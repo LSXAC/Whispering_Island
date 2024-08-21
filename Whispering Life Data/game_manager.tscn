@@ -118,13 +118,13 @@ from_direction = 2
 position = Vector2(-128, -80)
 
 [node name="Belt9" parent="." instance=ExtResource("17_ds46d")]
-position = Vector2(-160, -72)
+position = Vector2(-160, -80)
 
 [node name="Belt10" parent="." instance=ExtResource("17_ds46d")]
-position = Vector2(-176, -72)
+position = Vector2(-176, -80)
 
 [node name="Belt11" parent="." instance=ExtResource("17_ds46d")]
-position = Vector2(-192, -72)
+position = Vector2(-192, -80)
 
 [connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
 [connection signal="timeout" from="GameTimer" to="." method="OnGameTimerTimeout"]

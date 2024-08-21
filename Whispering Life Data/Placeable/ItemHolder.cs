@@ -13,8 +13,11 @@ public partial class ItemHolder : Node2D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (!moving_item || GetChildCount() == 0)
+        if (GetChildCount() == 0)
             return;
+
+        if (!moving_item)
+            EmitSignal("item_held");
 
         var item = GetChild<Node2D>(0);
         if (item is Node2D)

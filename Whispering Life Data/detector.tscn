@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Placeable/Detector.cs" id="1_uc8h7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
-size = Vector2(8, 8)
+size = Vector2(6, 6)
 
 [node name="Detector" type="Area2D"]
 collision_layer = 0
