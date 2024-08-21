@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7o3fi5jyastt"]
+
+[ext_resource type="Script" path="res://Prefabs/collect_item_label.cs" id="1_hsowa"]
+
+[node name="CollectItemLabel" type="Label"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -38.2222
+offset_right = 126.0
+offset_bottom = -15.2222
+grow_vertical = 0
+text = "+5 Wood"
+script = ExtResource("1_hsowa")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.01
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerFinished"]

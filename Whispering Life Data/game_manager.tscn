@@ -1,0 +1,133 @@
+[gd_scene load_steps=19 format=3 uid="uid://vserd8wdu3iw"]
+
+[ext_resource type="Script" path="res://Scripts/Manager Scripts/Game_Manager.cs" id="1_kw8xi"]
+[ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Placer.cs" id="2_2ikn4"]
+[ext_resource type="PackedScene" uid="uid://njw4so7o83dw" path="res://Prefabs/player.tscn" id="2_sny21"]
+[ext_resource type="PackedScene" uid="uid://bveoiwi14ha4g" path="res://Prefabs/Main_Island_0.tscn" id="3_p5rek"]
+[ext_resource type="PackedScene" uid="uid://deu0spbxs5bju" path="res://Menus/game_menu.tscn" id="4_dafgv"]
+[ext_resource type="PackedScene" uid="uid://j1cdgg7lep78" path="res://Prefabs/player_ui.tscn" id="4_iiee3"]
+[ext_resource type="Script" path="res://Scripts/Manager Scripts/Islands_Manager.cs" id="4_logif"]
+[ext_resource type="PackedScene" uid="uid://cjj30kpp0tj11" path="res://Menus/island_menu.tscn" id="5_nuj5f"]
+[ext_resource type="PackedScene" uid="uid://en6nagvvr8d3" path="res://Menus/Building_Menu.tscn" id="7_xph4e"]
+[ext_resource type="PackedScene" uid="uid://bovrg0u6tuo04" path="res://Menus/hover_menu.tscn" id="9_sosrl"]
+[ext_resource type="Script" path="res://Scripts/Global.cs" id="10_1kwav"]
+[ext_resource type="PackedScene" uid="uid://o62xek3uvpo8" path="res://quest_menu.tscn" id="12_x3g6o"]
+[ext_resource type="Script" path="res://Scripts/QuestManager.cs" id="13_v5o5h"]
+[ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Quests/Start.tres" id="14_2k87u"]
+[ext_resource type="Resource" uid="uid://cdk8sna5iiegp" path="res://Quests/Start2.tres" id="15_13bir"]
+[ext_resource type="PackedScene" uid="uid://c3qnrt64xg6eg" path="res://Placeable/Tree_Growther.tscn" id="16_1j4gf"]
+[ext_resource type="PackedScene" uid="uid://rd7h1v4imvk6" path="res://Placeable/Belt_Top.tscn" id="17_ds46d"]
+[ext_resource type="PackedScene" uid="uid://cn0rjr3gah4jr" path="res://Placeable/Furnace.tscn" id="18_o0m5c"]
+
+[node name="GameManager" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_kw8xi")
+
+[node name="BuildingManager" type="Node2D" parent="."]
+
+[node name="BuildingPlacer" type="Node2D" parent="BuildingManager" node_paths=PackedStringArray("parent_Node", "tilemap")]
+script = ExtResource("2_2ikn4")
+parent_Node = NodePath("../../Buildings")
+tilemap = NodePath("../../IslandManager/MainIsland/BuildingArea")
+
+[node name="Building_Tilemap_Snapper" type="TileMap" parent="BuildingManager/BuildingPlacer"]
+format = 2
+
+[node name="Buildings" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_sny21")]
+position = Vector2(-4, -9)
+scale = Vector2(0.75, 0.75)
+
+[node name="IslandManager" type="Node2D" parent="." node_paths=PackedStringArray("island_menu")]
+y_sort_enabled = true
+script = ExtResource("4_logif")
+island_menu = NodePath("../IslandMenu")
+
+[node name="MainIsland" parent="IslandManager" instance=ExtResource("3_p5rek")]
+
+[node name="PlayerUI" parent="." instance=ExtResource("4_iiee3")]
+
+[node name="GameMenu" parent="." instance=ExtResource("4_dafgv")]
+visible = false
+
+[node name="IslandMenu" parent="." instance=ExtResource("5_nuj5f")]
+visible = false
+
+[node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer", "building_typ_parent") instance=ExtResource("7_xph4e")]
+visible = false
+building_placer = NodePath("../BuildingManager/BuildingPlacer")
+building_typ_parent = NodePath("VScrollBar/GridContainer")
+
+[node name="HoverMenu" parent="." instance=ExtResource("9_sosrl")]
+offset_left = -224.0
+offset_top = -132.0
+offset_right = -124.0
+offset_bottom = -82.0
+
+[node name="Global" type="Node2D" parent="."]
+script = ExtResource("10_1kwav")
+
+[node name="QuestMenu" parent="." instance=ExtResource("12_x3g6o")]
+
+[node name="QuestManager" type="Node2D" parent="." node_paths=PackedStringArray("quest_timer")]
+script = ExtResource("13_v5o5h")
+quests = Array[Object]([ExtResource("14_2k87u"), ExtResource("15_13bir")])
+quest_timer = NodePath("QuestTimer")
+
+[node name="QuestTimer" type="Timer" parent="QuestManager"]
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Building" parent="." instance=ExtResource("16_1j4gf")]
+position = Vector2(0, -64)
+
+[node name="Belt" parent="." instance=ExtResource("17_ds46d")]
+position = Vector2(-32, -64)
+
+[node name="Belt2" parent="." instance=ExtResource("17_ds46d")]
+position = Vector2(-48, -64)
+
+[node name="Belt4" parent="." instance=ExtResource("17_ds46d")]
+position = Vector2(-64, -64)
+to_direction = 2
+
+[node name="Belt5" parent="." instance=ExtResource("17_ds46d")]
+position = Vector2(-64, -48)
+from_direction = 0
+
+[node name="Belt6" parent="." instance=ExtResource("17_ds46d")]
+position = Vector2(-80, -48)
+
+[node name="Belt7" parent="." instance=ExtResource("17_ds46d")]
+position = Vector2(-96, -48)
+to_direction = 0
+
+[node name="Belt8" parent="." instance=ExtResource("17_ds46d")]
+position = Vector2(-96, -64)
+to_direction = 0
+from_direction = 2
+
+[node name="Belt3" parent="." instance=ExtResource("17_ds46d")]
+position = Vector2(-96, -80)
+from_direction = 2
+
+[node name="Building2" parent="." instance=ExtResource("18_o0m5c")]
+position = Vector2(-128, -80)
+
+[node name="Belt9" parent="." instance=ExtResource("17_ds46d")]
+position = Vector2(-160, -72)
+
+[node name="Belt10" parent="." instance=ExtResource("17_ds46d")]
+position = Vector2(-176, -72)
+
+[node name="Belt11" parent="." instance=ExtResource("17_ds46d")]
+position = Vector2(-192, -72)
+
+[connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
+[connection signal="timeout" from="GameTimer" to="." method="OnGameTimerTimeout"]
+
+[editable path="IslandManager/MainIsland"]
+[editable path="BuildingMenu"]

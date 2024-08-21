@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjj30kpp0tj11"]
+
+[ext_resource type="Script" path="res://Scripts/Menu Scripts/island_menu.cs" id="1_dg2ug"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="1_dlbjo"]
+[ext_resource type="Texture2D" uid="uid://dlln1ly5u41as" path="res://Sprites/Screenshots/Island_1.png" id="2_ofw6p"]
+[ext_resource type="Texture2D" uid="uid://dpi14qef38gqy" path="res://Sprites/Screenshots/Island_2.png" id="4_a432s"]
+
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("button1", "button2")]
+script = ExtResource("1_dg2ug")
+button1 = NodePath("Background/HBoxHeader/VBoxContainer/Button")
+button2 = NodePath("Background/HBoxHeader/VBoxContainer2/Button2")
+
+[node name="TransBackground" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.172549, 0.172549, 0.172549, 0.294118)
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = 30.0
+offset_right = -70.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxHeader" type="HBoxContainer" parent="Background"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 26.0
+alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Background/HBoxHeader"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HBoxHeader/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+texture = ExtResource("2_ofw6p")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Background/HBoxHeader/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 20
+text = "Island 1"
+icon_alignment = 1
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="Background/HBoxHeader"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HBoxHeader/VBoxContainer2"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("4_a432s")
+expand_mode = 1
+
+[node name="Button2" type="Button" parent="Background/HBoxHeader/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 20
+text = "Island 2"

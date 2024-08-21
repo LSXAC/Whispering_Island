@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr5ksbynphgec"]
+
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="1_ekcoh"]
+
+[node name="Action_Info_Box" type="ColorRect"]
+custom_minimum_size = Vector2(0, 16)
+offset_top = 5.0
+offset_right = 213.0
+offset_bottom = 21.0
+color = Color(0.164706, 0.164706, 0.164706, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 196.0
+offset_bottom = 15.0
+theme_override_fonts/font = ExtResource("1_ekcoh")
+theme_override_font_sizes/font_size = 10
+text = "[E] Interact"
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true

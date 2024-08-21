@@ -1,0 +1,307 @@
+[gd_scene load_steps=30 format=3 uid="uid://deu0spbxs5bju"]
+
+[ext_resource type="Script" path="res://Scripts/Menu Scripts/GameMenu.cs" id="1_2bdem"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
+[ext_resource type="PackedScene" uid="uid://74pm7gmanqf2" path="res://Prefabs/inventory.tscn" id="3_ub0ut"]
+[ext_resource type="Script" path="res://Menus/CraftingMenu.cs" id="4_3cwxu"]
+[ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Items/Sticks.tres" id="5_k1cyv"]
+[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="6_7ubdg"]
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Items/Wood.tres" id="7_wyt5m"]
+[ext_resource type="Script" path="res://Scripts/Resources/Recipe.cs" id="8_ya722"]
+[ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Items/Pickaxe.tres" id="9_wvqoj"]
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="10_b3op3"]
+[ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Items/Plank.tres" id="11_judtb"]
+[ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Items/Charcoal.tres" id="12_q6qwl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_um5wb"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_wg0kw"]
+script = ExtResource("6_7ubdg")
+item_info = ExtResource("5_k1cyv")
+amount = 4
+
+[sub_resource type="Resource" id="Resource_r8k8y"]
+script = ExtResource("6_7ubdg")
+item_info = ExtResource("7_wyt5m")
+amount = 2
+
+[sub_resource type="Resource" id="Resource_1qhj7"]
+script = ExtResource("8_ya722")
+requiered_items = Array[Object]([SubResource("Resource_r8k8y")])
+output_item = SubResource("Resource_wg0kw")
+
+[sub_resource type="Resource" id="Resource_honsn"]
+script = ExtResource("6_7ubdg")
+item_info = ExtResource("9_wvqoj")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_ajr2q"]
+script = ExtResource("6_7ubdg")
+item_info = ExtResource("10_b3op3")
+amount = 3
+
+[sub_resource type="Resource" id="Resource_hrrhd"]
+script = ExtResource("6_7ubdg")
+item_info = ExtResource("5_k1cyv")
+amount = 2
+
+[sub_resource type="Resource" id="Resource_tswq2"]
+script = ExtResource("8_ya722")
+requiered_items = Array[Object]([SubResource("Resource_ajr2q"), SubResource("Resource_hrrhd")])
+output_item = SubResource("Resource_honsn")
+
+[sub_resource type="Resource" id="Resource_rlall"]
+script = ExtResource("6_7ubdg")
+item_info = ExtResource("11_judtb")
+amount = 2
+
+[sub_resource type="Resource" id="Resource_77rpa"]
+script = ExtResource("6_7ubdg")
+item_info = ExtResource("7_wyt5m")
+amount = 4
+
+[sub_resource type="Resource" id="Resource_a2ri2"]
+script = ExtResource("6_7ubdg")
+item_info = ExtResource("5_k1cyv")
+amount = 4
+
+[sub_resource type="Resource" id="Resource_dtjfg"]
+script = ExtResource("8_ya722")
+requiered_items = Array[Object]([SubResource("Resource_77rpa"), SubResource("Resource_a2ri2")])
+output_item = SubResource("Resource_rlall")
+
+[sub_resource type="Resource" id="Resource_arrlx"]
+script = ExtResource("6_7ubdg")
+item_info = ExtResource("12_q6qwl")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_1on0f"]
+script = ExtResource("6_7ubdg")
+item_info = ExtResource("11_judtb")
+amount = 6
+
+[sub_resource type="Resource" id="Resource_sxa1j"]
+script = ExtResource("6_7ubdg")
+item_info = ExtResource("5_k1cyv")
+amount = 12
+
+[sub_resource type="Resource" id="Resource_e84i1"]
+script = ExtResource("8_ya722")
+requiered_items = Array[Object]([SubResource("Resource_1on0f"), SubResource("Resource_sxa1j")])
+output_item = SubResource("Resource_arrlx")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tibut"]
+bg_color = Color(1, 1, 1, 0)
+
+[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab")]
+process_mode = 3
+script = ExtResource("1_2bdem")
+load_button = NodePath("Background/InventoryTab/PanelContainer/HBoxContainer/LoadGameButton")
+inventory_tab_button = NodePath("Background/HBoxHeader/InvTabButton")
+crafting_tab_button = NodePath("Background/HBoxHeader/CraftingTabButton")
+inventory_tab = NodePath("Background/InventoryTab")
+crafting_tab = NodePath("Background/CraftingTab")
+
+[node name="TransBackground" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.172549, 0.172549, 0.172549, 0.294118)
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxHeader" type="HBoxContainer" parent="Background"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 26.0
+alignment = 1
+
+[node name="InvTabButton" type="Button" parent="Background/HBoxHeader"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 20
+text = "Inventory"
+icon_alignment = 1
+
+[node name="CraftingTabButton" type="Button" parent="Background/HBoxHeader"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 20
+text = "Crafting"
+
+[node name="Button3" type="Button" parent="Background/HBoxHeader"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 20
+text = "Stats"
+
+[node name="Button4" type="Button" parent="Background/HBoxHeader"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+
+[node name="Button5" type="Button" parent="Background/HBoxHeader"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 20
+text = "[X]"
+
+[node name="InventoryTab" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="Inventory" parent="Background/InventoryTab" instance=ExtResource("3_ub0ut")]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 14.0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="PanelContainer" type="Control" parent="Background/InventoryTab"]
+anchors_preset = 0
+offset_left = 232.0
+offset_top = 222.0
+offset_right = 544.0
+offset_bottom = 270.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Background/InventoryTab/PanelContainer"]
+layout_mode = 2
+offset_top = -208.0
+offset_right = 312.0
+offset_bottom = 48.0
+alignment = 2
+
+[node name="SaveGameButton" type="Button" parent="Background/InventoryTab/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Save Game"
+
+[node name="LoadGameButton" type="Button" parent="Background/InventoryTab/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Load Game"
+
+[node name="Label" type="Label" parent="Background/InventoryTab/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "© 2024 Leon Schröder Asset Creations"
+
+[node name="CraftingTab" type="ColorRect" parent="Background"]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="Background/CraftingTab"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 14.0
+offset_right = 544.0
+offset_bottom = 38.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_um5wb")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Background/CraftingTab/PanelContainer"]
+layout_mode = 2
+split_offset = -125
+collapsed = true
+
+[node name="Label" type="Label" parent="Background/CraftingTab/PanelContainer/HSplitContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "  Item                  "
+
+[node name="Label2" type="Label" parent="Background/CraftingTab/PanelContainer/HSplitContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Resources needed"
+
+[node name="CraftingMenuBasic" type="PanelContainer" parent="Background/CraftingTab" node_paths=PackedStringArray("parent")]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 38.0
+offset_right = 544.0
+offset_bottom = 254.0
+script = ExtResource("4_3cwxu")
+parent = NodePath("VBoxContainer")
+crafting_recipies = [SubResource("Resource_1qhj7"), SubResource("Resource_tswq2"), SubResource("Resource_dtjfg"), SubResource("Resource_e84i1")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/CraftingMenuBasic"]
+layout_mode = 2
+
+[node name="CategoryPanel" type="PanelContainer" parent="Background/CraftingTab"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 14.0
+offset_right = 216.0
+offset_bottom = 220.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tibut")
+
+[node name="HSplitContainer" type="VBoxContainer" parent="Background/CraftingTab/CategoryPanel"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+text = "Basic"
+
+[node name="Button2" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+text = "Advanced"
+
+[node name="Button3" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+disabled = true
+text = "---"
+
+[node name="Button4" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+disabled = true
+text = "---"
+
+[node name="Button5" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+disabled = true
+text = "---"
+
+[node name="Button6" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+disabled = true
+text = "---"
+
+[node name="Button7" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+disabled = true
+text = "---"
+
+[connection signal="pressed" from="Background/HBoxHeader/InvTabButton" to="." method="OnInventoryTabButton"]
+[connection signal="pressed" from="Background/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]
+[connection signal="pressed" from="Background/HBoxHeader/Button5" to="." method="OnExitButton"]
+[connection signal="pressed" from="Background/InventoryTab/PanelContainer/HBoxContainer/SaveGameButton" to="." method="OnSaveButton"]
+[connection signal="pressed" from="Background/InventoryTab/PanelContainer/HBoxContainer/LoadGameButton" to="." method="OnLoadButton"]

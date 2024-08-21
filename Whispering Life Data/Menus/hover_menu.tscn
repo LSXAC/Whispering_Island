@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bovrg0u6tuo04"]
+
+[ext_resource type="Texture2D" uid="uid://de4l1wl47aa3q" path="res://Sprites/Menu/Menu_Overlay.png" id="1_8qcok"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="1_mkuyp"]
+[ext_resource type="Script" path="res://Scripts/Menu Scripts/hover_menu.cs" id="1_ywqhi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hpyar"]
+texture = ExtResource("1_8qcok")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="HoverMenu" type="PanelContainer" node_paths=PackedStringArray("title_Label", "description_Label")]
+z_index = 5
+z_as_relative = false
+custom_minimum_size = Vector2(100, 50)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -86.0
+offset_right = 100.0
+grow_vertical = 0
+pivot_offset = Vector2(50, 0)
+theme_override_styles/panel = SubResource("StyleBoxTexture_hpyar")
+script = ExtResource("1_ywqhi")
+title_Label = NodePath("CenterContainer/VBoxContainer/TitleLabel")
+description_Label = NodePath("CenterContainer/VBoxContainer/DescriptionLabel")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_mkuyp")
+theme_override_font_sizes/font_size = 10
+text = "r3r3r3r3rr3r"
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_mkuyp")
+theme_override_font_sizes/font_size = 7
+text = "gegegegegr3r3r3r3rr3"
+horizontal_alignment = 1

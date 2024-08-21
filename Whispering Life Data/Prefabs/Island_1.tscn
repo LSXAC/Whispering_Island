@@ -1,0 +1,176 @@
+[gd_scene load_steps=11 format=3 uid="uid://bi8dopb46mfob"]
+
+[ext_resource type="Script" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_4csf6"]
+[ext_resource type="Texture2D" uid="uid://cf7wddtjtlp1a" path="res://Tilemaps/Placeable_Tileset.png" id="1_pits8"]
+[ext_resource type="PackedScene" uid="uid://717sbs8rvfvt" path="res://Prefabs/Sign.tscn" id="2_mbodl"]
+[ext_resource type="PackedScene" uid="uid://dcruv230g3u4k" path="res://Placeable/building.tscn" id="3_37fa4"]
+[ext_resource type="TileSet" uid="uid://knopq4xq3ef2" path="res://Islands.tres" id="4_xeb8u"]
+[ext_resource type="Script" path="res://Prefabs/ObjectSpawnerTilemap.cs" id="6_orw41"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nigvl"]
+texture = ExtResource("1_pits8")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_grg2e"]
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_nigvl")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ud7jl"]
+size = Vector2(32, 32)
+
+[sub_resource type="TileSet" id="TileSet_8jpyj"]
+tile_size = Vector2i(32, 32)
+
+[node name="Island_1" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_4csf6")
+unique_island_id = 1
+
+[node name="BuildingArea" type="TileMap" parent="." groups=["BuildingCollision"]]
+z_index = -2
+tile_set = SubResource("TileSet_grg2e")
+format = 2
+layer_0/tile_data = PackedInt32Array(327679, 131072, 0, 262144, 131072, 0, 196608, 131072, 0, 131072, 131072, 0, 65536, 131072, 0, 65537, 131072, 0, 1, 131072, 0, -65535, 131072, 0, -131070, 131072, 0, -196606, 131072, 0, -262142, 131072, 0, -327678, 131072, 0, -327679, 131072, 0, -327680, 131072, 0, -262145, 131072, 0, -262146, 131072, 0, -262147, 131072, 0, -196611, 131072, 0, -131075, 131072, 0, -131076, 131072, 0, -196612, 131072, 0, -131077, 131072, 0, -65541, 131072, 0, -5, 131072, 0, 65531, 131072, 0, 131067, 131072, 0, 131068, 131072, 0, 65532, 131072, 0, 65533, 131072, 0, -3, 131072, 0, -65539, 131072, 0, -65540, 131072, 0, -4, 131072, 0, -2, 131072, 0, -65538, 131072, 0, -65537, 131072, 0, -131073, 131072, 0, -131074, 131072, 0, -196609, 131072, 0, -196610, 131072, 0, -131072, 131072, 0, -196608, 131072, 0, -262143, 131072, 0, -262144, 131072, 0, -196607, 131072, 0, -131071, 131072, 0, -196605, 131072, 0, -262141, 131072, 0, -131069, 131072, 0, -65533, 131072, 0, -131068, 131072, 0, -196604, 131072, 0, -65532, 131072, 0, 4, 131072, 0, 65540, 131072, 0, 3, 131072, 0, 65539, 131072, 0, 131075, 131072, 0, 131076, 131072, 0, -65534, 131072, 0, 2, 131072, 0, 131074, 131072, 0, 65538, 131072, 0, 196610, 131072, 0, 196611, 131072, 0, 262146, 131072, 0, 131073, 131072, 0, 196609, 131072, 0, 262145, 131072, 0, 262143, 131072, 0, 262142, 131072, 0, 196607, 131072, 0, 131071, 131072, 0, 196606, 131072, 0, 196605, 131072, 0, 196604, 131072, 0, 196603, 131072, 0, 131069, 131072, 0, 65534, 131072, 0, 131070, 131072, 0, 65535, 131072, 0, -65536, 131072, 0, -1, 131072, 0, 0, 131072, 0, 65541, 131072, 0, 5, 131072, 0, -65531, 131072, 0, -131067, 131072, 0, -393215, 131072, 0, -393216, 131072, 0, -327681, 131072, 0, -327682, 131072, 0, -65542, 131072, 0, -6, 131072, 0, 65530, 131072, 0, 131066, 131072, 0, 262140, 131072, 0, 262141, 131072, 0, 327680, 131072, 0, 327681, 131072, 0, 393215, 131072, 0, 393214, 131072, 0, 393213, 131072, 0, 327677, 131072, 0, 327678, 131072, 0, 327676, 131072, 0, 393212, 131072, 0, 327675, 131072, 0, 262139, 131072, 0, 262138, 131072, 0, 196602, 131072, 0, 196601, 131072, 0, 131065, 131072, 0, 65529, 131072, 0, 65528, 131072, 0, 131064, 131072, 0, -8, 131072, 0, -65544, 131072, 0, -131080, 131072, 0, -7, 131072, 0, -65543, 131072, 0, -131079, 131072, 0, -196615, 131072, 0, -196616, 131072, 0, -196614, 131072, 0, -196613, 131072, 0, -262150, 131072, 0, -131078, 131072, 0, -262151, 131072, 0, -262149, 131072, 0, -262148, 131072, 0, -327685, 131072, 0, -327686, 131072, 0, -327684, 131072, 0, -327683, 131072, 0, -393219, 131072, 0, -393218, 131072, 0, -393217, 131072, 0, -458753, 131072, 0, -458754, 131072, 0, -524288, 131072, 0, -524287, 131072, 0, -524286, 131072, 0, -458751, 131072, 0, -458750, 131072, 0, -458752, 131072, 0, -524285, 131072, 0, -458749, 131072, 0, -393213, 131072, 0, -327677, 131072, 0, -393214, 131072, 0, -393212, 131072, 0, -458748, 131072, 0, -327676, 131072, 0, -262140, 131072, 0, -393211, 131072, 0, -327675, 131072, 0, -262139, 131072, 0, -196603, 131072, 0, -262138, 131072, 0, -327674, 131072, 0, -196602, 131072, 0, -131066, 131072, 0, -262137, 131072, 0, -196601, 131072, 0, -131065, 131072, 0, -65529, 131072, 0, 7, 131072, 0, 6, 131072, 0, -65530, 131072, 0, 65542, 131072, 0, 65543, 131072, 0, 131078, 131072, 0, 131077, 131072, 0, 196612, 131072, 0, 196613, 131072, 0, 262148, 131072, 0, 262147, 131072, 0, 327682, 131072, 0, 327683, 131072, 0)
+
+[node name="IslandProperties" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="BridgeStartPoints" type="Node2D" parent="IslandProperties"]
+y_sort_enabled = true
+
+[node name="Up" type="Node2D" parent="IslandProperties/BridgeStartPoints"]
+y_sort_enabled = true
+position = Vector2(0, -128)
+
+[node name="Down" type="Node2D" parent="IslandProperties/BridgeStartPoints"]
+y_sort_enabled = true
+position = Vector2(0, 96)
+
+[node name="Left" type="Node2D" parent="IslandProperties/BridgeStartPoints"]
+y_sort_enabled = true
+position = Vector2(-128, 0)
+
+[node name="Right" type="Node2D" parent="IslandProperties/BridgeStartPoints"]
+y_sort_enabled = true
+position = Vector2(128, 0)
+
+[node name="Bridges" type="Node2D" parent="IslandProperties"]
+y_sort_enabled = true
+
+[node name="Signs" type="Node2D" parent="IslandProperties"]
+y_sort_enabled = true
+
+[node name="UpSign" parent="IslandProperties/Signs" node_paths=PackedStringArray("current_ip") instance=ExtResource("2_mbodl")]
+position = Vector2(32, -120)
+current_ip = NodePath("../../..")
+dir = 1
+
+[node name="RightSign" parent="IslandProperties/Signs" node_paths=PackedStringArray("current_ip") instance=ExtResource("2_mbodl")]
+position = Vector2(96, -40)
+current_ip = NodePath("../../..")
+dir = 2
+
+[node name="LeftSign" parent="IslandProperties/Signs" node_paths=PackedStringArray("current_ip") instance=ExtResource("2_mbodl")]
+position = Vector2(-80, -24)
+current_ip = NodePath("../../..")
+dir = 3
+
+[node name="DownSign" parent="IslandProperties/Signs" node_paths=PackedStringArray("current_ip") instance=ExtResource("2_mbodl")]
+position = Vector2(24, 72)
+current_ip = NodePath("../../..")
+dir = 4
+
+[node name="BridgeCollisions" type="StaticBody2D" parent="IslandProperties"]
+y_sort_enabled = true
+
+[node name="Up" type="CollisionShape2D" parent="IslandProperties/BridgeCollisions"]
+y_sort_enabled = true
+position = Vector2(0, -144)
+shape = SubResource("RectangleShape2D_ud7jl")
+
+[node name="Right" type="CollisionShape2D" parent="IslandProperties/BridgeCollisions"]
+y_sort_enabled = true
+position = Vector2(144, 0)
+shape = SubResource("RectangleShape2D_ud7jl")
+
+[node name="Left" type="CollisionShape2D" parent="IslandProperties/BridgeCollisions"]
+y_sort_enabled = true
+position = Vector2(-144, 0)
+shape = SubResource("RectangleShape2D_ud7jl")
+
+[node name="Down" type="CollisionShape2D" parent="IslandProperties/BridgeCollisions"]
+y_sort_enabled = true
+position = Vector2(0, 112)
+shape = SubResource("RectangleShape2D_ud7jl")
+
+[node name="Objects" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="Building" parent="Objects" instance=ExtResource("3_37fa4")]
+position = Vector2(48, -229)
+
+[node name="TileMap" type="TileMap" parent="."]
+z_index = -2
+tile_set = ExtResource("4_xeb8u")
+format = 2
+layer_0/tile_data = PackedInt32Array(-131074, 131072, 2, -65538, 131072, 2, -2, 131072, 2, -1, 131072, 2, 65535, 131072, 2, 0, 131072, 2, -65536, 131072, 2, -131072, 131072, 2, -196608, 131072, 2, -131073, 131072, 2, -65537, 131072, 2, -131071, 131072, 2, -65535, 131072, 2, 1, 131072, 2, 65534, 131072, 2, -65539, 131072, 2, -3, 131072, 2, -131070, 131072, 2, -65534, 131072, 2, 65533, 131072, 2, 131071, 131072, 2, 65536, 131072, 2, 65537, 131072, 2, 2, 131072, 2, 131072, 131072, 3, 131070, 131072, 2, 65538, 131072, 2, 131073, 131072, 3, 196607, 131072, 3, 131069, 131072, 2, -196607, 131072, 2, -131069, 196608, 2, -65533, 196608, 2, 3, 196608, 2, 65539, 196608, 3, -131075, 131072, 1, -196610, 65536, 1, -196609, 131072, 1, -262144, 131072, 1, -262143, 131072, 1, -196606, 131072, 2, -196605, 196608, 1, 131074, 196608, 3, -262142, 196608, 1, -131076, 65536, 1, 131068, 65536, 3, 196605, 65536, 3, 196609, 131072, 4, 196608, 131072, 4, 262143, 131072, 4, 262142, 131072, 4, 262141, 65536, 4, 196604, 65536, 4, 131075, 196608, 4, 196610, 196608, 4, 196606, 131072, 3, 65532, 65536, 2, -4, 65536, 2, -65540, 65536, 2)
+
+[node name="IslandMaxBorder" type="Node2D" parent="."]
+visible = false
+
+[node name="TileMap" type="TileMap" parent="IslandMaxBorder"]
+tile_set = ExtResource("4_xeb8u")
+format = 2
+layer_0/tile_data = PackedInt32Array(65528, 131072, 4, -8, 131072, 4, -65544, 131072, 4, -131080, 131072, 4, -196616, 131072, 4, -262152, 131072, 4, -327688, 131072, 4, -393224, 131072, 4, -458760, 131072, 4, -458759, 131072, 4, -458758, 131072, 4, -458757, 131072, 4, -458756, 131072, 4, -458755, 131072, 4, -458754, 131072, 4, -458753, 131072, 4, -524288, 131072, 4, -524287, 131072, 4, -524286, 131072, 4, -524285, 131072, 4, -524284, 131072, 4, -524283, 131072, 4, -524282, 131072, 4, -65529, 131072, 4, -131065, 131072, 4, -458745, 131072, 4, -524281, 131072, 4, -393209, 131072, 4, -327673, 131072, 4, -262137, 131072, 4, -196601, 131072, 4, 7, 131072, 4, 65543, 131072, 4, 131079, 131072, 4, 196615, 131072, 4, 262151, 131072, 4, 458752, 131072, 4, 458753, 131072, 4, 458754, 131072, 4, 458755, 131072, 4, 458756, 131072, 4, 458757, 131072, 4, 458758, 131072, 4, 458759, 131072, 4, 393223, 131072, 4, 327687, 131072, 4, 524287, 131072, 4, 524286, 131072, 4, 524285, 131072, 4, 524284, 131072, 4, 524283, 131072, 4, 524282, 131072, 4, 524281, 131072, 4, 524280, 131072, 4, 458744, 131072, 4, 393208, 131072, 4, 327672, 131072, 4, 262136, 131072, 4, 196600, 131072, 4, 131064, 131072, 4, 65526, 131072, 4, 65527, 131072, 4, -9, 131072, 4, -10, 131072, 4, -589825, 131072, 4, -524289, 131072, 4, -589824, 131072, 4, -655360, 131072, 4, -65528, 131072, 4, 8, 131072, 4, 9, 131072, 4, -65527, 131072, 4, 589823, 131072, 4, 655359, 131072, 4, 589824, 131072, 4, 524288, 131072, 4)
+
+[node name="EdgeCollisions" type="StaticBody2D" parent="."]
+
+[node name="TopLeft" type="CollisionPolygon2D" parent="EdgeCollisions"]
+position = Vector2(-16, 16)
+build_mode = 1
+polygon = PackedVector2Array(-112, -80, -112, -32, -120, -32, -136, -32, -136, -56, -128, -112, -24, -184, 0, -184, 0, -144, -16, -144, -48, -112, -80, -112)
+
+[node name="TopRight" type="CollisionPolygon2D" parent="EdgeCollisions"]
+position = Vector2(-32, 32)
+build_mode = 1
+polygon = PackedVector2Array(48, -160, 48, -192, 80, -208, 120, -200, 168, -160, 184, -112, 192, -48, 160, -48, 160, -96, 120, -136, 96, -160)
+
+[node name="BottomLeft" type="CollisionPolygon2D" parent="EdgeCollisions"]
+position = Vector2(-48, 48)
+build_mode = 1
+polygon = PackedVector2Array(-16, 48, -48, 16, -80, -16, -80, -32, -104, -32, -80, 0, -48, 64, 8, 88, 32, 72, 32, 48, 16, 48)
+
+[node name="BottomRight" type="CollisionPolygon2D" parent="EdgeCollisions"]
+position = Vector2(-64, 64)
+build_mode = 1
+polygon = PackedVector2Array(160, 0, 192, -32, 192, -48, 224, -48, 224, -48, 152, 40, 104, 56, 80, 56, 80, 32, 96, 32, 128, 32)
+
+[node name="ObjectSpawnerTilemap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_8jpyj")
+format = 2
+layer_0/enabled = false
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(131074, 0, 0, 327677, 0, 0, -131077, 0, 0, -327681, 0, 0, -327678, 0, 0, -393214, 65536, 0, -6, 65536, 0, 65541, 65536, 0)
+script = ExtResource("6_orw41")

@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://en6nagvvr8d3"]
+
+[ext_resource type="Script" path="res://Scripts/Menu Scripts/Building_Menu.cs" id="1_6maqu"]
+
+[node name="BuildingMenu" type="CanvasLayer"]
+script = ExtResource("1_6maqu")
+
+[node name="TransBackground" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.172549, 0.172549, 0.172549, 0.294118)
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VScrollBar" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(632, 160)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 30.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="VScrollBar"]
+layout_mode = 2
+columns = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 640.0
+offset_bottom = 28.0
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Production"
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Production"

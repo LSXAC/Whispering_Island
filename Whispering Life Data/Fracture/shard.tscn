@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba234wyejnhlu"]
+
+[ext_resource type="Script" path="res://Scripts/Fracture Scripts/shard.cs" id="1_4itc0"]
+
+[node name="Shard" type="RigidBody2D"]
+gravity_scale = -0.1
+sleeping = true
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_4itc0")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true

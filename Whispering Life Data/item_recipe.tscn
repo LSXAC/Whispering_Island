@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7l06c35ca42f"]
+
+[ext_resource type="Script" path="res://itemRecipeUI.cs" id="1_i2qso"]
+[ext_resource type="Texture2D" uid="uid://bjana5l7fkd6a" path="res://Sprites/Items/Icons_3rd/Wood_Stick.png" id="1_ymefu"]
+[ext_resource type="Script" path="res://h_box_item.cs" id="2_oxvhy"]
+[ext_resource type="Texture2D" uid="uid://wquchq45ve1" path="res://Sprites/Items/Icons/Hammer_Icon.png" id="4_urtgv"]
+
+[node name="ItemRecipe" type="Control" node_paths=PackedStringArray("parent", "craft_button", "outputUI")]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_i2qso")
+parent = NodePath("MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere")
+craft_button = NodePath("MarginContainer/VSplitContainer/HBoxRequiereToCraft/CraftButton")
+outputUI = NodePath("MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 42.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VSplitContainer" type="HSplitContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+split_offset = 250
+collapsed = true
+
+[node name="HBoxToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="CC" type="CenterContainer" parent="MarginContainer/VSplitContainer/HBoxToCraft"]
+layout_mode = 2
+
+[node name="HBoxItem" type="HBoxContainer" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC"]
+layout_mode = 2
+script = ExtResource("2_oxvhy")
+
+[node name="ItemTexture" type="TextureRect" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("1_ymefu")
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "4x Sticks"
+
+[node name="HBoxRequiereToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="CC_Requiere" type="CenterContainer" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft"]
+layout_mode = 2
+
+[node name="CraftButton" type="Button" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+icon = ExtResource("4_urtgv")
+icon_alignment = 1
+expand_icon = true

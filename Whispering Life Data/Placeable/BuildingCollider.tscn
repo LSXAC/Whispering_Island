@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5u81hi3w1yvx"]
+
+[ext_resource type="Script" path="res://Scripts/Building Scripts/BuildingCollider.cs" id="1_glpi8"]
+[ext_resource type="Texture2D" uid="uid://ds276tqn77ctg" path="res://Sprites/Placeable/Grid_Outline_True.png" id="2_4tvv1"]
+[ext_resource type="Texture2D" uid="uid://c7txhxc7yc661" path="res://Sprites/Placeable/Grid_Outline.png" id="2_dhvna"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ke66e"]
+size = Vector2(12, 12)
+
+[node name="PlaceArea" type="Area2D"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-24, -8)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_glpi8")
+grid_outline_green = ExtResource("2_4tvv1")
+grid_outline_red = ExtResource("2_dhvna")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ke66e")
+one_way_collision_margin = 10.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_as_relative = false
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dhvna")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyLeaved"]

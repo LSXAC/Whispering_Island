@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl0q84lfojr04"]
+
+[ext_resource type="Script" path="res://Scripts/Fracture Scripts/shard_emitter.cs" id="1_vhyct"]
+
+[node name="ShardEmitter" type="Node2D"]
+script = ExtResource("1_vhyct")
+nbr_of_shards = 10
+
+[node name="DeleteTimer" type="Timer" parent="."]
+wait_time = 5.0

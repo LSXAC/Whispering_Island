@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://csy1qfm077s3a"]
+
+[ext_resource type="Script" path="res://Scripts/Building Scripts/building_type.cs" id="1_dw2cy"]
+[ext_resource type="Texture2D" uid="uid://dpajjb7kxfkvs" path="res://Sprites/icon.svg" id="2_8y6lk"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="3_ahfhd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_si7c8"]
+font = ExtResource("3_ahfhd")
+font_size = 10
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="BuildingType" type="Panel" node_paths=PackedStringArray("title_label", "texture_rect", "select_button")]
+custom_minimum_size = Vector2(96, 144)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -544.0
+offset_bottom = -216.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dw2cy")
+title_label = NodePath("Title")
+texture_rect = NodePath("TextureRect")
+select_button = NodePath("BuildButton")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_top = 16.0
+offset_right = 48.0
+offset_bottom = 112.0
+grow_horizontal = 2
+texture = ExtResource("2_8y6lk")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_bottom = 16.0
+grow_horizontal = 0
+text = "Tree Grower"
+label_settings = SubResource("LabelSettings_si7c8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuildButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -32.0
+offset_right = 46.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Select"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://dmrxwabbdyg0d"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_j6n16"]
+[ext_resource type="Texture2D" uid="uid://cn8y6cj766xw0" path="res://Sprites/Items/Icons_3rd/Chest.png" id="2_6gu2g"]
+
+[resource]
+script = ExtResource("1_j6n16")
+unique_item_id = 5
+item_type = 0
+item_name = "CHEST"
+item_description = "CHEST_DESC"
+texture = ExtResource("2_6gu2g")
+value = 5.0

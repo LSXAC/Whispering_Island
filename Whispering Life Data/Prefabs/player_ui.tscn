@@ -1,0 +1,170 @@
+[gd_scene load_steps=8 format=3 uid="uid://j1cdgg7lep78"]
+
+[ext_resource type="Script" path="res://Scripts/Player Scripts/player_ui.cs" id="1_m5svq"]
+[ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="3_0pxjf"]
+[ext_resource type="PackedScene" uid="uid://u4rbvbumuiua" path="res://h_box_item.tscn" id="4_4w6kj"]
+[ext_resource type="Script" path="res://Prefabs/QuestMiniPanel.cs" id="4_khv1d"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_x1xeh"]
+color = Color(0.141176, 0.141176, 0.141176, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upggj"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("qcp_timer", "collected_item_parent")]
+script = ExtResource("1_m5svq")
+qcp_timer = NodePath("QuestCompletePanel/Timer")
+collected_item_parent = NodePath("ReceivedItems")
+
+[node name="HSlider" type="HSlider" parent="."]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -16.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_icons/grabber = ExtResource("2_jybl7")
+theme_override_styles/slider = SubResource("StyleBoxLine_x1xeh")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_upggj")
+max_value = 1.0
+step = 0.01
+scrollable = false
+
+[node name="Label" type="Label" parent="HSlider"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -79.0
+offset_top = -24.0
+offset_right = 80.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "Stamina"
+horizontal_alignment = 1
+
+[node name="ReceivedItems" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -111.0
+offset_right = 125.0
+grow_vertical = 0
+
+[node name="QuestMiniPanel" type="PanelContainer" parent="." node_paths=PackedStringArray("hbox_items", "time_label")]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 56.0
+script = ExtResource("4_khv1d")
+hbox_items = [NodePath("MarginContainer/VBoxContainer/Item1"), NodePath("MarginContainer/VBoxContainer/Item2"), NodePath("MarginContainer/VBoxContainer/Item3")]
+time_label = NodePath("MarginContainer/VBoxContainer/TimeLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="QuestMiniPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestMiniPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="QuestMiniPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Objectiv"
+horizontal_alignment = 1
+
+[node name="Item1" parent="QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+visible = false
+layout_mode = 2
+
+[node name="Item2" parent="QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+visible = false
+layout_mode = 2
+
+[node name="Item3" parent="QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+visible = false
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="QuestMiniPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Time Left: 192s"
+
+[node name="QuestCompletePanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -128.0
+offset_right = 256.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="QuestCompletePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestCompletePanel/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="QuestCompletePanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Quest Complete!"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="QuestCompletePanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "The requiered Items got removed"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="QuestCompletePanel"]
+wait_time = 2.0
+
+[node name="GameTimePanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(120, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+offset_right = 120.0
+grow_vertical = 0
+
+[node name="GameTimeLabel" type="Label" parent="GameTimePanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Game Time: 0.1s"
+horizontal_alignment = 1
+
+[connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]

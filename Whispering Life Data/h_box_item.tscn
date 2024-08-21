@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://u4rbvbumuiua"]
+
+[ext_resource type="Script" path="res://h_box_item.cs" id="1_fptl0"]
+[ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="2_8ded4"]
+
+[node name="HBoxItem" type="HBoxContainer"]
+offset_right = 80.0
+offset_bottom = 24.0
+script = ExtResource("1_fptl0")
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("2_8ded4")
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "2x"
+horizontal_alignment = 2
+vertical_alignment = 1

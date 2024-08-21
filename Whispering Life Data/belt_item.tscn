@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkue7sa7xyeyr"]
+
+[ext_resource type="Script" path="res://BeltItem.cs" id="1_wf8mv"]
+[ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="2_tqvkn"]
+
+[node name="BellItem" type="CharacterBody2D"]
+script = ExtResource("1_wf8mv")
+
+[node name="BellItemSprite" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_tqvkn")

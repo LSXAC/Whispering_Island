@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bopqpble0frf3"]
+
+[ext_resource type="Script" path="res://Placeable/Trashcan.cs" id="1_awq62"]
+[ext_resource type="Texture2D" uid="uid://dkx6f8rgpkwjm" path="res://Sprites/Trashcan.png" id="2_y886q"]
+[ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_y1dx4"]
+[ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilemaps/BuildingTiles.tres" id="4_yf36i"]
+[ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_jpa2r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77bd0"]
+size = Vector2(14, 14)
+
+[node name="Trashcan" type="Area2D" node_paths=PackedStringArray("item_holder")]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_awq62")
+item_holder = NodePath("ItemHolder")
+
+[node name="BuildingSprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(16, 16)
+texture = ExtResource("2_y886q")
+centered = false
+offset = Vector2(-32, -32)
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("3_y1dx4")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="CollisionTemplateTilemap" type="TileMap" parent="."]
+z_index = -2
+tile_set = ExtResource("4_yf36i")
+format = 2
+layer_0/tile_data = PackedInt32Array(-1, 131073, 0)
+
+[node name="ItemHolder" parent="." instance=ExtResource("6_jpa2r")]
+position = Vector2(-8, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -8)
+shape = SubResource("RectangleShape2D_77bd0")
+
+[connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]
