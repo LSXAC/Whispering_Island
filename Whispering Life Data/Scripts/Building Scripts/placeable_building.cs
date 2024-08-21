@@ -16,18 +16,6 @@ public partial class placeable_building : Building_Node
     [Export]
     public Node2D building_content;
 
-    [Export]
-    public float count = 0;
-
-    [Export]
-    public float export_count = 0;
-
-    [Export]
-    public bool is_crafter = false;
-
-    [Export]
-    public Giver giver;
-
     public override void OnMouseClick()
     {
         if (Global.GetDistanceToPlayer(this.GlobalPosition) < 60f)
@@ -39,10 +27,5 @@ public partial class placeable_building : Building_Node
     public override void _Ready()
     {
         building_collider_manager = GetNode<Node2D>("BuildingAreas") as Building_Collider_Manager;
-    }
-
-    public void OnSpawnTimeout()
-    {
-        count++;
     }
 }

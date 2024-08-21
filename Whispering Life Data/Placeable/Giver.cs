@@ -7,7 +7,7 @@ public partial class Giver : Area2D
     public Detector detector;
 
     [Export]
-    public placeable_building building;
+    public ProcessBase building;
 
     [Export]
     public Node2D Holder;
@@ -16,19 +16,14 @@ public partial class Giver : Area2D
     [Export]
     public Item produced_item;
 
-    [Export]
-    public Timer crafting_timer;
-
     public void OnProductionTimerTimeout()
     {
         detector.Detect();
     }
 
-    private bool is_crafting = false;
-
     public void OnDetectorBeltDetected(Belt destination)
     {
-        if (building.is_crafter)
+        if (building is ProcessBuilding)
         {
             if (destination.can_receive_item() && building.export_count > 0)
             {
@@ -38,29 +33,23 @@ public partial class Giver : Area2D
                 Holder.AddChild(item);
                 destination.receive_item(item);
             }
-            if (!is_crafting && building.count >= 2)
+            if (!((ProcessBuilding)building).is_crafting && building.input_count >= 2)
             {
-                building.count -= 2;
-                is_crafting = true;
-                crafting_timer.OneShot = true;
-                crafting_timer.Start();
+                building.input_count -= 2;
+                ((ProcessBuilding)building).is_crafting = true;
+                ((ProcessBuilding)building).crafting_timer.OneShot = true;
+                ((ProcessBuilding)building).crafting_timer.Start();
             }
         }
-        else
+        else if (building is ProductionMachine)
         {
-            if (destination.can_receive_item() && building.count > 0)
+            if (destination.can_receive_item() && building.input_count > 0)
             {
-                building.count -= 1;
+                building.input_count -= 1;
                 BeltItem item = (BeltItem)beltItem.Instantiate();
                 Holder.AddChild(item);
                 destination.receive_item(item);
             }
         }
-    }
-
-    public void OnCraftingTimerTimeout()
-    {
-        building.export_count++;
-        is_crafting = false;
     }
 }

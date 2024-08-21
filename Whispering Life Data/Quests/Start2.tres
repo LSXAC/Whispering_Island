@@ -17,7 +17,7 @@ amount = 3
 
 [resource]
 script = ExtResource("3_aiyko")
-quest_name = "Another Shit"
-quest_description = "Shitting  Time 2 dEscrIptIon"
+quest_name = "The Second Quest!"
+quest_description = "A Quest Description - 2"
 quest_items = Array[Resource]([SubResource("Resource_iic3g"), SubResource("Resource_swemk")])
 quest_time = 300

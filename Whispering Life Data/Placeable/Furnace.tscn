@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cn0rjr3gah4jr"]
 
-[ext_resource type="Script" path="res://Scripts/Building Scripts/placeable_building.cs" id="1_00atl"]
+[ext_resource type="Script" path="res://Placeable/ProcessBuilding.cs" id="1_vtdy4"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="2_gjbdr"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_rakgt"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilemaps/BuildingTiles.tres" id="4_ayk0p"]
@@ -23,18 +23,17 @@ script = ExtResource("10_j7ftf")
 item_info = ExtResource("10_c3j8d")
 amount = 1
 
-[node name="Building" type="Area2D" node_paths=PackedStringArray("sprite", "giver", "building_sprite")]
+[node name="Building" type="Area2D" node_paths=PackedStringArray("crafting_timer", "sprite", "building_sprite")]
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
 monitoring = false
 monitorable = false
-script = ExtResource("1_00atl")
+script = ExtResource("1_vtdy4")
+crafting_timer = NodePath("CraftingTimer")
 building_name = "Furnace"
 building_texture = ExtResource("2_gjbdr")
 sprite = NodePath("BuildingSprite")
-is_crafter = true
-giver = NodePath("Giver")
 title = "Furnace"
 description = "Smelts things"
 building_sprite = NodePath("BuildingSprite")
@@ -97,14 +96,13 @@ texture = ExtResource("5_epac7")
 [node name="Taker" parent="." node_paths=PackedStringArray("building") instance=ExtResource("8_17n2q")]
 building = NodePath("..")
 
-[node name="Giver" parent="." node_paths=PackedStringArray("building", "crafting_timer") instance=ExtResource("9_g3chf")]
+[node name="Giver" parent="." node_paths=PackedStringArray("building") instance=ExtResource("9_g3chf")]
 building = NodePath("..")
 produced_item = SubResource("Resource_h1u8o")
-crafting_timer = NodePath("../CraftingTimer")
 
 [node name="CraftingTimer" type="Timer" parent="."]
 wait_time = 2.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
-[connection signal="timeout" from="CraftingTimer" to="Giver" method="OnCraftingTimerTimeout"]
+[connection signal="timeout" from="CraftingTimer" to="." method="OnCraftingTimerTimeout"]

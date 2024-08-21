@@ -15,23 +15,19 @@ public partial class Building_Menu : CanvasLayer
     private PackedScene building_typ = ResourceLoader.Load<PackedScene>(
         "res://Menus/building_type.tscn"
     );
-    private PackedScene building_1 = ResourceLoader.Load<PackedScene>(
-        "res://Placeable/building.tscn"
-    );
-    private PackedScene building_2 = ResourceLoader.Load<PackedScene>(
+    private PackedScene tree_growther = ResourceLoader.Load<PackedScene>(
         "res://Placeable/Tree_Growther.tscn"
     );
+    private PackedScene furnace = ResourceLoader.Load<PackedScene>("res://Placeable/Furnace.tscn");
 
-    private PackedScene belt_top = ResourceLoader.Load<PackedScene>(
-        "res://Placeable/Belt_Top.tscn"
-    );
+    private PackedScene belt = ResourceLoader.Load<PackedScene>("res://Placeable/Belt.tscn");
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        InitBuildings(building_1);
-        InitBuildings(building_2);
-        InitBuildings(belt_top);
+        InitBuildings(tree_growther);
+        InitBuildings(furnace);
+        InitBuildings(belt);
         instance = this;
     }
 

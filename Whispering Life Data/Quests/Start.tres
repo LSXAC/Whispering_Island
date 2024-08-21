@@ -11,7 +11,7 @@ amount = 10
 
 [resource]
 script = ExtResource("1_8kshx")
-quest_name = "Start the Shit"
-quest_description = "A really shitty Destriptiobn"
+quest_name = "The First Quest!"
+quest_description = "A Quest Description - 1"
 quest_items = Array[Resource]([SubResource("Resource_iic3g")])
 quest_time = 300

@@ -28,6 +28,10 @@ public partial class building_type : Panel
             title_label.Text = ((placeable_building)placeable).building_name;
             texture_rect.Texture = ((placeable_building)placeable).building_texture;
         }
+        else
+        {
+            title_label.Text = "Belt";
+        }
         this.scene_ref = scene_ref;
     }
 
