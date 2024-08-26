@@ -127,7 +127,7 @@ public partial class Island_Properties : Node2D
 
         Node2D island = (Node2D)island_prefab.Instantiate();
         Island_Properties ip = island as Island_Properties;
-        Game_Manager.island_parent.AddChild(island);
+        Game_Manager.INSTANCE.island_parent.AddChild(island);
 
         GD.Print("Step 2: Select Direction");
         switch (dir)

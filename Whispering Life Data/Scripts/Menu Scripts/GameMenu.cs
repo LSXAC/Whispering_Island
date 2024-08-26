@@ -26,7 +26,7 @@ public partial class GameMenu : CanvasLayer
             if (!Visible)
             {
                 this.Visible = true;
-                Game_Manager.InsideGameMenu = true;
+                Game_Manager.inside_game_menu = true;
             }
             else
                 OnExitButton();
@@ -43,7 +43,7 @@ public partial class GameMenu : CanvasLayer
     public void OnExitButton()
     {
         this.Visible = false;
-        Game_Manager.InsideGameMenu = false;
+        Game_Manager.inside_game_menu = false;
     }
 
     public void OnInventoryTabButton()

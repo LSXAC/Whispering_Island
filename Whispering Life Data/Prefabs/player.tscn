@@ -1,9 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://njw4so7o83dw"]
+[gd_scene load_steps=32 format=3 uid="uid://njw4so7o83dw"]
 
 [ext_resource type="Script" path="res://Scripts/Player Scripts/Player.cs" id="1_2p5ml"]
 [ext_resource type="Texture2D" uid="uid://b4214y7h1nkv7" path="res://Sprites/Char_Animation.png" id="2_c6oqb"]
-[ext_resource type="PackedScene" uid="uid://dr5ksbynphgec" path="res://Prefabs/action_info_box.tscn" id="3_unkjv"]
-[ext_resource type="PackedScene" uid="uid://biyoymgwsyck4" path="res://Menus/action_event_menu.tscn" id="4_ndkyb"]
 [ext_resource type="Script" path="res://Scripts/Player Scripts/Player_Stamina.cs" id="5_l640a"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="6_k5wdo"]
 
@@ -237,14 +235,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjp5d"]
 size = Vector2(48, 50)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("cam", "vbox", "action_menu", "player_stamina")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("cam", "vbox", "player_stamina")]
 y_sort_enabled = true
 motion_mode = 1
 safe_margin = 3.0
 script = ExtResource("1_2p5ml")
 cam = NodePath("Camera2D")
-vbox = NodePath("VBoxContainer")
-action_menu = NodePath("Action_Event_Menu")
+vbox = NodePath("")
 player_stamina = NodePath("Player_Stamina")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -271,20 +268,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_rjp5d")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-clip_contents = true
-custom_minimum_size = Vector2(0, 30)
-offset_left = 31.0
-offset_top = -20.0
-offset_right = 244.0
-offset_bottom = 20.0
-alignment = 1
-
-[node name="Action_Info_Box" parent="VBoxContainer" instance=ExtResource("3_unkjv")]
-layout_mode = 2
-
-[node name="Action_Event_Menu" parent="." instance=ExtResource("4_ndkyb")]
 
 [node name="Player_Stamina" type="Node2D" parent="."]
 script = ExtResource("5_l640a")

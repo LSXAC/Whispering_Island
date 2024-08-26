@@ -4,20 +4,22 @@ using Godot;
 
 public partial class Game_Manager : Node2D
 {
-    public static string game_version = "a.0.1";
-
-    public static Node2D island_parent;
-    public static bool InsideGameMenu = false;
-
     [Export]
     public Building_Placer building_placer;
 
-    [Export]
-    public TileMap outside_tilemap;
+    public static string game_version = "a.0.1";
+
+    public static Game_Manager INSTANCE = null;
+
+    public static bool inside_game_menu = false;
 
     public static bool[,] island_matrix = new bool[21, 21];
 
-    public island_menu island_menu;
+    public static BuildingMode building_mode = BuildingMode.None;
+
+    public static float game_time_since_start = 0f;
+
+    public Node2D island_parent;
 
     public enum BuildingMode
     {
@@ -26,29 +28,16 @@ public partial class Game_Manager : Node2D
         Removing
     }
 
-    public static BuildingMode building_mode = BuildingMode.None;
+    private Timer game_timer;
 
-    public static float min_distance_to_interactable = 5f;
+    private SaveState save_state = new SaveState();
 
-    public Timer game_timer;
-    public static float game_time_since_start = 0f;
-
-    // Called when the node enters the scene tree for the first time.
-
-    public SaveState save_state = new SaveState();
-    public static Game_Manager INSTANCE = null;
-
-    public override void _Ready()
+    private void CreateIslands()
     {
-        INSTANCE = this;
-
-        game_timer = GetNode<Timer>("GameTimer");
-        TranslationServer.SetLocale("de");
-        island_parent = GetNode<Node2D>("IslandManager");
-        CreateIslands();
-        Node2D main_island = island_parent.GetNode<Node2D>("MainIsland");
-        Island_Properties mi = main_island.GetNode<Node2D>("IslandProperties") as Island_Properties;
-        CheckGameSave();
+        Island_Properties main_island = island_parent.GetNode<Island_Properties>("MainIsland");
+        SetIslandOnMatrix(0, 0, true); //Main Island
+        SetIslandOnMatrix(0, -1, true); //Monster Island
+        main_island.GetSigns();
     }
 
     private void CheckGameSave()
@@ -64,11 +53,26 @@ public partial class Game_Manager : Node2D
         }
     }
 
+    public override void _Ready()
+    {
+        INSTANCE = this;
+
+        game_timer = GetNode<Timer>("GameTimer");
+        island_parent = GetNode<Node2D>("IslandManager");
+        Node2D main_island = island_parent.GetNode<Node2D>("MainIsland");
+        Island_Properties mi = main_island.GetNode<Node2D>("IslandProperties") as Island_Properties;
+
+        TranslationServer.SetLocale("de");
+
+        CreateIslands();
+        CheckGameSave();
+    }
+
     public void SaveGame()
     {
         Inventory.SaveInventory();
         save_state.char_save = Inventory.char_save;
-        save_state.char_save.player_position = Player.instance.Position;
+        save_state.char_save.player_position = Player.INSTANCE.Position;
 
         save_state.env_save.island_Saves = Islands_Manager.INSTANCE.island_saves;
 
@@ -94,7 +98,7 @@ public partial class Game_Manager : Node2D
         Debug.Print("Game_Manager - Loading SaveState");
         save_state = (SaveState)SaveState.LoadSave();
         Inventory.char_save = save_state.char_save;
-        Player.instance.Position = save_state.char_save.player_position;
+        Player.INSTANCE.Position = save_state.char_save.player_position;
         Inventory.LoadInventory();
 
         Islands_Manager.INSTANCE.island_saves = save_state.env_save.island_Saves;
@@ -118,14 +122,6 @@ public partial class Game_Manager : Node2D
         player_ui.INSTANCE.UpdateGameTimeLabel();
     }
 
-    private void CreateIslands()
-    {
-        Island_Properties main_island = island_parent.GetNode<Island_Properties>("MainIsland");
-        SetIslandOnMatrix(0, 0, true); //Main Island
-        SetIslandOnMatrix(0, -1, true); //Monster Island
-        main_island.GetSigns();
-    }
-
     public static void SetIslandOnMatrix(int x, int y, bool state)
     {
         island_matrix[x + 10, y + 10] = state;
@@ -136,12 +132,5 @@ public partial class Game_Manager : Node2D
         if (island_matrix[x + 10, y + 10])
             return true;
         return false;
-    }
-
-    public static void ResetMatrix()
-    {
-        for (int i = 0; i < island_matrix.Length; i++)
-        for (int j = 0; j < island_matrix.Length; j++)
-            island_matrix[i, j] = false;
     }
 }

@@ -4,61 +4,29 @@ using Godot;
 
 public partial class Player : CharacterBody2D
 {
+    public static Player INSTANCE = null;
     public AnimatedSprite2D anim;
+    private Player_Stamina player_stamina;
+    private Camera2D cam;
+    private string current_direction = "Down";
     private float velo_x = 0,
         velo_y = 0;
-    private string current_direction = "Down";
-    private ShaderMaterial outline_shader = ResourceLoader.Load<ShaderMaterial>(
-        "res://Shader Objects/Outline_Shader.tres"
-    );
-
-    [Export]
-    public bool is_inside_interactable = false;
-
-    [Export]
-    private Camera2D cam;
-
-    [Export]
-    private VBoxContainer vbox;
-    private shard_emitter emitter;
-
-    private PackedScene action_info_box = ResourceLoader.Load<PackedScene>(
-        "res://Prefabs/action_info_box.tscn"
-    );
-
-    [Export]
-    public action_event_menu action_menu;
     private float max_zoom_offset = 2.2f;
-
-    [Export]
-    public Player_Stamina player_stamina;
-    public static Player instance;
 
     public override void _Ready()
     {
-        instance = this;
-        cam.Zoom = new Godot.Vector2(1.5f, 1.5f);
+        INSTANCE = this;
+        player_stamina = GetNode<Player_Stamina>("Player_Stamina");
         anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        RemoveAllActionInfoTextBoxes();
-    }
+        cam = GetNode<Camera2D>("Camera2D");
 
-    private void RemoveAllActionInfoTextBoxes()
-    {
-        foreach (Node node in vbox.GetChildren())
-            node.QueueFree();
-    }
-
-    private void AddActionInfoBox()
-    {
-        ColorRect box = (ColorRect)action_info_box.Instantiate();
-        box.GetNode<Label>("Label").Text = "[E] SPRENGEN";
-        vbox.AddChild(box);
+        cam.Zoom = new Godot.Vector2(1.5f, 1.5f);
     }
 
     public override void _PhysicsProcess(double delta)
     {
         if (
-            Game_Manager.InsideGameMenu
+            Game_Manager.inside_game_menu
             || Game_Manager.building_mode != Game_Manager.BuildingMode.None
         )
             return;
@@ -103,15 +71,7 @@ public partial class Player : CharacterBody2D
         this.Velocity = new Godot.Vector2(this.velo_x, this.velo_y);
         player_stamina.UpdateStaminaDependencies(velo_x, velo_y);
         anim.Play(GetDirection());
-        GetInteractions();
         MoveAndSlide();
-    }
-
-    private void GetInteractions()
-    {
-        if (Input.IsActionJustPressed("Interact") && is_inside_interactable)
-            if (emitter != null)
-                action_menu.InitMenu(emitter);
     }
 
     private string GetDirection()
@@ -143,21 +103,5 @@ public partial class Player : CharacterBody2D
             current_direction = "Right";
 
         return null;
-    }
-
-    public void OnAreaEntered(Area2D area)
-    {
-        if (area.Name.Equals("Interactable"))
-        {
-            AddActionInfoBox();
-            is_inside_interactable = true;
-        }
-    }
-
-    public void OnAreaLeaved(Area2D area)
-    {
-        RemoveAllActionInfoTextBoxes();
-        is_inside_interactable = false;
-        action_menu.ClearMenu();
     }
 }
