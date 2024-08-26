@@ -22,13 +22,13 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="VScrollBar" type="ScrollContainer" parent="."]
-custom_minimum_size = Vector2(632, 160)
+custom_minimum_size = Vector2(584, 160)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 30.0
-offset_right = -4.0
+offset_right = -52.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -50,3 +50,12 @@ layout_mode = 2
 [node name="Button3" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 text = "Production"
+
+[node name="RemoveButton" type="Button" parent="."]
+offset_left = 599.0
+offset_top = 4.0
+offset_right = 635.0
+offset_bottom = 36.0
+text = "R"
+
+[connection signal="pressed" from="RemoveButton" to="." method="OnRemoveButton"]

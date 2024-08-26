@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://j1cdgg7lep78"]
+[gd_scene load_steps=10 format=3 uid="uid://j1cdgg7lep78"]
 
 [ext_resource type="Script" path="res://Scripts/Player Scripts/player_ui.cs" id="1_m5svq"]
 [ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
+[ext_resource type="Texture2D" uid="uid://ddo0v2qenmv6h" path="res://Sprites/Building_Frame.png" id="2_ktroc"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="3_0pxjf"]
+[ext_resource type="Texture2D" uid="uid://dfp34ytxtppg8" path="res://Sprites/Removing_Frame.png" id="3_7rm5b"]
 [ext_resource type="PackedScene" uid="uid://u4rbvbumuiua" path="res://h_box_item.tscn" id="4_4w6kj"]
-[ext_resource type="Script" path="res://Prefabs/QuestMiniPanel.cs" id="4_khv1d"]
+[ext_resource type="Script" path="res://Scripts/Menu Scripts/QuestMiniPanel.cs" id="4_khv1d"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_x1xeh"]
 color = Color(0.141176, 0.141176, 0.141176, 1)
@@ -15,10 +17,22 @@ thickness = 6
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upggj"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("qcp_timer", "collected_item_parent")]
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("qcp_timer", "window_frame_rect", "collected_item_parent")]
 script = ExtResource("1_m5svq")
 qcp_timer = NodePath("QuestCompletePanel/Timer")
+window_frame_rect = NodePath("WindowFrame")
+building_frame = ExtResource("2_ktroc")
+removing_frame = ExtResource("3_7rm5b")
 collected_item_parent = NodePath("ReceivedItems")
+
+[node name="WindowFrame" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7rm5b")
 
 [node name="HSlider" type="HSlider" parent="."]
 custom_minimum_size = Vector2(200, 0)

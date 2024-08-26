@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b7o3fi5jyastt"]
 
-[ext_resource type="Script" path="res://Prefabs/collect_item_label.cs" id="1_hsowa"]
+[ext_resource type="Script" path="res://Scripts/Menu Scripts/collect_item_label.cs" id="1_hsowa"]
 
 [node name="CollectItemLabel" type="Label"]
 anchors_preset = 2

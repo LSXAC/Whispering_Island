@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://bi8dopb46mfob"]
 
 [ext_resource type="Script" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_4csf6"]
-[ext_resource type="Texture2D" uid="uid://cf7wddtjtlp1a" path="res://Tilemaps/Placeable_Tileset.png" id="1_pits8"]
+[ext_resource type="Texture2D" uid="uid://cf7wddtjtlp1a" path="res://Sprites/Tileset Sprites/Placeable_Tileset.png" id="1_pits8"]
 [ext_resource type="PackedScene" uid="uid://717sbs8rvfvt" path="res://Prefabs/Sign.tscn" id="2_mbodl"]
 [ext_resource type="PackedScene" uid="uid://dcruv230g3u4k" path="res://Placeable/building.tscn" id="3_37fa4"]
-[ext_resource type="TileSet" uid="uid://knopq4xq3ef2" path="res://Islands.tres" id="4_xeb8u"]
-[ext_resource type="Script" path="res://Prefabs/ObjectSpawnerTilemap.cs" id="6_orw41"]
+[ext_resource type="TileSet" uid="uid://knopq4xq3ef2" path="res://Tileset Objects/Islands.tres" id="4_xeb8u"]
+[ext_resource type="Script" path="res://Scripts/Resources/ObjectSpawnerTilemap.cs" id="6_orw41"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nigvl"]
 texture = ExtResource("1_pits8")

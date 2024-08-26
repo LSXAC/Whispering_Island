@@ -14,7 +14,17 @@ public abstract partial class Building_Node : Node2D
     public Sprite2D building_sprite;
 
     public bool mouse_inside = false;
+
     public abstract void OnMouseClick();
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event is InputEventMouseButton buttonevent)
+            if (buttonevent.Pressed && mouse_inside)
+            {
+                OnMouseClick();
+            }
+    }
 
     public string GetTitle()
     {
@@ -38,14 +48,5 @@ public abstract partial class Building_Node : Node2D
             return new Vector2(0, 0);
         }
         return new Vector2(Position.X, Position.Y - building_sprite.Texture.GetSize().Y - 16f);
-    }
-
-    public override void _Input(InputEvent @event)
-    {
-        if (@event is InputEventMouseButton buttonevent)
-            if (buttonevent.Pressed && mouse_inside)
-            {
-                OnMouseClick();
-            }
     }
 }

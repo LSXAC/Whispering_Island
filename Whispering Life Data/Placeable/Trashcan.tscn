@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bopqpble0frf3"]
 
-[ext_resource type="Script" path="res://Placeable/Trashcan.cs" id="1_awq62"]
+[ext_resource type="Script" path="res://Scripts/Building Scripts/Trashcan.cs" id="1_awq62"]
 [ext_resource type="Texture2D" uid="uid://dkx6f8rgpkwjm" path="res://Sprites/Trashcan.png" id="2_y886q"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_y1dx4"]
-[ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilemaps/BuildingTiles.tres" id="4_yf36i"]
+[ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tileset Objects/BuildingTiles.tres" id="4_yf36i"]
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_jpa2r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77bd0"]

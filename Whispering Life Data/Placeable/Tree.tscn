@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://bekb5fw4mpfgk"]
 
-[ext_resource type="Script" path="res://Placeable/ResourceObject.cs" id="1_0pylb"]
+[ext_resource type="Script" path="res://Scripts/Resources/ResourceObject.cs" id="1_0pylb"]
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Items/Wood.tres" id="2_my7vu"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Prefabs/timer_bar.tscn" id="5_2oaeo"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="5_qbov7"]

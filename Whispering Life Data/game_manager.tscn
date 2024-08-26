@@ -11,14 +11,15 @@
 [ext_resource type="PackedScene" uid="uid://en6nagvvr8d3" path="res://Menus/Building_Menu.tscn" id="7_xph4e"]
 [ext_resource type="PackedScene" uid="uid://bovrg0u6tuo04" path="res://Menus/hover_menu.tscn" id="9_sosrl"]
 [ext_resource type="Script" path="res://Scripts/Global.cs" id="10_1kwav"]
-[ext_resource type="PackedScene" uid="uid://o62xek3uvpo8" path="res://quest_menu.tscn" id="12_x3g6o"]
+[ext_resource type="PackedScene" uid="uid://o62xek3uvpo8" path="res://Menus/quest_menu.tscn" id="12_x3g6o"]
 [ext_resource type="Script" path="res://Scripts/QuestManager.cs" id="13_v5o5h"]
 [ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Quests/Start.tres" id="14_2k87u"]
 [ext_resource type="Resource" uid="uid://cdk8sna5iiegp" path="res://Quests/Start2.tres" id="15_13bir"]
 
-[node name="GameManager" type="Node2D"]
+[node name="GameManager" type="Node2D" node_paths=PackedStringArray("building_placer")]
 y_sort_enabled = true
 script = ExtResource("1_kw8xi")
+building_placer = NodePath("BuildingManager/BuildingPlacer")
 
 [node name="BuildingManager" type="Node2D" parent="."]
 

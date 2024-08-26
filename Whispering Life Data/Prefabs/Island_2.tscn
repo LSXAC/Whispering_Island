@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_0e24f"]
 [ext_resource type="PackedScene" uid="uid://717sbs8rvfvt" path="res://Prefabs/Sign.tscn" id="2_0eca3"]
 [ext_resource type="PackedScene" uid="uid://dcruv230g3u4k" path="res://Placeable/building.tscn" id="3_6ysk4"]
-[ext_resource type="TileSet" uid="uid://knopq4xq3ef2" path="res://Islands.tres" id="4_nxsuo"]
-[ext_resource type="Texture2D" uid="uid://bca1e628hy8iw" path="res://Tilemaps/Spawn_Tileset.png" id="5_370rs"]
-[ext_resource type="Script" path="res://Prefabs/ObjectSpawnerTilemap.cs" id="6_xneeu"]
+[ext_resource type="TileSet" uid="uid://knopq4xq3ef2" path="res://Tileset Objects/Islands.tres" id="4_nxsuo"]
+[ext_resource type="Texture2D" uid="uid://bca1e628hy8iw" path="res://Sprites/Tileset Sprites/Spawn_Tileset.png" id="5_370rs"]
+[ext_resource type="Script" path="res://Scripts/Resources/ObjectSpawnerTilemap.cs" id="6_xneeu"]
 
 [sub_resource type="TileSet" id="TileSet_rofjb"]
 physics_layer_0/collision_layer = 4

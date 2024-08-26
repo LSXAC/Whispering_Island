@@ -5,9 +5,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(14, 14)
 
-[node name="MouseArea" type="Area2D" node_paths=PackedStringArray("building_sprite")]
+[node name="MouseArea" type="Area2D"]
 script = ExtResource("1_1swh0")
-building_sprite = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)

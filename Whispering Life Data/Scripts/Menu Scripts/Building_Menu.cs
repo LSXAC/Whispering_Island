@@ -12,21 +12,24 @@ public partial class Building_Menu : CanvasLayer
     private GridContainer building_typ_parent;
     public static Building_Menu instance;
 
-    private PackedScene building_typ = ResourceLoader.Load<PackedScene>(
+    public PackedScene building_typ = ResourceLoader.Load<PackedScene>(
         "res://Menus/building_type.tscn"
     );
-    private PackedScene tree_growther = ResourceLoader.Load<PackedScene>(
+    public PackedScene tree_growther = ResourceLoader.Load<PackedScene>(
         "res://Placeable/Tree_Growther.tscn"
     );
-    private PackedScene furnace = ResourceLoader.Load<PackedScene>("res://Placeable/Furnace.tscn");
+    public PackedScene furnace = ResourceLoader.Load<PackedScene>("res://Placeable/Furnace.tscn");
+    public PackedScene quarry = ResourceLoader.Load<PackedScene>("res://Placeable/Quarry.tscn");
 
-    private PackedScene belt = ResourceLoader.Load<PackedScene>("res://Placeable/Belt.tscn");
+    public PackedScene belt = ResourceLoader.Load<PackedScene>("res://Placeable/Belt.tscn");
+    public PackedScene beltItem = ResourceLoader.Load<PackedScene>("res://belt_item.tscn");
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         InitBuildings(tree_growther);
         InitBuildings(furnace);
+        InitBuildings(quarry);
         InitBuildings(belt);
         instance = this;
     }
@@ -34,7 +37,7 @@ public partial class Building_Menu : CanvasLayer
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        if (Game_Manager.in_building_mode)
+        if (Game_Manager.building_mode != Game_Manager.BuildingMode.None)
             return;
 
         if (Input.IsActionJustPressed("OpenBuilding"))
@@ -44,6 +47,13 @@ public partial class Building_Menu : CanvasLayer
     public void OpenWindow()
     {
         this.Visible = true;
+    }
+
+    public void OnRemoveButton()
+    {
+        this.Visible = false;
+        Game_Manager.building_mode = Game_Manager.BuildingMode.Removing;
+        player_ui.INSTANCE.SetWindowFrame();
     }
 
     private void InitBuildings(PackedScene scene)

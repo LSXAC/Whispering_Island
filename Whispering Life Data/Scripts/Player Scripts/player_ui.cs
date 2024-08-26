@@ -15,6 +15,15 @@ public partial class player_ui : CanvasLayer
     public Timer qcp_timer;
 
     [Export]
+    public TextureRect window_frame_rect;
+
+    [Export]
+    public Texture2D building_frame;
+
+    [Export]
+    public Texture2D removing_frame;
+
+    [Export]
     public PackedScene collected_item_label = ResourceLoader.Load<PackedScene>(
         "res://Prefabs/collect_item_label.tscn"
     );
@@ -61,6 +70,23 @@ public partial class player_ui : CanvasLayer
         Label label = (Label)INSTANCE.collected_item_label.Instantiate();
         label.Text = text;
         INSTANCE.collected_item_parent.AddChild(label);
+    }
+
+    public void SetWindowFrame()
+    {
+        window_frame_rect.Visible = true;
+        switch (Game_Manager.building_mode)
+        {
+            case Game_Manager.BuildingMode.Placing:
+                window_frame_rect.Texture = building_frame;
+                break;
+            case Game_Manager.BuildingMode.Removing:
+                window_frame_rect.Texture = removing_frame;
+                break;
+            case Game_Manager.BuildingMode.None:
+                window_frame_rect.Visible = false;
+                break;
+        }
     }
 
     public override void _Process(double delta)

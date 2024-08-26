@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
 [ext_resource type="PackedScene" uid="uid://74pm7gmanqf2" path="res://Prefabs/inventory.tscn" id="3_ub0ut"]
-[ext_resource type="Script" path="res://Menus/CraftingMenu.cs" id="4_3cwxu"]
+[ext_resource type="Script" path="res://Scripts/Menu Scripts/CraftingMenu.cs" id="4_3cwxu"]
 [ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Items/Sticks.tres" id="5_k1cyv"]
 [ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="6_7ubdg"]
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Items/Wood.tres" id="7_wyt5m"]

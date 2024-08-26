@@ -37,7 +37,6 @@ public partial class building_type : Panel
 
     private void OnSelectButton()
     {
-        Game_Manager.in_building_mode = true;
         Building_Menu.instance.Visible = false;
         Building_Menu.instance.building_placer.InitBuilding(scene_ref);
     }

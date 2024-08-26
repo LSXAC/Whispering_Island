@@ -10,13 +10,23 @@ public partial class Game_Manager : Node2D
     public static bool InsideGameMenu = false;
 
     [Export]
+    public Building_Placer building_placer;
+
+    [Export]
     public TileMap outside_tilemap;
 
     public static bool[,] island_matrix = new bool[21, 21];
 
     public island_menu island_menu;
 
-    public static bool in_building_mode = false;
+    public enum BuildingMode
+    {
+        None,
+        Placing,
+        Removing
+    }
+
+    public static BuildingMode building_mode = BuildingMode.None;
 
     public static float min_distance_to_interactable = 5f;
 
@@ -47,17 +57,10 @@ public partial class Game_Manager : Node2D
             LoadGame();
         else
         {
-            Debug.Print("GM - New SaveState");
+            Debug.Print("Game_Manager - New SaveState");
             save_state = new SaveState();
             QuestManager.INSTANCE.StartQuest();
             save_state.WriteSave();
-        }
-    }
-
-    public override void _Process(double delta)
-    {
-        if (Input.IsKeyPressed(Key.N))
-        { /*DEBUGS*/
         }
     }
 
@@ -72,16 +75,23 @@ public partial class Game_Manager : Node2D
         Islands_Manager.INSTANCE.SaveResourceObjects();
         save_state.env_save.resource_object_manager_saves = Islands_Manager.INSTANCE.roms;
 
+        //Save Quest
         save_state.quest_save.current_quest_id = QuestManager.current_quest_id;
         save_state.quest_save.quest_time_left = QuestManager.current_quest_time;
         save_state.game_time_since_start = game_time_since_start;
+
+        //Save Machines and Belts
+        building_placer.SavePlacedObjects();
+        save_state.belt_saves = building_placer.belt_saves;
+        save_state.machine_saves = building_placer.machine_saves;
+
         save_state.WriteSave();
         Debug.Print("Saved Game!");
     }
 
     public void LoadGame()
     {
-        Debug.Print("GM - Loading SaveState");
+        Debug.Print("Game_Manager - Loading SaveState");
         save_state = (SaveState)SaveState.LoadSave();
         Inventory.char_save = save_state.char_save;
         Player.instance.Position = save_state.char_save.player_position;
@@ -89,6 +99,11 @@ public partial class Game_Manager : Node2D
 
         Islands_Manager.INSTANCE.island_saves = save_state.env_save.island_Saves;
         Islands_Manager.INSTANCE.LoadIslands(save_state.env_save.resource_object_manager_saves);
+
+        //Load Machines and Belts
+        building_placer.belt_saves = save_state.belt_saves;
+        building_placer.machine_saves = save_state.machine_saves;
+        building_placer.LoadPlacedObjects();
 
         // Start Quest
         QuestManager.INSTANCE.StartQuest(save_state.quest_save);

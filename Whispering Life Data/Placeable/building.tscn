@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bi0toyag2snak" path="res://Sprites/Leuchtturm.png" id="2_cqi38"]
 [ext_resource type="Texture2D" uid="uid://4ygno3hn7qj3" path="res://Sprites/Leuchtturm_Bottom.png" id="4_8s25f"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="5_8lurx"]
-[ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilemaps/BuildingTiles.tres" id="6_ybw7s"]
+[ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tileset Objects/BuildingTiles.tres" id="6_ybw7s"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="7_bxpu2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2qp5w"]

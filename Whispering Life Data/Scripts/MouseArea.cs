@@ -4,7 +4,10 @@ using Godot;
 public partial class MouseArea : Area2D
 {
     private ShaderMaterial outline_shader = ResourceLoader.Load<ShaderMaterial>(
-        "res://Outline_Shader.tres"
+        "res://Shader Objects/Outline_Shader.tres"
+    );
+    private ShaderMaterial remove_outline_shader = ResourceLoader.Load<ShaderMaterial>(
+        "res://Shader Objects/Remove_Outline_Color.tres"
     );
 
     [Export]
@@ -15,9 +18,18 @@ public partial class MouseArea : Area2D
 
     public void OnMouseEntered()
     {
-        building_sprite.Material = outline_shader;
-        building_node.mouse_inside = true;
-        hover_menu.InitHoverMenu(building_node);
+        if (Game_Manager.building_mode == Game_Manager.BuildingMode.None)
+        {
+            building_sprite.Material = outline_shader;
+            building_node.mouse_inside = true;
+            if (!building_node.title.ToString().ToUpper().Contains("BELT"))
+                hover_menu.InitHoverMenu(building_node);
+        }
+        else if (Game_Manager.building_mode == Game_Manager.BuildingMode.Removing)
+        {
+            building_sprite.Material = remove_outline_shader;
+            building_node.mouse_inside = true;
+        }
     }
 
     public void OnMouseLeaved()

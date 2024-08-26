@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://p7nxdwibna32"]
 
-[ext_resource type="Script" path="res://Placeable/ResourceObject.cs" id="1_d2fyj"]
+[ext_resource type="Script" path="res://Scripts/Resources/ResourceObject.cs" id="1_d2fyj"]
 [ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="2_s20f6"]
 [ext_resource type="Texture2D" uid="uid://cep6pkf1xs5cc" path="res://Sprites/Stone.png" id="3_fkv6e"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_ef0xx"]

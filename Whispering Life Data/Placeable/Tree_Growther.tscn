@@ -1,15 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3qnrt64xg6eg"]
+[gd_scene load_steps=12 format=3 uid="uid://c3qnrt64xg6eg"]
 
-[ext_resource type="Script" path="res://Placeable/ProductionMachine.cs" id="1_s0fjq"]
+[ext_resource type="Script" path="res://Scripts/Building Scripts/ProductionMachine.cs" id="1_s0fjq"]
 [ext_resource type="Texture2D" uid="uid://bm1alvnfn87kq" path="res://Sprites/Buildings/Tree_Growther_Sprite.png" id="3_hdi0y"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="5_bvfyh"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="5_haeqn"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="6_gkdsr"]
-[ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilemaps/BuildingTiles.tres" id="6_t8y08"]
+[ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tileset Objects/BuildingTiles.tres" id="6_t8y08"]
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="7_0bq2m"]
-[ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://giver.tscn" id="8_iut5d"]
+[ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Placeable/giver.tscn" id="8_iut5d"]
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Items/Wood.tres" id="9_jf153"]
-[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="10_dfbsg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(48, 43)
@@ -17,18 +16,12 @@ size = Vector2(48, 43)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(48, 48)
 
-[sub_resource type="Resource" id="Resource_q7pm3"]
-script = ExtResource("10_dfbsg")
-item_info = ExtResource("9_jf153")
-amount = 1
-
-[node name="Building" type="Area2D" node_paths=PackedStringArray("sprite", "building_sprite")]
+[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("sprite", "building_sprite")]
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
-monitoring = false
-monitorable = false
 script = ExtResource("1_s0fjq")
+export_item_info = ExtResource("9_jf153")
 building_name = "Tree Growther"
 building_texture = ExtResource("3_hdi0y")
 sprite = NodePath("BuildingSprite")
@@ -91,12 +84,10 @@ texture = ExtResource("5_bvfyh")
 
 [node name="Giver" parent="." node_paths=PackedStringArray("building") instance=ExtResource("8_iut5d")]
 building = NodePath("..")
-produced_item = SubResource("Resource_q7pm3")
 
 [node name="Giver2" parent="." node_paths=PackedStringArray("building") instance=ExtResource("8_iut5d")]
 position = Vector2(23, -9)
 building = NodePath("..")
-produced_item = SubResource("Resource_q7pm3")
 
 [node name="Holder" parent="Giver2" index="0"]
 position = Vector2(-16, 1)

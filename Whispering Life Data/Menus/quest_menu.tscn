@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=3 uid="uid://o62xek3uvpo8"]
+
+[ext_resource type="Script" path="res://Scripts/Menu Scripts/QuestMenu.cs" id="1_rjdwy"]
+
+[node name="QuestMenu" type="CanvasLayer" node_paths=PackedStringArray("quest_label_parent", "quest_name_label", "complete_button", "quest_description_label")]
+visible = false
+script = ExtResource("1_rjdwy")
+quest_label_parent = NodePath("Background/VBoxContainer")
+quest_name_label = NodePath("Background/Label")
+complete_button = NodePath("Background/CompleteQuestButton")
+quest_description_label = NodePath("Background/Description")
+
+[node name="TransBackground" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.172549, 0.172549, 0.172549, 0.294118)
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 30.0
+offset_right = -64.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[node name="Label" type="Label" parent="Background"]
+layout_mode = 2
+offset_right = 512.0
+offset_bottom = 49.0
+text = "Quest Menu
+---------------------------------------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Background"]
+layout_mode = 2
+offset_top = 50.0
+offset_right = 512.0
+offset_bottom = 99.0
+text = "Quest Menu
+---------------------------------------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 0
+offset_top = 98.0
+offset_right = 512.0
+offset_bottom = 138.0
+alignment = 1
+
+[node name="CompleteQuestButton" type="Button" parent="Background"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 258.0
+offset_right = 312.0
+offset_bottom = 284.0
+text = "Finish Quest"
+
+[node name="X" type="Button" parent="."]
+offset_left = 536.0
+offset_top = 40.0
+offset_right = 568.0
+offset_bottom = 71.0
+text = "X"
+
+[connection signal="visibility_changed" from="." to="." method="OnVisiblityChanged"]
+[connection signal="pressed" from="Background/CompleteQuestButton" to="." method="OnCompleteButton"]
+[connection signal="pressed" from="X" to="." method="OnCloseButton"]

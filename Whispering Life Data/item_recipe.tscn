@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b7l06c35ca42f"]
 
-[ext_resource type="Script" path="res://itemRecipeUI.cs" id="1_i2qso"]
+[ext_resource type="Script" path="res://Scripts/itemRecipeUI.cs" id="1_i2qso"]
 [ext_resource type="Texture2D" uid="uid://bjana5l7fkd6a" path="res://Sprites/Items/Icons_3rd/Wood_Stick.png" id="1_ymefu"]
-[ext_resource type="Script" path="res://h_box_item.cs" id="2_oxvhy"]
+[ext_resource type="Script" path="res://Scripts/h_box_item.cs" id="2_oxvhy"]
 [ext_resource type="Texture2D" uid="uid://wquchq45ve1" path="res://Sprites/Items/Icons/Hammer_Icon.png" id="4_urtgv"]
 
 [node name="ItemRecipe" type="Control" node_paths=PackedStringArray("parent", "craft_button", "outputUI")]

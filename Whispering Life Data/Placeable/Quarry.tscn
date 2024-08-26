@@ -1,0 +1,105 @@
+[gd_scene load_steps=12 format=3 uid="uid://cqc6xxau4eh7e"]
+
+[ext_resource type="Script" path="res://Scripts/Building Scripts/ProductionMachine.cs" id="1_rsbck"]
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="2_6bbma"]
+[ext_resource type="Texture2D" uid="uid://bm1alvnfn87kq" path="res://Sprites/Buildings/Tree_Growther_Sprite.png" id="3_7b4ad"]
+[ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="4_65eiu"]
+[ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tileset Objects/BuildingTiles.tres" id="5_hjvrw"]
+[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="6_iudpf"]
+[ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="7_sy75k"]
+[ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="8_81bpx"]
+[ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Placeable/giver.tscn" id="9_dvgwj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
+size = Vector2(48, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
+size = Vector2(48, 48)
+
+[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("sprite", "building_sprite")]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_rsbck")
+type = 2
+export_item_info = ExtResource("2_6bbma")
+building_name = "Quarry"
+building_texture = ExtResource("3_7b4ad")
+sprite = NodePath("BuildingSprite")
+title = "Quarry "
+description = "Mining Stone Auto"
+building_sprite = NodePath("BuildingSprite")
+
+[node name="BuildingSprite" type="Sprite2D" parent="."]
+modulate = Color(0.345098, 0.431373, 0.317647, 1)
+y_sort_enabled = true
+texture = ExtResource("3_7b4ad")
+centered = false
+offset = Vector2(-32, -32)
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("4_65eiu")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="CollisionTemplateTilemap" type="TileMap" parent="."]
+z_index = -2
+tile_set = ExtResource("5_hjvrw")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65536, 131073, 0, -1, 131073, 0, 65535, 131073, 0, 0, 131073, 0, 65534, 131073, 0, -2, 131073, 0, -65538, 131073, 0, -65537, 131073, 0, -131072, 131073, 0)
+
+[node name="MachineCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -5.5)
+shape = SubResource("RectangleShape2D_m0htq")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(0, -3)
+texture = ExtResource("6_iudpf")
+
+[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+collision_layer = 2
+script = ExtResource("7_sy75k")
+building_node = NodePath("..")
+building_sprite = NodePath("../BuildingSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(-8, -8)
+shape = SubResource("RectangleShape2D_fk0le")
+
+[node name="Tree" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Texture" type="Sprite2D" parent="Tree"]
+z_index = 2
+y_sort_enabled = true
+position = Vector2(-6, -28)
+texture = ExtResource("8_81bpx")
+
+[node name="Shadow" type="Sprite2D" parent="Tree"]
+modulate = Color(1, 1, 1, 0.392157)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-7, -12)
+texture = ExtResource("6_iudpf")
+
+[node name="Giver" parent="." node_paths=PackedStringArray("building") instance=ExtResource("9_dvgwj")]
+building = NodePath("..")
+
+[node name="Giver2" parent="." node_paths=PackedStringArray("building") instance=ExtResource("9_dvgwj")]
+position = Vector2(23, -9)
+building = NodePath("..")
+
+[node name="Holder" parent="Giver2" index="0"]
+position = Vector2(-16, 1)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
+[connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimeout"]
+
+[editable path="Giver2"]
