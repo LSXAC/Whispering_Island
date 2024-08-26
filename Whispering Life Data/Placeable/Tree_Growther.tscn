@@ -40,10 +40,11 @@ offset = Vector2(-32, -32)
 script = ExtResource("5_haeqn")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="CollisionTemplateTilemap" type="TileMap" parent="." groups=["Blocker"]]
+[node name="CollisionTemplateTilemap" type="TileMap" parent="."]
 z_index = -2
 tile_set = ExtResource("5_17ipw")
 format = 2
+layer_0/tile_data = PackedInt32Array(65534, 131072, 0, 65535, 131072, 0, 0, 131072, 0, -65536, 131072, 0, -1, 131072, 0, -2, 131072, 0, -65538, 131072, 0, -65537, 131072, 0, -131072, 131072, 0)
 
 [node name="MachineCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-8, -5.5)

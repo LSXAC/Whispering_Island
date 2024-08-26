@@ -42,7 +42,7 @@ offset = Vector2(-32, -32)
 script = ExtResource("4_65eiu")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="CollisionTemplateTilemap" type="TileMap" parent="." groups=["Blocker"]]
+[node name="CollisionTemplateTilemap" type="TileMap" parent="."]
 z_index = -2
 tile_set = ExtResource("5_8y1t1")
 format = 2
