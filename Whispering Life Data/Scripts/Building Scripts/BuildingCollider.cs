@@ -33,12 +33,7 @@ public partial class BuildingCollider : Area2D
 
     public void OnBodyEntered(Node2D node)
     {
-        /*Debug.Print(Name + " | " + node.Name);
-        if (node.IsInGroup("BuildingCollision"))
-        {
-            on_building_layer = true;
-            rect.Texture = grid_outline_green;
-        }*/
+        Calc();
     }
 
     public void Calc()
@@ -78,7 +73,6 @@ public partial class BuildingCollider : Area2D
 
     public void OnBodyLeaved(Node2D node)
     {
-        /*on_building_layer = false;
-        rect.Texture = grid_outline_red;*/
+        Calc();
     }
 }
