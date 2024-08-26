@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Belt.cs" id="1_wiff4"]
 [ext_resource type="Texture2D" uid="uid://bi2pvwe1l5m40" path="res://Sprites/Belt_Atlas.png" id="2_7umy0"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_cjdmx"]
-[ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tileset Objects/BuildingTiles.tres" id="4_wmfx3"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="4_x2jdc"]
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Placeable/detector.tscn" id="5_4wn6s"]
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_4pt64"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="7_h12jl"]
@@ -18,9 +18,9 @@ size = Vector2(10, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
 size = Vector2(16, 16)
 
-[node name="Belt" type="StaticBody2D" node_paths=PackedStringArray("item_holder", "detector", "sprite", "building_sprite")]
+[node name="Belt" type="StaticBody2D" node_paths=PackedStringArray("item_holder", "detector", "sprite", "building_sprite", "collision_shape")]
 y_sort_enabled = true
-collision_layer = 4
+collision_layer = 12
 collision_mask = 0
 script = ExtResource("1_wiff4")
 item_holder = NodePath("ItemHolder")
@@ -29,6 +29,7 @@ sprite = NodePath("BuildingSprite")
 title = "Belt"
 description = "Moves Items"
 building_sprite = NodePath("BuildingSprite")
+collision_shape = NodePath("CollisionShape2D")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -43,11 +44,11 @@ vframes = 5
 script = ExtResource("3_cjdmx")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="CollisionTemplateTilemap" type="TileMap" parent="."]
+[node name="CollisionTemplateTilemap" type="TileMap" parent="." groups=["Blocker"]]
 z_index = -2
-tile_set = ExtResource("4_wmfx3")
+tile_set = ExtResource("4_x2jdc")
 format = 2
-layer_0/tile_data = PackedInt32Array(-1, 131073, 0)
+layer_0/tile_data = PackedInt32Array(-1, 131072, 0)
 
 [node name="Detector" parent="." instance=ExtResource("5_4wn6s")]
 position = Vector2(-8, -8)

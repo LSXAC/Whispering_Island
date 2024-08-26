@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class BuildingCollider : Area2D
@@ -19,6 +20,7 @@ public partial class BuildingCollider : Area2D
     public override void _Ready()
     {
         rect = GetNode<TextureRect>("TextureRect");
+        MakeInvisibleRect(false);
     }
 
     public override void _Process(double delta)
@@ -31,10 +33,40 @@ public partial class BuildingCollider : Area2D
 
     public void OnBodyEntered(Node2D node)
     {
+        /*Debug.Print(Name + " | " + node.Name);
         if (node.IsInGroup("BuildingCollision"))
         {
             on_building_layer = true;
             rect.Texture = grid_outline_green;
+        }*/
+    }
+
+    public void Calc()
+    {
+        bool on_building = false;
+        foreach (Node2D node in GetOverlappingBodies())
+        {
+            Debug.Print(node.Name);
+            if (node is Belt || node is MachineBase)
+            {
+                on_building = false;
+                break;
+            }
+
+            if (node.IsInGroup("BuildingCollision"))
+            {
+                on_building = true;
+            }
+        }
+        if (on_building)
+        {
+            on_building_layer = true;
+            rect.Texture = grid_outline_green;
+        }
+        else
+        {
+            on_building_layer = false;
+            rect.Texture = grid_outline_red;
         }
     }
 
@@ -46,7 +78,7 @@ public partial class BuildingCollider : Area2D
 
     public void OnBodyLeaved(Node2D node)
     {
-        on_building_layer = false;
-        rect.Texture = grid_outline_red;
+        /*on_building_layer = false;
+        rect.Texture = grid_outline_red;*/
     }
 }

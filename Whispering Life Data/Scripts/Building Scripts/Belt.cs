@@ -44,33 +44,30 @@ public partial class Belt : placeable_building
     {
         if (area is BeltArea)
         {
-            if (area.GetParent<Belt>().can_receive_item())
-            {
-                var item = item_holder.offload_item();
-                area.GetParent<Belt>().receive_item(item);
-            }
-        }
-        if (area is Trashcan)
-        {
-            if (((Trashcan)area).can_receive_item())
-            {
-                var item = item_holder.offload_item();
-                ((Trashcan)area).receive_item(item);
-            }
-        }
-        if (area is Taker)
-        {
-            if (((Taker)area).can_receive_item())
-            {
-                if (item_holder.hasBeltItem())
+            if (area.GetParent() is Belt)
+                if (area.GetParent<Belt>().can_receive_item())
                 {
-                    ItemInfo ii = item_holder.GetBeltItem().GetItemInfo();
-                    if (ii != ((Taker)area).building.import_item_info)
-                        return;
+                    var item = item_holder.offload_item();
+                    area.GetParent<Belt>().receive_item(item);
                 }
-                var item = item_holder.offload_item();
-                ((Taker)area).receive_item(item);
-            }
+            if (area.GetParent() is Trashcan)
+                if (area.GetParent<Trashcan>().can_receive_item())
+                {
+                    var item = item_holder.offload_item();
+                    area.GetParent<Trashcan>().receive_item(item);
+                }
+            if (area.GetParent() is Taker)
+                if (area.GetParent<Taker>().can_receive_item())
+                {
+                    if (item_holder.hasBeltItem())
+                    {
+                        ItemInfo ii = item_holder.GetBeltItem().GetItemInfo();
+                        if (ii != area.GetParent<Taker>().building.import_item_info)
+                            return;
+                    }
+                    var item = item_holder.offload_item();
+                    area.GetParent<Taker>().receive_item(item);
+                }
         }
     }
 

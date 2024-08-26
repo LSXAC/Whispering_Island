@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="2_gjbdr"]
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Items/Wood.tres" id="2_rd0fi"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_rakgt"]
-[ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tileset Objects/BuildingTiles.tres" id="4_ayk0p"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="5_epac7"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="6_srwxn"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="6_vvdf8"]
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="7_bopdg"]
 [ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Placeable/Taker.tscn" id="8_17n2q"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Placeable/giver.tscn" id="9_g3chf"]
@@ -18,9 +18,9 @@ size = Vector2(48, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(48, 48)
 
-[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("crafting_timer", "sprite", "building_sprite")]
+[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("crafting_timer", "sprite", "building_content", "building_sprite")]
 y_sort_enabled = true
-collision_layer = 4
+collision_layer = 12
 collision_mask = 0
 script = ExtResource("1_vtdy4")
 crafting_timer = NodePath("CraftingTimer")
@@ -29,6 +29,7 @@ export_item_info = ExtResource("10_c3j8d")
 building_name = "Furnace"
 building_texture = ExtResource("2_gjbdr")
 sprite = NodePath("BuildingSprite")
+building_content = NodePath("MachineCollision")
 title = "Furnace"
 description = "Smelts things"
 building_sprite = NodePath("BuildingSprite")
@@ -44,11 +45,10 @@ offset = Vector2(-32, -32)
 script = ExtResource("3_rakgt")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="CollisionTemplateTilemap" type="TileMap" parent="."]
+[node name="CollisionTemplateTilemap" type="TileMap" parent="." groups=["Blocker"]]
 z_index = -2
-tile_set = ExtResource("4_ayk0p")
+tile_set = ExtResource("6_vvdf8")
 format = 2
-layer_0/tile_data = PackedInt32Array(-65536, 131073, 0, -1, 131073, 0, 65535, 131073, 0, 0, 131073, 0, 65534, 131073, 0, -2, 131073, 0, -65538, 131073, 0, -65537, 131073, 0, -131072, 131073, 0)
 
 [node name="MachineCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-8, -8)

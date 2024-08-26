@@ -40,12 +40,14 @@ public partial class Building_Placer : Node2D
             belt = current_building as Belt;
             belt.Set_Rotation(current_belt_rotation);
             belt.GetNode<Area2D>("BeltArea").Monitorable = false;
+            belt.collision_shape.Disabled = true;
             return;
         }
         if (current_building is placeable_building)
         {
             placeable = current_building as placeable_building;
             placeable.sprite.SelfModulate = new Color(1f, 1f, 1f, 0.0f);
+            placeable.collision_shape.Disabled = true;
             if (placeable.building_content != null)
                 placeable.building_content.Visible = false;
         }
