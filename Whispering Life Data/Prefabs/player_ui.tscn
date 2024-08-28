@@ -123,7 +123,7 @@ layout_mode = 2
 [node name="TimeLabel" type="Label" parent="QuestMiniPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "Time Left: 192s"
+text = "Time Left: Unknown"
 
 [node name="QuestCompletePanel" type="Panel" parent="."]
 visible = false
@@ -178,7 +178,7 @@ grow_vertical = 0
 [node name="GameTimeLabel" type="Label" parent="GameTimePanel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
-text = "Game Time: 0.1s"
+text = "Game Time: X"
 horizontal_alignment = 1
 
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]

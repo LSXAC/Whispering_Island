@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using DialogueManagerRuntime;
 using Godot;
 
 public partial class Game_Manager : Node2D
@@ -19,7 +20,10 @@ public partial class Game_Manager : Node2D
 
     public static float game_time_since_start = 0f;
 
+    public static bool In_Cutscene = false;
+    public static bool tutorial_finished = false;
     public Node2D island_parent;
+    public Camera2D cutscene_camera;
 
     public enum BuildingMode
     {
@@ -28,7 +32,7 @@ public partial class Game_Manager : Node2D
         Removing
     }
 
-    private Timer game_timer;
+    public Timer game_timer;
 
     private SaveState save_state = new SaveState();
 
@@ -48,8 +52,10 @@ public partial class Game_Manager : Node2D
         {
             Debug.Print("Game_Manager - New SaveState");
             save_state = new SaveState();
-            QuestManager.INSTANCE.StartQuest();
             save_state.WriteSave();
+            var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial.dialogue");
+            Global.MoveCamera(new Vector2(0, -256));
+            DialogueManager.ShowDialogueBalloon(dialogue, "TutorialDE");
         }
     }
 
@@ -57,6 +63,7 @@ public partial class Game_Manager : Node2D
     {
         INSTANCE = this;
 
+        cutscene_camera = GetNode<Camera2D>("CutsceneCamera");
         game_timer = GetNode<Timer>("GameTimer");
         island_parent = GetNode<Node2D>("IslandManager");
         Node2D main_island = island_parent.GetNode<Node2D>("MainIsland");
@@ -89,6 +96,8 @@ public partial class Game_Manager : Node2D
         save_state.belt_saves = building_placer.belt_saves;
         save_state.machine_saves = building_placer.machine_saves;
 
+        save_state.tutorial_finished = tutorial_finished;
+
         save_state.WriteSave();
         Debug.Print("Saved Game!");
     }
@@ -97,6 +106,8 @@ public partial class Game_Manager : Node2D
     {
         Debug.Print("Game_Manager - Loading SaveState");
         save_state = (SaveState)SaveState.LoadSave();
+
+        tutorial_finished = save_state.tutorial_finished;
         Inventory.char_save = save_state.char_save;
         Player.INSTANCE.Position = save_state.char_save.player_position;
         Inventory.LoadInventory();

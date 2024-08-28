@@ -35,7 +35,7 @@ building_sprite = NodePath("BuildingSprite")
 collision_shape = NodePath("MachineCollision")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
-y_sort_enabled = true
+z_index = 2
 position = Vector2(0, -16)
 texture = ExtResource("2_gjbdr")
 centered = false

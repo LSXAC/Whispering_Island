@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using DialogueManagerRuntime;
 using Godot;
 using Godot.Collections;
 
@@ -65,11 +66,6 @@ public partial class QuestMenu : CanvasLayer
             complete_button.Disabled = false;
         else
             complete_button.Disabled = true;
-    }
-
-    public void UpdateLabels()
-    {
-        // Amount Inventory/Quest Item Amount x
     }
 
     public void CreateLabels(Array<Item> items)

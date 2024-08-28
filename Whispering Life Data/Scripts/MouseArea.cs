@@ -18,6 +18,11 @@ public partial class MouseArea : Area2D
 
     public void OnMouseEntered()
     {
+        if (building_node == null || Game_Manager.In_Cutscene)
+        {
+            return;
+        }
+
         if (Game_Manager.building_mode == Game_Manager.BuildingMode.None)
         {
             building_sprite.Material = outline_shader;
@@ -32,10 +37,30 @@ public partial class MouseArea : Area2D
         }
     }
 
+    public override void _Input(InputEvent @event)
+    {
+        if (@event is InputEventMouseButton buttonevent)
+            if (buttonevent.Pressed)
+            {
+                OnMouseClick();
+            }
+    }
+
+    public void OnMouseClick()
+    {
+        if (Global.GetDistanceToPlayer(this.GlobalPosition) >= 20f)
+            return;
+        if (GetParent().HasNode("Actionable"))
+            GetParent().GetNode<Actionable>("Actionable").Action();
+    }
+
     public void OnMouseLeaved()
     {
         building_sprite.Material = null;
-        building_node.mouse_inside = false;
-        hover_menu.DisableHoverMenu();
+        if (building_node != null)
+        {
+            building_node.mouse_inside = false;
+            hover_menu.DisableHoverMenu();
+        }
     }
 }

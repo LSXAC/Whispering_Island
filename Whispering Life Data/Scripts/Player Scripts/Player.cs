@@ -5,10 +5,10 @@ using Godot;
 public partial class Player : CharacterBody2D
 {
     public static Player INSTANCE = null;
+    public static Camera2D camera;
     public AnimatedSprite2D anim;
     private Player_Stamina player_stamina;
-    private Camera2D cam;
-    private string current_direction = "Down";
+    private string current_direction = "Up";
     private float velo_x = 0,
         velo_y = 0;
     private float max_zoom_offset = 2.2f;
@@ -18,9 +18,9 @@ public partial class Player : CharacterBody2D
         INSTANCE = this;
         player_stamina = GetNode<Player_Stamina>("Player_Stamina");
         anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        cam = GetNode<Camera2D>("Camera2D");
+        camera = GetNode<Camera2D>("Camera2D");
 
-        cam.Zoom = new Godot.Vector2(1.5f, 1.5f);
+        camera.Zoom = new Godot.Vector2(1.5f, 1.5f);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -33,14 +33,14 @@ public partial class Player : CharacterBody2D
 
         if (Input.IsActionJustReleased("Zoom_In"))
             if (
-                (cam.Zoom + new Godot.Vector2(0.15f, 0.15f))
+                (camera.Zoom + new Godot.Vector2(0.15f, 0.15f))
                 <= new Godot.Vector2(max_zoom_offset, max_zoom_offset)
             )
-                cam.Zoom += new Godot.Vector2(0.15f, 0.15f);
+                camera.Zoom += new Godot.Vector2(0.15f, 0.15f);
 
         if (Input.IsActionJustReleased("Zoom_Out"))
-            if ((cam.Zoom - new Godot.Vector2(0.15f, 0.15f)) >= new Godot.Vector2(0.8f, 0.8f))
-                cam.Zoom += new Godot.Vector2(-0.15f, -0.15f);
+            if ((camera.Zoom - new Godot.Vector2(0.15f, 0.15f)) >= new Godot.Vector2(0.8f, 0.8f))
+                camera.Zoom += new Godot.Vector2(-0.15f, -0.15f);
 
         this.velo_x = 0;
         this.velo_y = 0;

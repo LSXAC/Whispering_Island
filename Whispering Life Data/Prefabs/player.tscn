@@ -235,14 +235,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjp5d"]
 size = Vector2(48, 50)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("cam", "vbox", "player_stamina")]
+[node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 motion_mode = 1
 safe_margin = 3.0
 script = ExtResource("1_2p5ml")
-cam = NodePath("Camera2D")
-vbox = NodePath("")
-player_stamina = NodePath("Player_Stamina")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 rotation = 1.5708

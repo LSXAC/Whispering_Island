@@ -41,7 +41,6 @@ public partial class BuildingCollider : Area2D
         bool on_building = false;
         foreach (Node2D node in GetOverlappingBodies())
         {
-            Debug.Print(node.Name);
             if (node is Belt || node is MachineBase)
             {
                 on_building = false;

@@ -55,6 +55,14 @@ public partial class ResourceObject : Building_Node
         anim_player.PlayBackwards("Break");
     }
 
+    public override void _Process(double delta)
+    {
+        if (!Game_Manager.tutorial_finished && Visible)
+            Visible = false;
+        else if (Game_Manager.tutorial_finished && !Visible)
+            Visible = true;
+    }
+
     public void ResourceObjectLoad(ResourceObjectSave ros)
     {
         if (ros == null)

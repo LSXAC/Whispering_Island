@@ -20,6 +20,10 @@ public partial class SaveState : Resource
     [Export]
     public Array<MachineSave> machine_saves = new Array<MachineSave>();
 
+    [Export]
+    public bool tutorial_finished = false;
+
+    [Export]
     public float game_time_since_start = 0;
 
     private static string save_path = "user://save.tres";
