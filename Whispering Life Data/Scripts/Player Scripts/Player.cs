@@ -31,17 +31,7 @@ public partial class Player : CharacterBody2D
         )
             return;
 
-        if (Input.IsActionJustReleased("Zoom_In"))
-            if (
-                (camera.Zoom + new Godot.Vector2(0.15f, 0.15f))
-                <= new Godot.Vector2(max_zoom_offset, max_zoom_offset)
-            )
-                camera.Zoom += new Godot.Vector2(0.15f, 0.15f);
-
-        if (Input.IsActionJustReleased("Zoom_Out"))
-            if ((camera.Zoom - new Godot.Vector2(0.15f, 0.15f)) >= new Godot.Vector2(0.8f, 0.8f))
-                camera.Zoom += new Godot.Vector2(-0.15f, -0.15f);
-
+        ZoomCamera();
         this.velo_x = 0;
         this.velo_y = 0;
 
@@ -70,8 +60,38 @@ public partial class Player : CharacterBody2D
         }
         this.Velocity = new Godot.Vector2(this.velo_x, this.velo_y);
         player_stamina.UpdateStaminaDependencies(velo_x, velo_y);
-        anim.Play(GetDirection());
+        ChoosePlayerAnimation();
         MoveAndSlide();
+    }
+
+    private void ChoosePlayerAnimation()
+    {
+        if (this.Velocity == Godot.Vector2.Zero)
+        {
+            if (current_direction == "Down")
+                anim.Play("Idle_Down");
+            if (current_direction == "Up")
+                anim.Play("Idle_Up");
+            if (current_direction == "Left")
+                anim.Play("Idle_Left");
+            if (current_direction == "Right")
+                anim.Play("Idle_Right");
+        }
+        anim.Play(GetDirection());
+    }
+
+    private void ZoomCamera()
+    {
+        if (Input.IsActionJustReleased("Zoom_In"))
+            if (
+                (camera.Zoom + new Godot.Vector2(0.15f, 0.15f))
+                <= new Godot.Vector2(max_zoom_offset, max_zoom_offset)
+            )
+                camera.Zoom += new Godot.Vector2(0.15f, 0.15f);
+
+        if (Input.IsActionJustReleased("Zoom_Out"))
+            if ((camera.Zoom - new Godot.Vector2(0.15f, 0.15f)) >= new Godot.Vector2(0.8f, 0.8f))
+                camera.Zoom += new Godot.Vector2(-0.15f, -0.15f);
     }
 
     private string GetDirection()

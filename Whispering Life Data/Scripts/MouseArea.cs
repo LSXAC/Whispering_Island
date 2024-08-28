@@ -3,6 +3,12 @@ using Godot;
 
 public partial class MouseArea : Area2D
 {
+    [Export]
+    private Building_Node building_node;
+
+    [Export]
+    public Sprite2D building_sprite;
+
     private ShaderMaterial outline_shader = ResourceLoader.Load<ShaderMaterial>(
         "res://Shader Objects/Outline_Shader.tres"
     );
@@ -10,19 +16,8 @@ public partial class MouseArea : Area2D
         "res://Shader Objects/Remove_Outline_Color.tres"
     );
 
-    [Export]
-    private Building_Node building_node;
-
-    [Export]
-    public Sprite2D building_sprite;
-
-    public void OnMouseEntered()
+    private void OutlineBuilding()
     {
-        if (building_node == null || Game_Manager.In_Cutscene)
-        {
-            return;
-        }
-
         if (Game_Manager.building_mode == Game_Manager.BuildingMode.None)
         {
             building_sprite.Material = outline_shader;
@@ -37,13 +32,13 @@ public partial class MouseArea : Area2D
         }
     }
 
-    public override void _Input(InputEvent @event)
+    public void OnMouseEntered()
     {
-        if (@event is InputEventMouseButton buttonevent)
-            if (buttonevent.Pressed)
-            {
-                OnMouseClick();
-            }
+        if (building_node == null || Game_Manager.In_Cutscene)
+        {
+            return;
+        }
+        OutlineBuilding();
     }
 
     public void OnMouseClick()
@@ -62,5 +57,14 @@ public partial class MouseArea : Area2D
             building_node.mouse_inside = false;
             hover_menu.DisableHoverMenu();
         }
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event is InputEventMouseButton buttonevent)
+            if (buttonevent.Pressed)
+            {
+                OnMouseClick();
+            }
     }
 }

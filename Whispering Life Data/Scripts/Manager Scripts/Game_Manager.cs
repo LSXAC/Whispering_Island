@@ -36,27 +36,16 @@ public partial class Game_Manager : Node2D
 
     private SaveState save_state = new SaveState();
 
-    private void CreateIslands()
+    public static void SetIslandOnMatrix(int x, int y, bool state)
     {
-        Island_Properties main_island = island_parent.GetNode<Island_Properties>("MainIsland");
-        SetIslandOnMatrix(0, 0, true); //Main Island
-        SetIslandOnMatrix(0, -1, true); //Monster Island
-        main_island.GetSigns();
+        island_matrix[x + 10, y + 10] = state;
     }
 
-    private void CheckGameSave()
+    public static bool IsIslandOnMatrix(int x, int y)
     {
-        if (SaveState.HasSave())
-            LoadGame();
-        else
-        {
-            Debug.Print("Game_Manager - New SaveState");
-            save_state = new SaveState();
-            save_state.WriteSave();
-            var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial.dialogue");
-            Global.MoveCamera(new Vector2(0, -256));
-            DialogueManager.ShowDialogueBalloon(dialogue, "TutorialDE");
-        }
+        if (island_matrix[x + 10, y + 10])
+            return true;
+        return false;
     }
 
     public override void _Ready()
@@ -133,15 +122,26 @@ public partial class Game_Manager : Node2D
         player_ui.INSTANCE.UpdateGameTimeLabel();
     }
 
-    public static void SetIslandOnMatrix(int x, int y, bool state)
+    private void CreateIslands()
     {
-        island_matrix[x + 10, y + 10] = state;
+        Island_Properties main_island = island_parent.GetNode<Island_Properties>("MainIsland");
+        SetIslandOnMatrix(0, 0, true); //Main Island
+        SetIslandOnMatrix(0, -1, true); //Monster Island
+        main_island.GetSigns();
     }
 
-    public static bool IsIslandOnMatrix(int x, int y)
+    private void CheckGameSave()
     {
-        if (island_matrix[x + 10, y + 10])
-            return true;
-        return false;
+        if (SaveState.HasSave())
+            LoadGame();
+        else
+        {
+            Debug.Print("Game_Manager - New SaveState");
+            save_state = new SaveState();
+            save_state.WriteSave();
+            var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial.dialogue");
+            Global.MoveCamera(new Vector2(0, -256));
+            DialogueManager.ShowDialogueBalloon(dialogue, "TutorialDE");
+        }
     }
 }
