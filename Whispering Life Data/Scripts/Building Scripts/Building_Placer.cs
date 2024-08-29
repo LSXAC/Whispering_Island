@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Linq.Expressions;
 using Godot;
 using Godot.Collections;
 
@@ -14,6 +15,7 @@ public partial class Building_Placer : Node2D
     private placeable_building placeable;
     private Belt belt;
     private int current_belt_rotation = 3;
+    private Vector2 current_scale = new Vector2(1, 1);
     public static PackedScene building = null;
 
     public Array<BeltSave> belt_saves = new Array<BeltSave>();
@@ -29,6 +31,7 @@ public partial class Building_Placer : Node2D
             Game_Manager.building_mode = Game_Manager.BuildingMode.None;
             return;
         }
+        current_scale = new Vector2(1, 1);
         Game_Manager.building_mode = Game_Manager.BuildingMode.Placing;
         player_ui.INSTANCE.SetWindowFrame();
         current_building = (Node2D)scene.Instantiate();
@@ -43,13 +46,11 @@ public partial class Building_Placer : Node2D
             belt.collision_shape.Disabled = true;
             return;
         }
-        if (current_building is placeable_building)
+        if (current_building is MachineBase)
         {
             placeable = current_building as placeable_building;
-            placeable.sprite.SelfModulate = new Color(1f, 1f, 1f, 0.5f);
+            placeable.GetSprite().SelfModulate = new Color(1f, 1f, 1f, 0.5f);
             placeable.collision_shape.Disabled = true;
-            if (placeable.building_content != null)
-                placeable.building_content.Visible = false;
         }
     }
 
@@ -99,6 +100,7 @@ public partial class Building_Placer : Node2D
             parent_Node.AddChild(temp);
             temp.GlobalPosition = machine_save.position;
             temp.export_count = machine_save.export_count;
+            temp.Scale = machine_save.scale;
             temp.import_count = machine_save.import_count;
         }
     }
@@ -143,6 +145,7 @@ public partial class Building_Placer : Node2D
                     new MachineSave(
                         ((MachineBase)node).type,
                         ((MachineBase)node).Position,
+                        ((MachineBase)node).Scale,
                         ((MachineBase)node).export_count,
                         ((MachineBase)node).import_count
                     )
@@ -183,6 +186,19 @@ public partial class Building_Placer : Node2D
                 belt.Set_Rotation(current_belt_rotation);
             }
         }
+        else
+        {
+            if (Input.IsActionJustPressed("Rotate_Right"))
+            {
+                current_scale = new Vector2(placeable.Scale.X * -1, 1);
+                placeable.Scale = current_scale;
+            }
+            if (Input.IsActionJustPressed("Rotate_Left"))
+            {
+                current_scale = new Vector2(placeable.Scale.X * -1, 1);
+                placeable.Scale = current_scale;
+            }
+        }
 
         if (Input.IsActionJustPressed("MouseLeft"))
         {
@@ -212,6 +228,7 @@ public partial class Building_Placer : Node2D
         Node2D temp = (Node2D)building.Instantiate();
         Vector2 pos = tilemap.LocalToMap(GetGlobalMousePosition());
         temp.Position = new Vector2(pos.X * 16, pos.Y * 16);
+        temp.Scale = current_scale;
         parent_Node.AddChild(temp);
 
         if (temp is Belt)

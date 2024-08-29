@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Taker : Area2D
+public partial class Taker : StaticBody2D
 {
     [Export]
     public MachineBase building;

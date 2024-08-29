@@ -23,15 +23,8 @@ public partial class building_type : Panel
     public void InitBuildingTypeUI(PackedScene scene_ref)
     {
         Building_Node placeable = scene_ref.Instantiate() as Building_Node;
-        if (placeable is placeable_building)
-        {
-            title_label.Text = ((placeable_building)placeable).building_name;
-            texture_rect.Texture = ((placeable_building)placeable).building_texture;
-        }
-        else
-        {
-            title_label.Text = "Belt";
-        }
+        title_label.Text = ((placeable_building)placeable).GetTitle();
+        texture_rect.Texture = ((placeable_building)placeable).GetSprite().Texture;
         this.scene_ref = scene_ref;
     }
 

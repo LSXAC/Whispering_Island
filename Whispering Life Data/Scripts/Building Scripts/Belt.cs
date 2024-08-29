@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Godot;
 
 public partial class Belt : placeable_building
@@ -114,13 +115,13 @@ public partial class Belt : placeable_building
                 switch (from_direction)
                 {
                     case BeltDirection.Right:
-                        sprite.Frame = 1;
+                        GetSprite().Frame = 1;
                         break;
                     case BeltDirection.Top:
-                        sprite.Frame = 9;
+                        GetSprite().Frame = 9;
                         break;
                     case BeltDirection.Down:
-                        sprite.Frame = 2;
+                        GetSprite().Frame = 2;
                         break;
                 }
                 break;
@@ -129,13 +130,13 @@ public partial class Belt : placeable_building
                 switch (from_direction)
                 {
                     case BeltDirection.Left:
-                        sprite.Frame = 11;
+                        GetSprite().Frame = 11;
                         break;
                     case BeltDirection.Top:
-                        sprite.Frame = 10;
+                        GetSprite().Frame = 10;
                         break;
                     case BeltDirection.Down:
-                        sprite.Frame = 3;
+                        GetSprite().Frame = 3;
                         break;
                 }
                 break;
@@ -144,13 +145,13 @@ public partial class Belt : placeable_building
                 switch (from_direction)
                 {
                     case BeltDirection.Left:
-                        sprite.Frame = 12;
+                        GetSprite().Frame = 12;
                         break;
                     case BeltDirection.Down:
-                        sprite.Frame = 7;
+                        GetSprite().Frame = 7;
                         break;
                     case BeltDirection.Right:
-                        sprite.Frame = 8;
+                        GetSprite().Frame = 8;
                         break;
                 }
                 break;
@@ -159,13 +160,13 @@ public partial class Belt : placeable_building
                 switch (from_direction)
                 {
                     case BeltDirection.Left:
-                        sprite.Frame = 4;
+                        GetSprite().Frame = 4;
                         break;
                     case BeltDirection.Top:
-                        sprite.Frame = 5;
+                        GetSprite().Frame = 5;
                         break;
                     case BeltDirection.Right:
-                        sprite.Frame = 0;
+                        GetSprite().Frame = 0;
                         break;
                 }
                 break;

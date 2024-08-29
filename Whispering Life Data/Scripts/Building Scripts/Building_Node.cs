@@ -5,13 +5,13 @@ using Godot;
 public abstract partial class Building_Node : Node2D
 {
     [Export]
-    public string title = "";
+    private string title = "";
 
     [Export]
-    public string description = "";
+    private string description = "";
 
     [Export]
-    public Sprite2D building_sprite;
+    private Sprite2D sprite;
 
     [Export]
     public CollisionShape2D collision_shape;
@@ -27,6 +27,13 @@ public abstract partial class Building_Node : Node2D
             {
                 OnMouseClick();
             }
+    }
+
+    public Sprite2D GetSprite()
+    {
+        if (sprite != null)
+            return sprite;
+        return new Sprite2D();
     }
 
     public string GetTitle()
@@ -45,11 +52,11 @@ public abstract partial class Building_Node : Node2D
 
     public Vector2 GetBuildingPosition()
     {
-        if (building_sprite == null)
+        if (sprite == null)
         {
             Debug.Print("Kein Sprite referenziert!", this);
             return new Vector2(0, 0);
         }
-        return new Vector2(Position.X, Position.Y - building_sprite.Texture.GetSize().Y - 16f);
+        return new Vector2(Position.X, Position.Y - sprite.Texture.GetSize().Y - 16f);
     }
 }

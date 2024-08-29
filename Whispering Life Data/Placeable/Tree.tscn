@@ -114,7 +114,7 @@ scale_min = 0.5
 scale_max = 0.7
 scale_curve = SubResource("CurveTexture_osh17")
 
-[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "sprite", "gpu_particles", "building_sprite")]
+[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "sprite", "gpu_particles", "sprite")]
 y_sort_enabled = true
 script = ExtResource("1_0pylb")
 anim_player = NodePath("AnimationPlayer")
@@ -124,7 +124,7 @@ sprite = NodePath("Sprite")
 gpu_particles = NodePath("LeavesParticles")
 title = "Tree"
 description = "Chop to get Wood"
-building_sprite = NodePath("Sprite")
+sprite = NodePath("Sprite")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 y_sort_enabled = true

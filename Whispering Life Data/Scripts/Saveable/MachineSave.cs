@@ -4,12 +4,13 @@ public partial class MachineSave : Resource
 {
     public MachineSave() { }
 
-    public MachineSave(MachineBase.MachineType type, Vector2 pos, int im_c, int ex_c)
+    public MachineSave(MachineBase.MachineType type, Vector2 pos, Vector2 scale, int im_c, int ex_c)
     {
         this.type = type;
         this.position = pos;
         this.import_count = im_c;
         this.export_count = ex_c;
+        this.scale = scale;
     }
 
     [Export]
@@ -23,4 +24,7 @@ public partial class MachineSave : Resource
 
     [Export]
     public int export_count = 0;
+
+    [Export]
+    public Vector2 scale;
 }

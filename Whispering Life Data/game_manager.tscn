@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=24 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" path="res://Scripts/Manager Scripts/Game_Manager.cs" id="1_kw8xi"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Placer.cs" id="2_2ikn4"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bovrg0u6tuo04" path="res://Menus/hover_menu.tscn" id="9_sosrl"]
 [ext_resource type="Script" path="res://Scripts/Global.cs" id="10_1kwav"]
 [ext_resource type="PackedScene" uid="uid://o62xek3uvpo8" path="res://Menus/quest_menu.tscn" id="12_x3g6o"]
+[ext_resource type="Resource" uid="uid://c1p7gva6jex80" path="res://Dialogues/Questing.dialogue" id="13_c3cat"]
 [ext_resource type="Script" path="res://Scripts/QuestManager.cs" id="13_v5o5h"]
 [ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Quests/Start.tres" id="14_2k87u"]
 [ext_resource type="Resource" uid="uid://cdk8sna5iiegp" path="res://Quests/Start2.tres" id="15_13bir"]
@@ -80,6 +81,7 @@ offset_bottom = -82.0
 script = ExtResource("10_1kwav")
 
 [node name="QuestMenu" parent="." instance=ExtResource("12_x3g6o")]
+dialogue_timeline = ExtResource("13_c3cat")
 
 [node name="QuestManager" type="Node2D" parent="." node_paths=PackedStringArray("quest_timer")]
 script = ExtResource("13_v5o5h")

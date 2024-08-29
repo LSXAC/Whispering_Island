@@ -17,6 +17,9 @@ public partial class QuestMenu : CanvasLayer
 
     [Export]
     public Label quest_description_label;
+
+    [Export]
+    public Resource dialogue_timeline;
     public PackedScene h_box_item = ResourceLoader.Load<PackedScene>("res://h_box_item.tscn");
     public static QuestMenu INSTANCE = null;
     public static Quest currentQuest = null;
@@ -50,6 +53,13 @@ public partial class QuestMenu : CanvasLayer
     }
 
     public void OnCloseButton()
+    {
+        Global.MoveCamera(new Vector2(0, -256));
+        DialogueManager.ShowDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_DE");
+        CloseQuestMenu();
+    }
+
+    public void CloseQuestMenu()
     {
         this.Visible = false;
     }

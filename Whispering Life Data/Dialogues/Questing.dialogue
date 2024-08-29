@@ -1,0 +1,8 @@
+~ Quest_Menu_Closed_DE
+
+% Boss: Denk dran, die Zeit läuft!
+% Boss: ICH HAB HUNGER!
+%2 Boss: Lass mich nicht so lange warten!
+do Global.LeaveDialogue()
+
+=> END

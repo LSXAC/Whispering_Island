@@ -188,13 +188,12 @@ layer_0/z_index = -3
 layer_0/tile_data = PackedInt32Array(-393215, 0, 0, -327678, 0, 0, 65540, 0, 0, 65539, 0, 0, 131075, 0, 0, 2, 0, 0, 131065, 0, 0, 262140, 0, 0, 327677, 0, 0, 327676, 0, 0, 393213, 0, 0, -196613, 65536, 0, -327682, 65536, 0, 327678, 65536, 0, 65538, 65536, 0)
 script = ExtResource("8_7hw5l")
 
-[node name="QuestSign" type="StaticBody2D" parent="." node_paths=PackedStringArray("building_sprite")]
+[node name="QuestSign" type="StaticBody2D" parent="."]
 y_sort_enabled = true
 position = Vector2(32, -200)
 script = ExtResource("8_dl61a")
 title = "Quest Sign"
 description = "123414"
-building_sprite = NodePath("BuildingSprite")
 
 [node name="Collision" type="CollisionShape2D" parent="QuestSign"]
 position = Vector2(-32, -31)

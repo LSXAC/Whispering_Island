@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class BeltItem : CharacterBody2D
@@ -12,10 +14,13 @@ public partial class BeltItem : CharacterBody2D
         if (!moving)
             if (Position != Vector2.Zero)
             {
+                Debug.Print("Pos" + Position.ToString());
+                Debug.Print("Pos Norm" + Position.Normalized().ToString());
+                Debug.Print("- Pos Norm" + Position.Normalized().ToString());
                 Velocity = -Position.Normalized() * 5f;
                 moving = true;
             }
-        if (moving && Position.DistanceTo(Vector2.Zero) < 0.2f)
+        if (moving && Math.Abs(Position.DistanceTo(Vector2.Zero)) < 0.2f)
         {
             moving = false;
             Velocity = Vector2.Zero;

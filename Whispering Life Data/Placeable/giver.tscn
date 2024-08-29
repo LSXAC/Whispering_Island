@@ -13,7 +13,7 @@ detector = NodePath("Detector")
 Holder = NodePath("Holder")
 
 [node name="Holder" type="Node2D" parent="."]
-position = Vector2(15, 1)
+position = Vector2(15, 0)
 
 [node name="ProductionTimer" type="Timer" parent="."]
 wait_time = 0.25

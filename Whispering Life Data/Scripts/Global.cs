@@ -14,7 +14,7 @@ public partial class Global : Node2D
     public static void MoveCamera(Godot.Vector2 pos)
     {
         Player.camera.Enabled = false;
-        Game_Manager.INSTANCE.cutscene_camera.Position = Player.camera.Position;
+        Game_Manager.INSTANCE.cutscene_camera.GlobalPosition = Player.camera.GlobalPosition;
         Game_Manager.INSTANCE.cutscene_camera.Enabled = true;
         Game_Manager.INSTANCE.cutscene_camera.Position = pos;
     }
@@ -32,6 +32,11 @@ public partial class Global : Node2D
         Debug.Print("Enter Diualogue");
     }
 
+    public static void QueueFreeTree()
+    {
+        Tutorial.INSTANCE.Tree.QueueFree();
+    }
+
     public static void LeaveDialogue()
     {
         Debug.Print("Leave");
@@ -40,7 +45,6 @@ public partial class Global : Node2D
         Player.camera.Enabled = true;
         Player.camera.Position = Godot.Vector2.Zero;
         Game_Manager.In_Cutscene = false;
-        Tutorial.INSTANCE.Tree.QueueFree();
     }
 
     public static void OutlineTree()

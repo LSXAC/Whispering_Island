@@ -18,17 +18,16 @@ size = Vector2(10, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
 size = Vector2(16, 16)
 
-[node name="Belt" type="StaticBody2D" node_paths=PackedStringArray("item_holder", "detector", "sprite", "building_sprite", "collision_shape")]
+[node name="Belt" type="StaticBody2D" node_paths=PackedStringArray("item_holder", "detector", "sprite", "collision_shape")]
 z_index = 1
 collision_layer = 12
 collision_mask = 0
 script = ExtResource("1_wiff4")
 item_holder = NodePath("ItemHolder")
 detector = NodePath("Detector")
-sprite = NodePath("BuildingSprite")
 title = "Belt"
 description = "Moves Items"
-building_sprite = NodePath("BuildingSprite")
+sprite = NodePath("BuildingSprite")
 collision_shape = NodePath("CollisionShape2D")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]

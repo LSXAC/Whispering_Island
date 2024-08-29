@@ -34,6 +34,7 @@ Boss: Verstanden?
 	Spieler: Ich glaube das musst du mir nochmal erklären :/
 	=> Holz
 
+do Global.QueueFreeTree()
 Spieler: Das ist ja mega geil! Ich schätze mal das es beim Stein genauso ist?
 do Global.MoveCamera(Vector2(0,-256))
 Boss: Du hast es kapiert! Ich krieg bald endlich essen!
