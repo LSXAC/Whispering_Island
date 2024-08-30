@@ -7,7 +7,8 @@ public partial class MachineBase : placeable_building
     {
         WOODFARM,
         FURNACE,
-        QUARRY
+        QUARRY,
+        CHEST
     }
 
     [Export]

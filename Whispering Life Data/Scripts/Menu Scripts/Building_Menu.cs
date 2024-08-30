@@ -20,6 +20,7 @@ public partial class Building_Menu : CanvasLayer
     );
     public PackedScene furnace = ResourceLoader.Load<PackedScene>("res://Placeable/Furnace.tscn");
     public PackedScene quarry = ResourceLoader.Load<PackedScene>("res://Placeable/Quarry.tscn");
+    public PackedScene chest = ResourceLoader.Load<PackedScene>("res://Placeable/Chest.tscn");
 
     public PackedScene belt = ResourceLoader.Load<PackedScene>("res://Placeable/Belt.tscn");
     public PackedScene beltItem = ResourceLoader.Load<PackedScene>("res://belt_item.tscn");
@@ -30,6 +31,7 @@ public partial class Building_Menu : CanvasLayer
         InitBuildings(tree_growther);
         InitBuildings(furnace);
         InitBuildings(quarry);
+        InitBuildings(chest);
         InitBuildings(belt);
         instance = this;
     }

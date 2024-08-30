@@ -93,6 +93,8 @@ public partial class Building_Placer : Node2D
 
             if (machine_save.type == MachineBase.MachineType.FURNACE)
                 temp = Building_Menu.instance.furnace.Instantiate() as ProcessBuilding;
+            if (machine_save.type == MachineBase.MachineType.CHEST)
+                temp = Building_Menu.instance.furnace.Instantiate() as ProcessBuilding;
 
             if (temp == null)
                 return;

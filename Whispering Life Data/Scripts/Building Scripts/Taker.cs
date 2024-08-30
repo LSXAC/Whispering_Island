@@ -10,7 +10,7 @@ public partial class Taker : StaticBody2D
 
     public bool can_receive_item()
     {
-        return item_holder_In.GetChildCount() == 0 && building.import_count < 5;
+        return item_holder_In.GetChildCount() == 0 && building.import_count < 50;
     }
 
     public void receive_item(Node2D item)

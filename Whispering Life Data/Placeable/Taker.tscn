@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Placeable/BeltArea.cs" id="3_csobx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cxv0"]
-size = Vector2(8, 8)
+size = Vector2(4, 4)
 
 [node name="Taker" type="StaticBody2D" node_paths=PackedStringArray("item_holder_In")]
 collision_layer = 4

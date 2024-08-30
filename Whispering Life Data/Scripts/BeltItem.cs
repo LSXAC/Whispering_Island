@@ -14,9 +14,6 @@ public partial class BeltItem : CharacterBody2D
         if (!moving)
             if (Position != Vector2.Zero)
             {
-                Debug.Print("Pos" + Position.ToString());
-                Debug.Print("Pos Norm" + Position.Normalized().ToString());
-                Debug.Print("- Pos Norm" + Position.Normalized().ToString());
                 Velocity = -Position.Normalized();
                 moving = true;
             }
