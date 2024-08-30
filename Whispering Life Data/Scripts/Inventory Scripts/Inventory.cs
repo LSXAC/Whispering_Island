@@ -19,6 +19,7 @@ public partial class Inventory : Control
         ResourceLoader.Load<ItemInfo>("res://Items/Pickaxe.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Plank.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Chest.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Charcoal.tres"),
     };
     public static Inventory INSTANCE = null;
 

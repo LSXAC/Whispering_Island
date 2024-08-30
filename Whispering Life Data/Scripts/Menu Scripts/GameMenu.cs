@@ -51,6 +51,7 @@ public partial class GameMenu : CanvasLayer
 
     public void OnExitButton()
     {
+        OnCloseFurnaceTab();
         this.Visible = false;
         Game_Manager.inside_game_menu = false;
     }

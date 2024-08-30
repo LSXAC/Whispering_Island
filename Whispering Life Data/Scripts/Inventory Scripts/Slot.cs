@@ -81,10 +81,17 @@ public partial class Slot : PanelContainer
         InventoryItem ii = (InventoryItem)data;
         if (GetChildCount() > 0)
         {
-            Node item = GetChild<Node>(0);
+            InventoryItem item = GetChild<InventoryItem>(0);
             if ((Node)data == item)
                 return;
 
+            if (item.item_info == ii.item_info)
+            {
+                item.amount += ii.amount;
+                item.UpdateAmountLabel();
+                ii.QueueFree();
+                return;
+            }
             item.Reparent(((Node)data).GetParent());
         }
         ((Node)data).Reparent(this);

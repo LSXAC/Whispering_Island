@@ -14,13 +14,24 @@ public partial class ProcessBuilding : MachineBase
     [Export]
     public Timer crafting_timer;
 
+    int progress = 0;
+
     public void OnCraftingTimerTimeout()
     {
-        export_count++;
-        InventoryItem ii = new InventoryItem();
-        ii.init(export_item_info);
-        FurnaceTab.INSTANCE.export_slot.UpdateFurnaceItem(ii, 1);
-        is_crafting = false;
+        FurnaceTab.INSTANCE.UpdateProgressbar(progress);
+        if (progress >= 100)
+        {
+            export_count++;
+            InventoryItem ii = new InventoryItem();
+            ii.init(export_item_info);
+            FurnaceTab.INSTANCE.export_slot.UpdateFurnaceItem(ii, 1);
+            is_crafting = false;
+            crafting_timer.Stop();
+            progress = 0;
+            FurnaceTab.INSTANCE.UpdateProgressbar(progress);
+            return;
+        }
+        progress += 5;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -35,7 +46,6 @@ public partial class ProcessBuilding : MachineBase
         InventoryItem ii = new InventoryItem();
         ii.init(import_item_info);
         FurnaceTab.INSTANCE.import_slot.UpdateFurnaceItem(ii, -2);
-        crafting_timer.OneShot = true;
         crafting_timer.Start();
     }
 }
