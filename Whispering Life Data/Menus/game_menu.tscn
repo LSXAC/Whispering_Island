@@ -1,11 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=30 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
 [ext_resource type="PackedScene" uid="uid://74pm7gmanqf2" path="res://Prefabs/inventory.tscn" id="3_ub0ut"]
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/CraftingMenu.cs" id="4_3cwxu"]
-[ext_resource type="Script" path="res://Menus/FurnaceTab.cs" id="4_kmuua"]
-[ext_resource type="Script" path="res://Scripts/Inventory Scripts/Slot.cs" id="4_v56ys"]
 [ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Items/Sticks.tres" id="5_k1cyv"]
 [ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="6_7ubdg"]
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Items/Wood.tres" id="7_wyt5m"]
@@ -104,7 +102,7 @@ inventory_tab_button = NodePath("Background/HBoxHeader/InvTabButton")
 crafting_tab_button = NodePath("Background/HBoxHeader/CraftingTabButton")
 inventory_tab = NodePath("Background/InventoryTab")
 crafting_tab = NodePath("Background/CraftingTab")
-furnace_tab = NodePath("Background/FurnaceTab")
+furnace_tab = NodePath("")
 
 [node name="TransBackground" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -211,75 +209,6 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "© 2024 Leon Schröder Asset Creations"
 
-[node name="FurnaceTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("export_slot", "import_slot", "fuel_slot")]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 26.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.576471, 0.807843, 1, 1)
-script = ExtResource("4_kmuua")
-export_slot = NodePath("PanelContainer/ExportSlot")
-import_slot = NodePath("PanelContainer/InputSlot")
-fuel_slot = NodePath("PanelContainer/FuelSlot")
-
-[node name="Inventory" parent="Background/FurnaceTab" instance=ExtResource("3_ub0ut")]
-layout_mode = 1
-offset_left = 8.0
-offset_top = 14.0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="PanelContainer" type="Control" parent="Background/FurnaceTab"]
-anchors_preset = 0
-offset_left = 232.0
-offset_top = 222.0
-offset_right = 544.0
-offset_bottom = 270.0
-
-[node name="Label" type="Label" parent="Background/FurnaceTab/PanelContainer"]
-layout_mode = 2
-offset_top = -208.0
-offset_right = 312.0
-offset_bottom = -185.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "© 2024 Leon Schröder Asset Creations"
-
-[node name="InputSlot" type="PanelContainer" parent="Background/FurnaceTab/PanelContainer"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-offset_top = -176.0
-offset_right = 48.0
-offset_bottom = -128.0
-script = ExtResource("4_v56ys")
-
-[node name="ExportSlot" type="PanelContainer" parent="Background/FurnaceTab/PanelContainer"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-offset_left = 256.0
-offset_top = -176.0
-offset_right = 304.0
-offset_bottom = -128.0
-script = ExtResource("4_v56ys")
-
-[node name="FuelSlot" type="PanelContainer" parent="Background/FurnaceTab/PanelContainer"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-offset_top = -120.0
-offset_right = 48.0
-offset_bottom = -72.0
-script = ExtResource("4_v56ys")
-
-[node name="ProgressBar" type="ProgressBar" parent="Background/FurnaceTab/PanelContainer"]
-layout_mode = 0
-offset_left = 56.0
-offset_top = -168.0
-offset_right = 248.0
-offset_bottom = -141.0
-
 [node name="CraftingTab" type="ColorRect" parent="Background"]
 visible = false
 z_index = 2
@@ -377,4 +306,3 @@ text = "---"
 [connection signal="pressed" from="Background/HBoxHeader/Button5" to="." method="OnExitButton"]
 [connection signal="pressed" from="Background/InventoryTab/PanelContainer/HBoxContainer/SaveGameButton" to="." method="OnSaveButton"]
 [connection signal="pressed" from="Background/InventoryTab/PanelContainer/HBoxContainer/LoadGameButton" to="." method="OnLoadButton"]
-[connection signal="visibility_changed" from="Background/FurnaceTab" to="Background/FurnaceTab" method="OnVisiblityChange"]

@@ -51,12 +51,6 @@ public partial class MouseArea : Area2D
 
         if (GetParent().HasNode("Actionable"))
             GetParent().GetNode<Actionable>("Actionable").Action();
-
-        if (GetParent() is ProcessBuilding)
-        {
-            FurnaceTab.INSTANCE.SetProcessBuilding(GetParent<ProcessBuilding>());
-            GameMenu.INSTANCE.OnOpenFurnaceTab();
-        }
     }
 
     public void OnMouseLeaved()
