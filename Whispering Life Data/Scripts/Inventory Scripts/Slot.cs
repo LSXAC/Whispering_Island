@@ -42,6 +42,9 @@ public partial class Slot : PanelContainer
 
     public override bool _CanDropData(Vector2 atPosition, Variant data)
     {
+        if (data.Obj == null)
+            return false;
+
         InventoryItem ii = (InventoryItem)data;
         if (type == ItemInfo.Type.Resource)
         {
@@ -60,9 +63,15 @@ public partial class Slot : PanelContainer
 
     public override void _DropData(Vector2 atPosition, Variant data)
     {
+        if (data.Obj == null)
+            return;
+
         if (GetChildCount() > 0)
         {
             Node item = GetChild<Node>(0);
+            InventoryItem ii = (InventoryItem)data;
+            if (ii.amount == 0)
+                return;
             if ((Node)data == item)
                 return;
 

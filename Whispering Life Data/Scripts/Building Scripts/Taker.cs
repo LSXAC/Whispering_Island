@@ -23,5 +23,13 @@ public partial class Taker : StaticBody2D
         var item = item_holder_In.offload_item();
         item.QueueFree();
         building.import_count++;
+
+        if (!((ProcessBuilding)building).is_crafting && building.import_count >= 2)
+        {
+            building.import_count -= 2;
+            ((ProcessBuilding)building).is_crafting = true;
+            ((ProcessBuilding)building).crafting_timer.OneShot = true;
+            ((ProcessBuilding)building).crafting_timer.Start();
+        }
     }
 }

@@ -32,13 +32,6 @@ public partial class Giver : Area2D
                     Holder.AddChild(item);
                     destination.GetParent<Belt>().receive_item(item);
                 }
-                if (!((ProcessBuilding)building).is_crafting && building.import_count >= 2)
-                {
-                    building.import_count -= 2;
-                    ((ProcessBuilding)building).is_crafting = true;
-                    ((ProcessBuilding)building).crafting_timer.OneShot = true;
-                    ((ProcessBuilding)building).crafting_timer.Start();
-                }
             }
             else if (building is ProductionMachine)
             {

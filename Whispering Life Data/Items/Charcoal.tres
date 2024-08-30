@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_xbwg7")
 unique_item_id = 6
-item_type = 4
+item_type = 0
 item_name = "Charcoal"
 item_description = "Charcoal_DESC"
 texture = ExtResource("2_0c7f3")

@@ -98,6 +98,12 @@ building = NodePath("..")
 [node name="CraftingTimer" type="Timer" parent="."]
 wait_time = 2.0
 
+[node name="Slots" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
 [connection signal="timeout" from="CraftingTimer" to="." method="OnCraftingTimerTimeout"]

@@ -33,7 +33,6 @@ public partial class InventoryItem : TextureRect
 
     public override Variant _GetDragData(Vector2 atPosition)
     {
-        Debug.Print("Pulled Data");
         SetDragPreview(MakeDragPreview(atPosition));
         return this;
     }

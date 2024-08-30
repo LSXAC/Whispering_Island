@@ -43,10 +43,20 @@ public partial class MouseArea : Area2D
 
     public void OnMouseClick()
     {
+        if (Game_Manager.inside_game_menu)
+            return;
+
         if (Global.GetDistanceToPlayer(this.GlobalPosition) >= 20f)
             return;
+
         if (GetParent().HasNode("Actionable"))
             GetParent().GetNode<Actionable>("Actionable").Action();
+
+        if (GetParent() is ProcessBuilding)
+        {
+            FurnaceTab.INSTANCE.SetProcessBuilding(GetParent<ProcessBuilding>());
+            GameMenu.INSTANCE.OnOpenFurnaceTab();
+        }
     }
 
     public void OnMouseLeaved()

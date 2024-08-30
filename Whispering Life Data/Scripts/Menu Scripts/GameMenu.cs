@@ -18,6 +18,15 @@ public partial class GameMenu : CanvasLayer
     [Export]
     public ColorRect crafting_tab;
 
+    [Export]
+    public FurnaceTab furnace_tab;
+    public static GameMenu INSTANCE = null;
+
+    public override void _Ready()
+    {
+        INSTANCE = this;
+    }
+
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
@@ -57,6 +66,25 @@ public partial class GameMenu : CanvasLayer
         crafting_tab.Visible = true;
         inventory_tab.Visible = false;
         crafting_tab.GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
+    }
+
+    public void OnOpenFurnaceTab()
+    {
+        Visible = true;
+        Game_Manager.inside_game_menu = true;
+        crafting_tab.Visible = false;
+        inventory_tab.Visible = false;
+        furnace_tab.Visible = true;
+    }
+
+    public void OnCloseFurnaceTab()
+    {
+        crafting_tab.Visible = false;
+        inventory_tab.Visible = true;
+        furnace_tab.Visible = false;
+        Game_Manager.inside_game_menu = false;
+        Visible = false;
+        FurnaceTab.INSTANCE.ClearProcessBuilding();
     }
 
     public void OnSaveButton()
