@@ -17,6 +17,9 @@ public partial class GameMenu : CanvasLayer
 
     [Export]
     public ColorRect crafting_tab;
+
+    [Export]
+    public FurnaceTab furnace_tab;
     public static GameMenu INSTANCE = null;
 
     public override void _Ready()
@@ -69,14 +72,15 @@ public partial class GameMenu : CanvasLayer
     {
         Visible = true;
         Game_Manager.inside_game_menu = true;
+        inventory_tab.Visible = true;
         crafting_tab.Visible = false;
-        inventory_tab.Visible = false;
+        furnace_tab.Visible = true;
     }
 
     public void OnCloseFurnaceTab()
     {
         crafting_tab.Visible = false;
-        inventory_tab.Visible = true;
+        furnace_tab.Visible = false;
         Game_Manager.inside_game_menu = false;
         Visible = false;
     }

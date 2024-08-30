@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dj73tpok8xq6p"]
 
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Chest.cs" id="1_qtaud"]
-[ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Items/Charcoal.tres" id="2_ptpkm"]
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Items/Wood.tres" id="2_wtxcs"]
 [ext_resource type="Texture2D" uid="uid://cb634fgv247qi" path="res://Sprites/Chest_Building_Sprite.png" id="4_mcpbh"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="5_0ufwp"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="6_ofxn8"]
@@ -22,7 +22,7 @@ collision_layer = 12
 collision_mask = 0
 script = ExtResource("1_qtaud")
 type = 3
-import_item_info = ExtResource("2_ptpkm")
+import_item_info = ExtResource("2_wtxcs")
 title = "Chest"
 description = "Stores Items"
 sprite = NodePath("BuildingSprite")

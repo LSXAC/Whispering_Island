@@ -33,7 +33,6 @@ public partial class InventoryItem : TextureRect
 
     public override Variant _GetDragData(Vector2 atPosition)
     {
-        Reparent(GameMenu.INSTANCE);
         SetDragPreview(MakeDragPreview(atPosition));
         return this;
     }
@@ -47,6 +46,7 @@ public partial class InventoryItem : TextureRect
             SizeFlagsVertical = SizeFlags.ShrinkCenter,
             Position = -atPosition,
         };
+
         return preview;
     }
 }
