@@ -16,6 +16,8 @@ public partial class Slot : PanelContainer
         ii.amount = amount;
         ii.UpdateAmountLabel();
         AddChild(ii);
+        if (amount == 0)
+            ClearItem();
     }
 
     public void UpdateItem(int amount)
@@ -23,6 +25,16 @@ public partial class Slot : PanelContainer
         GetItem().amount += amount;
         GetItem().UpdateAmountLabel();
         if (GetItem().amount == 0)
+            ClearItem();
+    }
+
+    public void UpdateFurnaceItem(InventoryItem ii, int amount)
+    {
+        if (GetItem() == null)
+            SetItem(ii, amount);
+        GetItem().amount += amount;
+        GetItem().UpdateAmountLabel();
+        if (GetItem().amount <= 0)
             ClearItem();
     }
 
@@ -66,12 +78,10 @@ public partial class Slot : PanelContainer
         if (data.Obj == null)
             return;
 
+        InventoryItem ii = (InventoryItem)data;
         if (GetChildCount() > 0)
         {
             Node item = GetChild<Node>(0);
-            InventoryItem ii = (InventoryItem)data;
-            if (ii.amount == 0)
-                return;
             if ((Node)data == item)
                 return;
 

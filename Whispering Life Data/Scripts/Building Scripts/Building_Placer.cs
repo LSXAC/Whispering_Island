@@ -104,6 +104,7 @@ public partial class Building_Placer : Node2D
             temp.export_count = machine_save.export_count;
             temp.Scale = machine_save.scale;
             temp.import_count = machine_save.import_count;
+            temp.machine_enabled = machine_save.machine_enabled;
         }
     }
 
@@ -149,7 +150,8 @@ public partial class Building_Placer : Node2D
                         ((MachineBase)node).Position,
                         ((MachineBase)node).Scale,
                         ((MachineBase)node).export_count,
-                        ((MachineBase)node).import_count
+                        ((MachineBase)node).import_count,
+                        ((MachineBase)node).machine_enabled
                     )
                 );
             }

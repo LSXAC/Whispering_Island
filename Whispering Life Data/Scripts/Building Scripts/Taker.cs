@@ -10,7 +10,9 @@ public partial class Taker : StaticBody2D
 
     public bool can_receive_item()
     {
-        return item_holder_In.GetChildCount() == 0 && building.import_count < 50;
+        return item_holder_In.GetChildCount() == 0
+            && building.import_count < 50
+            && building.machine_enabled;
     }
 
     public void receive_item(Node2D item)
@@ -23,13 +25,8 @@ public partial class Taker : StaticBody2D
         var item = item_holder_In.offload_item();
         item.QueueFree();
         building.import_count++;
-
-        if (!((ProcessBuilding)building).is_crafting && building.import_count >= 2)
-        {
-            building.import_count -= 2;
-            ((ProcessBuilding)building).is_crafting = true;
-            ((ProcessBuilding)building).crafting_timer.OneShot = true;
-            ((ProcessBuilding)building).crafting_timer.Start();
-        }
+        InventoryItem ii = new InventoryItem();
+        ii.init(building.import_item_info);
+        FurnaceTab.INSTANCE.import_slot.UpdateFurnaceItem(ii, 1);
     }
 }

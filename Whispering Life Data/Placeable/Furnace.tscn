@@ -23,6 +23,7 @@ y_sort_enabled = true
 collision_layer = 12
 collision_mask = 0
 script = ExtResource("1_vtdy4")
+fuel_item_info = ExtResource("10_c3j8d")
 crafting_timer = NodePath("CraftingTimer")
 type = 1
 import_item_info = ExtResource("2_rd0fi")
