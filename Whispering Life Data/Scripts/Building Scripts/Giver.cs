@@ -27,7 +27,6 @@ public partial class Giver : Area2D
                 if (destination.GetParent<Belt>().can_receive_item() && building.export_count > 0)
                 {
                     building.export_count--;
-                    FurnaceTab.INSTANCE.OnVisiblityChange();
                     BeltItem item = (BeltItem)beltItem.Instantiate();
                     item.InitBeltItem(new Item(building.export_item_info, 1));
                     Holder.AddChild(item);

@@ -14,6 +14,10 @@ public partial class ProcessBuilding : MachineBase
     [Export]
     public Timer crafting_timer;
 
+    [Export]
+    public Timer state_timer;
+
+    public int ui_progress = 0;
     int progress = 0;
 
     public void OnCraftingTimerTimeout()
@@ -47,5 +51,41 @@ public partial class ProcessBuilding : MachineBase
         ii.init(import_item_info);
         FurnaceTab.INSTANCE.import_slot.UpdateFurnaceItem(ii, -2);
         crafting_timer.Start();
+    }
+
+    public void OnMachineTimeOut()
+    {
+        if (machine_enabled)
+        {
+            if (ui_progress < 100)
+                ui_progress += 2;
+
+            if (ui_progress >= 100)
+            {
+                state_timer.Stop();
+                machine_enabled = true;
+                if (FurnaceTab.INSTANCE.process_building == this)
+                    FurnaceTab.INSTANCE.switch_button.Disabled = false;
+            }
+            if (FurnaceTab.INSTANCE.process_building == this)
+                FurnaceTab.INSTANCE.SetMachineProgressbar(ui_progress);
+        }
+        else if (!machine_enabled)
+        {
+            if (ui_progress >= 2)
+                ui_progress -= 2;
+
+            if (ui_progress <= 0)
+            {
+                state_timer.Stop();
+                if (FurnaceTab.INSTANCE.process_building == this)
+                {
+                    FurnaceTab.INSTANCE.safty_panel.Visible = false;
+                    FurnaceTab.INSTANCE.switch_button.Disabled = false;
+                }
+            }
+            if (FurnaceTab.INSTANCE.process_building == this)
+                FurnaceTab.INSTANCE.SetMachineProgressbar(ui_progress);
+        }
     }
 }

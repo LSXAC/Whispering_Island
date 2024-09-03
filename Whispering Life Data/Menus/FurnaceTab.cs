@@ -22,17 +22,16 @@ public partial class FurnaceTab : ColorRect
     public ProgressBar workingProgressbar;
 
     [Export]
-    public Timer machineTimer;
+    public Button switch_button;
 
     [Export]
-    public Button switch_button;
+    public Label working_label;
     public ProcessBuilding process_building;
     public static FurnaceTab INSTANCE = null;
 
     public override void _Ready()
     {
         INSTANCE = this;
-        SetMachineProgressbar(100);
     }
 
     public void SetMachineProgressbar(int amount)
@@ -48,15 +47,19 @@ public partial class FurnaceTab : ColorRect
     public void SetProcessBuilding(ProcessBuilding process_building)
     {
         this.process_building = process_building;
-        if (process_building.machine_enabled)
+        SetMachineProgressbar(process_building.ui_progress);
+        if (process_building.ui_progress == 0 || process_building.ui_progress == 100)
+            switch_button.Disabled = false;
+
+        if (!process_building.machine_enabled)
         {
-            SetMachineProgressbar(100);
-            safty_panel.Visible = true;
+            ChangeStateLabel(true);
+            safty_panel.Visible = false;
         }
         else
         {
-            SetMachineProgressbar(0);
-            safty_panel.Visible = false;
+            ChangeStateLabel(false);
+            safty_panel.Visible = true;
         }
     }
 
@@ -66,45 +69,14 @@ public partial class FurnaceTab : ColorRect
         GameMenu.INSTANCE.OnCloseFurnaceTab();
     }
 
-    public void OnVisiblityChange()
-    {
-        //ClearProcessBuilding();
-    }
-
-    public void OnMachineTimeOut()
-    {
-        if (process_building.machine_enabled)
-        {
-            if (machineProgressbar.Value < 100)
-                machineProgressbar.Value += 2;
-            if (machineProgressbar.Value >= 100)
-            {
-                machineTimer.Stop();
-                switch_button.Disabled = false;
-                process_building.machine_enabled = true;
-            }
-        }
-        else if (!process_building.machine_enabled)
-        {
-            if (machineProgressbar.Value >= 2)
-                machineProgressbar.Value -= 2;
-            if (machineProgressbar.Value <= 0)
-            {
-                machineTimer.Stop();
-                safty_panel.Visible = false;
-                switch_button.Disabled = false;
-            }
-        }
-    }
-
     public void OnMachineStateButton()
     {
-        machineTimer.Start();
+        process_building.state_timer.Start();
         switch_button.Disabled = true;
         if (process_building.machine_enabled)
         {
             process_building.machine_enabled = false;
-            switch_button.Text = "Enable Machine";
+            ChangeStateLabel(true);
         }
         else
         {
@@ -125,7 +97,21 @@ public partial class FurnaceTab : ColorRect
 
             safty_panel.Visible = true;
             process_building.machine_enabled = true;
+            ChangeStateLabel(false);
+        }
+    }
+
+    private void ChangeStateLabel(bool state)
+    {
+        if (state)
+        {
+            switch_button.Text = "Enable Machine";
+            working_label.Text = "Machine Offline - No I/O";
+        }
+        else
+        {
             switch_button.Text = "Disable Machine";
+            working_label.Text = "Machine Online - Working";
         }
     }
 }
