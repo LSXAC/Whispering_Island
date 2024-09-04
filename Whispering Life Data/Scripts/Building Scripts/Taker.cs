@@ -23,10 +23,8 @@ public partial class Taker : StaticBody2D
     public void OnItemHolderItemHeld()
     {
         var item = item_holder_In.offload_item();
-        item.QueueFree();
         building.import_count++;
-        InventoryItem ii = new InventoryItem();
-        ii.init(building.import_item_info);
-        FurnaceTab.INSTANCE.import_slot.UpdateFurnaceItem(ii, 1);
+        FurnaceTab.INSTANCE.UpdateFurnaceUI();
+        item.QueueFree();
     }
 }

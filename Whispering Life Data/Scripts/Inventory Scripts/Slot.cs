@@ -9,10 +9,10 @@ public partial class Slot : PanelContainer
 
     public override void _Ready() { }
 
-    public void SetItem(InventoryItem ii, int amount)
+    public void SetItem(ItemInfo item_info, int amount)
     {
-        //type in DropData needs to be clearafied
-        //type = ii.item_info.item_type;
+        InventoryItem ii = new InventoryItem();
+        ii.init(item_info);
         ii.amount = amount;
         ii.UpdateAmountLabel();
         AddChild(ii);
@@ -28,10 +28,10 @@ public partial class Slot : PanelContainer
             ClearItem();
     }
 
-    public void UpdateFurnaceItem(InventoryItem ii, int amount)
+    public void UpdateFurnaceItem(ItemInfo item_info, int amount)
     {
         if (GetItem() == null)
-            SetItem(ii, amount);
+            SetItem(item_info, amount);
         GetItem().amount += amount;
         GetItem().UpdateAmountLabel();
         if (GetItem().amount <= 0)

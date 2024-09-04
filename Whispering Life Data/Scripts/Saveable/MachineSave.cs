@@ -11,30 +11,8 @@ public partial class MachineSave : Resource
         int im_c,
         int ex_c,
         bool me,
-        int import_item_info_id,
-        int export_item_info_id
-    )
-    {
-        this.type = type;
-        this.position = pos;
-        this.import_count = im_c;
-        this.export_count = ex_c;
-        this.scale = scale;
-        this.machine_enabled = me;
-        this.import_item_type = import_item_info_id;
-        this.export_item_type = export_item_info_id;
-    }
-
-    public MachineSave(
-        MachineBase.MachineType type,
-        Vector2 pos,
-        Vector2 scale,
-        int im_c,
-        int ex_c,
-        bool me,
         ItemInfo import_item_info,
-        ItemInfo export_item_info,
-        int current_recipe
+        ItemInfo export_item_info
     )
     {
         this.type = type;
@@ -43,7 +21,6 @@ public partial class MachineSave : Resource
         this.export_count = ex_c;
         this.scale = scale;
         this.machine_enabled = me;
-
         if (import_item_info == null)
             this.import_item_type = -1;
         else
@@ -53,8 +30,6 @@ public partial class MachineSave : Resource
             this.export_item_type = -1;
         else
             this.export_item_type = export_item_info.unique_item_id;
-
-        this.current_recipe = current_recipe;
     }
 
     [Export]

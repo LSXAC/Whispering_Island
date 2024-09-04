@@ -31,6 +31,7 @@ public partial class Giver : Area2D
                     item.InitBeltItem(new Item(building.export_item_info, 1));
                     Holder.AddChild(item);
                     destination.GetParent<Belt>().receive_item(item);
+                    FurnaceTab.INSTANCE.UpdateFurnaceUI();
                 }
             }
             else if (building is ProductionMachine)
@@ -47,6 +48,7 @@ public partial class Giver : Area2D
                     );
                     Holder.AddChild(item);
                     destination.GetParent<Belt>().receive_item(item);
+                    FurnaceTab.INSTANCE.UpdateFurnaceUI();
                 }
             }
         }

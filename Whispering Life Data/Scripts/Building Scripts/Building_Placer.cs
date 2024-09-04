@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq.Expressions;
+using System.Reflection.PortableExecutable;
 using Godot;
 using Godot.Collections;
 
@@ -12,15 +13,12 @@ public partial class Building_Placer : Node2D
     [Export]
     public TileMap tilemap;
     public static Node2D current_building = null;
+    public static PackedScene building = null;
+    public Array<BeltSave> belt_saves = new Array<BeltSave>();
+    public Array<MachineSave> machine_saves = new Array<MachineSave>();
     private placeable_building placeable;
-    private Belt belt;
     private int current_belt_rotation = 3;
     private Vector2 current_scale = new Vector2(1, 1);
-    public static PackedScene building = null;
-
-    public Array<BeltSave> belt_saves = new Array<BeltSave>();
-
-    public Array<MachineSave> machine_saves = new Array<MachineSave>();
 
     public void InitBuilding(PackedScene scene)
     {
@@ -40,10 +38,10 @@ public partial class Building_Placer : Node2D
         parent_Node.AddChild(current_building);
         if (current_building is Belt)
         {
-            belt = current_building as Belt;
-            belt.Set_Rotation(current_belt_rotation);
-            belt.GetNode<Area2D>("BeltArea").Monitorable = false;
-            belt.collision_shape.Disabled = true;
+            placeable = current_building as Belt;
+            ((Belt)placeable).Set_Rotation(current_belt_rotation);
+            placeable.GetNode<Area2D>("BeltArea").Monitorable = false;
+            placeable.collision_shape.Disabled = true;
             return;
         }
         if (current_building is MachineBase)
@@ -51,6 +49,7 @@ public partial class Building_Placer : Node2D
             placeable = current_building as placeable_building;
             placeable.GetSprite().SelfModulate = new Color(1f, 1f, 1f, 0.5f);
             placeable.collision_shape.Disabled = true;
+            return;
         }
     }
 
@@ -58,7 +57,6 @@ public partial class Building_Placer : Node2D
     {
         foreach (BeltSave belt_save in belt_saves)
         {
-            Debug.Print("Belt Load" + " | " + belt_save.position);
             Belt temp = Building_Menu.instance.belt.Instantiate() as Belt;
             parent_Node.AddChild(temp);
             temp.GlobalPosition = belt_save.position;
@@ -84,29 +82,7 @@ public partial class Building_Placer : Node2D
         foreach (MachineSave machine_save in machine_saves)
         {
             Debug.Print("Machine Load" + " | " + machine_save.position);
-            MachineBase temp = null;
-            if (machine_save.type == MachineBase.MachineType.WOODFARM)
-                temp = Building_Menu.instance.tree_growther.Instantiate() as ProductionMachine;
-
-            if (machine_save.type == MachineBase.MachineType.QUARRY)
-                temp = Building_Menu.instance.quarry.Instantiate() as ProductionMachine;
-
-            if (machine_save.type == MachineBase.MachineType.FURNACE)
-            {
-                temp = Building_Menu.instance.furnace.Instantiate() as ProcessBuilding;
-                ((ProcessBuilding)temp).current_recipe = machine_save.current_recipe;
-
-                if (machine_save.import_item_type != -1)
-                    temp.import_item_info = Inventory.INSTANCE.item_Types[
-                        machine_save.import_item_type
-                    ];
-                if (machine_save.export_item_type != -1)
-                    temp.export_item_info = Inventory.INSTANCE.item_Types[
-                        machine_save.export_item_type
-                    ];
-            }
-            if (machine_save.type == MachineBase.MachineType.CHEST)
-                temp = Building_Menu.instance.furnace.Instantiate() as ProcessBuilding;
+            MachineBase temp = SelectSavedMachine(machine_save);
 
             if (temp == null)
                 return;
@@ -117,8 +93,38 @@ public partial class Building_Placer : Node2D
             temp.Scale = machine_save.scale;
             temp.import_count = machine_save.import_count;
             temp.machine_enabled = machine_save.machine_enabled;
-            temp._Ready();
         }
+    }
+
+    private MachineBase SelectSavedMachine(MachineSave machine_save)
+    {
+        if (machine_save.type == MachineBase.MachineType.WOODFARM)
+            return Building_Menu.instance.tree_growther.Instantiate() as ProductionMachine;
+
+        if (machine_save.type == MachineBase.MachineType.QUARRY)
+            return Building_Menu.instance.quarry.Instantiate() as ProductionMachine;
+
+        if (machine_save.type == MachineBase.MachineType.FURNACE)
+        {
+            MachineBase temp = Building_Menu.instance.furnace.Instantiate() as ProcessBuilding;
+            ((ProcessBuilding)temp).current_recipe = machine_save.current_recipe;
+
+            if (machine_save.import_item_type != -1)
+                temp.import_item_info = Inventory.INSTANCE.item_Types[
+                    machine_save.import_item_type
+                ];
+
+            if (machine_save.export_item_type != -1)
+                temp.export_item_info = Inventory.INSTANCE.item_Types[
+                    machine_save.export_item_type
+                ];
+            return temp;
+        }
+
+        if (machine_save.type == MachineBase.MachineType.CHEST)
+            return Building_Menu.instance.furnace.Instantiate() as ProcessBuilding;
+
+        return null;
     }
 
     public void LoadPlacedObjects()
@@ -138,7 +144,6 @@ public partial class Building_Placer : Node2D
         {
             if (node is Belt)
             {
-                Debug.Print("Belt" + " | " + node.GlobalPosition + " | " + node.Position);
                 BeltSave belt_save = new BeltSave(
                     node.Position,
                     ((Belt)node).from_direction,
@@ -146,46 +151,33 @@ public partial class Building_Placer : Node2D
                     null,
                     ((Belt)node).current_rotation
                 );
+
                 if (((Belt)node).item_holder.hasBeltItem())
                 {
                     belt_save.holded_item = ((Belt)node).item_holder.GetBeltItem().item.item_info;
                     belt_save.beltItem_moving = ((Belt)node).item_holder.moving_item;
                     belt_save.beltItem_position = ((Belt)node).item_holder.GetBeltItem().Position;
                 }
+
                 belt_saves.Add(belt_save);
             }
-            if (node is MachineBase && node is not ProcessBuilding)
+
+            if (node is MachineBase)
             {
-                Debug.Print("Machine" + " | " + node.GlobalPosition + " | " + node.Position);
-                machine_saves.Add(
-                    new MachineSave(
-                        ((MachineBase)node).type,
-                        ((MachineBase)node).Position,
-                        ((MachineBase)node).Scale,
-                        ((MachineBase)node).import_count,
-                        ((MachineBase)node).export_count,
-                        ((MachineBase)node).machine_enabled,
-                        ((MachineBase)node).import_item_info.unique_item_id,
-                        ((MachineBase)node).export_item_info.unique_item_id
-                    )
+                MachineSave ms = new MachineSave(
+                    ((MachineBase)node).type,
+                    ((MachineBase)node).Position,
+                    ((MachineBase)node).Scale,
+                    ((MachineBase)node).import_count,
+                    ((MachineBase)node).export_count,
+                    ((MachineBase)node).machine_enabled,
+                    ((MachineBase)node).import_item_info,
+                    ((MachineBase)node).export_item_info
                 );
-            }
-            if (node is ProcessBuilding)
-            {
-                Debug.Print("Machine" + " | " + node.GlobalPosition + " | " + node.Position);
-                machine_saves.Add(
-                    new MachineSave(
-                        ((ProcessBuilding)node).type,
-                        ((ProcessBuilding)node).Position,
-                        ((ProcessBuilding)node).Scale,
-                        ((ProcessBuilding)node).import_count,
-                        ((ProcessBuilding)node).export_count,
-                        ((ProcessBuilding)node).machine_enabled,
-                        ((ProcessBuilding)node).import_item_info,
-                        ((ProcessBuilding)node).export_item_info,
-                        ((ProcessBuilding)node).current_recipe
-                    )
-                );
+                if (node is ProcessBuilding)
+                    ms.current_recipe = ((ProcessBuilding)node).current_recipe;
+
+                machine_saves.Add(ms);
             }
         }
     }
@@ -205,31 +197,20 @@ public partial class Building_Placer : Node2D
         if (Input.IsActionJustPressed("Close"))
             CloseMenuWithBuildingSelected();
 
-        if (belt != null)
+        if (placeable is Belt)
         {
             if (Input.IsActionJustPressed("Rotate_Right"))
-            {
-                current_belt_rotation++;
-                if (current_belt_rotation == 4)
-                    current_belt_rotation = 0;
-                belt.Set_Rotation(current_belt_rotation);
-            }
+                RotateBeltRight();
+
             if (Input.IsActionJustPressed("Rotate_Left"))
-            {
-                current_belt_rotation--;
-                if (current_belt_rotation == -1)
-                    current_belt_rotation = 3;
-                belt.Set_Rotation(current_belt_rotation);
-            }
+                RotateBeltLeft();
         }
         else
         {
-            if (Input.IsActionJustPressed("Rotate_Right"))
-            {
-                current_scale = new Vector2(placeable.Scale.X * -1, 1);
-                placeable.Scale = current_scale;
-            }
-            if (Input.IsActionJustPressed("Rotate_Left"))
+            if (
+                Input.IsActionJustPressed("Rotate_Right")
+                || Input.IsActionJustPressed("Rotate_Left")
+            )
             {
                 current_scale = new Vector2(placeable.Scale.X * -1, 1);
                 placeable.Scale = current_scale;
@@ -237,26 +218,30 @@ public partial class Building_Placer : Node2D
         }
 
         if (Input.IsActionJustPressed("MouseLeft"))
-        {
-            Debug.Print("Mouse Pressed");
             if (placeable != null)
-            {
-                Debug.Print("placeable not null");
-                if (placeable.building_collider_manager.AllCollidersOnBuildingLayer())
-                {
-                    BuildBuilding();
-                    Debug.Print("Build!");
-                }
-            }
-            if (belt != null)
-            {
-                if (belt.building_collider_manager.AllCollidersOnBuildingLayer())
-                {
-                    BuildBuilding();
-                    Debug.Print("Build!");
-                }
-            }
-        }
+                PlaceBuilding();
+    }
+
+    private void RotateBeltLeft()
+    {
+        current_belt_rotation--;
+        if (current_belt_rotation == -1)
+            current_belt_rotation = 3;
+        ((Belt)placeable).Set_Rotation(current_belt_rotation);
+    }
+
+    private void RotateBeltRight()
+    {
+        current_belt_rotation++;
+        if (current_belt_rotation == 4)
+            current_belt_rotation = 0;
+        ((Belt)placeable).Set_Rotation(current_belt_rotation);
+    }
+
+    private void PlaceBuilding()
+    {
+        if (placeable.building_collider_manager.AllCollidersOnBuildingLayer())
+            BuildBuilding();
     }
 
     public void BuildBuilding()
@@ -281,7 +266,6 @@ public partial class Building_Placer : Node2D
         current_building = null;
         tempB.QueueFree();
         placeable = null;
-        belt = null;
         CloseMenuWithNoBuilding();
     }
 

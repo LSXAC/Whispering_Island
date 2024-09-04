@@ -95,12 +95,13 @@ public partial class Inventory : Control
         for (int i = 0; i < char_save.inventory_items.Count; i++)
         {
             Debug.Print("LOADING");
-            InventoryItem ii = new InventoryItem();
-            ii.init(INSTANCE.item_Types[char_save.inventory_items[i].item_id]);
 
             INSTANCE
                 .GetNode<Slot>($"GridContainer/Slot{char_save.inventory_items[i].slot_id}")
-                .SetItem(ii, char_save.inventory_items[i].amount);
+                .SetItem(
+                    INSTANCE.item_Types[char_save.inventory_items[i].item_id],
+                    char_save.inventory_items[i].amount
+                );
         }
 
         //InventoryItem iix = new InventoryItem();
@@ -142,20 +143,11 @@ public partial class Inventory : Control
         for (int i = 0; i < INSTANCE.slots.Count; i++)
             if (INSTANCE.slots[i].GetItem() == null)
             {
-                INSTANCE
-                    .slots[i]
-                    .SetItem(CreateInventoryItem(item_Types[item_info.unique_item_id]), amount);
+                INSTANCE.slots[i].SetItem(item_Types[item_info.unique_item_id], amount);
                 QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
                     QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
                 );
                 return;
             }
-    }
-
-    public InventoryItem CreateInventoryItem(ItemInfo item_info)
-    {
-        InventoryItem ii = new InventoryItem();
-        ii.init(item_info);
-        return ii;
     }
 }

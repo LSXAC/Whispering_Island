@@ -9,6 +9,12 @@ public partial class Belt : placeable_building
     [Export]
     public Detector detector;
 
+    [Export]
+    public BeltDirection to_direction = BeltDirection.Left;
+
+    [Export]
+    public BeltDirection from_direction = BeltDirection.Right;
+
     public enum BeltDirection
     {
         Top,
@@ -16,12 +22,6 @@ public partial class Belt : placeable_building
         Down,
         Left
     };
-
-    [Export]
-    public BeltDirection to_direction = BeltDirection.Left;
-
-    [Export]
-    public BeltDirection from_direction = BeltDirection.Right;
 
     public int current_rotation = 0;
 
@@ -63,11 +63,16 @@ public partial class Belt : placeable_building
                     if (item_holder.hasBeltItem())
                     {
                         ItemInfo ii = item_holder.GetBeltItem().GetItemInfo();
-                        if (ii != area.GetParent<Taker>().building.import_item_info)
-                            return;
+                        if (
+                            ii == area.GetParent<Taker>().building.import_item_info
+                            || area.GetParent<Taker>().building.import_item_info == null
+                        )
+                        {
+                            var item = item_holder.offload_item();
+                            area.GetParent<Taker>().building.import_item_info = ii;
+                            area.GetParent<Taker>().receive_item(item);
+                        }
                     }
-                    var item = item_holder.offload_item();
-                    area.GetParent<Taker>().receive_item(item);
                 }
         }
     }

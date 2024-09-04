@@ -27,8 +27,8 @@ public partial class FurnaceTab : ColorRect
 
     [Export]
     public Label working_label;
-    public ProcessBuilding process_building;
     public static FurnaceTab INSTANCE = null;
+    public ProcessBuilding process_building;
 
     public override void _Ready()
     {
@@ -65,41 +65,24 @@ public partial class FurnaceTab : ColorRect
 
         if (!process_building.machine_enabled)
         {
-            process_building.ui_progress = 0;
             ChangeStateLabel(true);
             safty_panel.Visible = false;
         }
         else
         {
-            process_building.ui_progress = 100;
             ChangeStateLabel(false);
             safty_panel.Visible = true;
         }
         SetMachineProgressbar(process_building.ui_progress);
 
-        InventoryItem ii = new InventoryItem();
         if (process_building.export_item_info != null && process_building.export_count != 0)
-        {
-            ii.init(process_building.export_item_info);
-            export_slot.SetItem(ii, process_building.export_count);
-            Debug.Print("Spawn Furnace Export");
-        }
+            export_slot.SetItem(process_building.export_item_info, process_building.export_count);
 
-        ii = new InventoryItem();
         if (process_building.import_item_info != null && process_building.import_count != 0)
-        {
-            ii.init(process_building.import_item_info);
-            import_slot.SetItem(ii, process_building.import_count);
-            Debug.Print("Spawn Furnace Import");
-        }
+            import_slot.SetItem(process_building.import_item_info, process_building.import_count);
 
-        ii = new InventoryItem();
         if (process_building.fuel_item_info != null && process_building.fuel_count != 0)
-        {
-            ii.init(process_building.fuel_item_info);
-            fuel_slot.SetItem(ii, process_building.fuel_count);
-            Debug.Print("Spawn Furnace Fuek");
-        }
+            fuel_slot.SetItem(process_building.fuel_item_info, process_building.fuel_count);
     }
 
     public void ClearProcessBuilding()

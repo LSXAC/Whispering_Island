@@ -5,8 +5,6 @@ using Godot.Collections;
 
 public partial class ProcessBuilding : MachineBase
 {
-    public bool is_crafting = false;
-
     [Export]
     public int fuel_count = 0;
 
@@ -21,6 +19,7 @@ public partial class ProcessBuilding : MachineBase
 
     [Export]
     public Array<Machine_Recipe> recipes = new Array<Machine_Recipe>();
+    public bool is_crafting = false;
     public int ui_progress = 0;
     public int current_recipe = 0;
     int progress = 0;
@@ -65,6 +64,7 @@ public partial class ProcessBuilding : MachineBase
     {
         if (import_item_info == null)
             return false;
+
         for (int i = 0; i < recipes.Count; i++)
             if (recipes[i].import_item_info == import_item_info)
             {
@@ -74,6 +74,7 @@ public partial class ProcessBuilding : MachineBase
                 else if (export_item_info == recipes[i].export_item_info)
                     return true;
             }
+
         return false;
     }
 
