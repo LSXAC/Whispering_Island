@@ -74,6 +74,7 @@ public partial class FurnaceTab : ColorRect
             safty_panel.Visible = true;
         }
         SetMachineProgressbar(process_building.ui_progress);
+        UpdateProgressbar(process_building.progress);
 
         if (process_building.export_item_info != null && process_building.export_count != 0)
             export_slot.SetItem(process_building.export_item_info, process_building.export_count);

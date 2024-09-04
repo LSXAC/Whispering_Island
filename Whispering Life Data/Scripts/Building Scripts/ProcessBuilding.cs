@@ -22,11 +22,13 @@ public partial class ProcessBuilding : MachineBase
     public bool is_crafting = false;
     public int ui_progress = 0;
     public int current_recipe = 0;
-    int progress = 0;
+    public int progress = 0;
 
     public void OnCraftingTimerTimeout()
     {
-        FurnaceTab.INSTANCE.UpdateProgressbar(progress);
+        if (FurnaceTab.INSTANCE.process_building == this)
+            FurnaceTab.INSTANCE.UpdateProgressbar(progress);
+
         if (progress >= 100)
         {
             export_item_info = recipes[current_recipe].export_item_info;
@@ -34,7 +36,8 @@ public partial class ProcessBuilding : MachineBase
             is_crafting = false;
             crafting_timer.Stop();
             progress = 0;
-            FurnaceTab.INSTANCE.UpdateProgressbar(progress);
+            if (FurnaceTab.INSTANCE.process_building == this)
+                FurnaceTab.INSTANCE.UpdateProgressbar(progress);
             FurnaceTab.INSTANCE.UpdateFurnaceUI();
             return;
         }
@@ -56,7 +59,8 @@ public partial class ProcessBuilding : MachineBase
 
         is_crafting = true;
         import_count -= recipes[current_recipe].import_amount;
-        FurnaceTab.INSTANCE.UpdateFurnaceUI();
+        if (FurnaceTab.INSTANCE.process_building == this)
+            FurnaceTab.INSTANCE.UpdateFurnaceUI();
         crafting_timer.Start();
     }
 
