@@ -92,7 +92,19 @@ public partial class Building_Placer : Node2D
                 temp = Building_Menu.instance.quarry.Instantiate() as ProductionMachine;
 
             if (machine_save.type == MachineBase.MachineType.FURNACE)
+            {
                 temp = Building_Menu.instance.furnace.Instantiate() as ProcessBuilding;
+                ((ProcessBuilding)temp).current_recipe = machine_save.current_recipe;
+
+                if (machine_save.import_item_type != -1)
+                    temp.import_item_info = Inventory.INSTANCE.item_Types[
+                        machine_save.import_item_type
+                    ];
+                if (machine_save.export_item_type != -1)
+                    temp.export_item_info = Inventory.INSTANCE.item_Types[
+                        machine_save.export_item_type
+                    ];
+            }
             if (machine_save.type == MachineBase.MachineType.CHEST)
                 temp = Building_Menu.instance.furnace.Instantiate() as ProcessBuilding;
 
@@ -142,7 +154,7 @@ public partial class Building_Placer : Node2D
                 }
                 belt_saves.Add(belt_save);
             }
-            if (node is MachineBase)
+            if (node is MachineBase && node is not ProcessBuilding)
             {
                 Debug.Print("Machine" + " | " + node.GlobalPosition + " | " + node.Position);
                 machine_saves.Add(
@@ -150,9 +162,28 @@ public partial class Building_Placer : Node2D
                         ((MachineBase)node).type,
                         ((MachineBase)node).Position,
                         ((MachineBase)node).Scale,
-                        ((MachineBase)node).export_count,
                         ((MachineBase)node).import_count,
-                        ((MachineBase)node).machine_enabled
+                        ((MachineBase)node).export_count,
+                        ((MachineBase)node).machine_enabled,
+                        ((MachineBase)node).import_item_info.unique_item_id,
+                        ((MachineBase)node).export_item_info.unique_item_id
+                    )
+                );
+            }
+            if (node is ProcessBuilding)
+            {
+                Debug.Print("Machine" + " | " + node.GlobalPosition + " | " + node.Position);
+                machine_saves.Add(
+                    new MachineSave(
+                        ((ProcessBuilding)node).type,
+                        ((ProcessBuilding)node).Position,
+                        ((ProcessBuilding)node).Scale,
+                        ((ProcessBuilding)node).import_count,
+                        ((ProcessBuilding)node).export_count,
+                        ((ProcessBuilding)node).machine_enabled,
+                        ((ProcessBuilding)node).import_item_info,
+                        ((ProcessBuilding)node).export_item_info,
+                        ((ProcessBuilding)node).current_recipe
                     )
                 );
             }

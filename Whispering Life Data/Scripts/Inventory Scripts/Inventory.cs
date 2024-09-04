@@ -11,7 +11,7 @@ public partial class Inventory : Control
     public int MaxSlots = 20;
 
     public static CharacterSave char_save = new CharacterSave();
-    private ItemInfo[] item_Types =
+    public ItemInfo[] item_Types =
     {
         ResourceLoader.Load<ItemInfo>("res://Items/Wood.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Stone.tres"),

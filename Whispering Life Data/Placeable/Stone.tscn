@@ -114,7 +114,7 @@ _data = {
 "Respawning": SubResource("Animation_c5l8r")
 }
 
-[node name="Stone" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "sprite", "gpu_particles", "building_sprite")]
+[node name="Stone" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "sprite", "gpu_particles", "sprite")]
 y_sort_enabled = true
 script = ExtResource("1_d2fyj")
 anim_player = NodePath("AnimationPlayer")
@@ -126,7 +126,7 @@ sprite = NodePath("Sprite")
 gpu_particles = NodePath("StoneParticles")
 title = "Stone"
 description = "Mine to get Stone"
-building_sprite = NodePath("Sprite")
+sprite = NodePath("Sprite")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 y_sort_enabled = true

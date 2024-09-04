@@ -40,8 +40,8 @@ public partial class Slot : PanelContainer
 
     public InventoryItem GetItem()
     {
-        foreach (Node child in GetChildren())
-            return (InventoryItem)child;
+        if (GetChildCount() > 0)
+            return (InventoryItem)GetChild(0);
         return null;
     }
 

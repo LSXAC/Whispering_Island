@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using Godot;
+using Godot.Collections;
 
 public partial class ProcessBuilding : MachineBase
 {
@@ -17,7 +19,10 @@ public partial class ProcessBuilding : MachineBase
     [Export]
     public Timer state_timer;
 
+    [Export]
+    public Array<Machine_Recipe> recipes = new Array<Machine_Recipe>();
     public int ui_progress = 0;
+    public int current_recipe = 0;
     int progress = 0;
 
     public void OnCraftingTimerTimeout()
@@ -25,14 +30,13 @@ public partial class ProcessBuilding : MachineBase
         FurnaceTab.INSTANCE.UpdateProgressbar(progress);
         if (progress >= 100)
         {
-            export_count++;
-            InventoryItem ii = new InventoryItem();
-            ii.init(export_item_info);
-            FurnaceTab.INSTANCE.export_slot.UpdateFurnaceItem(ii, 1);
+            export_item_info = recipes[current_recipe].export_item_info;
+            export_count += recipes[current_recipe].export_amount;
             is_crafting = false;
             crafting_timer.Stop();
             progress = 0;
             FurnaceTab.INSTANCE.UpdateProgressbar(progress);
+            FurnaceTab.INSTANCE.UpdateFurnaceUI();
             return;
         }
         progress += 5;
@@ -42,15 +46,35 @@ public partial class ProcessBuilding : MachineBase
     {
         if (is_crafting)
             return;
-        if (import_count <= 1)
+        if (!machine_enabled)
+            return;
+        if (import_item_info == null)
+            return;
+        if (!CanCraft())
+            return;
+        if (import_count <= recipes[current_recipe].import_amount - 1)
             return;
 
         is_crafting = true;
-        import_count -= 2;
-        InventoryItem ii = new InventoryItem();
-        ii.init(import_item_info);
-        FurnaceTab.INSTANCE.import_slot.UpdateFurnaceItem(ii, -2);
+        import_count -= recipes[current_recipe].import_amount;
+        FurnaceTab.INSTANCE.UpdateFurnaceUI();
         crafting_timer.Start();
+    }
+
+    private bool CanCraft()
+    {
+        if (import_item_info == null)
+            return false;
+        for (int i = 0; i < recipes.Count; i++)
+            if (recipes[i].import_item_info == import_item_info)
+            {
+                current_recipe = i;
+                if (export_item_info == null)
+                    return true;
+                else if (export_item_info == recipes[i].export_item_info)
+                    return true;
+            }
+        return false;
     }
 
     public void OnMachineTimeOut()

@@ -114,7 +114,7 @@ public partial class ResourceObject : Building_Node
         anim_player.Play("Hit");
         StartTimerBar(TimerBar.state.COOLDOWN, click_cooldown_time);
         player_ui.AddItemLabelUI("+" + mining_amount + " " + item_info.item_name);
-        Inventory.INSTANCE.AddItem(item_info, 1);
+        Inventory.INSTANCE.AddItem(item_info, mining_amount);
     }
 
     private void StartTimerBar(TimerBar.state state, double time, bool from_loading = false)

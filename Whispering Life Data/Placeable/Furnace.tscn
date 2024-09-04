@@ -1,16 +1,33 @@
-[gd_scene load_steps=14 format=3 uid="uid://cn0rjr3gah4jr"]
+[gd_scene load_steps=19 format=3 uid="uid://cn0rjr3gah4jr"]
 
 [ext_resource type="Script" path="res://Scripts/Building Scripts/ProcessBuilding.cs" id="1_vtdy4"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="2_gjbdr"]
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Items/Wood.tres" id="2_rd0fi"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_rakgt"]
+[ext_resource type="Script" path="res://Scripts/Machine_Recipe.cs" id="4_w4r4g"]
+[ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Items/Pickaxe.tres" id="5_c0w8r"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="5_epac7"]
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="6_0asmg"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="6_srwxn"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="6_vvdf8"]
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="7_bopdg"]
 [ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Placeable/Taker.tscn" id="8_17n2q"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Placeable/giver.tscn" id="9_g3chf"]
 [ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Items/Charcoal.tres" id="10_c3j8d"]
+
+[sub_resource type="Resource" id="Resource_njs37"]
+script = ExtResource("4_w4r4g")
+import_item_info = ExtResource("2_rd0fi")
+export_item_info = ExtResource("10_c3j8d")
+import_amount = 2
+export_amount = 1
+
+[sub_resource type="Resource" id="Resource_ex5dq"]
+script = ExtResource("4_w4r4g")
+import_item_info = ExtResource("6_0asmg")
+export_item_info = ExtResource("5_c0w8r")
+import_amount = 1
+export_amount = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(48, 48)
@@ -26,9 +43,8 @@ script = ExtResource("1_vtdy4")
 fuel_item_info = ExtResource("10_c3j8d")
 crafting_timer = NodePath("CraftingTimer")
 state_timer = NodePath("MachineUITimer")
+recipes = [SubResource("Resource_njs37"), SubResource("Resource_ex5dq")]
 type = 1
-import_item_info = ExtResource("2_rd0fi")
-export_item_info = ExtResource("10_c3j8d")
 title = "Furnace"
 description = "Smelts things"
 sprite = NodePath("BuildingSprite")

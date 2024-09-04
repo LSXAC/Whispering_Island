@@ -35,11 +35,16 @@ public partial class Giver : Area2D
             }
             else if (building is ProductionMachine)
             {
-                if (destination.GetParent<Belt>().can_receive_item() && building.import_count > 0)
+                if (
+                    destination.GetParent<Belt>().can_receive_item()
+                    && ((ProductionMachine)building).production_count > 0
+                )
                 {
-                    building.import_count -= 1;
+                    ((ProductionMachine)building).production_count -= 1;
                     BeltItem item = (BeltItem)beltItem.Instantiate();
-                    item.InitBeltItem(new Item(building.export_item_info, 1));
+                    item.InitBeltItem(
+                        new Item(((ProductionMachine)building).production_item_info, 1)
+                    );
                     Holder.AddChild(item);
                     destination.GetParent<Belt>().receive_item(item);
                 }

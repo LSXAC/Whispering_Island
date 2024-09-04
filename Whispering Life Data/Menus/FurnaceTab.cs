@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class FurnaceTab : ColorRect
@@ -47,24 +48,63 @@ public partial class FurnaceTab : ColorRect
     public void SetProcessBuilding(ProcessBuilding process_building)
     {
         this.process_building = process_building;
-        SetMachineProgressbar(process_building.ui_progress);
+        UpdateFurnaceUI();
+    }
+
+    public void UpdateFurnaceUI()
+    {
+        if (process_building == null)
+            return;
+        Debug.Print("Clear");
+        export_slot.ClearItem();
+        import_slot.ClearItem();
+        fuel_slot.ClearItem();
+
         if (process_building.ui_progress == 0 || process_building.ui_progress == 100)
             switch_button.Disabled = false;
 
         if (!process_building.machine_enabled)
         {
+            process_building.ui_progress = 0;
             ChangeStateLabel(true);
             safty_panel.Visible = false;
         }
         else
         {
+            process_building.ui_progress = 100;
             ChangeStateLabel(false);
             safty_panel.Visible = true;
+        }
+        SetMachineProgressbar(process_building.ui_progress);
+
+        InventoryItem ii = new InventoryItem();
+        if (process_building.export_item_info != null && process_building.export_count != 0)
+        {
+            ii.init(process_building.export_item_info);
+            export_slot.SetItem(ii, process_building.export_count);
+            Debug.Print("Spawn Furnace Export");
+        }
+
+        ii = new InventoryItem();
+        if (process_building.import_item_info != null && process_building.import_count != 0)
+        {
+            ii.init(process_building.import_item_info);
+            import_slot.SetItem(ii, process_building.import_count);
+            Debug.Print("Spawn Furnace Import");
+        }
+
+        ii = new InventoryItem();
+        if (process_building.fuel_item_info != null && process_building.fuel_count != 0)
+        {
+            ii.init(process_building.fuel_item_info);
+            fuel_slot.SetItem(ii, process_building.fuel_count);
+            Debug.Print("Spawn Furnace Fuek");
         }
     }
 
     public void ClearProcessBuilding()
     {
+        OvertakeItems();
         process_building = null;
         GameMenu.INSTANCE.OnCloseFurnaceTab();
     }
@@ -80,21 +120,7 @@ public partial class FurnaceTab : ColorRect
         }
         else
         {
-            if (export_slot.GetItem() == null)
-                process_building.export_count = 0;
-            else
-                process_building.export_count = export_slot.GetItem().amount;
-
-            if (import_slot.GetItem() == null)
-                process_building.import_count = 0;
-            else
-                process_building.import_count = import_slot.GetItem().amount;
-
-            if (fuel_slot.GetItem() == null)
-                process_building.fuel_count = 0;
-            else
-                process_building.fuel_count = fuel_slot.GetItem().amount;
-
+            OvertakeItems();
             safty_panel.Visible = true;
             process_building.machine_enabled = true;
             ChangeStateLabel(false);
@@ -112,6 +138,42 @@ public partial class FurnaceTab : ColorRect
         {
             switch_button.Text = "Disable Machine";
             working_label.Text = "Machine Online - Working";
+        }
+    }
+
+    private void OvertakeItems()
+    {
+        if (export_slot.GetItem() == null)
+        {
+            process_building.export_item_info = null;
+            process_building.export_count = 0;
+        }
+        else
+        {
+            process_building.export_item_info = export_slot.GetItem().item_info;
+            process_building.export_count = export_slot.GetItem().amount;
+        }
+
+        if (import_slot.GetItem() == null)
+        {
+            process_building.import_item_info = null;
+            process_building.import_count = 0;
+        }
+        else
+        {
+            process_building.import_item_info = import_slot.GetItem().item_info;
+            process_building.import_count = import_slot.GetItem().amount;
+        }
+
+        if (fuel_slot.GetItem() == null)
+        {
+            process_building.fuel_item_info = null;
+            process_building.fuel_count = 0;
+        }
+        else
+        {
+            process_building.fuel_item_info = fuel_slot.GetItem().item_info;
+            process_building.fuel_count = fuel_slot.GetItem().amount;
         }
     }
 }
