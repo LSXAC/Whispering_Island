@@ -33,7 +33,7 @@ public abstract partial class Building_Node : Node2D
     {
         if (sprite != null)
             return sprite;
-        return new Sprite2D();
+        return null;
     }
 
     public string GetTitle()
@@ -52,11 +52,11 @@ public abstract partial class Building_Node : Node2D
 
     public Vector2 GetBuildingPosition()
     {
-        if (sprite == null)
+        if (GetSprite() == null)
         {
-            Debug.Print("Kein Sprite referenziert!", this);
+            Debug.Print("Kein Sprite referenziert! Position für Hovermenu nicht erkannt", this);
             return new Vector2(0, 0);
         }
-        return new Vector2(Position.X, Position.Y - sprite.Texture.GetSize().Y - 16f);
+        return new Vector2(sprite.GlobalPosition.X, sprite.GlobalPosition.Y - 40f);
     }
 }

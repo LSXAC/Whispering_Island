@@ -9,15 +9,11 @@ public partial class ItemSave : Resource
     [Export]
     public int amount = 0;
 
-    [Export]
-    public int slot_id = -1;
-
     public ItemSave() { }
 
-    public ItemSave(int item_id, int amount, int slot_id)
+    public ItemSave(int item_id, int amount)
     {
         this.item_id = item_id;
         this.amount = amount;
-        this.slot_id = slot_id;
     }
 }

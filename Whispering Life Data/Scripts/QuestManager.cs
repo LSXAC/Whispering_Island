@@ -83,7 +83,9 @@ public partial class QuestManager : Node
     {
         foreach (Item quest_item in quests[current_quest_id].quest_items)
         {
-            Slot inventory_item = Inventory.FindSlotWithItemInInventory(quest_item.item_info);
+            Slot inventory_item = Inventory.INSTANCE.FindSlotWithItemInInventory(
+                quest_item.item_info
+            );
             if (inventory_item == null)
                 return false;
             if (inventory_item.GetItem().amount < quest_item.amount)
@@ -95,7 +97,11 @@ public partial class QuestManager : Node
     public void RemoveQuestItems()
     {
         foreach (Item quest_item in quests[current_quest_id].quest_items)
-            Inventory.INSTANCE.AddItem(quest_item.item_info, -quest_item.amount);
+            Inventory.INSTANCE.AddItem(
+                quest_item.item_info,
+                -quest_item.amount,
+                Inventory.INSTANCE.inventory_items
+            );
     }
 
     public void NextQuest()

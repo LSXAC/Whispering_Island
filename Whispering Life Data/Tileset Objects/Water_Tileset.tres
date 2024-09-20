@@ -1,18 +1,55 @@
-[gd_resource type="TileSet" load_steps=27 format=3 uid="uid://vsj46vpxsnru"]
+[gd_resource type="TileSet" load_steps=51 format=3 uid="uid://vsj46vpxsnru"]
 
+[ext_resource type="Texture2D" uid="uid://bi8egnh1b4n83" path="res://Tileset Objects/MagicWater/Magic_Water_1.png" id="1_rtlvs"]
 [ext_resource type="Texture2D" uid="uid://dooor06ccu87y" path="res://Tileset Objects/Water/Water_1.png" id="1_u3b80"]
 [ext_resource type="Texture2D" uid="uid://0rl83d64hqkh" path="res://Tileset Objects/Water/Water_2.png" id="2_c2tbr"]
+[ext_resource type="Texture2D" uid="uid://c240kvjiurpst" path="res://Tileset Objects/MagicWater/Magic_Water_2.png" id="2_whdmk"]
+[ext_resource type="Texture2D" uid="uid://bipi4wgov82tj" path="res://Tileset Objects/MagicWater/Magic_Water_11.png" id="3_1jg46"]
 [ext_resource type="Texture2D" uid="uid://cycnvh3dfs6f7" path="res://Tileset Objects/Water/Water_3.png" id="3_xrlvh"]
 [ext_resource type="Texture2D" uid="uid://ba570eyrsjq8o" path="res://Tileset Objects/Water/Water_4.png" id="4_mycqd"]
+[ext_resource type="Texture2D" uid="uid://dv8abcdj7svtm" path="res://Tileset Objects/MagicWater/Magic_Water_12.png" id="4_yqd1n"]
 [ext_resource type="Texture2D" uid="uid://c5llyjm3cfhyj" path="res://Tileset Objects/Water/Water_5.png" id="5_pb1dq"]
+[ext_resource type="Texture2D" uid="uid://ctl7gd2ydpvh1" path="res://Tileset Objects/MagicWater/Magic_Water_3.png" id="6_cwgaw"]
 [ext_resource type="Texture2D" uid="uid://c0yvn7kwntlcn" path="res://Tileset Objects/Water/Water_6.png" id="6_mgobi"]
 [ext_resource type="Texture2D" uid="uid://b1wqeeiyklds" path="res://Tileset Objects/Water/Water_7.png" id="7_fbyyg"]
 [ext_resource type="Texture2D" uid="uid://byvkxgk8j7jfg" path="res://Tileset Objects/Water/Water_8.png" id="8_ah8py"]
 [ext_resource type="Texture2D" uid="uid://cbxak8ydie33r" path="res://Tileset Objects/Water/Water_9.png" id="9_haeme"]
 [ext_resource type="Texture2D" uid="uid://kloj4p85bsy7" path="res://Tileset Objects/Water/Water_10.png" id="10_cqb46"]
+[ext_resource type="Texture2D" uid="uid://bmp5o7gqb4ttj" path="res://Tileset Objects/MagicWater/Magic_Water_4.png" id="11_26vk6"]
 [ext_resource type="Texture2D" uid="uid://dry4tyyhyjg0x" path="res://Tileset Objects/Water/Water_11.png" id="11_cx60o"]
 [ext_resource type="Texture2D" uid="uid://1l5q7q7yv7ui" path="res://Tileset Objects/Water/Water_12.png" id="12_s3oyj"]
 [ext_resource type="Texture2D" uid="uid://oug4rosvi3ti" path="res://Tileset Objects/Water/Water_13.png" id="13_jcwga"]
+[ext_resource type="Texture2D" uid="uid://b4pa6rhyy1yvf" path="res://Tileset Objects/MagicWater/Magic_Water_5.png" id="21_trhay"]
+[ext_resource type="Texture2D" uid="uid://buokwq8snmtp7" path="res://Tileset Objects/MagicWater/Magic_Water_6.png" id="22_kijxc"]
+[ext_resource type="Texture2D" uid="uid://cd357yt54y2bp" path="res://Tileset Objects/MagicWater/Magic_Water_7.png" id="23_o1l0d"]
+[ext_resource type="Texture2D" uid="uid://cm0uaj4de3qrg" path="res://Tileset Objects/MagicWater/Magic_Water_8.png" id="24_hrn2j"]
+[ext_resource type="Texture2D" uid="uid://b0r51ag32xper" path="res://Tileset Objects/MagicWater/Magic_Water_9.png" id="25_ev506"]
+[ext_resource type="Texture2D" uid="uid://cl47cky4qujvi" path="res://Tileset Objects/MagicWater/Magic_Water_10.png" id="26_d2jlq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_teo7r"]
+texture = ExtResource("1_rtlvs")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o8fy8"]
+texture = ExtResource("2_whdmk")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tag7v"]
+texture = ExtResource("3_1jg46")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m56r2"]
+texture = ExtResource("4_yqd1n")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ujjg"]
+texture = ExtResource("6_cwgaw")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbgj0"]
 texture = ExtResource("1_u3b80")
@@ -31,6 +68,11 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n20kn"]
 texture = ExtResource("4_mycqd")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p6yow"]
+texture = ExtResource("11_26vk6")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
@@ -79,6 +121,36 @@ texture = ExtResource("13_jcwga")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w6204"]
+texture = ExtResource("21_trhay")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6w0g0"]
+texture = ExtResource("22_kijxc")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kc01l"]
+texture = ExtResource("23_o1l0d")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7bmyx"]
+texture = ExtResource("24_hrn2j")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cue45"]
+texture = ExtResource("25_ev506")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2gl4m"]
+texture = ExtResource("26_d2jlq")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
 [resource]
 tile_size = Vector2i(32, 32)
 sources/26 = SubResource("TileSetAtlasSource_gbgj0")
@@ -94,3 +166,15 @@ sources/35 = SubResource("TileSetAtlasSource_gehrk")
 sources/36 = SubResource("TileSetAtlasSource_e2uw7")
 sources/37 = SubResource("TileSetAtlasSource_fvwo4")
 sources/38 = SubResource("TileSetAtlasSource_krt7s")
+sources/0 = SubResource("TileSetAtlasSource_teo7r")
+sources/1 = SubResource("TileSetAtlasSource_o8fy8")
+sources/2 = SubResource("TileSetAtlasSource_6ujjg")
+sources/3 = SubResource("TileSetAtlasSource_p6yow")
+sources/4 = SubResource("TileSetAtlasSource_w6204")
+sources/5 = SubResource("TileSetAtlasSource_6w0g0")
+sources/6 = SubResource("TileSetAtlasSource_kc01l")
+sources/7 = SubResource("TileSetAtlasSource_7bmyx")
+sources/8 = SubResource("TileSetAtlasSource_cue45")
+sources/9 = SubResource("TileSetAtlasSource_2gl4m")
+sources/10 = SubResource("TileSetAtlasSource_tag7v")
+sources/11 = SubResource("TileSetAtlasSource_m56r2")

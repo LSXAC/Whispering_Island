@@ -148,7 +148,7 @@ Close={
 [internationalization]
 
 locale/translations=PackedStringArray("res://Translation/Whispering Island - Translationscript - Sheet1.de.translation", "res://Translation/Whispering Island - Translationscript - Sheet1.en.translation")
-locale/translations_pot_files=PackedStringArray("res://Dialogues/Tutorial.dialogue", "res://Dialogues/Questing.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogues/Tutorial.dialogue", "res://Dialogues/Questing.dialogue", "res://Dialogues/TutorialEng.dialogue")
 
 [rendering]
 

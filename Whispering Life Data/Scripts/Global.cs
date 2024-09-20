@@ -1,7 +1,4 @@
-using System;
 using System.Diagnostics;
-using System.Numerics;
-using DialogueManagerRuntime;
 using Godot;
 
 public partial class Global : Node2D

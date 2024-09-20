@@ -25,36 +25,31 @@ STAMINA_OUT,Searching for Air,Atemlos
 ,,
 ,,
 ,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
 WOOD,Wood,Holz
+WOOD_DESC,Material from a Tree,Material von einem Baum
+STONE,Stone,Stein
+STONE_DESC,A hard natural material,ein natürliches Hartprodukt
+CHAR_COAL,Char Coal,Holzkohle
+CHAR_COAL_DESC,A burned piece of wood,Ein verbranntes Stück Holz
+STONE_PICKAXE,Stone Pickaxe,Steinspitzhacke
+STONE_PICKAXE_DESC,A tool for faster mining,Ein Werkzeug zum schnelleren abbauen
+STONE_KNIFE,Stone Knife,Steinmesser
+STONE_KNIFE_DESC,A tool for cutting,Ein Werkzeug zum schneiden
+WOOD_CHEST,Wooden Chest,Holzkiste
+WOOD_CHEST_DESC,A wooden chest to store items,Eine Holzkiste um Gegenstände zu verstauen
+WOOD_PLANK,Wooden Plank,Holzplatte
+WOOD_PLANK_DESC,A processed piece of wood,Ein Stück verarbeitetes Holz
+WOOD_STICK,Wooden Stick,Holzstab
+WOOD_STICK_DESC,A long wooden piece,Ein längliches Stück Holz
+IRON_ORE,Iron Ore,Eisenerz
+IRON_ORE_DESC,A cluster of Iron,Ein Batzen Eisenerz
+IRON_INGOT,Iron Ingot,Eisenbarren
+IRON_INGOT_DESC,A smithed piece of Iron,Ein geschmiedetes Stück Eisen
+COPPER_ORE,Copper Ore,Kupfererz
+COPPER_ORE_DESC,A cluster of Copper,Ein Batzen Kupfererz
+COPPER_INGOT,Copper Ingot,Kupferbarren
+COPPER_INGOT_DESC,A smithed piece of Copper,Ein geschmiedetes Stück Kupfer
+MYSTIC_FIBRE,Mystic Fibre,Mystische Fasern
+MYSTIC_FIBRE_DESC,A XXXXXXXX,A XXXXXXXX
+MYSTIC_WOOD,Mystic Wood,Mystisches Holz
+MYSTIC_WOOD_DESC,A XXXXXXXX,A XXXXXXXX

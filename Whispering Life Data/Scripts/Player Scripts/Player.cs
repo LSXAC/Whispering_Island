@@ -6,12 +6,14 @@ public partial class Player : CharacterBody2D
 {
     public static Player INSTANCE = null;
     public static Camera2D camera;
+    public static CharacterSave char_save = new CharacterSave();
     public AnimatedSprite2D anim;
     private Player_Stamina player_stamina;
     private string current_direction = "Up";
     private float velo_x = 0,
         velo_y = 0;
-    private float max_zoom_offset = 2.2f;
+
+    private float max_zoom_offset = 2f;
 
     public override void _Ready()
     {

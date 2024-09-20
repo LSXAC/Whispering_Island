@@ -1,0 +1,177 @@
+[gd_scene load_steps=17 format=3 uid="uid://gb18hiamdyqj"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/ResourceObject.cs" id="1_oeonl"]
+[ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://Items/Mystic_Wood.tres" id="2_wvxkc"]
+[ext_resource type="Texture2D" uid="uid://doy5paqc40023" path="res://Sprites/MystTree.png" id="3_7es2c"]
+[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_bvs21"]
+[ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="5_ntkvk"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Prefabs/timer_bar.tscn" id="6_j0pn3"]
+[ext_resource type="Texture2D" uid="uid://bfw0elq5yfvqk" path="res://Sprites/Leave.png" id="7_ogh8e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
+size = Vector2(26, 37)
+
+[sub_resource type="Animation" id="Animation_2ey6b"]
+resource_name = "Break"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TreeSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TreeSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -3), Vector2(0, 6)]
+}
+
+[sub_resource type="Animation" id="Animation_a1g7f"]
+resource_name = "Hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TreeSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3), Vector2(-1, -3), Vector2(0, -3), Vector2(1, -3), Vector2(0, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_c5l8r"]
+resource_name = "Respawning"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TreeSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TreeSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2ngb"]
+_data = {
+"Break": SubResource("Animation_2ey6b"),
+"Hit": SubResource("Animation_a1g7f"),
+"Respawning": SubResource("Animation_c5l8r")
+}
+
+[sub_resource type="Curve" id="Curve_lkdxx"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_osh17"]
+curve = SubResource("Curve_lkdxx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6nogx"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_osh17")
+
+[node name="MystTree" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "sprite", "collision_shape")]
+y_sort_enabled = true
+script = ExtResource("1_oeonl")
+anim_player = NodePath("AnimationPlayer")
+max_durability = 5
+mining_amount = 2
+mining_amount_last = 5
+item_info = ExtResource("2_wvxkc")
+gpu_particles = NodePath("LeavesParticles")
+title = "Mystical Tree"
+description = "Mine to get mystical Wood"
+sprite = NodePath("TreeSprite")
+collision_shape = NodePath("Collision")
+
+[node name="TreeSprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -2)
+texture = ExtResource("3_7es2c")
+offset = Vector2(1, -14)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_m0htq")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+texture = ExtResource("4_bvs21")
+
+[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+script = ExtResource("5_ntkvk")
+building_node = NodePath("..")
+building_sprite = NodePath("../TreeSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_a25cn")
+
+[node name="TimerBar" parent="." instance=ExtResource("6_j0pn3")]
+offset_top = -44.0
+offset_bottom = -40.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v2ngb")
+}
+
+[node name="LeavesParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, -13)
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_6nogx")
+texture = ExtResource("7_ogh8e")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+randomness = 0.5
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

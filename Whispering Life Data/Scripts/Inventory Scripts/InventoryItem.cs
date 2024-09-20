@@ -13,9 +13,11 @@ public partial class InventoryItem : TextureRect
 
     public void init(ItemInfo item_info)
     {
+        this.Size = new Vector2(32, 32);
         this.item_info = item_info;
         Label l = new Label { ZIndex = 1 };
         amount_label = l;
+        TooltipText = TranslationServer.Translate(item_info.item_description.ToString());
         AddChild(l);
     }
 
@@ -31,7 +33,7 @@ public partial class InventoryItem : TextureRect
         StretchMode = StretchModeEnum.KeepAspectCentered;
     }
 
-    public override Variant _GetDragData(Vector2 atPosition)
+    /*public override Variant _GetDragData(Vector2 atPosition)
     {
         SetDragPreview(MakeDragPreview(atPosition));
         return this;
@@ -48,5 +50,5 @@ public partial class InventoryItem : TextureRect
         };
 
         return preview;
-    }
+    }*/
 }

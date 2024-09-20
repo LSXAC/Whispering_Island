@@ -58,22 +58,40 @@ public partial class Belt : placeable_building
                     area.GetParent<Trashcan>().receive_item(item);
                 }
             if (area.GetParent() is Taker)
-                if (area.GetParent<Taker>().can_receive_item())
+            {
+                if (area.GetParent().GetParent() is ProcessBuilding)
                 {
-                    if (item_holder.hasBeltItem())
+                    if (area.GetParent<Taker>().can_receive_item())
                     {
-                        ItemInfo ii = item_holder.GetBeltItem().GetItemInfo();
-                        if (
-                            ii == area.GetParent<Taker>().building.import_item_info
-                            || area.GetParent<Taker>().building.import_item_info == null
-                        )
+                        if (item_holder.hasBeltItem())
                         {
-                            var item = item_holder.offload_item();
-                            area.GetParent<Taker>().building.import_item_info = ii;
-                            area.GetParent<Taker>().receive_item(item);
+                            ItemInfo ii = item_holder.GetBeltItem().GetItemInfo();
+                            if (
+                                ii
+                                    == (
+                                        (ProcessBuilding)area.GetParent<Taker>().building
+                                    ).import_item_info
+                                || (
+                                    (ProcessBuilding)area.GetParent<Taker>().building
+                                ).import_item_info == null
+                            )
+                            {
+                                var item = item_holder.offload_item();
+                                (
+                                    (ProcessBuilding)area.GetParent<Taker>().building
+                                ).import_item_info = ii;
+                                area.GetParent<Taker>().receive_item(item);
+                            }
                         }
                     }
                 }
+                if (area.GetParent().GetParent() is Chest)
+                {
+                    var item = item_holder.offload_item();
+                    if (area.GetParent<Taker>().can_receive_item((BeltItem)item))
+                        area.GetParent<Taker>().receive_item(item);
+                }
+            }
         }
     }
 

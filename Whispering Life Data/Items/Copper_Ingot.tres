@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://i3ah62dd06gb"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_1iyg4"]
+[ext_resource type="Texture2D" uid="uid://dgdgpeeiw5ea0" path="res://Sprites/Items/Icons_3rd/Copper_Ingot.png" id="2_germ5"]
+
+[resource]
+script = ExtResource("1_1iyg4")
+unique_item_id = 10
+item_type = 0
+item_name = "COPPER_INGOT"
+item_description = "COPPER_INGOT_DESC"
+texture = ExtResource("2_germ5")
+value = 10.0

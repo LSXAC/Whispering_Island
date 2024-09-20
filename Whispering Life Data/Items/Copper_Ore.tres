@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://eo8ax7whu2kb"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_5d0qr"]
+[ext_resource type="Texture2D" uid="uid://wgni2ah8cili" path="res://Sprites/Items/Icons_3rd/Copper_Ore.png" id="2_yec6h"]
+
+[resource]
+script = ExtResource("1_5d0qr")
+unique_item_id = 9
+item_type = 0
+item_name = "COPPER_ORE"
+item_description = "COPPER_ORE_DESC"
+texture = ExtResource("2_yec6h")
+value = 10.0

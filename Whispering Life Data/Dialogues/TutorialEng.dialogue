@@ -1,0 +1,71 @@
+~ TutorialENG
+
+Boss: So you've decided to feed me forever?
+
+do Global.MoveCamera(Vector2(0,-208))
+Player: Yes! Exactly.
+do Global.MoveCamera(Vector2(0,-256))
+Boss: What now?
+do Global.MoveCamera(Vector2(0,-208))
+Player: Good question. Let's end the conversation.
+do Global.MoveCamera(Vector2(0,-256))
+Boss: Nope! There still has to be a tutorial!
+Boss: Whether you like it or not!
+Boss: Maybe you don't even know how to play this game!
+do Global.MoveCamera(Vector2(0,-208))
+Player: Okay, Boss! What should I do?
+do Global.MoveCamera(Vector2(0,-256))
+Boss: Well, I think the first thing you need to understand is how to get resources.
+do Global.MoveCamera(Vector2(0,-208))
+Player: Sounds logical!
+=> Wood
+
+~ Wood
+do Global.MoveCamera(Vector2(32,-160))
+do Global.OutlineTree()
+Boss: Watch out! This is wood!
+Boss: When you dismantle this, wood is automatically added to your inventory.
+Boss: If you do it a few times, it disintegrates completely and you even get a bonus!
+do Global.RemoveOutlineTree()
+do Global.MoveCamera(Vector2(0,-208))
+Boss: Got it?
+- Yes, awesome!
+- I do of course not understand
+	Spieler: I think you need to explain that to me again :/
+	=> Wood
+
+do Global.QueueFreeTree()
+Player: That's really cool! I guess it's the same with the stone?
+do Global.MoveCamera(Vector2(0,-256))
+Boss: You've got it! I'll finally get to eat soon!
+Boss: Later, of course, you have to process the resources further! I don't always eat the same thing!
+Boss: Some things can only be obtained later using machines, e.g. wood -> charcoal in the oven!
+=> Control
+
+~ Control
+do Global.MoveCamera(Vector2(0,-208))
+Player: But stop being so quick! Okay?
+Player: How does the control actually work?
+do Global.MoveCamera(Vector2(0,-256))
+Boss: True. Yes, WASD to move around and use the mouse to interact with things!
+Boss:  Don't forget to press ESC (inventory) or J (construction menu)!
+Boss: Should be quite useful if you want to play the game.
+do Global.MoveCamera(Vector2(0,-208))
+- That makes sense, of course!
+- I think you need to explain the controls to me again.
+	=> Control
+	
+do Global.MoveCamera(Vector2(0,-256))
+Boss: Good, you should now have the most important knowledge.
+Boss: If you need further help, please have a look at ESC (Help)
+Boss: Depending on how far along you are, you will find useful information there!
+Boss: I'll start the timer until I absolutely have to eat something.
+Boss: Stay in time, bring me the required resources and I won't eat you!
+do Global.MoveCamera(Vector2(0,-208))
+Player: Man. Makes you hungry for a piece of wood yourself!
+Player: So - farm resources, continue processing, possibly automate and always bring something to eat to this island!
+Player: Even I can do that!
+
+do Global.StartAfterTutorial()
+do Global.LeaveDialogue()
+=> END

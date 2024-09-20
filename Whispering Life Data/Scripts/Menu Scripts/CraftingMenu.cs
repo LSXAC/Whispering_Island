@@ -43,7 +43,7 @@ public partial class CraftingMenu : PanelContainer
             parent.AddChild(irUI);
 
             //Get whole Inventory onces, to save performance, instead of checken for every item the
-            Array<Item> itemsInInventory = Inventory.GetListOfItemsInInventory();
+            Array<Item> itemsInInventory = Inventory.INSTANCE.GetListOfItemsInInventory();
             irUI.InitResourceItems(
                 crafting_recipies[i].requiered_items,
                 itemsInInventory,

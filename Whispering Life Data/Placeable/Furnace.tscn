@@ -1,11 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://cn0rjr3gah4jr"]
+[gd_scene load_steps=20 format=3 uid="uid://cn0rjr3gah4jr"]
 
 [ext_resource type="Script" path="res://Scripts/Building Scripts/ProcessBuilding.cs" id="1_vtdy4"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="2_gjbdr"]
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Items/Wood.tres" id="2_rd0fi"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_rakgt"]
 [ext_resource type="Script" path="res://Scripts/Machine_Recipe.cs" id="4_w4r4g"]
-[ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Items/Pickaxe.tres" id="5_c0w8r"]
+[ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Items/Stone_Pickaxe.tres" id="5_c0w8r"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="5_epac7"]
 [ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="6_0asmg"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="6_srwxn"]
@@ -13,7 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="7_bopdg"]
 [ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Placeable/Taker.tscn" id="8_17n2q"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Placeable/giver.tscn" id="9_g3chf"]
-[ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Items/Charcoal.tres" id="10_c3j8d"]
+[ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Items/Char_Coal.tres" id="10_c3j8d"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="10_frsc1"]
 
 [sub_resource type="Resource" id="Resource_njs37"]
 script = ExtResource("4_w4r4g")
@@ -30,14 +31,14 @@ import_amount = 1
 export_amount = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
-size = Vector2(48, 48)
+size = Vector2(48, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(48, 48)
 
 [node name="Building" type="StaticBody2D" node_paths=PackedStringArray("crafting_timer", "state_timer", "sprite", "collision_shape")]
 y_sort_enabled = true
-collision_layer = 12
+collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_vtdy4")
 fuel_item_info = ExtResource("10_c3j8d")
@@ -51,11 +52,11 @@ sprite = NodePath("BuildingSprite")
 collision_shape = NodePath("MachineCollision")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
-z_index = 2
-position = Vector2(0, -16)
+y_sort_enabled = true
+position = Vector2(-8, -16)
 texture = ExtResource("2_gjbdr")
 centered = false
-offset = Vector2(-32, -32)
+offset = Vector2(-24, -32)
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("3_rakgt")
@@ -68,24 +69,25 @@ format = 2
 layer_0/tile_data = PackedInt32Array(-1, 131072, 0, -2, 131072, 0, -65538, 131072, 0, -65537, 131072, 0, -131072, 131072, 0, -65536, 131072, 0, 0, 131072, 0, 65535, 131072, 0, 65534, 131072, 0)
 
 [node name="MachineCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-8, -8)
+position = Vector2(-8, 0.5)
 shape = SubResource("RectangleShape2D_m0htq")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
-position = Vector2(0, -3)
-texture = ExtResource("5_epac7")
+position = Vector2(-8, 13.5)
+scale = Vector2(2.375, 3.0625)
+texture = ExtResource("10_frsc1")
 
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+position = Vector2(-8, -8)
 collision_layer = 2
 script = ExtResource("6_srwxn")
 building_node = NodePath("..")
 building_sprite = NodePath("../BuildingSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
-position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_fk0le")
 
 [node name="Tree" type="Node2D" parent="."]
@@ -115,12 +117,6 @@ building = NodePath("..")
 
 [node name="CraftingTimer" type="Timer" parent="."]
 wait_time = 0.1
-
-[node name="Slots" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="MachineUITimer" type="Timer" parent="."]
 wait_time = 0.05

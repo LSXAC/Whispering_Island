@@ -41,7 +41,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:scale")
+tracks/0/path = NodePath("StoneSprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -53,7 +53,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:position")
+tracks/1/path = NodePath("StoneSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -69,7 +69,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("StoneSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -85,7 +85,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("StoneSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -97,7 +97,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:scale")
+tracks/1/path = NodePath("StoneSprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -114,7 +114,7 @@ _data = {
 "Respawning": SubResource("Animation_c5l8r")
 }
 
-[node name="Stone" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "sprite", "gpu_particles", "sprite")]
+[node name="Stone" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "sprite", "collision_shape")]
 y_sort_enabled = true
 script = ExtResource("1_d2fyj")
 anim_player = NodePath("AnimationPlayer")
@@ -122,13 +122,13 @@ max_durability = 5
 mining_amount = 2
 mining_amount_last = 5
 item_info = ExtResource("2_s20f6")
-sprite = NodePath("Sprite")
 gpu_particles = NodePath("StoneParticles")
 title = "Stone"
 description = "Mine to get Stone"
-sprite = NodePath("Sprite")
+sprite = NodePath("StoneSprite")
+collision_shape = NodePath("Collision")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="StoneSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, 6)
 scale = Vector2(1e-05, 1e-05)
@@ -147,7 +147,7 @@ texture = ExtResource("4_ef0xx")
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
 script = ExtResource("5_irj67")
 building_node = NodePath("..")
-building_sprite = NodePath("../Sprite")
+building_sprite = NodePath("../StoneSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 position = Vector2(0, -7)

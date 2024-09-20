@@ -20,7 +20,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:scale")
+tracks/0/path = NodePath("TreeSprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +32,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:position")
+tracks/1/path = NodePath("TreeSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -48,7 +48,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("TreeSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,7 +64,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("TreeSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,7 +76,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:scale")
+tracks/1/path = NodePath("TreeSprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -97,7 +97,7 @@ _data = {
 _data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_osh17"]
+[sub_resource type="CurveTexture" id="CurveTexture_lbdfl"]
 curve = SubResource("Curve_fj6mt")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n07ev"]
@@ -112,24 +112,23 @@ radial_velocity_max = 25.0
 gravity = Vector3(0, 98, 0)
 scale_min = 0.5
 scale_max = 0.7
-scale_curve = SubResource("CurveTexture_osh17")
+scale_curve = SubResource("CurveTexture_lbdfl")
 
-[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "sprite", "gpu_particles", "sprite")]
+[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "sprite", "collision_shape")]
 y_sort_enabled = true
 script = ExtResource("1_0pylb")
 anim_player = NodePath("AnimationPlayer")
 respawn_seconds = 30
 item_info = ExtResource("2_my7vu")
-sprite = NodePath("Sprite")
 gpu_particles = NodePath("LeavesParticles")
 title = "Tree"
 description = "Chop to get Wood"
-sprite = NodePath("Sprite")
+sprite = NodePath("TreeSprite")
+collision_shape = NodePath("Collision")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="TreeSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(1, 6)
-scale = Vector2(1e-05, 1e-05)
+position = Vector2(1, 0)
 texture = ExtResource("7_omkwi")
 centered = false
 offset = Vector2(-16, -40)
@@ -147,7 +146,7 @@ texture = ExtResource("5_qbov7")
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
 script = ExtResource("6_mydk3")
 building_node = NodePath("..")
-building_sprite = NodePath("../Sprite")
+building_sprite = NodePath("../TreeSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 position = Vector2(0, -15.5)

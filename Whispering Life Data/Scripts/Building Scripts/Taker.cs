@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Godot;
 
 public partial class Taker : StaticBody2D
@@ -8,11 +9,20 @@ public partial class Taker : StaticBody2D
     [Export]
     public ItemHolder item_holder_In;
 
-    public bool can_receive_item()
+    public bool can_receive_item(BeltItem ii = null)
     {
-        return item_holder_In.GetChildCount() == 0
-            && building.import_count < 50
-            && building.machine_enabled;
+        if (building is Chest)
+        {
+            if (Inventory.INSTANCE.HasItemInInventory(((Chest)building).chest_items, ii))
+                Debug.Print("Has Item in Inventory");
+            return item_holder_In.GetChildCount() == 0
+                && (
+                    Inventory.INSTANCE.HasEmptySlotInInventory(((Chest)building).chest_items)
+                    || Inventory.INSTANCE.HasItemInInventory(((Chest)building).chest_items, ii)
+                );
+        }
+
+        return item_holder_In.GetChildCount() == 0 && building.machine_enabled;
     }
 
     public void receive_item(Node2D item)
@@ -22,8 +32,19 @@ public partial class Taker : StaticBody2D
 
     public void OnItemHolderItemHeld()
     {
-        var item = item_holder_In.offload_item();
-        building.import_count++;
+        BeltItem item = (BeltItem)item_holder_In.offload_item();
+        if (building is ProcessBuilding)
+            ((ProcessBuilding)building).import_count++;
+
+        if (building is Chest)
+        {
+            Inventory.INSTANCE.AddItem(
+                item.item.item_info,
+                item.item.amount,
+                ((Chest)building).chest_items
+            );
+            ChestInventory.INSTANCE.UpdateInventoryUI();
+        }
         FurnaceTab.INSTANCE.UpdateFurnaceUI();
         item.QueueFree();
     }

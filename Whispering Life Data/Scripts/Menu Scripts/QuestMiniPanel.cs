@@ -32,12 +32,12 @@ public partial class QuestMiniPanel : PanelContainer
 
     public void UpdateQuestMiniPanel(Quest currentQuest)
     {
-        Array<Item> items_in_inventory = Inventory.GetListOfItemsInInventory();
+        Array<Item> items_in_inventory = Inventory.INSTANCE.GetListOfItemsInInventory();
         Debug.Print("Start Updating");
         for (int i = 0; i < currentQuest.quest_items.Count; i++)
         {
             Item item = currentQuest.quest_items[i];
-            Item iii = Inventory.GetItemFromList(items_in_inventory, item);
+            Item iii = Inventory.INSTANCE.GetItemFromList(items_in_inventory, item);
             hbox_items[i].Visible = true;
             hbox_items[i].InitItemUI("", item.amount, item.item_info.texture);
 

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://c6cvl30smgqs7"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_pp54m"]
+[ext_resource type="Texture2D" uid="uid://cixgxe6yx2sgh" path="res://Sprites/Items/Plants_Icons/Mystic_Fibre.png" id="2_l5v4f"]
+
+[resource]
+script = ExtResource("1_pp54m")
+unique_item_id = 13
+item_type = 0
+item_name = "MYSTIC_WOOD"
+item_description = "MYSTIC_WOOD_DESC"
+texture = ExtResource("2_l5v4f")
+value = 10.0

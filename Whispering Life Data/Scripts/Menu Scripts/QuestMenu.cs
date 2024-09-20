@@ -80,11 +80,11 @@ public partial class QuestMenu : CanvasLayer
 
     public void CreateLabels(Array<Item> items)
     {
-        Array<Item> items_in_inventory = Inventory.GetListOfItemsInInventory();
+        Array<Item> items_in_inventory = Inventory.INSTANCE.GetListOfItemsInInventory();
         foreach (Item i in items)
         {
             h_box_item c_label = (h_box_item)h_box_item.Instantiate();
-            Item iii = Inventory.GetItemFromList(items_in_inventory, i);
+            Item iii = Inventory.INSTANCE.GetItemFromList(items_in_inventory, i);
             c_label.InitItemUI(i.item_info.item_name, i.amount, i.item_info.texture);
             quest_label_parent.AddChild(c_label);
             c_label.Alignment = BoxContainer.AlignmentMode.Center;

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://bvplgrho461h0"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_hlfru"]
+[ext_resource type="Texture2D" uid="uid://dru5exeq2s371" path="res://Sprites/Items/Icons_3rd/Stone_Knife.png" id="2_1lwkt"]
+
+[resource]
+script = ExtResource("1_hlfru")
+unique_item_id = 11
+item_type = 0
+item_name = "STONE_KNIFE"
+item_description = "STONE_KNIFE_DESC"
+texture = ExtResource("2_1lwkt")
+value = 10.0

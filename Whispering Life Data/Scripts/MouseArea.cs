@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class MouseArea : Area2D
@@ -23,7 +24,10 @@ public partial class MouseArea : Area2D
             building_sprite.Material = outline_shader;
             building_node.mouse_inside = true;
             if (!building_node.GetTitle().ToString().ToUpper().Contains("BELT"))
+            {
                 hover_menu.InitHoverMenu(building_node);
+                Debug.Print("Hover Menu");
+            }
         }
         else if (Game_Manager.building_mode == Game_Manager.BuildingMode.Removing)
         {
@@ -43,10 +47,17 @@ public partial class MouseArea : Area2D
 
     public void OnMouseClick()
     {
-        if (Game_Manager.inside_game_menu)
+        if (
+            Game_Manager.inside_game_menu
+            || Game_Manager.building_mode != Game_Manager.BuildingMode.None
+            || building_node == null
+        )
             return;
 
-        if (Global.GetDistanceToPlayer(this.GlobalPosition) >= 20f)
+        if (!building_node.mouse_inside)
+            return;
+
+        if (Global.GetDistanceToPlayer(this.GlobalPosition) >= 40f)
             return;
 
         if (GetParent().HasNode("Actionable"))
@@ -56,6 +67,13 @@ public partial class MouseArea : Area2D
         {
             FurnaceTab.INSTANCE.SetProcessBuilding(GetParent<ProcessBuilding>());
             GameMenu.INSTANCE.OnOpenFurnaceTab();
+        }
+
+        if (GetParent() is Chest)
+        {
+            GameMenu.INSTANCE.OnOpenChestTab();
+            ChestInventory.INSTANCE.OpenChest(GetParent<Chest>());
+            Debug.Print("CHEST!" + " | " + Name);
         }
     }
 

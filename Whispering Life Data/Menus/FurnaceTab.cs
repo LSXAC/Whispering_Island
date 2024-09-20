@@ -28,6 +28,14 @@ public partial class FurnaceTab : ColorRect
     [Export]
     public Label working_label;
     public static FurnaceTab INSTANCE = null;
+
+    public enum SlotType
+    {
+        IMPORT,
+        EXPORT,
+        FUEL
+    };
+
     public ProcessBuilding process_building;
 
     public override void _Ready()
@@ -55,7 +63,7 @@ public partial class FurnaceTab : ColorRect
     {
         if (process_building == null)
             return;
-        Debug.Print("Clear");
+
         export_slot.ClearItem();
         import_slot.ClearItem();
         fuel_slot.ClearItem();

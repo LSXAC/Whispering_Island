@@ -1,13 +1,27 @@
-using System;
 using System.Diagnostics;
+using System.Xml.Serialization;
 using Godot;
 
-public partial class Slot : PanelContainer
+public partial class Slot : Button
 {
     [Export]
     public ItemInfo.Type type;
 
-    public override void _Ready() { }
+    InventoryBase inventory_base = null;
+
+    public override void _Ready()
+    {
+        if (GetParent().GetParent() is Inventory)
+        {
+            inventory_base = (InventoryBase)GetParent().GetParent();
+            Pressed += () => OnSlotButton();
+        }
+        if (GetParent().GetParent() is ChestInventory)
+        {
+            inventory_base = (InventoryBase)GetParent().GetParent();
+            Pressed += () => OnChestSlotButton();
+        }
+    }
 
     public void SetItem(ItemInfo item_info, int amount)
     {
@@ -47,12 +61,157 @@ public partial class Slot : PanelContainer
 
     public void ClearItem()
     {
+        Debug.Print("TRY: Item Cleared");
         if (GetItem() == null)
             return;
+        Debug.Print("Item Cleared");
         GetItem().QueueFree();
     }
 
-    public override bool _CanDropData(Vector2 atPosition, Variant data)
+    public void OnSlotButton()
+    {
+        if (Inventory.clicked_item == null)
+        {
+            if (GetItem() != null)
+            {
+                CreateClickedItem();
+                inventory_base.inventory_items[GetIndex()] = null;
+                inventory_base.UpdateInventoryUI();
+            }
+        }
+        else
+        {
+            if (GetItem() == null)
+            {
+                inventory_base.inventory_items[GetIndex()] = new ItemSave(
+                    Inventory.clicked_item.item_info.unique_item_id,
+                    Inventory.clicked_item.amount
+                );
+            }
+            if (GetItem() != null)
+                if (GetItem().item_info == Inventory.clicked_item.item_info)
+                {
+                    inventory_base.inventory_items[GetIndex()].amount += Inventory
+                        .clicked_item
+                        .amount;
+                }
+            inventory_base.UpdateInventoryUI();
+            Inventory.clicked_item.QueueFree();
+            Inventory.clicked_item = null;
+        }
+    }
+
+    public void OnChestSlotButton()
+    {
+        if (Inventory.clicked_item == null)
+        {
+            if (GetItem() != null)
+            {
+                CreateClickedItem();
+                ChestInventory.INSTANCE.current_chest.chest_items[GetIndex()] = null;
+                inventory_base.UpdateInventoryUI();
+            }
+        }
+        else
+        {
+            if (GetItem() == null)
+            {
+                ChestInventory.INSTANCE.current_chest.chest_items[GetIndex()] = new ItemSave(
+                    Inventory.clicked_item.item_info.unique_item_id,
+                    Inventory.clicked_item.amount
+                );
+            }
+            if (GetItem() != null)
+                if (GetItem().item_info == Inventory.clicked_item.item_info)
+                {
+                    ChestInventory.INSTANCE.current_chest.chest_items[GetIndex()].amount +=
+                        Inventory.clicked_item.amount;
+                }
+            inventory_base.UpdateInventoryUI();
+            Inventory.clicked_item.QueueFree();
+            Inventory.clicked_item = null;
+        }
+    }
+
+    public void CreateClickedItem()
+    {
+        InventoryItem ii = new InventoryItem();
+        ii.init(GetItem().item_info);
+        ii.amount = GetItem().amount;
+        ii.MouseFilter = MouseFilterEnum.Ignore;
+        ii.ZIndex = 10;
+        Inventory.clicked_item = ii;
+        Inventory.INSTANCE.AddChild(ii);
+    }
+
+    public void onMachineSlot(int id)
+    {
+        if (Inventory.clicked_item == null)
+        {
+            if (GetItem() != null)
+                switch (id)
+                {
+                    case (int)FurnaceTab.SlotType.IMPORT:
+                        CreateClickedItem();
+                        FurnaceTab.INSTANCE.process_building.import_item_info = null;
+                        FurnaceTab.INSTANCE.process_building.import_count = 0;
+                        ClearItem();
+                        break;
+                    case (int)FurnaceTab.SlotType.EXPORT:
+                        CreateClickedItem();
+                        FurnaceTab.INSTANCE.process_building.export_item_info = null;
+                        FurnaceTab.INSTANCE.process_building.export_count = 0;
+                        ClearItem();
+                        break;
+                    case (int)FurnaceTab.SlotType.FUEL:
+                        CreateClickedItem();
+                        FurnaceTab.INSTANCE.process_building.fuel_item_info = null;
+                        FurnaceTab.INSTANCE.process_building.fuel_count = 0;
+                        ClearItem();
+                        break;
+                }
+        }
+        else
+        {
+            if (GetItem() == null)
+            {
+                switch (id)
+                {
+                    case (int)FurnaceTab.SlotType.IMPORT:
+                        FurnaceTab.INSTANCE.process_building.import_item_info = Inventory
+                            .clicked_item
+                            .item_info;
+                        FurnaceTab.INSTANCE.process_building.import_count = Inventory
+                            .clicked_item
+                            .amount;
+                        break;
+
+                    case (int)FurnaceTab.SlotType.EXPORT:
+                        FurnaceTab.INSTANCE.process_building.export_item_info = Inventory
+                            .clicked_item
+                            .item_info;
+                        FurnaceTab.INSTANCE.process_building.export_count = Inventory
+                            .clicked_item
+                            .amount;
+                        break;
+
+                    case (int)FurnaceTab.SlotType.FUEL:
+                        FurnaceTab.INSTANCE.process_building.fuel_item_info = Inventory
+                            .clicked_item
+                            .item_info;
+                        FurnaceTab.INSTANCE.process_building.fuel_count = Inventory
+                            .clicked_item
+                            .amount;
+                        break;
+                }
+                FurnaceTab.INSTANCE.UpdateFurnaceUI();
+                Inventory.clicked_item.QueueFree();
+                Inventory.clicked_item = null;
+            }
+        }
+    }
+
+    /*public override bool _CanDropData(Vector2 atPosition, Variant data)
     {
         if (data.Obj == null)
             return false;
@@ -95,5 +254,5 @@ public partial class Slot : PanelContainer
             item.Reparent(((Node)data).GetParent());
         }
         ((Node)data).Reparent(this);
-    }
+    }*/
 }

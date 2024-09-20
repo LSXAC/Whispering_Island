@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://dvojtgqho3ajj"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_kqash"]
+[ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Pickaxe.png" id="2_wjrmy"]
+
+[resource]
+script = ExtResource("1_kqash")
+unique_item_id = 3
+item_type = 1
+item_name = "STONE_PICKAXE"
+item_description = "STONE_PICKAXE_DESC"
+texture = ExtResource("2_wjrmy")
+value = 5.0

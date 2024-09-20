@@ -16,11 +16,11 @@ axis_stretch_vertical = 1
 [node name="HoverMenu" type="PanelContainer" node_paths=PackedStringArray("title_Label", "description_Label")]
 z_index = 5
 z_as_relative = false
-custom_minimum_size = Vector2(100, 50)
+custom_minimum_size = Vector2(100, 34)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -86.0
+offset_top = -34.0
 offset_right = 100.0
 grow_vertical = 0
 pivot_offset = Vector2(50, 0)

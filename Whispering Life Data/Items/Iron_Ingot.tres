@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://d2e6om0f0jfhd"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_o64ju"]
+[ext_resource type="Texture2D" uid="uid://d1wddls2semmy" path="res://Sprites/Items/Icons_3rd/Iron_Ingot.png" id="2_012xw"]
+
+[resource]
+script = ExtResource("1_o64ju")
+unique_item_id = 8
+item_type = 0
+item_name = "IRON_INGOT"
+item_description = "IRON_INGOT_DESC"
+texture = ExtResource("2_012xw")
+value = 10.0

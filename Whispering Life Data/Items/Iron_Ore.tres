@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://l7tf257vet4l"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_thvwm"]
+[ext_resource type="Texture2D" uid="uid://bhlg8ovvfb3n4" path="res://Sprites/Items/Icons_3rd/Iron_Ore.png" id="2_1b5uf"]
+
+[resource]
+script = ExtResource("1_thvwm")
+unique_item_id = 7
+item_type = 0
+item_name = "IRON_ORE"
+item_description = "IRON_ORE_DESC"
+texture = ExtResource("2_1b5uf")
+value = 10.0

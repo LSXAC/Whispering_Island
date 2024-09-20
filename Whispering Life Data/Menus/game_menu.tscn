@@ -1,19 +1,20 @@
-[gd_scene load_steps=32 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=33 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
 [ext_resource type="PackedScene" uid="uid://74pm7gmanqf2" path="res://Prefabs/inventory.tscn" id="3_ub0ut"]
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/CraftingMenu.cs" id="4_3cwxu"]
+[ext_resource type="PackedScene" uid="uid://bj72iumyf7nxx" path="res://Prefabs/ChestInventory.tscn" id="4_eoykc"]
 [ext_resource type="Script" path="res://Menus/FurnaceTab.cs" id="4_kmuua"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/Slot.cs" id="4_v56ys"]
-[ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Items/Sticks.tres" id="5_k1cyv"]
+[ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Items/Wood_Stick.tres" id="5_k1cyv"]
 [ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="6_7ubdg"]
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Items/Wood.tres" id="7_wyt5m"]
 [ext_resource type="Script" path="res://Scripts/Resources/Recipe.cs" id="8_ya722"]
-[ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Items/Pickaxe.tres" id="9_wvqoj"]
+[ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Items/Stone_Pickaxe.tres" id="9_wvqoj"]
 [ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="10_b3op3"]
-[ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Items/Plank.tres" id="11_judtb"]
-[ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Items/Charcoal.tres" id="12_q6qwl"]
+[ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Items/Wood_Plank.tres" id="11_judtb"]
+[ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Items/Char_Coal.tres" id="12_q6qwl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_um5wb"]
 bg_color = Color(0, 0, 0, 1)
@@ -96,7 +97,7 @@ output_item = SubResource("Resource_arrlx")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tibut"]
 bg_color = Color(1, 1, 1, 0)
 
-[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab")]
+[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "chest_tab")]
 process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/InventoryTab/PanelContainer/HBoxContainer/LoadGameButton")
@@ -105,6 +106,7 @@ crafting_tab_button = NodePath("Background/HBoxHeader/CraftingTabButton")
 inventory_tab = NodePath("Background/InventoryTab")
 crafting_tab = NodePath("Background/CraftingTab")
 furnace_tab = NodePath("Background/FurnaceTab")
+chest_tab = NodePath("Background/ChestTab")
 
 [node name="TransBackground" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -211,7 +213,35 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "© 2024 Leon Schröder Asset Creations"
 
+[node name="ChestTab" type="ColorRect" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 224.0
+offset_top = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="ChestInventory" parent="Background/ChestTab" instance=ExtResource("4_eoykc")]
+layout_mode = 1
+offset_left = 120.0
+offset_top = 14.0
+offset_right = -216.0
+offset_bottom = 14.0
+
+[node name="CloseButton" type="Button" parent="Background/ChestTab"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 14.0
+offset_right = 112.0
+offset_bottom = 45.0
+text = "X"
+
 [node name="FurnaceTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("export_slot", "import_slot", "fuel_slot", "safty_panel", "machineProgressbar", "workingProgressbar", "switch_button", "working_label")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -246,7 +276,7 @@ offset_bottom = -185.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "© 2024 Leon Schröder Asset Creations"
 
-[node name="InputSlot" type="PanelContainer" parent="Background/FurnaceTab/PanelContainer"]
+[node name="InputSlot" type="Button" parent="Background/FurnaceTab/PanelContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 offset_top = -176.0
@@ -254,7 +284,7 @@ offset_right = 48.0
 offset_bottom = -128.0
 script = ExtResource("4_v56ys")
 
-[node name="ExportSlot" type="PanelContainer" parent="Background/FurnaceTab/PanelContainer"]
+[node name="ExportSlot" type="Button" parent="Background/FurnaceTab/PanelContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 offset_left = 256.0
@@ -263,7 +293,7 @@ offset_right = 304.0
 offset_bottom = -128.0
 script = ExtResource("4_v56ys")
 
-[node name="FuelSlot" type="PanelContainer" parent="Background/FurnaceTab/PanelContainer"]
+[node name="FuelSlot" type="Button" parent="Background/FurnaceTab/PanelContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 offset_top = -120.0
@@ -424,5 +454,9 @@ text = "---"
 [connection signal="pressed" from="Background/HBoxHeader/Button5" to="." method="OnExitButton"]
 [connection signal="pressed" from="Background/InventoryTab/PanelContainer/HBoxContainer/SaveGameButton" to="." method="OnSaveButton"]
 [connection signal="pressed" from="Background/InventoryTab/PanelContainer/HBoxContainer/LoadGameButton" to="." method="OnLoadButton"]
+[connection signal="pressed" from="Background/ChestTab/CloseButton" to="." method="OnCloseChestTab"]
+[connection signal="pressed" from="Background/FurnaceTab/PanelContainer/InputSlot" to="Background/FurnaceTab/PanelContainer/InputSlot" method="onMachineSlot" binds= [0]]
+[connection signal="pressed" from="Background/FurnaceTab/PanelContainer/ExportSlot" to="Background/FurnaceTab/PanelContainer/ExportSlot" method="onMachineSlot" binds= [1]]
+[connection signal="pressed" from="Background/FurnaceTab/PanelContainer/FuelSlot" to="Background/FurnaceTab/PanelContainer/FuelSlot" method="onMachineSlot" binds= [2]]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/Button" to="Background/FurnaceTab" method="OnMachineStateButton"]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/CloseButton" to="Background/FurnaceTab" method="ClearProcessBuilding"]

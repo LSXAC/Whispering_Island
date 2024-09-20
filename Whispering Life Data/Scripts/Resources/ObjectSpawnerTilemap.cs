@@ -6,11 +6,14 @@ using Godot.Collections;
 
 public partial class ObjectSpawnerTilemap : TileMap
 {
-    [Export]
     public PackedScene tree = ResourceLoader.Load<PackedScene>("res://Placeable/Tree.tscn");
 
-    [Export]
     public PackedScene stone = ResourceLoader.Load<PackedScene>("res://Placeable/Stone.tscn");
+    public PackedScene mystTree = ResourceLoader.Load<PackedScene>("res://Placeable/MystTree.tscn");
+    public PackedScene mystFibre = ResourceLoader.Load<PackedScene>(
+        "res://Placeable/MystFibre.tscn"
+    );
+
     public ResourceObjectManagerSave roms = new ResourceObjectManagerSave();
 
     public Array<ResourceObject> resource_objects = new Array<ResourceObject>();
@@ -36,6 +39,8 @@ public partial class ObjectSpawnerTilemap : TileMap
 
     private Vector2I woodVec = new Vector2I(0, 0);
     private Vector2I stoneVec = new Vector2I(1, 0);
+    private Vector2I mystTreeVec = new Vector2I(2, 0);
+    private Vector2I mystFibreVec = new Vector2I(3, 0);
 
     private void SetObjectsOnTilemap()
     {
@@ -47,8 +52,14 @@ public partial class ObjectSpawnerTilemap : TileMap
             if (GetCellAtlasCoords(0, cell2I) == stoneVec)
                 bn = (ResourceObject)stone.Instantiate();
 
+            if (GetCellAtlasCoords(0, cell2I) == mystTreeVec)
+                bn = (ResourceObject)mystTree.Instantiate();
+            if (GetCellAtlasCoords(0, cell2I) == mystFibreVec)
+                bn = (ResourceObject)mystFibre.Instantiate();
+
             if (bn == null)
                 return;
+
             this.resource_objects.Add(bn);
             bn.Position = ToGlobal(MapToLocal(cell2I));
             AddChild(bn);

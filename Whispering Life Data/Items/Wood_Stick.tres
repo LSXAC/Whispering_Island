@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://bvax767e5vss4"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_ytvhq"]
+[ext_resource type="Texture2D" uid="uid://bjana5l7fkd6a" path="res://Sprites/Items/Icons_3rd/Wood_Stick.png" id="2_miv00"]
+
+[resource]
+script = ExtResource("1_ytvhq")
+unique_item_id = 2
+item_type = 0
+item_name = "WOOD_STICK"
+item_description = "WOOD_STICK_DESC"
+texture = ExtResource("2_miv00")
+value = 1.0

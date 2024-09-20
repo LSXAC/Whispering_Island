@@ -89,10 +89,20 @@ public partial class Building_Placer : Node2D
 
             parent_Node.AddChild(temp);
             temp.GlobalPosition = machine_save.position;
-            temp.export_count = machine_save.export_count;
             temp.Scale = machine_save.scale;
-            temp.import_count = machine_save.import_count;
             temp.machine_enabled = machine_save.machine_enabled;
+
+            if (temp is ProcessBuilding)
+            {
+                ((ProcessBuilding)temp).export_count = machine_save.export_count;
+                ((ProcessBuilding)temp).import_count = machine_save.import_count;
+            }
+
+            if (temp is Chest)
+            {
+                for (int i = 0; i < machine_save.chest_items.Length; i++)
+                    ((Chest)temp).chest_items[i] = machine_save.chest_items[i];
+            }
         }
     }
 
@@ -110,19 +120,19 @@ public partial class Building_Placer : Node2D
             ((ProcessBuilding)temp).current_recipe = machine_save.current_recipe;
 
             if (machine_save.import_item_type != -1)
-                temp.import_item_info = Inventory.INSTANCE.item_Types[
+                ((ProcessBuilding)temp).import_item_info = Inventory.INSTANCE.item_Types[
                     machine_save.import_item_type
                 ];
 
             if (machine_save.export_item_type != -1)
-                temp.export_item_info = Inventory.INSTANCE.item_Types[
+                ((ProcessBuilding)temp).export_item_info = Inventory.INSTANCE.item_Types[
                     machine_save.export_item_type
                 ];
             return temp;
         }
 
         if (machine_save.type == MachineBase.MachineType.CHEST)
-            return Building_Menu.instance.furnace.Instantiate() as ProcessBuilding;
+            return Building_Menu.instance.chest.Instantiate() as Chest;
 
         return null;
     }
@@ -168,14 +178,30 @@ public partial class Building_Placer : Node2D
                     ((MachineBase)node).type,
                     ((MachineBase)node).Position,
                     ((MachineBase)node).Scale,
-                    ((MachineBase)node).import_count,
-                    ((MachineBase)node).export_count,
-                    ((MachineBase)node).machine_enabled,
-                    ((MachineBase)node).import_item_info,
-                    ((MachineBase)node).export_item_info
+                    ((MachineBase)node).machine_enabled
                 );
+
                 if (node is ProcessBuilding)
+                {
                     ms.current_recipe = ((ProcessBuilding)node).current_recipe;
+                    ms.export_count = ((ProcessBuilding)node).export_count;
+                    ms.import_count = ((ProcessBuilding)node).import_count;
+                    if (((ProcessBuilding)node).import_item_info == null)
+                        ms.import_item_type = -1;
+                    else
+                        ms.import_item_type = ((ProcessBuilding)node)
+                            .import_item_info
+                            .unique_item_id;
+                    if (((ProcessBuilding)node).export_item_info == null)
+                        ms.export_item_type = -1;
+                    else
+                        ms.export_item_type = ((ProcessBuilding)node)
+                            .export_item_info
+                            .unique_item_id;
+                }
+
+                if (node is Chest)
+                    ms.chest_items = ((Chest)node).chest_items;
 
                 machine_saves.Add(ms);
             }

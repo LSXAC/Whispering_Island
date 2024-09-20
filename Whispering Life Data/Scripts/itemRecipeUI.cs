@@ -40,7 +40,7 @@ public partial class itemRecipeUI : Control
             hbc_c.InitItemUI("", item.amount, item.item_info.texture);
 
             hbc_c.ChangeColor(global::h_box_item.colorType.red);
-            Item i_list = Inventory.GetItemFromList(itemsInInventory, item);
+            Item i_list = Inventory.INSTANCE.GetItemFromList(itemsInInventory, item);
             if (i_list != null)
                 if (i_list.amount >= item.amount)
                 {
@@ -58,9 +58,17 @@ public partial class itemRecipeUI : Control
     public void CraftItem()
     {
         foreach (Item items in req_items)
-            Inventory.INSTANCE.AddItem(items.item_info, -items.amount);
+            Inventory.INSTANCE.AddItem(
+                items.item_info,
+                -items.amount,
+                Inventory.INSTANCE.inventory_items
+            );
 
-        Inventory.INSTANCE.AddItem(output_item.item_info, output_item.amount);
+        Inventory.INSTANCE.AddItem(
+            output_item.item_info,
+            output_item.amount,
+            Inventory.INSTANCE.inventory_items
+        );
         CraftingMenu.INSTANCE.ReloadUIRecipes();
     }
 }

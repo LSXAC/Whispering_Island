@@ -20,6 +20,9 @@ public partial class GameMenu : CanvasLayer
 
     [Export]
     public FurnaceTab furnace_tab;
+
+    [Export]
+    public ColorRect chest_tab;
     public static GameMenu INSTANCE = null;
 
     public override void _Ready()
@@ -76,12 +79,35 @@ public partial class GameMenu : CanvasLayer
         inventory_tab.Visible = true;
         crafting_tab.Visible = false;
         furnace_tab.Visible = true;
+        chest_tab.Visible = false;
+    }
+
+    public void OnOpenChestTab()
+    {
+        Visible = true;
+        Game_Manager.inside_game_menu = true;
+        inventory_tab.Visible = true;
+        crafting_tab.Visible = false;
+        furnace_tab.Visible = false;
+        chest_tab.Visible = true;
     }
 
     public void OnCloseFurnaceTab()
     {
+        inventory_tab.Visible = true;
         crafting_tab.Visible = false;
         furnace_tab.Visible = false;
+        Game_Manager.inside_game_menu = false;
+        Visible = false;
+    }
+
+    public void OnCloseChestTab()
+    {
+        inventory_tab.Visible = true;
+        crafting_tab.Visible = false;
+        furnace_tab.Visible = false;
+        chest_tab.Visible = false;
+        ChestInventory.INSTANCE.current_chest = null;
         Game_Manager.inside_game_menu = false;
         Visible = false;
     }

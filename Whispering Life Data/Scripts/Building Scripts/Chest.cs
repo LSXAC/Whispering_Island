@@ -5,5 +5,7 @@ using Godot.Collections;
 public partial class Chest : MachineBase
 {
     [Export]
-    public Array<ItemSave> chest_items = new Array<ItemSave>();
+    public ItemSave[] chest_items = new ItemSave[20];
+
+    
 }

@@ -19,6 +19,18 @@ public partial class ProcessBuilding : MachineBase
 
     [Export]
     public Array<Machine_Recipe> recipes = new Array<Machine_Recipe>();
+
+    [Export]
+    public int import_count = 0;
+
+    [Export]
+    public ItemInfo import_item_info;
+
+    [Export]
+    public int export_count = 0;
+
+    [Export]
+    public ItemInfo export_item_info;
     public bool is_crafting = false;
     public int ui_progress = 0;
     public int current_recipe = 0;
@@ -52,7 +64,7 @@ public partial class ProcessBuilding : MachineBase
             return;
         if (import_item_info == null)
             return;
-        if (!CanCraft())
+        if (!SelectAndCheckCanCraft())
             return;
         if (import_count <= recipes[current_recipe].import_amount - 1)
             return;
@@ -64,7 +76,7 @@ public partial class ProcessBuilding : MachineBase
         crafting_timer.Start();
     }
 
-    private bool CanCraft()
+    private bool SelectAndCheckCanCraft()
     {
         if (import_item_info == null)
             return false;

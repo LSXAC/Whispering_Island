@@ -58,7 +58,7 @@ public partial class Game_Manager : Node2D
         Node2D main_island = island_parent.GetNode<Node2D>("MainIsland");
         Island_Properties mi = main_island.GetNode<Node2D>("IslandProperties") as Island_Properties;
 
-        TranslationServer.SetLocale("de");
+        TranslationServer.SetLocale("en");
 
         CreateIslands();
         CheckGameSave();
@@ -66,8 +66,7 @@ public partial class Game_Manager : Node2D
 
     public void SaveGame()
     {
-        Inventory.SaveInventory();
-        save_state.char_save = Inventory.char_save;
+        save_state.char_save = Player.char_save;
         save_state.char_save.player_position = Player.INSTANCE.Position;
 
         save_state.env_save.island_Saves = Islands_Manager.INSTANCE.island_saves;
@@ -79,6 +78,8 @@ public partial class Game_Manager : Node2D
         save_state.quest_save.current_quest_id = QuestManager.current_quest_id;
         save_state.quest_save.quest_time_left = QuestManager.current_quest_time;
         save_state.game_time_since_start = game_time_since_start;
+
+        save_state.char_save.inventory_items = Inventory.INSTANCE.inventory_items;
 
         //Save Machines and Belts
         building_placer.SavePlacedObjects();
@@ -97,9 +98,9 @@ public partial class Game_Manager : Node2D
         save_state = (SaveState)SaveState.LoadSave();
 
         tutorial_finished = save_state.tutorial_finished;
-        Inventory.char_save = save_state.char_save;
+        Player.char_save = save_state.char_save;
         Player.INSTANCE.Position = save_state.char_save.player_position;
-        Inventory.LoadInventory();
+        Inventory.INSTANCE.LoadInventoryFromSave(save_state.char_save.inventory_items);
 
         Islands_Manager.INSTANCE.island_saves = save_state.env_save.island_Saves;
         Islands_Manager.INSTANCE.LoadIslands(save_state.env_save.resource_object_manager_saves);
@@ -140,8 +141,12 @@ public partial class Game_Manager : Node2D
             save_state = new SaveState();
             save_state.WriteSave();
             var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial.dialogue");
+            var dialogueEng = GD.Load<Resource>("res://Dialogues/TutorialEng.dialogue");
             Global.MoveCamera(new Vector2(0, -256));
-            DialogueManager.ShowDialogueBalloon(dialogue, "TutorialDE");
+            if (TranslationServer.GetLocale() == "de")
+                DialogueManager.ShowDialogueBalloon(dialogue, "TutorialDE");
+            else
+                DialogueManager.ShowDialogueBalloon(dialogueEng, "TutorialENG");
         }
     }
 }

@@ -24,11 +24,14 @@ public partial class Giver : Area2D
         {
             if (building is ProcessBuilding)
             {
-                if (destination.GetParent<Belt>().can_receive_item() && building.export_count > 0)
+                if (
+                    destination.GetParent<Belt>().can_receive_item()
+                    && ((ProcessBuilding)building).export_count > 0
+                )
                 {
-                    building.export_count--;
+                    ((ProcessBuilding)building).export_count--;
                     BeltItem item = (BeltItem)beltItem.Instantiate();
-                    item.InitBeltItem(new Item(building.export_item_info, 1));
+                    item.InitBeltItem(new Item(((ProcessBuilding)building).export_item_info, 1));
                     Holder.AddChild(item);
                     destination.GetParent<Belt>().receive_item(item);
                     FurnaceTab.INSTANCE.UpdateFurnaceUI();

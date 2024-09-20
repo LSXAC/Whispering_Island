@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://dmrxwabbdyg0d"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_2ug6e"]
+[ext_resource type="Texture2D" uid="uid://ppkhe2a2ex8x" path="res://Sprites/Items/Tool_Icons/Wood_Chest.png" id="2_2y4vq"]
+
+[resource]
+script = ExtResource("1_2ug6e")
+unique_item_id = 5
+item_type = 0
+item_name = "WOOD_CHEST"
+item_description = "WOOD_CHEST_DESC"
+texture = ExtResource("2_2y4vq")
+value = 5.0
