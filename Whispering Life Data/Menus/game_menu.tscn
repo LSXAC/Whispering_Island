@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=38 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -15,6 +15,11 @@
 [ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="10_b3op3"]
 [ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Items/Wood_Plank.tres" id="11_judtb"]
 [ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Items/Char_Coal.tres" id="12_q6qwl"]
+[ext_resource type="Script" path="res://Menus/SettingsTab.cs" id="16_jv3kw"]
+[ext_resource type="Texture2D" uid="uid://syf34dx878d5" path="res://Sprites/Flaggs/US_FLAG.png" id="16_ldk1u"]
+[ext_resource type="StyleBox" uid="uid://beanw2e3ddca1" path="res://Menus/OptionButtonStyle.tres" id="17_hyydq"]
+[ext_resource type="Texture2D" uid="uid://d24spwn8n1w7w" path="res://Sprites/Flaggs/DE_FLAG.png" id="18_1qrrt"]
+[ext_resource type="StyleBox" uid="uid://ch5faigjhjxlm" path="res://Menus/OptionButtonStylePressed.tres" id="18_q7nbm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_um5wb"]
 bg_color = Color(0, 0, 0, 1)
@@ -130,7 +135,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="HBoxHeader" type="HBoxContainer" parent="Background"]
 layout_mode = 0
-offset_right = 500.0
+offset_right = 560.0
 offset_bottom = 26.0
 alignment = 1
 
@@ -449,6 +454,310 @@ layout_mode = 2
 disabled = true
 text = "---"
 
+[node name="SettingsTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("option_button")]
+layout_mode = 0
+offset_top = 26.0
+offset_right = 560.0
+offset_bottom = 304.0
+color = Color(0.576471, 0.807843, 1, 1)
+script = ExtResource("16_jv3kw")
+option_button = NodePath("VBoxContainer/Language/PanelContainer/MarginContainerRight/OptionButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/SettingsTab"]
+layout_mode = 0
+offset_right = 559.0
+offset_bottom = 278.0
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/SettingsTab/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainerLeft" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Background/SettingsTab/VBoxContainer/HBoxContainer/MarginContainerLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Tutieetetete"
+vertical_alignment = 1
+
+[node name="MarginContainerRight" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Button" type="Button" parent="Background/SettingsTab/VBoxContainer/HBoxContainer/MarginContainerRight"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Button to Click"
+
+[node name="Language" type="HBoxContainer" parent="Background/SettingsTab/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/Language"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/Language/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainerLeft" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/Language/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Background/SettingsTab/VBoxContainer/Language/Container/MarginContainerLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 15
+text = "Language"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/Language"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/Language/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainerRight" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/Language/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="OptionButton" type="OptionButton" parent="Background/SettingsTab/VBoxContainer/Language/PanelContainer/MarginContainerRight"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = ExtResource("18_q7nbm")
+theme_override_styles/normal = ExtResource("17_hyydq")
+theme_override_styles/hover = ExtResource("18_q7nbm")
+theme_override_styles/pressed = ExtResource("18_q7nbm")
+alignment = 1
+item_count = 2
+selected = 1
+popup/item_0/text = "US ENGLISH"
+popup/item_0/icon = ExtResource("16_ldk1u")
+popup/item_0/id = 0
+popup/item_1/text = "Deutsch"
+popup/item_1/icon = ExtResource("18_1qrrt")
+popup/item_1/id = 1
+
+[node name="SomethingElse" type="HBoxContainer" parent="Background/SettingsTab/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/SomethingElse"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/SomethingElse/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="MarginContainerLeft" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/SomethingElse/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Background/SettingsTab/VBoxContainer/SomethingElse/Container/MarginContainerLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 15
+text = "Language"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/SomethingElse"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/SomethingElse/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="MarginContainerRight" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/SomethingElse/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="OptionButton" type="OptionButton" parent="Background/SettingsTab/VBoxContainer/SomethingElse/PanelContainer/MarginContainerRight"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = ExtResource("17_hyydq")
+alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = "English"
+popup/item_0/icon = ExtResource("16_ldk1u")
+popup/item_0/id = 0
+
+[node name="Language2" type="HBoxContainer" parent="Background/SettingsTab/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/Language2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/Language2/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainerLeft" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/Language2/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Background/SettingsTab/VBoxContainer/Language2/Container/MarginContainerLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 15
+text = "Language"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/Language2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/Language2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainerRight" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/Language2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="OptionButton" type="OptionButton" parent="Background/SettingsTab/VBoxContainer/Language2/PanelContainer/MarginContainerRight"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = ExtResource("17_hyydq")
+alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = "English"
+popup/item_0/icon = ExtResource("16_ldk1u")
+popup/item_0/id = 0
+
+[node name="SomethingElse2" type="HBoxContainer" parent="Background/SettingsTab/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/SomethingElse2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/SomethingElse2/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="MarginContainerLeft" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/SomethingElse2/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Background/SettingsTab/VBoxContainer/SomethingElse2/Container/MarginContainerLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 15
+text = "Language"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/SomethingElse2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/SomethingElse2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="MarginContainerRight" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/SomethingElse2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="OptionButton" type="OptionButton" parent="Background/SettingsTab/VBoxContainer/SomethingElse2/PanelContainer/MarginContainerRight"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = ExtResource("17_hyydq")
+alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = "English"
+popup/item_0/icon = ExtResource("16_ldk1u")
+popup/item_0/id = 0
+
 [connection signal="pressed" from="Background/HBoxHeader/InvTabButton" to="." method="OnInventoryTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/Button5" to="." method="OnExitButton"]
@@ -460,3 +769,4 @@ text = "---"
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/FuelSlot" to="Background/FurnaceTab/PanelContainer/FuelSlot" method="onMachineSlot" binds= [2]]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/Button" to="Background/FurnaceTab" method="OnMachineStateButton"]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/CloseButton" to="Background/FurnaceTab" method="ClearProcessBuilding"]
+[connection signal="item_selected" from="Background/SettingsTab/VBoxContainer/Language/PanelContainer/MarginContainerRight/OptionButton" to="Background/SettingsTab" method="OnItemSelected"]

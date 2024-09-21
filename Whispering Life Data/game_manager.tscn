@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=20 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" path="res://Scripts/Manager Scripts/Game_Manager.cs" id="1_kw8xi"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Placer.cs" id="2_2ikn4"]
@@ -16,17 +16,9 @@
 [ext_resource type="Script" path="res://Scripts/QuestManager.cs" id="13_v5o5h"]
 [ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Quests/Start.tres" id="14_2k87u"]
 [ext_resource type="Resource" uid="uid://cdk8sna5iiegp" path="res://Quests/Start2.tres" id="15_13bir"]
-[ext_resource type="Texture2D" uid="uid://cu01dy01ry77j" path="res://Sprites/Sign/Sign_Front.png" id="16_xfw4o"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="17_c5f2u"]
-[ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="18_pd3wh"]
 [ext_resource type="Script" path="res://Tutorial.cs" id="21_c8cjw"]
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="21_m8ul6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6kej"]
-size = Vector2(16, 4)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
-size = Vector2(16, 21)
 
 [node name="GameManager" type="Node2D" node_paths=PackedStringArray("building_placer")]
 y_sort_enabled = true
@@ -93,33 +85,6 @@ quest_timer = NodePath("QuestTimer")
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 0.1
 
-[node name="Test" type="StaticBody2D" parent="."]
-y_sort_enabled = true
-
-[node name="Collision" type="CollisionShape2D" parent="Test"]
-shape = SubResource("RectangleShape2D_g6kej")
-
-[node name="BuildingSprite" type="Sprite2D" parent="Test"]
-y_sort_enabled = true
-texture = ExtResource("16_xfw4o")
-offset = Vector2(0, -6)
-
-[node name="Shadow" type="Sprite2D" parent="Test"]
-modulate = Color(0, 0, 0, 0.196078)
-z_index = -1
-z_as_relative = false
-position = Vector2(0, 3)
-scale = Vector2(1, 0.4125)
-texture = ExtResource("17_c5f2u")
-
-[node name="MouseArea" type="Area2D" parent="Test" node_paths=PackedStringArray("building_sprite")]
-script = ExtResource("18_pd3wh")
-building_sprite = NodePath("../BuildingSprite")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test/MouseArea"]
-position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_fk0le")
-
 [node name="CutsceneCamera" type="Camera2D" parent="."]
 position = Vector2(32, -160)
 enabled = false
@@ -152,8 +117,6 @@ texture = ExtResource("17_c5f2u")
 
 [connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
 [connection signal="timeout" from="GameTimer" to="." method="OnGameTimerTimeout"]
-[connection signal="mouse_entered" from="Test/MouseArea" to="Test/MouseArea" method="OnMouseEntered"]
-[connection signal="mouse_exited" from="Test/MouseArea" to="Test/MouseArea" method="OnMouseLeaved"]
 
 [editable path="IslandManager/MainIsland"]
 [editable path="BuildingMenu"]

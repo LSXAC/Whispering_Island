@@ -1,12 +1,12 @@
 [gd_scene load_steps=17 format=3 uid="uid://cjw7mpije2ul4"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/ResourceObject.cs" id="1_g4r0j"]
-[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="2_2a63k"]
+[ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Items/Mystic_Fibre.tres" id="2_8xjas"]
 [ext_resource type="Texture2D" uid="uid://bv0y2lln1foop" path="res://Sprites/MystFibre.png" id="3_wt8vm"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_ccab7"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="5_h2g1a"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Prefabs/timer_bar.tscn" id="6_hn3tl"]
-[ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sprites/Stone_Particle.png" id="7_h3038"]
+[ext_resource type="Texture2D" uid="uid://w5h1vxawvg88" path="res://Sprites/Myst_Particle.png" id="7_7jxkm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(16, 8)
@@ -23,9 +23,9 @@ curve = SubResource("Curve_bk6ie")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7tpe0"]
 particle_flag_disable_z = true
-emission_shape_scale = Vector3(15, 1, 1)
-emission_shape = 1
-emission_sphere_radius = 1.0
+emission_shape_scale = Vector3(5, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
 angle_min = 25.0
 angle_max = 180.0
 radial_velocity_min = 15.0
@@ -121,8 +121,8 @@ anim_player = NodePath("AnimationPlayer")
 max_durability = 5
 mining_amount = 2
 mining_amount_last = 5
-item_info = ExtResource("2_2a63k")
-gpu_particles = NodePath("StoneParticles")
+item_info = ExtResource("2_8xjas")
+gpu_particles = NodePath("FibreParticles")
 title = "Mystical Fibre"
 description = "Mine to get Fibre"
 sprite = NodePath("Fibre")
@@ -130,7 +130,7 @@ collision_shape = NodePath("Collision")
 
 [node name="Fibre" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, -1)
+position = Vector2(0, -3)
 texture = ExtResource("3_wt8vm")
 offset = Vector2(0, -16)
 
@@ -157,13 +157,13 @@ shape = SubResource("RectangleShape2D_a25cn")
 offset_top = -32.0
 offset_bottom = -28.0
 
-[node name="StoneParticles" type="GPUParticles2D" parent="."]
+[node name="FibreParticles" type="GPUParticles2D" parent="."]
 z_index = 1
-position = Vector2(0, -5)
+position = Vector2(1, -7)
 emitting = false
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_7tpe0")
-texture = ExtResource("7_h3038")
+texture = ExtResource("7_7jxkm")
 lifetime = 0.3
 one_shot = true
 explosiveness = 0.7

@@ -11,6 +11,7 @@ public partial class Game_Manager : Node2D
     public static string game_version = "a.0.1";
 
     public static Game_Manager INSTANCE = null;
+    public static string player_name = "Player";
 
     public static bool inside_game_menu = false;
 
@@ -58,7 +59,7 @@ public partial class Game_Manager : Node2D
         Node2D main_island = island_parent.GetNode<Node2D>("MainIsland");
         Island_Properties mi = main_island.GetNode<Node2D>("IslandProperties") as Island_Properties;
 
-        TranslationServer.SetLocale("en");
+        TranslationServer.SetLocale("de");
 
         CreateIslands();
         CheckGameSave();
@@ -140,13 +141,11 @@ public partial class Game_Manager : Node2D
             Debug.Print("Game_Manager - New SaveState");
             save_state = new SaveState();
             save_state.WriteSave();
+
             var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial.dialogue");
-            var dialogueEng = GD.Load<Resource>("res://Dialogues/TutorialEng.dialogue");
             Global.MoveCamera(new Vector2(0, -256));
-            if (TranslationServer.GetLocale() == "de")
-                DialogueManager.ShowDialogueBalloon(dialogue, "TutorialDE");
-            else
-                DialogueManager.ShowDialogueBalloon(dialogueEng, "TutorialENG");
+            DialogueManager.TranslationSource = TranslationSource.CSV;
+            DialogueManager.ShowDialogueBalloon(dialogue, "Tutorial");
         }
     }
 }

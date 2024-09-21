@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_bvs21"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="5_ntkvk"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Prefabs/timer_bar.tscn" id="6_j0pn3"]
-[ext_resource type="Texture2D" uid="uid://bfw0elq5yfvqk" path="res://Sprites/Leave.png" id="7_ogh8e"]
+[ext_resource type="Texture2D" uid="uid://bleogitdknxq1" path="res://Sprites/Myst_Leave_Particle.png" id="7_038wo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(16, 8)
@@ -130,7 +130,7 @@ collision_shape = NodePath("Collision")
 
 [node name="TreeSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, -2)
+position = Vector2(0, -3)
 texture = ExtResource("3_7es2c")
 offset = Vector2(1, -14)
 
@@ -167,7 +167,7 @@ position = Vector2(0, -13)
 emitting = false
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_6nogx")
-texture = ExtResource("7_ogh8e")
+texture = ExtResource("7_038wo")
 lifetime = 0.3
 one_shot = true
 explosiveness = 0.7

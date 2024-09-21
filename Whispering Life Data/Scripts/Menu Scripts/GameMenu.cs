@@ -23,6 +23,10 @@ public partial class GameMenu : CanvasLayer
 
     [Export]
     public ColorRect chest_tab;
+
+    [Export]
+    public ColorRect settings_tab;
+
     public static GameMenu INSTANCE = null;
 
     public override void _Ready()
