@@ -31,7 +31,7 @@ size = Vector2(32, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(200, 176)
 
-[node name="MainIsland" type="Node2D"]
+[node name="MainIsland" type="Node2D" groups=["Island_Properties"]]
 y_sort_enabled = true
 script = ExtResource("1_sbvtb")
 unique_island_id = 0
@@ -175,6 +175,8 @@ polygon = PackedVector2Array(192, 32, 224, 32, 288, -32, 288, -48, 320, -48, 280
 
 [node name="ObjectSpawnerTilemap" type="TileMapLayer" parent="."]
 y_sort_enabled = true
+tile_map_data = PackedByteArray("AAABAAIAAAAAAAAAAAADAAEAAAAAAAAAAAACAPv/AAAAAAAAAAABAPn/AAABAAAAAAD+//z/AAABAAAAAAD8/wAAAAABAAAAAAD9/wAAAAABAAAAAAD5/wEAAAAAAAAAAAD8/wQAAAAAAAAAAAABAPr/AAAAAAAAAAABAP//AAAAAAAAAAACAAAAAAAAAAAAAAD+/wEAAAAAAAAAAAA=")
+enabled = false
 tile_set = ExtResource("7_va5b3")
 script = ExtResource("8_7hw5l")
 

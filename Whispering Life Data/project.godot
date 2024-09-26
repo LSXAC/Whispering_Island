@@ -48,6 +48,10 @@ project/assembly_name="Whispering Life"
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
+[global_group]
+
+Island_Properties="Echt Main Node of an Island"
+
 [input]
 
 Right={

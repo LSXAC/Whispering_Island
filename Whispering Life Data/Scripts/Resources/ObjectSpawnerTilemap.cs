@@ -42,7 +42,7 @@ public partial class ObjectSpawnerTilemap : TileMapLayer
     private Vector2I mystTreeVec = new Vector2I(2, 0);
     private Vector2I mystFibreVec = new Vector2I(3, 0);
 
-    private void SetObjectsOnTilemap()
+    public void SetObjectsOnTilemap()
     {
         foreach (Vector2I cell2I in GetUsedCells())
         {

@@ -159,4 +159,10 @@ public partial class Game_Manager : Node2D
         DialogueManager.TranslationSource = TranslationSource.CSV;
         DialogueManager.ShowDialogueBalloon(dialogue, "Tutorial");
     }
+
+    public void LoadIslandResources()
+    {
+        //foreach (Island_Properties ip in GetTree().GetNodesInGroup("Island_Properties"))
+        //ip.ost.SetObjectsOnTilemap();
+    }
 }

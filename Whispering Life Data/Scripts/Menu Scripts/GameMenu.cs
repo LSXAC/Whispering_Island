@@ -27,6 +27,9 @@ public partial class GameMenu : CanvasLayer
     [Export]
     public ColorRect settings_tab;
 
+    [Export]
+    public ColorRect saveload_tab;
+
     public static GameMenu INSTANCE = null;
 
     [Export]
@@ -64,6 +67,7 @@ public partial class GameMenu : CanvasLayer
         Inventory,
         Crafting,
         Stats,
+        LoadSave,
         Settings,
         X
     }
@@ -106,6 +110,7 @@ public partial class GameMenu : CanvasLayer
         crafting_tab.Visible = false;
         inventory_tab.Visible = true;
         settings_tab.Visible = false;
+        saveload_tab.Visible = false;
     }
 
     public void OnSettingsTabButton()
@@ -114,6 +119,7 @@ public partial class GameMenu : CanvasLayer
         crafting_tab.Visible = false;
         inventory_tab.Visible = false;
         settings_tab.Visible = true;
+        saveload_tab.Visible = false;
     }
 
     public void OnCraftingTabButton()
@@ -122,6 +128,17 @@ public partial class GameMenu : CanvasLayer
         crafting_tab.Visible = true;
         inventory_tab.Visible = false;
         settings_tab.Visible = false;
+        saveload_tab.Visible = false;
+        crafting_tab.GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
+    }
+
+    public void OnSaveLoadTabButton()
+    {
+        ChangeSelectedTabColor(Tabs.LoadSave);
+        crafting_tab.Visible = false;
+        inventory_tab.Visible = false;
+        settings_tab.Visible = false;
+        saveload_tab.Visible = true;
         crafting_tab.GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
     }
 
@@ -135,6 +152,7 @@ public partial class GameMenu : CanvasLayer
         settings_tab.Visible = false;
         furnace_tab.Visible = true;
         chest_tab.Visible = false;
+        saveload_tab.Visible = false;
     }
 
     public void OnOpenChestTab()
@@ -147,6 +165,7 @@ public partial class GameMenu : CanvasLayer
         settings_tab.Visible = false;
         furnace_tab.Visible = false;
         chest_tab.Visible = true;
+        saveload_tab.Visible = false;
     }
 
     public void OnCloseFurnaceTab()
@@ -156,6 +175,7 @@ public partial class GameMenu : CanvasLayer
         crafting_tab.Visible = false;
         furnace_tab.Visible = false;
         settings_tab.Visible = false;
+        saveload_tab.Visible = false;
         Game_Manager.inside_game_menu = false;
         Visible = false;
     }
@@ -168,6 +188,7 @@ public partial class GameMenu : CanvasLayer
         furnace_tab.Visible = false;
         settings_tab.Visible = false;
         chest_tab.Visible = false;
+        saveload_tab.Visible = false;
         ChestInventory.INSTANCE.current_chest = null;
         Game_Manager.inside_game_menu = false;
         Visible = false;

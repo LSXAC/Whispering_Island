@@ -42,6 +42,7 @@ public partial class Global : Node2D
         Player.camera.Enabled = true;
         Player.camera.Position = Godot.Vector2.Zero;
         Game_Manager.In_Cutscene = false;
+        Game_Manager.INSTANCE.LoadIslandResources();
     }
 
     public static void OutlineTree()

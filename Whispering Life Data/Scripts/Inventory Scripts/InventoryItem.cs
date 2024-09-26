@@ -13,9 +13,13 @@ public partial class InventoryItem : TextureRect
 
     public void init(ItemInfo item_info)
     {
-        this.Size = new Vector2(32, 32);
+        this.Size = new Vector2(40, 40);
+        this.Position = new Vector2(4, 4);
         this.item_info = item_info;
         Label l = new Label { ZIndex = 1 };
+        l.CustomMinimumSize = new Vector2(42, 46);
+        l.VerticalAlignment = VerticalAlignment.Bottom;
+        l.HorizontalAlignment = HorizontalAlignment.Right;
         amount_label = l;
         TooltipText = TranslationServer.Translate(item_info.item_description.ToString());
         AddChild(l);

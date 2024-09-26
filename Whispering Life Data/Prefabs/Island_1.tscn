@@ -38,7 +38,7 @@ shader_parameter/speed = Vector2(0.1, 0.1)
 shader_parameter/distortion = 0.005
 shader_parameter/noise_texture = ExtResource("9_vucc1")
 
-[node name="Island_1" type="Node2D"]
+[node name="Island_1" type="Node2D" groups=["Island_Properties"]]
 y_sort_enabled = true
 script = ExtResource("1_4csf6")
 unique_island_id = 1
@@ -184,5 +184,7 @@ polygon = PackedVector2Array(192, 0, 224, -32, 224, -48, 256, -48, 224, 16, 104,
 
 [node name="ObjectSpawnerTilemap" type="TileMapLayer" parent="."]
 y_sort_enabled = true
+tile_map_data = PackedByteArray("AAACAPv/AAACAAAAAAD+//z/AAADAAAAAAACAP7/AAADAAAAAAABAAAAAAADAAAAAAD+////AAADAAAAAAAEAPz/AAACAAAAAAADAAEAAAACAAAAAAD9/wEAAAACAAAAAAD6/wMAAAACAAAAAAD7/wQAAAACAAAAAAAEAAQAAAACAAAAAAD8//v/AAACAAAAAAA=")
+enabled = false
 tile_set = ExtResource("6_yodjl")
 script = ExtResource("6_orw41")

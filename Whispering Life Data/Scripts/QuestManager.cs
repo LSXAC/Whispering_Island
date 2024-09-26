@@ -107,7 +107,7 @@ public partial class QuestManager : Node
     public void NextQuest()
     {
         RemoveQuestItems();
-        QuestMenu.INSTANCE.OnCloseButton();
+        QuestMenu.INSTANCE.CloseQuestMenu();
         player_ui.CompleteQuestPanelShow();
 
         if (current_quest_id == quests.Count - 1)
