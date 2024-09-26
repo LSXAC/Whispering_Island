@@ -26,13 +26,11 @@ offset = Vector2(-32, -32)
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("3_y1dx4")
-collision_tilemap = NodePath("../CollisionTemplateTilemap")
+collision_tilemap = NodePath("")
 
-[node name="CollisionTemplateTilemap" type="TileMap" parent="."]
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
 z_index = -2
 tile_set = ExtResource("4_yf36i")
-format = 2
-layer_0/tile_data = PackedInt32Array(-1, 131073, 0)
 
 [node name="ItemHolder" parent="." instance=ExtResource("6_jpa2r")]
 position = Vector2(-8, -8)

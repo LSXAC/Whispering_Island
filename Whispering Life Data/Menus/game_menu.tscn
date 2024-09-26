@@ -102,7 +102,7 @@ output_item = SubResource("Resource_arrlx")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tibut"]
 bg_color = Color(1, 1, 1, 0)
 
-[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "chest_tab")]
+[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "chest_tab", "settings_tab", "header_container")]
 process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/InventoryTab/PanelContainer/HBoxContainer/LoadGameButton")
@@ -112,6 +112,8 @@ inventory_tab = NodePath("Background/InventoryTab")
 crafting_tab = NodePath("Background/CraftingTab")
 furnace_tab = NodePath("Background/FurnaceTab")
 chest_tab = NodePath("Background/ChestTab")
+settings_tab = NodePath("Background/SettingsTab")
+header_container = NodePath("Background/HBoxHeader")
 
 [node name="TransBackground" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -141,6 +143,8 @@ alignment = 1
 
 [node name="InvTabButton" type="Button" parent="Background/HBoxHeader"]
 layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 20
 text = "Inventory"
@@ -148,24 +152,31 @@ icon_alignment = 1
 
 [node name="CraftingTabButton" type="Button" parent="Background/HBoxHeader"]
 layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 20
 text = "Crafting"
 
-[node name="Button3" type="Button" parent="Background/HBoxHeader"]
+[node name="StatsTabButton" type="Button" parent="Background/HBoxHeader"]
 layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 20
 text = "Stats"
 
-[node name="Button4" type="Button" parent="Background/HBoxHeader"]
+[node name="SettingsTabButton" type="Button" parent="Background/HBoxHeader"]
 layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 20
 text = "Settings"
 
-[node name="Button5" type="Button" parent="Background/HBoxHeader"]
+[node name="ExitTabButton" type="Button" parent="Background/HBoxHeader"]
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 20
 text = "[X]"
@@ -560,15 +571,14 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 15
 theme_override_styles/focus = ExtResource("18_q7nbm")
-theme_override_styles/normal = ExtResource("17_hyydq")
 theme_override_styles/hover = ExtResource("18_q7nbm")
 theme_override_styles/pressed = ExtResource("18_q7nbm")
+theme_override_styles/normal = ExtResource("17_hyydq")
 alignment = 1
-item_count = 2
 selected = 1
+item_count = 2
 popup/item_0/text = "US ENGLISH"
 popup/item_0/icon = ExtResource("16_ldk1u")
-popup/item_0/id = 0
 popup/item_1/text = "Deutsch"
 popup/item_1/icon = ExtResource("18_1qrrt")
 popup/item_1/id = 1
@@ -629,11 +639,10 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = ExtResource("17_hyydq")
 alignment = 1
-item_count = 1
 selected = 0
+item_count = 1
 popup/item_0/text = "English"
 popup/item_0/icon = ExtResource("16_ldk1u")
-popup/item_0/id = 0
 
 [node name="Language2" type="HBoxContainer" parent="Background/SettingsTab/VBoxContainer"]
 layout_mode = 2
@@ -690,11 +699,10 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = ExtResource("17_hyydq")
 alignment = 1
-item_count = 1
 selected = 0
+item_count = 1
 popup/item_0/text = "English"
 popup/item_0/icon = ExtResource("16_ldk1u")
-popup/item_0/id = 0
 
 [node name="SomethingElse2" type="HBoxContainer" parent="Background/SettingsTab/VBoxContainer"]
 layout_mode = 2
@@ -752,15 +760,15 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = ExtResource("17_hyydq")
 alignment = 1
-item_count = 1
 selected = 0
+item_count = 1
 popup/item_0/text = "English"
 popup/item_0/icon = ExtResource("16_ldk1u")
-popup/item_0/id = 0
 
 [connection signal="pressed" from="Background/HBoxHeader/InvTabButton" to="." method="OnInventoryTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]
-[connection signal="pressed" from="Background/HBoxHeader/Button5" to="." method="OnExitButton"]
+[connection signal="pressed" from="Background/HBoxHeader/SettingsTabButton" to="." method="OnSettingsTabButton"]
+[connection signal="pressed" from="Background/HBoxHeader/ExitTabButton" to="." method="OnExitButton"]
 [connection signal="pressed" from="Background/InventoryTab/PanelContainer/HBoxContainer/SaveGameButton" to="." method="OnSaveButton"]
 [connection signal="pressed" from="Background/InventoryTab/PanelContainer/HBoxContainer/LoadGameButton" to="." method="OnLoadButton"]
 [connection signal="pressed" from="Background/ChestTab/CloseButton" to="." method="OnCloseChestTab"]

@@ -10,7 +10,7 @@ public partial class Building_Collider_Manager : Node2D
     );
 
     [Export]
-    private TileMap collision_tilemap;
+    private TileMapLayer collision_tilemap;
 
     public override void _Ready()
     {
@@ -34,7 +34,7 @@ public partial class Building_Collider_Manager : Node2D
 
     private void CreateBuildingCollider()
     {
-        foreach (Vector2I cell in collision_tilemap.GetUsedCells(0))
+        foreach (Vector2I cell in collision_tilemap.GetUsedCells())
         {
             Debug.Print("NEw Areas");
             Area2D area = (Area2D)building_collider.Instantiate();

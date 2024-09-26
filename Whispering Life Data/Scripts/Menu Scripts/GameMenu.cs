@@ -29,6 +29,12 @@ public partial class GameMenu : CanvasLayer
 
     public static GameMenu INSTANCE = null;
 
+    [Export]
+    public HBoxContainer header_container;
+
+    public Color font_color_selected = new Color(0.969f, 0.78f, 0.4f);
+    public Color font_color_standard = new Color(1f, 1f, 1);
+
     public override void _Ready()
     {
         INSTANCE = this;
@@ -41,12 +47,42 @@ public partial class GameMenu : CanvasLayer
         {
             if (!Visible)
             {
+                ChangeSelectedTabColor(Tabs.Inventory);
                 this.Visible = true;
                 Game_Manager.inside_game_menu = true;
             }
             else
+            {
+                ChangeSelectedTabColor(Tabs.X);
                 OnExitButton();
+            }
         }
+    }
+
+    enum Tabs
+    {
+        Inventory,
+        Crafting,
+        Stats,
+        Settings,
+        X
+    }
+
+    private void ChangeSelectedTabColor(Tabs tab)
+    {
+        foreach (Button btn in header_container.GetChildren())
+        {
+            btn.RemoveThemeColorOverride("font_color");
+            btn.RemoveThemeColorOverride("font_hover_color");
+        }
+        ((Button)header_container.GetChild((int)tab)).AddThemeColorOverride(
+            "font_color",
+            font_color_selected
+        );
+        ((Button)header_container.GetChild((int)tab)).AddThemeColorOverride(
+            "font_hover_color",
+            font_color_selected
+        );
     }
 
     public void OnVisiblityChange()
@@ -58,6 +94,7 @@ public partial class GameMenu : CanvasLayer
 
     public void OnExitButton()
     {
+        ChangeSelectedTabColor(Tabs.X);
         OnCloseFurnaceTab();
         this.Visible = false;
         Game_Manager.inside_game_menu = false;
@@ -65,51 +102,71 @@ public partial class GameMenu : CanvasLayer
 
     public void OnInventoryTabButton()
     {
+        ChangeSelectedTabColor(Tabs.Inventory);
         crafting_tab.Visible = false;
         inventory_tab.Visible = true;
+        settings_tab.Visible = false;
+    }
+
+    public void OnSettingsTabButton()
+    {
+        ChangeSelectedTabColor(Tabs.Settings);
+        crafting_tab.Visible = false;
+        inventory_tab.Visible = false;
+        settings_tab.Visible = true;
     }
 
     public void OnCraftingTabButton()
     {
+        ChangeSelectedTabColor(Tabs.Crafting);
         crafting_tab.Visible = true;
         inventory_tab.Visible = false;
+        settings_tab.Visible = false;
         crafting_tab.GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
     }
 
     public void OnOpenFurnaceTab()
     {
+        ChangeSelectedTabColor(Tabs.Inventory);
         Visible = true;
         Game_Manager.inside_game_menu = true;
         inventory_tab.Visible = true;
         crafting_tab.Visible = false;
+        settings_tab.Visible = false;
         furnace_tab.Visible = true;
         chest_tab.Visible = false;
     }
 
     public void OnOpenChestTab()
     {
+        ChangeSelectedTabColor(Tabs.Inventory);
         Visible = true;
         Game_Manager.inside_game_menu = true;
         inventory_tab.Visible = true;
         crafting_tab.Visible = false;
+        settings_tab.Visible = false;
         furnace_tab.Visible = false;
         chest_tab.Visible = true;
     }
 
     public void OnCloseFurnaceTab()
     {
+        ChangeSelectedTabColor(Tabs.X);
         inventory_tab.Visible = true;
         crafting_tab.Visible = false;
         furnace_tab.Visible = false;
+        settings_tab.Visible = false;
         Game_Manager.inside_game_menu = false;
         Visible = false;
     }
 
     public void OnCloseChestTab()
     {
+        ChangeSelectedTabColor(Tabs.X);
         inventory_tab.Visible = true;
         crafting_tab.Visible = false;
         furnace_tab.Visible = false;
+        settings_tab.Visible = false;
         chest_tab.Visible = false;
         ChestInventory.INSTANCE.current_chest = null;
         Game_Manager.inside_game_menu = false;

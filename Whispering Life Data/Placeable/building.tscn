@@ -10,16 +10,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_2qp5w"]
 radius = 24.0
 
-[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("sprite", "building_content", "building_sprite")]
+[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("sprite")]
 y_sort_enabled = true
 script = ExtResource("1_tdwsl")
-building_name = "Tower"
-building_texture = ExtResource("2_cqi38")
-sprite = NodePath("SpriteTop")
-building_content = NodePath("SpriteTop")
 title = "Lighthouse"
 description = "Leuchtet"
-building_sprite = NodePath("BuildingSprite")
+sprite = NodePath("SpriteTop")
 
 [node name="SpriteTop" type="Sprite2D" parent="."]
 z_index = 1
@@ -38,14 +34,12 @@ offset = Vector2(-24, -32)
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 y_sort_enabled = true
 script = ExtResource("5_8lurx")
-collision_tilemap = NodePath("../CollisionTemplateTilemap")
+collision_tilemap = NodePath("")
 
-[node name="CollisionTemplateTilemap" type="TileMap" parent="."]
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
 visible = false
 z_index = -2
 tile_set = ExtResource("6_ybw7s")
-format = 2
-layer_0/tile_data = PackedInt32Array(65535, 131073, 0, 0, 131073, 0, -65536, 131073, 0, -1, 131073, 0, -2, 131073, 0, 65534, 131073, 0, 1, 131073, 0, -65535, 131073, 0)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2qp5w")

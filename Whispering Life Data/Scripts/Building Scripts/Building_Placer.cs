@@ -11,7 +11,7 @@ public partial class Building_Placer : Node2D
     public Node2D parent_Node;
 
     [Export]
-    public TileMap tilemap;
+    public TileMapLayer tilemap;
     public static Node2D current_building = null;
     public static PackedScene building = null;
     public Array<BeltSave> belt_saves = new Array<BeltSave>();

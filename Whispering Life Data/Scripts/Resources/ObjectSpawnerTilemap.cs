@@ -4,7 +4,7 @@ using System.Linq;
 using Godot;
 using Godot.Collections;
 
-public partial class ObjectSpawnerTilemap : TileMap
+public partial class ObjectSpawnerTilemap : TileMapLayer
 {
     public PackedScene tree = ResourceLoader.Load<PackedScene>("res://Placeable/Tree.tscn");
 
@@ -44,17 +44,17 @@ public partial class ObjectSpawnerTilemap : TileMap
 
     private void SetObjectsOnTilemap()
     {
-        foreach (Vector2I cell2I in GetUsedCells(0))
+        foreach (Vector2I cell2I in GetUsedCells())
         {
             ResourceObject bn = null;
-            if (GetCellAtlasCoords(0, cell2I) == woodVec)
+            if (GetCellAtlasCoords(cell2I) == woodVec)
                 bn = (ResourceObject)tree.Instantiate();
-            if (GetCellAtlasCoords(0, cell2I) == stoneVec)
+            if (GetCellAtlasCoords(cell2I) == stoneVec)
                 bn = (ResourceObject)stone.Instantiate();
 
-            if (GetCellAtlasCoords(0, cell2I) == mystTreeVec)
+            if (GetCellAtlasCoords(cell2I) == mystTreeVec)
                 bn = (ResourceObject)mystTree.Instantiate();
-            if (GetCellAtlasCoords(0, cell2I) == mystFibreVec)
+            if (GetCellAtlasCoords(cell2I) == mystFibreVec)
                 bn = (ResourceObject)mystFibre.Instantiate();
 
             if (bn == null)

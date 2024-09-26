@@ -41,13 +41,11 @@ vframes = 5
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("3_cjdmx")
-collision_tilemap = NodePath("../CollisionTemplateTilemap")
+collision_tilemap = NodePath("")
 
-[node name="CollisionTemplateTilemap" type="TileMap" parent="." groups=["Blocker"]]
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." groups=["Blocker"]]
 z_index = -2
 tile_set = ExtResource("4_x2jdc")
-format = 2
-layer_0/tile_data = PackedInt32Array(-1, 131072, 0)
 
 [node name="Detector" parent="." instance=ExtResource("5_4wn6s")]
 position = Vector2(-8, -8)

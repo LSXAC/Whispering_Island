@@ -24,7 +24,6 @@ public partial class SettingsTab : ColorRect
                 language = "de";
                 break;
         }
-		option_button.Focused
         TranslationServer.SetLocale(language);
     }
 }

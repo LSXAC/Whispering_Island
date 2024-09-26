@@ -99,6 +99,13 @@ public partial class Game_Manager : Node2D
         save_state = (SaveState)SaveState.LoadSave();
 
         tutorial_finished = save_state.tutorial_finished;
+
+        if (!tutorial_finished)
+        {
+            StartTutorial();
+            return;
+        }
+
         Player.char_save = save_state.char_save;
         Player.INSTANCE.Position = save_state.char_save.player_position;
         Inventory.INSTANCE.LoadInventoryFromSave(save_state.char_save.inventory_items);
@@ -141,11 +148,15 @@ public partial class Game_Manager : Node2D
             Debug.Print("Game_Manager - New SaveState");
             save_state = new SaveState();
             save_state.WriteSave();
-
-            var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial.dialogue");
-            Global.MoveCamera(new Vector2(0, -256));
-            DialogueManager.TranslationSource = TranslationSource.CSV;
-            DialogueManager.ShowDialogueBalloon(dialogue, "Tutorial");
+            StartTutorial();
         }
+    }
+
+    private void StartTutorial()
+    {
+        var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial.dialogue");
+        Global.MoveCamera(new Vector2(0, -256));
+        DialogueManager.TranslationSource = TranslationSource.CSV;
+        DialogueManager.ShowDialogueBalloon(dialogue, "Tutorial");
     }
 }

@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=21 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" path="res://Scripts/Manager Scripts/Game_Manager.cs" id="1_kw8xi"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Placer.cs" id="2_2ikn4"]
 [ext_resource type="PackedScene" uid="uid://njw4so7o83dw" path="res://Prefabs/player.tscn" id="2_sny21"]
+[ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tileset Objects/BuildingTiles.tres" id="3_gu3ih"]
 [ext_resource type="PackedScene" uid="uid://bveoiwi14ha4g" path="res://Prefabs/Main_Island_0.tscn" id="3_p5rek"]
 [ext_resource type="PackedScene" uid="uid://deu0spbxs5bju" path="res://Menus/game_menu.tscn" id="4_dafgv"]
 [ext_resource type="PackedScene" uid="uid://j1cdgg7lep78" path="res://Prefabs/player_ui.tscn" id="4_iiee3"]
@@ -32,8 +33,8 @@ script = ExtResource("2_2ikn4")
 parent_Node = NodePath("../../Buildings")
 tilemap = NodePath("../../IslandManager/MainIsland/BuildingArea")
 
-[node name="Building_Tilemap_Snapper" type="TileMap" parent="BuildingManager/BuildingPlacer"]
-format = 2
+[node name="Building_Tilemap_Snapper" type="TileMapLayer" parent="BuildingManager/BuildingPlacer"]
+tile_set = ExtResource("3_gu3ih")
 
 [node name="Buildings" type="Node2D" parent="."]
 y_sort_enabled = true
