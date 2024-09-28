@@ -8,6 +8,7 @@ public partial class Player : CharacterBody2D
     public static Camera2D camera;
     public static CharacterSave char_save = new CharacterSave();
     public AnimatedSprite2D anim;
+    public Player_Stats player_stats;
     private Player_Stamina player_stamina;
     private string current_direction = "Up";
     private float velo_x = 0,
@@ -18,7 +19,8 @@ public partial class Player : CharacterBody2D
     public override void _Ready()
     {
         INSTANCE = this;
-        player_stamina = GetNode<Player_Stamina>("Player_Stamina");
+        player_stamina = GetNode<Player_Stamina>("PlayerStamina");
+        player_stats = GetNode<Player_Stats>("PlayerStats");
         anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         camera = GetNode<Camera2D>("Camera2D");
 

@@ -41,7 +41,7 @@ vframes = 5
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("3_cjdmx")
-collision_tilemap = NodePath("")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." groups=["Blocker"]]
 z_index = -2

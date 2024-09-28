@@ -34,7 +34,7 @@ offset = Vector2(-24, -32)
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 y_sort_enabled = true
 script = ExtResource("5_8lurx")
-collision_tilemap = NodePath("")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
 visible = false

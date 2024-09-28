@@ -21,6 +21,10 @@ public partial class Slot : Button
             inventory_base = (InventoryBase)GetParent().GetParent();
             Pressed += () => OnChestSlotButton();
         }
+        if (type == ItemInfo.Type.Cloths || type == ItemInfo.Type.Tool)
+        {
+            Pressed += () => OnEquipSlotButton(GetIndex());
+        }
     }
 
     public void SetItem(ItemInfo item_info, int amount)
@@ -61,11 +65,71 @@ public partial class Slot : Button
 
     public void ClearItem()
     {
-        Debug.Print("TRY: Item Cleared");
         if (GetItem() == null)
             return;
-        Debug.Print("Item Cleared");
         GetItem().QueueFree();
+    }
+
+    public void OnEquipSlotButton(int index)
+    {
+        if (Inventory.clicked_item == null)
+        {
+            if (GetItem() != null)
+            {
+                CreateClickedItem();
+                if (GetItem().item_info.item_type == ItemInfo.Type.Cloths)
+                {
+                    EquipmentPanel.INSTANCE.equipped_armor[index] = null;
+                    EquipmentPanel.INSTANCE.slots_armor[index].ClearItem();
+                }
+                if (GetItem().item_info.item_type == ItemInfo.Type.Tool)
+                {
+                    EquipmentPanel.INSTANCE.equipped_tools[index] = null;
+                    EquipmentPanel.INSTANCE.slots_tool[index].ClearItem();
+                }
+            }
+        }
+        else
+        {
+            if (GetItem() == null)
+            {
+                if (
+                    type == Inventory.clicked_item.item_info.item_type
+                    && type == ItemInfo.Type.Cloths
+                )
+                {
+                    EquipmentPanel.INSTANCE.equipped_armor[index] = new ItemSave(
+                        Inventory.clicked_item.item_info.unique_item_id,
+                        Inventory.clicked_item.amount
+                    );
+                    EquipmentPanel
+                        .INSTANCE.slots_armor[index]
+                        .SetItem(Inventory.clicked_item.item_info, Inventory.clicked_item.amount);
+                    //inventory_base.UpdateInventoryUI();
+                    Inventory.clicked_item.QueueFree();
+                    Inventory.clicked_item = null;
+                }
+                if (
+                    type == Inventory.clicked_item.item_info.item_type
+                    && type == ItemInfo.Type.Tool
+                )
+                {
+                    EquipmentPanel.INSTANCE.equipped_tools[index] = new ItemSave(
+                        Inventory.clicked_item.item_info.unique_item_id,
+                        Inventory.clicked_item.amount
+                    );
+                    EquipmentPanel
+                        .INSTANCE.slots_tool[index]
+                        .SetItem(Inventory.clicked_item.item_info, Inventory.clicked_item.amount);
+                    //inventory_base.UpdateInventoryUI();
+                    Inventory.clicked_item.QueueFree();
+                    Inventory.clicked_item = null;
+                }
+                //Update Notification to EquipmentPanel to update Stats (Bonus)
+            }
+            else // Can be Expanded, if e.g. Stackable Potions in one Equipment Slot
+                return;
+        }
     }
 
     public void OnSlotButton()

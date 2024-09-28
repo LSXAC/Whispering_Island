@@ -98,6 +98,7 @@ public partial class ResourceObject : Building_Node
 
     private void Hit()
     {
+        Player.INSTANCE.player_stats.AddFatigue(0.25f);
         current_durability--;
         gpu_particles.Emitting = true;
         if (current_durability == 0)

@@ -1,12 +1,14 @@
-[gd_scene load_steps=38 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=40 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
 [ext_resource type="PackedScene" uid="uid://74pm7gmanqf2" path="res://Prefabs/inventory.tscn" id="3_ub0ut"]
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/CraftingMenu.cs" id="4_3cwxu"]
+[ext_resource type="Script" path="res://Menus/EquipmentPanel.cs" id="4_e3tur"]
 [ext_resource type="PackedScene" uid="uid://bj72iumyf7nxx" path="res://Prefabs/ChestInventory.tscn" id="4_eoykc"]
 [ext_resource type="Script" path="res://Menus/FurnaceTab.cs" id="4_kmuua"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/Slot.cs" id="4_v56ys"]
+[ext_resource type="Texture2D" uid="uid://ne3oahdi530f" path="res://Sprites/Char_Profil.png" id="5_6jpat"]
 [ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Items/Wood_Stick.tres" id="5_k1cyv"]
 [ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="6_7ubdg"]
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Items/Wood.tres" id="7_wyt5m"]
@@ -207,12 +209,207 @@ offset_top = 14.0
 offset_right = 8.0
 offset_bottom = 8.0
 
-[node name="PanelContainer" type="Control" parent="Background/InventoryTab"]
+[node name="EquipmentPanel" type="Control" parent="Background/InventoryTab" node_paths=PackedStringArray("slots_armor", "slots_tool", "health_bar", "fatigue_bar")]
 anchors_preset = 0
-offset_left = 232.0
-offset_top = 222.0
-offset_right = 544.0
-offset_bottom = 270.0
+offset_left = 240.0
+offset_top = 22.0
+offset_right = 552.0
+offset_bottom = 279.0
+script = ExtResource("4_e3tur")
+slots_armor = [NodePath("Character/HeadSlot"), NodePath("Character/ChestSlot"), NodePath("Character/LegSlot"), NodePath("Character/ShoesSlot")]
+slots_tool = [NodePath("EquipmentHBox/EquipSlot1"), NodePath("EquipmentHBox/EquipSlot2"), NodePath("EquipmentHBox/EquipSlot3"), NodePath("EquipmentHBox/EquipSlot4")]
+health_bar = NodePath("GridContainer/HealthHBox/HealthProgressbar")
+fatigue_bar = NodePath("GridContainer/FatigueBox/FatigueProgressbar")
+
+[node name="Character" type="Control" parent="Background/InventoryTab/EquipmentPanel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HeadSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_left = 40.0
+offset_top = 1.0
+offset_right = 88.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+text = "[Head]"
+script = ExtResource("4_v56ys")
+type = 3
+
+[node name="ChestSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_left = 40.0
+offset_top = 57.0
+offset_right = 88.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+text = "[Chest]"
+script = ExtResource("4_v56ys")
+type = 3
+
+[node name="LegSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_left = 208.0
+offset_top = 1.0
+offset_right = 256.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+text = "[Legs]"
+script = ExtResource("4_v56ys")
+type = 3
+
+[node name="ShoesSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_left = 208.0
+offset_top = 57.0
+offset_right = 256.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+text = "[Foots]"
+script = ExtResource("4_v56ys")
+type = 3
+
+[node name="ColorRectProfil" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel"]
+layout_mode = 0
+offset_left = 96.0
+offset_right = 196.0
+offset_bottom = 112.0
+color = Color(0, 0, 0, 0.537255)
+
+[node name="TextureRect" type="TextureRect" parent="Background/InventoryTab/EquipmentPanel/ColorRectProfil"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_6jpat")
+
+[node name="EquipmentHBox" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 120.0
+offset_right = 256.0
+offset_bottom = 168.0
+theme_override_constants/separation = 8
+
+[node name="EquipSlot1" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+text = "[Weapon]"
+script = ExtResource("4_v56ys")
+type = 2
+
+[node name="EquipSlot2" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+text = "[Equip]"
+script = ExtResource("4_v56ys")
+type = 1
+
+[node name="EquipSlot3" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+text = "[Equip]"
+script = ExtResource("4_v56ys")
+type = 1
+
+[node name="EquipSlot4" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+text = "[Equip]"
+script = ExtResource("4_v56ys")
+type = 1
+
+[node name="GridContainer" type="GridContainer" parent="Background/InventoryTab/EquipmentPanel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 184.0
+offset_right = 256.0
+offset_bottom = 234.0
+
+[node name="HealthHBox" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="Label" type="Label" parent="Background/InventoryTab/EquipmentPanel/GridContainer/HealthHBox"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Health:"
+
+[node name="HealthProgressbar" type="ProgressBar" parent="Background/InventoryTab/EquipmentPanel/GridContainer/HealthHBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+value = 15.0
+
+[node name="FatigueBox" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="Label" type="Label" parent="Background/InventoryTab/EquipmentPanel/GridContainer/FatigueBox"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Fatigue:"
+
+[node name="FatigueProgressbar" type="ProgressBar" parent="Background/InventoryTab/EquipmentPanel/GridContainer/FatigueBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+value = 15.0
+
+[node name="KnowledgeHBox" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="Label" type="Label" parent="Background/InventoryTab/EquipmentPanel/GridContainer/KnowledgeHBox"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Unknown:"
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/InventoryTab/EquipmentPanel/GridContainer/KnowledgeHBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+value = 15.0
 
 [node name="ChestTab" type="ColorRect" parent="Background"]
 visible = false
@@ -449,6 +646,44 @@ text = "---"
 layout_mode = 2
 disabled = true
 text = "---"
+
+[node name="StatsTab" type="ColorRect" parent="Background"]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Background/StatsTab"]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 544.0
+offset_bottom = 270.0
+alignment = 1
+
+[node name="SaveGameButton" type="Button" parent="Background/StatsTab/HBoxContainer"]
+custom_minimum_size = Vector2(128, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Save Game"
+
+[node name="LoadGameButton" type="Button" parent="Background/StatsTab/HBoxContainer"]
+custom_minimum_size = Vector2(128, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Load Game"
+
+[node name="Label" type="Label" parent="Background/StatsTab/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "© 2024 Leon Schröder Asset Creations"
+horizontal_alignment = 1
 
 [node name="SaveLoadTab" type="ColorRect" parent="Background"]
 visible = false
@@ -794,12 +1029,15 @@ popup/item_0/icon = ExtResource("16_ldk1u")
 [connection signal="pressed" from="Background/HBoxHeader/SaveTabButton" to="." method="OnSaveLoadTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/SettingsTabButton" to="." method="OnSettingsTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/ExitTabButton" to="." method="OnExitButton"]
+[connection signal="visibility_changed" from="Background/InventoryTab/EquipmentPanel" to="Background/InventoryTab/EquipmentPanel" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/ChestTab/CloseButton" to="." method="OnCloseChestTab"]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/InputSlot" to="Background/FurnaceTab/PanelContainer/InputSlot" method="onMachineSlot" binds= [0]]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/ExportSlot" to="Background/FurnaceTab/PanelContainer/ExportSlot" method="onMachineSlot" binds= [1]]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/FuelSlot" to="Background/FurnaceTab/PanelContainer/FuelSlot" method="onMachineSlot" binds= [2]]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/Button" to="Background/FurnaceTab" method="OnMachineStateButton"]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/CloseButton" to="Background/FurnaceTab" method="ClearProcessBuilding"]
+[connection signal="pressed" from="Background/StatsTab/HBoxContainer/SaveGameButton" to="." method="OnSaveButton"]
+[connection signal="pressed" from="Background/StatsTab/HBoxContainer/LoadGameButton" to="." method="OnLoadButton"]
 [connection signal="pressed" from="Background/SaveLoadTab/HBoxContainer/SaveGameButton" to="." method="OnSaveButton"]
 [connection signal="pressed" from="Background/SaveLoadTab/HBoxContainer/LoadGameButton" to="." method="OnLoadButton"]
 [connection signal="item_selected" from="Background/SettingsTab/VBoxContainer/Language/PanelContainer/MarginContainerRight/OptionButton" to="Background/SettingsTab" method="OnItemSelected"]

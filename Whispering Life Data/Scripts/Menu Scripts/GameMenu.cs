@@ -201,6 +201,7 @@ public partial class GameMenu : CanvasLayer
 
     public void OnLoadButton()
     {
-        Game_Manager.INSTANCE.LoadGame();
+        OnExitButton();
+        GetTree().ReloadCurrentScene();
     }
 }

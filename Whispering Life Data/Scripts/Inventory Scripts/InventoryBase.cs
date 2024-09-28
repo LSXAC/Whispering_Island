@@ -48,10 +48,7 @@ public partial class InventoryBase : Control
     public void SetSlots()
     {
         foreach (Slot s in GetNode<GridContainer>($"GridContainer").GetChildren())
-        {
             slots.Add(s);
-            Debug.Print(slots.Count.ToString());
-        }
     }
 
     public Slot FindSlotWithItemInInventory(ItemInfo item_info)
@@ -102,6 +99,9 @@ public partial class InventoryBase : Control
             {
                 array[i].amount += amount;
 
+                QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
+                    QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
+                );
                 UpdateInventoryUI();
                 return;
             }
@@ -169,6 +169,7 @@ public partial class InventoryBase : Control
 
     public void LoadInventoryFromSave(ItemSave[] item_save)
     {
+        inventory_items = new ItemSave[20];
         inventory_items = item_save;
         UpdateInventoryUI();
     }

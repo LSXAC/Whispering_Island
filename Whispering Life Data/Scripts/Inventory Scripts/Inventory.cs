@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Transactions;
 
 public partial class Inventory : InventoryBase

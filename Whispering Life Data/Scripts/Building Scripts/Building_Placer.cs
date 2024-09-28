@@ -44,7 +44,7 @@ public partial class Building_Placer : Node2D
             placeable.collision_shape.Disabled = true;
             return;
         }
-        if (current_building is MachineBase)
+        if (current_building is placeable_building)
         {
             placeable = current_building as placeable_building;
             placeable.GetSprite().SelfModulate = new Color(1f, 1f, 1f, 0.5f);

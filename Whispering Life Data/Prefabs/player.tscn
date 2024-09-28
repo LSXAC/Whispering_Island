@@ -1,7 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://njw4so7o83dw"]
+[gd_scene load_steps=33 format=3 uid="uid://njw4so7o83dw"]
 
 [ext_resource type="Script" path="res://Scripts/Player Scripts/Player.cs" id="1_2p5ml"]
 [ext_resource type="Texture2D" uid="uid://b4214y7h1nkv7" path="res://Sprites/Char_Animation.png" id="2_c6oqb"]
+[ext_resource type="Script" path="res://Scripts/Player Scripts/Player_Stats.cs" id="5_f3lay"]
 [ext_resource type="Script" path="res://Scripts/Player Scripts/Player_Stamina.cs" id="5_l640a"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="6_k5wdo"]
 
@@ -267,7 +268,7 @@ collision_mask = 2
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_rjp5d")
 
-[node name="Player_Stamina" type="Node2D" parent="."]
+[node name="PlayerStamina" type="Node2D" parent="."]
 script = ExtResource("5_l640a")
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -275,6 +276,9 @@ modulate = Color(1, 1, 1, 0.392157)
 y_sort_enabled = true
 position = Vector2(0, -4)
 texture = ExtResource("6_k5wdo")
+
+[node name="PlayerStats" type="Node2D" parent="."]
+script = ExtResource("5_f3lay")
 
 [connection signal="area_entered" from="Area2D" to="." method="OnAreaEntered"]
 [connection signal="area_exited" from="Area2D" to="." method="OnAreaLeaved"]

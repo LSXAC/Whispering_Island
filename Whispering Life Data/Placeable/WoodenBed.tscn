@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://1kc5qr5s7veo"]
+
+[ext_resource type="Script" path="res://Placeable/Bed.cs" id="1_8y476"]
+[ext_resource type="Texture2D" uid="uid://c2yvdku225ug1" path="res://Sprites/Wooden_Bed.png" id="2_s6a6o"]
+[ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="4_aqiu5"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="5_wwg0f"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="6_5o0it"]
+[ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="7_h1m8n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
+size = Vector2(16, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
+size = Vector2(16, 30)
+
+[node name="Bed" type="StaticBody2D" node_paths=PackedStringArray("sprite", "collision_shape")]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_8y476")
+title = "Bed"
+description = "Sleep, Remove Fatigue, Sacrifice Time"
+sprite = NodePath("BuildingSprite")
+collision_shape = NodePath("MachineCollision")
+
+[node name="BuildingSprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-8, -4)
+texture = ExtResource("2_s6a6o")
+centered = false
+offset = Vector2(-9, -32)
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("4_aqiu5")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 254, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+tile_set = ExtResource("5_wwg0f")
+
+[node name="MachineCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -15)
+shape = SubResource("RectangleShape2D_m0htq")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-8, 9.53674e-07)
+scale = Vector2(1, 0.375)
+texture = ExtResource("6_5o0it")
+
+[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+position = Vector2(-8, -8)
+collision_layer = 2
+script = ExtResource("7_h1m8n")
+building_node = NodePath("..")
+building_sprite = NodePath("../BuildingSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_fk0le")
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

@@ -22,6 +22,7 @@ public partial class Player_Stamina : Node2D
                 new Vector2(velo_x, velo_y).Normalized() * speed_mult * 1.75f;
             Player.INSTANCE.anim.SpeedScale = 1.35f * 1.5f;
             current_stamina -= stamina_use;
+            Player.INSTANCE.player_stats.AddFatigue(0.01f);
         }
         else
         {
@@ -30,6 +31,7 @@ public partial class Player_Stamina : Node2D
             if (current_stamina >= max_stamina && stamina_is_regenerating)
                 stamina_is_regenerating = false;
 
+            Player.INSTANCE.player_stats.AddFatigue(0.0025f);
             Player.INSTANCE.Velocity = new Vector2(velo_x, velo_y) * speed_mult;
             Player.INSTANCE.anim.SpeedScale = 1.35f;
         }

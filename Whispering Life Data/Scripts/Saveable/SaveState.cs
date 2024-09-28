@@ -41,6 +41,6 @@ public partial class SaveState : Resource
 
     public static Resource LoadSave()
     {
-        return ResourceLoader.Load(save_path);
+        return ResourceLoader.Load(save_path, "", ResourceLoader.CacheMode.Replace);
     }
 }

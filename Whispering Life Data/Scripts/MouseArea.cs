@@ -75,6 +75,13 @@ public partial class MouseArea : Area2D
             ChestInventory.INSTANCE.OpenChest(GetParent<Chest>());
             Debug.Print("CHEST!" + " | " + Name);
         }
+
+        if (GetParent() is Bed)
+        {
+            //Open Bed UI, Select Time you want to Sleep
+            Player.INSTANCE.player_stats.RemoveFatigue(seconds: 5);
+            Debug.Print("Sleep");
+        }
     }
 
     public void OnMouseLeaved()

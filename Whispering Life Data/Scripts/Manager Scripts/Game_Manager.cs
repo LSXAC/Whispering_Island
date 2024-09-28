@@ -69,6 +69,8 @@ public partial class Game_Manager : Node2D
     {
         save_state.char_save = Player.char_save;
         save_state.char_save.player_position = Player.INSTANCE.Position;
+        save_state.char_save.health_value = Player.INSTANCE.player_stats.health_value;
+        save_state.char_save.fatigue_value = Player.INSTANCE.player_stats.fatigue_value;
 
         save_state.env_save.island_Saves = Islands_Manager.INSTANCE.island_saves;
 
@@ -81,6 +83,8 @@ public partial class Game_Manager : Node2D
         save_state.game_time_since_start = game_time_since_start;
 
         save_state.char_save.inventory_items = Inventory.INSTANCE.inventory_items;
+        save_state.char_save.equipped_armor = EquipmentPanel.INSTANCE.equipped_armor;
+        save_state.char_save.equipped_tool = EquipmentPanel.INSTANCE.equipped_tools;
 
         //Save Machines and Belts
         building_placer.SavePlacedObjects();
@@ -97,7 +101,7 @@ public partial class Game_Manager : Node2D
     {
         Debug.Print("Game_Manager - Loading SaveState");
         save_state = (SaveState)SaveState.LoadSave();
-
+        inside_game_menu = false;
         tutorial_finished = save_state.tutorial_finished;
 
         if (!tutorial_finished)
@@ -105,10 +109,18 @@ public partial class Game_Manager : Node2D
             StartTutorial();
             return;
         }
+        foreach (ItemSave save in save_state.char_save.inventory_items)
+            if (save != null)
+                Debug.Print(save.amount.ToString());
 
         Player.char_save = save_state.char_save;
         Player.INSTANCE.Position = save_state.char_save.player_position;
+        Player.INSTANCE.player_stats.health_value = save_state.char_save.health_value;
+        Player.INSTANCE.player_stats.fatigue_value = save_state.char_save.fatigue_value;
         Inventory.INSTANCE.LoadInventoryFromSave(save_state.char_save.inventory_items);
+
+        EquipmentPanel.INSTANCE.LoadArmorFromSave(save_state.char_save.equipped_armor);
+        EquipmentPanel.INSTANCE.LoadToolFromSave(save_state.char_save.equipped_tool);
 
         Islands_Manager.INSTANCE.island_saves = save_state.env_save.island_Saves;
         Islands_Manager.INSTANCE.LoadIslands(save_state.env_save.resource_object_manager_saves);
