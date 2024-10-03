@@ -1,7 +1,18 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://dvojtgqho3ajj"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=6 format=3 uid="uid://dvojtgqho3ajj"]
 
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_c6s5x"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_kqash"]
 [ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Pickaxe.png" id="2_wjrmy"]
+
+[sub_resource type="Resource" id="Resource_2i0b4"]
+script = ExtResource("1_c6s5x")
+type = 3
+bonus = 1.0
+
+[sub_resource type="Resource" id="Resource_16geq"]
+script = ExtResource("1_c6s5x")
+type = 0
+bonus = 0.2
 
 [resource]
 script = ExtResource("1_kqash")
@@ -11,3 +22,4 @@ item_name = "STONE_PICKAXE"
 item_description = "STONE_PICKAXE_DESC"
 texture = ExtResource("2_wjrmy")
 value = 5.0
+item_stats = [SubResource("Resource_2i0b4"), SubResource("Resource_16geq")]

@@ -14,15 +14,7 @@ public partial class CraftingMenu : PanelContainer
     public PackedScene recipe_slot = ResourceLoader.Load<PackedScene>("res://item_recipe.tscn");
 
     [Export]
-    public Array<Recipe> crafting_recipies = new Array<Recipe>();
-
-    public static CraftingMenu INSTANCE = null;
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
-        INSTANCE = this;
-    }
+    public Array<Resource> crafting_recipies = new Array<Resource>();
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta) { }
@@ -34,21 +26,19 @@ public partial class CraftingMenu : PanelContainer
 
         for (int i = 0; i < crafting_recipies.Count; i++)
         {
+            Recipe recipe = new Recipe();
+            recipe = crafting_recipies[i] as Recipe;
             itemRecipeUI irUI = (itemRecipeUI)recipe_slot.Instantiate();
+            irUI.craftingMenu = this;
             irUI.outputUI.InitItemUI(
-                crafting_recipies[i].output_item.item_info.item_name,
-                crafting_recipies[i].output_item.amount,
-                crafting_recipies[i].output_item.item_info.texture
+                recipe.output_item.item_info.item_name,
+                recipe.output_item.amount,
+                recipe.output_item.item_info.texture
             );
             parent.AddChild(irUI);
 
             //Get whole Inventory onces, to save performance, instead of checken for every item the
-            Array<Item> itemsInInventory = Inventory.INSTANCE.GetListOfItemsInInventory();
-            irUI.InitResourceItems(
-                crafting_recipies[i].requiered_items,
-                itemsInInventory,
-                crafting_recipies[i].output_item
-            );
+            irUI.InitResourceItems(recipe.requiered_items, recipe.output_item);
             irUI.button_id = i;
             irUI.craft_button.Pressed += () => irUI.CraftItem();
 

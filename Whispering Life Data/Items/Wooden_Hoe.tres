@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=6 format=3 uid="uid://c10rid084wdox"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_fqlw0"]
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_kn11j"]
+[ext_resource type="Texture2D" uid="uid://cixgxe6yx2sgh" path="res://Sprites/Items/Plants_Icons/Mystic_Fibre.png" id="2_h8mwi"]
+
+[sub_resource type="Resource" id="Resource_mcbdc"]
+script = ExtResource("1_fqlw0")
+type = 4
+bonus = 0.5
+
+[sub_resource type="Resource" id="Resource_o3yil"]
+script = ExtResource("1_fqlw0")
+type = 1
+bonus = -0.3
+
+[resource]
+script = ExtResource("1_kn11j")
+unique_item_id = 20
+item_type = 0
+item_name = "WOODEN_HOE"
+item_description = "WOODEN_HOE_DESC"
+texture = ExtResource("2_h8mwi")
+value = 10.0
+item_stats = [SubResource("Resource_mcbdc"), SubResource("Resource_o3yil")]

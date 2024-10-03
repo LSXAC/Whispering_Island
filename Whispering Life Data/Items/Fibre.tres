@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://cnhxvkn1vnyic"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_utofh"]
+[ext_resource type="Texture2D" uid="uid://cixgxe6yx2sgh" path="res://Sprites/Items/Plants_Icons/Mystic_Fibre.png" id="2_k64l7"]
+
+[resource]
+script = ExtResource("1_utofh")
+unique_item_id = 14
+item_type = 0
+item_name = "FIBRE"
+item_description = "FIBRE_DESC"
+texture = ExtResource("2_k64l7")
+value = 10.0
+item_stats = []

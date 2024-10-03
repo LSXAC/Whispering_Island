@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using Godot;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class ItemInfo : Resource
@@ -31,4 +33,7 @@ public partial class ItemInfo : Resource
 
     [Export(PropertyHint.Range, "0,1000,1")]
     public float value;
+
+    [Export]
+    public Array<ItemStats> item_stats = new Array<ItemStats>();
 }

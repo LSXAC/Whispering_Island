@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj72iumyf7nxx"]
+[gd_scene load_steps=4 format=3 uid="uid://bj72iumyf7nxx"]
 
 [ext_resource type="Script" path="res://Prefabs/ChestInventory.cs" id="1_r1544"]
+[ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://Menus/Theme_Slots.tres" id="2_3btuv"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/Slot.cs" id="2_ols8c"]
 
 [node name="ChestInventory" type="Control"]
@@ -22,99 +23,119 @@ columns = 4
 [node name="Slot0" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot1" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot2" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot3" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot4" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot5" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot6" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot7" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot8" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot9" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot10" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot11" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot12" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot13" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot14" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot15" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot16" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot17" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot18" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")
 
 [node name="Slot19" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+theme = ExtResource("2_3btuv")
 script = ExtResource("2_ols8c")

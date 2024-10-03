@@ -1,7 +1,18 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://bvplgrho461h0"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=6 format=3 uid="uid://bvplgrho461h0"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_hlfru"]
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_o6n1x"]
 [ext_resource type="Texture2D" uid="uid://dru5exeq2s371" path="res://Sprites/Items/Icons_3rd/Stone_Knife.png" id="2_1lwkt"]
+
+[sub_resource type="Resource" id="Resource_p82l7"]
+script = ExtResource("1_o6n1x")
+type = 0
+bonus = 0.2
+
+[sub_resource type="Resource" id="Resource_6hoy5"]
+script = ExtResource("1_o6n1x")
+type = 1
+bonus = -0.5
 
 [resource]
 script = ExtResource("1_hlfru")
@@ -11,3 +22,4 @@ item_name = "STONE_KNIFE"
 item_description = "STONE_KNIFE_DESC"
 texture = ExtResource("2_1lwkt")
 value = 10.0
+item_stats = [SubResource("Resource_p82l7"), SubResource("Resource_6hoy5")]

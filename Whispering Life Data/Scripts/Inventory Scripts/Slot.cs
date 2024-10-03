@@ -87,6 +87,7 @@ public partial class Slot : Button
                     EquipmentPanel.INSTANCE.equipped_tools[index] = null;
                     EquipmentPanel.INSTANCE.slots_tool[index].ClearItem();
                 }
+                EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
             }
         }
         else
@@ -108,6 +109,7 @@ public partial class Slot : Button
                     //inventory_base.UpdateInventoryUI();
                     Inventory.clicked_item.QueueFree();
                     Inventory.clicked_item = null;
+                    EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
                 }
                 if (
                     type == Inventory.clicked_item.item_info.item_type
@@ -124,6 +126,7 @@ public partial class Slot : Button
                     //inventory_base.UpdateInventoryUI();
                     Inventory.clicked_item.QueueFree();
                     Inventory.clicked_item = null;
+                    EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
                 }
                 //Update Notification to EquipmentPanel to update Stats (Bonus)
             }
@@ -151,6 +154,9 @@ public partial class Slot : Button
                     Inventory.clicked_item.item_info.unique_item_id,
                     Inventory.clicked_item.amount
                 );
+                inventory_base.UpdateInventoryUI();
+                Inventory.clicked_item.QueueFree();
+                Inventory.clicked_item = null;
             }
             if (GetItem() != null)
                 if (GetItem().item_info == Inventory.clicked_item.item_info)
@@ -158,10 +164,10 @@ public partial class Slot : Button
                     inventory_base.inventory_items[GetIndex()].amount += Inventory
                         .clicked_item
                         .amount;
+                    inventory_base.UpdateInventoryUI();
+                    Inventory.clicked_item.QueueFree();
+                    Inventory.clicked_item = null;
                 }
-            inventory_base.UpdateInventoryUI();
-            Inventory.clicked_item.QueueFree();
-            Inventory.clicked_item = null;
         }
     }
 

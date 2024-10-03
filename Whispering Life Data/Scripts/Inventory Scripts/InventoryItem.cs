@@ -21,7 +21,14 @@ public partial class InventoryItem : TextureRect
         l.VerticalAlignment = VerticalAlignment.Bottom;
         l.HorizontalAlignment = HorizontalAlignment.Right;
         amount_label = l;
-        TooltipText = TranslationServer.Translate(item_info.item_description.ToString());
+        TooltipText = TranslationServer.Translate(item_info.item_description.ToString()) + "\n";
+        TooltipText += "Type: " + item_info.item_type + "\n";
+        foreach (ItemStats stats in item_info.item_stats)
+            if (stats.bonus > 0)
+                TooltipText += "\n" + stats.type.ToString() + ": +" + (stats.bonus * 100) + "%";
+            else if (stats.bonus < 0)
+                TooltipText += "\n" + stats.type.ToString() + ": " + (stats.bonus * 100) + "%";
+
         AddChild(l);
     }
 

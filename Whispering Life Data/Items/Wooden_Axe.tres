@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=6 format=3 uid="uid://dmrxwabbdyg0d"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_8fx8c"]
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_ssgok"]
+[ext_resource type="Texture2D" uid="uid://ppkhe2a2ex8x" path="res://Sprites/Items/Tool_Icons/Wood_Chest.png" id="2_n6xng"]
+
+[sub_resource type="Resource" id="Resource_4kdc1"]
+script = ExtResource("1_ssgok")
+type = 2
+bonus = 0.25
+
+[sub_resource type="Resource" id="Resource_t6n0y"]
+script = ExtResource("1_ssgok")
+type = 0
+bonus = 0.5
+
+[resource]
+script = ExtResource("1_8fx8c")
+unique_item_id = 5
+item_type = 1
+item_name = "WOODEN_AXE"
+item_description = "WOODEN_AXE_DESC"
+texture = ExtResource("2_n6xng")
+value = 5.0
+item_stats = [SubResource("Resource_4kdc1"), SubResource("Resource_t6n0y")]

@@ -59,7 +59,7 @@ public partial class Game_Manager : Node2D
         Node2D main_island = island_parent.GetNode<Node2D>("MainIsland");
         Island_Properties mi = main_island.GetNode<Node2D>("IslandProperties") as Island_Properties;
 
-        TranslationServer.SetLocale("de");
+        TranslationServer.SetLocale("en");
 
         CreateIslands();
         CheckGameSave();
@@ -121,6 +121,7 @@ public partial class Game_Manager : Node2D
 
         EquipmentPanel.INSTANCE.LoadArmorFromSave(save_state.char_save.equipped_armor);
         EquipmentPanel.INSTANCE.LoadToolFromSave(save_state.char_save.equipped_tool);
+        EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
 
         Islands_Manager.INSTANCE.island_saves = save_state.env_save.island_Saves;
         Islands_Manager.INSTANCE.LoadIslands(save_state.env_save.resource_object_manager_saves);

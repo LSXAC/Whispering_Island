@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=11 format=3 uid="uid://b7a6dtp0rqub1"]
+
+[ext_resource type="Resource" uid="uid://c10rid084wdox" path="res://Items/Wooden_Hoe.tres" id="1_opu84"]
+[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_8dwyn"]
+[ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Items/Wooden_Handle.tres" id="3_qs25p"]
+[ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Items/Mystic_Fibre.tres" id="4_n4kll"]
+[ext_resource type="Resource" uid="uid://n1o6p57v8r23" path="res://Items/Wooden_Hoe_Head.tres" id="5_go1d0"]
+[ext_resource type="Script" path="res://Scripts/Resources/Recipe.cs" id="6_re561"]
+
+[sub_resource type="Resource" id="Resource_6mgx6"]
+script = ExtResource("2_8dwyn")
+item_info = ExtResource("1_opu84")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_q4hka"]
+script = ExtResource("2_8dwyn")
+item_info = ExtResource("3_qs25p")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_hbdev"]
+script = ExtResource("2_8dwyn")
+item_info = ExtResource("4_n4kll")
+amount = 2
+
+[sub_resource type="Resource" id="Resource_0htsl"]
+script = ExtResource("2_8dwyn")
+item_info = ExtResource("5_go1d0")
+amount = 1
+
+[resource]
+script = ExtResource("6_re561")
+requiered_items = Array[Object]([SubResource("Resource_q4hka"), SubResource("Resource_hbdev"), SubResource("Resource_0htsl")])
+output_item = SubResource("Resource_6mgx6")

@@ -6,6 +6,7 @@
 
 using System;
 using Godot;
+using Godot.Collections;
 
 public partial class Player_Stats : Node2D
 {
@@ -14,7 +15,14 @@ public partial class Player_Stats : Node2D
     public const float fatigue_amount = 0.1f;
     public const float fatigue_remove_by_sleep_amount = 0.1f;
 
+    public float[] stat_amounts = new float[Enum.GetNames(typeof(StatsPanel.stat_types)).Length];
+
     public override void _Ready() { }
+
+    public void UpdateStatsByEquipmentChange()
+    {
+        //EquipmentPanel.INSTANCE
+    }
 
     public void AddFatigue(float amount)
     {

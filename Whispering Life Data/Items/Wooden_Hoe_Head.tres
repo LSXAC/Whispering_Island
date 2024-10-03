@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://n1o6p57v8r23"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_6xubx"]
+[ext_resource type="Texture2D" uid="uid://cixgxe6yx2sgh" path="res://Sprites/Items/Plants_Icons/Mystic_Fibre.png" id="2_0ol51"]
+
+[resource]
+script = ExtResource("1_6xubx")
+unique_item_id = 19
+item_type = 0
+item_name = "WOODEN_HOE_HEAD"
+item_description = "WOODEN_HOE_HEAD_DESC"
+texture = ExtResource("2_0ol51")
+value = 10.0
+item_stats = []

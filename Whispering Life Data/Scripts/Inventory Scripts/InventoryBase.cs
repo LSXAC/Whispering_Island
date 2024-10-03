@@ -16,7 +16,7 @@ public partial class InventoryBase : Control
         ResourceLoader.Load<ItemInfo>("res://Items/Wood_Stick.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Stone_Pickaxe.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Wood_Plank.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Wood_Chest.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Char_Coal.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Iron_Ore.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Iron_Ingot.tres"),
@@ -25,6 +25,14 @@ public partial class InventoryBase : Control
         ResourceLoader.Load<ItemInfo>("res://Items/Stone_Knife.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Fibre.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Wood.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Fibre.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Stone_Blade.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Handle.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Stone_Axe_Head.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Stone_Pickaxe_Head.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Hoe_Head.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Hoe.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe_Head.tres"),
     };
 
     public override void _Ready()
@@ -75,12 +83,11 @@ public partial class InventoryBase : Control
     public Array<Item> GetListOfItemsInInventory()
     {
         Array<Item> items = new Array<Item>();
-        foreach (Slot s in slots)
+        foreach (ItemSave s in inventory_items)
         {
-            InventoryItem i = s.GetItem();
-            if (i != null)
+            if (s != null)
             {
-                Item item = new Item { item_info = i.item_info, amount = i.amount };
+                Item item = new Item { item_info = item_Types[s.item_id], amount = s.amount };
                 items.Add(item);
             }
         }
@@ -97,7 +104,10 @@ public partial class InventoryBase : Control
 
             if (array[i].item_id == item_info.unique_item_id)
             {
-                array[i].amount += amount;
+                if (array[i].amount + amount <= 0)
+                    array[i] = null;
+                else
+                    array[i].amount += amount;
 
                 QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
                     QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
@@ -152,7 +162,6 @@ public partial class InventoryBase : Control
     public void OnVisiblityChange()
     {
         UpdateInventoryUI();
-        Debug.Print("Updated Invs");
     }
 
     public void UpdateInventoryUI()
@@ -165,6 +174,8 @@ public partial class InventoryBase : Control
                 GetNode<Slot>($"GridContainer/Slot{i}")
                     .SetItem(item_Types[inventory_items[i].item_id], inventory_items[i].amount);
         }
+
+        Debug.Print("Inventory Updated");
     }
 
     public void LoadInventoryFromSave(ItemSave[] item_save)

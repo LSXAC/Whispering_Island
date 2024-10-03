@@ -13,6 +13,7 @@ script = ExtResource("1_i2qso")
 parent = NodePath("MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere")
 craft_button = NodePath("MarginContainer/VSplitContainer/HBoxRequiereToCraft/CraftButton")
 outputUI = NodePath("MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem")
+req_items = Array[Object]([])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0

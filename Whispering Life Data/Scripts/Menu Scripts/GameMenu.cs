@@ -132,6 +132,29 @@ public partial class GameMenu : CanvasLayer
         crafting_tab.GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
     }
 
+    public void OnCraftingCategoryButton(int id)
+    {
+        crafting_tab.GetNode<CraftingMenu>("CraftingMenuBasic").Visible = false;
+        crafting_tab.GetNode<CraftingMenu>("CraftingMenuTools").Visible = false;
+        crafting_tab.GetNode<CraftingMenu>("CraftingMenuToolparts").Visible = false;
+
+        switch (id)
+        {
+            case 0:
+                crafting_tab.GetNode<CraftingMenu>("CraftingMenuBasic").Visible = true;
+                crafting_tab.GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
+                break;
+            case 1:
+                crafting_tab.GetNode<CraftingMenu>("CraftingMenuTools").Visible = true;
+                crafting_tab.GetNode<CraftingMenu>("CraftingMenuTools").ReloadUIRecipes();
+                break;
+            case 2:
+                crafting_tab.GetNode<CraftingMenu>("CraftingMenuToolparts").Visible = true;
+                crafting_tab.GetNode<CraftingMenu>("CraftingMenuToolparts").ReloadUIRecipes();
+                break;
+        }
+    }
+
     public void OnSaveLoadTabButton()
     {
         ChangeSelectedTabColor(Tabs.LoadSave);

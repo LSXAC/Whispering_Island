@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://dc73s801r6m64"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_hnkh6"]
+[ext_resource type="Texture2D" uid="uid://cixgxe6yx2sgh" path="res://Sprites/Items/Plants_Icons/Mystic_Fibre.png" id="2_yhnnn"]
+
+[resource]
+script = ExtResource("1_hnkh6")
+unique_item_id = 17
+item_type = 0
+item_name = "STONE_AXE_HEAD"
+item_description = "STONE_AXE_HEAD_DESC"
+texture = ExtResource("2_yhnnn")
+value = 10.0
+item_stats = []
