@@ -159,7 +159,8 @@ public partial class Slot : Button
                 Inventory.clicked_item = null;
             }
             if (GetItem() != null)
-                if (GetItem().item_info == Inventory.clicked_item.item_info)
+                if (GetItem().item_info ==
+                 Inventory.clicked_item.item_info)
                 {
                     inventory_base.inventory_items[GetIndex()].amount += Inventory
                         .clicked_item

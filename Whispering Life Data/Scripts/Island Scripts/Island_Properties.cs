@@ -55,10 +55,10 @@ public partial class Island_Properties : Node2D
     };
 
     [Export]
-    private int matrix_x = 0;
+    public int matrix_x = 0;
 
     [Export]
-    private int matrix_y = 0;
+    public int matrix_y = 0;
 
     private float x = 0;
     private float y = 0;
