@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_lxl0p")
 unique_item_id = 18
-item_type = 0
+item_types = Array[int]([0])
 item_name = "STONE_PICKAXE_HEAD"
 item_description = "STONE_PICKAXE_HEAD_DESC"
 texture = ExtResource("2_mcs8f")

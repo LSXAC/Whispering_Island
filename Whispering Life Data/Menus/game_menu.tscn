@@ -169,7 +169,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "[Head]"
 script = ExtResource("4_v56ys")
-type = 3
+slot_type = 3
 
 [node name="ChestSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character"]
 custom_minimum_size = Vector2(48, 48)
@@ -183,7 +183,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "[Chest]"
 script = ExtResource("4_v56ys")
-type = 3
+slot_type = 3
 
 [node name="LegSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character"]
 custom_minimum_size = Vector2(48, 48)
@@ -196,7 +196,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "[Legs]"
 script = ExtResource("4_v56ys")
-type = 3
+slot_type = 3
 
 [node name="ShoesSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character"]
 custom_minimum_size = Vector2(48, 48)
@@ -210,7 +210,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "[Foots]"
 script = ExtResource("4_v56ys")
-type = 3
+slot_type = 3
 
 [node name="ColorRectProfil" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel"]
 layout_mode = 0
@@ -251,7 +251,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "[Weapon]"
 script = ExtResource("4_v56ys")
-type = 2
+slot_type = 2
 
 [node name="EquipSlot2" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
 custom_minimum_size = Vector2(48, 48)
@@ -261,7 +261,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "[TOOL]"
 script = ExtResource("4_v56ys")
-type = 1
+slot_type = 1
 
 [node name="EquipSlot3" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
 custom_minimum_size = Vector2(48, 48)
@@ -271,7 +271,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "[TOOL]"
 script = ExtResource("4_v56ys")
-type = 1
+slot_type = 1
 
 [node name="EquipSlot4" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
 custom_minimum_size = Vector2(48, 48)
@@ -281,7 +281,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "[TOOL]"
 script = ExtResource("4_v56ys")
-type = 1
+slot_type = 1
 
 [node name="GridContainer" type="GridContainer" parent="Background/InventoryTab/EquipmentPanel"]
 layout_mode = 0
@@ -524,7 +524,11 @@ offset_top = -176.0
 offset_right = 48.0
 offset_bottom = -128.0
 theme = ExtResource("10_8x2l6")
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+text = "[INPUT]"
 script = ExtResource("4_v56ys")
+slot_type = 6
 
 [node name="ExportSlot" type="Button" parent="Background/FurnaceTab/PanelContainer"]
 custom_minimum_size = Vector2(48, 48)
@@ -534,7 +538,11 @@ offset_top = -176.0
 offset_right = 304.0
 offset_bottom = -128.0
 theme = ExtResource("10_8x2l6")
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+text = "[OUTPUT]"
 script = ExtResource("4_v56ys")
+is_export_slot = true
 
 [node name="FuelSlot" type="Button" parent="Background/FurnaceTab/PanelContainer"]
 custom_minimum_size = Vector2(48, 48)
@@ -543,7 +551,11 @@ offset_top = -120.0
 offset_right = 48.0
 offset_bottom = -72.0
 theme = ExtResource("10_8x2l6")
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+text = "[FUEL]"
 script = ExtResource("4_v56ys")
+slot_type = 7
 
 [node name="ProgressBar" type="ProgressBar" parent="Background/FurnaceTab/PanelContainer"]
 layout_mode = 0

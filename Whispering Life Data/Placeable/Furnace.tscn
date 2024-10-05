@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cn0rjr3gah4jr"]
+[gd_scene load_steps=20 format=4 uid="uid://cn0rjr3gah4jr"]
 
 [ext_resource type="Script" path="res://Scripts/Building Scripts/ProcessBuilding.cs" id="1_vtdy4"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="2_gjbdr"]
@@ -64,6 +64,7 @@ collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
 z_index = -2
+tile_map_data = PackedByteArray("AAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAACAAAAAAAAAP//AAACAAAAAAD/////AAACAAAAAAA=")
 tile_set = ExtResource("6_vvdf8")
 
 [node name="MachineCollision" type="CollisionShape2D" parent="."]

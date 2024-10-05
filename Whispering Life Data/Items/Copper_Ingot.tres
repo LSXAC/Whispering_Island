@@ -6,8 +6,9 @@
 [resource]
 script = ExtResource("1_1iyg4")
 unique_item_id = 10
-item_type = 0
+item_types = Array[int]([0])
 item_name = "COPPER_INGOT"
 item_description = "COPPER_INGOT_DESC"
 texture = ExtResource("2_germ5")
 value = 10.0
+item_stats = []

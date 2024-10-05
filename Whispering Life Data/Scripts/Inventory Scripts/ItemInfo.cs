@@ -13,14 +13,19 @@ public partial class ItemInfo : Resource
         Weapon,
         Cloths,
         Placeable,
-        ALL
+        ALL,
+        SMELTABLE,
+        BURNABLE
     };
 
     [Export]
     public int unique_item_id = -1;
 
     [Export]
-    public Type item_type;
+    public Array<Type> item_types;
+
+    [Export]
+    public int burntime = 60;
 
     [Export]
     public string item_name;
@@ -36,4 +41,12 @@ public partial class ItemInfo : Resource
 
     [Export]
     public Array<ItemStats> item_stats = new Array<ItemStats>();
+
+    public bool HasType(Type type)
+    {
+        foreach (Type item_type in item_types)
+            if (item_type == type)
+                return true;
+        return false;
+    }
 }

@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_utofh")
 unique_item_id = 14
-item_type = 0
+item_types = Array[int]([0])
 item_name = "FIBRE"
 item_description = "FIBRE_DESC"
 texture = ExtResource("2_k64l7")

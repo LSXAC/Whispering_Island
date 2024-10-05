@@ -1,11 +1,13 @@
-using System.Diagnostics;
-using System.Xml.Serialization;
 using Godot;
+using Godot.Collections;
 
 public partial class Slot : Button
 {
     [Export]
-    public ItemInfo.Type type;
+    public ItemInfo.Type slot_type;
+
+    [Export]
+    public bool is_export_slot = false;
 
     InventoryBase inventory_base = null;
 
@@ -21,7 +23,7 @@ public partial class Slot : Button
             inventory_base = (InventoryBase)GetParent().GetParent();
             Pressed += () => OnChestSlotButton();
         }
-        if (type == ItemInfo.Type.Cloths || type == ItemInfo.Type.Tool)
+        if (slot_type == ItemInfo.Type.Cloths || slot_type == ItemInfo.Type.Tool)
         {
             Pressed += () => OnEquipSlotButton(GetIndex());
         }
@@ -77,12 +79,12 @@ public partial class Slot : Button
             if (GetItem() != null)
             {
                 CreateClickedItem();
-                if (GetItem().item_info.item_type == ItemInfo.Type.Cloths)
+                if (GetItem().item_info.HasType(ItemInfo.Type.Cloths))
                 {
                     EquipmentPanel.INSTANCE.equipped_armor[index] = null;
                     EquipmentPanel.INSTANCE.slots_armor[index].ClearItem();
                 }
-                if (GetItem().item_info.item_type == ItemInfo.Type.Tool)
+                if (GetItem().item_info.HasType(ItemInfo.Type.Tool))
                 {
                     EquipmentPanel.INSTANCE.equipped_tools[index] = null;
                     EquipmentPanel.INSTANCE.slots_tool[index].ClearItem();
@@ -95,8 +97,8 @@ public partial class Slot : Button
             if (GetItem() == null)
             {
                 if (
-                    type == Inventory.clicked_item.item_info.item_type
-                    && type == ItemInfo.Type.Cloths
+                    Inventory.clicked_item.item_info.HasType(slot_type)
+                    && slot_type == ItemInfo.Type.Cloths
                 )
                 {
                     EquipmentPanel.INSTANCE.equipped_armor[index] = new ItemSave(
@@ -112,8 +114,8 @@ public partial class Slot : Button
                     EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
                 }
                 if (
-                    type == Inventory.clicked_item.item_info.item_type
-                    && type == ItemInfo.Type.Tool
+                    Inventory.clicked_item.item_info.HasType(slot_type)
+                    && slot_type == ItemInfo.Type.Tool
                 )
                 {
                     EquipmentPanel.INSTANCE.equipped_tools[index] = new ItemSave(
@@ -157,10 +159,10 @@ public partial class Slot : Button
                 inventory_base.UpdateInventoryUI();
                 Inventory.clicked_item.QueueFree();
                 Inventory.clicked_item = null;
+                return;
             }
             if (GetItem() != null)
-                if (GetItem().item_info ==
-                 Inventory.clicked_item.item_info)
+                if (GetItem().item_info == Inventory.clicked_item.item_info)
                 {
                     inventory_base.inventory_items[GetIndex()].amount += Inventory
                         .clicked_item
@@ -168,6 +170,7 @@ public partial class Slot : Button
                     inventory_base.UpdateInventoryUI();
                     Inventory.clicked_item.QueueFree();
                     Inventory.clicked_item = null;
+                    return;
                 }
         }
     }
@@ -191,6 +194,10 @@ public partial class Slot : Button
                     Inventory.clicked_item.item_info.unique_item_id,
                     Inventory.clicked_item.amount
                 );
+                inventory_base.UpdateInventoryUI();
+                Inventory.clicked_item.QueueFree();
+                Inventory.clicked_item = null;
+                return;
             }
             if (GetItem() != null)
                 if (GetItem().item_info == Inventory.clicked_item.item_info)
@@ -201,6 +208,7 @@ public partial class Slot : Button
             inventory_base.UpdateInventoryUI();
             Inventory.clicked_item.QueueFree();
             Inventory.clicked_item = null;
+            return;
         }
     }
 
@@ -246,38 +254,45 @@ public partial class Slot : Button
         {
             if (GetItem() == null)
             {
-                switch (id)
+                if (Inventory.clicked_item.item_info.HasType(slot_type))
                 {
-                    case (int)FurnaceTab.SlotType.IMPORT:
-                        FurnaceTab.INSTANCE.process_building.import_item_info = Inventory
-                            .clicked_item
-                            .item_info;
-                        FurnaceTab.INSTANCE.process_building.import_count = Inventory
-                            .clicked_item
-                            .amount;
-                        break;
+                    switch (id)
+                    {
+                        case (int)FurnaceTab.SlotType.IMPORT:
+                            FurnaceTab.INSTANCE.process_building.import_item_info = Inventory
+                                .clicked_item
+                                .item_info;
+                            FurnaceTab.INSTANCE.process_building.import_count = Inventory
+                                .clicked_item
+                                .amount;
+                            FurnaceTab.INSTANCE.UpdateFurnaceUI();
+                            Inventory.clicked_item.QueueFree();
+                            Inventory.clicked_item = null;
+                            break;
 
-                    case (int)FurnaceTab.SlotType.EXPORT:
-                        FurnaceTab.INSTANCE.process_building.export_item_info = Inventory
-                            .clicked_item
-                            .item_info;
-                        FurnaceTab.INSTANCE.process_building.export_count = Inventory
-                            .clicked_item
-                            .amount;
-                        break;
+                        /* EXPORT SLOT should not Items be placed, only taken out
+                        case (int)FurnaceTab.SlotType.EXPORT:
+                            FurnaceTab.INSTANCE.process_building.export_item_info = Inventory
+                                .clicked_item
+                                .item_info;
+                            FurnaceTab.INSTANCE.process_building.export_count = Inventory
+                                .clicked_item
+                                .amount;
+                            break;*/
 
-                    case (int)FurnaceTab.SlotType.FUEL:
-                        FurnaceTab.INSTANCE.process_building.fuel_item_info = Inventory
-                            .clicked_item
-                            .item_info;
-                        FurnaceTab.INSTANCE.process_building.fuel_count = Inventory
-                            .clicked_item
-                            .amount;
-                        break;
+                        case (int)FurnaceTab.SlotType.FUEL:
+                            FurnaceTab.INSTANCE.process_building.fuel_item_info = Inventory
+                                .clicked_item
+                                .item_info;
+                            FurnaceTab.INSTANCE.process_building.fuel_count = Inventory
+                                .clicked_item
+                                .amount;
+                            FurnaceTab.INSTANCE.UpdateFurnaceUI();
+                            Inventory.clicked_item.QueueFree();
+                            Inventory.clicked_item = null;
+                            break;
+                    }
                 }
-                FurnaceTab.INSTANCE.UpdateFurnaceUI();
-                Inventory.clicked_item.QueueFree();
-                Inventory.clicked_item = null;
             }
         }
     }

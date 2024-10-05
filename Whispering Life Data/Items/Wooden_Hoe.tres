@@ -17,7 +17,7 @@ bonus = -0.3
 [resource]
 script = ExtResource("1_kn11j")
 unique_item_id = 20
-item_type = 0
+item_types = Array[int]([1, 7])
 item_name = "WOODEN_HOE"
 item_description = "WOODEN_HOE_DESC"
 texture = ExtResource("2_h8mwi")

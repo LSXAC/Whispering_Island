@@ -23,7 +23,13 @@ public partial class InventoryItem : TextureRect
         amount_label = l;
         TooltipText = TranslationServer.Translate(item_info.item_name.ToString()) + "\n";
         TooltipText += TranslationServer.Translate(item_info.item_description.ToString()) + "\n";
-        TooltipText += "Type: " + item_info.item_type + "\n";
+        foreach (ItemInfo.Type type in item_info.item_types)
+        {
+            if (type == ItemInfo.Type.BURNABLE)
+                TooltipText += "Burntime: " + item_info.burntime + "s" + "\n";
+            else
+                TooltipText += "Type: " + type + "\n";
+        }
         foreach (ItemStats stats in item_info.item_stats)
             if (stats.bonus > 0)
                 TooltipText += "\n" + stats.type.ToString() + ": +" + (stats.bonus * 100) + "%";

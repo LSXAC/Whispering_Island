@@ -6,8 +6,9 @@
 [resource]
 script = ExtResource("1_thvwm")
 unique_item_id = 7
-item_type = 0
+item_types = Array[int]([0, 6])
 item_name = "IRON_ORE"
 item_description = "IRON_ORE_DESC"
 texture = ExtResource("2_1b5uf")
 value = 10.0
+item_stats = []
