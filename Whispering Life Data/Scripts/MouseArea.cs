@@ -21,6 +21,10 @@ public partial class MouseArea : Area2D
     {
         if (Game_Manager.building_mode == Game_Manager.BuildingMode.None)
         {
+            if (GetParent() is ResourceObject)
+                if (((ResourceObject)GetParent()).in_cooldown)
+                    return;
+
             building_sprite.Material = outline_shader;
             building_node.mouse_inside = true;
             if (!building_node.GetTitle().ToString().ToUpper().Contains("BELT"))

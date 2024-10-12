@@ -7,17 +7,17 @@ public partial class IslandSave : Resource
     public Island_Properties.DIRECTION dir = Island_Properties.DIRECTION.NONE;
 
     [Export]
-    public int start_unique_island_id = -1;
+    public int matrix_island_id = -1;
 
     [Export]
-    public int end_unique_island_id = -1;
+    public int island_id = -1;
 
     public IslandSave() { }
 
-    public IslandSave(Island_Properties.DIRECTION dir, int start_unique_id, int end_unique_id)
+    public IslandSave(Island_Properties.DIRECTION dir, int matrix_island_id, int island_id)
     {
         this.dir = dir;
-        this.start_unique_island_id = start_unique_id;
-        this.end_unique_island_id = end_unique_id;
+        this.matrix_island_id = matrix_island_id;
+        this.island_id = island_id;
     }
 }

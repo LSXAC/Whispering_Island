@@ -112,6 +112,9 @@ public partial class ResourceObject : Building_Node
             );
             StartTimerBar(TimerBar.state.RESPAWNING, respawn_seconds);
             Inventory.INSTANCE.AddItem(item_info, 3, Inventory.INSTANCE.inventory_items);
+            GetNode<CollisionShape2D>("Collision").Disabled = true;
+            GetNode<Sprite2D>("Shadow").Visible = false;
+            hover_menu.DisableHoverMenu();
             return;
         }
         anim_player.Play("Hit");
@@ -138,7 +141,8 @@ public partial class ResourceObject : Building_Node
             current_durability = max_durability;
             anim_player.PlayBackwards("Break");
         }
-
+        GetNode<CollisionShape2D>("Collision").Disabled = false;
+        GetNode<Sprite2D>("Shadow").Visible = true;
         in_cooldown = false;
         interactableArea.Monitoring = true;
         timer_bar.currentstate = TimerBar.state.COOLDOWN;

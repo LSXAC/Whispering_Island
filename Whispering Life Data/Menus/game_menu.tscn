@@ -456,6 +456,7 @@ horizontal_alignment = 1
 
 [node name="ChestTab" type="ColorRect" parent="Background"]
 visible = false
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -483,6 +484,7 @@ text = "X"
 
 [node name="FurnaceTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("export_slot", "import_slot", "fuel_slot", "safty_panel", "machineProgressbar", "workingProgressbar", "switch_button", "working_label")]
 visible = false
+z_index = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -608,7 +610,7 @@ offset_bottom = -80.0
 
 [node name="CraftingTab" type="ColorRect" parent="Background"]
 visible = false
-z_index = 2
+z_index = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -727,7 +729,7 @@ text = "---"
 
 [node name="StatsTab" type="ColorRect" parent="Background"]
 visible = false
-z_index = 2
+z_index = 4
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -765,7 +767,7 @@ horizontal_alignment = 1
 
 [node name="SaveLoadTab" type="ColorRect" parent="Background"]
 visible = false
-z_index = 2
+z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -803,6 +805,7 @@ horizontal_alignment = 1
 
 [node name="SettingsTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("option_button")]
 visible = false
+z_index = 6
 layout_mode = 0
 offset_top = 26.0
 offset_right = 560.0

@@ -46,11 +46,6 @@ public partial class island_menu : CanvasLayer
         if (current_sign == null)
             return;
 
-        Islands_Manager.INSTANCE.SaveIsland(
-            current_sign.dir,
-            current_sign.current_ip.unique_island_id,
-            id
-        );
         CreateIsland(id, current_sign.dir, current_sign.current_ip);
 
         SwitchBuildingMenu();

@@ -41,7 +41,7 @@ shader_parameter/noise_texture = ExtResource("9_vucc1")
 [node name="Island_1" type="Node2D" groups=["Island_Properties"]]
 y_sort_enabled = true
 script = ExtResource("1_4csf6")
-unique_island_id = 1
+unique_island_id = 0
 
 [node name="BuildingArea" type="TileMapLayer" parent="." groups=["BuildingCollision"]]
 z_index = -21

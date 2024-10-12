@@ -8,5 +8,5 @@ public partial class ResourceObjectManagerSave : Resource
     public Array<ResourceObjectSave> resource_object_saves = new Array<ResourceObjectSave>();
 
     [Export]
-    public int unique_island_id = -1;
+    public int matrix_island_id = -1;
 }

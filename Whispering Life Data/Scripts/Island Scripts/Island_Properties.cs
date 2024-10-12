@@ -8,6 +8,9 @@ public partial class Island_Properties : Node2D
     public int unique_island_id = -1;
 
     [Export]
+    public int matrix_island_id = 0;
+
+    [Export]
     private int island_tiles = 16;
 
     [Export]
@@ -66,8 +69,7 @@ public partial class Island_Properties : Node2D
     public override void _Ready()
     {
         ost = GetNode<ObjectSpawnerTilemap>("ObjectSpawnerTilemap");
-        ost.roms.unique_island_id = unique_island_id;
-
+        ost.roms.matrix_island_id = matrix_island_id;
         Node2D start_node = GetNode<Node2D>("IslandProperties");
         bridge_start_points = start_node.GetNode<Node2D>("BridgeStartPoints");
         bridge_collision_parent = start_node.GetNode<StaticBody2D>("BridgeCollisions");
@@ -195,6 +197,10 @@ public partial class Island_Properties : Node2D
                 GD.Print("NO DIRECTION");
                 break;
         }
+        Islands_Manager.INSTANCE.SaveIsland(dir, matrix_island_id, ip.unique_island_id);
+        Islands_Manager.INSTANCE.last_island_id += 1;
+        ip.matrix_island_id = Islands_Manager.INSTANCE.last_island_id;
+        ip.ost.roms.matrix_island_id = ip.matrix_island_id;
         island_menu.instance.current_sign = null;
         GetSigns();
         ip.GetSigns();

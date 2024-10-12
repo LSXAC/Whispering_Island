@@ -1,14 +1,14 @@
-[gd_scene load_steps=15 format=4 uid="uid://frwl0u2a1cwh"]
+[gd_scene load_steps=13 format=4 uid="uid://frwl0u2a1cwh"]
 
 [ext_resource type="Script" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_0e24f"]
 [ext_resource type="PackedScene" uid="uid://717sbs8rvfvt" path="res://Prefabs/Sign.tscn" id="2_0eca3"]
 [ext_resource type="PackedScene" uid="uid://dcruv230g3u4k" path="res://Placeable/building.tscn" id="3_6ysk4"]
 [ext_resource type="Shader" path="res://Shader Objects/water.gdshader" id="4_44rhs"]
 [ext_resource type="TileSet" uid="uid://knopq4xq3ef2" path="res://Tileset Objects/Islands.tres" id="4_nxsuo"]
-[ext_resource type="Texture2D" uid="uid://bca1e628hy8iw" path="res://Sprites/Tileset Sprites/Spawn_Tileset.png" id="5_370rs"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Prefabs/Water_Noise_Map.tres" id="5_x1thx"]
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Tileset Objects/Water_Tileset.tres" id="6_8g1yn"]
 [ext_resource type="Script" path="res://Scripts/Resources/ObjectSpawnerTilemap.cs" id="6_xneeu"]
+[ext_resource type="TileSet" uid="uid://bovg285rqfm1r" path="res://Tileset Objects/Spawn_Tileset.tres" id="8_86k7w"]
 
 [sub_resource type="TileSet" id="TileSet_rofjb"]
 physics_layer_0/collision_layer = 4
@@ -23,20 +23,10 @@ shader_parameter/speed = Vector2(0.1, 0.1)
 shader_parameter/distortion = 0.005
 shader_parameter/noise_texture = ExtResource("5_x1thx")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgeve"]
-texture = ExtResource("5_370rs")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_25eb0"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_bgeve")
-
 [node name="Island_2" type="Node2D" groups=["Island_Properties"]]
 y_sort_enabled = true
 script = ExtResource("1_0e24f")
-unique_island_id = 2
+unique_island_id = 1
 
 [node name="BuildingArea" type="TileMapLayer" parent="." groups=["BuildingCollision"]]
 z_index = -2
@@ -183,6 +173,7 @@ polygon = PackedVector2Array(160, -32, 160, -48, 144, -48, 192, -48, 184, -24, 1
 
 [node name="ObjectSpawnerTilemap" type="TileMapLayer" parent="."]
 y_sort_enabled = true
+tile_map_data = PackedByteArray("AAACAAAAAAADAAAAAAAEAP7/AAADAAAAAAACAP3/AAADAAAAAAAAAPz/AAADAAAAAAD8//v/AAACAAAAAAD7/wMAAAACAAAAAAAEAAQAAAACAAAAAAA=")
 enabled = false
-tile_set = SubResource("TileSet_25eb0")
+tile_set = ExtResource("8_86k7w")
 script = ExtResource("6_xneeu")

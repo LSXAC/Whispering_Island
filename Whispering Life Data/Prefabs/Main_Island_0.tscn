@@ -34,7 +34,6 @@ size = Vector2(200, 176)
 [node name="MainIsland" type="Node2D" groups=["Island_Properties"]]
 y_sort_enabled = true
 script = ExtResource("1_sbvtb")
-unique_island_id = 0
 
 [node name="BuildingArea" type="TileMapLayer" parent="." groups=["BuildingCollision"]]
 process_priority = 10

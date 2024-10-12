@@ -15,6 +15,7 @@ public partial class Islands_Manager : Node2D
     [Export]
     public Array<ResourceObjectManagerSave> roms = new Array<ResourceObjectManagerSave>();
     public static Islands_Manager INSTANCE = null;
+    public int last_island_id = 0;
 
     public override void _Ready()
     {
@@ -35,17 +36,19 @@ public partial class Islands_Manager : Node2D
         {
             foreach (Island_Properties ip in GetChildren())
             {
-                if (ip.unique_island_id == is_save.start_unique_island_id)
+                Debug.Print(ip.matrix_island_id + " | " + is_save.matrix_island_id);
+                if (ip.matrix_island_id == is_save.matrix_island_id)
                 {
-                    island_menu.CreateIsland(is_save.end_unique_island_id, is_save.dir, ip);
+                    island_menu.CreateIsland(is_save.island_id, is_save.dir, ip);
                 }
             }
         }
 
-        foreach (Island_Properties ip in GetChildren())
+        Debug.Print(roms.Count + " !!!!!!");
+        foreach (ResourceObjectManagerSave roms_t in roms)
         {
-            foreach (ResourceObjectManagerSave roms_t in roms)
-                if (ip.unique_island_id == roms_t.unique_island_id)
+            foreach (Island_Properties ip in GetChildren())
+                if (ip.matrix_island_id == roms_t.matrix_island_id)
                     ip.ost.LoadResourceObjects(roms_t);
         }
     }
@@ -62,11 +65,9 @@ public partial class Islands_Manager : Node2D
         }
     }
 
-    public void SaveIsland(Island_Properties.DIRECTION dir, int start_unique_id, int end_unique_id)
+    public void SaveIsland(Island_Properties.DIRECTION dir, int matrix_island_id, int island_id)
     {
-        island_saves.Add(
-            new IslandSave(dir: dir, start_unique_id: start_unique_id, end_unique_id: end_unique_id)
-        );
+        island_saves.Add(new IslandSave(dir: dir, matrix_island_id: matrix_island_id, island_id));
         Debug.Print("new Island Saved");
         Debug.Print(island_saves.Count + " x");
     }
