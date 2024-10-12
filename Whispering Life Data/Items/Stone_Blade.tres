@@ -7,6 +7,7 @@
 script = ExtResource("1_ww5u3")
 unique_item_id = 15
 item_types = Array[int]([0])
+burntime = 60
 item_name = "STONE_BLADE"
 item_description = "STONE_BLADE_DESC"
 texture = ExtResource("2_qymfn")

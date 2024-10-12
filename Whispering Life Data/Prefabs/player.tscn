@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://njw4so7o83dw"]
+[gd_scene load_steps=32 format=3 uid="uid://njw4so7o83dw"]
 
 [ext_resource type="Script" path="res://Scripts/Player Scripts/Player.cs" id="1_2p5ml"]
 [ext_resource type="Texture2D" uid="uid://b4214y7h1nkv7" path="res://Sprites/Char_Animation.png" id="2_c6oqb"]
@@ -90,17 +90,13 @@ region = Rect2(64, 32, 32, 32)
 atlas = ExtResource("2_c6oqb")
 region = Rect2(96, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gx82d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_16ka7"]
 atlas = ExtResource("2_c6oqb")
-region = Rect2(0, 96, 32, 32)
+region = Rect2(64, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_muj1f"]
 atlas = ExtResource("2_c6oqb")
 region = Rect2(32, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_16ka7"]
-atlas = ExtResource("2_c6oqb")
-region = Rect2(64, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2x40k"]
 atlas = ExtResource("2_c6oqb")
@@ -120,12 +116,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7yh5b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p1c8w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_htyks")
 }],
 "loop": true,
 "name": &"Down",
@@ -190,7 +180,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Left",
-"speed": 4.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -207,11 +197,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"Right",
-"speed": 4.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gx82d")
+"texture": SubResource("AtlasTexture_16ka7")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_muj1f")
@@ -221,16 +211,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2x40k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_16ka7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_muj1f")
 }],
 "loop": true,
 "name": &"Up",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjp5d"]
@@ -256,8 +240,8 @@ position_smoothing_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_gvbij")
-animation = &"Down"
-frame_progress = 0.814397
+animation = &"Idle_Right"
+frame_progress = 0.85495
 speed_scale = 1.35
 offset = Vector2(0, -15)
 

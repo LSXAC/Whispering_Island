@@ -18,6 +18,7 @@ bonus = 0.5
 script = ExtResource("2_dvxbn")
 unique_item_id = 21
 item_types = Array[int]([0])
+burntime = 60
 item_name = "WOODEN_AXE_HEAD"
 item_description = "WOODEN_AXE_HEAD_DESC"
 texture = ExtResource("3_334df")

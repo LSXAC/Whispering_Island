@@ -6,7 +6,7 @@ public partial class Player_Stamina : Node2D
     private float max_stamina = 1f;
     private float stamina_regeneration = 0.0025f;
     public static bool stamina_is_regenerating = false;
-    private float speed_mult = 75f;
+    private float speed_mult = 65f;
     private float stamina_use = 0.005f;
 
     public void UpdateStaminaDependencies(float velo_x, float velo_y)
@@ -20,7 +20,7 @@ public partial class Player_Stamina : Node2D
         {
             Player.INSTANCE.Velocity =
                 new Vector2(velo_x, velo_y).Normalized() * speed_mult * 1.75f;
-            Player.INSTANCE.anim.SpeedScale = 1.35f * 1.5f;
+            Player.INSTANCE.anim.SpeedScale = 1.5f;
             current_stamina -= stamina_use;
             Player.INSTANCE.player_stats.AddFatigue(0.01f);
         }
@@ -33,7 +33,7 @@ public partial class Player_Stamina : Node2D
 
             Player.INSTANCE.player_stats.AddFatigue(0.0025f);
             Player.INSTANCE.Velocity = new Vector2(velo_x, velo_y) * speed_mult;
-            Player.INSTANCE.anim.SpeedScale = 1.35f;
+            Player.INSTANCE.anim.SpeedScale = 1f;
         }
 
         if (

@@ -18,6 +18,7 @@ bonus = -0.5
 script = ExtResource("1_hlfru")
 unique_item_id = 11
 item_types = Array[int]([1])
+burntime = 60
 item_name = "STONE_KNIFE"
 item_description = "STONE_KNIFE_DESC"
 texture = ExtResource("2_1lwkt")
