@@ -15,11 +15,12 @@ public partial class Islands_Manager : Node2D
     [Export]
     public Array<ResourceObjectManagerSave> roms = new Array<ResourceObjectManagerSave>();
     public static Islands_Manager INSTANCE = null;
-    public int last_island_id = 0;
+    public int last_island_id;
 
     public override void _Ready()
     {
         INSTANCE = this;
+        last_island_id = 0;
 
         foreach (Island_Properties ip in GetChildren())
         {
@@ -39,7 +40,7 @@ public partial class Islands_Manager : Node2D
                 Debug.Print(ip.matrix_island_id + " | " + is_save.matrix_island_id);
                 if (ip.matrix_island_id == is_save.matrix_island_id)
                 {
-                    island_menu.CreateIsland(is_save.island_id, is_save.dir, ip);
+                    island_menu.CreateIsland(is_save.island_id, is_save.dir, ip, true);
                 }
             }
         }

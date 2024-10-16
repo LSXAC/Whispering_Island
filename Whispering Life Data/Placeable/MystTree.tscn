@@ -123,8 +123,8 @@ mining_amount = 2
 mining_amount_last = 5
 item_info = ExtResource("2_wvxkc")
 gpu_particles = NodePath("LeavesParticles")
-title = "Mystical Tree"
-description = "Mine to get mystical Wood"
+title = "WORLD_RESOURCE_MYSTIC_TREE"
+description = "WORLD_RESOURCE_MYSTIC_TREE_DESC"
 sprite = NodePath("TreeSprite")
 collision_shape = NodePath("Collision")
 

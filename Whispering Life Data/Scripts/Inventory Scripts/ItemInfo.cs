@@ -8,14 +8,16 @@ public partial class ItemInfo : Resource
 {
     public enum Type
     {
-        Resource,
-        Tool,
-        Weapon,
-        Cloths,
-        Placeable,
+        RESOURCE,
+        TOOL,
+        WEAPON,
+        CLOTHS,
+        PLACEABLE,
         ALL,
         SMELTABLE,
-        BURNABLE
+        BURNABLE,
+        PROCESSED,
+        RESEARCHABLE
     };
 
     [Export]

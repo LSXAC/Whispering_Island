@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd8pn6e2fwrpm"]
+
+[ext_resource type="Script" path="res://Menus/LevelTab.cs" id="1_kne63"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_66jv3"]
+
+[node name="Level 1" type="PanelContainer"]
+script = ExtResource("1_kne63")
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="FeatureLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.998561, 0.859831, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_66jv3")
+theme_override_font_sizes/font_size = 14
+text = "Krasser Holz Kenner"
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_66jv3")
+theme_override_font_sizes/font_size = 10
+text = "Das Holz ist nicht nur auf deiner Seite, sondern auch auf der anderen."
+autowrap_mode = 3
+
+[node name="SpaceLabel2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.998561, 0.859831, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_66jv3")
+theme_override_font_sizes/font_size = 14
+
+[node name="BonusLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.498413, 0.814262, 0.395717, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_66jv3")
+theme_override_font_sizes/font_size = 10
+text = "Unlocks: Wood Furnace, Crafting Tools Lvl. 1."
+autowrap_mode = 3

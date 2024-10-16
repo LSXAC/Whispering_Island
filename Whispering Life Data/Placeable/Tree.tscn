@@ -121,8 +121,8 @@ anim_player = NodePath("AnimationPlayer")
 respawn_seconds = 30
 item_info = ExtResource("2_my7vu")
 gpu_particles = NodePath("LeavesParticles")
-title = "Tree"
-description = "Chop to get Wood"
+title = "WORLD_RESOURCE_TREE"
+description = "WORLD_RESOURCE_TREE_DESC"
 sprite = NodePath("TreeSprite")
 collision_shape = NodePath("Collision")
 

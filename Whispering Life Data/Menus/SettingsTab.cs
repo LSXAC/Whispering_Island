@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class SettingsTab : ColorRect
@@ -7,10 +8,31 @@ public partial class SettingsTab : ColorRect
     public OptionButton option_button;
 
     // Called when the node enters the scene tree for the first time.
-    public override void _Ready() { }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta) { }
+
+    public override void _Notification(int what)
+    {
+        if (what != NotificationTranslationChanged)
+            return;
+
+        GetOption();
+    }
+
+    private void GetOption()
+    {
+        Debug.Print(TranslationServer.GetLocale());
+        switch (TranslationServer.GetLocale())
+        {
+            case "en":
+                option_button.Selected = 0;
+                break;
+            case "de":
+                option_button.Selected = 1;
+                break;
+        }
+    }
 
     public void OnItemSelected(int index)
     {

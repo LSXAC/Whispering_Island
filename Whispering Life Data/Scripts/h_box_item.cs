@@ -32,7 +32,7 @@ public partial class h_box_item : HBoxContainer
         if (item_texture == null)
             item_texture = GetNode<TextureRect>("ItemTexture");
 
-        item_label.Text = item_name + " " + amount + "x";
+        item_label.Text = TranslationServer.Translate(item_name) + " " + amount + "x";
         item_texture.Texture = texture;
     }
 

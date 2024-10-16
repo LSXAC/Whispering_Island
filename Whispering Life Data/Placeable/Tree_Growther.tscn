@@ -23,8 +23,8 @@ collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_s0fjq")
 production_item_info = ExtResource("9_jf153")
-title = "Tree Growther"
-description = "121213131313"
+title = "BUILDING_WOOD_GROWTHER"
+description = "BUILDING_WOOD_GROWTHER"
 sprite = NodePath("BuildingSprite")
 collision_shape = NodePath("MachineCollision")
 

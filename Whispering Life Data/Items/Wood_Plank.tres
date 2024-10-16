@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_qp7xs")
 unique_item_id = 4
-item_types = Array[int]([0, 7])
+item_types = Array[int]([8, 7])
 burntime = 60
 item_name = "WOOD_PLANK"
 item_description = "WOOD_PLANK_DESC"

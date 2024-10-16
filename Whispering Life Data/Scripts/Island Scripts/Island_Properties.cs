@@ -122,7 +122,11 @@ public partial class Island_Properties : Node2D
         node.QueueFree();
     }
 
-    public void CreateAnotherIsland(PackedScene island_prefab, DIRECTION dir)
+    public void CreateAnotherIsland(
+        PackedScene island_prefab,
+        DIRECTION dir,
+        bool is_loading = false
+    )
     {
         GD.Print("Step 1: Initialize");
         Vector2 new_pos = Vector2.Zero;
@@ -197,7 +201,8 @@ public partial class Island_Properties : Node2D
                 GD.Print("NO DIRECTION");
                 break;
         }
-        Islands_Manager.INSTANCE.SaveIsland(dir, matrix_island_id, ip.unique_island_id);
+        if (!is_loading)
+            Islands_Manager.INSTANCE.SaveIsland(dir, matrix_island_id, ip.unique_island_id);
         Islands_Manager.INSTANCE.last_island_id += 1;
         ip.matrix_island_id = Islands_Manager.INSTANCE.last_island_id;
         ip.ost.roms.matrix_island_id = ip.matrix_island_id;

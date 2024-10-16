@@ -11,6 +11,14 @@ public partial class InventoryItem : TextureRect
     public int amount = 0;
     public Label amount_label;
 
+    public override void _Notification(int what)
+    {
+        if (what != NotificationTranslationChanged)
+            return;
+
+        UpdateToolTip();
+    }
+
     public void init(ItemInfo item_info)
     {
         this.Size = new Vector2(40, 40);
@@ -21,22 +29,45 @@ public partial class InventoryItem : TextureRect
         l.VerticalAlignment = VerticalAlignment.Bottom;
         l.HorizontalAlignment = HorizontalAlignment.Right;
         amount_label = l;
+        UpdateToolTip();
+        AddChild(l);
+    }
+
+    private void UpdateToolTip()
+    {
         TooltipText = TranslationServer.Translate(item_info.item_name.ToString()) + "\n";
         TooltipText += TranslationServer.Translate(item_info.item_description.ToString()) + "\n";
         foreach (ItemInfo.Type type in item_info.item_types)
         {
             if (type == ItemInfo.Type.BURNABLE)
-                TooltipText += "Burntime: " + item_info.burntime + "s" + "\n";
+                TooltipText +=
+                    TranslationServer.Translate("BURNTIME")
+                    + ": "
+                    + item_info.burntime
+                    + "s"
+                    + "\n";
             else
-                TooltipText += "Type: " + type + "\n";
+                TooltipText +=
+                    TranslationServer.Translate("TYPE")
+                    + ": "
+                    + TranslationServer.Translate(type.ToString())
+                    + "\n";
         }
         foreach (ItemStats stats in item_info.item_stats)
             if (stats.bonus > 0)
-                TooltipText += "\n" + stats.type.ToString() + ": +" + (stats.bonus * 100) + "%";
+                TooltipText +=
+                    "\n"
+                    + TranslationServer.Translate(stats.type.ToString())
+                    + ": +"
+                    + (stats.bonus * 100)
+                    + "%";
             else if (stats.bonus < 0)
-                TooltipText += "\n" + stats.type.ToString() + ": " + (stats.bonus * 100) + "%";
-
-        AddChild(l);
+                TooltipText +=
+                    "\n"
+                    + TranslationServer.Translate(stats.type.ToString())
+                    + ": "
+                    + (stats.bonus * 100)
+                    + "%";
     }
 
     public void UpdateAmountLabel()

@@ -123,8 +123,8 @@ mining_amount = 2
 mining_amount_last = 5
 item_info = ExtResource("2_8xjas")
 gpu_particles = NodePath("FibreParticles")
-title = "Mystical Fibre"
-description = "Mine to get Fibre"
+title = "WORLD_RESOURCE_MYSTIC_FIBRE"
+description = "WORLD_RESOURCE_MYSTIC_FIBRE_DESC"
 sprite = NodePath("Fibre")
 collision_shape = NodePath("Collision")
 

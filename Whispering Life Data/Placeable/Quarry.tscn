@@ -24,8 +24,8 @@ collision_mask = 0
 script = ExtResource("1_rsbck")
 production_item_info = ExtResource("2_6bbma")
 type = 2
-title = "Quarry "
-description = "Mining Stone Auto"
+title = "BUILDING_QUARRY"
+description = "BUILDING_QUARRY_DESC"
 sprite = NodePath("BuildingSprite")
 collision_shape = NodePath("MachineCollision")
 

@@ -55,9 +55,11 @@ public partial class island_menu : CanvasLayer
     public void CreateIsland(
         int unique_id,
         Island_Properties.DIRECTION dir,
-        Island_Properties current_ip
+        Island_Properties current_ip,
+        bool is_loading = false
     )
     {
+        Debug.Print("Get Dir.");
         if (dir == Island_Properties.DIRECTION.UP)
             if (Game_Manager.IsIslandOnMatrix(current_ip.matrix_x, current_ip.matrix_y + 1))
                 return;
@@ -70,14 +72,19 @@ public partial class island_menu : CanvasLayer
         if (dir == Island_Properties.DIRECTION.RIGHT)
             if (Game_Manager.IsIslandOnMatrix(current_ip.matrix_x + 1, current_ip.matrix_y))
                 return;
-
+        Debug.Print("Found Dir.");
         switch (unique_id)
         {
             case 0:
-                current_ip.CreateAnotherIsland(island_1, dir);
+                Debug.Print("Island 0.");
+                current_ip.CreateAnotherIsland(island_1, dir, is_loading);
                 break;
             case 1:
-                current_ip.CreateAnotherIsland(island_2, dir);
+                Debug.Print("Island 1.");
+                current_ip.CreateAnotherIsland(island_2, dir, is_loading);
+                break;
+            default:
+                Debug.Print("No matching Island ID found");
                 break;
         }
     }

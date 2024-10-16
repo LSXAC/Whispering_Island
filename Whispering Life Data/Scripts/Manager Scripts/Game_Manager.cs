@@ -15,11 +15,11 @@ public partial class Game_Manager : Node2D
 
     public static bool inside_game_menu = false;
 
-    public static bool[,] island_matrix = new bool[21, 21];
+    public static bool[,] island_matrix;
 
     public static BuildingMode building_mode = BuildingMode.None;
 
-    public static float game_time_since_start = 0f;
+    public static float game_time_since_start;
 
     public static bool In_Cutscene = false;
     public static bool tutorial_finished = false;
@@ -52,6 +52,8 @@ public partial class Game_Manager : Node2D
     public override void _Ready()
     {
         INSTANCE = this;
+        island_matrix = new bool[21, 21];
+        game_time_since_start = 0f;
 
         cutscene_camera = GetNode<Camera2D>("CutsceneCamera");
         game_timer = GetNode<Timer>("GameTimer");
@@ -76,7 +78,7 @@ public partial class Game_Manager : Node2D
 
         Islands_Manager.INSTANCE.SaveResourceObjects();
         save_state.env_save.resource_object_manager_saves = Islands_Manager.INSTANCE.roms;
-
+        save_state.current_language = TranslationServer.GetLocale();
         //Save Quest
         save_state.quest_save.current_quest_id = QuestManager.current_quest_id;
         save_state.quest_save.quest_time_left = QuestManager.current_quest_time;
@@ -93,6 +95,7 @@ public partial class Game_Manager : Node2D
 
         save_state.tutorial_finished = tutorial_finished;
 
+        save_state.dateTime_save_string = DateTime.Now.ToString();
         save_state.WriteSave();
         Debug.Print("Saved Game!");
     }
@@ -102,16 +105,14 @@ public partial class Game_Manager : Node2D
         Debug.Print("Game_Manager - Loading SaveState");
         save_state = (SaveState)SaveState.LoadSave();
         inside_game_menu = false;
+        TranslationServer.SetLocale(save_state.current_language);
         tutorial_finished = save_state.tutorial_finished;
-
+        SaveLoadTab.dateTime_from_save = DateTime.Parse(save_state.dateTime_save_string);
         if (!tutorial_finished)
         {
             StartTutorial();
             return;
         }
-        foreach (ItemSave save in save_state.char_save.inventory_items)
-            if (save != null)
-                Debug.Print(save.amount.ToString());
 
         Player.char_save = save_state.char_save;
         Player.INSTANCE.Position = save_state.char_save.player_position;

@@ -4,6 +4,9 @@ using Godot.Collections;
 public partial class Slot : Button
 {
     [Export]
+    public string label_translation_string;
+
+    [Export]
     public ItemInfo.Type slot_type;
 
     [Export]
@@ -23,10 +26,21 @@ public partial class Slot : Button
             inventory_base = (InventoryBase)GetParent().GetParent();
             Pressed += () => OnChestSlotButton();
         }
-        if (slot_type == ItemInfo.Type.Cloths || slot_type == ItemInfo.Type.Tool)
+        if (slot_type == ItemInfo.Type.CLOTHS || slot_type == ItemInfo.Type.TOOL)
         {
             Pressed += () => OnEquipSlotButton(GetIndex());
         }
+    }
+
+    public override void _Notification(int what)
+    {
+        if (what != NotificationTranslationChanged)
+            return;
+
+        if (label_translation_string == null)
+            return;
+
+        Text = TranslationServer.Translate(label_translation_string);
     }
 
     public void SetItem(ItemInfo item_info, int amount)
@@ -79,12 +93,12 @@ public partial class Slot : Button
             if (GetItem() != null)
             {
                 CreateClickedItem();
-                if (GetItem().item_info.HasType(ItemInfo.Type.Cloths))
+                if (GetItem().item_info.HasType(ItemInfo.Type.CLOTHS))
                 {
                     EquipmentPanel.INSTANCE.equipped_armor[index] = null;
                     EquipmentPanel.INSTANCE.slots_armor[index].ClearItem();
                 }
-                if (GetItem().item_info.HasType(ItemInfo.Type.Tool))
+                if (GetItem().item_info.HasType(ItemInfo.Type.TOOL))
                 {
                     EquipmentPanel.INSTANCE.equipped_tools[index] = null;
                     EquipmentPanel.INSTANCE.slots_tool[index].ClearItem();
@@ -98,7 +112,7 @@ public partial class Slot : Button
             {
                 if (
                     Inventory.clicked_item.item_info.HasType(slot_type)
-                    && slot_type == ItemInfo.Type.Cloths
+                    && slot_type == ItemInfo.Type.CLOTHS
                 )
                 {
                     EquipmentPanel.INSTANCE.equipped_armor[index] = new ItemSave(
@@ -115,7 +129,7 @@ public partial class Slot : Button
                 }
                 if (
                     Inventory.clicked_item.item_info.HasType(slot_type)
-                    && slot_type == ItemInfo.Type.Tool
+                    && slot_type == ItemInfo.Type.TOOL
                 )
                 {
                     EquipmentPanel.INSTANCE.equipped_tools[index] = new ItemSave(

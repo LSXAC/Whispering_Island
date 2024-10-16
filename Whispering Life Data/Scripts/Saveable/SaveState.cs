@@ -24,7 +24,13 @@ public partial class SaveState : Resource
     public bool tutorial_finished = false;
 
     [Export]
+    public string current_language = "en";
+
+    [Export]
     public float game_time_since_start = 0;
+
+    [Export]
+    public string dateTime_save_string;
 
     private static string save_path = "user://save.tres";
     public static string game_version = "a.0.1";

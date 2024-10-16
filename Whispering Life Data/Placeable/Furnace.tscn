@@ -46,8 +46,8 @@ crafting_timer = NodePath("CraftingTimer")
 state_timer = NodePath("MachineUITimer")
 recipes = [SubResource("Resource_njs37"), SubResource("Resource_ex5dq")]
 type = 1
-title = "Furnace"
-description = "Smelts things"
+title = "BUILDING_FURNACE"
+description = "BUILDING_FURNACE_DESC"
 sprite = NodePath("BuildingSprite")
 collision_shape = NodePath("MachineCollision")
 

@@ -123,13 +123,13 @@ public partial class FurnaceTab : ColorRect
     {
         if (state)
         {
-            switch_button.Text = "Enable Machine";
-            working_label.Text = "Machine Offline - No I/O";
+            switch_button.Text = TranslationServer.Translate("FURNACE_MENU_ENABLE_MACHINE");
+            working_label.Text = TranslationServer.Translate("FURNACE_MENU_NOT_WORKING");
         }
         else
         {
-            switch_button.Text = "Disable Machine";
-            working_label.Text = "Machine Online - Working";
+            switch_button.Text = TranslationServer.Translate("FURNACE_MENU_DISABLE_MACHINE");
+            working_label.Text = TranslationServer.Translate("FURNACE_MENU_WORKING");
         }
     }
 

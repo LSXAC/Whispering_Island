@@ -32,11 +32,19 @@ public partial class player_ui : CanvasLayer
     public Control collected_item_parent;
     public static player_ui INSTANCE;
 
+    public override void _Notification(int what)
+    {
+        if (what != NotificationTranslationChanged)
+            return;
+
+        UpdateGameTimeLabel();
+    }
+
     public override void _Ready()
     {
         INSTANCE = this;
         game_time_panel = GetNode<PanelContainer>("GameTimePanel");
-        game_time_label = game_time_panel.GetNode<Label>("GameTimeLabel");
+        game_time_label = game_time_panel.GetChild(0).GetNode<Label>("GameTimeLabel");
         quest_complete_panel = GetNode<Panel>("QuestCompletePanel");
         hslider = GetNode<HSlider>("HSlider");
         stamina_label = hslider.GetNode<Label>("Label");
@@ -62,7 +70,10 @@ public partial class player_ui : CanvasLayer
     public void UpdateGameTimeLabel()
     {
         game_time_label.Text =
-            "Game Time: " + Game_Manager.game_time_since_start.ToString("N2") + "s";
+            TranslationServer.Translate("PLAYERUI_GAMETIME")
+            + ": "
+            + Game_Manager.game_time_since_start.ToString("N2")
+            + "s";
     }
 
     public static void AddItemLabelUI(string text)

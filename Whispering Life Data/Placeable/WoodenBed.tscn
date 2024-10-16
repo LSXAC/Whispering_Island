@@ -18,8 +18,8 @@ y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_8y476")
-title = "Bed"
-description = "Sleep, Remove Fatigue, Sacrifice Time"
+title = "BUILDING_BED"
+description = "BUILDING_BED_DESC"
 sprite = NodePath("BuildingSprite")
 collision_shape = NodePath("MachineCollision")
 

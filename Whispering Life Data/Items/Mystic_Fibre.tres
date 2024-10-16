@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_lfhgc")
 unique_item_id = 12
-item_types = Array[int]([0])
+item_types = Array[int]([9])
 burntime = 60
 item_name = "MYSTIC_FIBRE"
 item_description = "MYSTIC_FIBRE_DESC"

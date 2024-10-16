@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class GameMenu : CanvasLayer
@@ -100,6 +101,7 @@ public partial class GameMenu : CanvasLayer
     {
         ChangeSelectedTabColor(Tabs.X);
         OnCloseFurnaceTab();
+        OnCloseChestTab();
         this.Visible = false;
         Game_Manager.inside_game_menu = false;
     }
@@ -225,6 +227,6 @@ public partial class GameMenu : CanvasLayer
     public void OnLoadButton()
     {
         OnExitButton();
-        GetTree().ReloadCurrentScene();
+        Debug.Print(GetTree().ReloadCurrentScene().ToString());
     }
 }

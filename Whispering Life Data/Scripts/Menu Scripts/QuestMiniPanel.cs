@@ -12,6 +12,14 @@ public partial class QuestMiniPanel : PanelContainer
     public Label time_label;
     public static QuestMiniPanel INSTANCE = null;
 
+    public override void _Notification(int what)
+    {
+        if (what != NotificationTranslationChanged)
+            return;
+
+        UpdateTimeLabel(QuestManager.current_quest_time);
+    }
+
     public override void _Ready()
     {
         INSTANCE = this;
@@ -19,7 +27,16 @@ public partial class QuestMiniPanel : PanelContainer
 
     public void UpdateTimeLabel(int time)
     {
-        time_label.Text = "Time Left: " + time + "s";
+        Debug.Print(time.ToString());
+        int min = time / 60;
+        int sec = (time - min * 60);
+        time_label.Text =
+            TranslationServer.Translate("PLAYERUI_QUEST_TIME_LEFT")
+            + ": "
+            + min.ToString("D2")
+            + ":"
+            + sec.ToString("D2")
+            + "s";
     }
 
     public void InitQuestMiniPanel(Quest currentQuest)
@@ -33,7 +50,6 @@ public partial class QuestMiniPanel : PanelContainer
     public void UpdateQuestMiniPanel(Quest currentQuest)
     {
         Array<Item> items_in_inventory = Inventory.INSTANCE.GetListOfItemsInInventory();
-        Debug.Print("Start Updating");
         for (int i = 0; i < currentQuest.quest_items.Count; i++)
         {
             Item item = currentQuest.quest_items[i];
