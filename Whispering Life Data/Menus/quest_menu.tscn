@@ -1,14 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://o62xek3uvpo8"]
+[gd_scene load_steps=4 format=3 uid="uid://o62xek3uvpo8"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/QuestMenu.cs" id="1_rjdwy"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_8enkj"]
+[ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://header_color_rect.tscn" id="2_vqvtn"]
 
 [node name="QuestMenu" type="CanvasLayer" node_paths=PackedStringArray("quest_label_parent", "quest_name_label", "complete_button", "quest_description_label")]
 visible = false
 script = ExtResource("1_rjdwy")
-quest_label_parent = NodePath("Background/VBoxContainer")
-quest_name_label = NodePath("Background/Label")
-complete_button = NodePath("Background/CompleteQuestButton")
-quest_description_label = NodePath("Background/Description")
+quest_label_parent = NodePath("Background/MarginContainer/VBoxContainer2/VBoxContainer")
+quest_name_label = NodePath("Background/MarginContainer/VBoxContainer2/Label")
+complete_button = NodePath("Background/MarginContainer/VBoxContainer2/CompleteQuestButton")
+quest_description_label = NodePath("Background/MarginContainer/VBoxContainer2/Description")
 
 [node name="TransBackground" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -28,49 +30,99 @@ offset_right = -64.0
 offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.176471, 0.176471, 0.176471, 1)
+color = Color(0.576471, 0.807843, 1, 1)
 
-[node name="Label" type="Label" parent="Background"]
-layout_mode = 2
-offset_right = 512.0
-offset_bottom = 49.0
-text = "Quest Menu
----------------------------------------------"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Description" type="Label" parent="Background"]
-layout_mode = 2
-offset_top = 50.0
-offset_right = 512.0
-offset_bottom = 99.0
-text = "Quest Menu
----------------------------------------------"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+[node name="HeaderColorRect" parent="Background" instance=ExtResource("2_vqvtn")]
 layout_mode = 0
-offset_top = 98.0
 offset_right = 512.0
-offset_bottom = 138.0
+translation_string = "GAMEMENU_QUEST_MENU"
+
+[node name="X" type="Button" parent="Background/HeaderColorRect"]
+layout_mode = 0
+offset_left = 480.0
+offset_right = 512.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_8enkj")
+theme_override_font_sizes/font_size = 16
+text = "<X>"
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -85.0
+offset_right = 215.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_8enkj")
+theme_override_font_sizes/font_size = 16
+text = "Quest Menu
+---------------------------------------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="SPACELABLE" type="Label" parent="Background/MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_8enkj")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Description" type="Label" parent="Background/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_8enkj")
+theme_override_font_sizes/font_size = 12
+text = "Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="SPACELABLE2" type="Label" parent="Background/MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_8enkj")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer2"]
+layout_mode = 2
 alignment = 1
 
-[node name="CompleteQuestButton" type="Button" parent="Background"]
-layout_mode = 0
-offset_left = 200.0
-offset_top = 258.0
-offset_right = 312.0
-offset_bottom = 284.0
+[node name="CompleteQuestButton" type="Button" parent="Background/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_8enkj")
+theme_override_font_sizes/font_size = 16
 text = "Finish Quest"
 
-[node name="X" type="Button" parent="."]
-offset_left = 536.0
-offset_top = 40.0
-offset_right = 568.0
-offset_bottom = 71.0
-text = "X"
-
 [connection signal="visibility_changed" from="." to="." method="OnVisiblityChanged"]
-[connection signal="pressed" from="Background/CompleteQuestButton" to="." method="OnCompleteButton"]
-[connection signal="pressed" from="X" to="." method="OnCloseButton"]
+[connection signal="pressed" from="Background/HeaderColorRect/X" to="." method="OnCloseButton"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer2/CompleteQuestButton" to="." method="OnCompleteButton"]

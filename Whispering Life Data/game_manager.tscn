@@ -15,8 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://o62xek3uvpo8" path="res://Menus/quest_menu.tscn" id="12_x3g6o"]
 [ext_resource type="Resource" uid="uid://c1p7gva6jex80" path="res://Dialogues/Questing.dialogue" id="13_c3cat"]
 [ext_resource type="Script" path="res://Scripts/QuestManager.cs" id="13_v5o5h"]
-[ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Quests/Start.tres" id="14_2k87u"]
-[ext_resource type="Resource" uid="uid://cdk8sna5iiegp" path="res://Quests/Start2.tres" id="15_13bir"]
+[ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Quests/Quest_1.tres" id="14_2k87u"]
+[ext_resource type="Resource" uid="uid://cdk8sna5iiegp" path="res://Quests/Quest_2.tres" id="15_13bir"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="17_c5f2u"]
 [ext_resource type="Script" path="res://Tutorial.cs" id="21_c8cjw"]
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="21_m8ul6"]
@@ -64,17 +64,9 @@ building_placer = NodePath("../BuildingManager/BuildingPlacer")
 building_typ_parent = NodePath("VScrollBar/GridContainer")
 
 [node name="HoverMenu" parent="." instance=ExtResource("9_sosrl")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -112.0
 offset_top = -25.0
 offset_right = 112.0
 offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Global" type="Node2D" parent="."]
 script = ExtResource("10_1kwav")

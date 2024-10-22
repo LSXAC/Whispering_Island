@@ -36,8 +36,8 @@ public partial class QuestMenu : CanvasLayer
     {
         ResetParent();
 
-        quest_name_label.Text = quest.quest_name;
-        quest_description_label.Text = quest.quest_description;
+        quest_name_label.Text = TranslationServer.Translate(quest.quest_name);
+        quest_description_label.Text = TranslationServer.Translate(quest.quest_description);
         CreateLabels(quest.quest_items);
     }
 
@@ -69,8 +69,13 @@ public partial class QuestMenu : CanvasLayer
         if (QuestManager.current_quest_id == -1)
             return;
 
-        Debug.Print("Vis Cha");
         ResetParent();
+        quest_name_label.Text = TranslationServer.Translate(
+            QuestManager.INSTANCE.quests[QuestManager.current_quest_id].quest_name
+        );
+        quest_description_label.Text = TranslationServer.Translate(
+            QuestManager.INSTANCE.quests[QuestManager.current_quest_id].quest_description
+        );
         CreateLabels(QuestManager.INSTANCE.quests[QuestManager.current_quest_id].quest_items);
         if (QuestManager.INSTANCE.CheckQuestComplete())
             complete_button.Disabled = false;

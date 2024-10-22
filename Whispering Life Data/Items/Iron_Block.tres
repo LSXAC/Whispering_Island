@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://dqdb68mek201l"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="2_3fpnd"]
+[ext_resource type="Texture2D" uid="uid://dq6hfhtw5fovg" path="res://Sprites/Items/Icons_3rd/Iron_Block.png" id="2_ph1s0"]
+
+[resource]
+script = ExtResource("2_3fpnd")
+unique_item_id = 23
+item_types = Array[int]([8])
+burntime = 60
+item_name = "IRON_BLOCK"
+item_description = "IRON_BLOCK_DESC"
+texture = ExtResource("2_ph1s0")
+value = 5.0
+item_stats = []

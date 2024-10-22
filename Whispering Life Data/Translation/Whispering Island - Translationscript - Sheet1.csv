@@ -11,7 +11,7 @@ GAMEMENU_SETTINGS_BUTTON,Settings,Einstellungen
 GAMEMENU_FURNACE,> Furnace,> Ofen
 GAMEMENU_CHEST,> Chest,> Kiste
 GAMEMENU_RESEARCH_TABLE,> Research Table,> Forschungstisch
-,,
+GAMEMENU_QUEST_MENU,> Quest Overview,> Aufgabenübersicht
 ,,
 PLAYERUI_GAMETIME,Game time,Spielzeit
 PLAYERUI_QUEST_OBJECTIV,Objectiv,Aufgabe
@@ -102,27 +102,76 @@ WOOD,Wood,Holz
 WOOD_DESC,Material from a Tree,Material von einem Baum
 STONE,Stone,Stein
 STONE_DESC,A hard natural material,ein natürliches Hartprodukt
-CHAR_COAL,Char Coal,Holzkohle
-CHAR_COAL_DESC,A burned piece of wood,Ein verbranntes Stück Holz
+WOOD_STICK,Wooden Stick,Holzstab
+WOOD_STICK_DESC,A long piece of wood,Ein längliches Stück Holz
 STONE_PICKAXE,Stone Pickaxe,Steinspitzhacke
 STONE_PICKAXE_DESC,A tool for faster mining,Ein Werkzeug zum schnelleren abbauen
-STONE_KNIFE,Stone Knife,Steinmesser
-STONE_KNIFE_DESC,A tool for cutting,Ein Werkzeug zum schneiden
-WOOD_CHEST,Wooden Chest,Holzkiste
-WOOD_CHEST_DESC,A wooden chest to store items,Eine Holzkiste um Gegenstände zu verstauen
 WOOD_PLANK,Wooden Plank,Holzplatte
 WOOD_PLANK_DESC,A processed piece of wood,Ein Stück verarbeitetes Holz
-WOOD_STICK,Wooden Stick,Holzstab
-WOOD_STICK_DESC,A long wooden piece,Ein längliches Stück Holz
+WOODEN_AXE,Wooden Axe,Holzaxt
+WOODEN_AXE_DESC,A tool to break trees faster,Ein Werkzeug um schneller Bäume zu fällen
+CHAR_COAL,Char Coal,Holzkohle
+CHAR_COAL_DESC,A burned piece of wood,Ein verbranntes Stück Holz
 IRON_ORE,Iron Ore,Eisenerz
-IRON_ORE_DESC,A cluster of Iron,Ein Batzen Eisenerz
+IRON_ORE_DESC,A lump of Iron,Ein klumpen Eisenerz
 IRON_INGOT,Iron Ingot,Eisenbarren
-IRON_INGOT_DESC,A smithed piece of Iron,Ein geschmiedetes Stück Eisen
+IRON_INGOT_DESC,A processed piece of Iron,Ein geschmiedetes Stück Eisen
 COPPER_ORE,Copper Ore,Kupfererz
-COPPER_ORE_DESC,A cluster of Copper,Ein Batzen Kupfererz
+COPPER_ORE_DESC,A lump of Copper,Ein klumpen Kupfererz
 COPPER_INGOT,Copper Ingot,Kupferbarren
-COPPER_INGOT_DESC,A smithed piece of Copper,Ein geschmiedetes Stück Kupfer
+COPPER_INGOT_DESC,a processed piece of copper,Ein geschmiedetes Stück Kupfer
+STONE_KNIFE,Stone Knife,Steinmesser
+STONE_KNIFE_DESC,A tool for cutting,Ein Werkzeug zum schneiden
 MYSTIC_FIBRE,Mystic Fibre,Mystische Fasern
 MYSTIC_FIBRE_DESC,A XXXXXXXX,A XXXXXXXX
 MYSTIC_WOOD,Mystic Wood,Mystisches Holz
 MYSTIC_WOOD_DESC,A XXXXXXXX,A XXXXXXXX
+FIBRE,Fibre,Faser
+FIBRE_DESC,A fibre to bind tools,Eine Faser um Werkzeuge zu binden
+STONE_BLADE,Stone Blade,Steinschneide
+STONE_BLADE_DESC,A stone with a sharp edge,Ein Stein mit einer scharfen Kante
+GLASS,glass,Glass
+GLASS_DESC,glass made of sand ,Aus Sand geschmolzenes Glas
+STONE_AXE_HEAD,Stone Axe Head,Steinaxtkopf
+STONE_AXE_HEAD_DESC,A stone formed as a axe head,Ein Stein geformt wie ein Axtkopf
+STONE_PICKAXE_HEAD,Stone Pickaxe Head,Steinspitzhackenkopf
+STONE_PICKAXE_HEAD_DESC,A stone formed as a pickaxe head,Ein Stein geformt wie ein Spitzhackenkopf
+WOODEN_HOE_HEAD,Wooden Hoe Head,Holzhackenkopf
+WOODEN_HOE_HEAD_DESC,A piece of wood formed as a hoe head,Ein Holzstück geformt als ein Hackenkopf
+WOODEN_HOE,Wooden Hoe Head,Holzhacke
+WOODEN_HOE_DESC,A tool to break plants faster,Ein Werkzeug um schneller Pflanzen zu säen
+WOODEN_AXE_HEAD,Wooden Axe Head,Holzaxtkopf
+WOODEN_AXE_HEAD_DESC,A piece of wood formed as a axe head,Ein Holzstück geformt als ein Axtkopf
+WHEAT,Wheat,Weizen
+WHEAT_DESC,fresh wheat,Frisch geernteter Weizenstängel
+IRON_BLOCK,Iron Block,Eisenblock
+IRON_BLOCK_DESC,Block of Iron,Block aus Eisen
+IRON_BLOCK_DESC,Block of Iron,Block aus Eisen
+,,
+,,
+QUEST_TITLE_1,,Die hungrige Insel #1
+QUEST_DESC_1,,"Du bist zufällig auf eine hungrige Insel getroffen. Du bist dir nicht Sicher, wie, oder warum es dazu kam. Aber du hast dich dazu verpflichtet eine Insel auf ewig mit Ressourcen zu füttern.
+Naja, das was die Insel grade will, sieht eigentlich noch nicht so schwer aus!"
+QUEST_TITLE_2,,Es will noch mehr! #2
+QUEST_DESC_2,,"Du hast nun erfolgreich die erste Fütterung durchgeführt, aber wie kann das sein? Dieses Monster will gleich wieder was zu Essen haben! Das wird echt eine Herausforderung, wenn er immer mehr
+und immer komplexere Ressourcen haben möchte! (Tipp: Drücke [ESC] und gehe auf den Punkt ""Herstellen"") "
+QUEST_TITLE_3,,Ich werde Forscherin! #3
+QUEST_DESC_3,,"Wieso kann ich die Ressourcen die dieses Monster will, nicht herstellen? Mir fehlen dafür einfach die Baupläne... (Tipp: Stelle einen Forschungstisch her - In diesem kannst du einige Basis Ressourcen
+erforschen, die jede Stufe etwas neues freischalten.)"
+QUEST_TITLE_4,,Neues Zeitalter #4
+QUEST_DESC_4,,"Eisen! Das kann doch jetzt nicht sein ernst sein. Hier auf dieser Insel gibt es doch gar kein Eisen! Wenn ich doch nur die benachbarten Inseln erreichen könnte... (Tipp: An einem Schild können Brücken
+gebaut werden. Die Insel dahinter kann Frei gewählt werden)"
+QUEST_TITLE_5,,Das Monster ist der Boss #5 (Kritische Quest)
+QUEST_DESC_5,,"Also so langsam reicht es mir echt, was er haben möchte! Einen Eisenblock? Wie soll ich das schwere Ding überhaupt transportieren!
+(Tipp: Eisenerz muss auf Stufe 2 erforscht werden um einen Eisenblock herzustellen)"
+QUEST_TITLE_6,,Er will was? Mystisch? #6
+QUEST_DESC_6,,"Dem feinen Herren ist das wohl zu Öde, die ganze Zeit das gleiche zu essen... und was möchte er jetzt? Mystisch... Was? Ach egal, ich bring Ihn, was er möchte.
+(Tipp: Baue eine mystische Insel an einem Schild)"
+QUEST_TITLE_7,dwdw,dwdwd
+QUEST_DESC_7,dwdw,dwdwd
+QUEST_TITLE_8,dwdw,dwdwd
+QUEST_DESC_8,dwdw,dwdwd
+QUEST_TITLE_9,dwdw,dwdwd
+QUEST_DESC_9,dwdw,dwdwd
+QUEST_TITLE_10,dwdw,dwdwd
+QUEST_DESC_10,dwdw,dwdwd

@@ -15,7 +15,7 @@ public partial class ResearchTab : ColorRect
     public Label item_level_label;
 
     public PackedScene research_level_tab = ResourceLoader.Load<PackedScene>(
-        "Research_Level_Tab.tscn"
+        "res://Prefabs/Research_Level_Tab.tscn"
     );
 
     public Array<ResearchSave> research_states = new Array<ResearchSave>();

@@ -8,7 +8,8 @@ public partial class HeaderColorRect : ColorRect
 
     public override void _Ready()
     {
-        GetNode<TranslationLabel>("Label").label_translation_string = translation_string;
-        GetNode<TranslationLabel>("Label").UpdateText();
+        GetChild(0).GetNode<TranslationLabel>("Label").label_translation_string =
+            translation_string;
+        GetChild(0).GetNode<TranslationLabel>("Label").UpdateText();
     }
 }

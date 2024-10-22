@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_c6s5x"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_kqash"]
-[ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Pickaxe.png" id="2_wjrmy"]
+[ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe.png" id="2_wjrmy"]
 
 [sub_resource type="Resource" id="Resource_2i0b4"]
 script = ExtResource("1_c6s5x")

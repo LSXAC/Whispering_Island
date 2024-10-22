@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch7l8hspct7p6"
-path="res://.godot/imported/Pickaxe.png-f37e23cf9e6025edc0c7806a9ed2f8c3.ctex"
+uid="uid://ccv3tqh14oetx"
+path="res://.godot/imported/Wooden_Axe.png-19e84d5cec0d1d8042929c13508b0380.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Icons_3rd/Pickaxe.png"
-dest_files=["res://.godot/imported/Pickaxe.png-f37e23cf9e6025edc0c7806a9ed2f8c3.ctex"]
+source_file="res://Sprites/Items/Icons_3rd/Wooden_Axe.png"
+dest_files=["res://.godot/imported/Wooden_Axe.png-19e84d5cec0d1d8042929c13508b0380.ctex"]
 
 [params]
 

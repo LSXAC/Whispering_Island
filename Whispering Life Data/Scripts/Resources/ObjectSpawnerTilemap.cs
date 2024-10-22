@@ -13,6 +13,7 @@ public partial class ObjectSpawnerTilemap : TileMapLayer
     public PackedScene mystFibre = ResourceLoader.Load<PackedScene>(
         "res://Placeable/MystFibre.tscn"
     );
+    public PackedScene wheat = ResourceLoader.Load<PackedScene>("res://Placeable/Wheat.tscn");
 
     public ResourceObjectManagerSave roms = new ResourceObjectManagerSave();
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c64xvoxldsui6"
-path="res://.godot/imported/icons_29_33.png-89d44c183260c3dcfbd55efcdac3a90e.ctex"
+uid="uid://ycfo4a4nvvu0"
+path="res://.godot/imported/Stone_Bladet.png-80729822233d118b3164ff6039c8cc34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Plants_Icons/icons_29_33.png"
-dest_files=["res://.godot/imported/icons_29_33.png-89d44c183260c3dcfbd55efcdac3a90e.ctex"]
+source_file="res://Sprites/Items/Icons_3rd/Stone_Bladet.png"
+dest_files=["res://.godot/imported/Stone_Bladet.png-80729822233d118b3164ff6039c8cc34.ctex"]
 
 [params]
 

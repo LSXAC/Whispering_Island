@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://6wlgn6tdsk7b"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_lxl0p"]
-[ext_resource type="Texture2D" uid="uid://cixgxe6yx2sgh" path="res://Sprites/Items/Plants_Icons/Mystic_Fibre.png" id="2_mcs8f"]
+[ext_resource type="Texture2D" uid="uid://dssms0p4e3r0e" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe_Head.png" id="2_t5k5v"]
 
 [resource]
 script = ExtResource("1_lxl0p")
@@ -10,6 +10,6 @@ item_types = Array[int]([8])
 burntime = 60
 item_name = "STONE_PICKAXE_HEAD"
 item_description = "STONE_PICKAXE_HEAD_DESC"
-texture = ExtResource("2_mcs8f")
+texture = ExtResource("2_t5k5v")
 value = 10.0
 item_stats = []

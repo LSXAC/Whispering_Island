@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4258hkqai8ka"
-path="res://.godot/imported/icons_29_02.png-85fd21bb941ff47783febff642e13d48.ctex"
+uid="uid://ch7l8hspct7p6"
+path="res://.godot/imported/Stone_Pickaxe.png-6f921623cb27fe978a77522a0b718aa7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Plants_Icons/icons_29_02.png"
-dest_files=["res://.godot/imported/icons_29_02.png-85fd21bb941ff47783febff642e13d48.ctex"]
+source_file="res://Sprites/Items/Icons_3rd/Stone_Pickaxe.png"
+dest_files=["res://.godot/imported/Stone_Pickaxe.png-6f921623cb27fe978a77522a0b718aa7.ctex"]
 
 [params]
 

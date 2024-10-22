@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3muq15xuvyro"
-path="res://.godot/imported/Icons_27_39.png-a7a6d960621e9b4e601af9ac2740676e.ctex"
+uid="uid://125t5f6fiugo"
+path="res://.godot/imported/Monster_Island.png-3d1155f8a1613a0a4f2ced1b619b8c15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Icons_3rd/Icons_27_39.png"
-dest_files=["res://.godot/imported/Icons_27_39.png-a7a6d960621e9b4e601af9ac2740676e.ctex"]
+source_file="res://Sprites/Monster_Island.png"
+dest_files=["res://.godot/imported/Monster_Island.png-3d1155f8a1613a0a4f2ced1b619b8c15.ctex"]
 
 [params]
 

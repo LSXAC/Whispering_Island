@@ -31,6 +31,9 @@ public partial class GameMenu : CanvasLayer
     [Export]
     public ColorRect saveload_tab;
 
+    [Export]
+    public ColorRect admin_tab;
+
     public static GameMenu INSTANCE = null;
 
     [Export]
@@ -70,6 +73,7 @@ public partial class GameMenu : CanvasLayer
         Stats,
         LoadSave,
         Settings,
+        Admin,
         X
     }
 
@@ -113,6 +117,7 @@ public partial class GameMenu : CanvasLayer
         inventory_tab.Visible = true;
         settings_tab.Visible = false;
         saveload_tab.Visible = false;
+        admin_tab.Visible = false;
     }
 
     public void OnSettingsTabButton()
@@ -122,6 +127,7 @@ public partial class GameMenu : CanvasLayer
         inventory_tab.Visible = false;
         settings_tab.Visible = true;
         saveload_tab.Visible = false;
+        admin_tab.Visible = false;
     }
 
     public void OnCraftingTabButton()
@@ -130,29 +136,40 @@ public partial class GameMenu : CanvasLayer
         crafting_tab.Visible = true;
         inventory_tab.Visible = false;
         settings_tab.Visible = false;
+        admin_tab.Visible = false;
         saveload_tab.Visible = false;
-        crafting_tab.GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
+        crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
     }
 
     public void OnCraftingCategoryButton(int id)
     {
-        crafting_tab.GetNode<CraftingMenu>("CraftingMenuBasic").Visible = false;
-        crafting_tab.GetNode<CraftingMenu>("CraftingMenuTools").Visible = false;
-        crafting_tab.GetNode<CraftingMenu>("CraftingMenuToolparts").Visible = false;
+        crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuBasic").Visible = false;
+        crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuTools").Visible = false;
+        crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuToolparts").Visible = false;
 
         switch (id)
         {
             case 0:
-                crafting_tab.GetNode<CraftingMenu>("CraftingMenuBasic").Visible = true;
-                crafting_tab.GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
+                crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuBasic").Visible = true;
+                crafting_tab
+                    .GetChild(0)
+                    .GetNode<CraftingMenu>("CraftingMenuBasic")
+                    .ReloadUIRecipes();
                 break;
             case 1:
-                crafting_tab.GetNode<CraftingMenu>("CraftingMenuTools").Visible = true;
-                crafting_tab.GetNode<CraftingMenu>("CraftingMenuTools").ReloadUIRecipes();
+                crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuTools").Visible = true;
+                crafting_tab
+                    .GetChild(0)
+                    .GetNode<CraftingMenu>("CraftingMenuTools")
+                    .ReloadUIRecipes();
                 break;
             case 2:
-                crafting_tab.GetNode<CraftingMenu>("CraftingMenuToolparts").Visible = true;
-                crafting_tab.GetNode<CraftingMenu>("CraftingMenuToolparts").ReloadUIRecipes();
+                crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuToolparts").Visible =
+                    true;
+                crafting_tab
+                    .GetChild(0)
+                    .GetNode<CraftingMenu>("CraftingMenuToolparts")
+                    .ReloadUIRecipes();
                 break;
         }
     }
@@ -164,7 +181,8 @@ public partial class GameMenu : CanvasLayer
         inventory_tab.Visible = false;
         settings_tab.Visible = false;
         saveload_tab.Visible = true;
-        crafting_tab.GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
+        admin_tab.Visible = false;
+        crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
     }
 
     public void OnOpenFurnaceTab()
@@ -175,6 +193,7 @@ public partial class GameMenu : CanvasLayer
         inventory_tab.Visible = true;
         crafting_tab.Visible = false;
         settings_tab.Visible = false;
+        admin_tab.Visible = false;
         furnace_tab.Visible = true;
         chest_tab.Visible = false;
         saveload_tab.Visible = false;
@@ -188,8 +207,23 @@ public partial class GameMenu : CanvasLayer
         inventory_tab.Visible = true;
         crafting_tab.Visible = false;
         settings_tab.Visible = false;
+        admin_tab.Visible = false;
         furnace_tab.Visible = false;
         chest_tab.Visible = true;
+        saveload_tab.Visible = false;
+    }
+
+    public void OnOpenAdminTab()
+    {
+        ChangeSelectedTabColor(Tabs.Admin);
+        Visible = true;
+        Game_Manager.inside_game_menu = true;
+        inventory_tab.Visible = true;
+        crafting_tab.Visible = false;
+        settings_tab.Visible = false;
+        admin_tab.Visible = true;
+        furnace_tab.Visible = false;
+        chest_tab.Visible = false;
         saveload_tab.Visible = false;
     }
 
@@ -199,6 +233,7 @@ public partial class GameMenu : CanvasLayer
         inventory_tab.Visible = true;
         crafting_tab.Visible = false;
         furnace_tab.Visible = false;
+        admin_tab.Visible = false;
         settings_tab.Visible = false;
         saveload_tab.Visible = false;
         Game_Manager.inside_game_menu = false;
@@ -212,6 +247,7 @@ public partial class GameMenu : CanvasLayer
         crafting_tab.Visible = false;
         furnace_tab.Visible = false;
         settings_tab.Visible = false;
+        admin_tab.Visible = false;
         chest_tab.Visible = false;
         saveload_tab.Visible = false;
         ChestInventory.INSTANCE.current_chest = null;

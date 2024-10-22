@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq6hfhtw5fovg"
-path="res://.godot/imported/Icons_27_26.png-5874c7163ca8b853bf20eebf6be9e399.ctex"
+uid="uid://dxjvpwnw5yl31"
+path="res://.godot/imported/Glass.png-0216abbd7b9b1aeb6a958f0db4802f2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Icons_3rd/Icons_27_26.png"
-dest_files=["res://.godot/imported/Icons_27_26.png-5874c7163ca8b853bf20eebf6be9e399.ctex"]
+source_file="res://Sprites/Items/Icons_3rd/Glass.png"
+dest_files=["res://.godot/imported/Glass.png-0216abbd7b9b1aeb6a958f0db4802f2c.ctex"]
 
 [params]
 

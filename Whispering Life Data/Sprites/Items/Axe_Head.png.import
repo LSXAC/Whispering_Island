@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxjvpwnw5yl31"
-path="res://.godot/imported/Icons_27_81.png-dc793290277ce2b7a002be2961cc3ecf.ctex"
+uid="uid://od8rrcp37xan"
+path="res://.godot/imported/Axe_Head.png-758ac0c9e6ff2a35c09be8807752f511.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Icons_3rd/Icons_27_81.png"
-dest_files=["res://.godot/imported/Icons_27_81.png-dc793290277ce2b7a002be2961cc3ecf.ctex"]
+source_file="res://Sprites/Items/Axe_Head.png"
+dest_files=["res://.godot/imported/Axe_Head.png-758ac0c9e6ff2a35c09be8807752f511.ctex"]
 
 [params]
 

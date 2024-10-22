@@ -10,8 +10,8 @@
 [ext_resource type="TileSet" uid="uid://bovg285rqfm1r" path="res://Tileset Objects/Spawn_Tileset.tres" id="7_va5b3"]
 [ext_resource type="Script" path="res://Scripts/Resources/ObjectSpawnerTilemap.cs" id="8_7hw5l"]
 [ext_resource type="Script" path="res://Scripts/QuestSign.cs" id="8_dl61a"]
-[ext_resource type="Texture2D" uid="uid://bhlxcjg0smxvq" path="res://Sprites/Main_Island.png" id="9_4vrhr"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="10_7bt86"]
+[ext_resource type="Texture2D" uid="uid://125t5f6fiugo" path="res://Sprites/Monster_Island.png" id="11_qd1vh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cugrr"]
 size = Vector2(32, 32)
@@ -175,7 +175,7 @@ polygon = PackedVector2Array(192, 32, 224, 32, 288, -32, 288, -48, 320, -48, 280
 
 [node name="ObjectSpawnerTilemap" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAABAAIAAAAAAAAAAAADAAEAAAAAAAAAAAACAPv/AAAAAAAAAAABAPn/AAABAAAAAAD+//z/AAABAAAAAAD8/wAAAAABAAAAAAD9/wAAAAABAAAAAAD5/wEAAAAAAAAAAAD8/wQAAAAAAAAAAAABAPr/AAAAAAAAAAABAP//AAAAAAAAAAACAAAAAAAAAAAAAAD+/wEAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAAIAAAAAAAAAAAADAAEAAAAAAAAAAAACAPv/AAAAAAAAAAABAPn/AAABAAAAAAD+//z/AAABAAAAAAD8/wAAAAABAAAAAAD9/wAAAAABAAAAAAD5/wEAAAAAAAAAAAD8/wQAAAAAAAAAAAABAPr/AAAAAAAAAAABAP//AAAAAAAAAAACAAAAAAAAAAAAAAD+/wEAAAAAAAAAAAD7/wAAAAAAAAEAAAD9//r/AAAAAAEAAAABAPz/AAAAAAEAAAAAAP3/AAAAAAEAAAADAPv/AAAAAAEAAAA=")
 enabled = false
 tile_set = ExtResource("7_va5b3")
 script = ExtResource("8_7hw5l")
@@ -194,8 +194,9 @@ shape = SubResource("RectangleShape2D_g6kej")
 [node name="BuildingSprite" type="Sprite2D" parent="QuestSign"]
 z_index = -3
 y_sort_enabled = true
-position = Vector2(-32, -80)
-texture = ExtResource("9_4vrhr")
+position = Vector2(-19, -75)
+scale = Vector2(2, 2)
+texture = ExtResource("11_qd1vh")
 offset = Vector2(0, -6)
 
 [node name="MouseArea" type="Area2D" parent="QuestSign" node_paths=PackedStringArray("building_node", "building_sprite")]

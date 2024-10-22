@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_8fx8c"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_ssgok"]
-[ext_resource type="Texture2D" uid="uid://ppkhe2a2ex8x" path="res://Sprites/Items/Tool_Icons/Wood_Chest.png" id="2_n6xng"]
+[ext_resource type="Texture2D" uid="uid://ccv3tqh14oetx" path="res://Sprites/Items/Icons_3rd/Wooden_Axe.png" id="3_7xvs7"]
 
 [sub_resource type="Resource" id="Resource_4kdc1"]
 script = ExtResource("1_ssgok")
@@ -21,6 +21,6 @@ item_types = Array[int]([1, 8])
 burntime = 60
 item_name = "WOODEN_AXE"
 item_description = "WOODEN_AXE_DESC"
-texture = ExtResource("2_n6xng")
+texture = ExtResource("3_7xvs7")
 value = 5.0
 item_stats = [SubResource("Resource_4kdc1"), SubResource("Resource_t6n0y")]

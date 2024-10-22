@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_fqlw0"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_kn11j"]
-[ext_resource type="Texture2D" uid="uid://cixgxe6yx2sgh" path="res://Sprites/Items/Plants_Icons/Mystic_Fibre.png" id="2_h8mwi"]
+[ext_resource type="Texture2D" uid="uid://nay062h3dror" path="res://Sprites/Items/Icons_3rd/Stone_Hoe.png" id="3_2is6l"]
 
 [sub_resource type="Resource" id="Resource_mcbdc"]
 script = ExtResource("1_fqlw0")
@@ -21,6 +21,6 @@ item_types = Array[int]([1, 7, 8])
 burntime = 60
 item_name = "WOODEN_HOE"
 item_description = "WOODEN_HOE_DESC"
-texture = ExtResource("2_h8mwi")
+texture = ExtResource("3_2is6l")
 value = 10.0
 item_stats = [SubResource("Resource_mcbdc"), SubResource("Resource_o3yil")]

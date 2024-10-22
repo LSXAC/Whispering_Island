@@ -69,6 +69,9 @@ public partial class player_ui : CanvasLayer
 
     public void UpdateGameTimeLabel()
     {
+        if (game_time_label == null)
+            return;
+
         game_time_label.Text =
             TranslationServer.Translate("PLAYERUI_GAMETIME")
             + ": "

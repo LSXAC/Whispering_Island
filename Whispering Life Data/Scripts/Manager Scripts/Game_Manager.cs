@@ -174,6 +174,8 @@ public partial class Game_Manager : Node2D
         DialogueManager.ShowDialogueBalloon(dialogue, "Tutorial");
     }
 
+    public void GameOver() { }
+
     public void LoadIslandResources()
     {
         //foreach (Island_Properties ip in GetTree().GetNodesInGroup("Island_Properties"))

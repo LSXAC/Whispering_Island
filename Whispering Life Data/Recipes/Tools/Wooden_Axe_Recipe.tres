@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://dmrxwabbdyg0d" path="res://Items/Wooden_Axe.tres" id="1_clc2t"]
 [ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_fo241"]
-[ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Items/Wooden_Handle.tres" id="3_y3gtv"]
+[ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Items/Wood_Stick.tres" id="3_f1jbd"]
 [ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Items/Mystic_Fibre.tres" id="4_ua5yn"]
 [ext_resource type="Resource" uid="uid://65jron2bhtes" path="res://Items/Wooden_Axe_Head.tres" id="5_yhesi"]
 [ext_resource type="Script" path="res://Scripts/Resources/Recipe.cs" id="6_5jnak"]
@@ -14,7 +14,7 @@ amount = 1
 
 [sub_resource type="Resource" id="Resource_q4hka"]
 script = ExtResource("2_fo241")
-item_info = ExtResource("3_y3gtv")
+item_info = ExtResource("3_f1jbd")
 amount = 1
 
 [sub_resource type="Resource" id="Resource_hbdev"]

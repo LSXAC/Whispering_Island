@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=38 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -18,12 +18,15 @@
 [ext_resource type="Resource" uid="uid://dr5yac7cj8scc" path="res://Recipes/Basics/Wooden_Plank_Recipe.tres" id="12_h3bpf"]
 [ext_resource type="Resource" uid="uid://bedyblbr23cwl" path="res://Recipes/Basics/Wooden_Stick_Recipe.tres" id="13_o680h"]
 [ext_resource type="Resource" uid="uid://bp4wq2ypl075m" path="res://Recipes/Tools/Wooden_Axe_Recipe.tres" id="16_1o4en"]
+[ext_resource type="Script" path="res://Menus/CheatTab.cs" id="16_f2xax"]
 [ext_resource type="Script" path="res://Menus/SettingsTab.cs" id="16_jv3kw"]
 [ext_resource type="Texture2D" uid="uid://syf34dx878d5" path="res://Sprites/Flaggs/US_FLAG.png" id="16_ldk1u"]
 [ext_resource type="Resource" uid="uid://b7a6dtp0rqub1" path="res://Recipes/Tools/Wooden_Hoe_Recipe.tres" id="17_7eamj"]
 [ext_resource type="StyleBox" uid="uid://beanw2e3ddca1" path="res://Menus/OptionButtonStyle.tres" id="17_hyydq"]
+[ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="17_iq1ex"]
 [ext_resource type="Texture2D" uid="uid://d24spwn8n1w7w" path="res://Sprites/Flaggs/DE_FLAG.png" id="18_1qrrt"]
 [ext_resource type="Resource" uid="uid://cydbh0i4ql0ev" path="res://Recipes/Toolparts/Wooden_Handle.tres" id="18_5towo"]
+[ext_resource type="Texture2D" uid="uid://w1k1mv22ckvl" path="res://Sprites/Items/Icons_3rd/Stone.png" id="18_ou1xm"]
 [ext_resource type="StyleBox" uid="uid://ch5faigjhjxlm" path="res://Menus/OptionButtonStylePressed.tres" id="18_q7nbm"]
 [ext_resource type="Resource" uid="uid://g5iegjlxch46" path="res://Recipes/Toolparts/Stone_Blade_Recipe.tres" id="18_vv5t7"]
 [ext_resource type="Resource" uid="uid://crbwxmyjqlafm" path="res://Recipes/Toolparts/Stone_Pickaxe_Head_Recipe.tres" id="19_f07lv"]
@@ -34,13 +37,10 @@
 [ext_resource type="Script" path="res://Menus/TranslationLabel.cs" id="26_tl5yt"]
 [ext_resource type="Script" path="res://Menus/SaveLoadTab.cs" id="27_ku6dj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_um5wb"]
-bg_color = Color(0, 0, 0, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tibut"]
 bg_color = Color(1, 1, 1, 0)
 
-[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "chest_tab", "settings_tab", "saveload_tab", "header_container")]
+[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "header_container")]
 process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/SaveLoadTab/HBoxContainer/LoadGameButton")
@@ -52,6 +52,7 @@ furnace_tab = NodePath("Background/FurnaceTab")
 chest_tab = NodePath("Background/ChestTab")
 settings_tab = NodePath("Background/SettingsTab")
 saveload_tab = NodePath("Background/SaveLoadTab")
+admin_tab = NodePath("Background/AdminTab")
 header_container = NodePath("Background/HBoxHeader")
 
 [node name="TransBackground" type="ColorRect" parent="."]
@@ -87,7 +88,7 @@ focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "> Inventory"
 icon_alignment = 1
 script = ExtResource("3_pwamf")
@@ -100,7 +101,7 @@ focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "> Crafting"
 script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_CRAFTING_BUTTON"
@@ -112,7 +113,7 @@ focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "> Stats"
 script = ExtResource("3_pwamf")
 
@@ -123,7 +124,7 @@ focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "> Save/Load"
 script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_SAVELOAD_BUTTON"
@@ -135,10 +136,21 @@ focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "> Settings"
 script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_SETTINGS_BUTTON"
+
+[node name="CheatButton" type="Button" parent="Background/HBoxHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "> ADMIN"
+script = ExtResource("3_pwamf")
 
 [node name="ExitTabButton" type="Button" parent="Background/HBoxHeader"]
 layout_mode = 2
@@ -146,7 +158,7 @@ focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "<X>"
 script = ExtResource("3_pwamf")
 
@@ -782,6 +794,99 @@ offset_right = 307.0
 offset_bottom = -2.0
 translation_string = "GAMEMENU_RESEARCH_TABLE"
 
+[node name="AdminTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("item_list")]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 222.0
+offset_top = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
+script = ExtResource("16_f2xax")
+item_list = NodePath("PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/ItemList")
+
+[node name="PanelContainer" type="Control" parent="Background/AdminTab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/AdminTab/PanelContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/AdminTab/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+text = "Admin Panel"
+vertical_alignment = 1
+
+[node name="SPACELABEL" type="Label" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+vertical_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/side_margin = 0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+current_tab = 0
+
+[node name="Items" type="VBoxContainer" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ItemList" type="ItemList" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 10
+select_mode = 1
+max_text_lines = 2
+item_count = 3
+max_columns = 3
+fixed_icon_size = Vector2i(24, 24)
+item_0/text = "Wood"
+item_0/icon = ExtResource("17_iq1ex")
+item_1/text = "Stone"
+item_1/icon = ExtResource("18_ou1xm")
+item_2/text = "Nichts"
+
+[node name="CreateButton" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Send selected Items to Inventory"
+
+[node name="DeselectButton" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Unselect All"
+
 [node name="CraftingTab" type="ColorRect" parent="Background"]
 visible = false
 z_index = 3
@@ -794,36 +899,29 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
 
-[node name="PanelContainer" type="PanelContainer" parent="Background/CraftingTab"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab"]
 layout_mode = 0
-offset_left = 224.0
+offset_left = 227.0
 offset_top = 14.0
-offset_right = 544.0
-offset_bottom = 38.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_um5wb")
+offset_right = 548.0
+offset_bottom = 212.0
 
-[node name="CraftingMenuBasic" type="PanelContainer" parent="Background/CraftingTab/PanelContainer" node_paths=PackedStringArray("parent")]
-layout_mode = 2
-script = ExtResource("4_3cwxu")
-parent = NodePath("VBoxContainer")
-crafting_recipies = [ExtResource("12_h3bpf"), ExtResource("13_o680h")]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/PanelContainer/CraftingMenuBasic"]
+[node name="PanelContainer" type="PanelContainer" parent="Background/CraftingTab/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Background/CraftingTab/PanelContainer/CraftingMenuBasic"]
+[node name="MarginContainer" type="MarginContainer" parent="Background/CraftingTab/VBoxContainer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 5
+theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="HSplitContainer" type="HSplitContainer" parent="Background/CraftingTab/PanelContainer/CraftingMenuBasic/MarginContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="Background/CraftingTab/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 split_offset = -125
 collapsed = true
 
-[node name="ItemLabel" type="Label" parent="Background/CraftingTab/PanelContainer/CraftingMenuBasic/MarginContainer/HSplitContainer"]
+[node name="ItemLabel" type="Label" parent="Background/CraftingTab/VBoxContainer/PanelContainer/MarginContainer/HSplitContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
@@ -831,7 +929,7 @@ text = "  Item                  "
 script = ExtResource("26_tl5yt")
 label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
 
-[node name="ResourceNeededLabel" type="Label" parent="Background/CraftingTab/PanelContainer/CraftingMenuBasic/MarginContainer/HSplitContainer"]
+[node name="ResourceNeededLabel" type="Label" parent="Background/CraftingTab/VBoxContainer/PanelContainer/MarginContainer/HSplitContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
@@ -839,32 +937,33 @@ text = "Resources needed"
 script = ExtResource("26_tl5yt")
 label_translation_string = "CRAFTING_MENU_TOPBAR_RESOURCE_NEEDED"
 
-[node name="CraftingMenuTools" type="PanelContainer" parent="Background/CraftingTab" node_paths=PackedStringArray("parent")]
+[node name="CraftingMenuBasic" type="PanelContainer" parent="Background/CraftingTab/VBoxContainer" node_paths=PackedStringArray("parent")]
+layout_mode = 2
+script = ExtResource("4_3cwxu")
+parent = NodePath("VBoxContainer")
+crafting_recipies = [ExtResource("12_h3bpf"), ExtResource("13_o680h")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuBasic"]
+layout_mode = 2
+
+[node name="CraftingMenuTools" type="PanelContainer" parent="Background/CraftingTab/VBoxContainer" node_paths=PackedStringArray("parent")]
 visible = false
-layout_mode = 0
-offset_left = 224.0
-offset_top = 38.0
-offset_right = 544.0
-offset_bottom = 254.0
+layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("VBoxContainer")
 crafting_recipies = [ExtResource("19_pe00a"), ExtResource("20_ujqyg"), ExtResource("16_1o4en"), ExtResource("17_7eamj")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/CraftingMenuTools"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuTools"]
 layout_mode = 2
 
-[node name="CraftingMenuToolparts" type="PanelContainer" parent="Background/CraftingTab" node_paths=PackedStringArray("parent")]
+[node name="CraftingMenuToolparts" type="PanelContainer" parent="Background/CraftingTab/VBoxContainer" node_paths=PackedStringArray("parent")]
 visible = false
-layout_mode = 0
-offset_left = 224.0
-offset_top = 38.0
-offset_right = 544.0
-offset_bottom = 254.0
+layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("VBoxContainer")
 crafting_recipies = [ExtResource("18_vv5t7"), ExtResource("19_f07lv"), ExtResource("20_jycfp"), ExtResource("18_5towo"), ExtResource("21_13841")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/CraftingMenuToolparts"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuToolparts"]
 layout_mode = 2
 
 [node name="CategoryPanel" type="PanelContainer" parent="Background/CraftingTab"]
@@ -1345,6 +1444,7 @@ popup/item_0/icon = ExtResource("16_ldk1u")
 [connection signal="pressed" from="Background/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/SaveTabButton" to="." method="OnSaveLoadTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/SettingsTabButton" to="." method="OnSettingsTabButton"]
+[connection signal="pressed" from="Background/HBoxHeader/CheatButton" to="." method="OnOpenAdminTab"]
 [connection signal="pressed" from="Background/HBoxHeader/ExitTabButton" to="." method="OnExitButton"]
 [connection signal="visibility_changed" from="Background/InventoryTab/EquipmentPanel" to="Background/InventoryTab/EquipmentPanel" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/InputSlot" to="Background/FurnaceTab/PanelContainer/InputSlot" method="onMachineSlot" binds= [0]]
@@ -1353,6 +1453,9 @@ popup/item_0/icon = ExtResource("16_ldk1u")
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/EnableDisableButton" to="Background/FurnaceTab" method="OnMachineStateButton"]
 [connection signal="pressed" from="Background/ResearchTab/PanelContainer/ResearchSlot" to="Background/ResearchTab/PanelContainer/ResearchSlot" method="onMachineSlot" binds= [0]]
 [connection signal="pressed" from="Background/ResearchTab/PanelContainer/Button" to="Background/ResearchTab" method="OnMachineStateButton"]
+[connection signal="visibility_changed" from="Background/AdminTab" to="Background/AdminTab" method="OnVisiblityChange"]
+[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/CreateButton" to="Background/AdminTab" method="OnCreateItems"]
+[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/DeselectButton" to="Background/AdminTab" method="OnDeselectAll"]
 [connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/GeneralButton" to="." method="OnCraftingCategoryButton" binds= [0]]
 [connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/ToolspartsButton" to="." method="OnCraftingCategoryButton" binds= [2]]
 [connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/ToolsButton" to="." method="OnCraftingCategoryButton" binds= [1]]

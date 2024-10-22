@@ -27,12 +27,14 @@ public partial class InventoryBase : Control
         ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Wood.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Fibre.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Stone_Blade.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Handle.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Glass.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Stone_Axe_Head.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Stone_Pickaxe_Head.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Hoe_Head.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Hoe.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe_Head.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Wheat.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Iron_Block.tres"),
     };
 
     public override void _Ready()

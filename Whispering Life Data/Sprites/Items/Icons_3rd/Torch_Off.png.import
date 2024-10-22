@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8lcew4fxuuxm"
-path="res://.godot/imported/icons_29_78.png-a9f498390c61204c7d60592f7276eaf9.ctex"
+uid="uid://3muq15xuvyro"
+path="res://.godot/imported/Torch_Off.png-8b1d348dd03d59b3e779188df8cd6913.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Plants_Icons/icons_29_78.png"
-dest_files=["res://.godot/imported/icons_29_78.png-a9f498390c61204c7d60592f7276eaf9.ctex"]
+source_file="res://Sprites/Items/Icons_3rd/Torch_Off.png"
+dest_files=["res://.godot/imported/Torch_Off.png-8b1d348dd03d59b3e779188df8cd6913.ctex"]
 
 [params]
 
