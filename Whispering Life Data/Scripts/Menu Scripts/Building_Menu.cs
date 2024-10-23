@@ -27,6 +27,9 @@ public partial class Building_Menu : CanvasLayer
     public PackedScene wooden_bed = ResourceLoader.Load<PackedScene>(
         "res://Placeable/WoodenBed.tscn"
     );
+    public PackedScene beltTunnel = ResourceLoader.Load<PackedScene>(
+        "res://Placeable/BeltTunnel.tscn"
+    );
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -37,6 +40,7 @@ public partial class Building_Menu : CanvasLayer
         InitBuildings(chest);
         InitBuildings(belt);
         InitBuildings(wooden_bed);
+        InitBuildings(beltTunnel);
         instance = this;
     }
 

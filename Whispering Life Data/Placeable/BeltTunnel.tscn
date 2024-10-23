@@ -1,0 +1,108 @@
+[gd_scene load_steps=14 format=3 uid="uid://cvinbig8n3cbp"]
+
+[ext_resource type="Script" path="res://Placeable/BeltTunnel.cs" id="1_8pw6g"]
+[ext_resource type="Texture2D" uid="uid://bi2pvwe1l5m40" path="res://Sprites/Belt_Atlas.png" id="2_h7ddp"]
+[ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_03v8s"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="4_u84hi"]
+[ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Placeable/detector.tscn" id="5_cqme2"]
+[ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_edykq"]
+[ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="7_nklsv"]
+[ext_resource type="Script" path="res://Placeable/BeltArea.cs" id="8_kbhhr"]
+[ext_resource type="Script" path="res://Placeable/TunnelArea.cs" id="9_a3q3v"]
+[ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Prefabs/Water_Noise_Map.tres" id="10_hvugw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8pj"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77bd0"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
+size = Vector2(16, 14)
+
+[node name="BeltTunnel" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "item_holder", "detector", "sprite", "collision_shape")]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_8pw6g")
+checkAreaTimer = NodePath("CheckAreaTimer")
+item_holder = NodePath("ItemHolder")
+detector = NodePath("Detector")
+title = "Belt"
+description = "Moves Items"
+sprite = NodePath("BuildingSprite")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="BuildingSprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-8, -6)
+texture = ExtResource("2_h7ddp")
+centered = false
+offset = Vector2(-8, -10)
+hframes = 5
+vframes = 5
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("3_03v8s")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." groups=["Blocker"]]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+tile_set = ExtResource("4_u84hi")
+
+[node name="Detector" parent="." instance=ExtResource("5_cqme2")]
+position = Vector2(-24, -8)
+
+[node name="ItemHolder" parent="." instance=ExtResource("6_edykq")]
+y_sort_enabled = true
+position = Vector2(-8, -8)
+
+[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+collision_layer = 2
+script = ExtResource("7_nklsv")
+building_node = NodePath("..")
+building_sprite = NodePath("../BuildingSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(-8, -8)
+shape = SubResource("RectangleShape2D_3k8pj")
+
+[node name="BeltArea" type="Area2D" parent="."]
+collision_layer = 516
+collision_mask = 0
+monitoring = false
+script = ExtResource("8_kbhhr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeltArea"]
+position = Vector2(-8, -8)
+shape = SubResource("RectangleShape2D_77bd0")
+
+[node name="TunnelArea" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 512
+collision_priority = 2.0
+monitorable = false
+script = ExtResource("9_a3q3v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TunnelArea"]
+position = Vector2(-8, -8)
+shape = SubResource("RectangleShape2D_77bd0")
+
+[node name="Sprite2D" type="Sprite2D" parent="TunnelArea"]
+position = Vector2(-8, -8)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("10_hvugw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-8, -7)
+shape = SubResource("RectangleShape2D_xfl3k")
+
+[node name="CheckAreaTimer" type="Timer" parent="."]
+
+[connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
+[connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
+[connection signal="area_entered" from="TunnelArea" to="TunnelArea" method="OnAreaEntered"]

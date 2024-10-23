@@ -51,6 +51,15 @@ public partial class Belt : placeable_building
                     var item = item_holder.offload_item();
                     area.GetParent<Belt>().receive_item(item);
                 }
+            if (area.GetParent() is BeltTunnel)
+                if (area.GetParent<BeltTunnel>().is_tunnel_connected)
+                    if (area.GetParent<BeltTunnel>().connected_itemholder != null)
+                        if (area.GetParent<BeltTunnel>().can_receive_item())
+                        {
+                            Debug.Print("Deposit Item");
+                            var item = item_holder.offload_item();
+                            area.GetParent<BeltTunnel>().connected_itemholder.receive_item(item);
+                        }
             if (area.GetParent() is Trashcan)
                 if (area.GetParent<Trashcan>().can_receive_item())
                 {

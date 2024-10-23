@@ -8,7 +8,8 @@ public partial class MachineBase : placeable_building
         WOODFARM,
         FURNACE,
         QUARRY,
-        CHEST
+        CHEST,
+        TUNNEL
     }
 
     [Export]
