@@ -42,6 +42,8 @@ public partial class Building_Placer : Node2D
             ((Belt)placeable).Set_Rotation(current_belt_rotation);
             placeable.GetNode<Area2D>("BeltArea").Monitorable = false;
             placeable.collision_shape.Disabled = true;
+            if (current_building is BeltTunnel)
+                placeable.GetNode<TunnelArea>("TunnelArea").Monitoring = false;
             return;
         }
         if (current_building is placeable_building)
@@ -266,6 +268,10 @@ public partial class Building_Placer : Node2D
 
     private void PlaceBuilding()
     {
+        if (placeable == null)
+            Debug.Print("Placeable NULL");
+        if (placeable.building_collider_manager == null)
+            Debug.Print("BCM NULL");
         if (placeable.building_collider_manager.AllCollidersOnBuildingLayer())
             BuildBuilding();
     }
@@ -281,6 +287,11 @@ public partial class Building_Placer : Node2D
         if (temp is Belt)
         {
             ((Belt)temp).Set_Rotation(current_belt_rotation);
+            if (temp is BeltTunnel)
+            {
+                Debug.Print("BeltTunnel XX");
+                ((BeltTunnel)temp).CheckIfTunnelInDir();
+            }
             return;
         }
         CloseMenuWithBuildingSelected();

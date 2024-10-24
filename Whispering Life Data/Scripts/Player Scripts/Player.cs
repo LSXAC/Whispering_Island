@@ -32,6 +32,7 @@ public partial class Player : CharacterBody2D
         if (
             Game_Manager.inside_game_menu
             || Game_Manager.building_mode != Game_Manager.BuildingMode.None
+            || Game_Manager.gameover
         )
             return;
 

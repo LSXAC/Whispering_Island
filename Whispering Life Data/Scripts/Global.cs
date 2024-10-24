@@ -3,12 +3,12 @@ using Godot;
 
 public partial class Global : Node2D
 {
-    public static float GetDistanceToPlayer(Godot.Vector2 nodePosition)
+    public static float GetDistanceToPlayer(Vector2 nodePosition)
     {
         return Player.INSTANCE.GlobalPosition.DistanceTo(nodePosition);
     }
 
-    public static void MoveCamera(Godot.Vector2 pos)
+    public static void MoveCamera(Vector2 pos)
     {
         Player.camera.Enabled = false;
         Game_Manager.INSTANCE.cutscene_camera.GlobalPosition = Player.camera.GlobalPosition;
@@ -43,6 +43,7 @@ public partial class Global : Node2D
         Player.camera.Position = Godot.Vector2.Zero;
         Game_Manager.In_Cutscene = false;
         Game_Manager.INSTANCE.LoadIslandResources();
+        Game_Manager.INSTANCE.SaveGame();
     }
 
     public static void OutlineTree()

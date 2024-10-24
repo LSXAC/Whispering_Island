@@ -47,7 +47,7 @@ public partial class Building_Menu : CanvasLayer
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        if (Game_Manager.building_mode != Game_Manager.BuildingMode.None)
+        if (Game_Manager.building_mode != Game_Manager.BuildingMode.None || Game_Manager.gameover)
             return;
 
         if (Input.IsActionJustPressed("OpenBuilding"))

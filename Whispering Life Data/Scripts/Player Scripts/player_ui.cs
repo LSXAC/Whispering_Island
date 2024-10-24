@@ -30,7 +30,13 @@ public partial class player_ui : CanvasLayer
 
     [Export]
     public Control collected_item_parent;
+
+    [Export]
+    public Panel gameover_panel;
     public static player_ui INSTANCE;
+
+    [Export]
+    public CheckBox skip_tutorial_box;
 
     public override void _Notification(int what)
     {
@@ -43,6 +49,7 @@ public partial class player_ui : CanvasLayer
     public override void _Ready()
     {
         INSTANCE = this;
+        gameover_panel.Visible = false;
         game_time_panel = GetNode<PanelContainer>("GameTimePanel");
         game_time_label = game_time_panel.GetChild(0).GetNode<Label>("GameTimeLabel");
         quest_complete_panel = GetNode<Panel>("QuestCompletePanel");
@@ -77,6 +84,19 @@ public partial class player_ui : CanvasLayer
             + ": "
             + Game_Manager.game_time_since_start.ToString("N2")
             + "s";
+    }
+
+    public void OnNewGameButton()
+    {
+        if (skip_tutorial_box.ButtonPressed)
+            Game_Manager.INSTANCE.NewGame(true);
+        else
+            Game_Manager.INSTANCE.NewGame();
+    }
+
+    public void OnLoadGameButton()
+    {
+        Game_Manager.INSTANCE.LoadGame();
     }
 
     public static void AddItemLabelUI(string text)

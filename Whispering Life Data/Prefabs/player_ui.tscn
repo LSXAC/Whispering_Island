@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://j1cdgg7lep78"]
+[gd_scene load_steps=12 format=3 uid="uid://j1cdgg7lep78"]
 
 [ext_resource type="Script" path="res://Scripts/Player Scripts/player_ui.cs" id="1_m5svq"]
 [ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://u4rbvbumuiua" path="res://h_box_item.tscn" id="4_4w6kj"]
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/QuestMiniPanel.cs" id="4_khv1d"]
 [ext_resource type="Script" path="res://Menus/TranslationLabel.cs" id="7_vya4o"]
+[ext_resource type="Script" path="res://Menus/TranslationButton.cs" id="9_erkjv"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_x1xeh"]
 color = Color(0.141176, 0.141176, 0.141176, 1)
@@ -18,13 +19,15 @@ thickness = 6
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upggj"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("qcp_timer", "window_frame_rect", "collected_item_parent")]
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("qcp_timer", "window_frame_rect", "collected_item_parent", "gameover_panel", "skip_tutorial_box")]
 script = ExtResource("1_m5svq")
 qcp_timer = NodePath("QuestCompletePanel/Timer")
 window_frame_rect = NodePath("WindowFrame")
 building_frame = ExtResource("2_ktroc")
 removing_frame = ExtResource("3_7rm5b")
 collected_item_parent = NodePath("ReceivedItems")
+gameover_panel = NodePath("GameOverPanel")
+skip_tutorial_box = NodePath("GameOverPanel/VBoxContainer/CheckBox")
 
 [node name="WindowFrame" type="TextureRect" parent="."]
 visible = false
@@ -198,4 +201,71 @@ theme_override_font_sizes/font_size = 14
 text = "Game Time: X"
 horizontal_alignment = 1
 
+[node name="GameOverPanel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameOverPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3_0pxjf")
+bbcode_enabled = true
+text = "[center][wave][font_size=25px]>[color=red]You got eaten[color=white]<"
+
+[node name="SPACELABEL" type="Label" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+text = "The Timer reached his limit and the Monster did not get his food."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SPACELABEL2" type="Label" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="LoadGameButton" type="Button" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+text = "Load Game"
+script = ExtResource("9_erkjv")
+label_translation_string = "SAVELOAD_MENU_LOAD_BUTTON"
+
+[node name="NewGameButton" type="Button" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+text = "New Game"
+script = ExtResource("9_erkjv")
+
+[node name="CheckBox" type="CheckBox" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0pxjf")
+button_pressed = true
+text = "SKIP TUTORIAL"
+
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
+[connection signal="button_down" from="GameOverPanel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButton"]
+[connection signal="button_down" from="GameOverPanel/VBoxContainer/NewGameButton" to="." method="OnNewGameButton"]

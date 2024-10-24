@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Net;
 using DialogueManagerRuntime;
 using Godot;
 
@@ -12,6 +13,7 @@ public partial class Game_Manager : Node2D
 
     public static Game_Manager INSTANCE = null;
     public static string player_name = "Player";
+    public static bool gameover = false;
 
     public static bool inside_game_menu = false;
 
@@ -52,7 +54,11 @@ public partial class Game_Manager : Node2D
     public override void _Ready()
     {
         INSTANCE = this;
+        gameover = false;
+        tutorial_finished = false;
+        In_Cutscene = false;
         island_matrix = new bool[21, 21];
+        inside_game_menu = false;
         game_time_since_start = 0f;
 
         cutscene_camera = GetNode<Camera2D>("CutsceneCamera");
@@ -104,16 +110,22 @@ public partial class Game_Manager : Node2D
     {
         Debug.Print("Game_Manager - Loading SaveState");
         save_state = (SaveState)SaveState.LoadSave();
-        inside_game_menu = false;
         TranslationServer.SetLocale(save_state.current_language);
         tutorial_finished = save_state.tutorial_finished;
-        SaveLoadTab.dateTime_from_save = DateTime.Parse(save_state.dateTime_save_string);
         if (!tutorial_finished)
         {
             StartTutorial();
             return;
         }
-
+        try
+        {
+            SaveLoadTab.dateTime_from_save = DateTime.Parse(save_state.dateTime_save_string);
+        }
+        catch (Exception e)
+        {
+            Debug.Print(e.StackTrace.ToString());
+            SaveLoadTab.dateTime_from_save = DateTime.Now;
+        }
         Player.char_save = save_state.char_save;
         Player.INSTANCE.Position = save_state.char_save.player_position;
         Player.INSTANCE.player_stats.health_value = save_state.char_save.health_value;
@@ -159,22 +171,35 @@ public partial class Game_Manager : Node2D
             LoadGame();
         else
         {
-            Debug.Print("Game_Manager - New SaveState");
-            save_state = new SaveState();
-            save_state.WriteSave();
+            NewGame();
             StartTutorial();
         }
     }
 
+    public void NewGame(bool skip_tutorial = false)
+    {
+        Debug.Print("Game_Manager - New SaveState");
+        GetTree().ReloadCurrentScene();
+        save_state = new SaveState();
+        if (skip_tutorial)
+            save_state.tutorial_finished = true;
+        save_state.WriteSave();
+    }
+
     private void StartTutorial()
     {
+        Debug.Print("Start Tutorial");
         var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial.dialogue");
         Global.MoveCamera(new Vector2(0, -256));
         DialogueManager.TranslationSource = TranslationSource.CSV;
         DialogueManager.ShowDialogueBalloon(dialogue, "Tutorial");
     }
 
-    public void GameOver() { }
+    public void GameOver()
+    {
+        player_ui.INSTANCE.gameover_panel.Visible = true;
+        gameover = true;
+    }
 
     public void LoadIslandResources()
     {

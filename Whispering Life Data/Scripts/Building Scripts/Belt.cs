@@ -45,7 +45,7 @@ public partial class Belt : placeable_building
     {
         if (area is BeltArea)
         {
-            if (area.GetParent() is Belt)
+            if (area.GetParent() is Belt && area.GetParent() is not BeltTunnel)
                 if (area.GetParent<Belt>().can_receive_item())
                 {
                     var item = item_holder.offload_item();
@@ -60,6 +60,7 @@ public partial class Belt : placeable_building
                             var item = item_holder.offload_item();
                             area.GetParent<BeltTunnel>().connected_itemholder.receive_item(item);
                         }
+
             if (area.GetParent() is Trashcan)
                 if (area.GetParent<Trashcan>().can_receive_item())
                 {

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class BeltTunnel : Belt
@@ -19,8 +20,7 @@ public partial class BeltTunnel : Belt
     public override void _Ready()
     {
         checkArea = GetNode<Area2D>("TunnelArea");
-        checkAreaTimer.Start();
-        CheckIfTunnelInDir();
+        building_collider_manager = GetNode<Node2D>("BuildingAreas") as Building_Collider_Manager;
     }
 
     public new bool can_receive_item()
@@ -33,8 +33,10 @@ public partial class BeltTunnel : Belt
 
     public async void CheckIfTunnelInDir()
     {
-        for (int i = 0; i < 3; i++)
+        checkAreaTimer.Start();
+        for (int i = 0; i < 10; i++)
         {
+            //    <<<<<<y>>>>>>     <<<<<<x>>>>>>
             if (to_direction == BeltDirection.Top)
                 checkArea.Position += new Vector2(0, -16);
             if (to_direction == BeltDirection.Down)
@@ -48,10 +50,35 @@ public partial class BeltTunnel : Belt
             if (break_search)
             {
                 break_search = false;
+                Debug.Print("Breaked Loop");
                 ResetCheckArea();
                 break;
             }
         }
+        ResetCheckArea();
+        for (int i = 0; i < 10; i++)
+        {
+            //    <<<<<<y>>>>>>     <<<<<<x>>>>>>
+            if (from_direction == BeltDirection.Top)
+                checkArea.Position += new Vector2(0, -16);
+            if (from_direction == BeltDirection.Down)
+                checkArea.Position += new Vector2(0, 16);
+            if (from_direction == BeltDirection.Left)
+                checkArea.Position += new Vector2(-16, 0);
+            if (from_direction == BeltDirection.Right)
+                checkArea.Position += new Vector2(16, 0);
+
+            await ToSignal(checkAreaTimer, "timeout");
+            if (break_search)
+            {
+                break_search = false;
+                Debug.Print("Breaked Loop");
+                ResetCheckArea();
+                break;
+            }
+        }
+        ResetCheckArea();
+        checkAreaTimer.Stop();
     }
 
     public void ResetCheckArea()

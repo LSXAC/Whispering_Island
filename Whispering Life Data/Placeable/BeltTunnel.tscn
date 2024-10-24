@@ -100,6 +100,7 @@ position = Vector2(-8, -7)
 shape = SubResource("RectangleShape2D_xfl3k")
 
 [node name="CheckAreaTimer" type="Timer" parent="."]
+wait_time = 0.1
 
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]

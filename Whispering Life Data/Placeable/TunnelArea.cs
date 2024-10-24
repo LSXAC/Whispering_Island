@@ -17,7 +17,9 @@ public partial class TunnelArea : Area2D
             Debug.Print(((BeltTunnel)area.GetParent()).to_direction.ToString());
             if (
                 ((BeltTunnel)GetParent()).to_direction
-                == ((BeltTunnel)area.GetParent()).to_direction
+                    == ((BeltTunnel)area.GetParent()).to_direction
+                && ((BeltTunnel)GetParent()).is_tunnel_connected == false
+                && ((BeltTunnel)area.GetParent()).is_tunnel_connected == false
             )
             {
                 ((BeltTunnel)GetParent()).is_tunnel_connected = true;

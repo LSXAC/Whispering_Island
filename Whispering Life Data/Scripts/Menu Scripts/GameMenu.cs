@@ -50,6 +50,9 @@ public partial class GameMenu : CanvasLayer
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
+        if (Game_Manager.gameover)
+            return;
+
         if (Input.IsActionJustPressed("Escape"))
         {
             if (!Visible)

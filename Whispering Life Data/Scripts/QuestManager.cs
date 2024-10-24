@@ -49,7 +49,10 @@ public partial class QuestManager : Node
     public void OnQuestTimerTimeout()
     {
         if (current_quest_time - 1 <= 0)
-            Debug.Print("Quest Failed!");
+        {
+            Game_Manager.INSTANCE.GameOver();
+            quest_timer.Stop();
+        }
 
         current_quest_time -= 1;
         QuestMiniPanel.INSTANCE.UpdateTimeLabel(current_quest_time);

@@ -16,7 +16,7 @@ public partial class CharacterSave : Resource
     public ItemSave[] equipped_tool = new ItemSave[4];
 
     [Export]
-    public Vector2 player_position = new Vector2();
+    public Vector2 player_position = new Vector2(0, -160);
 
     [Export]
     public int health_value = 100;
