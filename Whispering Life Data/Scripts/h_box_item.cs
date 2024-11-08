@@ -46,14 +46,17 @@ public partial class h_box_item : HBoxContainer
             item_label.Modulate = green;
     }
 
-    public bool CanCraftItem(Item item)
+    public bool CanCraftItem(Item need, int amount)
     {
-        if (item != null)
+        ChangeColor(global::h_box_item.colorType.red);
+        if (need != null)
         {
-            if (item.amount >= item.amount)
+            if (need.amount >= amount)
             {
                 ChangeColor(global::h_box_item.colorType.white);
+                return true;
             }
         }
+        return false;
     }
 }

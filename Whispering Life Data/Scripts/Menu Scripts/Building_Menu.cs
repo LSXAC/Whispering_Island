@@ -7,15 +7,13 @@ public partial class Building_Menu : CanvasLayer
     public Building_Placer building_placer;
 
     [Export]
-    private VBoxContainer buildings_parent;
-
-    [Export]
     public Array<PackedScene> buildings = new Array<PackedScene>();
     public static Building_Menu instance;
 
-    private PackedScene buildingMenuChild = ResourceLoader.Load<PackedScene>(
-        "res://building_menu_child.tscn"
-    );
+    [Export]
+    public BuildingMenuCategory production_panel,
+        decoration_panel,
+        research_panel;
 
     public override void _Ready()
     {
@@ -24,7 +22,26 @@ public partial class Building_Menu : CanvasLayer
 
     public void OnVisiblityChange()
     {
-        ReloadUIRecipes();
+        OnPanelButton(0);
+    }
+
+    public void OnPanelButton(int id)
+    {
+        production_panel.Visible = false;
+        decoration_panel.Visible = false;
+        research_panel.Visible = false;
+        switch (id)
+        {
+            case 0:
+                production_panel.Visible = true;
+                break;
+            case 1:
+                decoration_panel.Visible = true;
+                break;
+            case 2:
+                research_panel.Visible = true;
+                break;
+        }
     }
 
     public override void _Process(double delta)
@@ -36,18 +53,9 @@ public partial class Building_Menu : CanvasLayer
             OpenWindow();
     }
 
-    public void ReloadUIRecipes()
-    {
-        foreach (Control c in buildings_parent.GetChildren())
-            c.QueueFree();
-
-        for (int i = 0; i < buildings.Count; i++)
-            InitBuildings(buildings[i]);
-    }
-
     public void OpenWindow()
     {
-        this.Visible = true;
+        this.Visible = !this.Visible;
     }
 
     public void OnRemoveButton()
@@ -55,12 +63,5 @@ public partial class Building_Menu : CanvasLayer
         this.Visible = false;
         Game_Manager.building_mode = Game_Manager.BuildingMode.Removing;
         player_ui.INSTANCE.SetWindowFrame();
-    }
-
-    private void InitBuildings(BuildingType building_type, int id)
-    {
-        BuildingMenuChild node = buildingMenuChild.Instantiate() as BuildingMenuChild;
-        node.InitBuildingMenuChild(building_type, this, id);
-        buildings_parent.AddChild(node);
     }
 }

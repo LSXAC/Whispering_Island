@@ -1,0 +1,51 @@
+using System;
+using System.Diagnostics;
+using Godot;
+using Godot.Collections;
+
+public partial class Item_Row_Manager : HBoxContainer
+{
+    private PackedScene h_box_item = ResourceLoader.Load<PackedScene>("res://h_box_item.tscn");
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready() { }
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta) { }
+
+    public bool CanCreate(Array<Item> items)
+    {
+        foreach (Control c in GetChildren())
+            c.QueueFree();
+
+        if (items == null)
+            return false;
+
+        int x = 0;
+        foreach (Item item in items)
+        {
+            h_box_item hbc_c = (h_box_item)h_box_item.Instantiate();
+            hbc_c.InitItemUI("", item.amount, item.item_info.texture);
+            hbc_c.ChangeColor(global::h_box_item.colorType.red);
+
+            Item i_list = Inventory.INSTANCE.GetItemFromList(
+                Inventory.INSTANCE.GetListOfItemsInInventory(),
+                item
+            );
+
+            if (i_list != null)
+            {
+                if (i_list.amount >= item.amount)
+                {
+                    hbc_c.ChangeColor(global::h_box_item.colorType.white);
+                    x++;
+                }
+            }
+            AddChild(hbc_c);
+        }
+        if (x == items.Count)
+            return true;
+
+        return false;
+    }
+}

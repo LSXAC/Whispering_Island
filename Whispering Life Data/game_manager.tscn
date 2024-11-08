@@ -68,10 +68,9 @@ visible = false
 [node name="IslandMenu" parent="." instance=ExtResource("5_nuj5f")]
 visible = false
 
-[node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer", "building_typ_parent") instance=ExtResource("7_xph4e")]
+[node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer") instance=ExtResource("7_xph4e")]
 visible = false
 building_placer = NodePath("../BuildingManager/BuildingPlacer")
-building_typ_parent = NodePath("VScrollBar/GridContainer")
 
 [node name="HoverMenu" parent="." instance=ExtResource("9_sosrl")]
 offset_top = -25.0

@@ -25,7 +25,7 @@ public partial class CraftingMenu : PanelContainer
             recipe = crafting_recipies[i] as Recipe;
             itemRecipeUI irUI = (itemRecipeUI)recipe_slot.Instantiate();
             irUI.craftingMenu = this;
-            irUI.outputUI.InitItemUI(
+            irUI.output_item_hbox.InitItemUI(
                 recipe.output_item.item_info.item_name,
                 recipe.output_item.amount,
                 recipe.output_item.item_info.texture
@@ -37,6 +37,7 @@ public partial class CraftingMenu : PanelContainer
             irUI.button_id = i;
             irUI.craft_button.Pressed += () => irUI.CraftItem();
 
+            //Check if all h_box_items return true!
             if (irUI.can_craft)
                 irUI.craft_button.Disabled = false;
             else

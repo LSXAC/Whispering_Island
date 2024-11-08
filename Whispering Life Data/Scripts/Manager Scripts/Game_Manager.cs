@@ -1,13 +1,56 @@
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Net;
 using DialogueManagerRuntime;
 using Godot;
+using Godot.Collections;
 
 public partial class Game_Manager : Node2D
 {
     [Export]
     public Building_Placer building_placer;
+
+    public static Dictionary<string, BuildingType> buildings = new Dictionary<
+        string,
+        BuildingType
+    >()
+    {
+        {
+            BUILDING_ID.BELT.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Belt.tres")
+        },
+        {
+            BUILDING_ID.BELTTUNNEL.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Belt_Tunnel.tres")
+        },
+        {
+            BUILDING_ID.CHEST.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Chest.tres")
+        },
+        {
+            BUILDING_ID.FURNACE.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Furnace.tres")
+        },
+        {
+            BUILDING_ID.TREE_GROWTHER.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Tree_Growther.tres")
+        },
+        {
+            BUILDING_ID.QUARRY.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Quarry.tres")
+        },
+    };
+
+    public enum BUILDING_ID
+    {
+        BELT,
+        BELTTUNNEL,
+        CHEST,
+        FURNACE,
+        QUARRY,
+        TREE_GROWTHER
+    }
 
     public static string game_version = "a.0.1";
 
@@ -38,6 +81,15 @@ public partial class Game_Manager : Node2D
     public Timer game_timer;
 
     private SaveState save_state = new SaveState();
+
+    public BuildingType GetBuildingType(BUILDING_ID building_id)
+    {
+        if (buildings.ContainsKey(building_id.ToString()))
+            return buildings[building_id.ToString()];
+
+        GD.PrintErr("No Building found for: " + building_id.ToString());
+        return null;
+    }
 
     public static void SetIslandOnMatrix(int x, int y, bool state)
     {

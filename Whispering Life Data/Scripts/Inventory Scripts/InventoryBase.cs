@@ -88,6 +88,9 @@ public partial class InventoryBase : Control
 
     public Item GetItemFromList(Array<Item> itemsInInventory, Item item_to_find)
     {
+        if (item_to_find == null)
+            return null;
+
         foreach (Item i in itemsInInventory)
             if (i.item_info.item_name.Equals(item_to_find.item_info.item_name))
                 return i;

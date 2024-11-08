@@ -21,6 +21,8 @@ public partial class Building_Placer : Node2D
     private int current_belt_rotation = 3;
     private Vector2 current_scale = new Vector2(1, 1);
 
+    private PackedScene belt_item = ResourceLoader.Load<PackedScene>("res://belt_item.tscn");
+
     public void InitBuilding(PackedScene scene)
     {
         if (scene == null)
@@ -30,6 +32,7 @@ public partial class Building_Placer : Node2D
             Game_Manager.building_mode = Game_Manager.BuildingMode.None;
             return;
         }
+
         current_scale = new Vector2(1, 1);
         Game_Manager.building_mode = Game_Manager.BuildingMode.Placing;
         player_ui.INSTANCE.SetWindowFrame();
@@ -60,7 +63,11 @@ public partial class Building_Placer : Node2D
     {
         foreach (BeltSave belt_save in belt_saves)
         {
-            Belt temp = Building_Menu.instance.belt.Instantiate() as Belt;
+            Belt temp =
+                Game_Manager
+                    .INSTANCE.GetBuildingType(Game_Manager.BUILDING_ID.BELT)
+                    .building_scene.Instantiate() as Belt;
+
             InitBelt(temp, belt_save);
         }
     }
@@ -84,7 +91,8 @@ public partial class Building_Placer : Node2D
 
         if (beltsave.holded_item != null)
         {
-            BeltItem item = (BeltItem)Building_Menu.instance.beltItem.Instantiate();
+            BeltItem item = (BeltItem)belt_item.Instantiate() as BeltItem;
+
             Item ite = new Item(beltsave.holded_item, 1);
             item.InitBeltItem(ite);
             belt.item_holder.moving_item = beltsave.beltItem_moving;
@@ -99,10 +107,20 @@ public partial class Building_Placer : Node2D
         {
             if (bts.is_connected)
             {
-                BeltTunnel temp = Building_Menu.instance.beltTunnel.Instantiate() as BeltTunnel;
+                BeltTunnel temp =
+                    Game_Manager
+                        .INSTANCE.GetBuildingType(Game_Manager.BUILDING_ID.BELTTUNNEL)
+                        .building_scene.Instantiate() as BeltTunnel;
+
                 InitBelt(temp, bts.beltsave1);
-                BeltTunnel temp2 = Building_Menu.instance.beltTunnel.Instantiate() as BeltTunnel;
+
+                BeltTunnel temp2 =
+                    Game_Manager
+                        .INSTANCE.GetBuildingType(Game_Manager.BUILDING_ID.BELTTUNNEL)
+                        .building_scene.Instantiate() as BeltTunnel;
+
                 InitBelt(temp2, bts.beltsave2);
+
                 temp.is_tunnel_connected = true;
                 temp2.is_tunnel_connected = true;
                 temp.connected_itemholder = temp2.item_holder;
@@ -110,7 +128,11 @@ public partial class Building_Placer : Node2D
             }
             else
             {
-                BeltTunnel temp = Building_Menu.instance.beltTunnel.Instantiate() as BeltTunnel;
+                BeltTunnel temp =
+                    Game_Manager
+                        .INSTANCE.GetBuildingType(Game_Manager.BUILDING_ID.BELTTUNNEL)
+                        .building_scene.Instantiate() as BeltTunnel;
+
                 InitBelt(temp, bts.beltsave1);
             }
         }
@@ -148,14 +170,21 @@ public partial class Building_Placer : Node2D
     private MachineBase SelectSavedMachine(MachineSave machine_save)
     {
         if (machine_save.type == MachineBase.MachineType.WOODFARM)
-            return Building_Menu.instance.tree_growther.Instantiate() as ProductionMachine;
+            return Game_Manager
+                    .INSTANCE.GetBuildingType(Game_Manager.BUILDING_ID.TREE_GROWTHER)
+                    .building_scene.Instantiate() as ProductionMachine;
 
         if (machine_save.type == MachineBase.MachineType.QUARRY)
-            return Building_Menu.instance.quarry.Instantiate() as ProductionMachine;
+            return Game_Manager
+                    .INSTANCE.GetBuildingType(Game_Manager.BUILDING_ID.QUARRY)
+                    .building_scene.Instantiate() as ProductionMachine;
 
         if (machine_save.type == MachineBase.MachineType.FURNACE)
         {
-            MachineBase temp = Building_Menu.instance.furnace.Instantiate() as ProcessBuilding;
+            MachineBase temp =
+                Game_Manager
+                    .INSTANCE.GetBuildingType(Game_Manager.BUILDING_ID.FURNACE)
+                    .building_scene.Instantiate() as ProcessBuilding;
             ((ProcessBuilding)temp).current_recipe = machine_save.current_recipe;
 
             if (machine_save.import_item_type != -1)
@@ -171,7 +200,9 @@ public partial class Building_Placer : Node2D
         }
 
         if (machine_save.type == MachineBase.MachineType.CHEST)
-            return Building_Menu.instance.chest.Instantiate() as Chest;
+            return Game_Manager
+                    .INSTANCE.GetBuildingType(Game_Manager.BUILDING_ID.CHEST)
+                    .building_scene.Instantiate() as Chest;
 
         return null;
     }
