@@ -85,6 +85,7 @@ public partial class Game_Manager : Node2D
         Islands_Manager.INSTANCE.SaveResourceObjects();
         save_state.env_save.resource_object_manager_saves = Islands_Manager.INSTANCE.roms;
         save_state.current_language = TranslationServer.GetLocale();
+
         //Save Quest
         save_state.quest_save.current_quest_id = QuestManager.current_quest_id;
         save_state.quest_save.quest_time_left = QuestManager.current_quest_time;
@@ -98,10 +99,22 @@ public partial class Game_Manager : Node2D
         building_placer.SavePlacedObjects();
         save_state.belt_saves = building_placer.belt_saves;
         save_state.machine_saves = building_placer.machine_saves;
+        save_state.belt_transmitter_saves = building_placer.belt_transmitter_saves;
 
         save_state.tutorial_finished = tutorial_finished;
 
         save_state.dateTime_save_string = DateTime.Now.ToString();
+
+        //Audio
+        save_state.master_volume = AudioServer.GetBusVolumeDb(
+            AudioServer.GetBusIndex(SoundSlider.BUS.Master.ToString())
+        );
+        save_state.music_volume = AudioServer.GetBusVolumeDb(
+            AudioServer.GetBusIndex(SoundSlider.BUS.Music.ToString())
+        );
+        save_state.sfx_volume = AudioServer.GetBusVolumeDb(
+            AudioServer.GetBusIndex(SoundSlider.BUS.SFX.ToString())
+        );
         save_state.WriteSave();
         Debug.Print("Saved Game!");
     }
@@ -141,6 +154,7 @@ public partial class Game_Manager : Node2D
 
         //Load Machines and Belts
         building_placer.belt_saves = save_state.belt_saves;
+        building_placer.belt_transmitter_saves = save_state.belt_transmitter_saves;
         building_placer.machine_saves = save_state.machine_saves;
         building_placer.LoadPlacedObjects();
 
@@ -149,6 +163,20 @@ public partial class Game_Manager : Node2D
 
         game_time_since_start = save_state.game_time_since_start;
         game_timer.Start();
+
+        //Audio
+        AudioServer.SetBusVolumeDb(
+            AudioServer.GetBusIndex(SoundSlider.BUS.Master.ToString()),
+            save_state.master_volume
+        );
+        AudioServer.SetBusVolumeDb(
+            AudioServer.GetBusIndex(SoundSlider.BUS.Music.ToString()),
+            save_state.music_volume
+        );
+        AudioServer.SetBusVolumeDb(
+            AudioServer.GetBusIndex(SoundSlider.BUS.SFX.ToString()),
+            save_state.sfx_volume
+        );
     }
 
     public void OnGameTimerTimeout()

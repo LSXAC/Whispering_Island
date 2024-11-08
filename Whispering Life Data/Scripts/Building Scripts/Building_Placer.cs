@@ -15,6 +15,7 @@ public partial class Building_Placer : Node2D
     public static Node2D current_building = null;
     public static PackedScene building = null;
     public Array<BeltSave> belt_saves = new Array<BeltSave>();
+    public Array<BeltTransmitterSave> belt_transmitter_saves = new Array<BeltTransmitterSave>();
     public Array<MachineSave> machine_saves = new Array<MachineSave>();
     private placeable_building placeable;
     private int current_belt_rotation = 3;
@@ -60,21 +61,57 @@ public partial class Building_Placer : Node2D
         foreach (BeltSave belt_save in belt_saves)
         {
             Belt temp = Building_Menu.instance.belt.Instantiate() as Belt;
-            parent_Node.AddChild(temp);
-            temp.GlobalPosition = belt_save.position;
-            temp.from_direction = belt_save.from_direction;
-            temp.to_direction = belt_save.to_direction;
-            temp.set_direction();
-            temp.Set_Rotation(belt_save.current_rotation);
+            InitBelt(temp, belt_save);
+        }
+    }
 
-            if (belt_save.holded_item != null)
+    private void InitBelt(Belt belt, BeltSave beltsave)
+    {
+        if (belt == null || beltsave == null)
+        {
+            if (beltsave == null)
+                Debug.Print("BeltSave Null");
+            if (belt == null)
+                Debug.Print("Belt Null");
+            return;
+        }
+        parent_Node.AddChild(belt);
+        belt.GlobalPosition = beltsave.position;
+        belt.from_direction = beltsave.from_direction;
+        belt.to_direction = beltsave.to_direction;
+        belt.set_direction();
+        belt.Set_Rotation(beltsave.current_rotation);
+
+        if (beltsave.holded_item != null)
+        {
+            BeltItem item = (BeltItem)Building_Menu.instance.beltItem.Instantiate();
+            Item ite = new Item(beltsave.holded_item, 1);
+            item.InitBeltItem(ite);
+            belt.item_holder.moving_item = beltsave.beltItem_moving;
+            item.Position = beltsave.beltItem_position;
+            belt.item_holder.AddChild(item);
+        }
+    }
+
+    public void LoadBeltTransmitter()
+    {
+        foreach (BeltTransmitterSave bts in belt_transmitter_saves)
+        {
+            if (bts.is_connected)
             {
-                BeltItem item = (BeltItem)Building_Menu.instance.beltItem.Instantiate();
-                Item ite = new Item(belt_save.holded_item, 1);
-                item.InitBeltItem(ite);
-                temp.item_holder.moving_item = belt_save.beltItem_moving;
-                item.Position = belt_save.beltItem_position;
-                temp.item_holder.AddChild(item);
+                BeltTunnel temp = Building_Menu.instance.beltTunnel.Instantiate() as BeltTunnel;
+                InitBelt(temp, bts.beltsave1);
+                BeltTunnel temp2 = Building_Menu.instance.beltTunnel.Instantiate() as BeltTunnel;
+                InitBelt(temp2, bts.beltsave2);
+                temp.is_tunnel_connected = true;
+                temp2.is_tunnel_connected = true;
+                temp.connected_itemholder = temp2.item_holder;
+                temp2.connected_itemholder = temp.item_holder;
+            }
+            else
+            {
+                BeltTunnel temp = Building_Menu.instance.beltTunnel.Instantiate() as BeltTunnel;
+                InitBelt(temp, bts.beltsave1);
             }
         }
     }
@@ -146,12 +183,14 @@ public partial class Building_Placer : Node2D
 
         LoadBelts();
         LoadMachines();
+        LoadBeltTransmitter();
     }
 
     public void SavePlacedObjects()
     {
         belt_saves.Clear();
         machine_saves.Clear();
+        belt_transmitter_saves.Clear();
         foreach (Node2D node in parent_Node.GetChildren())
         {
             if (node is Belt)
@@ -171,7 +210,38 @@ public partial class Building_Placer : Node2D
                     belt_save.beltItem_position = ((Belt)node).item_holder.GetBeltItem().Position;
                 }
 
-                belt_saves.Add(belt_save);
+                if (node is BeltTunnel)
+                {
+                    bool placed = false;
+                    if (((BeltTunnel)node).is_tunnel_connected)
+                        foreach (BeltTransmitterSave bts in belt_transmitter_saves)
+                        {
+                            if (bts.is_connected)
+                                if (
+                                    bts.beltsave1.position
+                                    == ((BeltTunnel)node)
+                                        .connected_itemholder.GetParent<BeltTunnel>()
+                                        .Position
+                                )
+                                {
+                                    bts.beltsave2 = belt_save;
+                                    placed = true;
+                                    break;
+                                }
+                        }
+                    if (placed)
+                        continue;
+
+                    belt_transmitter_saves.Add(
+                        new BeltTransmitterSave(
+                            belt_save,
+                            ((BeltTunnel)node).is_tunnel_connected,
+                            null
+                        )
+                    );
+                }
+                else
+                    belt_saves.Add(belt_save);
             }
 
             if (node is MachineBase)

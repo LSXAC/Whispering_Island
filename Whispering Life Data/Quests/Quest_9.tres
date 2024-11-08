@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=9 format=3 uid="uid://blm63gas5igti"]
+
+[ext_resource type="Resource" uid="uid://ljb14i8nnpgp" path="res://Items/Sand.tres" id="1_mdr6y"]
+[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_ivpen"]
+[ext_resource type="Resource" uid="uid://cij4xtg6ixn5i" path="res://Items/Sand_Stone.tres" id="3_j4vvv"]
+[ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Items/Glass.tres" id="4_dj6om"]
+[ext_resource type="Script" path="res://Scripts/Resources/Quest.cs" id="4_yniui"]
+
+[sub_resource type="Resource" id="Resource_iic3g"]
+script = ExtResource("2_ivpen")
+item_info = ExtResource("1_mdr6y")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_swemk"]
+script = ExtResource("2_ivpen")
+item_info = ExtResource("3_j4vvv")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_lf1k7"]
+script = ExtResource("2_ivpen")
+item_info = ExtResource("4_dj6om")
+amount = 10
+
+[resource]
+script = ExtResource("4_yniui")
+quest_name = "QUEST_TITLE_9"
+quest_description = "QUEST_DESC_9"
+quest_items = Array[Resource]([SubResource("Resource_iic3g"), SubResource("Resource_swemk"), SubResource("Resource_lf1k7")])
+quest_time = 300

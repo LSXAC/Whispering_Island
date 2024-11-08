@@ -26,4 +26,4 @@ script = ExtResource("3_5ptet")
 quest_name = "QUEST_TITLE_1"
 quest_description = "QUEST_DESC_1"
 quest_items = Array[Resource]([SubResource("Resource_iic3g"), SubResource("Resource_wk0ab"), SubResource("Resource_qtac1")])
-quest_time = 10
+quest_time = 300

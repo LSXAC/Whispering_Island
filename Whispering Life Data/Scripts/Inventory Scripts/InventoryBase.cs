@@ -35,6 +35,19 @@ public partial class InventoryBase : Control
         ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe_Head.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Wheat.tres"),
         ResourceLoader.Load<ItemInfo>("res://Items/Iron_Block.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Wheat_Seed.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Potato.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Potato_Seed.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Carrot.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Carrot_Seed.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Corn.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Corn_Seed.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Sand.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Sand_Stone.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Helm.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Chestplate.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Leggings.tres"),
+        ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Shoes.tres"),
     };
 
     public override void _Ready()

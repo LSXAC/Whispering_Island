@@ -1,13 +1,8 @@
-using System;
-using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
 public partial class CraftingMenu : PanelContainer
 {
-    //TODO After Demo
-    //Automate UI Update, Externate Recipies,
-
     [Export]
     public Control parent;
 

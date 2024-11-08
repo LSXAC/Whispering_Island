@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://ckgu5x7reokuj"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_57mkd"]
+[ext_resource type="Texture2D" uid="uid://cmqinhn108vms" path="res://Sprites/Items/Plants_Icons/Wheat_Seeds.png" id="2_dgcxj"]
+
+[resource]
+script = ExtResource("1_57mkd")
+unique_item_id = 24
+item_types = Array[int]([8])
+burntime = 60
+item_name = "WHEAT_SEED"
+item_description = "WHEAT_SEED_DESC"
+texture = ExtResource("2_dgcxj")
+value = 5.0
+item_stats = []

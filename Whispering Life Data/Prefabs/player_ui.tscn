@@ -202,6 +202,7 @@ text = "Game Time: X"
 horizontal_alignment = 1
 
 [node name="GameOverPanel" type="Panel" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -262,6 +263,7 @@ script = ExtResource("9_erkjv")
 
 [node name="CheckBox" type="CheckBox" parent="GameOverPanel/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_0pxjf")
 button_pressed = true
 text = "SKIP TUTORIAL"

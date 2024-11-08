@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://bwoxb4s5viywy"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_i5tbv"]
+[ext_resource type="Texture2D" uid="uid://cnvvdeihm1guu" path="res://Sprites/Items/Armor/Mystic_Armor_Chestplate.png" id="2_ytxfk"]
+
+[resource]
+script = ExtResource("1_i5tbv")
+unique_item_id = 34
+item_types = Array[int]([8])
+burntime = 60
+item_name = "MYSTIC_ARMOR_CHESTPLATE"
+item_description = "MYSTIC_ARMOR_CHESTPLATE_DESC"
+texture = ExtResource("2_ytxfk")
+value = 5.0
+item_stats = []

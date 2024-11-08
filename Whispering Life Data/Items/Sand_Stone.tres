@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://cij4xtg6ixn5i"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_t7wrt"]
+[ext_resource type="Texture2D" uid="uid://cvc84eav5n4cf" path="res://Sprites/Items/Icons_3rd/Sand_Stone.png" id="2_iqepi"]
+
+[resource]
+script = ExtResource("1_t7wrt")
+unique_item_id = 32
+item_types = Array[int]([8])
+burntime = 60
+item_name = "SAND_STONE"
+item_description = "SAND_STONE_DESC"
+texture = ExtResource("2_iqepi")
+value = 5.0
+item_stats = []

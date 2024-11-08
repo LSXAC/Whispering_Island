@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=11 format=3 uid="uid://c38ri0vpagiep"]
+
+[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Items/Potato.tres" id="1_ay1sl"]
+[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_pjewh"]
+[ext_resource type="Resource" uid="uid://ch1b1ltixbads" path="res://Items/Carrot.tres" id="3_mskbb"]
+[ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://Items/Wheat.tres" id="4_c22fn"]
+[ext_resource type="Script" path="res://Scripts/Resources/Quest.cs" id="4_nea21"]
+[ext_resource type="Resource" uid="uid://bp4gggmthi11e" path="res://Items/Corn.tres" id="5_2nsqi"]
+
+[sub_resource type="Resource" id="Resource_iic3g"]
+script = ExtResource("2_pjewh")
+item_info = ExtResource("1_ay1sl")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_swemk"]
+script = ExtResource("2_pjewh")
+item_info = ExtResource("3_mskbb")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_3eesr"]
+script = ExtResource("2_pjewh")
+item_info = ExtResource("4_c22fn")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_m0xoj"]
+script = ExtResource("2_pjewh")
+item_info = ExtResource("5_2nsqi")
+amount = 5
+
+[resource]
+script = ExtResource("4_nea21")
+quest_name = "QUEST_TITLE_8"
+quest_description = "QUEST_DESC_8"
+quest_items = Array[Resource]([SubResource("Resource_iic3g"), SubResource("Resource_swemk"), SubResource("Resource_3eesr"), SubResource("Resource_m0xoj")])
+quest_time = 300

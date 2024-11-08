@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://ch1b1ltixbads"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_65fj7"]
+[ext_resource type="Texture2D" uid="uid://byeg4uf6p2ldq" path="res://Sprites/Items/Fruits_Icons/Carrot.png" id="2_llr6w"]
+
+[resource]
+script = ExtResource("1_65fj7")
+unique_item_id = 27
+item_types = Array[int]([8])
+burntime = 60
+item_name = "CARROT"
+item_description = "CARROT_DESC"
+texture = ExtResource("2_llr6w")
+value = 5.0
+item_stats = []

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://ccleudbhqsed1"]
+
+[ext_resource type="Resource" uid="uid://gjds5x8w8irk" path="res://Items/Mystic_Armor_Shoes.tres" id="1_wed4v"]
+[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_h01gh"]
+[ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Items/Mystic_Fibre.tres" id="3_w5m1a"]
+[ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://Items/Mystic_Wood.tres" id="4_h4oab"]
+[ext_resource type="Script" path="res://Scripts/Resources/Recipe.cs" id="5_mpn1w"]
+
+[sub_resource type="Resource" id="Resource_66y5o"]
+script = ExtResource("2_h01gh")
+item_info = ExtResource("1_wed4v")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_af5nn"]
+script = ExtResource("2_h01gh")
+item_info = ExtResource("3_w5m1a")
+amount = 4
+
+[sub_resource type="Resource" id="Resource_0o42p"]
+script = ExtResource("2_h01gh")
+item_info = ExtResource("4_h4oab")
+amount = 4
+
+[resource]
+script = ExtResource("5_mpn1w")
+requiered_items = Array[Object]([SubResource("Resource_af5nn"), SubResource("Resource_0o42p")])
+output_item = SubResource("Resource_66y5o")

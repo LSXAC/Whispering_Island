@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=31 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" path="res://Scripts/Manager Scripts/Game_Manager.cs" id="1_kw8xi"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Placer.cs" id="2_2ikn4"]
@@ -18,8 +18,18 @@
 [ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Quests/Quest_1.tres" id="14_2k87u"]
 [ext_resource type="Resource" uid="uid://cdk8sna5iiegp" path="res://Quests/Quest_2.tres" id="15_13bir"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="17_c5f2u"]
+[ext_resource type="Resource" uid="uid://1g8vpo6nhjtq" path="res://Quests/Quest_3.tres" id="18_updaf"]
+[ext_resource type="Resource" uid="uid://dgro7e15kytdm" path="res://Quests/Quest_4.tres" id="19_q77oc"]
+[ext_resource type="Resource" uid="uid://brkjgnwhqbr8g" path="res://Quests/Quest_5.tres" id="20_cyfj4"]
 [ext_resource type="Script" path="res://Tutorial.cs" id="21_c8cjw"]
+[ext_resource type="Resource" uid="uid://f440f8pp671q" path="res://Quests/Quest_6.tres" id="21_d16gf"]
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="21_m8ul6"]
+[ext_resource type="Resource" uid="uid://dcy3vpjgge5ds" path="res://Quests/Quest_7.tres" id="22_dxyke"]
+[ext_resource type="Resource" uid="uid://c38ri0vpagiep" path="res://Quests/Quest_8.tres" id="23_32xbn"]
+[ext_resource type="Resource" uid="uid://blm63gas5igti" path="res://Quests/Quest_9.tres" id="24_2beqv"]
+[ext_resource type="Resource" uid="uid://vl3pot0l2l0n" path="res://Quests/Quest_10.tres" id="25_plrle"]
+[ext_resource type="AudioStream" uid="uid://baxwufa73fl35" path="res://Music/441638__naturenotesuk__birds-at-feeder.wav" id="29_dh6dl"]
+[ext_resource type="AudioStream" uid="uid://bwod2wh4o0qwt" path="res://Music/759996__josefpres__piano-loops-167-octave-short-loop-120-bpm.wav" id="30_kqvqo"]
 
 [node name="GameManager" type="Node2D" node_paths=PackedStringArray("building_placer")]
 y_sort_enabled = true
@@ -76,7 +86,7 @@ dialogue_timeline = ExtResource("13_c3cat")
 
 [node name="QuestManager" type="Node2D" parent="." node_paths=PackedStringArray("quest_timer")]
 script = ExtResource("13_v5o5h")
-quests = Array[Object]([ExtResource("14_2k87u"), ExtResource("15_13bir")])
+quests = Array[Object]([ExtResource("14_2k87u"), ExtResource("15_13bir"), ExtResource("18_updaf"), ExtResource("19_q77oc"), ExtResource("20_cyfj4"), ExtResource("21_d16gf"), ExtResource("22_dxyke"), ExtResource("23_32xbn"), ExtResource("24_2beqv"), ExtResource("25_plrle")])
 quest_timer = NodePath("QuestTimer")
 
 [node name="QuestTimer" type="Timer" parent="QuestManager"]
@@ -113,6 +123,18 @@ z_index = -1
 z_as_relative = false
 position = Vector2(0, 6)
 texture = ExtResource("17_c5f2u")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_dh6dl")
+autoplay = true
+bus = &"SFX"
+playback_type = 1
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_kqvqo")
+autoplay = true
+bus = &"Music"
+playback_type = 1
 
 [connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
 [connection signal="timeout" from="GameTimer" to="." method="OnGameTimerTimeout"]

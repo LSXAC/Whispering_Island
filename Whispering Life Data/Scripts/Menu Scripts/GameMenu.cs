@@ -149,6 +149,8 @@ public partial class GameMenu : CanvasLayer
         crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuBasic").Visible = false;
         crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuTools").Visible = false;
         crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuToolparts").Visible = false;
+        crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuArmor").Visible = false;
+        crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuAgriculture").Visible = false;
 
         switch (id)
         {
@@ -172,6 +174,21 @@ public partial class GameMenu : CanvasLayer
                 crafting_tab
                     .GetChild(0)
                     .GetNode<CraftingMenu>("CraftingMenuToolparts")
+                    .ReloadUIRecipes();
+                break;
+            case 3:
+                crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuArmor").Visible = true;
+                crafting_tab
+                    .GetChild(0)
+                    .GetNode<CraftingMenu>("CraftingMenuArmor")
+                    .ReloadUIRecipes();
+                break;
+            case 4:
+                crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuAgriculture").Visible =
+                    true;
+                crafting_tab
+                    .GetChild(0)
+                    .GetNode<CraftingMenu>("CraftingMenuAgriculture")
                     .ReloadUIRecipes();
                 break;
         }

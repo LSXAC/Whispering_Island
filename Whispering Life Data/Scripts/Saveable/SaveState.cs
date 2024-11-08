@@ -18,6 +18,9 @@ public partial class SaveState : Resource
     public Array<BeltSave> belt_saves = new Array<BeltSave>();
 
     [Export]
+    public Array<BeltTransmitterSave> belt_transmitter_saves = new Array<BeltTransmitterSave>();
+
+    [Export]
     public Array<MachineSave> machine_saves = new Array<MachineSave>();
 
     [Export]
@@ -25,6 +28,15 @@ public partial class SaveState : Resource
 
     [Export]
     public string current_language = "en";
+
+    [Export]
+    public float master_volume = 0;
+
+    [Export]
+    public float music_volume = -5;
+
+    [Export]
+    public float sfx_volume = 5;
 
     [Export]
     public float game_time_since_start = 0;

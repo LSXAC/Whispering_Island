@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://bp4gggmthi11e"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_6xtys"]
+[ext_resource type="Texture2D" uid="uid://dsheiojtc2vgm" path="res://Sprites/Items/Fruits_Icons/Corn.png" id="2_wa533"]
+
+[resource]
+script = ExtResource("1_6xtys")
+unique_item_id = 29
+item_types = Array[int]([8])
+burntime = 60
+item_name = "CORN"
+item_description = "CORN_DESC"
+texture = ExtResource("2_wa533")
+value = 5.0
+item_stats = []

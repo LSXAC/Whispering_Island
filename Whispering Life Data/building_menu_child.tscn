@@ -1,0 +1,151 @@
+[gd_scene load_steps=7 format=3 uid="uid://lcn20e480tcl"]
+
+[ext_resource type="Script" path="res://BuildingMenuChild.cs" id="1_bclyx"]
+[ext_resource type="Texture2D" uid="uid://cn8y6cj766xw0" path="res://Sprites/Items/Icons_3rd/Chest.png" id="1_gie1h"]
+[ext_resource type="Texture2D" uid="uid://crueuofcl0tbe" path="res://Sprites/Items/Icons_3rd/Wooden_Stick.png" id="2_api5l"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="3_d0if0"]
+[ext_resource type="Script" path="res://Menus/TranslationLabel.cs" id="5_80mq4"]
+[ext_resource type="Script" path="res://Menus/TranslationButton.cs" id="5_y7wap"]
+
+[node name="BuildingMenuChild" type="Control"]
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_bclyx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 2
+offset_right = 639.0
+offset_bottom = 104.0
+size_flags_vertical = 3
+color = Color(0.176419, 0.176419, 0.176419, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("1_gie1h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Title of Building"
+
+[node name="Label2" type="Label" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Description of Building"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_api5l")
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "5x"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_api5l")
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer2/MarginContainer"]
+layout_mode = 2
+text = "5x"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_api5l")
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer3/MarginContainer"]
+layout_mode = 2
+text = "5x"
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -52.0
+offset_bottom = 52.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_d0if0")
+theme_override_font_sizes/font_size = 16
+text = "Build Building"
+script = ExtResource("5_y7wap")
+label_translation_string = "BUILDING_MENU_BUILD_BUTTON"
+
+[node name="Label" type="Label" parent="ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_d0if0")
+theme_override_font_sizes/font_size = 10
+text = "Ressourcen werden nur verbraucht, wenn Gebäude platziert wird."
+horizontal_alignment = 2
+autowrap_mode = 3
+script = ExtResource("5_80mq4")
+label_translation_string = "BUILDING_MENU_RESOURCES_USED_INFO"

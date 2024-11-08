@@ -1,17 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://en6nagvvr8d3"]
+[gd_scene load_steps=5 format=3 uid="uid://en6nagvvr8d3"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/Building_Menu.cs" id="1_6maqu"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_e7u7j"]
+[ext_resource type="Script" path="res://Menus/TranslationButton.cs" id="3_ft6wq"]
+[ext_resource type="PackedScene" uid="uid://lcn20e480tcl" path="res://building_menu_child.tscn" id="4_xb50w"]
 
-[node name="BuildingMenu" type="CanvasLayer"]
+[node name="BuildingMenu" type="CanvasLayer" node_paths=PackedStringArray("building_typ_parent")]
 script = ExtResource("1_6maqu")
-
-[node name="TransBackground" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.172549, 0.172549, 0.172549, 0.294118)
+building_typ_parent = NodePath("CraftingTab/VScrollBar/VBoxContainer")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -21,41 +17,92 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VScrollBar" type="ScrollContainer" parent="."]
+[node name="HBoxHeader" type="HBoxContainer" parent="."]
+offset_right = 639.0
+offset_bottom = 24.0
+alignment = 1
+
+[node name="ProductionButton" type="Button" parent="HBoxHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_e7u7j")
+theme_override_font_sizes/font_size = 12
+text = "> Production"
+icon_alignment = 1
+script = ExtResource("3_ft6wq")
+label_translation_string = "BUILDING_MENU_PRODUCTION"
+
+[node name="DecorationButton" type="Button" parent="HBoxHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_e7u7j")
+theme_override_font_sizes/font_size = 12
+text = "> Decoration"
+script = ExtResource("3_ft6wq")
+label_translation_string = "BUILDING_MENU_DECORATION"
+
+[node name="ResearchButton" type="Button" parent="HBoxHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_e7u7j")
+theme_override_font_sizes/font_size = 12
+text = "> Research"
+script = ExtResource("3_ft6wq")
+label_translation_string = "BUILDING_MENU_RESEARCH"
+
+[node name="ExitTabButton" type="Button" parent="HBoxHeader"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_e7u7j")
+theme_override_font_sizes/font_size = 12
+text = "<X>"
+script = ExtResource("3_ft6wq")
+
+[node name="CraftingTab" type="ColorRect" parent="."]
+z_index = 3
+offset_left = 4.0
+offset_top = 30.0
+offset_right = 4.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="VScrollBar" type="ScrollContainer" parent="CraftingTab"]
 custom_minimum_size = Vector2(584, 160)
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 30.0
-offset_right = -52.0
+offset_left = -2.0
+offset_right = 635.0
+offset_bottom = 289.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="VScrollBar"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftingTab/VScrollBar"]
 layout_mode = 2
-columns = 3
+size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_right = 640.0
-offset_bottom = 28.0
-
-[node name="Button" type="Button" parent="HBoxContainer"]
+[node name="BuildingMenuChild" parent="CraftingTab/VScrollBar/VBoxContainer" instance=ExtResource("4_xb50w")]
 layout_mode = 2
-text = "Production"
-
-[node name="Button2" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="Button3" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-text = "Production"
 
 [node name="RemoveButton" type="Button" parent="."]
-offset_left = 599.0
-offset_top = 4.0
-offset_right = 635.0
-offset_bottom = 36.0
+offset_left = 600.0
+offset_top = 324.0
+offset_right = 636.0
+offset_bottom = 356.0
 text = "R"
 
 [connection signal="pressed" from="RemoveButton" to="." method="OnRemoveButton"]

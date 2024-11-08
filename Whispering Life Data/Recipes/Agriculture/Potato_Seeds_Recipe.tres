@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3 uid="uid://7bvesh06e55y"]
+
+[ext_resource type="Resource" uid="uid://1vfo1rr84pk7" path="res://Items/Potato_Seed.tres" id="1_bfqmn"]
+[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_ryrdc"]
+[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Items/Potato.tres" id="3_uw5u0"]
+[ext_resource type="Script" path="res://Scripts/Resources/Recipe.cs" id="4_2yntd"]
+
+[sub_resource type="Resource" id="Resource_66y5o"]
+script = ExtResource("2_ryrdc")
+item_info = ExtResource("1_bfqmn")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_af5nn"]
+script = ExtResource("2_ryrdc")
+item_info = ExtResource("3_uw5u0")
+amount = 2
+
+[resource]
+script = ExtResource("4_2yntd")
+requiered_items = Array[Object]([SubResource("Resource_af5nn")])
+output_item = SubResource("Resource_66y5o")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://cbpupb53ocwp4"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_jdahr"]
+[ext_resource type="Texture2D" uid="uid://bwa8pldkfr7on" path="res://Sprites/Items/Plants_Icons/Corn_Seeds.png" id="2_jsf3g"]
+
+[resource]
+script = ExtResource("1_jdahr")
+unique_item_id = 30
+item_types = Array[int]([8])
+burntime = 60
+item_name = "CORN_SEED"
+item_description = "CORN_SEED_DESC"
+texture = ExtResource("2_jsf3g")
+value = 5.0
+item_stats = []

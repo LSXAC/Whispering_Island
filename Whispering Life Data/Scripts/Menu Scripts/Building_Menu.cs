@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using Godot;
+using Godot.Collections;
 
 public partial class Building_Menu : CanvasLayer
 {
@@ -9,42 +7,26 @@ public partial class Building_Menu : CanvasLayer
     public Building_Placer building_placer;
 
     [Export]
-    private GridContainer building_typ_parent;
+    private VBoxContainer buildings_parent;
+
+    [Export]
+    public Array<PackedScene> buildings = new Array<PackedScene>();
     public static Building_Menu instance;
 
-    public PackedScene building_typ = ResourceLoader.Load<PackedScene>(
-        "res://Menus/building_type.tscn"
-    );
-    public PackedScene tree_growther = ResourceLoader.Load<PackedScene>(
-        "res://Placeable/Tree_Growther.tscn"
-    );
-    public PackedScene furnace = ResourceLoader.Load<PackedScene>("res://Placeable/Furnace.tscn");
-    public PackedScene quarry = ResourceLoader.Load<PackedScene>("res://Placeable/Quarry.tscn");
-    public PackedScene chest = ResourceLoader.Load<PackedScene>("res://Placeable/Chest.tscn");
-
-    public PackedScene belt = ResourceLoader.Load<PackedScene>("res://Placeable/Belt.tscn");
-    public PackedScene beltItem = ResourceLoader.Load<PackedScene>("res://belt_item.tscn");
-    public PackedScene wooden_bed = ResourceLoader.Load<PackedScene>(
-        "res://Placeable/WoodenBed.tscn"
-    );
-    public PackedScene beltTunnel = ResourceLoader.Load<PackedScene>(
-        "res://Placeable/BeltTunnel.tscn"
+    private PackedScene buildingMenuChild = ResourceLoader.Load<PackedScene>(
+        "res://building_menu_child.tscn"
     );
 
-    // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        InitBuildings(tree_growther);
-        InitBuildings(furnace);
-        InitBuildings(quarry);
-        InitBuildings(chest);
-        InitBuildings(belt);
-        InitBuildings(wooden_bed);
-        InitBuildings(beltTunnel);
         instance = this;
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public void OnVisiblityChange()
+    {
+        ReloadUIRecipes();
+    }
+
     public override void _Process(double delta)
     {
         if (Game_Manager.building_mode != Game_Manager.BuildingMode.None || Game_Manager.gameover)
@@ -52,6 +34,15 @@ public partial class Building_Menu : CanvasLayer
 
         if (Input.IsActionJustPressed("OpenBuilding"))
             OpenWindow();
+    }
+
+    public void ReloadUIRecipes()
+    {
+        foreach (Control c in buildings_parent.GetChildren())
+            c.QueueFree();
+
+        for (int i = 0; i < buildings.Count; i++)
+            InitBuildings(buildings[i]);
     }
 
     public void OpenWindow()
@@ -66,10 +57,10 @@ public partial class Building_Menu : CanvasLayer
         player_ui.INSTANCE.SetWindowFrame();
     }
 
-    private void InitBuildings(PackedScene scene)
+    private void InitBuildings(BuildingType building_type, int id)
     {
-        building_type node = building_typ.Instantiate() as building_type;
-        node.InitBuildingTypeUI(scene);
-        building_typ_parent.AddChild(node);
+        BuildingMenuChild node = buildingMenuChild.Instantiate() as BuildingMenuChild;
+        node.InitBuildingMenuChild(building_type, this, id);
+        buildings_parent.AddChild(node);
     }
 }
