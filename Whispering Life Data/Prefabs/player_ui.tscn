@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://j1cdgg7lep78"]
+[gd_scene load_steps=13 format=3 uid="uid://j1cdgg7lep78"]
 
 [ext_resource type="Script" path="res://Scripts/Player Scripts/player_ui.cs" id="1_m5svq"]
 [ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="3_0pxjf"]
 [ext_resource type="Texture2D" uid="uid://dfp34ytxtppg8" path="res://Sprites/Removing_Frame.png" id="3_7rm5b"]
 [ext_resource type="PackedScene" uid="uid://u4rbvbumuiua" path="res://h_box_item.tscn" id="4_4w6kj"]
+[ext_resource type="Script" path="res://Item_Row_Manager.cs" id="4_28ccb"]
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/QuestMiniPanel.cs" id="4_khv1d"]
 [ext_resource type="Script" path="res://Menus/TranslationLabel.cs" id="7_vya4o"]
 [ext_resource type="Script" path="res://Menus/TranslationButton.cs" id="9_erkjv"]
@@ -19,10 +20,12 @@ thickness = 6
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upggj"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("qcp_timer", "window_frame_rect", "collected_item_parent", "gameover_panel", "skip_tutorial_box")]
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "skip_tutorial_box")]
 script = ExtResource("1_m5svq")
 qcp_timer = NodePath("QuestCompletePanel/Timer")
+times_to_build_left_label = NodePath("WindowFrame/VBoxContainer/TimesLeftLabel")
 window_frame_rect = NodePath("WindowFrame")
+item_row_manager = NodePath("WindowFrame/VBoxContainer/HBoxContainer")
 building_frame = ExtResource("2_ktroc")
 removing_frame = ExtResource("3_7rm5b")
 collected_item_parent = NodePath("ReceivedItems")
@@ -37,6 +40,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_7rm5b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowFrame"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="WindowFrame/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 16
+text = "Resources need "
+horizontal_alignment = 2
+
+[node name="TimesLeftLabel" type="Label" parent="WindowFrame/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 16
+text = "> 2x left"
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowFrame/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("4_28ccb")
 
 [node name="HSlider" type="HSlider" parent="."]
 custom_minimum_size = Vector2(200, 0)

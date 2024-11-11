@@ -8,4 +8,14 @@ public partial class BuildingType : Resource
 
     [Export]
     public Recipe building_recipe;
+
+    [Export]
+    public CATEGORY category;
+
+    public enum CATEGORY
+    {
+        PRODUCTION,
+        DECORATION,
+        RESEARCH
+    }
 }

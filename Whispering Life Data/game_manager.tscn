@@ -69,7 +69,6 @@ visible = false
 visible = false
 
 [node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer") instance=ExtResource("7_xph4e")]
-visible = false
 building_placer = NodePath("../BuildingManager/BuildingPlacer")
 
 [node name="HoverMenu" parent="." instance=ExtResource("9_sosrl")]

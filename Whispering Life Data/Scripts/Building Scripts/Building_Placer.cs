@@ -14,6 +14,7 @@ public partial class Building_Placer : Node2D
     public TileMapLayer tilemap;
     public static Node2D current_building = null;
     public static PackedScene building = null;
+    public static Recipe building_recipe = null;
     public Array<BeltSave> belt_saves = new Array<BeltSave>();
     public Array<BeltTransmitterSave> belt_transmitter_saves = new Array<BeltTransmitterSave>();
     public Array<MachineSave> machine_saves = new Array<MachineSave>();
@@ -22,23 +23,26 @@ public partial class Building_Placer : Node2D
     private Vector2 current_scale = new Vector2(1, 1);
 
     private PackedScene belt_item = ResourceLoader.Load<PackedScene>("res://belt_item.tscn");
+    private bool can_create = false;
 
-    public void InitBuilding(PackedScene scene)
+    public void InitBuilding(BuildingType building_tye)
     {
-        if (scene == null)
+        if (building_tye == null || building_tye.building_scene == null)
         {
             GD.PrintErr("Building is Null, can not be initialised");
             Building_Menu.instance.Visible = false;
             Game_Manager.building_mode = Game_Manager.BuildingMode.None;
             return;
         }
-
+        can_create = true;
         current_scale = new Vector2(1, 1);
         Game_Manager.building_mode = Game_Manager.BuildingMode.Placing;
         player_ui.INSTANCE.SetWindowFrame();
-        current_building = (Node2D)scene.Instantiate();
+        player_ui.INSTANCE.item_row_manager.CanCreate(building_tye.building_recipe.requiered_items);
+        current_building = (Node2D)building_tye.building_scene.Instantiate();
+        building_recipe = building_tye.building_recipe;
 
-        building = scene;
+        building = building_tye.building_scene;
         parent_Node.AddChild(current_building);
         if (current_building is Belt)
         {
@@ -379,11 +383,17 @@ public partial class Building_Placer : Node2D
 
     public void BuildBuilding()
     {
+        if (!can_create)
+            return;
+
         Node2D temp = (Node2D)building.Instantiate();
         Vector2 pos = tilemap.LocalToMap(GetGlobalMousePosition());
         temp.Position = new Vector2(pos.X * 16, pos.Y * 16);
         temp.Scale = current_scale;
         parent_Node.AddChild(temp);
+        // Remove Resources
+        foreach (Item i in building_recipe.requiered_items)
+            Inventory.INSTANCE.AddItem(i.item_info, -i.amount, Inventory.INSTANCE.inventory_items);
 
         if (temp is Belt)
         {
@@ -393,6 +403,8 @@ public partial class Building_Placer : Node2D
                 Debug.Print("BeltTunnel XX");
                 ((BeltTunnel)temp).CheckIfTunnelInDir();
             }
+            if (!player_ui.INSTANCE.item_row_manager.CanCreate(building_recipe.requiered_items))
+                can_create = false;
             return;
         }
         CloseMenuWithBuildingSelected();
@@ -402,6 +414,7 @@ public partial class Building_Placer : Node2D
     {
         Node2D tempB = current_building;
         current_building = null;
+        building_recipe = null;
         tempB.QueueFree();
         placeable = null;
         CloseMenuWithNoBuilding();

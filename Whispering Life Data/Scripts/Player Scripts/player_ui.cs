@@ -15,7 +15,13 @@ public partial class player_ui : CanvasLayer
     public Timer qcp_timer;
 
     [Export]
+    public Label times_to_build_left_label;
+
+    [Export]
     public TextureRect window_frame_rect;
+
+    [Export]
+    public Item_Row_Manager item_row_manager;
 
     [Export]
     public Texture2D building_frame;

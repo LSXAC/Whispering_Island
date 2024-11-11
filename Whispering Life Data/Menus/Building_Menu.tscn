@@ -118,6 +118,7 @@ grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
 script = ExtResource("4_6buxp")
 parent = NodePath("BuildingMenuChild/VScrollBar/VBoxContainer")
+category = 1
 
 [node name="BuildingMenuChild" parent="DecorationTab" instance=ExtResource("4_xb50w")]
 layout_mode = 2
@@ -152,6 +153,7 @@ grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
 script = ExtResource("4_6buxp")
 parent = NodePath("BuildingMenuChild/VScrollBar/VBoxContainer")
+category = 2
 
 [node name="BuildingMenuChild" parent="ResearchTab" instance=ExtResource("4_xb50w")]
 layout_mode = 2

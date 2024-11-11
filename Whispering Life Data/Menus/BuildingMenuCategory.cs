@@ -8,6 +8,9 @@ public partial class BuildingMenuCategory : ColorRect
     [Export]
     public Control parent;
 
+    [Export]
+    public BuildingType.CATEGORY category;
+
     private PackedScene buildingMenuChild = ResourceLoader.Load<PackedScene>(
         "res://building_menu_child.tscn"
     );
@@ -21,7 +24,8 @@ public partial class BuildingMenuCategory : ColorRect
 
         foreach (var (name, packed) in Game_Manager.buildings)
         {
-            InitBuildings(packed);
+            if (packed.category == category)
+                InitBuildings(packed);
         }
     }
 

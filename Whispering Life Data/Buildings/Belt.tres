@@ -8,3 +8,4 @@
 script = ExtResource("3_6opvd")
 building_scene = ExtResource("2_oinj2")
 building_recipe = ExtResource("1_xuike")
+category = 0

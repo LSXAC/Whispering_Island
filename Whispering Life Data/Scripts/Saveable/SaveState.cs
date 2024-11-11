@@ -30,7 +30,7 @@ public partial class SaveState : Resource
     public string current_language = "en";
 
     [Export]
-    public float master_volume = 0;
+    public float master_volume = -15;
 
     [Export]
     public float music_volume = -5;
