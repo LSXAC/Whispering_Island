@@ -86,6 +86,11 @@ public partial class MouseArea : Area2D
             Player.INSTANCE.player_stats.RemoveFatigue(seconds: 5);
             Debug.Print("Sleep");
         }
+        if (GetParent() is ResearchTable)
+        {
+            //Open Research UI
+            Debug.Print("RESEARCH");
+        }
     }
 
     public void OnMouseLeaved()

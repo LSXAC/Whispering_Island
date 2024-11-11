@@ -10,9 +10,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_2qp5w"]
 radius = 24.0
 
-[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("sprite")]
+[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("building_collider_manager", "sprite")]
 y_sort_enabled = true
 script = ExtResource("1_tdwsl")
+building_collider_manager = NodePath("BuildingAreas")
 title = "Lighthouse"
 description = "Leuchtet"
 sprite = NodePath("SpriteTop")

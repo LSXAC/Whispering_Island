@@ -40,6 +40,10 @@ public partial class Game_Manager : Node2D
             BUILDING_ID.QUARRY.ToString(),
             ResourceLoader.Load<BuildingType>("res://Buildings/Quarry.tres")
         },
+        {
+            BUILDING_ID.RESEARCH_TABLE.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Research_Table.tres")
+        },
     };
 
     public enum BUILDING_ID
@@ -49,7 +53,8 @@ public partial class Game_Manager : Node2D
         CHEST,
         FURNACE,
         QUARRY,
-        TREE_GROWTHER
+        TREE_GROWTHER,
+        RESEARCH_TABLE
     }
 
     public static string game_version = "a.0.1";

@@ -16,12 +16,13 @@ size = Vector2(32, 25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(32, 32)
 
-[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("sprite", "collision_shape")]
+[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_qtaud")
 type = 3
+building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_CHEST"
 description = "BUILDING_CHEST_DESC"
 sprite = NodePath("BuildingSprite")
