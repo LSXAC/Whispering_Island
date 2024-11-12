@@ -8,6 +8,7 @@ script = ExtResource("1_ytvhq")
 unique_item_id = 2
 item_types = Array[int]([8, 7])
 burntime = 60
+research_id = -1
 item_name = "WOOD_STICK"
 item_description = "WOOD_STICK_DESC"
 texture = ExtResource("2_miv00")

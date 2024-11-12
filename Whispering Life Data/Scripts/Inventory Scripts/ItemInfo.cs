@@ -30,6 +30,9 @@ public partial class ItemInfo : Resource
     public int burntime = 60;
 
     [Export]
+    public int research_id = -1;
+
+    [Export]
     public string item_name;
 
     [Export]

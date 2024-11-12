@@ -8,6 +8,7 @@ script = ExtResource("1_0bwou")
 unique_item_id = 28
 item_types = Array[int]([8])
 burntime = 60
+research_id = -1
 item_name = "CARROT_SEED"
 item_description = "CARROT_SEED_DESC"
 texture = ExtResource("2_lpgb1")

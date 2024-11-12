@@ -8,6 +8,7 @@ script = ExtResource("1_hd1t8")
 unique_item_id = 16
 item_types = Array[int]([8])
 burntime = 60
+research_id = -1
 item_name = "GLASS"
 item_description = "GLASS_DESC"
 texture = ExtResource("2_pi3r4")

@@ -8,6 +8,7 @@ script = ExtResource("1_thvwm")
 unique_item_id = 7
 item_types = Array[int]([0, 6, 9])
 burntime = 60
+research_id = -1
 item_name = "IRON_ORE"
 item_description = "IRON_ORE_DESC"
 texture = ExtResource("2_1b5uf")
