@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
@@ -13,6 +14,9 @@ public partial class ResearchTab : ColorRect
 
     [Export]
     public Label item_level_label;
+
+    [Export]
+    public Slot research_slot;
 
     public PackedScene research_level_tab = ResourceLoader.Load<PackedScene>(
         "res://Prefabs/Research_Level_Tab.tscn"
@@ -32,22 +36,42 @@ public partial class ResearchTab : ColorRect
 
     public void OnVisiblityChanged()
     {
-        if (research_slot_item == null)
-            ClearText();
-        else
-        {
-            UpdateLevelTabs(Inventory.INSTANCE.item_Types[research_slot_item.item_id]);
-        }
+        UpdateLevelTabs();
     }
 
-    public void UpdateLevelTabs(ItemInfo ii) { }
+    public void UpdateLevelTabs()
+    {
+        if (research_slot_item != null)
+        {
+            research_slot.SetItem(
+                Inventory.INSTANCE.item_Types[research_slot_item.item_id],
+                research_slot_item.amount
+            );
+            SetText();
+        }
+        else
+        {
+            ClearText();
+            research_slot.ClearItem();
+        }
+    }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta) { }
 
     private void ClearText()
     {
-        item_level_label.Text = "No Item in Research Slot";
+        item_name_label.Text = "No Item in Research Slot";
+        item_level_label.Text = "-/-";
+    }
+
+    private void SetText()
+    {
+        item_name_label.Text =
+            ""
+            + TranslationServer.Translate(
+                Inventory.INSTANCE.item_Types[research_slot_item.item_id].item_name
+            );
         item_level_label.Text = "-/-";
     }
 }

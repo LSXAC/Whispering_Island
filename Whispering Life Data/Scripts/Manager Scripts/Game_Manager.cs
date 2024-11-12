@@ -162,6 +162,8 @@ public partial class Game_Manager : Node2D
 
         save_state.dateTime_save_string = DateTime.Now.ToString();
 
+        save_state.char_save.research_slot_item = ResearchTab.INSTANCE.research_slot_item;
+
         //Audio
         save_state.master_volume = AudioServer.GetBusVolumeDb(
             AudioServer.GetBusIndex(SoundSlider.BUS.Master.ToString())
@@ -217,6 +219,8 @@ public partial class Game_Manager : Node2D
 
         // Start Quest
         QuestManager.INSTANCE.StartQuest(save_state.quest_save);
+
+        ResearchTab.INSTANCE.research_slot_item = save_state.char_save.research_slot_item;
 
         game_time_since_start = save_state.game_time_since_start;
         game_timer.Start();

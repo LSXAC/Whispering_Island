@@ -24,9 +24,8 @@ texture = ExtResource("2_y886q")
 centered = false
 offset = Vector2(-32, -32)
 
-[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+[node name="BuildingAreas" type="Node2D" parent="."]
 script = ExtResource("3_y1dx4")
-collision_tilemap = NodePath("")
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
 z_index = -2

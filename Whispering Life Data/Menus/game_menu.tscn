@@ -52,7 +52,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tibut"]
 bg_color = Color(1, 1, 1, 0)
 
-[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "header_container")]
+[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "header_container")]
 process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/SaveLoadTab/HBoxContainer/LoadGameButton")
@@ -61,6 +61,7 @@ crafting_tab_button = NodePath("Background/HBoxHeader/CraftingTabButton")
 inventory_tab = NodePath("Background/InventoryTab")
 crafting_tab = NodePath("Background/CraftingTab")
 furnace_tab = NodePath("Background/FurnaceTab")
+research_tab = NodePath("Background/ResearchTab")
 chest_tab = NodePath("Background/ChestTab")
 settings_tab = NodePath("Background/SettingsTab")
 saveload_tab = NodePath("Background/SaveLoadTab")
@@ -698,8 +699,7 @@ offset_right = 307.0
 offset_bottom = -2.0
 translation_string = "GAMEMENU_FURNACE"
 
-[node name="ResearchTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("tab_container", "item_name_label", "item_level_label")]
-visible = false
+[node name="ResearchTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("tab_container", "item_name_label", "item_level_label", "research_slot")]
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -714,6 +714,7 @@ script = ExtResource("11_hr8uu")
 tab_container = NodePath("PanelContainer/TabContainer")
 item_name_label = NodePath("PanelContainer/ItemLabel")
 item_level_label = NodePath("PanelContainer/CurrentLevelLabel")
+research_slot = NodePath("PanelContainer/ResearchSlot")
 
 [node name="PanelContainer" type="Control" parent="Background/ResearchTab"]
 anchors_preset = 0
@@ -1200,6 +1201,7 @@ text = "Game savefile from: 16.10.2024 - 12:55:23"
 horizontal_alignment = 1
 
 [node name="SettingsTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("option_button")]
+visible = false
 z_index = 6
 layout_mode = 0
 offset_top = 26.0
@@ -1602,7 +1604,6 @@ popup/item_0/icon = ExtResource("16_ldk1u")
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/ExportSlot" to="Background/FurnaceTab/PanelContainer/ExportSlot" method="onMachineSlot" binds= [1]]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/FuelSlot" to="Background/FurnaceTab/PanelContainer/FuelSlot" method="onMachineSlot" binds= [2]]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/EnableDisableButton" to="Background/FurnaceTab" method="OnMachineStateButton"]
-[connection signal="pressed" from="Background/ResearchTab/PanelContainer/ResearchSlot" to="Background/ResearchTab/PanelContainer/ResearchSlot" method="onMachineSlot" binds= [0]]
 [connection signal="pressed" from="Background/ResearchTab/PanelContainer/Button" to="Background/ResearchTab" method="OnMachineStateButton"]
 [connection signal="visibility_changed" from="Background/AdminTab" to="Background/AdminTab" method="OnVisiblityChange"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/CreateButton" to="Background/AdminTab" method="OnCreateItems"]

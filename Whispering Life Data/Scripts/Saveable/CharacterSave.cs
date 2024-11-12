@@ -23,4 +23,7 @@ public partial class CharacterSave : Resource
 
     [Export]
     public float fatigue_value = 0;
+
+    [Export]
+    public ItemSave research_slot_item = new ItemSave();
 }

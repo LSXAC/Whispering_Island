@@ -20,7 +20,6 @@ public partial class BeltTunnel : Belt
     public override void _Ready()
     {
         checkArea = GetNode<Area2D>("TunnelArea");
-        building_collider_manager = GetNode<Node2D>("BuildingAreas") as Building_Collider_Manager;
     }
 
     public new bool can_receive_item()

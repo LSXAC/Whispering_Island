@@ -23,6 +23,9 @@ public partial class GameMenu : CanvasLayer
     public FurnaceTab furnace_tab;
 
     [Export]
+    public ResearchTab research_tab;
+
+    [Export]
     public ColorRect chest_tab;
 
     [Export]
@@ -109,6 +112,7 @@ public partial class GameMenu : CanvasLayer
         ChangeSelectedTabColor(Tabs.X);
         OnCloseFurnaceTab();
         OnCloseChestTab();
+        OnCloseResearchTab();
         this.Visible = false;
         Game_Manager.inside_game_menu = false;
     }
@@ -258,6 +262,33 @@ public partial class GameMenu : CanvasLayer
         saveload_tab.Visible = false;
         Game_Manager.inside_game_menu = false;
         Visible = false;
+    }
+
+    public void OnCloseResearchTab()
+    {
+        ChangeSelectedTabColor(Tabs.X);
+        inventory_tab.Visible = true;
+        research_tab.Visible = false;
+        crafting_tab.Visible = false;
+        furnace_tab.Visible = false;
+        admin_tab.Visible = false;
+        settings_tab.Visible = false;
+        saveload_tab.Visible = false;
+        Game_Manager.inside_game_menu = false;
+        Visible = false;
+    }
+
+    public void OnOpenResearchTab()
+    {
+        Visible = true;
+        inventory_tab.Visible = true;
+        research_tab.Visible = true;
+        crafting_tab.Visible = false;
+        furnace_tab.Visible = false;
+        admin_tab.Visible = false;
+        settings_tab.Visible = false;
+        saveload_tab.Visible = false;
+        Game_Manager.inside_game_menu = true;
     }
 
     public void OnCloseChestTab()

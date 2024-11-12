@@ -130,7 +130,7 @@ public partial class InventoryBase : Control
                 QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
                     QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
                 );
-                UpdateInventoryUI();
+                UpdateSlotUI(i);
                 return;
             }
         }
@@ -144,7 +144,7 @@ public partial class InventoryBase : Control
                     QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
                 );
 
-                UpdateInventoryUI();
+                UpdateSlotUI(i);
                 return;
             }
     }
@@ -184,16 +184,19 @@ public partial class InventoryBase : Control
 
     public void UpdateInventoryUI()
     {
-        ClearInventory();
-
         for (int i = 0; i < inventory_items.Length; i++)
-        {
-            if (inventory_items[i] != null)
-                GetNode<Slot>($"GridContainer/Slot{i}")
-                    .SetItem(item_Types[inventory_items[i].item_id], inventory_items[i].amount);
-        }
+            UpdateSlotUI(i);
+    }
 
-        Debug.Print("Inventory Updated");
+    public void UpdateSlotUI(int i)
+    {
+        GetNode<Slot>($"GridContainer/Slot{i}").ClearItem();
+
+        if (inventory_items[i] == null)
+            return;
+
+        GetNode<Slot>($"GridContainer/Slot{i}")
+            .SetItem(item_Types[inventory_items[i].item_id], inventory_items[i].amount);
     }
 
     public void LoadInventoryFromSave(ItemSave[] item_save)
@@ -201,11 +204,5 @@ public partial class InventoryBase : Control
         inventory_items = new ItemSave[20];
         inventory_items = item_save;
         UpdateInventoryUI();
-    }
-
-    public void ClearInventory()
-    {
-        foreach (Slot s in slots)
-            s.ClearItem();
     }
 }

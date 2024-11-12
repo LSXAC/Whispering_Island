@@ -88,8 +88,7 @@ public partial class MouseArea : Area2D
         }
         if (GetParent() is ResearchTable)
         {
-            //Open Research UI
-            Debug.Print("RESEARCH");
+            GameMenu.INSTANCE.OnOpenResearchTab();
         }
     }
 

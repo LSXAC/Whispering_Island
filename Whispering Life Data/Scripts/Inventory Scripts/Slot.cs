@@ -30,6 +30,10 @@ public partial class Slot : Button
         {
             Pressed += () => OnEquipSlotButton(GetIndex());
         }
+        if (slot_type == ItemInfo.Type.RESEARCHABLE)
+        {
+            Pressed += () => OnResearchSlotButton();
+        }
     }
 
     public override void _Notification(int what)
@@ -159,7 +163,7 @@ public partial class Slot : Button
             {
                 CreateClickedItem();
                 inventory_base.inventory_items[GetIndex()] = null;
-                inventory_base.UpdateInventoryUI();
+                inventory_base.UpdateSlotUI(GetIndex());
             }
         }
         else
@@ -170,9 +174,9 @@ public partial class Slot : Button
                     Inventory.clicked_item.item_info.unique_item_id,
                     Inventory.clicked_item.amount
                 );
-                inventory_base.UpdateInventoryUI();
                 Inventory.clicked_item.QueueFree();
                 Inventory.clicked_item = null;
+                inventory_base.UpdateSlotUI(GetIndex());
                 return;
             }
             if (GetItem() != null)
@@ -181,9 +185,9 @@ public partial class Slot : Button
                     inventory_base.inventory_items[GetIndex()].amount += Inventory
                         .clicked_item
                         .amount;
-                    inventory_base.UpdateInventoryUI();
                     Inventory.clicked_item.QueueFree();
                     Inventory.clicked_item = null;
+                    inventory_base.UpdateSlotUI(GetIndex());
                     return;
                 }
         }
@@ -223,6 +227,33 @@ public partial class Slot : Button
             Inventory.clicked_item.QueueFree();
             Inventory.clicked_item = null;
             return;
+        }
+    }
+
+    public void OnResearchSlotButton()
+    {
+        if (Inventory.clicked_item == null)
+        {
+            if (GetItem() != null)
+            {
+                CreateClickedItem();
+                ResearchTab.INSTANCE.research_slot_item = null;
+                ResearchTab.INSTANCE.UpdateLevelTabs();
+            }
+        }
+        else
+        {
+            if (GetItem() == null)
+            {
+                ResearchTab.INSTANCE.research_slot_item = new ItemSave(
+                    Inventory.clicked_item.item_info.unique_item_id,
+                    Inventory.clicked_item.amount
+                );
+                Inventory.clicked_item.QueueFree();
+                Inventory.clicked_item = null;
+                ResearchTab.INSTANCE.UpdateLevelTabs();
+                return;
+            }
         }
     }
 

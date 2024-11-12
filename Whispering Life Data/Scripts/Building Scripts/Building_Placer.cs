@@ -392,6 +392,7 @@ public partial class Building_Placer : Node2D
         temp.Scale = current_scale;
         parent_Node.AddChild(temp);
         // Remove Resources
+
         foreach (Item i in building_recipe.requiered_items)
             Inventory.INSTANCE.AddItem(i.item_info, -i.amount, Inventory.INSTANCE.inventory_items);
 
