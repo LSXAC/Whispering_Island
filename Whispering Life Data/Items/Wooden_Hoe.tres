@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=6 format=3 uid="uid://c10rid084wdox"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=9 format=3 uid="uid://c10rid084wdox"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_fqlw0"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_kn11j"]
+[ext_resource type="Resource" uid="uid://xatv5x587fug" path="res://Items/Item_Types/Tool_Type_Classic.tres" id="2_1bryp"]
 [ext_resource type="Texture2D" uid="uid://nay062h3dror" path="res://Sprites/Items/Icons_3rd/Stone_Hoe.png" id="3_2is6l"]
+[ext_resource type="Resource" uid="uid://duirbryu00nmb" path="res://Items/Item_Types/Burnable_Type_60.tres" id="3_6hdbi"]
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Items/Item_Types/Processed_Type_Classic.tres" id="4_p5l1n"]
 
 [sub_resource type="Resource" id="Resource_mcbdc"]
 script = ExtResource("1_fqlw0")
@@ -16,10 +19,9 @@ bonus = -0.3
 
 [resource]
 script = ExtResource("1_kn11j")
+item_types_arr = Array[Object]([ExtResource("2_1bryp"), ExtResource("3_6hdbi"), ExtResource("4_p5l1n")])
 unique_item_id = 20
 item_types = Array[int]([1, 7, 8])
-burntime = 60
-research_id = -1
 item_name = "WOODEN_HOE"
 item_description = "WOODEN_HOE_DESC"
 texture = ExtResource("3_2is6l")

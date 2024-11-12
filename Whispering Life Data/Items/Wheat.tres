@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://ctutjhkm2sj52"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://ctutjhkm2sj52"]
 
+[ext_resource type="Resource" uid="uid://yh8rhrf7r458" path="res://Items/Item_Types/Resource_Type_Classic.tres" id="1_xabq2"]
 [ext_resource type="Texture2D" uid="uid://c8lcew4fxuuxm" path="res://Sprites/Items/Plants_Icons/Wheat.png" id="2_0eva6"]
+[ext_resource type="Resource" uid="uid://b4j8cjn03te4o" path="res://Items/Item_Types/Smeltable_Type_Classic.tres" id="2_foppn"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="2_gtcen"]
 
 [resource]
 script = ExtResource("2_gtcen")
+item_types_arr = Array[Object]([ExtResource("1_xabq2"), ExtResource("2_foppn")])
 unique_item_id = 22
 item_types = Array[int]([0, 6])
-burntime = 60
-research_id = -1
 item_name = "WHEAT"
 item_description = "WHEAT_DESC"
 texture = ExtResource("2_0eva6")

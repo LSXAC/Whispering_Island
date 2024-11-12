@@ -1,14 +1,20 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://d2e6om0f0jfhd"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=6 format=3 uid="uid://d2e6om0f0jfhd"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_o64ju"]
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Items/Item_Types/Processed_Type_Classic.tres" id="1_pgyqu"]
 [ext_resource type="Texture2D" uid="uid://d1wddls2semmy" path="res://Sprites/Items/Icons_3rd/Iron_Ingot.png" id="2_012xw"]
+[ext_resource type="Script" path="res://Scripts/Item/ResearchableType.cs" id="2_n6f0a"]
+
+[sub_resource type="Resource" id="Resource_ut5h0"]
+script = ExtResource("2_n6f0a")
+research_id = 0
+type = 9
 
 [resource]
 script = ExtResource("1_o64ju")
+item_types_arr = Array[Object]([ExtResource("1_pgyqu"), SubResource("Resource_ut5h0")])
 unique_item_id = 8
-item_types = Array[int]([8, 9])
-burntime = 60
-research_id = -1
+item_types = Array[int]([])
 item_name = "IRON_INGOT"
 item_description = "IRON_INGOT_DESC"
 texture = ExtResource("2_012xw")

@@ -61,7 +61,7 @@ public partial class MouseArea : Area2D
         if (!building_node.mouse_inside)
             return;
 
-        if (Global.GetDistanceToPlayer(this.GlobalPosition) >= 40f)
+        if (GlobalFunctions.GetDistanceToPlayer(this.GlobalPosition) >= 40f)
             return;
 
         if (GetParent().HasNode("Actionable"))

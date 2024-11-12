@@ -11,7 +11,7 @@ public partial class Sign : Building_Node
 
     public override void OnMouseClick()
     {
-        if (Global.GetDistanceToPlayer(this.GlobalPosition) >= 20f)
+        if (GlobalFunctions.GetDistanceToPlayer(this.GlobalPosition) >= 20f)
             return;
 
         island_menu.instance.current_sign = this;

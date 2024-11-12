@@ -88,7 +88,7 @@ public partial class ResourceObject : Building_Node
     public override void OnMouseClick()
     {
         Debug.Print(Name + " | " + in_cooldown);
-        if (Global.GetDistanceToPlayer(this.GlobalPosition) >= 40f)
+        if (GlobalFunctions.GetDistanceToPlayer(this.GlobalPosition) >= 40f)
             return;
         if (in_cooldown)
             return;

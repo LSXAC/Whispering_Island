@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://n1o6p57v8r23"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=4 format=3 uid="uid://n1o6p57v8r23"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_6xubx"]
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Items/Item_Types/Processed_Type_Classic.tres" id="1_724m4"]
 [ext_resource type="Texture2D" uid="uid://dssivsn4mo2xw" path="res://Sprites/Items/Icons_3rd/Stone_Hoe_Head.png" id="2_tbw8i"]
 
 [resource]
 script = ExtResource("1_6xubx")
+item_types_arr = Array[Object]([ExtResource("1_724m4")])
 unique_item_id = 19
 item_types = Array[int]([8])
-burntime = 60
-research_id = -1
 item_name = "WOODEN_HOE_HEAD"
 item_description = "WOODEN_HOE_HEAD_DESC"
 texture = ExtResource("2_tbw8i")

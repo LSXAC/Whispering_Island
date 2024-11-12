@@ -1,14 +1,19 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://clbfixrv0y7vr"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://clbfixrv0y7vr"]
 
+[ext_resource type="Script" path="res://Scripts/Item/ResearchableType.cs" id="1_j1xm0"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_lfhgc"]
 [ext_resource type="Texture2D" uid="uid://cixgxe6yx2sgh" path="res://Sprites/Items/Plants_Icons/Mystic_Fibre.png" id="2_j403k"]
 
+[sub_resource type="Resource" id="Resource_ye8dr"]
+script = ExtResource("1_j1xm0")
+research_id = 0
+type = 9
+
 [resource]
 script = ExtResource("1_lfhgc")
+item_types_arr = Array[Object]([SubResource("Resource_ye8dr")])
 unique_item_id = 12
 item_types = Array[int]([9])
-burntime = 60
-research_id = -1
 item_name = "MYSTIC_FIBRE"
 item_description = "MYSTIC_FIBRE_DESC"
 texture = ExtResource("2_j403k")

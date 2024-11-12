@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cjj30kpp0tj11" path="res://Menus/island_menu.tscn" id="5_nuj5f"]
 [ext_resource type="PackedScene" uid="uid://en6nagvvr8d3" path="res://Menus/Building_Menu.tscn" id="7_xph4e"]
 [ext_resource type="PackedScene" uid="uid://bovrg0u6tuo04" path="res://Menus/hover_menu.tscn" id="9_sosrl"]
-[ext_resource type="Script" path="res://Scripts/Global.cs" id="10_1kwav"]
+[ext_resource type="Script" path="res://Scripts/GlobalFunctions.cs" id="10_1kwav"]
 [ext_resource type="PackedScene" uid="uid://o62xek3uvpo8" path="res://Menus/quest_menu.tscn" id="12_x3g6o"]
 [ext_resource type="Resource" uid="uid://c1p7gva6jex80" path="res://Dialogues/Questing.dialogue" id="13_c3cat"]
 [ext_resource type="Script" path="res://Scripts/QuestManager.cs" id="13_v5o5h"]

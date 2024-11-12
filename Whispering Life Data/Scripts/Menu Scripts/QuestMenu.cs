@@ -54,7 +54,7 @@ public partial class QuestMenu : CanvasLayer
 
     public void OnCloseButton()
     {
-        Global.MoveCamera(new Vector2(0, -256));
+        GlobalFunctions.MoveCamera(new Vector2(0, -256));
         DialogueManager.ShowDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_DE");
         CloseQuestMenu();
     }

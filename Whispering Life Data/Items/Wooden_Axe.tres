@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=6 format=3 uid="uid://dmrxwabbdyg0d"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=8 format=3 uid="uid://dmrxwabbdyg0d"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_8fx8c"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_ssgok"]
+[ext_resource type="Resource" uid="uid://xatv5x587fug" path="res://Items/Item_Types/Tool_Type_Classic.tres" id="2_bl1hv"]
 [ext_resource type="Texture2D" uid="uid://ccv3tqh14oetx" path="res://Sprites/Items/Icons_3rd/Wooden_Axe.png" id="3_7xvs7"]
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Items/Item_Types/Processed_Type_Classic.tres" id="3_g6e61"]
 
 [sub_resource type="Resource" id="Resource_4kdc1"]
 script = ExtResource("1_ssgok")
@@ -16,10 +18,9 @@ bonus = 0.5
 
 [resource]
 script = ExtResource("1_8fx8c")
+item_types_arr = Array[Object]([ExtResource("2_bl1hv"), ExtResource("3_g6e61")])
 unique_item_id = 5
 item_types = Array[int]([1, 8])
-burntime = 60
-research_id = -1
 item_name = "WOODEN_AXE"
 item_description = "WOODEN_AXE_DESC"
 texture = ExtResource("3_7xvs7")

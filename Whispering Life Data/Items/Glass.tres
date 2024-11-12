@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://bn0p8b6sengb5"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=4 format=3 uid="uid://bn0p8b6sengb5"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_hd1t8"]
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Items/Item_Types/Processed_Type_Classic.tres" id="1_wcdq2"]
 [ext_resource type="Texture2D" uid="uid://dxjvpwnw5yl31" path="res://Sprites/Items/Icons_3rd/Glass.png" id="2_pi3r4"]
 
 [resource]
 script = ExtResource("1_hd1t8")
+item_types_arr = Array[Object]([ExtResource("1_wcdq2")])
 unique_item_id = 16
-item_types = Array[int]([8])
-burntime = 60
-research_id = -1
+item_types = Array[int]([])
 item_name = "GLASS"
 item_description = "GLASS_DESC"
 texture = ExtResource("2_pi3r4")

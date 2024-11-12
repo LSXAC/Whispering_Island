@@ -11,52 +11,6 @@ public partial class Game_Manager : Node2D
     [Export]
     public Building_Placer building_placer;
 
-    public static Dictionary<string, BuildingType> buildings = new Dictionary<
-        string,
-        BuildingType
-    >()
-    {
-        {
-            BUILDING_ID.BELT.ToString(),
-            ResourceLoader.Load<BuildingType>("res://Buildings/Belt.tres")
-        },
-        {
-            BUILDING_ID.BELTTUNNEL.ToString(),
-            ResourceLoader.Load<BuildingType>("res://Buildings/Belt_Tunnel.tres")
-        },
-        {
-            BUILDING_ID.CHEST.ToString(),
-            ResourceLoader.Load<BuildingType>("res://Buildings/Chest.tres")
-        },
-        {
-            BUILDING_ID.FURNACE.ToString(),
-            ResourceLoader.Load<BuildingType>("res://Buildings/Furnace.tres")
-        },
-        {
-            BUILDING_ID.TREE_GROWTHER.ToString(),
-            ResourceLoader.Load<BuildingType>("res://Buildings/Tree_Growther.tres")
-        },
-        {
-            BUILDING_ID.QUARRY.ToString(),
-            ResourceLoader.Load<BuildingType>("res://Buildings/Quarry.tres")
-        },
-        {
-            BUILDING_ID.RESEARCH_TABLE.ToString(),
-            ResourceLoader.Load<BuildingType>("res://Buildings/Research_Table.tres")
-        },
-    };
-
-    public enum BUILDING_ID
-    {
-        BELT,
-        BELTTUNNEL,
-        CHEST,
-        FURNACE,
-        QUARRY,
-        TREE_GROWTHER,
-        RESEARCH_TABLE
-    }
-
     public static string game_version = "a.0.1";
 
     public static Game_Manager INSTANCE = null;
@@ -86,15 +40,6 @@ public partial class Game_Manager : Node2D
     public Timer game_timer;
 
     private SaveState save_state = new SaveState();
-
-    public BuildingType GetBuildingType(BUILDING_ID building_id)
-    {
-        if (buildings.ContainsKey(building_id.ToString()))
-            return buildings[building_id.ToString()];
-
-        GD.PrintErr("No Building found for: " + building_id.ToString());
-        return null;
-    }
 
     public static void SetIslandOnMatrix(int x, int y, bool state)
     {
@@ -279,7 +224,7 @@ public partial class Game_Manager : Node2D
     {
         Debug.Print("Start Tutorial");
         var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial.dialogue");
-        Global.MoveCamera(new Vector2(0, -256));
+        GlobalFunctions.MoveCamera(new Vector2(0, -256));
         DialogueManager.TranslationSource = TranslationSource.CSV;
         DialogueManager.ShowDialogueBalloon(dialogue, "Tutorial");
     }

@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://ljb14i8nnpgp"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=4 format=3 uid="uid://ljb14i8nnpgp"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_e4sjo"]
+[ext_resource type="Resource" uid="uid://yh8rhrf7r458" path="res://Items/Item_Types/Resource_Type_Classic.tres" id="1_vq5d2"]
 [ext_resource type="Texture2D" uid="uid://x7jiiuscayra" path="res://Sprites/Items/Icons_3rd/Sand.png" id="2_cv2vi"]
 
 [resource]
 script = ExtResource("1_e4sjo")
+item_types_arr = Array[Object]([ExtResource("1_vq5d2")])
 unique_item_id = 31
 item_types = Array[int]([8])
-burntime = 60
 item_name = "SAND"
 item_description = "SAND_DESC"
 texture = ExtResource("2_cv2vi")

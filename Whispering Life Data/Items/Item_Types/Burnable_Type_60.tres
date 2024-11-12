@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BurnableType" load_steps=2 format=3 uid="uid://duirbryu00nmb"]
+
+[ext_resource type="Script" path="res://Scripts/Item/BurnableType.cs" id="1_hif2o"]
+
+[resource]
+script = ExtResource("1_hif2o")
+burntime = 60
+type = 7

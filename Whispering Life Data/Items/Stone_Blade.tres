@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://81xbm48s547g"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=4 format=3 uid="uid://81xbm48s547g"]
 
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Items/Item_Types/Processed_Type_Classic.tres" id="1_skjtg"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_ww5u3"]
 [ext_resource type="Texture2D" uid="uid://ycfo4a4nvvu0" path="res://Sprites/Items/Icons_3rd/Stone_Bladet.png" id="2_vwhri"]
 
 [resource]
 script = ExtResource("1_ww5u3")
+item_types_arr = Array[Object]([ExtResource("1_skjtg")])
 unique_item_id = 15
 item_types = Array[int]([8])
-burntime = 60
-research_id = -1
 item_name = "STONE_BLADE"
 item_description = "STONE_BLADE_DESC"
 texture = ExtResource("2_vwhri")

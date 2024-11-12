@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://bvax767e5vss4"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://bvax767e5vss4"]
 
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Items/Item_Types/Processed_Type_Classic.tres" id="1_obe6s"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_ytvhq"]
+[ext_resource type="Resource" uid="uid://duirbryu00nmb" path="res://Items/Item_Types/Burnable_Type_60.tres" id="2_jhnxl"]
 [ext_resource type="Texture2D" uid="uid://bjana5l7fkd6a" path="res://Sprites/Items/Icons_3rd/Wood_Stick.png" id="2_miv00"]
 
 [resource]
 script = ExtResource("1_ytvhq")
+item_types_arr = Array[Object]([ExtResource("1_obe6s"), ExtResource("2_jhnxl")])
 unique_item_id = 2
 item_types = Array[int]([8, 7])
-burntime = 60
-research_id = -1
 item_name = "WOOD_STICK"
 item_description = "WOOD_STICK_DESC"
 texture = ExtResource("2_miv00")

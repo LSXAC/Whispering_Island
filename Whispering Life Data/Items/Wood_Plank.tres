@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://bl35uo51q2mwf"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://bl35uo51q2mwf"]
 
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Items/Item_Types/Processed_Type_Classic.tres" id="1_g5k8p"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_qp7xs"]
 [ext_resource type="Texture2D" uid="uid://8t8iildjf1jv" path="res://Sprites/Items/Icons_3rd/Wooden_Plank.png" id="2_7cxi2"]
+[ext_resource type="Resource" uid="uid://duirbryu00nmb" path="res://Items/Item_Types/Burnable_Type_60.tres" id="2_xbk7a"]
 
 [resource]
 script = ExtResource("1_qp7xs")
+item_types_arr = Array[Object]([ExtResource("1_g5k8p"), ExtResource("2_xbk7a")])
 unique_item_id = 4
 item_types = Array[int]([8, 7])
-burntime = 60
-research_id = -1
 item_name = "WOOD_PLANK"
 item_description = "WOOD_PLANK_DESC"
 texture = ExtResource("2_7cxi2")

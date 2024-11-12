@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Godot;
 
-public partial class Global : Node2D
+public partial class GlobalFunctions : Node2D
 {
     public static float GetDistanceToPlayer(Vector2 nodePosition)
     {

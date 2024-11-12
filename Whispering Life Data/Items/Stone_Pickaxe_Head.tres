@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://6wlgn6tdsk7b"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=4 format=3 uid="uid://6wlgn6tdsk7b"]
 
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Items/Item_Types/Processed_Type_Classic.tres" id="1_gwktg"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_lxl0p"]
 [ext_resource type="Texture2D" uid="uid://dssms0p4e3r0e" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe_Head.png" id="2_t5k5v"]
 
 [resource]
 script = ExtResource("1_lxl0p")
+item_types_arr = Array[Object]([ExtResource("1_gwktg")])
 unique_item_id = 18
 item_types = Array[int]([8])
-burntime = 60
-research_id = -1
 item_name = "STONE_PICKAXE_HEAD"
 item_description = "STONE_PICKAXE_HEAD_DESC"
 texture = ExtResource("2_t5k5v")

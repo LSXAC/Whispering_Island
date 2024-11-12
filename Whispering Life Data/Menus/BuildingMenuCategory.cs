@@ -22,7 +22,7 @@ public partial class BuildingMenuCategory : ColorRect
         foreach (Control c in parent.GetChildren())
             c.QueueFree();
 
-        foreach (var (name, packed) in Game_Manager.buildings)
+        foreach (var (name, packed) in Database.buildings)
         {
             if (packed.category == category)
                 InitBuildings(packed);

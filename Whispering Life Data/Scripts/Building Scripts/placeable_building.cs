@@ -12,7 +12,7 @@ public partial class placeable_building : Building_Node
         if (Game_Manager.building_mode == Game_Manager.BuildingMode.Removing)
             QueueFree();
 
-        if (Global.GetDistanceToPlayer(this.GlobalPosition) < 60f) { }
+        if (GlobalFunctions.GetDistanceToPlayer(this.GlobalPosition) < 60f) { }
         else
             GD.Print("No! No! No!");
     }

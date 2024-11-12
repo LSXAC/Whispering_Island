@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://1vfo1rr84pk7"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=4 format=3 uid="uid://1vfo1rr84pk7"]
 
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Items/Item_Types/Processed_Type_Classic.tres" id="1_1o78k"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_brr71"]
 [ext_resource type="Texture2D" uid="uid://bh7u3xtchj2nl" path="res://Sprites/Items/Plants_Icons/Potato_Seed.png" id="2_3ipvg"]
 
 [resource]
 script = ExtResource("1_brr71")
+item_types_arr = Array[Object]([ExtResource("1_1o78k")])
 unique_item_id = 26
 item_types = Array[int]([8])
-burntime = 60
 item_name = "POTATO_SEED"
 item_description = "POTATO_SEED_DESC"
 texture = ExtResource("2_3ipvg")
