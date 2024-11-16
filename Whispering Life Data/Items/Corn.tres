@@ -7,9 +7,8 @@
 [resource]
 script = ExtResource("1_6xtys")
 item_types_arr = Array[Object]([ExtResource("1_8epk6")])
-unique_item_id = 29
-item_types = Array[int]([])
 item_name = "CORN"
+unique_id = 29
 item_description = "CORN_DESC"
 texture = ExtResource("2_wa533")
 value = 5.0

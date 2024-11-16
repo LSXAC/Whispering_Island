@@ -7,11 +7,8 @@
 [resource]
 script = ExtResource("1_65fj7")
 item_types_arr = Array[Object]([ExtResource("1_kpehp")])
-unique_item_id = 27
-item_types = Array[int]([])
-burntime = 60
-research_id = -1
 item_name = "CARROT"
+unique_id = 27
 item_description = "CARROT_DESC"
 texture = ExtResource("2_llr6w")
 value = 5.0

@@ -8,9 +8,8 @@
 [resource]
 script = ExtResource("1_qp7xs")
 item_types_arr = Array[Object]([ExtResource("1_g5k8p"), ExtResource("2_xbk7a")])
-unique_item_id = 4
-item_types = Array[int]([8, 7])
 item_name = "WOOD_PLANK"
+unique_id = 4
 item_description = "WOOD_PLANK_DESC"
 texture = ExtResource("2_7cxi2")
 value = 5.0

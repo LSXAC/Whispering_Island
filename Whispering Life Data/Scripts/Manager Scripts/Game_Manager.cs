@@ -102,12 +102,14 @@ public partial class Game_Manager : Node2D
         save_state.belt_saves = building_placer.belt_saves;
         save_state.machine_saves = building_placer.machine_saves;
         save_state.belt_transmitter_saves = building_placer.belt_transmitter_saves;
+        save_state.placeable_saves = building_placer.placeable_saves;
 
         save_state.tutorial_finished = tutorial_finished;
 
         save_state.dateTime_save_string = DateTime.Now.ToString();
 
         save_state.char_save.research_slot_item = ResearchTab.INSTANCE.research_slot_item;
+        save_state.research_saves = ResearchTab.INSTANCE.research_saves;
 
         //Audio
         save_state.master_volume = AudioServer.GetBusVolumeDb(
@@ -160,12 +162,14 @@ public partial class Game_Manager : Node2D
         building_placer.belt_saves = save_state.belt_saves;
         building_placer.belt_transmitter_saves = save_state.belt_transmitter_saves;
         building_placer.machine_saves = save_state.machine_saves;
+        building_placer.placeable_saves = save_state.placeable_saves;
         building_placer.LoadPlacedObjects();
 
         // Start Quest
         QuestManager.INSTANCE.StartQuest(save_state.quest_save);
 
         ResearchTab.INSTANCE.research_slot_item = save_state.char_save.research_slot_item;
+        ResearchTab.INSTANCE.research_saves = save_state.research_saves;
 
         game_time_since_start = save_state.game_time_since_start;
         game_timer.Start();

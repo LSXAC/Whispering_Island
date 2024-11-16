@@ -1604,7 +1604,7 @@ popup/item_0/icon = ExtResource("16_ldk1u")
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/ExportSlot" to="Background/FurnaceTab/PanelContainer/ExportSlot" method="onMachineSlot" binds= [1]]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/FuelSlot" to="Background/FurnaceTab/PanelContainer/FuelSlot" method="onMachineSlot" binds= [2]]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/EnableDisableButton" to="Background/FurnaceTab" method="OnMachineStateButton"]
-[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Button" to="Background/ResearchTab" method="OnMachineStateButton"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Button" to="Background/ResearchTab" method="OnResearchButton"]
 [connection signal="visibility_changed" from="Background/AdminTab" to="Background/AdminTab" method="OnVisiblityChange"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/CreateButton" to="Background/AdminTab" method="OnCreateItems"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/DeselectButton" to="Background/AdminTab" method="OnDeselectAll"]

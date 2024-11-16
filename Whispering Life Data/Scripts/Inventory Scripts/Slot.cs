@@ -120,7 +120,7 @@ public partial class Slot : Button
                 )
                 {
                     EquipmentPanel.INSTANCE.equipped_armor[index] = new ItemSave(
-                        Inventory.clicked_item.item_info.unique_item_id,
+                        (int)Inventory.clicked_item.item_info.unique_id,
                         Inventory.clicked_item.amount
                     );
                     EquipmentPanel
@@ -137,7 +137,7 @@ public partial class Slot : Button
                 )
                 {
                     EquipmentPanel.INSTANCE.equipped_tools[index] = new ItemSave(
-                        Inventory.clicked_item.item_info.unique_item_id,
+                        (int)Inventory.clicked_item.item_info.unique_id,
                         Inventory.clicked_item.amount
                     );
                     EquipmentPanel
@@ -171,7 +171,7 @@ public partial class Slot : Button
             if (GetItem() == null)
             {
                 inventory_base.inventory_items[GetIndex()] = new ItemSave(
-                    Inventory.clicked_item.item_info.unique_item_id,
+                    (int)Inventory.clicked_item.item_info.unique_id,
                     Inventory.clicked_item.amount
                 );
                 Inventory.clicked_item.QueueFree();
@@ -209,7 +209,7 @@ public partial class Slot : Button
             if (GetItem() == null)
             {
                 ChestInventory.INSTANCE.current_chest.chest_items[GetIndex()] = new ItemSave(
-                    Inventory.clicked_item.item_info.unique_item_id,
+                    (int)Inventory.clicked_item.item_info.unique_id,
                     Inventory.clicked_item.amount
                 );
                 inventory_base.UpdateInventoryUI();
@@ -246,7 +246,7 @@ public partial class Slot : Button
             if (GetItem() == null)
             {
                 ResearchTab.INSTANCE.research_slot_item = new ItemSave(
-                    Inventory.clicked_item.item_info.unique_item_id,
+                    (int)Inventory.clicked_item.item_info.unique_id,
                     Inventory.clicked_item.amount
                 );
                 Inventory.clicked_item.QueueFree();

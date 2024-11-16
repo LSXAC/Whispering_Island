@@ -1,22 +1,16 @@
 using Godot;
 
-public partial class MachineSave : Resource
+public partial class MachineSave : PlaceableSave
 {
     public MachineSave() { }
 
-    public MachineSave(MachineBase.MachineType type, Vector2 pos, Vector2 scale, bool me)
+    public MachineSave(Database.BUILDING_ID id, Vector2 pos, Vector2 scale, bool me)
     {
-        this.type = type;
-        this.position = pos;
+        this.building_id = id;
+        this.pos = pos;
         this.scale = scale;
         this.machine_enabled = me;
     }
-
-    [Export]
-    public MachineBase.MachineType type = MachineBase.MachineType.WOODFARM;
-
-    [Export]
-    public Vector2 position = Vector2.Zero;
 
     [Export]
     public int import_count = 0;

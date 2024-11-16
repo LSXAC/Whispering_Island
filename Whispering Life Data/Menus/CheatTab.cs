@@ -16,8 +16,12 @@ public partial class CheatTab : ColorRect
     private void SetItemsInList()
     {
         item_list.Clear();
-        foreach (ItemInfo ii in Inventory.INSTANCE.item_Types)
-            item_list.AddItem(TranslationServer.Translate(ii.item_name), ii.texture, true);
+        foreach (var (id, item_info) in Inventory.INSTANCE.item_Types)
+            item_list.AddItem(
+                TranslationServer.Translate(item_info.item_name),
+                item_info.texture,
+                true
+            );
     }
 
     public void OnDeselectAll()
@@ -30,7 +34,7 @@ public partial class CheatTab : ColorRect
         int[] items = item_list.GetSelectedItems();
         foreach (int i in items)
             Inventory.INSTANCE.AddItem(
-                Inventory.INSTANCE.item_Types[i],
+                Inventory.INSTANCE.item_Types[((Inventory.ITEM_ID)i)],
                 50,
                 Inventory.INSTANCE.inventory_items
             );

@@ -5,6 +5,9 @@ public partial class placeable_building : Building_Node
     public bool colliding_Wall = false;
 
     [Export]
+    public Database.BUILDING_ID building_id;
+
+    [Export]
     public Building_Collider_Manager building_collider_manager;
 
     public override void OnMouseClick()

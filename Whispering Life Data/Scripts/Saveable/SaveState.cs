@@ -24,6 +24,9 @@ public partial class SaveState : Resource
     public Array<MachineSave> machine_saves = new Array<MachineSave>();
 
     [Export]
+    public Array<PlaceableSave> placeable_saves = new Array<PlaceableSave>();
+
+    [Export]
     public bool tutorial_finished = false;
 
     [Export]
@@ -43,6 +46,10 @@ public partial class SaveState : Resource
 
     [Export]
     public string dateTime_save_string;
+
+    [Export]
+    public Dictionary<Inventory.ITEM_ID, ResearchSave> research_saves =
+        new Dictionary<Inventory.ITEM_ID, ResearchSave>();
 
     private static string save_path = "user://save.tres";
     public static string game_version = "a.0.1";

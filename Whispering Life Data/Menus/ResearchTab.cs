@@ -1,11 +1,13 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
 public partial class ResearchTab : ColorRect
 {
+    [Export]
+    public Dictionary<Inventory.ITEM_ID, ResearchSave> research_saves;
+
     [Export]
     public TabContainer tab_container;
 
@@ -44,10 +46,10 @@ public partial class ResearchTab : ColorRect
         if (research_slot_item != null)
         {
             research_slot.SetItem(
-                Inventory.INSTANCE.item_Types[research_slot_item.item_id],
+                Inventory.INSTANCE.item_Types[(Inventory.ITEM_ID)research_slot_item.item_id],
                 research_slot_item.amount
             );
-            SetText();
+            SetText(research_slot.GetItem().item_info);
         }
         else
         {
@@ -65,13 +67,69 @@ public partial class ResearchTab : ColorRect
         item_level_label.Text = "-/-";
     }
 
-    private void SetText()
+    private void SetText(ItemInfo item_info)
     {
+        foreach (LevelTab lt in tab_container.GetChildren())
+            lt.QueueFree();
+
+        Inventory.ITEM_ID id = item_info.unique_id;
+
+        if (!Database.researchs.ContainsKey(id))
+            return;
+
+        for (int i = 0; i < Database.researchs[id].research_levels.Count; i++)
+        {
+            if (research_saves.ContainsKey(id))
+                if (research_saves[id].research_level >= i)
+                    continue;
+
+            LevelTab lt = research_level_tab.Instantiate() as LevelTab;
+            tab_container.AddChild(lt);
+            lt.UpdateLevelTab(
+                Database.researchs[id].translation_string,
+                i,
+                "NO BONI LOL",
+                (Database.UPGRADE_LEVEL)i
+            );
+        }
         item_name_label.Text =
             ""
             + TranslationServer.Translate(
-                Inventory.INSTANCE.item_Types[research_slot_item.item_id].item_name
+                Inventory
+                    .INSTANCE
+                    .item_Types[(Inventory.ITEM_ID)research_slot_item.item_id]
+                    .item_name
             );
         item_level_label.Text = "-/-";
+
+        //Update Level Tab Box
+    }
+
+    public void OnResearchButton()
+    {
+        if (research_slot_item == null)
+            return;
+        if (tab_container.CurrentTab == -1)
+            return;
+
+        ItemInfo item_info = research_slot.GetItem().item_info;
+        Inventory.ITEM_ID id = item_info.unique_id;
+
+        //Remove Items
+        //start Research
+        Debug.Print(tab_container.CurrentTab.ToString());
+
+        if (!research_saves.ContainsKey(id))
+            research_saves[id] = new ResearchSave();
+
+        if (
+            research_saves[id]
+                .AddLevel(tab_container.GetChild<LevelTab>(tab_container.CurrentTab).level + 1)
+        )
+            Debug.Print(
+                "Level" + tab_container.CurrentTab + " added to " + research_saves[id].ToString()
+            );
+
+        Debug.Print(research_saves[id].research_level + " current level <:");
     }
 }

@@ -28,6 +28,7 @@ script = ExtResource("1_8pw6g")
 checkAreaTimer = NodePath("CheckAreaTimer")
 item_holder = NodePath("ItemHolder")
 detector = NodePath("Detector")
+building_id = 1
 building_collider_manager = NodePath("BuildingAreas")
 title = "Belt"
 description = "Moves Items"

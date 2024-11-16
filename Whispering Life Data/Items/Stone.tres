@@ -8,15 +8,13 @@
 
 [sub_resource type="Resource" id="Resource_mhah5"]
 script = ExtResource("3_s48gi")
-research_id = 2
 type = 9
 
 [resource]
 script = ExtResource("1_1knkb")
 item_types_arr = Array[Object]([ExtResource("1_0luyf"), ExtResource("2_tdf8b"), SubResource("Resource_mhah5")])
-unique_item_id = 1
-item_types = Array[int]([0, 6, 9])
 item_name = "STONE"
+unique_id = 1
 item_description = "STONE_DESC"
 texture = ExtResource("2_ddmyj")
 value = 3.0

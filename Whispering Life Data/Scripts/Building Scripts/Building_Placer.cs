@@ -18,6 +18,7 @@ public partial class Building_Placer : Node2D
     public Array<BeltSave> belt_saves = new Array<BeltSave>();
     public Array<BeltTransmitterSave> belt_transmitter_saves = new Array<BeltTransmitterSave>();
     public Array<MachineSave> machine_saves = new Array<MachineSave>();
+    public Array<PlaceableSave> placeable_saves = new Array<PlaceableSave>();
     private placeable_building placeable;
     private int current_belt_rotation = 3;
     private Vector2 current_scale = new Vector2(1, 1);
@@ -145,14 +146,14 @@ public partial class Building_Placer : Node2D
     {
         foreach (MachineSave machine_save in machine_saves)
         {
-            Debug.Print("Machine Load" + " | " + machine_save.position);
+            Debug.Print("Machine Load" + " | " + machine_save.pos);
             MachineBase temp = SelectSavedMachine(machine_save);
 
             if (temp == null)
                 return;
 
             parent_Node.AddChild(temp);
-            temp.GlobalPosition = machine_save.position;
+            temp.GlobalPosition = machine_save.pos;
             temp.Scale = machine_save.scale;
             temp.machine_enabled = machine_save.machine_enabled;
 
@@ -170,19 +171,38 @@ public partial class Building_Placer : Node2D
         }
     }
 
+    public void LoadPlacableBuildings()
+    {
+        foreach (PlaceableSave ps in placeable_saves)
+        {
+            placeable_building temp = null;
+            if (ps.building_id == Database.BUILDING_ID.RESEARCH_TABLE)
+                temp =
+                    Database
+                        .GetBuildingType(Database.BUILDING_ID.RESEARCH_TABLE)
+                        .building_scene.Instantiate() as ResearchTable;
+
+            if (temp == null)
+                return;
+
+            parent_Node.AddChild(temp);
+            temp.GlobalPosition = ps.pos;
+        }
+    }
+
     private MachineBase SelectSavedMachine(MachineSave machine_save)
     {
-        if (machine_save.type == MachineBase.MachineType.WOODFARM)
+        if (machine_save.building_id == Database.BUILDING_ID.TREE_GROWTHER)
             return Database
                     .GetBuildingType(Database.BUILDING_ID.TREE_GROWTHER)
                     .building_scene.Instantiate() as ProductionMachine;
 
-        if (machine_save.type == MachineBase.MachineType.QUARRY)
+        if (machine_save.building_id == Database.BUILDING_ID.QUARRY)
             return Database
                     .GetBuildingType(Database.BUILDING_ID.QUARRY)
                     .building_scene.Instantiate() as ProductionMachine;
 
-        if (machine_save.type == MachineBase.MachineType.FURNACE)
+        if (machine_save.building_id == Database.BUILDING_ID.FURNACE)
         {
             MachineBase temp =
                 Database.GetBuildingType(Database.BUILDING_ID.FURNACE).building_scene.Instantiate()
@@ -191,17 +211,17 @@ public partial class Building_Placer : Node2D
 
             if (machine_save.import_item_type != -1)
                 ((ProcessBuilding)temp).import_item_info = Inventory.INSTANCE.item_Types[
-                    machine_save.import_item_type
+                    (Inventory.ITEM_ID)machine_save.import_item_type
                 ];
 
             if (machine_save.export_item_type != -1)
                 ((ProcessBuilding)temp).export_item_info = Inventory.INSTANCE.item_Types[
-                    machine_save.export_item_type
+                    (Inventory.ITEM_ID)machine_save.export_item_type
                 ];
             return temp;
         }
 
-        if (machine_save.type == MachineBase.MachineType.CHEST)
+        if (machine_save.building_id == Database.BUILDING_ID.CHEST)
             return Database.GetBuildingType(Database.BUILDING_ID.CHEST).building_scene.Instantiate()
                 as Chest;
 
@@ -216,6 +236,7 @@ public partial class Building_Placer : Node2D
         LoadBelts();
         LoadMachines();
         LoadBeltTransmitter();
+        LoadPlacableBuildings();
     }
 
     public void SavePlacedObjects()
@@ -223,6 +244,8 @@ public partial class Building_Placer : Node2D
         belt_saves.Clear();
         machine_saves.Clear();
         belt_transmitter_saves.Clear();
+        placeable_saves.Clear();
+
         foreach (Node2D node in parent_Node.GetChildren())
         {
             if (node is Belt)
@@ -274,12 +297,13 @@ public partial class Building_Placer : Node2D
                 }
                 else
                     belt_saves.Add(belt_save);
+                continue;
             }
 
             if (node is MachineBase)
             {
                 MachineSave ms = new MachineSave(
-                    ((MachineBase)node).type,
+                    ((placeable_building)node).building_id,
                     ((MachineBase)node).Position,
                     ((MachineBase)node).Scale,
                     ((MachineBase)node).machine_enabled
@@ -293,21 +317,29 @@ public partial class Building_Placer : Node2D
                     if (((ProcessBuilding)node).import_item_info == null)
                         ms.import_item_type = -1;
                     else
-                        ms.import_item_type = ((ProcessBuilding)node)
-                            .import_item_info
-                            .unique_item_id;
+                        ms.import_item_type = (int)
+                            ((ProcessBuilding)node).import_item_info.unique_id;
                     if (((ProcessBuilding)node).export_item_info == null)
                         ms.export_item_type = -1;
                     else
-                        ms.export_item_type = ((ProcessBuilding)node)
-                            .export_item_info
-                            .unique_item_id;
+                        ms.export_item_type = (int)
+                            ((ProcessBuilding)node).export_item_info.unique_id;
                 }
 
                 if (node is Chest)
                     ms.chest_items = ((Chest)node).chest_items;
 
                 machine_saves.Add(ms);
+                continue;
+            }
+
+            if (node is placeable_building)
+            {
+                PlaceableSave ps = new PlaceableSave(
+                    ((placeable_building)node).building_id,
+                    node.GlobalPosition
+                );
+                placeable_saves.Add(ps);
             }
         }
     }

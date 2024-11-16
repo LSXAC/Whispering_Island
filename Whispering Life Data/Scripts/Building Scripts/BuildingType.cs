@@ -1,4 +1,6 @@
+using System;
 using Godot;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class BuildingType : Resource
@@ -8,6 +10,9 @@ public partial class BuildingType : Resource
 
     [Export]
     public Recipe building_recipe;
+
+    [Export]
+    public Array<BuildingRequirement> requirements;
 
     [Export]
     public CATEGORY category;

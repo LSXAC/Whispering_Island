@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
@@ -24,10 +25,10 @@ public partial class ItemInfo : Resource
     };
 
     [Export]
-    public int unique_item_id = -1;
+    public string item_name;
 
     [Export]
-    public string item_name;
+    public Inventory.ITEM_ID unique_id;
 
     [Export]
     public string item_description;
@@ -47,5 +48,15 @@ public partial class ItemInfo : Resource
             if (item_type.type == type)
                 return true;
         return false;
+    }
+
+    public int GetTypeIndex(Type type)
+    {
+        for (int i = 0; i < item_types_arr.Count; i++)
+            if (item_types_arr[i].type == type)
+                return i;
+
+        Debug.Print("Item cannot be found in Arr");
+        return -1;
     }
 }

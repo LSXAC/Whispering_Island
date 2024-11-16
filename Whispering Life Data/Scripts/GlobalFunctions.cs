@@ -3,6 +3,15 @@ using Godot;
 
 public partial class GlobalFunctions : Node2D
 {
+    public static bool HasResearchLevel(Inventory.ITEM_ID id, Database.UPGRADE_LEVEL level)
+    {
+        if (ResearchTab.INSTANCE.research_saves.ContainsKey(id))
+            if (ResearchTab.INSTANCE.research_saves[id].research_level >= (int)level)
+                return true;
+
+        return false;
+    }
+
     public static float GetDistanceToPlayer(Vector2 nodePosition)
     {
         return Player.INSTANCE.GlobalPosition.DistanceTo(nodePosition);

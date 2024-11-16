@@ -9,63 +9,110 @@ public partial class InventoryBase : Control
 
     [Export]
     public ItemSave[] inventory_items = new ItemSave[20];
-    public ItemInfo[] item_Types =
+    public Dictionary<ITEM_ID, ItemInfo> item_Types = new Dictionary<ITEM_ID, ItemInfo>()
     {
-        ResourceLoader.Load<ItemInfo>("res://Items/Wood.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Stone.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Wood_Stick.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Stone_Pickaxe.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Wood_Plank.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Char_Coal.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Iron_Ore.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Iron_Ingot.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Copper_Ore.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Copper_Ingot.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Stone_Knife.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Fibre.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Wood.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Fibre.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Stone_Blade.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Glass.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Stone_Axe_Head.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Stone_Pickaxe_Head.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Hoe_Head.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Hoe.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe_Head.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Wheat.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Iron_Block.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Wheat_Seed.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Potato.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Potato_Seed.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Carrot.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Carrot_Seed.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Corn.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Corn_Seed.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Sand.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Sand_Stone.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Helm.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Chestplate.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Leggings.tres"),
-        ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Shoes.tres"),
+        { ITEM_ID.WOOD, ResourceLoader.Load<ItemInfo>("res://Items/Wood.tres") },
+        { ITEM_ID.STONE, ResourceLoader.Load<ItemInfo>("res://Items/Stone.tres") },
+        { ITEM_ID.WOOD_STICK, ResourceLoader.Load<ItemInfo>("res://Items/Wood_Stick.tres") },
+        { ITEM_ID.STONE_PICKAXE, ResourceLoader.Load<ItemInfo>("res://Items/Stone_Pickaxe.tres") },
+        { ITEM_ID.WOODEN_PLANK, ResourceLoader.Load<ItemInfo>("res://Items/Wood_Plank.tres") },
+        { ITEM_ID.Wooden_Axe, ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe.tres") },
+        { ITEM_ID.CHAR_COAL, ResourceLoader.Load<ItemInfo>("res://Items/Char_Coal.tres") },
+        { ITEM_ID.IRON_ORE, ResourceLoader.Load<ItemInfo>("res://Items/Iron_Ore.tres") },
+        { ITEM_ID.IRON_INGOT, ResourceLoader.Load<ItemInfo>("res://Items/Iron_Ingot.tres") },
+        { ITEM_ID.COPPER_ORE, ResourceLoader.Load<ItemInfo>("res://Items/Copper_Ore.tres") },
+        { ITEM_ID.COPPER_INGOT, ResourceLoader.Load<ItemInfo>("res://Items/Copper_Ingot.tres") },
+        { ITEM_ID.STONE_KNIFE, ResourceLoader.Load<ItemInfo>("res://Items/Stone_Knife.tres") },
+        { ITEM_ID.MYSTIC_FIBRE, ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Fibre.tres") },
+        { ITEM_ID.MYSTIC_WOOD, ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Wood.tres") },
+        { ITEM_ID.FIBRE, ResourceLoader.Load<ItemInfo>("res://Items/Fibre.tres") },
+        { ITEM_ID.STONE_BLADE, ResourceLoader.Load<ItemInfo>("res://Items/Stone_Blade.tres") },
+        { ITEM_ID.GLASS, ResourceLoader.Load<ItemInfo>("res://Items/Glass.tres") },
+        {
+            ITEM_ID.STONE_AXE_HEAD,
+            ResourceLoader.Load<ItemInfo>("res://Items/Stone_Axe_Head.tres")
+        },
+        {
+            ITEM_ID.STONE_PICKAXE_HEAD,
+            ResourceLoader.Load<ItemInfo>("res://Items/Stone_Pickaxe_Head.tres")
+        },
+        {
+            ITEM_ID.WOODEN_HOE_HEAD,
+            ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Hoe_Head.tres")
+        },
+        { ITEM_ID.WOODEN_HOE, ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Hoe.tres") },
+        {
+            ITEM_ID.WOODEN_AXE_HEAD,
+            ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe_Head.tres")
+        },
+        { ITEM_ID.WHEAT, ResourceLoader.Load<ItemInfo>("res://Items/Wheat.tres") },
+        { ITEM_ID.IRON_BLOCK, ResourceLoader.Load<ItemInfo>("res://Items/Iron_Block.tres") },
+        { ITEM_ID.WHEAT_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Wheat_Seed.tres") },
+        { ITEM_ID.POTATO, ResourceLoader.Load<ItemInfo>("res://Items/Potato.tres") },
+        { ITEM_ID.POTATO_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Potato_Seed.tres") },
+        { ITEM_ID.CARROT, ResourceLoader.Load<ItemInfo>("res://Items/Carrot.tres") },
+        { ITEM_ID.CARROT_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Carrot_Seed.tres") },
+        { ITEM_ID.CORN, ResourceLoader.Load<ItemInfo>("res://Items/Corn.tres") },
+        { ITEM_ID.CORN_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Corn_Seed.tres") },
+        { ITEM_ID.SAND, ResourceLoader.Load<ItemInfo>("res://Items/Sand.tres") },
+        { ITEM_ID.SAND_STONE, ResourceLoader.Load<ItemInfo>("res://Items/Sand_Stone.tres") },
+        {
+            ITEM_ID.MYSTIC_ARMOR_HEAD,
+            ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Helm.tres")
+        },
+        {
+            ITEM_ID.MYSTIC_ARMOR_CHESTPLATE,
+            ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Chestplate.tres")
+        },
+        {
+            ITEM_ID.MYSTIC_ARMOR_LEGGINGS,
+            ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Leggings.tres")
+        },
+        {
+            ITEM_ID.MYSTIC_ARMOR_SHOES,
+            ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Shoes.tres")
+        },
     };
 
-    public override void _Ready()
+    public enum ITEM_ID
     {
-        for (int i = 0; i < item_Types.Length; i++)
-        {
-            for (int j = 0; j < item_Types.Length; j++)
-                if (item_Types[i].unique_item_id == item_Types[j].unique_item_id && i != j)
-                {
-                    GD.PrintErr(
-                        "UNIQUE ITEM ID IS DUPLICATED: i: "
-                            + item_Types[i].item_name
-                            + "j: "
-                            + item_Types[j].item_name
-                    );
-                    return;
-                }
-        }
+        WOOD,
+        STONE,
+        WOOD_STICK,
+        STONE_PICKAXE,
+        WOODEN_PLANK,
+        Wooden_Axe,
+        CHAR_COAL,
+        IRON_ORE,
+        IRON_INGOT,
+        COPPER_ORE,
+        COPPER_INGOT,
+        STONE_KNIFE,
+        MYSTIC_FIBRE,
+        MYSTIC_WOOD,
+        FIBRE,
+        STONE_BLADE,
+        GLASS,
+        STONE_AXE_HEAD,
+        STONE_PICKAXE_HEAD,
+        WOODEN_HOE_HEAD,
+        WOODEN_HOE,
+        WOODEN_AXE_HEAD,
+        WHEAT,
+        IRON_BLOCK,
+        WHEAT_SEED,
+        POTATO,
+        POTATO_SEED,
+        CARROT,
+        CARROT_SEED,
+        CORN,
+        CORN_SEED,
+        SAND,
+        SAND_STONE,
+        MYSTIC_ARMOR_HEAD,
+        MYSTIC_ARMOR_CHESTPLATE,
+        MYSTIC_ARMOR_LEGGINGS,
+        MYSTIC_ARMOR_SHOES
     }
 
     public void SetSlots()
@@ -105,14 +152,18 @@ public partial class InventoryBase : Control
         {
             if (s != null)
             {
-                Item item = new Item { item_info = item_Types[s.item_id], amount = s.amount };
+                Item item = new Item
+                {
+                    item_info = item_Types[((ITEM_ID)s.item_id)],
+                    amount = s.amount
+                };
                 items.Add(item);
             }
         }
         return items;
     }
 
-    public void AddItem(ItemInfo item_info, int amount, ItemSave[] array)
+    public void AddItem(ItemInfo ii, int amount, ItemSave[] array)
     {
         //Check if Item already exists
         for (int i = 0; i < array.Length; i++)
@@ -120,7 +171,7 @@ public partial class InventoryBase : Control
             if (array[i] == null)
                 continue;
 
-            if (array[i].item_id == item_info.unique_item_id)
+            if (array[i].item_id == (int)ii.unique_id)
             {
                 if (array[i].amount + amount <= 0)
                     array[i] = null;
@@ -139,7 +190,7 @@ public partial class InventoryBase : Control
         for (int i = 0; i < array.Length; i++)
             if (array[i] == null)
             {
-                array[i] = new ItemSave(item_info.unique_item_id, amount);
+                array[i] = new ItemSave((int)ii.unique_id, amount);
                 QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
                     QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
                 );
@@ -162,7 +213,7 @@ public partial class InventoryBase : Control
                 Debug.Print("BI IS NULL");
                 return false;
             }
-            if (array[i].item_id == bi.item.item_info.unique_item_id)
+            if (array[i].item_id == (int)bi.item.item_info.unique_id)
                 return true;
         }
         return false;
@@ -196,7 +247,7 @@ public partial class InventoryBase : Control
             return;
 
         GetNode<Slot>($"GridContainer/Slot{i}")
-            .SetItem(item_Types[inventory_items[i].item_id], inventory_items[i].amount);
+            .SetItem(item_Types[(ITEM_ID)inventory_items[i].item_id], inventory_items[i].amount);
     }
 
     public void LoadInventoryFromSave(ItemSave[] item_save)

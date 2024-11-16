@@ -55,16 +55,26 @@ public partial class EquipmentPanel : Control
         foreach (ItemSave s in equipped_armor)
         {
             if (s != null)
-                if (Inventory.INSTANCE.item_Types[s.item_id].item_stats != null)
-                    foreach (ItemStats x in Inventory.INSTANCE.item_Types[s.item_id].item_stats)
+                if (Inventory.INSTANCE.item_Types[(Inventory.ITEM_ID)s.item_id].item_stats != null)
+                    foreach (
+                        ItemStats x in Inventory
+                            .INSTANCE
+                            .item_Types[(Inventory.ITEM_ID)s.item_id]
+                            .item_stats
+                    )
                         ps.stat_amounts[(int)x.type] += x.bonus;
         }
 
         foreach (ItemSave s in equipped_tools)
         {
             if (s != null)
-                if (Inventory.INSTANCE.item_Types[s.item_id].item_stats != null)
-                    foreach (ItemStats x in Inventory.INSTANCE.item_Types[s.item_id].item_stats)
+                if (Inventory.INSTANCE.item_Types[(Inventory.ITEM_ID)s.item_id].item_stats != null)
+                    foreach (
+                        ItemStats x in Inventory
+                            .INSTANCE
+                            .item_Types[(Inventory.ITEM_ID)s.item_id]
+                            .item_stats
+                    )
                         ps.stat_amounts[(int)x.type] += x.bonus;
         }
         UpdateProgressbars();
@@ -81,7 +91,7 @@ public partial class EquipmentPanel : Control
             if (item_save[i] != null)
                 slots_armor[i]
                     .SetItem(
-                        Inventory.INSTANCE.item_Types[item_save[i].item_id],
+                        Inventory.INSTANCE.item_Types[(Inventory.ITEM_ID)item_save[i].item_id],
                         item_save[i].amount
                     );
     }
@@ -97,7 +107,7 @@ public partial class EquipmentPanel : Control
             if (item_save[i] != null)
                 slots_tool[i]
                     .SetItem(
-                        Inventory.INSTANCE.item_Types[item_save[i].item_id],
+                        Inventory.INSTANCE.item_Types[(Inventory.ITEM_ID)item_save[i].item_id],
                         item_save[i].amount
                     );
     }

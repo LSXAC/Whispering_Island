@@ -19,9 +19,8 @@ bonus = 0.2
 [resource]
 script = ExtResource("1_kqash")
 item_types_arr = Array[Object]([ExtResource("2_ewrsk"), ExtResource("3_igsve")])
-unique_item_id = 3
-item_types = Array[int]([1, 8])
 item_name = "STONE_PICKAXE"
+unique_id = 3
 item_description = "STONE_PICKAXE_DESC"
 texture = ExtResource("2_wjrmy")
 value = 5.0

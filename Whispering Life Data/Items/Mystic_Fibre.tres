@@ -6,15 +6,13 @@
 
 [sub_resource type="Resource" id="Resource_ye8dr"]
 script = ExtResource("1_j1xm0")
-research_id = 0
 type = 9
 
 [resource]
 script = ExtResource("1_lfhgc")
 item_types_arr = Array[Object]([SubResource("Resource_ye8dr")])
-unique_item_id = 12
-item_types = Array[int]([9])
 item_name = "MYSTIC_FIBRE"
+unique_id = 12
 item_description = "MYSTIC_FIBRE_DESC"
 texture = ExtResource("2_j403k")
 value = 10.0

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
@@ -24,8 +25,19 @@ public partial class BuildingMenuCategory : ColorRect
 
         foreach (var (name, packed) in Database.buildings)
         {
-            if (packed.category == category)
+            if (packed == null)
+            {
+                Debug.Print(name + " empty");
+                return;
+            }
+
+            if (packed.category == category) //Check if Requirement is there
+            {
+                if (packed.requirements != null || packed.requirements.Count > 0)
+                    if (!CheckAllRequirements(packed.requirements))
+                        continue;
                 InitBuildings(packed);
+            }
         }
     }
 
@@ -39,5 +51,20 @@ public partial class BuildingMenuCategory : ColorRect
     public void OnVisiblityChange()
     {
         SetBuildings();
+    }
+
+    private bool CheckAllRequirements(Array<BuildingRequirement> br)
+    {
+        foreach (BuildingRequirement temp in br)
+        {
+            if (!ResearchTab.INSTANCE.research_saves.ContainsKey(temp.item_id))
+                return false;
+            if (
+                ResearchTab.INSTANCE.research_saves[temp.item_id].research_level
+                < (int)temp.required_level
+            )
+                return false;
+        }
+        return true;
     }
 }

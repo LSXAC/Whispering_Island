@@ -4,28 +4,30 @@ using Godot.Collections;
 
 public partial class Database : Node
 {
+    public enum UPGRADE_LEVEL
+    {
+        Level0,
+        Level1,
+        Level2,
+        Level3,
+        Level4,
+        Level5
+    }
+
     // RESEARCH LINES ------------------------------------------------------------------------------------------------
 
-    public static Dictionary<string, ResearchLevelManager> researchs = new Dictionary<
-        string,
+    public static Dictionary<Inventory.ITEM_ID, ResearchLevelManager> researchs = new Dictionary<
+        Inventory.ITEM_ID,
         ResearchLevelManager
     >()
     {
-        /*{
-            RESEARCH_ID.WOOD.ToString(),
-            ResourceLoader.Load<ResearchLevelManager>("res://Buildings/Belt.tres")
-        }*/
+        {
+            Inventory.ITEM_ID.WOOD,
+            ResourceLoader.Load<ResearchLevelManager>(
+                "res://Items/ItemResearchs/Wood_Research_Level_Manager.tres"
+            )
+        }
     };
-
-    public enum RESEARCH_ID
-    {
-        NONE,
-        WOOD,
-        STONE,
-        COPPER,
-        IRON,
-        SAND
-    }
 
     // BUILDINGS LINES ------------------------------------------------------------------------------------------------
 
