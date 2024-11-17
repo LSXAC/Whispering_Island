@@ -55,7 +55,10 @@ public partial class QuestMenu : CanvasLayer
     public void OnCloseButton()
     {
         GlobalFunctions.MoveCamera(new Vector2(0, -256));
-        DialogueManager.ShowDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_DE");
+        if (TranslationServer.GetLocale() == "de")
+            DialogueManager.ShowDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_DE");
+        else
+            DialogueManager.ShowDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_ENG");
         CloseQuestMenu();
     }
 

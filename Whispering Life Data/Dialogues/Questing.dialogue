@@ -6,3 +6,12 @@
 do Global.LeaveDialogue()
 
 => END
+
+~ Quest_Menu_Closed_ENG
+
+% Boss: The time is running!
+% Boss: I'AM HUNGRY!
+%2 Boss: Don't let me wait so long!
+do Global.LeaveDialogue()
+
+=> END

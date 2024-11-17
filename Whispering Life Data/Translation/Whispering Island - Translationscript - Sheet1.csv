@@ -3,32 +3,18 @@ LANGUAGE,English,Deutsch
 STAMINA_LEFT,Stamina,Ausdauer
 STAMINA_OUT,Searching for Air,Atemlos
 SETTINGS_LANGUAGE_LABEL,Language,Sprache
-,,
 GAMEMENU_INVENTORY_BUTTON,Inventory,Inventar
 GAMEMENU_CRAFTING_BUTTON,Crafting,Herstellen
 GAMEMENU_SAVELOAD_BUTTON,Save,Speichern
 GAMEMENU_SETTINGS_BUTTON,Settings,Einstellungen
+SETTINGS_MASTER_VOLUME,Master Volume,Gesamtlautstärke
 GAMEMENU_FURNACE,> Furnace,> Ofen
 GAMEMENU_CHEST,> Chest,> Kiste
 GAMEMENU_RESEARCH_TABLE,> Research Table,> Forschungstisch
 GAMEMENU_QUEST_MENU,> Quest Overview,> Aufgabenübersicht
-,,
 PLAYERUI_GAMETIME,Game time,Spielzeit
 PLAYERUI_QUEST_OBJECTIV,Objectiv,Aufgabe
 PLAYERUI_QUEST_TIME_LEFT,Time left,Zeit übrig
-,,
-RESOURCE,Resource,Ressource
-TOOL,Tool,Werkzeug
-WEAPON,Weapon,Waffe
-CLOTHS,Cloths,Kleidung
-PLACEABLE,Placeable,Platzierbar
-ALL,All,Alles
-SMELTABLE,Smeltable,Schmelzbar
-BURNABLE,Burnable,Brennbar
-PROCESSED,Processed,Verarbeitet
-RESEARCHABLE,Researchable,Erforschbar
-TYPE,Type,Typ
-BURNTIME,Burntime,Brennzeit
 ,,
 ,,
 EQUIPMENT_SLOT_HEAD,Head,Kopf
@@ -38,11 +24,14 @@ EQUIPMENT_SLOT_FOOTS,Foots,Füße
 EQUIPMENT_SLOT_WEAPON,Weapon,Waffe
 EQUIPMENT_SLOT_TOOL,Tool,Werkzeug
 ,,
+,,
 CRAFTING_MENU_GENERAL,General,Allgemein
 CRAFTING_MENU_TOOLPARTS,Toolparts,Werkzeugteile
 CRAFTING_MENU_TOOLS,Tools,Werkzeuge
 CRAFTING_MENU_TOPBAR_ITEM,Item,Gegenstand
 CRAFTING_MENU_TOPBAR_RESOURCE_NEEDED,Resources needed,Benötigte Ressourcen
+CRAFTING_MENU_ARMOR,Armor,Rüstung
+CRAFTING_MENU_AGRICULTURE,Agriculture,Landwirdschaft
 ,,
 SAVELOAD_MENU_SAVE_BUTTON,Save Game,Spielstand speichern
 SAVELOAD_MENU_LOAD_BUTTON,Load Game,Spielstand laden
@@ -61,10 +50,21 @@ export items, when the machine
 is working!","Ressourcen während dem Aktivzustand
 zu verändern, ist nicht möglich."
 ,,
+BUILDING_MENU_RESOURCES_USED_INFO,"Resources not used, until building placed.","Ressourcen werden nur verbraucht, wenn Gebäude platziert wird."
+BUILDING_MENU_BUILD_BUTTON,Build Building,Gebäude bauen
+BUILDING_MENU_PRODUCTION,> Production,> Produktion
+BUILDING_MENU_DECORATION,> Decoration,> Dekoration
+BUILDING_MENU_RESEARCH,> Research,> Forschung
+,,
+,,
+,,
+,,
+,,
+,,
 ,,
 ,,
 BUILDING_FURNACE,Furnace,Ofen
-BUILDING_FURNACE_DESC,Smelts Resources that are smeltable,"Verarbeitet Ressourcen 
+BUILDING_FURNACE_DESC,Smelts Resources that are smeltable,"Schmilzt Ressourcen 
 die schmelzbar sind"
 BUILDING_CHEST,Chest,Kiste
 BUILDING_CHEST_DESC,Can hold Resources,Kann Ressourcen speichern
@@ -77,8 +77,6 @@ BUILDING_QUARRY_DESC,Generates continuesly stone,Produziert stetig Stein
 BUILDING_SIGN,Sign,Schild
 BUILDING_SIGN_DESC,Sign where a Bridge can be build,Schild an dem eine Brücke gebaut werden kann
 ,,
-,,
-,,
 WORLD_RESOURCE_STONE,Stone,Stein
 WORLD_RESOURCE_STONE_DESC,Mine to receive stone,Erhalte Stein beim abbauen
 WORLD_RESOURCE_TREE,Tree,Baum
@@ -87,91 +85,21 @@ WORLD_RESOURCE_MYSTIC_TREE,Mystic Tree,Mystischer Baum
 WORLD_RESOURCE_MYSTIC_TREE_DESC,Harvest to receive mystic wood,Erhalte mystisches Holz beim fällen
 WORLD_RESOURCE_MYSTIC_FIBRE,Mystic Tree,Mystischer Baum
 WORLD_RESOURCE_MYSTIC_FIBRE_DESC,Harvest to receive mystic wood,Erhalte mystisches Holz beim fällen
+WORLD_RESOURCE_WHEAT,Mystic Tree,Mystischer Baum
+WORLD_RESOURCE_WHEAT_DESC,Harvest to receive mystic wood,Erhalte mystisches Holz beim fällen
 ,,
 ,,
 ,,
 ,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-WOOD,Wood,Holz
-WOOD_DESC,Material from a Tree,Material von einem Baum
-STONE,Stone,Stein
-STONE_DESC,A hard natural material,ein natürliches Hartprodukt
-WOOD_STICK,Wooden Stick,Holzstab
-WOOD_STICK_DESC,A long piece of wood,Ein längliches Stück Holz
-STONE_PICKAXE,Stone Pickaxe,Steinspitzhacke
-STONE_PICKAXE_DESC,A tool for faster mining,Ein Werkzeug zum schnelleren abbauen
-WOOD_PLANK,Wooden Plank,Holzplatte
-WOOD_PLANK_DESC,A processed piece of wood,Ein Stück verarbeitetes Holz
-WOODEN_AXE,Wooden Axe,Holzaxt
-WOODEN_AXE_DESC,A tool to break trees faster,Ein Werkzeug um schneller Bäume zu fällen
-CHAR_COAL,Char Coal,Holzkohle
-CHAR_COAL_DESC,A burned piece of wood,Ein verbranntes Stück Holz
-IRON_ORE,Iron Ore,Eisenerz
-IRON_ORE_DESC,A lump of Iron,Ein klumpen Eisenerz
-IRON_INGOT,Iron Ingot,Eisenbarren
-IRON_INGOT_DESC,A processed piece of Iron,Ein geschmiedetes Stück Eisen
-COPPER_ORE,Copper Ore,Kupfererz
-COPPER_ORE_DESC,A lump of Copper,Ein klumpen Kupfererz
-COPPER_INGOT,Copper Ingot,Kupferbarren
-COPPER_INGOT_DESC,a processed piece of copper,Ein geschmiedetes Stück Kupfer
-STONE_KNIFE,Stone Knife,Steinmesser
-STONE_KNIFE_DESC,A tool for cutting,Ein Werkzeug zum schneiden
-MYSTIC_FIBRE,Mystic Fibre,Mystische Fasern
-MYSTIC_FIBRE_DESC,A XXXXXXXX,A XXXXXXXX
-MYSTIC_WOOD,Mystic Wood,Mystisches Holz
-MYSTIC_WOOD_DESC,A XXXXXXXX,A XXXXXXXX
-FIBRE,Fibre,Faser
-FIBRE_DESC,A fibre to bind tools,Eine Faser um Werkzeuge zu binden
-STONE_BLADE,Stone Blade,Steinschneide
-STONE_BLADE_DESC,A stone with a sharp edge,Ein Stein mit einer scharfen Kante
-GLASS,glass,Glass
-GLASS_DESC,glass made of sand ,Aus Sand geschmolzenes Glas
-STONE_AXE_HEAD,Stone Axe Head,Steinaxtkopf
-STONE_AXE_HEAD_DESC,A stone formed as a axe head,Ein Stein geformt wie ein Axtkopf
-STONE_PICKAXE_HEAD,Stone Pickaxe Head,Steinspitzhackenkopf
-STONE_PICKAXE_HEAD_DESC,A stone formed as a pickaxe head,Ein Stein geformt wie ein Spitzhackenkopf
-WOODEN_HOE_HEAD,Wooden Hoe Head,Holzhackenkopf
-WOODEN_HOE_HEAD_DESC,A piece of wood formed as a hoe head,Ein Holzstück geformt als ein Hackenkopf
-WOODEN_HOE,Wooden Hoe Head,Holzhacke
-WOODEN_HOE_DESC,A tool to break plants faster,Ein Werkzeug um schneller Pflanzen zu säen
-WOODEN_AXE_HEAD,Wooden Axe Head,Holzaxtkopf
-WOODEN_AXE_HEAD_DESC,A piece of wood formed as a axe head,Ein Holzstück geformt als ein Axtkopf
-WHEAT,Wheat,Weizen
-WHEAT_DESC,fresh wheat,Frisch geernteter Weizenstängel
-IRON_BLOCK,Iron Block,Eisenblock
-IRON_BLOCK_DESC,Block of Iron,Block aus Eisen
-IRON_BLOCK_DESC,Block of Iron,Block aus Eisen
-,,
-,,
-QUEST_TITLE_1,,Die hungrige Insel #1
-QUEST_DESC_1,,"Du bist zufällig auf eine hungrige Insel getroffen. Du bist dir nicht Sicher, wie, oder warum es dazu kam. Aber du hast dich dazu verpflichtet eine Insel auf ewig mit Ressourcen zu füttern.
-Naja, das was die Insel grade will, sieht eigentlich noch nicht so schwer aus!"
-QUEST_TITLE_2,,Es will noch mehr! #2
-QUEST_DESC_2,,"Du hast nun erfolgreich die erste Fütterung durchgeführt, aber wie kann das sein? Dieses Monster will gleich wieder was zu Essen haben! Das wird echt eine Herausforderung, wenn er immer mehr
-und immer komplexere Ressourcen haben möchte! (Tipp: Drücke [ESC] und gehe auf den Punkt ""Herstellen"") "
-QUEST_TITLE_3,,Ich werde Forscherin! #3
-QUEST_DESC_3,,"Wieso kann ich die Ressourcen die dieses Monster will, nicht herstellen? Mir fehlen dafür einfach die Baupläne... (Tipp: Stelle einen Forschungstisch her - In diesem kannst du einige Basis Ressourcen
-erforschen, die jede Stufe etwas neues freischalten.)"
-QUEST_TITLE_4,,Neues Zeitalter #4
-QUEST_DESC_4,,"Eisen! Das kann doch jetzt nicht sein ernst sein. Hier auf dieser Insel gibt es doch gar kein Eisen! Wenn ich doch nur die benachbarten Inseln erreichen könnte... (Tipp: An einem Schild können Brücken
-gebaut werden. Die Insel dahinter kann Frei gewählt werden)"
-QUEST_TITLE_5,,Das Monster ist der Boss #5 (Kritische Quest)
-QUEST_DESC_5,,"Also so langsam reicht es mir echt, was er haben möchte! Einen Eisenblock? Wie soll ich das schwere Ding überhaupt transportieren!
-(Tipp: Eisenerz muss auf Stufe 2 erforscht werden um einen Eisenblock herzustellen)"
-QUEST_TITLE_6,,Er will was? Mystisch? #6
-QUEST_DESC_6,,"Dem feinen Herren ist das wohl zu Öde, die ganze Zeit das gleiche zu essen... und was möchte er jetzt? Mystisch... Was? Ach egal, ich bring Ihn, was er möchte.
-(Tipp: Baue eine mystische Insel an einem Schild)"
-QUEST_TITLE_7,dwdw,dwdwd
-QUEST_DESC_7,dwdw,dwdwd
-QUEST_TITLE_8,dwdw,dwdwd
-QUEST_DESC_8,dwdw,dwdwd
-QUEST_TITLE_9,dwdw,dwdwd
-QUEST_DESC_9,dwdw,dwdwd
-QUEST_TITLE_10,dwdw,dwdwd
-QUEST_DESC_10,dwdw,dwdwd
+RESOURCE,Resource,Ressource
+TOOL,Tool,Werkzeug
+WEAPON,Weapon,Waffe
+CLOTHS,Cloths,Kleidung
+PLACEABLE,Placeable,Platzierbar
+ALL,All,Alles
+SMELTABLE,Smeltable,Schmelzbar
+BURNABLE,Burnable,Brennbar
+PROCESSED,Processed,Verarbeitet
+RESEARCHABLE,Researchable,Erforschbar
+TYPE,Type,Typ
+BURNTIME,Burntime,Brennzeit

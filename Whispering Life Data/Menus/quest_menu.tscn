@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://header_color_rect.tscn" id="2_vqvtn"]
 
 [node name="QuestMenu" type="CanvasLayer" node_paths=PackedStringArray("quest_label_parent", "quest_name_label", "complete_button", "quest_description_label")]
-visible = false
 script = ExtResource("1_rjdwy")
 quest_label_parent = NodePath("Background/MarginContainer/VBoxContainer2/VBoxContainer")
 quest_name_label = NodePath("Background/MarginContainer/VBoxContainer2/Label")
@@ -16,6 +15,8 @@ quest_description_label = NodePath("Background/MarginContainer/VBoxContainer2/De
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.172549, 0.172549, 0.172549, 0.294118)
@@ -96,7 +97,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_8enkj")
 theme_override_font_sizes/font_size = 12
-text = "Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das Das "
+text = "Ich hab nen Kran dabei, heute werden die Fetten gefickt!!!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
