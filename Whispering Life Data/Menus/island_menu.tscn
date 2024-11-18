@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/island_menu.cs" id="1_dg2ug"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="1_dlbjo"]
-[ext_resource type="Texture2D" uid="uid://dlln1ly5u41as" path="res://Sprites/Screenshots/Island_1.png" id="2_ofw6p"]
-[ext_resource type="Texture2D" uid="uid://dpi14qef38gqy" path="res://Sprites/Screenshots/Island_2.png" id="4_a432s"]
+[ext_resource type="Texture2D" uid="uid://y7p1sna6t1lh" path="res://Sprites/Mystic_Island.png" id="2_oe6wg"]
+[ext_resource type="Texture2D" uid="uid://b52ffyqisk5i1" path="res://Sprites/Mining_Island.png" id="4_ehxoq"]
 
 [node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("button1", "button2")]
 script = ExtResource("1_dg2ug")
@@ -43,7 +43,7 @@ layout_mode = 2
 clip_contents = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-texture = ExtResource("2_ofw6p")
+texture = ExtResource("2_oe6wg")
 expand_mode = 1
 
 [node name="Button" type="Button" parent="Background/HBoxHeader/VBoxContainer"]
@@ -60,7 +60,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="Background/HBoxHeader/VBoxContainer2"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
-texture = ExtResource("4_a432s")
+texture = ExtResource("4_ehxoq")
 expand_mode = 1
 
 [node name="Button2" type="Button" parent="Background/HBoxHeader/VBoxContainer2"]

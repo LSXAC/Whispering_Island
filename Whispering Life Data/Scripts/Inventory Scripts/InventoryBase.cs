@@ -248,6 +248,10 @@ public partial class InventoryBase : Control
 
         GetNode<Slot>($"GridContainer/Slot{i}")
             .SetItem(item_Types[(ITEM_ID)inventory_items[i].item_id], inventory_items[i].amount);
+
+        QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
+            QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
+        );
     }
 
     public void LoadInventoryFromSave(ItemSave[] item_save)

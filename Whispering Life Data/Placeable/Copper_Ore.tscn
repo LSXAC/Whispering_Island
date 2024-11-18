@@ -1,12 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://p7nxdwibna32"]
+[gd_scene load_steps=17 format=3 uid="uid://cnafp0o2cwupt"]
 
-[ext_resource type="Script" path="res://Scripts/Resources/ResourceObject.cs" id="1_d2fyj"]
-[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="2_s20f6"]
-[ext_resource type="Texture2D" uid="uid://cep6pkf1xs5cc" path="res://Sprites/Stone.png" id="3_fkv6e"]
-[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_ef0xx"]
-[ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="5_irj67"]
-[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Prefabs/timer_bar.tscn" id="6_o3r64"]
-[ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sprites/Stone_Particle.png" id="7_nb7gb"]
+[ext_resource type="Script" path="res://Scripts/Resources/ResourceObject.cs" id="1_igor6"]
+[ext_resource type="Resource" uid="uid://eo8ax7whu2kb" path="res://Items/Copper_Ore.tres" id="2_yrpvd"]
+[ext_resource type="Texture2D" uid="uid://b1ko86hk6yisc" path="res://Sprites/Copper_ore.png" id="3_tqg5t"]
+[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_a8k6t"]
+[ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="5_asj4m"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Prefabs/timer_bar.tscn" id="6_3oocu"]
+[ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sprites/Stone_Particle.png" id="7_dwdud"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(16, 8)
@@ -14,34 +14,13 @@ size = Vector2(16, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
 size = Vector2(26, 18.5)
 
-[sub_resource type="Curve" id="Curve_bk6ie"]
-_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_4ikef"]
-curve = SubResource("Curve_bk6ie")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7tpe0"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(15, 1, 1)
-emission_shape = 1
-emission_sphere_radius = 1.0
-angle_min = 25.0
-angle_max = 180.0
-radial_velocity_min = 15.0
-radial_velocity_max = 25.0
-gravity = Vector3(0, 98, 0)
-scale_min = 0.1
-scale_max = 0.2
-scale_curve = SubResource("CurveTexture_4ikef")
-
 [sub_resource type="Animation" id="Animation_2ey6b"]
 resource_name = "Break"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("StoneSprite:scale")
+tracks/0/path = NodePath("WheatSprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -53,7 +32,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("StoneSprite:position")
+tracks/1/path = NodePath("WheatSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -69,7 +48,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("StoneSprite:position")
+tracks/0/path = NodePath("WheatSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -85,7 +64,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("StoneSprite:position")
+tracks/0/path = NodePath("WheatSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -97,7 +76,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("StoneSprite:scale")
+tracks/1/path = NodePath("WheatSprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -114,24 +93,46 @@ _data = {
 "Respawning": SubResource("Animation_c5l8r")
 }
 
-[node name="Stone" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "sprite", "collision_shape")]
+[sub_resource type="Curve" id="Curve_jra3w"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lfoib"]
+curve = SubResource("Curve_jra3w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h3jn0"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_lfoib")
+
+[node name="Copper_Ore" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "sprite", "collision_shape")]
 y_sort_enabled = true
-script = ExtResource("1_d2fyj")
+script = ExtResource("1_igor6")
 anim_player = NodePath("AnimationPlayer")
 max_durability = 5
 mining_amount = 2
 mining_amount_last = 5
-item_info = ExtResource("2_s20f6")
+item_info = ExtResource("2_yrpvd")
 gpu_particles = NodePath("StoneParticles")
-title = "WORLD_RESOURCE_STONE"
-description = "WORLD_RESOURCE_STONE_DESC"
-sprite = NodePath("StoneSprite")
+title = "WORLD_RESOURCE_COPPER_ORE"
+description = "WORLD_RESOURCE_COPPER_ORE_DESC"
+sprite = NodePath("WheatSprite")
 collision_shape = NodePath("Collision")
 
-[node name="StoneSprite" type="Sprite2D" parent="."]
+[node name="WheatSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, -3)
-texture = ExtResource("3_fkv6e")
+position = Vector2(0, 6)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3_tqg5t")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -141,37 +142,37 @@ shape = SubResource("RectangleShape2D_m0htq")
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
-texture = ExtResource("4_ef0xx")
+texture = ExtResource("4_a8k6t")
 
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
-script = ExtResource("5_irj67")
+script = ExtResource("5_asj4m")
 building_node = NodePath("..")
-building_sprite = NodePath("../StoneSprite")
+building_sprite = NodePath("../WheatSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_a25cn")
 
-[node name="TimerBar" parent="." instance=ExtResource("6_o3r64")]
+[node name="TimerBar" parent="." instance=ExtResource("6_3oocu")]
 offset_top = -32.0
 offset_bottom = -28.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v2ngb")
+}
 
 [node name="StoneParticles" type="GPUParticles2D" parent="."]
 z_index = 1
 position = Vector2(0, -5)
 emitting = false
 amount = 15
-process_material = SubResource("ParticleProcessMaterial_7tpe0")
-texture = ExtResource("7_nb7gb")
+process_material = SubResource("ParticleProcessMaterial_h3jn0")
+texture = ExtResource("7_dwdud")
 lifetime = 0.3
 one_shot = true
 explosiveness = 0.7
 randomness = 0.5
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_v2ngb")
-}
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
