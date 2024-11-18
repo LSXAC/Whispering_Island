@@ -243,6 +243,8 @@ public partial class Slot : Button
         }
         else
         {
+            if (!Inventory.clicked_item.item_info.HasType(ItemInfo.Type.RESEARCHABLE))
+                return;
             if (GetItem() == null)
             {
                 ResearchTab.INSTANCE.research_slot_item = new ItemSave(

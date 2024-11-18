@@ -175,5 +175,6 @@ polygon = PackedVector2Array(256, -32, 256, -48, 288, -48, 312, 48, 232, 144, 80
 [node name="ObjectSpawnerTilemap" type="TileMapLayer" parent="."]
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD7/wIAAAABAAEAAAD8/wEAAAABAAEAAAD9/wMAAAABAAEAAAADAPr/AAABAAEAAAAEAPv/AAABAAEAAAADAAQAAAABAAEAAAAFAAEAAAACAAEAAAAGAAIAAAACAAEAAAD9//3/AAACAAEAAAA=")
+enabled = false
 tile_set = ExtResource("8_86k7w")
 script = ExtResource("6_xneeu")

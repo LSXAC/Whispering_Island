@@ -44,8 +44,8 @@ public partial class ObjectSpawnerTilemap : TileMapLayer
 
     private Vector2I woodVec = new Vector2I(0, 0);
     private Vector2I wheatVec = new Vector2I(0, 1);
-    private Vector2I ironoreVec = new Vector2I(0, 2);
-    private Vector2I copperoreVec = new Vector2I(0, 3);
+    private Vector2I ironoreVec = new Vector2I(1, 1);
+    private Vector2I copperoreVec = new Vector2I(2, 1);
     private Vector2I stoneVec = new Vector2I(1, 0);
     private Vector2I mystTreeVec = new Vector2I(2, 0);
     private Vector2I mystFibreVec = new Vector2I(3, 0);
@@ -64,12 +64,13 @@ public partial class ObjectSpawnerTilemap : TileMapLayer
                 bn = (ResourceObject)mystTree.Instantiate();
             if (GetCellAtlasCoords(cell2I) == mystFibreVec)
                 bn = (ResourceObject)mystFibre.Instantiate();
+
             if (GetCellAtlasCoords(cell2I) == wheatVec)
                 bn = (ResourceObject)wheat.Instantiate();
             if (GetCellAtlasCoords(cell2I) == ironoreVec)
-                bn = (ResourceObject)wheat.Instantiate();
+                bn = (ResourceObject)iron_ore.Instantiate();
             if (GetCellAtlasCoords(cell2I) == copperoreVec)
-                bn = (ResourceObject)wheat.Instantiate();
+                bn = (ResourceObject)copper_ore.Instantiate();
 
             if (bn == null)
                 return;

@@ -46,7 +46,7 @@ public partial class ResearchTab : ColorRect
         if (research_slot_item != null)
         {
             research_slot.SetItem(
-                Inventory.INSTANCE.item_Types[(Inventory.ITEM_ID)research_slot_item.item_id],
+                Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)research_slot_item.item_id],
                 research_slot_item.amount
             );
             SetText(research_slot.GetItem().item_info);
@@ -113,7 +113,7 @@ public partial class ResearchTab : ColorRect
             return;
 
         ItemInfo item_info = research_slot.GetItem().item_info;
-        Inventory.ITEM_ID id = item_info.unique_id;
+        InventoryBase.ITEM_ID id = item_info.unique_id;
 
         //Remove Items
         //start Research
