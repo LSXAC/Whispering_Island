@@ -10,13 +10,13 @@ public partial class QuestMenu : CanvasLayer
     public Control quest_label_parent;
 
     [Export]
-    public Label quest_name_label;
+    public RichTextLabel quest_name_label;
 
     [Export]
     public Button complete_button;
 
     [Export]
-    public Label quest_description_label;
+    public RichTextLabel quest_description_label;
 
     [Export]
     public Resource dialogue_timeline;
@@ -73,12 +73,16 @@ public partial class QuestMenu : CanvasLayer
             return;
 
         ResetParent();
-        quest_name_label.Text = TranslationServer.Translate(
-            QuestManager.INSTANCE.quests[QuestManager.current_quest_id].quest_name
-        );
-        quest_description_label.Text = TranslationServer.Translate(
-            QuestManager.INSTANCE.quests[QuestManager.current_quest_id].quest_description
-        );
+        quest_name_label.Text =
+            "[center]"
+            + TranslationServer.Translate(
+                QuestManager.INSTANCE.quests[QuestManager.current_quest_id].quest_name
+            );
+        quest_description_label.Text =
+            "[center]"
+            + TranslationServer.Translate(
+                QuestManager.INSTANCE.quests[QuestManager.current_quest_id].quest_description
+            );
         CreateLabels(QuestManager.INSTANCE.quests[QuestManager.current_quest_id].quest_items);
         if (QuestManager.INSTANCE.CheckQuestComplete())
             complete_button.Disabled = false;

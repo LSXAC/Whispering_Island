@@ -56,6 +56,7 @@ public partial class QuestMiniPanel : PanelContainer
             Item iii = Inventory.INSTANCE.GetItemFromList(items_in_inventory, item);
             hbox_items[i].Visible = true;
             hbox_items[i].InitItemUI("", item.amount, item.item_info.texture);
+            hbox_items[i].ChangeColor(h_box_item.colorType.white);
 
             if (iii == null)
             {
@@ -68,8 +69,6 @@ public partial class QuestMiniPanel : PanelContainer
 
             if (iii.amount >= currentQuest.quest_items[i].amount)
                 hbox_items[i].ChangeColor(h_box_item.colorType.green);
-            else
-                hbox_items[i].ChangeColor(h_box_item.colorType.white);
         }
     }
 }

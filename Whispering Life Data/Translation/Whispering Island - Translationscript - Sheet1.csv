@@ -83,9 +83,9 @@ WORLD_RESOURCE_TREE,Tree,Baum
 WORLD_RESOURCE_TREE_DESC,Harvest to receive wood,Erhalte Holz beim fällen
 WORLD_RESOURCE_MYSTIC_TREE,Mystic Tree,Mystischer Baum
 WORLD_RESOURCE_MYSTIC_TREE_DESC,Harvest to receive mystic wood,Erhalte mystisches Holz beim fällen
-WORLD_RESOURCE_MYSTIC_FIBRE,Mystic Tree,Mystischer Baum
-WORLD_RESOURCE_MYSTIC_FIBRE_DESC,Harvest to receive mystic wood,Erhalte mystisches Holz beim fällen
-WORLD_RESOURCE_WHEAT,Mystic Tree,Mystischer Baum
+WORLD_RESOURCE_MYSTIC_FIBRE,Mystic Fibre,Mystische Fasern
+WORLD_RESOURCE_MYSTIC_FIBRE_DESC,Collect to receive mystic fibre,Erhalte mystische Fasern beim sammeln
+WORLD_RESOURCE_WHEAT,Wheat,Weizen
 WORLD_RESOURCE_WHEAT_DESC,Harvest to receive mystic wood,Erhalte mystisches Holz beim fällen
 ,,
 ,,

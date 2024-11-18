@@ -19,6 +19,10 @@ public partial class CraftingMenu : PanelContainer
         foreach (Control c in parent.GetChildren())
             c.QueueFree();
 
+        /*QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
+            QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
+        );*/
+
         for (int i = 0; i < crafting_recipies.Count; i++)
         {
             Recipe recipe = new Recipe();

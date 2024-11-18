@@ -65,6 +65,10 @@ public partial class Database : Node
             BUILDING_ID.RESEARCH_TABLE.ToString(),
             ResourceLoader.Load<BuildingType>("res://Buildings/Research_Table.tres")
         },
+        {
+            BUILDING_ID.WOODEN_BED.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Wooden_Bed.tres")
+        },
     };
 
     public enum BUILDING_ID
@@ -75,7 +79,8 @@ public partial class Database : Node
         FURNACE,
         QUARRY,
         TREE_GROWTHER,
-        RESEARCH_TABLE
+        RESEARCH_TABLE,
+        WOODEN_BED
     }
 
     public static BuildingType GetBuildingType(BUILDING_ID building_id)
