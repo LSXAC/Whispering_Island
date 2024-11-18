@@ -87,6 +87,26 @@ WORLD_RESOURCE_MYSTIC_FIBRE,Mystic Fibre,Mystische Fasern
 WORLD_RESOURCE_MYSTIC_FIBRE_DESC,Collect to receive mystic fibre,Erhalte mystische Fasern beim sammeln
 WORLD_RESOURCE_WHEAT,Wheat,Weizen
 WORLD_RESOURCE_WHEAT_DESC,Harvest to receive mystic wood,Erhalte mystisches Holz beim fällen
+WORLD_RESOURCE_POTATO,Potato,Kartoffel
+WORLD_RESOURCE_POTATO_DESC,Harvest to receive potatos,Erhalte kartoffeln beim ernten
+WORLD_RESOURCE_CARROT,Carrot,Karotte
+WORLD_RESOURCE_CARROT_DESC,Harvest to receive carrots,Erhalte eine Karotten beim ernten
+WORLD_RESOURCE_CORN,Corn,Mais
+WORLD_RESOURCE_CORN_DESC,Harvest to receive corns,Erhalte Mais beim ernten
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
 ,,
 ,,
 ,,

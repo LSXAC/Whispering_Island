@@ -64,11 +64,11 @@ IRON_BLOCK_DESC,Block of Iron,Block aus Eisen
 WHEAT_SEED,Wheat Seeds,Weizensamen
 WHEAT_SEED_DESC,Seeds made from wheat,Samen hergestellt aus Weizen
 POTATO,Potato,Kartoffel
-POTATO_DESC,fresh potato,Frisch ausgebüddelte Kartoffel
+POTATO_DESC,fresh potato,Frisch ausgebuddelte Kartoffel
 POTATO_SEED,Potato Seeds,Kartoffelsamen
 POTATO_SEED_DESC,Seeds made from potatos,Samen hergestellt aus Kartoffeln
 CARROT,Carrot,Karotte
-CARROT_DESC,fresh carrot,Samen hergestellt aus Karotten
+CARROT_DESC,fresh carrot,Frisch gezogene Karotte
 CARROT_SEED,Carrot Seeds,Karottensamen
 CARROT_SEED_DESC,Seeds made from Carrots,Samen hergestellt aus Karotten
 CORN,Corn,Mais

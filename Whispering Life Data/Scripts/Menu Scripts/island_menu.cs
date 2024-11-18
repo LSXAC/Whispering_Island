@@ -7,6 +7,7 @@ public partial class island_menu : CanvasLayer
 {
     private PackedScene island_1 = ResourceLoader.Load<PackedScene>("res://Prefabs/Island_1.tscn");
     private PackedScene island_2 = ResourceLoader.Load<PackedScene>("res://Prefabs/Island_2.tscn");
+    private PackedScene island_3 = ResourceLoader.Load<PackedScene>("res://Prefabs/Island_3.tscn");
 
     [Export]
     private Button button1;
@@ -14,10 +15,14 @@ public partial class island_menu : CanvasLayer
     [Export]
     private Button button2;
 
+    [Export]
+    private Button button3;
+
     public enum ISLANDS
     {
         ISLAND_0,
-        ISLAND_1
+        ISLAND_1,
+        ISLAND_2
     };
 
     public Sign current_sign = null;
@@ -28,6 +33,7 @@ public partial class island_menu : CanvasLayer
         instance = this;
         button1.Pressed += () => SelectIsland(0);
         button2.Pressed += () => SelectIsland(1);
+        button3.Pressed += () => SelectIsland(2);
     }
 
     public void SwitchBuildingMenu()
@@ -82,6 +88,10 @@ public partial class island_menu : CanvasLayer
             case 1:
                 Debug.Print("Island 1.");
                 current_ip.CreateAnotherIsland(island_2, dir, is_loading);
+                break;
+            case 2:
+                Debug.Print("Island 2.");
+                current_ip.CreateAnotherIsland(island_3, dir, is_loading);
                 break;
             default:
                 Debug.Print("No matching Island ID found");
