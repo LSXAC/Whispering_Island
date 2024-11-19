@@ -39,6 +39,9 @@ public partial class InventoryItem : TextureRect
         TooltipText += TranslationServer.Translate(item_info.item_description.ToString()) + "\n";
         foreach (ItemType item_type in item_info.item_types_arr)
         {
+            if (item_type == null)
+                continue;
+
             if (item_type.type == ItemInfo.Type.BURNABLE)
                 TooltipText +=
                     TranslationServer.Translate("BURNTIME")

@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_65fj7")
-item_types_arr = Array[Object]([ExtResource("1_15be1"), null])
+item_types_arr = Array[Object]([ExtResource("1_15be1")])
 item_name = "CARROT"
 unique_id = 27
 item_description = "CARROT_DESC"

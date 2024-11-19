@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/Resources/ResourceObject.cs" id="1_ywllv"]
 [ext_resource type="Resource" uid="uid://ch1b1ltixbads" path="res://Items/Carrot.tres" id="2_v7k63"]
-[ext_resource type="Texture2D" uid="uid://cp4wdhfxd0xvr" path="res://Sprites/Iron_ore.png" id="3_gg3tg"]
+[ext_resource type="Texture2D" uid="uid://b3xd7qx5g1j24" path="res://Sprites/Carrots.png" id="3_f7c6g"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_h5o6p"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="5_va1aa"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Prefabs/timer_bar.tscn" id="6_4rs16"]
-[ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sprites/Stone_Particle.png" id="7_tgpbc"]
+[ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="7_ec4u3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(16, 8)
@@ -20,7 +20,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WheatSprite:scale")
+tracks/0/path = NodePath("CarrotSprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +32,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WheatSprite:position")
+tracks/1/path = NodePath("CarrotSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -48,7 +48,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WheatSprite:position")
+tracks/0/path = NodePath("CarrotSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,7 +64,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WheatSprite:position")
+tracks/0/path = NodePath("CarrotSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,7 +76,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WheatSprite:scale")
+tracks/1/path = NodePath("CarrotSprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -118,21 +118,21 @@ scale_curve = SubResource("CurveTexture_lfoib")
 y_sort_enabled = true
 script = ExtResource("1_ywllv")
 anim_player = NodePath("AnimationPlayer")
-max_durability = 5
-mining_amount = 2
-mining_amount_last = 5
+max_durability = 1
+respawn_seconds = 20
+mining_amount_last = 1
 item_info = ExtResource("2_v7k63")
-gpu_particles = NodePath("WheatParticle")
+gpu_particles = NodePath("CarrotParticles")
 title = "WORLD_RESOURCE_CARROT"
 description = "WORLD_RESOURCE_CARROT_DESC"
-sprite = NodePath("WheatSprite")
+sprite = NodePath("CarrotSprite")
 collision_shape = NodePath("Collision")
 
-[node name="WheatSprite" type="Sprite2D" parent="."]
+[node name="CarrotSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, 6)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("3_gg3tg")
+texture = ExtResource("3_f7c6g")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -147,7 +147,7 @@ texture = ExtResource("4_h5o6p")
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
 script = ExtResource("5_va1aa")
 building_node = NodePath("..")
-building_sprite = NodePath("../WheatSprite")
+building_sprite = NodePath("../CarrotSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 position = Vector2(0, -7)
@@ -162,13 +162,13 @@ libraries = {
 "": SubResource("AnimationLibrary_v2ngb")
 }
 
-[node name="WheatParticle" type="GPUParticles2D" parent="."]
+[node name="CarrotParticles" type="GPUParticles2D" parent="."]
 z_index = 1
 position = Vector2(0, -5)
 emitting = false
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_n5030")
-texture = ExtResource("7_tgpbc")
+texture = ExtResource("7_ec4u3")
 lifetime = 0.3
 one_shot = true
 explosiveness = 0.7
