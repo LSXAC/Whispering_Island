@@ -17,6 +17,10 @@ public partial class ObjectSpawnerTilemap : TileMapLayer
     public PackedScene potato = ResourceLoader.Load<PackedScene>("res://Placeable/Potato.tscn");
     public PackedScene carrot = ResourceLoader.Load<PackedScene>("res://Placeable/Carrot.tscn");
     public PackedScene corn = ResourceLoader.Load<PackedScene>("res://Placeable/Corn.tscn");
+    public PackedScene sand = ResourceLoader.Load<PackedScene>("res://Placeable/Sand.tscn");
+    public PackedScene sand_stone = ResourceLoader.Load<PackedScene>(
+        "res://Placeable/Sand_Stone.tscn"
+    );
     public PackedScene iron_ore = ResourceLoader.Load<PackedScene>("res://Placeable/Iron_Ore.tscn");
     public PackedScene copper_ore = ResourceLoader.Load<PackedScene>(
         "res://Placeable/Copper_Ore.tscn"
@@ -52,6 +56,8 @@ public partial class ObjectSpawnerTilemap : TileMapLayer
     private Vector2I carrotVec = new Vector2I(1, 2);
     private Vector2I cornVec = new Vector2I(2, 2);
     private Vector2I copperoreVec = new Vector2I(2, 1);
+    private Vector2I sandVec = new Vector2I(0, 3);
+    private Vector2I sandStoneVec = new Vector2I(1, 3);
     private Vector2I stoneVec = new Vector2I(1, 0);
     private Vector2I mystTreeVec = new Vector2I(2, 0);
     private Vector2I mystFibreVec = new Vector2I(3, 0);
@@ -84,6 +90,11 @@ public partial class ObjectSpawnerTilemap : TileMapLayer
                 bn = (ResourceObject)carrot.Instantiate();
             if (GetCellAtlasCoords(cell2I) == cornVec)
                 bn = (ResourceObject)corn.Instantiate();
+
+            if (GetCellAtlasCoords(cell2I) == sandVec)
+                bn = (ResourceObject)sand.Instantiate();
+            if (GetCellAtlasCoords(cell2I) == sandStoneVec)
+                bn = (ResourceObject)sand_stone.Instantiate();
 
             if (bn == null)
                 return;

@@ -1,16 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjj30kpp0tj11"]
+[gd_scene load_steps=7 format=3 uid="uid://cjj30kpp0tj11"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/island_menu.cs" id="1_dg2ug"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="1_dlbjo"]
 [ext_resource type="Texture2D" uid="uid://y7p1sna6t1lh" path="res://Sprites/Mystic_Island.png" id="2_oe6wg"]
 [ext_resource type="Texture2D" uid="uid://b52ffyqisk5i1" path="res://Sprites/Mining_Island.png" id="4_ehxoq"]
 [ext_resource type="Texture2D" uid="uid://g5tq6jiacbx3" path="res://Sprites/Farming_Island.png" id="5_qufp2"]
+[ext_resource type="Texture2D" uid="uid://bjp5wy4new0rg" path="res://Sprites/Island_Dessert.png" id="6_in7ku"]
 
-[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("button1", "button2", "button3")]
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("button1", "button2", "button3", "button4")]
 script = ExtResource("1_dg2ug")
 button1 = NodePath("Background/HBoxHeader/VBoxContainer/Button")
 button2 = NodePath("Background/HBoxHeader/VBoxContainer2/Button2")
 button3 = NodePath("Background/HBoxHeader/VBoxContainer3/Button3")
+button4 = NodePath("Background/HBoxHeader/VBoxContainer4/Button4")
 
 [node name="TransBackground" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -82,6 +84,22 @@ texture = ExtResource("5_qufp2")
 expand_mode = 1
 
 [node name="Button3" type="Button" parent="Background/HBoxHeader/VBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 20
+text = "Island 3"
+
+[node name="VBoxContainer4" type="HBoxContainer" parent="Background/HBoxHeader"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HBoxHeader/VBoxContainer4"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("6_in7ku")
+expand_mode = 1
+
+[node name="Button4" type="Button" parent="Background/HBoxHeader/VBoxContainer4"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_dlbjo")
 theme_override_font_sizes/font_size = 20
