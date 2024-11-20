@@ -111,6 +111,8 @@ public partial class Game_Manager : Node2D
         save_state.char_save.research_slot_item = ResearchTab.INSTANCE.research_slot_item;
         save_state.research_saves = ResearchTab.INSTANCE.research_saves;
 
+        save_state.skill_saves = Skilltree.skill_progress;
+
         //Audio
         save_state.master_volume = AudioServer.GetBusVolumeDb(
             AudioServer.GetBusIndex(SoundSlider.BUS.Master.ToString())
@@ -164,6 +166,7 @@ public partial class Game_Manager : Node2D
         building_placer.machine_saves = save_state.machine_saves;
         building_placer.placeable_saves = save_state.placeable_saves;
         building_placer.LoadPlacedObjects();
+        Skilltree.skill_progress = save_state.skill_saves;
 
         // Start Quest
         QuestManager.INSTANCE.StartQuest(save_state.quest_save);

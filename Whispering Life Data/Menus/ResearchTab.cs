@@ -6,7 +6,7 @@ using Godot.Collections;
 public partial class ResearchTab : ColorRect
 {
     [Export]
-    public Dictionary<Inventory.ITEM_ID, ResearchSave> research_saves;
+    public Dictionary<InventoryBase.ITEM_ID, ResearchSave> research_saves;
 
     [Export]
     public TabContainer tab_container;
@@ -20,6 +20,11 @@ public partial class ResearchTab : ColorRect
     [Export]
     public Slot research_slot;
 
+    [Export]
+    public ProgressBar progressBar;
+
+    [Export]
+    public Timer timer;
     public PackedScene research_level_tab = ResourceLoader.Load<PackedScene>(
         "res://Prefabs/Research_Level_Tab.tscn"
     );
@@ -28,6 +33,9 @@ public partial class ResearchTab : ColorRect
     public ItemSave research_slot_item = null;
 
     public static ResearchTab INSTANCE = null;
+
+    [Export]
+    public ColorRect working_panel;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -72,7 +80,7 @@ public partial class ResearchTab : ColorRect
         foreach (LevelTab lt in tab_container.GetChildren())
             lt.QueueFree();
 
-        Inventory.ITEM_ID id = item_info.unique_id;
+        InventoryBase.ITEM_ID id = item_info.unique_id;
 
         if (!Database.researchs.ContainsKey(id))
             return;
@@ -88,7 +96,7 @@ public partial class ResearchTab : ColorRect
             lt.UpdateLevelTab(
                 Database.researchs[id].translation_string,
                 i,
-                "NO BONI LOL",
+                "Empty",
                 (Database.UPGRADE_LEVEL)i
             );
         }
@@ -97,10 +105,13 @@ public partial class ResearchTab : ColorRect
             + TranslationServer.Translate(
                 Inventory
                     .INSTANCE
-                    .item_Types[(Inventory.ITEM_ID)research_slot_item.item_id]
+                    .item_Types[(InventoryBase.ITEM_ID)research_slot_item.item_id]
                     .item_name
             );
-        item_level_label.Text = "-/-";
+        if (research_saves.ContainsKey(id))
+            item_level_label.Text = "Research Level: " + research_saves[id].research_level;
+        else
+            item_level_label.Text = "No Researches";
 
         //Update Level Tab Box
     }
@@ -112,11 +123,29 @@ public partial class ResearchTab : ColorRect
         if (tab_container.CurrentTab == -1)
             return;
 
+        //Remove Items
+        //start Research
+        progressBar.Value = 0;
+        working_panel.Visible = true;
+        timer.Start();
+    }
+
+    public void OnTimerTimeout()
+    {
+        progressBar.Value += 0.1;
+        if (progressBar.Value >= 100)
+        {
+            timer.Stop();
+            OnResearchFinished();
+            progressBar.Value = 0;
+        }
+    }
+
+    public void OnResearchFinished()
+    {
         ItemInfo item_info = research_slot.GetItem().item_info;
         InventoryBase.ITEM_ID id = item_info.unique_id;
 
-        //Remove Items
-        //start Research
         Debug.Print(tab_container.CurrentTab.ToString());
 
         if (!research_saves.ContainsKey(id))
@@ -131,5 +160,7 @@ public partial class ResearchTab : ColorRect
             );
 
         Debug.Print(research_saves[id].research_level + " current level <:");
+        SetText(research_slot.GetItem().item_info);
+        working_panel.Visible = false;
     }
 }

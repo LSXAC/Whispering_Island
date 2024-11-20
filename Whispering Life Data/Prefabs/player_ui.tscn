@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://j1cdgg7lep78"]
+[gd_scene load_steps=14 format=3 uid="uid://j1cdgg7lep78"]
 
 [ext_resource type="Script" path="res://Scripts/Player Scripts/player_ui.cs" id="1_m5svq"]
 [ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/QuestMiniPanel.cs" id="4_khv1d"]
 [ext_resource type="Script" path="res://Menus/TranslationLabel.cs" id="7_vya4o"]
 [ext_resource type="Script" path="res://Menus/TranslationButton.cs" id="9_erkjv"]
+[ext_resource type="Script" path="res://Prefabs/EffectPanel.cs" id="11_r7w4g"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_x1xeh"]
 color = Color(0.141176, 0.141176, 0.141176, 1)
@@ -301,6 +302,40 @@ theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_0pxjf")
 button_pressed = true
 text = "SKIP TUTORIAL"
+
+[node name="EffectPanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 59.0
+grow_horizontal = 0
+script = ExtResource("11_r7w4g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EffectPanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -95.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="FatigueLabel" type="Label" parent="EffectPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 16
+text = "Fatigue: 2%"
+horizontal_alignment = 2
+
+[node name="FatigueEffects" type="Label" parent="EffectPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 2
 
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="button_down" from="GameOverPanel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButton"]

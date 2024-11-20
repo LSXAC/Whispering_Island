@@ -51,6 +51,9 @@ public partial class SaveState : Resource
     public Dictionary<Inventory.ITEM_ID, ResearchSave> research_saves =
         new Dictionary<Inventory.ITEM_ID, ResearchSave>();
 
+    [Export]
+    public int[] skill_saves = new int[4];
+
     private static string save_path = "user://save.tres";
     public static string game_version = "a.0.1";
 

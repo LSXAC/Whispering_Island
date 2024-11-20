@@ -40,6 +40,9 @@ public partial class GameMenu : CanvasLayer
     [Export]
     public ColorRect island_tab;
 
+    [Export]
+    public ColorRect skilltree_tab;
+
     public static GameMenu INSTANCE = null;
 
     [Export]
@@ -80,6 +83,7 @@ public partial class GameMenu : CanvasLayer
         Inventory,
         Crafting,
         Stats,
+        SkillTree,
         LoadSave,
         Settings,
         Admin,
@@ -213,6 +217,7 @@ public partial class GameMenu : CanvasLayer
         saveload_tab.Visible = true;
         admin_tab.Visible = false;
         island_tab.Visible = false;
+        skilltree_tab.Visible = false;
         crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
     }
 
@@ -229,6 +234,7 @@ public partial class GameMenu : CanvasLayer
         chest_tab.Visible = false;
         saveload_tab.Visible = false;
         island_tab.Visible = false;
+        skilltree_tab.Visible = false;
     }
 
     public void OnOpenChestTab()
@@ -243,6 +249,7 @@ public partial class GameMenu : CanvasLayer
         furnace_tab.Visible = false;
         chest_tab.Visible = true;
         saveload_tab.Visible = false;
+        skilltree_tab.Visible = false;
         island_tab.Visible = false;
     }
 
@@ -255,6 +262,7 @@ public partial class GameMenu : CanvasLayer
         crafting_tab.Visible = false;
         settings_tab.Visible = false;
         admin_tab.Visible = true;
+        skilltree_tab.Visible = false;
         furnace_tab.Visible = false;
         chest_tab.Visible = false;
         saveload_tab.Visible = false;
@@ -267,6 +275,7 @@ public partial class GameMenu : CanvasLayer
         inventory_tab.Visible = true;
         crafting_tab.Visible = false;
         furnace_tab.Visible = false;
+        skilltree_tab.Visible = false;
         admin_tab.Visible = false;
         settings_tab.Visible = false;
         saveload_tab.Visible = false;
@@ -283,6 +292,7 @@ public partial class GameMenu : CanvasLayer
         crafting_tab.Visible = false;
         furnace_tab.Visible = false;
         admin_tab.Visible = false;
+        skilltree_tab.Visible = false;
         settings_tab.Visible = false;
         saveload_tab.Visible = false;
         Game_Manager.inside_game_menu = false;
@@ -298,6 +308,39 @@ public partial class GameMenu : CanvasLayer
         crafting_tab.Visible = false;
         furnace_tab.Visible = false;
         admin_tab.Visible = false;
+        skilltree_tab.Visible = false;
+        settings_tab.Visible = false;
+        island_tab.Visible = false;
+        saveload_tab.Visible = false;
+        Game_Manager.inside_game_menu = true;
+    }
+
+    public void OnCloseSkilltreeTab()
+    {
+        ChangeSelectedTabColor(Tabs.X);
+        inventory_tab.Visible = true;
+        research_tab.Visible = false;
+        crafting_tab.Visible = false;
+        furnace_tab.Visible = false;
+        admin_tab.Visible = false;
+        skilltree_tab.Visible = false;
+        settings_tab.Visible = false;
+        saveload_tab.Visible = false;
+        Game_Manager.inside_game_menu = false;
+        island_tab.Visible = false;
+        Visible = false;
+    }
+
+    public void OnOpenSkilltreeTab()
+    {
+        ChangeSelectedTabColor(Tabs.SkillTree);
+        Visible = true;
+        inventory_tab.Visible = false;
+        research_tab.Visible = false;
+        crafting_tab.Visible = false;
+        furnace_tab.Visible = false;
+        admin_tab.Visible = false;
+        skilltree_tab.Visible = true;
         settings_tab.Visible = false;
         island_tab.Visible = false;
         saveload_tab.Visible = false;
@@ -314,6 +357,7 @@ public partial class GameMenu : CanvasLayer
         admin_tab.Visible = false;
         island_tab.Visible = false;
         chest_tab.Visible = false;
+        skilltree_tab.Visible = false;
         saveload_tab.Visible = false;
         ChestInventory.INSTANCE.current_chest = null;
         Game_Manager.inside_game_menu = false;
@@ -328,6 +372,7 @@ public partial class GameMenu : CanvasLayer
         crafting_tab.Visible = false;
         furnace_tab.Visible = false;
         admin_tab.Visible = false;
+        skilltree_tab.Visible = false;
         settings_tab.Visible = false;
         island_tab.Visible = true;
         saveload_tab.Visible = false;
@@ -341,6 +386,7 @@ public partial class GameMenu : CanvasLayer
         crafting_tab.Visible = false;
         furnace_tab.Visible = false;
         settings_tab.Visible = false;
+        skilltree_tab.Visible = false;
         admin_tab.Visible = false;
         island_tab.Visible = false;
         chest_tab.Visible = false;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=58 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -22,7 +22,9 @@
 [ext_resource type="Script" path="res://Menus/CheatTab.cs" id="16_f2xax"]
 [ext_resource type="Script" path="res://Menus/SettingsTab.cs" id="16_jv3kw"]
 [ext_resource type="Texture2D" uid="uid://syf34dx878d5" path="res://Sprites/Flaggs/US_FLAG.png" id="16_ldk1u"]
+[ext_resource type="Script" path="res://Menus/Skilltree.cs" id="16_x6qgy"]
 [ext_resource type="Resource" uid="uid://b7a6dtp0rqub1" path="res://Recipes/Tools/Wooden_Hoe_Recipe.tres" id="17_7eamj"]
+[ext_resource type="Script" path="res://Menus/SkillBox.cs" id="17_44ufd"]
 [ext_resource type="StyleBox" uid="uid://beanw2e3ddca1" path="res://Menus/OptionButtonStyle.tres" id="17_hyydq"]
 [ext_resource type="Texture2D" uid="uid://y7p1sna6t1lh" path="res://Sprites/Mystic_Island.png" id="17_i4snh"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="17_iq1ex"]
@@ -58,7 +60,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tibut"]
 bg_color = Color(1, 1, 1, 0)
 
-[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "header_container")]
+[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "header_container")]
 process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/SaveLoadTab/HBoxContainer/LoadGameButton")
@@ -73,6 +75,7 @@ settings_tab = NodePath("Background/SettingsTab")
 saveload_tab = NodePath("Background/SaveLoadTab")
 admin_tab = NodePath("Background/AdminTab")
 island_tab = NodePath("Background/IslandTab")
+skilltree_tab = NodePath("Background/Skilltree")
 header_container = NodePath("Background/HBoxHeader")
 
 [node name="TransBackground" type="ColorRect" parent="."]
@@ -135,6 +138,17 @@ theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
 text = "> Stats"
+script = ExtResource("3_pwamf")
+
+[node name="SkillTreeTabButton" type="Button" parent="Background/HBoxHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "> SkillTree"
 script = ExtResource("3_pwamf")
 
 [node name="SaveTabButton" type="Button" parent="Background/HBoxHeader"]
@@ -706,7 +720,7 @@ offset_right = 307.0
 offset_bottom = -2.0
 translation_string = "GAMEMENU_FURNACE"
 
-[node name="ResearchTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("tab_container", "item_name_label", "item_level_label", "research_slot")]
+[node name="ResearchTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("tab_container", "item_name_label", "item_level_label", "research_slot", "progressBar", "timer", "working_panel")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -723,6 +737,9 @@ tab_container = NodePath("PanelContainer/TabContainer")
 item_name_label = NodePath("PanelContainer/ItemLabel")
 item_level_label = NodePath("PanelContainer/CurrentLevelLabel")
 research_slot = NodePath("PanelContainer/ResearchSlot")
+progressBar = NodePath("PanelContainer/WorkingProgressBar")
+timer = NodePath("PanelContainer/Timer")
+working_panel = NodePath("ColorRect")
 
 [node name="PanelContainer" type="Control" parent="Background/ResearchTab"]
 anchors_preset = 0
@@ -807,6 +824,9 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 text = "Research Level: 0"
 vertical_alignment = 1
 
+[node name="Timer" type="Timer" parent="Background/ResearchTab/PanelContainer"]
+wait_time = 0.1
+
 [node name="HeaderColorRect" parent="Background/ResearchTab" instance=ExtResource("11_45saq")]
 layout_mode = 1
 offset_left = -222.0
@@ -814,6 +834,296 @@ offset_top = -26.0
 offset_right = 307.0
 offset_bottom = -2.0
 translation_string = "GAMEMENU_RESEARCH_TABLE"
+
+[node name="ColorRect" type="ColorRect" parent="Background/ResearchTab"]
+visible = false
+layout_mode = 0
+offset_right = 334.0
+offset_bottom = 274.0
+color = Color(0, 0, 0, 0.294118)
+
+[node name="Label" type="Label" parent="Background/ResearchTab/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -11.5
+offset_right = 39.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 20
+text = "WORKING"
+
+[node name="Label2" type="Label" parent="Background/ResearchTab/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = 12.0
+offset_right = 129.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Passed Research time will not be saved,
+only result"
+horizontal_alignment = 1
+
+[node name="Skilltree" type="ColorRect" parent="Background" node_paths=PackedStringArray("skillboxes")]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
+script = ExtResource("16_x6qgy")
+skillboxes = [NodePath("MarginContainer/VBoxContainer/SkillBox"), NodePath("MarginContainer/VBoxContainer/SkillBox2"), NodePath("MarginContainer/VBoxContainer/SkillBox3"), NodePath("MarginContainer/VBoxContainer/SkillBox4")]
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Skilltree/MarginContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="SkillBox" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("17_44ufd")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Movement"
+horizontal_alignment = 1
+
+[node name="CheckBox0" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+10%"
+
+[node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+15%"
+
+[node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+20%"
+
+[node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10%"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Upgrade"
+
+[node name="SkillBox2" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("17_44ufd")
+type = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Movement"
+horizontal_alignment = 1
+
+[node name="CheckBox0" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+10%"
+
+[node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+15%"
+
+[node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+20%"
+
+[node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10%"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Upgrade"
+
+[node name="SkillBox3" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("17_44ufd")
+type = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Movement"
+horizontal_alignment = 1
+
+[node name="CheckBox0" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+10%"
+
+[node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+15%"
+
+[node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+20%"
+
+[node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10%"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Upgrade"
+
+[node name="SkillBox4" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("17_44ufd")
+type = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Movement"
+horizontal_alignment = 1
+
+[node name="CheckBox0" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+10%"
+
+[node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+15%"
+
+[node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+20%"
+
+[node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10%"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Upgrade"
 
 [node name="IslandTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("button1", "button2", "button3", "button4")]
 visible = false
@@ -1895,6 +2205,7 @@ popup/item_0/icon = ExtResource("16_ldk1u")
 
 [connection signal="pressed" from="Background/HBoxHeader/InvTabButton" to="." method="OnInventoryTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]
+[connection signal="pressed" from="Background/HBoxHeader/SkillTreeTabButton" to="." method="OnOpenSkilltreeTab"]
 [connection signal="pressed" from="Background/HBoxHeader/SaveTabButton" to="." method="OnSaveLoadTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/SettingsTabButton" to="." method="OnSettingsTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/CheatButton" to="." method="OnOpenAdminTab"]
@@ -1905,6 +2216,8 @@ popup/item_0/icon = ExtResource("16_ldk1u")
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/FuelSlot" to="Background/FurnaceTab/PanelContainer/FuelSlot" method="onMachineSlot" binds= [2]]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/EnableDisableButton" to="Background/FurnaceTab" method="OnMachineStateButton"]
 [connection signal="pressed" from="Background/ResearchTab/PanelContainer/Button" to="Background/ResearchTab" method="OnResearchButton"]
+[connection signal="timeout" from="Background/ResearchTab/PanelContainer/Timer" to="Background/ResearchTab" method="OnTimerTimeout"]
+[connection signal="visibility_changed" from="Background/Skilltree" to="Background/Skilltree" method="OnVisiblityChanged"]
 [connection signal="visibility_changed" from="Background/AdminTab" to="Background/AdminTab" method="OnVisiblityChange"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/CreateButton" to="Background/AdminTab" method="OnCreateItems"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/DeselectButton" to="Background/AdminTab" method="OnDeselectAll"]
