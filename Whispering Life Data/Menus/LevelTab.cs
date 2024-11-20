@@ -26,6 +26,7 @@ public partial class LevelTab : PanelContainer
         Database.UPGRADE_LEVEL level
     )
     {
+        Name = "Level" + id;
         Debug.Print("Update Level Tab");
         feature_label.Text = TranslationServer.Translate(translation_string + "_LVL_" + id);
         description_label.Text = TranslationServer.Translate(

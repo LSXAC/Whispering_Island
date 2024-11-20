@@ -77,15 +77,15 @@ public partial class ResearchTab : ColorRect
 
     private void SetText(ItemInfo item_info)
     {
-        foreach (LevelTab lt in tab_container.GetChildren())
-            lt.QueueFree();
+        foreach (LevelTab lts in tab_container.GetChildren())
+            lts.QueueFree();
 
         InventoryBase.ITEM_ID id = item_info.unique_id;
 
         if (!Database.researchs.ContainsKey(id))
             return;
 
-        for (int i = 0; i < Database.researchs[id].research_levels.Count; i++)
+        for (int i = 1; i < Database.researchs[id].research_levels.Count + 1; i++)
         {
             if (research_saves.ContainsKey(id))
                 if (research_saves[id].research_level >= i)
@@ -111,7 +111,7 @@ public partial class ResearchTab : ColorRect
         if (research_saves.ContainsKey(id))
             item_level_label.Text = "Research Level: " + research_saves[id].research_level;
         else
-            item_level_label.Text = "No Researches";
+            item_level_label.Text = "Research Level: 0";
 
         //Update Level Tab Box
     }

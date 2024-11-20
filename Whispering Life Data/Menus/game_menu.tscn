@@ -825,7 +825,7 @@ text = "Research Level: 0"
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="Background/ResearchTab/PanelContainer"]
-wait_time = 0.1
+wait_time = 0.01
 
 [node name="HeaderColorRect" parent="Background/ResearchTab" instance=ExtResource("11_45saq")]
 layout_mode = 1

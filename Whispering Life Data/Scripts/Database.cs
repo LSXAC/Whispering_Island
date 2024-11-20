@@ -26,6 +26,12 @@ public partial class Database : Node
             ResourceLoader.Load<ResearchLevelManager>(
                 "res://Items/ItemResearchs/Wood_Research_Level_Manager.tres"
             )
+        },
+        {
+            Inventory.ITEM_ID.STONE,
+            ResourceLoader.Load<ResearchLevelManager>(
+                "res://Items/ItemResearchs/Stone_Research_Level_Manager.tres"
+            )
         }
     };
 
