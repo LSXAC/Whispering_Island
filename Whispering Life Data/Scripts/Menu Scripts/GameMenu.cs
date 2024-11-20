@@ -37,6 +37,9 @@ public partial class GameMenu : CanvasLayer
     [Export]
     public ColorRect admin_tab;
 
+    [Export]
+    public ColorRect island_tab;
+
     public static GameMenu INSTANCE = null;
 
     [Export]
@@ -125,6 +128,7 @@ public partial class GameMenu : CanvasLayer
         settings_tab.Visible = false;
         saveload_tab.Visible = false;
         admin_tab.Visible = false;
+        island_tab.Visible = false;
     }
 
     public void OnSettingsTabButton()
@@ -135,6 +139,7 @@ public partial class GameMenu : CanvasLayer
         settings_tab.Visible = true;
         saveload_tab.Visible = false;
         admin_tab.Visible = false;
+        island_tab.Visible = false;
     }
 
     public void OnCraftingTabButton()
@@ -145,6 +150,7 @@ public partial class GameMenu : CanvasLayer
         settings_tab.Visible = false;
         admin_tab.Visible = false;
         saveload_tab.Visible = false;
+        island_tab.Visible = false;
         crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
     }
 
@@ -206,6 +212,7 @@ public partial class GameMenu : CanvasLayer
         settings_tab.Visible = false;
         saveload_tab.Visible = true;
         admin_tab.Visible = false;
+        island_tab.Visible = false;
         crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
     }
 
@@ -221,6 +228,7 @@ public partial class GameMenu : CanvasLayer
         furnace_tab.Visible = true;
         chest_tab.Visible = false;
         saveload_tab.Visible = false;
+        island_tab.Visible = false;
     }
 
     public void OnOpenChestTab()
@@ -235,6 +243,7 @@ public partial class GameMenu : CanvasLayer
         furnace_tab.Visible = false;
         chest_tab.Visible = true;
         saveload_tab.Visible = false;
+        island_tab.Visible = false;
     }
 
     public void OnOpenAdminTab()
@@ -249,6 +258,7 @@ public partial class GameMenu : CanvasLayer
         furnace_tab.Visible = false;
         chest_tab.Visible = false;
         saveload_tab.Visible = false;
+        island_tab.Visible = false;
     }
 
     public void OnCloseFurnaceTab()
@@ -262,6 +272,7 @@ public partial class GameMenu : CanvasLayer
         saveload_tab.Visible = false;
         Game_Manager.inside_game_menu = false;
         Visible = false;
+        island_tab.Visible = false;
     }
 
     public void OnCloseResearchTab()
@@ -275,6 +286,7 @@ public partial class GameMenu : CanvasLayer
         settings_tab.Visible = false;
         saveload_tab.Visible = false;
         Game_Manager.inside_game_menu = false;
+        island_tab.Visible = false;
         Visible = false;
     }
 
@@ -287,6 +299,7 @@ public partial class GameMenu : CanvasLayer
         furnace_tab.Visible = false;
         admin_tab.Visible = false;
         settings_tab.Visible = false;
+        island_tab.Visible = false;
         saveload_tab.Visible = false;
         Game_Manager.inside_game_menu = true;
     }
@@ -299,6 +312,37 @@ public partial class GameMenu : CanvasLayer
         furnace_tab.Visible = false;
         settings_tab.Visible = false;
         admin_tab.Visible = false;
+        island_tab.Visible = false;
+        chest_tab.Visible = false;
+        saveload_tab.Visible = false;
+        ChestInventory.INSTANCE.current_chest = null;
+        Game_Manager.inside_game_menu = false;
+        Visible = false;
+    }
+
+    public void OnOpenIslandTab()
+    {
+        Visible = true;
+        inventory_tab.Visible = false;
+        research_tab.Visible = false;
+        crafting_tab.Visible = false;
+        furnace_tab.Visible = false;
+        admin_tab.Visible = false;
+        settings_tab.Visible = false;
+        island_tab.Visible = true;
+        saveload_tab.Visible = false;
+        Game_Manager.inside_game_menu = true;
+    }
+
+    public void OnCloseIslandTab()
+    {
+        ChangeSelectedTabColor(Tabs.X);
+        inventory_tab.Visible = false;
+        crafting_tab.Visible = false;
+        furnace_tab.Visible = false;
+        settings_tab.Visible = false;
+        admin_tab.Visible = false;
+        island_tab.Visible = false;
         chest_tab.Visible = false;
         saveload_tab.Visible = false;
         ChestInventory.INSTANCE.current_chest = null;

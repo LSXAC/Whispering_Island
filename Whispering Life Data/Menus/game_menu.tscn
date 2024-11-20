@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=56 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -18,21 +18,27 @@
 [ext_resource type="Resource" uid="uid://dr5yac7cj8scc" path="res://Recipes/Basics/Wooden_Plank_Recipe.tres" id="12_h3bpf"]
 [ext_resource type="Resource" uid="uid://bedyblbr23cwl" path="res://Recipes/Basics/Wooden_Stick_Recipe.tres" id="13_o680h"]
 [ext_resource type="Resource" uid="uid://bp4wq2ypl075m" path="res://Recipes/Tools/Wooden_Axe_Recipe.tres" id="16_1o4en"]
+[ext_resource type="Script" path="res://Scripts/Menu Scripts/island_menu.cs" id="16_burxg"]
 [ext_resource type="Script" path="res://Menus/CheatTab.cs" id="16_f2xax"]
 [ext_resource type="Script" path="res://Menus/SettingsTab.cs" id="16_jv3kw"]
 [ext_resource type="Texture2D" uid="uid://syf34dx878d5" path="res://Sprites/Flaggs/US_FLAG.png" id="16_ldk1u"]
 [ext_resource type="Resource" uid="uid://b7a6dtp0rqub1" path="res://Recipes/Tools/Wooden_Hoe_Recipe.tres" id="17_7eamj"]
 [ext_resource type="StyleBox" uid="uid://beanw2e3ddca1" path="res://Menus/OptionButtonStyle.tres" id="17_hyydq"]
+[ext_resource type="Texture2D" uid="uid://y7p1sna6t1lh" path="res://Sprites/Mystic_Island.png" id="17_i4snh"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="17_iq1ex"]
 [ext_resource type="Texture2D" uid="uid://d24spwn8n1w7w" path="res://Sprites/Flaggs/DE_FLAG.png" id="18_1qrrt"]
 [ext_resource type="Resource" uid="uid://cydbh0i4ql0ev" path="res://Recipes/Toolparts/Wooden_Handle.tres" id="18_5towo"]
+[ext_resource type="Texture2D" uid="uid://b52ffyqisk5i1" path="res://Sprites/Mining_Island.png" id="18_k8cqj"]
 [ext_resource type="Texture2D" uid="uid://w1k1mv22ckvl" path="res://Sprites/Items/Icons_3rd/Stone.png" id="18_ou1xm"]
 [ext_resource type="StyleBox" uid="uid://ch5faigjhjxlm" path="res://Menus/OptionButtonStylePressed.tres" id="18_q7nbm"]
 [ext_resource type="Resource" uid="uid://g5iegjlxch46" path="res://Recipes/Toolparts/Stone_Blade_Recipe.tres" id="18_vv5t7"]
 [ext_resource type="Resource" uid="uid://crbwxmyjqlafm" path="res://Recipes/Toolparts/Stone_Pickaxe_Head_Recipe.tres" id="19_f07lv"]
 [ext_resource type="Resource" uid="uid://c61tkydmwleam" path="res://Recipes/Tools/Stone_Knife_Recipe.tres" id="19_pe00a"]
+[ext_resource type="Texture2D" uid="uid://g5tq6jiacbx3" path="res://Sprites/Farming_Island.png" id="19_wr86d"]
+[ext_resource type="Texture2D" uid="uid://bjp5wy4new0rg" path="res://Sprites/Island_Dessert.png" id="20_23y7x"]
 [ext_resource type="Resource" uid="uid://u2pfsg8ffel3" path="res://Recipes/Toolparts/Wooden_Axe_Head_Recipe.tres" id="20_jycfp"]
 [ext_resource type="Resource" uid="uid://b3t04yx2ddd54" path="res://Recipes/Tools/Stone_Pickaxe_Recipe.tres" id="20_ujqyg"]
+[ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Prefabs/Water_Noise_Map.tres" id="21_7smve"]
 [ext_resource type="Resource" uid="uid://br1o134cy0afx" path="res://Recipes/Toolparts/Wooden_Hoe_Head_Recipe.tres" id="21_13841"]
 [ext_resource type="Script" path="res://Menus/TranslationLabel.cs" id="26_tl5yt"]
 [ext_resource type="Script" path="res://Menus/SaveLoadTab.cs" id="27_ku6dj"]
@@ -52,7 +58,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tibut"]
 bg_color = Color(1, 1, 1, 0)
 
-[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "header_container")]
+[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "header_container")]
 process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/SaveLoadTab/HBoxContainer/LoadGameButton")
@@ -66,6 +72,7 @@ chest_tab = NodePath("Background/ChestTab")
 settings_tab = NodePath("Background/SettingsTab")
 saveload_tab = NodePath("Background/SaveLoadTab")
 admin_tab = NodePath("Background/AdminTab")
+island_tab = NodePath("Background/IslandTab")
 header_container = NodePath("Background/HBoxHeader")
 
 [node name="TransBackground" type="ColorRect" parent="."]
@@ -807,6 +814,298 @@ offset_top = -26.0
 offset_right = 307.0
 offset_bottom = -2.0
 translation_string = "GAMEMENU_RESEARCH_TABLE"
+
+[node name="IslandTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("button1", "button2", "button3", "button4")]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
+script = ExtResource("16_burxg")
+button1 = NodePath("MarginContainer/ScrollContainer/GridContainer/ColorRect/Button")
+button2 = NodePath("MarginContainer/ScrollContainer/GridContainer/ColorRect2/Button")
+button3 = NodePath("MarginContainer/ScrollContainer/GridContainer/ColorRect3/Button")
+button4 = NodePath("MarginContainer/ScrollContainer/GridContainer/ColorRect4/Button")
+
+[node name="HeaderColorRect" parent="Background/IslandTab" instance=ExtResource("11_45saq")]
+layout_mode = 1
+offset_left = 1.0
+offset_top = -25.0
+offset_right = 530.0
+offset_bottom = -1.0
+translation_string = "ISLAND MENU"
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/IslandTab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/IslandTab/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Background/IslandTab/MarginContainer/ScrollContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_i4snh")
+expand_mode = 3
+
+[node name="Button" type="Button" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 127.0
+offset_right = 149.0
+offset_bottom = 148.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "SELECT"
+
+[node name="Label" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+text = "Mystic Island"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_k8cqj")
+expand_mode = 3
+
+[node name="Button" type="Button" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect2"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 127.0
+offset_right = 149.0
+offset_bottom = 148.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "SELECT"
+
+[node name="Label" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect2"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+text = "Mining Island"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect3" type="ColorRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_wr86d")
+expand_mode = 3
+
+[node name="Button" type="Button" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect3"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 127.0
+offset_right = 149.0
+offset_bottom = 148.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "SELECT"
+
+[node name="Label" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect3"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+text = "Farming Island"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect4" type="ColorRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_23y7x")
+expand_mode = 3
+
+[node name="Button" type="Button" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect4"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 127.0
+offset_right = 149.0
+offset_bottom = 148.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "SELECT"
+
+[node name="Label" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect4"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+text = "Dessert Island"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect5" type="ColorRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_7smve")
+expand_mode = 3
+
+[node name="Button" type="Button" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect5"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 127.0
+offset_right = 149.0
+offset_bottom = 148.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+disabled = true
+text = "SELECT"
+
+[node name="Label" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect5"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+text = "Unknown"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect6" type="ColorRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect6"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_7smve")
+expand_mode = 3
+
+[node name="Button" type="Button" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect6"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 127.0
+offset_right = 149.0
+offset_bottom = 148.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+disabled = true
+text = "SELECT"
+
+[node name="Label" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect6"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+text = "Unknown"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AdminTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("item_list")]
 visible = false

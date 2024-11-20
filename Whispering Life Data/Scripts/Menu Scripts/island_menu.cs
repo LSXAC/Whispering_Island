@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Godot;
 
-public partial class island_menu : CanvasLayer
+public partial class island_menu : ColorRect
 {
     private PackedScene island_1 = ResourceLoader.Load<PackedScene>("res://Prefabs/Island_1.tscn");
     private PackedScene island_2 = ResourceLoader.Load<PackedScene>("res://Prefabs/Island_2.tscn");
@@ -44,17 +44,6 @@ public partial class island_menu : CanvasLayer
         button4.Pressed += () => SelectIsland(3);
     }
 
-    public void SwitchBuildingMenu()
-    {
-        if (this.Visible)
-            this.Visible = false;
-        else
-        {
-            this.Visible = true;
-            // Update Panel with Islands (for : PackedScenes List)
-        }
-    }
-
     public void SelectIsland(int id)
     {
         if (current_sign == null)
@@ -62,7 +51,7 @@ public partial class island_menu : CanvasLayer
 
         CreateIsland(id, current_sign.dir, current_sign.current_ip);
 
-        SwitchBuildingMenu();
+        GameMenu.INSTANCE.OnCloseIslandTab();
         current_sign = null;
     }
 

@@ -7,9 +7,6 @@ using Godot.Collections;
 public partial class Islands_Manager : Node2D
 {
     [Export]
-    public island_menu island_menu;
-
-    [Export]
     public Array<IslandSave> island_saves = new Array<IslandSave>();
 
     [Export]
@@ -40,7 +37,7 @@ public partial class Islands_Manager : Node2D
                 Debug.Print(ip.matrix_island_id + " | " + is_save.matrix_island_id);
                 if (ip.matrix_island_id == is_save.matrix_island_id)
                 {
-                    island_menu.CreateIsland(is_save.island_id, is_save.dir, ip, true);
+                    island_menu.instance.CreateIsland(is_save.island_id, is_save.dir, ip, true);
                 }
             }
         }

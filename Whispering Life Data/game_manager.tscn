@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=30 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" path="res://Scripts/Manager Scripts/Game_Manager.cs" id="1_kw8xi"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Placer.cs" id="2_2ikn4"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://deu0spbxs5bju" path="res://Menus/game_menu.tscn" id="4_dafgv"]
 [ext_resource type="PackedScene" uid="uid://j1cdgg7lep78" path="res://Prefabs/player_ui.tscn" id="4_iiee3"]
 [ext_resource type="Script" path="res://Scripts/Manager Scripts/Islands_Manager.cs" id="4_logif"]
-[ext_resource type="PackedScene" uid="uid://cjj30kpp0tj11" path="res://Menus/island_menu.tscn" id="5_nuj5f"]
 [ext_resource type="PackedScene" uid="uid://en6nagvvr8d3" path="res://Menus/Building_Menu.tscn" id="7_xph4e"]
 [ext_resource type="PackedScene" uid="uid://bovrg0u6tuo04" path="res://Menus/hover_menu.tscn" id="9_sosrl"]
 [ext_resource type="Script" path="res://Scripts/GlobalFunctions.cs" id="10_1kwav"]
@@ -53,19 +52,15 @@ y_sort_enabled = true
 position = Vector2(0, -160)
 scale = Vector2(0.75, 0.75)
 
-[node name="IslandManager" type="Node2D" parent="." node_paths=PackedStringArray("island_menu")]
+[node name="IslandManager" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("4_logif")
-island_menu = NodePath("../IslandMenu")
 
 [node name="MainIsland" parent="IslandManager" instance=ExtResource("3_p5rek")]
 
 [node name="PlayerUI" parent="." instance=ExtResource("4_iiee3")]
 
 [node name="GameMenu" parent="." instance=ExtResource("4_dafgv")]
-visible = false
-
-[node name="IslandMenu" parent="." instance=ExtResource("5_nuj5f")]
 visible = false
 
 [node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer") instance=ExtResource("7_xph4e")]
