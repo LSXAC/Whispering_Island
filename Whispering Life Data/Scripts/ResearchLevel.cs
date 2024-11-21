@@ -1,8 +1,10 @@
 using System;
 using Godot;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class ResearchLevel : Resource
 {
-    // Extra Bonis?
+    [Export]
+    public Array<ItemInfo> unlocks_items;
 }

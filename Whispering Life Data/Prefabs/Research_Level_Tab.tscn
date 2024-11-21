@@ -25,7 +25,7 @@ theme_override_colors/font_color = Color(0.998561, 0.859831, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_66jv3")
 theme_override_font_sizes/font_size = 14
-text = "Krasser Holz Kenner"
+text = "The iron age begins"
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -33,7 +33,7 @@ size_flags_vertical = 6
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_66jv3")
 theme_override_font_sizes/font_size = 10
-text = "Das Holz ist nicht nur auf deiner Seite, sondern auch auf der anderen."
+text = "Iron ingot can be produced inside a furnace."
 autowrap_mode = 3
 
 [node name="SpaceLabel2" type="Label" parent="MarginContainer/VBoxContainer"]
@@ -51,5 +51,5 @@ theme_override_colors/font_color = Color(0.498413, 0.814262, 0.395717, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_66jv3")
 theme_override_font_sizes/font_size = 10
-text = "Unlocks: Wood Furnace, Crafting Tools Lvl. 1."
+text = "Unlocks: Iron Ingot"
 autowrap_mode = 3

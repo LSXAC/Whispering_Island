@@ -721,7 +721,6 @@ offset_bottom = -2.0
 translation_string = "GAMEMENU_FURNACE"
 
 [node name="ResearchTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("tab_container", "item_name_label", "item_level_label", "research_slot", "progressBar", "timer", "working_panel")]
-visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15

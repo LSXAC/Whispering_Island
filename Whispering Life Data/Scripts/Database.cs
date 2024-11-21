@@ -16,24 +16,40 @@ public partial class Database : Node
 
     // RESEARCH LINES ------------------------------------------------------------------------------------------------
 
-    public static Dictionary<Inventory.ITEM_ID, ResearchLevelManager> researchs = new Dictionary<
-        Inventory.ITEM_ID,
-        ResearchLevelManager
-    >()
-    {
+    public static Dictionary<InventoryBase.ITEM_ID, ResearchLevelManager> researchs =
+        new Dictionary<InventoryBase.ITEM_ID, ResearchLevelManager>()
         {
-            Inventory.ITEM_ID.WOOD,
-            ResourceLoader.Load<ResearchLevelManager>(
-                "res://Items/ItemResearchs/Wood_Research_Level_Manager.tres"
-            )
-        },
-        {
-            Inventory.ITEM_ID.STONE,
-            ResourceLoader.Load<ResearchLevelManager>(
-                "res://Items/ItemResearchs/Stone_Research_Level_Manager.tres"
-            )
-        }
-    };
+            {
+                InventoryBase.ITEM_ID.WOOD,
+                ResourceLoader.Load<ResearchLevelManager>(
+                    "res://Items/ItemResearchs/Wood_Research_Level_Manager.tres"
+                )
+            },
+            {
+                InventoryBase.ITEM_ID.STONE,
+                ResourceLoader.Load<ResearchLevelManager>(
+                    "res://Items/ItemResearchs/Stone_Research_Level_Manager.tres"
+                )
+            },
+            {
+                InventoryBase.ITEM_ID.SAND,
+                ResourceLoader.Load<ResearchLevelManager>(
+                    "res://Items/ItemResearchs/Sand_Research_Level_Manager.tres"
+                )
+            },
+            {
+                InventoryBase.ITEM_ID.MYSTIC_WOOD,
+                ResourceLoader.Load<ResearchLevelManager>(
+                    "res://Items/ItemResearchs/Mystic_Wood_Research_Level_Manager.tres"
+                )
+            },
+            {
+                InventoryBase.ITEM_ID.IRON_ORE,
+                ResourceLoader.Load<ResearchLevelManager>(
+                    "res://Items/ItemResearchs/Iron_Ore_Research_Level_Manager.tres"
+                )
+            }
+        };
 
     // BUILDINGS LINES ------------------------------------------------------------------------------------------------
 

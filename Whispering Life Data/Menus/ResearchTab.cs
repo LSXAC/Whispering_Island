@@ -73,6 +73,9 @@ public partial class ResearchTab : ColorRect
     {
         item_name_label.Text = "No Item in Research Slot";
         item_level_label.Text = "-/-";
+
+        foreach (LevelTab lts in tab_container.GetChildren())
+            lts.QueueFree();
     }
 
     private void SetText(ItemInfo item_info)
@@ -96,7 +99,7 @@ public partial class ResearchTab : ColorRect
             lt.UpdateLevelTab(
                 Database.researchs[id].translation_string,
                 i,
-                "Empty",
+                Database.researchs[id].research_levels[i - 1], //Bonus String
                 (Database.UPGRADE_LEVEL)i
             );
         }
@@ -112,8 +115,6 @@ public partial class ResearchTab : ColorRect
             item_level_label.Text = "Research Level: " + research_saves[id].research_level;
         else
             item_level_label.Text = "Research Level: 0";
-
-        //Update Level Tab Box
     }
 
     public void OnResearchButton()
@@ -123,8 +124,8 @@ public partial class ResearchTab : ColorRect
         if (tab_container.CurrentTab == -1)
             return;
 
-        //Remove Items
-        //start Research
+        //Remove Items, for Prototype, researching is only time consuming
+
         progressBar.Value = 0;
         working_panel.Visible = true;
         timer.Start();

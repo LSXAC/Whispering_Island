@@ -1,18 +1,17 @@
-[gd_resource type="Resource" script_class="ResearchLevelManager" load_steps=6 format=3 uid="uid://dynupcrbralid"]
+[gd_resource type="Resource" script_class="ResearchLevelManager" load_steps=8 format=3 uid="uid://dynupcrbralid"]
 
 [ext_resource type="Script" path="res://Scripts/ResearchLevelManager.cs" id="1_dftay"]
 [ext_resource type="Script" path="res://Scripts/ResearchLevel.cs" id="1_jb6np"]
+[ext_resource type="Resource" uid="uid://dmrxwabbdyg0d" path="res://Items/Wooden_Axe.tres" id="2_40dvl"]
+[ext_resource type="Resource" uid="uid://65jron2bhtes" path="res://Items/Wooden_Axe_Head.tres" id="3_tsodp"]
+[ext_resource type="Resource" uid="uid://c10rid084wdox" path="res://Items/Wooden_Hoe.tres" id="4_pa0ck"]
+[ext_resource type="Resource" uid="uid://n1o6p57v8r23" path="res://Items/Wooden_Hoe_Head.tres" id="5_pvapa"]
 
 [sub_resource type="Resource" id="Resource_5ebk2"]
 script = ExtResource("1_jb6np")
-
-[sub_resource type="Resource" id="Resource_2mqpd"]
-script = ExtResource("1_jb6np")
-
-[sub_resource type="Resource" id="Resource_ehhb3"]
-script = ExtResource("1_jb6np")
+unlocks_items = Array[Object]([ExtResource("2_40dvl"), ExtResource("3_tsodp"), ExtResource("4_pa0ck"), ExtResource("5_pvapa")])
 
 [resource]
 script = ExtResource("1_dftay")
 translation_string = "RESEARCH_WOOD"
-research_levels = Array[Object]([SubResource("Resource_5ebk2"), SubResource("Resource_2mqpd"), SubResource("Resource_ehhb3")])
+research_levels = Array[Object]([SubResource("Resource_5ebk2")])
