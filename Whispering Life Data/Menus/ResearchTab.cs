@@ -71,7 +71,7 @@ public partial class ResearchTab : ColorRect
 
     private void ClearText()
     {
-        item_name_label.Text = "No Item in Research Slot";
+        item_name_label.Text = TranslationServer.Translate("RESEARCH_NO_ITEM");
         item_level_label.Text = "-/-";
 
         foreach (LevelTab lts in tab_container.GetChildren())
@@ -112,18 +112,21 @@ public partial class ResearchTab : ColorRect
                     .item_name
             );
         if (research_saves.ContainsKey(id))
-            item_level_label.Text = "Research Level: " + research_saves[id].research_level;
+            item_level_label.Text =
+                TranslationServer.Translate("RESEARCH_RESEARCHLEVEL")
+                + ": "
+                + research_saves[id].research_level;
         else
-            item_level_label.Text = "Research Level: 0";
+            item_level_label.Text = TranslationServer.Translate("RESEARCH_RESEARCHLEVEL") + ": 0";
     }
 
     public void OnResearchButton()
     {
         if (research_slot_item == null)
             return;
-        if (tab_container.CurrentTab == -1)
-            return;
 
+        if (tab_container.CurrentTab != 0)
+            return;
         //Remove Items, for Prototype, researching is only time consuming
 
         progressBar.Value = 0;
@@ -161,7 +164,7 @@ public partial class ResearchTab : ColorRect
             );
 
         Debug.Print(research_saves[id].research_level + " current level <:");
-        SetText(research_slot.GetItem().item_info);
+        tab_container.GetChild(0).QueueFree();
         working_panel.Visible = false;
     }
 }

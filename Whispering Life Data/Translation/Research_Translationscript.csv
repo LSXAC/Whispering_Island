@@ -1,5 +1,10 @@
 ,en,de
 RESEARCH_BONUS,Unlocks:,Schaltet Frei:
+RESEARCH_RESEARCHLEVEL,Research Level,Erforschungsstufe
+RESEARCH_NO_ITEM,No Item in Research Slot.,Keine Ressource im Erforschungsslot.
+RESEARCH_BUTTON,Start Research,Erforschung starten
+,,
+,,
 ,,
 ,,
 RESEARCH_WOOD_LVL_1,Craftsman #1,Handwerker #1
@@ -17,8 +22,3 @@ RESEARCH_STONE_LVL_1_DESC,Stone tools can be crafted in the crafting menu.,Werkz
 ,,
 ,,
 ,,
-RESEARCH_MYSTIC_WOOD_LVL_1,Mystic Researcher #1,Mystischer Forscher #1
-RESEARCH_MYSTIC_WOOD_LVL_1_DESC,Mystic Armorparts can be crafted in the crafting menu.,Mystische Rüstungsteile können im Herstellungsmenü hergestellt werden.
-,,
-RESEARCH_SAND_LVL_1,Sand Flames,Sandflammen
-RESEARCH_SAND_LVL_1_DESC,"Glass can be produced in the furnace, by burning 2x Sand","Glas kann im Ofen hergestellt werden, indem 2x Sand gebrannt wird."

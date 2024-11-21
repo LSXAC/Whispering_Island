@@ -87,20 +87,20 @@ WORLD_RESOURCE_MYSTIC_FIBRE,Mystic Fibre,Mystische Fasern
 WORLD_RESOURCE_MYSTIC_FIBRE_DESC,Collect to receive mystic fibre,Erhalte mystische Fasern beim sammeln
 WORLD_RESOURCE_WHEAT,Wheat,Weizen
 WORLD_RESOURCE_WHEAT_DESC,Harvest to receive wheat,Erhalte Weizen beim ernten
+WORLD_RESOURCE_IRON_ORE,Iron Ore,Eisenerz
+WORLD_RESOURCE_IRON_ORE_DESC,Receive Iron Ore by mining,Erhalte Eisenerz beim abbauen
+WORLD_RESOURCE_COPPER_ORE,Copper Ore,Kupfererz
+WORLD_RESOURCE_COPPER_ORE_DESC,Receive Copper Ore by mining,Erhalte Kupfererz beim abbauen
 WORLD_RESOURCE_POTATO,Potato,Kartoffel
-WORLD_RESOURCE_POTATO_DESC,Harvest to receive potatos,Erhalte kartoffeln beim ernten
+WORLD_RESOURCE_POTATO_DESC,Harvest to receive potatos,Erhalte Kartoffeln beim ernten
 WORLD_RESOURCE_CARROT,Carrot,Karotte
-WORLD_RESOURCE_CARROT_DESC,Harvest to receive carrots,Erhalte eine Karotten beim ernten
+WORLD_RESOURCE_CARROT_DESC,Harvest to receive carrots,Erhalte Karotten beim ernten
 WORLD_RESOURCE_CORN,Corn,Mais
 WORLD_RESOURCE_CORN_DESC,Harvest to receive corns,Erhalte Mais beim ernten
 WORLD_RESOURCE_SAND,Sand,Sand
 WORLD_RESOURCE_SAND_DESC,Mine to receive sand,Erhalte Sand beim abbauen
 WORLD_RESOURCE_SAND_STONE,Sandstone,Sandstein
 WORLD_RESOURCE_SAND_STONE_DESC,Mine to receive sandstone,Erhalte Sandstein beim abbauen
-,,
-,,
-,,
-,,
 ,,
 ,,
 ,,

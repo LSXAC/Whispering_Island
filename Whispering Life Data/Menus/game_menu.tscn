@@ -721,6 +721,7 @@ offset_bottom = -2.0
 translation_string = "GAMEMENU_FURNACE"
 
 [node name="ResearchTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("tab_container", "item_name_label", "item_level_label", "research_slot", "progressBar", "timer", "working_panel")]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -779,6 +780,8 @@ offset_bottom = 56.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
 text = "Start Research"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_BUTTON"
 
 [node name="TabContainer" type="TabContainer" parent="Background/ResearchTab/PanelContainer"]
 layout_mode = 1
@@ -801,6 +804,11 @@ current_tab = 0
 [node name="Level 1" parent="Background/ResearchTab/PanelContainer/TabContainer" instance=ExtResource("12_3k1qw")]
 layout_mode = 2
 
+[node name="Level 2" parent="Background/ResearchTab/PanelContainer/TabContainer" instance=ExtResource("12_3k1qw")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
 [node name="ItemLabel" type="Label" parent="Background/ResearchTab/PanelContainer"]
 layout_mode = 0
 offset_left = 58.0
@@ -809,18 +817,21 @@ offset_right = 258.0
 offset_bottom = -177.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
-text = "Itemname"
+theme_override_font_sizes/font_size = 14
+text = "Keine Ressource im Erforschungsslot."
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="CurrentLevelLabel" type="Label" parent="Background/ResearchTab/PanelContainer"]
 layout_mode = 0
 offset_left = 58.0
-offset_top = -176.0
+offset_top = -167.0
 offset_right = 258.0
 offset_bottom = -153.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
-text = "Research Level: 0"
+theme_override_font_sizes/font_size = 14
+text = "Erforschungsstufe: 0"
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="Background/ResearchTab/PanelContainer"]
