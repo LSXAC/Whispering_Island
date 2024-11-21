@@ -13,17 +13,19 @@ which unlocks something new with every level.","Wieso kann ich die Ressourcen di
 erforschen, die jede Stufe etwas neues freischalten.)"
 QUEST_TITLE_4,A new Age #4,Neues Zeitalter #4
 QUEST_DESC_4,Iron! He can't be serious. There is absoulutly no iron anywhere on this island! If only I could get to some of the neighbouring islands,Eisen! Das kann doch jetzt nicht sein ernst sein. Hier auf dieser Insel gibt es doch gar kein Eisen! Wenn ich doch nur die benachbarten Inseln erreichen könnte...
-QUEST_TITLE_5,The monstere's the boss #5,Das Monster ist der Boss #5 (Kritische Quest)
-QUEST_DESC_5,,"Also so langsam reicht es mir echt, was er haben möchte! Einen Eisenblock? Wie soll ich das schwere Ding überhaupt transportieren!
+QUEST_TITLE_5,The monster is the boss #5 (Boss Quest),Das Monster ist der Boss #5 (Kritische Quest)
+QUEST_DESC_5,"I've really had enough of what he's asking for! A block of iron? How am I going to carry this heavy thing!
+([b][colour=gold]Hint:[/colour][/b] Iron ore must be researched at level 2 to produce an iron block)","Also so langsam reicht es mir echt, was er haben möchte! Einen Eisenblock? Wie soll ich das schwere Ding überhaupt transportieren!
 (Tipp: Eisenerz muss auf Stufe 2 erforscht werden um einen Eisenblock herzustellen)"
 QUEST_TITLE_6,He wants what now? Mythic? #6,Er will was? Mystisch? #6
-QUEST_DESC_6,,"Dem feinen Herren ist das wohl zu Öde, die ganze Zeit das gleiche zu essen... und was möchte er jetzt? Mystisch... Was? Ach egal, ich bring Ihn, was er möchte.
+QUEST_DESC_6,"It's probably too boring for this fine gentleman to eat the same thing all the time... and what does he want now? Mystical... What? Never mind, I'll bring him whatever he wants.
+([b][color=gold]Hint:[/color][/b] Build a mystical island on a shield)","Dem feinen Herren ist das wohl zu Öde, die ganze Zeit das gleiche zu essen... und was möchte er jetzt? Mystisch... Was? Ach egal, ich bring Ihn, was er möchte.
 ([b][color=gold]Tipp:[/color][/b] Baue eine mystische Insel an einem Schild)"
-QUEST_TITLE_7,,Der Kleiderist? #7
-QUEST_DESC_7,,"Langsam wird es kalt! Glaube ich zumindest, es gibt eigentlich (noch) keine Temperaturverändernde Wirkung."
+QUEST_TITLE_7,The Dressmaker #7,Der Kleiderist? #7
+QUEST_DESC_7,"It's slowly getting cold! At least I think so, there is actually no temperature-changing effect (yet).","Langsam wird es kalt! Glaube ich zumindest, es gibt eigentlich (noch) keine Temperaturverändernde Wirkung."
 QUEST_TITLE_8,The Farmer! #8,Der Farmer! #8
-QUEST_DESC_8,,"Nach der ganzen harten Arbeit, braucht das Monster auch mal ein paar leckere Pflanzen! ([b][color=gold]Tipp:[/color][/b] Man kann Weizensamen in jegliche Samen im Herstellungsmenü verwandeln.)"
+QUEST_DESC_8,"After all that hard work, the monster needs some tasty plants! ([b][color=gold]Hint:[/color][/b] You can turn wheat seeds into any other seed in the crafting menu).","Nach der ganzen harten Arbeit, braucht das Monster auch mal ein paar leckere Pflanzen! ([b][color=gold]Tipp:[/color][/b] Man kann Weizensamen in jegliche Samen im Herstellungsmenü verwandeln.)"
 QUEST_TITLE_9,Desert explorer #9,Wüstenerkunder #9
-QUEST_DESC_9,,"Heißer Sand, kaum Wasser, schlechte Luft. Es wird Zeit für ein paar heiße Sachen in der Wüste. ([b][color=gold]Tipp:[/color][/b] Baue eine Wüsten Insel an einem Schild)"
+QUEST_DESC_9,"Hot sand, hardly any water, bad air. It's time for some hot stuff in the desert. ([b][color=gold]Hint:[/color][/b] Build a desert island on a shield)","Heißer Sand, kaum Wasser, schlechte Luft. Es wird Zeit für ein paar heiße Sachen in der Wüste. ([b][color=gold]Tipp:[/color][/b] Baue eine Wüsten Insel an einem Schild)"
 QUEST_TITLE_10,The (Prototype) End #10,Das (Prototype) Ende #10
-QUEST_DESC_10,,Das Ende ist in Sicht und er ist immer noch nicht zufrieden? Denn muss ich wohl nochmal ein paar der besten Items liefern. Vielleicht ist er den zufrieden.
+QUEST_DESC_10,The end is in sight and he's still not satisfied? Then I'll probably have to deliver a few of the best (current) items again. Maybe he'll be satisfied.,Das Ende ist in Sicht und er ist immer noch nicht zufrieden? Denn muss ich wohl nochmal ein paar der (aktuell) besten Items liefern. Vielleicht ist er den zufrieden.
