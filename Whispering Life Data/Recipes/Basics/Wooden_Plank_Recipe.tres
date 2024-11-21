@@ -25,3 +25,4 @@ amount = 2
 script = ExtResource("6_0ioip")
 requiered_items = Array[Object]([SubResource("Resource_q4hka"), SubResource("Resource_hh8pp")])
 output_item = SubResource("Resource_6mgx6")
+unlockRequirements = null

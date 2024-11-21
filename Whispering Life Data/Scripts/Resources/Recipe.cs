@@ -10,4 +10,7 @@ public partial class Recipe : Resource
 
     [Export]
     public Item output_item;
+
+    [Export]
+    public Array<UnlockRequirement> unlockRequirements;
 }

@@ -382,7 +382,7 @@ public partial class GameMenu : CanvasLayer
     public void OnCloseIslandTab()
     {
         ChangeSelectedTabColor(Tabs.X);
-        inventory_tab.Visible = false;
+        inventory_tab.Visible = true;
         crafting_tab.Visible = false;
         furnace_tab.Visible = false;
         settings_tab.Visible = false;

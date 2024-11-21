@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://cn0rjr3gah4jr"]
+[gd_scene load_steps=29 format=4 uid="uid://cn0rjr3gah4jr"]
 
 [ext_resource type="Script" path="res://Scripts/Building Scripts/ProcessBuilding.cs" id="1_vtdy4"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="2_gjbdr"]
@@ -10,11 +10,16 @@
 [ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="6_0asmg"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="6_srwxn"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="6_vvdf8"]
+[ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Items/Glass.tres" id="7_beqn2"]
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="7_bopdg"]
 [ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Placeable/Taker.tscn" id="8_17n2q"]
+[ext_resource type="Resource" uid="uid://ljb14i8nnpgp" path="res://Items/Sand.tres" id="8_dyfyb"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Placeable/giver.tscn" id="9_g3chf"]
+[ext_resource type="Script" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="9_mtbkd"]
 [ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Items/Char_Coal.tres" id="10_c3j8d"]
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="10_frsc1"]
+[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Items/Iron_Ingot.tres" id="10_gj52m"]
+[ext_resource type="Resource" uid="uid://l7tf257vet4l" path="res://Items/Iron_Ore.tres" id="11_822xt"]
 
 [sub_resource type="Resource" id="Resource_njs37"]
 script = ExtResource("4_w4r4g")
@@ -22,6 +27,7 @@ import_item_info = ExtResource("2_rd0fi")
 export_item_info = ExtResource("10_c3j8d")
 import_amount = 2
 export_amount = 1
+unlockRequirement = null
 
 [sub_resource type="Resource" id="Resource_ex5dq"]
 script = ExtResource("4_w4r4g")
@@ -29,6 +35,33 @@ import_item_info = ExtResource("6_0asmg")
 export_item_info = ExtResource("5_c0w8r")
 import_amount = 1
 export_amount = 1
+unlockRequirement = null
+
+[sub_resource type="Resource" id="Resource_xdrkx"]
+script = ExtResource("9_mtbkd")
+required_level = 1
+item_id = 31
+
+[sub_resource type="Resource" id="Resource_u1ie4"]
+script = ExtResource("4_w4r4g")
+import_item_info = ExtResource("8_dyfyb")
+export_item_info = ExtResource("7_beqn2")
+import_amount = 2
+export_amount = 1
+unlockRequirement = Array[Object]([SubResource("Resource_xdrkx")])
+
+[sub_resource type="Resource" id="Resource_yoryk"]
+script = ExtResource("9_mtbkd")
+required_level = 1
+item_id = 7
+
+[sub_resource type="Resource" id="Resource_kg0sh"]
+script = ExtResource("4_w4r4g")
+import_item_info = ExtResource("11_822xt")
+export_item_info = ExtResource("10_gj52m")
+import_amount = 2
+export_amount = 1
+unlockRequirement = Array[Object]([SubResource("Resource_yoryk")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(48, 31)
@@ -44,7 +77,7 @@ script = ExtResource("1_vtdy4")
 fuel_item_info = ExtResource("10_c3j8d")
 crafting_timer = NodePath("CraftingTimer")
 state_timer = NodePath("MachineUITimer")
-recipes = [SubResource("Resource_njs37"), SubResource("Resource_ex5dq")]
+recipes = [SubResource("Resource_njs37"), SubResource("Resource_ex5dq"), SubResource("Resource_u1ie4"), SubResource("Resource_kg0sh")]
 building_id = 3
 building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_FURNACE"

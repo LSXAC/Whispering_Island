@@ -128,7 +128,7 @@ offset_top = 8.0
 offset_right = 120.0
 offset_bottom = 56.0
 script = ExtResource("4_khv1d")
-hbox_items = [NodePath("MarginContainer/VBoxContainer/Item1"), NodePath("MarginContainer/VBoxContainer/Item2"), NodePath("MarginContainer/VBoxContainer/Item3")]
+hbox_items = [NodePath("MarginContainer/VBoxContainer/Item1"), NodePath("MarginContainer/VBoxContainer/Item2"), NodePath("MarginContainer/VBoxContainer/Item3"), NodePath("MarginContainer/VBoxContainer/Item4")]
 time_label = NodePath("MarginContainer/VBoxContainer/TimeLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="QuestMiniPanel"]
@@ -160,6 +160,10 @@ visible = false
 layout_mode = 2
 
 [node name="Item3" parent="QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+visible = false
+layout_mode = 2
+
+[node name="Item4" parent="QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
 visible = false
 layout_mode = 2
 

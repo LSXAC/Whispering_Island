@@ -12,7 +12,7 @@ public partial class BuildingType : Resource
     public Recipe building_recipe;
 
     [Export]
-    public Array<BuildingRequirement> requirements;
+    public Array<UnlockRequirement> requirements;
 
     [Export]
     public CATEGORY category;

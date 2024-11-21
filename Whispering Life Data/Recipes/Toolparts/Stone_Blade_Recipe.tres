@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3 uid="uid://g5iegjlxch46"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://g5iegjlxch46"]
 
 [ext_resource type="Resource" uid="uid://81xbm48s547g" path="res://Items/Stone_Blade.tres" id="1_ji7ed"]
 [ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_0d7p4"]
 [ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="3_f1gcm"]
 [ext_resource type="Script" path="res://Scripts/Resources/Recipe.cs" id="4_emfhy"]
+[ext_resource type="Script" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="5_d2sk1"]
 
 [sub_resource type="Resource" id="Resource_66y5o"]
 script = ExtResource("2_0d7p4")
@@ -15,7 +16,13 @@ script = ExtResource("2_0d7p4")
 item_info = ExtResource("3_f1gcm")
 amount = 10
 
+[sub_resource type="Resource" id="Resource_ljpxu"]
+script = ExtResource("5_d2sk1")
+required_level = 1
+item_id = 1
+
 [resource]
 script = ExtResource("4_emfhy")
 requiered_items = Array[Object]([SubResource("Resource_af5nn")])
 output_item = SubResource("Resource_66y5o")
+unlockRequirements = Array[Object]([SubResource("Resource_ljpxu")])

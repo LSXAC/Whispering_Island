@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class Machine_Recipe : Resource
@@ -15,4 +16,7 @@ public partial class Machine_Recipe : Resource
 
     [Export]
     public int export_amount = 0;
+
+    [Export]
+    public Array<UnlockRequirement> unlockRequirement;
 }

@@ -75,6 +75,16 @@ public partial class player_ui : CanvasLayer
         INSTANCE.qcp_timer.Start();
     }
 
+    public static void LastQuestPanelShow()
+    {
+        INSTANCE.quest_complete_panel.Visible = true;
+        INSTANCE.quest_complete_panel.GetChild(0).GetChild(0).GetNode<Label>("Label").Text =
+            "Last Quest Complete!";
+        INSTANCE.quest_complete_panel.GetChild(0).GetChild(0).GetNode<Label>("Label2").Text =
+            "Thanks for Playing!";
+        //INSTANCE.qcp_timer.Start();
+    }
+
     public void OnCompleteQuestCompletepanel()
     {
         quest_complete_panel.Visible = false;

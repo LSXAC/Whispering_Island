@@ -9,7 +9,7 @@ public partial class CraftingMenu : PanelContainer
     public PackedScene recipe_slot = ResourceLoader.Load<PackedScene>("res://item_recipe.tscn");
 
     [Export]
-    public Array<Resource> crafting_recipies = new Array<Resource>();
+    public Array<Recipe> crafting_recipies = new Array<Recipe>();
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta) { }
@@ -19,14 +19,19 @@ public partial class CraftingMenu : PanelContainer
         foreach (Control c in parent.GetChildren())
             c.QueueFree();
 
-        /*QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
-            QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
-        );*/
-
         for (int i = 0; i < crafting_recipies.Count; i++)
         {
-            Recipe recipe = new Recipe();
-            recipe = crafting_recipies[i] as Recipe;
+            if (crafting_recipies[i].unlockRequirements != null)
+                if (crafting_recipies[i].unlockRequirements.Count > 0)
+                    if (
+                        !GlobalFunctions.CheckAllRequirements(
+                            crafting_recipies[i].unlockRequirements
+                        )
+                    )
+                        continue;
+
+            Recipe recipe = crafting_recipies[i];
+
             itemRecipeUI irUI = (itemRecipeUI)recipe_slot.Instantiate();
             irUI.craftingMenu = this;
             irUI.output_item_hbox.InitItemUI(

@@ -111,13 +111,13 @@ public partial class QuestManager : Node
     {
         RemoveQuestItems();
         QuestMenu.INSTANCE.CloseQuestMenu();
-        player_ui.CompleteQuestPanelShow();
-
         if (current_quest_id == quests.Count - 1)
         {
             Debug.Print("Last Quest achieved");
+            player_ui.LastQuestPanelShow();
             return;
         }
+        player_ui.CompleteQuestPanelShow();
 
         current_quest_id++;
         StartQuest();

@@ -18,3 +18,4 @@ amount = 5
 [resource]
 script = ExtResource("1_mxkls")
 requiered_items = Array[Object]([SubResource("Resource_hnenm"), SubResource("Resource_odrd4")])
+unlockRequirements = null

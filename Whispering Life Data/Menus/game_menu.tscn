@@ -29,7 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://y7p1sna6t1lh" path="res://Sprites/Mystic_Island.png" id="17_i4snh"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="17_iq1ex"]
 [ext_resource type="Texture2D" uid="uid://d24spwn8n1w7w" path="res://Sprites/Flaggs/DE_FLAG.png" id="18_1qrrt"]
-[ext_resource type="Resource" uid="uid://cydbh0i4ql0ev" path="res://Recipes/Toolparts/Wooden_Handle.tres" id="18_5towo"]
 [ext_resource type="Texture2D" uid="uid://b52ffyqisk5i1" path="res://Sprites/Mining_Island.png" id="18_k8cqj"]
 [ext_resource type="Texture2D" uid="uid://w1k1mv22ckvl" path="res://Sprites/Items/Icons_3rd/Stone.png" id="18_ou1xm"]
 [ext_resource type="StyleBox" uid="uid://ch5faigjhjxlm" path="res://Menus/OptionButtonStylePressed.tres" id="18_q7nbm"]
@@ -44,6 +43,7 @@
 [ext_resource type="Resource" uid="uid://br1o134cy0afx" path="res://Recipes/Toolparts/Wooden_Hoe_Head_Recipe.tres" id="21_13841"]
 [ext_resource type="Script" path="res://Menus/TranslationLabel.cs" id="26_tl5yt"]
 [ext_resource type="Script" path="res://Menus/SaveLoadTab.cs" id="27_ku6dj"]
+[ext_resource type="Resource" uid="uid://cdmu1tdyjj3rf" path="res://Recipes/Basics/Iron_Block_Recipe.tres" id="30_ai4s4"]
 [ext_resource type="Resource" uid="uid://cfioc6hnfrwbd" path="res://Recipes/Armor/Mystic_Armor_Chestplate_Recipe.tres" id="31_33fii"]
 [ext_resource type="Resource" uid="uid://f3knkdcpxhnb" path="res://Recipes/Armor/Mystic_Armor_Helm_Recipe.tres" id="32_d7b8n"]
 [ext_resource type="Resource" uid="uid://blm4o283swyoa" path="res://Recipes/Armor/Mystic_Armor_Leggings_Recipe.tres" id="33_d8q64"]
@@ -1563,7 +1563,7 @@ label_translation_string = "CRAFTING_MENU_TOPBAR_RESOURCE_NEEDED"
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("VBoxContainer")
-crafting_recipies = [ExtResource("12_h3bpf"), ExtResource("13_o680h")]
+crafting_recipies = [ExtResource("12_h3bpf"), ExtResource("13_o680h"), ExtResource("30_ai4s4")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuBasic"]
 layout_mode = 2
@@ -1583,7 +1583,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("VBoxContainer")
-crafting_recipies = [ExtResource("18_vv5t7"), ExtResource("19_f07lv"), ExtResource("20_jycfp"), ExtResource("18_5towo"), ExtResource("21_13841")]
+crafting_recipies = [ExtResource("18_vv5t7"), ExtResource("19_f07lv"), ExtResource("20_jycfp"), ExtResource("21_13841")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuToolparts"]
 layout_mode = 2

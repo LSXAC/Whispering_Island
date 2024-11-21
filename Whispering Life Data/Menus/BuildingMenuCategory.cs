@@ -34,7 +34,7 @@ public partial class BuildingMenuCategory : ColorRect
             if (packed.category == category) //Check if Requirement is there
             {
                 if (packed.requirements != null || packed.requirements.Count > 0)
-                    if (!CheckAllRequirements(packed.requirements))
+                    if (!GlobalFunctions.CheckAllRequirements(packed.requirements))
                         continue;
                 InitBuildings(packed);
             }
@@ -51,20 +51,5 @@ public partial class BuildingMenuCategory : ColorRect
     public void OnVisiblityChange()
     {
         SetBuildings();
-    }
-
-    private bool CheckAllRequirements(Array<BuildingRequirement> br)
-    {
-        foreach (BuildingRequirement temp in br)
-        {
-            if (!ResearchTab.INSTANCE.research_saves.ContainsKey(temp.item_id))
-                return false;
-            if (
-                ResearchTab.INSTANCE.research_saves[temp.item_id].research_level
-                < (int)temp.required_level
-            )
-                return false;
-        }
-        return true;
     }
 }

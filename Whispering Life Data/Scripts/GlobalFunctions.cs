@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Godot;
+using Godot.Collections;
 
 public partial class GlobalFunctions : Node2D
 {
@@ -10,6 +11,21 @@ public partial class GlobalFunctions : Node2D
                 return true;
 
         return false;
+    }
+
+    public static bool CheckAllRequirements(Array<UnlockRequirement> br)
+    {
+        foreach (UnlockRequirement temp in br)
+        {
+            if (!ResearchTab.INSTANCE.research_saves.ContainsKey(temp.item_id))
+                return false;
+            if (
+                ResearchTab.INSTANCE.research_saves[temp.item_id].research_level
+                < (int)temp.required_level
+            )
+                return false;
+        }
+        return true;
     }
 
     public static float GetDistanceToPlayer(Vector2 nodePosition)

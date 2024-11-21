@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://eii6r53vob16" path="res://Recipes/Building_Recipies/Belt_Recipe.tres" id="1_2gb77"]
 [ext_resource type="PackedScene" uid="uid://cvinbig8n3cbp" path="res://Placeable/BeltTunnel.tscn" id="2_ienho"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/BuildingRequirement.cs" id="3_3osyc"]
+[ext_resource type="Script" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="3_3osyc"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_lgvyq"]
 
 [sub_resource type="Resource" id="Resource_1ude3"]

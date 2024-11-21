@@ -82,6 +82,11 @@ public partial class ProcessBuilding : MachineBase
             return false;
 
         for (int i = 0; i < recipes.Count; i++)
+        {
+            if (recipes[i].unlockRequirement != null || recipes[i].unlockRequirement.Count > 0)
+                if (!GlobalFunctions.CheckAllRequirements(recipes[i].unlockRequirement))
+                    continue;
+
             if (recipes[i].import_item_info == import_item_info)
             {
                 current_recipe = i;
@@ -90,7 +95,7 @@ public partial class ProcessBuilding : MachineBase
                 else if (export_item_info == recipes[i].export_item_info)
                     return true;
             }
-
+        }
         return false;
     }
 

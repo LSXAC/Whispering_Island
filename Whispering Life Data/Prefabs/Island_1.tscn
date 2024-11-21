@@ -31,7 +31,6 @@ tile_map_data = PackedByteArray("AAAEAPn/AQACAAAAAAAFAPr/AQACAAAAAAAFAPv/AQACAAA
 tile_set = ExtResource("2_yo60f")
 
 [node name="IslandProperties" type="Node2D" parent="."]
-visible = false
 y_sort_enabled = true
 
 [node name="BridgeStartPoints" type="Node2D" parent="IslandProperties"]
