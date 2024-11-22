@@ -11,6 +11,9 @@ public partial class Game_Manager : Node2D
     [Export]
     public Building_Placer building_placer;
 
+    [Export]
+    public PackedScene dialogeScene;
+
     public static string game_version = "a.0.1";
 
     public static Game_Manager INSTANCE = null;
@@ -134,11 +137,11 @@ public partial class Game_Manager : Node2D
         save_state = (SaveState)SaveState.LoadSave();
         TranslationServer.SetLocale(save_state.current_language);
         tutorial_finished = save_state.tutorial_finished;
-        /*if (!tutorial_finished)
+        if (!tutorial_finished)
         {
             StartTutorial();
             return;
-        }*/
+        }
         try
         {
             SaveLoadTab.dateTime_from_save = DateTime.Parse(save_state.dateTime_save_string);
@@ -215,52 +218,34 @@ public partial class Game_Manager : Node2D
             LoadGame();
         else
         {
-            NewGame(true);
-            //StartTutorial();
+            NewGame();
+            StartTutorial();
         }
     }
 
     public void NewGame(bool skip_tutorial = false)
     {
         Debug.Print("Game_Manager - New SaveState");
-        GetTree().ReloadCurrentScene();
         save_state = new SaveState();
         if (skip_tutorial)
             save_state.tutorial_finished = true;
         save_state.WriteSave();
-        LoadGame();
+        //LoadGame();
     }
 
-    /* private void StartTutorial()
-     {
-         Debug.Print("Start Tutorial");
-         if (TranslationServer.GetLocale() == "en_EN")
-         {
-             var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial_General_ENG.dialogue");
-             GlobalFunctions.MoveCamera(new Vector2(0, -256));
-             DialogueManager.TranslationSource = TranslationSource.None;
-             DialogueManager.ShowDialogueBalloon(dialogue, "Tutorial_Eng");
-             return;
-         }
-         if (TranslationServer.GetLocale() == "de_DE")
-         {
-             var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial_General.dialogue");
-             GlobalFunctions.MoveCamera(new Vector2(0, -256));
-             DialogueManager.TranslationSource = TranslationSource.None;
-             DialogueManager.ShowDialogueBalloon(dialogue, "Tutorial");
-             return;
-         }
-     }*/
+    private void StartTutorial()
+    {
+        Debug.Print("Start Tutorial");
+        var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial_General.dialogue");
+        GlobalFunctions.MoveCamera(new Vector2(0, -256));
+        DialogueManager.TranslationSource = TranslationSource.CSV;
+        DialogueManager.ShowExampleDialogueBalloon(dialogue, "Tutorial");
+        return;
+    }
 
     public void GameOver()
     {
         player_ui.INSTANCE.gameover_panel.Visible = true;
         gameover = true;
-    }
-
-    public void LoadIslandResources()
-    {
-        //foreach (Island_Properties ip in GetTree().GetNodesInGroup("Island_Properties"))
-        //ip.ost.SetObjectsOnTilemap();
     }
 }

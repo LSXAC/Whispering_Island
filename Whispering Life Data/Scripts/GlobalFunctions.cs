@@ -1,9 +1,17 @@
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using Godot;
 using Godot.Collections;
 
 public partial class GlobalFunctions : Node2D
 {
+    public static GlobalFunctions INSTANCE;
+
+    public override void _Ready()
+    {
+        INSTANCE = this;
+    }
+
     public static bool HasResearchLevel(Inventory.ITEM_ID id, Database.UPGRADE_LEVEL level)
     {
         if (ResearchTab.INSTANCE.research_saves.ContainsKey(id))
@@ -70,7 +78,6 @@ public partial class GlobalFunctions : Node2D
         Player.camera.Enabled = true;
         Player.camera.Position = Godot.Vector2.Zero;
         Game_Manager.In_Cutscene = false;
-        Game_Manager.INSTANCE.LoadIslandResources();
         Game_Manager.INSTANCE.SaveGame();
     }
 

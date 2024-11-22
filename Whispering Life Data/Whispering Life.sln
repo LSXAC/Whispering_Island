@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whispering Life", "Whispering Life.csproj", "{CB4C8C05-8281-4101-865F-77619EB4B519}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whispering Life", "Whispering Life.csproj", "{028BCCD4-A82F-40A8-A658-3DF9BF3EE7A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CB4C8C05-8281-4101-865F-77619EB4B519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CB4C8C05-8281-4101-865F-77619EB4B519}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CB4C8C05-8281-4101-865F-77619EB4B519}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{CB4C8C05-8281-4101-865F-77619EB4B519}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{CB4C8C05-8281-4101-865F-77619EB4B519}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{CB4C8C05-8281-4101-865F-77619EB4B519}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{028BCCD4-A82F-40A8-A658-3DF9BF3EE7A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{028BCCD4-A82F-40A8-A658-3DF9BF3EE7A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{028BCCD4-A82F-40A8-A658-3DF9BF3EE7A4}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{028BCCD4-A82F-40A8-A658-3DF9BF3EE7A4}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{028BCCD4-A82F-40A8-A658-3DF9BF3EE7A4}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{028BCCD4-A82F-40A8-A658-3DF9BF3EE7A4}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal

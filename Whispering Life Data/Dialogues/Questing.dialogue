@@ -3,7 +3,7 @@
 % Boss: Denk dran, die Zeit läuft!
 % Boss: ICH HAB HUNGER!
 %2 Boss: Lass mich nicht so lange warten!
-do Global.LeaveDialogue()
+do GlobalFunctions.LeaveDialogue()
 
 => END
 
@@ -12,6 +12,6 @@ do Global.LeaveDialogue()
 % Boss: The time is running!
 % Boss: I'AM HUNGRY!
 %2 Boss: Don't let me wait so long!
-do Global.LeaveDialogue()
+do GlobalFunctions.LeaveDialogue()
 
 => END
