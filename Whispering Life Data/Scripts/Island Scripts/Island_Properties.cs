@@ -81,6 +81,7 @@ public partial class Island_Properties : Node2D
     {
         //Get Signs und Set next_ip (from instantiated Island) = current_ip;
         //Also disable Signs, when from X <- Y | X (Right), Y (Left) Depending on Matrix
+
         Node2D node = null;
         if (
             (Game_Manager.IsIslandOnMatrix(matrix_x, matrix_y - 1) || up_closed)
@@ -89,6 +90,11 @@ public partial class Island_Properties : Node2D
         {
             node = signs_parent.GetNode<Node2D>("UpSign");
             bridge_collision_parent.GetNode<CollisionShape2D>("Up").Disabled = true;
+            if (node != null)
+                node.QueueFree();
+            //Get Island_Properties of Matrix overlapping
+            // Sign Left I1 and Right I2 -> disabled
+            //Has not Bridge (LEFT_RIGHT or RIGHT_LEFT), build bridge
         }
 
         if (
@@ -98,6 +104,8 @@ public partial class Island_Properties : Node2D
         {
             node = signs_parent.GetNode<Node2D>("DownSign");
             bridge_collision_parent.GetNode<CollisionShape2D>("Down").Disabled = true;
+            if (node != null)
+                node.QueueFree();
         }
 
         if (
@@ -107,6 +115,8 @@ public partial class Island_Properties : Node2D
         {
             node = signs_parent.GetNode<Node2D>("RightSign");
             bridge_collision_parent.GetNode<CollisionShape2D>("Right").Disabled = true;
+            if (node != null)
+                node.QueueFree();
         }
 
         if (
@@ -116,10 +126,9 @@ public partial class Island_Properties : Node2D
         {
             node = signs_parent.GetNode<Node2D>("LeftSign");
             bridge_collision_parent.GetNode<CollisionShape2D>("Left").Disabled = true;
+            if (node != null)
+                node.QueueFree();
         }
-        if (node == null)
-            return;
-        node.QueueFree();
     }
 
     public void CreateAnotherIsland(
@@ -183,8 +192,6 @@ public partial class Island_Properties : Node2D
                 ip.matrix_y = matrix_y + 1;
                 ip.matrix_x = matrix_x;
                 Game_Manager.SetIslandOnMatrix(matrix_x, matrix_y + 1, true);
-                //x = GetParent<Node2D>().Position.X+bridge_start_points.GetNode<Node2D>("Down").Position.X;
-                //y = bridge_start_points.GetNode<Node2D>("Down").Position.Y+GetParent<Node2D>().Position.Y+bridge_parts_amount*bridge_size_width;
                 SetPositionToNewIsland(island, ip);
                 SetBridges(
                     bridge_start_points.GetNode<Node2D>("Down").Position,
@@ -209,7 +216,6 @@ public partial class Island_Properties : Node2D
         island_menu.instance.current_sign = null;
         GetSigns();
         ip.GetSigns();
-        //ip.ReplaceTiles();
     }
 
     private void SetPositionToNewIsland(Node2D island, Island_Properties ip)
@@ -218,14 +224,6 @@ public partial class Island_Properties : Node2D
         y = ip.matrix_y * 16 * 32;
         island.Position = new Vector2(x, y);
     }
-
-    /*public void ReplaceTiles()
-    {
-        for(int x = -8; x<9; x++)
-            for(int y = -8; y<9;y++){
-                outside_tilemap.SetCell(0,outside_tilemap.LocalToMap(new Vector2(Position.X+x*32+matrix_x * 16*32,Position.Y+y*32+matrix_y * 16*32)),-1);
-            }
-    }*/
 
     private void SetBridges(Vector2 start, DIRECTION dir, Island_Properties ip_t)
     {

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class Sign : Building_Node
@@ -15,5 +16,7 @@ public partial class Sign : Building_Node
             return;
         GameMenu.INSTANCE.OnOpenIslandTab();
         island_menu.instance.current_sign = this;
+
+        Debug.Print(Game_Manager.island_matrix.ToString());
     }
 }

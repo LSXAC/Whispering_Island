@@ -85,10 +85,12 @@ position = Vector2(-7, -12)
 texture = ExtResource("5_bvfyh")
 
 [node name="Giver" parent="." node_paths=PackedStringArray("building") instance=ExtResource("8_iut5d")]
+direction_not_giving = 1
 building = NodePath("..")
 
 [node name="Giver2" parent="." node_paths=PackedStringArray("building") instance=ExtResource("8_iut5d")]
 position = Vector2(23, -9)
+direction_not_giving = 3
 building = NodePath("..")
 
 [node name="Holder" parent="Giver2" index="0"]

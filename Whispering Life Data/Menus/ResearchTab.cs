@@ -37,9 +37,13 @@ public partial class ResearchTab : ColorRect
     [Export]
     public ColorRect working_panel;
 
+    [Export]
+    public int Research_Points = 0;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        Research_Points = 0;
         INSTANCE = this;
         ClearText();
     }
@@ -162,7 +166,7 @@ public partial class ResearchTab : ColorRect
             Debug.Print(
                 "Level" + tab_container.CurrentTab + " added to " + research_saves[id].ToString()
             );
-
+        Research_Points += 1;
         Debug.Print(research_saves[id].research_level + " current level <:");
         tab_container.GetChild(0).QueueFree();
         working_panel.Visible = false;

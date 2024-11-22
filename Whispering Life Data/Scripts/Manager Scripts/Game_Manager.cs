@@ -69,7 +69,7 @@ public partial class Game_Manager : Node2D
         Node2D main_island = island_parent.GetNode<Node2D>("MainIsland");
         Island_Properties mi = main_island.GetNode<Node2D>("IslandProperties") as Island_Properties;
 
-        TranslationServer.SetLocale("en");
+        TranslationServer.SetLocale("en_EN");
 
         CreateIslands();
         CheckGameSave();
@@ -112,6 +112,7 @@ public partial class Game_Manager : Node2D
         save_state.research_saves = ResearchTab.INSTANCE.research_saves;
 
         save_state.skill_saves = Skilltree.skill_progress;
+        save_state.Research_Points = ResearchTab.INSTANCE.Research_Points;
 
         //Audio
         save_state.master_volume = AudioServer.GetBusVolumeDb(
@@ -133,11 +134,11 @@ public partial class Game_Manager : Node2D
         save_state = (SaveState)SaveState.LoadSave();
         TranslationServer.SetLocale(save_state.current_language);
         tutorial_finished = save_state.tutorial_finished;
-        if (!tutorial_finished)
+        /*if (!tutorial_finished)
         {
             StartTutorial();
             return;
-        }
+        }*/
         try
         {
             SaveLoadTab.dateTime_from_save = DateTime.Parse(save_state.dateTime_save_string);
@@ -166,13 +167,15 @@ public partial class Game_Manager : Node2D
         building_placer.machine_saves = save_state.machine_saves;
         building_placer.placeable_saves = save_state.placeable_saves;
         building_placer.LoadPlacedObjects();
-        Skilltree.skill_progress = save_state.skill_saves;
 
         // Start Quest
         QuestManager.INSTANCE.StartQuest(save_state.quest_save);
 
         ResearchTab.INSTANCE.research_slot_item = save_state.char_save.research_slot_item;
         ResearchTab.INSTANCE.research_saves = save_state.research_saves;
+
+        Skilltree.skill_progress = save_state.skill_saves;
+        ResearchTab.INSTANCE.Research_Points = save_state.Research_Points;
 
         game_time_since_start = save_state.game_time_since_start;
         game_timer.Start();
@@ -212,8 +215,8 @@ public partial class Game_Manager : Node2D
             LoadGame();
         else
         {
-            NewGame();
-            StartTutorial();
+            NewGame(true);
+            //StartTutorial();
         }
     }
 
@@ -225,16 +228,29 @@ public partial class Game_Manager : Node2D
         if (skip_tutorial)
             save_state.tutorial_finished = true;
         save_state.WriteSave();
+        LoadGame();
     }
 
-    private void StartTutorial()
-    {
-        Debug.Print("Start Tutorial");
-        var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial.dialogue");
-        GlobalFunctions.MoveCamera(new Vector2(0, -256));
-        DialogueManager.TranslationSource = TranslationSource.CSV;
-        DialogueManager.ShowDialogueBalloon(dialogue, "Tutorial");
-    }
+    /* private void StartTutorial()
+     {
+         Debug.Print("Start Tutorial");
+         if (TranslationServer.GetLocale() == "en_EN")
+         {
+             var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial_General_ENG.dialogue");
+             GlobalFunctions.MoveCamera(new Vector2(0, -256));
+             DialogueManager.TranslationSource = TranslationSource.None;
+             DialogueManager.ShowDialogueBalloon(dialogue, "Tutorial_Eng");
+             return;
+         }
+         if (TranslationServer.GetLocale() == "de_DE")
+         {
+             var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial_General.dialogue");
+             GlobalFunctions.MoveCamera(new Vector2(0, -256));
+             DialogueManager.TranslationSource = TranslationSource.None;
+             DialogueManager.ShowDialogueBalloon(dialogue, "Tutorial");
+             return;
+         }
+     }*/
 
     public void GameOver()
     {

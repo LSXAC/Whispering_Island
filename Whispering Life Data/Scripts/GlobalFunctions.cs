@@ -17,6 +17,9 @@ public partial class GlobalFunctions : Node2D
     {
         foreach (UnlockRequirement temp in br)
         {
+            if (ResearchTab.INSTANCE == null)
+                return false;
+
             if (!ResearchTab.INSTANCE.research_saves.ContainsKey(temp.item_id))
                 return false;
             if (

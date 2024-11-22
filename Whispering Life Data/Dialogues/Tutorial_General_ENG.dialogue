@@ -1,0 +1,73 @@
+
+
+~ Tutorial_Eng
+
+Boss: So you've decided to feed me for [b][color=gold]eternity[/color][/b]?
+do GlobalFunctions.MoveCamera(Vector2(0,-208))
+Spieler: Ha! That's right.
+do GlobalFunctions.MoveCamera(Vector2(0,-256))
+Boss: And what now?
+do GlobalFunctions.MoveCamera(Vector2(0,-208))
+Spieler: Good question, let's leave it at that!
+do GlobalFunctions.MoveCamera(Vector2(0,-256))
+Boss: We still have to do a [b][color=gold]Tutorial [/color][/b].
+Boss: If you want to or not.
+Boss: Maybe you*ve got no idea [b][color=gold]how to play[/color][/b] the game!!
+do GlobalFunctions.MoveCamera(Vector2(0,-208))
+Spieler: Okay Boss! What should I do now?
+do GlobalFunctions.MoveCamera(Vector2(0,-256))
+Boss: Now then, for [b][color=gold]now[/color][/b] you need to learn how to farm [b][color=gold]resources[/color][/b].
+do GlobalFunctions.MoveCamera(Vector2(0,-208))
+Spieler: Sounds about right!isch!
+Spieler: At least you've got a Plan.
+=> Holz
+
+~ Holz
+do GlobalFunctions.MoveCamera(Vector2(32,-160))
+do GlobalFunctions.OutlineTree()
+Boss: ATTENTION!! That's [b][color=gold]wood[/color][/b].
+Boss: If you chop that tree down you'll get [b][color=gold]wood[/color][/b].
+Boss: If you do that a few times in a row it'll eventually break and [b][color=gold]gives a bonus[/color][/b]!
+do GlobalFunctions.RemoveOutlineTree()
+do GlobalFunctions.MoveCamera(Vector2(0,-208))
+Boss: Understood?
+- Awesome!
+- I don't get it :/
+	Spieler: Can you explain that again?
+	=> Holz
+
+do GlobalFunctions.QueueFreeTree()
+Spieler: That's amazing! I guess it'S gonna be the same for [b][color=gold]stone[/color][/b]?
+do GlobalFunctions.MoveCamera(Vector2(0,-256))
+Boss: You finally got it. Soon i'll have something to eat :D
+Boss: You'll have to [b][color=gold]process your ressources[/color][/b] later on since I don't want to eat the same thing over and over again.
+Boss: A few things can only be obtained by [b][color=gold]using a machine[/color][/b] to craft them. e.g. Charcoal by using the oven.
+=> Steuerung
+
+~ Steuerung
+do GlobalFunctions.MoveCamera(Vector2(0,-208))
+Spieler: And now hurry okay?
+Spieler: How do the [b][color=gold]control[/color][/b] even work?
+do GlobalFunctions.MoveCamera(Vector2(0,-256))
+Boss: Right. Use [b][color=gold]WASD[/color][/b] to move around and the [b][color=gold]mouse[/color][/b] to interact with things.
+Boss: And remember to press [b][color=gold]ESC (Inventory)[/color][/b] or [b][color=gold]J (Buildmenu)[/color][/b] from time to time.
+Boss: Could be useful while playing the game.
+do GlobalFunctions.MoveCamera(Vector2(0,-208))
+- Makes sense.
+- I think you'll have to explain the controlls again.
+	=> Steuerung
+	
+do GlobalFunctions.MoveCamera(Vector2(0,-256))
+Boss: Allright. With that you should know 
+Boss: If you still need [b][color=gold]more help press ESC (help)[/color][/b].
+Boss: Depending on your progress, there might be some usefull information.
+Boss: I'll start the [b][color=gold]Timer[/color][/b] for when I [b][color=gold]need to eat[/color][/b] sometihing again.
+Boss: Try to stay within the time limit, bring me the ressources I want and then I won't eat you. 
+do GlobalFunctions.MoveCamera(Vector2(0,-208))
+Spieler: Damn. Almost makes you want to eat a pice of wood yourself.
+Spieler: AlSo let me get that right, [b][color=gold]farm[/color][/b] resscourses, [b][color=gold]process[/color][/b] them, [b][color=gold]automate[/color][/b] the process eventually and always [b][color=gold]get the island something to eat[/color][/b].
+Spieler: Even I can do that.
+
+do GlobalFunctions.StartAfterTutorial()
+do GlobalFunctions.LeaveDialogue()
+=> END

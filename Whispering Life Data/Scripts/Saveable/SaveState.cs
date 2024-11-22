@@ -27,6 +27,9 @@ public partial class SaveState : Resource
     public Array<PlaceableSave> placeable_saves = new Array<PlaceableSave>();
 
     [Export]
+    public int Research_Points = 0;
+
+    [Export]
     public bool tutorial_finished = false;
 
     [Export]
@@ -70,5 +73,10 @@ public partial class SaveState : Resource
     public static Resource LoadSave()
     {
         return ResourceLoader.Load(save_path, "", ResourceLoader.CacheMode.Replace);
+    }
+
+    public static void RemoveSave()
+    {
+        DirAccess.RemoveAbsolute(save_path);
     }
 }

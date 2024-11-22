@@ -7,6 +7,9 @@ public partial class Skilltree : ColorRect
 {
     [Export]
     public Array<SkillBox> skillboxes;
+
+    [Export]
+    public Label research_points_label;
     public static int[] skill_progress = new int[4] { -1, -1, -1, -1 };
 
     public enum SKILLTYPE
@@ -27,6 +30,11 @@ public partial class Skilltree : ColorRect
 
     public void OnVisiblityChanged()
     {
+        research_points_label.Text =
+            TranslationServer.Translate("SKILLTREE_RESEARCH_POINTS")
+            + ": "
+            + ResearchTab.INSTANCE.Research_Points;
+
         foreach (SkillBox box in skillboxes)
             box.InitSkillBox();
     }

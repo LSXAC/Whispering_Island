@@ -91,9 +91,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
-offset_top = 40.0
+offset_top = 27.0
 offset_right = -40.0
-offset_bottom = -16.0
+offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -890,7 +890,7 @@ text = "Passed Research time will not be saved,
 only result"
 horizontal_alignment = 1
 
-[node name="Skilltree" type="ColorRect" parent="Background" node_paths=PackedStringArray("skillboxes")]
+[node name="Skilltree" type="ColorRect" parent="Background" node_paths=PackedStringArray("skillboxes", "research_points_label")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -903,6 +903,7 @@ grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
 script = ExtResource("16_x6qgy")
 skillboxes = [NodePath("MarginContainer/VBoxContainer/SkillBox"), NodePath("MarginContainer/VBoxContainer/SkillBox2"), NodePath("MarginContainer/VBoxContainer/SkillBox3"), NodePath("MarginContainer/VBoxContainer/SkillBox4")]
+research_points_label = NodePath("MarginContainer/VBoxContainer/PointsHeader/MarginContainer/VBoxContainer/HBoxContainer/Label")
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree"]
 layout_mode = 1
@@ -919,6 +920,38 @@ theme_override_constants/margin_bottom = 5
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/Skilltree/MarginContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+
+[node name="PointsHeader" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/PointsHeader"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/PointsHeader/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/PointsHeader/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/PointsHeader/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+text = "Research Points: 1"
+horizontal_alignment = 1
 
 [node name="SkillBox" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -948,29 +981,41 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
 text = "Movement"
 horizontal_alignment = 1
 
 [node name="CheckBox0" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
 text = "+10%"
 
 [node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
 text = "+15%"
 
 [node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
 text = "+20%"
 
 [node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
 text = "10%"
 horizontal_alignment = 2
 
 [node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
 text = "Upgrade"
 
 [node name="SkillBox2" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
@@ -1002,29 +1047,41 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
 text = "Movement"
 horizontal_alignment = 1
 
 [node name="CheckBox0" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
 text = "+10%"
 
 [node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
 text = "+15%"
 
 [node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
 text = "+20%"
 
 [node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
 text = "10%"
 horizontal_alignment = 2
 
 [node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
 text = "Upgrade"
 
 [node name="SkillBox3" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
@@ -1056,29 +1113,41 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
 text = "Movement"
 horizontal_alignment = 1
 
 [node name="CheckBox0" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
 text = "+10%"
 
 [node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
 text = "+15%"
 
 [node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
 text = "+20%"
 
 [node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
 text = "10%"
 horizontal_alignment = 2
 
 [node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
 text = "Upgrade"
 
 [node name="SkillBox4" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
@@ -1110,29 +1179,41 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Movement"
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+text = "Erforschungszeit"
 horizontal_alignment = 1
 
 [node name="CheckBox0" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
 text = "+10%"
 
 [node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
 text = "+15%"
 
 [node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
 text = "+20%"
 
 [node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
 text = "10%"
 horizontal_alignment = 2
 
 [node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
 text = "Upgrade"
 
 [node name="IslandTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("button1", "button2", "button3", "button4")]

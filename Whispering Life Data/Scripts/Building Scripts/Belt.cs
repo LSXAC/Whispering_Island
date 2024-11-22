@@ -61,12 +61,6 @@ public partial class Belt : placeable_building
                             area.GetParent<BeltTunnel>().connected_itemholder.receive_item(item);
                         }
 
-            if (area.GetParent() is Trashcan)
-                if (area.GetParent<Trashcan>().can_receive_item())
-                {
-                    var item = item_holder.offload_item();
-                    area.GetParent<Trashcan>().receive_item(item);
-                }
             if (area.GetParent() is Taker)
             {
                 if (area.GetParent().GetParent() is ProcessBuilding)

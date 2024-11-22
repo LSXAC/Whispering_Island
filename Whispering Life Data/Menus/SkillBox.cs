@@ -24,6 +24,7 @@ public partial class SkillBox : ColorRect
                 lvl_boxes.Add((CheckBox)node);
         }
         resultLabel = hbc.GetNode<Label>("ResultLabel");
+        resultLabel.Text = "";
         btn = hbc.GetNode<Button>("Button");
         btn.Pressed += () => OnUpgradeButton();
         InitSkillBox();
@@ -31,18 +32,18 @@ public partial class SkillBox : ColorRect
 
     public void InitSkillBox()
     {
-        skillLabel.Text = type.ToString();
+        skillLabel.Text = TranslationServer.Translate("SKILLTREE_" + type.ToString()) + ":";
         foreach (CheckBox box in lvl_boxes)
             box.ButtonPressed = false;
 
         for (int i = 0; i < 3; i++)
         {
             lvl_boxes[i].Text = Skilltree.bonis[(int)type, i].ToString("P");
-            resultLabel.Text = Skilltree.bonis[(int)type, i].ToString("P");
         }
-        for (int i = 0; i < Skilltree.skill_progress[(int)type]; i++)
+        for (int i = 0; i < Skilltree.skill_progress[(int)type] + 1; i++)
         {
             lvl_boxes[i].ButtonPressed = true;
+            resultLabel.Text = Skilltree.bonis[(int)type, i].ToString("P");
         }
     }
 
@@ -51,8 +52,12 @@ public partial class SkillBox : ColorRect
         if (Skilltree.skill_progress[(int)type] == 3)
             return;
 
+        if (ResearchTab.INSTANCE.Research_Points < 1)
+            return;
+
         if (Skilltree.skill_progress[(int)type] < 3)
             Skilltree.skill_progress[(int)type]++;
+        ResearchTab.INSTANCE.Research_Points -= 1;
         InitSkillBox();
     }
 }

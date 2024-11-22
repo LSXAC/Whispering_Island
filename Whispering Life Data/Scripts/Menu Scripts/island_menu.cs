@@ -64,10 +64,10 @@ public partial class island_menu : ColorRect
     {
         Debug.Print("Get Dir.");
         if (dir == Island_Properties.DIRECTION.UP)
-            if (Game_Manager.IsIslandOnMatrix(current_ip.matrix_x, current_ip.matrix_y + 1))
+            if (Game_Manager.IsIslandOnMatrix(current_ip.matrix_x, current_ip.matrix_y - 1))
                 return;
         if (dir == Island_Properties.DIRECTION.DOWN)
-            if (Game_Manager.IsIslandOnMatrix(current_ip.matrix_x, current_ip.matrix_y - 1))
+            if (Game_Manager.IsIslandOnMatrix(current_ip.matrix_x, current_ip.matrix_y + 1))
                 return;
         if (dir == Island_Properties.DIRECTION.LEFT)
             if (Game_Manager.IsIslandOnMatrix(current_ip.matrix_x - 1, current_ip.matrix_y))
@@ -75,6 +75,7 @@ public partial class island_menu : ColorRect
         if (dir == Island_Properties.DIRECTION.RIGHT)
             if (Game_Manager.IsIslandOnMatrix(current_ip.matrix_x + 1, current_ip.matrix_y))
                 return;
+
         Debug.Print("Found Dir.");
         switch (unique_id)
         {

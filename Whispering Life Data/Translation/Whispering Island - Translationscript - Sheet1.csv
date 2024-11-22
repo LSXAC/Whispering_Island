@@ -102,11 +102,11 @@ WORLD_RESOURCE_SAND_DESC,Mine to receive sand,Erhalte Sand beim abbauen
 WORLD_RESOURCE_SAND_STONE,Sandstone,Sandstein
 WORLD_RESOURCE_SAND_STONE_DESC,Mine to receive sandstone,Erhalte Sandstein beim abbauen
 ,,
-,,
-,,
-,,
-,,
-,,
+SKILLTREE_RESEARCH_POINTS,Research Points,Erforschungspunkte
+SKILLTREE_MOVEMENT,Movement,Beweglichkeit
+SKILLTREE_FATIGUE,Fatigue,Erschöpfung
+SKILLTREE_HIT,Hit,Schlag
+SKILLTREE_RESEARCH_TIME,Research Time,Erforschungszeit
 ,,
 ,,
 ,,

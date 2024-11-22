@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqc6xxau4eh7e"]
+[gd_scene load_steps=13 format=4 uid="uid://cqc6xxau4eh7e"]
 
 [ext_resource type="Script" path="res://Scripts/Building Scripts/ProductionMachine.cs" id="1_rsbck"]
 [ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="2_6bbma"]
@@ -43,6 +43,7 @@ collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
 z_index = -2
+tile_map_data = PackedByteArray("AAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAACAAAAAAAAAP//AAACAAAAAAD/////AAACAAAAAAD+////AAACAAAAAAD+//7/AAACAAAAAAD///7/AAACAAAAAAAAAP7/AAACAAAAAAA=")
 tile_set = ExtResource("5_8y1t1")
 
 [node name="MachineCollision" type="CollisionShape2D" parent="."]
@@ -85,10 +86,12 @@ position = Vector2(-7, -12)
 texture = ExtResource("6_iudpf")
 
 [node name="Giver" parent="." node_paths=PackedStringArray("building") instance=ExtResource("9_dvgwj")]
+direction_not_giving = 1
 building = NodePath("..")
 
 [node name="Giver2" parent="." node_paths=PackedStringArray("building") instance=ExtResource("9_dvgwj")]
 position = Vector2(23, -9)
+direction_not_giving = 3
 building = NodePath("..")
 
 [node name="Holder" parent="Giver2" index="0"]
