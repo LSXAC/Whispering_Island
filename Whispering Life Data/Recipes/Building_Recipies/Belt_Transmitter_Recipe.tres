@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3 uid="uid://daa5hlexm024t"]
+
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Items/Wood.tres" id="1_7luj8"]
+[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_3pw7c"]
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="3_ljta3"]
+[ext_resource type="Script" path="res://Scripts/Resources/Recipe.cs" id="4_vghph"]
+
+[sub_resource type="Resource" id="Resource_hnenm"]
+script = ExtResource("2_3pw7c")
+item_info = ExtResource("1_7luj8")
+amount = 2
+
+[sub_resource type="Resource" id="Resource_odrd4"]
+script = ExtResource("2_3pw7c")
+item_info = ExtResource("3_ljta3")
+amount = 1
+
+[resource]
+script = ExtResource("4_vghph")
+requiered_items = Array[Object]([SubResource("Resource_hnenm"), SubResource("Resource_odrd4")])
+unlockRequirements = Array[Object]([])

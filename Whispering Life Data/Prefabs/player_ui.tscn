@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://j1cdgg7lep78"]
+[gd_scene load_steps=15 format=3 uid="uid://j1cdgg7lep78"]
 
 [ext_resource type="Script" path="res://Scripts/Player Scripts/player_ui.cs" id="1_m5svq"]
 [ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Menus/TranslationLabel.cs" id="7_vya4o"]
 [ext_resource type="Script" path="res://Menus/TranslationButton.cs" id="9_erkjv"]
 [ext_resource type="Script" path="res://Prefabs/EffectPanel.cs" id="11_r7w4g"]
+[ext_resource type="Script" path="res://Prefabs/SkilltreeBox.cs" id="12_bhbc1"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_x1xeh"]
 color = Color(0.141176, 0.141176, 0.141176, 1)
@@ -340,6 +341,56 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 2
+
+[node name="Skilltree_Box" type="Panel" parent="." node_paths=PackedStringArray("movement_label", "fatigue_label", "hit_label", "research_time")]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -107.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("12_bhbc1")
+movement_label = NodePath("VBoxContainer/Label")
+fatigue_label = NodePath("VBoxContainer/Label2")
+hit_label = NodePath("VBoxContainer/Label3")
+research_time = NodePath("VBoxContainer/Label4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Skilltree_Box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Skilltree_Box/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Movement: 1.05%"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Skilltree_Box/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Movement: 1.05%"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Skilltree_Box/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Movement: 1.05%"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Skilltree_Box/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Movement: 1.05%"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="button_down" from="GameOverPanel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButton"]

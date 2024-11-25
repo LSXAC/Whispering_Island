@@ -59,5 +59,6 @@ public partial class SkillBox : ColorRect
             Skilltree.skill_progress[(int)type]++;
         ResearchTab.INSTANCE.Research_Points -= 1;
         InitSkillBox();
+        Skilltree.GetSkillProgress(type);
     }
 }

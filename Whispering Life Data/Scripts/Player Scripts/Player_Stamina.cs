@@ -19,9 +19,14 @@ public partial class Player_Stamina : Node2D
         )
         {
             Player.INSTANCE.Velocity =
-                new Vector2(velo_x, velo_y).Normalized() * speed_mult * 1.75f;
+                new Vector2(velo_x, velo_y).Normalized()
+                * speed_mult
+                * 1.75f
+                * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.MOVEMENT);
             Player.INSTANCE.anim.SpeedScale = 1.5f;
-            current_stamina -= stamina_use;
+            current_stamina -=
+                stamina_use * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.FATIGUE);
+            ;
             Player.INSTANCE.player_stats.AddFatigue(0.01f);
         }
         else
@@ -32,7 +37,10 @@ public partial class Player_Stamina : Node2D
                 stamina_is_regenerating = false;
 
             Player.INSTANCE.player_stats.AddFatigue(0.0025f);
-            Player.INSTANCE.Velocity = new Vector2(velo_x, velo_y) * speed_mult;
+            Player.INSTANCE.Velocity =
+                new Vector2(velo_x, velo_y)
+                * speed_mult
+                * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.MOVEMENT);
             Player.INSTANCE.anim.SpeedScale = 1f;
         }
 

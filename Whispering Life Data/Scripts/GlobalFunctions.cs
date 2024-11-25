@@ -14,8 +14,8 @@ public partial class GlobalFunctions : Node2D
 
     public static bool HasResearchLevel(Inventory.ITEM_ID id, Database.UPGRADE_LEVEL level)
     {
-        if (ResearchTab.INSTANCE.research_saves.ContainsKey(id))
-            if (ResearchTab.INSTANCE.research_saves[id].research_level >= (int)level)
+        if (ResearchTab.research_saves.ContainsKey(id))
+            if (ResearchTab.research_saves[id].research_level >= (int)level)
                 return true;
 
         return false;
@@ -28,12 +28,9 @@ public partial class GlobalFunctions : Node2D
             if (ResearchTab.INSTANCE == null)
                 return false;
 
-            if (!ResearchTab.INSTANCE.research_saves.ContainsKey(temp.item_id))
+            if (!ResearchTab.research_saves.ContainsKey(temp.item_id))
                 return false;
-            if (
-                ResearchTab.INSTANCE.research_saves[temp.item_id].research_level
-                < (int)temp.required_level
-            )
+            if (ResearchTab.research_saves[temp.item_id].research_level < (int)temp.required_level)
                 return false;
         }
         return true;

@@ -237,7 +237,7 @@ public partial class Slot : Button
             if (GetItem() != null)
             {
                 CreateClickedItem();
-                ResearchTab.INSTANCE.research_slot_item = null;
+                ResearchTab.research_slot_item = null;
                 ResearchTab.INSTANCE.UpdateLevelTabs();
             }
         }
@@ -247,7 +247,7 @@ public partial class Slot : Button
                 return;
             if (GetItem() == null)
             {
-                ResearchTab.INSTANCE.research_slot_item = new ItemSave(
+                ResearchTab.research_slot_item = new ItemSave(
                     (int)Inventory.clicked_item.item_info.unique_id,
                     Inventory.clicked_item.amount
                 );

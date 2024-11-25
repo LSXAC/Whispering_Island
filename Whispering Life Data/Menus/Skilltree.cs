@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Godot;
 using Godot.Collections;
@@ -27,6 +28,20 @@ public partial class Skilltree : ColorRect
         { 0.2f, 0.4f, 0.6f },
         { -0.1f, -0.3f, -0.5f }
     };
+
+    public static float GetSkillProgress(SKILLTYPE type)
+    {
+        if (skill_progress[(int)type] == -1)
+        {
+            SkilltreeBox.INSTANCE.InitMove(type, 1);
+            return 1;
+        }
+        else
+        {
+            SkilltreeBox.INSTANCE.InitMove(type, bonis[(int)type, skill_progress[(int)type]] + 1);
+            return bonis[(int)type, skill_progress[(int)type]] + 1;
+        }
+    }
 
     public void OnVisiblityChanged()
     {

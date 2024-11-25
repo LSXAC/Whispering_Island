@@ -72,7 +72,7 @@ public partial class Game_Manager : Node2D
         Node2D main_island = island_parent.GetNode<Node2D>("MainIsland");
         Island_Properties mi = main_island.GetNode<Node2D>("IslandProperties") as Island_Properties;
 
-        TranslationServer.SetLocale("en_EN");
+        TranslationServer.SetLocale("de_DE");
 
         CreateIslands();
         CheckGameSave();
@@ -111,8 +111,8 @@ public partial class Game_Manager : Node2D
 
         save_state.dateTime_save_string = DateTime.Now.ToString();
 
-        save_state.char_save.research_slot_item = ResearchTab.INSTANCE.research_slot_item;
-        save_state.research_saves = ResearchTab.INSTANCE.research_saves;
+        save_state.char_save.research_slot_item = ResearchTab.research_slot_item;
+        save_state.research_saves = ResearchTab.research_saves;
 
         save_state.skill_saves = Skilltree.skill_progress;
         save_state.Research_Points = ResearchTab.INSTANCE.Research_Points;
@@ -174,8 +174,8 @@ public partial class Game_Manager : Node2D
         // Start Quest
         QuestManager.INSTANCE.StartQuest(save_state.quest_save);
 
-        ResearchTab.INSTANCE.research_slot_item = save_state.char_save.research_slot_item;
-        ResearchTab.INSTANCE.research_saves = save_state.research_saves;
+        ResearchTab.research_slot_item = save_state.char_save.research_slot_item;
+        ResearchTab.research_saves = save_state.research_saves;
 
         Skilltree.skill_progress = save_state.skill_saves;
         ResearchTab.INSTANCE.Research_Points = save_state.Research_Points;

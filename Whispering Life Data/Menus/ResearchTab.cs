@@ -5,8 +5,8 @@ using Godot.Collections;
 
 public partial class ResearchTab : ColorRect
 {
-    [Export]
-    public Dictionary<InventoryBase.ITEM_ID, ResearchSave> research_saves;
+    public static Dictionary<InventoryBase.ITEM_ID, ResearchSave> research_saves =
+        new Dictionary<InventoryBase.ITEM_ID, ResearchSave>();
 
     [Export]
     public TabContainer tab_container;
@@ -30,7 +30,7 @@ public partial class ResearchTab : ColorRect
     );
 
     public Array<ResearchSave> research_states = new Array<ResearchSave>();
-    public ItemSave research_slot_item = null;
+    public static ItemSave research_slot_item = null;
 
     public static ResearchTab INSTANCE = null;
 
@@ -134,6 +134,7 @@ public partial class ResearchTab : ColorRect
         //Remove Items, for Prototype, researching is only time consuming
 
         progressBar.Value = 0;
+        progressBar.MaxValue = 100 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.RESEARCH_TIME);
         working_panel.Visible = true;
         timer.Start();
     }
@@ -141,7 +142,7 @@ public partial class ResearchTab : ColorRect
     public void OnTimerTimeout()
     {
         progressBar.Value += 0.1;
-        if (progressBar.Value >= 100)
+        if (progressBar.Value >= progressBar.MaxValue)
         {
             timer.Stop();
             OnResearchFinished();

@@ -106,12 +106,20 @@ public partial class ResourceObject : Building_Node
             anim_player.Play("Break");
             player_ui.AddItemLabelUI(
                 "Cleared: +"
-                    + mining_amount_last
+                    + (
+                        (int)(
+                            mining_amount_last * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+                        )
+                    )
                     + " "
                     + TranslationServer.Translate(item_info.item_name.ToString())
             );
             StartTimerBar(TimerBar.state.RESPAWNING, respawn_seconds);
-            Inventory.INSTANCE.AddItem(item_info, 3, Inventory.INSTANCE.inventory_items);
+            Inventory.INSTANCE.AddItem(
+                item_info,
+                (int)(3 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)),
+                Inventory.INSTANCE.inventory_items
+            );
             GetNode<CollisionShape2D>("Collision").Disabled = true;
             GetNode<Sprite2D>("Shadow").Visible = false;
             hover_menu.DisableHoverMenu();
@@ -120,9 +128,16 @@ public partial class ResourceObject : Building_Node
         anim_player.Play("Hit");
         StartTimerBar(TimerBar.state.COOLDOWN, click_cooldown_time);
         player_ui.AddItemLabelUI(
-            "+" + mining_amount + " " + TranslationServer.Translate(item_info.item_name.ToString())
+            "+"
+                + ((int)(mining_amount * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)))
+                + " "
+                + TranslationServer.Translate(item_info.item_name.ToString())
         );
-        Inventory.INSTANCE.AddItem(item_info, mining_amount, Inventory.INSTANCE.inventory_items);
+        Inventory.INSTANCE.AddItem(
+            item_info,
+            (int)(mining_amount * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)),
+            Inventory.INSTANCE.inventory_items
+        );
     }
 
     private void StartTimerBar(TimerBar.state state, double time, bool from_loading = false)
