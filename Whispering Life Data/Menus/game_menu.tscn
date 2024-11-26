@@ -1508,7 +1508,7 @@ text = "Unknown"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AdminTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("item_list")]
+[node name="AdminTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("item_list", "timeStateLabel")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -1522,6 +1522,7 @@ grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
 script = ExtResource("16_f2xax")
 item_list = NodePath("PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/ItemList")
+timeStateLabel = NodePath("PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Stop (ALL)/StateLabel")
 
 [node name="PanelContainer" type="Control" parent="Background/AdminTab"]
 layout_mode = 1
@@ -1566,9 +1567,10 @@ size_flags_vertical = 3
 theme_override_constants/side_margin = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
-current_tab = 0
+current_tab = 1
 
 [node name="Items" type="VBoxContainer" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -1600,6 +1602,38 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
 text = "Unselect All"
+
+[node name="Time Stop (ALL)" type="VBoxContainer" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+alignment = 1
+metadata/_tab_index = 1
+
+[node name="StateLabel" type="Label" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Stop (ALL)"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+text = "The Time is Stopped! (I think)"
+horizontal_alignment = 1
+
+[node name="EMPTYLABEL" type="Label" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Stop (ALL)"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+horizontal_alignment = 1
+
+[node name="PauseTimeButton" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Stop (ALL)"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Pause Time"
+
+[node name="ResumTimeButton" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Stop (ALL)"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Resume Time"
 
 [node name="CraftingTab" type="ColorRect" parent="Background"]
 visible = false
@@ -2312,6 +2346,8 @@ popup/item_0/icon = ExtResource("16_ldk1u")
 [connection signal="visibility_changed" from="Background/AdminTab" to="Background/AdminTab" method="OnVisiblityChange"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/CreateButton" to="Background/AdminTab" method="OnCreateItems"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/DeselectButton" to="Background/AdminTab" method="OnDeselectAll"]
+[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Stop (ALL)/PauseTimeButton" to="Background/AdminTab" method="OnPauseTimeButton"]
+[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Stop (ALL)/ResumTimeButton" to="Background/AdminTab" method="OnResumeTimeButton"]
 [connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/GeneralButton" to="." method="OnCraftingCategoryButton" binds= [0]]
 [connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/ToolsButton" to="." method="OnCraftingCategoryButton" binds= [1]]
 [connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/ToolspartsButton" to="." method="OnCraftingCategoryButton" binds= [2]]

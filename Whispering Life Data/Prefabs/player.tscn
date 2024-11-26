@@ -240,8 +240,7 @@ position_smoothing_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_gvbij")
-animation = &"Idle_Right"
-frame_progress = 0.85495
+animation = &"Idle_Up"
 speed_scale = 1.35
 offset = Vector2(0, -15)
 

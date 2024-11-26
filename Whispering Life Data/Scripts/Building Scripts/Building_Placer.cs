@@ -51,6 +51,7 @@ public partial class Building_Placer : Node2D
             ((Belt)placeable).Set_Rotation(current_belt_rotation);
             placeable.GetNode<Area2D>("BeltArea").Monitorable = false;
             placeable.collision_shape.Disabled = true;
+            placeable.GetSprite().SelfModulate = new Color(1f, 1f, 1f, 0.75f);
             if (current_building is BeltTunnel)
                 placeable.GetNode<TunnelArea>("TunnelArea").Monitoring = false;
             return;
@@ -58,7 +59,7 @@ public partial class Building_Placer : Node2D
         if (current_building is placeable_building)
         {
             placeable = current_building as placeable_building;
-            placeable.GetSprite().SelfModulate = new Color(1f, 1f, 1f, 0.5f);
+            placeable.GetSprite().SelfModulate = new Color(1f, 1f, 1f, 0.75f);
             placeable.collision_shape.Disabled = true;
             return;
         }

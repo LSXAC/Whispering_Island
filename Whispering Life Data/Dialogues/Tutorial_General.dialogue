@@ -4,7 +4,7 @@
 
 Boss: So du hast dich entschieden, mich auf [b][color=gold]ewig[/color][/b] zu füttern? [ID:t8c9b048d2f]
 do GlobalFunctions.MoveCamera(Vector2(0,-208))
-Boss: Aber sowas von! [ID:t93ce6f08c4]
+Spieler: Aber sowas von! [ID:t93ce6f08c4]
 do GlobalFunctions.MoveCamera(Vector2(0,-256))
 Boss: Mh, und Jetzt? [ID:tcb66b8da81]
 do GlobalFunctions.MoveCamera(Vector2(0,-208))

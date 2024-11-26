@@ -40,7 +40,12 @@ public partial class QuestManager : Node
         QuestMiniPanel.INSTANCE.InitQuestMiniPanel(quests[current_quest_id]);
     }
 
-    private void StartTimer()
+    public void PauseTimer()
+    {
+        quest_timer.Stop();
+    }
+
+    public void StartTimer()
     {
         quest_timer.Start();
         quest_timer.WaitTime = 1;

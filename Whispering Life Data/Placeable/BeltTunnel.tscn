@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvinbig8n3cbp"]
+[gd_scene load_steps=15 format=3 uid="uid://cvinbig8n3cbp"]
 
 [ext_resource type="Script" path="res://Placeable/BeltTunnel.cs" id="1_8pw6g"]
 [ext_resource type="Texture2D" uid="uid://bi2pvwe1l5m40" path="res://Sprites/Belt_Atlas.png" id="2_h7ddp"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Placeable/BeltArea.cs" id="8_kbhhr"]
 [ext_resource type="Script" path="res://Placeable/TunnelArea.cs" id="9_a3q3v"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Prefabs/Water_Noise_Map.tres" id="10_hvugw"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="11_c8g6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8pj"]
 size = Vector2(14, 14)
@@ -103,6 +104,14 @@ shape = SubResource("RectangleShape2D_xfl3k")
 
 [node name="CheckAreaTimer" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-8, 0)
+scale = Vector2(1, 0.25)
+texture = ExtResource("11_c8g6k")
 
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]

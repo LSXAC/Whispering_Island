@@ -59,7 +59,7 @@ public partial class GameMenu : CanvasLayer
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        if (Game_Manager.gameover)
+        if (Game_Manager.gameover || Game_Manager.In_Cutscene || Building_Menu.instance.Visible)
             return;
 
         if (Input.IsActionJustPressed("Escape"))

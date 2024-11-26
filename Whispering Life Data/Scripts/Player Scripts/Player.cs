@@ -33,6 +33,7 @@ public partial class Player : CharacterBody2D
             Game_Manager.inside_game_menu
             || Game_Manager.building_mode != Game_Manager.BuildingMode.None
             || Game_Manager.gameover
+            || Game_Manager.In_Cutscene
         )
             return;
 

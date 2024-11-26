@@ -72,7 +72,7 @@ public partial class Game_Manager : Node2D
         Node2D main_island = island_parent.GetNode<Node2D>("MainIsland");
         Island_Properties mi = main_island.GetNode<Node2D>("IslandProperties") as Island_Properties;
 
-        TranslationServer.SetLocale("de_DE");
+        TranslationServer.SetLocale("en_EN");
 
         CreateIslands();
         CheckGameSave();
@@ -238,6 +238,7 @@ public partial class Game_Manager : Node2D
         Debug.Print("Start Tutorial");
         var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial_General.dialogue");
         GlobalFunctions.MoveCamera(new Vector2(0, -256));
+        GlobalFunctions.InDialogue();
         DialogueManager.TranslationSource = TranslationSource.CSV;
         DialogueManager.ShowExampleDialogueBalloon(dialogue, "Tutorial");
         return;

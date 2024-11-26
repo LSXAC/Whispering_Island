@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://rd7h1v4imvk6"]
+[gd_scene load_steps=13 format=3 uid="uid://rd7h1v4imvk6"]
 
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Belt.cs" id="1_wiff4"]
 [ext_resource type="Texture2D" uid="uid://bi2pvwe1l5m40" path="res://Sprites/Belt_Atlas.png" id="2_7umy0"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_4pt64"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="7_h12jl"]
 [ext_resource type="Script" path="res://Placeable/BeltArea.cs" id="8_2g66n"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="9_mfu8r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8pj"]
 size = Vector2(14, 14)
@@ -80,6 +81,14 @@ shape = SubResource("RectangleShape2D_77bd0")
 y_sort_enabled = true
 position = Vector2(-8, -7)
 shape = SubResource("RectangleShape2D_xfl3k")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-8, 0)
+scale = Vector2(1, 0.25)
+texture = ExtResource("9_mfu8r")
 
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]

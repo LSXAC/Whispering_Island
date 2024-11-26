@@ -6,11 +6,28 @@ public partial class CheatTab : ColorRect
     [Export]
     public ItemList item_list;
 
+    [Export]
+    public Label timeStateLabel;
+
     public override void _Ready() { }
 
     public void OnVisiblityChange()
     {
         SetItemsInList();
+    }
+
+    public void OnResumeTimeButton()
+    {
+        Game_Manager.INSTANCE.game_timer.Start();
+        QuestManager.INSTANCE.StartTimer();
+        timeStateLabel.Text = "Time is running! HELP";
+    }
+
+    public void OnPauseTimeButton()
+    {
+        Game_Manager.INSTANCE.game_timer.Stop();
+        QuestManager.INSTANCE.PauseTimer();
+        timeStateLabel.Text = "Time is stopped! Relief!";
     }
 
     private void SetItemsInList()
