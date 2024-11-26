@@ -23,6 +23,7 @@ PLAYERUI_QUEST_OBJECTIV,Objectiv,Aufgabe
 PLAYERUI_QUEST_TIME_LEFT,Time left,Zeit übrig
 PLAYERUI_GAME_OVER,[center][wave][font_size=25px]>[color=red]You got eaten![color=white]<,[center][wave][font_size=25px]>[color=red]Du wurdest gegessen![color=white]<
 PLAYERUI_GAME_OVER_DESC,The Timer reached his limit and the Monster did not get his food.,Die Zeit ist abgelaufen und das Monster hat nichts zuessen bekommen.
+PLAYERUI_ROTATE_FLIP_TIP,Rotate/Flip with [Q] or [E],Rotiere/Flip mit [Q] oder [E]
 ,,
 EQUIPMENT_SLOT_HEAD,Head,Kopf
 EQUIPMENT_SLOT_CHEST,Chest,Brust

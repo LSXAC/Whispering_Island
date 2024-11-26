@@ -51,29 +51,43 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -20.0
-offset_bottom = 20.0
+offset_left = -253.0
+offset_top = -157.0
+offset_right = -24.0
+offset_bottom = -100.0
 grow_horizontal = 0
 grow_vertical = 2
 
+[node name="Label2" type="Label" parent="WindowFrame/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+text = "Rotate/Flip with [Q] or [E]"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_ROTATE_FLIP_TIP"
+
 [node name="Label" type="Label" parent="WindowFrame/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
 theme_override_font_sizes/font_size = 16
 text = "Resources need "
 horizontal_alignment = 2
 
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowFrame/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+script = ExtResource("4_28ccb")
+
 [node name="TimesLeftLabel" type="Label" parent="WindowFrame/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
 theme_override_font_sizes/font_size = 16
 text = "> 2x left"
 horizontal_alignment = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="WindowFrame/VBoxContainer"]
-layout_mode = 2
-script = ExtResource("4_28ccb")
 
 [node name="HSlider" type="HSlider" parent="."]
 custom_minimum_size = Vector2(200, 0)
