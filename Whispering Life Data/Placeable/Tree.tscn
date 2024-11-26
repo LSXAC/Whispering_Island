@@ -12,7 +12,7 @@
 size = Vector2(16, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
-size = Vector2(26, 37)
+size = Vector2(27, 38)
 
 [sub_resource type="Animation" id="Animation_tcfwo"]
 resource_name = "Break"
@@ -144,12 +144,13 @@ z_as_relative = false
 texture = ExtResource("5_qbov7")
 
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+z_index = 1
 script = ExtResource("6_mydk3")
 building_node = NodePath("..")
 building_sprite = NodePath("../TreeSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
-position = Vector2(0, -15.5)
+position = Vector2(0.5, -16)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("5_2oaeo")]

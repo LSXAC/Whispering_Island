@@ -1,18 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyhqyvmm3pp6m"]
+[gd_scene load_steps=15 format=3 uid="uid://dyhqyvmm3pp6m"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/ResourceObject.cs" id="1_8yybw"]
 [ext_resource type="Resource" uid="uid://bp4gggmthi11e" path="res://Items/Corn.tres" id="2_der1d"]
 [ext_resource type="Texture2D" uid="uid://d25mort4mi1r" path="res://Sprites/Corns.png" id="3_son7a"]
-[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_qa3a0"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="5_nfn24"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Prefabs/timer_bar.tscn" id="6_i1ulo"]
 [ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="7_g65dp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
-size = Vector2(16, 8)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
-size = Vector2(26, 18.5)
+size = Vector2(14, 19)
 
 [sub_resource type="Animation" id="Animation_2ey6b"]
 resource_name = "Break"
@@ -118,38 +114,29 @@ scale_curve = SubResource("CurveTexture_lfoib")
 y_sort_enabled = true
 script = ExtResource("1_8yybw")
 anim_player = NodePath("AnimationPlayer")
-max_durability = 1
+max_durability = 2
 respawn_seconds = 30
-mining_amount_last = 1
+mining_amount_last = 2
 item_info = ExtResource("2_der1d")
 gpu_particles = NodePath("CornParticles")
 title = "WORLD_RESOURCE_CORN"
 description = "WORLD_RESOURCE_CORN_DESC"
 sprite = NodePath("CornSprite")
-collision_shape = NodePath("Collision")
+collision_shape = NodePath("")
 
 [node name="CornSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, -3)
 texture = ExtResource("3_son7a")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_m0htq")
-
-[node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.196078)
-z_index = -1
-z_as_relative = false
-texture = ExtResource("4_qa3a0")
-
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+z_index = 1
 script = ExtResource("5_nfn24")
 building_node = NodePath("..")
 building_sprite = NodePath("../CornSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
-position = Vector2(0, -7)
+position = Vector2(-1, -4.5)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("6_i1ulo")]

@@ -12,7 +12,7 @@
 size = Vector2(16, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
-size = Vector2(26, 18.5)
+size = Vector2(19, 12)
 
 [sub_resource type="Animation" id="Animation_2ey6b"]
 resource_name = "Break"
@@ -130,8 +130,7 @@ collision_shape = NodePath("Collision")
 
 [node name="WheatSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, 6)
-scale = Vector2(1e-05, 1e-05)
+position = Vector2(0, -3)
 texture = ExtResource("3_7yq6j")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -145,12 +144,13 @@ z_as_relative = false
 texture = ExtResource("4_pile3")
 
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+z_index = 1
 script = ExtResource("5_th823")
 building_node = NodePath("..")
 building_sprite = NodePath("../WheatSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
-position = Vector2(0, -7)
+position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("6_nv75e")]

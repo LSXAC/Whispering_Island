@@ -114,6 +114,7 @@ scale = Vector2(2.375, 3.0625)
 texture = ExtResource("10_frsc1")
 
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+z_index = 1
 position = Vector2(-8, -8)
 collision_layer = 2
 script = ExtResource("6_srwxn")

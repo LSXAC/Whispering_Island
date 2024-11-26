@@ -12,7 +12,7 @@
 size = Vector2(16, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
-size = Vector2(16, 30.125)
+size = Vector2(17, 30.125)
 
 [sub_resource type="Curve" id="Curve_bk6ie"]
 _data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
@@ -145,12 +145,13 @@ z_as_relative = false
 texture = ExtResource("4_ccab7")
 
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+z_index = 1
 script = ExtResource("5_h2g1a")
 building_node = NodePath("..")
 building_sprite = NodePath("../Fibre")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
-position = Vector2(0, -9.9375)
+position = Vector2(0.5, -9.9375)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("6_hn3tl")]

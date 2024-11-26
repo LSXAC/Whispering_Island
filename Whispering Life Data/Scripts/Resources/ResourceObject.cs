@@ -120,8 +120,12 @@ public partial class ResourceObject : Building_Node
                 (int)(3 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)),
                 Inventory.INSTANCE.inventory_items
             );
-            GetNode<CollisionShape2D>("Collision").Disabled = true;
-            GetNode<Sprite2D>("Shadow").Visible = false;
+
+            if (HasNode("Collision"))
+                GetNode<CollisionShape2D>("Collision").Disabled = true;
+            if (HasNode("Shadow"))
+                GetNode<Sprite2D>("Shadow").Visible = false;
+
             hover_menu.DisableHoverMenu();
             return;
         }
@@ -156,8 +160,12 @@ public partial class ResourceObject : Building_Node
             current_durability = max_durability;
             anim_player.PlayBackwards("Break");
         }
-        GetNode<CollisionShape2D>("Collision").Disabled = false;
-        GetNode<Sprite2D>("Shadow").Visible = true;
+
+        if (HasNode("Collision"))
+            GetNode<CollisionShape2D>("Collision").Disabled = false;
+        if (HasNode("Shadow"))
+            GetNode<Sprite2D>("Shadow").Visible = true;
+
         in_cooldown = false;
         interactableArea.Monitoring = true;
         timer_bar.currentstate = TimerBar.state.COOLDOWN;
