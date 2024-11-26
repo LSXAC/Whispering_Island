@@ -3,7 +3,7 @@
 [ext_resource type="Resource" uid="uid://ljb14i8nnpgp" path="res://Items/Sand.tres" id="1_mdr6y"]
 [ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_ivpen"]
 [ext_resource type="Resource" uid="uid://cij4xtg6ixn5i" path="res://Items/Sand_Stone.tres" id="3_j4vvv"]
-[ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Items/Glass.tres" id="4_dj6om"]
+[ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Items/Glass_Chunk.tres" id="4_dj6om"]
 [ext_resource type="Script" path="res://Scripts/Resources/Quest.cs" id="4_yniui"]
 
 [sub_resource type="Resource" id="Resource_iic3g"]

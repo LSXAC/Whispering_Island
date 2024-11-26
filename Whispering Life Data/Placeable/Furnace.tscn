@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="6_0asmg"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="6_srwxn"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="6_vvdf8"]
-[ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Items/Glass.tres" id="7_beqn2"]
+[ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Items/Glass_Chunk.tres" id="7_beqn2"]
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="7_bopdg"]
 [ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Placeable/Taker.tscn" id="8_17n2q"]
 [ext_resource type="Resource" uid="uid://ljb14i8nnpgp" path="res://Items/Sand.tres" id="8_dyfyb"]

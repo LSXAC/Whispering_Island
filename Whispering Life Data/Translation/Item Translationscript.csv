@@ -45,8 +45,8 @@ FIBRE,Fibre,Faser
 FIBRE_DESC,A fibre to bind tools,Eine Faser um Werkzeuge zu binden
 STONE_BLADE,Stone Blade,Steinschneide
 STONE_BLADE_DESC,A stone with a sharp edge,Ein Stein mit einer scharfen Kante
-GLASS,glass,Glass
-GLASS_DESC,glass made of sand ,Aus Sand geschmolzenes Glas
+GLASS_CHUNK,Glass chunk,Glasbrocken
+GLASS_CHUNK_DESC,Glass made of sand ,Aus Sand geschmolzenes Glas
 STONE_AXE_HEAD,Stone Axe Head,Steinaxtkopf
 STONE_AXE_HEAD_DESC,A stone formed as a axe head,Ein Stein geformt wie ein Axtkopf
 STONE_PICKAXE_HEAD,Stone Pickaxe Head,Steinspitzhackenkopf

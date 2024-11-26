@@ -27,7 +27,7 @@ public partial class InventoryBase : Control
         { ITEM_ID.MYSTIC_WOOD, ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Wood.tres") },
         { ITEM_ID.FIBRE, ResourceLoader.Load<ItemInfo>("res://Items/Fibre.tres") },
         { ITEM_ID.STONE_BLADE, ResourceLoader.Load<ItemInfo>("res://Items/Stone_Blade.tres") },
-        { ITEM_ID.GLASS, ResourceLoader.Load<ItemInfo>("res://Items/Glass.tres") },
+        { ITEM_ID.GLASS_CHUNK, ResourceLoader.Load<ItemInfo>("res://Items/Glass_Chunk.tres") },
         {
             ITEM_ID.STONE_AXE_HEAD,
             ResourceLoader.Load<ItemInfo>("res://Items/Stone_Axe_Head.tres")
@@ -92,7 +92,7 @@ public partial class InventoryBase : Control
         MYSTIC_WOOD,
         FIBRE,
         STONE_BLADE,
-        GLASS,
+        GLASS_CHUNK,
         STONE_AXE_HEAD,
         STONE_PICKAXE_HEAD,
         WOODEN_HOE_HEAD,
