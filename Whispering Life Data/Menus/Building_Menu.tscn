@@ -161,11 +161,22 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="RemoveButton" type="Button" parent="."]
-offset_left = 600.0
-offset_top = 324.0
-offset_right = 636.0
-offset_bottom = 356.0
-text = "R"
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -151.0
+offset_top = -37.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_e7u7j")
+theme_override_font_sizes/font_size = 18
+text = "Remove Buildings"
+script = ExtResource("3_ft6wq")
 
 [connection signal="visibility_changed" from="." to="." method="OnVisiblityChange"]
 [connection signal="button_down" from="HBoxHeader/ProductionButton" to="." method="OnPanelButton" binds= [0]]

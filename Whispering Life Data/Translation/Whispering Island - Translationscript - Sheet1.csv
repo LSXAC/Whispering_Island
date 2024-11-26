@@ -63,7 +63,7 @@ BUILDING_MENU_BUILD_BUTTON,Build Building,Gebäude bauen
 BUILDING_MENU_PRODUCTION,> Production,> Produktion
 BUILDING_MENU_DECORATION,> Decoration,> Dekoration
 BUILDING_MENU_RESEARCH,> Research,> Forschung
-,,
+BUILDING_MENU_REMOVE_BUILDINGS,> Remove Building,> Gebäude entfernen
 ,,
 BUILDING_FURNACE,Furnace,Ofen
 BUILDING_FURNACE_DESC,Smelts Resources that are smeltable,"Schmilzt Ressourcen 

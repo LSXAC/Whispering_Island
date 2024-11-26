@@ -44,6 +44,9 @@ public partial class player_ui : CanvasLayer
     [Export]
     public CheckBox skip_tutorial_box;
 
+    [Export]
+    public VBoxContainer info_vBox;
+
     public override void _Notification(int what)
     {
         if (what != NotificationTranslationChanged)
@@ -129,9 +132,12 @@ public partial class player_ui : CanvasLayer
         {
             case Game_Manager.BuildingMode.Placing:
                 window_frame_rect.Texture = building_frame;
+                info_vBox.Visible = true;
                 break;
             case Game_Manager.BuildingMode.Removing:
                 window_frame_rect.Texture = removing_frame;
+                info_vBox.Visible = false;
+
                 break;
             case Game_Manager.BuildingMode.None:
                 window_frame_rect.Visible = false;

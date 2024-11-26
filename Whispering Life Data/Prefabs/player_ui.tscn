@@ -23,7 +23,7 @@ thickness = 6
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upggj"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "skip_tutorial_box")]
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "skip_tutorial_box", "info_vBox")]
 script = ExtResource("1_m5svq")
 qcp_timer = NodePath("QuestCompletePanel/Timer")
 times_to_build_left_label = NodePath("WindowFrame/VBoxContainer/TimesLeftLabel")
@@ -34,6 +34,7 @@ removing_frame = ExtResource("3_7rm5b")
 collected_item_parent = NodePath("ReceivedItems")
 gameover_panel = NodePath("GameOverPanel")
 skip_tutorial_box = NodePath("GameOverPanel/VBoxContainer/CheckBox")
+info_vBox = NodePath("WindowFrame/VBoxContainer")
 
 [node name="WindowFrame" type="TextureRect" parent="."]
 visible = false
