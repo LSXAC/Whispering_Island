@@ -244,7 +244,7 @@ theme_override_font_sizes/font_size = 8
 text = "[Head]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_HEAD"
-slot_type = 3
+slot_type = 10
 
 [node name="ChestSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character"]
 custom_minimum_size = Vector2(48, 48)
@@ -259,7 +259,7 @@ theme_override_font_sizes/font_size = 8
 text = "[Chest]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_CHEST"
-slot_type = 3
+slot_type = 11
 
 [node name="LegSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character"]
 custom_minimum_size = Vector2(48, 48)
@@ -273,7 +273,7 @@ theme_override_font_sizes/font_size = 8
 text = "[Legs]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_LEGS"
-slot_type = 3
+slot_type = 12
 
 [node name="ShoesSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character"]
 custom_minimum_size = Vector2(48, 48)
@@ -288,7 +288,7 @@ theme_override_font_sizes/font_size = 8
 text = "[Foots]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_FOOTS"
-slot_type = 3
+slot_type = 13
 
 [node name="ColorRectProfil" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel"]
 layout_mode = 0

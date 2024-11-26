@@ -26,7 +26,14 @@ public partial class Slot : Button
             inventory_base = (InventoryBase)GetParent().GetParent();
             Pressed += () => OnChestSlotButton();
         }
-        if (slot_type == ItemInfo.Type.CLOTHS || slot_type == ItemInfo.Type.TOOL)
+        if (
+            slot_type == ItemInfo.Type.CLOTHS
+            || slot_type == ItemInfo.Type.TOOL
+            || slot_type == ItemInfo.Type.HEAD
+            || slot_type == ItemInfo.Type.CHESTPLATE
+            || slot_type == ItemInfo.Type.LEGGINGS
+            || slot_type == ItemInfo.Type.SHOES
+        )
         {
             Pressed += () => OnEquipSlotButton(GetIndex());
         }
@@ -97,15 +104,20 @@ public partial class Slot : Button
             if (GetItem() != null)
             {
                 CreateClickedItem();
-                if (GetItem().item_info.HasType(ItemInfo.Type.CLOTHS))
-                {
-                    EquipmentPanel.INSTANCE.equipped_armor[index] = null;
-                    EquipmentPanel.INSTANCE.slots_armor[index].ClearItem();
-                }
                 if (GetItem().item_info.HasType(ItemInfo.Type.TOOL))
                 {
                     EquipmentPanel.INSTANCE.equipped_tools[index] = null;
                     EquipmentPanel.INSTANCE.slots_tool[index].ClearItem();
+                }
+                if (
+                    GetItem().item_info.HasType(ItemInfo.Type.HEAD)
+                    || GetItem().item_info.HasType(ItemInfo.Type.CHESTPLATE)
+                    || GetItem().item_info.HasType(ItemInfo.Type.LEGGINGS)
+                    || GetItem().item_info.HasType(ItemInfo.Type.SHOES)
+                )
+                {
+                    EquipmentPanel.INSTANCE.equipped_armor[index] = null;
+                    EquipmentPanel.INSTANCE.slots_armor[index].ClearItem();
                 }
                 EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
             }
@@ -116,21 +128,18 @@ public partial class Slot : Button
             {
                 if (
                     Inventory.clicked_item.item_info.HasType(slot_type)
-                    && slot_type == ItemInfo.Type.CLOTHS
+                    && (
+                        slot_type == ItemInfo.Type.HEAD
+                        || slot_type == ItemInfo.Type.CHESTPLATE
+                        || slot_type == ItemInfo.Type.LEGGINGS
+                        || slot_type == ItemInfo.Type.SHOES
+                    )
                 )
                 {
-                    EquipmentPanel.INSTANCE.equipped_armor[index] = new ItemSave(
-                        (int)Inventory.clicked_item.item_info.unique_id,
-                        Inventory.clicked_item.amount
-                    );
-                    EquipmentPanel
-                        .INSTANCE.slots_armor[index]
-                        .SetItem(Inventory.clicked_item.item_info, Inventory.clicked_item.amount);
-                    //inventory_base.UpdateInventoryUI();
-                    Inventory.clicked_item.QueueFree();
-                    Inventory.clicked_item = null;
-                    EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
+                    OnTakeItemFromArmorSlot(index);
+                    return;
                 }
+
                 if (
                     Inventory.clicked_item.item_info.HasType(slot_type)
                     && slot_type == ItemInfo.Type.TOOL
@@ -153,6 +162,21 @@ public partial class Slot : Button
             else // Can be Expanded, if e.g. Stackable Potions in one Equipment Slot
                 return;
         }
+    }
+
+    private void OnTakeItemFromArmorSlot(int index)
+    {
+        EquipmentPanel.INSTANCE.equipped_armor[index] = new ItemSave(
+            (int)Inventory.clicked_item.item_info.unique_id,
+            Inventory.clicked_item.amount
+        );
+        EquipmentPanel
+            .INSTANCE.slots_armor[index]
+            .SetItem(Inventory.clicked_item.item_info, Inventory.clicked_item.amount);
+        //inventory_base.UpdateInventoryUI();
+        Inventory.clicked_item.QueueFree();
+        Inventory.clicked_item = null;
+        EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
     }
 
     public void OnSlotButton()

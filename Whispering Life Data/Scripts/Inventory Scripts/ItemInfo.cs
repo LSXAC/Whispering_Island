@@ -21,7 +21,11 @@ public partial class ItemInfo : Resource
         SMELTABLE,
         BURNABLE,
         PROCESSED,
-        RESEARCHABLE
+        RESEARCHABLE,
+        HEAD,
+        CHESTPLATE,
+        LEGGINGS,
+        SHOES
     };
 
     [Export]
