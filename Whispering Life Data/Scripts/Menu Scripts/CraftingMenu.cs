@@ -7,6 +7,7 @@ public partial class CraftingMenu : PanelContainer
     public Control parent;
 
     public PackedScene recipe_slot = ResourceLoader.Load<PackedScene>("res://item_recipe.tscn");
+    public PackedScene no_recipies = ResourceLoader.Load<PackedScene>("res://No_Recipies.tscn");
 
     [Export]
     public Array<Recipe> crafting_recipies = new Array<Recipe>();
@@ -17,7 +18,7 @@ public partial class CraftingMenu : PanelContainer
     public void ReloadUIRecipes()
     {
         foreach (Control c in parent.GetChildren())
-            c.QueueFree();
+            c.Free();
 
         for (int i = 0; i < crafting_recipies.Count; i++)
         {
@@ -51,6 +52,12 @@ public partial class CraftingMenu : PanelContainer
                 irUI.craft_button.Disabled = false;
             else
                 irUI.craft_button.Disabled = true;
+        }
+
+        if (parent.GetChildCount() == 0)
+        {
+            Panel p = no_recipies.Instantiate() as Panel;
+            parent.AddChild(p);
         }
     }
 

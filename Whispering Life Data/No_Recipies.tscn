@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdpgxwdw76lk3"]
+
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="1_pnbjv"]
+[ext_resource type="Script" path="res://Menus/TranslationLabel.cs" id="2_yd7oi"]
+
+[node name="Panel" type="Panel"]
+self_modulate = Color(1, 1, 1, 0.196078)
+show_behind_parent = true
+custom_minimum_size = Vector2(0, 25)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_pnbjv")
+theme_override_font_sizes/font_size = 12
+text = "There are currently no recipies unlocked."
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_yd7oi")
+label_translation_string = "CRAFTING_MENU_NO_RECIPIES"
