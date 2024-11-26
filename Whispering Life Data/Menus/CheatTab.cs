@@ -20,7 +20,7 @@ public partial class CheatTab : ColorRect
     {
         Game_Manager.INSTANCE.game_timer.Start();
         QuestManager.INSTANCE.StartTimer();
-        timeStateLabel.Text = "Time is running! HELP";
+        timeStateLabel.Text = "Time is running! HELP!";
     }
 
     public void OnPauseTimeButton()
