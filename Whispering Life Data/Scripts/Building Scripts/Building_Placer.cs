@@ -25,6 +25,7 @@ public partial class Building_Placer : Node2D
 
     private PackedScene belt_item = ResourceLoader.Load<PackedScene>("res://belt_item.tscn");
     private bool can_create = false;
+    private bool is_flipped = false;
 
     public void InitBuilding(BuildingType building_tye)
     {
@@ -35,6 +36,7 @@ public partial class Building_Placer : Node2D
             Game_Manager.building_mode = Game_Manager.BuildingMode.None;
             return;
         }
+        is_flipped = false;
         can_create = true;
         current_scale = new Vector2(1, 1);
         Game_Manager.building_mode = Game_Manager.BuildingMode.Placing;
@@ -376,6 +378,10 @@ public partial class Building_Placer : Node2D
             )
             {
                 current_scale = new Vector2(placeable.Scale.X * -1, 1);
+                if (placeable is MachineBase)
+                {
+                    is_flipped = !is_flipped;
+                }
                 placeable.Scale = current_scale;
             }
         }
@@ -437,6 +443,36 @@ public partial class Building_Placer : Node2D
             if (!player_ui.INSTANCE.item_row_manager.CanCreate(building_recipe.requiered_items))
                 can_create = false;
             return;
+        }
+
+        if (temp is MachineBase)
+        {
+            if (is_flipped)
+            {
+                MachineBase pb = temp as MachineBase;
+                if (pb.givers != null)
+                {
+                    foreach (Giver giv in pb.givers)
+                    {
+                        Debug.Print("GIver GIv");
+                        switch (giv.direction_not_giving)
+                        {
+                            case Belt.BeltDirection.Top:
+                                giv.direction_not_giving = Belt.BeltDirection.Down;
+                                break;
+                            case Belt.BeltDirection.Down:
+                                giv.direction_not_giving = Belt.BeltDirection.Top;
+                                break;
+                            case Belt.BeltDirection.Right:
+                                giv.direction_not_giving = Belt.BeltDirection.Left;
+                                break;
+                            case Belt.BeltDirection.Left:
+                                giv.direction_not_giving = Belt.BeltDirection.Right;
+                                break;
+                        }
+                    }
+                }
+            }
         }
         CloseMenuWithBuildingSelected();
     }
