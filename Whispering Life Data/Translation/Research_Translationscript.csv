@@ -3,8 +3,8 @@ RESEARCH_BONUS,Unlocks:,Schaltet Frei:
 RESEARCH_RESEARCHLEVEL,Research Level,Erforschungsstufe
 RESEARCH_NO_ITEM,No Item in Research Slot.,Keine Ressource im Erforschungsslot.
 RESEARCH_BUTTON,Start Research,Erforschung starten
-,,
-,,
+RESEARCH_WORKING,Researching,Erforschen
+RESEARCH_SAVE_INFO,"Passed Research time will not be saved, only result",Vergangene Erforschungszeit wird nicht gespeichert. Nur das Endergebnis!
 ,,
 ,,
 RESEARCH_WOOD_LVL_1,Craftsman #1,Handwerker #1

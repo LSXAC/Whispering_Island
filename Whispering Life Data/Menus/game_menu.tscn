@@ -869,6 +869,8 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 20
 text = "WORKING"
+script = ExtResource("26_tl5yt")
+label_translation_string = "RESEARCH_WORKING"
 
 [node name="Label2" type="Label" parent="Background/ResearchTab/ColorRect"]
 layout_mode = 1
@@ -886,9 +888,11 @@ grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
-text = "Passed Research time will not be saved,
-only result"
+text = "Passed Research time will not be saved, only result"
 horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "RESEARCH_SAVE_INFO"
 
 [node name="Skilltree" type="ColorRect" parent="Background" node_paths=PackedStringArray("skillboxes", "research_points_label")]
 visible = false
