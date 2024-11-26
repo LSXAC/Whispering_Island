@@ -1688,50 +1688,72 @@ label_translation_string = "CRAFTING_MENU_TOPBAR_RESOURCE_NEEDED"
 [node name="CraftingMenuBasic" type="PanelContainer" parent="Background/CraftingTab/VBoxContainer" node_paths=PackedStringArray("parent")]
 layout_mode = 2
 script = ExtResource("4_3cwxu")
-parent = NodePath("VBoxContainer")
+parent = NodePath("ScrollContainer/VBoxContainer")
 crafting_recipies = [ExtResource("12_h3bpf"), ExtResource("13_o680h"), ExtResource("30_ai4s4")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuBasic"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuBasic"]
+custom_minimum_size = Vector2(320, 220)
 layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuBasic/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="CraftingMenuTools" type="PanelContainer" parent="Background/CraftingTab/VBoxContainer" node_paths=PackedStringArray("parent")]
 visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
-parent = NodePath("VBoxContainer")
+parent = NodePath("ScrollContainer/VBoxContainer")
 crafting_recipies = [ExtResource("19_pe00a"), ExtResource("20_ujqyg"), ExtResource("16_1o4en"), ExtResource("17_7eamj")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuTools"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuTools"]
+custom_minimum_size = Vector2(320, 220)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuTools/ScrollContainer"]
 layout_mode = 2
 
 [node name="CraftingMenuToolparts" type="PanelContainer" parent="Background/CraftingTab/VBoxContainer" node_paths=PackedStringArray("parent")]
 visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
-parent = NodePath("VBoxContainer")
+parent = NodePath("ScrollContainer/VBoxContainer")
 crafting_recipies = [ExtResource("18_vv5t7"), ExtResource("19_f07lv"), ExtResource("20_jycfp"), ExtResource("21_13841")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuToolparts"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuToolparts"]
+custom_minimum_size = Vector2(320, 220)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuToolparts/ScrollContainer"]
 layout_mode = 2
 
 [node name="CraftingMenuArmor" type="PanelContainer" parent="Background/CraftingTab/VBoxContainer" node_paths=PackedStringArray("parent")]
 visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
-parent = NodePath("VBoxContainer")
+parent = NodePath("ScrollContainer/VBoxContainer")
 crafting_recipies = [ExtResource("32_d7b8n"), ExtResource("31_33fii"), ExtResource("33_d8q64"), ExtResource("34_m32cx")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuArmor"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuArmor"]
+custom_minimum_size = Vector2(320, 220)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuArmor/ScrollContainer"]
 layout_mode = 2
 
 [node name="CraftingMenuAgriculture" type="PanelContainer" parent="Background/CraftingTab/VBoxContainer" node_paths=PackedStringArray("parent")]
 visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
-parent = NodePath("VBoxContainer")
+parent = NodePath("ScrollContainer/VBoxContainer")
 crafting_recipies = [ExtResource("39_um0ua"), ExtResource("40_rv3r3"), ExtResource("41_bd22e"), ExtResource("35_3p2ru"), ExtResource("36_bw518"), ExtResource("37_xn11s"), ExtResource("38_sep6l")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuAgriculture"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuAgriculture"]
+custom_minimum_size = Vector2(320, 220)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuAgriculture/ScrollContainer"]
 layout_mode = 2
 
 [node name="CategoryPanel" type="PanelContainer" parent="Background/CraftingTab"]

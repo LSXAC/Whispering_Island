@@ -4,9 +4,10 @@
 [ext_resource type="Script" path="res://Menus/TranslationLabel.cs" id="2_yd7oi"]
 
 [node name="Panel" type="Panel"]
-self_modulate = Color(1, 1, 1, 0.196078)
+self_modulate = Color(1, 1, 1, 0.490196)
 show_behind_parent = true
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(320, 25)
+size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_pnbjv")
 theme_override_font_sizes/font_size = 12
 text = "There are currently no recipies unlocked."

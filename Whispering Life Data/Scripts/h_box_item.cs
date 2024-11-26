@@ -22,7 +22,7 @@ public partial class h_box_item : HBoxContainer
     public override void _Ready()
     {
         item_label = GetNode<Label>("ItemLabel");
-        item_texture = GetNode<TextureRect>("ItemTexture");
+        item_texture = GetNode<VBoxContainer>("VBoxContainer").GetNode<TextureRect>("ItemTexture");
     }
 
     public void InitItemUI(string item_name, int amount, Texture2D texture)
@@ -30,7 +30,8 @@ public partial class h_box_item : HBoxContainer
         if (item_label == null)
             item_label = GetNode<Label>("ItemLabel");
         if (item_texture == null)
-            item_texture = GetNode<TextureRect>("ItemTexture");
+            item_texture = GetNode<VBoxContainer>("VBoxContainer")
+                .GetNode<TextureRect>("ItemTexture");
 
         item_label.Text = TranslationServer.Translate(item_name) + " " + amount + "x";
         item_texture.Texture = texture;
