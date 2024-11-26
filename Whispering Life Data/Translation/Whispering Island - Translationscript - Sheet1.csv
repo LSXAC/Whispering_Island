@@ -7,15 +7,22 @@ GAMEMENU_INVENTORY_BUTTON,Inventory,Inventar
 GAMEMENU_CRAFTING_BUTTON,Crafting,Herstellen
 GAMEMENU_SAVELOAD_BUTTON,Save,Speichern
 GAMEMENU_SETTINGS_BUTTON,Settings,Einstellungen
+,,
 SETTINGS_MASTER_VOLUME,Master Volume,Gesamtlautstärke
+SETTINGS_SFX_VOLUME,SFX Volume,SFX Lautstärke
+SETTINGS_MUSIC_VOLUME,Music Volume,Musik Lautstärke
+,,
+,,
 GAMEMENU_FURNACE,> Furnace,> Ofen
 GAMEMENU_CHEST,> Chest,> Kiste
 GAMEMENU_RESEARCH_TABLE,> Research Table,> Forschungstisch
 GAMEMENU_QUEST_MENU,> Quest Overview,> Aufgabenübersicht
+,,
 PLAYERUI_GAMETIME,Game time,Spielzeit
 PLAYERUI_QUEST_OBJECTIV,Objectiv,Aufgabe
 PLAYERUI_QUEST_TIME_LEFT,Time left,Zeit übrig
-,,
+PLAYERUI_GAME_OVER,[center][wave][font_size=25px]>[color=red]You got eaten![color=white]<,[center][wave][font_size=25px]>[color=red]Du wurdest gegessen![color=white]<
+PLAYERUI_GAME_OVER_DESC,The Timer reached his limit and the Monster did not get his food.,Die Zeit ist abgelaufen und das Monster hat nichts zuessen bekommen.
 ,,
 EQUIPMENT_SLOT_HEAD,Head,Kopf
 EQUIPMENT_SLOT_CHEST,Chest,Brust
@@ -24,7 +31,6 @@ EQUIPMENT_SLOT_FOOTS,Foots,Füße
 EQUIPMENT_SLOT_WEAPON,Weapon,Waffe
 EQUIPMENT_SLOT_TOOL,Tool,Werkzeug
 ,,
-,,
 CRAFTING_MENU_GENERAL,General,Allgemein
 CRAFTING_MENU_TOOLPARTS,Toolparts,Werkzeugteile
 CRAFTING_MENU_TOOLS,Tools,Werkzeuge
@@ -32,6 +38,7 @@ CRAFTING_MENU_TOPBAR_ITEM,Item,Gegenstand
 CRAFTING_MENU_TOPBAR_RESOURCE_NEEDED,Resources needed,Benötigte Ressourcen
 CRAFTING_MENU_ARMOR,Armor,Rüstung
 CRAFTING_MENU_AGRICULTURE,Agriculture,Landwirdschaft
+CRAFTING_MENU_NO_RECIPIES,There are currently no recipies unlocked.,Aktuell sind keine Rezepte freigeschaltet.
 ,,
 SAVELOAD_MENU_SAVE_BUTTON,Save Game,Spielstand speichern
 SAVELOAD_MENU_LOAD_BUTTON,Load Game,Spielstand laden
@@ -55,12 +62,6 @@ BUILDING_MENU_BUILD_BUTTON,Build Building,Gebäude bauen
 BUILDING_MENU_PRODUCTION,> Production,> Produktion
 BUILDING_MENU_DECORATION,> Decoration,> Dekoration
 BUILDING_MENU_RESEARCH,> Research,> Forschung
-,,
-,,
-,,
-,,
-,,
-,,
 ,,
 ,,
 BUILDING_FURNACE,Furnace,Ofen
@@ -102,24 +103,12 @@ WORLD_RESOURCE_SAND_DESC,Mine to receive sand,Erhalte Sand beim abbauen
 WORLD_RESOURCE_SAND_STONE,Sandstone,Sandstein
 WORLD_RESOURCE_SAND_STONE_DESC,Mine to receive sandstone,Erhalte Sandstein beim abbauen
 ,,
+,,
 SKILLTREE_RESEARCH_POINTS,Research Points,Erforschungspunkte
 SKILLTREE_MOVEMENT,Movement,Beweglichkeit
 SKILLTREE_FATIGUE,Fatigue,Erschöpfung
 SKILLTREE_HIT,Hit,Schlag
 SKILLTREE_RESEARCH_TIME,Research Time,Erforschungszeit
 ,,
-,,
-,,
-,,
-RESOURCE,Resource,Ressource
-TOOL,Tool,Werkzeug
-WEAPON,Weapon,Waffe
-CLOTHS,Cloths,Kleidung
-PLACEABLE,Placeable,Platzierbar
-ALL,All,Alles
-SMELTABLE,Smeltable,Schmelzbar
-BURNABLE,Burnable,Brennbar
-PROCESSED,Processed,Verarbeitet
-RESEARCHABLE,Researchable,Erforschbar
-TYPE,Type,Typ
-BURNTIME,Burntime,Brennzeit
+MAINMENU_NEW_GAME,Start New Game,Neues Spiel beginnen
+MAINMENU_EXIT_GAME,Exit Game :(,Spiel verlassen :(

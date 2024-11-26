@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://j1cdgg7lep78"]
+[gd_scene load_steps=16 format=3 uid="uid://j1cdgg7lep78"]
 
 [ext_resource type="Script" path="res://Scripts/Player Scripts/player_ui.cs" id="1_m5svq"]
 [ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Menus/TranslationButton.cs" id="9_erkjv"]
 [ext_resource type="Script" path="res://Prefabs/EffectPanel.cs" id="11_r7w4g"]
 [ext_resource type="Script" path="res://Prefabs/SkilltreeBox.cs" id="12_bhbc1"]
+[ext_resource type="Script" path="res://Prefabs/TranslationRichTextLabel.cs" id="12_fbb8a"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_x1xeh"]
 color = Color(0.141176, 0.141176, 0.141176, 1)
@@ -355,6 +356,8 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = ExtResource("3_0pxjf")
 bbcode_enabled = true
 text = "[center][wave][font_size=25px]>[color=red]You got eaten[color=white]<"
+script = ExtResource("12_fbb8a")
+label_translation_string = "PLAYERUI_GAME_OVER"
 
 [node name="SPACELABEL" type="Label" parent="GameOverPanel/VBoxContainer"]
 layout_mode = 2
@@ -366,6 +369,8 @@ theme_override_fonts/font = ExtResource("3_0pxjf")
 text = "The Timer reached his limit and the Monster did not get his food."
 horizontal_alignment = 1
 autowrap_mode = 3
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_GAME_OVER_DESC"
 
 [node name="SPACELABEL2" type="Label" parent="GameOverPanel/VBoxContainer"]
 layout_mode = 2
@@ -384,6 +389,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
 text = "New Game"
 script = ExtResource("9_erkjv")
+label_translation_string = "MAINMENU_NEW_GAME"
 
 [node name="CheckBox" type="CheckBox" parent="GameOverPanel/VBoxContainer"]
 layout_mode = 2
