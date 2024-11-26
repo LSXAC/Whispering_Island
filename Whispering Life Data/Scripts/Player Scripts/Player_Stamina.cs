@@ -43,7 +43,10 @@ public partial class Player_Stamina : Node2D
                 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.MOVEMENT);
             Player.INSTANCE.anim.SpeedScale = 1f;
         }
+    }
 
+    public void RegenerateStamina(float velo_x, float velo_y)
+    {
         if (
             !Input.IsActionPressed("Shift")
             || stamina_is_regenerating

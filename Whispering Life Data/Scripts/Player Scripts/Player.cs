@@ -1,5 +1,4 @@
 using System;
-using System.Numerics;
 using Godot;
 
 public partial class Player : CharacterBody2D
@@ -29,12 +28,18 @@ public partial class Player : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (
-            Game_Manager.inside_game_menu
-            || Game_Manager.building_mode != Game_Manager.BuildingMode.None
-            || Game_Manager.gameover
-            || Game_Manager.In_Cutscene
-        )
+        //Disable all Events
+        if (Game_Manager.gameover)
+        {
+            Velocity = Vector2.Zero;
+            ChoosePlayerAnimation();
+            return;
+        }
+        // Regenerate indepentend from Player Events
+        player_stamina.RegenerateStamina(this.velo_x, this.velo_y);
+
+        // Disable Player Events
+        if (Game_Manager.inside_game_menu || Game_Manager.In_Cutscene)
             return;
 
         ZoomCamera();
