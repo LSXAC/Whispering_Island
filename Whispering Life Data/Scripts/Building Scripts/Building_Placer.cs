@@ -61,6 +61,11 @@ public partial class Building_Placer : Node2D
         if (current_building is placeable_building)
         {
             placeable = current_building as placeable_building;
+            if (placeable is MachineBase)
+            {
+                foreach (Taker taker in ((MachineBase)placeable).takers)
+                    taker.DisableMonitorable();
+            }
             placeable.GetSprite().SelfModulate = new Color(1f, 1f, 1f, 0.75f);
             placeable.collision_shape.Disabled = true;
             return;

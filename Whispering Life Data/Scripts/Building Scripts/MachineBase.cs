@@ -9,4 +9,7 @@ public partial class MachineBase : placeable_building
 
     [Export]
     public Array<Giver> givers;
+
+    [Export]
+    public Array<Taker> takers;
 }

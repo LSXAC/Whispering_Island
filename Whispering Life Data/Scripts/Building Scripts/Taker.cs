@@ -9,6 +9,18 @@ public partial class Taker : StaticBody2D
     [Export]
     public ItemHolder item_holder_In;
 
+    public Area2D area;
+
+    public override void _Ready()
+    {
+        area = GetNode<Area2D>("BeltArea");
+    }
+
+    public void DisableMonitorable()
+    {
+        area.Monitorable = false;
+    }
+
     public bool can_receive_item(BeltItem ii = null)
     {
         if (building is Chest)
