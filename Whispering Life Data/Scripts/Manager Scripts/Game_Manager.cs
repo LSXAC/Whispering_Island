@@ -247,6 +247,10 @@ public partial class Game_Manager : Node2D
     public void GameOver()
     {
         player_ui.INSTANCE.gameover_panel.Visible = true;
+        GameMenu.INSTANCE.Visible = false;
+        Building_Menu.instance.Visible = false;
+        QuestMenu.INSTANCE.Visible = false;
+        INSTANCE.game_timer.Stop();
         gameover = true;
     }
 }

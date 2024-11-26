@@ -241,73 +241,6 @@ theme_override_font_sizes/font_size = 14
 text = "Game Time: X"
 horizontal_alignment = 1
 
-[node name="GameOverPanel" type="Panel" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -100.0
-offset_right = 200.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="GameOverPanel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 2
-theme_override_constants/outline_size = 5
-theme_override_fonts/normal_font = ExtResource("3_0pxjf")
-bbcode_enabled = true
-text = "[center][wave][font_size=25px]>[color=red]You got eaten[color=white]<"
-
-[node name="SPACELABEL" type="Label" parent="GameOverPanel/VBoxContainer"]
-layout_mode = 2
-
-[node name="Description" type="Label" parent="GameOverPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("3_0pxjf")
-text = "The Timer reached his limit and the Monster did not get his food."
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="SPACELABEL2" type="Label" parent="GameOverPanel/VBoxContainer"]
-layout_mode = 2
-
-[node name="LoadGameButton" type="Button" parent="GameOverPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("3_0pxjf")
-text = "Load Game"
-script = ExtResource("9_erkjv")
-label_translation_string = "SAVELOAD_MENU_LOAD_BUTTON"
-
-[node name="NewGameButton" type="Button" parent="GameOverPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("3_0pxjf")
-text = "New Game"
-script = ExtResource("9_erkjv")
-
-[node name="CheckBox" type="CheckBox" parent="GameOverPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("3_0pxjf")
-button_pressed = true
-text = "SKIP TUTORIAL"
-
 [node name="EffectPanel" type="Panel" parent="."]
 visible = false
 anchors_preset = 1
@@ -390,6 +323,74 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Movement: 1.05%"
 horizontal_alignment = 1
+
+[node name="GameOverPanel" type="Panel" parent="."]
+visible = false
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameOverPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3_0pxjf")
+bbcode_enabled = true
+text = "[center][wave][font_size=25px]>[color=red]You got eaten[color=white]<"
+
+[node name="SPACELABEL" type="Label" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+text = "The Timer reached his limit and the Monster did not get his food."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SPACELABEL2" type="Label" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="LoadGameButton" type="Button" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+text = "Load Game"
+script = ExtResource("9_erkjv")
+label_translation_string = "SAVELOAD_MENU_LOAD_BUTTON"
+
+[node name="NewGameButton" type="Button" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+text = "New Game"
+script = ExtResource("9_erkjv")
+
+[node name="CheckBox" type="CheckBox" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+button_pressed = true
+text = "SKIP TUTORIAL"
 
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="button_down" from="GameOverPanel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButton"]
