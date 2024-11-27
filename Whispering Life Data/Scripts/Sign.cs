@@ -14,6 +14,7 @@ public partial class Sign : Building_Node
     {
         if (GlobalFunctions.GetDistanceToPlayer(this.GlobalPosition) >= 20f)
             return;
+
         GameMenu.INSTANCE.OnOpenIslandTab();
         island_menu.instance.current_sign = this;
 

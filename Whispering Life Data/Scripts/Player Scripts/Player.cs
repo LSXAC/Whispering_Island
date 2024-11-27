@@ -39,7 +39,7 @@ public partial class Player : CharacterBody2D
         player_stamina.RegenerateStamina(this.velo_x, this.velo_y);
 
         // Disable Player Events
-        if (Game_Manager.inside_game_menu || Game_Manager.In_Cutscene)
+        if (GameMenu.IsWindowActiv() || Game_Manager.In_Cutscene)
             return;
 
         ZoomCamera();

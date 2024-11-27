@@ -54,18 +54,28 @@ public partial class Building_Menu : CanvasLayer
             return;
 
         if (Input.IsActionJustPressed("OpenBuilding"))
+        {
+            if (GameMenu.IsWindowActiv())
+                return;
+
             OpenWindow();
+        }
+
+        if (Input.IsActionJustPressed("Escape"))
+            if (GameMenu.IsThisWindow(this))
+            {
+                CloseWindow();
+            }
     }
 
     public void OpenWindow()
     {
-        if (Game_Manager.inside_game_menu)
-            return;
+        GameMenu.SetWindow(this);
+    }
 
-        if (!this.Visible)
-            this.Visible = true;
-        else
-            this.Visible = false;
+    public void CloseWindow()
+    {
+        GameMenu.CloseLastWindow();
     }
 
     public void OnRemoveButton()

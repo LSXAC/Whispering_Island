@@ -52,8 +52,23 @@ public partial class QuestMenu : CanvasLayer
         QuestManager.INSTANCE.NextQuest();
     }
 
+    public override void _PhysicsProcess(double delta)
+    {
+        if (Input.IsActionJustPressed("Escape"))
+        {
+            if (GameMenu.IsThisWindow(this))
+                OnCloseButton();
+        }
+    }
+
+    public void OnOpenQuestMenu()
+    {
+        GameMenu.SetWindow(this);
+    }
+
     public void OnCloseButton()
     {
+        Game_Manager.In_Cutscene = true;
         GlobalFunctions.MoveCamera(new Vector2(0, -256));
         if (TranslationServer.GetLocale() == "de")
             DialogueManager.ShowDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_DE");
@@ -64,7 +79,7 @@ public partial class QuestMenu : CanvasLayer
 
     public void CloseQuestMenu()
     {
-        this.Visible = false;
+        GameMenu.CloseLastWindow();
     }
 
     public void OnVisiblityChanged()

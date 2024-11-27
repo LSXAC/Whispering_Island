@@ -110,7 +110,7 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_lfoib")
 
-[node name="Potato" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "sprite", "collision_shape")]
+[node name="Potato" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "sprite")]
 y_sort_enabled = true
 script = ExtResource("1_p10p7")
 anim_player = NodePath("AnimationPlayer")
@@ -122,7 +122,6 @@ gpu_particles = NodePath("PotatoParticle")
 title = "WORLD_RESOURCE_POTATO"
 description = "WORLD_RESOURCE_POTATO_DESC"
 sprite = NodePath("PotatoSprite")
-collision_shape = NodePath("")
 
 [node name="PotatoSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true

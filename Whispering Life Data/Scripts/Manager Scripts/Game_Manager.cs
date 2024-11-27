@@ -15,12 +15,11 @@ public partial class Game_Manager : Node2D
     public PackedScene dialogeScene;
 
     public static string game_version = "a.0.1";
+    public static CanvasLayer current_activ_canvaslayer = null;
 
     public static Game_Manager INSTANCE = null;
     public static string player_name = "Player";
     public static bool gameover = false;
-
-    public static bool inside_game_menu = false;
 
     public static bool[,] island_matrix;
 
@@ -63,7 +62,7 @@ public partial class Game_Manager : Node2D
         tutorial_finished = false;
         In_Cutscene = false;
         island_matrix = new bool[21, 21];
-        inside_game_menu = false;
+        current_activ_canvaslayer = null;
         game_time_since_start = 0f;
 
         cutscene_camera = GetNode<Camera2D>("CutsceneCamera");

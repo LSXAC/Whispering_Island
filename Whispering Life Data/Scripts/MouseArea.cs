@@ -52,7 +52,7 @@ public partial class MouseArea : Area2D
     public void OnMouseClick()
     {
         if (
-            Game_Manager.inside_game_menu
+            GameMenu.IsWindowActiv()
             || Game_Manager.building_mode != Game_Manager.BuildingMode.None
             || building_node == null
         )

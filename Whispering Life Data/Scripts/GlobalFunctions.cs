@@ -73,7 +73,7 @@ public partial class GlobalFunctions : Node2D
         Game_Manager.INSTANCE.cutscene_camera.Enabled = false;
         Player.camera.Position = Game_Manager.INSTANCE.cutscene_camera.Position;
         Player.camera.Enabled = true;
-        Player.camera.Position = Godot.Vector2.Zero;
+        Player.camera.Position = Vector2.Zero;
         Game_Manager.In_Cutscene = false;
         Game_Manager.INSTANCE.SaveGame();
     }

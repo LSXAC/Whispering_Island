@@ -182,7 +182,7 @@ script = ExtResource("3_ft6wq")
 [connection signal="button_down" from="HBoxHeader/ProductionButton" to="." method="OnPanelButton" binds= [0]]
 [connection signal="button_down" from="HBoxHeader/DecorationButton" to="." method="OnPanelButton" binds= [1]]
 [connection signal="button_down" from="HBoxHeader/ResearchButton" to="." method="OnPanelButton" binds= [2]]
-[connection signal="button_down" from="HBoxHeader/ExitTabButton" to="." method="OpenWindow"]
+[connection signal="button_down" from="HBoxHeader/ExitTabButton" to="." method="CloseWindow"]
 [connection signal="visibility_changed" from="ProductionTab" to="ProductionTab" method="OnVisiblityChange"]
 [connection signal="visibility_changed" from="DecorationTab" to="DecorationTab" method="OnVisiblityChange"]
 [connection signal="visibility_changed" from="ResearchTab" to="ResearchTab" method="OnVisiblityChange"]

@@ -57,25 +57,59 @@ public partial class GameMenu : CanvasLayer
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
-        if (Game_Manager.gameover || Game_Manager.In_Cutscene || Building_Menu.instance.Visible)
+        if (Game_Manager.gameover || Game_Manager.In_Cutscene)
             return;
 
         if (Input.IsActionJustPressed("Escape"))
         {
-            if (!Visible)
+            if (IsThisWindow(this))
             {
-                ChangeSelectedTabColor(Tabs.Inventory);
-                this.Visible = true;
-                Game_Manager.inside_game_menu = true;
-            }
-            else
-            {
-                ChangeSelectedTabColor(Tabs.X);
+                CloseLastWindow();
                 OnExitButton();
+                return;
             }
+
+            if (IsWindowActiv())
+                return;
+
+            ChangeSelectedTabColor(Tabs.Inventory);
+            SetWindow(this);
         }
+    }
+
+    public static void CloseLastWindow()
+    {
+        if (Game_Manager.current_activ_canvaslayer != null)
+        {
+            Game_Manager.current_activ_canvaslayer.Visible = false;
+            Game_Manager.current_activ_canvaslayer = null;
+            Debug.Print("Last Window Closed");
+        }
+    }
+
+    public static bool IsThisWindow(CanvasLayer layer)
+    {
+        if (Game_Manager.current_activ_canvaslayer != null)
+            if (Game_Manager.current_activ_canvaslayer == layer)
+                return true;
+
+        return false;
+    }
+
+    public static bool IsWindowActiv()
+    {
+        if (Game_Manager.current_activ_canvaslayer == null)
+            return false;
+        return true;
+    }
+
+    public static void SetWindow(CanvasLayer node)
+    {
+        Debug.Print(node.Name);
+        Game_Manager.current_activ_canvaslayer = node;
+        Game_Manager.current_activ_canvaslayer.Visible = true;
     }
 
     enum Tabs
@@ -116,45 +150,33 @@ public partial class GameMenu : CanvasLayer
 
     public void OnExitButton()
     {
-        ChangeSelectedTabColor(Tabs.X);
-        OnCloseFurnaceTab();
-        OnCloseChestTab();
-        OnCloseResearchTab();
-        this.Visible = false;
-        Game_Manager.inside_game_menu = false;
+        CloseAllTabs();
+        inventory_tab.Visible = true;
+        CloseLastWindow();
     }
 
     public void OnInventoryTabButton()
     {
+        SetWindow(this);
         ChangeSelectedTabColor(Tabs.Inventory);
-        crafting_tab.Visible = false;
+        CloseAllTabs();
         inventory_tab.Visible = true;
-        settings_tab.Visible = false;
-        saveload_tab.Visible = false;
-        admin_tab.Visible = false;
-        island_tab.Visible = false;
     }
 
     public void OnSettingsTabButton()
     {
+        SetWindow(this);
+        CloseAllTabs();
         ChangeSelectedTabColor(Tabs.Settings);
-        crafting_tab.Visible = false;
-        inventory_tab.Visible = false;
         settings_tab.Visible = true;
-        saveload_tab.Visible = false;
-        admin_tab.Visible = false;
-        island_tab.Visible = false;
     }
 
     public void OnCraftingTabButton()
     {
+        SetWindow(this);
         ChangeSelectedTabColor(Tabs.Crafting);
+        CloseAllTabs();
         crafting_tab.Visible = true;
-        inventory_tab.Visible = false;
-        settings_tab.Visible = false;
-        admin_tab.Visible = false;
-        saveload_tab.Visible = false;
-        island_tab.Visible = false;
         crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
     }
 
@@ -210,190 +232,107 @@ public partial class GameMenu : CanvasLayer
 
     public void OnSaveLoadTabButton()
     {
+        SetWindow(this);
         ChangeSelectedTabColor(Tabs.LoadSave);
-        crafting_tab.Visible = false;
-        inventory_tab.Visible = false;
-        settings_tab.Visible = false;
+        CloseAllTabs();
         saveload_tab.Visible = true;
-        admin_tab.Visible = false;
-        island_tab.Visible = false;
-        skilltree_tab.Visible = false;
-        crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
     }
 
     public void OnOpenFurnaceTab()
     {
-        ChangeSelectedTabColor(Tabs.Inventory);
-        Visible = true;
-        Game_Manager.inside_game_menu = true;
+        SetWindow(this);
+        CloseAllTabs();
         inventory_tab.Visible = true;
-        crafting_tab.Visible = false;
-        settings_tab.Visible = false;
-        admin_tab.Visible = false;
         furnace_tab.Visible = true;
-        chest_tab.Visible = false;
-        saveload_tab.Visible = false;
-        island_tab.Visible = false;
-        skilltree_tab.Visible = false;
     }
 
     public void OnOpenChestTab()
     {
-        ChangeSelectedTabColor(Tabs.Inventory);
-        Visible = true;
-        Game_Manager.inside_game_menu = true;
+        SetWindow(this);
+        CloseAllTabs();
         inventory_tab.Visible = true;
-        crafting_tab.Visible = false;
-        settings_tab.Visible = false;
-        admin_tab.Visible = false;
-        furnace_tab.Visible = false;
         chest_tab.Visible = true;
-        saveload_tab.Visible = false;
-        skilltree_tab.Visible = false;
-        island_tab.Visible = false;
     }
 
     public void OnOpenAdminTab()
     {
         ChangeSelectedTabColor(Tabs.Admin);
-        Visible = true;
-        Game_Manager.inside_game_menu = true;
+        SetWindow(this);
+        CloseAllTabs();
         inventory_tab.Visible = true;
-        crafting_tab.Visible = false;
-        settings_tab.Visible = false;
         admin_tab.Visible = true;
-        skilltree_tab.Visible = false;
-        furnace_tab.Visible = false;
-        chest_tab.Visible = false;
-        saveload_tab.Visible = false;
-        island_tab.Visible = false;
     }
 
     public void OnCloseFurnaceTab()
     {
-        ChangeSelectedTabColor(Tabs.X);
+        CloseAllTabs();
         inventory_tab.Visible = true;
+        CloseLastWindow();
+    }
+
+    private void CloseAllTabs()
+    {
+        inventory_tab.Visible = false;
+        research_tab.Visible = false;
         crafting_tab.Visible = false;
         furnace_tab.Visible = false;
-        skilltree_tab.Visible = false;
         admin_tab.Visible = false;
+        skilltree_tab.Visible = false;
         settings_tab.Visible = false;
         saveload_tab.Visible = false;
-        Game_Manager.inside_game_menu = false;
-        Visible = false;
         island_tab.Visible = false;
     }
 
     public void OnCloseResearchTab()
     {
-        ChangeSelectedTabColor(Tabs.X);
+        CloseAllTabs();
         inventory_tab.Visible = true;
-        research_tab.Visible = false;
-        crafting_tab.Visible = false;
-        furnace_tab.Visible = false;
-        admin_tab.Visible = false;
-        skilltree_tab.Visible = false;
-        settings_tab.Visible = false;
-        saveload_tab.Visible = false;
-        Game_Manager.inside_game_menu = false;
-        island_tab.Visible = false;
-        Visible = false;
+        CloseLastWindow();
     }
 
     public void OnOpenResearchTab()
     {
-        Visible = true;
+        SetWindow(this);
+        CloseAllTabs();
         inventory_tab.Visible = true;
         research_tab.Visible = true;
-        crafting_tab.Visible = false;
-        furnace_tab.Visible = false;
-        admin_tab.Visible = false;
-        skilltree_tab.Visible = false;
-        settings_tab.Visible = false;
-        island_tab.Visible = false;
-        saveload_tab.Visible = false;
-        Game_Manager.inside_game_menu = true;
     }
 
     public void OnCloseSkilltreeTab()
     {
-        ChangeSelectedTabColor(Tabs.X);
+        CloseAllTabs();
         inventory_tab.Visible = true;
-        research_tab.Visible = false;
-        crafting_tab.Visible = false;
-        furnace_tab.Visible = false;
-        admin_tab.Visible = false;
-        skilltree_tab.Visible = false;
-        settings_tab.Visible = false;
-        saveload_tab.Visible = false;
-        Game_Manager.inside_game_menu = false;
-        island_tab.Visible = false;
-        Visible = false;
+        CloseLastWindow();
     }
 
     public void OnOpenSkilltreeTab()
     {
+        SetWindow(this);
         ChangeSelectedTabColor(Tabs.SkillTree);
-        Visible = true;
-        inventory_tab.Visible = false;
-        research_tab.Visible = false;
-        crafting_tab.Visible = false;
-        furnace_tab.Visible = false;
-        admin_tab.Visible = false;
         skilltree_tab.Visible = true;
-        settings_tab.Visible = false;
-        island_tab.Visible = false;
-        saveload_tab.Visible = false;
-        Game_Manager.inside_game_menu = true;
     }
 
     public void OnCloseChestTab()
     {
-        ChangeSelectedTabColor(Tabs.X);
+        CloseAllTabs();
         inventory_tab.Visible = true;
-        crafting_tab.Visible = false;
-        furnace_tab.Visible = false;
-        settings_tab.Visible = false;
-        admin_tab.Visible = false;
-        island_tab.Visible = false;
-        chest_tab.Visible = false;
-        skilltree_tab.Visible = false;
-        saveload_tab.Visible = false;
         ChestInventory.INSTANCE.current_chest = null;
-        Game_Manager.inside_game_menu = false;
-        Visible = false;
+        CloseLastWindow();
     }
 
     public void OnOpenIslandTab()
     {
-        Visible = true;
-        inventory_tab.Visible = false;
-        research_tab.Visible = false;
-        crafting_tab.Visible = false;
-        furnace_tab.Visible = false;
-        admin_tab.Visible = false;
-        skilltree_tab.Visible = false;
-        settings_tab.Visible = false;
+        SetWindow(this);
+        CloseAllTabs();
         island_tab.Visible = true;
-        saveload_tab.Visible = false;
-        Game_Manager.inside_game_menu = true;
     }
 
     public void OnCloseIslandTab()
     {
-        ChangeSelectedTabColor(Tabs.X);
+        CloseAllTabs();
         inventory_tab.Visible = true;
-        crafting_tab.Visible = false;
-        furnace_tab.Visible = false;
-        settings_tab.Visible = false;
-        skilltree_tab.Visible = false;
-        admin_tab.Visible = false;
-        island_tab.Visible = false;
-        chest_tab.Visible = false;
-        saveload_tab.Visible = false;
         ChestInventory.INSTANCE.current_chest = null;
-        Game_Manager.inside_game_menu = false;
-        Visible = false;
+        CloseLastWindow();
     }
 
     public void OnSaveButton()
@@ -404,6 +343,7 @@ public partial class GameMenu : CanvasLayer
     public void OnLoadButton()
     {
         OnExitButton();
+        CloseLastWindow();
         Debug.Print(GetTree().ReloadCurrentScene().ToString());
     }
 }

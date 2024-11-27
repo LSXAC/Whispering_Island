@@ -8,6 +8,6 @@ public partial class QuestSign : Building_Node
         if (GlobalFunctions.GetDistanceToPlayer(this.GlobalPosition) >= 45)
             return;
 
-        QuestMenu.INSTANCE.Visible = true;
+        QuestMenu.INSTANCE.OnOpenQuestMenu();
     }
 }

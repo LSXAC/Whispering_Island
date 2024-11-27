@@ -364,7 +364,7 @@ public partial class Building_Placer : Node2D
         Vector2 pos = tilemap.LocalToMap(GetGlobalMousePosition());
         current_building.Position = new Vector2(pos.X * 16, pos.Y * 16);
 
-        if (Input.IsActionJustPressed("Close") || Input.IsActionJustPressed("Escape"))
+        if (Input.IsActionJustPressed("Escape"))
             CloseMenuWithBuildingSelected();
 
         if (placeable is Belt)
@@ -496,5 +496,6 @@ public partial class Building_Placer : Node2D
     {
         Game_Manager.building_mode = Game_Manager.BuildingMode.None;
         player_ui.INSTANCE.SetWindowFrame();
+        Building_Menu.instance.CloseWindow();
     }
 }
