@@ -308,6 +308,7 @@ public partial class GameMenu : CanvasLayer
     public void OnOpenSkilltreeTab()
     {
         SetWindow(this);
+        CloseAllTabs();
         ChangeSelectedTabColor(Tabs.SkillTree);
         skilltree_tab.Visible = true;
     }

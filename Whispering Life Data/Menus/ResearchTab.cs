@@ -169,6 +169,7 @@ public partial class ResearchTab : ColorRect
             );
         Research_Points += 1;
         Debug.Print(research_saves[id].research_level + " current level <:");
+        SetText(research_slot.GetItem().item_info);
         tab_container.GetChild(0).QueueFree();
         working_panel.Visible = false;
     }

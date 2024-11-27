@@ -1962,6 +1962,7 @@ text = "Game savefile from: 16.10.2024 - 12:55:23"
 horizontal_alignment = 1
 
 [node name="SettingsTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("option_button")]
+visible = false
 z_index = 6
 layout_mode = 0
 offset_top = 26.0

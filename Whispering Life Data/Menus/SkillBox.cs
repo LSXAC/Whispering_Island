@@ -58,6 +58,7 @@ public partial class SkillBox : ColorRect
         if (Skilltree.skill_progress[(int)type] < 3)
             Skilltree.skill_progress[(int)type]++;
         ResearchTab.INSTANCE.Research_Points -= 1;
+        Skilltree.INSTANCE.UpdateResearchPoints();
         InitSkillBox();
         Skilltree.GetSkillProgress(type);
     }
