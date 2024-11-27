@@ -182,8 +182,10 @@ tile_set = ExtResource("8_lsa2h")
 script = ExtResource("9_r4kdi")
 
 [node name="DecoBridges" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Up" type="Node2D" parent="DecoBridges"]
+y_sort_enabled = true
 
 [node name="BridgeUpBottomEnd" parent="DecoBridges/Up" instance=ExtResource("12_tck47")]
 position = Vector2(32, 144)
@@ -198,6 +200,7 @@ position = Vector2(32, 80)
 position = Vector2(32, 48)
 
 [node name="Side" type="Node2D" parent="DecoBridges"]
+y_sort_enabled = true
 
 [node name="BridgeSide" parent="DecoBridges/Side" instance=ExtResource("10_gp4cu")]
 position = Vector2(-40, 0)
@@ -216,6 +219,7 @@ position = Vector2(-8, 0)
 scale = Vector2(-1, 1)
 
 [node name="Side2" type="Node2D" parent="DecoBridges"]
+y_sort_enabled = true
 position = Vector2(-24, 184)
 
 [node name="BridgeSide" parent="DecoBridges/Side2" instance=ExtResource("10_gp4cu")]

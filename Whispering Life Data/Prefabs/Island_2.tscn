@@ -38,7 +38,7 @@ y_sort_enabled = true
 
 [node name="Up" type="Node2D" parent="IslandProperties/BridgeStartPoints"]
 y_sort_enabled = true
-position = Vector2(0, -191)
+position = Vector2(0, -192)
 
 [node name="Down" type="Node2D" parent="IslandProperties/BridgeStartPoints"]
 y_sort_enabled = true
@@ -83,7 +83,7 @@ y_sort_enabled = true
 
 [node name="Up" type="CollisionShape2D" parent="IslandProperties/BridgeCollisions"]
 y_sort_enabled = true
-position = Vector2(0, -207)
+position = Vector2(0, -208)
 shape = SubResource("RectangleShape2D_cpdmr")
 
 [node name="Right" type="CollisionShape2D" parent="IslandProperties/BridgeCollisions"]
