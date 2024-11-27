@@ -1962,7 +1962,6 @@ text = "Game savefile from: 16.10.2024 - 12:55:23"
 horizontal_alignment = 1
 
 [node name="SettingsTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("option_button")]
-visible = false
 z_index = 6
 layout_mode = 0
 offset_top = 26.0
@@ -2231,128 +2230,6 @@ popup/item_0/icon = ExtResource("16_ldk1u")
 popup/item_1/text = "Deutsch"
 popup/item_1/icon = ExtResource("18_1qrrt")
 popup/item_1/id = 1
-
-[node name="SomethingElse2" type="HBoxContainer" parent="Background/SettingsTab/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Container" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/SomethingElse2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/SomethingElse2/Container"]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.576471, 0.807843, 1, 1)
-
-[node name="MarginContainerLeft" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/SomethingElse2/Container"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 5
-
-[node name="Label" type="Label" parent="Background/SettingsTab/VBoxContainer/SomethingElse2/Container/MarginContainerLeft"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 15
-text = "Language"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/SomethingElse2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/SomethingElse2/PanelContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.576471, 0.807843, 1, 1)
-
-[node name="MarginContainerRight" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/SomethingElse2/PanelContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 5
-
-[node name="OptionButton" type="OptionButton" parent="Background/SettingsTab/VBoxContainer/SomethingElse2/PanelContainer/MarginContainerRight"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = ExtResource("17_hyydq")
-alignment = 1
-selected = 0
-item_count = 1
-popup/item_0/text = "English"
-popup/item_0/icon = ExtResource("16_ldk1u")
-
-[node name="Language2" type="HBoxContainer" parent="Background/SettingsTab/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Container" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/Language2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/Language2/Container"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MarginContainerLeft" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/Language2/Container"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 5
-
-[node name="Label" type="Label" parent="Background/SettingsTab/VBoxContainer/Language2/Container/MarginContainerLeft"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 15
-text = "Language"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/Language2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/Language2/PanelContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0, 0, 0, 1)
-
-[node name="MarginContainerRight" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/Language2/PanelContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 5
-
-[node name="OptionButton" type="OptionButton" parent="Background/SettingsTab/VBoxContainer/Language2/PanelContainer/MarginContainerRight"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = ExtResource("17_hyydq")
-alignment = 1
-selected = 0
-item_count = 1
-popup/item_0/text = "English"
-popup/item_0/icon = ExtResource("16_ldk1u")
 
 [connection signal="pressed" from="Background/HBoxHeader/InvTabButton" to="." method="OnInventoryTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]
