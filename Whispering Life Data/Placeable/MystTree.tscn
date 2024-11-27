@@ -129,6 +129,7 @@ sprite = NodePath("TreeSprite")
 collision_shape = NodePath("Collision")
 
 [node name="TreeSprite" type="Sprite2D" parent="."]
+self_modulate = Color(0.891689, 0.762786, 0.928384, 1)
 y_sort_enabled = true
 position = Vector2(0, -3)
 texture = ExtResource("3_7es2c")

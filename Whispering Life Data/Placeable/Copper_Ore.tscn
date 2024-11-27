@@ -129,6 +129,7 @@ sprite = NodePath("WheatSprite")
 collision_shape = NodePath("Collision")
 
 [node name="WheatSprite" type="Sprite2D" parent="."]
+self_modulate = Color(0.898255, 0.856434, 0.715743, 1)
 y_sort_enabled = true
 position = Vector2(0, -3)
 texture = ExtResource("3_tqg5t")
