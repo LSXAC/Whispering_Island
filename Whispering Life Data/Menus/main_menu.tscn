@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Menus/MainMenu.cs" id="1_tix1b"]
 [ext_resource type="Script" path="res://Menus/TranslationButton.cs" id="3_f3o34"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("skip_tutorial")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tix1b")
+skip_tutorial = NodePath("VBoxContainer/HBoxContainer/CheckBox")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -64,14 +65,25 @@ offset_bottom = 106.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NewGameButton" type="Button" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_6mgai")
 theme_override_font_sizes/font_size = 16
 text = "NEW GAME"
 script = ExtResource("3_f3o34")
 label_translation_string = "MAINMENU_NEW_GAME"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_6mgai")
+theme_override_font_sizes/font_size = 14
+text = "SKIP TUTORIAL"
 
 [node name="LoadGameButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -102,6 +114,7 @@ theme_override_font_sizes/font_size = 12
 text = "Copyright © 2024. Leon Schröder Asset Creations"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="OnNewGameButtoN"]
+[connection signal="visibility_changed" from="." to="." method="OnVisiblityChanged"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NewGameButton" to="." method="OnNewGameButtoN"]
 [connection signal="pressed" from="VBoxContainer/LoadGameButton" to="." method="OnLoadGameButtoN"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="OnExitGameButtoN"]

@@ -57,10 +57,13 @@ public partial class Item_Row_Manager : HBoxContainer
                 if (times > amount)
                     times = amount;
             }
-            player_ui.INSTANCE.times_to_build_left_label.Text = "> " + times + "x Left ";
+            player_ui.INSTANCE.times_to_build_left_label.Text =
+                "> " + times + "x " + TranslationServer.Translate("PLAYERUI_TIMES_LEFT_TO_BUILD");
             return true;
         }
-        player_ui.INSTANCE.times_to_build_left_label.Text = "> 0x Left ";
+        player_ui.INSTANCE.times_to_build_left_label.Text =
+            "> 0x " + TranslationServer.Translate("PLAYERUI_TIMES_LEFT_TO_BUILD");
+        ;
         return false;
     }
 }

@@ -15,6 +15,8 @@ border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
 [resource]
+default_font = ExtResource("1_c88cg")
+default_font_size = 16
 TooltipLabel/colors/font_color = Color(1, 1, 1, 1)
 TooltipLabel/colors/font_outline_color = Color(0, 0, 0, 1)
 TooltipLabel/constants/outline_size = 0

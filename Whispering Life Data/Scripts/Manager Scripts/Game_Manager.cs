@@ -59,7 +59,6 @@ public partial class Game_Manager : Node2D
     {
         INSTANCE = this;
         gameover = false;
-        tutorial_finished = false;
         In_Cutscene = false;
         island_matrix = new bool[21, 21];
         current_activ_canvaslayer = null;
@@ -218,7 +217,13 @@ public partial class Game_Manager : Node2D
         else
         {
             NewGame();
-            StartTutorial();
+            if (!tutorial_finished)
+                StartTutorial();
+            else
+            {
+                GlobalFunctions.StartAfterTutorial();
+                SaveGame();
+            }
         }
     }
 

@@ -63,6 +63,7 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
 text = "Rotate/Flip with [Q] or [E] | Close [ESC]"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -73,9 +74,11 @@ label_translation_string = "PLAYERUI_ROTATE_FLIP_TIP"
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 10
 text = "Resources need "
 horizontal_alignment = 2
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_RESOURCES_NEEDED"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="WindowFrame/VBoxContainer"]
 layout_mode = 2
@@ -86,8 +89,8 @@ script = ExtResource("4_28ccb")
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 16
-text = "> 2x left"
+theme_override_font_sizes/font_size = 8
+text = "> 2x can be build"
 horizontal_alignment = 2
 
 [node name="HSlider" type="HSlider" parent="."]
@@ -162,7 +165,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 12
 text = "Objectiv"
 horizontal_alignment = 1
 script = ExtResource("7_vya4o")
@@ -189,7 +192,7 @@ layout_mode = 2
 size_flags_vertical = 6
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 10
 text = "Time Left: Unknown"
 
 [node name="QuestCompletePanel" type="Panel" parent="."]
@@ -253,7 +256,7 @@ theme_override_constants/margin_bottom = 0
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "Game Time: X"
 horizontal_alignment = 1
 
@@ -298,7 +301,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -127.0
-offset_top = -107.0
+offset_top = -65.0
 grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("12_bhbc1")
@@ -312,30 +315,35 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="Skilltree_Box/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0pxjf")
 theme_override_font_sizes/font_size = 12
 text = "Movement: 1.05%"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="Skilltree_Box/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0pxjf")
 theme_override_font_sizes/font_size = 12
 text = "Movement: 1.05%"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="Skilltree_Box/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0pxjf")
 theme_override_font_sizes/font_size = 12
 text = "Movement: 1.05%"
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="Skilltree_Box/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0pxjf")
 theme_override_font_sizes/font_size = 12
 text = "Movement: 1.05%"
 horizontal_alignment = 1
