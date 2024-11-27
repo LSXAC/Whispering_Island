@@ -54,9 +54,9 @@ public partial class ResourceObject : Building_Node
 
     public override void _Process(double delta)
     {
-        if (!Game_Manager.tutorial_finished && Visible)
+        if (!Game_Manager.INSTANCE.tutorial_finished && Visible)
             Visible = false;
-        else if (Game_Manager.tutorial_finished && !Visible)
+        else if (Game_Manager.INSTANCE.tutorial_finished && !Visible)
             Visible = true;
     }
 

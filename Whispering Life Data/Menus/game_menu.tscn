@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=61 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -59,6 +59,35 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tibut"]
 bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lukln"]
+bg_color = Color(0.315803, 0.318524, 0.357476, 1)
+border_width_left = 1
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_58s80"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34cmw"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "header_container")]
 process_mode = 3
@@ -1962,7 +1991,6 @@ text = "Game savefile from: 16.10.2024 - 12:55:23"
 horizontal_alignment = 1
 
 [node name="SettingsTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("option_button")]
-visible = false
 z_index = 6
 layout_mode = 0
 offset_top = 26.0
@@ -2007,7 +2035,7 @@ size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 text = "SETTINGS_MASTER_VOLUME"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -2035,6 +2063,7 @@ theme_override_constants/margin_bottom = 5
 [node name="HSlider" type="HSlider" parent="Background/SettingsTab/VBoxContainer/MasterVolume/PanelContainer/MarginContainerRight"]
 layout_mode = 2
 theme_override_constants/center_grabber = 0
+theme_override_styles/slider = SubResource("StyleBoxFlat_lukln")
 min_value = -60.0
 max_value = 20.0
 script = ExtResource("37_vnnff")
@@ -2068,7 +2097,7 @@ size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 text = "SETTINGS_MUSIC_VOLUME"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -2096,6 +2125,7 @@ theme_override_constants/margin_bottom = 5
 [node name="HSlider" type="HSlider" parent="Background/SettingsTab/VBoxContainer/MusicVolume/PanelContainer/MarginContainerRight"]
 layout_mode = 2
 theme_override_constants/center_grabber = 0
+theme_override_styles/slider = SubResource("StyleBoxFlat_lukln")
 min_value = -60.0
 max_value = 20.0
 script = ExtResource("37_vnnff")
@@ -2130,7 +2160,7 @@ size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 text = "SETTINGS_SFX_VOLUME"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -2158,6 +2188,7 @@ theme_override_constants/margin_bottom = 5
 [node name="HSlider" type="HSlider" parent="Background/SettingsTab/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight"]
 layout_mode = 2
 theme_override_constants/center_grabber = 0
+theme_override_styles/slider = SubResource("StyleBoxFlat_lukln")
 min_value = -60.0
 max_value = 20.0
 script = ExtResource("37_vnnff")
@@ -2189,7 +2220,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 text = "Language"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -2218,12 +2249,13 @@ layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = ExtResource("18_q7nbm")
 theme_override_styles/hover = ExtResource("18_q7nbm")
 theme_override_styles/pressed = ExtResource("18_q7nbm")
 theme_override_styles/normal = ExtResource("17_hyydq")
 alignment = 1
+expand_icon = true
 selected = 0
 item_count = 2
 popup/item_0/text = "[US] ENGLISH"
@@ -2231,6 +2263,68 @@ popup/item_0/icon = ExtResource("16_ldk1u")
 popup/item_1/text = "Deutsch"
 popup/item_1/icon = ExtResource("18_1qrrt")
 popup/item_1/id = 1
+
+[node name="ExitGame" type="HBoxContainer" parent="Background/SettingsTab/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/ExitGame"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/ExitGame/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainerLeft" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/ExitGame/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Background/SettingsTab/VBoxContainer/ExitGame/Container/MarginContainerLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Don't forget to save"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("26_tl5yt")
+label_translation_string = "SETTINGS_HAVE_SAVED"
+
+[node name="PanelContainer" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/ExitGame"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/ExitGame/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainerRight" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/ExitGame/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Button" type="Button" parent="Background/SettingsTab/VBoxContainer/ExitGame/PanelContainer/MarginContainerRight"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxFlat_58s80")
+theme_override_styles/hover = SubResource("StyleBoxFlat_58s80")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_58s80")
+theme_override_styles/normal = SubResource("StyleBoxFlat_34cmw")
+text = "Exit Game"
+script = ExtResource("3_pwamf")
+label_translation_string = "MAINMENU_EXIT_GAME"
 
 [connection signal="pressed" from="Background/HBoxHeader/InvTabButton" to="." method="OnInventoryTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]
@@ -2269,3 +2363,4 @@ popup/item_1/id = 1
 [connection signal="value_changed" from="Background/SettingsTab/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" to="Background/SettingsTab/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" method="OnValueChanged"]
 [connection signal="visibility_changed" from="Background/SettingsTab/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" to="Background/SettingsTab/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" method="OnVisiblityChange"]
 [connection signal="item_selected" from="Background/SettingsTab/VBoxContainer/Language/PanelContainer/MarginContainerRight/OptionButton" to="Background/SettingsTab" method="OnItemSelected"]
+[connection signal="pressed" from="Background/SettingsTab/VBoxContainer/ExitGame/PanelContainer/MarginContainerRight/Button" to="." method="OnBackToMainMenu"]

@@ -23,6 +23,7 @@ public partial class QuestMiniPanel : PanelContainer
     public override void _Ready()
     {
         INSTANCE = this;
+        UpdateTimeLabel(0);
     }
 
     public void UpdateTimeLabel(int time)

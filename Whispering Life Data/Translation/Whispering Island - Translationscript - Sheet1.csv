@@ -11,7 +11,7 @@ GAMEMENU_SETTINGS_BUTTON,Settings,Einstellungen
 SETTINGS_MASTER_VOLUME,Master Volume,Gesamtlautstärke
 SETTINGS_SFX_VOLUME,SFX Volume,SFX Lautstärke
 SETTINGS_MUSIC_VOLUME,Music Volume,Musik Lautstärke
-,,
+SETTINGS_HAVE_SAVED,Don't forget to save!,Vergiss nicht zu speichern!
 ,,
 GAMEMENU_FURNACE,> Furnace,> Ofen
 GAMEMENU_CHEST,> Chest,> Kiste

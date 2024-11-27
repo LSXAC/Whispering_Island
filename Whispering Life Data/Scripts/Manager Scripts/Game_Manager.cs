@@ -28,9 +28,10 @@ public partial class Game_Manager : Node2D
     public static float game_time_since_start;
 
     public static bool In_Cutscene = false;
-    public static bool tutorial_finished = false;
+    public bool tutorial_finished = false;
     public Node2D island_parent;
     public Camera2D cutscene_camera;
+    public bool new_game = false;
 
     public enum BuildingMode
     {
@@ -212,23 +213,26 @@ public partial class Game_Manager : Node2D
 
     private void CheckGameSave()
     {
-        if (SaveState.HasSave())
-            LoadGame();
+        if (!new_game)
+            if (SaveState.HasSave())
+            {
+                LoadGame();
+                return;
+            }
+
+        NewGame();
+        if (!tutorial_finished)
+            StartTutorial();
         else
         {
-            NewGame();
-            if (!tutorial_finished)
-                StartTutorial();
-            else
-            {
-                GlobalFunctions.StartAfterTutorial();
-                SaveGame();
-            }
+            GlobalFunctions.StartAfterTutorial();
+            SaveGame();
         }
     }
 
     public void NewGame(bool skip_tutorial = false)
     {
+        new_game = false;
         Debug.Print("Game_Manager - New SaveState");
         save_state = new SaveState();
         if (skip_tutorial)

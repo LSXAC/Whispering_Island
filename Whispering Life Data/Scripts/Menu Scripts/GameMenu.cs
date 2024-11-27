@@ -79,6 +79,12 @@ public partial class GameMenu : CanvasLayer
         }
     }
 
+    public void OnBackToMainMenu()
+    {
+        MainMenu.INSTANCE.Visible = true;
+        Game_Manager.INSTANCE.QueueFree();
+    }
+
     public static void CloseLastWindow()
     {
         if (Game_Manager.current_activ_canvaslayer != null)

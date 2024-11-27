@@ -5,9 +5,13 @@ public partial class MainMenu : Control
 {
     [Export]
     public CheckBox skip_tutorial;
+    public static MainMenu INSTANCE;
     PackedScene game = ResourceLoader.Load<PackedScene>("res://game_manager.tscn");
 
-    public override void _Ready() { }
+    public override void _Ready()
+    {
+        INSTANCE = this;
+    }
 
     public void OnVisiblityChanged()
     {
@@ -19,15 +23,18 @@ public partial class MainMenu : Control
         SaveState.RemoveSave();
 
         Game_Manager gm = game.Instantiate() as Game_Manager;
+        gm.new_game = true;
         if (skip_tutorial.ButtonPressed)
-            Game_Manager.tutorial_finished = true;
+            gm.tutorial_finished = true;
         GetTree().Root.AddChild(gm);
         Visible = false;
     }
 
     public void OnLoadGameButtoN()
     {
-        GetTree().ChangeSceneToFile("res://game_manager.tscn");
+        Game_Manager gm = game.Instantiate() as Game_Manager;
+        GetTree().Root.AddChild(gm);
+        Visible = false;
     }
 
     public void OnExitGameButtoN()
