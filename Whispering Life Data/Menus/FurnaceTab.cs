@@ -71,14 +71,25 @@ public partial class FurnaceTab : ColorRect
         if (process_building.ui_progress == 0 || process_building.ui_progress == 100)
             switch_button.Disabled = false;
 
-        if (!process_building.machine_enabled)
+        if (process_building.inStartTransition)
+            ChangeTranstionStateLabel(true);
+
+        if (
+            !process_building.machine_enabled
+            && !process_building.inStartTransition
+            && !process_building.inEndTransition
+        )
         {
-            ChangeStateLabel(true);
+            ChangeEndStateLabel(true);
             safty_panel.Visible = false;
         }
         else
         {
-            ChangeStateLabel(false);
+            ChangeEndStateLabel(false);
+            if (process_building.inEndTransition)
+                ChangeTranstionStateLabel(false);
+            if (process_building.inStartTransition)
+                ChangeTranstionStateLabel(true);
             safty_panel.Visible = true;
         }
         SetMachineProgressbar(process_building.ui_progress);
@@ -103,23 +114,28 @@ public partial class FurnaceTab : ColorRect
 
     public void OnMachineStateButton()
     {
-        process_building.state_timer.Start();
-        switch_button.Disabled = true;
         if (process_building.machine_enabled)
         {
+            safty_panel.Visible = true;
+            ChangeEndStateLabel(true);
+            ChangeTranstionStateLabel(true);
             process_building.machine_enabled = false;
-            ChangeStateLabel(true);
+            process_building.inStartTransition = true;
         }
         else
         {
             OvertakeItems();
             safty_panel.Visible = true;
             process_building.machine_enabled = true;
-            ChangeStateLabel(false);
+            process_building.inEndTransition = true;
+            ChangeEndStateLabel(false);
+            ChangeTranstionStateLabel(false);
         }
+        process_building.state_timer.Start();
+        switch_button.Disabled = true;
     }
 
-    private void ChangeStateLabel(bool state)
+    public void ChangeEndStateLabel(bool state)
     {
         if (state)
         {
@@ -130,6 +146,18 @@ public partial class FurnaceTab : ColorRect
         {
             switch_button.Text = TranslationServer.Translate("FURNACE_MENU_DISABLE_MACHINE");
             working_label.Text = TranslationServer.Translate("FURNACE_MENU_WORKING");
+        }
+    }
+
+    public void ChangeTranstionStateLabel(bool state)
+    {
+        if (state)
+        {
+            working_label.Text = TranslationServer.Translate("FURNACE_MENU_COOLING_DOWN");
+        }
+        else
+        {
+            working_label.Text = TranslationServer.Translate("FURNACE_MENU_HEATING_UP");
         }
     }
 

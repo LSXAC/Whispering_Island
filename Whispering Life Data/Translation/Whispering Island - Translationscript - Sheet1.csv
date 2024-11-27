@@ -55,11 +55,19 @@ FURNACE_MENU_SLOT_INPUT,Input,Eingang
 FURNACE_MENU_SLOT_EXPORT,Export,Ausgang
 FURNACE_MENU_SLOT_FUEL,Fuel,Kraftstoff
 FURNACE_MENU_WORKING,Machine Online - Working,Maschine Aktiviert - Arbeitet
-FURNACE_MENU_NOT_WORKING,Machine Offline - No I/O,Maschine Deaktiviert - Kein I/O
-FURNACE_MENU_DESC,"You cannot externaly import or 
-export items, when the machine
-is working!","Ressourcen während dem Aktivzustand
-zu verändern, ist nicht möglich."
+FURNACE_MENU_NOT_WORKING,Machine Offline,Maschine Deaktiviert
+FURNACE_MENU_DESC,"You cannot import or export items by hand, when the machine is working! Hot!","Ressourcen per Hand, während dem Aktivzustand, zu verändern, ist nicht möglich. Heiß!"
+FURNACE_MENU_HEATING_UP,Machine is heating up!,Maschine heizt auf!
+FURNACE_MENU_COOLING_DOWN,Machine is cooling down!,Maschine kühlt ab!
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
 ,,
 BUILDING_MENU_RESOURCES_USED_INFO,"Resources not used, until building placed.","Ressourcen werden nur verbraucht, wenn Gebäude platziert wird."
 BUILDING_MENU_BUILD_BUTTON,Build Building,Gebäude bauen

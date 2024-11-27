@@ -36,6 +36,9 @@ public partial class ProcessBuilding : MachineBase
     public int current_recipe = 0;
     public int progress = 0;
 
+    public bool inStartTransition = false;
+    public bool inEndTransition = false;
+
     public void OnCraftingTimerTimeout()
     {
         if (FurnaceTab.INSTANCE.process_building == this)
@@ -101,34 +104,40 @@ public partial class ProcessBuilding : MachineBase
 
     public void OnMachineTimeOut()
     {
-        if (machine_enabled)
+        if (!inEndTransition)
+        {
+            if (ui_progress > 0)
+                ui_progress -= 2;
+
+            if (ui_progress <= 0)
+            {
+                ui_progress = 0;
+                if (FurnaceTab.INSTANCE.process_building == this)
+                    FurnaceTab.INSTANCE.switch_button.Disabled = false;
+
+                FurnaceTab.INSTANCE.safty_panel.Visible = false;
+                FurnaceTab.INSTANCE.ChangeEndStateLabel(true);
+                state_timer.Stop();
+                inStartTransition = false;
+            }
+            if (FurnaceTab.INSTANCE.process_building == this)
+                FurnaceTab.INSTANCE.SetMachineProgressbar(ui_progress);
+            return;
+        }
+
+        if (!inStartTransition)
         {
             if (ui_progress < 100)
                 ui_progress += 2;
 
             if (ui_progress >= 100)
             {
-                state_timer.Stop();
-                machine_enabled = true;
+                ui_progress = 100;
+                FurnaceTab.INSTANCE.ChangeEndStateLabel(false);
                 if (FurnaceTab.INSTANCE.process_building == this)
                     FurnaceTab.INSTANCE.switch_button.Disabled = false;
-            }
-            if (FurnaceTab.INSTANCE.process_building == this)
-                FurnaceTab.INSTANCE.SetMachineProgressbar(ui_progress);
-        }
-        else if (!machine_enabled)
-        {
-            if (ui_progress >= 2)
-                ui_progress -= 2;
-
-            if (ui_progress <= 0)
-            {
                 state_timer.Stop();
-                if (FurnaceTab.INSTANCE.process_building == this)
-                {
-                    FurnaceTab.INSTANCE.safty_panel.Visible = false;
-                    FurnaceTab.INSTANCE.switch_button.Disabled = false;
-                }
+                inEndTransition = false;
             }
             if (FurnaceTab.INSTANCE.process_building == this)
                 FurnaceTab.INSTANCE.SetMachineProgressbar(ui_progress);
