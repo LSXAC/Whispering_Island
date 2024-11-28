@@ -89,6 +89,11 @@ BUILDING_QUARRY,Quarry,Steinbruch
 BUILDING_QUARRY_DESC,Generates continuesly stone,Produziert stetig Stein
 BUILDING_SIGN,Sign,Schild
 BUILDING_SIGN_DESC,Sign where a Bridge can be build,Schild an dem eine Brücke gebaut werden kann
+BUILDING_TRASHCAN,Trashcan,Mülleimer
+BUILDING_TRASHCAN_DESC,Inserted Items will be deleted every Minute,Eingefügte Items werden minütlich gelöscht
+,,
+,,
+,,
 ,,
 WORLD_RESOURCE_STONE,Stone,Stein
 WORLD_RESOURCE_STONE_DESC,Mine to receive stone,Erhalte Stein beim abbauen

@@ -73,11 +73,11 @@ public partial class MouseArea : Area2D
             GameMenu.INSTANCE.OnOpenFurnaceTab();
         }
 
-        if (GetParent() is Chest)
+        if (GetParent() is Chest || GetParent() is Trashcan)
         {
             GameMenu.INSTANCE.OnOpenChestTab();
             ChestInventory.INSTANCE.OpenChest(GetParent<Chest>());
-            Debug.Print("CHEST!" + " | " + Name);
+            Debug.Print("CHEST! OR TRASHCAN! " + " | " + Name);
         }
 
         if (GetParent() is Bed)
