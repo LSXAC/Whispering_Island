@@ -200,6 +200,25 @@ public partial class InventoryBase : Control
             }
     }
 
+    public bool CanReceiveItem(ItemInfo ii, ItemSave[] array)
+    {
+        //Check if Item already exists
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i] == null)
+                continue;
+
+            if (array[i].item_id == (int)ii.unique_id)
+                return true;
+        }
+
+        //Check latest Slot which is Null
+        for (int i = 0; i < array.Length; i++)
+            if (array[i] == null)
+                return true;
+        return false;
+    }
+
     public bool HasItemInInventory(ItemSave[] array, BeltItem bi)
     {
         //Check if Item already exists

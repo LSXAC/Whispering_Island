@@ -87,7 +87,6 @@ public partial class ResourceObject : Building_Node
 
     public override void OnMouseClick()
     {
-        Debug.Print(Name + " | " + in_cooldown);
         if (GlobalFunctions.GetDistanceToPlayer(this.GlobalPosition) >= 40f)
             return;
         if (in_cooldown)
@@ -98,6 +97,12 @@ public partial class ResourceObject : Building_Node
 
     private void Hit()
     {
+        //Check if Item can be in Inventory
+        if (!Inventory.INSTANCE.CanReceiveItem(item_info, Inventory.INSTANCE.inventory_items))
+        {
+            player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
+            return;
+        }
         Player.INSTANCE.player_stats.AddFatigue(0.25f);
         current_durability--;
         gpu_particles.Emitting = true;

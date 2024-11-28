@@ -26,7 +26,7 @@ PLAYERUI_GAME_OVER_DESC,The Timer reached his limit and the Monster did not get 
 PLAYERUI_ROTATE_FLIP_TIP,Rotate/Flip with [Q] or [E] | Close [ESC],Rotiere/Flip mit [Q] oder [E] | Schließen [ESC]
 PLAYERUI_RESOURCES_NEEDED,Buildingresources:,Bauressourcen:
 PLAYERUI_TIMES_LEFT_TO_BUILD,can be build.,kann gebaut werden.
-,,
+PLAYERUI_INVENTORY_FULL,Inventory overloaded!,Inventar überladen!
 ,,
 EQUIPMENT_SLOT_HEAD,Head,Kopf
 EQUIPMENT_SLOT_CHEST,Chest,Brust
