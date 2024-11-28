@@ -18,8 +18,9 @@ public partial class CraftingMenu : PanelContainer
     public void ReloadUIRecipes()
     {
         foreach (Control c in parent.GetChildren())
-            c.Free();
+            c.QueueFree();
 
+        int times = 0;
         for (int i = 0; i < crafting_recipies.Count; i++)
         {
             if (crafting_recipies[i].unlockRequirements != null)
@@ -30,7 +31,7 @@ public partial class CraftingMenu : PanelContainer
                         )
                     )
                         continue;
-
+            times++;
             Recipe recipe = crafting_recipies[i];
 
             itemRecipeUI irUI = (itemRecipeUI)recipe_slot.Instantiate();
@@ -54,7 +55,7 @@ public partial class CraftingMenu : PanelContainer
                 irUI.craft_button.Disabled = true;
         }
 
-        if (parent.GetChildCount() == 0)
+        if (times == 0)
         {
             Panel p = no_recipies.Instantiate() as Panel;
             parent.AddChild(p);
