@@ -39,8 +39,11 @@ public partial class Item_Row_Manager : HBoxContainer
             {
                 if (i_list.amount >= item.amount)
                 {
-                    amount_of_each_item[i_list] = i_list.amount / item.amount;
-                    hbc_c.ChangeColor(global::h_box_item.colorType.white);
+                    if (item.amount > 0)
+                    {
+                        amount_of_each_item[i_list] = i_list.amount / item.amount;
+                        hbc_c.ChangeColor(global::h_box_item.colorType.white);
+                    }
                     x++;
                 }
             }
