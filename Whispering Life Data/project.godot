@@ -14,10 +14,8 @@ config/name="Whispering Life"
 run/main_scene="res://Menus/main_menu.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 run/max_fps=60
-boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
-boot_splash/image="res://Sprites/SplashLogo.png"
-boot_splash/fullsize=false
-boot_splash/use_filter=false
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="res://Sprites/icon.svg"
 
 [autoload]

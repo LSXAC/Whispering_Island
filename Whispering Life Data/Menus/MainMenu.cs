@@ -8,9 +8,28 @@ public partial class MainMenu : Control
     public static MainMenu INSTANCE;
     PackedScene game = ResourceLoader.Load<PackedScene>("res://game_manager.tscn");
 
+    [Export]
+    public VideoStreamPlayer intro_player;
+
+    [Export]
+    public VideoStreamPlayer background_player;
+
+    [Export]
+    public Control parent;
+
     public override void _Ready()
     {
         INSTANCE = this;
+        intro_player.Play();
+        intro_player.Finished += () => OpenMenu();
+    }
+
+    public void OpenMenu()
+    {
+        parent.Visible = true;
+        //background_player.Play();
+        //intro_player.Stop();
+        intro_player.Visible = false;
     }
 
     public void OnVisiblityChanged()
