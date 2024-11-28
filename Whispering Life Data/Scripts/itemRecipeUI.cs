@@ -35,6 +35,17 @@ public partial class itemRecipeUI : Control
 
         if (item_row_manager.CanCreate(items))
             can_craft = true;
+
+        if (
+            !Inventory.INSTANCE.CanReceiveItem(
+                output_item.item_info,
+                Inventory.INSTANCE.inventory_items
+            )
+        )
+        {
+            //player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
+            can_craft = false;
+        }
     }
 
     public void CraftItem()

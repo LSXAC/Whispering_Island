@@ -287,6 +287,7 @@ public partial class GameMenu : CanvasLayer
         settings_tab.Visible = false;
         saveload_tab.Visible = false;
         island_tab.Visible = false;
+        chest_tab.Visible = false;
     }
 
     public void OnCloseResearchTab()
@@ -338,7 +339,6 @@ public partial class GameMenu : CanvasLayer
     {
         CloseAllTabs();
         inventory_tab.Visible = true;
-        ChestInventory.INSTANCE.current_chest = null;
         CloseLastWindow();
     }
 

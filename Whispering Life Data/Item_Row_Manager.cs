@@ -59,6 +59,7 @@ public partial class Item_Row_Manager : HBoxContainer
             }
             player_ui.INSTANCE.times_to_build_left_label.Text =
                 "> " + times + "x " + TranslationServer.Translate("PLAYERUI_TIMES_LEFT_TO_BUILD");
+
             return true;
         }
         player_ui.INSTANCE.times_to_build_left_label.Text =
