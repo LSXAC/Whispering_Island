@@ -198,9 +198,9 @@ public partial class Slot : Button
                     (int)Inventory.clicked_item.item_info.unique_id,
                     Inventory.clicked_item.amount
                 );
+                inventory_base.UpdateSlotUI(GetIndex(), Inventory.clicked_item);
                 Inventory.clicked_item.QueueFree();
                 Inventory.clicked_item = null;
-                inventory_base.UpdateSlotUI(GetIndex());
                 return;
             }
             if (GetItem() != null)
@@ -209,9 +209,9 @@ public partial class Slot : Button
                     inventory_base.inventory_items[GetIndex()].amount += Inventory
                         .clicked_item
                         .amount;
+                    inventory_base.UpdateSlotUI(GetIndex(), Inventory.clicked_item);
                     Inventory.clicked_item.QueueFree();
                     Inventory.clicked_item = null;
-                    inventory_base.UpdateSlotUI(GetIndex());
                     return;
                 }
         }
@@ -290,6 +290,7 @@ public partial class Slot : Button
         ii.amount = GetItem().amount;
         ii.MouseFilter = MouseFilterEnum.Ignore;
         ii.ZIndex = 10;
+        ii.SelfModulate = GetItem().SelfModulate;
         Inventory.clicked_item = ii;
         Inventory.INSTANCE.AddChild(ii);
     }

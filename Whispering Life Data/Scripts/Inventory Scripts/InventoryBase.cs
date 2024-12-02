@@ -133,6 +133,34 @@ public partial class InventoryBase : Control
         return null;
     }
 
+    public void MarkSlotsWithType(ItemInfo.Type[] types)
+    {
+        Debug.Print("Updating Slots wirh markings");
+        foreach (Slot s in slots)
+        {
+            if (s.GetItem() != null)
+            {
+                s.GetItem().SelfModulate = new Color(1f, 1f, 1f);
+
+                if (HasZeroTypes(types, s.GetItem().item_info))
+                    s.GetItem().SelfModulate = new Color(0.5f, 0.5f, 0.5f);
+            }
+        }
+    }
+
+    private bool HasZeroTypes(ItemInfo.Type[] types, ItemInfo ii)
+    {
+        if (types == null)
+            return false;
+
+        foreach (ItemInfo.Type type in types)
+            if (!ii.HasType(type))
+                continue;
+            else
+                return false;
+        return true;
+    }
+
     public Item GetItemFromList(Array<Item> itemsInInventory, Item item_to_find)
     {
         if (item_to_find == null)
@@ -258,7 +286,7 @@ public partial class InventoryBase : Control
             UpdateSlotUI(i);
     }
 
-    public void UpdateSlotUI(int i)
+    public void UpdateSlotUI(int i, InventoryItem pref_ref = null)
     {
         GetNode<Slot>($"GridContainer/Slot{i}").ClearItem();
 
@@ -267,6 +295,9 @@ public partial class InventoryBase : Control
 
         GetNode<Slot>($"GridContainer/Slot{i}")
             .SetItem(item_Types[(ITEM_ID)inventory_items[i].item_id], inventory_items[i].amount);
+
+        if (pref_ref != null)
+            GetNode<Slot>($"GridContainer/Slot{i}").GetItem().SelfModulate = pref_ref.SelfModulate;
 
         QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
             QuestManager.INSTANCE.quests[QuestManager.current_quest_id]

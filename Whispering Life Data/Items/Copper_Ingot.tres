@@ -1,17 +1,12 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=6 format=3 uid="uid://i3ah62dd06gb"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=4 format=3 uid="uid://i3ah62dd06gb"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_1iyg4"]
 [ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Items/Item_Types/Processed_Type_Classic.tres" id="1_y0ver"]
 [ext_resource type="Texture2D" uid="uid://dgdgpeeiw5ea0" path="res://Sprites/Items/Icons_3rd/Copper_Ingot.png" id="2_germ5"]
-[ext_resource type="Script" path="res://Scripts/Item/ResearchableType.cs" id="2_r4tyi"]
-
-[sub_resource type="Resource" id="Resource_55mad"]
-script = ExtResource("2_r4tyi")
-type = 9
 
 [resource]
 script = ExtResource("1_1iyg4")
-item_types_arr = Array[Object]([ExtResource("1_y0ver"), SubResource("Resource_55mad")])
+item_types_arr = Array[Object]([ExtResource("1_y0ver")])
 item_name = "COPPER_INGOT"
 unique_id = 10
 item_description = "COPPER_INGOT_DESC"
