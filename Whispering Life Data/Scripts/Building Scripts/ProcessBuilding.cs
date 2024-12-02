@@ -157,6 +157,7 @@ public partial class ProcessBuilding : MachineBase
     {
         if (!inEndTransition)
         {
+            FurnaceTab.INSTANCE.switch_button.Disabled = true;
             if (ui_progress > 0)
                 ui_progress -= 2;
 
@@ -178,6 +179,7 @@ public partial class ProcessBuilding : MachineBase
 
         if (!inStartTransition)
         {
+            FurnaceTab.INSTANCE.switch_button.Disabled = true;
             if (ui_progress < 100)
                 ui_progress += 2;
 
