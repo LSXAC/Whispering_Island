@@ -29,10 +29,10 @@ public partial class Player : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         //Disable all Events
+        ChoosePlayerAnimation();
         if (Game_Manager.gameover)
         {
             Velocity = Vector2.Zero;
-            ChoosePlayerAnimation();
             return;
         }
         // Regenerate indepentend from Player Events

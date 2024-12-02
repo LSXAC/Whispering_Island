@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Menus/MainMenu.cs" id="1_tix1b"]
 [ext_resource type="VideoStream" path="res://Videos/Whispering_Island_GermanGameDevShowCase_2.ogv" id="2_vuou3"]
 [ext_resource type="Script" path="res://Menus/TranslationButton.cs" id="3_f3o34"]
-[ext_resource type="VideoStream" path="res://Videos/Animated_Splash_Screen.ogv" id="4_hfpt7"]
+[ext_resource type="VideoStream" path="res://Videos/Start_Screen.ogv" id="5_owr4r"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("skip_tutorial", "intro_player", "background_player", "parent")]
 layout_mode = 3
@@ -132,15 +132,13 @@ text = "Copyright © 2024. Leon Schröder Asset Creations"
 horizontal_alignment = 1
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("4_hfpt7")
-volume_db = -80.0
+stream = ExtResource("5_owr4r")
 autoplay = true
 expand = true
 

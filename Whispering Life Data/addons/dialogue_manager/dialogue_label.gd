@@ -138,8 +138,8 @@ func _type_next(delta: float, seconds_needed: float) -> void:
 	var additional_waiting_seconds: float = _get_pause(visible_characters)
 
 	# Pause on characters like "."
-	if _should_auto_pause():
-		additional_waiting_seconds += seconds_per_pause_step
+	#if _should_auto_pause():
+	#	additional_waiting_seconds += seconds_per_pause_step
 
 	# Pause at literal [wait] directives
 	if _last_wait_index != visible_characters and additional_waiting_seconds > 0:

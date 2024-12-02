@@ -7,6 +7,8 @@ class_name DialogueManagerExampleBalloon extends CanvasLayer
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
 
+@export var tipping: AudioStreamPlayer
+
 ## The dialogue resource
 var resource: DialogueResource
 
@@ -55,7 +57,9 @@ var dialogue_line: DialogueLine:
 		dialogue_label.show()
 		if not dialogue_line.text.is_empty():
 			dialogue_label.type_out()
+			tipping.play()
 			await dialogue_label.finished_typing
+			tipping.stop()
 
 		# Wait for input
 		if dialogue_line.responses.size() > 0:

@@ -19,9 +19,11 @@ public partial class MainMenu : Control
 
     public override void _Ready()
     {
+        TranslationServer.SetLocale("en");
         INSTANCE = this;
-        //intro_player.Play();
-        //intro_player.Finished += () => OpenMenu();
+        intro_player.Play();
+        intro_player.Finished += () => OpenMenu();
+        parent.Visible = false;
     }
 
     public void OpenMenu()
