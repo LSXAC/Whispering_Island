@@ -29,8 +29,8 @@ public partial class MainMenu : Control
     public void OpenMenu()
     {
         parent.Visible = true;
-        //background_player.Play();
-        //intro_player.Stop();
+        background_player.Play();
+        intro_player.Stop();
         intro_player.Visible = false;
     }
 
