@@ -33,6 +33,9 @@ public partial class FurnaceTab : ColorRect
 
     [Export]
     public Label working_label;
+
+    [Export]
+    public Label description_Label;
     public static FurnaceTab INSTANCE = null;
 
     public enum SlotType

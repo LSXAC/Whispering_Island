@@ -594,7 +594,7 @@ offset_right = 305.0
 offset_bottom = -2.0
 translation_string = "GAMEMENU_CHEST"
 
-[node name="FurnaceTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("export_slot", "import_slot", "fuel_slot", "fuel_label", "safty_panel", "machineProgressbar", "workingProgressbar", "fuelProgressbar", "switch_button", "working_label")]
+[node name="FurnaceTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("export_slot", "import_slot", "fuel_slot", "fuel_label", "safty_panel", "machineProgressbar", "workingProgressbar", "fuelProgressbar", "switch_button", "working_label", "description_Label")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -617,6 +617,7 @@ workingProgressbar = NodePath("PanelContainer/ProgressBar")
 fuelProgressbar = NodePath("PanelContainer/FuelProgressBar")
 switch_button = NodePath("PanelContainer/EnableDisableButton")
 working_label = NodePath("PanelContainer/WorkingLabel")
+description_Label = NodePath("PanelContainer/DescriptionLabel")
 
 [node name="PanelContainer" type="Control" parent="Background/FurnaceTab"]
 anchors_preset = 0
@@ -696,7 +697,7 @@ theme_override_font_sizes/font_size = 16
 [node name="WorkingLabel" type="Label" parent="Background/FurnaceTab/PanelContainer"]
 layout_mode = 0
 offset_left = -3.0
-offset_top = -52.0
+offset_top = -37.0
 offset_right = 317.0
 offset_bottom = -20.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -708,24 +709,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("26_tl5yt")
 label_translation_string = "FURNACE_MENU_WORKING"
-
-[node name="DescriptionLabel" type="Label" parent="Background/FurnaceTab/PanelContainer"]
-layout_mode = 0
-offset_left = 56.0
-offset_top = -125.0
-offset_right = 306.0
-offset_bottom = -65.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 12
-text = "You cannot externaly import or 
-export items,  when the machine is working!"
-horizontal_alignment = 2
-vertical_alignment = 2
-autowrap_mode = 2
-script = ExtResource("26_tl5yt")
-label_translation_string = "FURNACE_MENU_DESC"
 
 [node name="FuelProgressBar" type="ProgressBar" parent="Background/FurnaceTab/PanelContainer"]
 layout_mode = 0
@@ -769,6 +752,23 @@ offset_left = -8.0
 offset_top = -200.0
 offset_right = 312.0
 offset_bottom = -58.0
+
+[node name="DescriptionLabel" type="Label" parent="Background/FurnaceTab/PanelContainer"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = -125.0
+offset_right = 306.0
+offset_bottom = -65.0
+theme_override_colors/font_color = Color(0.981585, 0.500567, 0.415394, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "There is currently no available recipe for this resource. Do you miss a research level?"
+horizontal_alignment = 2
+vertical_alignment = 2
+autowrap_mode = 2
+script = ExtResource("26_tl5yt")
+label_translation_string = "FURNACE_MENU_DESC"
 
 [node name="HeaderColorRect" parent="Background/FurnaceTab" instance=ExtResource("11_45saq")]
 layout_mode = 1

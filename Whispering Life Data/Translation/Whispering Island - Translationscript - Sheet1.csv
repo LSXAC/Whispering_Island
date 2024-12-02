@@ -63,9 +63,9 @@ FURNACE_MENU_NOT_WORKING,Machine Offline,Maschine Deaktiviert
 FURNACE_MENU_DESC,"You cannot import or export items by hand, when the machine is working! Hot!","Ressourcen per Hand, während dem Aktivzustand, zu verändern, ist nicht möglich. Heiß!"
 FURNACE_MENU_HEATING_UP,Machine is heating up!,Maschine heizt auf!
 FURNACE_MENU_COOLING_DOWN,Machine is cooling down!,Maschine kühlt ab!
-,,
-,,
-,,
+FURNACE_MENU_DESC_NO_RECIPE,There is currently no available recipe for this resource. Do you miss a research level?,Aktuell gibt es kein Rezept für diese Ressource. Fehlt dir ein Forschungslevel?
+FURNACE_MENU_DESC_NO_RESOURCE,There is no Resource to be processed.,Es gibt keine Ressource zum verarbeiten.
+FURNACE_MENU_DESC_NO_FUEL,There is not enough fuel to process this ressource!,Es gibt nicht genügend Treibstoff um diese Ressource zu verarbeiten!
 ,,
 ,,
 ,,

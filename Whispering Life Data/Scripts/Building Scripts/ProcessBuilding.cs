@@ -75,12 +75,21 @@ public partial class ProcessBuilding : MachineBase
     {
         if (is_crafting)
             return;
-        if (!machine_enabled)
-            return;
+
         if (import_item_info == null)
+        {
+            FurnaceTab.INSTANCE.description_Label.Text = TranslationServer.Translate(
+                "FURNACE_MENU_DESC_NO_RESOURCE"
+            );
             return;
+        }
         if (!SelectAndCheckCanCraft())
+        {
+            FurnaceTab.INSTANCE.description_Label.Text = TranslationServer.Translate(
+                "FURNACE_MENU_DESC_NO_RECIPE"
+            );
             return;
+        }
         if (import_count <= recipes[current_recipe].import_amount - 1)
             return;
 
@@ -96,8 +105,24 @@ public partial class ProcessBuilding : MachineBase
                 fuel_count--;
             }
             else
+            {
+                FurnaceTab.INSTANCE.description_Label.Text = TranslationServer.Translate(
+                    "FURNACE_MENU_DESC_NO_FUEL"
+                );
                 return;
+            }
 
+        if (!machine_enabled)
+        {
+            FurnaceTab.INSTANCE.description_Label.Text = "";
+            return;
+        }
+        else
+        {
+            FurnaceTab.INSTANCE.description_Label.Text = TranslationServer.Translate(
+                "FURNACE_MENU_DESC"
+            );
+        }
         is_crafting = true;
         import_count -= recipes[current_recipe].import_amount;
         if (FurnaceTab.INSTANCE.process_building == this)
