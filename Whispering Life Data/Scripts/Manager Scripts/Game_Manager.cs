@@ -51,6 +51,9 @@ public partial class Game_Manager : Node2D
 
     public static bool IsIslandOnMatrix(int x, int y)
     {
+        if (x > 10 || y > 10 || x < -10 || y < -10)
+            return true;
+
         if (island_matrix[x + 10, y + 10])
             return true;
         return false;
