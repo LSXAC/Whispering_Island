@@ -22,6 +22,7 @@ layout_mode = 0
 offset_left = -32.0
 offset_top = -10.0
 offset_right = 73.0
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_gkuag")
 theme_override_font_sizes/font_size = 10
 text = "60s"

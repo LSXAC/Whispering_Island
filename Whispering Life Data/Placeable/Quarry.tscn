@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="6_fmaua"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="6_iudpf"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="7_sy75k"]
-[ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="8_81bpx"]
+[ext_resource type="Texture2D" uid="uid://cep6pkf1xs5cc" path="res://Sprites/Stone.png" id="8_33cw1"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Placeable/giver.tscn" id="9_dvgwj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
@@ -33,7 +33,6 @@ sprite = NodePath("BuildingSprite")
 collision_shape = NodePath("MachineCollision")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
-modulate = Color(0.345098, 0.431373, 0.317647, 1)
 y_sort_enabled = true
 texture = ExtResource("3_7b4ad")
 centered = false
@@ -78,8 +77,8 @@ y_sort_enabled = true
 [node name="Texture" type="Sprite2D" parent="Tree"]
 z_index = 2
 y_sort_enabled = true
-position = Vector2(-6, -28)
-texture = ExtResource("8_81bpx")
+position = Vector2(-8, -15)
+texture = ExtResource("8_33cw1")
 
 [node name="Shadow" type="Sprite2D" parent="Tree"]
 modulate = Color(1, 1, 1, 0.392157)
