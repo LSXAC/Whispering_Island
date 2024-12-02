@@ -9,6 +9,12 @@ public partial class ProcessBuilding : MachineBase
     public int fuel_count = 0;
 
     [Export]
+    public int max_fuel_count = 250;
+
+    [Export]
+    public int fuel_left = 0;
+
+    [Export]
     public ItemInfo fuel_item_info;
 
     [Export]
@@ -44,6 +50,11 @@ public partial class ProcessBuilding : MachineBase
         if (FurnaceTab.INSTANCE.process_building == this)
             FurnaceTab.INSTANCE.UpdateProgressbar(progress);
 
+        if (FurnaceTab.INSTANCE.process_building == this)
+            FurnaceTab.INSTANCE.UpdateFuelProgressbar(
+                (int)(((double)fuel_left / max_fuel_count) * 100)
+            );
+
         if (progress >= 100)
         {
             export_item_info = recipes[current_recipe].export_item_info;
@@ -57,6 +68,7 @@ public partial class ProcessBuilding : MachineBase
             return;
         }
         progress += 5;
+        fuel_left -= 1;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -71,6 +83,20 @@ public partial class ProcessBuilding : MachineBase
             return;
         if (import_count <= recipes[current_recipe].import_amount - 1)
             return;
+
+        if (fuel_left < 20)
+            if (fuel_count > 0)
+            {
+                fuel_left += (
+                    (BurnableType)
+                        fuel_item_info.item_types_arr[
+                            fuel_item_info.GetTypeIndex(ItemInfo.Type.BURNABLE)
+                        ]
+                ).burntime;
+                fuel_count--;
+            }
+            else
+                return;
 
         is_crafting = true;
         import_count -= recipes[current_recipe].import_amount;

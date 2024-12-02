@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=7 format=3 uid="uid://cfqb2p8ati1jo"]
 
-[ext_resource type="Resource" uid="uid://duirbryu00nmb" path="res://Items/Item_Types/Burnable_Type_60.tres" id="1_5bq7x"]
+[ext_resource type="Resource" uid="uid://bm70n0hc2huct" path="res://Items/Item_Types/Burnable_Type_120.tres" id="1_bs5ne"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_fu6sg"]
 [ext_resource type="Resource" uid="uid://b4j8cjn03te4o" path="res://Items/Item_Types/Smeltable_Type_Classic.tres" id="2_m24ht"]
 [ext_resource type="Texture2D" uid="uid://dwaejibm3nml2" path="res://Sprites/Items/Icons_3rd/Char_Coal.png" id="2_tqr2b"]
@@ -12,7 +12,7 @@ type = 9
 
 [resource]
 script = ExtResource("1_fu6sg")
-item_types_arr = Array[Object]([ExtResource("1_5bq7x"), ExtResource("2_m24ht"), SubResource("Resource_n4hnj")])
+item_types_arr = Array[Object]([ExtResource("1_bs5ne"), ExtResource("2_m24ht"), SubResource("Resource_n4hnj")])
 item_name = "CHAR_COAL"
 unique_id = 6
 item_description = "CHAR_COAL_DESC"

@@ -594,7 +594,7 @@ offset_right = 305.0
 offset_bottom = -2.0
 translation_string = "GAMEMENU_CHEST"
 
-[node name="FurnaceTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("export_slot", "import_slot", "fuel_slot", "safty_panel", "machineProgressbar", "workingProgressbar", "switch_button", "working_label")]
+[node name="FurnaceTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("export_slot", "import_slot", "fuel_slot", "fuel_label", "safty_panel", "machineProgressbar", "workingProgressbar", "fuelProgressbar", "switch_button", "working_label")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -610,9 +610,11 @@ script = ExtResource("4_kmuua")
 export_slot = NodePath("PanelContainer/ExportSlot")
 import_slot = NodePath("PanelContainer/InputSlot")
 fuel_slot = NodePath("PanelContainer/FuelSlot")
+fuel_label = NodePath("PanelContainer/FuelLabel")
 safty_panel = NodePath("PanelContainer/SaftyPanel")
 machineProgressbar = NodePath("PanelContainer/WorkingProgressBar")
 workingProgressbar = NodePath("PanelContainer/ProgressBar")
+fuelProgressbar = NodePath("PanelContainer/FuelProgressBar")
 switch_button = NodePath("PanelContainer/EnableDisableButton")
 working_label = NodePath("PanelContainer/WorkingLabel")
 
@@ -671,6 +673,16 @@ script = ExtResource("4_v56ys")
 label_translation_string = "FURNACE_MENU_SLOT_FUEL"
 slot_type = 7
 
+[node name="WorkingProgressBar" type="ProgressBar" parent="Background/FurnaceTab/PanelContainer"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -16.0
+offset_right = 314.0
+offset_bottom = 11.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+
 [node name="ProgressBar" type="ProgressBar" parent="Background/FurnaceTab/PanelContainer"]
 layout_mode = 0
 offset_left = 56.0
@@ -683,10 +695,10 @@ theme_override_font_sizes/font_size = 16
 
 [node name="WorkingLabel" type="Label" parent="Background/FurnaceTab/PanelContainer"]
 layout_mode = 0
-offset_left = -6.0
-offset_top = -64.0
-offset_right = 314.0
-offset_bottom = -32.0
+offset_left = -3.0
+offset_top = -52.0
+offset_right = 317.0
+offset_bottom = -20.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
@@ -700,9 +712,9 @@ label_translation_string = "FURNACE_MENU_WORKING"
 [node name="DescriptionLabel" type="Label" parent="Background/FurnaceTab/PanelContainer"]
 layout_mode = 0
 offset_left = 56.0
-offset_top = -136.0
+offset_top = -125.0
 offset_right = 306.0
-offset_bottom = -88.0
+offset_bottom = -65.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
@@ -715,15 +727,31 @@ autowrap_mode = 2
 script = ExtResource("26_tl5yt")
 label_translation_string = "FURNACE_MENU_DESC"
 
-[node name="WorkingProgressBar" type="ProgressBar" parent="Background/FurnaceTab/PanelContainer"]
+[node name="FuelProgressBar" type="ProgressBar" parent="Background/FurnaceTab/PanelContainer"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = -16.0
-offset_right = 314.0
-offset_bottom = 11.0
+offset_left = 56.0
+offset_top = -133.0
+offset_right = 304.0
+offset_bottom = -127.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 16
+step = 1.0
+show_percentage = false
+
+[node name="FuelLabel" type="Label" parent="Background/FurnaceTab/PanelContainer"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = -125.0
+offset_right = 301.0
+offset_bottom = -65.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "FUEL: 100/100"
+horizontal_alignment = 2
+autowrap_mode = 2
 
 [node name="EnableDisableButton" type="Button" parent="Background/FurnaceTab/PanelContainer"]
 layout_mode = 0
@@ -740,7 +768,7 @@ layout_mode = 0
 offset_left = -8.0
 offset_top = -200.0
 offset_right = 312.0
-offset_bottom = -80.0
+offset_bottom = -58.0
 
 [node name="HeaderColorRect" parent="Background/FurnaceTab" instance=ExtResource("11_45saq")]
 layout_mode = 1
@@ -1323,6 +1351,7 @@ offset_right = 149.0
 offset_bottom = 148.0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
+disabled = true
 text = "SELECT"
 
 [node name="Label" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect"]
@@ -1364,6 +1393,7 @@ offset_right = 149.0
 offset_bottom = 148.0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
+disabled = true
 text = "SELECT"
 
 [node name="Label" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect2"]
@@ -1405,6 +1435,7 @@ offset_right = 149.0
 offset_bottom = 148.0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
+disabled = true
 text = "SELECT"
 
 [node name="Label" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect3"]
@@ -1446,6 +1477,7 @@ offset_right = 149.0
 offset_bottom = 148.0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
+disabled = true
 text = "SELECT"
 
 [node name="Label" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect4"]
@@ -2343,6 +2375,7 @@ label_translation_string = "MAINMENU_EXIT_GAME"
 [connection signal="pressed" from="Background/ResearchTab/PanelContainer/Button" to="Background/ResearchTab" method="OnResearchButton"]
 [connection signal="timeout" from="Background/ResearchTab/PanelContainer/Timer" to="Background/ResearchTab" method="OnTimerTimeout"]
 [connection signal="visibility_changed" from="Background/Skilltree" to="Background/Skilltree" method="OnVisiblityChanged"]
+[connection signal="visibility_changed" from="Background/IslandTab" to="Background/IslandTab" method="OnVisiblityChanged"]
 [connection signal="visibility_changed" from="Background/AdminTab" to="Background/AdminTab" method="OnVisiblityChange"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/CreateButton" to="Background/AdminTab" method="OnCreateItems"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/DeselectButton" to="Background/AdminTab" method="OnDeselectAll"]

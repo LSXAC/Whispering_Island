@@ -14,6 +14,9 @@ public partial class FurnaceTab : ColorRect
     public Slot fuel_slot;
 
     [Export]
+    public Label fuel_label;
+
+    [Export]
     public Panel safty_panel;
 
     [Export]
@@ -21,6 +24,9 @@ public partial class FurnaceTab : ColorRect
 
     [Export]
     public ProgressBar workingProgressbar;
+
+    [Export]
+    public ProgressBar fuelProgressbar;
 
     [Export]
     public Button switch_button;
@@ -51,6 +57,12 @@ public partial class FurnaceTab : ColorRect
     public void UpdateProgressbar(int amount)
     {
         workingProgressbar.Value = amount;
+    }
+
+    public void UpdateFuelProgressbar(int amount)
+    {
+        fuelProgressbar.Value = amount;
+        fuel_label.Text = process_building.fuel_left + "/" + process_building.max_fuel_count;
     }
 
     public void SetProcessBuilding(ProcessBuilding process_building)
@@ -94,6 +106,9 @@ public partial class FurnaceTab : ColorRect
         }
         SetMachineProgressbar(process_building.ui_progress);
         UpdateProgressbar(process_building.progress);
+        UpdateFuelProgressbar(
+            (int)(((double)process_building.fuel_left / process_building.max_fuel_count) * 100)
+        );
 
         if (process_building.export_item_info != null && process_building.export_count != 0)
             export_slot.SetItem(process_building.export_item_info, process_building.export_count);

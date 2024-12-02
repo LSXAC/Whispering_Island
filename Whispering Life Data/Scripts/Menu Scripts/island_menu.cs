@@ -44,6 +44,28 @@ public partial class island_menu : ColorRect
         button4.Pressed += () => SelectIsland(3);
     }
 
+    public void OnVisiblityChanged()
+    {
+        DisableButtons();
+        GetTree().CreateTimer(0.2f).Timeout += () => SetButtons();
+    }
+
+    public void SetButtons()
+    {
+        button1.Disabled = false;
+        button2.Disabled = false;
+        button3.Disabled = false;
+        button4.Disabled = false;
+    }
+
+    public void DisableButtons()
+    {
+        button1.Disabled = true;
+        button2.Disabled = true;
+        button3.Disabled = true;
+        button4.Disabled = true;
+    }
+
     public void SelectIsland(int id)
     {
         if (current_sign == null)
