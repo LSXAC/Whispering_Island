@@ -110,7 +110,7 @@ public partial class ResourceObject : Building_Node
         {
             anim_player.Play("Break");
             player_ui.AddItemLabelUI(
-                "Cleared: +"
+                "Bonus: +"
                     + (
                         (int)(
                             mining_amount_last * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)

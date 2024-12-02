@@ -112,7 +112,7 @@ public partial class QuestManager : Node
             );
     }
 
-    public void NextQuest()
+    public async void NextQuest()
     {
         RemoveQuestItems();
         QuestMenu.INSTANCE.CloseQuestMenu();
@@ -123,8 +123,14 @@ public partial class QuestManager : Node
             return;
         }
         player_ui.CompleteQuestPanelShow();
+        Game_Manager.In_Cutscene = true;
+
+        await ToSignal(player_ui.INSTANCE.qcp_timer, "timeout");
+
+        Game_Manager.In_Cutscene = false;
 
         current_quest_id++;
         StartQuest();
+        QuestMenu.INSTANCE.OnOpenQuestMenu();
     }
 }

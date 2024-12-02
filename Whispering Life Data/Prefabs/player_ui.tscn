@@ -227,11 +227,15 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Quest Complete!"
 horizontal_alignment = 1
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_COMPLETE_QUEST"
 
 [node name="Label2" type="Label" parent="QuestCompletePanel/CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "The requiered Items got removed"
+text = "The required Items got removed from your inventory."
 horizontal_alignment = 1
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_COMPLETE_QUEST_REQU_ITEMS"
 
 [node name="Timer" type="Timer" parent="QuestCompletePanel"]
 wait_time = 2.0

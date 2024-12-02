@@ -71,9 +71,9 @@ public partial class QuestMenu : CanvasLayer
         Game_Manager.In_Cutscene = true;
         GlobalFunctions.MoveCamera(new Vector2(0, -256));
         if (TranslationServer.GetLocale() == "de")
-            DialogueManager.ShowDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_DE");
+            DialogueManager.ShowExampleDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_DE");
         else
-            DialogueManager.ShowDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_ENG");
+            DialogueManager.ShowExampleDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_ENG");
         CloseQuestMenu();
     }
 
@@ -117,11 +117,22 @@ public partial class QuestMenu : CanvasLayer
             c_label.Alignment = BoxContainer.AlignmentMode.Center;
             if (iii == null)
             {
-                c_label.item_label.Text = "0x /" + i.amount + "x";
+                c_label.item_label.Text =
+                    TranslationServer.Translate(i.item_info.item_name)
+                    + " - "
+                    + "0x /"
+                    + i.amount
+                    + "x";
                 continue;
             }
 
-            c_label.item_label.Text = iii.amount + "x /" + i.amount + "x";
+            c_label.item_label.Text =
+                TranslationServer.Translate(i.item_info.item_name)
+                + " - "
+                + i.amount
+                + "x /"
+                + i.amount
+                + "x";
 
             if (iii.amount >= i.amount)
                 c_label.ChangeColor(global::h_box_item.colorType.green);

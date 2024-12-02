@@ -63,6 +63,6 @@ public partial class TimerBar : ProgressBar
 
     private void UpdateLabel()
     {
-        label.Text = Value + "s";
+        label.Text = Value + "";
     }
 }

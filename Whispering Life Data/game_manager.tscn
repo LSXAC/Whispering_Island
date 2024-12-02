@@ -81,7 +81,7 @@ dialogue_timeline = ExtResource("13_c3cat")
 
 [node name="QuestManager" type="Node2D" parent="." node_paths=PackedStringArray("quest_timer")]
 script = ExtResource("13_v5o5h")
-quests = Array[Object]([ExtResource("14_2k87u"), ExtResource("15_13bir"), ExtResource("18_updaf"), ExtResource("19_q77oc"), ExtResource("20_cyfj4"), ExtResource("21_d16gf"), ExtResource("22_dxyke"), ExtResource("23_32xbn"), ExtResource("24_2beqv"), ExtResource("25_plrle")])
+quests = Array[Object]([ExtResource("14_2k87u"), ExtResource("21_d16gf"), ExtResource("15_13bir"), ExtResource("18_updaf"), ExtResource("19_q77oc"), ExtResource("20_cyfj4"), ExtResource("22_dxyke"), ExtResource("23_32xbn"), ExtResource("24_2beqv"), ExtResource("25_plrle")])
 quest_timer = NodePath("QuestTimer")
 
 [node name="QuestTimer" type="Timer" parent="QuestManager"]

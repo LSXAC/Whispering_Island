@@ -20,8 +20,8 @@ public partial class MainMenu : Control
     public override void _Ready()
     {
         INSTANCE = this;
-        intro_player.Play();
-        intro_player.Finished += () => OpenMenu();
+        //intro_player.Play();
+        //intro_player.Finished += () => OpenMenu();
     }
 
     public void OpenMenu()

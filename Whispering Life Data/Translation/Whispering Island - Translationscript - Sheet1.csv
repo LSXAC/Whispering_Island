@@ -27,6 +27,10 @@ PLAYERUI_ROTATE_FLIP_TIP,Rotate/Flip with [Q] or [E] | Close [ESC],Rotiere/Flip 
 PLAYERUI_RESOURCES_NEEDED,Buildingresources:,Bauressourcen:
 PLAYERUI_TIMES_LEFT_TO_BUILD,can be build.,kann gebaut werden.
 PLAYERUI_INVENTORY_FULL,Inventory overloaded!,Inventar überladen!
+PLAYERUI_COMPLETE_QUEST,Quest completed!,Aufgabe erfüllt!
+PLAYERUI_COMPLETE_QUEST_REQU_ITEMS,The required Items got removed from your inventory.,Die erforderlichen Items wurden aus dem Inventar entfernt.
+,,
+,,
 ,,
 EQUIPMENT_SLOT_HEAD,Head,Kopf
 EQUIPMENT_SLOT_CHEST,Chest,Brust
@@ -59,10 +63,6 @@ FURNACE_MENU_NOT_WORKING,Machine Offline,Maschine Deaktiviert
 FURNACE_MENU_DESC,"You cannot import or export items by hand, when the machine is working! Hot!","Ressourcen per Hand, während dem Aktivzustand, zu verändern, ist nicht möglich. Heiß!"
 FURNACE_MENU_HEATING_UP,Machine is heating up!,Maschine heizt auf!
 FURNACE_MENU_COOLING_DOWN,Machine is cooling down!,Maschine kühlt ab!
-,,
-,,
-,,
-,,
 ,,
 ,,
 ,,
