@@ -12,7 +12,10 @@ public partial class SaveLoadTab : ColorRect
     public static DateTime dateTime_from_save;
 
     // Called when the node enters the scene tree for the first time.
-    public override void _Ready() { }
+    public override void _Ready()
+    {
+        dateTime_from_save = DateTime.Now;
+    }
 
     public override void _Notification(int what)
     {

@@ -4,8 +4,8 @@ QUEST_DESC_1,"You encountered a hungry island. You're not sure why or how but no
 Well, what the island want doesn't seem so difficult for now!","Du bist zufällig auf eine hungrige Insel getroffen. Du bist dir nicht Sicher, wie, oder warum es dazu kam. Aber du hast dich dazu verpflichtet eine [b][color=gold]Insel auf ewig[/color][/b] mit Ressourcen [b][color=gold]zu füttern.[/color][/b]
 Naja, das was die Insel grade will, sieht eigentlich noch nicht so schwer aus!"
 QUEST_TITLE_2,It wants more! #2,Es will noch mehr! #2
-QUEST_DESC_2,"You've successfully feed the island for the first time but how can that be? That monster wants something new too eat immedeatly! That's going to be a challenge, if it wants 
-more and more complex resourcess. ([b][color=gold]Hint:[/b][/color] Press [b][color=gold][ESC][/color][/b] and click on crafting.)","Du hast nun erfolgreich die erste Fütterung durchgeführt, aber wie kann das sein? Dieses Monster will gleich wieder was zu Essen haben! Das wird echt eine Herausforderung, wenn er immer mehr
+QUEST_DESC_2,"You've successfully feed the island for the second time but how can that be? That monster wants always something new too eat immedeatly! That's going to be a challenge, if it wants 
+more and more complex resourcess. ([b][color=gold]Hint:[/color][/b] Press [b][color=gold][ESC][/color][/b] and click on crafting.)","Du hast nun erfolgreich die zweite Fütterung durchgeführt, aber wie kann das sein? Dieses Monster will immer wieder was neues zu Essen haben! Das wird echt eine Herausforderung, wenn er immer mehr
 und immer komplexere Ressourcen haben möchte! ([b][color=gold]Tipp:[/color][/b] Drücke [b][color=gold][ESC][/color][/b] und gehe auf den Punkt ""Herstellen"") "
 QUEST_TITLE_3,I'll be an explorer #3,Ich werde Forscherin! #3
 QUEST_DESC_3,"Why can't I craft the resourcess that monster wants? I'm missing the necessary blueprints... ([b][color=gold]Hint:[/color][/b] Craft a researchtable - you can examin the basic resources,
@@ -18,10 +18,10 @@ QUEST_DESC_5,"I've really had enough of what he's asking for! A block of iron? H
 ([b][colour=gold]Hint:[/colour][/b] Iron ore must be researched at level 2 to produce an iron block)","Also so langsam reicht es mir echt, was er haben möchte! Einen Eisenblock? Wie soll ich das schwere Ding überhaupt transportieren!
 (Tipp: Eisenerz muss auf Stufe 2 erforscht werden um einen Eisenblock herzustellen)"
 QUEST_TITLE_6,He wants what now? Mythic? #6,Er will was? Mystisch? #6
-QUEST_DESC_6,"It's probably too boring for this fine gentleman to eat the same thing all the time... and what does he want now? Mystical... What? Never mind, I'll bring him whatever he wants.
+QUEST_DESC_6,"It's probably too boring for this fine gentleman to eat the same thing all the time... and what does he want now? Mystical... What? Never mind, I'll get him whatever he wants.
 ([b][color=gold]Hint:[/color][/b] Build a mystical island on a shield)","Dem feinen Herren ist das wohl zu Öde, die ganze Zeit das gleiche zu essen... und was möchte er jetzt? Mystisch... Was? Ach egal, ich bring Ihn, was er möchte.
 ([b][color=gold]Tipp:[/color][/b] Baue eine mystische Insel an einem Schild)"
-QUEST_TITLE_7,The Dressmaker #7,Der Kleiderist? #7
+QUEST_TITLE_7,The Tailor #7,Der Kleidermacher? #7
 QUEST_DESC_7,"It's slowly getting cold! At least I think so, there is actually no temperature-changing effect (yet).","Langsam wird es kalt! Glaube ich zumindest, es gibt eigentlich (noch) keine Temperaturverändernde Wirkung."
 QUEST_TITLE_8,The Farmer! #8,Der Farmer! #8
 QUEST_DESC_8,"After all that hard work, the monster needs some tasty plants! ([b][color=gold]Hint:[/color][/b] You can turn wheat seeds into any other seed in the crafting menu).","Nach der ganzen harten Arbeit, braucht das Monster auch mal ein paar leckere Pflanzen! ([b][color=gold]Tipp:[/color][/b] Man kann Weizensamen in jegliche Samen im Herstellungsmenü verwandeln.)"
