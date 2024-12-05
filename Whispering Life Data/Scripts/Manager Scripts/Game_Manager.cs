@@ -74,8 +74,6 @@ public partial class Game_Manager : Node2D
         Node2D main_island = island_parent.GetNode<Node2D>("MainIsland");
         Island_Properties mi = main_island.GetNode<Node2D>("IslandProperties") as Island_Properties;
 
-        TranslationServer.SetLocale("en_EN");
-
         CreateIslands();
         CheckGameSave();
     }
@@ -91,7 +89,6 @@ public partial class Game_Manager : Node2D
 
         Islands_Manager.INSTANCE.SaveResourceObjects();
         save_state.env_save.resource_object_manager_saves = Islands_Manager.INSTANCE.roms;
-        save_state.current_language = TranslationServer.GetLocale();
 
         //Save Quest
         save_state.quest_save.current_quest_id = QuestManager.current_quest_id;
@@ -119,17 +116,8 @@ public partial class Game_Manager : Node2D
         save_state.skill_saves = Skilltree.skill_progress;
         save_state.Research_Points = ResearchTab.INSTANCE.Research_Points;
 
-        //Audio
-        save_state.master_volume = AudioServer.GetBusVolumeDb(
-            AudioServer.GetBusIndex(SoundSlider.BUS.Master.ToString())
-        );
-        save_state.music_volume = AudioServer.GetBusVolumeDb(
-            AudioServer.GetBusIndex(SoundSlider.BUS.Music.ToString())
-        );
-        save_state.sfx_volume = AudioServer.GetBusVolumeDb(
-            AudioServer.GetBusIndex(SoundSlider.BUS.SFX.ToString())
-        );
         save_state.WriteSave();
+        MainMenu.SaveLauncherConfig();
         Debug.Print("Saved Game!");
     }
 
@@ -137,7 +125,6 @@ public partial class Game_Manager : Node2D
     {
         Debug.Print("Game_Manager - Loading SaveState");
         save_state = (SaveState)SaveState.LoadSave();
-        TranslationServer.SetLocale(save_state.current_language);
         tutorial_finished = save_state.tutorial_finished;
         if (!tutorial_finished)
         {
@@ -184,20 +171,6 @@ public partial class Game_Manager : Node2D
 
         game_time_since_start = save_state.game_time_since_start;
         game_timer.Start();
-
-        //Audio
-        AudioServer.SetBusVolumeDb(
-            AudioServer.GetBusIndex(SoundSlider.BUS.Master.ToString()),
-            save_state.master_volume
-        );
-        AudioServer.SetBusVolumeDb(
-            AudioServer.GetBusIndex(SoundSlider.BUS.Music.ToString()),
-            save_state.music_volume
-        );
-        AudioServer.SetBusVolumeDb(
-            AudioServer.GetBusIndex(SoundSlider.BUS.SFX.ToString()),
-            save_state.sfx_volume
-        );
     }
 
     public void OnGameTimerTimeout()
@@ -230,6 +203,7 @@ public partial class Game_Manager : Node2D
         {
             GlobalFunctions.StartAfterTutorial();
             SaveGame();
+            MainMenu.SaveLauncherConfig();
         }
     }
 

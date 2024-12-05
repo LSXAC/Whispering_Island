@@ -218,14 +218,13 @@ enabled = false
 tile_set = ExtResource("7_va5b3")
 script = ExtResource("8_7hw5l")
 
-[node name="QuestSign" type="StaticBody2D" parent="." node_paths=PackedStringArray("anim_player", "sprite")]
+[node name="QuestSign" type="StaticBody2D" parent="." node_paths=PackedStringArray("anim_player")]
 y_sort_enabled = true
 position = Vector2(32, -200)
 script = ExtResource("8_dl61a")
 anim_player = NodePath("AnimationPlayer")
 title = "Quest Sign"
 description = "123414"
-sprite = NodePath("AnimationPlayer/BuildingSprite")
 
 [node name="Collision" type="CollisionShape2D" parent="QuestSign"]
 position = Vector2(-32, -31)

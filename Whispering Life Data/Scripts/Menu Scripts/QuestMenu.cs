@@ -69,7 +69,7 @@ public partial class QuestMenu : CanvasLayer
     public void OnCloseButton()
     {
         Game_Manager.In_Cutscene = true;
-        GlobalFunctions.MoveCamera(new Vector2(0, -256));
+        GlobalFunctions.MoveCamera(new Vector2(13, -256));
         if (TranslationServer.GetLocale() == "de")
             DialogueManager.ShowExampleDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_DE");
         else
@@ -129,7 +129,7 @@ public partial class QuestMenu : CanvasLayer
             c_label.item_label.Text =
                 TranslationServer.Translate(i.item_info.item_name)
                 + " - "
-                + i.amount
+                + iii.amount
                 + "x /"
                 + i.amount
                 + "x";

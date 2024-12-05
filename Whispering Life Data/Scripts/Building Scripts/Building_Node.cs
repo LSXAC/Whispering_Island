@@ -23,7 +23,7 @@ public abstract partial class Building_Node : Node2D
     public override void _Input(InputEvent @event)
     {
         if (@event is InputEventMouseButton buttonevent)
-            if (buttonevent.Pressed && mouse_inside)
+            if (buttonevent.ButtonIndex == MouseButton.Left && buttonevent.Pressed && mouse_inside)
             {
                 OnMouseClick();
             }

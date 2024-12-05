@@ -22,6 +22,8 @@ public partial class hover_menu : PanelContainer
 
     public static void InitHoverMenu(Building_Node node)
     {
+        if (node.GetSprite() == null)
+            return;
         INSTANCE.title_Label.Text = TranslationServer.Translate(node.GetTitle());
         INSTANCE.description_Label.Text = TranslationServer.Translate(node.GetDescription());
         INSTANCE.Position = new Vector2(

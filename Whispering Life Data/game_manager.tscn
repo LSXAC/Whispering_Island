@@ -60,6 +60,10 @@ script = ExtResource("4_logif")
 
 [node name="MainIsland" parent="IslandManager" instance=ExtResource("3_p5rek")]
 
+[node name="QuestSign" parent="IslandManager/MainIsland" index="7"]
+title = "Monster"
+description = "...."
+
 [node name="PlayerUI" parent="." instance=ExtResource("4_iiee3")]
 
 [node name="GameMenu" parent="." instance=ExtResource("4_dafgv")]

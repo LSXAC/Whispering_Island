@@ -17,13 +17,58 @@ public partial class MainMenu : Control
     [Export]
     public Control parent;
 
+    [Export]
+    public Button load_button;
+
+    public static LauncherSave launcherSave;
+
     public override void _Ready()
     {
-        TranslationServer.SetLocale("en");
         INSTANCE = this;
         intro_player.Play();
         intro_player.Finished += () => OpenMenu();
         parent.Visible = false;
+        if (!SaveState.HasSave())
+            load_button.Disabled = true;
+
+        if (LauncherSave.HasSave())
+        {
+            launcherSave = (LauncherSave)LauncherSave.LoadSave();
+            TranslationServer.SetLocale(launcherSave.current_language);
+            AudioServer.SetBusVolumeDb(
+                AudioServer.GetBusIndex(SoundSlider.BUS.Master.ToString()),
+                launcherSave.master_volume
+            );
+            AudioServer.SetBusVolumeDb(
+                AudioServer.GetBusIndex(SoundSlider.BUS.Music.ToString()),
+                launcherSave.music_volume
+            );
+            AudioServer.SetBusVolumeDb(
+                AudioServer.GetBusIndex(SoundSlider.BUS.SFX.ToString()),
+                launcherSave.sfx_volume
+            );
+            return;
+        }
+
+        TranslationServer.SetLocale("en");
+        SaveLauncherConfig();
+    }
+
+    public static void SaveLauncherConfig()
+    {
+        launcherSave = new LauncherSave();
+
+        launcherSave.current_language = TranslationServer.GetLocale();
+        launcherSave.master_volume = AudioServer.GetBusVolumeDb(
+            AudioServer.GetBusIndex(SoundSlider.BUS.Master.ToString())
+        );
+        launcherSave.music_volume = AudioServer.GetBusVolumeDb(
+            AudioServer.GetBusIndex(SoundSlider.BUS.Music.ToString())
+        );
+        launcherSave.sfx_volume = AudioServer.GetBusVolumeDb(
+            AudioServer.GetBusIndex(SoundSlider.BUS.SFX.ToString())
+        );
+        launcherSave.WriteSave();
     }
 
     public void OpenMenu()
@@ -37,6 +82,10 @@ public partial class MainMenu : Control
     public void OnVisiblityChanged()
     {
         skip_tutorial.ButtonPressed = false;
+        if (!SaveState.HasSave())
+            load_button.Disabled = true;
+        else
+            load_button.Disabled = false;
     }
 
     public void OnNewGameButtoN()
@@ -53,6 +102,9 @@ public partial class MainMenu : Control
 
     public void OnLoadGameButtoN()
     {
+        if (IsInstanceValid(Game_Manager.INSTANCE))
+            Game_Manager.INSTANCE.QueueFree();
+
         Game_Manager gm = game.Instantiate() as Game_Manager;
         GetTree().Root.AddChild(gm);
         Visible = false;

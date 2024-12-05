@@ -247,6 +247,8 @@ public partial class Slot : Button
                     ChestInventory.INSTANCE.current_chest.chest_items[GetIndex()].amount +=
                         Inventory.clicked_item.amount;
                 }
+                else
+                    return;
             inventory_base.UpdateInventoryUI();
             Inventory.clicked_item.QueueFree();
             Inventory.clicked_item = null;

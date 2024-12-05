@@ -17,7 +17,7 @@ GAMEMENU_FURNACE,> Furnace,> Ofen
 GAMEMENU_CHEST,> Chest,> Kiste
 GAMEMENU_RESEARCH_TABLE,> Research Table,> Forschungstisch
 GAMEMENU_QUEST_MENU,> Quest Overview,> Aufgabenübersicht
-,,
+GAMEMENU_TRASHCHEST,> Trash Chest,> Müll Kiste
 PLAYERUI_GAMETIME,Game time,Spielzeit
 PLAYERUI_QUEST_OBJECTIV,Objectiv,Aufgabe
 PLAYERUI_QUEST_TIME_LEFT,Time left,Zeit übrig
@@ -91,6 +91,17 @@ BUILDING_SIGN,Sign,Schild
 BUILDING_SIGN_DESC,Sign where a Bridge can be build,Schild an dem eine Brücke gebaut werden kann
 BUILDING_TRASHCAN,Trashcan,Mülleimer
 BUILDING_TRASHCAN_DESC,Inserted Items will be deleted every Minute,Eingefügte Items werden minütlich gelöscht
+BUILDING_BELT,Belt,Fließband
+BUILDING_BELT_DESC,Transports resources.,Transportiert Ressourcen.
+BUILDING_BELT_TUNNEL,Transmitter belt,Übertragungs Fließband
+BUILDING_BELT_TUNNEL_DESC,Transports resources over air.,Transportiert Ressourcen über Luft.
+,,
+,,
+,,
+,,
+,,
+,,
+,,
 ,,
 ,,
 ,,
@@ -129,3 +140,5 @@ SKILLTREE_RESEARCH_TIME,Research Time,Erforschungszeit
 ,,
 MAINMENU_NEW_GAME,Start New Game,Neues Spiel beginnen
 MAINMENU_EXIT_GAME,Exit Game :(,Spiel verlassen :(
+MAINMENU_SKIP_TUTORIAL,Skip Tutorial,Start überspringen
+MAINMENU_BACK_TO_MAINMENU,Main Menu,Hauptmenü

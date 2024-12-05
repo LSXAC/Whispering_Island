@@ -176,6 +176,11 @@ public partial class Building_Placer : Node2D
                 for (int i = 0; i < machine_save.chest_items.Length; i++)
                     ((Chest)temp).chest_items[i] = machine_save.chest_items[i];
             }
+            if (temp is Trashcan)
+            {
+                for (int i = 0; i < machine_save.chest_items.Length; i++)
+                    ((Chest)temp).chest_items[i] = machine_save.chest_items[i];
+            }
         }
     }
 
@@ -232,6 +237,11 @@ public partial class Building_Placer : Node2D
         if (machine_save.building_id == Database.BUILDING_ID.CHEST)
             return Database.GetBuildingType(Database.BUILDING_ID.CHEST).building_scene.Instantiate()
                 as Chest;
+
+        if (machine_save.building_id == Database.BUILDING_ID.TRASHCAN)
+            return Database
+                    .GetBuildingType(Database.BUILDING_ID.TRASHCAN)
+                    .building_scene.Instantiate() as Trashcan;
 
         return null;
     }
@@ -334,7 +344,7 @@ public partial class Building_Placer : Node2D
                             ((ProcessBuilding)node).export_item_info.unique_id;
                 }
 
-                if (node is Chest)
+                if (node is Chest || node is Trashcan)
                     ms.chest_items = ((Chest)node).chest_items;
 
                 machine_saves.Add(ms);

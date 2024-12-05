@@ -47,6 +47,9 @@ public partial class player_ui : CanvasLayer
     [Export]
     public VBoxContainer info_vBox;
 
+    [Export]
+    public Button mainmenu_button;
+
     public override void _Notification(int what)
     {
         if (what != NotificationTranslationChanged)
@@ -70,6 +73,13 @@ public partial class player_ui : CanvasLayer
         stamina_label.Text = TranslationServer.Translate("STAMINA_LEFT");
 
         hslider.AddThemeStyleboxOverride("grabber_area", before_reg);
+        mainmenu_button.Pressed += () => ToMainMenu();
+    }
+
+    public void ToMainMenu()
+    {
+        gameover_panel.Visible = false;
+        GameMenu.INSTANCE.OnBackToMainMenu();
     }
 
     public static void CompleteQuestPanelShow()
@@ -115,7 +125,7 @@ public partial class player_ui : CanvasLayer
 
     public void OnLoadGameButton()
     {
-        Game_Manager.INSTANCE.LoadGame();
+        GameMenu.INSTANCE.OnLoadButton();
     }
 
     public static void AddItemLabelUI(string text)
@@ -147,6 +157,9 @@ public partial class player_ui : CanvasLayer
 
     public override void _Process(double delta)
     {
+        if (Game_Manager.gameover && !gameover_panel.Visible)
+            gameover_panel.Visible = true;
+
         if (hslider == null)
             return;
 

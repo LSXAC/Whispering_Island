@@ -27,8 +27,8 @@ script = ExtResource("1_wiff4")
 item_holder = NodePath("ItemHolder")
 detector = NodePath("Detector")
 building_collider_manager = NodePath("BuildingAreas")
-title = "Belt"
-description = "Moves Items"
+title = "BUILDING_BELT"
+description = "BUILDING_BELT_DESC"
 sprite = NodePath("BuildingSprite")
 collision_shape = NodePath("CollisionShape2D")
 

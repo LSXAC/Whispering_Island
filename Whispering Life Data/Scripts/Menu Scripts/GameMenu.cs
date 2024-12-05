@@ -355,8 +355,7 @@ public partial class GameMenu : CanvasLayer
 
     public void OnLoadButton()
     {
-        OnExitButton();
-        CloseLastWindow();
-        Debug.Print(GetTree().ReloadCurrentScene().ToString());
+        MainMenu.INSTANCE.Visible = true;
+        MainMenu.INSTANCE.OnLoadGameButtoN();
     }
 }

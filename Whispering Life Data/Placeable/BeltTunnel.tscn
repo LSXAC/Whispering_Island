@@ -31,8 +31,8 @@ item_holder = NodePath("ItemHolder")
 detector = NodePath("Detector")
 building_id = 1
 building_collider_manager = NodePath("BuildingAreas")
-title = "Belt"
-description = "Moves Items"
+title = "BUILDING_BELT_TUNNEL"
+description = "BUILDING_BELT_TUNNEL_DESC"
 sprite = NodePath("BuildingSprite")
 collision_shape = NodePath("CollisionShape2D")
 

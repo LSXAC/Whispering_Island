@@ -110,7 +110,7 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_lfoib")
 
-[node name="Carrot" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "sprite", "collision_shape")]
+[node name="Carrot" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "sprite")]
 y_sort_enabled = true
 script = ExtResource("1_ywllv")
 anim_player = NodePath("AnimationPlayer")
@@ -120,7 +120,6 @@ gpu_particles = NodePath("CarrotParticles")
 title = "WORLD_RESOURCE_CARROT"
 description = "WORLD_RESOURCE_CARROT_DESC"
 sprite = NodePath("CarrotSprite")
-collision_shape = NodePath("")
 
 [node name="CarrotSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true

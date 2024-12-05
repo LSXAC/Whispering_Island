@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d382ft4naeqtp"]
+[gd_scene load_steps=8 format=3 uid="uid://d382ft4naeqtp"]
 
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="1_6mgai"]
 [ext_resource type="Script" path="res://Menus/MainMenu.cs" id="1_tix1b"]
@@ -6,8 +6,9 @@
 [ext_resource type="Script" path="res://Menus/TranslationButton.cs" id="3_f3o34"]
 [ext_resource type="Texture2D" uid="uid://de4l1wl47aa3q" path="res://Sprites/Menu/Menu_Overlay.png" id="3_hkyqf"]
 [ext_resource type="VideoStream" path="res://Videos/Start_Screen.ogv" id="5_owr4r"]
+[ext_resource type="Script" path="res://Menus/TranslationCheckBox.cs" id="6_8cuob"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("skip_tutorial", "intro_player", "background_player", "parent")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("skip_tutorial", "intro_player", "background_player", "parent", "load_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +20,7 @@ skip_tutorial = NodePath("Control/Panel/VBoxContainer/HBoxContainer/CheckBox")
 intro_player = NodePath("VideoStreamPlayer")
 background_player = NodePath("Control/VideoStreamPlayer")
 parent = NodePath("Control")
+load_button = NodePath("Control/Panel/VBoxContainer/LoadGameButton")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -47,10 +49,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -316.0
-offset_top = -169.0
-offset_right = -16.0
-offset_bottom = -15.0
+offset_left = -310.0
+offset_top = -185.0
+offset_right = -10.0
+offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("3_hkyqf")
@@ -83,7 +85,7 @@ theme_override_font_sizes/normal_font_size = 22
 theme_override_font_sizes/bold_font_size = 22
 bbcode_enabled = true
 text = "[center][b][color=gold][wave]> Whispering Island <[/wave]
-[font_size=14px][color=white]Prototype [ver 1.0.2]"
+[font_size=14px][color=white]Prototype [ver 1.0.3]"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
 custom_minimum_size = Vector2(200, 0)
@@ -101,7 +103,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="NewGameButton" type="Button" parent="Control/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -118,10 +122,15 @@ layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_6mgai")
 theme_override_font_sizes/font_size = 10
-text = "SKIP TUTORIAL"
+theme_override_constants/check_v_offset = 0
+text = "Skip tutorial"
+script = ExtResource("6_8cuob")
+label_translation_string = "MAINMENU_SKIP_TUTORIAL"
 
 [node name="LoadGameButton" type="Button" parent="Control/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_6mgai")
 theme_override_font_sizes/font_size = 12
@@ -130,7 +139,9 @@ script = ExtResource("3_f3o34")
 label_translation_string = "SAVELOAD_MENU_LOAD_BUTTON"
 
 [node name="ExitButton" type="Button" parent="Control/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_6mgai")
 theme_override_font_sizes/font_size = 12

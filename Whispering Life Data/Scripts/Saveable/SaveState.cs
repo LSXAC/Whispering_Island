@@ -33,18 +33,6 @@ public partial class SaveState : Resource
     public bool tutorial_finished = false;
 
     [Export]
-    public string current_language = "en";
-
-    [Export]
-    public float master_volume = -15;
-
-    [Export]
-    public float music_volume = -5;
-
-    [Export]
-    public float sfx_volume = 5;
-
-    [Export]
     public float game_time_since_start = 0;
 
     [Export]

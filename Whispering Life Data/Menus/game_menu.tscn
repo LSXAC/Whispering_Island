@@ -589,9 +589,9 @@ offset_bottom = 14.0
 
 [node name="HeaderColorRect" parent="Background/ChestTab" instance=ExtResource("11_45saq")]
 layout_mode = 1
-offset_left = -224.0
+offset_left = -223.0
 offset_top = -26.0
-offset_right = 305.0
+offset_right = 310.0
 offset_bottom = -2.0
 translation_string = "GAMEMENU_CHEST"
 
@@ -1052,18 +1052,21 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
+button_mask = 0
 text = "+10%"
 
 [node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
+button_mask = 0
 text = "+15%"
 
 [node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
+button_mask = 0
 text = "+20%"
 
 [node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -1118,18 +1121,21 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
+button_mask = 0
 text = "+10%"
 
 [node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
+button_mask = 0
 text = "+15%"
 
 [node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
+button_mask = 0
 text = "+20%"
 
 [node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -1184,18 +1190,21 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
+button_mask = 0
 text = "+10%"
 
 [node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
+button_mask = 0
 text = "+15%"
 
 [node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
+button_mask = 0
 text = "+20%"
 
 [node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -1250,18 +1259,21 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
+button_mask = 0
 text = "+10%"
 
 [node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
+button_mask = 0
 text = "+15%"
 
 [node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
+button_mask = 0
 text = "+20%"
 
 [node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]

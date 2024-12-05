@@ -23,7 +23,7 @@ thickness = 6
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upggj"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "skip_tutorial_box", "info_vBox")]
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "skip_tutorial_box", "info_vBox", "mainmenu_button")]
 script = ExtResource("1_m5svq")
 qcp_timer = NodePath("QuestCompletePanel/Timer")
 times_to_build_left_label = NodePath("WindowFrame/VBoxContainer/TimesLeftLabel")
@@ -35,6 +35,7 @@ collected_item_parent = NodePath("ReceivedItems")
 gameover_panel = NodePath("GameOverPanel")
 skip_tutorial_box = NodePath("GameOverPanel/VBoxContainer/CheckBox")
 info_vBox = NodePath("WindowFrame/VBoxContainer")
+mainmenu_button = NodePath("GameOverPanel/VBoxContainer/MainmenuButton")
 
 [node name="WindowFrame" type="TextureRect" parent="."]
 visible = false
@@ -411,13 +412,13 @@ text = "Load Game"
 script = ExtResource("9_erkjv")
 label_translation_string = "SAVELOAD_MENU_LOAD_BUTTON"
 
-[node name="NewGameButton" type="Button" parent="GameOverPanel/VBoxContainer"]
+[node name="MainmenuButton" type="Button" parent="GameOverPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
-text = "New Game"
+text = "Main Menu"
 script = ExtResource("9_erkjv")
-label_translation_string = "MAINMENU_NEW_GAME"
+label_translation_string = "MAINMENU_BACK_TO_MAINMENU"
 
 [node name="CheckBox" type="CheckBox" parent="GameOverPanel/VBoxContainer"]
 layout_mode = 2
@@ -427,5 +428,4 @@ button_pressed = true
 text = "SKIP TUTORIAL"
 
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
-[connection signal="button_down" from="GameOverPanel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButton"]
-[connection signal="button_down" from="GameOverPanel/VBoxContainer/NewGameButton" to="." method="OnNewGameButton"]
+[connection signal="button_up" from="GameOverPanel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButton"]

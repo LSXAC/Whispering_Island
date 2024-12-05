@@ -124,13 +124,13 @@ public partial class QuestManager : Node
         }
         player_ui.CompleteQuestPanelShow();
         Game_Manager.In_Cutscene = true;
-
-        await ToSignal(player_ui.INSTANCE.qcp_timer, "timeout");
-
-        Game_Manager.In_Cutscene = false;
-
         current_quest_id++;
         StartQuest();
+        PauseTimer();
+        await ToSignal(player_ui.INSTANCE.qcp_timer, "timeout");
+        StartTimer();
+        Game_Manager.In_Cutscene = false;
+
         QuestMenu.INSTANCE.OnOpenQuestMenu();
     }
 }
