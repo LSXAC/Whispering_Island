@@ -230,24 +230,77 @@ public partial class Slot : Button
             }
 
             if (GetItem().item_info != Inventory.clicked_item.item_info)
+            {
+                //Switch Items
+                //CreateClickedItem();
+                InventoryItem ii = Inventory.clicked_item;
+                ClearClickedItem();
+                CreateClickedItem();
+                NewSlot(inventory_base.inventory_items, (int)ii.item_info.unique_id, ii.amount);
+                return;
+            }
+
+            if (
+                GetAmountOfSlot(inventory_base.inventory_items)
+                == Inventory.clicked_item.item_info.max_slot_amount
+            )
                 return;
 
             if (ItemCanBeHalfed(Inventory.clicked_item))
                 if (btn.ButtonMask == MouseButtonMask.Right)
                 {
-                    UpdateSlot(
-                        inventory_base.inventory_items,
-                        GetAmountOfSlot(inventory_base.inventory_items)
-                            + HalfAmountNextInt(Inventory.clicked_item.amount)
-                    );
-                    Inventory.clicked_item.amount = HalfAmount(Inventory.clicked_item.amount);
+                    //Check if 48 Slot overgoes
+                    if ( //Check if <= slot max
+                        Inventory.clicked_item.amount + GetAmountOfSlot(inventory_base.inventory_items)
+                        <= Inventory.clicked_item.item_info.max_slot_amount
+                    )
+                    {
+                        UpdateSlot(
+                            inventory_base.inventory_items,
+                            GetAmountOfSlot(inventory_base.inventory_items)
+                                + HalfAmountNextInt(Inventory.clicked_item.amount)
+                        );
+                        Inventory.clicked_item.amount = HalfAmount(Inventory.clicked_item.amount);
+                    }
+                    else
+                    {
+                        // 48 - 30 = 18
+                        int diff =
+                            Inventory.clicked_item.item_info.max_slot_amount
+                            - GetAmountOfSlot(inventory_base.inventory_items);
+
+                        UpdateSlot(
+                            inventory_base.inventory_items,
+                            GetAmountOfSlot(inventory_base.inventory_items) + diff
+                        );
+                        Inventory.clicked_item.amount -= diff;
+                    }
                     return;
                 }
-            UpdateSlot(
-                inventory_base.inventory_items,
-                GetAmountOfSlot(inventory_base.inventory_items) + Inventory.clicked_item.amount
-            );
-            ClearClickedItem();
+
+            if ( //Check if <= slot max
+                Inventory.clicked_item.amount + GetAmountOfSlot(inventory_base.inventory_items)
+                <= Inventory.clicked_item.item_info.max_slot_amount
+            )
+            {
+                UpdateSlot(
+                    inventory_base.inventory_items,
+                    GetAmountOfSlot(inventory_base.inventory_items) + Inventory.clicked_item.amount
+                );
+                ClearClickedItem();
+            }
+            else
+            {
+                int diff =
+                    Inventory.clicked_item.item_info.max_slot_amount
+                    - GetAmountOfSlot(inventory_base.inventory_items);
+
+                UpdateSlot(
+                    inventory_base.inventory_items,
+                    GetAmountOfSlot(inventory_base.inventory_items) + diff
+                );
+                Inventory.clicked_item.amount -= diff;
+            }
         }
     }
 
@@ -276,7 +329,7 @@ public partial class Slot : Button
 
     private void ClearClickedItem()
     {
-        Inventory.clicked_item.QueueFree();
+        Inventory.clicked_item.Free();
         Inventory.clicked_item = null;
     }
 
@@ -337,25 +390,64 @@ public partial class Slot : Button
             }
 
             if (GetItem().item_info != Inventory.clicked_item.item_info)
+            {
+                //Switch Items
+                //CreateClickedItem();
+                InventoryItem ii = Inventory.clicked_item;
+                ClearClickedItem();
+                CreateClickedItem();
+                NewSlot(chest.chest_items, (int)ii.item_info.unique_id, ii.amount);
                 return;
+            }
 
             if (ItemCanBeHalfed(Inventory.clicked_item))
                 if (btn.ButtonMask == MouseButtonMask.Right)
                 {
-                    UpdateSlot(
-                        chest.chest_items,
-                        GetAmountOfSlot(chest.chest_items)
-                            + HalfAmountNextInt(Inventory.clicked_item.amount)
-                    );
-                    Inventory.clicked_item.amount = HalfAmount(Inventory.clicked_item.amount);
+                    //Check if 48 Slot overgoes
+                    if ( //Check if <= slot max
+                        Inventory.clicked_item.amount + GetAmountOfSlot(chest.chest_items)
+                        <= Inventory.clicked_item.item_info.max_slot_amount
+                    )
+                    {
+                        UpdateSlot(
+                            chest.chest_items,
+                            GetAmountOfSlot(chest.chest_items)
+                                + HalfAmountNextInt(Inventory.clicked_item.amount)
+                        );
+                        Inventory.clicked_item.amount = HalfAmount(Inventory.clicked_item.amount);
+                    }
+                    else
+                    {
+                        // 48 - 30 = 18
+                        int diff =
+                            Inventory.clicked_item.item_info.max_slot_amount
+                            - GetAmountOfSlot(chest.chest_items);
+
+                        UpdateSlot(chest.chest_items, GetAmountOfSlot(chest.chest_items) + diff);
+                        Inventory.clicked_item.amount -= diff;
+                    }
                     return;
                 }
+            if ( //Check if <= slot max
+                Inventory.clicked_item.amount + GetAmountOfSlot(chest.chest_items)
+                <= Inventory.clicked_item.item_info.max_slot_amount
+            )
+            {
+                UpdateSlot(
+                    chest.chest_items,
+                    GetAmountOfSlot(chest.chest_items) + Inventory.clicked_item.amount
+                );
+                ClearClickedItem();
+            }
+            else
+            {
+                int diff =
+                    Inventory.clicked_item.item_info.max_slot_amount
+                    - GetAmountOfSlot(chest.chest_items);
 
-            UpdateSlot(
-                chest.chest_items,
-                GetAmountOfSlot(chest.chest_items) + Inventory.clicked_item.amount
-            );
-            ClearClickedItem();
+                UpdateSlot(chest.chest_items, GetAmountOfSlot(chest.chest_items) + diff);
+                Inventory.clicked_item.amount -= diff;
+            }
         }
     }
 

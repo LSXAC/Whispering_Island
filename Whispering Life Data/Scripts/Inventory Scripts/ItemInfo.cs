@@ -29,6 +29,9 @@ public partial class ItemInfo : Resource
     };
 
     [Export]
+    public int max_slot_amount = 48;
+
+    [Export]
     public string item_name;
 
     [Export]

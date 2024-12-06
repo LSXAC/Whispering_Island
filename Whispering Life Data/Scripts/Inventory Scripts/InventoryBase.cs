@@ -194,6 +194,7 @@ public partial class InventoryBase : Control
     public void AddItem(ItemInfo ii, int amount, ItemSave[] array)
     {
         //Check if Item already exists
+        int remaining = amount;
         for (int i = 0; i < array.Length; i++)
         {
             if (array[i] == null)
@@ -201,10 +202,22 @@ public partial class InventoryBase : Control
 
             if (array[i].item_id == (int)ii.unique_id)
             {
-                if (array[i].amount + amount <= 0)
+                if (array[i].amount + remaining <= 0)
                     array[i] = null;
                 else
-                    array[i].amount += amount;
+                {
+                    if (array[i].amount == ii.max_slot_amount)
+                        continue;
+
+                    if (array[i].amount + remaining <= ii.max_slot_amount)
+                        array[i].amount += remaining;
+                    else
+                    {
+                        int diff = ii.max_slot_amount - array[i].amount;
+                        array[i].amount = ii.max_slot_amount;
+                        remaining -= diff;
+                    }
+                }
 
                 QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
                     QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
@@ -214,11 +227,14 @@ public partial class InventoryBase : Control
             }
         }
 
+        if (remaining == 0)
+            return;
+
         //Check latest Slot which is Null
         for (int i = 0; i < array.Length; i++)
             if (array[i] == null)
             {
-                array[i] = new ItemSave((int)ii.unique_id, amount);
+                array[i] = new ItemSave((int)ii.unique_id, remaining);
                 QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
                     QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
                 );
@@ -228,7 +244,7 @@ public partial class InventoryBase : Control
             }
     }
 
-    public bool CanReceiveItem(ItemInfo ii, ItemSave[] array)
+    public bool CanReceiveItem(ItemInfo ii, ItemSave[] array, int amount)
     {
         //Check if Item already exists
         for (int i = 0; i < array.Length; i++)

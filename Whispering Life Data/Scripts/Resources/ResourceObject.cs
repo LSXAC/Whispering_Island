@@ -99,7 +99,13 @@ public partial class ResourceObject : Building_Node
     private void Hit()
     {
         //Check if Item can be in Inventory
-        if (!Inventory.INSTANCE.CanReceiveItem(item_info, Inventory.INSTANCE.inventory_items))
+        if (
+            !Inventory.INSTANCE.CanReceiveItem(
+                item_info,
+                Inventory.INSTANCE.inventory_items,
+                (int)(mining_amount_last * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT))
+            )
+        )
         {
             player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
             return;

@@ -9,8 +9,6 @@ public partial class CheatTab : ColorRect
     [Export]
     public Label timeStateLabel;
 
-    public override void _Ready() { }
-
     public void OnVisiblityChange()
     {
         SetItemsInList();
@@ -51,13 +49,10 @@ public partial class CheatTab : ColorRect
         int[] items = item_list.GetSelectedItems();
         foreach (int i in items)
             Inventory.INSTANCE.AddItem(
-                Inventory.INSTANCE.item_Types[((Inventory.ITEM_ID)i)],
-                50,
+                Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)i],
+                Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)i].max_slot_amount,
                 Inventory.INSTANCE.inventory_items
             );
         OnDeselectAll();
     }
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta) { }
 }

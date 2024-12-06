@@ -39,7 +39,8 @@ public partial class itemRecipeUI : Control
         if (
             !Inventory.INSTANCE.CanReceiveItem(
                 output_item.item_info,
-                Inventory.INSTANCE.inventory_items
+                Inventory.INSTANCE.inventory_items,
+                output_item.amount
             )
         )
         {
