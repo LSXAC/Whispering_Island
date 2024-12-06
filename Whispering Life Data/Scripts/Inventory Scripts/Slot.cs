@@ -13,39 +13,40 @@ public partial class Slot : Button
     public bool is_export_slot = false;
 
     InventoryBase inventory_base = null;
+    Chest chest = null;
 
     public override void _GuiInput(InputEvent @event)
     {
         if (@event is InputEventMouseButton btn && @event.IsPressed())
-            if (btn.ButtonMask == MouseButtonMask.Left)
+        {
+            if (GetParent().GetParent() is Inventory)
             {
-                if (GetParent().GetParent() is Inventory)
-                {
-                    inventory_base = (InventoryBase)GetParent().GetParent();
-                    OnSlotButton();
-                }
-                if (GetParent().GetParent() is ChestInventory)
-                {
-                    inventory_base = (InventoryBase)GetParent().GetParent();
-                    OnChestSlotButton();
-                }
-                if (
-                    slot_type == ItemInfo.Type.CLOTHS
-                    || slot_type == ItemInfo.Type.TOOL
-                    || slot_type == ItemInfo.Type.HEAD
-                    || slot_type == ItemInfo.Type.CHESTPLATE
-                    || slot_type == ItemInfo.Type.LEGGINGS
-                    || slot_type == ItemInfo.Type.SHOES
-                )
-                {
-                    OnEquipSlotButton(GetIndex());
-                }
-                if (slot_type == ItemInfo.Type.RESEARCHABLE)
-                {
-                    OnResearchSlotButton();
-                }
-                AcceptEvent();
+                inventory_base = (InventoryBase)GetParent().GetParent();
+                OnSlotButton(btn);
             }
+            if (GetParent().GetParent() is ChestInventory)
+            {
+                inventory_base = (InventoryBase)GetParent().GetParent();
+                chest = ChestInventory.INSTANCE.current_chest;
+                OnChestSlotButton(btn);
+            }
+            if (
+                slot_type == ItemInfo.Type.CLOTHS
+                || slot_type == ItemInfo.Type.TOOL
+                || slot_type == ItemInfo.Type.HEAD
+                || slot_type == ItemInfo.Type.CHESTPLATE
+                || slot_type == ItemInfo.Type.LEGGINGS
+                || slot_type == ItemInfo.Type.SHOES
+            )
+            {
+                OnEquipSlotButton(GetIndex());
+            }
+            if (slot_type == ItemInfo.Type.RESEARCHABLE)
+            {
+                OnResearchSlotButton();
+            }
+            AcceptEvent();
+        }
     }
 
     public override void _Notification(int what)
@@ -158,8 +159,7 @@ public partial class Slot : Button
                         .INSTANCE.slots_tool[index]
                         .SetItem(Inventory.clicked_item.item_info, Inventory.clicked_item.amount);
                     //inventory_base.UpdateInventoryUI();
-                    Inventory.clicked_item.QueueFree();
-                    Inventory.clicked_item = null;
+                    ClearClickedItem();
                     EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
                 }
                 //Update Notification to EquipmentPanel to update Stats (Bonus)
@@ -178,86 +178,184 @@ public partial class Slot : Button
         EquipmentPanel
             .INSTANCE.slots_armor[index]
             .SetItem(Inventory.clicked_item.item_info, Inventory.clicked_item.amount);
-        //inventory_base.UpdateInventoryUI();
-        Inventory.clicked_item.QueueFree();
-        Inventory.clicked_item = null;
+        ClearClickedItem();
         EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
     }
 
-    public void OnSlotButton()
+    public void OnSlotButton(InputEventMouseButton @btn)
     {
         if (Inventory.clicked_item == null)
         {
             if (GetItem() != null)
             {
+                if (ItemCanBeHalfed(GetItem()))
+                    if (@btn.ButtonMask == MouseButtonMask.Right)
+                    {
+                        CreateClickedItem(halfNext: true);
+                        UpdateSlot(
+                            inventory_base.inventory_items,
+                            HalfAmount(inventory_base.inventory_items[GetIndex()].amount)
+                        );
+                        return;
+                    }
+
                 CreateClickedItem();
-                inventory_base.inventory_items[GetIndex()] = null;
-                inventory_base.UpdateSlotUI(GetIndex());
+                ClearSlot(inventory_base.inventory_items);
             }
+            return;
         }
         else
         {
             if (GetItem() == null)
             {
-                inventory_base.inventory_items[GetIndex()] = new ItemSave(
+                if (ItemCanBeHalfed(Inventory.clicked_item))
+                    if (btn.ButtonMask == MouseButtonMask.Right)
+                    {
+                        NewSlot(
+                            inventory_base.inventory_items,
+                            (int)Inventory.clicked_item.item_info.unique_id,
+                            HalfAmountNextInt(Inventory.clicked_item.amount)
+                        );
+                        Inventory.clicked_item.amount = (int)(Inventory.clicked_item.amount / 2.0);
+                        return;
+                    }
+
+                NewSlot(
+                    inventory_base.inventory_items,
                     (int)Inventory.clicked_item.item_info.unique_id,
                     Inventory.clicked_item.amount
                 );
-                inventory_base.UpdateSlotUI(GetIndex(), Inventory.clicked_item);
-                Inventory.clicked_item.QueueFree();
-                Inventory.clicked_item = null;
+                ClearClickedItem();
                 return;
             }
-            if (GetItem() != null)
-                if (GetItem().item_info == Inventory.clicked_item.item_info)
+
+            if (GetItem().item_info != Inventory.clicked_item.item_info)
+                return;
+
+            if (ItemCanBeHalfed(Inventory.clicked_item))
+                if (btn.ButtonMask == MouseButtonMask.Right)
                 {
-                    inventory_base.inventory_items[GetIndex()].amount += Inventory
-                        .clicked_item
-                        .amount;
-                    inventory_base.UpdateSlotUI(GetIndex(), Inventory.clicked_item);
-                    Inventory.clicked_item.QueueFree();
-                    Inventory.clicked_item = null;
+                    UpdateSlot(
+                        inventory_base.inventory_items,
+                        GetAmountOfSlot(inventory_base.inventory_items)
+                            + HalfAmountNextInt(Inventory.clicked_item.amount)
+                    );
+                    Inventory.clicked_item.amount = HalfAmount(Inventory.clicked_item.amount);
                     return;
                 }
+            UpdateSlot(
+                inventory_base.inventory_items,
+                GetAmountOfSlot(inventory_base.inventory_items) + Inventory.clicked_item.amount
+            );
+            ClearClickedItem();
         }
     }
 
-    public void OnChestSlotButton()
+    private void UpdateSlot(ItemSave[] i_save, int amount)
+    {
+        i_save[GetIndex()].amount = amount;
+        inventory_base.UpdateSlotUI(GetIndex(), Inventory.clicked_item);
+    }
+
+    private int GetAmountOfSlot(ItemSave[] i_save)
+    {
+        return i_save[GetIndex()].amount;
+    }
+
+    private void NewSlot(ItemSave[] i_save, int id, int amount)
+    {
+        i_save[GetIndex()] = new ItemSave(id, amount);
+        inventory_base.UpdateSlotUI(GetIndex(), Inventory.clicked_item);
+    }
+
+    private void ClearSlot(ItemSave[] i_save)
+    {
+        i_save[GetIndex()] = null;
+        inventory_base.UpdateSlotUI(GetIndex());
+    }
+
+    private void ClearClickedItem()
+    {
+        Inventory.clicked_item.QueueFree();
+        Inventory.clicked_item = null;
+    }
+
+    private int HalfAmount(int amount)
+    {
+        return (int)(amount / 2.0);
+    }
+
+    private int HalfAmountNextInt(int amount)
+    {
+        return (int)(amount / 2.0 + 0.5f);
+    }
+
+    public void OnChestSlotButton(InputEventMouseButton @btn)
     {
         if (Inventory.clicked_item == null)
         {
             if (GetItem() != null)
             {
+                if (ItemCanBeHalfed(GetItem()))
+                    if (@btn.ButtonMask == MouseButtonMask.Right)
+                    {
+                        CreateClickedItem(halfNext: true);
+                        UpdateSlot(
+                            chest.chest_items,
+                            HalfAmount(chest.chest_items[GetIndex()].amount)
+                        );
+                        return;
+                    }
+
                 CreateClickedItem();
-                ChestInventory.INSTANCE.current_chest.chest_items[GetIndex()] = null;
-                inventory_base.UpdateInventoryUI();
+                ClearSlot(chest.chest_items);
             }
         }
         else
         {
             if (GetItem() == null)
             {
-                ChestInventory.INSTANCE.current_chest.chest_items[GetIndex()] = new ItemSave(
+                if (ItemCanBeHalfed(Inventory.clicked_item))
+                    if (btn.ButtonMask == MouseButtonMask.Right)
+                    {
+                        NewSlot(
+                            chest.chest_items,
+                            (int)Inventory.clicked_item.item_info.unique_id,
+                            HalfAmountNextInt(Inventory.clicked_item.amount)
+                        );
+                        Inventory.clicked_item.amount = (int)(Inventory.clicked_item.amount / 2.0);
+                        return;
+                    }
+
+                NewSlot(
+                    chest.chest_items,
                     (int)Inventory.clicked_item.item_info.unique_id,
                     Inventory.clicked_item.amount
                 );
-                inventory_base.UpdateInventoryUI();
-                Inventory.clicked_item.QueueFree();
-                Inventory.clicked_item = null;
+                ClearClickedItem();
                 return;
             }
-            if (GetItem() != null)
-                if (GetItem().item_info == Inventory.clicked_item.item_info)
+
+            if (GetItem().item_info != Inventory.clicked_item.item_info)
+                return;
+
+            if (ItemCanBeHalfed(Inventory.clicked_item))
+                if (btn.ButtonMask == MouseButtonMask.Right)
                 {
-                    ChestInventory.INSTANCE.current_chest.chest_items[GetIndex()].amount +=
-                        Inventory.clicked_item.amount;
-                }
-                else
+                    UpdateSlot(
+                        chest.chest_items,
+                        GetAmountOfSlot(chest.chest_items)
+                            + HalfAmountNextInt(Inventory.clicked_item.amount)
+                    );
+                    Inventory.clicked_item.amount = HalfAmount(Inventory.clicked_item.amount);
                     return;
-            inventory_base.UpdateInventoryUI();
-            Inventory.clicked_item.QueueFree();
-            Inventory.clicked_item = null;
-            return;
+                }
+
+            UpdateSlot(
+                chest.chest_items,
+                GetAmountOfSlot(chest.chest_items) + Inventory.clicked_item.amount
+            );
+            ClearClickedItem();
         }
     }
 
@@ -282,24 +380,35 @@ public partial class Slot : Button
                     (int)Inventory.clicked_item.item_info.unique_id,
                     Inventory.clicked_item.amount
                 );
-                Inventory.clicked_item.QueueFree();
-                Inventory.clicked_item = null;
+                ClearClickedItem();
                 ResearchTab.INSTANCE.UpdateLevelTabs();
                 return;
             }
         }
     }
 
-    public void CreateClickedItem()
+    public void CreateClickedItem(bool halfNext = false)
     {
         InventoryItem ii = new InventoryItem();
         ii.init(GetItem().item_info);
-        ii.amount = GetItem().amount;
+
+        if (!halfNext)
+            ii.amount = GetItem().amount;
+        else
+            ii.amount = HalfAmountNextInt(GetItem().amount);
+
         ii.MouseFilter = MouseFilterEnum.Ignore;
         ii.ZIndex = 10;
         ii.SelfModulate = GetItem().SelfModulate;
         Inventory.clicked_item = ii;
         Inventory.INSTANCE.AddChild(ii);
+    }
+
+    public bool ItemCanBeHalfed(InventoryItem ii)
+    {
+        if (((int)(ii.amount / 2.0)) > 0)
+            return true;
+        return false;
     }
 
     public void onMachineSlot(int id)
@@ -345,19 +454,8 @@ public partial class Slot : Button
                                 .clicked_item
                                 .amount;
                             FurnaceTab.INSTANCE.UpdateFurnaceUI();
-                            Inventory.clicked_item.QueueFree();
-                            Inventory.clicked_item = null;
+                            ClearClickedItem();
                             break;
-
-                        /* EXPORT SLOT should not Items be placed, only taken out
-                        case (int)FurnaceTab.SlotType.EXPORT:
-                            FurnaceTab.INSTANCE.process_building.export_item_info = Inventory
-                                .clicked_item
-                                .item_info;
-                            FurnaceTab.INSTANCE.process_building.export_count = Inventory
-                                .clicked_item
-                                .amount;
-                            break;*/
 
                         case (int)FurnaceTab.SlotType.FUEL:
                             FurnaceTab.INSTANCE.process_building.fuel_item_info = Inventory
@@ -367,57 +465,11 @@ public partial class Slot : Button
                                 .clicked_item
                                 .amount;
                             FurnaceTab.INSTANCE.UpdateFurnaceUI();
-                            Inventory.clicked_item.QueueFree();
-                            Inventory.clicked_item = null;
+                            ClearClickedItem();
                             break;
                     }
                 }
             }
         }
     }
-
-    /*public override bool _CanDropData(Vector2 atPosition, Variant data)
-    {
-        if (data.Obj == null)
-            return false;
-
-        InventoryItem ii = (InventoryItem)data;
-        if (type == ItemInfo.Type.Resource)
-        {
-            if (GetChildCount() == 0)
-                return true;
-            else if (type == ii.GetParent<Slot>().type)
-                return true;
-        }
-        else
-        {
-            return ii.item_info.item_type == type;
-        }
-
-        return false;
-    }
-
-    public override void _DropData(Vector2 atPosition, Variant data)
-    {
-        if (data.Obj == null)
-            return;
-
-        InventoryItem ii = (InventoryItem)data;
-        if (GetChildCount() > 0)
-        {
-            InventoryItem item = GetChild<InventoryItem>(0);
-            if ((Node)data == item)
-                return;
-
-            if (item.item_info == ii.item_info)
-            {
-                item.amount += ii.amount;
-                item.UpdateAmountLabel();
-                ii.QueueFree();
-                return;
-            }
-            item.Reparent(((Node)data).GetParent());
-        }
-        ((Node)data).Reparent(this);
-    }*/
 }

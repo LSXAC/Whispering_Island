@@ -1,3 +1,4 @@
+using System.Data.Common;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Godot;
@@ -10,6 +11,11 @@ public partial class GlobalFunctions : Node2D
     public override void _Ready()
     {
         INSTANCE = this;
+    }
+
+    public static int RoundToNextInt(float id)
+    {
+        return (int)(id + 0.5f);
     }
 
     public static bool HasResearchLevel(Inventory.ITEM_ID id, Database.UPGRADE_LEVEL level)

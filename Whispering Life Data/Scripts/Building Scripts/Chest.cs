@@ -15,6 +15,6 @@ public partial class Chest : MachineBase
             return;
 
         GameMenu.INSTANCE.OnOpenChestTab();
-        ChestInventory.INSTANCE.OpenChest(GetParent<Chest>());
+        ChestInventory.INSTANCE.OpenChest(this);
     }
 }
