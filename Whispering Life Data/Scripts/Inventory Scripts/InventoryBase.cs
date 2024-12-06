@@ -246,6 +246,7 @@ public partial class InventoryBase : Control
 
     public bool CanReceiveItem(ItemInfo ii, ItemSave[] array, int amount)
     {
+        int remaining = amount;
         //Check if Item already exists
         for (int i = 0; i < array.Length; i++)
         {
@@ -253,7 +254,20 @@ public partial class InventoryBase : Control
                 continue;
 
             if (array[i].item_id == (int)ii.unique_id)
-                return true;
+            {
+                if (array[i].amount == ii.max_slot_amount)
+                    continue;
+
+                if (array[i].amount + remaining <= ii.max_slot_amount)
+                {
+                    return true;
+                }
+                else
+                {
+                    int diff = ii.max_slot_amount - array[i].amount;
+                    remaining -= diff;
+                }
+            }
         }
 
         //Check latest Slot which is Null
