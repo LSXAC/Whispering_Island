@@ -20,14 +20,23 @@ public partial class MainMenu : Control
     [Export]
     public Button load_button;
 
+    [Export]
+    public bool skip_intro = false;
+
     public static LauncherSave launcherSave;
 
     public override void _Ready()
     {
         INSTANCE = this;
-        intro_player.Play();
-        intro_player.Finished += () => OpenMenu();
-        parent.Visible = false;
+        if (!skip_intro)
+        {
+            intro_player.Play();
+            intro_player.Finished += () => OpenMenu();
+            parent.Visible = false;
+        }
+        else
+            OpenMenu();
+
         if (!SaveState.HasSave())
             load_button.Disabled = true;
 

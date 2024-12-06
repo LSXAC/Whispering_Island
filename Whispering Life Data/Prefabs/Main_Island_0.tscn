@@ -67,7 +67,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
-size = Vector2(200, 176)
+size = Vector2(168, 152)
 
 [node name="MainIsland" type="Node2D" groups=["Island_Properties"]]
 y_sort_enabled = true
@@ -244,12 +244,13 @@ texture = ExtResource("11_qd1vh")
 offset = Vector2(0, -6)
 
 [node name="MouseArea" type="Area2D" parent="QuestSign" node_paths=PackedStringArray("building_node", "building_sprite")]
+collision_layer = 2
 script = ExtResource("10_7bt86")
 building_node = NodePath("..")
 building_sprite = NodePath("../AnimationPlayer/BuildingSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QuestSign/MouseArea"]
-position = Vector2(-36, -112)
+position = Vector2(-20, -100)
 shape = SubResource("RectangleShape2D_fk0le")
 
 [connection signal="mouse_entered" from="QuestSign/MouseArea" to="QuestSign/MouseArea" method="OnMouseEntered"]

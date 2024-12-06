@@ -45,6 +45,17 @@ public partial class ProcessBuilding : MachineBase
     public bool inStartTransition = false;
     public bool inEndTransition = false;
 
+    public override void OnMouseClick()
+    {
+        base.OnMouseClick();
+
+        if (!CheckClickDependencies(this))
+            return;
+
+        FurnaceTab.INSTANCE.SetProcessBuilding(GetParent<ProcessBuilding>());
+        GameMenu.INSTANCE.OnOpenFurnaceTab();
+    }
+
     public void OnCraftingTimerTimeout()
     {
         if (FurnaceTab.INSTANCE.process_building == this)

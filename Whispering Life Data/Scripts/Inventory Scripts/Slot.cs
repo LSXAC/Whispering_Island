@@ -14,33 +14,38 @@ public partial class Slot : Button
 
     InventoryBase inventory_base = null;
 
-    public override void _Ready()
+    public override void _GuiInput(InputEvent @event)
     {
-        if (GetParent().GetParent() is Inventory)
-        {
-            inventory_base = (InventoryBase)GetParent().GetParent();
-            Pressed += () => OnSlotButton();
-        }
-        if (GetParent().GetParent() is ChestInventory)
-        {
-            inventory_base = (InventoryBase)GetParent().GetParent();
-            Pressed += () => OnChestSlotButton();
-        }
-        if (
-            slot_type == ItemInfo.Type.CLOTHS
-            || slot_type == ItemInfo.Type.TOOL
-            || slot_type == ItemInfo.Type.HEAD
-            || slot_type == ItemInfo.Type.CHESTPLATE
-            || slot_type == ItemInfo.Type.LEGGINGS
-            || slot_type == ItemInfo.Type.SHOES
-        )
-        {
-            Pressed += () => OnEquipSlotButton(GetIndex());
-        }
-        if (slot_type == ItemInfo.Type.RESEARCHABLE)
-        {
-            Pressed += () => OnResearchSlotButton();
-        }
+        if (@event is InputEventMouseButton btn && @event.IsPressed())
+            if (btn.ButtonMask == MouseButtonMask.Left)
+            {
+                if (GetParent().GetParent() is Inventory)
+                {
+                    inventory_base = (InventoryBase)GetParent().GetParent();
+                    OnSlotButton();
+                }
+                if (GetParent().GetParent() is ChestInventory)
+                {
+                    inventory_base = (InventoryBase)GetParent().GetParent();
+                    OnChestSlotButton();
+                }
+                if (
+                    slot_type == ItemInfo.Type.CLOTHS
+                    || slot_type == ItemInfo.Type.TOOL
+                    || slot_type == ItemInfo.Type.HEAD
+                    || slot_type == ItemInfo.Type.CHESTPLATE
+                    || slot_type == ItemInfo.Type.LEGGINGS
+                    || slot_type == ItemInfo.Type.SHOES
+                )
+                {
+                    OnEquipSlotButton(GetIndex());
+                }
+                if (slot_type == ItemInfo.Type.RESEARCHABLE)
+                {
+                    OnResearchSlotButton();
+                }
+                AcceptEvent();
+            }
     }
 
     public override void _Notification(int what)

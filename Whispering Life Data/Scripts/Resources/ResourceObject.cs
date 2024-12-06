@@ -87,8 +87,9 @@ public partial class ResourceObject : Building_Node
 
     public override void OnMouseClick()
     {
-        if (GlobalFunctions.GetDistanceToPlayer(this.GlobalPosition) >= 40f)
+        if (!placeable_building.CheckClickDependencies(this))
             return;
+
         if (in_cooldown)
             return;
 

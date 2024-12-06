@@ -7,5 +7,14 @@ public partial class Chest : MachineBase
     [Export]
     public ItemSave[] chest_items = new ItemSave[20];
 
-    
+    public override void OnMouseClick()
+    {
+        base.OnMouseClick();
+
+        if (!CheckClickDependencies(this))
+            return;
+
+        GameMenu.INSTANCE.OnOpenChestTab();
+        ChestInventory.INSTANCE.OpenChest(GetParent<Chest>());
+    }
 }

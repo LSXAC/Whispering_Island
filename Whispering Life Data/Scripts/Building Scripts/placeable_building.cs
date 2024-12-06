@@ -14,9 +14,22 @@ public partial class placeable_building : Building_Node
     {
         if (Game_Manager.building_mode == Game_Manager.BuildingMode.Removing)
             QueueFree();
+    }
 
-        if (GlobalFunctions.GetDistanceToPlayer(this.GlobalPosition) < 60f) { }
-        else
-            GD.Print("No! No! No!");
+    public static bool CheckClickDependencies(Building_Node node)
+    {
+        if (
+            GameMenu.IsWindowActiv()
+            || Game_Manager.building_mode != Game_Manager.BuildingMode.None
+        )
+            return false;
+
+        if (!node.mouse_inside)
+            return false;
+
+        if (GlobalFunctions.GetDistanceToPlayer(node.GlobalPosition) >= 40f)
+            return false;
+
+        return true;
     }
 }

@@ -1,18 +1,29 @@
-using Godot;
 using System;
+using Godot;
 
 public partial class Trashcan : Chest
 {
-	[Export]
-	public Timer deletion_timer;
+    [Export]
+    public Timer deletion_timer;
 
-	public void OnDeletionTimerTimeout()
-	{
-		DeleteItems();
-	}
+    public void OnDeletionTimerTimeout()
+    {
+        DeleteItems();
+    }
 
-	public void DeleteItems()
-	{
-		this.chest_items = new ItemSave[20];
-	}
+    public void DeleteItems()
+    {
+        this.chest_items = new ItemSave[20];
+    }
+
+    public override void OnMouseClick()
+    {
+        base.OnMouseClick();
+
+        if (!CheckClickDependencies(this))
+            return;
+
+        GameMenu.INSTANCE.OnOpenChestTab();
+        ChestInventory.INSTANCE.OpenChest(GetParent<Chest>());
+    }
 }

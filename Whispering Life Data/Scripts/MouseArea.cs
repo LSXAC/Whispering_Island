@@ -49,49 +49,6 @@ public partial class MouseArea : Area2D
         OutlineBuilding();
     }
 
-    public void OnMouseClick()
-    {
-        if (
-            GameMenu.IsWindowActiv()
-            || Game_Manager.building_mode != Game_Manager.BuildingMode.None
-            || building_node == null
-        )
-            return;
-
-        if (!building_node.mouse_inside)
-            return;
-
-        if (GlobalFunctions.GetDistanceToPlayer(this.GlobalPosition) >= 40f)
-            return;
-
-        if (GetParent().HasNode("Actionable"))
-            GetParent().GetNode<Actionable>("Actionable").Action();
-
-        if (GetParent() is ProcessBuilding)
-        {
-            FurnaceTab.INSTANCE.SetProcessBuilding(GetParent<ProcessBuilding>());
-            GameMenu.INSTANCE.OnOpenFurnaceTab();
-        }
-
-        if (GetParent() is Chest || GetParent() is Trashcan)
-        {
-            GameMenu.INSTANCE.OnOpenChestTab();
-            ChestInventory.INSTANCE.OpenChest(GetParent<Chest>());
-            Debug.Print("CHEST! OR TRASHCAN! " + " | " + Name);
-        }
-
-        if (GetParent() is Bed)
-        {
-            //Open Bed UI, Select Time you want to Sleep
-            Player.INSTANCE.player_stats.RemoveFatigue(seconds: 5);
-            Debug.Print("Sleep");
-        }
-        if (GetParent() is ResearchTable)
-        {
-            GameMenu.INSTANCE.OnOpenResearchTab();
-        }
-    }
-
     public void OnMouseLeaved()
     {
         building_sprite.Material = null;
@@ -100,14 +57,5 @@ public partial class MouseArea : Area2D
             building_node.mouse_inside = false;
             hover_menu.DisableHoverMenu();
         }
-    }
-
-    public override void _Input(InputEvent @event)
-    {
-        if (@event is InputEventMouseButton buttonevent)
-            if (buttonevent.Pressed)
-            {
-                OnMouseClick();
-            }
     }
 }
