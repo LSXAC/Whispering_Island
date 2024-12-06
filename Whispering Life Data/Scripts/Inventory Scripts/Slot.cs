@@ -470,9 +470,11 @@ public partial class Slot : Button
             {
                 ResearchTab.research_slot_item = new ItemSave(
                     (int)Inventory.clicked_item.item_info.unique_id,
-                    Inventory.clicked_item.amount
+                    1
                 );
-                ClearClickedItem();
+                Inventory.clicked_item.amount -= 1;
+                if (Inventory.clicked_item.amount == 0)
+                    ClearClickedItem();
                 ResearchTab.INSTANCE.UpdateLevelTabs();
                 return;
             }

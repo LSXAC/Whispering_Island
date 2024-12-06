@@ -19,6 +19,7 @@ bonus = 0.2
 [resource]
 script = ExtResource("1_kqash")
 item_types_arr = Array[Object]([ExtResource("2_ewrsk"), ExtResource("3_igsve")])
+max_slot_amount = 1
 item_name = "STONE_PICKAXE"
 unique_id = 3
 item_description = "STONE_PICKAXE_DESC"
