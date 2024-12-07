@@ -71,21 +71,31 @@ public partial class Belt : placeable_building
                         {
                             ItemInfo ii = item_holder.GetBeltItem().GetItemInfo();
                             if (
-                                ii
-                                    == (
-                                        (ProcessBuilding)area.GetParent<Taker>().building
-                                    ).import_item_info
-                                || (
-                                    (ProcessBuilding)area.GetParent<Taker>().building
-                                ).import_item_info == null
+                                ((ProcessBuilding)area.GetParent<Taker>().building).GetItemInfo(
+                                    FurnaceTab.SlotType.IMPORT
+                                ) != null
                             )
-                            {
-                                var item = item_holder.offload_item();
-                                (
-                                    (ProcessBuilding)area.GetParent<Taker>().building
-                                ).import_item_info = ii;
-                                area.GetParent<Taker>().receive_item(item);
-                            }
+                                if (
+                                    ii
+                                    != (
+                                        (ProcessBuilding)area.GetParent<Taker>().building
+                                    ).GetItemInfo(FurnaceTab.SlotType.IMPORT)
+                                )
+                                    return;
+                                else
+                                {
+                                    var item2 = item_holder.offload_item();
+                                    ((ProcessBuilding)area.GetParent<Taker>().building)
+                                        .item_array[(int)FurnaceTab.SlotType.IMPORT]
+                                        .amount += 1;
+                                    area.GetParent<Taker>().receive_item(item2);
+                                    return;
+                                }
+                            var item = item_holder.offload_item();
+                            ((ProcessBuilding)area.GetParent<Taker>().building).item_array[
+                                (int)FurnaceTab.SlotType.IMPORT
+                            ] = new ItemSave((int)ii.unique_id, 1);
+                            area.GetParent<Taker>().receive_item(item);
                         }
                     }
                 }

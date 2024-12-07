@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
-public partial class InventoryBase : Control
+public partial class InventoryBase : SlotUpdater
 {
     public Array<Slot> slots = new Array<Slot>();
 
@@ -182,7 +182,7 @@ public partial class InventoryBase : Control
             {
                 Item item = new Item
                 {
-                    item_info = item_Types[((ITEM_ID)s.item_id)],
+                    item_info = item_Types[(ITEM_ID)s.item_id],
                     amount = s.amount
                 };
                 items.Add(item);
@@ -222,7 +222,7 @@ public partial class InventoryBase : Control
                 QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
                     QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
                 );
-                UpdateSlotUI(i);
+                UpdateSlot(i);
                 return;
             }
         }
@@ -239,7 +239,7 @@ public partial class InventoryBase : Control
                     QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
                 );
 
-                UpdateSlotUI(i);
+                UpdateSlot(i);
                 return;
             }
     }
@@ -313,25 +313,35 @@ public partial class InventoryBase : Control
     public void UpdateInventoryUI()
     {
         for (int i = 0; i < inventory_items.Length; i++)
-            UpdateSlotUI(i);
+            UpdateSlot(i);
     }
 
-    public void UpdateSlotUI(int i, InventoryItem pref_ref = null)
+    public override void UpdateSlot(int index, InventoryItem pref_ref = null)
     {
-        GetNode<Slot>($"GridContainer/Slot{i}").ClearItem();
-
-        if (inventory_items[i] == null)
+        ClearSlot(index);
+        if (inventory_items[index] == null)
             return;
 
-        GetNode<Slot>($"GridContainer/Slot{i}")
-            .SetItem(item_Types[(ITEM_ID)inventory_items[i].item_id], inventory_items[i].amount);
+        GetNode<Slot>($"GridContainer/Slot{index}")
+            .SetItem(GetItemInfo(index), inventory_items[index].amount);
 
         if (pref_ref != null)
-            GetNode<Slot>($"GridContainer/Slot{i}").GetItem().SelfModulate = pref_ref.SelfModulate;
+            GetNode<Slot>($"GridContainer/Slot{index}").GetItem().SelfModulate =
+                pref_ref.SelfModulate;
 
         QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
             QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
         );
+    }
+
+    public override void ClearSlot(int index)
+    {
+        GetNode<Slot>($"GridContainer/Slot{index}").ClearItem();
+    }
+
+    public override ItemInfo GetItemInfo(int index)
+    {
+        return item_Types[(ITEM_ID)inventory_items[index].item_id];
     }
 
     public void LoadInventoryFromSave(ItemSave[] item_save)

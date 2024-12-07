@@ -595,8 +595,7 @@ offset_right = 310.0
 offset_bottom = -2.0
 translation_string = "GAMEMENU_CHEST"
 
-[node name="FurnaceTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("export_slot", "import_slot", "fuel_slot", "fuel_label", "safty_panel", "machineProgressbar", "workingProgressbar", "fuelProgressbar", "switch_button", "working_label", "description_Label")]
-visible = false
+[node name="FurnaceTab" type="Control" parent="Background" node_paths=PackedStringArray("export_slot", "import_slot", "fuel_slot", "fuel_label", "safty_panel", "machineProgressbar", "workingProgressbar", "fuelProgressbar", "switch_button", "working_label", "description_Label")]
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -606,11 +605,10 @@ offset_left = 222.0
 offset_top = 26.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.576471, 0.807843, 1, 1)
 script = ExtResource("4_kmuua")
-export_slot = NodePath("PanelContainer/ExportSlot")
-import_slot = NodePath("PanelContainer/InputSlot")
-fuel_slot = NodePath("PanelContainer/FuelSlot")
+export_slot = NodePath("PanelContainer/Slots/ExportSlot")
+import_slot = NodePath("PanelContainer/Slots/InputSlot")
+fuel_slot = NodePath("PanelContainer/Slots/FuelSlot")
 fuel_label = NodePath("PanelContainer/FuelLabel")
 safty_panel = NodePath("PanelContainer/SaftyPanel")
 machineProgressbar = NodePath("PanelContainer/WorkingProgressBar")
@@ -620,6 +618,15 @@ switch_button = NodePath("PanelContainer/EnableDisableButton")
 working_label = NodePath("PanelContainer/WorkingLabel")
 description_Label = NodePath("PanelContainer/DescriptionLabel")
 
+[node name="ColorRect" type="ColorRect" parent="Background/FurnaceTab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
+
 [node name="PanelContainer" type="Control" parent="Background/FurnaceTab"]
 anchors_preset = 0
 offset_left = 8.0
@@ -627,7 +634,12 @@ offset_top = 214.0
 offset_right = 320.0
 offset_bottom = 262.0
 
-[node name="InputSlot" type="Button" parent="Background/FurnaceTab/PanelContainer"]
+[node name="Slots" type="Control" parent="Background/FurnaceTab/PanelContainer"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InputSlot" type="Button" parent="Background/FurnaceTab/PanelContainer/Slots"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 offset_top = -192.0
@@ -641,8 +653,9 @@ text = "[Eingang]"
 script = ExtResource("4_v56ys")
 label_translation_string = "FURNACE_MENU_SLOT_INPUT"
 slot_type = 6
+check_slot_type = true
 
-[node name="ExportSlot" type="Button" parent="Background/FurnaceTab/PanelContainer"]
+[node name="ExportSlot" type="Button" parent="Background/FurnaceTab/PanelContainer/Slots"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 offset_left = 256.0
@@ -656,9 +669,10 @@ theme_override_font_sizes/font_size = 8
 text = "[OUTPUT]"
 script = ExtResource("4_v56ys")
 label_translation_string = "FURNACE_MENU_SLOT_EXPORT"
+check_slot_type = true
 is_export_slot = true
 
-[node name="FuelSlot" type="Button" parent="Background/FurnaceTab/PanelContainer"]
+[node name="FuelSlot" type="Button" parent="Background/FurnaceTab/PanelContainer/Slots"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 offset_top = -136.0
@@ -673,6 +687,7 @@ autowrap_mode = 3
 script = ExtResource("4_v56ys")
 label_translation_string = "FURNACE_MENU_SLOT_FUEL"
 slot_type = 7
+check_slot_type = true
 
 [node name="WorkingProgressBar" type="ProgressBar" parent="Background/FurnaceTab/PanelContainer"]
 layout_mode = 0
@@ -2380,9 +2395,6 @@ label_translation_string = "MAINMENU_EXIT_GAME"
 [connection signal="pressed" from="Background/HBoxHeader/CheatButton" to="." method="OnOpenAdminTab"]
 [connection signal="pressed" from="Background/HBoxHeader/ExitTabButton" to="." method="OnExitButton"]
 [connection signal="visibility_changed" from="Background/InventoryTab/EquipmentPanel" to="Background/InventoryTab/EquipmentPanel" method="OnVisiblityChanged"]
-[connection signal="pressed" from="Background/FurnaceTab/PanelContainer/InputSlot" to="Background/FurnaceTab/PanelContainer/InputSlot" method="onMachineSlot" binds= [0]]
-[connection signal="pressed" from="Background/FurnaceTab/PanelContainer/ExportSlot" to="Background/FurnaceTab/PanelContainer/ExportSlot" method="onMachineSlot" binds= [1]]
-[connection signal="pressed" from="Background/FurnaceTab/PanelContainer/FuelSlot" to="Background/FurnaceTab/PanelContainer/FuelSlot" method="onMachineSlot" binds= [2]]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/EnableDisableButton" to="Background/FurnaceTab" method="OnMachineStateButton"]
 [connection signal="pressed" from="Background/ResearchTab/PanelContainer/Button" to="Background/ResearchTab" method="OnResearchButton"]
 [connection signal="timeout" from="Background/ResearchTab/PanelContainer/Timer" to="Background/ResearchTab" method="OnTimerTimeout"]

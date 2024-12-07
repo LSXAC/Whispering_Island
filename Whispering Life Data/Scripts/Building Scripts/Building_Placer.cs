@@ -167,8 +167,10 @@ public partial class Building_Placer : Node2D
 
             if (temp is ProcessBuilding)
             {
-                ((ProcessBuilding)temp).export_count = machine_save.export_count;
-                ((ProcessBuilding)temp).import_count = machine_save.import_count;
+                for (int i = 0; i < machine_save.furnace_slots.Length; i++)
+                    ((ProcessBuilding)temp).item_array[i] = machine_save.furnace_slots[i];
+
+                ((ProcessBuilding)temp).fuel_left = machine_save.fuel_left;
             }
 
             if (temp is Chest)
@@ -221,16 +223,6 @@ public partial class Building_Placer : Node2D
                 Database.GetBuildingType(Database.BUILDING_ID.FURNACE).building_scene.Instantiate()
                 as ProcessBuilding;
             ((ProcessBuilding)temp).current_recipe = machine_save.current_recipe;
-
-            if (machine_save.import_item_type != -1)
-                ((ProcessBuilding)temp).import_item_info = Inventory.INSTANCE.item_Types[
-                    (Inventory.ITEM_ID)machine_save.import_item_type
-                ];
-
-            if (machine_save.export_item_type != -1)
-                ((ProcessBuilding)temp).export_item_info = Inventory.INSTANCE.item_Types[
-                    (Inventory.ITEM_ID)machine_save.export_item_type
-                ];
             return temp;
         }
 
@@ -330,18 +322,9 @@ public partial class Building_Placer : Node2D
                 if (node is ProcessBuilding)
                 {
                     ms.current_recipe = ((ProcessBuilding)node).current_recipe;
-                    ms.export_count = ((ProcessBuilding)node).export_count;
-                    ms.import_count = ((ProcessBuilding)node).import_count;
-                    if (((ProcessBuilding)node).import_item_info == null)
-                        ms.import_item_type = -1;
-                    else
-                        ms.import_item_type = (int)
-                            ((ProcessBuilding)node).import_item_info.unique_id;
-                    if (((ProcessBuilding)node).export_item_info == null)
-                        ms.export_item_type = -1;
-                    else
-                        ms.export_item_type = (int)
-                            ((ProcessBuilding)node).export_item_info.unique_id;
+                    for (int i = 0; i < 3; i++)
+                        ms.furnace_slots[i] = ((ProcessBuilding)node).item_array[i];
+                    ms.fuel_left = ((ProcessBuilding)node).fuel_left;
                 }
 
                 if (node is Chest || node is Trashcan)

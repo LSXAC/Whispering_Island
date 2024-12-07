@@ -18,6 +18,7 @@ bonus = 0.5
 [resource]
 script = ExtResource("2_dvxbn")
 item_types_arr = Array[Object]([ExtResource("2_gtxu7")])
+max_slot_amount = 48
 item_name = "WOODEN_AXE_HEAD"
 unique_id = 21
 item_description = "WOODEN_AXE_HEAD_DESC"

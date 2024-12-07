@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1_57mkd")
 item_types_arr = Array[Object]([ExtResource("1_y3k1p")])
+max_slot_amount = 48
 item_name = "WHEAT_SEED"
 unique_id = 24
 item_description = "WHEAT_SEED_DESC"

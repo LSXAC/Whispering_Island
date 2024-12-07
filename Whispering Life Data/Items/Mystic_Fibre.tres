@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_lfhgc")
 item_types_arr = Array[Object]([])
+max_slot_amount = 48
 item_name = "MYSTIC_FIBRE"
 unique_id = 12
 item_description = "MYSTIC_FIBRE_DESC"

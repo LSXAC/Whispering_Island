@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using Godot;
 
-public partial class FurnaceTab : ColorRect
+public partial class FurnaceTab : SlotUpdater
 {
     [Export]
     public Slot export_slot;
@@ -50,6 +50,56 @@ public partial class FurnaceTab : ColorRect
     public override void _Ready()
     {
         INSTANCE = this;
+    }
+
+    public override void UpdateSlot(int index, InventoryItem ii)
+    {
+        ClearSlot(index);
+        SetInfo((SlotType)index, ii);
+    }
+
+    public override void ClearSlot(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                import_slot.ClearItem();
+                break;
+            case 1:
+                export_slot.ClearItem();
+                break;
+            case 2:
+                fuel_slot.ClearItem();
+                break;
+        }
+    }
+
+    public override ItemInfo GetItemInfo(int index)
+    {
+        if (process_building == null)
+            throw new Exception("No Process Building set");
+
+        return Inventory.INSTANCE.item_Types[
+            (InventoryBase.ITEM_ID)process_building.item_array[index].item_id
+        ];
+    }
+
+    public void ClearInfo(SlotType type)
+    {
+        process_building.item_array[(int)type] = null;
+    }
+
+    public void SetInfo(SlotType type, InventoryItem ii)
+    {
+        UpdateFurnaceUI();
+    }
+
+    public void UpdateInfoHalf(SlotType type)
+    {
+        process_building.item_array[(int)type].amount = (int)(
+            process_building.item_array[(int)type].amount / 2.0
+        );
+        UpdateFurnaceUI();
     }
 
     public void SetMachineProgressbar(int amount)
@@ -110,17 +160,29 @@ public partial class FurnaceTab : ColorRect
         SetMachineProgressbar(process_building.ui_progress);
         UpdateProgressbar(process_building.progress);
         UpdateFuelProgressbar(
-            (int)(((double)process_building.fuel_left / process_building.max_fuel_count) * 100)
+            (int)((double)process_building.fuel_left / process_building.max_fuel_count * 100)
         );
 
-        if (process_building.export_item_info != null && process_building.export_count != 0)
-            export_slot.SetItem(process_building.export_item_info, process_building.export_count);
+        if (process_building.item_array[(int)SlotType.EXPORT] != null)
+            if (process_building.item_array[(int)SlotType.EXPORT].amount > 0)
+                export_slot.SetItem(
+                    GetItemInfo((int)SlotType.EXPORT),
+                    process_building.item_array[(int)SlotType.EXPORT].amount
+                );
 
-        if (process_building.import_item_info != null && process_building.import_count != 0)
-            import_slot.SetItem(process_building.import_item_info, process_building.import_count);
+        if (process_building.item_array[(int)SlotType.IMPORT] != null)
+            if (process_building.item_array[(int)SlotType.IMPORT].amount > 0)
+                import_slot.SetItem(
+                    GetItemInfo((int)SlotType.IMPORT),
+                    process_building.item_array[(int)SlotType.IMPORT].amount
+                );
 
-        if (process_building.fuel_item_info != null && process_building.fuel_count != 0)
-            fuel_slot.SetItem(process_building.fuel_item_info, process_building.fuel_count);
+        if (process_building.item_array[(int)SlotType.FUEL] != null)
+            if (process_building.item_array[(int)SlotType.FUEL].amount > 0)
+                fuel_slot.SetItem(
+                    GetItemInfo((int)SlotType.FUEL),
+                    process_building.item_array[(int)SlotType.FUEL].amount
+                );
     }
 
     public void ClearProcessBuilding()
@@ -183,35 +245,38 @@ public partial class FurnaceTab : ColorRect
     {
         if (export_slot.GetItem() == null)
         {
-            process_building.export_item_info = null;
-            process_building.export_count = 0;
+            ClearInfo(SlotType.EXPORT);
         }
         else
         {
-            process_building.export_item_info = export_slot.GetItem().item_info;
-            process_building.export_count = export_slot.GetItem().amount;
+            process_building.item_array[(int)SlotType.EXPORT] = new ItemSave(
+                (int)export_slot.GetItem().item_info.unique_id,
+                export_slot.GetItem().amount
+            );
         }
 
         if (import_slot.GetItem() == null)
         {
-            process_building.import_item_info = null;
-            process_building.import_count = 0;
+            ClearInfo(SlotType.IMPORT);
         }
         else
         {
-            process_building.import_item_info = import_slot.GetItem().item_info;
-            process_building.import_count = import_slot.GetItem().amount;
+            process_building.item_array[(int)SlotType.IMPORT] = new ItemSave(
+                (int)import_slot.GetItem().item_info.unique_id,
+                import_slot.GetItem().amount
+            );
         }
 
         if (fuel_slot.GetItem() == null)
         {
-            process_building.fuel_item_info = null;
-            process_building.fuel_count = 0;
+            ClearInfo(SlotType.FUEL);
         }
         else
         {
-            process_building.fuel_item_info = fuel_slot.GetItem().item_info;
-            process_building.fuel_count = fuel_slot.GetItem().amount;
+            process_building.item_array[(int)SlotType.FUEL] = new ItemSave(
+                (int)fuel_slot.GetItem().item_info.unique_id,
+                fuel_slot.GetItem().amount
+            );
         }
     }
 }

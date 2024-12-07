@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("2_3fpnd")
 item_types_arr = Array[Object]([ExtResource("1_xmevh")])
+max_slot_amount = 48
 item_name = "IRON_BLOCK"
 unique_id = 23
 item_description = "IRON_BLOCK_DESC"

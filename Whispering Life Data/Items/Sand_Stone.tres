@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1_t7wrt")
 item_types_arr = Array[Object]([ExtResource("1_ljwju")])
+max_slot_amount = 48
 item_name = "SAND_STONE"
 unique_id = 32
 item_description = "SAND_STONE_DESC"

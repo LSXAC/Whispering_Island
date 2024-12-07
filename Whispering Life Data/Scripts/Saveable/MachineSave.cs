@@ -13,16 +13,10 @@ public partial class MachineSave : PlaceableSave
     }
 
     [Export]
-    public int import_count = 0;
+    public ItemSave[] furnace_slots = new ItemSave[3] { null, null, null };
 
     [Export]
-    public int import_item_type = -1;
-
-    [Export]
-    public int export_item_type = -1;
-
-    [Export]
-    public int export_count = 0;
+    public int fuel_left = 0;
 
     [Export]
     public Vector2 scale;

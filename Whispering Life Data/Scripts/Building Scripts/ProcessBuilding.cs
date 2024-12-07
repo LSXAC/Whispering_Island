@@ -6,16 +6,13 @@ using Godot.Collections;
 public partial class ProcessBuilding : MachineBase
 {
     [Export]
-    public int fuel_count = 0;
+    public ItemSave[] item_array = new ItemSave[3] { null, null, null };
 
     [Export]
     public int max_fuel_count = 250;
 
     [Export]
     public int fuel_left = 0;
-
-    [Export]
-    public ItemInfo fuel_item_info;
 
     [Export]
     public Timer crafting_timer;
@@ -26,17 +23,6 @@ public partial class ProcessBuilding : MachineBase
     [Export]
     public Array<Machine_Recipe> recipes = new Array<Machine_Recipe>();
 
-    [Export]
-    public int import_count = 0;
-
-    [Export]
-    public ItemInfo import_item_info;
-
-    [Export]
-    public int export_count = 0;
-
-    [Export]
-    public ItemInfo export_item_info;
     public bool is_crafting = false;
     public int ui_progress = 0;
     public int current_recipe = 0;
@@ -45,6 +31,16 @@ public partial class ProcessBuilding : MachineBase
     public bool inStartTransition = false;
     public bool inEndTransition = false;
 
+    public ItemInfo GetItemInfo(FurnaceTab.SlotType slotType)
+    {
+        if (item_array[(int)slotType] == null)
+            return null;
+
+        return Inventory.INSTANCE.item_Types[
+            (InventoryBase.ITEM_ID)item_array[(int)slotType].item_id
+        ];
+    }
+
     public override void OnMouseClick()
     {
         base.OnMouseClick();
@@ -52,7 +48,7 @@ public partial class ProcessBuilding : MachineBase
         if (!CheckClickDependencies(this))
             return;
 
-        FurnaceTab.INSTANCE.SetProcessBuilding(GetParent<ProcessBuilding>());
+        FurnaceTab.INSTANCE.SetProcessBuilding(this);
         GameMenu.INSTANCE.OnOpenFurnaceTab();
     }
 
@@ -63,19 +59,28 @@ public partial class ProcessBuilding : MachineBase
 
         if (FurnaceTab.INSTANCE.process_building == this)
             FurnaceTab.INSTANCE.UpdateFuelProgressbar(
-                (int)(((double)fuel_left / max_fuel_count) * 100)
+                (int)((double)fuel_left / max_fuel_count * 100)
             );
 
         if (progress >= 100)
         {
-            export_item_info = recipes[current_recipe].export_item_info;
-            export_count += recipes[current_recipe].export_amount;
+            if (item_array[(int)FurnaceTab.SlotType.EXPORT] != null)
+                item_array[(int)FurnaceTab.SlotType.EXPORT].amount += recipes[
+                    current_recipe
+                ].export_amount;
+            else
+                item_array[(int)FurnaceTab.SlotType.EXPORT] = new ItemSave(
+                    (int)recipes[current_recipe].export_item_info.unique_id,
+                    recipes[current_recipe].export_amount
+                );
+
             is_crafting = false;
             crafting_timer.Stop();
             progress = 0;
             if (FurnaceTab.INSTANCE.process_building == this)
                 FurnaceTab.INSTANCE.UpdateProgressbar(progress);
-            FurnaceTab.INSTANCE.UpdateFurnaceUI();
+            if (FurnaceTab.INSTANCE.process_building == this)
+                FurnaceTab.INSTANCE.UpdateFurnaceUI();
             return;
         }
         progress += 5;
@@ -87,13 +92,14 @@ public partial class ProcessBuilding : MachineBase
         if (is_crafting)
             return;
 
-        if (import_item_info == null)
+        if (item_array[(int)FurnaceTab.SlotType.IMPORT] == null)
         {
             FurnaceTab.INSTANCE.description_Label.Text = TranslationServer.Translate(
                 "FURNACE_MENU_DESC_NO_RESOURCE"
             );
             return;
         }
+
         if (!SelectAndCheckCanCraft())
         {
             FurnaceTab.INSTANCE.description_Label.Text = TranslationServer.Translate(
@@ -101,19 +107,32 @@ public partial class ProcessBuilding : MachineBase
             );
             return;
         }
-        if (import_count <= recipes[current_recipe].import_amount - 1)
+        if (
+            item_array[(int)FurnaceTab.SlotType.IMPORT].amount
+            <= recipes[current_recipe].import_amount - 1
+        )
             return;
 
         if (fuel_left < 20)
-            if (fuel_count > 0)
+            if (item_array[(int)FurnaceTab.SlotType.FUEL] != null)
             {
-                fuel_left += (
-                    (BurnableType)
-                        fuel_item_info.item_types_arr[
-                            fuel_item_info.GetTypeIndex(ItemInfo.Type.BURNABLE)
-                        ]
-                ).burntime;
-                fuel_count--;
+                if (item_array[(int)FurnaceTab.SlotType.FUEL].amount > 0)
+                {
+                    ItemInfo ii = Inventory.INSTANCE.item_Types[
+                        (InventoryBase.ITEM_ID)item_array[(int)FurnaceTab.SlotType.FUEL].item_id
+                    ];
+                    fuel_left += (
+                        (BurnableType)ii.item_types_arr[ii.GetTypeIndex(ItemInfo.Type.BURNABLE)]
+                    ).burntime;
+                    item_array[(int)FurnaceTab.SlotType.FUEL].amount--;
+                }
+                else
+                {
+                    FurnaceTab.INSTANCE.description_Label.Text = TranslationServer.Translate(
+                        "FURNACE_MENU_DESC_NO_FUEL"
+                    );
+                    return;
+                }
             }
             else
             {
@@ -134,8 +153,9 @@ public partial class ProcessBuilding : MachineBase
                 "FURNACE_MENU_DESC"
             );
         }
+
         is_crafting = true;
-        import_count -= recipes[current_recipe].import_amount;
+        item_array[(int)FurnaceTab.SlotType.IMPORT].amount -= recipes[current_recipe].import_amount;
         if (FurnaceTab.INSTANCE.process_building == this)
             FurnaceTab.INSTANCE.UpdateFurnaceUI();
         crafting_timer.Start();
@@ -143,7 +163,7 @@ public partial class ProcessBuilding : MachineBase
 
     private bool SelectAndCheckCanCraft()
     {
-        if (import_item_info == null)
+        if (item_array[(int)FurnaceTab.SlotType.IMPORT] == null)
             return false;
 
         for (int i = 0; i < recipes.Count; i++)
@@ -152,14 +172,26 @@ public partial class ProcessBuilding : MachineBase
                 if (!GlobalFunctions.CheckAllRequirements(recipes[i].unlockRequirement))
                     continue;
 
-            if (recipes[i].import_item_info == import_item_info)
-            {
-                current_recipe = i;
-                if (export_item_info == null)
-                    return true;
-                else if (export_item_info == recipes[i].export_item_info)
-                    return true;
-            }
+            if (item_array[(int)FurnaceTab.SlotType.IMPORT] != null)
+                if (
+                    recipes[i].import_item_info
+                    == Inventory.INSTANCE.item_Types[
+                        (InventoryBase.ITEM_ID)item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
+                    ]
+                )
+                {
+                    current_recipe = i;
+                    if (item_array[(int)FurnaceTab.SlotType.EXPORT] == null)
+                        return true;
+                    else if (
+                        recipes[i].export_item_info
+                        == Inventory.INSTANCE.item_Types[
+                            (InventoryBase.ITEM_ID)
+                                item_array[(int)FurnaceTab.SlotType.EXPORT].item_id
+                        ]
+                    )
+                        return true;
+                }
         }
         return false;
     }

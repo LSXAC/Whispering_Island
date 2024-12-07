@@ -45,8 +45,6 @@ public partial class Taker : StaticBody2D
     public void OnItemHolderItemHeld()
     {
         BeltItem item = (BeltItem)item_holder_In.offload_item();
-        if (building is ProcessBuilding)
-            ((ProcessBuilding)building).import_count++;
 
         if (building is Chest)
         {
