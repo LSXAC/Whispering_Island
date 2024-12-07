@@ -111,7 +111,7 @@ public partial class QuestMenu : CanvasLayer
         foreach (Item i in items)
         {
             h_box_item c_label = (h_box_item)h_box_item.Instantiate();
-            Item iii = Inventory.INSTANCE.GetItemFromList(items_in_inventory, i);
+            Array<Item> iii = Inventory.INSTANCE.GetItemFromList(items_in_inventory, i);
             c_label.InitItemUI(i.item_info.item_name, i.amount, i.item_info.texture);
             quest_label_parent.AddChild(c_label);
             c_label.Alignment = BoxContainer.AlignmentMode.Center;
@@ -126,15 +126,20 @@ public partial class QuestMenu : CanvasLayer
                 continue;
             }
 
+            int amount = 0;
+            if (iii != null)
+                foreach (Item i_x in iii)
+                    amount += i_x.amount;
+
             c_label.item_label.Text =
                 TranslationServer.Translate(i.item_info.item_name)
                 + " - "
-                + iii.amount
+                + amount
                 + "x /"
                 + i.amount
                 + "x";
 
-            if (iii.amount >= i.amount)
+            if (amount >= i.amount)
                 c_label.ChangeColor(global::h_box_item.colorType.green);
             else
                 c_label.ChangeColor(global::h_box_item.colorType.white);

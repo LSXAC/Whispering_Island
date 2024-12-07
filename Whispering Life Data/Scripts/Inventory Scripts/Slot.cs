@@ -62,13 +62,13 @@ public partial class Slot : Button
             )
             {
                 OnEquipSlotButton(GetIndex());
-                // SLot Updater
+                // SLot Updater not needed now
             }
 
             if (slot_type == ItemInfo.Type.RESEARCHABLE)
             {
                 OnResearchSlotButton();
-                //SlotUpdater
+                //SlotUpdater not needed now
             }
 
             AcceptEvent();
@@ -95,21 +95,6 @@ public partial class Slot : Button
         AddChild(ii);
         if (amount == 0)
             ClearItem();
-    }
-
-    public void UpdateItem(int amount)
-    {
-        GetItem().amount += amount;
-        GetItem().UpdateAmountLabel();
-        if (GetItem().amount <= 0)
-            ClearItem();
-    }
-
-    public void UpdateFurnaceItem(ItemInfo item_info, int amount)
-    {
-        if (GetItem() == null)
-            SetItem(item_info, amount);
-        UpdateItem(amount);
     }
 
     public InventoryItem GetItem()
@@ -413,48 +398,5 @@ public partial class Slot : Button
         if (((int)(ii.amount / 2.0)) > 0)
             return true;
         return false;
-    }
-
-    public void onMachineSlot(InputEventMouseButton @btn)
-    {
-        if (Inventory.clicked_item == null)
-        {
-            if (GetItem() != null)
-            {
-                if (ItemCanBeHalfed(GetItem()))
-                    if (@btn.ButtonMask == MouseButtonMask.Right)
-                    {
-                        CreateClickedItem(halfNext: true);
-                        FurnaceTab.INSTANCE.UpdateInfoHalf((FurnaceTab.SlotType)GetIndex());
-                        return;
-                    }
-
-                CreateClickedItem();
-                FurnaceTab.INSTANCE.ClearInfo((FurnaceTab.SlotType)GetIndex());
-                ClearItem();
-            }
-        }
-        else
-        {
-            if (GetItem() == null)
-            {
-                if (Inventory.clicked_item.item_info.HasType(slot_type))
-                {
-                    if (ItemCanBeHalfed(Inventory.clicked_item))
-                        if (@btn.ButtonMask == MouseButtonMask.Right)
-                        {
-                            CreateClickedItem(halfNext: true);
-                            FurnaceTab.INSTANCE.UpdateInfoHalf((FurnaceTab.SlotType)GetIndex());
-                            return;
-                        }
-
-                    FurnaceTab.INSTANCE.SetInfo(
-                        (FurnaceTab.SlotType)GetIndex(),
-                        Inventory.clicked_item
-                    );
-                    ClearClickedItem();
-                }
-            }
-        }
     }
 }

@@ -49,12 +49,12 @@ public partial class h_box_item : HBoxContainer
 
     public bool CanCraftItem(Item need, int amount)
     {
-        ChangeColor(global::h_box_item.colorType.red);
+        ChangeColor(colorType.red);
         if (need != null)
         {
             if (need.amount >= amount)
             {
-                ChangeColor(global::h_box_item.colorType.white);
+                ChangeColor(colorType.white);
                 return true;
             }
         }

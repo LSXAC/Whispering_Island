@@ -596,6 +596,7 @@ offset_bottom = -2.0
 translation_string = "GAMEMENU_CHEST"
 
 [node name="FurnaceTab" type="Control" parent="Background" node_paths=PackedStringArray("export_slot", "import_slot", "fuel_slot", "fuel_label", "safty_panel", "machineProgressbar", "workingProgressbar", "fuelProgressbar", "switch_button", "working_label", "description_Label")]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15

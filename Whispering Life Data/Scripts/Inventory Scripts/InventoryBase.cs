@@ -161,16 +161,20 @@ public partial class InventoryBase : SlotUpdater
         return true;
     }
 
-    public Item GetItemFromList(Array<Item> itemsInInventory, Item item_to_find)
+    public Array<Item> GetItemFromList(Array<Item> itemsInInventory, Item item_to_find)
     {
         if (item_to_find == null)
             return null;
+        Array<Item> items = new Array<Item>();
 
         foreach (Item i in itemsInInventory)
             if (i.item_info.item_name.Equals(item_to_find.item_info.item_name))
-                return i;
+                items.Add(i);
 
-        return null;
+        if (items.Count == 0)
+            return null;
+
+        return items;
     }
 
     public Array<Item> GetListOfItemsInInventory()
@@ -193,7 +197,7 @@ public partial class InventoryBase : SlotUpdater
 
     public void AddItem(ItemInfo ii, int amount, ItemSave[] array)
     {
-        //Check if Item already exists
+        //Check if Item already exists // 70
         int remaining = amount;
         for (int i = 0; i < array.Length; i++)
         {
@@ -202,51 +206,94 @@ public partial class InventoryBase : SlotUpdater
 
             if (array[i].item_id == (int)ii.unique_id)
             {
-                if (array[i].amount + remaining <= 0)
-                    array[i] = null;
-                else
+                // 20 + 70
+                if (remaining > 0)
                 {
                     if (array[i].amount == ii.max_slot_amount)
                         continue;
-
+                    // 47 + 70 != 48
                     if (array[i].amount + remaining <= ii.max_slot_amount)
-                        array[i].amount += remaining;
-                    else
                     {
+                        array[i].amount += remaining;
+                        remaining = 0;
+                        UpdateSlot(i);
+                        return;
+                    }
+                    else
+                    { // 48 - 47 = 1
                         int diff = ii.max_slot_amount - array[i].amount;
                         array[i].amount = ii.max_slot_amount;
                         remaining -= diff;
+                        UpdateSlot(i);
                     }
                 }
-
-                QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
-                    QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
-                );
-                UpdateSlot(i);
-                return;
             }
-        }
 
-        if (remaining == 0)
-            return;
+            QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
+                QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
+            );
+        }
 
         //Check latest Slot which is Null
         for (int i = 0; i < array.Length; i++)
             if (array[i] == null)
             {
-                array[i] = new ItemSave((int)ii.unique_id, remaining);
-                QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
-                    QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
-                );
-
-                UpdateSlot(i);
-                return;
+                if (remaining <= ii.max_slot_amount)
+                {
+                    array[i] = new ItemSave((int)ii.unique_id, remaining);
+                    QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
+                        QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
+                    );
+                    UpdateSlot(i);
+                    return;
+                }
+                else
+                {
+                    array[i] = new ItemSave((int)ii.unique_id, ii.max_slot_amount);
+                    QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
+                        QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
+                    );
+                    remaining -= ii.max_slot_amount;
+                }
             }
+    }
+
+    public void RemoveItem(ItemInfo ii, int amount, ItemSave[] array)
+    {
+        //Check if Item already exists
+        int remaining = amount; //10
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i] == null)
+                continue;
+
+            if (array[i].item_id == (int)ii.unique_id)
+            {
+                // 4 - 6 = -2
+                if ((array[i].amount - remaining) > 0)
+                {
+                    array[i].amount -= remaining;
+                    remaining = 0;
+                    UpdateSlot(i);
+                }
+                else
+                {
+                    remaining -= array[i].amount;
+                    array[i] = null;
+                    UpdateSlot(i);
+                }
+            }
+        }
+        if (remaining < 0)
+            GD.PrintErr("Not all resources got removed, cause not enough items!");
+
+        QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
+            QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
+        );
     }
 
     public bool CanReceiveItem(ItemInfo ii, ItemSave[] array, int amount)
     {
-        int remaining = amount;
         //Check if Item already exists
         for (int i = 0; i < array.Length; i++)
         {
@@ -255,18 +302,8 @@ public partial class InventoryBase : SlotUpdater
 
             if (array[i].item_id == (int)ii.unique_id)
             {
-                if (array[i].amount == ii.max_slot_amount)
-                    continue;
-
-                if (array[i].amount + remaining <= ii.max_slot_amount)
-                {
+                if (array[i].amount < ii.max_slot_amount)
                     return true;
-                }
-                else
-                {
-                    int diff = ii.max_slot_amount - array[i].amount;
-                    remaining -= diff;
-                }
             }
         }
 
@@ -274,6 +311,28 @@ public partial class InventoryBase : SlotUpdater
         for (int i = 0; i < array.Length; i++)
             if (array[i] == null)
                 return true;
+
+        return false;
+    }
+
+    public bool HasEnoughResources(ItemInfo ii, ItemSave[] array, int amount)
+    {
+        int need = amount;
+        int has = 0;
+        //Check if Item already exists
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i] == null)
+                continue;
+
+            if (array[i].item_id == (int)ii.unique_id)
+            {
+                has += array[i].amount;
+
+                if (has >= need)
+                    return true;
+            }
+        }
         return false;
     }
 

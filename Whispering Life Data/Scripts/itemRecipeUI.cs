@@ -53,9 +53,9 @@ public partial class itemRecipeUI : Control
     {
         foreach (Item items in req_items)
         {
-            Inventory.INSTANCE.AddItem(
+            Inventory.INSTANCE.RemoveItem(
                 items.item_info,
-                -items.amount,
+                items.amount,
                 Inventory.INSTANCE.inventory_items
             );
             Debug.Print(items.item_info.item_name);

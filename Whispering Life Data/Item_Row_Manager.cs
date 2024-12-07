@@ -30,18 +30,22 @@ public partial class Item_Row_Manager : HBoxContainer
             hbc_c.InitItemUI("", item.amount, item.item_info.texture);
             hbc_c.ChangeColor(global::h_box_item.colorType.red);
 
-            Item i_list = Inventory.INSTANCE.GetItemFromList(
+            Array<Item> i_list = Inventory.INSTANCE.GetItemFromList(
                 Inventory.INSTANCE.GetListOfItemsInInventory(),
                 item
             );
+            int amount_of_item = 0;
+            if (i_list != null)
+                foreach (Item i in i_list)
+                    amount_of_item += i.amount;
 
             if (i_list != null)
             {
-                if (i_list.amount >= item.amount)
+                if (amount_of_item >= item.amount)
                 {
                     if (item.amount > 0)
                     {
-                        amount_of_each_item[i_list] = i_list.amount / item.amount;
+                        amount_of_each_item[item] = amount_of_item / item.amount;
                         hbc_c.ChangeColor(global::h_box_item.colorType.white);
                     }
                     x++;
@@ -56,7 +60,6 @@ public partial class Item_Row_Manager : HBoxContainer
 
             foreach (var (item, amount) in amount_of_each_item)
             {
-                // 4, 2, 3
                 if (times > amount)
                     times = amount;
             }

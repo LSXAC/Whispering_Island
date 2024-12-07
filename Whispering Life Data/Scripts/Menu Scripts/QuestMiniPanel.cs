@@ -54,7 +54,7 @@ public partial class QuestMiniPanel : PanelContainer
         for (int i = 0; i < currentQuest.quest_items.Count; i++)
         {
             Item item = currentQuest.quest_items[i];
-            Item iii = Inventory.INSTANCE.GetItemFromList(items_in_inventory, item);
+            Array<Item> iii = Inventory.INSTANCE.GetItemFromList(items_in_inventory, item);
             hbox_items[i].Visible = true;
             hbox_items[i].InitItemUI("", item.amount, item.item_info.texture);
             hbox_items[i].ChangeColor(h_box_item.colorType.white);
@@ -65,10 +65,14 @@ public partial class QuestMiniPanel : PanelContainer
                 hbox_items[i].item_label.Text = "0x / " + item.amount + "x";
                 continue;
             }
+            int amount = 0;
+            if (iii != null)
+                foreach (Item i_x in iii)
+                    amount += i_x.amount;
 
-            hbox_items[i].item_label.Text = iii.amount + "x /" + hbox_items[i].item_label.Text;
+            hbox_items[i].item_label.Text = amount + "x /" + hbox_items[i].item_label.Text;
 
-            if (iii.amount >= currentQuest.quest_items[i].amount)
+            if (amount >= currentQuest.quest_items[i].amount)
                 hbox_items[i].ChangeColor(h_box_item.colorType.green);
         }
     }

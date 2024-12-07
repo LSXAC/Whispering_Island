@@ -428,7 +428,11 @@ public partial class Building_Placer : Node2D
         // Remove Resources
 
         foreach (Item i in building_recipe.requiered_items)
-            Inventory.INSTANCE.AddItem(i.item_info, -i.amount, Inventory.INSTANCE.inventory_items);
+            Inventory.INSTANCE.RemoveItem(
+                i.item_info,
+                i.amount,
+                Inventory.INSTANCE.inventory_items
+            );
 
         if (temp is Belt)
         {
