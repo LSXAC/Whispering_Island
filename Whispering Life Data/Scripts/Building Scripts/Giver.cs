@@ -38,20 +38,22 @@ public partial class Giver : Area2D
 
     private void IsProcessingBuilding(Node destination)
     {
-        if (
-            destination.GetParent<Belt>().can_receive_item()
-            && ((ProcessBuilding)building).item_array[(int)FurnaceTab.SlotType.EXPORT].amount > 0
-        )
-        {
-            ((ProcessBuilding)building).item_array[(int)FurnaceTab.SlotType.EXPORT].amount--;
-            BeltItem item = (BeltItem)beltItem.Instantiate();
+        if (((ProcessBuilding)building).item_array[(int)FurnaceTab.SlotType.EXPORT] != null)
+            if (
+                destination.GetParent<Belt>().can_receive_item()
+                && ((ProcessBuilding)building).item_array[(int)FurnaceTab.SlotType.EXPORT].amount
+                    > 0
+            )
+            {
+                ((ProcessBuilding)building).item_array[(int)FurnaceTab.SlotType.EXPORT].amount--;
+                BeltItem item = (BeltItem)beltItem.Instantiate();
 
-            item.InitBeltItem(
-                new Item(((ProcessBuilding)building).GetItemInfo(FurnaceTab.SlotType.EXPORT), 1)
-            );
-            Holder.AddChild(item);
-            destination.GetParent<Belt>().receive_item(item);
-        }
+                item.InitBeltItem(
+                    new Item(((ProcessBuilding)building).GetItemInfo(FurnaceTab.SlotType.EXPORT), 1)
+                );
+                Holder.AddChild(item);
+                destination.GetParent<Belt>().receive_item(item);
+            }
     }
 
     private void IsProductionBuilding(Node destination)
