@@ -355,7 +355,6 @@ public partial class GameMenu : CanvasLayer
 
     public void OnLoadButton()
     {
-        Inventory.clicked_item.Free();
         MainMenu.INSTANCE.Visible = true;
         MainMenu.INSTANCE.OnLoadGameButtoN();
     }

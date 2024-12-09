@@ -18,6 +18,13 @@ public partial class Inventory : InventoryBase
         if (clicked_item == null)
             return;
 
+        if (Game_Manager.gameover)
+        {
+            clicked_item.Free();
+            clicked_item = null;
+            return;
+        }
+
         clicked_item.GlobalPosition = GetGlobalMousePosition();
     }
 }
