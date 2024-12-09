@@ -105,9 +105,9 @@ public partial class QuestManager : Node
     public void RemoveQuestItems()
     {
         foreach (Item quest_item in quests[current_quest_id].quest_items)
-            Inventory.INSTANCE.AddItem(
+            Inventory.INSTANCE.RemoveItem(
                 quest_item.item_info,
-                -quest_item.amount,
+                quest_item.amount,
                 Inventory.INSTANCE.inventory_items
             );
     }

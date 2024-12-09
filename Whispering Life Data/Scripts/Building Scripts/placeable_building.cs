@@ -27,7 +27,7 @@ public partial class placeable_building : Building_Node
         if (!node.mouse_inside)
             return false;
 
-        if (GlobalFunctions.GetDistanceToPlayer(node.GlobalPosition) >= 40f)
+        if (GlobalFunctions.GetDistanceToPlayer(node.GlobalPosition) >= 50f)
             return false;
 
         return true;
