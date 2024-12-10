@@ -42,9 +42,6 @@ public partial class player_ui : CanvasLayer
     public static player_ui INSTANCE;
 
     [Export]
-    public CheckBox skip_tutorial_box;
-
-    [Export]
     public VBoxContainer info_vBox;
 
     [Export]
@@ -113,14 +110,6 @@ public partial class player_ui : CanvasLayer
             + ": "
             + Game_Manager.game_time_since_start.ToString("N2")
             + "s";
-    }
-
-    public void OnNewGameButton()
-    {
-        if (skip_tutorial_box.ButtonPressed)
-            Game_Manager.INSTANCE.NewGame(true);
-        else
-            Game_Manager.INSTANCE.NewGame();
     }
 
     public void OnLoadGameButton()

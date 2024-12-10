@@ -116,6 +116,8 @@ public partial class Game_Manager : Node2D
         save_state.skill_saves = Skilltree.skill_progress;
         save_state.Research_Points = ResearchTab.INSTANCE.Research_Points;
 
+        save_state.current_hearts = HeartManager.INSTANCE.current_hearts;
+
         save_state.WriteSave();
         MainMenu.SaveLauncherConfig();
         Debug.Print("Saved Game!");
@@ -160,9 +162,6 @@ public partial class Game_Manager : Node2D
         building_placer.placeable_saves = save_state.placeable_saves;
         building_placer.LoadPlacedObjects();
 
-        // Start Quest
-        QuestManager.INSTANCE.StartQuest(save_state.quest_save);
-
         ResearchTab.research_slot_item = save_state.char_save.research_slot_item;
         ResearchTab.research_saves = save_state.research_saves;
 
@@ -170,6 +169,13 @@ public partial class Game_Manager : Node2D
         ResearchTab.INSTANCE.Research_Points = save_state.Research_Points;
 
         game_time_since_start = save_state.game_time_since_start;
+
+        HeartManager.INSTANCE.current_hearts = save_state.current_hearts;
+        HeartManager.INSTANCE.UpdateHeartUI();
+
+        // Start Quest
+        QuestManager.INSTANCE.StartQuest(save_state.quest_save);
+
         game_timer.Start();
     }
 

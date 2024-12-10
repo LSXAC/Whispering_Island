@@ -55,8 +55,10 @@ public partial class QuestManager : Node
     {
         if (current_quest_time - 1 <= 0)
         {
-            Game_Manager.INSTANCE.GameOver();
-            quest_timer.Stop();
+            //Cutscene // UH; WIEK ANNST DEN DU DID WARGEN; GÄ?
+            INSTANCE.quest_timer.Stop();
+            HeartManager.INSTANCE.RemoveHeart();
+            NextQuest(finished_correctly: false);
         }
 
         current_quest_time -= 1;
@@ -112,9 +114,11 @@ public partial class QuestManager : Node
             );
     }
 
-    public async void NextQuest()
+    public async void NextQuest(bool finished_correctly = true)
     {
-        RemoveQuestItems();
+        if (finished_correctly)
+            RemoveQuestItems();
+
         QuestMenu.INSTANCE.CloseQuestMenu();
         if (current_quest_id == quests.Count - 1)
         {
@@ -122,15 +126,18 @@ public partial class QuestManager : Node
             player_ui.LastQuestPanelShow();
             return;
         }
-        player_ui.CompleteQuestPanelShow();
-        Game_Manager.In_Cutscene = true;
         current_quest_id++;
         StartQuest();
-        PauseTimer();
-        await ToSignal(player_ui.INSTANCE.qcp_timer, "timeout");
-        StartTimer();
-        Game_Manager.In_Cutscene = false;
 
-        QuestMenu.INSTANCE.OnOpenQuestMenu();
+        if (finished_correctly)
+        {
+            player_ui.CompleteQuestPanelShow();
+            Game_Manager.In_Cutscene = true;
+            PauseTimer();
+            await ToSignal(player_ui.INSTANCE.qcp_timer, "timeout");
+            StartTimer();
+            QuestMenu.INSTANCE.OnOpenQuestMenu();
+        }
+        Game_Manager.In_Cutscene = false;
     }
 }

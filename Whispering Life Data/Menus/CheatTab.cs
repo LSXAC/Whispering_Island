@@ -14,6 +14,11 @@ public partial class CheatTab : ColorRect
         SetItemsInList();
     }
 
+    public void SetQuestTimeTo(int time)
+    {
+        QuestManager.current_quest_time = time;
+    }
+
     public void OnResumeTimeButton()
     {
         Game_Manager.INSTANCE.game_timer.Start();

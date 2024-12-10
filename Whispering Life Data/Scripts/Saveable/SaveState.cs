@@ -27,6 +27,9 @@ public partial class SaveState : Resource
     public Array<PlaceableSave> placeable_saves = new Array<PlaceableSave>();
 
     [Export]
+    public int current_hearts = 3;
+
+    [Export]
     public int Research_Points = 0;
 
     [Export]

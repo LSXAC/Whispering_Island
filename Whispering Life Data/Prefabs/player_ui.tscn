@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://j1cdgg7lep78"]
+[gd_scene load_steps=18 format=3 uid="uid://j1cdgg7lep78"]
 
 [ext_resource type="Script" path="res://Scripts/Player Scripts/player_ui.cs" id="1_m5svq"]
 [ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://Prefabs/EffectPanel.cs" id="11_r7w4g"]
 [ext_resource type="Script" path="res://Prefabs/SkilltreeBox.cs" id="12_bhbc1"]
 [ext_resource type="Script" path="res://Prefabs/TranslationRichTextLabel.cs" id="12_fbb8a"]
+[ext_resource type="Texture2D" uid="uid://1rxf21hw1xu5" path="res://Sprites/Heart_Icon.png" id="12_rpytx"]
+[ext_resource type="Script" path="res://Prefabs/HeartManager.cs" id="12_twnk5"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_x1xeh"]
 color = Color(0.141176, 0.141176, 0.141176, 1)
@@ -23,7 +25,7 @@ thickness = 6
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upggj"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "skip_tutorial_box", "info_vBox", "mainmenu_button")]
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "info_vBox", "mainmenu_button")]
 script = ExtResource("1_m5svq")
 qcp_timer = NodePath("QuestCompletePanel/Timer")
 times_to_build_left_label = NodePath("WindowFrame/VBoxContainer/TimesLeftLabel")
@@ -33,7 +35,6 @@ building_frame = ExtResource("2_ktroc")
 removing_frame = ExtResource("3_7rm5b")
 collected_item_parent = NodePath("ReceivedItems")
 gameover_panel = NodePath("GameOverPanel")
-skip_tutorial_box = NodePath("")
 info_vBox = NodePath("WindowFrame/VBoxContainer")
 mainmenu_button = NodePath("GameOverPanel/VBoxContainer/MainmenuButton")
 
@@ -142,59 +143,6 @@ anchor_bottom = 1.0
 offset_top = -111.0
 offset_right = 125.0
 grow_vertical = 0
-
-[node name="QuestMiniPanel" type="PanelContainer" parent="." node_paths=PackedStringArray("hbox_items", "time_label")]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 120.0
-offset_bottom = 56.0
-script = ExtResource("4_khv1d")
-hbox_items = [NodePath("MarginContainer/VBoxContainer/Item1"), NodePath("MarginContainer/VBoxContainer/Item2"), NodePath("MarginContainer/VBoxContainer/Item3"), NodePath("MarginContainer/VBoxContainer/Item4")]
-time_label = NodePath("MarginContainer/VBoxContainer/TimeLabel")
-
-[node name="MarginContainer" type="MarginContainer" parent="QuestMiniPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="QuestMiniPanel/MarginContainer"]
-layout_mode = 2
-
-[node name="TitleLabel" type="Label" parent="QuestMiniPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
-text = "Objectiv"
-horizontal_alignment = 1
-script = ExtResource("7_vya4o")
-label_translation_string = "PLAYERUI_QUEST_OBJECTIV"
-
-[node name="Item1" parent="QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
-visible = false
-layout_mode = 2
-
-[node name="Item2" parent="QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
-visible = false
-layout_mode = 2
-
-[node name="Item3" parent="QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
-visible = false
-layout_mode = 2
-
-[node name="Item4" parent="QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
-visible = false
-layout_mode = 2
-
-[node name="TimeLabel" type="Label" parent="QuestMiniPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 10
-text = "Time Left: Unknown"
 
 [node name="QuestCompletePanel" type="Panel" parent="."]
 visible = false
@@ -419,6 +367,108 @@ theme_override_fonts/font = ExtResource("3_0pxjf")
 text = "Main Menu"
 script = ExtResource("9_erkjv")
 label_translation_string = "MAINMENU_BACK_TO_MAINMENU"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 110.0
+offset_bottom = 40.0
+
+[node name="HeartPanel" type="Panel" parent="VBoxContainer" node_paths=PackedStringArray("parent")]
+custom_minimum_size = Vector2(100, 45)
+layout_mode = 2
+script = ExtResource("12_twnk5")
+parent = NodePath("MarginContainer/VBoxContainer/HBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HeartPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HeartPanel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HeartPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "Hearts"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HeartPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("12_rpytx")
+expand_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("12_rpytx")
+expand_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("12_rpytx")
+expand_mode = 4
+
+[node name="QuestMiniPanel" type="PanelContainer" parent="VBoxContainer" node_paths=PackedStringArray("hbox_items", "time_label")]
+layout_mode = 2
+script = ExtResource("4_khv1d")
+hbox_items = [NodePath("MarginContainer/VBoxContainer/Item1"), NodePath("MarginContainer/VBoxContainer/Item2"), NodePath("MarginContainer/VBoxContainer/Item3"), NodePath("MarginContainer/VBoxContainer/Item4")]
+time_label = NodePath("MarginContainer/VBoxContainer/TimeLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/QuestMiniPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/QuestMiniPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "Objectiv"
+horizontal_alignment = 1
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_QUEST_OBJECTIV"
+
+[node name="Item1" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+visible = false
+layout_mode = 2
+
+[node name="Item2" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+visible = false
+layout_mode = 2
+
+[node name="Item3" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+visible = false
+layout_mode = 2
+
+[node name="Item4" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+visible = false
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 10
+text = "Time Left: Unknown"
 
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="button_up" from="GameOverPanel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButton"]
