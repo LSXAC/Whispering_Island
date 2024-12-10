@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://j1cdgg7lep78"]
+[gd_scene load_steps=19 format=3 uid="uid://j1cdgg7lep78"]
 
 [ext_resource type="Script" path="res://Scripts/Player Scripts/player_ui.cs" id="1_m5svq"]
 [ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Item_Row_Manager.cs" id="4_28ccb"]
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/QuestMiniPanel.cs" id="4_khv1d"]
 [ext_resource type="Script" path="res://Menus/TranslationLabel.cs" id="7_vya4o"]
+[ext_resource type="Script" path="res://Prefabs/QuestAcceptPanel.cs" id="8_3uym3"]
 [ext_resource type="Script" path="res://Menus/TranslationButton.cs" id="9_erkjv"]
 [ext_resource type="Script" path="res://Prefabs/EffectPanel.cs" id="11_r7w4g"]
 [ext_resource type="Script" path="res://Prefabs/SkilltreeBox.cs" id="12_bhbc1"]
@@ -187,6 +188,68 @@ script = ExtResource("7_vya4o")
 label_translation_string = "PLAYERUI_COMPLETE_QUEST_REQU_ITEMS"
 
 [node name="Timer" type="Timer" parent="QuestCompletePanel"]
+wait_time = 2.0
+
+[node name="QuestAcceptPanel" type="Panel" parent="." node_paths=PackedStringArray("title_label", "description_label", "confirm_button")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -128.0
+offset_right = 256.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("8_3uym3")
+title_label = NodePath("CenterContainer/VBoxContainer/Title")
+description_label = NodePath("CenterContainer/VBoxContainer/Description")
+confirm_button = NodePath("CenterContainer/VBoxContainer/ConfirmButton")
+
+[node name="CenterContainer" type="CenterContainer" parent="QuestAcceptPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestAcceptPanel/CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="QuestAcceptPanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "You received a Debuff!"
+horizontal_alignment = 1
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_COMPLETE_QUEST"
+
+[node name="Description" type="Label" parent="QuestAcceptPanel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "The Next Quest will only have half of the Time to complete"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_COMPLETE_QUEST_REQU_ITEMS"
+
+[node name="SPACELABEL" type="Label" parent="QuestAcceptPanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="ConfirmButton" type="Button" parent="QuestAcceptPanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 14
+text = "Confirm"
+
+[node name="Timer" type="Timer" parent="QuestAcceptPanel"]
 wait_time = 2.0
 
 [node name="GameTimePanel" type="PanelContainer" parent="."]
@@ -471,4 +534,6 @@ theme_override_font_sizes/font_size = 10
 text = "Time Left: Unknown"
 
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
+[connection signal="pressed" from="QuestAcceptPanel/CenterContainer/VBoxContainer/ConfirmButton" to="QuestAcceptPanel" method="OnButton"]
+[connection signal="timeout" from="QuestAcceptPanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="button_up" from="GameOverPanel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButton"]

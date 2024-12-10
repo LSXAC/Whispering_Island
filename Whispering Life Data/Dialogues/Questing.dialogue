@@ -15,3 +15,23 @@ do GlobalFunctions.LeaveDialogue()
 do GlobalFunctions.LeaveDialogue()
 
 => END
+
+~ Quest_Not_Completed_DE
+
+% Boss: ROAW! Wie kannst du mich nur warten lassen!
+% Boss: Ich glaube ich seh nicht richtig! Kein Essen!
+% Boss: Willst du so dringend, dass ich dich fresse!?
+do GlobalFunctions.NextQuestHalfTime()
+do GlobalFunctions.OpenAcceptPanel()
+
+=> END
+
+~ Quest_Not_Completed_ENG
+
+% Boss: ROAW! Wie kannst du mich nur warten lassen!
+% Boss: Ich glaube ich seh nicht richtig! Kein Essen!
+% Boss: Willst du so dringend, dass ich dich fresse!?
+do GlobalFunctions.NextQuestHalfTime()
+do GlobalFunctions.OpenAcceptPanel()
+
+=> END

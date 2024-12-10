@@ -27,6 +27,16 @@ public partial class GlobalFunctions : Node2D
         return false;
     }
 
+    public static void NextQuestHalfTime()
+    {
+        QuestManager.next_quest_half_time = true;
+    }
+
+    public static void OpenAcceptPanel()
+    {
+        player_ui.INSTANCE.quest_accept_panel.Visible = true;
+    }
+
     public static bool CheckAllRequirements(Array<UnlockRequirement> br)
     {
         foreach (UnlockRequirement temp in br)

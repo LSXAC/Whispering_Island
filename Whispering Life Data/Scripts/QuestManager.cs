@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using DialogueManagerRuntime;
 using Godot;
 using Godot.Collections;
 
@@ -10,6 +11,8 @@ public partial class QuestManager : Node
     public static int current_quest_id = 0;
     public static QuestManager INSTANCE = null;
     public static int current_quest_time = 0;
+
+    public static bool next_quest_half_time = false;
 
     [Export]
     public Timer quest_timer;
@@ -51,13 +54,27 @@ public partial class QuestManager : Node
         quest_timer.WaitTime = 1;
     }
 
-    public void OnQuestTimerTimeout()
+    public async void OnQuestTimerTimeout()
     {
-        if (current_quest_time - 1 <= 0)
+        if (current_quest_time <= 0)
         {
             //Cutscene // UH; WIEK ANNST DEN DU DID WARGEN; GÄ?
             INSTANCE.quest_timer.Stop();
+            QuestMenu.INSTANCE.CloseQuestMenu();
             HeartManager.INSTANCE.RemoveHeart();
+            if (Game_Manager.gameover)
+                return;
+
+            var dialogue = GD.Load<Resource>("res://Dialogues/Questing.dialogue");
+            GlobalFunctions.MoveCamera(new Vector2(0, -256));
+            GlobalFunctions.InDialogue();
+            if (TranslationServer.GetLocale() == "de")
+                DialogueManager.ShowExampleDialogueBalloon(dialogue, "Quest_Not_Completed_DE");
+            else
+                DialogueManager.ShowExampleDialogueBalloon(dialogue, "Quest_Not_Completed_ENG");
+
+            await ToSignal(player_ui.INSTANCE.quest_accept_panel.confirm_button, "pressed");
+            GlobalFunctions.LeaveDialogue();
             NextQuest(finished_correctly: false);
         }
 
@@ -117,9 +134,10 @@ public partial class QuestManager : Node
     public async void NextQuest(bool finished_correctly = true)
     {
         if (finished_correctly)
+        {
+            QuestMenu.INSTANCE.CloseQuestMenu();
             RemoveQuestItems();
-
-        QuestMenu.INSTANCE.CloseQuestMenu();
+        }
         if (current_quest_id == quests.Count - 1)
         {
             Debug.Print("Last Quest achieved");
@@ -128,6 +146,12 @@ public partial class QuestManager : Node
         }
         current_quest_id++;
         StartQuest();
+
+        if (next_quest_half_time)
+        {
+            current_quest_time = (int)(current_quest_time / 2.0);
+            next_quest_half_time = false;
+        }
 
         if (finished_correctly)
         {

@@ -8,6 +8,7 @@ public partial class player_ui : CanvasLayer
     private StyleBoxFlat when_reg = new StyleBoxFlat();
     private Label stamina_label;
     private Panel quest_complete_panel;
+    public QuestAcceptPanel quest_accept_panel;
     private PanelContainer game_time_panel;
     private Label game_time_label;
 
@@ -62,6 +63,7 @@ public partial class player_ui : CanvasLayer
         game_time_panel = GetNode<PanelContainer>("GameTimePanel");
         game_time_label = game_time_panel.GetChild(0).GetNode<Label>("GameTimeLabel");
         quest_complete_panel = GetNode<Panel>("QuestCompletePanel");
+        quest_accept_panel = GetNode<QuestAcceptPanel>("QuestAcceptPanel");
         hslider = GetNode<HSlider>("HSlider");
         stamina_label = hslider.GetNode<Label>("Label");
 
