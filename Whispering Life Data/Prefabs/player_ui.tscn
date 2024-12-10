@@ -33,7 +33,7 @@ building_frame = ExtResource("2_ktroc")
 removing_frame = ExtResource("3_7rm5b")
 collected_item_parent = NodePath("ReceivedItems")
 gameover_panel = NodePath("GameOverPanel")
-skip_tutorial_box = NodePath("GameOverPanel/VBoxContainer/CheckBox")
+skip_tutorial_box = NodePath("")
 info_vBox = NodePath("WindowFrame/VBoxContainer")
 mainmenu_button = NodePath("GameOverPanel/VBoxContainer/MainmenuButton")
 
@@ -419,13 +419,6 @@ theme_override_fonts/font = ExtResource("3_0pxjf")
 text = "Main Menu"
 script = ExtResource("9_erkjv")
 label_translation_string = "MAINMENU_BACK_TO_MAINMENU"
-
-[node name="CheckBox" type="CheckBox" parent="GameOverPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("3_0pxjf")
-button_pressed = true
-text = "SKIP TUTORIAL"
 
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="button_up" from="GameOverPanel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButton"]
