@@ -30,10 +30,24 @@ public partial class GlobalFunctions : Node2D
     public static void NextQuestHalfTime()
     {
         QuestManager.next_quest_half_time = true;
+        OpenAcceptPanel();
+        player_ui.INSTANCE.quest_accept_panel.InitAcceptPanel(QuestAcceptPanel.PENEALTY.HALF_TIME);
+    }
+
+    public static void NextQuestDoubledItems()
+    {
+        OpenAcceptPanel();
+        player_ui.INSTANCE.quest_accept_panel.InitAcceptPanel(
+            QuestAcceptPanel.PENEALTY.DOUBLE_AMOUNT
+        );
     }
 
     public static void OpenAcceptPanel()
     {
+        Game_Manager.INSTANCE.cutscene_camera.Enabled = false;
+        Player.camera.Position = Game_Manager.INSTANCE.cutscene_camera.Position;
+        Player.camera.Enabled = true;
+        Player.camera.Position = Vector2.Zero;
         player_ui.INSTANCE.quest_accept_panel.Visible = true;
     }
 

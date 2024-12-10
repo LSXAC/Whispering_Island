@@ -99,6 +99,7 @@ public partial class QuestMenu : CanvasLayer
                 QuestManager.INSTANCE.quests[QuestManager.current_quest_id].quest_description
             );
         CreateLabels(QuestManager.INSTANCE.quests[QuestManager.current_quest_id].quest_items);
+
         if (QuestManager.INSTANCE.CheckQuestComplete())
             complete_button.Disabled = false;
         else
@@ -112,17 +113,29 @@ public partial class QuestMenu : CanvasLayer
         {
             h_box_item c_label = (h_box_item)h_box_item.Instantiate();
             Array<Item> iii = Inventory.INSTANCE.GetItemFromList(items_in_inventory, i);
-            c_label.InitItemUI(i.item_info.item_name, i.amount, i.item_info.texture);
+            if (QuestManager.next_quest_is_doubled_items)
+                c_label.InitItemUI(i.item_info.item_name, i.amount, i.item_info.texture);
+            else
+                c_label.InitItemUI(i.item_info.item_name, i.amount * 2, i.item_info.texture);
+
             quest_label_parent.AddChild(c_label);
             c_label.Alignment = BoxContainer.AlignmentMode.Center;
             if (iii == null)
             {
-                c_label.item_label.Text =
-                    TranslationServer.Translate(i.item_info.item_name)
-                    + " - "
-                    + "0x /"
-                    + i.amount
-                    + "x";
+                if (QuestManager.next_quest_is_doubled_items)
+                    c_label.item_label.Text =
+                        TranslationServer.Translate(i.item_info.item_name)
+                        + " - "
+                        + "0x /"
+                        + (i.amount * 2)
+                        + "x";
+                else
+                    c_label.item_label.Text =
+                        TranslationServer.Translate(i.item_info.item_name)
+                        + " - "
+                        + "0x /"
+                        + i.amount
+                        + "x";
                 continue;
             }
 
@@ -131,18 +144,37 @@ public partial class QuestMenu : CanvasLayer
                 foreach (Item i_x in iii)
                     amount += i_x.amount;
 
-            c_label.item_label.Text =
-                TranslationServer.Translate(i.item_info.item_name)
-                + " - "
-                + amount
-                + "x /"
-                + i.amount
-                + "x";
-
-            if (amount >= i.amount)
-                c_label.ChangeColor(global::h_box_item.colorType.green);
+            if (QuestManager.next_quest_is_doubled_items)
+                c_label.item_label.Text =
+                    TranslationServer.Translate(i.item_info.item_name)
+                    + " - "
+                    + amount
+                    + "x /"
+                    + (i.amount * 2)
+                    + "x";
             else
-                c_label.ChangeColor(global::h_box_item.colorType.white);
+                c_label.item_label.Text =
+                    TranslationServer.Translate(i.item_info.item_name)
+                    + " - "
+                    + amount
+                    + "x /"
+                    + i.amount
+                    + "x";
+
+            if (QuestManager.next_quest_is_doubled_items)
+            {
+                if (amount >= i.amount * 2)
+                    c_label.ChangeColor(global::h_box_item.colorType.green);
+                else
+                    c_label.ChangeColor(global::h_box_item.colorType.white);
+            }
+            else
+            {
+                if (amount >= i.amount)
+                    c_label.ChangeColor(global::h_box_item.colorType.green);
+                else
+                    c_label.ChangeColor(global::h_box_item.colorType.white);
+            }
         }
     }
 }

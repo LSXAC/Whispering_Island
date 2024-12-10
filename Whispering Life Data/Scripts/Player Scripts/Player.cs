@@ -23,7 +23,7 @@ public partial class Player : CharacterBody2D
         anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         camera = GetNode<Camera2D>("Camera2D");
 
-        camera.Zoom = new Godot.Vector2(1.5f, 1.5f);
+        camera.Zoom = new Vector2(1.5f, 1.5f);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -40,7 +40,10 @@ public partial class Player : CharacterBody2D
 
         // Disable Player Events
         if (Game_Manager.In_Cutscene)
+        {
+            Velocity = Vector2.Zero;
             return;
+        }
 
         if (GameMenu.IsWindowActiv())
             if (Game_Manager.building_mode == Game_Manager.BuildingMode.None)

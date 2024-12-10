@@ -30,6 +30,9 @@ public partial class SaveState : Resource
     public int current_hearts = 3;
 
     [Export]
+    public bool is_doubled_quest = false;
+
+    [Export]
     public int Research_Points = 0;
 
     [Export]

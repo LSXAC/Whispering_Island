@@ -117,6 +117,7 @@ public partial class Game_Manager : Node2D
         save_state.Research_Points = ResearchTab.INSTANCE.Research_Points;
 
         save_state.current_hearts = HeartManager.INSTANCE.current_hearts;
+        save_state.is_doubled_quest = QuestManager.next_quest_is_doubled_items;
 
         save_state.WriteSave();
         MainMenu.SaveLauncherConfig();
@@ -174,6 +175,7 @@ public partial class Game_Manager : Node2D
         HeartManager.INSTANCE.UpdateHeartUI();
 
         // Start Quest
+        QuestManager.next_quest_is_doubled_items = save_state.is_doubled_quest;
         QuestManager.INSTANCE.StartQuest(save_state.quest_save);
 
         game_timer.Start();

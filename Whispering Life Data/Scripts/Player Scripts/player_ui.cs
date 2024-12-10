@@ -7,7 +7,7 @@ public partial class player_ui : CanvasLayer
     private StyleBoxFlat before_reg = new StyleBoxFlat();
     private StyleBoxFlat when_reg = new StyleBoxFlat();
     private Label stamina_label;
-    private Panel quest_complete_panel;
+    public Panel quest_complete_panel;
     public QuestAcceptPanel quest_accept_panel;
     private PanelContainer game_time_panel;
     private Label game_time_label;
@@ -94,7 +94,7 @@ public partial class player_ui : CanvasLayer
             "Last Quest Complete!";
         INSTANCE.quest_complete_panel.GetChild(0).GetChild(0).GetNode<Label>("Label2").Text =
             "Thanks for Playing!";
-        //INSTANCE.qcp_timer.Start();
+        INSTANCE.qcp_timer.Start();
     }
 
     public void OnCompleteQuestCompletepanel()

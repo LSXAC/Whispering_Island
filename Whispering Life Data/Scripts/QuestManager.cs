@@ -13,6 +13,7 @@ public partial class QuestManager : Node
     public static int current_quest_time = 0;
 
     public static bool next_quest_half_time = false;
+    public static bool next_quest_is_doubled_items = false;
 
     [Export]
     public Timer quest_timer;
@@ -65,17 +66,43 @@ public partial class QuestManager : Node
             if (Game_Manager.gameover)
                 return;
 
+            int penealty = -1;
+            Random rnd = new Random();
+            penealty = (int)rnd.NextInt64(0, 2);
+            if (penealty == 1 && next_quest_is_doubled_items)
+            {
+                next_quest_is_doubled_items = false;
+                penealty = 0;
+            }
+
             var dialogue = GD.Load<Resource>("res://Dialogues/Questing.dialogue");
             GlobalFunctions.MoveCamera(new Vector2(0, -256));
             GlobalFunctions.InDialogue();
-            if (TranslationServer.GetLocale() == "de")
-                DialogueManager.ShowExampleDialogueBalloon(dialogue, "Quest_Not_Completed_DE");
-            else
-                DialogueManager.ShowExampleDialogueBalloon(dialogue, "Quest_Not_Completed_ENG");
+
+            if (penealty == 0)
+            {
+                if (TranslationServer.GetLocale() == "de")
+                    DialogueManager.ShowExampleDialogueBalloon(dialogue, "Quest_Not_Completed_DE");
+                else
+                    DialogueManager.ShowExampleDialogueBalloon(dialogue, "Quest_Not_Completed_ENG");
+            }
+            if (penealty == 1)
+            {
+                if (TranslationServer.GetLocale() == "de")
+                    DialogueManager.ShowExampleDialogueBalloon(
+                        dialogue,
+                        "Quest_Not_Completed_1_DE"
+                    );
+                else
+                    DialogueManager.ShowExampleDialogueBalloon(
+                        dialogue,
+                        "Quest_Not_Completed_1_ENG"
+                    );
+            }
 
             await ToSignal(player_ui.INSTANCE.quest_accept_panel.confirm_button, "pressed");
             GlobalFunctions.LeaveDialogue();
-            NextQuest(finished_correctly: false);
+            NextQuest(finished_correctly: false, penealty);
         }
 
         current_quest_time -= 1;
@@ -110,12 +137,25 @@ public partial class QuestManager : Node
     {
         foreach (Item quest_item in quests[current_quest_id].quest_items)
         {
-            Slot inventory_item = Inventory.INSTANCE.FindSlotWithItemInInventory(
-                quest_item.item_info
+            Array<Item> iii = Inventory.INSTANCE.GetItemFromList(
+                Inventory.INSTANCE.GetListOfItemsInInventory(),
+                quest_item
             );
-            if (inventory_item == null)
+
+            if (iii == null)
                 return false;
-            if (inventory_item.GetItem().amount < quest_item.amount)
+
+            int amount = 0;
+            if (iii != null)
+                foreach (Item i_x in iii)
+                    amount += i_x.amount;
+
+            if (next_quest_is_doubled_items)
+            {
+                if (amount < quest_item.amount * 2)
+                    return false;
+            }
+            else if (amount < quest_item.amount)
                 return false;
         }
         return true;
@@ -123,26 +163,46 @@ public partial class QuestManager : Node
 
     public void RemoveQuestItems()
     {
-        foreach (Item quest_item in quests[current_quest_id].quest_items)
-            Inventory.INSTANCE.RemoveItem(
-                quest_item.item_info,
-                quest_item.amount,
-                Inventory.INSTANCE.inventory_items
-            );
+        if (!next_quest_is_doubled_items)
+        {
+            foreach (Item quest_item in quests[current_quest_id].quest_items)
+                Inventory.INSTANCE.RemoveItem(
+                    quest_item.item_info,
+                    quest_item.amount,
+                    Inventory.INSTANCE.inventory_items
+                );
+        }
+        else
+        {
+            foreach (Item quest_item in quests[current_quest_id].quest_items)
+                Inventory.INSTANCE.RemoveItem(
+                    quest_item.item_info,
+                    quest_item.amount * 2,
+                    Inventory.INSTANCE.inventory_items
+                );
+        }
     }
 
-    public async void NextQuest(bool finished_correctly = true)
+    public async void NextQuest(bool finished_correctly = true, int penealty = -1)
     {
         if (finished_correctly)
         {
             QuestMenu.INSTANCE.CloseQuestMenu();
             RemoveQuestItems();
         }
+
+        next_quest_is_doubled_items = false;
+
+        if (penealty == (int)QuestAcceptPanel.PENEALTY.DOUBLE_AMOUNT)
+            next_quest_is_doubled_items = true;
+
         if (current_quest_id == quests.Count - 1)
         {
             Debug.Print("Last Quest achieved");
             player_ui.LastQuestPanelShow();
-            return;
+            await ToSignal(player_ui.INSTANCE.qcp_timer, "timeout");
+            player_ui.INSTANCE.quest_complete_panel.Visible = false;
+            current_quest_id = -1;
         }
         current_quest_id++;
         StartQuest();

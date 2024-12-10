@@ -21,6 +21,7 @@ do GlobalFunctions.LeaveDialogue()
 % Boss: ROAW! Wie kannst du mich nur warten lassen!
 % Boss: Ich glaube ich seh nicht richtig! Kein Essen!
 % Boss: Willst du so dringend, dass ich dich fresse!?
+Boss: [b][color=gold]Du musst bestraft werden![/color][/b]
 do GlobalFunctions.NextQuestHalfTime()
 do GlobalFunctions.OpenAcceptPanel()
 
@@ -28,10 +29,36 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_ENG
 
+% Boss: ROAW! Do you really want to let me wait?
+% Boss: I think I have seeing issues! There is no Food!
+% Boss: Do you really want that badly, that I eat you?
+Boss: [b][color=gold]You will be punished![/color][/b]
+
+do GlobalFunctions.NextQuestHalfTime()
+do GlobalFunctions.OpenAcceptPanel()
+
+=> END
+
+
+~ Quest_Not_Completed_1_DE
+
 % Boss: ROAW! Wie kannst du mich nur warten lassen!
 % Boss: Ich glaube ich seh nicht richtig! Kein Essen!
 % Boss: Willst du so dringend, dass ich dich fresse!?
-do GlobalFunctions.NextQuestHalfTime()
+Boss: [b][color=gold]Du musst bestraft werden![/color][/b]
+do GlobalFunctions.NextQuestDoubledItems()
+do GlobalFunctions.OpenAcceptPanel()
+
+=> END
+
+~ Quest_Not_Completed_1_ENG
+
+% Boss: ROAW! Do you really want to let me wait?
+% Boss: I think I have seeing issues! There is no Food!
+% Boss: Do you really want that badly, that I eat you?
+Boss: [b][color=gold]You will be punished![/color][/b]
+
+do GlobalFunctions.NextQuestDoubledItems()
 do GlobalFunctions.OpenAcceptPanel()
 
 => END
