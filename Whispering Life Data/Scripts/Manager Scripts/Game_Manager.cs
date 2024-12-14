@@ -14,7 +14,6 @@ public partial class Game_Manager : Node2D
     [Export]
     public PackedScene dialogeScene;
 
-    public static string game_version = "a.0.1";
     public static CanvasLayer current_activ_canvaslayer = null;
 
     public static Game_Manager INSTANCE = null;
