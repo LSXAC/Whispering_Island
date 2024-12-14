@@ -96,12 +96,12 @@ BUILDING_BELT_DESC,Transports resources.,Transportiert Ressourcen.
 BUILDING_BELT_TUNNEL,Transmitter belt,Übertragungs Fließband
 BUILDING_BELT_TUNNEL_DESC,Transports resources over air.,Transportiert Ressourcen über Luft.
 ,,
-,,
-,,
-,,
-,,
-,,
-,,
+QUEST_ACCEPT_PANEL_HALF_TIME_TITLE,> Half Time - Punishment,> Halbzeit - Strafe
+QUEST_ACCEPT_PANEL_HALF_TIME_DESC,The Next Quest will only have half of the Time to complete,Für die nächste Aufgabe wird nur die halbe Zeit zur Verfügung stehen
+QUEST_ACCEPT_PANEL_DOUBLE_AMOUNT_TITLE,> Double Amount - Punishment,> Doppelte Menge - Strafe
+QUEST_ACCEPT_PANEL_DOUBLE_AMOUNT_DESC,The Next Quest will have the doubled amount of resources to deliver.,Für die nächste Aufgabe musst du die doppelte Anzahl an Ressourcen abgeben.
+QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_TITLE,> Island - Punishment,> Insel - Strafe
+QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_DESC,You will lose the last build Island,Du wirst die letzte gebaute Insel verlieren.
 ,,
 ,,
 ,,

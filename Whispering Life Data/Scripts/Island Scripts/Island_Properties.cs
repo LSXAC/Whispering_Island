@@ -211,6 +211,9 @@ public partial class Island_Properties : Node2D
         if (!is_loading)
             Islands_Manager.INSTANCE.SaveIsland(dir, matrix_island_id, ip.unique_island_id);
         Islands_Manager.INSTANCE.last_island_id += 1;
+
+        //Remove last 1/3 of build Islands. Reverse Building.
+
         ip.matrix_island_id = Islands_Manager.INSTANCE.last_island_id;
         ip.ost.roms.matrix_island_id = ip.matrix_island_id;
         island_menu.instance.current_sign = null;

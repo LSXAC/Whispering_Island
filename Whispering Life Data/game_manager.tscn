@@ -51,7 +51,7 @@ tile_set = ExtResource("3_gu3ih")
 y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_sny21")]
-position = Vector2(0, -179)
+position = Vector2(10, -170)
 scale = Vector2(0.75, 0.75)
 
 [node name="IslandManager" type="Node2D" parent="."]

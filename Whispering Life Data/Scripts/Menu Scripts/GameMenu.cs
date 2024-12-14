@@ -81,10 +81,15 @@ public partial class GameMenu : CanvasLayer
         }
     }
 
-    public void OnBackToMainMenu()
+    public async void OnBackToMainMenu()
     {
-        MainMenu.INSTANCE.Visible = true;
+        TransitionManager.StartTransition();
+        await TransitionManager.IsInTransitionLoop();
+
+        MainMenu.INSTANCE.parent.Visible = true;
         Game_Manager.INSTANCE.QueueFree();
+
+        TransitionManager.INSTANCE.StopTransition();
     }
 
     public static void CloseLastWindow()
@@ -355,7 +360,6 @@ public partial class GameMenu : CanvasLayer
 
     public void OnLoadButton()
     {
-        MainMenu.INSTANCE.Visible = true;
         MainMenu.INSTANCE.OnLoadGameButtoN();
     }
 }

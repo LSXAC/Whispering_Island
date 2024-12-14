@@ -42,6 +42,14 @@ public partial class GlobalFunctions : Node2D
         );
     }
 
+    public static void NextQuestIslandsRemoved()
+    {
+        OpenAcceptPanel();
+        player_ui.INSTANCE.quest_accept_panel.InitAcceptPanel(
+            QuestAcceptPanel.PENEALTY.ISLAND_REMOVE
+        );
+    }
+
     public static void OpenAcceptPanel()
     {
         Game_Manager.INSTANCE.cutscene_camera.Enabled = false;

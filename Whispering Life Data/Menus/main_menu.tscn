@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d382ft4naeqtp"]
+[gd_scene load_steps=9 format=3 uid="uid://d382ft4naeqtp"]
 
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="1_6mgai"]
 [ext_resource type="Script" path="res://Menus/MainMenu.cs" id="1_tix1b"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://de4l1wl47aa3q" path="res://Sprites/Menu/Menu_Overlay.png" id="3_hkyqf"]
 [ext_resource type="VideoStream" path="res://Videos/Start_Screen.ogv" id="5_owr4r"]
 [ext_resource type="Script" path="res://Menus/TranslationCheckBox.cs" id="6_8cuob"]
+[ext_resource type="PackedScene" uid="uid://mpqbrpcj1slc" path="res://transition_manager.tscn" id="8_kmnt3"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("skip_tutorial", "intro_player", "background_player", "parent", "load_button")]
 layout_mode = 3
@@ -15,15 +16,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_tix1b")
-skip_tutorial = NodePath("Control/Panel/VBoxContainer/HBoxContainer/CheckBox")
-intro_player = NodePath("VideoStreamPlayer")
-background_player = NodePath("Control/VideoStreamPlayer")
-parent = NodePath("Control")
-load_button = NodePath("Control/Panel/VBoxContainer/LoadGameButton")
-skip_intro = true
+skip_tutorial = NodePath("Menu/Control/Panel/VBoxContainer/HBoxContainer/CheckBox")
+intro_player = NodePath("Menu/VideoStreamPlayer2")
+background_player = NodePath("Menu/Control/VideoStreamPlayer")
+parent = NodePath("Menu/Control")
+load_button = NodePath("Menu/Control/Panel/VBoxContainer/LoadGameButton")
 
-[node name="Control" type="Control" parent="."]
+[node name="Menu" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +32,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Control"]
+[node name="Control" type="Control" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Menu/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,7 +52,7 @@ volume_db = -80.0
 expand = true
 loop = true
 
-[node name="Panel" type="NinePatchRect" parent="Control"]
+[node name="Panel" type="NinePatchRect" parent="Menu/Control"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -62,7 +71,7 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Menu/Control/Panel"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -76,7 +85,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu/Control/Panel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_fonts/normal_font = ExtResource("1_6mgai")
@@ -88,7 +97,7 @@ bbcode_enabled = true
 text = "[center][b][color=gold][wave]> Whispering Island <[/wave]
 [font_size=14px][color=white]Prototype [ver 1.1.0]"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Control/Panel"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -103,12 +112,12 @@ offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/Control/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="NewGameButton" type="Button" parent="Control/Panel/VBoxContainer/HBoxContainer"]
+[node name="NewGameButton" type="Button" parent="Menu/Control/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 5
@@ -118,7 +127,7 @@ text = "NEW GAME"
 script = ExtResource("3_f3o34")
 label_translation_string = "MAINMENU_NEW_GAME"
 
-[node name="CheckBox" type="CheckBox" parent="Control/Panel/VBoxContainer/HBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="Menu/Control/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_6mgai")
@@ -128,7 +137,7 @@ text = "Skip tutorial"
 script = ExtResource("6_8cuob")
 label_translation_string = "MAINMENU_SKIP_TUTORIAL"
 
-[node name="LoadGameButton" type="Button" parent="Control/Panel/VBoxContainer"]
+[node name="LoadGameButton" type="Button" parent="Menu/Control/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_vertical = 3
@@ -139,7 +148,7 @@ text = "LOAD GAME"
 script = ExtResource("3_f3o34")
 label_translation_string = "SAVELOAD_MENU_LOAD_BUTTON"
 
-[node name="ExitButton" type="Button" parent="Control/Panel/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="Menu/Control/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_vertical = 3
@@ -150,14 +159,14 @@ text = "EXIT GAME"
 script = ExtResource("3_f3o34")
 label_translation_string = "MAINMENU_EXIT_GAME"
 
-[node name="Label2" type="Label" parent="Control/Panel/VBoxContainer"]
+[node name="Label2" type="Label" parent="Menu/Control/Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_6mgai")
 theme_override_font_sizes/font_size = 1
 horizontal_alignment = 2
 
-[node name="Label" type="Label" parent="Control/Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="Menu/Control/Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_6mgai")
@@ -165,7 +174,7 @@ theme_override_font_sizes/font_size = 10
 text = "Copyright © 2024. Leon Schröder Asset Creations"
 horizontal_alignment = 2
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+[node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="Menu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -176,7 +185,11 @@ stream = ExtResource("5_owr4r")
 autoplay = true
 expand = true
 
+[node name="TransitionManager" parent="." instance=ExtResource("8_kmnt3")]
+layer = 10
+visible = false
+
 [connection signal="visibility_changed" from="." to="." method="OnVisiblityChanged"]
-[connection signal="pressed" from="Control/Panel/VBoxContainer/HBoxContainer/NewGameButton" to="." method="OnNewGameButtoN"]
-[connection signal="pressed" from="Control/Panel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButtoN"]
-[connection signal="pressed" from="Control/Panel/VBoxContainer/ExitButton" to="." method="OnExitGameButtoN"]
+[connection signal="pressed" from="Menu/Control/Panel/VBoxContainer/HBoxContainer/NewGameButton" to="." method="OnNewGameButtoN"]
+[connection signal="pressed" from="Menu/Control/Panel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButtoN"]
+[connection signal="pressed" from="Menu/Control/Panel/VBoxContainer/ExitButton" to="." method="OnExitGameButtoN"]

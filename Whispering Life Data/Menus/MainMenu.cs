@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class MainMenu : Control
@@ -44,6 +45,7 @@ public partial class MainMenu : Control
         {
             launcherSave = (LauncherSave)LauncherSave.LoadSave();
             TranslationServer.SetLocale(launcherSave.current_language);
+
             AudioServer.SetBusVolumeDb(
                 AudioServer.GetBusIndex(SoundSlider.BUS.Master.ToString()),
                 launcherSave.master_volume
@@ -97,26 +99,45 @@ public partial class MainMenu : Control
             load_button.Disabled = false;
     }
 
-    public void OnNewGameButtoN()
+    public async void OnNewGameButtoN()
     {
         SaveState.RemoveSave();
+
+        TransitionManager.StartTransition();
+        await TransitionManager.IsInTransitionLoop();
 
         Game_Manager gm = game.Instantiate() as Game_Manager;
         gm.new_game = true;
         if (skip_tutorial.ButtonPressed)
             gm.tutorial_finished = true;
         GetTree().Root.AddChild(gm);
-        Visible = false;
+        GetTree().Root.MoveChild(gm, 0);
+
+        TransitionManager.INSTANCE.StopTransition();
+        parent.Visible = false;
     }
 
-    public void OnLoadGameButtoN()
+    public async void OnLoadGameButtoN()
+    {
+        TransitionManager.StartTransition();
+        await TransitionManager.IsInTransitionLoop();
+
+        if (IsInstanceValid(Game_Manager.INSTANCE))
+            Game_Manager.INSTANCE.QueueFree();
+
+        LoadGame();
+
+        TransitionManager.INSTANCE.StopTransition();
+        parent.Visible = false;
+    }
+
+    public void LoadGame()
     {
         if (IsInstanceValid(Game_Manager.INSTANCE))
             Game_Manager.INSTANCE.QueueFree();
 
         Game_Manager gm = game.Instantiate() as Game_Manager;
         GetTree().Root.AddChild(gm);
-        Visible = false;
     }
 
     public void OnExitGameButtoN()

@@ -109,7 +109,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="UpSign" parent="IslandProperties/Signs" node_paths=PackedStringArray("current_ip") instance=ExtResource("2_wsc2u")]
-position = Vector2(0, -200)
+position = Vector2(13, -200)
 current_ip = NodePath("../../..")
 dir = 1
 

@@ -68,7 +68,11 @@ public partial class QuestManager : Node
 
             int penealty = -1;
             Random rnd = new Random();
-            penealty = (int)rnd.NextInt64(0, 2);
+            if (HeartManager.INSTANCE.current_hearts == 2)
+                penealty = (int)rnd.NextInt64(0, 2);
+            else if (HeartManager.INSTANCE.current_hearts == 1)
+                penealty = 2;
+
             if (penealty == 1 && next_quest_is_doubled_items)
             {
                 next_quest_is_doubled_items = false;
@@ -97,6 +101,19 @@ public partial class QuestManager : Node
                     DialogueManager.ShowExampleDialogueBalloon(
                         dialogue,
                         "Quest_Not_Completed_1_ENG"
+                    );
+            }
+            if (penealty == 2)
+            {
+                if (TranslationServer.GetLocale() == "de")
+                    DialogueManager.ShowExampleDialogueBalloon(
+                        dialogue,
+                        "Quest_Not_Completed_2_DE"
+                    );
+                else
+                    DialogueManager.ShowExampleDialogueBalloon(
+                        dialogue,
+                        "Quest_Not_Completed_2_ENG"
                     );
             }
 
@@ -222,6 +239,12 @@ public partial class QuestManager : Node
             StartTimer();
             QuestMenu.INSTANCE.OnOpenQuestMenu();
         }
+
+        if (penealty == 2)
+        {
+            Islands_Manager.INSTANCE.RemoveIslands();
+        }
+
         Game_Manager.In_Cutscene = false;
     }
 }

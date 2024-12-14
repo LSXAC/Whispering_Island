@@ -41,7 +41,7 @@ public partial class Game_Manager : Node2D
 
     public Timer game_timer;
 
-    private SaveState save_state = new SaveState();
+    public SaveState save_state = new SaveState();
 
     public static void SetIslandOnMatrix(int x, int y, bool state)
     {

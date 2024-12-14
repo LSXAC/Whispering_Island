@@ -26,10 +26,15 @@ public partial class Islands_Manager : Node2D
         }
     }
 
-    public override void _Process(double delta) { }
+    public override void _PhysicsProcess(double delta)
+    {
+        if (Input.IsActionJustPressed("RemoveIsland"))
+            RemoveIslands();
+    }
 
     public void LoadIslands(Array<ResourceObjectManagerSave> roms)
     {
+        Debug.Print(island_saves.Count + "");
         foreach (IslandSave is_save in island_saves)
         {
             foreach (Island_Properties ip in GetChildren())
@@ -49,6 +54,18 @@ public partial class Islands_Manager : Node2D
                 if (ip.matrix_island_id == roms_t.matrix_island_id)
                     ip.ost.LoadResourceObjects(roms_t);
         }
+    }
+
+    public void RemoveIslands()
+    {
+        if (island_saves.Count == 0)
+            return;
+
+        island_saves.RemoveAt(island_saves.Count - 1);
+        Game_Manager.INSTANCE.SaveGame();
+        Game_Manager.INSTANCE.save_state.char_save.player_position = new Vector2(10f, -170f);
+        Game_Manager.INSTANCE.save_state.WriteSave();
+        GameMenu.INSTANCE.OnLoadButton();
     }
 
     public void SaveResourceObjects()
