@@ -22,6 +22,10 @@ public partial class EquipmentPanel : Control
     public StatsPanel stats_panel;
 
     [Export]
+    public Label health_bar_label,
+        fatigue_bar_label;
+
+    [Export]
     public ProgressBar health_bar,
         fatigue_bar;
 
@@ -39,11 +43,20 @@ public partial class EquipmentPanel : Control
     private void UpdateProgressbars()
     {
         health_bar.Value = Player.INSTANCE.player_stats.health_value;
+        health_bar_label.Text = TranslationServer.Translate("EQUIPMENT_PANEL_HEALTH_BAR") + ":";
         fatigue_bar.Value = Player.INSTANCE.player_stats.fatigue_value;
+        fatigue_bar_label.Text = TranslationServer.Translate("EQUIPMENT_PANEL_FATIGUE_BAR") + ":";
+
         for (int i = 0; i < Enum.GetNames(typeof(StatsPanel.stat_types)).Length; i++)
+        {
+            stats_panel.stats_container.GetChild(i).GetNode<Label>("Type").Text =
+                TranslationServer.Translate(
+                    "EQUIPMENT_PANEL_" + ((StatsPanel.stat_types)i).ToString()
+                ) + ":";
             stats_panel.stats_container.GetChild(i).GetNode<Label>("Number").Text = Player
                 .INSTANCE.player_stats.stat_amounts[i]
                 .ToString("N3");
+        }
     }
 
     public void CalculateStatsFromEquipment()

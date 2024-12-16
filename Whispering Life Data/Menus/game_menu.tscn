@@ -207,6 +207,7 @@ script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_SETTINGS_BUTTON"
 
 [node name="CheatButton" type="Button" parent="Background/HBoxHeader"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -244,7 +245,7 @@ offset_top = 14.0
 offset_right = 8.0
 offset_bottom = 8.0
 
-[node name="EquipmentPanel" type="Control" parent="Background/InventoryTab" node_paths=PackedStringArray("slots_armor", "slots_tool", "stats_panel", "health_bar", "fatigue_bar")]
+[node name="EquipmentPanel" type="Control" parent="Background/InventoryTab" node_paths=PackedStringArray("slots_armor", "slots_tool", "stats_panel", "health_bar_label", "fatigue_bar_label", "health_bar", "fatigue_bar")]
 anchors_preset = 0
 offset_left = 216.0
 offset_top = 38.0
@@ -254,6 +255,8 @@ script = ExtResource("4_e3tur")
 slots_armor = [NodePath("Character/HeadSlot"), NodePath("Character/ChestSlot"), NodePath("Character/LegSlot"), NodePath("Character/ShoesSlot")]
 slots_tool = [NodePath("EquipmentHBox/EquipSlot1"), NodePath("EquipmentHBox/EquipSlot2"), NodePath("EquipmentHBox/EquipSlot3"), NodePath("EquipmentHBox/EquipSlot4")]
 stats_panel = NodePath("StatsPanel")
+health_bar_label = NodePath("GridContainer/HealthHBox/Label")
+fatigue_bar_label = NodePath("GridContainer/FatigueBox/Label")
 health_bar = NodePath("GridContainer/HealthHBox/HealthProgressbar")
 fatigue_bar = NodePath("GridContainer/FatigueBox/FatigueProgressbar")
 
@@ -461,7 +464,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
-value = 15.0
 
 [node name="StatsPanel" type="Panel" parent="Background/InventoryTab/EquipmentPanel" node_paths=PackedStringArray("stats_container")]
 layout_mode = 0

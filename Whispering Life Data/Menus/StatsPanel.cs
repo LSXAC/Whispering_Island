@@ -8,11 +8,11 @@ public partial class StatsPanel : Panel
 
     public enum stat_types
     {
-        Attack,
-        Defense,
-        Foresty,
-        Mining,
-        Farming
+        ATTACK,
+        DEFENSE,
+        FORESTRY,
+        MINING,
+        FARMING
     };
 
     // Called when the node enters the scene tree for the first time.
