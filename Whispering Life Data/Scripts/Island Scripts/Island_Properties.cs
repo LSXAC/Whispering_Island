@@ -9,6 +9,7 @@ public partial class Island_Properties : Node2D
 
     [Export]
     public int matrix_island_id = 0;
+    public BuildingManager building_manager;
 
     [Export]
     private int island_tiles = 16;
@@ -43,6 +44,7 @@ public partial class Island_Properties : Node2D
     private PackedScene BRIDGE_BOTTOM_END = ResourceLoader.Load<PackedScene>(
         "res://Sprites/Bridge/bridge_bottom_end.tscn"
     );
+    public TileMapLayer building_area;
     private Node2D bridges_parent;
     private Node2D signs_parent;
     private StaticBody2D bridge_collision_parent;
@@ -68,6 +70,7 @@ public partial class Island_Properties : Node2D
 
     public override void _Ready()
     {
+        building_area = GetNode<TileMapLayer>("BuildingArea");
         ost = GetNode<ObjectSpawnerTilemap>("ObjectSpawnerTilemap");
         ost.roms.matrix_island_id = matrix_island_id;
         Node2D start_node = GetNode<Node2D>("IslandProperties");
@@ -75,6 +78,7 @@ public partial class Island_Properties : Node2D
         bridge_collision_parent = start_node.GetNode<StaticBody2D>("BridgeCollisions");
         bridges_parent = start_node.GetNode<Node2D>("Bridges");
         signs_parent = start_node.GetNode<Node2D>("Signs");
+        building_manager = GetNode<BuildingManager>("BuildingManager");
     }
 
     public void GetSigns()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b0pmpn0st1gl4"]
+[gd_scene load_steps=19 format=4 uid="uid://b0pmpn0st1gl4"]
 
 [ext_resource type="Script" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_7mnce"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tileset Objects/BuildingTiles.tres" id="2_0iwig"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bl3g1ot6s782m" path="res://Sprites/Bridge/bridge_bottom_end.tscn" id="12_tck47"]
 [ext_resource type="PackedScene" uid="uid://dfsg3iq034qml" path="res://Sprites/Bridge/bridge_up.tscn" id="13_t01tk"]
 [ext_resource type="PackedScene" uid="uid://bc2tlg8s8fxwl" path="res://Sprites/Bridge/bridge_up_end.tscn" id="14_p3mgc"]
+[ext_resource type="Script" path="res://Prefabs/BuildingManager.cs" id="16_ies5y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpdmr"]
 size = Vector2(32, 32)
@@ -234,3 +235,7 @@ position = Vector2(-104, 0)
 [node name="BridgeSide5" parent="DecoBridges/Side2" instance=ExtResource("11_gln15")]
 position = Vector2(-8, 0)
 scale = Vector2(-1, 1)
+
+[node name="BuildingManager" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("16_ies5y")

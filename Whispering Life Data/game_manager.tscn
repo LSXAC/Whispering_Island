@@ -39,10 +39,9 @@ dialogeScene = ExtResource("2_0anla")
 
 [node name="BuildingManager" type="Node2D" parent="."]
 
-[node name="BuildingPlacer" type="Node2D" parent="BuildingManager" node_paths=PackedStringArray("parent_Node", "tilemap")]
+[node name="BuildingPlacer" type="Node2D" parent="BuildingManager" node_paths=PackedStringArray("islands_manager")]
 script = ExtResource("2_2ikn4")
-parent_Node = NodePath("../../Buildings")
-tilemap = NodePath("../../IslandManager/MainIsland/BuildingArea")
+islands_manager = NodePath("../../IslandManager")
 
 [node name="Building_Tilemap_Snapper" type="TileMapLayer" parent="BuildingManager/BuildingPlacer"]
 tile_set = ExtResource("3_gu3ih")

@@ -95,6 +95,14 @@ public partial class Database : Node
             BUILDING_ID.TRASHCAN.ToString(),
             ResourceLoader.Load<BuildingType>("res://Buildings/Trashcan.tres")
         },
+        /*{
+            BUILDING_ID.TREE_PLANT.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Trashcan.tres")
+        },
+        {
+            BUILDING_ID.MYSTIC_TREE_PLANT.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Trashcan.tres")
+        },*/
     };
 
     public enum BUILDING_ID
@@ -107,7 +115,9 @@ public partial class Database : Node
         TREE_GROWTHER,
         RESEARCH_TABLE,
         WOODEN_BED,
-        TRASHCAN
+        TRASHCAN,
+        TREE_PLANT,
+        MYSTIC_TREE_PLANT
     }
 
     public static BuildingType GetBuildingType(BUILDING_ID building_id)

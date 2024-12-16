@@ -9,4 +9,4 @@ script = ExtResource("3_7jee8")
 building_scene = ExtResource("2_m61kj")
 building_recipe = ExtResource("1_p7p2b")
 requirements = Array[Object]([])
-category = 2
+category = 3

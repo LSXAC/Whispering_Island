@@ -12,19 +12,10 @@ public partial class SaveState : Resource
     public EnvironmentSave env_save = new EnvironmentSave();
 
     [Export]
+    public Array<IslandBuildSave> build_saves = new Array<IslandBuildSave>();
+
+    [Export]
     public QuestSave quest_save = new QuestSave();
-
-    [Export]
-    public Array<BeltSave> belt_saves = new Array<BeltSave>();
-
-    [Export]
-    public Array<BeltTransmitterSave> belt_transmitter_saves = new Array<BeltTransmitterSave>();
-
-    [Export]
-    public Array<MachineSave> machine_saves = new Array<MachineSave>();
-
-    [Export]
-    public Array<PlaceableSave> placeable_saves = new Array<PlaceableSave>();
 
     [Export]
     public int current_hearts = 3;

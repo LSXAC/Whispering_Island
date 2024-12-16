@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bveoiwi14ha4g"]
+[gd_scene load_steps=22 format=4 uid="uid://bveoiwi14ha4g"]
 
 [ext_resource type="Script" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_sbvtb"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tileset Objects/BuildingTiles.tres" id="2_naawu"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/QuestSign.cs" id="8_dl61a"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="10_7bt86"]
 [ext_resource type="Texture2D" uid="uid://125t5f6fiugo" path="res://Sprites/Monster_Island.png" id="11_qd1vh"]
+[ext_resource type="Script" path="res://Prefabs/BuildingManager.cs" id="13_lo8qh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cugrr"]
 size = Vector2(32, 32)
@@ -252,6 +253,10 @@ building_sprite = NodePath("../AnimationPlayer/BuildingSprite")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QuestSign/MouseArea"]
 position = Vector2(-20, -100)
 shape = SubResource("RectangleShape2D_fk0le")
+
+[node name="BuildingManager" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("13_lo8qh")
 
 [connection signal="mouse_entered" from="QuestSign/MouseArea" to="QuestSign/MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="QuestSign/MouseArea" to="QuestSign/MouseArea" method="OnMouseLeaved"]

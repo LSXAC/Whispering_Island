@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bi8dopb46mfob"]
+[gd_scene load_steps=14 format=4 uid="uid://bi8dopb46mfob"]
 
 [ext_resource type="Script" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_4csf6"]
 [ext_resource type="PackedScene" uid="uid://717sbs8rvfvt" path="res://Prefabs/Sign.tscn" id="2_mbodl"]
@@ -10,6 +10,7 @@
 [ext_resource type="Shader" path="res://Shader Objects/water.gdshader" id="7_232am"]
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Tileset Objects/Water_Tileset.tres" id="8_k6lgg"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Prefabs/Water_Noise_Map.tres" id="9_vucc1"]
+[ext_resource type="Script" path="res://Prefabs/BuildingManager.cs" id="11_uwvvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud7jl"]
 size = Vector2(32, 32)
@@ -172,3 +173,7 @@ tile_map_data = PackedByteArray("AAACAPv/AAACAAAAAAD+//z/AAADAAAAAAACAP7/AAADAAA
 enabled = false
 tile_set = ExtResource("6_yodjl")
 script = ExtResource("6_orw41")
+
+[node name="BuildingManager" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("11_uwvvs")

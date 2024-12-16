@@ -207,7 +207,6 @@ script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_SETTINGS_BUTTON"
 
 [node name="CheatButton" type="Button" parent="Background/HBoxHeader"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0

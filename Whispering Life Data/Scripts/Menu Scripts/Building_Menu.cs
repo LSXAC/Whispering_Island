@@ -13,6 +13,7 @@ public partial class Building_Menu : CanvasLayer
     [Export]
     public BuildingMenuCategory production_panel,
         decoration_panel,
+        planting_panel,
         research_panel;
 
     public override void _Ready()
@@ -30,6 +31,7 @@ public partial class Building_Menu : CanvasLayer
         production_panel.Visible = false;
         decoration_panel.Visible = false;
         research_panel.Visible = false;
+        planting_panel.Visible = false;
         switch (id)
         {
             case 0:
@@ -39,6 +41,9 @@ public partial class Building_Menu : CanvasLayer
                 decoration_panel.Visible = true;
                 break;
             case 2:
+                planting_panel.Visible = true;
+                break;
+            case 3:
                 research_panel.Visible = true;
                 break;
         }

@@ -88,6 +88,7 @@ public partial class Game_Manager : Node2D
 
         Islands_Manager.INSTANCE.SaveResourceObjects();
         save_state.env_save.resource_object_manager_saves = Islands_Manager.INSTANCE.roms;
+        save_state.build_saves = Islands_Manager.INSTANCE.build_saves;
 
         //Save Quest
         save_state.quest_save.current_quest_id = QuestManager.current_quest_id;
@@ -97,13 +98,6 @@ public partial class Game_Manager : Node2D
         save_state.char_save.inventory_items = Inventory.INSTANCE.inventory_items;
         save_state.char_save.equipped_armor = EquipmentPanel.INSTANCE.equipped_armor;
         save_state.char_save.equipped_tool = EquipmentPanel.INSTANCE.equipped_tools;
-
-        //Save Machines and Belts
-        building_placer.SavePlacedObjects();
-        save_state.belt_saves = building_placer.belt_saves;
-        save_state.machine_saves = building_placer.machine_saves;
-        save_state.belt_transmitter_saves = building_placer.belt_transmitter_saves;
-        save_state.placeable_saves = building_placer.placeable_saves;
 
         save_state.tutorial_finished = tutorial_finished;
 
@@ -153,14 +147,8 @@ public partial class Game_Manager : Node2D
         EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
 
         Islands_Manager.INSTANCE.island_saves = save_state.env_save.island_Saves;
+        Islands_Manager.INSTANCE.build_saves = save_state.build_saves;
         Islands_Manager.INSTANCE.LoadIslands(save_state.env_save.resource_object_manager_saves);
-
-        //Load Machines and Belts
-        building_placer.belt_saves = save_state.belt_saves;
-        building_placer.belt_transmitter_saves = save_state.belt_transmitter_saves;
-        building_placer.machine_saves = save_state.machine_saves;
-        building_placer.placeable_saves = save_state.placeable_saves;
-        building_placer.LoadPlacedObjects();
 
         ResearchTab.research_slot_item = save_state.char_save.research_slot_item;
         ResearchTab.research_saves = save_state.research_saves;
