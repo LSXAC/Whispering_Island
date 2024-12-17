@@ -35,11 +35,9 @@ public partial class Islands_Manager : Node2D
             if (pos.DistanceTo(ip.GlobalPosition) < length)
             {
                 length = (int)pos.DistanceTo(ip.GlobalPosition);
-                Debug.Print(ip.Name + " | " + length);
                 ips = ip;
             }
         }
-        Debug.Print(ips.Name);
         return ips;
     }
 
@@ -77,6 +75,7 @@ public partial class Islands_Manager : Node2D
                     ip.building_manager.belt_saves = ibs.belt_saves;
                     ip.building_manager.belt_transmitter_saves = ibs.belt_transmitter_saves;
                     ip.building_manager.placeable_saves = ibs.placeable_saves;
+                    ip.building_manager.resource_obj_saves = ibs.resource_obj_saves;
                     ip.building_manager.LoadPlacedObjects();
                 }
         }
@@ -135,6 +134,7 @@ public partial class Islands_Manager : Node2D
             ibs.belt_saves = ip.building_manager.belt_saves;
             ibs.belt_transmitter_saves = ip.building_manager.belt_transmitter_saves;
             ibs.placeable_saves = ip.building_manager.placeable_saves;
+            ibs.resource_obj_saves = ip.building_manager.resource_obj_saves;
             build_saves.Add(ibs);
         }
     }

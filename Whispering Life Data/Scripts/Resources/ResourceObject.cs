@@ -1,8 +1,9 @@
 using System;
 using System.Diagnostics;
+using System.Security.Cryptography;
 using Godot;
 
-public partial class ResourceObject : Building_Node
+public partial class ResourceObject : placeable_building
 {
     //@todo: Animation for each Click
     //@todo: Remove Animations
@@ -36,6 +37,9 @@ public partial class ResourceObject : Building_Node
     Area2D interactableArea;
     public bool in_cooldown = false;
 
+    [Signal]
+    public delegate void ReadyFinishedEventHandler();
+
     public override void _Ready()
     {
         current_durability = max_durability;
@@ -49,7 +53,14 @@ public partial class ResourceObject : Building_Node
 
         if (timer_bar == null)
             GD.PrintErr("ResourceObject: " + this.Name + " | doesn't have TimerBar");
+
+        //EmitSignal(SignalName.ReadyFinished);
+    }
+
+    public void SpawnPlant()
+    {
         anim_player.PlayBackwards("Break");
+        StartTimerBar(TimerBar.state.SPAWNING, respawn_seconds);
     }
 
     public override void _Process(double delta)
@@ -65,6 +76,9 @@ public partial class ResourceObject : Building_Node
         if (ros == null)
             return;
 
+        //await ToSignal(this, "ReadyFinished");
+        //Debug.Print("Finiushed Ready Funtin in Reasources");
+        Position = ros.position;
         current_durability = ros.current_durability;
         in_cooldown = ros.in_cooldown;
         if (ros.last_state != TimerBar.state.NONE)
@@ -80,14 +94,15 @@ public partial class ResourceObject : Building_Node
             in_cooldown: in_cooldown,
             last_state: timer_bar.currentstate,
             (int)timer_bar.Value,
-            current_durability
+            current_durability,
+            Position
         );
         return ros;
     }
 
     public override void OnMouseClick()
     {
-        if (!placeable_building.CheckClickDependencies(this))
+        if (!CheckClickDependencies(this))
             return;
 
         if (in_cooldown)
@@ -126,7 +141,7 @@ public partial class ResourceObject : Building_Node
                     + " "
                     + TranslationServer.Translate(item_info.item_name.ToString())
             );
-            StartTimerBar(TimerBar.state.RESPAWNING, respawn_seconds);
+            StartTimerBar(TimerBar.state.SPAWNING, respawn_seconds);
             Inventory.INSTANCE.AddItem(
                 item_info,
                 (int)(3 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)),
@@ -139,6 +154,7 @@ public partial class ResourceObject : Building_Node
                 GetNode<Sprite2D>("Shadow").Visible = false;
 
             hover_menu.DisableHoverMenu();
+            QueueFree();
             return;
         }
         anim_player.Play("Hit");
@@ -158,8 +174,12 @@ public partial class ResourceObject : Building_Node
 
     private void StartTimerBar(TimerBar.state state, double time, bool from_loading = false)
     {
-        if (state == TimerBar.state.RESPAWNING && from_loading)
-            anim_player.Play("Respawning");
+        if (state == TimerBar.state.SPAWNING && from_loading)
+            anim_player.PlayBackwards("Break");
+
+        if (state == TimerBar.state.SPAWNING)
+            if (collision_shape != null)
+                collision_shape.Disabled = false;
 
         timer_bar.InitTimer(max_seconds: time, new_state: state);
         in_cooldown = true;
@@ -167,14 +187,15 @@ public partial class ResourceObject : Building_Node
 
     public void Reset(bool from_loading = false)
     {
-        if (timer_bar.currentstate == TimerBar.state.RESPAWNING || from_loading)
+        if (timer_bar.currentstate == TimerBar.state.SPAWNING || from_loading)
         {
             current_durability = max_durability;
-            anim_player.PlayBackwards("Break");
+            //anim_player.PlayBackwards("Break"); Sapling to Plant
         }
 
-        if (HasNode("Collision"))
-            GetNode<CollisionShape2D>("Collision").Disabled = false;
+        if (collision_shape != null)
+            collision_shape.Disabled = true;
+
         if (HasNode("Shadow"))
             GetNode<Sprite2D>("Shadow").Visible = true;
 

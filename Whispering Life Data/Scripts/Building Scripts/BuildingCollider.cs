@@ -41,7 +41,7 @@ public partial class BuildingCollider : Area2D
         bool on_building = false;
         foreach (Node2D node in GetOverlappingBodies())
         {
-            if (node is Belt || node is MachineBase)
+            if (node is Building_Node)
             {
                 on_building = false;
                 break;

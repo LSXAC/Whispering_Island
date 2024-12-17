@@ -17,7 +17,7 @@ size = Vector2(14, 14)
 size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
-size = Vector2(16, 14)
+size = Vector2(16, 12)
 
 [node name="Belt" type="StaticBody2D" node_paths=PackedStringArray("item_holder", "detector", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
@@ -80,7 +80,7 @@ shape = SubResource("RectangleShape2D_77bd0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-8, -7)
+position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_xfl3k")
 
 [node name="Shadow" type="Sprite2D" parent="."]

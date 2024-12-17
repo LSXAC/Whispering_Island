@@ -6,7 +6,7 @@ public partial class TimerBar : ProgressBar
     public enum state
     {
         NONE,
-        RESPAWNING,
+        SPAWNING,
         COOLDOWN
     };
 
@@ -37,9 +37,6 @@ public partial class TimerBar : ProgressBar
         else
             timer.WaitTime = 1;
         currentstate = new_state;
-        //if (currentstate == state.COOLDOWN)
-        // AddThemeStyleboxOverride("background", styleBoxCooldown);
-        //else
         AddThemeStyleboxOverride("background", styleBoxRespawn);
         if (new_state != state.COOLDOWN)
             Visible = true;

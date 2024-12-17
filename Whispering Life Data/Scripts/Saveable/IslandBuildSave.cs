@@ -18,6 +18,9 @@ public partial class IslandBuildSave : Resource
     public Array<PlaceableSave> placeable_saves = new Array<PlaceableSave>();
 
     [Export]
+    public Array<ResourceObjectSave> resource_obj_saves = new Array<ResourceObjectSave>();
+
+    [Export]
     public int matrix_island_id = -1;
 
     public IslandBuildSave() { }

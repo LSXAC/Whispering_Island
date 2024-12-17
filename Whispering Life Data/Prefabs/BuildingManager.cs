@@ -9,6 +9,7 @@ public partial class BuildingManager : Node2D
     public Array<BeltTransmitterSave> belt_transmitter_saves = new Array<BeltTransmitterSave>();
     public Array<MachineSave> machine_saves = new Array<MachineSave>();
     public Array<PlaceableSave> placeable_saves = new Array<PlaceableSave>();
+    public Array<ResourceObjectSave> resource_obj_saves = new Array<ResourceObjectSave>();
     private PackedScene belt_item = ResourceLoader.Load<PackedScene>("res://belt_item.tscn");
 
     public void LoadBelts()
@@ -20,6 +21,19 @@ public partial class BuildingManager : Node2D
                 as Belt;
 
             InitBelt(temp, belt_save);
+        }
+    }
+
+    public void LoadResources()
+    {
+        foreach (ResourceObjectSave ros in resource_obj_saves)
+        {
+            ResourceObject temp =
+                Database
+                    .GetBuildingType(Database.BUILDING_ID.CORN_PLANT)
+                    .building_scene.Instantiate() as ResourceObject;
+            AddChild(temp);
+            temp.ResourceObjectLoad(ros);
         }
     }
 
@@ -186,6 +200,7 @@ public partial class BuildingManager : Node2D
         LoadMachines();
         LoadBeltTransmitter();
         LoadPlacableBuildings();
+        LoadResources();
     }
 
     public void SavePlacedObjects()
@@ -194,9 +209,13 @@ public partial class BuildingManager : Node2D
         machine_saves.Clear();
         belt_transmitter_saves.Clear();
         placeable_saves.Clear();
+        resource_obj_saves.Clear();
 
         foreach (Node2D node in GetChildren())
         {
+            if (node is ResourceObject)
+                resource_obj_saves.Add(((ResourceObject)node).SaveResourceObject());
+
             if (node is Belt)
             {
                 BeltSave belt_save = new BeltSave(

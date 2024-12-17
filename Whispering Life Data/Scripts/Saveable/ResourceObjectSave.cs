@@ -7,6 +7,9 @@ public partial class ResourceObjectSave : Resource
     public bool in_cooldown = false;
 
     [Export]
+    public Vector2 position = Vector2.Zero;
+
+    [Export]
     public TimerBar.state last_state = TimerBar.state.NONE;
 
     [Export]
@@ -21,12 +24,14 @@ public partial class ResourceObjectSave : Resource
         bool in_cooldown,
         TimerBar.state last_state,
         int time_left,
-        int current_durability
+        int current_durability,
+        Vector2 pos
     )
     {
         this.in_cooldown = in_cooldown;
         this.last_state = last_state;
         this.time_left = time_left;
         this.current_durability = current_durability;
+        this.position = pos;
     }
 }
