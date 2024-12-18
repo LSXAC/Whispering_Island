@@ -26,27 +26,11 @@ public partial class ObjectSpawnerTilemap : TileMapLayer
         "res://Placeable/Copper_Ore.tscn"
     );
 
-    public ResourceObjectManagerSave roms = new ResourceObjectManagerSave();
-
     public Array<ResourceObject> resource_objects = new Array<ResourceObject>();
 
     public override void _Ready()
     {
         SetObjectsOnTilemap();
-    }
-
-    public void LoadResourceObjects(ResourceObjectManagerSave roms)
-    {
-        for (int i = 0; i < roms.resource_object_saves.Count; i++)
-            resource_objects[i].ResourceObjectLoad(roms.resource_object_saves[i]);
-    }
-
-    public void SaveResourseObjects()
-    {
-        roms.resource_object_saves.Clear();
-
-        for (int i = 0; i < resource_objects.Count; i++)
-            roms.resource_object_saves.Add(resource_objects[i].SaveResourceObject());
     }
 
     private Vector2I woodVec = new Vector2I(0, 0);

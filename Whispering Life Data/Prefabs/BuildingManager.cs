@@ -9,6 +9,8 @@ public partial class BuildingManager : Node2D
     public Array<BeltTransmitterSave> belt_transmitter_saves = new Array<BeltTransmitterSave>();
     public Array<MachineSave> machine_saves = new Array<MachineSave>();
     public Array<PlaceableSave> placeable_saves = new Array<PlaceableSave>();
+
+    [Export]
     public Array<ResourceObjectSave> resource_obj_saves = new Array<ResourceObjectSave>();
     private PackedScene belt_item = ResourceLoader.Load<PackedScene>("res://belt_item.tscn");
 
@@ -29,9 +31,8 @@ public partial class BuildingManager : Node2D
         foreach (ResourceObjectSave ros in resource_obj_saves)
         {
             ResourceObject temp =
-                Database
-                    .GetBuildingType(Database.BUILDING_ID.CORN_PLANT)
-                    .building_scene.Instantiate() as ResourceObject;
+                Database.GetBuildingType(ros.building_id).building_scene.Instantiate()
+                as ResourceObject;
             AddChild(temp);
             temp.ResourceObjectLoad(ros);
         }

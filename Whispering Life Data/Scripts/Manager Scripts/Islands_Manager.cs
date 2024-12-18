@@ -18,12 +18,6 @@ public partial class Islands_Manager : Node2D
     {
         INSTANCE = this;
         last_island_id = 0;
-
-        foreach (Island_Properties ip in GetChildren())
-        {
-            if (!roms.Contains(ip.ost.roms))
-                roms.Add(ip.ost.roms);
-        }
     }
 
     public Island_Properties GetNearestIsland(Vector2 pos)
@@ -54,16 +48,6 @@ public partial class Islands_Manager : Node2D
                     island_menu.instance.CreateIsland(is_save.island_id, is_save.dir, ip, true);
                 }
             }
-        }
-
-        Debug.Print(roms.Count + " !!!!!!");
-        foreach (ResourceObjectManagerSave roms_t in roms)
-        {
-            foreach (Island_Properties ip in GetChildren())
-                if (ip.matrix_island_id == roms_t.matrix_island_id)
-                {
-                    ip.ost.LoadResourceObjects(roms_t);
-                }
         }
 
         foreach (IslandBuildSave ibs in build_saves)
@@ -115,15 +99,6 @@ public partial class Islands_Manager : Node2D
 
     public void SaveResourceObjects()
     {
-        foreach (Island_Properties ip in GetChildren())
-            ip.ost.SaveResourseObjects();
-
-        foreach (Island_Properties ip in GetChildren())
-        {
-            if (!roms.Contains(ip.ost.roms))
-                roms.Add(ip.ost.roms);
-        }
-
         build_saves.Clear();
         foreach (Island_Properties ip in GetChildren())
         {

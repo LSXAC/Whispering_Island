@@ -96,13 +96,53 @@ public partial class Database : Node
             ResourceLoader.Load<BuildingType>("res://Buildings/Trashcan.tres")
         },
         {
-            BUILDING_ID.CORN_PLANT.ToString(),
-            ResourceLoader.Load<BuildingType>("res://Buildings/Planting/Corn_Plant.tres")
+            BUILDING_ID.CORN_OBJECT.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Planting/Corn_Object.tres")
         },
-        /*{
-            BUILDING_ID.MYSTIC_TREE_PLANT.ToString(),
-            ResourceLoader.Load<BuildingType>("res://Buildings/Trashcan.tres")
-        },*/
+        {
+            BUILDING_ID.CARROT_OBJECT.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Planting/Carrot_Object.tres")
+        },
+        {
+            BUILDING_ID.POTATO_OBJECT.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Planting/Potato_Object.tres")
+        },
+        {
+            BUILDING_ID.WHEAT_OBJECT.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Planting/Wheat_Object.tres")
+        },
+        {
+            BUILDING_ID.TREE_OBJECT.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Planting/Tree_Object.tres")
+        },
+        {
+            BUILDING_ID.MYSTIC_TREE_OBJECT.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Planting/Mystic_Tree_Object.tres")
+        },
+        {
+            BUILDING_ID.MYSTIC_FIBRE_OBJECT.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Planting/Mystic_Fibre_Object.tres")
+        },
+        {
+            BUILDING_ID.STONE_OBJECT.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Stone_Object.tres")
+        },
+        {
+            BUILDING_ID.IRON_ORE_OBJECT.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Ore/Iron_Ore_Object.tres")
+        },
+        {
+            BUILDING_ID.COPPER_ORE_OBJECT.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Ore/Copper_Ore_Object.tres")
+        },
+        {
+            BUILDING_ID.SAND_OBJECT.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Sand_Object.tres")
+        },
+        {
+            BUILDING_ID.SAND_STONE_OBJECT.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Sand_Stone_Object.tres")
+        },
     };
 
     public enum BUILDING_ID
@@ -116,8 +156,18 @@ public partial class Database : Node
         RESEARCH_TABLE,
         WOODEN_BED,
         TRASHCAN,
-        CORN_PLANT,
-        MYSTIC_TREE_PLANT
+        CORN_OBJECT,
+        WHEAT_OBJECT,
+        POTATO_OBJECT,
+        CARROT_OBJECT,
+        MYSTIC_TREE_OBJECT,
+        MYSTIC_FIBRE_OBJECT,
+        TREE_OBJECT,
+        STONE_OBJECT,
+        IRON_ORE_OBJECT,
+        COPPER_ORE_OBJECT,
+        SAND_STONE_OBJECT,
+        SAND_OBJECT
     }
 
     public static BuildingType GetBuildingType(BUILDING_ID building_id)

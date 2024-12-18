@@ -18,6 +18,9 @@ public partial class ResourceObjectSave : Resource
     [Export]
     public int current_durability = 0;
 
+    [Export]
+    public Database.BUILDING_ID building_id;
+
     public ResourceObjectSave() { }
 
     public ResourceObjectSave(
@@ -25,7 +28,8 @@ public partial class ResourceObjectSave : Resource
         TimerBar.state last_state,
         int time_left,
         int current_durability,
-        Vector2 pos
+        Vector2 pos,
+        Database.BUILDING_ID building_id
     )
     {
         this.in_cooldown = in_cooldown;
@@ -33,5 +37,6 @@ public partial class ResourceObjectSave : Resource
         this.time_left = time_left;
         this.current_durability = current_durability;
         this.position = pos;
+        this.building_id = building_id;
     }
 }

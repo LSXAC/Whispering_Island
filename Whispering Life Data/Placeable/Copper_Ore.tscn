@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cnafp0o2cwupt"]
+[gd_scene load_steps=16 format=3 uid="uid://cnafp0o2cwupt"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/ResourceObject.cs" id="1_igor6"]
 [ext_resource type="Resource" uid="uid://eo8ax7whu2kb" path="res://Items/Copper_Ore.tres" id="2_yrpvd"]
@@ -7,91 +7,15 @@
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="5_asj4m"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Prefabs/timer_bar.tscn" id="6_3oocu"]
 [ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sprites/Stone_Particle.png" id="7_dwdud"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="8_wsr34"]
+[ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="9_duihs"]
+[ext_resource type="PackedScene" uid="uid://badiq5h8rhrc" path="res://Object_Player.tscn" id="10_kcog1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(16, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
 size = Vector2(19, 12)
-
-[sub_resource type="Animation" id="Animation_2ey6b"]
-resource_name = "Break"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WheatSprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WheatSprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -3), Vector2(0, 6)]
-}
-
-[sub_resource type="Animation" id="Animation_a1g7f"]
-resource_name = "Hit"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WheatSprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -3), Vector2(-1, -3), Vector2(0, -3), Vector2(1, -3), Vector2(0, -3)]
-}
-
-[sub_resource type="Animation" id="Animation_c5l8r"]
-resource_name = "Respawning"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WheatSprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WheatSprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2ngb"]
-_data = {
-"Break": SubResource("Animation_2ey6b"),
-"Hit": SubResource("Animation_a1g7f"),
-"Respawning": SubResource("Animation_c5l8r")
-}
 
 [sub_resource type="Curve" id="Curve_jra3w"]
 _data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
@@ -114,7 +38,7 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_lfoib")
 
-[node name="Copper_Ore" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "sprite", "collision_shape")]
+[node name="Copper_Ore" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 script = ExtResource("1_igor6")
 anim_player = NodePath("AnimationPlayer")
@@ -123,49 +47,51 @@ mining_amount = 2
 mining_amount_last = 5
 item_info = ExtResource("2_yrpvd")
 gpu_particles = NodePath("StoneParticles")
+building_id = 18
+building_collider_manager = NodePath("BuildingAreas")
 title = "WORLD_RESOURCE_COPPER_ORE"
 description = "WORLD_RESOURCE_COPPER_ORE_DESC"
-sprite = NodePath("WheatSprite")
+sprite = NodePath("CornSprite")
 collision_shape = NodePath("Collision")
 
-[node name="WheatSprite" type="Sprite2D" parent="."]
+[node name="CornSprite" type="Sprite2D" parent="."]
 self_modulate = Color(0.898255, 0.856434, 0.715743, 1)
 y_sort_enabled = true
-position = Vector2(0, -3)
+position = Vector2(-8, 0)
 texture = ExtResource("3_tqg5t")
+offset = Vector2(0, -12)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_m0htq")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
+position = Vector2(-8, -9)
 texture = ExtResource("4_a8k6t")
 
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
 z_index = 1
+position = Vector2(-8, -9)
 script = ExtResource("5_asj4m")
 building_node = NodePath("..")
-building_sprite = NodePath("../WheatSprite")
+building_sprite = NodePath("../CornSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("6_3oocu")]
+offset_left = -26.0
 offset_top = -32.0
+offset_right = 14.0
 offset_bottom = -28.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_v2ngb")
-}
 
 [node name="StoneParticles" type="GPUParticles2D" parent="."]
 z_index = 1
-position = Vector2(0, -5)
+position = Vector2(-8, -10)
 emitting = false
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_h3jn0")
@@ -174,6 +100,18 @@ lifetime = 0.3
 one_shot = true
 explosiveness = 0.7
 randomness = 0.5
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("8_wsr34")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("9_duihs")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="AnimationPlayer" parent="." instance=ExtResource("10_kcog1")]
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

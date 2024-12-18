@@ -59,7 +59,7 @@ script = ExtResource("4_logif")
 
 [node name="MainIsland" parent="IslandManager" instance=ExtResource("3_p5rek")]
 
-[node name="QuestSign" parent="IslandManager/MainIsland" index="7"]
+[node name="QuestSign" parent="IslandManager/MainIsland" index="6"]
 title = "Monster"
 description = "...."
 

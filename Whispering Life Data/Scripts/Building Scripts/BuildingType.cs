@@ -22,6 +22,7 @@ public partial class BuildingType : Resource
         PRODUCTION,
         DECORATION,
         PLANTING,
-        RESEARCH
+        RESEARCH,
+        NONE
     }
 }

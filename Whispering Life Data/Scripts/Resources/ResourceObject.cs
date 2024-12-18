@@ -30,6 +30,15 @@ public partial class ResourceObject : placeable_building
     private ItemInfo item_info;
 
     [Export]
+    public bool drops_extra_item;
+
+    [Export]
+    public int extra_item_amount = 0;
+
+    [Export]
+    public ItemInfo extra_item_info;
+
+    [Export]
     public GpuParticles2D gpu_particles;
     private int current_durability;
 
@@ -95,7 +104,8 @@ public partial class ResourceObject : placeable_building
             last_state: timer_bar.currentstate,
             (int)timer_bar.Value,
             current_durability,
-            Position
+            Position,
+            building_id
         );
         return ros;
     }
@@ -114,17 +124,52 @@ public partial class ResourceObject : placeable_building
     private void Hit()
     {
         //Check if Item can be in Inventory
-        if (
-            !Inventory.INSTANCE.CanReceiveItem(
-                item_info,
-                Inventory.INSTANCE.inventory_items,
-                (int)(mining_amount_last * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT))
-            )
-        )
+        if (current_durability - 1 > 0)
         {
-            player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
-            return;
+            if (
+                !Inventory.INSTANCE.CanReceiveItem(
+                    item_info,
+                    Inventory.INSTANCE.inventory_items,
+                    (int)(mining_amount * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT))
+                )
+            )
+            {
+                player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
+                return;
+            }
         }
+        else
+        {
+            if (
+                !Inventory.INSTANCE.CanReceiveItem(
+                    item_info,
+                    Inventory.INSTANCE.inventory_items,
+                    (int)(mining_amount_last * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT))
+                )
+            )
+            {
+                player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
+
+                return;
+            }
+            if (drops_extra_item)
+            {
+                if (
+                    !Inventory.INSTANCE.CanReceiveItem(
+                        extra_item_info,
+                        Inventory.INSTANCE.inventory_items,
+                        extra_item_amount
+                    )
+                )
+                {
+                    player_ui.AddItemLabelUI(
+                        TranslationServer.Translate("PLAYERUI_INVENTORY_FULL")
+                    );
+                    return;
+                }
+            }
+        }
+
         Player.INSTANCE.player_stats.AddFatigue(0.25f);
         current_durability--;
         gpu_particles.Emitting = true;
@@ -144,9 +189,24 @@ public partial class ResourceObject : placeable_building
             StartTimerBar(TimerBar.state.SPAWNING, respawn_seconds);
             Inventory.INSTANCE.AddItem(
                 item_info,
-                (int)(3 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)),
+                (int)(mining_amount_last * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)),
                 Inventory.INSTANCE.inventory_items
             );
+
+            if (drops_extra_item)
+            {
+                player_ui.AddItemLabelUI(
+                    "Bonus: +"
+                        + extra_item_amount
+                        + " "
+                        + TranslationServer.Translate(extra_item_info.item_name.ToString())
+                );
+                Inventory.INSTANCE.AddItem(
+                    extra_item_info,
+                    extra_item_amount,
+                    Inventory.INSTANCE.inventory_items
+                );
+            }
 
             if (HasNode("Collision"))
                 GetNode<CollisionShape2D>("Collision").Disabled = true;

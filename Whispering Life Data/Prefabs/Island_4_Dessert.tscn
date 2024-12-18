@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Prefabs/Water_Noise_Map.tres" id="5_y5hnp"]
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Tileset Objects/Water_Tileset.tres" id="6_nm11x"]
 [ext_resource type="PackedScene" uid="uid://dcruv230g3u4k" path="res://Placeable/building.tscn" id="7_f2frl"]
-[ext_resource type="TileSet" uid="uid://bovg285rqfm1r" path="res://Tileset Objects/Spawn_Tileset.tres" id="8_tgn2h"]
-[ext_resource type="Script" path="res://Scripts/Resources/ObjectSpawnerTilemap.cs" id="9_xps35"]
 [ext_resource type="Script" path="res://Prefabs/BuildingManager.cs" id="11_b1ij4"]
+[ext_resource type="PackedScene" uid="uid://dxbndpfa2cnsl" path="res://Placeable/Sand.tscn" id="12_axois"]
+[ext_resource type="PackedScene" uid="uid://c6fshtcsvmam5" path="res://Placeable/Sand_Stone.tscn" id="13_cjnl4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpdmr"]
 size = Vector2(32, 32)
@@ -171,13 +171,48 @@ position = Vector2(-64, 64)
 build_mode = 1
 polygon = PackedVector2Array(288, -48, 320, -48, 312, 32, 288, 136, 208, 176, 80, 160, 80, 128, 128, 128, 160, 160, 224, 160, 256, 128, 256, 64, 288, 32)
 
-[node name="ObjectSpawnerTilemap" type="TileMapLayer" parent="."]
-y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD8//v/AAABAAMAAAD7//z/AAABAAMAAAAEAP7/AAABAAMAAAD5/wEAAAABAAMAAAD6/wIAAAABAAMAAAD7/wUAAAAAAAMAAAD8/wYAAAAAAAMAAAAFAAUAAAAAAAMAAAAEAAYAAAAAAAMAAAD///3/AAAAAAMAAAD9//n/AAAAAAMAAAD7//3/AAAAAAMAAAA=")
-enabled = false
-tile_set = ExtResource("8_tgn2h")
-script = ExtResource("9_xps35")
-
 [node name="BuildingManager" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("11_b1ij4")
+
+[node name="Sand" parent="BuildingManager" instance=ExtResource("12_axois")]
+position = Vector2(-112, -128)
+
+[node name="Sand2" parent="BuildingManager" instance=ExtResource("12_axois")]
+position = Vector2(-88, -104)
+
+[node name="Sand3" parent="BuildingManager" instance=ExtResource("12_axois")]
+position = Vector2(-128, -80)
+
+[node name="Sand4" parent="BuildingManager" instance=ExtResource("12_axois")]
+position = Vector2(-72, 56)
+
+[node name="Sand5" parent="BuildingManager" instance=ExtResource("12_axois")]
+position = Vector2(-96, 40)
+
+[node name="Sand6" parent="BuildingManager" instance=ExtResource("12_axois")]
+position = Vector2(176, 144)
+
+[node name="Sand7" parent="BuildingManager" instance=ExtResource("12_axois")]
+position = Vector2(144, 160)
+
+[node name="Sand8" parent="BuildingManager" instance=ExtResource("12_axois")]
+position = Vector2(176, 176)
+
+[node name="Sand9" parent="BuildingManager" instance=ExtResource("12_axois")]
+position = Vector2(8, -80)
+
+[node name="SandStone" parent="BuildingManager" instance=ExtResource("13_cjnl4")]
+position = Vector2(40, 80)
+
+[node name="SandStone4" parent="BuildingManager" instance=ExtResource("13_cjnl4")]
+position = Vector2(-136, 56)
+
+[node name="SandStone5" parent="BuildingManager" instance=ExtResource("13_cjnl4")]
+position = Vector2(48, -168)
+
+[node name="SandStone2" parent="BuildingManager" instance=ExtResource("13_cjnl4")]
+position = Vector2(72, 112)
+
+[node name="SandStone3" parent="BuildingManager" instance=ExtResource("13_cjnl4")]
+position = Vector2(-152, 88)

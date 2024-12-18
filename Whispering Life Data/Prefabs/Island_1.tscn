@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bi8dopb46mfob"]
+[gd_scene load_steps=16 format=4 uid="uid://bi8dopb46mfob"]
 
 [ext_resource type="Script" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_4csf6"]
 [ext_resource type="PackedScene" uid="uid://717sbs8rvfvt" path="res://Prefabs/Sign.tscn" id="2_mbodl"]
@@ -11,6 +11,8 @@
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Tileset Objects/Water_Tileset.tres" id="8_k6lgg"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Prefabs/Water_Noise_Map.tres" id="9_vucc1"]
 [ext_resource type="Script" path="res://Prefabs/BuildingManager.cs" id="11_uwvvs"]
+[ext_resource type="PackedScene" uid="uid://cjw7mpije2ul4" path="res://Placeable/MystFibre.tscn" id="12_ip5eg"]
+[ext_resource type="PackedScene" uid="uid://gb18hiamdyqj" path="res://Placeable/MystTree.tscn" id="13_5o5x2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud7jl"]
 size = Vector2(32, 32)
@@ -177,3 +179,33 @@ script = ExtResource("6_orw41")
 [node name="BuildingManager" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("11_uwvvs")
+
+[node name="MystFibre" parent="BuildingManager" instance=ExtResource("12_ip5eg")]
+position = Vector2(-54, -163)
+
+[node name="MystFibre2" parent="BuildingManager" instance=ExtResource("12_ip5eg")]
+position = Vector2(127, -119)
+
+[node name="MystFibre3" parent="BuildingManager" instance=ExtResource("12_ip5eg")]
+position = Vector2(119, 51)
+
+[node name="MystFibre4" parent="BuildingManager" instance=ExtResource("12_ip5eg")]
+position = Vector2(-39, -13)
+
+[node name="MystFibre5" parent="BuildingManager" instance=ExtResource("12_ip5eg")]
+position = Vector2(-141, -46)
+
+[node name="MystTree" parent="BuildingManager" instance=ExtResource("13_5o5x2")]
+position = Vector2(-98, -85)
+
+[node name="MystTree2" parent="BuildingManager" instance=ExtResource("13_5o5x2")]
+position = Vector2(76, -137)
+
+[node name="MystTree3" parent="BuildingManager" instance=ExtResource("13_5o5x2")]
+position = Vector2(172, -66)
+
+[node name="MystTree4" parent="BuildingManager" instance=ExtResource("13_5o5x2")]
+position = Vector2(-77, 55)
+
+[node name="MystTree5" parent="BuildingManager" instance=ExtResource("13_5o5x2")]
+position = Vector2(-34, -102)

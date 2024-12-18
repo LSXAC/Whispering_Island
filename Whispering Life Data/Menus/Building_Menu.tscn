@@ -60,9 +60,9 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_e7u7j")
 theme_override_font_sizes/font_size = 12
-text = "> Research"
+text = "> Plants"
 script = ExtResource("3_ft6wq")
-label_translation_string = "BUILDING_MENU_RESEARCH"
+label_translation_string = "BUILDING_MENU_PLANTS"
 
 [node name="ResearchButton" type="Button" parent="HBoxHeader"]
 layout_mode = 2

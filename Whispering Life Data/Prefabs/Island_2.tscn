@@ -8,9 +8,9 @@
 [ext_resource type="TileSet" uid="uid://knopq4xq3ef2" path="res://Tileset Objects/Islands.tres" id="4_nxsuo"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Prefabs/Water_Noise_Map.tres" id="5_x1thx"]
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Tileset Objects/Water_Tileset.tres" id="6_8g1yn"]
-[ext_resource type="Script" path="res://Scripts/Resources/ObjectSpawnerTilemap.cs" id="6_xneeu"]
-[ext_resource type="TileSet" uid="uid://bovg285rqfm1r" path="res://Tileset Objects/Spawn_Tileset.tres" id="8_86k7w"]
 [ext_resource type="Script" path="res://Prefabs/BuildingManager.cs" id="11_7s17v"]
+[ext_resource type="PackedScene" uid="uid://c0l4m6jxp7pau" path="res://Placeable/Iron_Ore.tscn" id="12_wlxw7"]
+[ext_resource type="PackedScene" uid="uid://cnafp0o2cwupt" path="res://Placeable/Copper_Ore.tscn" id="13_cf0p2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpdmr"]
 size = Vector2(32, 32)
@@ -171,13 +171,30 @@ position = Vector2(-64, 64)
 build_mode = 1
 polygon = PackedVector2Array(256, -32, 256, -48, 288, -48, 312, 48, 232, 144, 80, 160, 80, 128, 160, 128, 224, 64, 256, 64, 288, 32, 288, 0)
 
-[node name="ObjectSpawnerTilemap" type="TileMapLayer" parent="."]
-y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD7/wIAAAABAAEAAAD8/wEAAAABAAEAAAD9/wMAAAABAAEAAAADAPr/AAABAAEAAAAEAPv/AAABAAEAAAADAAQAAAABAAEAAAAFAAEAAAACAAEAAAAGAAIAAAACAAEAAAD9//3/AAACAAEAAAA=")
-enabled = false
-tile_set = ExtResource("8_86k7w")
-script = ExtResource("6_xneeu")
-
 [node name="BuildingManager" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("11_7s17v")
+
+[node name="Iron_Ore" parent="BuildingManager" instance=ExtResource("12_wlxw7")]
+position = Vector2(-96, -88)
+
+[node name="Iron_Ore2" parent="BuildingManager" instance=ExtResource("12_wlxw7")]
+position = Vector2(160, -120)
+
+[node name="Iron_Ore3" parent="BuildingManager" instance=ExtResource("12_wlxw7")]
+position = Vector2(192, 112)
+
+[node name="Iron_Ore4" parent="BuildingManager" instance=ExtResource("12_wlxw7")]
+position = Vector2(-144, 104)
+
+[node name="Copper_Ore" parent="BuildingManager" instance=ExtResource("13_cf0p2")]
+position = Vector2(-16, -8)
+
+[node name="Copper_Ore2" parent="BuildingManager" instance=ExtResource("13_cf0p2")]
+position = Vector2(48, -40)
+
+[node name="Copper_Ore3" parent="BuildingManager" instance=ExtResource("13_cf0p2")]
+position = Vector2(16, 72)
+
+[node name="Copper_Ore4" parent="BuildingManager" instance=ExtResource("13_cf0p2")]
+position = Vector2(128, 72)

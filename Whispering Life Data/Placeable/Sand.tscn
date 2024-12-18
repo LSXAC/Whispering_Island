@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dxbndpfa2cnsl"]
+[gd_scene load_steps=16 format=3 uid="uid://dxbndpfa2cnsl"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/ResourceObject.cs" id="1_csqkk"]
 [ext_resource type="Resource" uid="uid://ljb14i8nnpgp" path="res://Items/Sand.tres" id="2_kmxi4"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="5_0gbfr"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Prefabs/timer_bar.tscn" id="6_sb3br"]
 [ext_resource type="Texture2D" uid="uid://brdyj2udwaxpm" path="res://Sprites/Sand_Particle.png" id="7_4gwp8"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="8_rx5eh"]
+[ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="9_3m7pm"]
+[ext_resource type="PackedScene" uid="uid://badiq5h8rhrc" path="res://Object_Player.tscn" id="10_uky7d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(16, 8)
@@ -35,86 +38,7 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_4ikef")
 
-[sub_resource type="Animation" id="Animation_2ey6b"]
-resource_name = "Break"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SandSprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SandSprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -3), Vector2(0, 6)]
-}
-
-[sub_resource type="Animation" id="Animation_a1g7f"]
-resource_name = "Hit"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SandSprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -3), Vector2(-1, -3), Vector2(0, -3), Vector2(1, -3), Vector2(0, -3)]
-}
-
-[sub_resource type="Animation" id="Animation_c5l8r"]
-resource_name = "Respawning"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SandSprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SandSprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2ngb"]
-_data = {
-"Break": SubResource("Animation_2ey6b"),
-"Hit": SubResource("Animation_a1g7f"),
-"Respawning": SubResource("Animation_c5l8r")
-}
-
-[node name="Sand" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "sprite", "collision_shape")]
+[node name="Sand" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 script = ExtResource("1_csqkk")
 anim_player = NodePath("AnimationPlayer")
@@ -123,44 +47,51 @@ mining_amount = 2
 mining_amount_last = 5
 item_info = ExtResource("2_kmxi4")
 gpu_particles = NodePath("SandStoneParticles")
+building_id = 20
+building_collider_manager = NodePath("BuildingAreas")
 title = "WORLD_RESOURCE_SAND"
 description = "WORLD_RESOURCE_SAND_DESC"
-sprite = NodePath("SandSprite")
+sprite = NodePath("CornSprite")
 collision_shape = NodePath("Collision")
 
-[node name="SandSprite" type="Sprite2D" parent="."]
+[node name="CornSprite" type="Sprite2D" parent="."]
 self_modulate = Color(0.843184, 0.843184, 0.843184, 1)
 y_sort_enabled = true
-position = Vector2(0, -3)
+position = Vector2(-9, -3)
 texture = ExtResource("3_hphir")
+offset = Vector2(0, -9)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_m0htq")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
+position = Vector2(-8, -9)
 texture = ExtResource("4_i18rj")
 
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
 z_index = 1
+position = Vector2(-9, -9)
 script = ExtResource("5_0gbfr")
 building_node = NodePath("..")
-building_sprite = NodePath("../SandSprite")
+building_sprite = NodePath("../CornSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 position = Vector2(1, -3)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("6_sb3br")]
-offset_top = -32.0
-offset_bottom = -28.0
+offset_left = -25.0
+offset_top = -31.0
+offset_right = 15.0
+offset_bottom = -27.0
 
 [node name="SandStoneParticles" type="GPUParticles2D" parent="."]
 z_index = 1
-position = Vector2(0, -5)
+position = Vector2(-8, -10)
 emitting = false
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_7tpe0")
@@ -170,10 +101,17 @@ one_shot = true
 explosiveness = 0.7
 randomness = 0.5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_v2ngb")
-}
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("8_rx5eh")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("9_3m7pm")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="AnimationPlayer" parent="." instance=ExtResource("10_uky7d")]
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

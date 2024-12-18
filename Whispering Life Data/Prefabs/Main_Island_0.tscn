@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bveoiwi14ha4g"]
+[gd_scene load_steps=23 format=4 uid="uid://bveoiwi14ha4g"]
 
 [ext_resource type="Script" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_sbvtb"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tileset Objects/BuildingTiles.tres" id="2_naawu"]
@@ -7,12 +7,13 @@
 [ext_resource type="Shader" path="res://Shader Objects/water.gdshader" id="5_2o0lf"]
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Tileset Objects/Water_Tileset.tres" id="6_f2khq"]
 [ext_resource type="FastNoiseLite" uid="uid://d00dkr70looh3" path="res://Prefabs/FastNoiseWater.tres" id="6_r1dg3"]
-[ext_resource type="TileSet" uid="uid://bovg285rqfm1r" path="res://Tileset Objects/Spawn_Tileset.tres" id="7_va5b3"]
-[ext_resource type="Script" path="res://Scripts/Resources/ObjectSpawnerTilemap.cs" id="8_7hw5l"]
 [ext_resource type="Script" path="res://Scripts/QuestSign.cs" id="8_dl61a"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="10_7bt86"]
 [ext_resource type="Texture2D" uid="uid://125t5f6fiugo" path="res://Sprites/Monster_Island.png" id="11_qd1vh"]
+[ext_resource type="PackedScene" uid="uid://bekb5fw4mpfgk" path="res://Placeable/Tree.tscn" id="12_3x7uo"]
 [ext_resource type="Script" path="res://Prefabs/BuildingManager.cs" id="13_lo8qh"]
+[ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Placeable/Stone.tscn" id="13_sqojh"]
+[ext_resource type="PackedScene" uid="uid://hl3jkk2n0f7x" path="res://Placeable/Wheat.tscn" id="14_kjoym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cugrr"]
 size = Vector2(32, 32)
@@ -212,13 +213,6 @@ polygon = PackedVector2Array(-80, 112, -80, 80, -112, 48, -144, 48, -176, 16, -1
 position = Vector2(-64, 64)
 polygon = PackedVector2Array(192, 32, 224, 32, 288, -32, 288, -48, 320, -48, 280, 32, 272, 128, 128, 160, 80, 160, 80, 128, 96, 128, 136, 88, 160, 88, 192, 64)
 
-[node name="ObjectSpawnerTilemap" type="TileMapLayer" parent="."]
-y_sort_enabled = true
-tile_map_data = PackedByteArray("AAABAAIAAAAAAAAAAAADAAEAAAAAAAAAAAACAPv/AAAAAAAAAAABAPn/AAABAAAAAAD+//z/AAABAAAAAAD8/wAAAAABAAAAAAD9/wAAAAABAAAAAAD5/wEAAAAAAAAAAAD8/wQAAAAAAAAAAAABAPr/AAAAAAAAAAABAP//AAAAAAAAAAACAAAAAAAAAAAAAAD+/wEAAAAAAAAAAAD7/wAAAAAAAAEAAAD9//r/AAAAAAEAAAABAPz/AAAAAAEAAAAAAP3/AAAAAAEAAAADAPv/AAAAAAEAAAA=")
-enabled = false
-tile_set = ExtResource("7_va5b3")
-script = ExtResource("8_7hw5l")
-
 [node name="QuestSign" type="StaticBody2D" parent="." node_paths=PackedStringArray("anim_player")]
 y_sort_enabled = true
 position = Vector2(32, -200)
@@ -257,6 +251,54 @@ shape = SubResource("RectangleShape2D_fk0le")
 [node name="BuildingManager" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("13_lo8qh")
+
+[node name="Tree" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+position = Vector2(80, -181)
+
+[node name="Tree2" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+position = Vector2(110, -160)
+
+[node name="Tree3" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+position = Vector2(-158, -101)
+
+[node name="Tree4" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+position = Vector2(94, 124)
+
+[node name="Tree5" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+position = Vector2(-102, 14)
+
+[node name="Stone" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+position = Vector2(-75, 23)
+
+[node name="Stone2" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+position = Vector2(-32, -171)
+
+[node name="Stone3" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+position = Vector2(58, -95)
+
+[node name="Stone4" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+position = Vector2(91, 19)
+
+[node name="Wheat" parent="BuildingManager" instance=ExtResource("14_kjoym")]
+position = Vector2(-68, -151)
+
+[node name="Wheat2" parent="BuildingManager" instance=ExtResource("14_kjoym")]
+position = Vector2(-94, -142)
+
+[node name="Wheat3" parent="BuildingManager" instance=ExtResource("14_kjoym")]
+position = Vector2(85, -157)
+
+[node name="Wheat4" parent="BuildingManager" instance=ExtResource("14_kjoym")]
+position = Vector2(-61, -83)
+
+[node name="Wheat5" parent="BuildingManager" instance=ExtResource("14_kjoym")]
+position = Vector2(19, -38)
+
+[node name="Wheat6" parent="BuildingManager" instance=ExtResource("14_kjoym")]
+position = Vector2(-136, -44)
+
+[node name="Wheat7" parent="BuildingManager" instance=ExtResource("14_kjoym")]
+position = Vector2(-32, 91)
 
 [connection signal="mouse_entered" from="QuestSign/MouseArea" to="QuestSign/MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="QuestSign/MouseArea" to="QuestSign/MouseArea" method="OnMouseLeaved"]

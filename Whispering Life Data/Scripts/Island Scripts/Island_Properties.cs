@@ -26,8 +26,6 @@ public partial class Island_Properties : Node2D
     [Export]
     private bool left_closed = false;
 
-    public ObjectSpawnerTilemap ost;
-
     private Node2D bridge_start_points;
     private PackedScene BRIDGE_SIDE = ResourceLoader.Load<PackedScene>(
         "res://Sprites/Bridge/bridge_side.tscn"
@@ -71,8 +69,6 @@ public partial class Island_Properties : Node2D
     public override void _Ready()
     {
         building_area = GetNode<TileMapLayer>("BuildingArea");
-        ost = GetNode<ObjectSpawnerTilemap>("ObjectSpawnerTilemap");
-        ost.roms.matrix_island_id = matrix_island_id;
         Node2D start_node = GetNode<Node2D>("IslandProperties");
         bridge_start_points = start_node.GetNode<Node2D>("BridgeStartPoints");
         bridge_collision_parent = start_node.GetNode<StaticBody2D>("BridgeCollisions");
@@ -219,7 +215,6 @@ public partial class Island_Properties : Node2D
         //Remove last 1/3 of build Islands. Reverse Building.
 
         ip.matrix_island_id = Islands_Manager.INSTANCE.last_island_id;
-        ip.ost.roms.matrix_island_id = ip.matrix_island_id;
         island_menu.instance.current_sign = null;
         GetSigns();
         ip.GetSigns();
