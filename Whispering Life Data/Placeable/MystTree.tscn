@@ -48,6 +48,7 @@ mining_amount_last = 5
 item_info = ExtResource("2_wvxkc")
 gpu_particles = NodePath("LeavesParticles")
 building_id = 13
+tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
 title = "WORLD_RESOURCE_MYSTIC_TREE"
 description = "WORLD_RESOURCE_MYSTIC_TREE_DESC"

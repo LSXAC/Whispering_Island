@@ -26,6 +26,7 @@ deletion_timer = NodePath("DeletionTimer")
 givers = []
 takers = [NodePath("Taker"), NodePath("Taker2")]
 building_id = 8
+tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_TRASHCAN"
 description = "BUILDING_TRASHCAN_DESC"

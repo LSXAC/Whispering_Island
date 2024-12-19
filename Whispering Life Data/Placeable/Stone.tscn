@@ -48,6 +48,7 @@ mining_amount_last = 5
 item_info = ExtResource("2_s20f6")
 gpu_particles = NodePath("StoneParticles")
 building_id = 16
+tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
 title = "WORLD_RESOURCE_STONE"
 description = "WORLD_RESOURCE_STONE_DESC"

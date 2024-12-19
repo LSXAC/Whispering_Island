@@ -26,6 +26,7 @@ production_item_info = ExtResource("9_jf153")
 givers = [NodePath("Giver"), NodePath("Giver2")]
 takers = []
 building_id = 5
+tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_WOOD_GROWTHER"
 description = "BUILDING_WOOD_GROWTHER"

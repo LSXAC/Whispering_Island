@@ -46,6 +46,7 @@ respawn_seconds = 30
 item_info = ExtResource("2_my7vu")
 gpu_particles = NodePath("LeavesParticles")
 building_id = 15
+tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
 title = "WORLD_RESOURCE_TREE"
 description = "WORLD_RESOURCE_TREE_DESC"

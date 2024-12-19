@@ -26,6 +26,7 @@ production_item_info = ExtResource("2_6bbma")
 givers = [NodePath("Giver"), NodePath("Giver2")]
 takers = []
 building_id = 4
+tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_QUARRY"
 description = "BUILDING_QUARRY_DESC"

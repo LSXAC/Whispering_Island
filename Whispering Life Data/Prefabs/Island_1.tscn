@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bi8dopb46mfob"]
+[gd_scene load_steps=17 format=4 uid="uid://bi8dopb46mfob"]
 
 [ext_resource type="Script" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_4csf6"]
 [ext_resource type="PackedScene" uid="uid://717sbs8rvfvt" path="res://Prefabs/Sign.tscn" id="2_mbodl"]
@@ -9,6 +9,7 @@
 [ext_resource type="TileSet" uid="uid://bovg285rqfm1r" path="res://Tileset Objects/Spawn_Tileset.tres" id="6_yodjl"]
 [ext_resource type="Shader" path="res://Shader Objects/water.gdshader" id="7_232am"]
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Tileset Objects/Water_Tileset.tres" id="8_k6lgg"]
+[ext_resource type="TileSet" uid="uid://bij4wcpveo44d" path="res://Prefabs/Farming_Tileset.tres" id="8_nokly"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Prefabs/Water_Noise_Map.tres" id="9_vucc1"]
 [ext_resource type="Script" path="res://Prefabs/BuildingManager.cs" id="11_uwvvs"]
 [ext_resource type="PackedScene" uid="uid://cjw7mpije2ul4" path="res://Placeable/MystFibre.tscn" id="12_ip5eg"]
@@ -136,6 +137,11 @@ z_index = -1
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD7//3/AAAEAAgAAAD7//v/AAAFAAoAAAD8//v/AAABAAgAAAD6//z/AAAFAAkAAAD6//v/AAAGAAgAAAD8//3/AAAHAAkAAAD6//3/AAAGAAkAAAD8//z/AAADAAgAAAD7//z/AAABAAgAAAD9//z/AAAHAAkAAAD9//v/AAADAAkAAAD9//r/AAAHAAgAAAD8//r/AAAEAAoAAAD7//r/AAAGAAgAAAA=")
 tile_set = ExtResource("4_xeb8u")
+
+[node name="FarmingLayer" type="TileMapLayer" parent="Tilemaps" groups=["FARMINGGROUND"]]
+z_index = -1
+tile_map_data = PackedByteArray("AAAGAPf/AQAFAAQAAAAFAPf/AQADAAUAAAAGAPj/AQAEAAUAAAD4//z/AQAGAAUAAAACAP7/AQACAAQAAAACAP//AQACAAIAAAADAP7/AQAEAAIAAAADAP//AQAEAAMAAAAEAP7/AQACAAMAAAAEAP3/AQACAAUAAAACAAAAAQAHAAQAAAAAAAAAAQACAAQAAAABAAEAAQABAAMAAAAEAP//AQAGAAQAAAADAAEAAQAGAAUAAAACAAIAAQAFAAUAAAABAAIAAQABAAUAAAAAAAEAAQAAAAUAAAABAAAAAQAFAAIAAAA=")
+tile_set = ExtResource("8_nokly")
 
 [node name="Objects" type="Node2D" parent="."]
 visible = false

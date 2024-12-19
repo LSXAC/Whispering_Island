@@ -1,4 +1,6 @@
+using System;
 using Godot;
+using Godot.Collections;
 
 public partial class placeable_building : Building_Node
 {
@@ -8,7 +10,16 @@ public partial class placeable_building : Building_Node
     public Database.BUILDING_ID building_id;
 
     [Export]
+    public Array<TILETYPE> tile_types;
+
+    [Export]
     public Building_Collider_Manager building_collider_manager;
+
+    public enum TILETYPE
+    {
+        BUILDINGCOLLISION,
+        FARMINGGROUND
+    }
 
     public override void OnMouseClick()
     {

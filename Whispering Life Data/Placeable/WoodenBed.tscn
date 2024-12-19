@@ -19,6 +19,7 @@ collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_8y476")
 building_id = 7
+tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_BED"
 description = "BUILDING_BED_DESC"

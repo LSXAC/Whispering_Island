@@ -19,6 +19,7 @@ collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_6uycx")
 building_id = 6
+tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
 title = "Research Table"
 description = "A Table to do research (NOT DOCS SET)"

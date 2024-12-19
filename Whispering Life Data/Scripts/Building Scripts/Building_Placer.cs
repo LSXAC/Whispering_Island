@@ -44,6 +44,7 @@ public partial class Building_Placer : Node2D
             .GetNearestIsland(GetGlobalMousePosition())
             .building_manager.AddChild(current_building);
         placeable = (placeable_building)current_building;
+        placeable.building_collider_manager.SetTileType(placeable.tile_types);
 
         if (((placeable_building)current_building).collision_shape != null)
             ((placeable_building)current_building).collision_shape.Disabled = true;

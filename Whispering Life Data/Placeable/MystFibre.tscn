@@ -48,6 +48,7 @@ mining_amount_last = 5
 item_info = ExtResource("2_8xjas")
 gpu_particles = NodePath("FibreParticles")
 building_id = 14
+tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
 title = "WORLD_RESOURCE_MYSTIC_FIBRE"
 description = "WORLD_RESOURCE_MYSTIC_FIBRE_DESC"

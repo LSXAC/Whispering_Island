@@ -24,6 +24,7 @@ script = ExtResource("1_qtaud")
 givers = []
 takers = [NodePath("Taker"), NodePath("Taker2")]
 building_id = 2
+tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_CHEST"
 description = "BUILDING_CHEST_DESC"

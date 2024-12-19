@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using Godot;
+using Godot.Collections;
 
 public partial class Building_Collider_Manager : Node2D
 {
@@ -15,6 +16,15 @@ public partial class Building_Collider_Manager : Node2D
     public override void _Ready()
     {
         CreateBuildingCollider();
+    }
+
+    public void SetTileType(Array<placeable_building.TILETYPE> types)
+    {
+        foreach (Node2D node in GetChildren())
+        {
+            BuildingCollider bc = node as BuildingCollider;
+            bc.types = types;
+        }
     }
 
     public bool AllCollidersOnBuildingLayer()

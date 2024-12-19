@@ -30,6 +30,7 @@ checkAreaTimer = NodePath("CheckAreaTimer")
 item_holder = NodePath("ItemHolder")
 detector = NodePath("Detector")
 building_id = 1
+tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_BELT_TUNNEL"
 description = "BUILDING_BELT_TUNNEL_DESC"

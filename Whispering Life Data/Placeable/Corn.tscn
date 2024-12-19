@@ -53,6 +53,7 @@ extra_item_amount = 1
 extra_item_info = ExtResource("3_1qyy3")
 gpu_particles = NodePath("CornParticles")
 building_id = 9
+tile_types = Array[int]([1])
 building_collider_manager = NodePath("BuildingAreas")
 title = "WORLD_RESOURCE_CORN"
 description = "WORLD_RESOURCE_CORN_DESC"

@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using Godot;
+using Godot.Collections;
 
 public partial class BuildingCollider : Area2D
 {
@@ -13,6 +14,7 @@ public partial class BuildingCollider : Area2D
     [Export]
     private Texture2D grid_outline_red;
     private TextureRect rect;
+    public Array<placeable_building.TILETYPE> types;
     private bool activated = true;
 
     // Called when the node enters the scene tree for the first time.
@@ -47,10 +49,12 @@ public partial class BuildingCollider : Area2D
                 break;
             }
 
-            if (node.IsInGroup("BuildingCollision"))
-            {
-                on_building = true;
-            }
+            if (types == null)
+                continue;
+
+            foreach (placeable_building.TILETYPE type in types)
+                if (node.IsInGroup(type.ToString()))
+                    on_building = true;
         }
         if (on_building)
         {

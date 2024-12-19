@@ -80,6 +80,7 @@ recipes = [SubResource("Resource_njs37"), SubResource("Resource_u1ie4"), SubReso
 givers = [NodePath("Giver")]
 takers = [NodePath("Taker")]
 building_id = 3
+tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_FURNACE"
 description = "BUILDING_FURNACE_DESC"
