@@ -24,7 +24,7 @@ public partial class ResourceObject : placeable_building
     private float click_cooldown_time = 0.5f;
 
     [Export]
-    private int mining_amount_last = 3;
+    private int mining_bonus = 2;
 
     [Export]
     private ItemInfo item_info;
@@ -148,7 +148,8 @@ public partial class ResourceObject : placeable_building
                     item_info,
                     Inventory.INSTANCE.inventory_items,
                     (int)(
-                        (mining_amount_last + Player.INSTANCE.player_stats.stat_amounts[(int)type])
+                        mining_bonus
+                        * Player.INSTANCE.player_stats.stat_amounts[(int)type]
                         * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
                     )
                 )
@@ -189,10 +190,9 @@ public partial class ResourceObject : placeable_building
                 "Bonus: +"
                     + (
                         (int)(
-                            (
-                                mining_amount_last
-                                + Player.INSTANCE.player_stats.stat_amounts[(int)type]
-                            ) * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+                            mining_bonus
+                            * Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                            * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
                         )
                     )
                     + " "
@@ -202,7 +202,8 @@ public partial class ResourceObject : placeable_building
             Inventory.INSTANCE.AddItem(
                 item_info,
                 (int)(
-                    (mining_amount_last + Player.INSTANCE.player_stats.stat_amounts[(int)type])
+                    mining_bonus
+                    * Player.INSTANCE.player_stats.stat_amounts[(int)type]
                     * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
                 ),
                 Inventory.INSTANCE.inventory_items

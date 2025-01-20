@@ -126,6 +126,8 @@ public partial class Slot : Button
                     EquipmentPanel.INSTANCE.equipped_tools[index] = null;
                     EquipmentPanel.INSTANCE.slots_tool[index].ClearItem();
                     player_ui.INSTANCE.equipmentSelectBar.select_slots[index].ClearItem();
+                    if (EquipmentSelectBar.current_selected_slot == index)
+                        player_ui.INSTANCE.equipmentSelectBar.current_selected_item = null;
                 }
                 if (
                     GetItem().item_info.HasType(ItemInfo.Type.HEAD)
@@ -174,7 +176,8 @@ public partial class Slot : Button
                     player_ui
                         .INSTANCE.equipmentSelectBar.select_slots[index]
                         .SetItem(Inventory.clicked_item.item_info, Inventory.clicked_item.amount);
-
+                    if (EquipmentSelectBar.current_selected_slot == index)
+                        player_ui.INSTANCE.equipmentSelectBar.SelectSelectSlot(index);
                     ClearClickedItem();
                     EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
                 }

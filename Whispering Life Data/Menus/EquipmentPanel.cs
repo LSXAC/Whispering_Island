@@ -55,7 +55,7 @@ public partial class EquipmentPanel : Control
                 ) + ":";
             stats_panel.stats_container.GetChild(i).GetNode<Label>("Number").Text = Player
                 .INSTANCE.player_stats.stat_amounts[i]
-                .ToString("N3");
+                .ToString("N1");
         }
     }
 

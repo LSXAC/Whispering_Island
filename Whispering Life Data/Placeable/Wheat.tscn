@@ -46,7 +46,6 @@ collision_mask = 0
 script = ExtResource("1_hu0bp")
 anim_player = NodePath("AnimationPlayer")
 type = 4
-mining_amount_last = 2
 item_info = ExtResource("2_02xrx")
 drops_extra_item = true
 extra_item_amount = 1

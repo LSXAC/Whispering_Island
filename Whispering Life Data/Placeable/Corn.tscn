@@ -46,7 +46,6 @@ script = ExtResource("1_8yybw")
 anim_player = NodePath("AnimationPlayer")
 max_durability = 2
 respawn_seconds = 30
-mining_amount_last = 2
 item_info = ExtResource("2_der1d")
 drops_extra_item = true
 extra_item_amount = 1

@@ -42,9 +42,6 @@ public partial class EquipmentSelectBar : Container
 
     public void SelectSelectSlot(int index)
     {
-        if (current_selected_slot == index)
-            return;
-
         select_slots[current_selected_slot].GetParent().GetParent<ColorRect>().Color = normal_color;
         select_slots[index].GetParent().GetParent<ColorRect>().Color = selected_color;
         current_selected_item = select_slots[index].GetItem();

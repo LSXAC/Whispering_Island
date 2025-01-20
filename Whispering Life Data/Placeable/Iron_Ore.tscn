@@ -43,7 +43,6 @@ y_sort_enabled = true
 script = ExtResource("1_442v2")
 anim_player = NodePath("AnimationPlayer")
 max_durability = 10
-mining_amount_last = 5
 item_info = ExtResource("2_j0f22")
 gpu_particles = NodePath("StoneParticles")
 building_id = 17

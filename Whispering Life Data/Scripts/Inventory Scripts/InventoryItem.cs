@@ -59,18 +59,10 @@ public partial class InventoryItem : TextureRect
         foreach (ItemStats stats in item_info.item_stats)
             if (stats.bonus > 0)
                 TooltipText +=
-                    "\n"
-                    + TranslationServer.Translate(stats.type.ToString())
-                    + ": +"
-                    + (stats.bonus * 100)
-                    + "%";
+                    "\n" + TranslationServer.Translate(stats.type.ToString()) + ": +" + stats.bonus;
             else if (stats.bonus < 0)
                 TooltipText +=
-                    "\n"
-                    + TranslationServer.Translate(stats.type.ToString())
-                    + ": "
-                    + (stats.bonus * 100)
-                    + "%";
+                    "\n" + TranslationServer.Translate(stats.type.ToString()) + ": " + stats.bonus;
     }
 
     public void UpdateAmountLabel()
