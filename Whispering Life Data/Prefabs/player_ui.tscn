@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://j1cdgg7lep78"]
+[gd_scene load_steps=23 format=3 uid="uid://j1cdgg7lep78"]
 
 [ext_resource type="Script" path="res://Scripts/Player Scripts/player_ui.cs" id="1_m5svq"]
 [ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
@@ -16,6 +16,9 @@
 [ext_resource type="Script" path="res://Prefabs/TranslationRichTextLabel.cs" id="12_fbb8a"]
 [ext_resource type="Texture2D" uid="uid://1rxf21hw1xu5" path="res://Sprites/Heart_Icon.png" id="12_rpytx"]
 [ext_resource type="Script" path="res://Prefabs/HeartManager.cs" id="12_twnk5"]
+[ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://Menus/Theme_Slots.tres" id="17_33i7j"]
+[ext_resource type="Script" path="res://Prefabs/EquipmentSelectBar.cs" id="17_450ol"]
+[ext_resource type="Script" path="res://Scripts/Inventory Scripts/Slot.cs" id="18_2bhlg"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_x1xeh"]
 color = Color(0.141176, 0.141176, 0.141176, 1)
@@ -26,8 +29,12 @@ thickness = 6
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upggj"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "info_vBox", "mainmenu_button")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qq3qp"]
+
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("equipmentSelectBar", "game_time_panel", "qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "info_vBox", "mainmenu_button", "item_label_timer")]
 script = ExtResource("1_m5svq")
+equipmentSelectBar = NodePath("EquipmentSelectBar")
+game_time_panel = NodePath("VBoxContainer/GameTimePanel")
 qcp_timer = NodePath("QuestCompletePanel/Timer")
 times_to_build_left_label = NodePath("WindowFrame/VBoxContainer/TimesLeftLabel")
 window_frame_rect = NodePath("WindowFrame")
@@ -38,6 +45,7 @@ collected_item_parent = NodePath("ReceivedItems")
 gameover_panel = NodePath("GameOverPanel")
 info_vBox = NodePath("WindowFrame/VBoxContainer")
 mainmenu_button = NodePath("GameOverPanel/VBoxContainer/MainmenuButton")
+item_label_timer = NodePath("Item_Label_Timer")
 
 [node name="WindowFrame" type="TextureRect" parent="."]
 visible = false
@@ -104,8 +112,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -100.0
-offset_top = -16.0
+offset_top = -21.0
 offset_right = 100.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_icons/grabber = ExtResource("2_jybl7")
@@ -251,30 +260,6 @@ text = "Confirm"
 
 [node name="Timer" type="Timer" parent="QuestAcceptPanel"]
 wait_time = 2.0
-
-[node name="GameTimePanel" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(120, 0)
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -17.0
-offset_right = 120.0
-grow_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="GameTimePanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 0
-
-[node name="GameTimeLabel" type="Label" parent="GameTimePanel/MarginContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
-text = "Game Time: X"
-horizontal_alignment = 1
 
 [node name="EffectPanel" type="Panel" parent="."]
 visible = false
@@ -432,8 +417,29 @@ script = ExtResource("9_erkjv")
 label_translation_string = "MAINMENU_BACK_TO_MAINMENU"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_right = 110.0
-offset_bottom = 40.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 115.0
+offset_bottom = 89.0
+
+[node name="GameTimePanel" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/GameTimePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="GameTimeLabel" type="Label" parent="VBoxContainer/GameTimePanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "Game Time: X"
+horizontal_alignment = 1
 
 [node name="HeartPanel" type="Panel" parent="VBoxContainer" node_paths=PackedStringArray("parent")]
 custom_minimum_size = Vector2(100, 45)
@@ -532,6 +538,207 @@ theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_0pxjf")
 theme_override_font_sizes/font_size = 10
 text = "Time Left: Unknown"
+
+[node name="EquipmentSelectBar" type="Container" parent="." node_paths=PackedStringArray("select_slots")]
+custom_minimum_size = Vector2(220, 65)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_top = 5.0
+offset_right = -11.0
+offset_bottom = 70.0
+grow_horizontal = 0
+script = ExtResource("17_450ol")
+normal_color = Color(1, 1, 1, 0)
+selected_color = Color(1, 0.839216, 0.0941176, 1)
+select_slots = [NodePath("VBoxContainer/EquipmentHBox/ColorRect/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect2/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect3/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SelectSlot")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EquipmentSelectBar"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EquipmentSelectBar/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "[1]"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "[2]"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "[3]"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "[4]"
+horizontal_alignment = 1
+
+[node name="EquipmentHBox" type="HBoxContainer" parent="EquipmentSelectBar/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
+clip_contents = true
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+color = Color(1, 0.840758, 0.0925788, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("17_33i7j")
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
+disabled = true
+script = ExtResource("18_2bhlg")
+slot_type = 2
+
+[node name="ColorRect2" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
+clip_contents = true
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect2/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("17_33i7j")
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
+disabled = true
+script = ExtResource("18_2bhlg")
+slot_type = 1
+
+[node name="ColorRect3" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
+clip_contents = true
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect3/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("17_33i7j")
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
+disabled = true
+script = ExtResource("18_2bhlg")
+slot_type = 1
+
+[node name="ColorRect4" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
+clip_contents = true
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("17_33i7j")
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
+disabled = true
+script = ExtResource("18_2bhlg")
+slot_type = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="EquipmentSelectBar/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "Equipment Selectbar"
+horizontal_alignment = 2
+
+[node name="Item_Label_Timer" type="Timer" parent="."]
+wait_time = 0.2
 
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="pressed" from="QuestAcceptPanel/CenterContainer/VBoxContainer/ConfirmButton" to="QuestAcceptPanel" method="OnButton"]

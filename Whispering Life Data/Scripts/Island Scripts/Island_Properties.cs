@@ -10,6 +10,7 @@ public partial class Island_Properties : Node2D
     [Export]
     public int matrix_island_id = 0;
     public BuildingManager building_manager;
+    public TileMapLayer ground_tilemap;
 
     [Export]
     private int island_tiles = 16;
@@ -68,6 +69,7 @@ public partial class Island_Properties : Node2D
 
     public override void _Ready()
     {
+        ground_tilemap = GetNode("Tilemaps").GetNode<TileMapLayer>("Ground");
         building_area = GetNode<TileMapLayer>("BuildingArea");
         Node2D start_node = GetNode<Node2D>("IslandProperties");
         bridge_start_points = start_node.GetNode<Node2D>("BridgeStartPoints");

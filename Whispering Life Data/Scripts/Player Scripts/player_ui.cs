@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Godot.Collections;
 
 public partial class player_ui : CanvasLayer
 {
@@ -9,6 +10,11 @@ public partial class player_ui : CanvasLayer
     private Label stamina_label;
     public Panel quest_complete_panel;
     public QuestAcceptPanel quest_accept_panel;
+
+    [Export]
+    public EquipmentSelectBar equipmentSelectBar;
+
+    [Export]
     private PanelContainer game_time_panel;
     private Label game_time_label;
 
@@ -48,6 +54,12 @@ public partial class player_ui : CanvasLayer
     [Export]
     public Button mainmenu_button;
 
+    [Export]
+    public Timer item_label_timer;
+
+    private Array<string> item_label_queue = new Array<string>();
+    private bool queue_working = false;
+
     public override void _Notification(int what)
     {
         if (what != NotificationTranslationChanged)
@@ -60,7 +72,6 @@ public partial class player_ui : CanvasLayer
     {
         INSTANCE = this;
         gameover_panel.Visible = false;
-        game_time_panel = GetNode<PanelContainer>("GameTimePanel");
         game_time_label = game_time_panel.GetChild(0).GetNode<Label>("GameTimeLabel");
         quest_complete_panel = GetNode<Panel>("QuestCompletePanel");
         quest_accept_panel = GetNode<QuestAcceptPanel>("QuestAcceptPanel");
@@ -73,6 +84,19 @@ public partial class player_ui : CanvasLayer
 
         hslider.AddThemeStyleboxOverride("grabber_area", before_reg);
         mainmenu_button.Pressed += () => ToMainMenu();
+        item_label_timer.Timeout += () => SpawnItemLabelUI();
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        if (item_label_queue.Count <= 0)
+            return;
+
+        if (!queue_working)
+        {
+            queue_working = true;
+            item_label_timer.Start();
+        }
     }
 
     public void ToMainMenu()
@@ -121,9 +145,16 @@ public partial class player_ui : CanvasLayer
 
     public static void AddItemLabelUI(string text)
     {
+        INSTANCE.item_label_queue.Add(text);
+    }
+
+    public static void SpawnItemLabelUI()
+    {
         Label label = (Label)INSTANCE.collected_item_label.Instantiate();
-        label.Text = text;
+        label.Text = INSTANCE.item_label_queue[0];
         INSTANCE.collected_item_parent.AddChild(label);
+        INSTANCE.item_label_queue.RemoveAt(0);
+        INSTANCE.queue_working = false;
     }
 
     public void SetWindowFrame()

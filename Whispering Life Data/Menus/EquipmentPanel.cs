@@ -118,10 +118,18 @@ public partial class EquipmentPanel : Control
 
         for (int i = 0; i < slots_tool.Length; i++)
             if (item_save[i] != null)
+            {
                 slots_tool[i]
                     .SetItem(
-                        Inventory.INSTANCE.item_Types[(Inventory.ITEM_ID)item_save[i].item_id],
+                        Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)item_save[i].item_id],
                         item_save[i].amount
                     );
+                player_ui
+                    .INSTANCE.equipmentSelectBar.select_slots[i]
+                    .SetItem(
+                        Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)item_save[i].item_id],
+                        item_save[i].amount
+                    );
+            }
     }
 }

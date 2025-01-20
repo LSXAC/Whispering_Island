@@ -27,6 +27,9 @@ public partial class Slot : Button
     {
         if (@event is InputEventMouseButton btn && @event.IsPressed())
         {
+            if (btn.ButtonMask != MouseButtonMask.Left && btn.ButtonMask != MouseButtonMask.Right)
+                return;
+
             if (GetParent().GetParent() is Inventory)
             {
                 item_array = ((InventoryBase)GetParent().GetParent()).inventory_items;
@@ -122,6 +125,7 @@ public partial class Slot : Button
                 {
                     EquipmentPanel.INSTANCE.equipped_tools[index] = null;
                     EquipmentPanel.INSTANCE.slots_tool[index].ClearItem();
+                    player_ui.INSTANCE.equipmentSelectBar.select_slots[index].ClearItem();
                 }
                 if (
                     GetItem().item_info.HasType(ItemInfo.Type.HEAD)
@@ -166,6 +170,11 @@ public partial class Slot : Button
                     EquipmentPanel
                         .INSTANCE.slots_tool[index]
                         .SetItem(Inventory.clicked_item.item_info, Inventory.clicked_item.amount);
+
+                    player_ui
+                        .INSTANCE.equipmentSelectBar.select_slots[index]
+                        .SetItem(Inventory.clicked_item.item_info, Inventory.clicked_item.amount);
+
                     ClearClickedItem();
                     EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
                 }
