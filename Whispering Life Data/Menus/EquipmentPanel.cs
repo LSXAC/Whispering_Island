@@ -68,27 +68,25 @@ public partial class EquipmentPanel : Control
         foreach (ItemSave s in equipped_armor)
         {
             if (s != null)
-                if (Inventory.INSTANCE.item_Types[(Inventory.ITEM_ID)s.item_id].item_stats != null)
+                if (
+                    Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)s.item_id].item_stats
+                    != null
+                )
                     foreach (
                         ItemStats x in Inventory
                             .INSTANCE
-                            .item_Types[(Inventory.ITEM_ID)s.item_id]
+                            .item_Types[(InventoryBase.ITEM_ID)s.item_id]
                             .item_stats
                     )
                         ps.stat_amounts[(int)x.type] += x.bonus;
         }
 
-        foreach (ItemSave s in equipped_tools)
+        if (player_ui.INSTANCE.equipmentSelectBar.GetSelectedItem() != null)
         {
-            if (s != null)
-                if (Inventory.INSTANCE.item_Types[(Inventory.ITEM_ID)s.item_id].item_stats != null)
-                    foreach (
-                        ItemStats x in Inventory
-                            .INSTANCE
-                            .item_Types[(Inventory.ITEM_ID)s.item_id]
-                            .item_stats
-                    )
-                        ps.stat_amounts[(int)x.type] += x.bonus;
+            InventoryItem ii = player_ui.INSTANCE.equipmentSelectBar.GetSelectedItem();
+            if (ii.item_info.item_stats != null)
+                foreach (ItemStats x in ii.item_info.item_stats)
+                    ps.stat_amounts[(int)x.type] += x.bonus;
         }
         UpdateProgressbars();
     }

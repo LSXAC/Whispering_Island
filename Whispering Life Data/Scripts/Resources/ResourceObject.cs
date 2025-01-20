@@ -12,10 +12,10 @@ public partial class ResourceObject : placeable_building
     public AnimationPlayer anim_player;
 
     [Export]
-    private int max_durability = 3;
+    public StatsPanel.stat_types type;
 
     [Export]
-    private int mining_amount = 1;
+    private int max_durability = 3;
 
     [Export]
     private int respawn_seconds = 60;
@@ -130,7 +130,10 @@ public partial class ResourceObject : placeable_building
                 !Inventory.INSTANCE.CanReceiveItem(
                     item_info,
                     Inventory.INSTANCE.inventory_items,
-                    (int)(mining_amount * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT))
+                    (int)(
+                        Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                        * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+                    )
                 )
             )
             {
@@ -144,7 +147,10 @@ public partial class ResourceObject : placeable_building
                 !Inventory.INSTANCE.CanReceiveItem(
                     item_info,
                     Inventory.INSTANCE.inventory_items,
-                    (int)(mining_amount_last * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT))
+                    (int)(
+                        (mining_amount_last + Player.INSTANCE.player_stats.stat_amounts[(int)type])
+                        * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+                    )
                 )
             )
             {
@@ -171,16 +177,22 @@ public partial class ResourceObject : placeable_building
         }
 
         Player.INSTANCE.player_stats.AddFatigue(0.25f);
-        current_durability--;
+        current_durability -= (int)(
+            Player.INSTANCE.player_stats.stat_amounts[(int)type]
+            * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+        );
         gpu_particles.Emitting = true;
-        if (current_durability == 0)
+        if (current_durability <= 0)
         {
             anim_player.Play("Break");
             player_ui.AddItemLabelUI(
                 "Bonus: +"
                     + (
                         (int)(
-                            mining_amount_last * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+                            (
+                                mining_amount_last
+                                + Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                            ) * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
                         )
                     )
                     + " "
@@ -189,7 +201,10 @@ public partial class ResourceObject : placeable_building
             StartTimerBar(TimerBar.state.SPAWNING, respawn_seconds);
             Inventory.INSTANCE.AddItem(
                 item_info,
-                (int)(mining_amount_last * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)),
+                (int)(
+                    (mining_amount_last + Player.INSTANCE.player_stats.stat_amounts[(int)type])
+                    * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+                ),
                 Inventory.INSTANCE.inventory_items
             );
 
@@ -221,13 +236,21 @@ public partial class ResourceObject : placeable_building
         StartTimerBar(TimerBar.state.COOLDOWN, click_cooldown_time);
         player_ui.AddItemLabelUI(
             "+"
-                + ((int)(mining_amount * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)))
+                + (
+                    (int)(
+                        Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                        * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+                    )
+                )
                 + " "
                 + TranslationServer.Translate(item_info.item_name.ToString())
         );
         Inventory.INSTANCE.AddItem(
             item_info,
-            (int)(mining_amount * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)),
+            (int)(
+                Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+            ),
             Inventory.INSTANCE.inventory_items
         );
     }

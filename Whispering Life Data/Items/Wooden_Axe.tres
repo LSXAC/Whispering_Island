@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=8 format=3 uid="uid://dmrxwabbdyg0d"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=7 format=3 uid="uid://dmrxwabbdyg0d"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_8fx8c"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_ssgok"]
@@ -9,12 +9,7 @@
 [sub_resource type="Resource" id="Resource_4kdc1"]
 script = ExtResource("1_ssgok")
 type = 2
-bonus = 0.25
-
-[sub_resource type="Resource" id="Resource_t6n0y"]
-script = ExtResource("1_ssgok")
-type = 0
-bonus = 0.5
+bonus = 1.0
 
 [resource]
 script = ExtResource("1_8fx8c")
@@ -25,4 +20,4 @@ unique_id = 5
 item_description = "WOODEN_AXE_DESC"
 texture = ExtResource("3_7xvs7")
 value = 5.0
-item_stats = [SubResource("Resource_4kdc1"), SubResource("Resource_t6n0y")]
+item_stats = [SubResource("Resource_4kdc1")]

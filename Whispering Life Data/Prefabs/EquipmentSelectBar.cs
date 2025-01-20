@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class EquipmentSelectBar : Container
@@ -10,9 +11,15 @@ public partial class EquipmentSelectBar : Container
     [Export]
     public Slot[] select_slots = new Slot[4];
 
+    public InventoryItem current_selected_item = null;
+
     public static int current_selected_slot = 0;
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Ready()
+    {
+        SelectSelectSlot(0);
+    }
+
     public override void _Process(double delta)
     {
         if (Input.IsActionJustPressed("NUM1"))
@@ -25,6 +32,14 @@ public partial class EquipmentSelectBar : Container
             SelectSelectSlot(3);
     }
 
+    public InventoryItem GetSelectedItem()
+    {
+        if (current_selected_item == null)
+            Debug.Print("No Item selected in Selectbar");
+
+        return current_selected_item;
+    }
+
     public void SelectSelectSlot(int index)
     {
         if (current_selected_slot == index)
@@ -32,6 +47,8 @@ public partial class EquipmentSelectBar : Container
 
         select_slots[current_selected_slot].GetParent().GetParent<ColorRect>().Color = normal_color;
         select_slots[index].GetParent().GetParent<ColorRect>().Color = selected_color;
+        current_selected_item = select_slots[index].GetItem();
         current_selected_slot = index;
+        EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
     }
 }
