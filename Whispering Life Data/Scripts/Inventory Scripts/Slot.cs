@@ -111,7 +111,7 @@ public partial class Slot : Button
             }
             else
             {
-                GetItem().GetChild(0).QueueFree();
+                GetItem().QueueFree();
                 SetItem(item_info, amount);
             }
         }
