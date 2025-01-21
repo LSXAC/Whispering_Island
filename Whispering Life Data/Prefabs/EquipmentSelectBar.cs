@@ -40,12 +40,31 @@ public partial class EquipmentSelectBar : Container
         return current_selected_item;
     }
 
+    public ItemInfo.Type_Level GetSelectedTypeLevel()
+    {
+        if (GetSelectedItem() != null)
+            return GetSelectedItem().item_info.type_level;
+        return ItemInfo.Type_Level.Hand;
+    }
+
+    public bool HasSameUseType(StatsPanel.stat_types type)
+    {
+        if (GetSelectedItem() != null)
+            if (GetSelectedItem().item_info.use_type == type)
+                return true;
+            else
+                return false;
+
+        return true;
+    }
+
     public void SelectSelectSlot(int index)
     {
         select_slots[current_selected_slot].GetParent().GetParent<ColorRect>().Color = normal_color;
         select_slots[index].GetParent().GetParent<ColorRect>().Color = selected_color;
         current_selected_item = select_slots[index].GetItem();
         current_selected_slot = index;
-        EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
+        if (EquipmentPanel.INSTANCE != null)
+            EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
     }
 }

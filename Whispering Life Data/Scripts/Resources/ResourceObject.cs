@@ -15,6 +15,9 @@ public partial class ResourceObject : placeable_building
     public StatsPanel.stat_types type;
 
     [Export]
+    public ItemInfo.Type_Level type_level = ItemInfo.Type_Level.Hand;
+
+    [Export]
     private int max_durability = 3;
 
     [Export]
@@ -85,8 +88,6 @@ public partial class ResourceObject : placeable_building
         if (ros == null)
             return;
 
-        //await ToSignal(this, "ReadyFinished");
-        //Debug.Print("Finiushed Ready Funtin in Reasources");
         Position = ros.position;
         current_durability = ros.current_durability;
         in_cooldown = ros.in_cooldown;
@@ -140,6 +141,16 @@ public partial class ResourceObject : placeable_building
                 player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
                 return;
             }
+            if (!player_ui.INSTANCE.equipmentSelectBar.HasSameUseType(type))
+            {
+                player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WRONG_TOOL"));
+                return;
+            }
+            if (player_ui.INSTANCE.equipmentSelectBar.GetSelectedTypeLevel() < type_level)
+            {
+                player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WEAK_TYPE_LEVEL"));
+                return;
+            }
         }
         else
         {
@@ -156,7 +167,16 @@ public partial class ResourceObject : placeable_building
             )
             {
                 player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
-
+                return;
+            }
+            if (!player_ui.INSTANCE.equipmentSelectBar.HasSameUseType(type))
+            {
+                player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WRONG_TOOL"));
+                return;
+            }
+            if (player_ui.INSTANCE.equipmentSelectBar.GetSelectedTypeLevel() < type_level)
+            {
+                player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WEAK_TYPE_LEVEL"));
                 return;
             }
             if (drops_extra_item)

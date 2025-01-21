@@ -42,6 +42,7 @@ scale_curve = SubResource("CurveTexture_4ikef")
 y_sort_enabled = true
 script = ExtResource("1_csqkk")
 anim_player = NodePath("AnimationPlayer")
+type = 3
 max_durability = 5
 item_info = ExtResource("2_kmxi4")
 gpu_particles = NodePath("SandStoneParticles")

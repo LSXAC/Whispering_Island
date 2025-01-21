@@ -44,6 +44,7 @@ collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_ywllv")
 anim_player = NodePath("AnimationPlayer")
+type = 4
 respawn_seconds = 20
 item_info = ExtResource("2_v7k63")
 drops_extra_item = true

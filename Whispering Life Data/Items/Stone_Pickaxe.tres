@@ -20,4 +20,6 @@ unique_id = 3
 item_description = "STONE_PICKAXE_DESC"
 texture = ExtResource("2_wjrmy")
 value = 5.0
+type_level = 2
+use_type = 3
 item_stats = [SubResource("Resource_2i0b4")]

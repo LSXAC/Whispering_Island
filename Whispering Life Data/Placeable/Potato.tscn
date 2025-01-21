@@ -44,6 +44,7 @@ collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_p10p7")
 anim_player = NodePath("AnimationPlayer")
+type = 4
 max_durability = 2
 respawn_seconds = 30
 item_info = ExtResource("2_yytp3")

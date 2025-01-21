@@ -155,6 +155,7 @@ public partial class player_ui : CanvasLayer
         INSTANCE.collected_item_parent.AddChild(label);
         INSTANCE.item_label_queue.RemoveAt(0);
         INSTANCE.queue_working = false;
+        INSTANCE.item_label_timer.Stop();
     }
 
     public void SetWindowFrame()

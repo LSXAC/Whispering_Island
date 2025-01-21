@@ -29,8 +29,8 @@ PLAYERUI_TIMES_LEFT_TO_BUILD,can be build.,kann gebaut werden.
 PLAYERUI_INVENTORY_FULL,Inventory overloaded!,Inventar überladen!
 PLAYERUI_COMPLETE_QUEST,Quest completed!,Aufgabe erfüllt!
 PLAYERUI_COMPLETE_QUEST_REQU_ITEMS,The required Items got removed from your inventory.,Die erforderlichen Items wurden aus dem Inventar entfernt.
-,,
-,,
+PLAYERUI_WEAK_TYPE_LEVEL,The Tool Level is to weak.,Das Werkzeuglevel ist zu schwach.
+PLAYERUI_WRONG_TOOL,Wrong Tool!,Falsches Werkzeug!
 ,,
 EQUIPMENT_SLOT_HEAD,Head,Kopf
 EQUIPMENT_SLOT_CHEST,Chest,Brust

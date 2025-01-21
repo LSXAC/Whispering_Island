@@ -100,6 +100,25 @@ public partial class Slot : Button
             ClearItem();
     }
 
+    public void UpdateItem(ItemInfo item_info, int amount)
+    {
+        if (GetItem() != null)
+        {
+            if (item_info == GetItem().item_info)
+            {
+                GetItem().amount = amount;
+                GetItem().UpdateAmountLabel();
+            }
+            else
+            {
+                GetItem().GetChild(0).QueueFree();
+                SetItem(item_info, amount);
+            }
+        }
+        else
+            SetItem(item_info, amount);
+    }
+
     public InventoryItem GetItem()
     {
         if (GetChildCount() > 0)

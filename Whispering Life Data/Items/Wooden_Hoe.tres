@@ -26,4 +26,5 @@ unique_id = 20
 item_description = "WOODEN_HOE_DESC"
 texture = ExtResource("3_2is6l")
 value = 10.0
+type_level = 1
 item_stats = [SubResource("Resource_mcbdc"), SubResource("Resource_o3yil")]

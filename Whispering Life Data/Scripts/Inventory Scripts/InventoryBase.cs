@@ -377,12 +377,14 @@ public partial class InventoryBase : SlotUpdater
 
     public override void UpdateSlot(int index, InventoryItem pref_ref = null)
     {
-        ClearSlot(index);
         if (inventory_items[index] == null)
+        {
+            ClearSlot(index);
             return;
+        }
 
         GetNode<Slot>($"GridContainer/Slot{index}")
-            .SetItem(GetItemInfo(index), inventory_items[index].amount);
+            .UpdateItem(GetItemInfo(index), inventory_items[index].amount);
 
         if (pref_ref != null)
             GetNode<Slot>($"GridContainer/Slot{index}").GetItem().SelfModulate =

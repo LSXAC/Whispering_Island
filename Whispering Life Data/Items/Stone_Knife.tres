@@ -25,4 +25,6 @@ unique_id = 11
 item_description = "STONE_KNIFE_DESC"
 texture = ExtResource("2_1lwkt")
 value = 10.0
+type_level = 2
+use_type = 4
 item_stats = [SubResource("Resource_p82l7"), SubResource("Resource_6hoy5")]

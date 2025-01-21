@@ -28,6 +28,15 @@ public partial class ItemInfo : Resource
         SHOES
     };
 
+    public enum Type_Level
+    {
+        Hand,
+        Wood,
+        Stone,
+        Mystic,
+        Iron,
+    }
+
     [Export]
     public int max_slot_amount = 48;
 
@@ -35,7 +44,7 @@ public partial class ItemInfo : Resource
     public string item_name;
 
     [Export]
-    public Inventory.ITEM_ID unique_id;
+    public InventoryBase.ITEM_ID unique_id;
 
     [Export]
     public string item_description;
@@ -45,6 +54,12 @@ public partial class ItemInfo : Resource
 
     [Export(PropertyHint.Range, "0,1000,1")]
     public float value;
+
+    [Export]
+    public Type_Level type_level;
+
+    [Export]
+    public StatsPanel.stat_types use_type;
 
     [Export]
     public Array<ItemStats> item_stats = new Array<ItemStats>();

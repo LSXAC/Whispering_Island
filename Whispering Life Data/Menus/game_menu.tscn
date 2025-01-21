@@ -2403,6 +2403,7 @@ label_translation_string = "MAINMENU_EXIT_GAME"
 [connection signal="pressed" from="Background/HBoxHeader/SettingsTabButton" to="." method="OnSettingsTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/CheatButton" to="." method="OnOpenAdminTab"]
 [connection signal="pressed" from="Background/HBoxHeader/ExitTabButton" to="." method="OnExitButton"]
+[connection signal="visibility_changed" from="Background/InventoryTab" to="Background/InventoryTab/Inventory" method="OnVisiblityChange"]
 [connection signal="visibility_changed" from="Background/InventoryTab/EquipmentPanel" to="Background/InventoryTab/EquipmentPanel" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/EnableDisableButton" to="Background/FurnaceTab" method="OnMachineStateButton"]
 [connection signal="pressed" from="Background/ResearchTab/PanelContainer/Button" to="Background/ResearchTab" method="OnResearchButton"]
