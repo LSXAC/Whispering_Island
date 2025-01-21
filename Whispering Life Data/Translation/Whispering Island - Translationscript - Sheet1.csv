@@ -7,7 +7,7 @@ GAMEMENU_INVENTORY_BUTTON,Inventory,Inventar
 GAMEMENU_CRAFTING_BUTTON,Crafting,Herstellen
 GAMEMENU_SAVELOAD_BUTTON,Save,Speichern
 GAMEMENU_SETTINGS_BUTTON,Settings,Einstellungen
-,,
+GAMEMENU_HELP_BUTTON,Guide,Handbuch
 SETTINGS_MASTER_VOLUME,Master Volume,Gesamtlautstärke
 SETTINGS_SFX_VOLUME,SFX Volume,SFX Lautstärke
 SETTINGS_MUSIC_VOLUME,Music Volume,Musik Lautstärke

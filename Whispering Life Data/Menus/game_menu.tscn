@@ -1,7 +1,8 @@
-[gd_scene load_steps=61 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=68 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
+[ext_resource type="Texture2D" uid="uid://dt57iw0qu33ut" path="res://Sprites/Items/Tool_Icons/icons_30_36.png" id="3_m27n3"]
 [ext_resource type="Script" path="res://Menus/TranslationButton.cs" id="3_pwamf"]
 [ext_resource type="PackedScene" uid="uid://74pm7gmanqf2" path="res://Prefabs/inventory.tscn" id="3_ub0ut"]
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/CraftingMenu.cs" id="4_3cwxu"]
@@ -10,7 +11,12 @@
 [ext_resource type="Script" path="res://Menus/FurnaceTab.cs" id="4_kmuua"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/Slot.cs" id="4_v56ys"]
 [ext_resource type="Texture2D" uid="uid://ne3oahdi530f" path="res://Sprites/Char_Profil.png" id="5_6jpat"]
+[ext_resource type="Texture2D" uid="uid://b8klnfsxws1y4" path="res://Sprites/Items/Icons_3rd/Icons_27_10.png" id="5_bku2s"]
+[ext_resource type="Texture2D" uid="uid://wm8u7fh52l6x" path="res://Sprites/Items/Icons_3rd/Icons_27_28.png" id="6_wyyvd"]
+[ext_resource type="Texture2D" uid="uid://xwp6xkc68bnl" path="res://Sprites/Items/Icons_3rd/Icons_27_30.png" id="7_gd3kq"]
 [ext_resource type="Script" path="res://Menus/StatsPanel.cs" id="7_hhlnf"]
+[ext_resource type="Texture2D" uid="uid://dogc25lho5gel" path="res://Sprites/Items/Plants_Icons/icons_29_06.png" id="7_lai0m"]
+[ext_resource type="Texture2D" uid="uid://bpn4kdrr5ejdr" path="res://Sprites/Items/Icons_3rd/Icons_27_73.png" id="7_wk80g"]
 [ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://Menus/Theme_Slots.tres" id="10_8x2l6"]
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://header_color_rect.tscn" id="11_45saq"]
 [ext_resource type="Script" path="res://Menus/ResearchTab.cs" id="11_hr8uu"]
@@ -56,6 +62,7 @@
 [ext_resource type="Resource" uid="uid://b7s0yy04d32rp" path="res://Recipes/Agriculture/Wheat_Seeds_To_Carrot_Seeds_Recipe.tres" id="39_um0ua"]
 [ext_resource type="Resource" uid="uid://blnxntu8sdsvq" path="res://Recipes/Agriculture/Wheat_Seeds_To_Corn_Seeds_Recipe.tres" id="40_rv3r3"]
 [ext_resource type="Resource" uid="uid://kbdrwglo2ghh" path="res://Recipes/Agriculture/Wheat_Seeds_To_Potato_Seeds_Recipe.tres" id="41_bd22e"]
+[ext_resource type="Script" path="res://Menus/HelpTab.cs" id="56_74gou"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tibut"]
 bg_color = Color(1, 1, 1, 0)
@@ -89,7 +96,7 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "header_container")]
+[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "header_container")]
 process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/SaveLoadTab/HBoxContainer/LoadGameButton")
@@ -105,6 +112,7 @@ saveload_tab = NodePath("Background/SaveLoadTab")
 admin_tab = NodePath("Background/AdminTab")
 island_tab = NodePath("Background/IslandTab")
 skilltree_tab = NodePath("Background/Skilltree")
+help_tab = NodePath("Background/HelpTab")
 header_container = NodePath("Background/HBoxHeader")
 
 [node name="TransBackground" type="ColorRect" parent="."]
@@ -140,10 +148,11 @@ size_flags_horizontal = 3
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
-text = "> Inventory"
-icon_alignment = 1
+text = "Inventory"
+icon = ExtResource("3_m27n3")
 script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_INVENTORY_BUTTON"
 
@@ -153,13 +162,30 @@ size_flags_horizontal = 3
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
-text = "> Crafting"
+text = "Crafting"
+icon = ExtResource("5_bku2s")
 script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_CRAFTING_BUTTON"
 
+[node name="SaveTabButton" type="Button" parent="Background/HBoxHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Save/Load"
+icon = ExtResource("6_wyyvd")
+script = ExtResource("3_pwamf")
+label_translation_string = "GAMEMENU_SAVELOAD_BUTTON"
+
 [node name="StatsTabButton" type="Button" parent="Background/HBoxHeader"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -168,7 +194,7 @@ theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
 disabled = true
-text = "> Stats"
+text = "Stats"
 script = ExtResource("3_pwamf")
 
 [node name="SkillTreeTabButton" type="Button" parent="Background/HBoxHeader"]
@@ -177,12 +203,14 @@ size_flags_horizontal = 3
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
-text = "> SkillTree"
+text = "SkillTREE"
+icon = ExtResource("7_lai0m")
 script = ExtResource("3_pwamf")
 
-[node name="SaveTabButton" type="Button" parent="Background/HBoxHeader"]
+[node name="AdminButton" type="Button" parent="Background/HBoxHeader"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -190,31 +218,31 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
-text = "> Save/Load"
+text = "ADMIN"
 script = ExtResource("3_pwamf")
-label_translation_string = "GAMEMENU_SAVELOAD_BUTTON"
+
+[node name="HelpButton" type="Button" parent="Background/HBoxHeader"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Help"
+icon = ExtResource("7_wk80g")
+script = ExtResource("3_pwamf")
+label_translation_string = "GAMEMENU_HELP_BUTTON"
 
 [node name="SettingsTabButton" type="Button" parent="Background/HBoxHeader"]
 layout_mode = 2
-size_flags_horizontal = 3
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
-text = "> Settings"
-script = ExtResource("3_pwamf")
-label_translation_string = "GAMEMENU_SETTINGS_BUTTON"
-
-[node name="CheatButton" type="Button" parent="Background/HBoxHeader"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 12
-text = "> ADMIN"
+icon = ExtResource("7_gd3kq")
 script = ExtResource("3_pwamf")
 
 [node name="ExitTabButton" type="Button" parent="Background/HBoxHeader"]
@@ -1744,7 +1772,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 26.0
+offset_top = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
@@ -1996,6 +2024,273 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "© 2024 Leon Schröder Asset Creations"
 horizontal_alignment = 1
+
+[node name="HelpTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("pages")]
+visible = false
+z_index = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
+script = ExtResource("56_74gou")
+pages = [NodePath("VBoxContainer/HP_Resources"), NodePath("VBoxContainer/HP_Resources2")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab"]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 14.0
+offset_right = 549.0
+offset_bottom = 263.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Background/HelpTab/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Item"
+horizontal_alignment = 1
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="HP_Resources" type="PanelContainer" parent="Background/HelpTab/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = -3
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources/MarginContainer"]
+custom_minimum_size = Vector2(300, 205)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Item"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="ItemLabel2" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Title of the PageTitle of the PageTitle of the Page Title of the Page Title of the PageTitle of the PageTitle of the PageTitle of the Page Title of the Page"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="ItemLabel3" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Title of the PageTitle of the PageTitle of the Page Title of the Page Title of the PageTitle of the PageTitle of the PageTitle of the Page Title of the Page"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="ItemLabel4" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Title of the PageTitle of the PageTitle of the Page Title of the Page Title of the PageTitle of the PageTitle of the PageTitle of the Page Title of the Page"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="ItemLabel5" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Title of the PageTitle of the PageTitle of the Page Title of the Page Title of the PageTitle of the PageTitle of the PageTitle of the Page Title of the Page"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="HP_Resources2" type="PanelContainer" parent="Background/HelpTab/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources2"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = -3
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources2/MarginContainer"]
+custom_minimum_size = Vector2(300, 215)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources2/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources2/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Item"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="ItemLabel2" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources2/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Title of the PageTitle of the PageTitle of the Page Title of the Page Title of the PageTitle of the PageTitle of the PageTitle of the Page Title of the Page"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="ItemLabel5" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources2/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Title of the PageTitle of the PageTitle of the Page Title of the Page Title of the PageTitle of the PageTitle of the PageTitle of the Page Title of the Page"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="CategoryPanel" type="PanelContainer" parent="Background/HelpTab"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 14.0
+offset_right = 216.0
+offset_bottom = 253.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tibut")
+
+[node name="HSplitContainer" type="VBoxContainer" parent="Background/HelpTab/CategoryPanel"]
+layout_mode = 2
+
+[node name="ResourcesButton" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+text = "Resources"
+script = ExtResource("3_pwamf")
+label_translation_string = "CRAFTING_MENU_GENERAL"
+
+[node name="ToolsButton" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+text = "ToolsDeath"
+script = ExtResource("3_pwamf")
+label_translation_string = "CRAFTING_MENU_TOOLS"
+
+[node name="ToolspartsButton" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+text = "Toolparts"
+script = ExtResource("3_pwamf")
+label_translation_string = "CRAFTING_MENU_TOOLPARTS"
+
+[node name="ArmorButton" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+text = "CRAFTING_MENU_ARMOR"
+script = ExtResource("3_pwamf")
+label_translation_string = "CRAFTING_MENU_ARMOR"
+
+[node name="AgricultureButton" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+text = "CRAFTING_MENU_ARMOR"
+script = ExtResource("3_pwamf")
+label_translation_string = "CRAFTING_MENU_AGRICULTURE"
+
+[node name="Button6" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+disabled = true
+text = "---"
+script = ExtResource("3_pwamf")
+
+[node name="Button7" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+disabled = true
+text = "---"
+script = ExtResource("3_pwamf")
+
+[node name="Button8" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+disabled = true
+text = "---"
+script = ExtResource("3_pwamf")
+
+[node name="Button9" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+disabled = true
+text = "---"
+script = ExtResource("3_pwamf")
 
 [node name="SaveLoadTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("lastsave_label", "fromsave_label")]
 visible = false
@@ -2398,10 +2693,11 @@ label_translation_string = "MAINMENU_EXIT_GAME"
 
 [connection signal="pressed" from="Background/HBoxHeader/InvTabButton" to="." method="OnInventoryTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]
-[connection signal="pressed" from="Background/HBoxHeader/SkillTreeTabButton" to="." method="OnOpenSkilltreeTab"]
 [connection signal="pressed" from="Background/HBoxHeader/SaveTabButton" to="." method="OnSaveLoadTabButton"]
+[connection signal="pressed" from="Background/HBoxHeader/SkillTreeTabButton" to="." method="OnOpenSkilltreeTab"]
+[connection signal="pressed" from="Background/HBoxHeader/AdminButton" to="." method="OnOpenAdminTab"]
+[connection signal="pressed" from="Background/HBoxHeader/HelpButton" to="." method="OnHelpTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/SettingsTabButton" to="." method="OnSettingsTabButton"]
-[connection signal="pressed" from="Background/HBoxHeader/CheatButton" to="." method="OnOpenAdminTab"]
 [connection signal="pressed" from="Background/HBoxHeader/ExitTabButton" to="." method="OnExitButton"]
 [connection signal="visibility_changed" from="Background/InventoryTab" to="Background/InventoryTab/Inventory" method="OnVisiblityChange"]
 [connection signal="visibility_changed" from="Background/InventoryTab/EquipmentPanel" to="Background/InventoryTab/EquipmentPanel" method="OnVisiblityChanged"]
@@ -2423,6 +2719,9 @@ label_translation_string = "MAINMENU_EXIT_GAME"
 [connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/AgricultureButton" to="." method="OnCraftingCategoryButton" binds= [4]]
 [connection signal="pressed" from="Background/StatsTab/HBoxContainer/SaveGameButton" to="." method="OnSaveButton"]
 [connection signal="pressed" from="Background/StatsTab/HBoxContainer/LoadGameButton" to="." method="OnLoadButton"]
+[connection signal="visibility_changed" from="Background/HelpTab" to="Background/HelpTab" method="OnVisiblityChange"]
+[connection signal="pressed" from="Background/HelpTab/CategoryPanel/HSplitContainer/ResourcesButton" to="Background/HelpTab" method="OnPageButton" binds= [0]]
+[connection signal="pressed" from="Background/HelpTab/CategoryPanel/HSplitContainer/ToolsButton" to="Background/HelpTab" method="OnPageButton" binds= [1]]
 [connection signal="visibility_changed" from="Background/SaveLoadTab" to="Background/SaveLoadTab" method="OnVisiblityChange"]
 [connection signal="pressed" from="Background/SaveLoadTab/HBoxContainer/SaveGameButton" to="." method="OnSaveButton"]
 [connection signal="pressed" from="Background/SaveLoadTab/HBoxContainer/LoadGameButton" to="." method="OnLoadButton"]

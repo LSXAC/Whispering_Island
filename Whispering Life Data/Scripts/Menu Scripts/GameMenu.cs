@@ -43,6 +43,9 @@ public partial class GameMenu : CanvasLayer
     [Export]
     public ColorRect skilltree_tab;
 
+    [Export]
+    public ColorRect help_tab;
+
     public static GameMenu INSTANCE = null;
 
     [Export]
@@ -133,6 +136,7 @@ public partial class GameMenu : CanvasLayer
         SkillTree,
         LoadSave,
         Settings,
+        Guide,
         Admin,
         X
     }
@@ -174,6 +178,14 @@ public partial class GameMenu : CanvasLayer
         ChangeSelectedTabColor(Tabs.Inventory);
         CloseAllTabs();
         inventory_tab.Visible = true;
+    }
+
+    public void OnHelpTabButton()
+    {
+        SetWindow(this);
+        ChangeSelectedTabColor(Tabs.Guide);
+        CloseAllTabs();
+        help_tab.Visible = true;
     }
 
     public void OnSettingsTabButton()
