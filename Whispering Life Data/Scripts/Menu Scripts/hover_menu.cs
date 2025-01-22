@@ -26,10 +26,6 @@ public partial class hover_menu : PanelContainer
             return;
         INSTANCE.title_Label.Text = TranslationServer.Translate(node.GetTitle());
         INSTANCE.description_Label.Text = TranslationServer.Translate(node.GetDescription());
-        INSTANCE.Position = new Vector2(
-            node.GetBuildingPosition().X - (INSTANCE.Size.X / 2),
-            node.GetBuildingPosition().Y - INSTANCE.Size.Y
-        );
         EnableHoverMenu();
     }
 

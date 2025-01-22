@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://j1cdgg7lep78"]
+[gd_scene load_steps=24 format=3 uid="uid://j1cdgg7lep78"]
 
 [ext_resource type="Script" path="res://Scripts/Player Scripts/player_ui.cs" id="1_m5svq"]
 [ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
@@ -19,6 +19,7 @@
 [ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://Menus/Theme_Slots.tres" id="17_33i7j"]
 [ext_resource type="Script" path="res://Prefabs/EquipmentSelectBar.cs" id="17_450ol"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/Slot.cs" id="18_2bhlg"]
+[ext_resource type="PackedScene" uid="uid://bovrg0u6tuo04" path="res://Menus/hover_menu.tscn" id="20_fdkbp"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_x1xeh"]
 color = Color(0.141176, 0.141176, 0.141176, 1)
@@ -739,6 +740,19 @@ horizontal_alignment = 2
 
 [node name="Item_Label_Timer" type="Timer" parent="."]
 wait_time = 0.2
+
+[node name="HoverMenu" parent="." instance=ExtResource("20_fdkbp")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -172.0
+offset_top = -68.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="pressed" from="QuestAcceptPanel/CenterContainer/VBoxContainer/ConfirmButton" to="QuestAcceptPanel" method="OnButton"]

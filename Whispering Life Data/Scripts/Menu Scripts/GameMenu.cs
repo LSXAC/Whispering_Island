@@ -310,6 +310,7 @@ public partial class GameMenu : CanvasLayer
         saveload_tab.Visible = false;
         island_tab.Visible = false;
         chest_tab.Visible = false;
+        help_tab.Visible = false;
     }
 
     public void OnCloseResearchTab()

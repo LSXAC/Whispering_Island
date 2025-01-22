@@ -17,46 +17,42 @@ axis_stretch_vertical = 1
 z_index = 5
 z_as_relative = false
 custom_minimum_size = Vector2(150, 34)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -112.0
-offset_top = -19.0
-offset_right = 50.0
-offset_bottom = 45.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 162.0
+offset_bottom = 58.0
+pivot_offset = Vector2(0, 58)
 theme_override_styles/panel = SubResource("StyleBoxTexture_hpyar")
 script = ExtResource("1_ywqhi")
-title_Label = NodePath("CenterContainer/VBoxContainer/TitleLabel")
-description_Label = NodePath("CenterContainer/VBoxContainer/DescriptionLabel")
+title_Label = NodePath("MarginContainer/VBoxContainer/TitleLabel")
+description_Label = NodePath("MarginContainer/VBoxContainer/DescriptionLabel")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+clip_contents = true
 layout_mode = 2
+alignment = 1
 
-[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 12
-text = "WDwdwdwd  wdwfwfwf w fwfwf gr "
+theme_override_font_sizes/font_size = 10
+text = "Stone"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DescriptionLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 19)
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 10
-text = "gegegegegr3r3r3r3rr3 dwd wd wfe fe feg rg r"
+theme_override_font_sizes/font_size = 8
+text = "Harvest get Stone"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
