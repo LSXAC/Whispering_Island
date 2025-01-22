@@ -13,4 +13,6 @@ unique_id = 18
 item_description = "STONE_PICKAXE_HEAD_DESC"
 texture = ExtResource("2_t5k5v")
 value = 10.0
+type_level = 0
+use_type = 0
 item_stats = []

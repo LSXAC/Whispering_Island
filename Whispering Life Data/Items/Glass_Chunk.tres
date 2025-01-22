@@ -13,4 +13,6 @@ unique_id = 16
 item_description = "GLASS_CHUNK_DESC"
 texture = ExtResource("3_rlumj")
 value = 10.0
+type_level = 0
+use_type = 0
 item_stats = []

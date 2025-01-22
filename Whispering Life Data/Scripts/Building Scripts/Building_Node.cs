@@ -11,7 +11,7 @@ public abstract partial class Building_Node : Node2D
     private string description = "";
 
     [Export]
-    private Sprite2D sprite;
+    public Sprite2D sprite;
 
     [Export]
     public CollisionShape2D collision_shape;

@@ -39,12 +39,13 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_rvv5o")
 
-[node name="Wheat" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
+[node name="Wheat" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "hit_point", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_hu0bp")
 anim_player = NodePath("AnimationPlayer")
+hit_point = NodePath("HitPoint")
 type = 4
 item_info = ExtResource("2_02xrx")
 drops_extra_item = true
@@ -116,6 +117,9 @@ script = ExtResource("9_vc3u4")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
 [node name="AnimationPlayer" parent="." instance=ExtResource("10_plo37")]
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-8, -11)
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

@@ -12,6 +12,9 @@ public partial class ResourceObject : placeable_building
     public AnimationPlayer anim_player;
 
     [Export]
+    public Node2D hit_point;
+
+    [Export]
     public StatsPanel.stat_types type;
 
     [Export]
@@ -48,6 +51,11 @@ public partial class ResourceObject : placeable_building
     TimerBar timer_bar;
     Area2D interactableArea;
     public bool in_cooldown = false;
+    Random rnd = new Random();
+
+    private PackedScene hit_label = ResourceLoader.Load<PackedScene>(
+        "res://Prefabs/hit_label.tscn"
+    );
 
     [Signal]
     public delegate void ReadyFinishedEventHandler();
@@ -65,8 +73,6 @@ public partial class ResourceObject : placeable_building
 
         if (timer_bar == null)
             GD.PrintErr("ResourceObject: " + this.Name + " | doesn't have TimerBar");
-
-        //EmitSignal(SignalName.ReadyFinished);
     }
 
     public void SpawnPlant()
@@ -195,6 +201,29 @@ public partial class ResourceObject : placeable_building
                     return;
                 }
             }
+        }
+
+        if (hit_point == null)
+            Debug.Print("No Hitpoint! " + Name);
+        else
+        {
+            CharacterBody2D hit_lab = hit_label.Instantiate() as CharacterBody2D;
+            int time = rnd.Next(-8, 9);
+            hit_lab
+                .GetChild<HitLabel>(0)
+                .InitText(
+                    "- "
+                        + (int)(
+                            Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                            * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+                        )
+                );
+            Islands_Manager
+                .INSTANCE.GetNearestIsland(GetGlobalMousePosition())
+                .building_manager.AddChild(hit_lab);
+
+            hit_lab.GlobalPosition = hit_point.GlobalPosition - new Vector2(11, 10);
+            hit_lab.Position += new Vector2(time, 0);
         }
 
         Player.INSTANCE.player_stats.AddFatigue(0.25f);

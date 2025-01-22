@@ -13,4 +13,6 @@ unique_id = 19
 item_description = "WOODEN_HOE_HEAD_DESC"
 texture = ExtResource("2_tbw8i")
 value = 10.0
+type_level = 0
+use_type = 0
 item_stats = []

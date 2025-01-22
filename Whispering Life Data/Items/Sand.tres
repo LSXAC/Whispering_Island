@@ -23,4 +23,6 @@ unique_id = 31
 item_description = "SAND_DESC"
 texture = ExtResource("2_cv2vi")
 value = 5.0
+type_level = 0
+use_type = 0
 item_stats = []

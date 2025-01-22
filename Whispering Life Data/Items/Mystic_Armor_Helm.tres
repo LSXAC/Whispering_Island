@@ -24,4 +24,6 @@ unique_id = 33
 item_description = "MYSTIC_ARMOR_HELM_DESC"
 texture = ExtResource("2_p0nwu")
 value = 5.0
+type_level = 0
+use_type = 0
 item_stats = [SubResource("Resource_7l2xd")]

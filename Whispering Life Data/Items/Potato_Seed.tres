@@ -13,4 +13,6 @@ unique_id = 26
 item_description = "POTATO_SEED_DESC"
 texture = ExtResource("2_3ipvg")
 value = 5.0
+type_level = 0
+use_type = 0
 item_stats = []

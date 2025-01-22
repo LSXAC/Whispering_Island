@@ -13,4 +13,6 @@ unique_id = 8
 item_description = "IRON_INGOT_DESC"
 texture = ExtResource("2_012xw")
 value = 10.0
+type_level = 0
+use_type = 0
 item_stats = []

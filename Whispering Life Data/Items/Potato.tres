@@ -13,4 +13,6 @@ unique_id = 25
 item_description = "POTATO_DESC"
 texture = ExtResource("2_p24iq")
 value = 5.0
+type_level = 0
+use_type = 0
 item_stats = []

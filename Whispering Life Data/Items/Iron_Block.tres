@@ -13,4 +13,6 @@ unique_id = 23
 item_description = "IRON_BLOCK_DESC"
 texture = ExtResource("2_ph1s0")
 value = 5.0
+type_level = 0
+use_type = 0
 item_stats = []

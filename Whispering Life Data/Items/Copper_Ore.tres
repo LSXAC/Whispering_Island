@@ -19,4 +19,6 @@ unique_id = 9
 item_description = "COPPER_ORE_DESC"
 texture = ExtResource("2_yec6h")
 value = 10.0
+type_level = 0
+use_type = 0
 item_stats = []

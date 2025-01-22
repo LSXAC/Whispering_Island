@@ -24,4 +24,6 @@ unique_id = 34
 item_description = "MYSTIC_ARMOR_CHESTPLATE_DESC"
 texture = ExtResource("2_ytxfk")
 value = 5.0
+type_level = 0
+use_type = 0
 item_stats = [SubResource("Resource_x0ulm")]

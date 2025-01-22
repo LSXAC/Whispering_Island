@@ -38,12 +38,13 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_lfoib")
 
-[node name="Corn" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
+[node name="Corn" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "hit_point", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_8yybw")
 anim_player = NodePath("AnimationPlayer")
+hit_point = NodePath("HitPoint")
 type = 4
 max_durability = 2
 respawn_seconds = 30
@@ -112,6 +113,9 @@ explosiveness = 0.7
 randomness = 0.5
 
 [node name="AnimationPlayer" parent="." instance=ExtResource("9_nc3vd")]
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-8, -12)
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

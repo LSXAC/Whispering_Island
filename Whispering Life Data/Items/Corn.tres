@@ -13,4 +13,6 @@ unique_id = 29
 item_description = "CORN_DESC"
 texture = ExtResource("2_wa533")
 value = 5.0
+type_level = 0
+use_type = 0
 item_stats = []

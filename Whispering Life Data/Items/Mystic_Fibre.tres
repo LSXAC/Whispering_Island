@@ -12,4 +12,6 @@ unique_id = 12
 item_description = "MYSTIC_FIBRE_DESC"
 texture = ExtResource("2_j403k")
 value = 10.0
+type_level = 0
+use_type = 0
 item_stats = []

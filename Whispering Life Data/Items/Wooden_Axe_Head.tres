@@ -24,4 +24,6 @@ unique_id = 21
 item_description = "WOODEN_AXE_HEAD_DESC"
 texture = ExtResource("3_gytu5")
 value = 5.0
+type_level = 0
+use_type = 0
 item_stats = [SubResource("Resource_4kdc1"), SubResource("Resource_t6n0y")]

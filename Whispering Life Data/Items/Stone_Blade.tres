@@ -13,4 +13,6 @@ unique_id = 15
 item_description = "STONE_BLADE_DESC"
 texture = ExtResource("2_vwhri")
 value = 10.0
+type_level = 0
+use_type = 0
 item_stats = []

@@ -14,4 +14,6 @@ unique_id = 4
 item_description = "WOOD_PLANK_DESC"
 texture = ExtResource("2_7cxi2")
 value = 5.0
+type_level = 0
+use_type = 0
 item_stats = []

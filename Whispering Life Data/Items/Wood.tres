@@ -20,4 +20,6 @@ unique_id = 0
 item_description = "WOOD_DESC"
 texture = ExtResource("2_xwls3")
 value = 2.0
+type_level = 0
+use_type = 0
 item_stats = []

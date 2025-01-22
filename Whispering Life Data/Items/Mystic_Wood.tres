@@ -18,4 +18,6 @@ unique_id = 13
 item_description = "MYSTIC_WOOD_DESC"
 texture = ExtResource("2_bwbu0")
 value = 10.0
+type_level = 0
+use_type = 0
 item_stats = []

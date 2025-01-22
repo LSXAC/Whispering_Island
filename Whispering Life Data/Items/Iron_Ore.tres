@@ -19,4 +19,6 @@ unique_id = 7
 item_description = "IRON_ORE_DESC"
 texture = ExtResource("2_1b5uf")
 value = 10.0
+type_level = 0
+use_type = 0
 item_stats = []

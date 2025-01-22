@@ -19,4 +19,6 @@ unique_id = 6
 item_description = "CHAR_COAL_DESC"
 texture = ExtResource("2_tqr2b")
 value = 10.0
+type_level = 0
+use_type = 0
 item_stats = []

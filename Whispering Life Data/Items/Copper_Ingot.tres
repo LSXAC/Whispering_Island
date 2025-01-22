@@ -13,4 +13,6 @@ unique_id = 10
 item_description = "COPPER_INGOT_DESC"
 texture = ExtResource("2_germ5")
 value = 10.0
+type_level = 0
+use_type = 0
 item_stats = []

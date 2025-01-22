@@ -14,4 +14,6 @@ unique_id = 2
 item_description = "WOOD_STICK_DESC"
 texture = ExtResource("2_miv00")
 value = 1.0
+type_level = 0
+use_type = 0
 item_stats = []

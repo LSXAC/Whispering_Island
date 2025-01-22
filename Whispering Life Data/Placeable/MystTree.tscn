@@ -38,10 +38,11 @@ scale_min = 0.5
 scale_max = 0.7
 scale_curve = SubResource("CurveTexture_osh17")
 
-[node name="MystTree" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
+[node name="MystTree" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "hit_point", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 script = ExtResource("1_oeonl")
 anim_player = NodePath("AnimationPlayer")
+hit_point = NodePath("HitPoint")
 type = 2
 type_level = 1
 max_durability = 5
@@ -112,6 +113,9 @@ script = ExtResource("9_0gvrl")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
 [node name="AnimationPlayer" parent="." instance=ExtResource("10_woiyh")]
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-7, -33)
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

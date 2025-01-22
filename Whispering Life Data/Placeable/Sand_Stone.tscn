@@ -38,10 +38,11 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_4ikef")
 
-[node name="SandStone" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
+[node name="SandStone" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "hit_point", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 script = ExtResource("1_kgvxa")
 anim_player = NodePath("AnimationPlayer")
+hit_point = NodePath("HitPoint")
 type = 3
 max_durability = 5
 item_info = ExtResource("2_knfll")
@@ -112,6 +113,9 @@ script = ExtResource("9_hetxp")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
 [node name="AnimationPlayer" parent="." instance=ExtResource("10_pmbc1")]
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-7, -10)
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
