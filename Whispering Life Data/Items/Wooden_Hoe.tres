@@ -10,12 +10,12 @@
 [sub_resource type="Resource" id="Resource_mcbdc"]
 script = ExtResource("1_fqlw0")
 type = 4
-bonus = 0.5
+bonus = 1.0
 
 [sub_resource type="Resource" id="Resource_o3yil"]
 script = ExtResource("1_fqlw0")
 type = 1
-bonus = -0.3
+bonus = -1.0
 
 [resource]
 script = ExtResource("1_kn11j")
@@ -27,5 +27,5 @@ item_description = "WOODEN_HOE_DESC"
 texture = ExtResource("3_2is6l")
 value = 10.0
 type_level = 1
-use_type = 0
+use_type = 4
 item_stats = [SubResource("Resource_mcbdc"), SubResource("Resource_o3yil")]
