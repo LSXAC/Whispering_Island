@@ -13,8 +13,9 @@ public partial class TunnelArea : Area2D
             if (area.GetParent() == GetParent())
                 return;
 
-            Debug.Print(((BeltTunnel)GetParent()).to_direction.ToString());
-            Debug.Print(((BeltTunnel)area.GetParent()).to_direction.ToString());
+            //Debug.Print(((BeltTunnel)GetParent()).to_direction.ToString());
+            //Debug.Print(((BeltTunnel)area.GetParent()).to_direction.ToString());
+
             if (
                 ((BeltTunnel)GetParent()).to_direction
                     == ((BeltTunnel)area.GetParent()).to_direction
@@ -30,6 +31,7 @@ public partial class TunnelArea : Area2D
                     (BeltTunnel)GetParent()
                 ).item_holder;
                 ((BeltTunnel)area.GetParent()).is_tunnel_connected = true;
+                //((BeltTunnel)area.GetParent()).GetNode<Timer>("CheckTimer").Stop();
             }
 
             ((BeltTunnel)GetParent()).ResetCheckArea();

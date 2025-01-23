@@ -115,8 +115,12 @@ position = Vector2(-8, 0)
 scale = Vector2(1, 0.25)
 texture = ExtResource("11_c8g6k")
 
+[node name="CheckTimer" type="Timer" parent="."]
+wait_time = 0.25
+
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
 [connection signal="area_entered" from="TunnelArea" to="TunnelArea" method="OnAreaEntered"]
+[connection signal="timeout" from="CheckTimer" to="." method="CheckTimerTimeout"]

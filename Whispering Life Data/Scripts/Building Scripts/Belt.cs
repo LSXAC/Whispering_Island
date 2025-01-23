@@ -51,14 +51,17 @@ public partial class Belt : placeable_building
                     var item = item_holder.offload_item();
                     area.GetParent<Belt>().receive_item(item);
                 }
+
             if (area.GetParent() is BeltTunnel)
                 if (area.GetParent<BeltTunnel>().is_tunnel_connected)
                     if (area.GetParent<BeltTunnel>().connected_itemholder != null)
-                        if (area.GetParent<BeltTunnel>().can_receive_item())
+                        if (area.GetParent<BeltTunnel>().item_holder.GetChildCount() == 0)
                         {
                             Debug.Print("Deposit Item");
                             var item = item_holder.offload_item();
-                            area.GetParent<BeltTunnel>().connected_itemholder.receive_item(item);
+                            area.GetParent<BeltTunnel>().from_Belt = true;
+                            area.GetParent<BeltTunnel>().GetNode<Timer>("CheckTimer").Start();
+                            area.GetParent<BeltTunnel>().item_holder.receive_item(item);
                         }
 
             if (area.GetParent() is Taker)

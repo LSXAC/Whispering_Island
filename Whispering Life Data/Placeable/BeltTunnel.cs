@@ -13,6 +13,9 @@ public partial class BeltTunnel : Belt
     [Export]
     public Timer checkAreaTimer;
 
+    [Export]
+    public bool from_Belt = false;
+
     public static int length = 10;
     public bool break_search = false;
     Area2D checkArea;
@@ -28,6 +31,24 @@ public partial class BeltTunnel : Belt
             return false;
 
         return connected_itemholder.GetChildCount() == 0;
+    }
+
+    public void CheckTimerTimeout()
+    {
+        if (!is_tunnel_connected)
+            return;
+        if (connected_itemholder == null)
+            return;
+
+        if (!from_Belt)
+            return;
+
+        if (connected_itemholder.GetParent<BeltTunnel>().item_holder.GetChildCount() == 0)
+        {
+            Debug.Print("offload from Tunnel A");
+            var item = item_holder.offload_item();
+            connected_itemholder.GetParent<Belt>().receive_item(item);
+        }
     }
 
     public async void CheckIfTunnelInDir()

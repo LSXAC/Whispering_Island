@@ -189,6 +189,8 @@ public partial class Building_Placer : Node2D
             if (temp is BeltTunnel)
             {
                 Debug.Print("BeltTunnel XX");
+                Random rnd = new Random();
+                temp.Name = "BeltTunnel + " + rnd.Next(0, 10000);
                 ((BeltTunnel)temp).CheckIfTunnelInDir();
             }
             if (!player_ui.INSTANCE.item_row_manager.CanCreate(building_recipe.requiered_items))

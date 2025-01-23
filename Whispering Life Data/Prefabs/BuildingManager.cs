@@ -88,7 +88,9 @@ public partial class BuildingManager : Node2D
                 InitBelt(temp2, bts.beltsave2);
 
                 temp.is_tunnel_connected = true;
+                temp.Name = "BeltTunnel1";
                 temp2.is_tunnel_connected = true;
+                temp2.Name = "BeltTunnel2";
                 temp.connected_itemholder = temp2.item_holder;
                 temp2.connected_itemholder = temp.item_holder;
             }

@@ -53,6 +53,12 @@ public partial class Giver : Area2D
                 );
                 Holder.AddChild(item);
                 destination.GetParent<Belt>().receive_item(item);
+
+                if (destination.GetParent() is BeltTunnel)
+                {
+                    destination.GetParent<BeltTunnel>().from_Belt = true;
+                    destination.GetParent<BeltTunnel>().GetNode<Timer>("CheckTimer").Start();
+                }
             }
     }
 
@@ -63,6 +69,9 @@ public partial class Giver : Area2D
             && ((ProductionMachine)building).production_count > 0
         )
         {
+            if (destination.GetParent() is BeltTunnel)
+                destination.GetParent<BeltTunnel>().from_Belt = true;
+
             ((ProductionMachine)building).production_count -= 1;
             BeltItem item = (BeltItem)beltItem.Instantiate();
             item.InitBeltItem(new Item(((ProductionMachine)building).production_item_info, 1));
