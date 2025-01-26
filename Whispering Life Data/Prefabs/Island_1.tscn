@@ -201,6 +201,9 @@ position = Vector2(-39, -13)
 [node name="MystFibre5" parent="BuildingManager" instance=ExtResource("12_ip5eg")]
 position = Vector2(-141, -46)
 
+[node name="MystFibre6" parent="BuildingManager" instance=ExtResource("12_ip5eg")]
+position = Vector2(-64, -128)
+
 [node name="MystTree" parent="BuildingManager" instance=ExtResource("13_5o5x2")]
 position = Vector2(-98, -85)
 

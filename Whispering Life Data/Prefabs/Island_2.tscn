@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://frwl0u2a1cwh"]
+[gd_scene load_steps=16 format=4 uid="uid://frwl0u2a1cwh"]
 
 [ext_resource type="Script" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_0e24f"]
 [ext_resource type="PackedScene" uid="uid://717sbs8rvfvt" path="res://Prefabs/Sign.tscn" id="2_0eca3"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Prefabs/BuildingManager.cs" id="11_7s17v"]
 [ext_resource type="PackedScene" uid="uid://c0l4m6jxp7pau" path="res://Placeable/Iron_Ore.tscn" id="12_wlxw7"]
 [ext_resource type="PackedScene" uid="uid://cnafp0o2cwupt" path="res://Placeable/Copper_Ore.tscn" id="13_cf0p2"]
+[ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Placeable/Stone.tscn" id="13_oqrlm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpdmr"]
 size = Vector2(32, 32)
@@ -182,16 +183,13 @@ y_sort_enabled = true
 script = ExtResource("11_7s17v")
 
 [node name="Iron_Ore" parent="BuildingManager" instance=ExtResource("12_wlxw7")]
-position = Vector2(-96, -88)
+position = Vector2(-88, -80)
 
 [node name="Iron_Ore2" parent="BuildingManager" instance=ExtResource("12_wlxw7")]
-position = Vector2(160, -120)
+position = Vector2(128, -160)
 
 [node name="Iron_Ore3" parent="BuildingManager" instance=ExtResource("12_wlxw7")]
 position = Vector2(192, 112)
-
-[node name="Iron_Ore4" parent="BuildingManager" instance=ExtResource("12_wlxw7")]
-position = Vector2(-144, 104)
 
 [node name="Copper_Ore" parent="BuildingManager" instance=ExtResource("13_cf0p2")]
 position = Vector2(-16, -8)
@@ -200,7 +198,28 @@ position = Vector2(-16, -8)
 position = Vector2(48, -40)
 
 [node name="Copper_Ore3" parent="BuildingManager" instance=ExtResource("13_cf0p2")]
-position = Vector2(16, 72)
+position = Vector2(11, 76)
 
 [node name="Copper_Ore4" parent="BuildingManager" instance=ExtResource("13_cf0p2")]
 position = Vector2(128, 72)
+
+[node name="Stone" parent="BuildingManager" instance=ExtResource("13_oqrlm")]
+position = Vector2(-144, 112)
+
+[node name="Stone2" parent="BuildingManager" instance=ExtResource("13_oqrlm")]
+position = Vector2(208, 80)
+
+[node name="Stone3" parent="BuildingManager" instance=ExtResource("13_oqrlm")]
+position = Vector2(-112, -56)
+
+[node name="Stone4" parent="BuildingManager" instance=ExtResource("13_oqrlm")]
+position = Vector2(168, -128)
+
+[node name="Stone5" parent="BuildingManager" instance=ExtResource("13_oqrlm")]
+position = Vector2(96, -200)
+
+[node name="Stone6" parent="BuildingManager" instance=ExtResource("13_oqrlm")]
+position = Vector2(-32, -168)
+
+[node name="Stone7" parent="BuildingManager" instance=ExtResource("13_oqrlm")]
+position = Vector2(96, -16)

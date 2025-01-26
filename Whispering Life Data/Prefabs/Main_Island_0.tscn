@@ -273,11 +273,32 @@ position = Vector2(94, 124)
 [node name="Tree5" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(-102, 14)
 
+[node name="Tree6" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+position = Vector2(-136, 56)
+
+[node name="Tree7" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+position = Vector2(184, -64)
+
+[node name="Tree8" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+position = Vector2(-80, -168)
+
 [node name="Stone" parent="BuildingManager" instance=ExtResource("13_sqojh")]
 position = Vector2(-75, 23)
 
 [node name="Stone2" parent="BuildingManager" instance=ExtResource("13_sqojh")]
 position = Vector2(-32, -171)
+
+[node name="Stone5" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+position = Vector2(-24, -192)
+
+[node name="Stone6" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+position = Vector2(-96, -144)
+
+[node name="Stone7" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+position = Vector2(72, 144)
+
+[node name="Stone8" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+position = Vector2(-96, 88)
 
 [node name="Stone3" parent="BuildingManager" instance=ExtResource("13_sqojh")]
 position = Vector2(58, -95)

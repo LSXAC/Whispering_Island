@@ -72,6 +72,12 @@ public partial class InventoryBase : SlotUpdater
             ITEM_ID.MYSTIC_ARMOR_SHOES,
             ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Shoes.tres")
         },
+        { ITEM_ID.OAK_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Oak_Seed.tres") },
+        { ITEM_ID.MYST_OAK_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Myst_Oak_Seed.tres") },
+        {
+            ITEM_ID.MYST_FIBRE_SEED,
+            ResourceLoader.Load<ItemInfo>("res://Items/Myst_Fibre_Seed.tres")
+        },
     };
 
     public enum ITEM_ID
@@ -112,7 +118,10 @@ public partial class InventoryBase : SlotUpdater
         MYSTIC_ARMOR_HEAD,
         MYSTIC_ARMOR_CHESTPLATE,
         MYSTIC_ARMOR_LEGGINGS,
-        MYSTIC_ARMOR_SHOES
+        MYSTIC_ARMOR_SHOES,
+        OAK_SEED,
+        MYST_OAK_SEED,
+        MYST_FIBRE_SEED
     }
 
     public void SetSlots()

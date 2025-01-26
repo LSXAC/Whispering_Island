@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://bqmofblxswr12"]
 
-[ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Items/Mystic_Fibre.tres" id="1_sw2dt"]
+[ext_resource type="Resource" uid="uid://dpfc7scfcvgj6" path="res://Items/Myst_Fibre_Seed.tres" id="1_6mix3"]
 [ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_nanwy"]
 [ext_resource type="Script" path="res://Scripts/Resources/Recipe.cs" id="3_63irg"]
 
 [sub_resource type="Resource" id="Resource_85pk6"]
 script = ExtResource("2_nanwy")
-item_info = ExtResource("1_sw2dt")
+item_info = ExtResource("1_6mix3")
 amount = 1
 
 [resource]

@@ -247,7 +247,6 @@ public partial class ResourceObject : placeable_building
                     + " "
                     + TranslationServer.Translate(item_info.item_name.ToString())
             );
-            StartTimerBar(TimerBar.state.SPAWNING, respawn_seconds);
             Inventory.INSTANCE.AddItem(
                 item_info,
                 (int)(
@@ -326,14 +325,11 @@ public partial class ResourceObject : placeable_building
             //anim_player.PlayBackwards("Break"); Sapling to Plant
         }
 
-        if (collision_shape != null)
-            collision_shape.Disabled = true;
-
         if (HasNode("Shadow"))
             GetNode<Sprite2D>("Shadow").Visible = true;
 
         in_cooldown = false;
         interactableArea.Monitoring = true;
-        timer_bar.currentstate = TimerBar.state.COOLDOWN;
+        timer_bar.currentstate = TimerBar.state.NONE;
     }
 }

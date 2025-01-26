@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bekb5fw4mpfgk"]
+[gd_scene load_steps=17 format=4 uid="uid://bekb5fw4mpfgk"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/ResourceObject.cs" id="1_0pylb"]
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Items/Wood.tres" id="2_my7vu"]
+[ext_resource type="Resource" uid="uid://dnxxeevayo83d" path="res://Items/Oak_Seed.tres" id="3_2i1cs"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Prefabs/timer_bar.tscn" id="5_2oaeo"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="5_qbov7"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="6_mydk3"]
@@ -40,6 +41,7 @@ scale_curve = SubResource("CurveTexture_lbdfl")
 
 [node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "hit_point", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
+collision_layer = 13
 script = ExtResource("1_0pylb")
 anim_player = NodePath("AnimationPlayer")
 hit_point = NodePath("HitPoint")
@@ -47,6 +49,9 @@ type = 2
 max_durability = 5
 respawn_seconds = 30
 item_info = ExtResource("2_my7vu")
+drops_extra_item = true
+extra_item_amount = 1
+extra_item_info = ExtResource("3_2i1cs")
 gpu_particles = NodePath("LeavesParticles")
 building_id = 15
 tile_types = Array[int]([0])
@@ -104,7 +109,7 @@ randomness = 0.5
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
 z_index = -2
-tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray("AAD/////AAACAAAAAAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAACAAAAAAAAAP//AAACAAAAAAAAAP7/AAACAAAAAAD///7/AAACAAAAAAD+//7/AAACAAAAAAA=")
 enabled = false
 tile_set = ExtResource("8_ltfd3")
 

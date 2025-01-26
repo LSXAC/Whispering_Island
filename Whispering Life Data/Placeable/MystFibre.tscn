@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjw7mpije2ul4"]
+[gd_scene load_steps=17 format=3 uid="uid://cjw7mpije2ul4"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/ResourceObject.cs" id="1_g4r0j"]
 [ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Items/Mystic_Fibre.tres" id="2_8xjas"]
+[ext_resource type="Resource" uid="uid://dpfc7scfcvgj6" path="res://Items/Myst_Fibre_Seed.tres" id="3_dw06p"]
 [ext_resource type="Texture2D" uid="uid://bv0y2lln1foop" path="res://Sprites/MystFibre.png" id="3_wt8vm"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_ccab7"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="5_h2g1a"]
@@ -40,12 +41,16 @@ scale_curve = SubResource("CurveTexture_lfoib")
 
 [node name="MystFibre" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "hit_point", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
+collision_layer = 13
 script = ExtResource("1_g4r0j")
 anim_player = NodePath("AnimationPlayer")
 hit_point = NodePath("HitPoint")
 type = 4
 max_durability = 5
 item_info = ExtResource("2_8xjas")
+drops_extra_item = true
+extra_item_amount = 1
+extra_item_info = ExtResource("3_dw06p")
 gpu_particles = NodePath("FibreParticles")
 building_id = 14
 tile_types = Array[int]([0])

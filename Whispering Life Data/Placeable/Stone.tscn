@@ -40,6 +40,7 @@ scale_curve = SubResource("CurveTexture_4ikef")
 
 [node name="Stone" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "hit_point", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
+collision_layer = 13
 script = ExtResource("1_d2fyj")
 anim_player = NodePath("AnimationPlayer")
 hit_point = NodePath("HitPoint")

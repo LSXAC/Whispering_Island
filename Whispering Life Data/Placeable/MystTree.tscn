@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://gb18hiamdyqj"]
+[gd_scene load_steps=17 format=4 uid="uid://gb18hiamdyqj"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/ResourceObject.cs" id="1_oeonl"]
 [ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://Items/Mystic_Wood.tres" id="2_wvxkc"]
+[ext_resource type="Resource" uid="uid://bj62tvtw6mn4v" path="res://Items/Myst_Oak_Seed.tres" id="3_5fbt7"]
 [ext_resource type="Texture2D" uid="uid://doy5paqc40023" path="res://Sprites/MystTree.png" id="3_7es2c"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_bvs21"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="5_ntkvk"]
@@ -40,6 +41,7 @@ scale_curve = SubResource("CurveTexture_osh17")
 
 [node name="MystTree" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "hit_point", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
+collision_layer = 13
 script = ExtResource("1_oeonl")
 anim_player = NodePath("AnimationPlayer")
 hit_point = NodePath("HitPoint")
@@ -47,6 +49,9 @@ type = 2
 type_level = 1
 max_durability = 5
 item_info = ExtResource("2_wvxkc")
+drops_extra_item = true
+extra_item_amount = 1
+extra_item_info = ExtResource("3_5fbt7")
 gpu_particles = NodePath("LeavesParticles")
 building_id = 13
 tile_types = Array[int]([0])
@@ -104,7 +109,7 @@ randomness = 0.5
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
 z_index = -2
-tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray("AAD/////AAACAAAAAAD//wAAAAACAAAAAAD+/wAAAAACAAAAAAD+////AAACAAAAAAD+//7/AAACAAAAAAD///7/AAACAAAAAAAAAP7/AAACAAAAAAAAAP//AAACAAAAAAAAAAAAAAACAAAAAAA=")
 enabled = false
 tile_set = ExtResource("8_4renc")
 

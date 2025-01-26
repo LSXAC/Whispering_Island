@@ -51,8 +51,8 @@ STONE_AXE_HEAD,Stone Axe Head,Steinaxtkopf
 STONE_AXE_HEAD_DESC,A stone formed as a axe head,Ein Stein geformt wie ein Axtkopf
 STONE_PICKAXE_HEAD,Stone Pickaxe Head,Steinspitzhackenkopf
 STONE_PICKAXE_HEAD_DESC,A stone formed as a pickaxe head,Ein Stein geformt wie ein Spitzhackenkopf
-WOODEN_HOE_HEAD,Wooden Hoe Head,Holzhackenkopf
-WOODEN_HOE_HEAD_DESC,A piece of wood formed as a hoe head,Ein Holzstück geformt als ein Hackenkopf
+WOODEN_HOE,Wooden Hoe,Holzhacke
+WOODEN_HOE_DESC,A tool to break plants faster,Ein Werkzeug um schneller Pflanzen zu säen
 WOODEN_HOE,Wooden Hoe Head,Holzhacke
 WOODEN_HOE_DESC,A tool to break plants faster,Ein Werkzeug um schneller Pflanzen zu säen
 WOODEN_AXE_HEAD,Wooden Axe Head,Holzaxtkopf

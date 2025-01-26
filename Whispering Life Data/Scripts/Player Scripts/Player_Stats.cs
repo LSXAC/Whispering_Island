@@ -15,7 +15,7 @@ public partial class Player_Stats : Node2D
     public const float fatigue_amount = 0.1f;
     public const float fatigue_remove_by_sleep_amount = 0.1f;
 
-    public float[] stat_amounts = new float[Enum.GetNames(typeof(StatsPanel.stat_types)).Length];
+    public float[] stat_amounts = new float[5] { 1f, 1f, 1f, 1f, 1f };
 
     public override void _Ready() { }
 
