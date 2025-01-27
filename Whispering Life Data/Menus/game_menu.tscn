@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=69 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -13,11 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://ne3oahdi530f" path="res://Sprites/Char_Profil.png" id="5_6jpat"]
 [ext_resource type="Texture2D" uid="uid://b8klnfsxws1y4" path="res://Sprites/Items/Icons_3rd/Icons_27_10.png" id="5_bku2s"]
 [ext_resource type="Texture2D" uid="uid://wm8u7fh52l6x" path="res://Sprites/Items/Icons_3rd/Icons_27_28.png" id="6_wyyvd"]
-[ext_resource type="Texture2D" uid="uid://xwp6xkc68bnl" path="res://Sprites/Items/Icons_3rd/Icons_27_30.png" id="7_gd3kq"]
 [ext_resource type="Script" path="res://Menus/StatsPanel.cs" id="7_hhlnf"]
 [ext_resource type="Texture2D" uid="uid://dogc25lho5gel" path="res://Sprites/Items/Plants_Icons/icons_29_06.png" id="7_lai0m"]
 [ext_resource type="Texture2D" uid="uid://bpn4kdrr5ejdr" path="res://Sprites/Items/Icons_3rd/Icons_27_73.png" id="7_wk80g"]
+[ext_resource type="Texture2D" uid="uid://soncujix6fa3" path="res://Sprites/Items/Icons/setting.png" id="9_4wwa8"]
 [ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://Menus/Theme_Slots.tres" id="10_8x2l6"]
+[ext_resource type="Texture2D" uid="uid://be2xmt8674o1k" path="res://Sprites/Items/Icons/rejected.png" id="10_yfud7"]
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://header_color_rect.tscn" id="11_45saq"]
 [ext_resource type="Script" path="res://Menus/ResearchTab.cs" id="11_hr8uu"]
 [ext_resource type="PackedScene" uid="uid://cd8pn6e2fwrpm" path="res://Prefabs/Research_Level_Tab.tscn" id="12_3k1qw"]
@@ -153,6 +154,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
 text = "Inventory"
 icon = ExtResource("3_m27n3")
+flat = true
 script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_INVENTORY_BUTTON"
 
@@ -167,6 +169,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
 text = "Crafting"
 icon = ExtResource("5_bku2s")
+flat = true
 script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_CRAFTING_BUTTON"
 
@@ -181,6 +184,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
 text = "Save/Load"
 icon = ExtResource("6_wyyvd")
+flat = true
 script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_SAVELOAD_BUTTON"
 
@@ -195,6 +199,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
 disabled = true
 text = "Stats"
+flat = true
 script = ExtResource("3_pwamf")
 
 [node name="SkillTreeTabButton" type="Button" parent="Background/HBoxHeader"]
@@ -208,9 +213,11 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
 text = "SkillTREE"
 icon = ExtResource("7_lai0m")
+flat = true
 script = ExtResource("3_pwamf")
 
 [node name="AdminButton" type="Button" parent="Background/HBoxHeader"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -219,9 +226,11 @@ theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
 text = "ADMIN"
+flat = true
 script = ExtResource("3_pwamf")
 
 [node name="HelpButton" type="Button" parent="Background/HBoxHeader"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -231,6 +240,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
 text = "Help"
 icon = ExtResource("7_wk80g")
+flat = true
 script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_HELP_BUTTON"
 
@@ -242,7 +252,8 @@ theme_override_constants/outline_size = 0
 theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
-icon = ExtResource("7_gd3kq")
+icon = ExtResource("9_4wwa8")
+flat = true
 script = ExtResource("3_pwamf")
 
 [node name="ExitTabButton" type="Button" parent="Background/HBoxHeader"]
@@ -250,9 +261,11 @@ layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
-text = "<X>"
+icon = ExtResource("10_yfud7")
+flat = true
 script = ExtResource("3_pwamf")
 
 [node name="InventoryTab" type="ColorRect" parent="Background"]

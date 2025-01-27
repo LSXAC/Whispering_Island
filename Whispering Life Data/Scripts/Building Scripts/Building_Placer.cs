@@ -51,6 +51,8 @@ public partial class Building_Placer : Node2D
         else
             Debug.Print("CollisionShape fehlt!!");
 
+        placeable.ZIndex = 10;
+
         if (current_building is Belt)
         {
             placeable = current_building as Belt;
@@ -179,7 +181,10 @@ public partial class Building_Placer : Node2D
         {
             ((ResourceObject)temp).SpawnPlant();
             if (!player_ui.INSTANCE.item_row_manager.CanCreate(building_recipe.requiered_items))
+            {
                 can_create = false;
+                CloseMenuWithBuildingSelected();
+            }
             return;
         }
 
@@ -194,7 +199,10 @@ public partial class Building_Placer : Node2D
                 ((BeltTunnel)temp).CheckIfTunnelInDir();
             }
             if (!player_ui.INSTANCE.item_row_manager.CanCreate(building_recipe.requiered_items))
+            {
                 can_create = false;
+                CloseMenuWithBuildingSelected();
+            }
             return;
         }
 

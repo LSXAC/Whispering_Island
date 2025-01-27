@@ -21,6 +21,7 @@ shape = SubResource("RectangleShape2D_ke66e")
 one_way_collision_margin = 10.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
 y_sort_enabled = true
 custom_minimum_size = Vector2(16, 16)
 anchors_preset = 15

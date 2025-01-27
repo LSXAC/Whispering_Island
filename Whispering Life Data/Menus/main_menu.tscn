@@ -23,7 +23,6 @@ intro_player = NodePath("Menu/VideoStreamPlayer2")
 background_player = NodePath("Menu/Control/VideoStreamPlayer")
 parent = NodePath("Menu/Control")
 load_button = NodePath("Menu/Control/Panel/VBoxContainer/LoadGameButton")
-skip_intro = true
 
 [node name="Menu" type="Control" parent="."]
 layout_mode = 1
@@ -173,7 +172,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_6mgai")
 theme_override_font_sizes/font_size = 10
-text = "Copyright © 2024. Leon Schröder Asset Creations"
+text = "Copyright © 2025. Leon Schröder Asset Creations"
 horizontal_alignment = 2
 
 [node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="Menu"]
