@@ -21,7 +21,7 @@ public partial class ResourceObject : placeable_building
     public ItemInfo.Type_Level type_level = ItemInfo.Type_Level.Hand;
 
     [Export]
-    private int max_durability = 3;
+    public int max_durability = 3;
 
     [Export]
     private int respawn_seconds = 60;
@@ -46,7 +46,7 @@ public partial class ResourceObject : placeable_building
 
     [Export]
     public GpuParticles2D gpu_particles;
-    private int current_durability;
+    public int current_durability;
 
     TimerBar timer_bar;
     Area2D interactableArea;
@@ -302,6 +302,8 @@ public partial class ResourceObject : placeable_building
             ),
             Inventory.INSTANCE.inventory_items
         );
+
+        hover_menu.InitHoverMenu(this);
     }
 
     private void StartTimerBar(TimerBar.state state, double time, bool from_loading = false)

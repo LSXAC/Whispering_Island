@@ -157,3 +157,13 @@ MAINMENU_NEW_GAME,Start New Game,Neues Spiel beginnen
 MAINMENU_EXIT_GAME,Exit Game :(,Spiel verlassen :(
 MAINMENU_SKIP_TUTORIAL,Skip Tutorial,Start überspringen
 MAINMENU_BACK_TO_MAINMENU,Main Menu,Hauptmenü
+,,
+,,
+,,
+,,
+,,
+HOVER_MENU_OBJECT,Object,Objekt
+HOVER_MENU_DESCRIPTION,Description,Beschreibung
+HOVER_MENU_HITPOINTS,Hitpoints,Lebenspunkte
+HOVER_MENU_RESOURCE_TYPE,Collect Type,Sammeltyp
+HOVER_MENU_RESOURCE_TYPE_LEVEL,Tool Level,Werkzeuglevel
