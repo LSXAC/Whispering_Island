@@ -144,8 +144,12 @@ public partial class Database : Node
             ResourceLoader.Load<BuildingType>("res://Buildings/Sand_Stone_Object.tres")
         },
         {
-            BUILDING_ID.BELT_SPLITTER.ToString(),
-            ResourceLoader.Load<BuildingType>("res://Buildings/Belt_Splitter.tres")
+            BUILDING_ID.BELT_SPLITTER_1x2.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Belt_Splitter_1x2.tres")
+        },
+        {
+            BUILDING_ID.BELT_SPLITTER_1x3.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Belt_Splitter_1x3.tres")
         },
     };
 
@@ -172,7 +176,8 @@ public partial class Database : Node
         COPPER_ORE_OBJECT,
         SAND_STONE_OBJECT,
         SAND_OBJECT,
-        BELT_SPLITTER
+        BELT_SPLITTER_1x2,
+        BELT_SPLITTER_1x3
     }
 
     public static BuildingType GetBuildingType(BUILDING_ID building_id)

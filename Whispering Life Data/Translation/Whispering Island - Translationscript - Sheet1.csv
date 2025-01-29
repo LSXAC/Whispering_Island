@@ -110,16 +110,16 @@ BUILDING_BELT,Belt,Fließband
 BUILDING_BELT_DESC,Transports resources.,Transportiert Ressourcen.
 BUILDING_BELT_TUNNEL,Transmitter belt,Übertragungs Fließband
 BUILDING_BELT_TUNNEL_DESC,Transports resources over air.,Transportiert Ressourcen über Luft.
-,,
+BUILDING_BELT_SPLITTER_1x2,Belt Splitter 1x2,Fließbandteiler 1x2
+BUILDING_BELT_SPLITTER_1x2_DESC,Splits Items from one belt to two other.,Verteilt Gegenstände von einen Fließband zu zwei anderen.
+BUILDING_BELT_SPLITTER_1x3,Belt Splitter 1x3,Fließbandteiler 1x3
+BUILDING_BELT_SPLITTER_1x3_DESC,Splits Items from one belt to three other.,Verteilt Gegenstände von einen Fließband zu drei anderen.
 QUEST_ACCEPT_PANEL_HALF_TIME_TITLE,> Half Time - Punishment,> Halbzeit - Strafe
 QUEST_ACCEPT_PANEL_HALF_TIME_DESC,The Next Quest will only have half of the Time to complete,Für die nächste Aufgabe wird nur die halbe Zeit zur Verfügung stehen
 QUEST_ACCEPT_PANEL_DOUBLE_AMOUNT_TITLE,> Double Amount - Punishment,> Doppelte Menge - Strafe
 QUEST_ACCEPT_PANEL_DOUBLE_AMOUNT_DESC,The Next Quest will have the doubled amount of resources to deliver.,Für die nächste Aufgabe musst du die doppelte Anzahl an Ressourcen abgeben.
 QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_TITLE,> Island - Punishment,> Insel - Strafe
 QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_DESC,You will lose the last build Island,Du wirst die letzte gebaute Insel verlieren.
-,,
-,,
-,,
 ,,
 WORLD_RESOURCE_STONE,Stone,Stein
 WORLD_RESOURCE_STONE_DESC,Mine to receive stone,Erhalte Stein beim abbauen
