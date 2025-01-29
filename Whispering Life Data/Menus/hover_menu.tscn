@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/hover_menu.cs" id="1_ywqhi"]
 [ext_resource type="Script" path="res://Menus/TranslationLabel.cs" id="3_u1ani"]
 
-[node name="HoverMenu" type="PanelContainer" node_paths=PackedStringArray("title_container", "descriptiion_container", "object_type_container", "hitpoint_container", "resource_type_container", "resource_type_level_container", "process_bar_container", "process_fuel_container", "process_input_container", "process_output_container", "title_content", "description_content", "object_type_content", "hitpoint_content", "resource_type_content", "resource_type_level_content", "process_bar_content", "process_fuel_content", "process_input_content", "process_output_content", "Line1", "Line2")]
+[node name="HoverMenu" type="PanelContainer" node_paths=PackedStringArray("title_container", "descriptiion_container", "object_type_container", "hitpoint_container", "resource_type_container", "resource_type_level_container", "process_bar_container", "process_fuel_container", "process_input_container", "process_output_container", "chest_slots_container", "title_content", "description_content", "object_type_content", "hitpoint_content", "resource_type_content", "resource_type_level_content", "process_bar_content", "process_fuel_content", "process_input_content", "process_output_content", "chest_slots_content", "Line1", "Line2")]
 z_index = 5
 z_as_relative = false
 custom_minimum_size = Vector2(150, 34)
@@ -22,6 +22,7 @@ process_bar_container = NodePath("MarginContainer/VBoxContainer/HBoxProgress")
 process_fuel_container = NodePath("MarginContainer/VBoxContainer/HBoxFuel")
 process_input_container = NodePath("MarginContainer/VBoxContainer/HBoxInput")
 process_output_container = NodePath("MarginContainer/VBoxContainer/HBoxOutput")
+chest_slots_container = NodePath("MarginContainer/VBoxContainer/HBoxSlots")
 title_content = NodePath("MarginContainer/VBoxContainer/HBoxTitle/TitleContent")
 description_content = NodePath("MarginContainer/VBoxContainer/HBoxDescription/DescriptionContent")
 object_type_content = NodePath("MarginContainer/VBoxContainer/HBoxObjectType/ObjectTypeContent")
@@ -32,6 +33,7 @@ process_bar_content = NodePath("MarginContainer/VBoxContainer/HBoxProgress/Progr
 process_fuel_content = NodePath("MarginContainer/VBoxContainer/HBoxFuel/FuelContent")
 process_input_content = NodePath("MarginContainer/VBoxContainer/HBoxInput/InputContent")
 process_output_content = NodePath("MarginContainer/VBoxContainer/HBoxOutput/OutputContent")
+chest_slots_content = NodePath("MarginContainer/VBoxContainer/HBoxSlots/SlotsContent")
 Line1 = NodePath("MarginContainer/VBoxContainer/Line")
 Line2 = NodePath("MarginContainer/VBoxContainer/Line2")
 
@@ -357,6 +359,37 @@ script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_PROCESS_OUTPUT"
 
 [node name="OutputContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxOutput"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_mkuyp")
+theme_override_font_sizes/font_size = 8
+text = "1x Charcoal"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxSlots" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SlotsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxSlots"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_mkuyp")
+theme_override_font_sizes/font_size = 8
+text = "Output"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("3_u1ani")
+label_translation_string = "HOVER_MENU_CHEST_SLOTS"
+
+[node name="SlotsContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxSlots"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 6

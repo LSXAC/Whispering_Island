@@ -17,7 +17,8 @@ public partial class hover_menu : PanelContainer
         process_bar_container,
         process_fuel_container,
         process_input_container,
-        process_output_container;
+        process_output_container,
+        chest_slots_container;
 
     [Export]
     public Label title_content,
@@ -40,6 +41,9 @@ public partial class hover_menu : PanelContainer
         process_fuel_content,
         process_input_content,
         process_output_content;
+
+    [Export]
+    public Label chest_slots_content;
 
     [Export]
     public ColorRect Line1,
@@ -67,6 +71,8 @@ public partial class hover_menu : PanelContainer
             INSTANCE.process_fuel_container.Visible = false;
             INSTANCE.process_input_container.Visible = false;
             INSTANCE.process_output_container.Visible = false;
+
+            INSTANCE.chest_slots_container.Visible = false;
 
             INSTANCE.Line1.Visible = false;
             INSTANCE.Line2.Visible = false;
@@ -96,6 +102,10 @@ public partial class hover_menu : PanelContainer
             if (node is ProductionMachine)
                 INSTANCE.object_type_content.Text = TranslationServer.Translate(
                     "HOVER_MENU_OBJECT_TYPE_MACHINE_PRODUCTION"
+                );
+            if (node is Chest)
+                INSTANCE.object_type_content.Text = TranslationServer.Translate(
+                    "HOVER_MENU_OBJECT_TYPE_CHEST"
                 );
         }
 
@@ -185,6 +195,19 @@ public partial class hover_menu : PanelContainer
                 pm.production_count
                 + "x "
                 + TranslationServer.Translate(pm.production_item_info.item_name);
+        }
+
+        if (node is Chest chest)
+        {
+            if (chest == null)
+            {
+                Debug.Print("chest NULL");
+                return;
+            }
+            INSTANCE.chest_slots_container.Visible = true;
+            INSTANCE.Line2.Visible = true;
+
+            INSTANCE.chest_slots_content.Text = chest.GetAmountOfFreeSlots() + "/" + 20;
         }
 
         EnableHoverMenu();

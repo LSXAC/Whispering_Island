@@ -17,4 +17,14 @@ public partial class Chest : MachineBase
         GameMenu.INSTANCE.OnOpenChestTab();
         ChestInventory.INSTANCE.OpenChest(this);
     }
+
+    public int GetAmountOfFreeSlots()
+    {
+        int amount = 0;
+        foreach (ItemSave i_s in chest_items)
+            if (i_s == null)
+                amount++;
+
+        return amount;
+    }
 }
