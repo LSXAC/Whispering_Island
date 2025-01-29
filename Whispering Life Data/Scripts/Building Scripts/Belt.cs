@@ -10,6 +10,9 @@ public partial class Belt : placeable_building
     public Detector detector;
 
     [Export]
+    public bool ignore_self_detector = false;
+
+    [Export]
     public BeltDirection to_direction = BeltDirection.Left;
 
     [Export]
@@ -43,6 +46,9 @@ public partial class Belt : placeable_building
 
     public void OnDetectorBeltDetected(Area2D area)
     {
+        if (ignore_self_detector)
+            return;
+
         if (area is BeltArea)
         {
             if (area.GetParent() is Belt && area.GetParent() is not BeltTunnel)

@@ -37,6 +37,7 @@ public partial class BeltTunnel : Belt
     {
         if (!is_tunnel_connected)
             return;
+
         if (connected_itemholder == null)
             return;
 

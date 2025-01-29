@@ -143,6 +143,10 @@ public partial class Database : Node
             BUILDING_ID.SAND_STONE_OBJECT.ToString(),
             ResourceLoader.Load<BuildingType>("res://Buildings/Sand_Stone_Object.tres")
         },
+        {
+            BUILDING_ID.BELT_SPLITTER.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Belt_Splitter.tres")
+        },
     };
 
     public enum BUILDING_ID
@@ -167,7 +171,8 @@ public partial class Database : Node
         IRON_ORE_OBJECT,
         COPPER_ORE_OBJECT,
         SAND_STONE_OBJECT,
-        SAND_OBJECT
+        SAND_OBJECT,
+        BELT_SPLITTER
     }
 
     public static BuildingType GetBuildingType(BUILDING_ID building_id)
