@@ -105,6 +105,16 @@ public partial class player_ui : CanvasLayer
         GameMenu.INSTANCE.OnBackToMainMenu();
     }
 
+    public void OnInventoryButton()
+    {
+        GameMenu.INSTANCE.OpenGameMenu();
+    }
+
+    public void OnBuildingMenuButton()
+    {
+        Building_Menu.instance.OpenBuildingMenu();
+    }
+
     public static void CompleteQuestPanelShow()
     {
         INSTANCE.quest_complete_panel.Visible = true;

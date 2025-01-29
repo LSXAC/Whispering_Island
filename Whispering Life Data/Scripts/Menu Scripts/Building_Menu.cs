@@ -73,6 +73,14 @@ public partial class Building_Menu : CanvasLayer
             }
     }
 
+    public void OpenBuildingMenu()
+    {
+        if (GameMenu.IsWindowActiv())
+            return;
+
+        OpenWindow();
+    }
+
     public void OpenWindow()
     {
         GameMenu.SetWindow(this);

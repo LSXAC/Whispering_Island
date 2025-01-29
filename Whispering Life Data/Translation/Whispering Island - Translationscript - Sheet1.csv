@@ -31,6 +31,9 @@ PLAYERUI_COMPLETE_QUEST,Quest completed!,Aufgabe erfüllt!
 PLAYERUI_COMPLETE_QUEST_REQU_ITEMS,The required Items got removed from your inventory.,Die erforderlichen Items wurden aus dem Inventar entfernt.
 PLAYERUI_WEAK_TYPE_LEVEL,The Tool Level is to weak.,Das Werkzeuglevel ist zu schwach.
 PLAYERUI_WRONG_TOOL,Wrong Tool!,Falsches Werkzeug!
+PLAYERUI_INVENTORY_BUTTON,Inventory,Inventar
+PLAYERUI_BUILDINGMENU_BUTTON,Building Menu,Baumenü
+,,
 ,,
 EQUIPMENT_SLOT_HEAD,Head,Kopf
 EQUIPMENT_SLOT_CHEST,Chest,Brust
@@ -86,9 +89,6 @@ BUILDING_MENU_DECORATION,> Decoration,> Dekoration
 BUILDING_MENU_RESEARCH,> Research,> Forschung
 BUILDING_MENU_REMOVE_BUILDINGS,> Remove Building,> Gebäude entfernen
 BUILDING_MENU_PLANTS,> Plants,> Pflanzen
-,,
-,,
-,,
 ,,
 ,,
 BUILDING_FURNACE,Furnace,Ofen
@@ -167,3 +167,13 @@ HOVER_MENU_DESCRIPTION,Description,Beschreibung
 HOVER_MENU_HITPOINTS,Hitpoints,Lebenspunkte
 HOVER_MENU_RESOURCE_TYPE,Collect Type,Sammeltyp
 HOVER_MENU_RESOURCE_TYPE_LEVEL,Tool Level,Werkzeuglevel
+HOVER_MENU_OBJECT_TYPE,Type,Typ
+HOVER_MENU_OBJECT_TYPE_RESOURCE,Resource,Ressource
+HOVER_MENU_OBJECT_TYPE_MACHINE_PRODUCTION,Production Machine,Produktionsmaschine
+HOVER_MENU_OBJECT_TYPE_MACHINE_PROCESSING,Processing Machine,Verarbeitungsmaschine
+,,
+HOVER_MENU_PROCESS_PROGRESS,Progress,Fortschritt
+HOVER_MENU_PROCESS_FUEL,Fuel,Treibstoff
+HOVER_MENU_PROCESS_INPUT,Input,Eingang
+HOVER_MENU_PROCESS_OUTPUT,Output,Ausgang
+HOVER_MENU_PROCESS_NO_ITEM,None,Keins

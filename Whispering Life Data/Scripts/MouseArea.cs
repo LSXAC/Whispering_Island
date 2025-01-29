@@ -27,11 +27,8 @@ public partial class MouseArea : Area2D
 
             building_sprite.Material = outline_shader;
             building_node.mouse_inside = true;
-            if (!building_node.GetTitle().ToString().ToUpper().Contains("BELT"))
-            {
-                hover_menu.InitHoverMenu(building_node);
-                Debug.Print("Hover Menu");
-            }
+            hover_menu.InitHoverMenu(building_node);
+            Debug.Print("Hover Menu");
         }
         else if (Game_Manager.building_mode == Game_Manager.BuildingMode.Removing)
         {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://j1cdgg7lep78"]
+[gd_scene load_steps=26 format=3 uid="uid://j1cdgg7lep78"]
 
 [ext_resource type="Script" path="res://Scripts/Player Scripts/player_ui.cs" id="1_m5svq"]
 [ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
@@ -18,7 +18,9 @@
 [ext_resource type="Script" path="res://Prefabs/HeartManager.cs" id="12_twnk5"]
 [ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://Menus/Theme_Slots.tres" id="17_33i7j"]
 [ext_resource type="Script" path="res://Prefabs/EquipmentSelectBar.cs" id="17_450ol"]
+[ext_resource type="Texture2D" uid="uid://bb5ty4ja5q1mo" path="res://Sprites/Items/Tool_Icons/icons_30_24.png" id="17_m7yfj"]
 [ext_resource type="Script" path="res://Scripts/Inventory Scripts/Slot.cs" id="18_2bhlg"]
+[ext_resource type="Texture2D" uid="uid://b6kjyf31e4wqm" path="res://Sprites/Items/Icons_3rd/Hammer.png" id="18_b5eon"]
 [ext_resource type="PackedScene" uid="uid://bovrg0u6tuo04" path="res://Menus/hover_menu.tscn" id="20_fdkbp"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_x1xeh"]
@@ -42,7 +44,7 @@ window_frame_rect = NodePath("WindowFrame")
 item_row_manager = NodePath("WindowFrame/VBoxContainer/HBoxContainer")
 building_frame = ExtResource("2_ktroc")
 removing_frame = ExtResource("3_7rm5b")
-collected_item_parent = NodePath("ReceivedItems")
+collected_item_parent = NodePath("VBoxContainer3/ReceivedItems")
 gameover_panel = NodePath("GameOverPanel")
 info_vBox = NodePath("WindowFrame/VBoxContainer")
 mainmenu_button = NodePath("GameOverPanel/VBoxContainer/MainmenuButton")
@@ -106,15 +108,15 @@ text = "> 2x can be build"
 horizontal_alignment = 2
 
 [node name="HSlider" type="HSlider" parent="."]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(150, 0)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.0
+offset_left = -75.0
 offset_top = -21.0
-offset_right = 100.0
+offset_right = 75.0
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -146,14 +148,48 @@ theme_override_font_sizes/font_size = 12
 text = "Stamina"
 horizontal_alignment = 1
 
-[node name="ReceivedItems" type="Control" parent="."]
-layout_mode = 3
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -111.0
-offset_right = 125.0
+offset_top = -40.0
+offset_right = 40.0
 grow_vertical = 0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -60.0
+offset_right = 128.0
+offset_bottom = -8.0
+grow_vertical = 0
+
+[node name="ReceivedItems" type="Control" parent="VBoxContainer3"]
+layout_mode = 2
+
+[node name="InventoryButton" type="Button" parent="VBoxContainer3"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 10
+text = "Inventory"
+icon = ExtResource("17_m7yfj")
+script = ExtResource("9_erkjv")
+label_translation_string = "PLAYERUI_INVENTORY_BUTTON"
+
+[node name="BuildingButton" type="Button" parent="VBoxContainer3"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 10
+text = "Building Menu"
+icon = ExtResource("18_b5eon")
+script = ExtResource("9_erkjv")
+label_translation_string = "PLAYERUI_BUILDINGMENU_BUTTON"
 
 [node name="QuestCompletePanel" type="Panel" parent="."]
 visible = false
@@ -754,6 +790,8 @@ offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
 
+[connection signal="pressed" from="VBoxContainer3/InventoryButton" to="." method="OnInventoryButton"]
+[connection signal="pressed" from="VBoxContainer3/BuildingButton" to="." method="OnBuildingMenuButton"]
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="pressed" from="QuestAcceptPanel/CenterContainer/VBoxContainer/ConfirmButton" to="QuestAcceptPanel" method="OnButton"]
 [connection signal="timeout" from="QuestAcceptPanel/Timer" to="." method="OnCompleteQuestCompletepanel"]

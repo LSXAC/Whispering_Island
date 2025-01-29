@@ -100,7 +100,7 @@ building = NodePath("..")
 position = Vector2(-16, 1)
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.75
+wait_time = 0.1
 autostart = true
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]

@@ -83,8 +83,12 @@ public partial class ProcessBuilding : MachineBase
                 FurnaceTab.INSTANCE.UpdateFurnaceUI();
             return;
         }
+
         progress += 5;
         fuel_left -= 1;
+
+        if (hover_menu.INSTANCE.current_object == this)
+            hover_menu.InitHoverMenu(this);
     }
 
     public override void _PhysicsProcess(double delta)

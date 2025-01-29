@@ -5,90 +5,186 @@ using Godot;
 public partial class hover_menu : PanelContainer
 {
     public static hover_menu INSTANCE = null;
+    public Node2D current_object = null;
 
     [Export]
-    public Label title_Label,
-        title_content;
+    public HBoxContainer title_container,
+        descriptiion_container,
+        object_type_container,
+        hitpoint_container,
+        resource_type_container,
+        resource_type_level_container,
+        process_bar_container,
+        process_fuel_container,
+        process_input_container,
+        process_output_container;
 
     [Export]
-    public Label description_Label,
+    public Label title_content,
         description_content;
 
     [Export]
-    public Label hitpoint_Label,
-        hitpoint_content;
+    public Label object_type_content;
 
     [Export]
-    public Label resource_type_Label,
-        resource_type_content;
+    public Label hitpoint_content;
 
     [Export]
-    public Label resource_type_level_Label,
-        resource_type_level_content;
+    public Label resource_type_content;
+
+    [Export]
+    public Label resource_type_level_content;
+
+    [Export]
+    public Label process_bar_content,
+        process_fuel_content,
+        process_input_content,
+        process_output_content;
+
+    [Export]
+    public ColorRect Line1,
+        Line2;
 
     public override void _Ready()
     {
         INSTANCE = this;
-        title_Label.Text = "PLACEHOLDER TITLE";
-        description_Label.Text = "PLACEHOLDER DESC";
         DisableHoverMenu();
     }
 
     public static void InitHoverMenu(Node2D node)
     {
+        INSTANCE.current_object = node;
         if (node is Building_Node b)
         {
-            INSTANCE.title_content.Visible = false;
-            INSTANCE.title_Label.Visible = false;
-            INSTANCE.description_Label.Visible = false;
-            INSTANCE.description_content.Visible = false;
-            INSTANCE.hitpoint_Label.Visible = false;
-            INSTANCE.hitpoint_content.Visible = false;
-            INSTANCE.resource_type_Label.Visible = false;
-            INSTANCE.resource_type_content.Visible = false;
-            INSTANCE.resource_type_level_Label.Visible = false;
-            INSTANCE.resource_type_level_content.Visible = false;
+            INSTANCE.title_container.Visible = false;
+            INSTANCE.descriptiion_container.Visible = false;
+            INSTANCE.resource_type_container.Visible = false;
+            INSTANCE.resource_type_level_container.Visible = false;
+            INSTANCE.hitpoint_container.Visible = false;
+            INSTANCE.object_type_container.Visible = false;
+
+            INSTANCE.process_bar_container.Visible = false;
+            INSTANCE.process_fuel_container.Visible = false;
+            INSTANCE.process_input_container.Visible = false;
+            INSTANCE.process_output_container.Visible = false;
+
+            INSTANCE.Line1.Visible = false;
+            INSTANCE.Line2.Visible = false;
 
             if (b.GetSprite() == null)
                 return;
 
-            INSTANCE.title_content.Visible = true;
-            INSTANCE.title_Label.Visible = true;
-            INSTANCE.description_Label.Visible = true;
-            INSTANCE.description_content.Visible = true;
+            INSTANCE.title_container.Visible = true;
+            INSTANCE.descriptiion_container.Visible = true;
+            INSTANCE.object_type_container.Visible = true;
+
             //Title ---------------
-            INSTANCE.title_Label.Text = TranslationServer.Translate("HOVER_MENU_OBJECT") + ":";
             INSTANCE.title_content.Text = TranslationServer.Translate(b.GetTitle());
 
             //Description -------------
-            INSTANCE.description_Label.Text =
-                TranslationServer.Translate("HOVER_MENU_DESCRIPTION") + ":";
             INSTANCE.description_content.Text = TranslationServer.Translate(b.GetDescription());
+
+            //Object Type -------------
+            if (node is ResourceObject)
+                INSTANCE.object_type_content.Text = TranslationServer.Translate(
+                    "HOVER_MENU_OBJECT_TYPE_RESOURCE"
+                );
+            if (node is ProcessBuilding)
+                INSTANCE.object_type_content.Text = TranslationServer.Translate(
+                    "HOVER_MENU_OBJECT_TYPE_MACHINE_PROCESSING"
+                );
+            if (node is ProductionMachine)
+                INSTANCE.object_type_content.Text = TranslationServer.Translate(
+                    "HOVER_MENU_OBJECT_TYPE_MACHINE_PRODUCTION"
+                );
         }
 
         if (node is ResourceObject ro)
         {
-            INSTANCE.hitpoint_Label.Visible = true;
-            INSTANCE.hitpoint_content.Visible = true;
-            INSTANCE.resource_type_Label.Visible = true;
-            INSTANCE.resource_type_content.Visible = true;
-            INSTANCE.resource_type_level_Label.Visible = true;
-            INSTANCE.resource_type_level_content.Visible = true;
+            INSTANCE.hitpoint_container.Visible = true;
+            INSTANCE.resource_type_container.Visible = true;
+            INSTANCE.resource_type_level_container.Visible = true;
+            INSTANCE.Line1.Visible = true;
 
             //Hitpoints if Ressource
-            INSTANCE.hitpoint_Label.Text =
-                TranslationServer.Translate("HOVER_MENU_HITPOINTS") + ":";
             INSTANCE.hitpoint_content.Text = ro.current_durability + "/" + ro.max_durability;
 
             //Type if Ressource
-            INSTANCE.resource_type_Label.Text =
-                TranslationServer.Translate("HOVER_MENU_RESOURCE_TYPE") + ":";
             INSTANCE.resource_type_content.Text = ro.type.ToString();
 
             //Collect Level if Ressource
-            INSTANCE.resource_type_level_Label.Text =
-                TranslationServer.Translate("HOVER_MENU_RESOURCE_TYPE_LEVEL") + ":";
             INSTANCE.resource_type_level_content.Text = ro.type_level.ToString();
+        }
+
+        if (node is ProcessBuilding pb)
+        {
+            if (pb == null)
+            {
+                Debug.Print("PB NULL");
+                return;
+            }
+            INSTANCE.process_bar_container.Visible = true;
+            INSTANCE.process_fuel_container.Visible = true;
+            INSTANCE.process_input_container.Visible = true;
+            INSTANCE.process_output_container.Visible = true;
+            INSTANCE.Line2.Visible = true;
+
+            INSTANCE.process_bar_content.Text = pb.progress + "/" + 100;
+            INSTANCE.process_fuel_content.Text = pb.fuel_left + "x";
+
+            if (pb.item_array[(int)FurnaceTab.SlotType.EXPORT] != null)
+                INSTANCE.process_output_content.Text =
+                    pb.item_array[(int)FurnaceTab.SlotType.EXPORT].amount
+                    + "x "
+                    + TranslationServer.Translate(
+                        Inventory
+                            .INSTANCE
+                            .item_Types[
+                                (InventoryBase.ITEM_ID)
+                                    pb.item_array[(int)FurnaceTab.SlotType.EXPORT].item_id
+                            ]
+                            .item_name
+                    );
+            else
+                INSTANCE.process_output_content.Text = TranslationServer.Translate(
+                    "HOVER_MENU_PROCESS_NO_ITEM"
+                );
+
+            if (pb.item_array[(int)FurnaceTab.SlotType.IMPORT] != null)
+                INSTANCE.process_input_content.Text =
+                    pb.item_array[(int)FurnaceTab.SlotType.IMPORT].amount
+                    + "x "
+                    + TranslationServer.Translate(
+                        Inventory
+                            .INSTANCE
+                            .item_Types[
+                                (InventoryBase.ITEM_ID)
+                                    pb.item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
+                            ]
+                            .item_name
+                    );
+            else
+                INSTANCE.process_input_content.Text = TranslationServer.Translate(
+                    "HOVER_MENU_PROCESS_NO_ITEM"
+                );
+        }
+
+        if (node is ProductionMachine pm)
+        {
+            if (pm == null)
+            {
+                Debug.Print("PM NULL");
+                return;
+            }
+            INSTANCE.process_bar_container.Visible = true;
+            INSTANCE.process_output_container.Visible = true;
+            INSTANCE.Line2.Visible = true;
+
+            INSTANCE.process_bar_content.Text = pm.progress + "/" + 100;
+            INSTANCE.process_output_content.Text =
+                pm.production_count
+                + "x "
+                + TranslationServer.Translate(pm.production_item_info.item_name);
         }
 
         EnableHoverMenu();
@@ -97,6 +193,7 @@ public partial class hover_menu : PanelContainer
     public static void DisableHoverMenu()
     {
         INSTANCE.Visible = false;
+        INSTANCE.current_object = null;
     }
 
     public static void EnableHoverMenu()

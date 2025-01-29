@@ -67,21 +67,26 @@ public partial class GameMenu : CanvasLayer
 
         if (Input.IsActionJustPressed("Escape"))
         {
-            if (IsThisWindow(this))
-            {
-                Inventory.INSTANCE.MarkSlotsWithType(null);
-                CloseLastWindow();
-                OnExitButton();
-                return;
-            }
-
-            if (IsWindowActiv())
-                return;
-
-            Inventory.INSTANCE.MarkSlotsWithType(null);
-            ChangeSelectedTabColor(Tabs.Inventory);
-            SetWindow(this);
+            OpenGameMenu();
         }
+    }
+
+    public void OpenGameMenu()
+    {
+        if (IsThisWindow(this))
+        {
+            Inventory.INSTANCE.MarkSlotsWithType(null);
+            CloseLastWindow();
+            OnExitButton();
+            return;
+        }
+
+        if (IsWindowActiv())
+            return;
+
+        Inventory.INSTANCE.MarkSlotsWithType(null);
+        ChangeSelectedTabColor(Tabs.Inventory);
+        SetWindow(this);
     }
 
     public async void OnBackToMainMenu()
