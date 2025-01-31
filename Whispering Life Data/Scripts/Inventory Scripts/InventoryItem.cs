@@ -10,6 +10,8 @@ public partial class InventoryItem : TextureRect
     [Export]
     public int amount = 0;
     public Label amount_label;
+    public int current_durability = -1;
+    public ProgressBar pb;
 
     public override void _Notification(int what)
     {
@@ -19,18 +21,42 @@ public partial class InventoryItem : TextureRect
         UpdateToolTip();
     }
 
-    public void init(ItemInfo item_info)
+    public void init(ItemInfo item_info, int current_durability = -1)
     {
         this.Size = new Vector2(40, 40);
         this.Position = new Vector2(4, 4);
         this.item_info = item_info;
         Label l = new Label { ZIndex = 1 };
+        l.HorizontalAlignment = HorizontalAlignment.Right;
         l.CustomMinimumSize = new Vector2(42, 46);
         l.VerticalAlignment = VerticalAlignment.Bottom;
         l.HorizontalAlignment = HorizontalAlignment.Right;
         amount_label = l;
         UpdateToolTip();
-        AddChild(l);
+        //57cb00
+        if (item_info.has_durability)
+        {
+            VBoxContainer vbc = new VBoxContainer();
+            vbc.MouseFilter = MouseFilterEnum.Ignore;
+            vbc.Size = new Vector2(40, 40);
+            vbc.Alignment = BoxContainer.AlignmentMode.End;
+
+            pb = new ProgressBar();
+            pb.MouseFilter = MouseFilterEnum.Ignore;
+            pb.Size = new Vector2(40, 5);
+            pb.MaxValue = item_info.max_durability;
+            pb.Step = 1;
+            pb.Value = current_durability;
+            this.current_durability = current_durability;
+            pb.ShowPercentage = false;
+            StyleBoxFlat sbf = new StyleBoxFlat();
+            sbf.BgColor = new Color(0.34f, 0.796f, 0);
+            pb.AddThemeStyleboxOverride("fill", sbf);
+            vbc.AddChild(pb);
+            AddChild(vbc);
+        }
+        else
+            AddChild(l);
     }
 
     private void UpdateToolTip()
@@ -67,7 +93,13 @@ public partial class InventoryItem : TextureRect
 
     public void UpdateAmountLabel()
     {
-        amount_label.Text = amount + "x";
+        if (amount_label != null)
+            amount_label.Text = amount + "x";
+    }
+
+    public void SetDurability(int durability)
+    {
+        pb.Value = durability;
     }
 
     public override void _Ready()

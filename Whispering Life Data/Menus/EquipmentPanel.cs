@@ -59,6 +59,50 @@ public partial class EquipmentPanel : Control
         }
     }
 
+    public static void UpdateSlotDurability(int index)
+    {
+        if (
+            INSTANCE
+                .slots_tool[EquipmentSelectBar.current_selected_slot]
+                .GetItem()
+                .current_durability > 0
+        )
+        {
+            player_ui
+                .INSTANCE.equipmentSelectBar.GetSelectedItem()
+                .SetDurability(
+                    INSTANCE
+                        .slots_tool[EquipmentSelectBar.current_selected_slot]
+                        .GetItem()
+                        .current_durability
+                );
+
+            INSTANCE
+                .slots_tool[EquipmentSelectBar.current_selected_slot]
+                .GetItem()
+                .SetDurability(
+                    INSTANCE
+                        .slots_tool[EquipmentSelectBar.current_selected_slot]
+                        .GetItem()
+                        .current_durability
+                );
+            INSTANCE.equipped_tools[EquipmentSelectBar.current_selected_slot].current_durability =
+                INSTANCE
+                    .slots_tool[EquipmentSelectBar.current_selected_slot]
+                    .GetItem()
+                    .current_durability;
+        }
+        else
+        {
+            player_ui
+                .INSTANCE.equipmentSelectBar.select_slots[EquipmentSelectBar.current_selected_slot]
+                .ClearItem();
+            INSTANCE.slots_tool[EquipmentSelectBar.current_selected_slot].ClearItem();
+            INSTANCE.equipped_tools[EquipmentSelectBar.current_selected_slot] = null;
+            player_ui.INSTANCE.equipmentSelectBar.current_selected_item = null;
+        }
+    }
+
     public void CalculateStatsFromEquipment()
     {
         Player_Stats ps = Player.INSTANCE.player_stats;
@@ -120,13 +164,15 @@ public partial class EquipmentPanel : Control
                 slots_tool[i]
                     .SetItem(
                         Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)item_save[i].item_id],
-                        item_save[i].amount
+                        item_save[i].amount,
+                        item_save[i].current_durability
                     );
                 player_ui
                     .INSTANCE.equipmentSelectBar.select_slots[i]
                     .SetItem(
                         Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)item_save[i].item_id],
-                        item_save[i].amount
+                        item_save[i].amount,
+                        item_save[i].current_durability
                     );
             }
     }

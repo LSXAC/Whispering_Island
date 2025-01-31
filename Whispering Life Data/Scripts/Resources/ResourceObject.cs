@@ -231,6 +231,24 @@ public partial class ResourceObject : placeable_building
             Player.INSTANCE.player_stats.stat_amounts[(int)type]
             * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
         );
+
+        //Should be Refactored to own Method
+        //Selected Item Durability + Break -------------------------------------------------------------
+        if (player_ui.INSTANCE.equipmentSelectBar.GetSelectedItem() != null)
+            if (player_ui.INSTANCE.equipmentSelectBar.GetSelectedItem().item_info.has_durability)
+            {
+                EquipmentPanel
+                    .INSTANCE.slots_tool[EquipmentSelectBar.current_selected_slot]
+                    .GetItem()
+                    .current_durability -= (int)(
+                    Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                    * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+                );
+
+                EquipmentPanel.UpdateSlotDurability(EquipmentSelectBar.current_selected_slot);
+            }
+        //-----------------------------------------------------------------------------------------------------
+
         gpu_particles.Emitting = true;
         if (current_durability <= 0)
         {

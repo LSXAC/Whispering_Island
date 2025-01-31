@@ -249,7 +249,11 @@ public partial class InventoryBase : SlotUpdater
             {
                 if (remaining <= ii.max_slot_amount)
                 {
-                    array[i] = new ItemSave((int)ii.unique_id, remaining);
+                    if (ii.has_durability)
+                        array[i] = new ItemSave((int)ii.unique_id, remaining, ii.max_durability);
+                    else
+                        array[i] = new ItemSave((int)ii.unique_id, remaining);
+
                     QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
                         QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
                     );
@@ -258,7 +262,10 @@ public partial class InventoryBase : SlotUpdater
                 }
                 else
                 {
-                    array[i] = new ItemSave((int)ii.unique_id, ii.max_slot_amount);
+                    if (ii.has_durability)
+                        array[i] = new ItemSave((int)ii.unique_id, remaining, ii.max_durability);
+                    else
+                        array[i] = new ItemSave((int)ii.unique_id, ii.max_slot_amount);
                     QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
                         QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
                     );
@@ -393,7 +400,7 @@ public partial class InventoryBase : SlotUpdater
         }
 
         GetNode<Slot>($"GridContainer/Slot{index}")
-            .UpdateItem(GetItemInfo(index), inventory_items[index].amount);
+            .UpdateItem(GetItemInfo(index), inventory_items[index].amount, GetDurability(index));
 
         if (pref_ref != null)
             GetNode<Slot>($"GridContainer/Slot{index}").GetItem().SelfModulate =
@@ -412,6 +419,18 @@ public partial class InventoryBase : SlotUpdater
     public override ItemInfo GetItemInfo(int index)
     {
         return item_Types[(ITEM_ID)inventory_items[index].item_id];
+    }
+
+    public int GetDurability(int index)
+    {
+        Debug.Print("" + GetItemInfo(index).has_durability);
+        if (GetItemInfo(index).has_durability)
+        {
+            Debug.Print(inventory_items[index].current_durability.ToString());
+            return inventory_items[index].current_durability;
+        }
+        else
+            return -1;
     }
 
     public void LoadInventoryFromSave(ItemSave[] item_save)

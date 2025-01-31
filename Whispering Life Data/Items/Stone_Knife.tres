@@ -19,6 +19,8 @@ bonus = -0.5
 [resource]
 script = ExtResource("1_hlfru")
 item_types_arr = Array[Object]([ExtResource("2_71jir"), ExtResource("3_1v52a")])
+has_durability = true
+max_durability = 150
 max_slot_amount = 1
 item_name = "STONE_KNIFE"
 unique_id = 11

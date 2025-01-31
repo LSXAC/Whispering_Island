@@ -8,6 +8,8 @@
 [resource]
 script = ExtResource("2_gtcen")
 item_types_arr = Array[Object]([ExtResource("1_xabq2"), ExtResource("2_foppn")])
+has_durability = false
+max_durability = 100
 max_slot_amount = 48
 item_name = "WHEAT"
 unique_id = 22

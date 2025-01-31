@@ -12,6 +12,8 @@ type = 9
 [resource]
 script = ExtResource("1_pp54m")
 item_types_arr = Array[Object]([ExtResource("1_mdwl2"), SubResource("Resource_g0ryy")])
+has_durability = false
+max_durability = 100
 max_slot_amount = 48
 item_name = "MYSTIC_WOOD"
 unique_id = 13

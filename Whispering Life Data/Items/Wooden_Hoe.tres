@@ -20,6 +20,8 @@ bonus = -1.0
 [resource]
 script = ExtResource("1_kn11j")
 item_types_arr = Array[Object]([ExtResource("2_1bryp"), ExtResource("3_6hdbi"), ExtResource("4_p5l1n")])
+has_durability = true
+max_durability = 50
 max_slot_amount = 1
 item_name = "WOODEN_HOE"
 unique_id = 20

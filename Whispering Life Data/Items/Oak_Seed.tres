@@ -7,6 +7,8 @@
 [resource]
 script = ExtResource("2_jql61")
 item_types_arr = Array[Object]([ExtResource("1_vpu17")])
+has_durability = false
+max_durability = 100
 max_slot_amount = 48
 item_name = "OAK SEED"
 unique_id = 37

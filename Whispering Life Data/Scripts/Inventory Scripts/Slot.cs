@@ -89,34 +89,39 @@ public partial class Slot : Button
         Text = TranslationServer.Translate(label_translation_string);
     }
 
-    public void SetItem(ItemInfo item_info, int amount)
+    public void SetItem(ItemInfo item_info, int amount, int durability = -1)
     {
         InventoryItem ii = new InventoryItem();
-        ii.init(item_info);
+        ii.init(item_info, durability);
         ii.amount = amount;
         ii.UpdateAmountLabel();
+        if (durability != -1)
+            ii.SetDurability(durability);
         AddChild(ii);
         if (amount == 0)
             ClearItem();
     }
 
-    public void UpdateItem(ItemInfo item_info, int amount)
+    public void UpdateItem(ItemInfo item_info, int amount, int durability)
     {
         if (GetItem() != null)
         {
             if (item_info == GetItem().item_info)
             {
+                if (durability != -1)
+                    GetItem().SetDurability(durability);
+
                 GetItem().amount = amount;
                 GetItem().UpdateAmountLabel();
             }
             else
             {
                 GetItem().QueueFree();
-                SetItem(item_info, amount);
+                SetItem(item_info, amount, durability);
             }
         }
         else
-            SetItem(item_info, amount);
+            SetItem(item_info, amount, durability);
     }
 
     public InventoryItem GetItem()
@@ -139,7 +144,8 @@ public partial class Slot : Button
         {
             if (GetItem() != null)
             {
-                CreateClickedItem();
+                Debug.Print(GetItem().current_durability.ToString());
+                CreateClickedItem(false, GetItem().current_durability);
                 if (GetItem().item_info.HasType(ItemInfo.Type.TOOL))
                 {
                     EquipmentPanel.INSTANCE.equipped_tools[index] = null;
@@ -186,15 +192,24 @@ public partial class Slot : Button
                 {
                     EquipmentPanel.INSTANCE.equipped_tools[index] = new ItemSave(
                         (int)Inventory.clicked_item.item_info.unique_id,
-                        Inventory.clicked_item.amount
+                        Inventory.clicked_item.amount,
+                        Inventory.clicked_item.current_durability
                     );
                     EquipmentPanel
                         .INSTANCE.slots_tool[index]
-                        .SetItem(Inventory.clicked_item.item_info, Inventory.clicked_item.amount);
+                        .SetItem(
+                            Inventory.clicked_item.item_info,
+                            Inventory.clicked_item.amount,
+                            Inventory.clicked_item.current_durability
+                        );
 
                     player_ui
                         .INSTANCE.equipmentSelectBar.select_slots[index]
-                        .SetItem(Inventory.clicked_item.item_info, Inventory.clicked_item.amount);
+                        .SetItem(
+                            Inventory.clicked_item.item_info,
+                            Inventory.clicked_item.amount,
+                            Inventory.clicked_item.current_durability
+                        );
                     if (EquipmentSelectBar.current_selected_slot == index)
                         player_ui.INSTANCE.equipmentSelectBar.SelectSelectSlot(index);
                     ClearClickedItem();
@@ -210,7 +225,8 @@ public partial class Slot : Button
     {
         EquipmentPanel.INSTANCE.equipped_armor[index] = new ItemSave(
             (int)Inventory.clicked_item.item_info.unique_id,
-            Inventory.clicked_item.amount
+            Inventory.clicked_item.amount,
+            Inventory.clicked_item.current_durability
         );
         EquipmentPanel
             .INSTANCE.slots_armor[index]
@@ -235,7 +251,10 @@ public partial class Slot : Button
                         return;
                     }
 
-                CreateClickedItem();
+                if (GetItem().item_info.has_durability)
+                    CreateClickedItem(false, GetItem().current_durability);
+                else
+                    CreateClickedItem();
                 ///////////////////////
                 ClearSlot(item_array);
                 ///////////////////////
@@ -257,7 +276,8 @@ public partial class Slot : Button
                         NewSlot(
                             item_array,
                             (int)Inventory.clicked_item.item_info.unique_id,
-                            HalfAmountNextInt(Inventory.clicked_item.amount)
+                            HalfAmountNextInt(Inventory.clicked_item.amount),
+                            Inventory.clicked_item.current_durability
                         );
                         Inventory.clicked_item.amount = (int)(Inventory.clicked_item.amount / 2.0);
                         return;
@@ -266,7 +286,8 @@ public partial class Slot : Button
                 NewSlot(
                     item_array,
                     (int)Inventory.clicked_item.item_info.unique_id,
-                    Inventory.clicked_item.amount
+                    Inventory.clicked_item.amount,
+                    Inventory.clicked_item.current_durability
                 );
                 ClearClickedItem();
                 return;
@@ -283,7 +304,12 @@ public partial class Slot : Button
                     InventoryItem ii = Inventory.clicked_item;
                     ClearClickedItem();
                     CreateClickedItem();
-                    NewSlot(item_array, (int)ii.item_info.unique_id, ii.amount);
+                    NewSlot(
+                        item_array,
+                        (int)ii.item_info.unique_id,
+                        ii.amount,
+                        ii.current_durability
+                    );
                     return;
                 }
             }
@@ -349,9 +375,12 @@ public partial class Slot : Button
         return i_save[GetIndex()].amount;
     }
 
-    private void NewSlot(ItemSave[] i_save, int id, int amount)
+    private void NewSlot(ItemSave[] i_save, int id, int amount, int durability = -1)
     {
-        i_save[GetIndex()] = new ItemSave(id, amount);
+        if (durability != -1)
+            i_save[GetIndex()] = new ItemSave(id, amount, durability);
+        else
+            i_save[GetIndex()] = new ItemSave(id, amount);
         slotUpdater.UpdateSlot(GetIndex(), Inventory.clicked_item);
     }
 
@@ -407,11 +436,11 @@ public partial class Slot : Button
         }
     }
 
-    public void CreateClickedItem(bool halfNext = false)
+    public void CreateClickedItem(bool halfNext = false, int durability = -1)
     {
         InventoryItem ii = new InventoryItem();
-        ii.init(GetItem().item_info);
-
+        ii.init(GetItem().item_info, durability);
+        Debug.Print("Durability: " + durability);
         if (!halfNext)
             ii.amount = GetItem().amount;
         else
@@ -419,6 +448,8 @@ public partial class Slot : Button
 
         ii.MouseFilter = MouseFilterEnum.Ignore;
         ii.ZIndex = 10;
+        if (durability != -1)
+            ii.SetDurability(durability);
         ii.SelfModulate = GetItem().SelfModulate;
         Inventory.clicked_item = ii;
         Inventory.INSTANCE.AddChild(ii);

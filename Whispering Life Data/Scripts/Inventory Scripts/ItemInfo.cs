@@ -38,6 +38,12 @@ public partial class ItemInfo : Resource
     }
 
     [Export]
+    public bool has_durability = false;
+
+    [Export]
+    public int max_durability = 100;
+
+    [Export]
     public int max_slot_amount = 48;
 
     [Export]

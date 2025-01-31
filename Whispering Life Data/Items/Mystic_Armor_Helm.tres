@@ -18,6 +18,8 @@ type = 10
 [resource]
 script = ExtResource("1_3srwn")
 item_types_arr = Array[Object]([ExtResource("1_qxwyv"), SubResource("Resource_hlk3f")])
+has_durability = false
+max_durability = 100
 max_slot_amount = 1
 item_name = "MYSTIC_ARMOR_HELM"
 unique_id = 33

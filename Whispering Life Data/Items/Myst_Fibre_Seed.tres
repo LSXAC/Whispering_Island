@@ -7,6 +7,8 @@
 [resource]
 script = ExtResource("2_2xap3")
 item_types_arr = Array[Object]([ExtResource("1_np636")])
+has_durability = false
+max_durability = 100
 max_slot_amount = 48
 item_name = "Mystic Fibre Seed"
 unique_id = 39

@@ -13,6 +13,8 @@ type = 9
 [resource]
 script = ExtResource("1_1knkb")
 item_types_arr = Array[Object]([ExtResource("1_0luyf"), ExtResource("2_tdf8b"), SubResource("Resource_mhah5")])
+has_durability = false
+max_durability = 100
 max_slot_amount = 48
 item_name = "STONE"
 unique_id = 1

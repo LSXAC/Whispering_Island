@@ -7,6 +7,8 @@
 [resource]
 script = ExtResource("1_lxl0p")
 item_types_arr = Array[Object]([ExtResource("1_gwktg")])
+has_durability = false
+max_durability = 100
 max_slot_amount = 48
 item_name = "STONE_PICKAXE_HEAD"
 unique_id = 18

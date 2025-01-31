@@ -7,6 +7,8 @@
 [resource]
 script = ExtResource("1_o64ju")
 item_types_arr = Array[Object]([ExtResource("1_pgyqu")])
+has_durability = false
+max_durability = 100
 max_slot_amount = 48
 item_name = "IRON_INGOT"
 unique_id = 8
