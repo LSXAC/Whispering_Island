@@ -1,13 +1,9 @@
 using System;
 using System.Diagnostics;
-using System.Security.Cryptography;
 using Godot;
 
 public partial class ResourceObject : placeable_building
 {
-    //@todo: Animation for each Click
-    //@todo: Remove Animations
-
     [Export]
     public AnimationPlayer anim_player;
 
@@ -81,7 +77,7 @@ public partial class ResourceObject : placeable_building
         StartTimerBar(TimerBar.state.SPAWNING, respawn_seconds);
     }
 
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
         if (!Game_Manager.INSTANCE.tutorial_finished && Visible)
             Visible = false;
@@ -130,8 +126,28 @@ public partial class ResourceObject : placeable_building
 
     private void Hit()
     {
+        if (!player_ui.INSTANCE.equipmentSelectBar.HasSameUseType(type))
+        {
+            player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WRONG_TOOL"));
+            return;
+        }
+
+        if (player_ui.INSTANCE.equipmentSelectBar.GetSelectedTypeLevel() < type_level)
+        {
+            player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WEAK_TYPE_LEVEL"));
+            return;
+        }
+
         //Check if Item can be in Inventory
-        if (current_durability - 1 > 0)
+        if (
+            (
+                current_durability
+                - (int)(
+                    Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                    * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+                )
+            ) > 0
+        )
         {
             if (
                 !Inventory.INSTANCE.CanReceiveItem(
@@ -147,42 +163,24 @@ public partial class ResourceObject : placeable_building
                 player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
                 return;
             }
-            if (!player_ui.INSTANCE.equipmentSelectBar.HasSameUseType(type))
-            {
-                player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WRONG_TOOL"));
-                return;
-            }
-            if (player_ui.INSTANCE.equipmentSelectBar.GetSelectedTypeLevel() < type_level)
-            {
-                player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WEAK_TYPE_LEVEL"));
-                return;
-            }
         }
         else
         {
+            int amount =
+                (int)(
+                    mining_bonus
+                    * Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                    * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+                ) + current_durability;
             if (
                 !Inventory.INSTANCE.CanReceiveItem(
                     item_info,
                     Inventory.INSTANCE.inventory_items,
-                    (int)(
-                        mining_bonus
-                        * Player.INSTANCE.player_stats.stat_amounts[(int)type]
-                        * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
-                    )
+                    amount
                 )
             )
             {
                 player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
-                return;
-            }
-            if (!player_ui.INSTANCE.equipmentSelectBar.HasSameUseType(type))
-            {
-                player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WRONG_TOOL"));
-                return;
-            }
-            if (player_ui.INSTANCE.equipmentSelectBar.GetSelectedTypeLevel() < type_level)
-            {
-                player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WEAK_TYPE_LEVEL"));
                 return;
             }
             if (drops_extra_item)
@@ -203,9 +201,7 @@ public partial class ResourceObject : placeable_building
             }
         }
 
-        if (hit_point == null)
-            Debug.Print("No Hitpoint! " + Name);
-        else
+        if (hit_point != null)
         {
             CharacterBody2D hit_lab = hit_label.Instantiate() as CharacterBody2D;
             int time = rnd.Next(-8, 9);
@@ -232,7 +228,6 @@ public partial class ResourceObject : placeable_building
             * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
         );
 
-        //Should be Refactored to own Method
         //Selected Item Durability + Break -------------------------------------------------------------
         if (player_ui.INSTANCE.equipmentSelectBar.GetSelectedItem() != null)
             if (player_ui.INSTANCE.equipmentSelectBar.GetSelectedItem().item_info.has_durability)
@@ -244,7 +239,6 @@ public partial class ResourceObject : placeable_building
                     Player.INSTANCE.player_stats.stat_amounts[(int)type]
                     * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
                 );
-
                 EquipmentPanel.UpdateSlotDurability(EquipmentSelectBar.current_selected_slot);
             }
         //-----------------------------------------------------------------------------------------------------
@@ -253,27 +247,19 @@ public partial class ResourceObject : placeable_building
         if (current_durability <= 0)
         {
             anim_player.Play("Break");
-            player_ui.AddItemLabelUI(
-                "Bonus: +"
-                    + (
-                        (int)(
-                            mining_bonus
-                            * Player.INSTANCE.player_stats.stat_amounts[(int)type]
-                            * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
-                        )
-                    )
-                    + " "
-                    + TranslationServer.Translate(item_info.item_name.ToString())
-            );
-            Inventory.INSTANCE.AddItem(
-                item_info,
+            int amount =
                 (int)(
                     mining_bonus
                     * Player.INSTANCE.player_stats.stat_amounts[(int)type]
                     * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
-                ),
-                Inventory.INSTANCE.inventory_items
+                ) + current_durability;
+            player_ui.AddItemLabelUI(
+                "Bonus: +"
+                    + amount
+                    + " "
+                    + TranslationServer.Translate(item_info.item_name.ToString())
             );
+            Inventory.INSTANCE.AddItem(item_info, amount, Inventory.INSTANCE.inventory_items);
 
             if (drops_extra_item)
             {
@@ -299,6 +285,7 @@ public partial class ResourceObject : placeable_building
             QueueFree();
             return;
         }
+
         anim_player.Play("Hit");
         StartTimerBar(TimerBar.state.COOLDOWN, click_cooldown_time);
         player_ui.AddItemLabelUI(
@@ -340,10 +327,7 @@ public partial class ResourceObject : placeable_building
     public void Reset(bool from_loading = false)
     {
         if (timer_bar.currentstate == TimerBar.state.SPAWNING || from_loading)
-        {
             current_durability = max_durability;
-            //anim_player.PlayBackwards("Break"); Sapling to Plant
-        }
 
         if (HasNode("Shadow"))
             GetNode<Sprite2D>("Shadow").Visible = true;
