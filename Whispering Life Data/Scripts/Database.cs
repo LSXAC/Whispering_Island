@@ -159,6 +159,10 @@ public partial class Database : Node
             BUILDING_ID.BELT_COMBINER_3x1.ToString(),
             ResourceLoader.Load<BuildingType>("res://Buildings/Belt_Combiner_3x1.tres")
         },
+        {
+            BUILDING_ID.CHEST_PUFFER.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Chest_Puffer.tres")
+        },
     };
 
     public enum BUILDING_ID
@@ -187,7 +191,8 @@ public partial class Database : Node
         BELT_SPLITTER_1x2,
         BELT_SPLITTER_1x3,
         BELT_COMBINER_2x1,
-        BELT_COMBINER_3x1
+        BELT_COMBINER_3x1,
+        CHEST_PUFFER
     }
 
     public static BuildingType GetBuildingType(BUILDING_ID building_id)

@@ -31,8 +31,10 @@ public partial class Giver : Area2D
 
             if (building is ProcessBuilding)
                 IsProcessingBuilding(destination);
-            else if (building is ProductionMachine)
+            else if (building is ProductionMachine && building is not Chest)
                 IsProductionBuilding(destination);
+            else if (building is Chest)
+                IsChestBuilding(destination);
         }
     }
 
@@ -60,6 +62,42 @@ public partial class Giver : Area2D
                     destination.GetParent<BeltTunnel>().GetNode<Timer>("CheckTimer").Start();
                 }
             }
+    }
+
+    private void IsChestBuilding(Node destination)
+    {
+        if (destination.GetParent<Belt>().can_receive_item())
+        {
+            if (destination.GetParent() is BeltTunnel)
+                destination.GetParent<BeltTunnel>().from_Belt = true;
+
+            if (destination.GetParent() is BeltSplitter)
+                destination.GetParent<BeltSplitter>().GetNode<Timer>("CheckAreaTimer").Start();
+
+            if (destination.GetParent() is BeltCombiner)
+                destination.GetParent<BeltCombiner>().GetNode<Timer>("CheckAreaTimer").Start();
+
+            //Remove from Chest
+            foreach (ItemSave i_s in ((Chest)building).chest_items)
+            {
+                if (i_s == null)
+                    continue;
+
+                Inventory.INSTANCE.RemoveItem(
+                    Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)i_s.item_id],
+                    1,
+                    ((Chest)building).chest_items
+                );
+                BeltItem item = (BeltItem)beltItem.Instantiate();
+                item.InitBeltItem(
+                    new Item(Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)i_s.item_id], 1)
+                );
+                Holder.AddChild(item);
+                destination.GetParent<Belt>().receive_item(item);
+                ChestInventory.INSTANCE.UpdateInventoryUI();
+                break;
+            }
+        }
     }
 
     private void IsProductionBuilding(Node destination)
