@@ -151,6 +151,14 @@ public partial class Database : Node
             BUILDING_ID.BELT_SPLITTER_1x3.ToString(),
             ResourceLoader.Load<BuildingType>("res://Buildings/Belt_Splitter_1x3.tres")
         },
+        {
+            BUILDING_ID.BELT_COMBINER_2x1.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Belt_Combiner_2x1.tres")
+        },
+        {
+            BUILDING_ID.BELT_COMBINER_3x1.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Belt_Combiner_3x1.tres")
+        },
     };
 
     public enum BUILDING_ID
@@ -177,7 +185,9 @@ public partial class Database : Node
         SAND_STONE_OBJECT,
         SAND_OBJECT,
         BELT_SPLITTER_1x2,
-        BELT_SPLITTER_1x3
+        BELT_SPLITTER_1x3,
+        BELT_COMBINER_2x1,
+        BELT_COMBINER_3x1
     }
 
     public static BuildingType GetBuildingType(BUILDING_ID building_id)

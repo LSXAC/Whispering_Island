@@ -16,6 +16,9 @@ public abstract partial class Building_Node : Node2D
     [Export]
     public CollisionShape2D collision_shape;
 
+    [Export]
+    public bool disable_collision = false;
+
     public bool mouse_inside = false;
 
     public abstract void OnMouseClick();

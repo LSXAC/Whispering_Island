@@ -75,6 +75,9 @@ public partial class Giver : Area2D
             if (destination.GetParent() is BeltSplitter)
                 destination.GetParent<BeltSplitter>().GetNode<Timer>("CheckAreaTimer").Start();
 
+            if (destination.GetParent() is BeltCombiner)
+                destination.GetParent<BeltCombiner>().GetNode<Timer>("CheckAreaTimer").Start();
+
             ((ProductionMachine)building).production_count -= 1;
             BeltItem item = (BeltItem)beltItem.Instantiate();
             item.InitBeltItem(new Item(((ProductionMachine)building).production_item_info, 1));

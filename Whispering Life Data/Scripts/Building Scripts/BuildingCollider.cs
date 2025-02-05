@@ -43,10 +43,13 @@ public partial class BuildingCollider : Area2D
         bool on_building = false;
         foreach (Node2D node in GetOverlappingBodies())
         {
-            if (node is Building_Node)
+            if (node is Building_Node n)
             {
-                on_building = false;
-                break;
+                if (!n.disable_collision)
+                {
+                    on_building = false;
+                    break;
+                }
             }
 
             if (types == null)

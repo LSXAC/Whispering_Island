@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://bdn4bxfkepb3m"]
+
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Items/Wood.tres" id="1_odctg"]
+[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_2sdtt"]
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="3_vvvga"]
+[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Items/Iron_Ingot.tres" id="4_aax3h"]
+[ext_resource type="Script" path="res://Scripts/Resources/Recipe.cs" id="5_skld5"]
+
+[sub_resource type="Resource" id="Resource_hnenm"]
+script = ExtResource("2_2sdtt")
+item_info = ExtResource("1_odctg")
+amount = 4
+
+[sub_resource type="Resource" id="Resource_odrd4"]
+script = ExtResource("2_2sdtt")
+item_info = ExtResource("3_vvvga")
+amount = 2
+
+[sub_resource type="Resource" id="Resource_fssec"]
+script = ExtResource("2_2sdtt")
+item_info = ExtResource("4_aax3h")
+amount = 4
+
+[resource]
+script = ExtResource("5_skld5")
+requiered_items = Array[Object]([SubResource("Resource_hnenm"), SubResource("Resource_odrd4"), SubResource("Resource_fssec")])
+unlockRequirements = Array[Object]([])

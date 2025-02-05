@@ -18,7 +18,7 @@ size = Vector2(14, 14)
 size = Vector2(14, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
-size = Vector2(16, 14)
+size = Vector2(32, 32)
 
 [node name="BeltSplitter1x2" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "item_holder", "detector", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
@@ -54,7 +54,8 @@ collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." groups=["Blocker"]]
 z_index = -2
-tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 255, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
 tile_set = ExtResource("4_xcseh")
 
 [node name="Detector" parent="." instance=ExtResource("5_k60li")]
@@ -87,7 +88,7 @@ shape = SubResource("RectangleShape2D_77bd0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-8, -7)
+position = Vector2(-16, -16)
 shape = SubResource("RectangleShape2D_xfl3k")
 
 [node name="CheckAreaTimer" type="Timer" parent="."]
@@ -103,9 +104,11 @@ texture = ExtResource("11_tpvem")
 
 [node name="Belt" parent="." instance=ExtResource("12_t2iun")]
 position = Vector2(-16, 0)
+disable_collision = true
 
 [node name="Belt2" parent="." instance=ExtResource("12_t2iun")]
 position = Vector2(-16, -16)
+disable_collision = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 3

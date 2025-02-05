@@ -1,15 +1,15 @@
-[gd_scene load_steps=14 format=4 uid="uid://d166ytf76ufnl"]
+[gd_scene load_steps=14 format=4 uid="uid://dsmt6k3efm7p6"]
 
-[ext_resource type="Script" path="res://Placeable/BeltSplitter.cs" id="1_uaqd4"]
-[ext_resource type="Texture2D" uid="uid://bi2pvwe1l5m40" path="res://Sprites/Belt_Atlas.png" id="2_0dff6"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_uoi4d"]
-[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="4_grvds"]
-[ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Placeable/detector.tscn" id="5_4htdo"]
-[ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_fil1i"]
-[ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="7_omdat"]
-[ext_resource type="Script" path="res://Placeable/BeltArea.cs" id="8_k0chv"]
-[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="9_16cul"]
-[ext_resource type="PackedScene" uid="uid://rd7h1v4imvk6" path="res://Placeable/Belt.tscn" id="10_imdpi"]
+[ext_resource type="Script" path="res://Placeable/BeltCombiner.cs" id="1_enwf2"]
+[ext_resource type="Texture2D" uid="uid://bi2pvwe1l5m40" path="res://Sprites/Belt_Atlas.png" id="2_ls4sy"]
+[ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_fu8mu"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="4_gmjjv"]
+[ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Placeable/detector.tscn" id="5_fsbsv"]
+[ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_sja4p"]
+[ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="7_pc03e"]
+[ext_resource type="Script" path="res://Placeable/BeltArea.cs" id="8_ef2jb"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="9_60jio"]
+[ext_resource type="PackedScene" uid="uid://rd7h1v4imvk6" path="res://Placeable/Belt.tscn" id="10_8ca66"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8pj"]
 size = Vector2(14, 14)
@@ -20,56 +20,55 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
 size = Vector2(32, 48)
 
-[node name="BeltSplitter1x3" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "belt_2", "item_holder", "detector", "building_collider_manager", "sprite", "collision_shape")]
+[node name="BeltCombiner3x1" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "belt_2", "item_holder", "detector", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
-script = ExtResource("1_uaqd4")
+script = ExtResource("1_enwf2")
 checkAreaTimer = NodePath("CheckAreaTimer")
 belt_0 = NodePath("Belt")
 belt_1 = NodePath("Belt2")
 belt_2 = NodePath("Belt3")
 item_holder = NodePath("ItemHolder")
 detector = NodePath("Detector")
-ignore_self_detector = true
-building_id = 22
+building_id = 23
 tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
-title = "BUILDING_BELT_SPLITTER_1x3"
-description = "BUILDING_BELT_SPLITTER_1x3_DESC"
+title = "BUILDING_BELT_COMBINER_3x1"
+description = "BUILDING_BELT_COMBINER_3x1_DESC"
 sprite = NodePath("BuildingSprite")
 collision_shape = NodePath("CollisionShape2D")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(-8, -6)
-texture = ExtResource("2_0dff6")
+texture = ExtResource("2_ls4sy")
 centered = false
 offset = Vector2(-8, -10)
 hframes = 5
 vframes = 5
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
-script = ExtResource("3_uoi4d")
+script = ExtResource("3_fu8mu")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." groups=["Blocker"]]
 z_index = -2
-tile_map_data = PackedByteArray("AAD///7/AAACAAAAAAD/////AAACAAAAAAD//wAAAAACAAAAAAD+/wAAAAACAAAAAAD+////AAACAAAAAAD+//7/AAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAD///7/AAACAAAAAAD///3/AAACAAAAAAAAAP//AAACAAAAAAAAAP7/AAACAAAAAAAAAP3/AAACAAAAAAD/////AAACAAAAAAA=")
 enabled = false
-tile_set = ExtResource("4_grvds")
+tile_set = ExtResource("4_gmjjv")
 
-[node name="Detector" parent="." instance=ExtResource("5_4htdo")]
+[node name="Detector" parent="." instance=ExtResource("5_fsbsv")]
 position = Vector2(-24, -8)
 
-[node name="ItemHolder" parent="." instance=ExtResource("6_fil1i")]
+[node name="ItemHolder" parent="." instance=ExtResource("6_sja4p")]
 y_sort_enabled = true
 position = Vector2(-8, -8)
 
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
 z_index = 1
 collision_layer = 2
-script = ExtResource("7_omdat")
+script = ExtResource("7_pc03e")
 building_node = NodePath("..")
 building_sprite = NodePath("../BuildingSprite")
 
@@ -81,7 +80,7 @@ shape = SubResource("RectangleShape2D_3k8pj")
 collision_layer = 516
 collision_mask = 0
 monitoring = false
-script = ExtResource("8_k0chv")
+script = ExtResource("8_ef2jb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BeltArea"]
 position = Vector2(-8, -8)
@@ -89,11 +88,12 @@ shape = SubResource("RectangleShape2D_77bd0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-16, -8)
+position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_xfl3k")
 
 [node name="CheckAreaTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.1
+autostart = true
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.196078)
@@ -101,36 +101,38 @@ z_index = -1
 z_as_relative = false
 position = Vector2(-8, 0)
 scale = Vector2(1, 0.25)
-texture = ExtResource("9_16cul")
+texture = ExtResource("9_60jio")
 
-[node name="Belt" parent="." instance=ExtResource("10_imdpi")]
-position = Vector2(-16, 0)
+[node name="Belt" parent="." instance=ExtResource("10_8ca66")]
+position = Vector2(16, 0)
+ignore_self_detector = true
 disable_collision = true
 
-[node name="Belt2" parent="." instance=ExtResource("10_imdpi")]
-position = Vector2(-16, -16)
+[node name="Belt2" parent="." instance=ExtResource("10_8ca66")]
+position = Vector2(16, -16)
+ignore_self_detector = true
 disable_collision = true
 
-[node name="Belt3" parent="." instance=ExtResource("10_imdpi")]
-position = Vector2(-16, 16)
+[node name="Belt3" parent="." instance=ExtResource("10_8ca66")]
+position = Vector2(16, -32)
+ignore_self_detector = true
 disable_collision = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 3
 y_sort_enabled = true
-offset_left = -24.0
+offset_left = -8.0
 offset_top = -32.0
-offset_right = -8.0
-offset_bottom = 16.0
+offset_right = 8.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 z_index = 4
 y_sort_enabled = true
-offset_left = -24.0
-offset_top = -39.0
-offset_right = -8.0
-offset_bottom = 7.0
+offset_left = -8.0
+offset_top = -55.0
+offset_right = 8.0
+offset_bottom = -8.0
 color = Color(0.262932, 0.262932, 0.262932, 1)
 
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
