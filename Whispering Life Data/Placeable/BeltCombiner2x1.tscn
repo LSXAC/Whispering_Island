@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bala7h6cfj70f"]
+[gd_scene load_steps=35 format=3 uid="uid://bala7h6cfj70f"]
 
 [ext_resource type="Script" path="res://Placeable/BeltCombiner.cs" id="1_ri5mj"]
 [ext_resource type="Texture2D" uid="uid://bi2pvwe1l5m40" path="res://Sprites/Belt_Atlas.png" id="2_22u81"]
@@ -20,7 +20,175 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
 size = Vector2(32, 32)
 
-[node name="BeltCombiner2x1" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "item_holder", "detector", "building_collider_manager", "sprite", "collision_shape")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f12qx"]
+atlas = ExtResource("2_22u81")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hjo4"]
+atlas = ExtResource("2_22u81")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57u6k"]
+atlas = ExtResource("2_22u81")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hca4h"]
+atlas = ExtResource("2_22u81")
+region = Rect2(48, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abpj3"]
+atlas = ExtResource("2_22u81")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oexus"]
+atlas = ExtResource("2_22u81")
+region = Rect2(16, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypb6y"]
+atlas = ExtResource("2_22u81")
+region = Rect2(32, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eknq3"]
+atlas = ExtResource("2_22u81")
+region = Rect2(48, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1std"]
+atlas = ExtResource("2_22u81")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxcwh"]
+atlas = ExtResource("2_22u81")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo84p"]
+atlas = ExtResource("2_22u81")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5glqp"]
+atlas = ExtResource("2_22u81")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0stun"]
+atlas = ExtResource("2_22u81")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dwgw"]
+atlas = ExtResource("2_22u81")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5cym"]
+atlas = ExtResource("2_22u81")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylu04"]
+atlas = ExtResource("2_22u81")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vk42x"]
+atlas = ExtResource("2_22u81")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lphv5"]
+atlas = ExtResource("2_22u81")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysffv"]
+atlas = ExtResource("2_22u81")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd7cq"]
+atlas = ExtResource("2_22u81")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_so54y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f12qx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hjo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57u6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hca4h")
+}],
+"loop": true,
+"name": &"BELT_CORNER_LEFT_DOWN",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abpj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oexus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypb6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eknq3")
+}],
+"loop": true,
+"name": &"BELT_DOWN",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1std")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxcwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo84p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5glqp")
+}],
+"loop": true,
+"name": &"BELT_LEFT",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0stun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dwgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5cym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylu04")
+}],
+"loop": true,
+"name": &"BELT_RIGHT",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vk42x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lphv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysffv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wd7cq")
+}],
+"loop": true,
+"name": &"BELT_UP",
+"speed": 4.0
+}]
+
+[node name="BeltCombiner2x1" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "item_holder", "detector", "anim_sprite", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -30,6 +198,7 @@ belt_0 = NodePath("Belt")
 belt_1 = NodePath("Belt2")
 item_holder = NodePath("ItemHolder")
 detector = NodePath("Detector")
+anim_sprite = NodePath("AnimatedSprite2D")
 building_id = 23
 tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
@@ -39,6 +208,7 @@ sprite = NodePath("BuildingSprite")
 collision_shape = NodePath("CollisionShape2D")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
+visible = false
 y_sort_enabled = true
 position = Vector2(-8, -6)
 texture = ExtResource("2_22u81")
@@ -62,7 +232,7 @@ position = Vector2(-24, -8)
 
 [node name="ItemHolder" parent="." instance=ExtResource("6_l1sf1")]
 y_sort_enabled = true
-position = Vector2(-8, -8)
+position = Vector2(-8, -10)
 
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
 z_index = 1
@@ -128,6 +298,11 @@ offset_top = -39.0
 offset_right = 8.0
 offset_bottom = -8.0
 color = Color(0.262932, 0.262932, 0.262932, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8, -8)
+sprite_frames = SubResource("SpriteFrames_so54y")
+animation = &"BELT_LEFT"
 
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]

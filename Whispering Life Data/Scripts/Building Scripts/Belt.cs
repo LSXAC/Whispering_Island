@@ -18,6 +18,9 @@ public partial class Belt : placeable_building
     [Export]
     public BeltDirection from_direction = BeltDirection.Right;
 
+    [Export]
+    public AnimatedSprite2D anim_sprite;
+
     public enum BeltDirection
     {
         Top,
@@ -152,6 +155,8 @@ public partial class Belt : placeable_building
         set_direction();
     }
 
+    string dir = "";
+
     public void set_direction()
     {
         switch (to_direction)
@@ -161,13 +166,13 @@ public partial class Belt : placeable_building
                 switch (from_direction)
                 {
                     case BeltDirection.Right:
-                        GetSprite().Frame = 1;
+                        dir = "BELT_LEFT";
                         break;
                     case BeltDirection.Top:
-                        GetSprite().Frame = 9;
+
                         break;
                     case BeltDirection.Down:
-                        GetSprite().Frame = 2;
+
                         break;
                 }
                 break;
@@ -176,13 +181,13 @@ public partial class Belt : placeable_building
                 switch (from_direction)
                 {
                     case BeltDirection.Left:
-                        GetSprite().Frame = 11;
+                        dir = "BELT_RIGHT";
                         break;
                     case BeltDirection.Top:
-                        GetSprite().Frame = 10;
+
                         break;
                     case BeltDirection.Down:
-                        GetSprite().Frame = 3;
+
                         break;
                 }
                 break;
@@ -191,13 +196,13 @@ public partial class Belt : placeable_building
                 switch (from_direction)
                 {
                     case BeltDirection.Left:
-                        GetSprite().Frame = 12;
+
                         break;
                     case BeltDirection.Down:
-                        GetSprite().Frame = 7;
+                        dir = "BELT_UP";
                         break;
                     case BeltDirection.Right:
-                        GetSprite().Frame = 8;
+
                         break;
                 }
                 break;
@@ -206,16 +211,29 @@ public partial class Belt : placeable_building
                 switch (from_direction)
                 {
                     case BeltDirection.Left:
-                        GetSprite().Frame = 4;
+
                         break;
                     case BeltDirection.Top:
-                        GetSprite().Frame = 5;
+                        dir = "BELT_DOWN";
                         break;
                     case BeltDirection.Right:
-                        GetSprite().Frame = 0;
+
                         break;
                 }
                 break;
         }
+        RefTimer ref_timer = GlobalAnimationTimer.INSTANCE.GetCurrentFrame();
+        setFrame(ref_timer.frame, GlobalAnimationTimer.INSTANCE.TimeLeft);
+    }
+
+    public void setFrame(int frame, double diff)
+    {
+        GetTree().CreateTimer(diff).Timeout += () => SetAnim(frame);
+    }
+
+    private void SetAnim(int frame)
+    {
+        anim_sprite.Play(dir);
+        anim_sprite.Frame = frame;
     }
 }

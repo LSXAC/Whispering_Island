@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=31 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" path="res://Scripts/Manager Scripts/Game_Manager.cs" id="1_kw8xi"]
 [ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://Dialogues/Balloon.tscn" id="2_0anla"]
@@ -29,6 +29,7 @@
 [ext_resource type="Resource" uid="uid://vl3pot0l2l0n" path="res://Quests/Quest_10.tres" id="25_plrle"]
 [ext_resource type="AudioStream" uid="uid://baxwufa73fl35" path="res://Music/441638__naturenotesuk__birds-at-feeder.wav" id="29_dh6dl"]
 [ext_resource type="AudioStream" uid="uid://bwod2wh4o0qwt" path="res://Music/759996__josefpres__piano-loops-167-octave-short-loop-120-bpm.wav" id="30_kqvqo"]
+[ext_resource type="Script" path="res://GlobalAnimationTimer.cs" id="30_sjy35"]
 
 [node name="GameManager" type="Node2D" node_paths=PackedStringArray("building_placer")]
 y_sort_enabled = true
@@ -128,8 +129,14 @@ autoplay = true
 bus = &"Music"
 playback_type = 1
 
+[node name="GlobalAnimationTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+script = ExtResource("30_sjy35")
+
 [connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
 [connection signal="timeout" from="GameTimer" to="." method="OnGameTimerTimeout"]
+[connection signal="timeout" from="GlobalAnimationTimer" to="GlobalAnimationTimer" method="OnAnimationGlobalTimerTimeout"]
 
 [editable path="IslandManager/MainIsland"]
 [editable path="BuildingMenu"]
