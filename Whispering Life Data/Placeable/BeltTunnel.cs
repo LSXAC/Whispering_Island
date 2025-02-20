@@ -16,7 +16,7 @@ public partial class BeltTunnel : Belt
     [Export]
     public bool from_Belt = false;
 
-    public static int length = 10;
+    public static int length = 16;
     public bool break_search = false;
     Area2D checkArea;
 

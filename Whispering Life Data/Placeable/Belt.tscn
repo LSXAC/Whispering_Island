@@ -1,7 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://rd7h1v4imvk6"]
+[gd_scene load_steps=14 format=3 uid="uid://rd7h1v4imvk6"]
 
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Belt.cs" id="1_wiff4"]
-[ext_resource type="Texture2D" uid="uid://bi2pvwe1l5m40" path="res://Sprites/Belt_Atlas.png" id="2_7umy0"]
+[ext_resource type="Texture2D" uid="uid://dh7i821w2aucb" path="res://Sprites/Belt_Side.png" id="2_qme1j"]
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_cjdmx"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="4_x2jdc"]
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Placeable/detector.tscn" id="5_4wn6s"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="7_h12jl"]
 [ext_resource type="Script" path="res://Placeable/BeltArea.cs" id="8_2g66n"]
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="9_mfu8r"]
+[ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://Animations/Belt_Animation.tres" id="10_fcawy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8pj"]
 size = Vector2(14, 14)
@@ -18,174 +19,6 @@ size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
 size = Vector2(16, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f12qx"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(0, 112, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4hjo4"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(16, 112, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_57u6k"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(32, 112, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hca4h"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(48, 112, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_abpj3"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(0, 96, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oexus"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(16, 96, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ypb6y"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(32, 96, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eknq3"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(48, 96, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g1std"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(0, 64, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hxcwh"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(16, 64, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uo84p"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(32, 64, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5glqp"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(48, 64, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0stun"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(0, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8dwgw"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(16, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w5cym"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(32, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ylu04"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(48, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vk42x"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(0, 80, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lphv5"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(16, 80, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ysffv"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(32, 80, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wd7cq"]
-atlas = ExtResource("2_7umy0")
-region = Rect2(48, 80, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_npoyk"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f12qx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4hjo4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_57u6k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hca4h")
-}],
-"loop": true,
-"name": &"BELT_CORNER_LEFT_DOWN",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_abpj3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oexus")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ypb6y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eknq3")
-}],
-"loop": true,
-"name": &"BELT_DOWN",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g1std")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hxcwh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uo84p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5glqp")
-}],
-"loop": true,
-"name": &"BELT_LEFT",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0stun")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8dwgw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w5cym")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ylu04")
-}],
-"loop": true,
-"name": &"BELT_RIGHT",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vk42x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lphv5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ysffv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wd7cq")
-}],
-"loop": true,
-"name": &"BELT_UP",
-"speed": 4.0
-}]
 
 [node name="Belt" type="StaticBody2D" node_paths=PackedStringArray("item_holder", "detector", "anim_sprite", "building_collider_manager", "sprite", "collision_shape") groups=["Belt"]]
 y_sort_enabled = true
@@ -206,7 +39,7 @@ collision_shape = NodePath("CollisionShape2D")
 visible = false
 y_sort_enabled = true
 position = Vector2(-8, -6)
-texture = ExtResource("2_7umy0")
+texture = ExtResource("2_qme1j")
 centered = false
 offset = Vector2(-8, -10)
 hframes = 5
@@ -264,9 +97,9 @@ texture = ExtResource("9_mfu8r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-8, -8)
-sprite_frames = SubResource("SpriteFrames_npoyk")
-animation = &"BELT_LEFT"
-frame_progress = 0.266783
+sprite_frames = ExtResource("10_fcawy")
+animation = &"BELT_RIGHT"
+frame_progress = 0.443808
 
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]

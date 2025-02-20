@@ -130,7 +130,7 @@ bus = &"Music"
 playback_type = 1
 
 [node name="GlobalAnimationTimer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.2
 autostart = true
 script = ExtResource("30_sjy35")
 
