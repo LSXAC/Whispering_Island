@@ -102,13 +102,15 @@ public partial class Building_Placer : Node2D
         if (Input.IsActionJustPressed("Escape"))
             CloseMenuWithBuildingSelected();
 
-        if (placeable is Belt)
+        if (placeable is Belt belt)
         {
             if (Input.IsActionJustPressed("Rotate_Right"))
                 RotateBeltRight();
 
             if (Input.IsActionJustPressed("Rotate_Left"))
                 RotateBeltLeft();
+
+            belt.set_direction();
         }
         else
         {

@@ -10,6 +10,9 @@ public partial class Belt : placeable_building
     public Detector detector;
 
     [Export]
+    public Area2D connected_belt_area;
+
+    [Export]
     public bool ignore_self_detector = false;
 
     [Export]
@@ -20,6 +23,9 @@ public partial class Belt : placeable_building
 
     [Export]
     public AnimatedSprite2D anim_sprite;
+
+    [Export]
+    public ConnectedBeltsManager cbm;
 
     public enum BeltDirection
     {
@@ -132,23 +138,24 @@ public partial class Belt : placeable_building
     public void Set_Rotation(int id)
     {
         if (id == 0)
-        {
+        { // ^
+            //if(cbm.HasConnectionTo(ConnectedBeltsManager.DIR.RIGHT))
             to_direction = BeltDirection.Top;
             from_direction = BeltDirection.Down;
             current_rotation = id;
-        }
+        } // >
         if (id == 1)
         {
             to_direction = BeltDirection.Right;
             from_direction = BeltDirection.Left;
             current_rotation = id;
-        }
+        } // v
         if (id == 2)
         {
             to_direction = BeltDirection.Down;
             from_direction = BeltDirection.Top;
             current_rotation = id;
-        }
+        } // <
         if (id == 3)
         {
             to_direction = BeltDirection.Left;
@@ -166,61 +173,96 @@ public partial class Belt : placeable_building
         {
             case BeltDirection.Left:
                 detector.Position = new Vector2(-24f, -8);
+                from_direction = BeltDirection.Right;
+
+                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.UP))
+                    from_direction = BeltDirection.Top;
+
+                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.DOWN))
+                    from_direction = BeltDirection.Down;
+
                 switch (from_direction)
                 {
                     case BeltDirection.Right:
                         dir = "BELT_LEFT";
                         break;
                     case BeltDirection.Top:
-
+                        Debug.Print("Corner LEFT_TOP");
                         break;
                     case BeltDirection.Down:
+                        Debug.Print("Corner LEFT_DOWN");
 
                         break;
                 }
                 break;
             case BeltDirection.Right:
                 detector.Position = new Vector2(8f, -8);
+
+                from_direction = BeltDirection.Left;
+
+                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.UP))
+                    from_direction = BeltDirection.Top;
+
+                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.DOWN))
+                    from_direction = BeltDirection.Down;
+
                 switch (from_direction)
                 {
                     case BeltDirection.Left:
                         dir = "BELT_RIGHT";
                         break;
                     case BeltDirection.Top:
-
+                        Debug.Print("Corner RIGHT_TOP");
                         break;
                     case BeltDirection.Down:
-
+                        Debug.Print("Corner RIGHT_DOWN");
                         break;
                 }
                 break;
             case BeltDirection.Top:
                 detector.Position = new Vector2(-8, -24);
+
+                from_direction = BeltDirection.Down;
+
+                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.LEFT))
+                    from_direction = BeltDirection.Left;
+
+                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.RIGHT))
+                    from_direction = BeltDirection.Right;
+
                 switch (from_direction)
                 {
                     case BeltDirection.Left:
-
+                        Debug.Print("Corner TOP_LEFT");
                         break;
                     case BeltDirection.Down:
                         dir = "BELT_UP";
                         break;
                     case BeltDirection.Right:
+                        Debug.Print("Corner TOP_RIGHT");
 
                         break;
                 }
                 break;
             case BeltDirection.Down:
                 detector.Position = new Vector2(-8, 8);
+                from_direction = BeltDirection.Top;
+
+                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.LEFT))
+                    from_direction = BeltDirection.Left;
+
+                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.RIGHT))
+                    from_direction = BeltDirection.Right;
                 switch (from_direction)
                 {
                     case BeltDirection.Left:
-
+                        Debug.Print("Corner DOWN_LEFT");
                         break;
                     case BeltDirection.Top:
                         dir = "BELT_DOWN";
                         break;
                     case BeltDirection.Right:
-
+                        Debug.Print("Corner DOWN_RIGHT");
                         break;
                 }
                 break;
