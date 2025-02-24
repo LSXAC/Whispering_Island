@@ -104,8 +104,8 @@ texture = ExtResource("9_mfu8r")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-8, -8)
 sprite_frames = ExtResource("10_fcawy")
-animation = &"BELT_RIGHT"
-frame_progress = 0.443808
+animation = &"BELT_CORNER_DOWN_RIGHT"
+frame_progress = 0.499002
 
 [node name="ConnectedBeltsManager" type="Node2D" parent="."]
 script = ExtResource("11_pw6t1")
