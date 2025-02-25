@@ -32,7 +32,8 @@ public partial class Belt : placeable_building
         Top,
         Right,
         Down,
-        Left
+        Left,
+        NONE
     };
 
     public int current_rotation = 0;
@@ -174,24 +175,36 @@ public partial class Belt : placeable_building
             case BeltDirection.Left:
                 detector.Position = new Vector2(-24f, -8);
                 from_direction = BeltDirection.Right;
+                if (cbm != null && !ignore_self_detector)
+                {
+                    if (cbm.HasImportantDirection(ConnectedBeltsManager.DIR.UP, BeltDirection.Down))
+                        from_direction = BeltDirection.Top;
 
-                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.UP))
-                    from_direction = BeltDirection.Top;
+                    if (
+                        cbm.HasImportantDirection(ConnectedBeltsManager.DIR.DOWN, BeltDirection.Top)
+                    )
+                        from_direction = BeltDirection.Down;
 
-                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.DOWN))
-                    from_direction = BeltDirection.Down;
-
+                    if (
+                        cbm.HasImportantDirection(ConnectedBeltsManager.DIR.UP, BeltDirection.Down)
+                        && cbm.HasImportantDirection(
+                            ConnectedBeltsManager.DIR.DOWN,
+                            BeltDirection.Top
+                        )
+                    )
+                        from_direction = BeltDirection.Right;
+                }
+                Debug.Print(from_direction.ToString());
                 switch (from_direction)
                 {
                     case BeltDirection.Right:
                         dir = "BELT_LEFT";
                         break;
                     case BeltDirection.Top:
-                        Debug.Print("Corner LEFT_TOP");
+                        dir = "BELT_CORNER_DOWN_LEFT";
                         break;
                     case BeltDirection.Down:
-                        Debug.Print("Corner LEFT_DOWN");
-
+                        dir = "BELT_CORNER_UP_LEFT";
                         break;
                 }
                 break;
@@ -200,22 +213,35 @@ public partial class Belt : placeable_building
 
                 from_direction = BeltDirection.Left;
 
-                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.UP))
-                    from_direction = BeltDirection.Top;
+                if (cbm != null && !ignore_self_detector)
+                {
+                    if (cbm.HasImportantDirection(ConnectedBeltsManager.DIR.UP, BeltDirection.Down))
+                        from_direction = BeltDirection.Top;
 
-                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.DOWN))
-                    from_direction = BeltDirection.Down;
+                    if (
+                        cbm.HasImportantDirection(ConnectedBeltsManager.DIR.DOWN, BeltDirection.Top)
+                    )
+                        from_direction = BeltDirection.Down;
 
+                    if (
+                        cbm.HasImportantDirection(ConnectedBeltsManager.DIR.UP, BeltDirection.Down)
+                        && cbm.HasImportantDirection(
+                            ConnectedBeltsManager.DIR.DOWN,
+                            BeltDirection.Top
+                        )
+                    )
+                        from_direction = BeltDirection.Right;
+                }
                 switch (from_direction)
                 {
                     case BeltDirection.Left:
                         dir = "BELT_RIGHT";
                         break;
                     case BeltDirection.Top:
-                        Debug.Print("Corner RIGHT_TOP");
+                        dir = "BELT_CORNER_DOWN_RIGHT";
                         break;
                     case BeltDirection.Down:
-                        Debug.Print("Corner RIGHT_DOWN");
+                        dir = "BELT_CORNER_UP_RIGHT";
                         break;
                 }
                 break;
@@ -223,46 +249,92 @@ public partial class Belt : placeable_building
                 detector.Position = new Vector2(-8, -24);
 
                 from_direction = BeltDirection.Down;
+                if (cbm != null && !ignore_self_detector)
+                {
+                    if (
+                        cbm.HasImportantDirection(
+                            ConnectedBeltsManager.DIR.LEFT,
+                            BeltDirection.Right
+                        )
+                    )
+                        from_direction = BeltDirection.Left;
 
-                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.LEFT))
-                    from_direction = BeltDirection.Left;
+                    if (
+                        cbm.HasImportantDirection(
+                            ConnectedBeltsManager.DIR.RIGHT,
+                            BeltDirection.Left
+                        )
+                    )
+                        from_direction = BeltDirection.Right;
 
-                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.RIGHT))
-                    from_direction = BeltDirection.Right;
-
+                    if (
+                        cbm.HasImportantDirection(
+                            ConnectedBeltsManager.DIR.LEFT,
+                            BeltDirection.Right
+                        )
+                        && cbm.HasImportantDirection(
+                            ConnectedBeltsManager.DIR.RIGHT,
+                            BeltDirection.Left
+                        )
+                    )
+                        from_direction = BeltDirection.Down;
+                }
                 switch (from_direction)
                 {
                     case BeltDirection.Left:
-                        Debug.Print("Corner TOP_LEFT");
+                        dir = "BELT_CORNER_RIGHT_UP";
                         break;
                     case BeltDirection.Down:
                         dir = "BELT_UP";
                         break;
                     case BeltDirection.Right:
-                        Debug.Print("Corner TOP_RIGHT");
-
+                        dir = "BELT_CORNER_LEFT_UP";
                         break;
                 }
                 break;
             case BeltDirection.Down:
                 detector.Position = new Vector2(-8, 8);
                 from_direction = BeltDirection.Top;
+                if (cbm != null && !ignore_self_detector)
+                {
+                    if (
+                        cbm.HasImportantDirection(
+                            ConnectedBeltsManager.DIR.LEFT,
+                            BeltDirection.Right
+                        )
+                    )
+                        from_direction = BeltDirection.Left;
 
-                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.LEFT))
-                    from_direction = BeltDirection.Left;
+                    if (
+                        cbm.HasImportantDirection(
+                            ConnectedBeltsManager.DIR.RIGHT,
+                            BeltDirection.Left
+                        )
+                    )
+                        from_direction = BeltDirection.Right;
 
-                if (cbm.HasConnectionTo(ConnectedBeltsManager.DIR.RIGHT))
-                    from_direction = BeltDirection.Right;
+                    if (
+                        cbm.HasImportantDirection(
+                            ConnectedBeltsManager.DIR.LEFT,
+                            BeltDirection.Right
+                        )
+                        && cbm.HasImportantDirection(
+                            ConnectedBeltsManager.DIR.RIGHT,
+                            BeltDirection.Left
+                        )
+                    )
+                        from_direction = BeltDirection.Top;
+                }
                 switch (from_direction)
                 {
                     case BeltDirection.Left:
-                        Debug.Print("Corner DOWN_LEFT");
+                        dir = "BELT_CORNER_RIGHT_DOWN";
                         break;
                     case BeltDirection.Top:
                         dir = "BELT_DOWN";
                         break;
                     case BeltDirection.Right:
-                        Debug.Print("Corner DOWN_RIGHT");
+                        dir = "BELT_CORNER_LEFT_DOWN";
                         break;
                 }
                 break;

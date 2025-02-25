@@ -109,8 +109,6 @@ public partial class Building_Placer : Node2D
 
             if (Input.IsActionJustPressed("Rotate_Left"))
                 RotateBeltLeft();
-
-            belt.set_direction();
         }
         else
         {

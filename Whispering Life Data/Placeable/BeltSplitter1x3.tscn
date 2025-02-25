@@ -67,8 +67,8 @@ tile_set = ExtResource("4_grvds")
 position = Vector2(-24, -8)
 
 [node name="ItemHolder" parent="." instance=ExtResource("6_fil1i")]
-y_sort_enabled = true
-position = Vector2(-8, -10)
+z_as_relative = false
+position = Vector2(-26, -10)
 
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
 z_index = 1
@@ -120,6 +120,7 @@ position = Vector2(-16, 16)
 disable_collision = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
 position = Vector2(-8, -8)
 sprite_frames = ExtResource("11_c3h42")
 animation = &"BELT_CORNER_LEFT_DOWN"

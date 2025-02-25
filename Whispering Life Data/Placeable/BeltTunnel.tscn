@@ -191,6 +191,7 @@ animations = [{
 }]
 
 [node name="BeltTunnel" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "item_holder", "detector", "anim_sprite", "building_collider_manager", "sprite", "collision_shape")]
+z_index = -1
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -224,6 +225,7 @@ collision_tilemap = NodePath("../CollisionTemplateTilemap")
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." groups=["Blocker"]]
 z_index = -2
 tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
 tile_set = ExtResource("4_u84hi")
 
 [node name="Detector" parent="." instance=ExtResource("5_cqme2")]

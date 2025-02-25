@@ -8,7 +8,6 @@ y_sort_enabled = true
 script = ExtResource("1_wf8mv")
 
 [node name="BellItemSprite" type="Sprite2D" parent="."]
-z_index = 1
 y_sort_enabled = true
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_tqvkn")

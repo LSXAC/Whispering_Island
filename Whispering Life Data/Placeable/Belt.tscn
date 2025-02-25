@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://rd7h1v4imvk6"]
+[gd_scene load_steps=16 format=3 uid="uid://rd7h1v4imvk6"]
 
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Belt.cs" id="1_wiff4"]
 [ext_resource type="Texture2D" uid="uid://dh7i821w2aucb" path="res://Sprites/Belt_Side.png" id="2_qme1j"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_4pt64"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="7_h12jl"]
 [ext_resource type="Script" path="res://Placeable/BeltArea.cs" id="8_2g66n"]
-[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="9_mfu8r"]
 [ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://Animations/Belt_Animation.tres" id="10_fcawy"]
 [ext_resource type="Script" path="res://Placeable/HasConnectedBeltArea.cs" id="11_08ai2"]
 [ext_resource type="Script" path="res://Placeable/ConnectedBeltsManager.cs" id="11_pw6t1"]
@@ -58,6 +57,7 @@ collision_tilemap = NodePath("../CollisionTemplateTilemap")
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." groups=["Blocker"]]
 z_index = -2
 tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
 tile_set = ExtResource("4_x2jdc")
 
 [node name="Detector" parent="." instance=ExtResource("5_4wn6s")]
@@ -93,19 +93,11 @@ y_sort_enabled = true
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_xfl3k")
 
-[node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.196078)
-z_index = -1
-z_as_relative = false
-position = Vector2(-8, 0)
-scale = Vector2(1, 0.25)
-texture = ExtResource("9_mfu8r")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
 position = Vector2(-8, -8)
 sprite_frames = ExtResource("10_fcawy")
-animation = &"BELT_CORNER_DOWN_RIGHT"
-frame_progress = 0.499002
+animation = &"BELT_CORNER_RIGHT_UP"
 
 [node name="ConnectedBeltsManager" type="Node2D" parent="."]
 script = ExtResource("11_pw6t1")
