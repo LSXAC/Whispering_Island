@@ -96,23 +96,30 @@ position = Vector2(-16, -16)
 shape = SubResource("RectangleShape2D_xfl3k")
 
 [node name="CheckAreaTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.1
+autostart = true
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
-position = Vector2(-8, 0)
-scale = Vector2(1, 0.25)
+position = Vector2(-16, 0)
+scale = Vector2(2, 0.25)
 texture = ExtResource("11_tpvem")
 
 [node name="Belt" parent="." instance=ExtResource("12_t2iun")]
 position = Vector2(-16, 0)
 disable_collision = true
 
+[node name="MouseArea" parent="Belt" index="5" node_paths=PackedStringArray("building_node")]
+building_node = NodePath("../..")
+
 [node name="Belt2" parent="." instance=ExtResource("12_t2iun")]
 position = Vector2(-16, -16)
 disable_collision = true
+
+[node name="MouseArea" parent="Belt2" index="5" node_paths=PackedStringArray("building_node")]
+building_node = NodePath("../..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
@@ -132,3 +139,6 @@ offset = Vector2(0, -19)
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
 [connection signal="timeout" from="CheckAreaTimer" to="." method="CheckTimerTimeout"]
+
+[editable path="Belt"]
+[editable path="Belt2"]

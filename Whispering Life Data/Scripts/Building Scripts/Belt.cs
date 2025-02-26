@@ -68,9 +68,6 @@ public partial class Belt : placeable_building
                     area.GetParent<Belt>().receive_item(item);
                 }
 
-            if (area.GetParent() is BeltSplitter && area.GetParent() is not BeltTunnel)
-                area.GetParent<BeltSplitter>().GetNode<Timer>("CheckAreaTimer").Start();
-
             if (area.GetParent() is BeltTunnel)
                 if (area.GetParent<BeltTunnel>().is_tunnel_connected)
                     if (area.GetParent<BeltTunnel>().connected_itemholder != null)

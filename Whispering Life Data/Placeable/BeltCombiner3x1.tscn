@@ -103,8 +103,7 @@ autostart = true
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
-position = Vector2(-8, 0)
-scale = Vector2(1, 0.25)
+scale = Vector2(2, 0.25)
 texture = ExtResource("9_60jio")
 
 [node name="Belt" parent="." instance=ExtResource("10_8ca66")]
@@ -112,15 +111,24 @@ position = Vector2(16, 0)
 ignore_self_detector = true
 disable_collision = true
 
+[node name="MouseArea" parent="Belt" index="5" node_paths=PackedStringArray("building_node")]
+building_node = NodePath("../..")
+
 [node name="Belt2" parent="." instance=ExtResource("10_8ca66")]
 position = Vector2(16, -16)
 ignore_self_detector = true
 disable_collision = true
 
+[node name="MouseArea" parent="Belt2" index="5" node_paths=PackedStringArray("building_node")]
+building_node = NodePath("../..")
+
 [node name="Belt3" parent="." instance=ExtResource("10_8ca66")]
 position = Vector2(16, -32)
 ignore_self_detector = true
 disable_collision = true
+
+[node name="MouseArea" parent="Belt3" index="5" node_paths=PackedStringArray("building_node")]
+building_node = NodePath("../..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
@@ -139,3 +147,7 @@ offset = Vector2(0, -27)
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
 [connection signal="timeout" from="CheckAreaTimer" to="." method="CheckTimerTimeout"]
+
+[editable path="Belt"]
+[editable path="Belt2"]
+[editable path="Belt3"]
