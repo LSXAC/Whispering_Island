@@ -17,10 +17,13 @@ public partial class HasConnectedBeltArea : Area2D
     {
         if (area is BeltArea ba)
         {
-            Debug.Print("Connected: " + Name + " | Dir: " + ba.GetParent<Belt>().to_direction);
-            cbm.connected_belts[(int)dir].connected = true;
-            cbm.connected_belts[(int)dir].to_direction = ba.GetParent<Belt>().to_direction;
-            cbm.GetParent<Belt>().set_direction();
+            if (ba.GetParent() is Belt)
+            {
+                Debug.Print("Connected: " + Name + " | Dir: " + ba.GetParent<Belt>().to_direction);
+                cbm.connected_belts[(int)dir].connected = true;
+                cbm.connected_belts[(int)dir].to_direction = ba.GetParent<Belt>().to_direction;
+                cbm.GetParent<Belt>().set_direction();
+            }
         }
     }
 
@@ -28,10 +31,13 @@ public partial class HasConnectedBeltArea : Area2D
     {
         if (area is BeltArea ba)
         {
-            Debug.Print("Disconnected: " + Name);
-            cbm.connected_belts[(int)dir].connected = false;
-            cbm.connected_belts[(int)dir].to_direction = Belt.BeltDirection.NONE;
-            cbm.GetParent<Belt>().set_direction();
+            if (ba.GetParent() is Belt)
+            {
+                Debug.Print("Disconnected: " + Name);
+                cbm.connected_belts[(int)dir].connected = false;
+                cbm.connected_belts[(int)dir].to_direction = Belt.BeltDirection.NONE;
+                cbm.GetParent<Belt>().set_direction();
+            }
         }
     }
 }

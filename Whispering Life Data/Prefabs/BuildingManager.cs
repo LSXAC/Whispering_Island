@@ -9,6 +9,7 @@ public partial class BuildingManager : Node2D
     public Array<BeltTransmitterSave> belt_transmitter_saves = new Array<BeltTransmitterSave>();
     public Array<MachineSave> machine_saves = new Array<MachineSave>();
     public Array<PlaceableSave> placeable_saves = new Array<PlaceableSave>();
+    public Array<BeltMachineSave> belt_machine_saves = new Array<BeltMachineSave>();
 
     [Export]
     public Array<ResourceObjectSave> resource_obj_saves = new Array<ResourceObjectSave>();
@@ -23,6 +24,7 @@ public partial class BuildingManager : Node2D
                 as Belt;
 
             InitBelt(temp, belt_save);
+            InitBeltItem(temp, belt_save);
         }
     }
 
@@ -54,7 +56,10 @@ public partial class BuildingManager : Node2D
         belt.to_direction = beltsave.to_direction;
         belt.set_direction();
         belt.Set_Rotation(beltsave.current_rotation);
+    }
 
+    public void InitBeltItem(Belt belt, BeltSave beltsave)
+    {
         if (beltsave.holded_item != null)
         {
             BeltItem item = (BeltItem)belt_item.Instantiate() as BeltItem;
@@ -79,6 +84,7 @@ public partial class BuildingManager : Node2D
                         .building_scene.Instantiate() as BeltTunnel;
 
                 InitBelt(temp, bts.beltsave1);
+                InitBeltItem(temp, bts.beltsave1);
 
                 BeltTunnel temp2 =
                     Database
@@ -86,6 +92,7 @@ public partial class BuildingManager : Node2D
                         .building_scene.Instantiate() as BeltTunnel;
 
                 InitBelt(temp2, bts.beltsave2);
+                InitBeltItem(temp, bts.beltsave2);
 
                 temp.is_tunnel_connected = true;
                 temp.Name = "BeltTunnel1";
@@ -102,6 +109,62 @@ public partial class BuildingManager : Node2D
                         .building_scene.Instantiate() as BeltTunnel;
 
                 InitBelt(temp, bts.beltsave1);
+                InitBeltItem(temp, bts.beltsave1);
+            }
+        }
+    }
+
+    public void LoadBeltMachines()
+    {
+        foreach (BeltMachineSave belt_machine_save in belt_machine_saves)
+        {
+            Node2D belt = null;
+
+            if (belt_machine_save.id == Database.BUILDING_ID.BELT_COMBINER_2x1)
+                belt =
+                    Database
+                        .GetBuildingType(Database.BUILDING_ID.BELT_COMBINER_2x1)
+                        .building_scene.Instantiate() as BeltCombiner;
+
+            if (belt_machine_save.id == Database.BUILDING_ID.BELT_COMBINER_3x1)
+                belt =
+                    Database
+                        .GetBuildingType(Database.BUILDING_ID.BELT_COMBINER_3x1)
+                        .building_scene.Instantiate() as BeltCombiner;
+
+            if (belt_machine_save.id == Database.BUILDING_ID.BELT_SPLITTER_1x2)
+                belt =
+                    Database
+                        .GetBuildingType(Database.BUILDING_ID.BELT_SPLITTER_1x2)
+                        .building_scene.Instantiate() as BeltSplitter;
+
+            if (belt_machine_save.id == Database.BUILDING_ID.BELT_SPLITTER_1x3)
+                belt =
+                    Database
+                        .GetBuildingType(Database.BUILDING_ID.BELT_SPLITTER_1x3)
+                        .building_scene.Instantiate() as BeltSplitter;
+
+            if (belt == null)
+                return;
+
+            AddChild(belt);
+            belt.Position = belt_machine_save.b1.position;
+
+            if (belt is BeltSplitter splitter)
+            {
+                InitBeltItem(splitter, belt_machine_save.b1);
+                InitBeltItem(splitter.belt_0, belt_machine_save.b2);
+                InitBeltItem(splitter.belt_1, belt_machine_save.b3);
+                if (belt_machine_save.b4 != null)
+                    InitBeltItem(splitter.belt_2, belt_machine_save.b4);
+            }
+            if (belt is BeltCombiner combiner)
+            {
+                InitBeltItem(combiner, belt_machine_save.b1);
+                InitBeltItem(combiner.belt_0, belt_machine_save.b2);
+                InitBeltItem(combiner.belt_1, belt_machine_save.b3);
+                if (belt_machine_save.b4 != null)
+                    InitBeltItem(combiner.belt_2, belt_machine_save.b4);
             }
         }
     }
@@ -204,6 +267,7 @@ public partial class BuildingManager : Node2D
         LoadBeltTransmitter();
         LoadPlacableBuildings();
         LoadResources();
+        LoadBeltMachines();
     }
 
     public void SavePlacedObjects()
@@ -212,6 +276,7 @@ public partial class BuildingManager : Node2D
         machine_saves.Clear();
         belt_transmitter_saves.Clear();
         placeable_saves.Clear();
+        belt_machine_saves.Clear();
         resource_obj_saves.Clear();
 
         foreach (Node2D node in GetChildren())
@@ -221,19 +286,32 @@ public partial class BuildingManager : Node2D
 
             if (node is Belt)
             {
-                BeltSave belt_save = new BeltSave(
-                    node.Position,
-                    ((Belt)node).from_direction,
-                    ((Belt)node).to_direction,
-                    null,
-                    ((Belt)node).current_rotation
-                );
+                BeltSave belt_save = CreateBeltSave((Belt)node);
 
-                if (((Belt)node).item_holder.hasBeltItem())
+                if (node is BeltSplitter splitter)
                 {
-                    belt_save.holded_item = ((Belt)node).item_holder.GetBeltItem().item.item_info;
-                    belt_save.beltItem_moving = ((Belt)node).item_holder.moving_item;
-                    belt_save.beltItem_position = ((Belt)node).item_holder.GetBeltItem().Position;
+                    BeltMachineSave belt_machine = new BeltMachineSave();
+                    belt_machine.id = splitter.building_id;
+                    belt_machine.b1 = belt_save;
+                    belt_machine.b2 = CreateBeltSave(splitter.belt_0);
+                    belt_machine.b3 = CreateBeltSave(splitter.belt_1);
+                    if (splitter.belt_2 != null)
+                        belt_machine.b4 = CreateBeltSave(splitter.belt_2);
+                    belt_machine_saves.Add(belt_machine);
+                    continue;
+                }
+
+                if (node is BeltCombiner combiner)
+                {
+                    BeltMachineSave belt_machine = new BeltMachineSave();
+                    belt_machine.id = combiner.building_id;
+                    belt_machine.b1 = belt_save;
+                    belt_machine.b2 = CreateBeltSave(combiner.belt_0);
+                    belt_machine.b3 = CreateBeltSave(combiner.belt_1);
+                    if (combiner.belt_2 != null)
+                        belt_machine.b4 = CreateBeltSave(combiner.belt_2);
+                    belt_machine_saves.Add(belt_machine);
+                    continue;
                 }
 
                 if (node is BeltTunnel)
@@ -304,5 +382,24 @@ public partial class BuildingManager : Node2D
                 placeable_saves.Add(ps);
             }
         }
+    }
+
+    public BeltSave CreateBeltSave(Belt belt)
+    {
+        BeltSave belt_save = new BeltSave(
+            belt.Position,
+            (belt).from_direction,
+            (belt).to_direction,
+            null,
+            (belt).current_rotation
+        );
+
+        if ((belt).item_holder.hasBeltItem())
+        {
+            belt_save.holded_item = (belt).item_holder.GetBeltItem().item.item_info;
+            belt_save.beltItem_moving = (belt).item_holder.moving_item;
+            belt_save.beltItem_position = (belt).item_holder.GetBeltItem().Position;
+        }
+        return belt_save;
     }
 }

@@ -347,6 +347,8 @@ public partial class Belt : placeable_building
 
     private void SetAnim(int frame)
     {
+        if (!IsInstanceValid(this))
+            return;
         anim_sprite.Play(dir);
         anim_sprite.Frame = frame;
     }

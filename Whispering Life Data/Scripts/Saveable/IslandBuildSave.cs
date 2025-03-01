@@ -21,6 +21,9 @@ public partial class IslandBuildSave : Resource
     public Array<ResourceObjectSave> resource_obj_saves = new Array<ResourceObjectSave>();
 
     [Export]
+    public Array<BeltMachineSave> belt_machine_saves = new Array<BeltMachineSave>();
+
+    [Export]
     public int matrix_island_id = -1;
 
     public IslandBuildSave() { }
