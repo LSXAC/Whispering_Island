@@ -102,7 +102,11 @@ public partial class Building_Placer : Node2D
         if (Input.IsActionJustPressed("Escape"))
             CloseMenuWithBuildingSelected();
 
-        if (placeable is Belt belt)
+        if (
+            placeable is Belt belt
+            && placeable is not BeltCombiner
+            && placeable is not BeltSplitter
+        )
         {
             if (Input.IsActionJustPressed("Rotate_Right"))
                 RotateBeltRight();
