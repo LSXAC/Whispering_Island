@@ -46,6 +46,7 @@ collision_tilemap = NodePath("../CollisionTemplateTilemap")
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
 z_index = -2
 tile_map_data = PackedByteArray("AAD+//7/AAACAAAAAAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAD/////AAACAAAAAAD///7/AAACAAAAAAAAAP7/AAACAAAAAAAAAP//AAACAAAAAAAAAAAAAAACAAAAAAA=")
+enabled = false
 tile_set = ExtResource("5_17ipw")
 
 [node name="MachineCollision" type="CollisionShape2D" parent="."]

@@ -60,6 +60,7 @@ title = "WORLD_RESOURCE_CORN"
 description = "WORLD_RESOURCE_CORN_DESC"
 sprite = NodePath("CornSprite")
 collision_shape = NodePath("MachineCollision")
+metadata/_edit_horizontal_guides_ = [707.0]
 
 [node name="CornSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
