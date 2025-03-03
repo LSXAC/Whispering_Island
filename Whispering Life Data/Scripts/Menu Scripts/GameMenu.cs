@@ -137,12 +137,12 @@ public partial class GameMenu : CanvasLayer
     {
         Inventory,
         Crafting,
+        LoadSave,
         Stats,
         SkillTree,
-        LoadSave,
-        Settings,
-        Guide,
         Admin,
+        Guide,
+        Settings,
         X
     }
 
