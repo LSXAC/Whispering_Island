@@ -24,4 +24,4 @@ amount = 1
 [resource]
 script = ExtResource("4_kigkp")
 requiered_items = Array[Object]([SubResource("Resource_hnenm"), SubResource("Resource_odrd4"), SubResource("Resource_swbji")])
-unlockRequirements = null
+unlockRequirements = Array[Object]([])

@@ -17,12 +17,15 @@ public partial class HasConnectedBeltArea : Area2D
     {
         if (area is PathConnectArea ba)
         {
-            if (ba.GetParent() is Belt)
+            if (ba.GetParent() is TransportBase)
             {
-                Debug.Print("Connected: " + Name + " | Dir: " + ba.GetParent<Belt>().to_direction);
+                Debug.Print(
+                    "Connected: " + Name + " | Dir: " + ba.GetParent<TransportBase>().to_direction
+                );
                 cbm.connected_belts[(int)dir].connected = true;
-                cbm.connected_belts[(int)dir].to_direction = ba.GetParent<Belt>().to_direction;
-                cbm.GetParent<Belt>().set_direction();
+                cbm.connected_belts[(int)dir].to_direction =
+                    ba.GetParent<TransportBase>().to_direction;
+                cbm.GetParent<TransportBase>().set_direction();
             }
         }
     }
@@ -31,12 +34,12 @@ public partial class HasConnectedBeltArea : Area2D
     {
         if (area is PathConnectArea ba)
         {
-            if (ba.GetParent() is Belt)
+            if (ba.GetParent() is TransportBase)
             {
                 Debug.Print("Disconnected: " + Name);
                 cbm.connected_belts[(int)dir].connected = false;
-                cbm.connected_belts[(int)dir].to_direction = Belt.Direction.NONE;
-                cbm.GetParent<Belt>().set_direction();
+                cbm.connected_belts[(int)dir].to_direction = TransportBase.Direction.NONE;
+                cbm.GetParent<TransportBase>().set_direction();
             }
         }
     }

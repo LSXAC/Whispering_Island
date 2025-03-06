@@ -103,16 +103,19 @@ public partial class Building_Placer : Node2D
             CloseMenuWithBuildingSelected();
 
         if (
-            placeable is Belt belt
-            && placeable is not BeltCombiner
-            && placeable is not BeltSplitter
+            (
+                placeable is Belt belt
+                && placeable is not BeltCombiner
+                && placeable is not BeltSplitter
+            )
+            || placeable is Rail
         )
         {
             if (Input.IsActionJustPressed("Rotate_Right"))
-                RotateBeltRight();
+                RotateRight();
 
             if (Input.IsActionJustPressed("Rotate_Left"))
-                RotateBeltLeft();
+                RotateLeft();
         }
         else
         {
@@ -135,20 +138,20 @@ public partial class Building_Placer : Node2D
                 PlaceBuilding();
     }
 
-    private void RotateBeltLeft()
+    private void RotateLeft()
     {
         current_belt_rotation--;
         if (current_belt_rotation == -1)
             current_belt_rotation = 3;
-        ((Belt)placeable).Set_Rotation(current_belt_rotation);
+        ((TransportBase)placeable).Set_Rotation(current_belt_rotation);
     }
 
-    private void RotateBeltRight()
+    private void RotateRight()
     {
         current_belt_rotation++;
         if (current_belt_rotation == 4)
             current_belt_rotation = 0;
-        ((Belt)placeable).Set_Rotation(current_belt_rotation);
+        ((TransportBase)placeable).Set_Rotation(current_belt_rotation);
     }
 
     private void PlaceBuilding()
@@ -192,9 +195,9 @@ public partial class Building_Placer : Node2D
             return;
         }
 
-        if (temp is Belt)
+        if (temp is TransportBase)
         {
-            ((Belt)temp).Set_Rotation(current_belt_rotation);
+            ((TransportBase)temp).Set_Rotation(current_belt_rotation);
             if (temp is BeltTunnel)
             {
                 Debug.Print("BeltTunnel XX");

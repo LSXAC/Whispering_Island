@@ -11,6 +11,9 @@ public partial class ConnectedBeltsManager : Node2D
         new belt_temp(),
     };
 
+    [Export]
+    public Node2D parent;
+
     public enum DIR
     {
         UP,
@@ -26,7 +29,7 @@ public partial class ConnectedBeltsManager : Node2D
         return false;
     }
 
-    public bool HasImportantDirection(DIR from, Belt.Direction dir)
+    public bool HasImportantDirection(DIR from, TransportBase.Direction dir)
     {
         if (HasConnectionTo(from))
             if (connected_belts[(int)from].to_direction == dir)
@@ -38,12 +41,12 @@ public partial class ConnectedBeltsManager : Node2D
 public class belt_temp
 {
     public bool connected = false;
-    public Belt.Direction from_direction,
+    public TransportBase.Direction from_direction,
         to_direction;
 
     public belt_temp()
     {
         connected = false;
-        from_direction = Belt.Direction.NONE;
+        from_direction = TransportBase.Direction.NONE;
     }
 }
