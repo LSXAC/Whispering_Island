@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Placeable/detector.tscn" id="5_cqme2"]
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_edykq"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="7_nklsv"]
-[ext_resource type="Script" path="res://Placeable/BeltArea.cs" id="8_kbhhr"]
+[ext_resource type="Script" path="res://Placeable/PathConnectArea.cs" id="8_keiqc"]
 [ext_resource type="Script" path="res://Placeable/TunnelArea.cs" id="9_a3q3v"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Prefabs/Water_Noise_Map.tres" id="10_hvugw"]
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="11_c8g6k"]
@@ -190,7 +190,7 @@ animations = [{
 "speed": 4.0
 }]
 
-[node name="BeltTunnel" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "item_holder", "detector", "anim_sprite", "building_collider_manager", "sprite", "collision_shape")]
+[node name="BeltTunnel" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "item_holder", "detector", "building_collider_manager", "sprite", "collision_shape")]
 z_index = -1
 y_sort_enabled = true
 collision_layer = 13
@@ -199,7 +199,6 @@ script = ExtResource("1_8pw6g")
 checkAreaTimer = NodePath("CheckAreaTimer")
 item_holder = NodePath("ItemHolder")
 detector = NodePath("Detector")
-anim_sprite = NodePath("AnimatedSprite2D")
 building_id = 1
 tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
@@ -246,13 +245,13 @@ building_sprite = NodePath("../BuildingSprite")
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_3k8pj")
 
-[node name="BeltArea" type="Area2D" parent="."]
+[node name="PathConnectArea" type="Area2D" parent="."]
 collision_layer = 516
 collision_mask = 0
 monitoring = false
-script = ExtResource("8_kbhhr")
+script = ExtResource("8_keiqc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BeltArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea"]
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_77bd0")
 

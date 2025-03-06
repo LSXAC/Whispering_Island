@@ -58,13 +58,13 @@ public partial class BeltTunnel : Belt
         for (int i = 0; i < 10; i++)
         {
             //    <<<<<<y>>>>>>     <<<<<<x>>>>>>
-            if (to_direction == BeltDirection.Top)
+            if (to_direction == Direction.Top)
                 checkArea.Position += new Vector2(0, -16);
-            if (to_direction == BeltDirection.Down)
+            if (to_direction == Direction.Down)
                 checkArea.Position += new Vector2(0, 16);
-            if (to_direction == BeltDirection.Left)
+            if (to_direction == Direction.Left)
                 checkArea.Position += new Vector2(-16, 0);
-            if (to_direction == BeltDirection.Right)
+            if (to_direction == Direction.Right)
                 checkArea.Position += new Vector2(16, 0);
 
             await ToSignal(checkAreaTimer, "timeout");
@@ -80,13 +80,13 @@ public partial class BeltTunnel : Belt
         for (int i = 0; i < 10; i++)
         {
             //    <<<<<<y>>>>>>     <<<<<<x>>>>>>
-            if (from_direction == BeltDirection.Top)
+            if (from_direction == Direction.Top)
                 checkArea.Position += new Vector2(0, -16);
-            if (from_direction == BeltDirection.Down)
+            if (from_direction == Direction.Down)
                 checkArea.Position += new Vector2(0, 16);
-            if (from_direction == BeltDirection.Left)
+            if (from_direction == Direction.Left)
                 checkArea.Position += new Vector2(-16, 0);
-            if (from_direction == BeltDirection.Right)
+            if (from_direction == Direction.Right)
                 checkArea.Position += new Vector2(16, 0);
 
             await ToSignal(checkAreaTimer, "timeout");

@@ -7,7 +7,7 @@ public partial class Giver : Area2D
     public Detector detector;
 
     [Export]
-    public Belt.BeltDirection direction_not_giving;
+    public Belt.Direction direction_not_giving;
 
     [Export]
     public MachineBase building;

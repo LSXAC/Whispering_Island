@@ -24,10 +24,13 @@ public partial class EquipmentSelectBar : Container
     {
         if (Input.IsActionJustPressed("NUM1"))
             SelectSelectSlot(0);
+
         if (Input.IsActionJustPressed("NUM2"))
             SelectSelectSlot(1);
+
         if (Input.IsActionJustPressed("NUM3"))
             SelectSelectSlot(2);
+
         if (Input.IsActionJustPressed("NUM4"))
             SelectSelectSlot(3);
     }
@@ -64,6 +67,7 @@ public partial class EquipmentSelectBar : Container
         select_slots[index].GetParent().GetParent<ColorRect>().Color = selected_color;
         current_selected_item = select_slots[index].GetItem();
         current_selected_slot = index;
+
         if (EquipmentPanel.INSTANCE != null)
             EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
     }

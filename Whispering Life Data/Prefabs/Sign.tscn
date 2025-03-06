@@ -13,6 +13,8 @@ size = Vector2(16, 21)
 
 [node name="Sign" type="StaticBody2D" node_paths=PackedStringArray("sprite")]
 y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
 script = ExtResource("1_lc4go")
 title = "BUILDING_SIGN"
 description = "BUILDING_SIGN_DESC"

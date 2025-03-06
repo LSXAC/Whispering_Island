@@ -57,7 +57,7 @@ public partial class Building_Placer : Node2D
         {
             placeable = current_building as Belt;
             ((Belt)placeable).Set_Rotation(current_belt_rotation);
-            placeable.GetNode<Area2D>("BeltArea").Monitorable = false;
+            placeable.GetNode<Area2D>("PathConnectArea").Monitorable = false;
             placeable.GetSprite().SelfModulate = new Color(1f, 1f, 1f, 0.75f);
             if (current_building is BeltTunnel)
                 placeable.GetNode<TunnelArea>("TunnelArea").Monitoring = false;
@@ -222,17 +222,17 @@ public partial class Building_Placer : Node2D
                         Debug.Print("GIver GIv");
                         switch (giv.direction_not_giving)
                         {
-                            case Belt.BeltDirection.Top:
-                                giv.direction_not_giving = Belt.BeltDirection.Down;
+                            case Belt.Direction.Top:
+                                giv.direction_not_giving = Belt.Direction.Down;
                                 break;
-                            case Belt.BeltDirection.Down:
-                                giv.direction_not_giving = Belt.BeltDirection.Top;
+                            case Belt.Direction.Down:
+                                giv.direction_not_giving = Belt.Direction.Top;
                                 break;
-                            case Belt.BeltDirection.Right:
-                                giv.direction_not_giving = Belt.BeltDirection.Left;
+                            case Belt.Direction.Right:
+                                giv.direction_not_giving = Belt.Direction.Left;
                                 break;
-                            case Belt.BeltDirection.Left:
-                                giv.direction_not_giving = Belt.BeltDirection.Right;
+                            case Belt.Direction.Left:
+                                giv.direction_not_giving = Belt.Direction.Right;
                                 break;
                         }
                     }

@@ -101,6 +101,7 @@ public partial class EquipmentPanel : Control
             INSTANCE.equipped_tools[EquipmentSelectBar.current_selected_slot] = null;
             player_ui.INSTANCE.equipmentSelectBar.current_selected_item = null;
         }
+        INSTANCE.CalculateStatsFromEquipment();
     }
 
     public void CalculateStatsFromEquipment()

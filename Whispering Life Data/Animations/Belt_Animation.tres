@@ -210,7 +210,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_drex7")
 }],
 "loop": true,
-"name": &"BELT_CORNER_DOWN_LEFT",
+"name": &"CORNER_DOWN_LEFT",
 "speed": 5.0
 }, {
 "frames": [{
@@ -227,7 +227,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ktiuf")
 }],
 "loop": true,
-"name": &"BELT_CORNER_DOWN_RIGHT",
+"name": &"CORNER_DOWN_RIGHT",
 "speed": 5.0
 }, {
 "frames": [{
@@ -244,7 +244,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_hca4h")
 }],
 "loop": true,
-"name": &"BELT_CORNER_LEFT_DOWN",
+"name": &"CORNER_LEFT_DOWN",
 "speed": 5.0
 }, {
 "frames": [{
@@ -261,7 +261,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_7rovn")
 }],
 "loop": true,
-"name": &"BELT_CORNER_LEFT_UP",
+"name": &"CORNER_LEFT_UP",
 "speed": 5.0
 }, {
 "frames": [{
@@ -278,7 +278,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_mjnmg")
 }],
 "loop": true,
-"name": &"BELT_CORNER_RIGHT_DOWN",
+"name": &"CORNER_RIGHT_DOWN",
 "speed": 5.0
 }, {
 "frames": [{
@@ -295,7 +295,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_0fcd0")
 }],
 "loop": true,
-"name": &"BELT_CORNER_RIGHT_UP",
+"name": &"CORNER_RIGHT_UP",
 "speed": 5.0
 }, {
 "frames": [{
@@ -312,7 +312,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_m7nc1")
 }],
 "loop": true,
-"name": &"BELT_CORNER_UP_LEFT",
+"name": &"CORNER_UP_LEFT",
 "speed": 5.0
 }, {
 "frames": [{
@@ -329,7 +329,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_fpdt5")
 }],
 "loop": true,
-"name": &"BELT_CORNER_UP_RIGHT",
+"name": &"CORNER_UP_RIGHT",
 "speed": 5.0
 }, {
 "frames": [{
@@ -346,7 +346,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_eknq3")
 }],
 "loop": true,
-"name": &"BELT_DOWN",
+"name": &"DOWN",
 "speed": 5.0
 }, {
 "frames": [{
@@ -363,7 +363,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_5glqp")
 }],
 "loop": true,
-"name": &"BELT_LEFT",
+"name": &"LEFT",
 "speed": 5.0
 }, {
 "frames": [{
@@ -380,7 +380,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ylu04")
 }],
 "loop": true,
-"name": &"BELT_RIGHT",
+"name": &"RIGHT",
 "speed": 5.0
 }, {
 "frames": [{
@@ -397,6 +397,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_wd7cq")
 }],
 "loop": true,
-"name": &"BELT_UP",
+"name": &"UP",
 "speed": 5.0
 }]

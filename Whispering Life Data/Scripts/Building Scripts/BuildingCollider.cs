@@ -43,6 +43,7 @@ public partial class BuildingCollider : Area2D
         bool on_building = false;
         foreach (Node2D node in GetOverlappingBodies())
         {
+            Debug.Print(node.Name);
             if (node is Building_Node n)
             {
                 if (!n.disable_collision)
@@ -51,6 +52,13 @@ public partial class BuildingCollider : Area2D
                     break;
                 }
             }
+
+            if (node is StaticBody2D)
+                if (node.Name.ToString().Contains("Bridge"))
+                {
+                    on_building = false;
+                    break;
+                }
 
             if (types == null)
                 continue;

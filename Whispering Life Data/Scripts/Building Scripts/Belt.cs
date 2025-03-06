@@ -16,18 +16,15 @@ public partial class Belt : placeable_building
     public bool ignore_self_detector = false;
 
     [Export]
-    public BeltDirection to_direction = BeltDirection.Left;
+    public Direction to_direction = Direction.Left;
 
     [Export]
-    public BeltDirection from_direction = BeltDirection.Right;
-
-    [Export]
-    public AnimatedSprite2D anim_sprite;
+    public Direction from_direction = Direction.Right;
 
     [Export]
     public ConnectedBeltsManager cbm;
 
-    public enum BeltDirection
+    public enum Direction
     {
         Top,
         Right,
@@ -35,6 +32,9 @@ public partial class Belt : placeable_building
         Left,
         NONE
     };
+
+    [Export]
+    public AnimationManager12D anim_manager12D;
 
     public int current_rotation = 0;
 
@@ -59,7 +59,7 @@ public partial class Belt : placeable_building
         if (ignore_self_detector)
             return;
 
-        if (area is BeltArea)
+        if (area is PathConnectArea)
         {
             if (area.GetParent() is Belt && area.GetParent() is not BeltTunnel)
                 if (area.GetParent<Belt>().can_receive_item())
@@ -136,220 +136,122 @@ public partial class Belt : placeable_building
     public void Set_Rotation(int id)
     {
         if (id == 0)
-        { // ^
-            //if(cbm.HasConnectionTo(ConnectedBeltsManager.DIR.RIGHT))
-            to_direction = BeltDirection.Top;
-            from_direction = BeltDirection.Down;
+        {
+            to_direction = Direction.Top;
+            from_direction = Direction.Down;
             current_rotation = id;
-        } // >
+        }
         if (id == 1)
         {
-            to_direction = BeltDirection.Right;
-            from_direction = BeltDirection.Left;
+            to_direction = Direction.Right;
+            from_direction = Direction.Left;
             current_rotation = id;
-        } // v
+        }
         if (id == 2)
         {
-            to_direction = BeltDirection.Down;
-            from_direction = BeltDirection.Top;
+            to_direction = Direction.Down;
+            from_direction = Direction.Top;
             current_rotation = id;
-        } // <
+        }
         if (id == 3)
         {
-            to_direction = BeltDirection.Left;
-            from_direction = BeltDirection.Right;
+            to_direction = Direction.Left;
+            from_direction = Direction.Right;
             current_rotation = id;
         }
         set_direction();
     }
 
-    string dir = "";
-
     public void set_direction()
     {
         switch (to_direction)
         {
-            case BeltDirection.Left:
+            case Direction.Left:
                 detector.Position = new Vector2(-24f, -8);
-                from_direction = BeltDirection.Right;
+                from_direction = Direction.Right;
                 if (cbm != null && !ignore_self_detector)
                 {
-                    if (cbm.HasImportantDirection(ConnectedBeltsManager.DIR.UP, BeltDirection.Down))
-                        from_direction = BeltDirection.Top;
+                    if (cbm.HasImportantDirection(ConnectedBeltsManager.DIR.UP, Direction.Down))
+                        from_direction = Direction.Top;
+
+                    if (cbm.HasImportantDirection(ConnectedBeltsManager.DIR.DOWN, Direction.Top))
+                        from_direction = Direction.Down;
 
                     if (
-                        cbm.HasImportantDirection(ConnectedBeltsManager.DIR.DOWN, BeltDirection.Top)
+                        cbm.HasImportantDirection(ConnectedBeltsManager.DIR.UP, Direction.Down)
+                        && cbm.HasImportantDirection(ConnectedBeltsManager.DIR.DOWN, Direction.Top)
                     )
-                        from_direction = BeltDirection.Down;
-
-                    if (
-                        cbm.HasImportantDirection(ConnectedBeltsManager.DIR.UP, BeltDirection.Down)
-                        && cbm.HasImportantDirection(
-                            ConnectedBeltsManager.DIR.DOWN,
-                            BeltDirection.Top
-                        )
-                    )
-                        from_direction = BeltDirection.Right;
+                        from_direction = Direction.Right;
                 }
                 Debug.Print(from_direction.ToString());
-                switch (from_direction)
-                {
-                    case BeltDirection.Right:
-                        dir = "BELT_LEFT";
-                        break;
-                    case BeltDirection.Top:
-                        dir = "BELT_CORNER_DOWN_LEFT";
-                        break;
-                    case BeltDirection.Down:
-                        dir = "BELT_CORNER_UP_LEFT";
-                        break;
-                }
+                anim_manager12D.SetAnimation(from_direction, to_direction);
                 break;
-            case BeltDirection.Right:
+            case Direction.Right:
                 detector.Position = new Vector2(8f, -8);
 
-                from_direction = BeltDirection.Left;
+                from_direction = Direction.Left;
 
                 if (cbm != null && !ignore_self_detector)
                 {
-                    if (cbm.HasImportantDirection(ConnectedBeltsManager.DIR.UP, BeltDirection.Down))
-                        from_direction = BeltDirection.Top;
+                    if (cbm.HasImportantDirection(ConnectedBeltsManager.DIR.UP, Direction.Down))
+                        from_direction = Direction.Top;
+
+                    if (cbm.HasImportantDirection(ConnectedBeltsManager.DIR.DOWN, Direction.Top))
+                        from_direction = Direction.Down;
 
                     if (
-                        cbm.HasImportantDirection(ConnectedBeltsManager.DIR.DOWN, BeltDirection.Top)
+                        cbm.HasImportantDirection(ConnectedBeltsManager.DIR.UP, Direction.Down)
+                        && cbm.HasImportantDirection(ConnectedBeltsManager.DIR.DOWN, Direction.Top)
                     )
-                        from_direction = BeltDirection.Down;
-
-                    if (
-                        cbm.HasImportantDirection(ConnectedBeltsManager.DIR.UP, BeltDirection.Down)
-                        && cbm.HasImportantDirection(
-                            ConnectedBeltsManager.DIR.DOWN,
-                            BeltDirection.Top
-                        )
-                    )
-                        from_direction = BeltDirection.Right;
+                        from_direction = Direction.Right;
                 }
-                switch (from_direction)
-                {
-                    case BeltDirection.Left:
-                        dir = "BELT_RIGHT";
-                        break;
-                    case BeltDirection.Top:
-                        dir = "BELT_CORNER_DOWN_RIGHT";
-                        break;
-                    case BeltDirection.Down:
-                        dir = "BELT_CORNER_UP_RIGHT";
-                        break;
-                }
+                anim_manager12D.SetAnimation(from_direction, to_direction);
                 break;
-            case BeltDirection.Top:
+            case Direction.Top:
                 detector.Position = new Vector2(-8, -24);
 
-                from_direction = BeltDirection.Down;
+                from_direction = Direction.Down;
                 if (cbm != null && !ignore_self_detector)
                 {
-                    if (
-                        cbm.HasImportantDirection(
-                            ConnectedBeltsManager.DIR.LEFT,
-                            BeltDirection.Right
-                        )
-                    )
-                        from_direction = BeltDirection.Left;
+                    if (cbm.HasImportantDirection(ConnectedBeltsManager.DIR.LEFT, Direction.Right))
+                        from_direction = Direction.Left;
+
+                    if (cbm.HasImportantDirection(ConnectedBeltsManager.DIR.RIGHT, Direction.Left))
+                        from_direction = Direction.Right;
 
                     if (
-                        cbm.HasImportantDirection(
-                            ConnectedBeltsManager.DIR.RIGHT,
-                            BeltDirection.Left
-                        )
-                    )
-                        from_direction = BeltDirection.Right;
-
-                    if (
-                        cbm.HasImportantDirection(
-                            ConnectedBeltsManager.DIR.LEFT,
-                            BeltDirection.Right
-                        )
+                        cbm.HasImportantDirection(ConnectedBeltsManager.DIR.LEFT, Direction.Right)
                         && cbm.HasImportantDirection(
                             ConnectedBeltsManager.DIR.RIGHT,
-                            BeltDirection.Left
+                            Direction.Left
                         )
                     )
-                        from_direction = BeltDirection.Down;
+                        from_direction = Direction.Down;
                 }
-                switch (from_direction)
-                {
-                    case BeltDirection.Left:
-                        dir = "BELT_CORNER_RIGHT_UP";
-                        break;
-                    case BeltDirection.Down:
-                        dir = "BELT_UP";
-                        break;
-                    case BeltDirection.Right:
-                        dir = "BELT_CORNER_LEFT_UP";
-                        break;
-                }
+                anim_manager12D.SetAnimation(from_direction, to_direction);
                 break;
-            case BeltDirection.Down:
+            case Direction.Down:
                 detector.Position = new Vector2(-8, 8);
-                from_direction = BeltDirection.Top;
+                from_direction = Direction.Top;
                 if (cbm != null && !ignore_self_detector)
                 {
-                    if (
-                        cbm.HasImportantDirection(
-                            ConnectedBeltsManager.DIR.LEFT,
-                            BeltDirection.Right
-                        )
-                    )
-                        from_direction = BeltDirection.Left;
+                    if (cbm.HasImportantDirection(ConnectedBeltsManager.DIR.LEFT, Direction.Right))
+                        from_direction = Direction.Left;
+
+                    if (cbm.HasImportantDirection(ConnectedBeltsManager.DIR.RIGHT, Direction.Left))
+                        from_direction = Direction.Right;
 
                     if (
-                        cbm.HasImportantDirection(
-                            ConnectedBeltsManager.DIR.RIGHT,
-                            BeltDirection.Left
-                        )
-                    )
-                        from_direction = BeltDirection.Right;
-
-                    if (
-                        cbm.HasImportantDirection(
-                            ConnectedBeltsManager.DIR.LEFT,
-                            BeltDirection.Right
-                        )
+                        cbm.HasImportantDirection(ConnectedBeltsManager.DIR.LEFT, Direction.Right)
                         && cbm.HasImportantDirection(
                             ConnectedBeltsManager.DIR.RIGHT,
-                            BeltDirection.Left
+                            Direction.Left
                         )
                     )
-                        from_direction = BeltDirection.Top;
+                        from_direction = Direction.Top;
                 }
-                switch (from_direction)
-                {
-                    case BeltDirection.Left:
-                        dir = "BELT_CORNER_RIGHT_DOWN";
-                        break;
-                    case BeltDirection.Top:
-                        dir = "BELT_DOWN";
-                        break;
-                    case BeltDirection.Right:
-                        dir = "BELT_CORNER_LEFT_DOWN";
-                        break;
-                }
+                anim_manager12D.SetAnimation(from_direction, to_direction);
                 break;
         }
-        RefTimer ref_timer = GlobalAnimationTimer.INSTANCE.GetCurrentFrame();
-        setFrame(ref_timer.frame, GlobalAnimationTimer.INSTANCE.TimeLeft);
-    }
-
-    public void setFrame(int frame, double diff)
-    {
-        GetTree().CreateTimer(diff).Timeout += () => SetAnim(frame);
-    }
-
-    private void SetAnim(int frame)
-    {
-        if (!IsInstanceValid(this))
-            return;
-        anim_sprite.Play(dir);
-        anim_sprite.Frame = frame;
     }
 }

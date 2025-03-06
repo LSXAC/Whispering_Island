@@ -26,7 +26,7 @@ public partial class ConnectedBeltsManager : Node2D
         return false;
     }
 
-    public bool HasImportantDirection(DIR from, Belt.BeltDirection dir)
+    public bool HasImportantDirection(DIR from, Belt.Direction dir)
     {
         if (HasConnectionTo(from))
             if (connected_belts[(int)from].to_direction == dir)
@@ -38,12 +38,12 @@ public partial class ConnectedBeltsManager : Node2D
 public class belt_temp
 {
     public bool connected = false;
-    public Belt.BeltDirection from_direction,
+    public Belt.Direction from_direction,
         to_direction;
 
     public belt_temp()
     {
         connected = false;
-        from_direction = Belt.BeltDirection.NONE;
+        from_direction = Belt.Direction.NONE;
     }
 }

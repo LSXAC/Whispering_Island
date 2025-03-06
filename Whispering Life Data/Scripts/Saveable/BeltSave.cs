@@ -6,8 +6,8 @@ public partial class BeltSave : Resource
 
     public BeltSave(
         Vector2 pos,
-        Belt.BeltDirection f_d,
-        Belt.BeltDirection t_d,
+        Belt.Direction f_d,
+        Belt.Direction t_d,
         ItemInfo item,
         int curr_rot
     )
@@ -23,10 +23,10 @@ public partial class BeltSave : Resource
     public Vector2 position = Vector2.Zero;
 
     [Export]
-    public Belt.BeltDirection from_direction = Belt.BeltDirection.Right;
+    public Belt.Direction from_direction = Belt.Direction.Right;
 
     [Export]
-    public Belt.BeltDirection to_direction = Belt.BeltDirection.Left;
+    public Belt.Direction to_direction = Belt.Direction.Left;
 
     [Export]
     public int current_rotation = 0;

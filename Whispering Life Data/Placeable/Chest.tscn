@@ -93,16 +93,10 @@ z_index = 2
 position = Vector2(-24, -25)
 building = NodePath("..")
 
-[node name="BeltArea" parent="Taker" index="1"]
-scale = Vector2(2, 2)
-
 [node name="Taker2" parent="." node_paths=PackedStringArray("building") instance=ExtResource("10_worc2")]
 z_index = 2
 position = Vector2(-8, -25)
 building = NodePath("..")
-
-[node name="BeltArea" parent="Taker2" index="1"]
-scale = Vector2(2, 2)
 
 [node name="CraftingTimer" type="Timer" parent="."]
 wait_time = 2.0

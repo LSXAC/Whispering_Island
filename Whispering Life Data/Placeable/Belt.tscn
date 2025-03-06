@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://rd7h1v4imvk6"]
+[gd_scene load_steps=18 format=3 uid="uid://rd7h1v4imvk6"]
 
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Belt.cs" id="1_wiff4"]
 [ext_resource type="Texture2D" uid="uid://dh7i821w2aucb" path="res://Sprites/Belt_Side.png" id="2_qme1j"]
@@ -7,10 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Placeable/detector.tscn" id="5_4wn6s"]
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_4pt64"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="7_h12jl"]
-[ext_resource type="Script" path="res://Placeable/BeltArea.cs" id="8_2g66n"]
+[ext_resource type="Script" path="res://Placeable/PathConnectArea.cs" id="8_4t2sw"]
 [ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://Animations/Belt_Animation.tres" id="10_fcawy"]
 [ext_resource type="Script" path="res://Placeable/HasConnectedBeltArea.cs" id="11_08ai2"]
 [ext_resource type="Script" path="res://Placeable/ConnectedBeltsManager.cs" id="11_pw6t1"]
+[ext_resource type="Script" path="res://Scripts/AnimationManager12D.cs" id="12_ftj05"]
+[ext_resource type="Script" path="res://Placeable/AnimationManagerBase.cs" id="13_3sbe5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8pj"]
 size = Vector2(14, 14)
@@ -24,15 +26,15 @@ size = Vector2(16, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlqqa"]
 size = Vector2(10, 10)
 
-[node name="Belt" type="StaticBody2D" node_paths=PackedStringArray("item_holder", "detector", "anim_sprite", "cbm", "building_collider_manager", "sprite", "collision_shape") groups=["Belt"]]
+[node name="Belt" type="StaticBody2D" node_paths=PackedStringArray("item_holder", "detector", "cbm", "anim_manager12D", "building_collider_manager", "sprite", "collision_shape") groups=["Belt"]]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_wiff4")
 item_holder = NodePath("ItemHolder")
 detector = NodePath("Detector")
-anim_sprite = NodePath("AnimatedSprite2D")
 cbm = NodePath("ConnectedBeltsManager")
+anim_manager12D = NodePath("12DAnimationManager")
 tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_BELT"
@@ -78,13 +80,13 @@ building_sprite = NodePath("../BuildingSprite")
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_3k8pj")
 
-[node name="BeltArea" type="Area2D" parent="."]
+[node name="PathConnectArea" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 0
 monitoring = false
-script = ExtResource("8_2g66n")
+script = ExtResource("8_4t2sw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BeltArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea"]
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_77bd0")
 
@@ -92,12 +94,6 @@ shape = SubResource("RectangleShape2D_77bd0")
 y_sort_enabled = true
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_xfl3k")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = -1
-position = Vector2(-8, -8)
-sprite_frames = ExtResource("10_fcawy")
-animation = &"BELT_CORNER_RIGHT_UP"
 
 [node name="ConnectedBeltsManager" type="Node2D" parent="."]
 script = ExtResource("11_pw6t1")
@@ -144,6 +140,20 @@ dir = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea4"]
 shape = SubResource("RectangleShape2D_hlqqa")
+
+[node name="12DAnimationManager" type="Node2D" parent="." node_paths=PackedStringArray("anim_sprite")]
+script = ExtResource("12_ftj05")
+anim_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="12DAnimationManager"]
+z_index = -1
+position = Vector2(-8, -8)
+sprite_frames = ExtResource("10_fcawy")
+animation = &"UP"
+frame_progress = 0.972976
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("13_3sbe5")
 
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]

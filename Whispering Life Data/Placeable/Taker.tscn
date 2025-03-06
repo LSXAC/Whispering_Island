@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Building Scripts/Taker.cs" id="1_fqdb7"]
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="2_nkdn0"]
-[ext_resource type="Script" path="res://Placeable/BeltArea.cs" id="3_csobx"]
+[ext_resource type="Script" path="res://Placeable/PathConnectArea.cs" id="3_38s1m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cxv0"]
 size = Vector2(4, 4)
@@ -15,13 +15,13 @@ item_holder_In = NodePath("ItemHolder")
 
 [node name="ItemHolder" parent="." instance=ExtResource("2_nkdn0")]
 
-[node name="BeltArea" type="Area2D" parent="."]
+[node name="PathConnectArea" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 0
 monitoring = false
-script = ExtResource("3_csobx")
+script = ExtResource("3_38s1m")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BeltArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea"]
 shape = SubResource("RectangleShape2D_2cxv0")
 
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]

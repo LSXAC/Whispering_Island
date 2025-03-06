@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://d166ytf76ufnl"]
+[gd_scene load_steps=17 format=4 uid="uid://d166ytf76ufnl"]
 
 [ext_resource type="Script" path="res://Placeable/BeltSplitter.cs" id="1_uaqd4"]
 [ext_resource type="Texture2D" uid="uid://c8pmilsf6bf50" path="res://Sprites/Menu_Belt_Splitter_1x3.png" id="2_5cc54"]
@@ -7,11 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Placeable/detector.tscn" id="5_4htdo"]
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_fil1i"]
 [ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="7_omdat"]
-[ext_resource type="Script" path="res://Placeable/BeltArea.cs" id="8_k0chv"]
+[ext_resource type="Script" path="res://Placeable/PathConnectArea.cs" id="8_vuvg6"]
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="9_16cul"]
 [ext_resource type="PackedScene" uid="uid://rd7h1v4imvk6" path="res://Placeable/Belt.tscn" id="10_imdpi"]
 [ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://Animations/Belt_Animation.tres" id="11_c3h42"]
 [ext_resource type="Texture2D" uid="uid://byws8skjjfxmy" path="res://Sprites/Top_Belt_Splitter_3x1.png" id="11_fetye"]
+[ext_resource type="Script" path="res://Scripts/AnimationManager12D.cs" id="12_4wndj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8pj"]
 size = Vector2(14, 14)
@@ -22,7 +23,7 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
 size = Vector2(32, 48)
 
-[node name="BeltSplitter1x3" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "belt_2", "item_holder", "detector", "anim_sprite", "building_collider_manager", "sprite", "collision_shape")]
+[node name="BeltSplitter1x3" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "belt_2", "item_holder", "detector", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -34,7 +35,6 @@ belt_2 = NodePath("Belt3")
 item_holder = NodePath("ItemHolder")
 detector = NodePath("Detector")
 ignore_self_detector = true
-anim_sprite = NodePath("AnimatedSprite2D")
 building_id = 22
 tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
@@ -81,13 +81,13 @@ building_sprite = NodePath("../BuildingSprite")
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_3k8pj")
 
-[node name="BeltArea" type="Area2D" parent="."]
+[node name="PathConnectArea" type="Area2D" parent="."]
 collision_layer = 516
 collision_mask = 0
 monitoring = false
-script = ExtResource("8_k0chv")
+script = ExtResource("8_vuvg6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BeltArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea"]
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_77bd0")
 
@@ -129,17 +129,21 @@ disable_collision = true
 [node name="MouseArea" parent="Belt3" index="5" node_paths=PackedStringArray("building_node")]
 building_node = NodePath("../..")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = -1
-position = Vector2(-8, -8)
-sprite_frames = ExtResource("11_c3h42")
-animation = &"BELT_CORNER_LEFT_DOWN"
-
 [node name="Top" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(-16, 16)
 texture = ExtResource("11_fetye")
 offset = Vector2(0, -27)
+
+[node name="12DAnimationManager" type="Node2D" parent="." node_paths=PackedStringArray("anim_sprite")]
+script = ExtResource("12_4wndj")
+anim_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="12DAnimationManager"]
+z_index = -1
+position = Vector2(-8, -8)
+sprite_frames = ExtResource("11_c3h42")
+animation = &"UP"
 
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]

@@ -15,7 +15,7 @@ public partial class HasConnectedBeltArea : Area2D
 
     public void OnAreaEntered(Area2D area)
     {
-        if (area is BeltArea ba)
+        if (area is PathConnectArea ba)
         {
             if (ba.GetParent() is Belt)
             {
@@ -29,13 +29,13 @@ public partial class HasConnectedBeltArea : Area2D
 
     public void OnAreaExited(Area2D area)
     {
-        if (area is BeltArea ba)
+        if (area is PathConnectArea ba)
         {
             if (ba.GetParent() is Belt)
             {
                 Debug.Print("Disconnected: " + Name);
                 cbm.connected_belts[(int)dir].connected = false;
-                cbm.connected_belts[(int)dir].to_direction = Belt.BeltDirection.NONE;
+                cbm.connected_belts[(int)dir].to_direction = Belt.Direction.NONE;
                 cbm.GetParent<Belt>().set_direction();
             }
         }

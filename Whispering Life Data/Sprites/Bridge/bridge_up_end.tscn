@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc2tlg8s8fxwl"]
+[gd_scene load_steps=5 format=3 uid="uid://bc2tlg8s8fxwl"]
 
 [ext_resource type="Texture2D" uid="uid://8eq3oygaf8qt" path="res://Sprites/Bridge/Bridge_Up_End.png" id="1_s4eol"]
 
@@ -7,6 +7,9 @@ size = Vector2(3, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_34776"]
 size = Vector2(3, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxyh8"]
+size = Vector2(28, 11)
 
 [node name="BridgeUpEnd" type="StaticBody2D"]
 y_sort_enabled = true
@@ -24,3 +27,11 @@ y_sort_enabled = true
 position = Vector2(0, 6)
 texture = ExtResource("1_s4eol")
 offset = Vector2(0, -6)
+
+[node name="Bridge" type="StaticBody2D" parent="."]
+collision_layer = 12
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bridge"]
+position = Vector2(0, 10.5)
+shape = SubResource("RectangleShape2D_lxyh8")
