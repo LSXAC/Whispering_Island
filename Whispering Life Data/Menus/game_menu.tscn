@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=76 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" path="res://Scripts/Menu Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -64,6 +64,13 @@
 [ext_resource type="Resource" uid="uid://blnxntu8sdsvq" path="res://Recipes/Agriculture/Wheat_Seeds_To_Corn_Seeds_Recipe.tres" id="40_rv3r3"]
 [ext_resource type="Resource" uid="uid://kbdrwglo2ghh" path="res://Recipes/Agriculture/Wheat_Seeds_To_Potato_Seeds_Recipe.tres" id="41_bd22e"]
 [ext_resource type="Script" path="res://Menus/HelpTab.cs" id="56_74gou"]
+[ext_resource type="Texture2D" uid="uid://dy7kd53s6cn22" path="res://Sprites/Mouse.png" id="58_0k4ta"]
+[ext_resource type="Texture2D" uid="uid://cn8y6cj766xw0" path="res://Sprites/Items/Icons_3rd/Chest.png" id="59_aahk4"]
+[ext_resource type="Texture2D" uid="uid://caucfvq00j5hu" path="res://Sprites/Research_Table.png" id="60_cjy3p"]
+[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="61_0s004"]
+[ext_resource type="Texture2D" uid="uid://1rxf21hw1xu5" path="res://Sprites/Heart_Icon.png" id="62_g0ojh"]
+[ext_resource type="Texture2D" uid="uid://nd03oe33c2v2" path="res://Sprites/Objectiv.png" id="63_38eqn"]
+[ext_resource type="Texture2D" uid="uid://125t5f6fiugo" path="res://Sprites/Monster_Island.png" id="64_jkgj7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tibut"]
 bg_color = Color(1, 1, 1, 0)
@@ -2037,7 +2044,6 @@ text = "© 2024 Leon Schröder Asset Creations"
 horizontal_alignment = 1
 
 [node name="HelpTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("pages")]
-visible = false
 z_index = 4
 layout_mode = 1
 anchors_preset = 15
@@ -2048,7 +2054,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
 script = ExtResource("56_74gou")
-pages = [NodePath("VBoxContainer/HP_Resources"), NodePath("VBoxContainer/HP_Resources2")]
+pages = [NodePath("VBoxContainer/HP_Resources"), NodePath("VBoxContainer/HP_Machine"), NodePath("VBoxContainer/HP_Quests"), NodePath("VBoxContainer/HP_Building"), NodePath("VBoxContainer/HP_Islands")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab"]
 layout_mode = 0
@@ -2057,146 +2063,685 @@ offset_top = 21.0
 offset_right = 549.0
 offset_bottom = 270.0
 
-[node name="PanelContainer" type="PanelContainer" parent="Background/HelpTab/VBoxContainer"]
+[node name="HP_Resources" type="PanelContainer" parent="Background/HelpTab/VBoxContainer"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
-text = "Item"
+text = "About Resources"
 horizontal_alignment = 1
 script = ExtResource("26_tl5yt")
-label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+label_translation_string = "HELP_RESOURCE_TITLE"
 
-[node name="HP_Resources" type="PanelContainer" parent="Background/HelpTab/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer"]
+custom_minimum_size = Vector2(320, 216)
 layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources"]
-custom_minimum_size = Vector2(320, 0)
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = -3
-theme_override_constants/margin_bottom = 5
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(300, 205)
 layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources/MarginContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 
-[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("18_ou1xm")
+stretch_mode = 3
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Ressourcen werden benötigt um Gebäude, Maschinen oder Dekorationen herzustellen."
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_RESOURCES_1"
+
+[node name="SpaceHolder" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
-text = "Item"
+text = "-----------------------------------"
 horizontal_alignment = 1
 autowrap_mode = 3
 script = ExtResource("26_tl5yt")
 label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
 
-[node name="ItemLabel2" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("58_0k4ta")
+stretch_mode = 3
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Ressourcen können über einen Linken Mausklick (Mouse 1) abgebaut werden."
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_RESOURCES_2"
+
+[node name="SpaceHolder2" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
-text = "Title of the PageTitle of the PageTitle of the Page Title of the Page Title of the PageTitle of the PageTitle of the PageTitle of the Page Title of the Page"
+text = "-----------------------------------"
 horizontal_alignment = 1
 autowrap_mode = 3
 script = ExtResource("26_tl5yt")
 label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
 
-[node name="ItemLabel3" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("59_aahk4")
+stretch_mode = 3
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Wenn kein Platz im Inventar ist, können keine Ressourcen abgebaut oder hergestellt werden."
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_RESOURCES_3"
+
+[node name="SpaceHolder3" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
-text = "Title of the PageTitle of the PageTitle of the Page Title of the Page Title of the PageTitle of the PageTitle of the PageTitle of the Page Title of the Page"
+text = "-----------------------------------"
 horizontal_alignment = 1
 autowrap_mode = 3
 script = ExtResource("26_tl5yt")
 label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
 
-[node name="ItemLabel4" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
-text = "Title of the PageTitle of the PageTitle of the Page Title of the Page Title of the PageTitle of the PageTitle of the PageTitle of the Page Title of the Page"
-horizontal_alignment = 1
-autowrap_mode = 3
-script = ExtResource("26_tl5yt")
-label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
-
-[node name="ItemLabel5" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
-text = "Title of the PageTitle of the PageTitle of the Page Title of the Page Title of the PageTitle of the PageTitle of the PageTitle of the Page Title of the Page"
-horizontal_alignment = 1
-autowrap_mode = 3
-script = ExtResource("26_tl5yt")
-label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
-
-[node name="HP_Resources2" type="PanelContainer" parent="Background/HelpTab/VBoxContainer"]
+[node name="HP_Machine" type="PanelContainer" parent="Background/HelpTab/VBoxContainer"]
 visible = false
+custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources2"]
-custom_minimum_size = Vector2(320, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Machine"]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = -3
-theme_override_constants/margin_bottom = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources2/MarginContainer"]
-custom_minimum_size = Vector2(300, 215)
+[node name="PanelContainer" type="PanelContainer" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "About Resources"
+horizontal_alignment = 1
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_MACHINES_TITLE"
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer"]
+custom_minimum_size = Vector2(320, 216)
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(300, 205)
 layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Resources2/MarginContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 20
+theme_override_constants/separation = 10
 
-[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources2/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("60_cjy3p")
+stretch_mode = 3
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Maschinen sind Objekte die einen Verarbeitungschritt für dich übernehmen. "
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_MACHINES_1"
+
+[node name="SpaceHolder" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
-text = "Item"
+text = "-----------------------------------"
 horizontal_alignment = 1
 autowrap_mode = 3
 script = ExtResource("26_tl5yt")
 label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
 
-[node name="ItemLabel2" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources2/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("61_0s004")
+stretch_mode = 3
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Maschinen können mit der Maus oder über die Anschlüsse betätigt werden. Achte auf die Pfeile für den Eingang und Ausgang."
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_MACHINES_2"
+
+[node name="SpaceHolder2" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
-text = "Title of the PageTitle of the PageTitle of the Page Title of the Page Title of the PageTitle of the PageTitle of the PageTitle of the Page Title of the Page"
+text = "-----------------------------------"
 horizontal_alignment = 1
 autowrap_mode = 3
 script = ExtResource("26_tl5yt")
 label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
 
-[node name="ItemLabel5" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Resources2/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("58_0k4ta")
+stretch_mode = 3
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Maschinen können über das Baumenü (j) gebaut werden."
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_MACHINES_3"
+
+[node name="SpaceHolder3" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Machine/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
-text = "Title of the PageTitle of the PageTitle of the Page Title of the Page Title of the PageTitle of the PageTitle of the PageTitle of the Page Title of the Page"
+text = "-----------------------------------"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="HP_Quests" type="PanelContainer" parent="Background/HelpTab/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Quests"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "About Quests"
+horizontal_alignment = 1
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_QUEST_TITLE"
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer"]
+custom_minimum_size = Vector2(320, 216)
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(300, 205)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("62_g0ojh")
+stretch_mode = 3
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Du hast 3 Herzen, die jeweils bei einer nicht erfüllten Aufgabe abgezogen werden. Nach jeder nicht erfüllten Aufgabe, gibt es einen Debuff. Beim ersten Herz: Weniger Zeit, oder Doppelte Abgabeitems und beim zweiten Herz, wird dir die letzte gebaute Insel entzogen. Sind alle 3 Herzen weg, wirst du von der Insel gegessen!"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_QUEST_1"
+
+[node name="SpaceHolder" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "-----------------------------------"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+texture = ExtResource("63_38eqn")
+expand_mode = 4
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Die AUfgaben werden dynamisch generiert und sind immer unterschiedlich. Abhängig von deinen aktuellen Forschungsstand, werden schwerere Ressourcen benötigt. (aktuell statisch)"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_QUEST_2"
+
+[node name="SpaceHolder2" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "-----------------------------------"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("64_jkgj7")
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Ressourcen und Tipps können über die Monster Insel abgegeben/oder erhalten werden."
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_QUEST_3"
+
+[node name="SpaceHolder3" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Quests/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "-----------------------------------"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="HP_Building" type="PanelContainer" parent="Background/HelpTab/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Building"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "About Quests"
+horizontal_alignment = 1
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_BUILDING_TITLE"
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer"]
+custom_minimum_size = Vector2(320, 216)
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(300, 205)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("62_g0ojh")
+stretch_mode = 3
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Du hast 3 Herzen, die jeweils bei einer nicht erfüllten Aufgabe abgezogen werden. Nach jeder nicht erfüllten Aufgabe, gibt es einen Debuff. Beim ersten Herz: Weniger Zeit, oder Doppelte Abgabeitems und beim zweiten Herz, wird dir die letzte gebaute Insel entzogen. Sind alle 3 Herzen weg, wirst du von der Insel gegessen!"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_BUILDING_1"
+
+[node name="SpaceHolder" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "-----------------------------------"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+texture = ExtResource("63_38eqn")
+expand_mode = 4
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Die AUfgaben werden dynamisch generiert und sind immer unterschiedlich. Abhängig von deinen aktuellen Forschungsstand, werden schwerere Ressourcen benötigt. (aktuell statisch)"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_BUILDING_2"
+
+[node name="SpaceHolder2" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "-----------------------------------"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("64_jkgj7")
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Ressourcen und Tipps können über die Monster Insel abgegeben/oder erhalten werden."
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_BUILDING_3"
+
+[node name="SpaceHolder3" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Building/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "-----------------------------------"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="HP_Islands" type="PanelContainer" parent="Background/HelpTab/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Islands"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "About Quests"
+horizontal_alignment = 1
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_ISLANDS_TITLE"
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer"]
+custom_minimum_size = Vector2(320, 216)
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(300, 205)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("62_g0ojh")
+stretch_mode = 3
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Du hast 3 Herzen, die jeweils bei einer nicht erfüllten Aufgabe abgezogen werden. Nach jeder nicht erfüllten Aufgabe, gibt es einen Debuff. Beim ersten Herz: Weniger Zeit, oder Doppelte Abgabeitems und beim zweiten Herz, wird dir die letzte gebaute Insel entzogen. Sind alle 3 Herzen weg, wirst du von der Insel gegessen!"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_BUILDING_1"
+
+[node name="SpaceHolder" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "-----------------------------------"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+texture = ExtResource("63_38eqn")
+expand_mode = 4
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Die AUfgaben werden dynamisch generiert und sind immer unterschiedlich. Abhängig von deinen aktuellen Forschungsstand, werden schwerere Ressourcen benötigt. (aktuell statisch)"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_BUILDING_2"
+
+[node name="SpaceHolder2" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "-----------------------------------"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "CRAFTING_MENU_TOPBAR_ITEM"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("64_jkgj7")
+expand_mode = 1
+
+[node name="ItemLabel" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Ressourcen und Tipps können über die Monster Insel abgegeben/oder erhalten werden."
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("26_tl5yt")
+label_translation_string = "HELP_BUILDING_3"
+
+[node name="SpaceHolder3" type="Label" parent="Background/HelpTab/VBoxContainer/HP_Islands/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "-----------------------------------"
 horizontal_alignment = 1
 autowrap_mode = 3
 script = ExtResource("26_tl5yt")
@@ -2221,47 +2766,47 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 16
 text = "Resources"
 script = ExtResource("3_pwamf")
-label_translation_string = "CRAFTING_MENU_GENERAL"
+label_translation_string = "HELP_BUTTON_RESOURCES"
 
-[node name="ToolsButton" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
+[node name="MachineButton" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 16
-text = "ToolsDeath"
+text = "Buildings"
 script = ExtResource("3_pwamf")
-label_translation_string = "CRAFTING_MENU_TOOLS"
+label_translation_string = "HELP_BUTTON_MACHINE"
 
-[node name="ToolspartsButton" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
+[node name="QuestButton" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 16
-text = "Toolparts"
+text = "Questing"
 script = ExtResource("3_pwamf")
-label_translation_string = "CRAFTING_MENU_TOOLPARTS"
+label_translation_string = "HELP_BUTTON_QUESTING"
 
-[node name="ArmorButton" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
+[node name="Buildings" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 16
-text = "CRAFTING_MENU_ARMOR"
+text = "Islands"
 script = ExtResource("3_pwamf")
-label_translation_string = "CRAFTING_MENU_ARMOR"
+label_translation_string = "HELP_BUTTON_BUILDING"
 
-[node name="AgricultureButton" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
+[node name="IslandsButton2" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 16
-text = "CRAFTING_MENU_ARMOR"
+text = "Islands"
 script = ExtResource("3_pwamf")
-label_translation_string = "CRAFTING_MENU_AGRICULTURE"
+label_translation_string = "HELP_BUTTON_ISLANDS"
 
 [node name="Button6" type="Button" parent="Background/HelpTab/CategoryPanel/HSplitContainer"]
 layout_mode = 2
@@ -2732,7 +3277,7 @@ label_translation_string = "MAINMENU_EXIT_GAME"
 [connection signal="pressed" from="Background/StatsTab/HBoxContainer/LoadGameButton" to="." method="OnLoadButton"]
 [connection signal="visibility_changed" from="Background/HelpTab" to="Background/HelpTab" method="OnVisiblityChange"]
 [connection signal="pressed" from="Background/HelpTab/CategoryPanel/HSplitContainer/ResourcesButton" to="Background/HelpTab" method="OnPageButton" binds= [0]]
-[connection signal="pressed" from="Background/HelpTab/CategoryPanel/HSplitContainer/ToolsButton" to="Background/HelpTab" method="OnPageButton" binds= [1]]
+[connection signal="pressed" from="Background/HelpTab/CategoryPanel/HSplitContainer/MachineButton" to="Background/HelpTab" method="OnPageButton" binds= [1]]
 [connection signal="visibility_changed" from="Background/SaveLoadTab" to="Background/SaveLoadTab" method="OnVisiblityChange"]
 [connection signal="pressed" from="Background/SaveLoadTab/HBoxContainer/SaveGameButton" to="." method="OnSaveButton"]
 [connection signal="pressed" from="Background/SaveLoadTab/HBoxContainer/LoadGameButton" to="." method="OnLoadButton"]

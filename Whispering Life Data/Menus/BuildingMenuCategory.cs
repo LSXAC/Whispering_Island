@@ -36,6 +36,8 @@ public partial class BuildingMenuCategory : ColorRect
                 if (packed.requirements != null || packed.requirements.Count > 0)
                     if (!GlobalFunctions.CheckAllRequirements(packed.requirements))
                         continue;
+                if (!packed.show_item)
+                    continue;
                 InitBuildings(packed);
             }
         }

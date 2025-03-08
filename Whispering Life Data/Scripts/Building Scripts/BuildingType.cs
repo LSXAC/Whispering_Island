@@ -17,6 +17,9 @@ public partial class BuildingType : Resource
     [Export]
     public CATEGORY category;
 
+    [Export]
+    public bool show_item = true;
+
     public enum CATEGORY
     {
         PRODUCTION,
