@@ -1,29 +1,38 @@
 ,en,de
-RESEARCH_BONUS,Unlocks:,Schaltet Frei:
-RESEARCH_RESEARCHLEVEL,Research Level,Erforschungsstufe
-RESEARCH_NO_ITEM,No Item in Research Slot.,Keine Ressource im Erforschungsslot.
-RESEARCH_BUTTON,Start Research,Erforschung starten
-RESEARCH_WORKING,Researching,Erforschen
-RESEARCH_SAVE_INFO,"Passed Research time will not be saved, only result",Vergangene Erforschungszeit wird nicht gespeichert. Nur das Endergebnis!
+HELP_BUTTON_RESOURCES,Resources,Ressourcen
 ,,
-,,
-RESEARCH_WOOD_LVL_1,Craftsman #1,Handwerker #1
-RESEARCH_WOOD_LVL_1_DESC,Wooden tools can be crafted in the crafting menu.,Werkzeuge aus Holz können im Herstellungsmenü hergestellt werden.
-RESEARCH_WOOD_LVL_2,Craftsman #2,Handwerker #2
-RESEARCH_WOOD_LVL_2_DESC,Storage Chests can be build in the building menu [J].,Lagerkisten können im Baumenü hergestellt werden. [J]
-,,
-RESEARCH_IRON_ORE_LVL_1,The iron Age #1,Das eiserne Zeitalter #1
-RESEARCH_IRON_ORE_LVL_1_DESC,"Glass can be produced in the furnace, by burning 2x Iron Ore","Eisenbarren können im Ofen hergestellt werden, indem 2x Eisenerz gebrannt wird."
-RESEARCH_IRON_ORE_LVL_2,The iron Age #2,Das eiserne Zeitalter #2
-RESEARCH_IRON_ORE_LVL_2_DESC,Iron blocks can be crafted in the crafting menu.,Eisenblöcke können im Herstellungsmenü hergestellt werden.
-,,
-RESEARCH_STONE_LVL_1,Stonecutter #1,Steinmetz #1
-RESEARCH_STONE_LVL_1_DESC,Stone tools can be crafted in the crafting menu.,Werkzeuge aus Stein können im Herstellungsmenü hergestellt werden.
+HELP_BUTTON_QUESTING,Quests,Aufträge
+HELP_BUTTON_ISLANDS,Islands,Inseln
+HELP_BUTTON_MACHINE,Machines,Maschinen
 ,,
 ,,
 ,,
-RESEARCH_MYSTIC_WOOD_LVL_1,Mystic Researcher #1,Mystischer Forscher #1
-RESEARCH_MYSTIC_WOOD_LVL_1_DESC,Mystic Armorparts can be crafted in the crafting menu.,Mystische Rüstungsteile können im Herstellungsmenü hergestellt werden.
 ,,
-RESEARCH_SAND_LVL_1,Sand Flames,Sandflammen
-RESEARCH_SAND_LVL_1_DESC,"Glass can be produced in the furnace, by burning 2x Sand","Glas kann im Ofen hergestellt werden, indem 2x Sand gebrannt wird."
+,,
+HELP_RESOURCE_TITLE,About Resources,Über Ressourcen
+HELP_RESOURCES_1,"Resources are needed to produce buildings, machines or decorations.","Ressourcen werden benötigt um Gebäude, Maschinen oder Dekorationen herzustellen."
+HELP_RESOURCES_2,Resources can be removed with a left mouse click (Mouse 1).,Ressourcen können über einen Linken Mausklick (Mouse 1) abgebaut werden.
+HELP_RESOURCES_3,"If there is no space in the inventory, no resources can be mined or produced.","Wenn kein Platz im Inventar ist, können keine Ressourcen abgebaut oder hergestellt werden."
+,,
+,,
+HELP_MACHINES_TITLE,About Machines,Über Maschinen
+HELP_MACHINES_1,Machines are objects that perform a processing step for you. ,Maschinen sind Objekte die einen Verarbeitungschritt für dich übernehmen. 
+HELP_MACHINES_2,Machines can be operated with the mouse or via the connections. Pay attention to the arrows for input and output.,Maschinen können mit der Maus oder über die Anschlüsse betätigt werden. Achte auf die Pfeile für den Eingang und Ausgang.
+HELP_MACHINES_3,Machines can be built via the building menu (j).,Maschinen können über das Baumenü (j) gebaut werden.
+,,
+,,
+HELP_QUEST_TITLE,About Quests,Über Aufträge
+HELP_QUEST_1,"You have 3 hearts, which are deducted each time a task is not completed. After each unfulfilled task, there is a debuff. With the first heart: less time or double the delivery items and with the second heart, the last island you built is taken away from you. If all 3 hearts are gone, you will be eaten off the island!","Du hast 3 Herzen, die jeweils bei einer nicht erfüllten Aufgabe abgezogen werden. Nach jeder nicht erfüllten Aufgabe, gibt es einen Debuff. Beim ersten Herz: Weniger Zeit, oder Doppelte Abgabeitems und beim zweiten Herz, wird dir die letzte gebaute Insel entzogen. Sind alle 3 Herzen weg, wirst du von der Insel gegessen!"
+HELP_QUEST_2,"The tasks are generated dynamically and are always different. Depending on your current research status, heavier resources are required. (currently static)","Die Aufgaben werden dynamisch generiert und sind immer unterschiedlich. Abhängig von deinen aktuellen Forschungsstand, werden schwerere Ressourcen benötigt. (aktuell statisch)"
+HELP_QUEST_3,Resources and tips can be given or received via the Monster Island.,Ressourcen und Tipps können über die Monster Insel abgegeben/oder erhalten werden.
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+HELP_ISLANDS_TITLE,About Islands,Über Inseln
+HELP_ISLANDS_1,Islands can be built using the signs on the edges of the island. Each island has different resources and functions.,Inseln können über die Schilder an den Inselrändern gebaut werden. Jede Insel hat unterschiedliche Ressourcen und funktionen.
+HELP_ISLANDS_2,Built islands cannot currently be removed manually! An island can be removed by not completing a quest as a punishment.,"Gebaute Inseln können aktuell nicht manuell entfernt werden! Eine Insel kann entfernt werden, durch eine nicht erfüllung einer Quest als bestrafung."

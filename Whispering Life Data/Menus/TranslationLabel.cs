@@ -16,6 +16,8 @@ public partial class TranslationLabel : Label
 
     public void UpdateText()
     {
+        if (label_translation_string == "")
+            return;
         Text = TranslationServer.Translate(label_translation_string);
     }
 }
