@@ -226,6 +226,7 @@ flat = true
 script = ExtResource("3_pwamf")
 
 [node name="AdminButton" type="Button" parent="Background/HBoxHeader"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
