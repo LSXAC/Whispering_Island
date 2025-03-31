@@ -4,6 +4,9 @@ using Godot;
 
 public partial class RailStation : MachineBase
 {
+    [Export]
+    public ChestBase chest_base;
+
     public override void OnMouseClick()
     {
         base.OnMouseClick();
@@ -12,7 +15,7 @@ public partial class RailStation : MachineBase
             return;
 
         Debug.Print("RailStation");
-        //GameMenu.INSTANCE.OnOpenChestTab();
-        //ChestInventory.INSTANCE.OpenChest(this);
+        GameMenu.INSTANCE.OnOpenRailStationTab();
+        ChestInventory.INSTANCE.OpenChest(chest_base);
     }
 }

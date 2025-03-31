@@ -106,7 +106,7 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "header_container")]
+[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "rail_station_tab", "header_container")]
 process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/SaveLoadTab/HBoxContainer/LoadGameButton")
@@ -123,6 +123,7 @@ admin_tab = NodePath("Background/AdminTab")
 island_tab = NodePath("Background/IslandTab")
 skilltree_tab = NodePath("Background/Skilltree")
 help_tab = NodePath("Background/HelpTab")
+rail_station_tab = NodePath("Background/RailStationTab")
 header_container = NodePath("Background/HBoxHeader")
 
 [node name="TransBackground" type="ColorRect" parent="."]
@@ -3079,6 +3080,58 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_34cmw")
 text = "Exit Game"
 script = ExtResource("3_pwamf")
 label_translation_string = "MAINMENU_EXIT_GAME"
+
+[node name="RailStationTab" type="ColorRect" parent="Background"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 223.0
+offset_top = 26.0
+offset_right = -227.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="HeaderColorRect" parent="Background/RailStationTab" instance=ExtResource("11_45saq")]
+layout_mode = 1
+offset_left = -223.0
+offset_top = -26.0
+offset_right = 310.0
+offset_bottom = -2.0
+translation_string = "GAMEMENU_CHEST"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/RailStationTab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 14.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Background/RailStationTab/VBoxContainer"]
+layout_mode = 2
+text = "Stop Train"
+
+[node name="Label2" type="Label" parent="Background/RailStationTab/VBoxContainer"]
+layout_mode = 2
+text = "Stop Train"
+
+[node name="Label3" type="Label" parent="Background/RailStationTab/VBoxContainer"]
+layout_mode = 2
+text = "Stop Train"
+
+[node name="Label4" type="Label" parent="Background/RailStationTab/VBoxContainer"]
+layout_mode = 2
+text = "Stop Train"
+
+[node name="Label5" type="Label" parent="Background/RailStationTab/VBoxContainer"]
+layout_mode = 2
+text = "Stop Train"
 
 [connection signal="pressed" from="Background/HBoxHeader/InvTabButton" to="." method="OnInventoryTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]

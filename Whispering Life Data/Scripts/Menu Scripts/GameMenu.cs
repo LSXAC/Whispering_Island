@@ -46,6 +46,9 @@ public partial class GameMenu : CanvasLayer
     [Export]
     public ColorRect help_tab;
 
+    [Export]
+    public ColorRect rail_station_tab;
+
     public static GameMenu INSTANCE = null;
 
     [Export]
@@ -287,6 +290,15 @@ public partial class GameMenu : CanvasLayer
         chest_tab.Visible = true;
     }
 
+    public void OnOpenRailStationTab()
+    {
+        SetWindow(this);
+        CloseAllTabs();
+        inventory_tab.Visible = true;
+        chest_tab.Visible = true;
+        rail_station_tab.Visible = true;
+    }
+
     public void OnOpenAdminTab()
     {
         ChangeSelectedTabColor(Tabs.Admin);
@@ -316,6 +328,7 @@ public partial class GameMenu : CanvasLayer
         island_tab.Visible = false;
         chest_tab.Visible = false;
         help_tab.Visible = false;
+        rail_station_tab.Visible = false;
     }
 
     public void OnCloseResearchTab()

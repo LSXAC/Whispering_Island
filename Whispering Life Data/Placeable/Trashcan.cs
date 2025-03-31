@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class Trashcan : Chest
+public partial class Trashcan : ChestBase
 {
     [Export]
     public Timer deletion_timer;
@@ -24,6 +24,6 @@ public partial class Trashcan : Chest
             return;
 
         GameMenu.INSTANCE.OnOpenChestTab();
-        ChestInventory.INSTANCE.OpenChest(GetParent<Chest>());
+        ChestInventory.INSTANCE.OpenChest(GetParent<ChestBase>());
     }
 }

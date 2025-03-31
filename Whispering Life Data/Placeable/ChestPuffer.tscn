@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://fnriepfksbws"]
 
-[ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Scripts/Building Scripts/Chest.cs" id="1_22ube"]
+[ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Scripts/Building Scripts/ChestBase.cs" id="1_22ube"]
 [ext_resource type="Texture2D" uid="uid://cb634fgv247qi" path="res://Sprites/Chest_Building_Sprite.png" id="2_wcyas"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_cjvsw"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="4_4mn7r"]

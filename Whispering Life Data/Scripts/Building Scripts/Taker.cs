@@ -23,14 +23,14 @@ public partial class Taker : StaticBody2D
 
     public bool can_receive_item(BeltItem ii = null)
     {
-        if (building is Chest)
+        if (building is ChestBase)
         {
-            if (Inventory.INSTANCE.HasItemInInventory(((Chest)building).chest_items, ii))
+            if (Inventory.INSTANCE.HasItemInInventory(((ChestBase)building).chest_items, ii))
                 Debug.Print("Has Item in Inventory");
             return item_holder_In.GetChildCount() == 0
                 && (
-                    Inventory.INSTANCE.HasEmptySlotInInventory(((Chest)building).chest_items)
-                    || Inventory.INSTANCE.HasItemInInventory(((Chest)building).chest_items, ii)
+                    Inventory.INSTANCE.HasEmptySlotInInventory(((ChestBase)building).chest_items)
+                    || Inventory.INSTANCE.HasItemInInventory(((ChestBase)building).chest_items, ii)
                 );
         }
 
@@ -46,12 +46,12 @@ public partial class Taker : StaticBody2D
     {
         BeltItem item = (BeltItem)item_holder_In.offload_item();
 
-        if (building is Chest)
+        if (building is ChestBase)
         {
             Inventory.INSTANCE.AddItem(
                 item.item.item_info,
                 item.item.amount,
-                ((Chest)building).chest_items
+                ((ChestBase)building).chest_items
             );
             ChestInventory.INSTANCE.UpdateInventoryUI();
         }

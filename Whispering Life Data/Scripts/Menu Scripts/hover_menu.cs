@@ -103,7 +103,7 @@ public partial class hover_menu : PanelContainer
                 INSTANCE.object_type_content.Text = TranslationServer.Translate(
                     "HOVER_MENU_OBJECT_TYPE_MACHINE_PRODUCTION"
                 );
-            if (node is Chest)
+            if (node is ChestBase)
                 INSTANCE.object_type_content.Text = TranslationServer.Translate(
                     "HOVER_MENU_OBJECT_TYPE_CHEST"
                 );
@@ -197,7 +197,7 @@ public partial class hover_menu : PanelContainer
                 + TranslationServer.Translate(pm.production_item_info.item_name);
         }
 
-        if (node is Chest chest)
+        if (node is ChestBase chest)
         {
             if (chest == null)
             {

@@ -192,15 +192,15 @@ public partial class BuildingManager : Node2D
                 ((ProcessBuilding)temp).fuel_left = machine_save.fuel_left;
             }
 
-            if (temp is Chest)
+            if (temp is ChestBase)
             {
                 for (int i = 0; i < machine_save.chest_items.Length; i++)
-                    ((Chest)temp).chest_items[i] = machine_save.chest_items[i];
+                    ((ChestBase)temp).chest_items[i] = machine_save.chest_items[i];
             }
             if (temp is Trashcan)
             {
                 for (int i = 0; i < machine_save.chest_items.Length; i++)
-                    ((Chest)temp).chest_items[i] = machine_save.chest_items[i];
+                    ((ChestBase)temp).chest_items[i] = machine_save.chest_items[i];
             }
         }
     }
@@ -247,7 +247,7 @@ public partial class BuildingManager : Node2D
 
         if (machine_save.building_id == Database.BUILDING_ID.CHEST)
             return Database.GetBuildingType(Database.BUILDING_ID.CHEST).building_scene.Instantiate()
-                as Chest;
+                as ChestBase;
 
         if (machine_save.building_id == Database.BUILDING_ID.TRASHCAN)
             return Database
@@ -366,8 +366,8 @@ public partial class BuildingManager : Node2D
                     ms.fuel_left = ((ProcessBuilding)node).fuel_left;
                 }
 
-                if (node is Chest || node is Trashcan)
-                    ms.chest_items = ((Chest)node).chest_items;
+                if (node is ChestBase || node is Trashcan)
+                    ms.chest_items = ((ChestBase)node).chest_items;
 
                 machine_saves.Add(ms);
                 continue;

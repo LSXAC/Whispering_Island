@@ -31,9 +31,9 @@ public partial class Giver : Area2D
 
             if (building is ProcessBuilding)
                 IsProcessingBuilding(destination);
-            else if (building is ProductionMachine && building is not Chest)
+            else if (building is ProductionMachine && building is not ChestBase)
                 IsProductionBuilding(destination);
-            else if (building is Chest)
+            else if (building is ChestBase)
                 IsChestBuilding(destination);
         }
     }
@@ -78,7 +78,7 @@ public partial class Giver : Area2D
                 destination.GetParent<BeltCombiner>().GetNode<Timer>("CheckAreaTimer").Start();
 
             //Remove from Chest
-            foreach (ItemSave i_s in ((Chest)building).chest_items)
+            foreach (ItemSave i_s in ((ChestBase)building).chest_items)
             {
                 if (i_s == null)
                     continue;
@@ -86,7 +86,7 @@ public partial class Giver : Area2D
                 Inventory.INSTANCE.RemoveItem(
                     Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)i_s.item_id],
                     1,
-                    ((Chest)building).chest_items
+                    ((ChestBase)building).chest_items
                 );
                 BeltItem item = (BeltItem)beltItem.Instantiate();
                 item.InitBeltItem(

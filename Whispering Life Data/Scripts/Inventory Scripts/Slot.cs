@@ -21,7 +21,7 @@ public partial class Slot : Button
 
     ItemSave[] item_array = null;
     SlotUpdater slotUpdater;
-    Chest chest = null;
+    ChestBase chest = null;
 
     public override void _GuiInput(InputEvent @event)
     {

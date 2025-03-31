@@ -83,7 +83,7 @@ public partial class Belt : TransportBase
                         }
                     }
                 }
-                if (area.GetParent().GetParent() is Chest)
+                if (area.GetParent().GetParent() is ChestBase)
                 {
                     var item = item_holder.offload_item();
                     if (area.GetParent<Taker>().can_receive_item((BeltItem)item))

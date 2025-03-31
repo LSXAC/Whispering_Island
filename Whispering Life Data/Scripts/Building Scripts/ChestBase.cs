@@ -2,7 +2,7 @@ using System;
 using Godot;
 using Godot.Collections;
 
-public partial class Chest : MachineBase
+public partial class ChestBase : MachineBase
 {
     [Export]
     public ItemSave[] chest_items = new ItemSave[20];
