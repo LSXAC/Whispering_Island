@@ -11,9 +11,6 @@ public partial class TransportBase : placeable_building
     public Detector detector;
 
     [Export]
-    public Area2D connected_belt_area;
-
-    [Export]
     public bool ignore_self_detector = false;
 
     [Export]

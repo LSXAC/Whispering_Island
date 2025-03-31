@@ -11,13 +11,13 @@ public abstract partial class Building_Node : Node2D
     private string description = "";
 
     [Export]
+    public bool disable_collision = false;
+
+    [Export]
     public Sprite2D sprite;
 
     [Export]
     public CollisionShape2D collision_shape;
-
-    [Export]
-    public bool disable_collision = false;
 
     public bool mouse_inside = false;
 

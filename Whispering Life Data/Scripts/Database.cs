@@ -167,6 +167,10 @@ public partial class Database : Node
             BUILDING_ID.RAIL.ToString(),
             ResourceLoader.Load<BuildingType>("res://Buildings/Rail.tres")
         },
+        {
+            BUILDING_ID.RAIL_STATION.ToString(),
+            ResourceLoader.Load<BuildingType>("res://Buildings/Rail_Station.tres")
+        },
     };
 
     public enum BUILDING_ID
@@ -197,7 +201,8 @@ public partial class Database : Node
         BELT_COMBINER_2x1,
         BELT_COMBINER_3x1,
         CHEST_PUFFER,
-        RAIL
+        RAIL,
+        RAIL_STATION
     }
 
     public static BuildingType GetBuildingType(BUILDING_ID building_id)

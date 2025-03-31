@@ -1,0 +1,152 @@
+[gd_scene load_steps=15 format=4 uid="uid://8ea6alhnkqok"]
+
+[ext_resource type="Script" uid="uid://o5ts5isb43np" path="res://Placeable/RailStation.cs" id="1_odv02"]
+[ext_resource type="PackedScene" uid="uid://dyylrlp6acwxq" path="res://Placeable/Rail.tscn" id="9_myue5"]
+[ext_resource type="Texture2D" uid="uid://c0apie0sdpnk7" path="res://Sprites/Top_Belt_Splitter_1x2.png" id="10_k0ftw"]
+[ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Placeable/PathConnectArea.cs" id="11_gxmie"]
+[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="12_qf5f2"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="13_san8u"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="14_3inm1"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="15_efe08"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/MouseArea.cs" id="16_qwphs"]
+[ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Placeable/Taker.tscn" id="19_1q5l7"]
+[ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Placeable/giver.tscn" id="20_qmtuw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
+size = Vector2(80, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
+size = Vector2(78, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o32qu"]
+size = Vector2(14, 14)
+
+[node name="RailStation" type="StaticBody2D" node_paths=PackedStringArray("givers", "takers", "building_collider_manager", "sprite", "collision_shape")]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_odv02")
+givers = []
+takers = []
+building_id = 27
+tile_types = Array[int]([0])
+building_collider_manager = NodePath("BuildingAreas")
+title = "RAIL_STATION"
+description = "RAIL_STATION_DESC"
+sprite = NodePath("BuildingSprite")
+collision_shape = NodePath("MachineCollision")
+
+[node name="BuildingSprite" type="Sprite2D" parent="."]
+visible = false
+y_sort_enabled = true
+position = Vector2(-8, -16)
+texture = ExtResource("12_qf5f2")
+centered = false
+offset = Vector2(-24, -32)
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("13_san8u")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray("AAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAACAAAAAAAAAP//AAACAAAAAAD/////AAACAAAAAAD9/wAAAAACAAAAAAD9////AAACAAAAAAD9//7/AAACAAAAAAD+//7/AAACAAAAAAD///7/AAACAAAAAAAAAP7/AAACAAAAAAABAP7/AAACAAAAAAABAP//AAACAAAAAAABAAAAAAACAAAAAAA=")
+enabled = false
+tile_set = ExtResource("14_3inm1")
+
+[node name="MachineCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -3)
+shape = SubResource("RectangleShape2D_m0htq")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-8, 5)
+scale = Vector2(5, 2)
+texture = ExtResource("15_efe08")
+
+[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+z_index = 1
+position = Vector2(-8, -8)
+collision_layer = 2
+script = ExtResource("16_qwphs")
+building_node = NodePath("..")
+building_sprite = NodePath("../BuildingSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_fk0le")
+
+[node name="Taker" parent="." node_paths=PackedStringArray("building") instance=ExtResource("19_1q5l7")]
+z_index = 2
+position = Vector2(7, -38)
+building = NodePath("..")
+
+[node name="Giver" parent="." node_paths=PackedStringArray("building") instance=ExtResource("20_qmtuw")]
+position = Vector2(-24, -37)
+direction_not_giving = 1
+building = NodePath("..")
+
+[node name="CraftingTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="MachineUITimer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="Rail" parent="." instance=ExtResource("9_myue5")]
+ignore_self_detector = true
+disable_mouse_interaction = true
+disable_collision = true
+
+[node name="Rail2" parent="." instance=ExtResource("9_myue5")]
+position = Vector2(16, 0)
+ignore_self_detector = true
+disable_mouse_interaction = true
+disable_collision = true
+
+[node name="Rail3" parent="." instance=ExtResource("9_myue5")]
+position = Vector2(-32, 0)
+disable_mouse_interaction = true
+disable_collision = true
+
+[node name="Rail4" parent="." instance=ExtResource("9_myue5")]
+position = Vector2(32, 0)
+disable_mouse_interaction = true
+disable_collision = true
+
+[node name="Rail5" parent="." instance=ExtResource("9_myue5")]
+position = Vector2(-16, 0)
+ignore_self_detector = true
+disable_mouse_interaction = true
+disable_collision = true
+
+[node name="Top" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-8, 7)
+texture = ExtResource("10_k0ftw")
+offset = Vector2(0, -19)
+
+[node name="Ground" type="Sprite2D" parent="."]
+z_index = -2
+y_sort_enabled = true
+position = Vector2(-8, 49)
+scale = Vector2(5, 3)
+texture = ExtResource("15_efe08")
+offset = Vector2(0, -19)
+
+[node name="PathConnectArea" type="Area2D" parent="."]
+position = Vector2(32, 0)
+collision_layer = 516
+collision_mask = 0
+monitoring = false
+script = ExtResource("11_gxmie")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea"]
+position = Vector2(-8, -8)
+shape = SubResource("RectangleShape2D_o32qu")
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
+[connection signal="timeout" from="CraftingTimer" to="." method="OnCraftingTimerTimeout"]
+[connection signal="timeout" from="MachineUITimer" to="." method="OnMachineTimeOut"]

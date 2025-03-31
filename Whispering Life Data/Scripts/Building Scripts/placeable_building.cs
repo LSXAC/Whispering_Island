@@ -10,6 +10,9 @@ public partial class placeable_building : Building_Node
     public Database.BUILDING_ID building_id;
 
     [Export]
+    public bool disable_mouse_interaction = false;
+
+    [Export]
     public Array<TILETYPE> tile_types;
 
     [Export]
@@ -19,6 +22,13 @@ public partial class placeable_building : Building_Node
     {
         BUILDINGCOLLISION,
         FARMINGGROUND
+    }
+
+    public override void _Ready()
+    {
+        if (disable_mouse_interaction)
+            if (HasNode("MouseArea"))
+                GetNode<MouseArea>("MouseArea").Monitorable = false;
     }
 
     public override void OnMouseClick()

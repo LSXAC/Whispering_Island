@@ -71,6 +71,7 @@ y_sort_enabled = true
 position = Vector2(-8, -10)
 
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+visible = false
 z_index = 1
 collision_layer = 2
 script = ExtResource("7_kirla")
@@ -150,7 +151,7 @@ anim_sprite = NodePath("AnimatedSprite2D")
 z_index = -1
 position = Vector2(-8, -8)
 sprite_frames = ExtResource("12_w7dvd")
-animation = &"CORNER_DOWN_LEFT"
+animation = &"LEFT"
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("13_gapd8")

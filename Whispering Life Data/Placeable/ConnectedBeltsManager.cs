@@ -11,9 +11,6 @@ public partial class ConnectedBeltsManager : Node2D
         new belt_temp(),
     };
 
-    [Export]
-    public Node2D parent;
-
     public enum DIR
     {
         UP,

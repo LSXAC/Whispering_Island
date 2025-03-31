@@ -13,7 +13,7 @@ public partial class Taker : StaticBody2D
 
     public override void _Ready()
     {
-        area = GetNode<Area2D>("BeltArea");
+        area = GetNode<Area2D>("PathConnectArea");
     }
 
     public void DisableMonitorable()
