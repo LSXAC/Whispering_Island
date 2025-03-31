@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dyylrlp6acwxq"]
 
 [ext_resource type="Script" uid="uid://3acu342n3tvo" path="res://Placeable/Rail.cs" id="1_gx7ou"]
-[ext_resource type="Texture2D" uid="uid://dh7i821w2aucb" path="res://Sprites/Belt_Side.png" id="2_1ght1"]
+[ext_resource type="Texture2D" uid="uid://c3w7sol4rqgfm" path="res://Sprites/Rail.png" id="2_w7dvd"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_xbe8k"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="4_87ulj"]
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Placeable/detector.tscn" id="5_dpbcl"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://cqukvf8b830bx" path="res://Placeable/ConnectedBeltsManager.cs" id="9_opil7"]
 [ext_resource type="Script" uid="uid://b2x3csh1fe7be" path="res://Placeable/HasConnectedBeltArea.cs" id="10_op4v1"]
 [ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/AnimationManager12D.cs" id="11_ib2cd"]
-[ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://Animations/Belt_Animation.tres" id="12_jeoqd"]
+[ext_resource type="SpriteFrames" uid="uid://bvc8p8j3rn6km" path="res://Rail_Animation.tres" id="12_w7dvd"]
 [ext_resource type="Script" uid="uid://cv7mwncttk6fg" path="res://Placeable/AnimationManagerBase.cs" id="13_gapd8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8pj"]
@@ -47,7 +47,7 @@ collision_shape = NodePath("CollisionShape2D")
 visible = false
 y_sort_enabled = true
 position = Vector2(-8, -6)
-texture = ExtResource("2_1ght1")
+texture = ExtResource("2_w7dvd")
 centered = false
 offset = Vector2(-8, -10)
 hframes = 5
@@ -149,9 +149,8 @@ anim_sprite = NodePath("AnimatedSprite2D")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="12DAnimationManager"]
 z_index = -1
 position = Vector2(-8, -8)
-sprite_frames = ExtResource("12_jeoqd")
-animation = &"UP"
-frame_progress = 0.972976
+sprite_frames = ExtResource("12_w7dvd")
+animation = &"CORNER_DOWN_LEFT"
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("13_gapd8")

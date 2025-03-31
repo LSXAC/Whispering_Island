@@ -10,4 +10,4 @@ building_scene = ExtResource("2_e1dqm")
 building_recipe = ExtResource("1_7bxcv")
 requirements = Array[Object]([])
 category = 0
-show_item = false
+show_item = true

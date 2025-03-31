@@ -149,8 +149,7 @@ anim_sprite = NodePath("AnimatedSprite2D")
 z_index = -1
 position = Vector2(-8, -8)
 sprite_frames = ExtResource("10_fcawy")
-animation = &"UP"
-frame_progress = 0.972976
+animation = &"CORNER_LEFT_DOWN"
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("13_3sbe5")
