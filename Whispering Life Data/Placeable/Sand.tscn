@@ -1,14 +1,14 @@
 [gd_scene load_steps=16 format=3 uid="uid://dxbndpfa2cnsl"]
 
-[ext_resource type="Script" path="res://Scripts/Resources/ResourceObject.cs" id="1_csqkk"]
+[ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/ResourceObject.cs" id="1_csqkk"]
 [ext_resource type="Resource" uid="uid://ljb14i8nnpgp" path="res://Items/Sand.tres" id="2_kmxi4"]
 [ext_resource type="Texture2D" uid="uid://cdmnjim53rqjp" path="res://Sprites/Sand.png" id="3_hphir"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_i18rj"]
-[ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="5_0gbfr"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/MouseArea.cs" id="5_0gbfr"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Prefabs/timer_bar.tscn" id="6_sb3br"]
 [ext_resource type="Texture2D" uid="uid://brdyj2udwaxpm" path="res://Sprites/Sand_Particle.png" id="7_4gwp8"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="8_rx5eh"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="9_3m7pm"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="9_3m7pm"]
 [ext_resource type="PackedScene" uid="uid://badiq5h8rhrc" path="res://Object_Player.tscn" id="10_uky7d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]

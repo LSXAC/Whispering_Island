@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://d382ft4naeqtp"]
 
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="1_6mgai"]
-[ext_resource type="Script" path="res://Menus/MainMenu.cs" id="1_tix1b"]
-[ext_resource type="VideoStream" path="res://Videos/Last_Background.ogv" id="2_sfr1x"]
-[ext_resource type="Script" path="res://Menus/TranslationButton.cs" id="3_f3o34"]
+[ext_resource type="Script" uid="uid://bm5n6v0k8up5x" path="res://Menus/MainMenu.cs" id="1_tix1b"]
+[ext_resource type="VideoStream" uid="uid://n71dls10csc8" path="res://Videos/Last_Background.ogv" id="2_sfr1x"]
+[ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Menus/TranslationButton.cs" id="3_f3o34"]
 [ext_resource type="Texture2D" uid="uid://de4l1wl47aa3q" path="res://Sprites/Menu/Menu_Overlay.png" id="3_hkyqf"]
-[ext_resource type="VideoStream" path="res://Videos/Start_Screen.ogv" id="5_owr4r"]
-[ext_resource type="Script" path="res://Menus/TranslationCheckBox.cs" id="6_8cuob"]
+[ext_resource type="VideoStream" uid="uid://cn5ad33bqf2ra" path="res://Videos/Start_Screen.ogv" id="5_owr4r"]
+[ext_resource type="Script" uid="uid://dlnqgvorydc7m" path="res://Menus/TranslationCheckBox.cs" id="6_8cuob"]
 [ext_resource type="PackedScene" uid="uid://mpqbrpcj1slc" path="res://transition_manager.tscn" id="8_kmnt3"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("skip_tutorial", "intro_player", "background_player", "parent", "load_button")]

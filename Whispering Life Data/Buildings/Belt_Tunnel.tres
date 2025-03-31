@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://daa5hlexm024t" path="res://Recipes/Building_Recipies/Belt_Transmitter_Recipe.tres" id="1_3rxwy"]
 [ext_resource type="PackedScene" uid="uid://cvinbig8n3cbp" path="res://Placeable/BeltTunnel.tscn" id="2_ienho"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_lgvyq"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_lgvyq"]
 
 [resource]
 script = ExtResource("3_lgvyq")
@@ -10,3 +10,4 @@ building_scene = ExtResource("2_ienho")
 building_recipe = ExtResource("1_3rxwy")
 requirements = Array[Object]([])
 category = 0
+show_item = true

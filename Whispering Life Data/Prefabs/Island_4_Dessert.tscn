@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=4 uid="uid://d0trh47s348ub"]
 
-[ext_resource type="Script" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_6ii06"]
+[ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_6ii06"]
 [ext_resource type="PackedScene" uid="uid://717sbs8rvfvt" path="res://Prefabs/Sign.tscn" id="2_4l4qg"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tileset Objects/BuildingTiles.tres" id="2_nehi6"]
 [ext_resource type="TileSet" uid="uid://knopq4xq3ef2" path="res://Tileset Objects/Islands.tres" id="3_dirg6"]
-[ext_resource type="Shader" path="res://Shader Objects/water.gdshader" id="4_h7tp2"]
+[ext_resource type="Shader" uid="uid://dcluye6ushewy" path="res://Shader Objects/water.gdshader" id="4_h7tp2"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Prefabs/Water_Noise_Map.tres" id="5_y5hnp"]
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Tileset Objects/Water_Tileset.tres" id="6_nm11x"]
 [ext_resource type="PackedScene" uid="uid://dcruv230g3u4k" path="res://Placeable/building.tscn" id="7_f2frl"]
-[ext_resource type="Script" path="res://Prefabs/BuildingManager.cs" id="11_b1ij4"]
+[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Prefabs/BuildingManager.cs" id="11_b1ij4"]
 [ext_resource type="PackedScene" uid="uid://dxbndpfa2cnsl" path="res://Placeable/Sand.tscn" id="12_axois"]
 [ext_resource type="PackedScene" uid="uid://c6fshtcsvmam5" path="res://Placeable/Sand_Stone.tscn" id="13_cjnl4"]
 
@@ -17,9 +17,9 @@ size = Vector2(32, 32)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nbpyd"]
 shader = ExtResource("4_h7tp2")
+shader_parameter/noise_texture = ExtResource("5_y5hnp")
 shader_parameter/speed = Vector2(0.1, 0.1)
 shader_parameter/distortion = 0.005
-shader_parameter/noise_texture = ExtResource("5_y5hnp")
 
 [node name="Island_2" type="Node2D" groups=["Island_Properties"]]
 y_sort_enabled = true

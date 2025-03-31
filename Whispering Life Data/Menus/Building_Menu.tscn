@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://en6nagvvr8d3"]
 
-[ext_resource type="Script" path="res://Scripts/Menu Scripts/Building_Menu.cs" id="1_6maqu"]
+[ext_resource type="Script" uid="uid://syryag1vxgf7" path="res://Scripts/Menu Scripts/Building_Menu.cs" id="1_6maqu"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_e7u7j"]
-[ext_resource type="Script" path="res://Menus/TranslationButton.cs" id="3_ft6wq"]
-[ext_resource type="Script" path="res://Menus/BuildingMenuCategory.cs" id="4_6buxp"]
+[ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Menus/TranslationButton.cs" id="3_ft6wq"]
+[ext_resource type="Script" uid="uid://2t1ns5okffld" path="res://Menus/BuildingMenuCategory.cs" id="4_6buxp"]
 
 [node name="BuildingMenu" type="CanvasLayer" node_paths=PackedStringArray("production_panel", "decoration_panel", "planting_panel", "research_panel")]
 visible = false

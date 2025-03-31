@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=9 format=3 uid="uid://c10rid084wdox"]
 
-[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_fqlw0"]
-[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_kn11j"]
+[ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_fqlw0"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_kn11j"]
 [ext_resource type="Resource" uid="uid://xatv5x587fug" path="res://Items/Item_Types/Tool_Type_Classic.tres" id="2_1bryp"]
 [ext_resource type="Texture2D" uid="uid://nay062h3dror" path="res://Sprites/Items/Icons_3rd/Stone_Hoe.png" id="3_2is6l"]
 [ext_resource type="Resource" uid="uid://duirbryu00nmb" path="res://Items/Item_Types/Burnable_Type_60.tres" id="3_6hdbi"]
@@ -30,4 +30,4 @@ texture = ExtResource("3_2is6l")
 value = 10.0
 type_level = 1
 use_type = 4
-item_stats = [SubResource("Resource_mcbdc"), SubResource("Resource_o3yil")]
+item_stats = Array[ExtResource("1_fqlw0")]([SubResource("Resource_mcbdc"), SubResource("Resource_o3yil")])

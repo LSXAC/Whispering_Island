@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dl0q84lfojr04"]
 
-[ext_resource type="Script" path="res://Scripts/Fracture Scripts/shard_emitter.cs" id="1_vhyct"]
+[ext_resource type="Script" uid="uid://cq1cw2brbphm8" path="res://Scripts/Fracture Scripts/shard_emitter.cs" id="1_vhyct"]
 
 [node name="ShardEmitter" type="Node2D"]
 script = ExtResource("1_vhyct")

@@ -65,10 +65,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v2ngb"]
 _data = {
-"Break": SubResource("Animation_2ey6b"),
-"Hit": SubResource("Animation_a1g7f"),
-"RESET": SubResource("Animation_2nxpf"),
-"Respawning": SubResource("Animation_c5l8r")
+&"Break": SubResource("Animation_2ey6b"),
+&"Hit": SubResource("Animation_a1g7f"),
+&"RESET": SubResource("Animation_2nxpf"),
+&"Respawning": SubResource("Animation_c5l8r")
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer"]

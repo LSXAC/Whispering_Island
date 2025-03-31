@@ -1,17 +1,17 @@
 [gd_scene load_steps=17 format=4 uid="uid://bi8dopb46mfob"]
 
-[ext_resource type="Script" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_4csf6"]
+[ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_4csf6"]
 [ext_resource type="PackedScene" uid="uid://717sbs8rvfvt" path="res://Prefabs/Sign.tscn" id="2_mbodl"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tileset Objects/BuildingTiles.tres" id="2_yo60f"]
 [ext_resource type="PackedScene" uid="uid://dcruv230g3u4k" path="res://Placeable/building.tscn" id="3_37fa4"]
 [ext_resource type="TileSet" uid="uid://knopq4xq3ef2" path="res://Tileset Objects/Islands.tres" id="4_xeb8u"]
-[ext_resource type="Script" path="res://Scripts/Resources/ObjectSpawnerTilemap.cs" id="6_orw41"]
+[ext_resource type="Script" uid="uid://qqtd0y77n1yh" path="res://Scripts/Resources/ObjectSpawnerTilemap.cs" id="6_orw41"]
 [ext_resource type="TileSet" uid="uid://bovg285rqfm1r" path="res://Tileset Objects/Spawn_Tileset.tres" id="6_yodjl"]
-[ext_resource type="Shader" path="res://Shader Objects/water.gdshader" id="7_232am"]
+[ext_resource type="Shader" uid="uid://dcluye6ushewy" path="res://Shader Objects/water.gdshader" id="7_232am"]
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Tileset Objects/Water_Tileset.tres" id="8_k6lgg"]
 [ext_resource type="TileSet" uid="uid://bij4wcpveo44d" path="res://Prefabs/Farming_Tileset.tres" id="8_nokly"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Prefabs/Water_Noise_Map.tres" id="9_vucc1"]
-[ext_resource type="Script" path="res://Prefabs/BuildingManager.cs" id="11_uwvvs"]
+[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Prefabs/BuildingManager.cs" id="11_uwvvs"]
 [ext_resource type="PackedScene" uid="uid://cjw7mpije2ul4" path="res://Placeable/MystFibre.tscn" id="12_ip5eg"]
 [ext_resource type="PackedScene" uid="uid://gb18hiamdyqj" path="res://Placeable/MystTree.tscn" id="13_5o5x2"]
 
@@ -20,9 +20,9 @@ size = Vector2(32, 32)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6rqyo"]
 shader = ExtResource("7_232am")
+shader_parameter/noise_texture = ExtResource("9_vucc1")
 shader_parameter/speed = Vector2(0.1, 0.1)
 shader_parameter/distortion = 0.005
-shader_parameter/noise_texture = ExtResource("9_vucc1")
 
 [node name="Island_1" type="Node2D" groups=["BUILDINGCOLLISION", "Island_Properties"]]
 y_sort_enabled = true

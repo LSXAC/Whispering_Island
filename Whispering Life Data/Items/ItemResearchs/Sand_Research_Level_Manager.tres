@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="ResearchLevelManager" load_steps=5 format=3 uid="uid://dfwyt0twaxq6e"]
 
-[ext_resource type="Script" path="res://Scripts/ResearchLevel.cs" id="1_2hiwq"]
+[ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Scripts/ResearchLevel.cs" id="1_2hiwq"]
 [ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Items/Glass_Chunk.tres" id="2_o3cmm"]
-[ext_resource type="Script" path="res://Scripts/ResearchLevelManager.cs" id="2_q78o4"]
+[ext_resource type="Script" uid="uid://8idh4gp832ub" path="res://Scripts/ResearchLevelManager.cs" id="2_q78o4"]
 
 [sub_resource type="Resource" id="Resource_5ebk2"]
 script = ExtResource("1_2hiwq")

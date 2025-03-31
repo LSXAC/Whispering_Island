@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://dv0p2nhe1lhk8" path="res://Recipes/Building_Recipies/Planting/Tree_Object_Recipe.tres" id="1_i3lv7"]
 [ext_resource type="PackedScene" uid="uid://bekb5fw4mpfgk" path="res://Placeable/Tree.tscn" id="2_kpsx5"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_xs07f"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_xs07f"]
 
 [resource]
 script = ExtResource("3_xs07f")
@@ -10,3 +10,4 @@ building_scene = ExtResource("2_kpsx5")
 building_recipe = ExtResource("1_i3lv7")
 requirements = Array[Object]([])
 category = 2
+show_item = true

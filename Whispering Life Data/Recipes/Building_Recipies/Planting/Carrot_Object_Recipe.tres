@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://l2m5wybg1mh1"]
 
 [ext_resource type="Resource" uid="uid://dcpvayh8hlqbo" path="res://Items/Carrot_Seed.tres" id="1_tu0gr"]
-[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_52fn8"]
-[ext_resource type="Script" path="res://Scripts/Resources/Recipe.cs" id="3_ir7iw"]
+[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_52fn8"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="3_ir7iw"]
 
 [sub_resource type="Resource" id="Resource_85pk6"]
 script = ExtResource("2_52fn8")

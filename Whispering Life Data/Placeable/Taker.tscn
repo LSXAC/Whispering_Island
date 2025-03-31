@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhfg3bvoui3da"]
 
-[ext_resource type="Script" path="res://Scripts/Building Scripts/Taker.cs" id="1_fqdb7"]
+[ext_resource type="Script" uid="uid://qn4g0iu3h1ut" path="res://Scripts/Building Scripts/Taker.cs" id="1_fqdb7"]
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="2_nkdn0"]
-[ext_resource type="Script" path="res://Placeable/PathConnectArea.cs" id="3_38s1m"]
+[ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Placeable/PathConnectArea.cs" id="3_38s1m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cxv0"]
 size = Vector2(4, 4)

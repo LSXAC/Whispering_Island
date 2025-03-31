@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://c2qpam141x3qs" path="res://Recipes/Building_Recipies/Chest_Recipe.tres" id="1_r5lej"]
 [ext_resource type="PackedScene" uid="uid://dj73tpok8xq6p" path="res://Placeable/Chest.tscn" id="2_wjc7p"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_8dfgs"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_8dfgs"]
 
 [resource]
 script = ExtResource("3_8dfgs")
@@ -10,3 +10,4 @@ building_scene = ExtResource("2_wjc7p")
 building_recipe = ExtResource("1_r5lej")
 requirements = Array[Object]([])
 category = 0
+show_item = true

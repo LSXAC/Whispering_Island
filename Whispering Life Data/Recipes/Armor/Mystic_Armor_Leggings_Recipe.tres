@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=11 format=3 uid="uid://blm4o283swyoa"]
 
 [ext_resource type="Resource" uid="uid://dk6vef80itp5v" path="res://Items/Mystic_Armor_Leggings.tres" id="1_6l1kl"]
-[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_30ift"]
+[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_30ift"]
 [ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Items/Mystic_Fibre.tres" id="3_5ge6l"]
 [ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://Items/Mystic_Wood.tres" id="4_hhu5g"]
-[ext_resource type="Script" path="res://Scripts/Resources/Recipe.cs" id="5_dnn05"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="6_wgqs8"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="5_dnn05"]
+[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="6_wgqs8"]
 
 [sub_resource type="Resource" id="Resource_66y5o"]
 script = ExtResource("2_30ift")

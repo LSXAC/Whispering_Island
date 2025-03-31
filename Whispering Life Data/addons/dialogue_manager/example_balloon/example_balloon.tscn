@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://73jm5qjy52vq"]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_36de5"]
+[ext_resource type="Script" uid="uid://dq0ry5j4llpeh" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_nlaid"]
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
+[ext_resource type="Script" uid="uid://dbi835581d5gg" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
 [ext_resource type="AudioStream" uid="uid://cshyxrrswskq0" path="res://Music/766634__stavsounds__keyboard_tactile_4.ogg" id="5_78y8o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]

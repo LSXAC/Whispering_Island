@@ -1,15 +1,15 @@
 [gd_scene load_steps=17 format=3 uid="uid://cjw7mpije2ul4"]
 
-[ext_resource type="Script" path="res://Scripts/Resources/ResourceObject.cs" id="1_g4r0j"]
+[ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/ResourceObject.cs" id="1_g4r0j"]
 [ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Items/Mystic_Fibre.tres" id="2_8xjas"]
 [ext_resource type="Resource" uid="uid://dpfc7scfcvgj6" path="res://Items/Myst_Fibre_Seed.tres" id="3_dw06p"]
 [ext_resource type="Texture2D" uid="uid://bv0y2lln1foop" path="res://Sprites/MystFibre.png" id="3_wt8vm"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_ccab7"]
-[ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="5_h2g1a"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/MouseArea.cs" id="5_h2g1a"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Prefabs/timer_bar.tscn" id="6_hn3tl"]
 [ext_resource type="Texture2D" uid="uid://w5h1vxawvg88" path="res://Sprites/Myst_Particle.png" id="7_7jxkm"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="8_vh1ys"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="9_nobcd"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="9_nobcd"]
 [ext_resource type="PackedScene" uid="uid://badiq5h8rhrc" path="res://Object_Player.tscn" id="10_hxgd6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]

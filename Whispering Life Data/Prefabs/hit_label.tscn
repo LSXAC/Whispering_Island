@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1l2gqiubblcd"]
 
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="1_e2k3u"]
-[ext_resource type="Script" path="res://Placeable/HitLabel.cs" id="2_vtkfl"]
+[ext_resource type="Script" uid="uid://b3felu4fawx3c" path="res://Placeable/HitLabel.cs" id="2_vtkfl"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 

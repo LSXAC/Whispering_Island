@@ -1,18 +1,18 @@
 [gd_scene load_steps=24 format=4 uid="uid://bveoiwi14ha4g"]
 
-[ext_resource type="Script" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_sbvtb"]
+[ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_sbvtb"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tileset Objects/BuildingTiles.tres" id="2_naawu"]
 [ext_resource type="PackedScene" uid="uid://717sbs8rvfvt" path="res://Prefabs/Sign.tscn" id="2_wsc2u"]
 [ext_resource type="TileSet" uid="uid://knopq4xq3ef2" path="res://Tileset Objects/Islands.tres" id="4_i3iyq"]
-[ext_resource type="Shader" path="res://Shader Objects/water.gdshader" id="5_2o0lf"]
+[ext_resource type="Shader" uid="uid://dcluye6ushewy" path="res://Shader Objects/water.gdshader" id="5_2o0lf"]
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Tileset Objects/Water_Tileset.tres" id="6_f2khq"]
 [ext_resource type="FastNoiseLite" uid="uid://d00dkr70looh3" path="res://Prefabs/FastNoiseWater.tres" id="6_r1dg3"]
 [ext_resource type="TileSet" uid="uid://bij4wcpveo44d" path="res://Prefabs/Farming_Tileset.tres" id="8_a2a5u"]
-[ext_resource type="Script" path="res://Scripts/QuestSign.cs" id="8_dl61a"]
-[ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="10_7bt86"]
+[ext_resource type="Script" uid="uid://cqvshjr3dd25t" path="res://Scripts/QuestSign.cs" id="8_dl61a"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/MouseArea.cs" id="10_7bt86"]
 [ext_resource type="Texture2D" uid="uid://125t5f6fiugo" path="res://Sprites/Monster_Island.png" id="11_qd1vh"]
 [ext_resource type="PackedScene" uid="uid://bekb5fw4mpfgk" path="res://Placeable/Tree.tscn" id="12_3x7uo"]
-[ext_resource type="Script" path="res://Prefabs/BuildingManager.cs" id="13_lo8qh"]
+[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Prefabs/BuildingManager.cs" id="13_lo8qh"]
 [ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Placeable/Stone.tscn" id="13_sqojh"]
 [ext_resource type="PackedScene" uid="uid://hl3jkk2n0f7x" path="res://Placeable/Wheat.tscn" id="14_kjoym"]
 
@@ -24,9 +24,9 @@ noise = ExtResource("6_r1dg3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mgavi"]
 shader = ExtResource("5_2o0lf")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_wjywr")
 shader_parameter/speed = Vector2(0.1, 0.1)
 shader_parameter/distortion = 0.005
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_wjywr")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6kej"]
 size = Vector2(32, 18)
@@ -65,8 +65,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d4xkj"]
 _data = {
-"Moving": SubResource("Animation_l5n1y"),
-"RESET": SubResource("Animation_631f2")
+&"Moving": SubResource("Animation_l5n1y"),
+&"RESET": SubResource("Animation_631f2")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
@@ -233,7 +233,7 @@ shape = SubResource("RectangleShape2D_g6kej")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="QuestSign"]
 libraries = {
-"": SubResource("AnimationLibrary_d4xkj")
+&"": SubResource("AnimationLibrary_d4xkj")
 }
 
 [node name="BuildingSprite" type="Sprite2D" parent="QuestSign/AnimationPlayer"]

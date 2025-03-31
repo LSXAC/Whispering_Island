@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bovrg0u6tuo04"]
 
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="1_mkuyp"]
-[ext_resource type="Script" path="res://Scripts/Menu Scripts/hover_menu.cs" id="1_ywqhi"]
-[ext_resource type="Script" path="res://Menus/TranslationLabel.cs" id="3_u1ani"]
+[ext_resource type="Script" uid="uid://daiymos1mp4si" path="res://Scripts/Menu Scripts/hover_menu.cs" id="1_ywqhi"]
+[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Menus/TranslationLabel.cs" id="3_u1ani"]
 
 [node name="HoverMenu" type="PanelContainer" node_paths=PackedStringArray("title_container", "descriptiion_container", "object_type_container", "hitpoint_container", "resource_type_container", "resource_type_level_container", "process_bar_container", "process_fuel_container", "process_input_container", "process_output_container", "chest_slots_container", "title_content", "description_content", "object_type_content", "hitpoint_content", "resource_type_content", "resource_type_level_content", "process_bar_content", "process_fuel_content", "process_input_content", "process_output_content", "chest_slots_content", "Line1", "Line2")]
 z_index = 5

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BurnableType" load_steps=2 format=3 uid="uid://bm70n0hc2huct"]
 
-[ext_resource type="Script" path="res://Scripts/Item/BurnableType.cs" id="1_cviqe"]
+[ext_resource type="Script" uid="uid://bfnqqg6a2on8k" path="res://Scripts/Item/BurnableType.cs" id="1_cviqe"]
 
 [resource]
 script = ExtResource("1_cviqe")

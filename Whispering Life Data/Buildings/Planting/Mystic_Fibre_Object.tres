@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://bqmofblxswr12" path="res://Recipes/Building_Recipies/Planting/Mystic_Fibre_Object_Recipe.tres" id="1_f2owc"]
 [ext_resource type="PackedScene" uid="uid://cjw7mpije2ul4" path="res://Placeable/MystFibre.tscn" id="2_a1amw"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_pcf46"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_pcf46"]
 
 [resource]
 script = ExtResource("3_pcf46")
@@ -10,3 +10,4 @@ building_scene = ExtResource("2_a1amw")
 building_recipe = ExtResource("1_f2owc")
 requirements = Array[Object]([])
 category = 2
+show_item = true

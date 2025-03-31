@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cn0rjr3gah4jr" path="res://Placeable/Furnace.tscn" id="1_biikl"]
 [ext_resource type="Resource" uid="uid://delu8mnq6anq6" path="res://Recipes/Building_Recipies/Furnace_Recipe.tres" id="1_oq4c4"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/BuildingType.cs" id="2_s1ai4"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="2_s1ai4"]
 
 [resource]
 script = ExtResource("2_s1ai4")
@@ -10,3 +10,4 @@ building_scene = ExtResource("1_biikl")
 building_recipe = ExtResource("1_oq4c4")
 requirements = Array[Object]([])
 category = 0
+show_item = true

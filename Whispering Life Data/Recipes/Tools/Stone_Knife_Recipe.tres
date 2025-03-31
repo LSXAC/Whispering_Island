@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=13 format=3 uid="uid://c61tkydmwleam"]
 
-[ext_resource type="Script" path="res://Scripts/Resources/Recipe.cs" id="1_0mtee"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="1_0mtee"]
 [ext_resource type="Resource" uid="uid://bvplgrho461h0" path="res://Items/Stone_Knife.tres" id="1_5dd8o"]
-[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_r7n06"]
+[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_r7n06"]
 [ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Items/Mystic_Fibre.tres" id="3_0w00u"]
 [ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Items/Wood_Stick.tres" id="3_6fenw"]
 [ext_resource type="Resource" uid="uid://81xbm48s547g" path="res://Items/Stone_Blade.tres" id="4_i7ooo"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="7_uyh81"]
+[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="7_uyh81"]
 
 [sub_resource type="Resource" id="Resource_6mgx6"]
 script = ExtResource("2_r7n06")

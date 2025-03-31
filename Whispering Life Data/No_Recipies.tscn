@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdpgxwdw76lk3"]
 
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="1_pnbjv"]
-[ext_resource type="Script" path="res://Menus/TranslationLabel.cs" id="2_yd7oi"]
+[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Menus/TranslationLabel.cs" id="2_yd7oi"]
 
 [node name="Panel" type="Panel"]
 self_modulate = Color(1, 1, 1, 0.490196)

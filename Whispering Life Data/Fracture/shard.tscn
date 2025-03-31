@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ba234wyejnhlu"]
 
-[ext_resource type="Script" path="res://Scripts/Fracture Scripts/shard.cs" id="1_4itc0"]
+[ext_resource type="Script" uid="uid://khwygnqvvbkc" path="res://Scripts/Fracture Scripts/shard.cs" id="1_4itc0"]
 
 [node name="Shard" type="RigidBody2D"]
 gravity_scale = -0.1

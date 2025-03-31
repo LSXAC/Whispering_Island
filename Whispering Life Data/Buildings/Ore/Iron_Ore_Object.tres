@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://bj0udm3iiilry" path="res://Recipes/Building_Recipies/Wooden_Bed_Recipe.tres" id="1_18alg"]
 [ext_resource type="PackedScene" uid="uid://c0l4m6jxp7pau" path="res://Placeable/Iron_Ore.tscn" id="2_awh0m"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_7qwwd"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_7qwwd"]
 
 [resource]
 script = ExtResource("3_7qwwd")
@@ -10,3 +10,4 @@ building_scene = ExtResource("2_awh0m")
 building_recipe = ExtResource("1_18alg")
 requirements = Array[Object]([])
 category = 4
+show_item = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://o62xek3uvpo8"]
 
-[ext_resource type="Script" path="res://Scripts/Menu Scripts/QuestMenu.cs" id="1_rjdwy"]
+[ext_resource type="Script" uid="uid://dmteju1kppf72" path="res://Scripts/Menu Scripts/QuestMenu.cs" id="1_rjdwy"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_8enkj"]
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://header_color_rect.tscn" id="2_vqvtn"]
 

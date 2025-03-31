@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://lcn20e480tcl"]
 
-[ext_resource type="Script" path="res://BuildingMenuChild.cs" id="1_bclyx"]
+[ext_resource type="Script" uid="uid://c38vuaagecws0" path="res://BuildingMenuChild.cs" id="1_bclyx"]
 [ext_resource type="Texture2D" uid="uid://cn8y6cj766xw0" path="res://Sprites/Items/Icons_3rd/Chest.png" id="1_gie1h"]
-[ext_resource type="Script" path="res://Item_Row_Manager.cs" id="3_c25jp"]
+[ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Item_Row_Manager.cs" id="3_c25jp"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="3_d0if0"]
-[ext_resource type="Script" path="res://Menus/TranslationLabel.cs" id="5_80mq4"]
-[ext_resource type="Script" path="res://Menus/TranslationButton.cs" id="5_y7wap"]
+[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Menus/TranslationLabel.cs" id="5_80mq4"]
+[ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Menus/TranslationButton.cs" id="5_y7wap"]
 
 [node name="BuildingMenuChild" type="Control" node_paths=PackedStringArray("textureRect", "title_label", "description_label", "build_button", "item_row_manager")]
 custom_minimum_size = Vector2(0, 104)

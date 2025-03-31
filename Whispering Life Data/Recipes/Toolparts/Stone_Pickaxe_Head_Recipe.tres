@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://crbwxmyjqlafm"]
 
 [ext_resource type="Resource" uid="uid://6wlgn6tdsk7b" path="res://Items/Stone_Pickaxe_Head.tres" id="1_jaxtt"]
-[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_b2w41"]
+[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_b2w41"]
 [ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Items/Stone.tres" id="3_niujy"]
-[ext_resource type="Script" path="res://Scripts/Resources/Recipe.cs" id="4_4f63p"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="5_j78b4"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="4_4f63p"]
+[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="5_j78b4"]
 
 [sub_resource type="Resource" id="Resource_66y5o"]
 script = ExtResource("2_b2w41")

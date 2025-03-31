@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://ce8ea3olbpkt6" path="res://Recipes/Building_Recipies/Trashcan_Recipe.tres" id="1_6tv2j"]
 [ext_resource type="PackedScene" uid="uid://bdrcel864aa3s" path="res://Placeable/Trashcan.tscn" id="2_bqmcv"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_3ti5q"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_3ti5q"]
 
 [resource]
 script = ExtResource("3_3ti5q")
@@ -10,3 +10,4 @@ building_scene = ExtResource("2_bqmcv")
 building_recipe = ExtResource("1_6tv2j")
 requirements = Array[Object]([])
 category = 0
+show_item = true

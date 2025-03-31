@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://j27j32uphbhr"]
 
-[ext_resource type="Script" path="res://Scripts/Building Scripts/Giver.cs" id="1_rc5cs"]
+[ext_resource type="Script" uid="uid://b26xeo4l8kneo" path="res://Scripts/Building Scripts/Giver.cs" id="1_rc5cs"]
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Placeable/detector.tscn" id="2_3u57x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_diue1"]

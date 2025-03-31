@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://74pm7gmanqf2"]
 
-[ext_resource type="Script" path="res://Scripts/Inventory Scripts/Inventory.cs" id="1_fyjge"]
+[ext_resource type="Script" uid="uid://ck16fti57dnx3" path="res://Scripts/Inventory Scripts/Inventory.cs" id="1_fyjge"]
 [ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://Menus/Theme_Slots.tres" id="2_35pps"]
-[ext_resource type="Script" path="res://Scripts/Inventory Scripts/Slot.cs" id="3_gv68e"]
+[ext_resource type="Script" uid="uid://x5sh7dthimfr" path="res://Scripts/Inventory Scripts/Slot.cs" id="3_gv68e"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3

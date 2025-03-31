@@ -1,9 +1,9 @@
 [gd_scene load_steps=32 format=3 uid="uid://njw4so7o83dw"]
 
-[ext_resource type="Script" path="res://Scripts/Player Scripts/Player.cs" id="1_2p5ml"]
+[ext_resource type="Script" uid="uid://gvudefjfv4jx" path="res://Scripts/Player Scripts/Player.cs" id="1_2p5ml"]
 [ext_resource type="Texture2D" uid="uid://b4214y7h1nkv7" path="res://Sprites/Char_Animation.png" id="2_c6oqb"]
-[ext_resource type="Script" path="res://Scripts/Player Scripts/Player_Stats.cs" id="5_f3lay"]
-[ext_resource type="Script" path="res://Scripts/Player Scripts/Player_Stamina.cs" id="5_l640a"]
+[ext_resource type="Script" uid="uid://bp563ixlsam56" path="res://Scripts/Player Scripts/Player_Stats.cs" id="5_f3lay"]
+[ext_resource type="Script" uid="uid://bphfcvdv87vxh" path="res://Scripts/Player Scripts/Player_Stamina.cs" id="5_l640a"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="6_k5wdo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wxsri"]

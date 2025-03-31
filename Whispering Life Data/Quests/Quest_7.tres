@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Quest" load_steps=11 format=3 uid="uid://dcy3vpjgge5ds"]
 
 [ext_resource type="Resource" uid="uid://j02uscprm0pm" path="res://Items/Mystic_Armor_Helm.tres" id="1_816ss"]
-[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_7rvqm"]
+[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_7rvqm"]
 [ext_resource type="Resource" uid="uid://bwoxb4s5viywy" path="res://Items/Mystic_Armor_Chestplate.tres" id="3_nduxg"]
-[ext_resource type="Script" path="res://Scripts/Resources/Quest.cs" id="4_3efco"]
+[ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Scripts/Resources/Quest.cs" id="4_3efco"]
 [ext_resource type="Resource" uid="uid://dk6vef80itp5v" path="res://Items/Mystic_Armor_Leggings.tres" id="4_ajloj"]
 [ext_resource type="Resource" uid="uid://gjds5x8w8irk" path="res://Items/Mystic_Armor_Shoes.tres" id="5_7fiko"]
 

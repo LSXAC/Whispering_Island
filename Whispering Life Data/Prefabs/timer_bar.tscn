@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmb5mvim8jqcp"]
 
-[ext_resource type="Script" path="res://Scripts/Resources/TimerBar.cs" id="1_60n7p"]
+[ext_resource type="Script" uid="uid://deld2y73dp2fk" path="res://Scripts/Resources/TimerBar.cs" id="1_60n7p"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_gkuag"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bu67"]

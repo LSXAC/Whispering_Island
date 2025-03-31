@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://dvu522o8i0uem" path="res://Recipes/Building_Recipies/Belt_Splitter_Recipe.tres" id="1_cyonf"]
 [ext_resource type="PackedScene" uid="uid://3ofhn4ivr5r6" path="res://Placeable/BeltSplitter.tscn" id="2_42wqc"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_dqmi5"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_dqmi5"]
 
 [resource]
 script = ExtResource("3_dqmi5")
@@ -10,3 +10,4 @@ building_scene = ExtResource("2_42wqc")
 building_recipe = ExtResource("1_cyonf")
 requirements = Array[Object]([])
 category = 0
+show_item = true

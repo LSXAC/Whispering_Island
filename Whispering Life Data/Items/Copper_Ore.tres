@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=7 format=3 uid="uid://eo8ax7whu2kb"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=8 format=3 uid="uid://eo8ax7whu2kb"]
 
 [ext_resource type="Resource" uid="uid://yh8rhrf7r458" path="res://Items/Item_Types/Resource_Type_Classic.tres" id="1_4ucrh"]
-[ext_resource type="Script" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_5d0qr"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_5d0qr"]
+[ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_8r82h"]
 [ext_resource type="Resource" uid="uid://b4j8cjn03te4o" path="res://Items/Item_Types/Smeltable_Type_Classic.tres" id="2_ab5kj"]
 [ext_resource type="Texture2D" uid="uid://wgni2ah8cili" path="res://Sprites/Items/Icons_3rd/Copper_Ore.png" id="2_yec6h"]
-[ext_resource type="Script" path="res://Scripts/Item/ResearchableType.cs" id="3_qkleu"]
+[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableType.cs" id="3_qkleu"]
 
 [sub_resource type="Resource" id="Resource_03yqd"]
 script = ExtResource("3_qkleu")
@@ -23,4 +24,4 @@ texture = ExtResource("2_yec6h")
 value = 10.0
 type_level = 0
 use_type = 0
-item_stats = []
+item_stats = Array[ExtResource("1_8r82h")]([])

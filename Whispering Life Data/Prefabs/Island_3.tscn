@@ -1,10 +1,10 @@
 [gd_scene load_steps=21 format=4 uid="uid://b0pmpn0st1gl4"]
 
-[ext_resource type="Script" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_7mnce"]
+[ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island_Properties.cs" id="1_7mnce"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tileset Objects/BuildingTiles.tres" id="2_0iwig"]
 [ext_resource type="PackedScene" uid="uid://717sbs8rvfvt" path="res://Prefabs/Sign.tscn" id="2_iygsg"]
 [ext_resource type="TileSet" uid="uid://knopq4xq3ef2" path="res://Tileset Objects/Islands.tres" id="3_0jsen"]
-[ext_resource type="Shader" path="res://Shader Objects/water.gdshader" id="4_2nqrk"]
+[ext_resource type="Shader" uid="uid://dcluye6ushewy" path="res://Shader Objects/water.gdshader" id="4_2nqrk"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Prefabs/Water_Noise_Map.tres" id="5_0531d"]
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Tileset Objects/Water_Tileset.tres" id="6_ocfom"]
 [ext_resource type="PackedScene" uid="uid://dcruv230g3u4k" path="res://Placeable/building.tscn" id="7_0hk06"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bl3g1ot6s782m" path="res://Sprites/Bridge/bridge_bottom_end.tscn" id="12_tck47"]
 [ext_resource type="PackedScene" uid="uid://dfsg3iq034qml" path="res://Sprites/Bridge/bridge_up.tscn" id="13_t01tk"]
 [ext_resource type="PackedScene" uid="uid://bc2tlg8s8fxwl" path="res://Sprites/Bridge/bridge_up_end.tscn" id="14_p3mgc"]
-[ext_resource type="Script" path="res://Prefabs/BuildingManager.cs" id="16_ies5y"]
+[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Prefabs/BuildingManager.cs" id="16_ies5y"]
 [ext_resource type="PackedScene" uid="uid://cyayxpnsm4v16" path="res://Placeable/Carrot.tscn" id="17_n6um2"]
 [ext_resource type="PackedScene" uid="uid://dyhqyvmm3pp6m" path="res://Placeable/Corn.tscn" id="18_2k6at"]
 [ext_resource type="PackedScene" uid="uid://bmjn6kocpubo3" path="res://Placeable/Potato.tscn" id="19_pinoh"]
@@ -24,9 +24,9 @@ size = Vector2(32, 32)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nbpyd"]
 shader = ExtResource("4_2nqrk")
+shader_parameter/noise_texture = ExtResource("5_0531d")
 shader_parameter/speed = Vector2(0.1, 0.1)
 shader_parameter/distortion = 0.005
-shader_parameter/noise_texture = ExtResource("5_0531d")
 
 [node name="Island_2" type="Node2D" groups=["Island_Properties"]]
 y_sort_enabled = true

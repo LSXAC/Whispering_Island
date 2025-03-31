@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://dj73tpok8xq6p"]
 
-[ext_resource type="Script" path="res://Scripts/Building Scripts/Chest.cs" id="1_qtaud"]
+[ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Scripts/Building Scripts/Chest.cs" id="1_qtaud"]
 [ext_resource type="Texture2D" uid="uid://cb634fgv247qi" path="res://Sprites/Chest_Building_Sprite.png" id="4_mcpbh"]
-[ext_resource type="Script" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="5_0ufwp"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="5_0ufwp"]
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_yp6ng"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="6_ofxn8"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="7_l52gj"]
-[ext_resource type="Script" path="res://Scripts/MouseArea.cs" id="8_higcq"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/MouseArea.cs" id="8_higcq"]
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="9_6iu6f"]
 [ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Placeable/Taker.tscn" id="10_worc2"]
 
