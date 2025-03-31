@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dyylrlp6acwxq"]
+[gd_scene load_steps=20 format=3 uid="uid://dyylrlp6acwxq"]
 
 [ext_resource type="Script" uid="uid://3acu342n3tvo" path="res://Placeable/Rail.cs" id="1_gx7ou"]
 [ext_resource type="Texture2D" uid="uid://c3w7sol4rqgfm" path="res://Sprites/Rail.png" id="2_w7dvd"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/AnimationManager12D.cs" id="11_ib2cd"]
 [ext_resource type="SpriteFrames" uid="uid://bvc8p8j3rn6km" path="res://Rail_Animation.tres" id="12_w7dvd"]
 [ext_resource type="Script" uid="uid://cv7mwncttk6fg" path="res://Placeable/AnimationManagerBase.cs" id="13_gapd8"]
+[ext_resource type="Script" uid="uid://8xhe0fsp3tnx" path="res://Placeable/RailArea.cs" id="14_rcvkn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8pj"]
 size = Vector2(14, 14)
@@ -25,6 +26,9 @@ size = Vector2(16, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlqqa"]
 size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7dvd"]
+size = Vector2(12, 12)
 
 [node name="Rail" type="StaticBody2D" node_paths=PackedStringArray("item_holder", "detector", "cbm", "anim_manager12D", "building_collider_manager", "sprite", "collision_shape") groups=["Belt"]]
 y_sort_enabled = true
@@ -155,6 +159,16 @@ animation = &"LEFT"
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("13_gapd8")
+
+[node name="RailArea" type="Area2D" parent="."]
+collision_layer = 32768
+collision_mask = 0
+monitoring = false
+script = ExtResource("14_rcvkn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RailArea"]
+position = Vector2(-8, -8)
+shape = SubResource("RectangleShape2D_w7dvd")
 
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]
