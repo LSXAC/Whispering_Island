@@ -120,8 +120,8 @@ BUILDING_BELT_COMBINER_3x1,Belt Combiner 3x1,Fließbandverbinder 3x1
 BUILDING_BELT_COMBINER_3x1_DESC,Combines Items from 3 belts to 1 belt,Kombiniert Gegenstände von drei Fließbändern zu einem Fließband.
 BUILDING_CHEST_PUFFER,Chest Puffer,Kistenzwischenlager
 BUILDING_CHEST_PUFFER_DESC,"Collects Items from one side, stores it and gives it to the next belt.","Sammelt Gegenstände von einer Seite, lagert diese und gibt diese auf ein anderes Belt aus."
-,,
-,,
+BUILDING_RAIL_STATION,Rail Station,Bahnstation
+BUILDING_RAIL_STATION_DESC,A Station that imports or exports resources from Train,Eine Station die Ressourcen vom Zug importiert oder exportiert.
 ,,
 ,,
 ,,

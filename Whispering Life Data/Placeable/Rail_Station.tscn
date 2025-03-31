@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=4 uid="uid://8ea6alhnkqok"]
+[gd_scene load_steps=15 format=4 uid="uid://8ea6alhnkqok"]
 
 [ext_resource type="Script" uid="uid://o5ts5isb43np" path="res://Placeable/RailStation.cs" id="1_odv02"]
-[ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Scripts/Building Scripts/ChestBase.cs" id="2_o32qu"]
 [ext_resource type="PackedScene" uid="uid://dyylrlp6acwxq" path="res://Placeable/Rail.tscn" id="9_myue5"]
 [ext_resource type="Texture2D" uid="uid://c0apie0sdpnk7" path="res://Sprites/Top_Belt_Splitter_1x2.png" id="10_k0ftw"]
 [ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Placeable/PathConnectArea.cs" id="11_gxmie"]
@@ -22,26 +21,20 @@ size = Vector2(78, 39)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o32qu"]
 size = Vector2(14, 14)
 
-[node name="RailStation" type="StaticBody2D" node_paths=PackedStringArray("chest_base", "givers", "takers", "building_collider_manager", "sprite", "collision_shape")]
+[node name="RailStation" type="StaticBody2D" node_paths=PackedStringArray("givers", "takers", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_odv02")
-chest_base = NodePath("ChestInventory")
 givers = [NodePath("Giver")]
 takers = [NodePath("Taker")]
 building_id = 27
 tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
-title = "RAIL_STATION"
-description = "RAIL_STATION_DESC"
+title = "BUILDING_RAIL_STATION"
+description = "BUILDING_RAIL_STATION_DESC"
 sprite = NodePath("BuildingSprite")
 collision_shape = NodePath("MachineCollision")
-
-[node name="ChestInventory" type="Node2D" parent="." node_paths=PackedStringArray("givers", "takers")]
-script = ExtResource("2_o32qu")
-givers = []
-takers = []
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 visible = false

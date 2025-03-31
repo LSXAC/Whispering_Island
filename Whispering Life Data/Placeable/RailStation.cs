@@ -2,11 +2,8 @@ using System;
 using System.Diagnostics;
 using Godot;
 
-public partial class RailStation : MachineBase
+public partial class RailStation : ChestBase
 {
-    [Export]
-    public ChestBase chest_base;
-
     public override void OnMouseClick()
     {
         base.OnMouseClick();
@@ -16,6 +13,6 @@ public partial class RailStation : MachineBase
 
         Debug.Print("RailStation");
         GameMenu.INSTANCE.OnOpenRailStationTab();
-        ChestInventory.INSTANCE.OpenChest(chest_base);
+        ChestInventory.INSTANCE.OpenChest(this);
     }
 }
