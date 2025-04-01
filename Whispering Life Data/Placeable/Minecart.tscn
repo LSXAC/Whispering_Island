@@ -10,44 +10,53 @@
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="8_iknbp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
-size = Vector2(32, 25)
+size = Vector2(14, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
-size = Vector2(32, 32)
+size = Vector2(16, 16)
 
-[node name="Building" type="StaticBody2D"]
+[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_l32ce")
+building_id = 28
+tile_types = Array[int]([])
+building_collider_manager = NodePath("BuildingAreas")
+title = "BUILDING_MINECART"
+description = "BUILDING_MINECART_DESC"
+sprite = NodePath("BuildingSprite")
+collision_shape = NodePath("MachineCollision")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-16, -14)
+position = Vector2(-8, -4.95833)
+scale = Vector2(0.5, 0.354167)
 texture = ExtResource("2_ntmmq")
 centered = false
 offset = Vector2(-16, -34)
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("3_jjxv8")
+current_type = 1
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
 z_index = -2
-tile_map_data = PackedByteArray(0, 0, 254, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
 enabled = false
 tile_set = ExtResource("4_dmls6")
 
 [node name="MachineCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-16, -15.5)
+position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_m0htq")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
-position = Vector2(-16, -6)
-scale = Vector2(1.375, 1.25)
+position = Vector2(-8, -4)
+scale = Vector2(1, 0.75)
 texture = ExtResource("5_wc0v6")
 
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
@@ -59,6 +68,7 @@ building_node = NodePath("..")
 building_sprite = NodePath("../BuildingSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(8, 10)
 shape = SubResource("RectangleShape2D_fk0le")
 
 [node name="Tree" type="Node2D" parent="."]

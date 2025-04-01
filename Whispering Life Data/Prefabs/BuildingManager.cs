@@ -380,7 +380,10 @@ public partial class BuildingManager : Node2D
                     node.Position
                 );
                 placeable_saves.Add(ps);
+                continue;
             }
+
+            Debug.Print("Did not saved! - " + node.GetClass() + " | " + node.Name);
         }
     }
 

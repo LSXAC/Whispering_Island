@@ -11,6 +11,15 @@ public partial class Building_Collider_Manager : Node2D
     );
 
     [Export]
+    public PLACE_TYPE current_type = PLACE_TYPE.BUILDING;
+
+    public enum PLACE_TYPE
+    {
+        BUILDING,
+        MOVEABLE
+    };
+
+    [Export]
     private TileMapLayer collision_tilemap;
 
     public override void _Ready()
@@ -35,6 +44,7 @@ public partial class Building_Collider_Manager : Node2D
         foreach (Node2D node in GetChildren())
         {
             BuildingCollider bc = node as BuildingCollider;
+            bc.type = current_type;
             bc.Calc();
             if (!bc.on_building_layer)
                 return false;

@@ -1,4 +1,4 @@
 using System;
 using Godot;
 
-public partial class RailArea : Area2D { }
+public partial class RailArea : StaticBody2D { }

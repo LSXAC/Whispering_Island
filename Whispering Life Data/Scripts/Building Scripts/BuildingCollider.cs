@@ -16,6 +16,9 @@ public partial class BuildingCollider : Area2D
     private TextureRect rect;
     public Array<placeable_building.TILETYPE> types;
     private bool activated = true;
+    public Building_Collider_Manager.PLACE_TYPE type = Building_Collider_Manager
+        .PLACE_TYPE
+        .BUILDING;
 
     // Called when the node enters the scene tree for the first time.
 
@@ -44,6 +47,16 @@ public partial class BuildingCollider : Area2D
         foreach (Node2D node in GetOverlappingBodies())
         {
             Debug.Print(node.Name);
+            if (type == Building_Collider_Manager.PLACE_TYPE.MOVEABLE)
+            {
+                if (node is RailArea)
+                {
+                    on_building = true;
+                    break;
+                }
+                continue;
+            }
+
             if (node is Building_Node n)
             {
                 if (!n.disable_collision)
@@ -67,6 +80,7 @@ public partial class BuildingCollider : Area2D
                 if (node.IsInGroup(type.ToString()))
                     on_building = true;
         }
+
         if (on_building)
         {
             on_building_layer = true;
