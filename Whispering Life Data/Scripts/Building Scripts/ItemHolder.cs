@@ -16,6 +16,10 @@ public partial class ItemHolder : Node2D
         if (GetChildCount() == 0)
             return;
 
+        if (GetChild<Node2D>(0) is Minecart)
+            if (!GetChild<Minecart>(0).is_running)
+                return;
+
         if (!moving_item)
             EmitSignal("item_held");
 

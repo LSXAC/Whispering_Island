@@ -35,6 +35,16 @@ public partial class TransportBase : placeable_building
         NONE
     };
 
+    public bool can_receive_item()
+    {
+        return item_holder.GetChildCount() == 0;
+    }
+
+    public void receive_item(Node2D item)
+    {
+        item_holder.receive_item(item);
+    }
+
     public void Set_Rotation(int id)
     {
         if (id == 0)

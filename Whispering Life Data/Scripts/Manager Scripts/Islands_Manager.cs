@@ -61,6 +61,8 @@ public partial class Islands_Manager : Node2D
                     ip.building_manager.placeable_saves = ibs.placeable_saves;
                     ip.building_manager.resource_obj_saves = ibs.resource_obj_saves;
                     ip.building_manager.belt_machine_saves = ibs.belt_machine_saves;
+                    ip.building_manager.rail_saves = ibs.rail_saves;
+
                     ip.building_manager.LoadPlacedObjects();
                 }
         }
@@ -112,6 +114,7 @@ public partial class Islands_Manager : Node2D
             ibs.placeable_saves = ip.building_manager.placeable_saves;
             ibs.resource_obj_saves = ip.building_manager.resource_obj_saves;
             ibs.belt_machine_saves = ip.building_manager.belt_machine_saves;
+            ibs.rail_saves = ip.building_manager.rail_saves;
             build_saves.Add(ibs);
         }
     }

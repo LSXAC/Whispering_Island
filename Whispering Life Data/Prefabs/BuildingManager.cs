@@ -10,6 +10,7 @@ public partial class BuildingManager : Node2D
     public Array<MachineSave> machine_saves = new Array<MachineSave>();
     public Array<PlaceableSave> placeable_saves = new Array<PlaceableSave>();
     public Array<BeltMachineSave> belt_machine_saves = new Array<BeltMachineSave>();
+    public Array<RailSave> rail_saves = new Array<RailSave>();
 
     [Export]
     public Array<ResourceObjectSave> resource_obj_saves = new Array<ResourceObjectSave>();
@@ -25,6 +26,32 @@ public partial class BuildingManager : Node2D
 
             InitBelt(temp, belt_save);
             InitBeltItem(temp, belt_save);
+        }
+    }
+
+    public void LoadRails()
+    {
+        foreach (RailSave rails in rail_saves)
+        {
+            Rail temp =
+                Database.GetBuildingType(Database.BUILDING_ID.RAIL).building_scene.Instantiate()
+                as Rail;
+
+            AddChild(temp);
+            temp.Position = rails.position;
+            temp.from_direction = rails.from_direction;
+            temp.to_direction = rails.to_direction;
+            temp.set_direction();
+            temp.Set_Rotation(rails.current_rotation);
+            if (rails.has_minecart)
+            {
+                Minecart cart =
+                    Database
+                        .GetBuildingType(Database.BUILDING_ID.MINECART)
+                        .building_scene.Instantiate() as Minecart;
+
+                temp.item_holder.AddChild(cart);
+            }
         }
     }
 
@@ -268,6 +295,7 @@ public partial class BuildingManager : Node2D
         LoadPlacableBuildings();
         LoadResources();
         LoadBeltMachines();
+        LoadRails();
     }
 
     public void SavePlacedObjects()
@@ -278,11 +306,18 @@ public partial class BuildingManager : Node2D
         placeable_saves.Clear();
         belt_machine_saves.Clear();
         resource_obj_saves.Clear();
+        rail_saves.Clear();
 
         foreach (Node2D node in GetChildren())
         {
             if (node is ResourceObject)
                 resource_obj_saves.Add(((ResourceObject)node).SaveResourceObject());
+
+            if (node is Rail)
+            {
+                RailSave rail_save = CreateRailSave((Rail)node);
+                rail_saves.Add(rail_save);
+            }
 
             if (node is Belt)
             {
@@ -404,5 +439,21 @@ public partial class BuildingManager : Node2D
             belt_save.beltItem_position = (belt).item_holder.GetBeltItem().Position;
         }
         return belt_save;
+    }
+
+    public RailSave CreateRailSave(Rail rail)
+    {
+        bool has_minecart = false;
+        if (rail.item_holder.GetChildCount() > 0)
+            has_minecart = true;
+
+        RailSave rail_save = new RailSave(
+            rail.Position,
+            (rail).from_direction,
+            (rail).to_direction,
+            has_minecart,
+            (rail).current_rotation
+        );
+        return rail_save;
     }
 }

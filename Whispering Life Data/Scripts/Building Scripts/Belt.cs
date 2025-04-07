@@ -9,16 +9,6 @@ public partial class Belt : TransportBase
         building_collider_manager = GetNode<Node2D>("BuildingAreas") as Building_Collider_Manager;
     }
 
-    public bool can_receive_item()
-    {
-        return item_holder.GetChildCount() == 0;
-    }
-
-    public void receive_item(Node2D item)
-    {
-        item_holder.receive_item(item);
-    }
-
     public void OnDetectorBeltDetected(Area2D area)
     {
         if (ignore_self_detector)
@@ -27,7 +17,7 @@ public partial class Belt : TransportBase
         if (area is PathConnectArea)
         {
             if (area.GetParent() is Belt && area.GetParent() is not BeltTunnel)
-                if (area.GetParent<Belt>().can_receive_item())
+                if (area.GetParent<TransportBase>().can_receive_item())
                 {
                     var item = item_holder.offload_item();
                     area.GetParent<Belt>().receive_item(item);

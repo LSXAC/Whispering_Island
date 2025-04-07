@@ -166,7 +166,7 @@ script = ExtResource("14_rcvkn")
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_w7dvd")
 
-[connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
+[connection signal="belt_detected" from="Detector" to="." method="OnDetectorRailDetected"]
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
