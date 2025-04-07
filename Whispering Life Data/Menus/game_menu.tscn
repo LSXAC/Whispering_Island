@@ -56,7 +56,6 @@
 [ext_resource type="Resource" uid="uid://blm4o283swyoa" path="res://Recipes/Armor/Mystic_Armor_Leggings_Recipe.tres" id="33_d8q64"]
 [ext_resource type="Resource" uid="uid://ccleudbhqsed1" path="res://Recipes/Armor/Mystic_Armor_Shoes_Recipe.tres" id="34_m32cx"]
 [ext_resource type="Resource" uid="uid://de441nblgkr1a" path="res://Recipes/Agriculture/Carrot_Seeds_Recipe.tres" id="35_3p2ru"]
-[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="35_5ehlf"]
 [ext_resource type="Resource" uid="uid://bwkkpl8p6xpi1" path="res://Recipes/Agriculture/Corn_Seeds_Recipe.tres" id="36_bw518"]
 [ext_resource type="Script" uid="uid://b3t4ic6iwowss" path="res://Menus/SoundSlider.cs" id="37_vnnff"]
 [ext_resource type="Resource" uid="uid://7bvesh06e55y" path="res://Recipes/Agriculture/Potato_Seeds_Recipe.tres" id="37_xn11s"]
@@ -74,6 +73,7 @@
 [ext_resource type="Texture2D" uid="uid://125t5f6fiugo" path="res://Sprites/Monster_Island.png" id="64_jkgj7"]
 [ext_resource type="Texture2D" uid="uid://dlln1ly5u41as" path="res://Sprites/Screenshots/Island_1.png" id="65_shum4"]
 [ext_resource type="Texture2D" uid="uid://dfa2imjkie3p2" path="res://Sprites/Items/Icons/letter-x.png" id="66_17ja5"]
+[ext_resource type="Script" uid="uid://cuumqpn4sqi6h" path="res://Menus/MinecartTab.cs" id="74_5ehlf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tibut"]
 bg_color = Color(1, 1, 1, 0)
@@ -107,7 +107,7 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "rail_station_tab", "header_container")]
+[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "rail_station_tab", "minecart_tab", "header_container")]
 process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/SaveLoadTab/HBoxContainer/LoadGameButton")
@@ -125,6 +125,7 @@ island_tab = NodePath("Background/IslandTab")
 skilltree_tab = NodePath("Background/Skilltree")
 help_tab = NodePath("Background/HelpTab")
 rail_station_tab = NodePath("Background/RailStationTab")
+minecart_tab = NodePath("Background/MinecartTab")
 header_container = NodePath("Background/HBoxHeader")
 
 [node name="TransBackground" type="ColorRect" parent="."]
@@ -1840,7 +1841,7 @@ label_translation_string = "CRAFTING_MENU_TOPBAR_RESOURCE_NEEDED"
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = Array[ExtResource("35_5ehlf")]([ExtResource("12_h3bpf"), ExtResource("13_o680h"), ExtResource("30_ai4s4")])
+crafting_recipies = [ExtResource("12_h3bpf"), ExtResource("13_o680h"), ExtResource("30_ai4s4")]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuBasic"]
 custom_minimum_size = Vector2(320, 222)
@@ -1856,7 +1857,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = Array[ExtResource("35_5ehlf")]([ExtResource("19_pe00a"), ExtResource("20_ujqyg"), ExtResource("16_1o4en"), ExtResource("17_7eamj")])
+crafting_recipies = [ExtResource("19_pe00a"), ExtResource("20_ujqyg"), ExtResource("16_1o4en"), ExtResource("17_7eamj")]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuTools"]
 custom_minimum_size = Vector2(320, 220)
@@ -1870,7 +1871,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = Array[ExtResource("35_5ehlf")]([ExtResource("18_vv5t7"), ExtResource("19_f07lv"), ExtResource("20_jycfp"), ExtResource("21_13841")])
+crafting_recipies = [ExtResource("18_vv5t7"), ExtResource("19_f07lv"), ExtResource("20_jycfp"), ExtResource("21_13841")]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuToolparts"]
 custom_minimum_size = Vector2(320, 220)
@@ -1884,7 +1885,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = Array[ExtResource("35_5ehlf")]([ExtResource("32_d7b8n"), ExtResource("31_33fii"), ExtResource("33_d8q64"), ExtResource("34_m32cx")])
+crafting_recipies = [ExtResource("32_d7b8n"), ExtResource("31_33fii"), ExtResource("33_d8q64"), ExtResource("34_m32cx")]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuArmor"]
 custom_minimum_size = Vector2(320, 220)
@@ -1898,7 +1899,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = Array[ExtResource("35_5ehlf")]([ExtResource("39_um0ua"), ExtResource("40_rv3r3"), ExtResource("41_bd22e"), ExtResource("35_3p2ru"), ExtResource("36_bw518"), ExtResource("37_xn11s"), ExtResource("38_sep6l")])
+crafting_recipies = [ExtResource("39_um0ua"), ExtResource("40_rv3r3"), ExtResource("41_bd22e"), ExtResource("35_3p2ru"), ExtResource("36_bw518"), ExtResource("37_xn11s"), ExtResource("38_sep6l")]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuAgriculture"]
 custom_minimum_size = Vector2(320, 220)
@@ -3134,6 +3135,73 @@ text = "Stop Train"
 layout_mode = 2
 text = "Stop Train"
 
+[node name="MinecartTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("engine_status_label")]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 222.0
+offset_top = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
+script = ExtResource("74_5ehlf")
+engine_status_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Engine_Status")
+
+[node name="PanelContainer" type="Control" parent="Background/MinecartTab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/MinecartTab/PanelContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MinecartTab/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Background/MinecartTab/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+text = "Minecart"
+vertical_alignment = 1
+
+[node name="Engine_Status" type="Label" parent="Background/MinecartTab/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+text = "Status: Running"
+vertical_alignment = 1
+
+[node name="SPACELABEL" type="Label" parent="Background/MinecartTab/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+vertical_alignment = 1
+
+[node name="StartEngineBtn" type="Button" parent="Background/MinecartTab/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start Engine"
+
+[node name="StopEngineBtn" type="Button" parent="Background/MinecartTab/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stop Engine"
+
 [connection signal="pressed" from="Background/HBoxHeader/InvTabButton" to="." method="OnInventoryTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/SaveTabButton" to="." method="OnSaveLoadTabButton"]
@@ -3178,3 +3246,6 @@ text = "Stop Train"
 [connection signal="visibility_changed" from="Background/SettingsTab/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" to="Background/SettingsTab/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" method="OnVisiblityChange"]
 [connection signal="item_selected" from="Background/SettingsTab/VBoxContainer/Language/PanelContainer/MarginContainerRight/OptionButton" to="Background/SettingsTab" method="OnItemSelected"]
 [connection signal="pressed" from="Background/SettingsTab/VBoxContainer/ExitGame/PanelContainer/MarginContainerRight/Button" to="." method="OnBackToMainMenu"]
+[connection signal="visibility_changed" from="Background/MinecartTab" to="Background/MinecartTab" method="OnVisiblityChange"]
+[connection signal="pressed" from="Background/MinecartTab/PanelContainer/MarginContainer/VBoxContainer/StartEngineBtn" to="Background/MinecartTab" method="StartEngine"]
+[connection signal="pressed" from="Background/MinecartTab/PanelContainer/MarginContainer/VBoxContainer/StopEngineBtn" to="Background/MinecartTab" method="StopEngine"]
