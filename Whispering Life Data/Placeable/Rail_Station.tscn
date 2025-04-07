@@ -98,31 +98,8 @@ wait_time = 0.1
 [node name="MachineUITimer" type="Timer" parent="."]
 wait_time = 0.05
 
-[node name="Top" type="Sprite2D" parent="."]
-y_sort_enabled = true
-position = Vector2(-7, 6)
-texture = ExtResource("9_o32qu")
-offset = Vector2(0, -19)
-
-[node name="Ground" type="Sprite2D" parent="."]
-z_index = -2
-y_sort_enabled = true
-position = Vector2(-7, 11)
-texture = ExtResource("10_o32qu")
-offset = Vector2(0, -19)
-
-[node name="PathConnectArea" type="Area2D" parent="."]
-position = Vector2(32, 0)
-collision_layer = 516
-collision_mask = 0
-monitoring = false
-script = ExtResource("11_gxmie")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea"]
-position = Vector2(-8, -8)
-shape = SubResource("RectangleShape2D_o32qu")
-
 [node name="Rails" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Rail" parent="Rails" instance=ExtResource("9_myue5")]
 ignore_self_detector = true
@@ -150,6 +127,30 @@ position = Vector2(-16, 0)
 ignore_self_detector = true
 disable_mouse_interaction = true
 disable_collision = true
+
+[node name="Top" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-7, 6)
+texture = ExtResource("9_o32qu")
+offset = Vector2(0, -19)
+
+[node name="Ground" type="Sprite2D" parent="."]
+z_index = -2
+y_sort_enabled = true
+position = Vector2(0, 42)
+texture = ExtResource("10_o32qu")
+offset = Vector2(-8, -50)
+
+[node name="PathConnectArea" type="Area2D" parent="."]
+position = Vector2(32, 0)
+collision_layer = 516
+collision_mask = 0
+monitoring = false
+script = ExtResource("11_gxmie")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea"]
+position = Vector2(-8, -8)
+shape = SubResource("RectangleShape2D_o32qu")
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

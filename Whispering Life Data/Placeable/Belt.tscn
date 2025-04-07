@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://rd7h1v4imvk6"]
+[gd_scene load_steps=17 format=3 uid="uid://rd7h1v4imvk6"]
 
 [ext_resource type="Script" uid="uid://peaogmggqlqv" path="res://Scripts/Building Scripts/Belt.cs" id="1_wiff4"]
 [ext_resource type="Texture2D" uid="uid://dh7i821w2aucb" path="res://Sprites/Belt_Side.png" id="2_qme1j"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://b2x3csh1fe7be" path="res://Placeable/HasConnectedBeltArea.cs" id="11_08ai2"]
 [ext_resource type="Script" uid="uid://cqukvf8b830bx" path="res://Placeable/ConnectedBeltsManager.cs" id="11_pw6t1"]
 [ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/AnimationManager12D.cs" id="12_ftj05"]
-[ext_resource type="Script" uid="uid://cv7mwncttk6fg" path="res://Placeable/AnimationManagerBase.cs" id="13_3sbe5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8pj"]
 size = Vector2(14, 14)
@@ -142,17 +141,16 @@ dir = 3
 shape = SubResource("RectangleShape2D_hlqqa")
 
 [node name="12DAnimationManager" type="Node2D" parent="." node_paths=PackedStringArray("anim_sprite")]
+y_sort_enabled = true
 script = ExtResource("12_ftj05")
 anim_sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="12DAnimationManager"]
 z_index = -1
+y_sort_enabled = true
 position = Vector2(-8, -8)
 sprite_frames = ExtResource("10_fcawy")
 animation = &"CORNER_LEFT_DOWN"
-
-[node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("13_3sbe5")
 
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]

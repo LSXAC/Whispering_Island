@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dyylrlp6acwxq"]
+[gd_scene load_steps=19 format=3 uid="uid://dyylrlp6acwxq"]
 
 [ext_resource type="Script" uid="uid://3acu342n3tvo" path="res://Placeable/Rail.cs" id="1_gx7ou"]
 [ext_resource type="Texture2D" uid="uid://c3w7sol4rqgfm" path="res://Sprites/Rail.png" id="2_w7dvd"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://b2x3csh1fe7be" path="res://Placeable/HasConnectedBeltArea.cs" id="10_op4v1"]
 [ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/AnimationManager12D.cs" id="11_ib2cd"]
 [ext_resource type="SpriteFrames" uid="uid://bvc8p8j3rn6km" path="res://Rail_Animation.tres" id="12_w7dvd"]
-[ext_resource type="Script" uid="uid://cv7mwncttk6fg" path="res://Placeable/AnimationManagerBase.cs" id="13_gapd8"]
 [ext_resource type="Script" uid="uid://8xhe0fsp3tnx" path="res://Placeable/RailArea.cs" id="14_rcvkn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8pj"]
@@ -147,17 +146,16 @@ dir = 3
 shape = SubResource("RectangleShape2D_hlqqa")
 
 [node name="12DAnimationManager" type="Node2D" parent="." node_paths=PackedStringArray("anim_sprite")]
+y_sort_enabled = true
 script = ExtResource("11_ib2cd")
 anim_sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="12DAnimationManager"]
 z_index = -1
+y_sort_enabled = true
 position = Vector2(-8, -8)
 sprite_frames = ExtResource("12_w7dvd")
 animation = &"LEFT"
-
-[node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("13_gapd8")
 
 [node name="RailArea" type="StaticBody2D" parent="."]
 collision_layer = 8

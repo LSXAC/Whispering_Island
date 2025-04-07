@@ -20,6 +20,8 @@ public partial class Building_Placer : Node2D
     private bool can_create = false;
     private bool is_flipped = false;
 
+    public static Node2D moveable_selected_parent = null;
+
     public void InitBuilding(BuildingType building_tye)
     {
         if (building_tye == null || building_tye.building_scene == null)
@@ -170,20 +172,25 @@ public partial class Building_Placer : Node2D
             return;
 
         Node2D temp = (Node2D)building.Instantiate();
+        if (temp is Minecart)
+        {
+            if (moveable_selected_parent == null)
+                return;
+
+            RemoveResources();
+            temp.Position = Vector2.Zero;
+            moveable_selected_parent.AddChild(temp);
+            moveable_selected_parent = null;
+            CloseMenuWithBuildingSelected();
+            return;
+        }
         Island_Properties ip = islands_manager.GetNearestIsland(GetGlobalMousePosition());
         Vector2 pos = ip.building_area.LocalToMap(GetGlobalMousePosition() - ip.GlobalPosition); // Global Mouse Position needs to be subtracted to local Tilemap world point
         temp.GlobalPosition = new Vector2((pos.X + 1) * 16, (pos.Y + 1) * 16);
         temp.Scale = current_scale;
         ip.building_manager.AddChild(temp);
         // Remove Resources
-
-        foreach (Item i in building_recipe.requiered_items)
-            Inventory.INSTANCE.RemoveItem(
-                i.item_info,
-                i.amount,
-                Inventory.INSTANCE.inventory_items
-            );
-
+        RemoveResources();
         if (temp is ResourceObject)
         {
             ((ResourceObject)temp).SpawnPlant();
@@ -225,17 +232,17 @@ public partial class Building_Placer : Node2D
                         Debug.Print("GIver GIv");
                         switch (giv.direction_not_giving)
                         {
-                            case Belt.Direction.Top:
-                                giv.direction_not_giving = Belt.Direction.Down;
+                            case TransportBase.Direction.Top:
+                                giv.direction_not_giving = TransportBase.Direction.Down;
                                 break;
-                            case Belt.Direction.Down:
-                                giv.direction_not_giving = Belt.Direction.Top;
+                            case TransportBase.Direction.Down:
+                                giv.direction_not_giving = TransportBase.Direction.Top;
                                 break;
-                            case Belt.Direction.Right:
-                                giv.direction_not_giving = Belt.Direction.Left;
+                            case TransportBase.Direction.Right:
+                                giv.direction_not_giving = TransportBase.Direction.Left;
                                 break;
-                            case Belt.Direction.Left:
-                                giv.direction_not_giving = Belt.Direction.Right;
+                            case TransportBase.Direction.Left:
+                                giv.direction_not_giving = TransportBase.Direction.Right;
                                 break;
                         }
                     }
@@ -243,6 +250,16 @@ public partial class Building_Placer : Node2D
             }
         }
         CloseMenuWithBuildingSelected();
+    }
+
+    private void RemoveResources()
+    {
+        foreach (Item i in building_recipe.requiered_items)
+            Inventory.INSTANCE.RemoveItem(
+                i.item_info,
+                i.amount,
+                Inventory.INSTANCE.inventory_items
+            );
     }
 
     public void CloseMenuWithBuildingSelected()

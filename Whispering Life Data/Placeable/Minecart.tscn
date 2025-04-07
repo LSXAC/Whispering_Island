@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cjyetki082f0p"]
 
 [ext_resource type="Script" uid="uid://bfdpgy14queaf" path="res://Placeable/Minecart.cs" id="1_l32ce"]
-[ext_resource type="Texture2D" uid="uid://cb634fgv247qi" path="res://Sprites/Chest_Building_Sprite.png" id="2_ntmmq"]
+[ext_resource type="Texture2D" uid="uid://cujtfa5wi4dgp" path="res://Sprites/Minecart.png" id="2_l32ce"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_jjxv8"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="4_dmls6"]
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_wc0v6"]
@@ -30,11 +30,10 @@ collision_shape = NodePath("MachineCollision")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-8, -4.95833)
-scale = Vector2(0.5, 0.354167)
-texture = ExtResource("2_ntmmq")
+position = Vector2(-8, -7)
+texture = ExtResource("2_l32ce")
 centered = false
-offset = Vector2(-16, -34)
+offset = Vector2(-8, -12)
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("3_jjxv8")

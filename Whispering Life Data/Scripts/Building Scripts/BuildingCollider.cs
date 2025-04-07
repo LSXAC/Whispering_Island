@@ -52,6 +52,7 @@ public partial class BuildingCollider : Area2D
                 if (node is RailArea)
                 {
                     on_building = true;
+                    Building_Placer.moveable_selected_parent = node.GetParent<Node2D>();
                     break;
                 }
                 continue;
