@@ -1,7 +1,6 @@
-[gd_scene load_steps=31 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=30 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" uid="uid://sxd7avtys7n7" path="res://Scripts/Manager Scripts/Game_Manager.cs" id="1_kw8xi"]
-[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://Dialogues/Balloon.tscn" id="2_0anla"]
 [ext_resource type="Script" uid="uid://cwonaacplejxj" path="res://Scripts/Building Scripts/Building_Placer.cs" id="2_2ikn4"]
 [ext_resource type="PackedScene" uid="uid://njw4so7o83dw" path="res://Prefabs/player.tscn" id="2_sny21"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tileset Objects/BuildingTiles.tres" id="3_gu3ih"]
@@ -35,7 +34,6 @@
 y_sort_enabled = true
 script = ExtResource("1_kw8xi")
 building_placer = NodePath("BuildingManager/BuildingPlacer")
-dialogeScene = ExtResource("2_0anla")
 
 [node name="BuildingManager" type="Node2D" parent="."]
 

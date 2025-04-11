@@ -31,10 +31,20 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]
 
-general/balloon_path="res://Dialogues/Balloon.tscn"
-general/uses_dotnet=true
-general/default_csv_locale="de"
-general/include_all_responses=true
+editor/new_file_template="~ this_is_a_node_title
+Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- First one
+	Nathan: You picked the first one.
+- Second one
+	Nathan: You picked the second one.
+- Start again => this_is_a_node_title
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END"
+editor/translations/default_csv_locale="de"
+runtime/balloon_path="res://Dialogues/Balloon.tscn"
+runtime/advanced/uses_dotnet=true
 
 [display]
 

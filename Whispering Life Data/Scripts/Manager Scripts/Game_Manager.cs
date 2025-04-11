@@ -11,9 +11,6 @@ public partial class Game_Manager : Node2D
     [Export]
     public Building_Placer building_placer;
 
-    [Export]
-    public PackedScene dialogeScene;
-
     public static CanvasLayer current_activ_canvaslayer = null;
 
     public static Game_Manager INSTANCE = null;
