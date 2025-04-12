@@ -30,7 +30,7 @@ collision_shape = NodePath("MachineCollision")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, 2)
+position = Vector2(-8, -8)
 texture = ExtResource("2_l32ce")
 centered = false
 offset = Vector2(-8, -12)
@@ -47,14 +47,14 @@ enabled = false
 tile_set = ExtResource("4_dmls6")
 
 [node name="MachineCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(-8, -11)
 shape = SubResource("RectangleShape2D_m0htq")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
-position = Vector2(0, 2)
+position = Vector2(-8, -8)
 scale = Vector2(1, 0.75)
 texture = ExtResource("5_wc0v6")
 
@@ -67,7 +67,7 @@ building_node = NodePath("..")
 building_sprite = NodePath("../BuildingSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
-position = Vector2(16, 16)
+position = Vector2(8, 7)
 shape = SubResource("RectangleShape2D_fk0le")
 
 [node name="Tree" type="Node2D" parent="."]

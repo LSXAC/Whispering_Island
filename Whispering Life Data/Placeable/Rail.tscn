@@ -71,7 +71,6 @@ position = Vector2(-8, -8)
 
 [node name="ItemHolder" parent="." instance=ExtResource("6_oxy0y")]
 y_sort_enabled = true
-position = Vector2(-8, -10)
 
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
 z_index = 1

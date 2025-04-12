@@ -9,6 +9,8 @@ public partial class AnimationManagerBase : Node2D
 
     public void setFrame(int frame, double diff)
     {
+        if (GetTree() == null || !IsInstanceValid(this))
+            return;
         GetTree().CreateTimer(diff).Timeout += () => SetAnim(frame);
     }
 

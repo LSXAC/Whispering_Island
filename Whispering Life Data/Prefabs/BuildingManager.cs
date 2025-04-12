@@ -49,8 +49,8 @@ public partial class BuildingManager : Node2D
                     Database
                         .GetBuildingType(Database.BUILDING_ID.MINECART)
                         .building_scene.Instantiate() as Minecart;
-
                 temp.item_holder.AddChild(cart);
+                cart.Position = rails.minecart_position;
             }
         }
     }
@@ -444,14 +444,19 @@ public partial class BuildingManager : Node2D
     public RailSave CreateRailSave(Rail rail)
     {
         bool has_minecart = false;
+        Vector2 minecart_positon = Vector2.Zero;
         if (rail.item_holder.GetChildCount() > 0)
+        {
             has_minecart = true;
+            minecart_positon = rail.item_holder.GetMinecart().Position;
+        }
 
         RailSave rail_save = new RailSave(
             rail.Position,
             (rail).from_direction,
             (rail).to_direction,
             has_minecart,
+            minecart_positon,
             (rail).current_rotation
         );
         return rail_save;

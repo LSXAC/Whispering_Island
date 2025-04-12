@@ -59,6 +59,14 @@ public partial class ItemHolder : Node2D
         return GetChild<BeltItem>(0);
     }
 
+    public Minecart GetMinecart()
+    {
+        if (GetChildCount() != 0)
+            if (GetChild<Node2D>(0) is Minecart)
+                return GetChild<Minecart>(0);
+        return null;
+    }
+
     public bool hasBeltItem()
     {
         if (GetChildCount() != 0)
