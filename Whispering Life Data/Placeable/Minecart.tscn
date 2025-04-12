@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjyetki082f0p"]
+[gd_scene load_steps=12 format=3 uid="uid://cjyetki082f0p"]
 
 [ext_resource type="Script" uid="uid://bfdpgy14queaf" path="res://Placeable/Minecart.cs" id="1_l32ce"]
 [ext_resource type="Texture2D" uid="uid://cujtfa5wi4dgp" path="res://Sprites/Minecart.png" id="2_l32ce"]
+[ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Scripts/Building Scripts/ChestBase.cs" id="2_raxwe"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_jjxv8"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="4_dmls6"]
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_wc0v6"]
@@ -27,6 +28,12 @@ title = "BUILDING_MINECART"
 description = "BUILDING_MINECART_DESC"
 sprite = NodePath("BuildingSprite")
 collision_shape = NodePath("MachineCollision")
+
+[node name="Chest" type="Node2D" parent="." node_paths=PackedStringArray("givers", "takers")]
+script = ExtResource("2_raxwe")
+givers = Array[int]([])
+takers = Array[int]([])
+disable_mouse_interaction = true
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true

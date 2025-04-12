@@ -307,6 +307,7 @@ public partial class GameMenu : CanvasLayer
         CloseAllTabs();
         inventory_tab.Visible = true;
         minecart_tab.Visible = true;
+        chest_tab.Visible = true;
     }
 
     public void OnOpenAdminTab()
