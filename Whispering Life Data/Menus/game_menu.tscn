@@ -656,6 +656,7 @@ text = "Toolbar"
 vertical_alignment = 1
 
 [node name="ChestTab" type="ColorRect" parent="Background"]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -669,6 +670,7 @@ grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
 
 [node name="Label" type="Label" parent="Background/ChestTab"]
+layout_mode = 0
 offset_left = 153.0
 offset_right = 221.0
 offset_bottom = 23.0
@@ -904,6 +906,7 @@ offset_bottom = -2.0
 translation_string = "GAMEMENU_FURNACE"
 
 [node name="Border" type="ColorRect" parent="Background/FurnaceTab"]
+layout_mode = 0
 offset_top = -2.0
 offset_right = 4.0
 offset_bottom = 278.0

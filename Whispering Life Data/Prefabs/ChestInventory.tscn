@@ -14,7 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_r1544")
 inventory_items = []
 
-[node name="GridContainer20" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -22,140 +22,140 @@ theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 columns = 4
 
-[node name="Slot0" type="Button" parent="GridContainer20"]
+[node name="Slot0" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot1" type="Button" parent="GridContainer20"]
+[node name="Slot1" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot2" type="Button" parent="GridContainer20"]
+[node name="Slot2" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot3" type="Button" parent="GridContainer20"]
+[node name="Slot3" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot4" type="Button" parent="GridContainer20"]
+[node name="Slot4" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot5" type="Button" parent="GridContainer20"]
+[node name="Slot5" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot6" type="Button" parent="GridContainer20"]
+[node name="Slot6" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot7" type="Button" parent="GridContainer20"]
+[node name="Slot7" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot8" type="Button" parent="GridContainer20"]
+[node name="Slot8" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot9" type="Button" parent="GridContainer20"]
+[node name="Slot9" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot10" type="Button" parent="GridContainer20"]
+[node name="Slot10" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot11" type="Button" parent="GridContainer20"]
+[node name="Slot11" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot12" type="Button" parent="GridContainer20"]
+[node name="Slot12" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot13" type="Button" parent="GridContainer20"]
+[node name="Slot13" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot14" type="Button" parent="GridContainer20"]
+[node name="Slot14" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot15" type="Button" parent="GridContainer20"]
+[node name="Slot15" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot16" type="Button" parent="GridContainer20"]
+[node name="Slot16" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot17" type="Button" parent="GridContainer20"]
+[node name="Slot17" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot18" type="Button" parent="GridContainer20"]
+[node name="Slot18" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
 button_mask = 3
 script = ExtResource("2_ols8c")
 
-[node name="Slot19" type="Button" parent="GridContainer20"]
+[node name="Slot19" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_3btuv")
