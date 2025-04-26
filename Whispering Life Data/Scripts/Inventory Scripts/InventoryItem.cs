@@ -23,14 +23,15 @@ public partial class InventoryItem : TextureRect
 
     public void init(ItemInfo item_info, int current_durability = -1)
     {
-        this.Size = new Vector2(40, 40);
-        this.Position = new Vector2(4, 4);
+        this.Size = new Vector2(20, 20);
+        this.Position = new Vector2(6, 6);
         this.item_info = item_info;
         Label l = new Label { ZIndex = 1 };
         l.HorizontalAlignment = HorizontalAlignment.Right;
-        l.CustomMinimumSize = new Vector2(42, 46);
+        l.AddThemeFontSizeOverride("font_size", 10);
+        l.CustomMinimumSize = new Vector2(30, 32);
+        l.Position = new Vector2(-6, -6);
         l.VerticalAlignment = VerticalAlignment.Bottom;
-        l.HorizontalAlignment = HorizontalAlignment.Right;
         amount_label = l;
         UpdateToolTip();
         //57cb00

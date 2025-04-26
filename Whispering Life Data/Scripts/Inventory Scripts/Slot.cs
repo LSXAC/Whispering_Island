@@ -270,16 +270,16 @@ public partial class Slot : Button
                 if (is_export_slot)
                     return;
 
-                if (ItemCanBeHalfed(Inventory.clicked_item))
+                if (Inventory.clicked_item.amount > 0)
                     if (btn.ButtonMask == MouseButtonMask.Right)
                     {
                         NewSlot(
                             item_array,
                             (int)Inventory.clicked_item.item_info.unique_id,
-                            HalfAmountNextInt(Inventory.clicked_item.amount),
+                            1,
                             Inventory.clicked_item.current_durability
                         );
-                        Inventory.clicked_item.amount = (int)(Inventory.clicked_item.amount / 2.0);
+                        Inventory.clicked_item.amount -= 1;
                         return;
                     }
 
@@ -292,6 +292,7 @@ public partial class Slot : Button
                 ClearClickedItem();
                 return;
             }
+
             if (slot_is_switchable)
             {
                 if (check_slot_type)
@@ -325,12 +326,8 @@ public partial class Slot : Button
                         <= Inventory.clicked_item.item_info.max_slot_amount
                     )
                     {
-                        UpdateSlot(
-                            item_array,
-                            GetAmountOfSlot(item_array)
-                                + HalfAmountNextInt(Inventory.clicked_item.amount)
-                        );
-                        Inventory.clicked_item.amount = HalfAmount(Inventory.clicked_item.amount);
+                        UpdateSlot(item_array, GetAmountOfSlot(item_array) + 1);
+                        Inventory.clicked_item.amount -= 1;
                     }
                     else
                     {
