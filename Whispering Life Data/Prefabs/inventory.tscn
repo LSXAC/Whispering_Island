@@ -19,7 +19,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
-columns = 4
+columns = 5
 
 [node name="Slot0" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -155,6 +155,76 @@ button_mask = 3
 script = ExtResource("3_gv68e")
 
 [node name="Slot19" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("2_35pps")
+button_mask = 3
+script = ExtResource("3_gv68e")
+
+[node name="Slot20" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("2_35pps")
+button_mask = 3
+script = ExtResource("3_gv68e")
+
+[node name="Slot21" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("2_35pps")
+button_mask = 3
+script = ExtResource("3_gv68e")
+
+[node name="Slot22" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("2_35pps")
+button_mask = 3
+script = ExtResource("3_gv68e")
+
+[node name="Slot23" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("2_35pps")
+button_mask = 3
+script = ExtResource("3_gv68e")
+
+[node name="Slot24" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("2_35pps")
+button_mask = 3
+script = ExtResource("3_gv68e")
+
+[node name="Slot25" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("2_35pps")
+button_mask = 3
+script = ExtResource("3_gv68e")
+
+[node name="Slot26" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("2_35pps")
+button_mask = 3
+script = ExtResource("3_gv68e")
+
+[node name="Slot27" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("2_35pps")
+button_mask = 3
+script = ExtResource("3_gv68e")
+
+[node name="Slot28" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("2_35pps")
+button_mask = 3
+script = ExtResource("3_gv68e")
+
+[node name="Slot29" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("2_35pps")

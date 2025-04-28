@@ -7,7 +7,7 @@ using Godot.Collections;
 public partial class CharacterSave : Resource
 {
     [Export]
-    public ItemSave[] inventory_items = new ItemSave[20];
+    public ItemSave[] inventory_items = new ItemSave[30];
 
     [Export]
     public ItemSave[] equipped_armor = new ItemSave[4];

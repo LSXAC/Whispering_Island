@@ -13,6 +13,9 @@ public partial class RailStation : ChestBase
 
         Debug.Print("RailStation");
         GameMenu.INSTANCE.OnOpenRailStationTab();
+        ChestInventory.INSTANCE = (
+            (RailStationTab)GameMenu.INSTANCE.rail_station_tab
+        ).chest_inventory;
         ChestInventory.INSTANCE.OpenChest(this);
     }
 }

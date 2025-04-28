@@ -89,7 +89,7 @@ public partial class BuildingManager : Node2D
     {
         if (beltsave.holded_item != null)
         {
-            BeltItem item = (BeltItem)belt_item.Instantiate() as BeltItem;
+            BeltItem item = (BeltItem)belt_item.Instantiate();
 
             Item ite = new Item(beltsave.holded_item, 1);
             item.InitBeltItem(ite);
@@ -145,31 +145,8 @@ public partial class BuildingManager : Node2D
     {
         foreach (BeltMachineSave belt_machine_save in belt_machine_saves)
         {
-            Node2D belt = null;
-
-            if (belt_machine_save.id == Database.BUILDING_ID.BELT_COMBINER_2x1)
-                belt =
-                    Database
-                        .GetBuildingType(Database.BUILDING_ID.BELT_COMBINER_2x1)
-                        .building_scene.Instantiate() as BeltCombiner;
-
-            if (belt_machine_save.id == Database.BUILDING_ID.BELT_COMBINER_3x1)
-                belt =
-                    Database
-                        .GetBuildingType(Database.BUILDING_ID.BELT_COMBINER_3x1)
-                        .building_scene.Instantiate() as BeltCombiner;
-
-            if (belt_machine_save.id == Database.BUILDING_ID.BELT_SPLITTER_1x2)
-                belt =
-                    Database
-                        .GetBuildingType(Database.BUILDING_ID.BELT_SPLITTER_1x2)
-                        .building_scene.Instantiate() as BeltSplitter;
-
-            if (belt_machine_save.id == Database.BUILDING_ID.BELT_SPLITTER_1x3)
-                belt =
-                    Database
-                        .GetBuildingType(Database.BUILDING_ID.BELT_SPLITTER_1x3)
-                        .building_scene.Instantiate() as BeltSplitter;
+            Node2D belt =
+                Database.GetBuildingType(belt_machine_save.id).building_scene.Instantiate() as Belt;
 
             if (belt == null)
                 return;
@@ -236,12 +213,9 @@ public partial class BuildingManager : Node2D
     {
         foreach (PlaceableSave ps in placeable_saves)
         {
-            placeable_building temp = null;
-            if (ps.building_id == Database.BUILDING_ID.RESEARCH_TABLE)
-                temp =
-                    Database
-                        .GetBuildingType(Database.BUILDING_ID.RESEARCH_TABLE)
-                        .building_scene.Instantiate() as ResearchTable;
+            placeable_building temp =
+                Database.GetBuildingType(ps.building_id).building_scene.Instantiate()
+                as placeable_building;
 
             if (temp == null)
                 return;
@@ -253,34 +227,11 @@ public partial class BuildingManager : Node2D
 
     private MachineBase SelectSavedMachine(MachineSave machine_save)
     {
-        if (machine_save.building_id == Database.BUILDING_ID.TREE_GROWTHER)
-            return Database
-                    .GetBuildingType(Database.BUILDING_ID.TREE_GROWTHER)
-                    .building_scene.Instantiate() as ProductionMachine;
-
-        if (machine_save.building_id == Database.BUILDING_ID.QUARRY)
-            return Database
-                    .GetBuildingType(Database.BUILDING_ID.QUARRY)
-                    .building_scene.Instantiate() as ProductionMachine;
-
-        if (machine_save.building_id == Database.BUILDING_ID.FURNACE)
-        {
-            MachineBase temp =
-                Database.GetBuildingType(Database.BUILDING_ID.FURNACE).building_scene.Instantiate()
-                as ProcessBuilding;
-            ((ProcessBuilding)temp).current_recipe = machine_save.current_recipe;
-            return temp;
-        }
-
-        if (machine_save.building_id == Database.BUILDING_ID.CHEST)
-            return Database.GetBuildingType(Database.BUILDING_ID.CHEST).building_scene.Instantiate()
-                as ChestBase;
-
-        if (machine_save.building_id == Database.BUILDING_ID.TRASHCAN)
-            return Database
-                    .GetBuildingType(Database.BUILDING_ID.TRASHCAN)
-                    .building_scene.Instantiate() as Trashcan;
-
+        MachineBase machine =
+            Database.GetBuildingType(machine_save.building_id).building_scene.Instantiate()
+            as MachineBase;
+        if (machine != null)
+            return machine;
         return null;
     }
 
@@ -426,17 +377,17 @@ public partial class BuildingManager : Node2D
     {
         BeltSave belt_save = new BeltSave(
             belt.Position,
-            (belt).from_direction,
-            (belt).to_direction,
+            belt.from_direction,
+            belt.to_direction,
             null,
-            (belt).current_rotation
+            belt.current_rotation
         );
 
-        if ((belt).item_holder.hasBeltItem())
+        if (belt.item_holder.hasBeltItem())
         {
-            belt_save.holded_item = (belt).item_holder.GetBeltItem().item.item_info;
-            belt_save.beltItem_moving = (belt).item_holder.moving_item;
-            belt_save.beltItem_position = (belt).item_holder.GetBeltItem().Position;
+            belt_save.holded_item = belt.item_holder.GetBeltItem().item.item_info;
+            belt_save.beltItem_moving = belt.item_holder.moving_item;
+            belt_save.beltItem_position = belt.item_holder.GetBeltItem().Position;
         }
         return belt_save;
     }
@@ -453,11 +404,11 @@ public partial class BuildingManager : Node2D
 
         RailSave rail_save = new RailSave(
             rail.Position,
-            (rail).from_direction,
-            (rail).to_direction,
+            rail.from_direction,
+            rail.to_direction,
             has_minecart,
             minecart_positon,
-            (rail).current_rotation
+            rail.current_rotation
         );
         return rail_save;
     }

@@ -9,6 +9,7 @@ public partial class ChestInventory : InventoryBase
     public override void _Ready()
     {
         INSTANCE = this;
+        slot_amount = 20;
         SetSlots();
     }
 

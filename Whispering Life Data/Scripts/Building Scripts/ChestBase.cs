@@ -15,6 +15,7 @@ public partial class ChestBase : MachineBase
             return;
 
         GameMenu.INSTANCE.OnOpenChestTab();
+        ChestInventory.INSTANCE = ((ChestTab)GameMenu.INSTANCE.chest_tab).chest_inventory;
         ChestInventory.INSTANCE.OpenChest(this);
     }
 

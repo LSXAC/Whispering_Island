@@ -10,6 +10,7 @@ public partial class Inventory : InventoryBase
     {
         INSTANCE = this;
         base._Ready();
+        slot_amount = 30;
         SetSlots();
     }
 

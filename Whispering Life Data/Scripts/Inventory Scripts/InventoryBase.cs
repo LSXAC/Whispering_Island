@@ -8,7 +8,9 @@ public partial class InventoryBase : SlotUpdater
     public Array<Slot> slots = new Array<Slot>();
 
     [Export]
-    public ItemSave[] inventory_items = new ItemSave[20];
+    public ItemSave[] inventory_items;
+
+    public int slot_amount = 30;
     public Dictionary<ITEM_ID, ItemInfo> item_Types = new Dictionary<ITEM_ID, ItemInfo>()
     {
         { ITEM_ID.WOOD, ResourceLoader.Load<ItemInfo>("res://Items/Wood.tres") },
@@ -435,7 +437,7 @@ public partial class InventoryBase : SlotUpdater
 
     public void LoadInventoryFromSave(ItemSave[] item_save)
     {
-        inventory_items = new ItemSave[20];
+        inventory_items = new ItemSave[slot_amount];
         inventory_items = item_save;
         UpdateInventoryUI();
     }
