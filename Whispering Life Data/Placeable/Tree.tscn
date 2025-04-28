@@ -100,12 +100,12 @@ offset_bottom = -53.0
 position = Vector2(-8, -13)
 emitting = false
 amount = 15
-process_material = SubResource("ParticleProcessMaterial_n07ev")
 texture = ExtResource("7_c8ycu")
 lifetime = 0.3
 one_shot = true
 explosiveness = 0.7
 randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_n07ev")
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
 z_index = -2

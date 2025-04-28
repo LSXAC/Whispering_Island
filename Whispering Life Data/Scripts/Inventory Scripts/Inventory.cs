@@ -9,8 +9,8 @@ public partial class Inventory : InventoryBase
     public override void _Ready()
     {
         INSTANCE = this;
-        base._Ready();
         slot_amount = 30;
+        base._Ready();
         SetSlots();
     }
 

@@ -238,7 +238,7 @@ public partial class BuildingManager : Node2D
     public void LoadPlacedObjects()
     {
         foreach (Node2D node in GetChildren())
-            node.QueueFree();
+            node.Free();
 
         LoadBelts();
         LoadMachines();
@@ -247,6 +247,12 @@ public partial class BuildingManager : Node2D
         LoadResources();
         LoadBeltMachines();
         LoadRails();
+    }
+
+    public void ClearAllObjects()
+    {
+        foreach (Node2D node in GetChildren())
+            node.QueueFree();
     }
 
     public void SavePlacedObjects()
@@ -262,12 +268,16 @@ public partial class BuildingManager : Node2D
         foreach (Node2D node in GetChildren())
         {
             if (node is ResourceObject)
+            {
                 resource_obj_saves.Add(((ResourceObject)node).SaveResourceObject());
+                continue;
+            }
 
             if (node is Rail)
             {
                 RailSave rail_save = CreateRailSave((Rail)node);
                 rail_saves.Add(rail_save);
+                continue;
             }
 
             if (node is Belt)

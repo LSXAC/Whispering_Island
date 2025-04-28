@@ -126,6 +126,11 @@ public partial class InventoryBase : SlotUpdater
         MYST_FIBRE_SEED
     }
 
+    public override void _Ready()
+    {
+        inventory_items = new ItemSave[slot_amount];
+    }
+
     public void SetSlots()
     {
         foreach (Slot s in GetNode<GridContainer>($"GridContainer").GetChildren())

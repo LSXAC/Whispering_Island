@@ -15,8 +15,8 @@ public partial class Minecart : MoveableBase
             return;
 
         MinecartTab.current_minecart = this;
-        GameMenu.INSTANCE.OnOpenMinecartTab();
         ChestInventory.INSTANCE = ((MinecartTab)GameMenu.INSTANCE.minecart_tab).chest_inventory;
+        GameMenu.INSTANCE.OnOpenMinecartTab();
         ChestInventory.INSTANCE.OpenChest(chestBase);
     }
 }

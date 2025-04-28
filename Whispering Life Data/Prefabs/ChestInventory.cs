@@ -10,6 +10,7 @@ public partial class ChestInventory : InventoryBase
     {
         INSTANCE = this;
         slot_amount = 20;
+        inventory_items = new ItemSave[slot_amount];
         SetSlots();
     }
 
