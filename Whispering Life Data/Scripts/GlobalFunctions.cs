@@ -7,6 +7,7 @@ using Godot.Collections;
 public partial class GlobalFunctions : Node2D
 {
     public static GlobalFunctions INSTANCE;
+    public static float transport_moving_speed = 10f;
 
     public override void _Ready()
     {
@@ -16,6 +17,11 @@ public partial class GlobalFunctions : Node2D
     public static int RoundToNextInt(float id)
     {
         return (int)(id + 0.5f);
+    }
+
+    public static float GetTransportMovingSpeed()
+    {
+        return transport_moving_speed;
     }
 
     public static bool HasResearchLevel(Inventory.ITEM_ID id, Database.UPGRADE_LEVEL level)

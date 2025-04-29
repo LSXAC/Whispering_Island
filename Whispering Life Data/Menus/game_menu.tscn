@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=83 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://Scripts/Menu Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -59,6 +59,7 @@
 [ext_resource type="Resource" uid="uid://ccleudbhqsed1" path="res://Recipes/Armor/Mystic_Armor_Shoes_Recipe.tres" id="34_m32cx"]
 [ext_resource type="Resource" uid="uid://de441nblgkr1a" path="res://Recipes/Agriculture/Carrot_Seeds_Recipe.tres" id="35_3p2ru"]
 [ext_resource type="Resource" uid="uid://bwkkpl8p6xpi1" path="res://Recipes/Agriculture/Corn_Seeds_Recipe.tres" id="36_bw518"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="37_kisma"]
 [ext_resource type="Script" uid="uid://b3t4ic6iwowss" path="res://Menus/SoundSlider.cs" id="37_vnnff"]
 [ext_resource type="Resource" uid="uid://7bvesh06e55y" path="res://Recipes/Agriculture/Potato_Seeds_Recipe.tres" id="37_xn11s"]
 [ext_resource type="Resource" uid="uid://c5ehrqs2knbf8" path="res://Recipes/Agriculture/Wheat_Seeds_Recipe.tres" id="38_sep6l"]
@@ -1885,7 +1886,7 @@ label_translation_string = "CRAFTING_MENU_TOPBAR_RESOURCE_NEEDED"
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = [ExtResource("12_h3bpf"), ExtResource("13_o680h"), ExtResource("30_ai4s4")]
+crafting_recipies = Array[ExtResource("37_kisma")]([ExtResource("12_h3bpf"), ExtResource("13_o680h"), ExtResource("30_ai4s4")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuBasic"]
 custom_minimum_size = Vector2(320, 222)
@@ -1901,7 +1902,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = [ExtResource("19_pe00a"), ExtResource("20_ujqyg"), ExtResource("16_1o4en"), ExtResource("17_7eamj")]
+crafting_recipies = Array[ExtResource("37_kisma")]([ExtResource("19_pe00a"), ExtResource("20_ujqyg"), ExtResource("16_1o4en"), ExtResource("17_7eamj")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuTools"]
 custom_minimum_size = Vector2(320, 220)
@@ -1915,7 +1916,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = [ExtResource("18_vv5t7"), ExtResource("19_f07lv"), ExtResource("20_jycfp"), ExtResource("21_13841")]
+crafting_recipies = Array[ExtResource("37_kisma")]([ExtResource("18_vv5t7"), ExtResource("19_f07lv"), ExtResource("20_jycfp"), ExtResource("21_13841")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuToolparts"]
 custom_minimum_size = Vector2(320, 220)
@@ -1929,7 +1930,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = [ExtResource("32_d7b8n"), ExtResource("31_33fii"), ExtResource("33_d8q64"), ExtResource("34_m32cx")]
+crafting_recipies = Array[ExtResource("37_kisma")]([ExtResource("32_d7b8n"), ExtResource("31_33fii"), ExtResource("33_d8q64"), ExtResource("34_m32cx")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuArmor"]
 custom_minimum_size = Vector2(320, 220)
@@ -1943,7 +1944,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = [ExtResource("39_um0ua"), ExtResource("40_rv3r3"), ExtResource("41_bd22e"), ExtResource("35_3p2ru"), ExtResource("36_bw518"), ExtResource("37_xn11s"), ExtResource("38_sep6l")]
+crafting_recipies = Array[ExtResource("37_kisma")]([ExtResource("39_um0ua"), ExtResource("40_rv3r3"), ExtResource("41_bd22e"), ExtResource("35_3p2ru"), ExtResource("36_bw518"), ExtResource("37_xn11s"), ExtResource("38_sep6l")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuAgriculture"]
 custom_minimum_size = Vector2(320, 220)

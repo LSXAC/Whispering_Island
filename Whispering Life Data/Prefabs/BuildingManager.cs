@@ -49,6 +49,7 @@ public partial class BuildingManager : Node2D
                     Database
                         .GetBuildingType(Database.BUILDING_ID.MINECART)
                         .building_scene.Instantiate() as Minecart;
+                cart.chestBase.chest_items = rails.chest_items;
                 temp.item_holder.AddChild(cart);
                 cart.Position = rails.minecart_position;
             }
@@ -406,10 +407,12 @@ public partial class BuildingManager : Node2D
     {
         bool has_minecart = false;
         Vector2 minecart_positon = Vector2.Zero;
+        ItemSave[] chest_items = new ItemSave[20];
         if (rail.item_holder.GetChildCount() > 0)
         {
             has_minecart = true;
             minecart_positon = rail.item_holder.GetMinecart().Position;
+            chest_items = rail.item_holder.GetMinecart().chestBase.chest_items;
         }
 
         RailSave rail_save = new RailSave(
@@ -418,6 +421,7 @@ public partial class BuildingManager : Node2D
             rail.to_direction,
             has_minecart,
             minecart_positon,
+            chest_items,
             rail.current_rotation
         );
         return rail_save;

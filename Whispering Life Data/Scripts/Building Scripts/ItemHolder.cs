@@ -27,6 +27,10 @@ public partial class ItemHolder : Node2D
         if (item is Node2D)
         {
             item.Position = item.Position.MoveToward(Vector2.Zero, speed * (float)delta);
+
+            if (GetChild<Node2D>(0) is Minecart mc)
+                mc.moving_vector = item.Position.MoveToward(Vector2.Zero, speed * (float)delta);
+
             if (item.Position == Vector2.Zero)
             {
                 item.Position = Vector2.Zero;

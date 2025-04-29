@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjyetki082f0p"]
+[gd_scene load_steps=13 format=3 uid="uid://cjyetki082f0p"]
 
 [ext_resource type="Script" uid="uid://bfdpgy14queaf" path="res://Placeable/Minecart.cs" id="1_l32ce"]
 [ext_resource type="Texture2D" uid="uid://cujtfa5wi4dgp" path="res://Sprites/Minecart.png" id="2_l32ce"]
 [ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Scripts/Building Scripts/ChestBase.cs" id="2_raxwe"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_jjxv8"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="4_dmls6"]
+[ext_resource type="Texture2D" uid="uid://da3a85kqd3k00" path="res://Sprites/Minecart_TOP.png" id="4_ntmmq"]
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_wc0v6"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/MouseArea.cs" id="6_wovkf"]
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="7_4m3td"]
@@ -16,11 +17,14 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(16, 16)
 
-[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("building_collider_manager", "sprite", "collision_shape")]
+[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("chestBase", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_l32ce")
+chestBase = NodePath("Chest")
+minecart_top = ExtResource("4_ntmmq")
+minecart_side = ExtResource("2_l32ce")
 building_id = 28
 tile_types = Array[int]([])
 building_collider_manager = NodePath("BuildingAreas")
@@ -38,7 +42,7 @@ disable_mouse_interaction = true
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(-8, -8)
-texture = ExtResource("2_l32ce")
+texture = ExtResource("4_ntmmq")
 centered = false
 offset = Vector2(-8, -12)
 
@@ -99,4 +103,3 @@ wait_time = 2.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
-[connection signal="timeout" from="CraftingTimer" to="." method="OnCraftingTimerTimeout"]
