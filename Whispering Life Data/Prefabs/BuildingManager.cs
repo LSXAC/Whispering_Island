@@ -196,7 +196,15 @@ public partial class BuildingManager : Node2D
 
                 ((ProcessBuilding)temp).fuel_left = machine_save.fuel_left;
             }
-
+            if (temp is RailStation)
+            {
+                for (int i = 0; i < machine_save.chest_items.Length; i++)
+                    ((RailStation)temp).chest_in.chest_items[i] = machine_save.chest_items[i];
+                for (int i = 0; i < machine_save.second_chest_items.Length; i++)
+                    ((RailStation)temp).chest_out.chest_items[i] = machine_save.second_chest_items[
+                        i
+                    ];
+            }
             if (temp is ChestBase)
             {
                 for (int i = 0; i < machine_save.chest_items.Length; i++)
@@ -361,6 +369,11 @@ public partial class BuildingManager : Node2D
                     for (int i = 0; i < 3; i++)
                         ms.furnace_slots[i] = ((ProcessBuilding)node).item_array[i];
                     ms.fuel_left = ((ProcessBuilding)node).fuel_left;
+                }
+                if (node is RailStation)
+                {
+                    ms.chest_items = ((RailStation)node).chest_in.chest_items;
+                    ms.second_chest_items = ((RailStation)node).chest_out.chest_items;
                 }
 
                 if (node is ChestBase || node is Trashcan)

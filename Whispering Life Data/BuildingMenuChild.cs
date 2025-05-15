@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class BuildingMenuChild : Control
@@ -29,19 +30,26 @@ public partial class BuildingMenuChild : Control
     public void InitBuildingMenuChild(BuildingType building_type)
     {
         this.building_tye = building_type;
-
         Building_Node placeable = building_tye.building_scene.Instantiate() as Building_Node;
-        title_label.Text = ((placeable_building)placeable).GetTitle();
-        textureRect.Texture = ((placeable_building)placeable).GetSprite().Texture;
-        description_label.Text = ((placeable_building)placeable).GetDescription();
+        try
+        {
+            title_label.Text = ((placeable_building)placeable).GetTitle();
+            textureRect.Texture = ((placeable_building)placeable).GetSprite().Texture;
+            description_label.Text = ((placeable_building)placeable).GetDescription();
 
-        Recipe recipe = new Recipe();
-        recipe = building_type.building_recipe;
+            Recipe recipe = new Recipe();
+            recipe = building_type.building_recipe;
 
-        if (item_row_manager.CanCreate(recipe.requiered_items))
-            build_button.Disabled = false;
-        else
-            build_button.Disabled = true;
+            if (item_row_manager.CanCreate(recipe.requiered_items))
+                build_button.Disabled = false;
+            else
+                build_button.Disabled = true;
+        }
+        catch (Exception e)
+        {
+            Debug.Print("Objekt: " + placeable.Name + " has problems");
+            Debug.Print(e.StackTrace);
+        }
     }
 
     public void OnSelectButton()

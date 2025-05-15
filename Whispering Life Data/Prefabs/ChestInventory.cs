@@ -4,7 +4,7 @@ using Godot;
 public partial class ChestInventory : InventoryBase
 {
     public static ChestInventory INSTANCE = null;
-    public ChestBase current_chest;
+    public static ChestBase current_chest;
 
     public override void _Ready()
     {
@@ -14,9 +14,8 @@ public partial class ChestInventory : InventoryBase
         SetSlots();
     }
 
-    public void OpenChest(ChestBase chest)
+    public void OpenChest()
     {
-        current_chest = chest;
-        LoadInventoryFromSave(chest.chest_items);
+        LoadInventoryFromSave(current_chest.chest_items);
     }
 }

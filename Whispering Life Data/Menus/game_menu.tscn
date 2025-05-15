@@ -59,7 +59,6 @@
 [ext_resource type="Resource" uid="uid://ccleudbhqsed1" path="res://Recipes/Armor/Mystic_Armor_Shoes_Recipe.tres" id="34_m32cx"]
 [ext_resource type="Resource" uid="uid://de441nblgkr1a" path="res://Recipes/Agriculture/Carrot_Seeds_Recipe.tres" id="35_3p2ru"]
 [ext_resource type="Resource" uid="uid://bwkkpl8p6xpi1" path="res://Recipes/Agriculture/Corn_Seeds_Recipe.tres" id="36_bw518"]
-[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="37_kisma"]
 [ext_resource type="Script" uid="uid://b3t4ic6iwowss" path="res://Menus/SoundSlider.cs" id="37_vnnff"]
 [ext_resource type="Resource" uid="uid://7bvesh06e55y" path="res://Recipes/Agriculture/Potato_Seeds_Recipe.tres" id="37_xn11s"]
 [ext_resource type="Resource" uid="uid://c5ehrqs2knbf8" path="res://Recipes/Agriculture/Wheat_Seeds_Recipe.tres" id="38_sep6l"]
@@ -110,6 +109,12 @@ corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kisma"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_top = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
 
 [node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "rail_station_tab", "minecart_tab", "header_container")]
 process_mode = 3
@@ -1886,7 +1891,7 @@ label_translation_string = "CRAFTING_MENU_TOPBAR_RESOURCE_NEEDED"
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = Array[ExtResource("37_kisma")]([ExtResource("12_h3bpf"), ExtResource("13_o680h"), ExtResource("30_ai4s4")])
+crafting_recipies = [ExtResource("12_h3bpf"), ExtResource("13_o680h"), ExtResource("30_ai4s4")]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuBasic"]
 custom_minimum_size = Vector2(320, 222)
@@ -1902,7 +1907,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = Array[ExtResource("37_kisma")]([ExtResource("19_pe00a"), ExtResource("20_ujqyg"), ExtResource("16_1o4en"), ExtResource("17_7eamj")])
+crafting_recipies = [ExtResource("19_pe00a"), ExtResource("20_ujqyg"), ExtResource("16_1o4en"), ExtResource("17_7eamj")]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuTools"]
 custom_minimum_size = Vector2(320, 220)
@@ -1916,7 +1921,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = Array[ExtResource("37_kisma")]([ExtResource("18_vv5t7"), ExtResource("19_f07lv"), ExtResource("20_jycfp"), ExtResource("21_13841")])
+crafting_recipies = [ExtResource("18_vv5t7"), ExtResource("19_f07lv"), ExtResource("20_jycfp"), ExtResource("21_13841")]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuToolparts"]
 custom_minimum_size = Vector2(320, 220)
@@ -1930,7 +1935,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = Array[ExtResource("37_kisma")]([ExtResource("32_d7b8n"), ExtResource("31_33fii"), ExtResource("33_d8q64"), ExtResource("34_m32cx")])
+crafting_recipies = [ExtResource("32_d7b8n"), ExtResource("31_33fii"), ExtResource("33_d8q64"), ExtResource("34_m32cx")]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuArmor"]
 custom_minimum_size = Vector2(320, 220)
@@ -1944,7 +1949,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = Array[ExtResource("37_kisma")]([ExtResource("39_um0ua"), ExtResource("40_rv3r3"), ExtResource("41_bd22e"), ExtResource("35_3p2ru"), ExtResource("36_bw518"), ExtResource("37_xn11s"), ExtResource("38_sep6l")])
+crafting_recipies = [ExtResource("39_um0ua"), ExtResource("40_rv3r3"), ExtResource("41_bd22e"), ExtResource("35_3p2ru"), ExtResource("36_bw518"), ExtResource("37_xn11s"), ExtResource("38_sep6l")]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuAgriculture"]
 custom_minimum_size = Vector2(320, 220)
@@ -3128,8 +3133,7 @@ text = "Exit Game"
 script = ExtResource("3_pwamf")
 label_translation_string = "MAINMENU_EXIT_GAME"
 
-[node name="RailStationTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("chest_inventory")]
-visible = false
+[node name="RailStationTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("chest_inventory_in", "chest_inventory_out", "container")]
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -3142,7 +3146,9 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
 script = ExtResource("76_6ikjc")
-chest_inventory = NodePath("ChestInventory")
+chest_inventory_in = NodePath("TabContainer/Storage In/ChestInventoryIn")
+chest_inventory_out = NodePath("TabContainer/Storage Out/ChestInventoryOut")
+container = NodePath("TabContainer")
 
 [node name="HeaderColorRect" parent="Background/RailStationTab" instance=ExtResource("11_45saq")]
 layout_mode = 1
@@ -3166,6 +3172,9 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="Background/RailStationTab/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
 text = "Railstation"
 
 [node name="HeaderColorRect2" parent="Background/RailStationTab" instance=ExtResource("11_45saq")]
@@ -3183,28 +3192,50 @@ offset_right = 4.0
 offset_bottom = 278.0
 color = Color(0, 0, 0, 1)
 
-[node name="ChestInventory" parent="Background/RailStationTab" instance=ExtResource("4_eoykc")]
+[node name="TabContainer" type="TabContainer" parent="Background/RailStationTab"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 72.0
+offset_right = 299.0
+offset_bottom = 262.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_kisma")
+tab_alignment = 1
+current_tab = 0
+clip_tabs = false
+
+[node name="Storage In" type="Control" parent="Background/RailStationTab/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ChestInventoryIn" parent="Background/RailStationTab/TabContainer/Storage In" instance=ExtResource("4_eoykc")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 32.0
-offset_top = 105.0
-offset_right = 276.0
-offset_bottom = 318.0
+offset_left = 35.0
+offset_top = 16.0
+offset_right = 279.0
+offset_bottom = 229.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Label" type="Label" parent="Background/RailStationTab"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 79.0
-offset_right = 100.0
-offset_bottom = 102.0
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
-text = "Storage"
-vertical_alignment = 1
+[node name="Storage Out" type="Control" parent="Background/RailStationTab/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ChestInventoryOut" parent="Background/RailStationTab/TabContainer/Storage Out" instance=ExtResource("4_eoykc")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 35.0
+offset_top = 16.0
+offset_right = 279.0
+offset_bottom = 229.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="MinecartTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("engine_status_label", "chest_inventory")]
 visible = false
@@ -3373,6 +3404,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="visibility_changed" from="Background/SettingsTab/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" to="Background/SettingsTab/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" method="OnVisiblityChange"]
 [connection signal="item_selected" from="Background/SettingsTab/VBoxContainer/Language/PanelContainer/MarginContainerRight/OptionButton" to="Background/SettingsTab" method="OnItemSelected"]
 [connection signal="pressed" from="Background/SettingsTab/VBoxContainer/ExitGame/PanelContainer/MarginContainerRight/Button" to="." method="OnBackToMainMenu"]
+[connection signal="tab_clicked" from="Background/RailStationTab/TabContainer" to="Background/RailStationTab" method="OnTabSelected"]
 [connection signal="visibility_changed" from="Background/MinecartTab" to="Background/MinecartTab" method="OnVisiblityChange"]
 [connection signal="pressed" from="Background/MinecartTab/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StartEngineBtn" to="Background/MinecartTab" method="StartEngine"]
 [connection signal="pressed" from="Background/MinecartTab/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StopEngineBtn" to="Background/MinecartTab" method="StopEngine"]

@@ -7,18 +7,6 @@ public partial class ChestBase : MachineBase
     [Export]
     public ItemSave[] chest_items = new ItemSave[20];
 
-    public override void OnMouseClick()
-    {
-        base.OnMouseClick();
-
-        if (!CheckClickDependencies(this))
-            return;
-
-        GameMenu.INSTANCE.OnOpenChestTab();
-        ChestInventory.INSTANCE = ((ChestTab)GameMenu.INSTANCE.chest_tab).chest_inventory;
-        ChestInventory.INSTANCE.OpenChest(this);
-    }
-
     public int GetAmountOfFreeSlots()
     {
         int amount = 0;

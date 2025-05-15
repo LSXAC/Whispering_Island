@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dj73tpok8xq6p"]
 
-[ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Scripts/Building Scripts/ChestBase.cs" id="1_qtaud"]
+[ext_resource type="Script" uid="uid://bwyysbkhkliqp" path="res://Placeable/Chest.cs" id="1_po66g"]
 [ext_resource type="Texture2D" uid="uid://cb634fgv247qi" path="res://Sprites/Chest_Building_Sprite.png" id="4_mcpbh"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="5_0ufwp"]
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_yp6ng"]
@@ -20,7 +20,7 @@ size = Vector2(32, 32)
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
-script = ExtResource("1_qtaud")
+script = ExtResource("1_po66g")
 givers = []
 takers = []
 building_id = 2

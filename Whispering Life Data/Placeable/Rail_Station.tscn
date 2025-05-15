@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://8ea6alhnkqok"]
+[gd_scene load_steps=17 format=4 uid="uid://8ea6alhnkqok"]
 
 [ext_resource type="Script" uid="uid://o5ts5isb43np" path="res://Placeable/RailStation.cs" id="1_odv02"]
 [ext_resource type="PackedScene" uid="uid://dyylrlp6acwxq" path="res://Placeable/Rail.tscn" id="9_myue5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://be1t8wuf070gp" path="res://Sprites/Rail_Station_Bottom.png" id="10_o32qu"]
 [ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Placeable/PathConnectArea.cs" id="11_gxmie"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="12_qf5f2"]
+[ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Scripts/Building Scripts/ChestBase.cs" id="13_rfmfo"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="13_san8u"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="14_3inm1"]
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="15_efe08"]
@@ -22,13 +23,15 @@ size = Vector2(78, 39)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o32qu"]
 size = Vector2(14, 14)
 
-[node name="RailStation" type="StaticBody2D" node_paths=PackedStringArray("givers", "takers", "building_collider_manager", "sprite", "collision_shape")]
+[node name="RailStation" type="StaticBody2D" node_paths=PackedStringArray("chest_in", "chest_out", "givers", "takers", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_odv02")
-givers = [NodePath("Giver")]
-takers = [NodePath("Taker")]
+chest_in = NodePath("Chest_In")
+chest_out = NodePath("Chest_Out")
+givers = []
+takers = []
 building_id = 27
 tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
@@ -82,12 +85,12 @@ shape = SubResource("RectangleShape2D_fk0le")
 [node name="Taker" parent="." node_paths=PackedStringArray("building") instance=ExtResource("19_1q5l7")]
 z_index = 2
 position = Vector2(-24, -38)
-building = NodePath("..")
+building = NodePath("../Chest_In")
 
 [node name="Giver" parent="." node_paths=PackedStringArray("building") instance=ExtResource("20_qmtuw")]
 position = Vector2(8, -37)
 direction_not_giving = 1
-building = NodePath("..")
+building = NodePath("../Chest_Out")
 
 [node name="Holder" parent="Giver" index="0"]
 position = Vector2(0, 14)
@@ -151,6 +154,24 @@ script = ExtResource("11_gxmie")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea"]
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_o32qu")
+
+[node name="Chest_In" type="Node2D" parent="." node_paths=PackedStringArray("givers", "takers")]
+script = ExtResource("13_rfmfo")
+chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+machine_enabled = true
+givers = []
+takers = [NodePath("../Taker")]
+disable_mouse_interaction = true
+tile_types = []
+
+[node name="Chest_Out" type="Node2D" parent="." node_paths=PackedStringArray("givers", "takers")]
+script = ExtResource("13_rfmfo")
+chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+machine_enabled = true
+givers = [NodePath("../Giver")]
+takers = []
+disable_mouse_interaction = true
+tile_types = Array[int]([0])
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

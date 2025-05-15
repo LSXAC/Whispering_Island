@@ -29,4 +29,7 @@ public partial class MachineSave : PlaceableSave
 
     [Export]
     public ItemSave[] chest_items = new ItemSave[20];
+
+    [Export]
+    public ItemSave[] second_chest_items = new ItemSave[20];
 }

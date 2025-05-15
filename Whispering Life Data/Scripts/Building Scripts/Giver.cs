@@ -23,6 +23,8 @@ public partial class Giver : Area2D
 
     public void OnDetectorBeltDetected(Area2D destination)
     {
+        Debug.Print(destination.Name);
+        Debug.Print(building.Name);
         //when Destination is Belt
         if (destination.GetParent() is Belt)
         {
@@ -33,7 +35,7 @@ public partial class Giver : Area2D
                 IsProcessingBuilding(destination);
             else if (building is ProductionMachine && building is not ChestBase)
                 IsProductionBuilding(destination);
-            else if (building is ChestBase)
+            else if (building is ChestBase || building is RailStation)
                 IsChestBuilding(destination);
         }
     }

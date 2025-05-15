@@ -79,6 +79,12 @@ public partial class Belt : TransportBase
                     if (area.GetParent<Taker>().can_receive_item((BeltItem)item))
                         area.GetParent<Taker>().receive_item(item);
                 }
+                if (area.GetParent().GetParent() is RailStation)
+                {
+                    var item = item_holder.offload_item();
+                    if (area.GetParent<Taker>().can_receive_item((BeltItem)item))
+                        area.GetParent<Taker>().receive_item(item);
+                }
             }
         }
     }

@@ -51,7 +51,7 @@ public partial class Slot : Button
             {
                 item_array = ((InventoryBase)GetParent().GetParent()).inventory_items;
                 slotUpdater = (InventoryBase)GetParent().GetParent();
-                chest = ChestInventory.INSTANCE.current_chest;
+                chest = ChestInventory.current_chest;
                 OnSlotButton(btn);
             }
 

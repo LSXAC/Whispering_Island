@@ -26,7 +26,8 @@ public partial class Minecart : MoveableBase
         MinecartTab.current_minecart = this;
         ChestInventory.INSTANCE = ((MinecartTab)GameMenu.INSTANCE.minecart_tab).chest_inventory;
         GameMenu.INSTANCE.OnOpenMinecartTab();
-        ChestInventory.INSTANCE.OpenChest(chestBase);
+        ChestInventory.current_chest = chestBase;
+        ChestInventory.INSTANCE.OpenChest();
     }
 
     public override void _Process(double delta)

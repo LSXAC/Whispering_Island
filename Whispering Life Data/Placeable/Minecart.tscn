@@ -35,6 +35,7 @@ collision_shape = NodePath("MachineCollision")
 
 [node name="Chest" type="Node2D" parent="." node_paths=PackedStringArray("givers", "takers")]
 script = ExtResource("2_raxwe")
+chest_items = Array[Array]([[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]])
 givers = Array[int]([])
 takers = Array[int]([])
 disable_mouse_interaction = true
