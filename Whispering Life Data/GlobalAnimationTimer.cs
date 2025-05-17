@@ -1,4 +1,3 @@
-using System;
 using Godot;
 
 public partial class GlobalAnimationTimer : Timer
@@ -13,14 +12,12 @@ public partial class GlobalAnimationTimer : Timer
 
     public RefTimer GetCurrentFrame()
     {
-        // 250 - 230 -> Timer der 20ms wartet bis Play
         return new RefTimer(current_frame);
     }
 
     public void OnAnimationGlobalTimerTimeout()
     {
         current_frame++;
-
         if (current_frame > 3)
             current_frame = 0;
     }

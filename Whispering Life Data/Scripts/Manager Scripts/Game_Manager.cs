@@ -133,6 +133,7 @@ public partial class Game_Manager : Node2D
             Debug.Print(e.StackTrace.ToString());
             SaveLoadTab.dateTime_from_save = DateTime.Now;
         }
+
         Player.char_save = save_state.char_save;
         Player.INSTANCE.Position = save_state.char_save.player_position;
         Player.INSTANCE.player_stats.health_value = save_state.char_save.health_value;
@@ -214,7 +215,7 @@ public partial class Game_Manager : Node2D
     {
         Debug.Print("Start Tutorial");
         var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial_General.dialogue");
-        GlobalFunctions.MoveCamera(new Vector2(0, -256));
+        GlobalFunctions.MoveCameraToPosition(new Vector2(0, -256));
         GlobalFunctions.InDialogue();
         DialogueManager.TranslationSource = TranslationSource.CSV;
         DialogueManager.ShowExampleDialogueBalloon(dialogue, "Tutorial");

@@ -33,14 +33,8 @@ public partial class HeartManager : Panel
         foreach (TextureRect tr in parent.GetChildren())
             tr.Visible = true;
 
-        // 3-3 = 0
-        // 2-3 = -1 = 1
-        // 1-3 = -2 = 2
-
         for (int i = Math.Abs(current_hearts - 3); i > 0; i--)
-        {
             ((TextureRect)parent.GetChild(i)).Visible = false;
-        }
     }
 
     public void AddHeart()

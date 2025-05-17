@@ -23,8 +23,6 @@ public partial class Giver : Area2D
 
     public void OnDetectorBeltDetected(Area2D destination)
     {
-        Debug.Print(destination.Name);
-        Debug.Print(building.Name);
         //when Destination is Belt
         if (destination.GetParent() is Belt)
         {

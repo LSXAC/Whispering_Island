@@ -30,7 +30,6 @@ public partial class AnimationManager12D : AnimationManagerBase
 
     public string GetAnimationNameFromMatrix(ANIMATION_DIRECTION dir)
     {
-        //11
         int y = (int)dir / 3;
         int x = (int)dir - y * 3;
         Debug.Print(dir.ToString() + " | " + x + " | " + y);

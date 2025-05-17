@@ -173,7 +173,7 @@ public partial class ProcessBuilding : MachineBase
         for (int i = 0; i < recipes.Count; i++)
         {
             if (recipes[i].unlockRequirement != null || recipes[i].unlockRequirement.Count > 0)
-                if (!GlobalFunctions.CheckAllRequirements(recipes[i].unlockRequirement))
+                if (!GlobalFunctions.CheckResearchRequirements(recipes[i].unlockRequirement))
                     continue;
 
             if (item_array[(int)FurnaceTab.SlotType.IMPORT] != null)

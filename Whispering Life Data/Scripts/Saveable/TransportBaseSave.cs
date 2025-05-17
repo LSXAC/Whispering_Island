@@ -2,21 +2,6 @@ using Godot;
 
 public partial class TransportBaseSave : Resource
 {
-    public TransportBaseSave() { }
-
-    public TransportBaseSave(
-        Vector2 pos,
-        TransportBase.Direction f_d,
-        TransportBase.Direction t_d,
-        int curr_rot
-    )
-    {
-        this.position = pos;
-        this.from_direction = f_d;
-        this.to_direction = t_d;
-        this.current_rotation = curr_rot;
-    }
-
     [Export]
     public Vector2 position = Vector2.Zero;
 
@@ -28,4 +13,19 @@ public partial class TransportBaseSave : Resource
 
     [Export]
     public int current_rotation = 0;
+
+    public TransportBaseSave() { }
+
+    public TransportBaseSave(
+        Vector2 pos,
+        TransportBase.Direction f_direction,
+        TransportBase.Direction t_direction,
+        int curr_rot
+    )
+    {
+        this.position = pos;
+        this.from_direction = f_direction;
+        this.to_direction = t_direction;
+        this.current_rotation = curr_rot;
+    }
 }

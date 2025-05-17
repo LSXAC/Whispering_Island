@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjyetki082f0p"]
+[gd_scene load_steps=14 format=3 uid="uid://cjyetki082f0p"]
 
 [ext_resource type="Script" uid="uid://bfdpgy14queaf" path="res://Placeable/Minecart.cs" id="1_l32ce"]
 [ext_resource type="Texture2D" uid="uid://cujtfa5wi4dgp" path="res://Sprites/Minecart.png" id="2_l32ce"]
@@ -17,9 +17,12 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntmmq"]
+size = Vector2(16, 16)
+
 [node name="Building" type="StaticBody2D" node_paths=PackedStringArray("chestBase", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
-collision_layer = 13
+collision_layer = 269
 collision_mask = 0
 script = ExtResource("1_l32ce")
 chestBase = NodePath("Chest")
@@ -35,7 +38,7 @@ collision_shape = NodePath("MachineCollision")
 
 [node name="Chest" type="Node2D" parent="." node_paths=PackedStringArray("givers", "takers")]
 script = ExtResource("2_raxwe")
-chest_items = Array[Array]([[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]])
+chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]]
 givers = Array[int]([])
 takers = Array[int]([])
 disable_mouse_interaction = true
@@ -101,6 +104,15 @@ texture = ExtResource("8_iknbp")
 
 [node name="CraftingTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="MinecartAREA" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinecartAREA"]
+position = Vector2(-8, -11)
+shape = SubResource("RectangleShape2D_ntmmq")
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

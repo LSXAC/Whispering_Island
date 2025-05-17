@@ -10,7 +10,39 @@ public partial class RailStationTab : ColorRect
 
     [Export]
     public TabContainer container;
+
+    [Export]
+    public CheckBox import_box,
+        export_box;
+
+    [Export]
+    public Label is_connected_label;
     public static RailStation last_rail_station = null;
+    public static RailStationTab INSTANCE = null;
+
+    public override void _Ready()
+    {
+        INSTANCE = this;
+    }
+
+    public void OnClickCheckImport()
+    {
+        export_box.ButtonPressed = false;
+        last_rail_station.export = false;
+        last_rail_station.import = true;
+    }
+
+    public void UpdateConnectedLabel(bool state)
+    {
+        is_connected_label.Text = "Connected: " + state.ToString();
+    }
+
+    public void OnClickCheckExport()
+    {
+        import_box.ButtonPressed = false;
+        last_rail_station.import = false;
+        last_rail_station.export = true;
+    }
 
     public void OnTabSelected(int tab)
     {

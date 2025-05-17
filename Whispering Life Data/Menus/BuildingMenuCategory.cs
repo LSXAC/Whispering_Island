@@ -34,7 +34,7 @@ public partial class BuildingMenuCategory : ColorRect
             if (packed.category == category) //Check if Requirement is there
             {
                 if (packed.requirements != null || packed.requirements.Count > 0)
-                    if (!GlobalFunctions.CheckAllRequirements(packed.requirements))
+                    if (!GlobalFunctions.CheckResearchRequirements(packed.requirements))
                         continue;
                 if (!packed.show_item)
                     continue;

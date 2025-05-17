@@ -1,13 +1,9 @@
-using System;
-using System.Diagnostics;
 using Godot;
 
 public partial class MainMenu : Control
 {
     [Export]
     public CheckBox skip_tutorial;
-    public static MainMenu INSTANCE;
-    PackedScene game = ResourceLoader.Load<PackedScene>("res://game_manager.tscn");
 
     [Export]
     public VideoStreamPlayer intro_player;
@@ -24,7 +20,9 @@ public partial class MainMenu : Control
     [Export]
     public bool skip_intro = false;
 
+    public static MainMenu INSTANCE = null;
     public static LauncherSave launcherSave;
+    PackedScene game = ResourceLoader.Load<PackedScene>("res://game_manager.tscn");
 
     public override void _Ready()
     {

@@ -6,15 +6,10 @@ public partial class TunnelArea : Area2D
 {
     public void OnAreaEntered(Area2D area)
     {
-        Debug.Print(area.Name);
         if (area.Name.Equals("BeltArea"))
         {
-            //Dir = Dir  L --> R     L --> R -> true
             if (area.GetParent() == GetParent())
                 return;
-
-            //Debug.Print(((BeltTunnel)GetParent()).to_direction.ToString());
-            //Debug.Print(((BeltTunnel)area.GetParent()).to_direction.ToString());
 
             if (
                 ((BeltTunnel)GetParent()).to_direction
@@ -31,7 +26,6 @@ public partial class TunnelArea : Area2D
                     (BeltTunnel)GetParent()
                 ).item_holder;
                 ((BeltTunnel)area.GetParent()).is_tunnel_connected = true;
-                //((BeltTunnel)area.GetParent()).GetNode<Timer>("CheckTimer").Stop();
             }
 
             ((BeltTunnel)GetParent()).ResetCheckArea();

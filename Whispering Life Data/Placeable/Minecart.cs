@@ -34,7 +34,6 @@ public partial class Minecart : MoveableBase
     {
         if (is_running)
         {
-            Debug.Print("Velo: " + moving_vector.ToString());
             if (moving_vector.X == 0 && moving_vector.Y == 0)
                 return;
             if (moving_vector.Y == 0)

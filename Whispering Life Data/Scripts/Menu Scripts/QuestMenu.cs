@@ -69,7 +69,7 @@ public partial class QuestMenu : CanvasLayer
     public void OnCloseButton()
     {
         Game_Manager.In_Cutscene = true;
-        GlobalFunctions.MoveCamera(new Vector2(13, -256));
+        GlobalFunctions.MoveCameraToPosition(new Vector2(13, -256));
         if (TranslationServer.GetLocale() == "de")
             DialogueManager.ShowExampleDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_DE");
         else

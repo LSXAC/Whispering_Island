@@ -6,12 +6,12 @@ using Godot.Collections;
 
 public partial class Islands_Manager : Node2D
 {
+    public static Islands_Manager INSTANCE = null;
     public Array<IslandSave> island_saves = new Array<IslandSave>();
 
     public Array<ResourceObjectManagerSave> roms = new Array<ResourceObjectManagerSave>();
 
     public Array<IslandBuildSave> build_saves = new Array<IslandBuildSave>();
-    public static Islands_Manager INSTANCE = null;
     public int last_island_id;
 
     public override void _Ready()
@@ -37,17 +37,11 @@ public partial class Islands_Manager : Node2D
 
     public void LoadIslands(Array<ResourceObjectManagerSave> roms)
     {
-        Debug.Print(island_saves.Count + "");
         foreach (IslandSave is_save in island_saves)
         {
             foreach (Island_Properties ip in GetChildren())
-            {
-                Debug.Print(ip.matrix_island_id + " | " + is_save.matrix_island_id);
                 if (ip.matrix_island_id == is_save.matrix_island_id)
-                {
                     island_menu.instance.CreateIsland(is_save.island_id, is_save.dir, ip, true);
-                }
-            }
         }
 
         foreach (IslandBuildSave ibs in build_saves)
@@ -62,20 +56,17 @@ public partial class Islands_Manager : Node2D
                     ip.building_manager.resource_obj_saves = ibs.resource_obj_saves;
                     ip.building_manager.belt_machine_saves = ibs.belt_machine_saves;
                     ip.building_manager.rail_saves = ibs.rail_saves;
-
                     ip.building_manager.LoadPlacedObjects();
                 }
         }
     }
 
-    public void RemoveIslands()
+    public void RemoveIslandsThroughQuest()
     {
         if (island_saves.Count == 0)
             return;
 
-        Debug.Print("IS: STATE 1");
         IslandSave i_s = island_saves[island_saves.Count - 1];
-        Debug.Print("IS: STATE 2");
 
         foreach (IslandBuildSave ibs in build_saves)
             if (ibs.matrix_island_id == i_s.matrix_island_id)
@@ -84,18 +75,16 @@ public partial class Islands_Manager : Node2D
                 break;
             }
 
-        Debug.Print("IS: STATE 3");
         foreach (ResourceObjectManagerSave roms_t in roms)
             if (roms_t.matrix_island_id == i_s.matrix_island_id)
             {
                 roms.Remove(roms_t);
                 break;
             }
-        Debug.Print("IS: STATE 4");
         island_saves.RemoveAt(island_saves.Count - 1);
-        Debug.Print("IS: STATE 5");
+
         Game_Manager.INSTANCE.SaveGame();
-        Game_Manager.INSTANCE.save_state.char_save.player_position = new Vector2(10f, -170f);
+        GlobalFunctions.SetPlayerPositionToStart();
         Game_Manager.INSTANCE.save_state.WriteSave();
         GameMenu.INSTANCE.OnLoadButton();
     }
@@ -122,7 +111,5 @@ public partial class Islands_Manager : Node2D
     public void SaveIsland(Island_Properties.DIRECTION dir, int matrix_island_id, int island_id)
     {
         island_saves.Add(new IslandSave(dir: dir, matrix_island_id: matrix_island_id, island_id));
-        Debug.Print("new Island Saved");
-        Debug.Print(island_saves.Count + " x");
     }
 }

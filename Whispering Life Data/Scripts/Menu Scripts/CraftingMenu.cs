@@ -26,7 +26,7 @@ public partial class CraftingMenu : PanelContainer
             if (crafting_recipies[i].unlockRequirements != null)
                 if (crafting_recipies[i].unlockRequirements.Count > 0)
                     if (
-                        !GlobalFunctions.CheckAllRequirements(
+                        !GlobalFunctions.CheckResearchRequirements(
                             crafting_recipies[i].unlockRequirements
                         )
                     )

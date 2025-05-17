@@ -1,6 +1,3 @@
-using System.Data.Common;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using Godot;
 using Godot.Collections;
 
@@ -65,13 +62,17 @@ public partial class GlobalFunctions : Node2D
         player_ui.INSTANCE.quest_accept_panel.Visible = true;
     }
 
-    public static bool CheckAllRequirements(Array<UnlockRequirement> br)
+    public static void SetPlayerPositionToStart()
+    {
+        Game_Manager.INSTANCE.save_state.char_save.player_position = new Vector2(10f, -170f);
+    }
+
+    public static bool CheckResearchRequirements(Array<UnlockRequirement> br)
     {
         foreach (UnlockRequirement temp in br)
         {
             if (ResearchTab.INSTANCE == null)
                 return false;
-
             if (!ResearchTab.research_saves.ContainsKey(temp.item_id))
                 return false;
             if (ResearchTab.research_saves[temp.item_id].research_level < (int)temp.required_level)
@@ -85,7 +86,7 @@ public partial class GlobalFunctions : Node2D
         return Player.INSTANCE.GlobalPosition.DistanceTo(nodePosition);
     }
 
-    public static void MoveCamera(Vector2 pos)
+    public static void MoveCameraToPosition(Vector2 pos)
     {
         Player.camera.Enabled = false;
         Game_Manager.INSTANCE.cutscene_camera.GlobalPosition = Player.camera.GlobalPosition;
@@ -103,7 +104,6 @@ public partial class GlobalFunctions : Node2D
     public static void InDialogue()
     {
         Game_Manager.In_Cutscene = true;
-        Debug.Print("Enter Diualogue");
     }
 
     public static void QueueFreeTree()
@@ -113,7 +113,6 @@ public partial class GlobalFunctions : Node2D
 
     public static void LeaveDialogue()
     {
-        Debug.Print("Leave");
         Game_Manager.INSTANCE.cutscene_camera.Enabled = false;
         Player.camera.Position = Game_Manager.INSTANCE.cutscene_camera.Position;
         Player.camera.Enabled = true;

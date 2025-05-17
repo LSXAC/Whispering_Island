@@ -65,7 +65,7 @@ public partial class Slot : Button
             )
             {
                 OnEquipSlotButton(GetIndex());
-                // SLot Updater not needed now
+                // Slot Updater not needed now
             }
 
             if (slot_type == ItemInfo.Type.RESEARCHABLE)

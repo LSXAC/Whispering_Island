@@ -80,7 +80,7 @@ public partial class QuestManager : Node
             }
 
             var dialogue = GD.Load<Resource>("res://Dialogues/Questing.dialogue");
-            GlobalFunctions.MoveCamera(new Vector2(0, -256));
+            GlobalFunctions.MoveCameraToPosition(new Vector2(0, -256));
             GlobalFunctions.InDialogue();
 
             if (penealty == 0)
@@ -126,10 +126,7 @@ public partial class QuestManager : Node
         QuestMiniPanel.INSTANCE.UpdateTimeLabel(current_quest_time);
     }
 
-    /// <summary>
-    /// Check if duplicated ItemType exists inside one Quest. Multiple Items of same Type would reference to same Itemslot and could create a Bug.
-    /// </summary>
-    /// <param name="obj"></param>
+    /// Check if duplicated ItemType exists inside one Quest.
     private void CheckQuestDuplications()
     {
         for (int x = 0; x < quests.Count; x++)
@@ -241,9 +238,7 @@ public partial class QuestManager : Node
         }
 
         if (penealty == 2)
-        {
-            Islands_Manager.INSTANCE.RemoveIslands();
-        }
+            Islands_Manager.INSTANCE.RemoveIslandsThroughQuest();
 
         Game_Manager.In_Cutscene = false;
     }

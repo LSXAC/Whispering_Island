@@ -3133,7 +3133,7 @@ text = "Exit Game"
 script = ExtResource("3_pwamf")
 label_translation_string = "MAINMENU_EXIT_GAME"
 
-[node name="RailStationTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("chest_inventory_in", "chest_inventory_out", "container")]
+[node name="RailStationTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("chest_inventory_in", "chest_inventory_out", "container", "import_box", "export_box")]
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -3149,6 +3149,8 @@ script = ExtResource("76_6ikjc")
 chest_inventory_in = NodePath("TabContainer/Storage In/ChestInventoryIn")
 chest_inventory_out = NodePath("TabContainer/Storage Out/ChestInventoryOut")
 container = NodePath("TabContainer")
+import_box = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/ImportBox")
+export_box = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/ExportBox")
 
 [node name="HeaderColorRect" parent="Background/RailStationTab" instance=ExtResource("11_45saq")]
 layout_mode = 1
@@ -3165,17 +3167,78 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 24.0
 offset_top = 9.0
-offset_right = 24.0
+offset_right = -25.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Background/RailStationTab/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/RailStationTab/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/RailStationTab/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/RailStationTab/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
 text = "Railstation"
+
+[node name="Label2" type="Label" parent="Background/RailStationTab/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Input Progress (From Minecart)"
+
+[node name="Minecart_Progressbar_In" type="ProgressBar" parent="Background/RailStationTab/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 6
+
+[node name="Label3" type="Label" parent="Background/RailStationTab/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Output Progress (To Minecart)"
+
+[node name="Minecart_Progressbar_Out" type="ProgressBar" parent="Background/RailStationTab/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 6
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background/RailStationTab/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MinecartLabel" type="Label" parent="Background/RailStationTab/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Minecart"
+
+[node name="IsConnectedLabel" type="Label" parent="Background/RailStationTab/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "connected: true"
+
+[node name="ExportBox" type="CheckBox" parent="Background/RailStationTab/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Export"
+
+[node name="ImportBox" type="CheckBox" parent="Background/RailStationTab/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Import"
 
 [node name="HeaderColorRect2" parent="Background/RailStationTab" instance=ExtResource("11_45saq")]
 layout_mode = 0
@@ -3194,19 +3257,20 @@ color = Color(0, 0, 0, 1)
 
 [node name="TabContainer" type="TabContainer" parent="Background/RailStationTab"]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 72.0
-offset_right = 299.0
-offset_bottom = 262.0
+offset_left = 24.0
+offset_top = 96.0
+offset_right = 235.0
+offset_bottom = 286.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
 theme_override_styles/panel = SubResource("StyleBoxFlat_kisma")
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 clip_tabs = false
 
 [node name="Storage In" type="Control" parent="Background/RailStationTab/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -3214,15 +3278,13 @@ metadata/_tab_index = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 35.0
 offset_top = 16.0
-offset_right = 279.0
+offset_right = 244.0
 offset_bottom = 229.0
 grow_horizontal = 1
 grow_vertical = 1
 
 [node name="Storage Out" type="Control" parent="Background/RailStationTab/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -3230,10 +3292,8 @@ metadata/_tab_index = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 35.0
-offset_top = 16.0
-offset_right = 279.0
-offset_bottom = 229.0
+offset_right = 244.0
+offset_bottom = 213.0
 grow_horizontal = 1
 grow_vertical = 1
 
@@ -3404,6 +3464,8 @@ color = Color(0, 0, 0, 1)
 [connection signal="visibility_changed" from="Background/SettingsTab/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" to="Background/SettingsTab/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" method="OnVisiblityChange"]
 [connection signal="item_selected" from="Background/SettingsTab/VBoxContainer/Language/PanelContainer/MarginContainerRight/OptionButton" to="Background/SettingsTab" method="OnItemSelected"]
 [connection signal="pressed" from="Background/SettingsTab/VBoxContainer/ExitGame/PanelContainer/MarginContainerRight/Button" to="." method="OnBackToMainMenu"]
+[connection signal="pressed" from="Background/RailStationTab/VBoxContainer/HBoxContainer/VBoxContainer2/ExportBox" to="Background/RailStationTab" method="OnClickCheckExport"]
+[connection signal="pressed" from="Background/RailStationTab/VBoxContainer/HBoxContainer/VBoxContainer2/ImportBox" to="Background/RailStationTab" method="OnClickCheckImport"]
 [connection signal="tab_clicked" from="Background/RailStationTab/TabContainer" to="Background/RailStationTab" method="OnTabSelected"]
 [connection signal="visibility_changed" from="Background/MinecartTab" to="Background/MinecartTab" method="OnVisiblityChange"]
 [connection signal="pressed" from="Background/MinecartTab/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StartEngineBtn" to="Background/MinecartTab" method="StartEngine"]
