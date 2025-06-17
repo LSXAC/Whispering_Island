@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=13 format=3 uid="uid://c61tkydmwleam"]
+
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="1_0mtee"]
+[ext_resource type="Resource" uid="uid://bvplgrho461h0" path="res://Resources/Text Resources/Items/Stone_Knife.tres" id="1_5dd8o"]
+[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_r7n06"]
+[ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Resources/Text Resources/Items/Mystic_Fibre.tres" id="3_0w00u"]
+[ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Resources/Text Resources/Items/Wood_Stick.tres" id="3_6fenw"]
+[ext_resource type="Resource" uid="uid://81xbm48s547g" path="res://Resources/Text Resources/Items/Stone_Blade.tres" id="4_i7ooo"]
+[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="7_uyh81"]
+
+[sub_resource type="Resource" id="Resource_6mgx6"]
+script = ExtResource("2_r7n06")
+item_info = ExtResource("1_5dd8o")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_q4hka"]
+script = ExtResource("2_r7n06")
+item_info = ExtResource("3_6fenw")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_hbdev"]
+script = ExtResource("2_r7n06")
+item_info = ExtResource("3_0w00u")
+amount = 2
+
+[sub_resource type="Resource" id="Resource_0htsl"]
+script = ExtResource("2_r7n06")
+item_info = ExtResource("4_i7ooo")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_vxo6p"]
+script = ExtResource("7_uyh81")
+required_level = 1
+item_id = 1
+
+[resource]
+script = ExtResource("1_0mtee")
+requiered_items = Array[Object]([SubResource("Resource_q4hka"), SubResource("Resource_hbdev"), SubResource("Resource_0htsl")])
+output_item = SubResource("Resource_6mgx6")
+unlockRequirements = Array[Object]([SubResource("Resource_vxo6p")])

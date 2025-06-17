@@ -1,0 +1,547 @@
+[gd_scene load_steps=15 format=3 uid="uid://cjj30kpp0tj11"]
+
+[ext_resource type="Script" uid="uid://c1q35nbh8sb51" path="res://Scripts/Menu Scripts/island_menu.cs" id="1_dg2ug"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="1_dlbjo"]
+[ext_resource type="Texture2D" uid="uid://y7p1sna6t1lh" path="res://Sprites/Mystic_Island.png" id="2_oe6wg"]
+[ext_resource type="Texture2D" uid="uid://b52ffyqisk5i1" path="res://Sprites/Mining_Island.png" id="4_ehxoq"]
+[ext_resource type="Texture2D" uid="uid://g5tq6jiacbx3" path="res://Sprites/Farming_Island.png" id="5_qufp2"]
+[ext_resource type="Texture2D" uid="uid://bjp5wy4new0rg" path="res://Sprites/Island_Dessert.png" id="6_in7ku"]
+[ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://Scenes/Menus/header_color_rect.tscn" id="7_q7x47"]
+[ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/TranslationButton.cs" id="8_liwoe"]
+[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/TranslationLabel.cs" id="9_qhepf"]
+[ext_resource type="Script" uid="uid://b3t4ic6iwowss" path="res://Scripts/SoundSlider.cs" id="10_yo0o2"]
+[ext_resource type="StyleBox" uid="uid://ch5faigjhjxlm" path="res://Resources/Text Resources/Menus/OptionButtonStylePressed.tres" id="11_yjoum"]
+[ext_resource type="StyleBox" uid="uid://beanw2e3ddca1" path="res://Resources/Text Resources/Menus/OptionButtonStyle.tres" id="12_fqkoe"]
+[ext_resource type="Texture2D" uid="uid://syf34dx878d5" path="res://Sprites/Flaggs/US_FLAG.png" id="13_o0t3s"]
+[ext_resource type="Texture2D" uid="uid://d24spwn8n1w7w" path="res://Sprites/Flaggs/DE_FLAG.png" id="14_bj3bb"]
+
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("button1", "button2", "button3", "button4")]
+script = ExtResource("1_dg2ug")
+button1 = NodePath("Background/Grid/VBoxContainer/Button")
+button2 = NodePath("Background/Grid/VBoxContainer2/Button2")
+button3 = NodePath("Background/Grid/VBoxContainer3/Button3")
+button4 = NodePath("Background/Grid/VBoxContainer4/Button4")
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = 30.0
+offset_right = -70.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Grid" type="GridContainer" parent="Background"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 24.0
+offset_right = 507.0
+offset_bottom = 328.0
+columns = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Background/Grid"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/Grid/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+texture = ExtResource("2_oe6wg")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Background/Grid/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 20
+text = "Island 1"
+icon_alignment = 1
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="Background/Grid"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/Grid/VBoxContainer2"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("4_ehxoq")
+expand_mode = 1
+
+[node name="Button2" type="Button" parent="Background/Grid/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 20
+text = "Island 2"
+
+[node name="VBoxContainer3" type="HBoxContainer" parent="Background/Grid"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/Grid/VBoxContainer3"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("5_qufp2")
+expand_mode = 1
+
+[node name="Button3" type="Button" parent="Background/Grid/VBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 20
+text = "Island 3"
+
+[node name="VBoxContainer4" type="HBoxContainer" parent="Background/Grid"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/Grid/VBoxContainer4"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("6_in7ku")
+expand_mode = 1
+
+[node name="Button4" type="Button" parent="Background/Grid/VBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 20
+text = "Island 3"
+
+[node name="HeaderColorRect" parent="Background" instance=ExtResource("7_q7x47")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -264.5
+offset_right = 264.5
+grow_horizontal = 2
+translation_string = "ISLAND MENU"
+
+[node name="ExitTabButton" type="Button" parent="Background"]
+offset_left = 484.0
+offset_top = 2.0
+offset_right = 511.0
+offset_bottom = 21.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 12
+text = "<X>"
+script = ExtResource("8_liwoe")
+
+[node name="Background2" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Island_Menu" type="ColorRect" parent="Background2"]
+z_index = 6
+layout_mode = 0
+offset_top = 26.0
+offset_right = 560.0
+offset_bottom = 304.0
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background2/Island_Menu"]
+layout_mode = 0
+offset_right = 559.0
+offset_bottom = 278.0
+theme_override_constants/separation = 0
+
+[node name="MasterVolume" type="HBoxContainer" parent="Background2/Island_Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container" type="PanelContainer" parent="Background2/Island_Menu/VBoxContainer/MasterVolume"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background2/Island_Menu/VBoxContainer/MasterVolume/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="MarginContainerLeft" type="MarginContainer" parent="Background2/Island_Menu/VBoxContainer/MasterVolume/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Background2/Island_Menu/VBoxContainer/MasterVolume/Container/MarginContainerLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 15
+text = "SETTINGS_MASTER_VOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_qhepf")
+label_translation_string = "SETTINGS_MASTER_VOLUME"
+
+[node name="PanelContainer" type="PanelContainer" parent="Background2/Island_Menu/VBoxContainer/MasterVolume"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background2/Island_Menu/VBoxContainer/MasterVolume/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="MarginContainerRight" type="MarginContainer" parent="Background2/Island_Menu/VBoxContainer/MasterVolume/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HSlider" type="HSlider" parent="Background2/Island_Menu/VBoxContainer/MasterVolume/PanelContainer/MarginContainerRight"]
+layout_mode = 2
+theme_override_constants/center_grabber = 0
+min_value = -60.0
+max_value = 20.0
+script = ExtResource("10_yo0o2")
+
+[node name="MusicVolume" type="HBoxContainer" parent="Background2/Island_Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container" type="PanelContainer" parent="Background2/Island_Menu/VBoxContainer/MusicVolume"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background2/Island_Menu/VBoxContainer/MusicVolume/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="MarginContainerLeft" type="MarginContainer" parent="Background2/Island_Menu/VBoxContainer/MusicVolume/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Background2/Island_Menu/VBoxContainer/MusicVolume/Container/MarginContainerLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 15
+text = "SETTINGS_MUSIC_VOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_qhepf")
+label_translation_string = "SETTINGS_MUSIC_VOLUME"
+
+[node name="PanelContainer" type="PanelContainer" parent="Background2/Island_Menu/VBoxContainer/MusicVolume"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background2/Island_Menu/VBoxContainer/MusicVolume/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="MarginContainerRight" type="MarginContainer" parent="Background2/Island_Menu/VBoxContainer/MusicVolume/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HSlider" type="HSlider" parent="Background2/Island_Menu/VBoxContainer/MusicVolume/PanelContainer/MarginContainerRight"]
+layout_mode = 2
+theme_override_constants/center_grabber = 0
+min_value = -60.0
+max_value = 20.0
+script = ExtResource("10_yo0o2")
+bus = 1
+
+[node name="SFXVolume" type="HBoxContainer" parent="Background2/Island_Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container" type="PanelContainer" parent="Background2/Island_Menu/VBoxContainer/SFXVolume"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background2/Island_Menu/VBoxContainer/SFXVolume/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="MarginContainerLeft" type="MarginContainer" parent="Background2/Island_Menu/VBoxContainer/SFXVolume/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Background2/Island_Menu/VBoxContainer/SFXVolume/Container/MarginContainerLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 15
+text = "SETTINGS_SFX_VOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_qhepf")
+label_translation_string = "SETTINGS_SFX_VOLUME"
+
+[node name="PanelContainer" type="PanelContainer" parent="Background2/Island_Menu/VBoxContainer/SFXVolume"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background2/Island_Menu/VBoxContainer/SFXVolume/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="MarginContainerRight" type="MarginContainer" parent="Background2/Island_Menu/VBoxContainer/SFXVolume/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HSlider" type="HSlider" parent="Background2/Island_Menu/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight"]
+layout_mode = 2
+theme_override_constants/center_grabber = 0
+min_value = -60.0
+max_value = 20.0
+script = ExtResource("10_yo0o2")
+bus = 2
+
+[node name="Language" type="HBoxContainer" parent="Background2/Island_Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container" type="PanelContainer" parent="Background2/Island_Menu/VBoxContainer/Language"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background2/Island_Menu/VBoxContainer/Language/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainerLeft" type="MarginContainer" parent="Background2/Island_Menu/VBoxContainer/Language/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Background2/Island_Menu/VBoxContainer/Language/Container/MarginContainerLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 15
+text = "Language"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_qhepf")
+label_translation_string = "SETTINGS_LANGUAGE_LABEL"
+
+[node name="PanelContainer" type="PanelContainer" parent="Background2/Island_Menu/VBoxContainer/Language"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background2/Island_Menu/VBoxContainer/Language/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainerRight" type="MarginContainer" parent="Background2/Island_Menu/VBoxContainer/Language/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="OptionButton" type="OptionButton" parent="Background2/Island_Menu/VBoxContainer/Language/PanelContainer/MarginContainerRight"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = ExtResource("11_yjoum")
+theme_override_styles/hover = ExtResource("11_yjoum")
+theme_override_styles/pressed = ExtResource("11_yjoum")
+theme_override_styles/normal = ExtResource("12_fqkoe")
+alignment = 1
+selected = 0
+item_count = 2
+popup/item_0/text = "[US] ENGLISH"
+popup/item_0/icon = ExtResource("13_o0t3s")
+popup/item_1/text = "Deutsch"
+popup/item_1/icon = ExtResource("14_bj3bb")
+popup/item_1/id = 1
+
+[node name="SomethingElse2" type="HBoxContainer" parent="Background2/Island_Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container" type="PanelContainer" parent="Background2/Island_Menu/VBoxContainer/SomethingElse2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background2/Island_Menu/VBoxContainer/SomethingElse2/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="MarginContainerLeft" type="MarginContainer" parent="Background2/Island_Menu/VBoxContainer/SomethingElse2/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Background2/Island_Menu/VBoxContainer/SomethingElse2/Container/MarginContainerLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 15
+text = "Language"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Background2/Island_Menu/VBoxContainer/SomethingElse2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background2/Island_Menu/VBoxContainer/SomethingElse2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="MarginContainerRight" type="MarginContainer" parent="Background2/Island_Menu/VBoxContainer/SomethingElse2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="OptionButton" type="OptionButton" parent="Background2/Island_Menu/VBoxContainer/SomethingElse2/PanelContainer/MarginContainerRight"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = ExtResource("12_fqkoe")
+alignment = 1
+selected = 0
+item_count = 1
+popup/item_0/text = "English"
+popup/item_0/icon = ExtResource("13_o0t3s")
+
+[node name="Language2" type="HBoxContainer" parent="Background2/Island_Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container" type="PanelContainer" parent="Background2/Island_Menu/VBoxContainer/Language2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background2/Island_Menu/VBoxContainer/Language2/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainerLeft" type="MarginContainer" parent="Background2/Island_Menu/VBoxContainer/Language2/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Background2/Island_Menu/VBoxContainer/Language2/Container/MarginContainerLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 15
+text = "Language"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Background2/Island_Menu/VBoxContainer/Language2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background2/Island_Menu/VBoxContainer/Language2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainerRight" type="MarginContainer" parent="Background2/Island_Menu/VBoxContainer/Language2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="OptionButton" type="OptionButton" parent="Background2/Island_Menu/VBoxContainer/Language2/PanelContainer/MarginContainerRight"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_dlbjo")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = ExtResource("12_fqkoe")
+alignment = 1
+selected = 0
+item_count = 1
+popup/item_0/text = "English"
+popup/item_0/icon = ExtResource("13_o0t3s")
+
+[node name="HeaderColorRect" parent="Background2" instance=ExtResource("7_q7x47")]
+offset_top = 1.0
+offset_bottom = 25.0
+translation_string = "GAMEMENU_RESEARCH_TABLE"
+
+[connection signal="value_changed" from="Background2/Island_Menu/VBoxContainer/MasterVolume/PanelContainer/MarginContainerRight/HSlider" to="Background2/Island_Menu/VBoxContainer/MasterVolume/PanelContainer/MarginContainerRight/HSlider" method="OnValueChanged"]
+[connection signal="visibility_changed" from="Background2/Island_Menu/VBoxContainer/MasterVolume/PanelContainer/MarginContainerRight/HSlider" to="Background2/Island_Menu/VBoxContainer/MasterVolume/PanelContainer/MarginContainerRight/HSlider" method="OnVisiblityChange"]
+[connection signal="value_changed" from="Background2/Island_Menu/VBoxContainer/MusicVolume/PanelContainer/MarginContainerRight/HSlider" to="Background2/Island_Menu/VBoxContainer/MusicVolume/PanelContainer/MarginContainerRight/HSlider" method="OnValueChanged"]
+[connection signal="visibility_changed" from="Background2/Island_Menu/VBoxContainer/MusicVolume/PanelContainer/MarginContainerRight/HSlider" to="Background2/Island_Menu/VBoxContainer/MusicVolume/PanelContainer/MarginContainerRight/HSlider" method="OnVisiblityChange"]
+[connection signal="value_changed" from="Background2/Island_Menu/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" to="Background2/Island_Menu/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" method="OnValueChanged"]
+[connection signal="visibility_changed" from="Background2/Island_Menu/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" to="Background2/Island_Menu/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" method="OnVisiblityChange"]
+[connection signal="item_selected" from="Background2/Island_Menu/VBoxContainer/Language/PanelContainer/MarginContainerRight/OptionButton" to="Background2/Island_Menu" method="OnItemSelected"]

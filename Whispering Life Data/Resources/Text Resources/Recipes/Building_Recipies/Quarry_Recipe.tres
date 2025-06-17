@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://b2fimwpxlqkw"]
+
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resources/Text Resources/Items/Wood.tres" id="1_b4can"]
+[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_puds0"]
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Resources/Text Resources/Items/Stone.tres" id="3_f5bci"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="4_3dunf"]
+[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Resources/Text Resources/Items/Iron_Ingot.tres" id="4_l1cds"]
+
+[sub_resource type="Resource" id="Resource_hnenm"]
+script = ExtResource("2_puds0")
+item_info = ExtResource("1_b4can")
+amount = 10
+
+[sub_resource type="Resource" id="Resource_odrd4"]
+script = ExtResource("2_puds0")
+item_info = ExtResource("3_f5bci")
+amount = 40
+
+[sub_resource type="Resource" id="Resource_yeelp"]
+script = ExtResource("2_puds0")
+item_info = ExtResource("4_l1cds")
+amount = 10
+
+[resource]
+script = ExtResource("4_3dunf")
+requiered_items = Array[Object]([SubResource("Resource_hnenm"), SubResource("Resource_odrd4"), SubResource("Resource_yeelp")])
+unlockRequirements = null

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://cnhxvkn1vnyic"]
+
+[ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_6gu1g"]
+[ext_resource type="Resource" uid="uid://yh8rhrf7r458" path="res://Resources/Text Resources/Items/Item_Types/Resource_Type_Classic.tres" id="1_pptb8"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_utofh"]
+[ext_resource type="Texture2D" uid="uid://c64xvoxldsui6" path="res://Sprites/Items/Plants_Icons/Fibre.png" id="2_ea1qr"]
+
+[resource]
+script = ExtResource("1_utofh")
+item_types_arr = Array[Object]([ExtResource("1_pptb8")])
+has_durability = false
+max_durability = 100
+max_slot_amount = 48
+item_name = "FIBRE"
+unique_id = 14
+item_description = "FIBRE_DESC"
+texture = ExtResource("2_ea1qr")
+value = 10.0
+type_level = 0
+use_type = 0
+item_stats = Array[ExtResource("1_6gu1g")]([])

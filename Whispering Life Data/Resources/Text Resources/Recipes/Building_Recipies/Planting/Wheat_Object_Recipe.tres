@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://snj3uok7s4bf"]
+
+[ext_resource type="Resource" uid="uid://ckgu5x7reokuj" path="res://Resources/Text Resources/Items/Wheat_Seed.tres" id="1_h3hcf"]
+[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_gw3lu"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="3_kx71m"]
+
+[sub_resource type="Resource" id="Resource_85pk6"]
+script = ExtResource("2_gw3lu")
+item_info = ExtResource("1_h3hcf")
+amount = 1
+
+[resource]
+script = ExtResource("3_kx71m")
+requiered_items = Array[Object]([SubResource("Resource_85pk6")])
+unlockRequirements = null

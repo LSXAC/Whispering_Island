@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=7 format=3 uid="uid://dgro7e15kytdm"]
+
+[ext_resource type="Resource" uid="uid://l7tf257vet4l" path="res://Resources/Text Resources/Items/Iron_Ore.tres" id="1_g6hsb"]
+[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_v5mvx"]
+[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Resources/Text Resources/Items/Iron_Ingot.tres" id="3_qhugk"]
+[ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Scripts/Resources/Quest.cs" id="5_ig5tn"]
+
+[sub_resource type="Resource" id="Resource_iic3g"]
+script = ExtResource("2_v5mvx")
+item_info = ExtResource("1_g6hsb")
+amount = 10
+
+[sub_resource type="Resource" id="Resource_swemk"]
+script = ExtResource("2_v5mvx")
+item_info = ExtResource("3_qhugk")
+amount = 5
+
+[resource]
+script = ExtResource("5_ig5tn")
+quest_name = "QUEST_TITLE_4"
+quest_description = "QUEST_DESC_4"
+quest_items = Array[Resource]([SubResource("Resource_iic3g"), SubResource("Resource_swemk")])
+quest_time = 300

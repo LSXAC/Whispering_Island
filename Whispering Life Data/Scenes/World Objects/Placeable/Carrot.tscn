@@ -1,0 +1,118 @@
+[gd_scene load_steps=16 format=3 uid="uid://cyayxpnsm4v16"]
+
+[ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/ResourceObject.cs" id="1_ywllv"]
+[ext_resource type="Resource" uid="uid://ch1b1ltixbads" path="res://Resources/Text Resources/Items/Carrot.tres" id="2_v7k63"]
+[ext_resource type="Resource" uid="uid://dcpvayh8hlqbo" path="res://Resources/Text Resources/Items/Carrot_Seed.tres" id="3_6cyct"]
+[ext_resource type="Texture2D" uid="uid://b3xd7qx5g1j24" path="res://Sprites/Carrots.png" id="3_f7c6g"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/MouseArea.cs" id="5_va1aa"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/Prefabs/timer_bar.tscn" id="6_4rs16"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Scenes/World Objects/Placeable/BlockingTileset.tres" id="7_8i61u"]
+[ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="7_ec4u3"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="8_csmfn"]
+[ext_resource type="PackedScene" uid="uid://badiq5h8rhrc" path="res://Scenes/Spawn_ResourceObject_AnimationPlayer.tscn" id="9_d641h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
+size = Vector2(14, 14)
+
+[sub_resource type="Curve" id="Curve_uq5h3"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lfoib"]
+curve = SubResource("Curve_uq5h3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n5030"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_lfoib")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i064e"]
+size = Vector2(12, 10)
+
+[node name="Carrot" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "hit_point", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_ywllv")
+anim_player = NodePath("AnimationPlayer")
+hit_point = NodePath("HitPoint")
+type = 4
+respawn_seconds = 20
+item_info = ExtResource("2_v7k63")
+drops_extra_item = true
+extra_item_amount = 1
+extra_item_info = ExtResource("3_6cyct")
+gpu_particles = NodePath("CarrotParticles")
+building_id = 12
+tile_types = Array[int]([1])
+building_collider_manager = NodePath("BuildingAreas")
+title = "WORLD_RESOURCE_CARROT"
+description = "WORLD_RESOURCE_CARROT_DESC"
+sprite = NodePath("CornSprite")
+collision_shape = NodePath("MachineCollision")
+
+[node name="CornSprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-9, 2)
+texture = ExtResource("3_f7c6g")
+offset = Vector2(0, -12)
+
+[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+z_index = 1
+script = ExtResource("5_va1aa")
+building_node = NodePath("..")
+building_sprite = NodePath("../CornSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(-8, -10)
+shape = SubResource("RectangleShape2D_a25cn")
+
+[node name="TimerBar" parent="." instance=ExtResource("6_4rs16")]
+offset_left = -27.0
+offset_top = -31.0
+offset_right = 13.0
+offset_bottom = -27.0
+
+[node name="CarrotParticles" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(-8, -8)
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_n5030")
+texture = ExtResource("7_ec4u3")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+randomness = 0.5
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("7_8i61u")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("8_csmfn")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="AnimationPlayer" parent="." instance=ExtResource("9_d641h")]
+
+[node name="MachineCollision" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-8, -7)
+shape = SubResource("RectangleShape2D_i064e")
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-8, -8)
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

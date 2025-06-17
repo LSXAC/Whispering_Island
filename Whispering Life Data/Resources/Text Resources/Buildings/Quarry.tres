@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://n4sd031omdv4"]
+
+[ext_resource type="Resource" uid="uid://b2fimwpxlqkw" path="res://Resources/Text Resources/Recipes/Building_Recipies/Quarry_Recipe.tres" id="1_itao7"]
+[ext_resource type="PackedScene" uid="uid://cqc6xxau4eh7e" path="res://Scenes/World Objects/Placeable/Quarry.tscn" id="2_ig20q"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_xj1b3"]
+
+[resource]
+script = ExtResource("3_xj1b3")
+building_scene = ExtResource("2_ig20q")
+building_recipe = ExtResource("1_itao7")
+requirements = null
+category = 0
+show_item = true

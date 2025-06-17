@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=11 format=3 uid="uid://cfioc6hnfrwbd"]
+
+[ext_resource type="Resource" uid="uid://bwoxb4s5viywy" path="res://Resources/Text Resources/Items/Mystic_Armor_Chestplate.tres" id="1_pr2v8"]
+[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_fuv45"]
+[ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Resources/Text Resources/Items/Mystic_Fibre.tres" id="3_r7j7a"]
+[ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://Resources/Text Resources/Items/Mystic_Wood.tres" id="4_pax2o"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="5_q33hb"]
+[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="6_kxygt"]
+
+[sub_resource type="Resource" id="Resource_66y5o"]
+script = ExtResource("2_fuv45")
+item_info = ExtResource("1_pr2v8")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_af5nn"]
+script = ExtResource("2_fuv45")
+item_info = ExtResource("3_r7j7a")
+amount = 8
+
+[sub_resource type="Resource" id="Resource_0o42p"]
+script = ExtResource("2_fuv45")
+item_info = ExtResource("4_pax2o")
+amount = 8
+
+[sub_resource type="Resource" id="Resource_aaxtq"]
+script = ExtResource("6_kxygt")
+required_level = 1
+item_id = 13
+
+[resource]
+script = ExtResource("5_q33hb")
+requiered_items = Array[Object]([SubResource("Resource_af5nn"), SubResource("Resource_0o42p")])
+output_item = SubResource("Resource_66y5o")
+unlockRequirements = Array[Object]([SubResource("Resource_aaxtq")])

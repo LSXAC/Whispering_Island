@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=7 format=3 uid="uid://c6cvl30smgqs7"]
+
+[ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_2yvyn"]
+[ext_resource type="Resource" uid="uid://yh8rhrf7r458" path="res://Resources/Text Resources/Items/Item_Types/Resource_Type_Classic.tres" id="1_mdwl2"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_pp54m"]
+[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableType.cs" id="2_8p0el"]
+[ext_resource type="Texture2D" uid="uid://b7u3al567dfdb" path="res://Sprites/Items/Plants_Icons/Mystic_Wood.png" id="2_bwbu0"]
+
+[sub_resource type="Resource" id="Resource_g0ryy"]
+script = ExtResource("2_8p0el")
+type = 9
+
+[resource]
+script = ExtResource("1_pp54m")
+item_types_arr = Array[Object]([ExtResource("1_mdwl2"), SubResource("Resource_g0ryy")])
+has_durability = false
+max_durability = 100
+max_slot_amount = 48
+item_name = "MYSTIC_WOOD"
+unique_id = 13
+item_description = "MYSTIC_WOOD_DESC"
+texture = ExtResource("2_bwbu0")
+value = 10.0
+type_level = 0
+use_type = 0
+item_stats = Array[ExtResource("1_2yvyn")]([])

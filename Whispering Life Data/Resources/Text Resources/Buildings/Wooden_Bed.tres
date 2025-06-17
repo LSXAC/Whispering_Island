@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://dvamcu1lg3joc"]
+
+[ext_resource type="Resource" uid="uid://bj0udm3iiilry" path="res://Resources/Text Resources/Recipes/Building_Recipies/Wooden_Bed_Recipe.tres" id="1_2ke4n"]
+[ext_resource type="PackedScene" uid="uid://1kc5qr5s7veo" path="res://Scenes/World Objects/Placeable/WoodenBed.tscn" id="2_ex62h"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_isx3e"]
+
+[resource]
+script = ExtResource("3_isx3e")
+building_scene = ExtResource("2_ex62h")
+building_recipe = ExtResource("1_2ke4n")
+requirements = Array[Object]([])
+category = 1
+show_item = true
