@@ -1,6 +1,6 @@
 [gd_scene load_steps=37 format=3 uid="uid://cvinbig8n3cbp"]
 
-[ext_resource type="Script" uid="uid://dbbnp7617yuu5" path="res://Placeable/BeltTunnel.cs" id="1_8pw6g"]
+[ext_resource type="Script" uid="uid://dbbnp7617yuu5" path="res://Scripts/Building Scripts/BeltTunnel.cs" id="1_8pw6g"]
 [ext_resource type="Texture2D" uid="uid://bi2pvwe1l5m40" path="res://Sprites/Belt_Atlas.png" id="2_h7ddp"]
 [ext_resource type="Texture2D" uid="uid://dh7i821w2aucb" path="res://Sprites/Belt_Side.png" id="2_pptf6"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_03v8s"]

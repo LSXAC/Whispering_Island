@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://bala7h6cfj70f"]
 
-[ext_resource type="Script" uid="uid://b16hq6yipkway" path="res://Placeable/BeltCombiner.cs" id="1_ri5mj"]
+[ext_resource type="Script" uid="uid://b16hq6yipkway" path="res://Scripts/BeltCombiner.cs" id="1_ri5mj"]
 [ext_resource type="Texture2D" uid="uid://vqnoy2nvry33" path="res://Sprites/Menu_Belt_Combiner_2x1.png" id="2_bxt4y"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_o1cmi"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Placeable/BlockingTileset.tres" id="4_1m3b1"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="9_j5fg5"]
 [ext_resource type="PackedScene" uid="uid://rd7h1v4imvk6" path="res://Placeable/Belt.tscn" id="10_1kri2"]
 [ext_resource type="Texture2D" uid="uid://c0apie0sdpnk7" path="res://Sprites/Top_Belt_Splitter_1x2.png" id="11_jlkvf"]
-[ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://Animations/Belt_Animation.tres" id="11_mjj1d"]
+[ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://Animations/Belt_Movement_Animation.tres" id="11_mjj1d"]
 [ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/AnimationManager12D.cs" id="12_8p114"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8pj"]

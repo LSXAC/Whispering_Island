@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_4pt64"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/MouseArea.cs" id="7_h12jl"]
 [ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Placeable/PathConnectArea.cs" id="8_4t2sw"]
-[ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://Animations/Belt_Animation.tres" id="10_fcawy"]
-[ext_resource type="Script" uid="uid://b2x3csh1fe7be" path="res://Placeable/HasConnectedBeltArea.cs" id="11_08ai2"]
-[ext_resource type="Script" uid="uid://cqukvf8b830bx" path="res://Placeable/ConnectedBeltsManager.cs" id="11_pw6t1"]
+[ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://Animations/Belt_Movement_Animation.tres" id="10_fcawy"]
+[ext_resource type="Script" uid="uid://b2x3csh1fe7be" path="res://Scripts/HasConnectedBeltArea.cs" id="11_08ai2"]
+[ext_resource type="Script" uid="uid://cqukvf8b830bx" path="res://Scripts/ConnectedBeltsManager.cs" id="11_pw6t1"]
 [ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/AnimationManager12D.cs" id="12_ftj05"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8pj"]
