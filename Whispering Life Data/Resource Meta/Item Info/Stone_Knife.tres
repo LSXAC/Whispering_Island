@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=8 format=3 uid="uid://bvplgrho461h0"]
+
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_hlfru"]
+[ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_o6n1x"]
+[ext_resource type="Texture2D" uid="uid://dru5exeq2s371" path="res://Sprites/Items/Icons_3rd/Stone_Knife.png" id="2_1lwkt"]
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Resource Meta/Item Info/Item_Types/RM_Processed_Type_Classic.tres" id="2_71jir"]
+[ext_resource type="Resource" uid="uid://xatv5x587fug" path="res://Resource Meta/Item Info/Item_Types/RM_Tool_Type_Classic.tres" id="3_1v52a"]
+
+[sub_resource type="Resource" id="Resource_p82l7"]
+script = ExtResource("1_o6n1x")
+type = 0
+bonus = 0.2
+
+[sub_resource type="Resource" id="Resource_6hoy5"]
+script = ExtResource("1_o6n1x")
+type = 1
+bonus = -0.5
+
+[resource]
+script = ExtResource("1_hlfru")
+item_types_arr = Array[Object]([ExtResource("2_71jir"), ExtResource("3_1v52a")])
+has_durability = true
+max_durability = 150
+max_slot_amount = 1
+item_name = "STONE_KNIFE"
+unique_id = 11
+item_description = "STONE_KNIFE_DESC"
+texture = ExtResource("2_1lwkt")
+value = 10.0
+type_level = 2
+use_type = 4
+item_stats = Array[ExtResource("1_o6n1x")]([SubResource("Resource_p82l7"), SubResource("Resource_6hoy5")])

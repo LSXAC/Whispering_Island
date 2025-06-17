@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://bang68hyrryto" path="res://Scripts/UI Scripts/TranslationRichTextLabel.cs" id="12_fbb8a"]
 [ext_resource type="Texture2D" uid="uid://1rxf21hw1xu5" path="res://Sprites/Heart_Icon.png" id="12_rpytx"]
 [ext_resource type="Script" uid="uid://b5gbju1jehjfy" path="res://Scripts/Manager Scripts/HeartManager.cs" id="12_twnk5"]
-[ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://Resources/Menus/Theme_Slots.tres" id="17_33i7j"]
+[ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://Resource Meta/Menus/Theme_Slots.tres" id="17_33i7j"]
 [ext_resource type="Script" uid="uid://cowg1oi4t5ap8" path="res://Scripts/EquipmentSelectBar.cs" id="17_450ol"]
 [ext_resource type="Texture2D" uid="uid://bb5ty4ja5q1mo" path="res://Sprites/Items/Tool_Icons/icons_30_24.png" id="17_m7yfj"]
 [ext_resource type="Script" uid="uid://x5sh7dthimfr" path="res://Scripts/Inventory Scripts/Slot.cs" id="18_2bhlg"]

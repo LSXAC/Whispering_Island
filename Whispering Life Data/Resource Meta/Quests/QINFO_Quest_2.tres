@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="QuestInfo" load_steps=9 format=3 uid="uid://cdk8sna5iiegp"]
+
+[ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Resource Meta/Item Info/Wood_Stick.tres" id="1_71w8j"]
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Item Info/Wood.tres" id="1_bbjln"]
+[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_uej2x"]
+[ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Scripts/Resources/QuestInfo.cs" id="3_aiyko"]
+[ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Resource Meta/Item Info/Wood_Plank.tres" id="4_i3mbo"]
+
+[sub_resource type="Resource" id="Resource_iic3g"]
+script = ExtResource("2_uej2x")
+item_info = ExtResource("1_71w8j")
+amount = 10
+
+[sub_resource type="Resource" id="Resource_swemk"]
+script = ExtResource("2_uej2x")
+item_info = ExtResource("1_bbjln")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_es1v1"]
+script = ExtResource("2_uej2x")
+item_info = ExtResource("4_i3mbo")
+amount = 5
+
+[resource]
+script = ExtResource("3_aiyko")
+quest_name = "QUEST_TITLE_2"
+quest_description = "QUEST_DESC_2"
+quest_items = Array[Resource]([SubResource("Resource_iic3g"), SubResource("Resource_swemk"), SubResource("Resource_es1v1")])
+quest_time = 300

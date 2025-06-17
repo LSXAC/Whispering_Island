@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://6wlgn6tdsk7b"]
+
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Resource Meta/Item Info/Item_Types/RM_Processed_Type_Classic.tres" id="1_gwktg"]
+[ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_hw0nm"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_lxl0p"]
+[ext_resource type="Texture2D" uid="uid://dssms0p4e3r0e" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe_Head.png" id="2_t5k5v"]
+
+[resource]
+script = ExtResource("1_lxl0p")
+item_types_arr = Array[Object]([ExtResource("1_gwktg")])
+has_durability = false
+max_durability = 100
+max_slot_amount = 48
+item_name = "STONE_PICKAXE_HEAD"
+unique_id = 18
+item_description = "STONE_PICKAXE_HEAD_DESC"
+texture = ExtResource("2_t5k5v")
+value = 10.0
+type_level = 0
+use_type = 0
+item_stats = Array[ExtResource("1_hw0nm")]([])

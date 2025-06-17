@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://bdefudjlvvi5c"]
+
+[ext_resource type="Resource" uid="uid://bqmofblxswr12" path="res://Resource Meta/Recipes/Building_Recipies/Planting/Mystic_Fibre_Object_Recipe.tres" id="1_f2owc"]
+[ext_resource type="PackedScene" uid="uid://cjw7mpije2ul4" path="res://Scenes/World Objects/Mineable Objects/MO_Mystical_Fibre.tscn" id="2_a1amw"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_pcf46"]
+
+[resource]
+script = ExtResource("3_pcf46")
+building_scene = ExtResource("2_a1amw")
+building_recipe = ExtResource("1_f2owc")
+requirements = Array[Object]([])
+category = 2
+show_item = true

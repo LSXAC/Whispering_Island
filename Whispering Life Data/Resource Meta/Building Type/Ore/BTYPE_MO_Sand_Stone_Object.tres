@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://bifci2duytvow"]
+
+[ext_resource type="Resource" uid="uid://bj0udm3iiilry" path="res://Resource Meta/Recipes/Building_Recipies/Wooden_Bed_Recipe.tres" id="1_cdgm8"]
+[ext_resource type="PackedScene" uid="uid://c6fshtcsvmam5" path="res://Scenes/World Objects/Mineable Objects/MO_Sand_Stone.tscn" id="2_p35re"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_k5ndo"]
+
+[resource]
+script = ExtResource("3_k5ndo")
+building_scene = ExtResource("2_p35re")
+building_recipe = ExtResource("1_cdgm8")
+requirements = Array[Object]([])
+category = 4
+show_item = true

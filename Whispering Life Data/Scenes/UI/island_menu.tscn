@@ -10,8 +10,8 @@
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/UI Scripts/TranslationButton.cs" id="8_liwoe"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="9_qhepf"]
 [ext_resource type="Script" uid="uid://b3t4ic6iwowss" path="res://Scripts/UI Scripts/SoundSlider.cs" id="10_yo0o2"]
-[ext_resource type="StyleBox" uid="uid://ch5faigjhjxlm" path="res://Resources/Menus/OptionButtonStylePressed.tres" id="11_yjoum"]
-[ext_resource type="StyleBox" uid="uid://beanw2e3ddca1" path="res://Resources/Menus/OptionButtonStyle.tres" id="12_fqkoe"]
+[ext_resource type="StyleBox" uid="uid://ch5faigjhjxlm" path="res://Resource Meta/Menus/OptionButtonStylePressed.tres" id="11_yjoum"]
+[ext_resource type="StyleBox" uid="uid://beanw2e3ddca1" path="res://Resource Meta/Menus/OptionButtonStyle.tres" id="12_fqkoe"]
 [ext_resource type="Texture2D" uid="uid://syf34dx878d5" path="res://Sprites/Flaggs/US_FLAG.png" id="13_o0t3s"]
 [ext_resource type="Texture2D" uid="uid://d24spwn8n1w7w" path="res://Sprites/Flaggs/DE_FLAG.png" id="14_bj3bb"]
 

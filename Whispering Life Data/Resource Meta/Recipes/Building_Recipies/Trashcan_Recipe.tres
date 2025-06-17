@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://ce8ea3olbpkt6"]
+
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Item Info/Wood.tres" id="1_jfouc"]
+[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_y5uji"]
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Resource Meta/Item Info/Stone.tres" id="3_7lwiw"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="4_ijtrh"]
+[ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Resource Meta/Item Info/Char_Coal.tres" id="4_muso4"]
+
+[sub_resource type="Resource" id="Resource_hnenm"]
+script = ExtResource("2_y5uji")
+item_info = ExtResource("1_jfouc")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_odrd4"]
+script = ExtResource("2_y5uji")
+item_info = ExtResource("3_7lwiw")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_la0k6"]
+script = ExtResource("2_y5uji")
+item_info = ExtResource("4_muso4")
+amount = 5
+
+[resource]
+script = ExtResource("4_ijtrh")
+requiered_items = Array[Object]([SubResource("Resource_hnenm"), SubResource("Resource_odrd4"), SubResource("Resource_la0k6")])
+unlockRequirements = Array[Object]([])

@@ -22,7 +22,7 @@ public partial class QuestMenu : CanvasLayer
     public Resource dialogue_timeline;
     public PackedScene h_box_item = ResourceLoader.Load<PackedScene>("res://h_box_item.tscn");
     public static QuestMenu INSTANCE = null;
-    public static Quest currentQuest = null;
+    public static QuestInfo currentQuest = null;
 
     private Array<Label> item_labels = new Array<Label>();
 
@@ -32,7 +32,7 @@ public partial class QuestMenu : CanvasLayer
         INSTANCE = this;
     }
 
-    public void InitQuest(Quest quest)
+    public void InitQuest(QuestInfo quest)
     {
         ResetParent();
 

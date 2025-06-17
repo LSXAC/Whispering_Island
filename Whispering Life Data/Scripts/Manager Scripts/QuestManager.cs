@@ -7,7 +7,7 @@ using Godot.Collections;
 public partial class QuestManager : Node
 {
     [Export]
-    public Array<Quest> quests;
+    public Array<QuestInfo> quests;
     public static int current_quest_id = 0;
     public static QuestManager INSTANCE = null;
     public static int current_quest_time = 0;

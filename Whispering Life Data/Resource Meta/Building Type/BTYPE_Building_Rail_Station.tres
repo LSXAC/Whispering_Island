@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://btttc2idbh83q"]
+
+[ext_resource type="Resource" uid="uid://b1b8ue2i4yt33" path="res://Resource Meta/Recipes/Building_Recipies/Rail_Station_Recipe.tres" id="1_6n3xd"]
+[ext_resource type="PackedScene" uid="uid://8ea6alhnkqok" path="res://Scenes/World Objects/Buildings/Building_Rail_Station.tscn" id="2_6n3xd"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_wkldc"]
+
+[resource]
+script = ExtResource("3_wkldc")
+building_scene = ExtResource("2_6n3xd")
+building_recipe = ExtResource("1_6n3xd")
+requirements = Array[Object]([])
+category = 0
+show_item = true

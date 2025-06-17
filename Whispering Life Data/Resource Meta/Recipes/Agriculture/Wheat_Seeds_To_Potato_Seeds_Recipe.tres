@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3 uid="uid://kbdrwglo2ghh"]
+
+[ext_resource type="Resource" uid="uid://1vfo1rr84pk7" path="res://Resource Meta/Item Info/Potato_Seed.tres" id="1_8fbgv"]
+[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_nxj3c"]
+[ext_resource type="Resource" uid="uid://ckgu5x7reokuj" path="res://Resource Meta/Item Info/Wheat_Seed.tres" id="3_xt3k8"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="4_taos8"]
+
+[sub_resource type="Resource" id="Resource_66y5o"]
+script = ExtResource("2_nxj3c")
+item_info = ExtResource("1_8fbgv")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_af5nn"]
+script = ExtResource("2_nxj3c")
+item_info = ExtResource("3_xt3k8")
+amount = 2
+
+[resource]
+script = ExtResource("4_taos8")
+requiered_items = Array[Object]([SubResource("Resource_af5nn")])
+output_item = SubResource("Resource_66y5o")
+unlockRequirements = null

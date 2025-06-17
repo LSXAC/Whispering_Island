@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=8 format=3 uid="uid://dk6vef80itp5v"]
+
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_c6th4"]
+[ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_c866y"]
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Resource Meta/Item Info/Item_Types/RM_Processed_Type_Classic.tres" id="1_o6pdc"]
+[ext_resource type="Texture2D" uid="uid://c5qiaugbvr50i" path="res://Sprites/Items/Armor/Mystic_Armor_Leggings.png" id="2_841uy"]
+[ext_resource type="Script" uid="uid://c4bxt3kxdc50f" path="res://Scripts/Item/LeggingsType.cs" id="2_e6w7m"]
+
+[sub_resource type="Resource" id="Resource_o4w48"]
+script = ExtResource("1_c866y")
+type = 1
+bonus = 0.3
+
+[sub_resource type="Resource" id="Resource_r0jra"]
+script = ExtResource("2_e6w7m")
+type = 12
+
+[resource]
+script = ExtResource("1_c6th4")
+item_types_arr = Array[Object]([ExtResource("1_o6pdc"), SubResource("Resource_r0jra")])
+has_durability = false
+max_durability = 100
+max_slot_amount = 1
+item_name = "MYSTIC_ARMOR_LEGGINGS"
+unique_id = 35
+item_description = "MYSTIC_ARMOR_LEGGINGS_DESC"
+texture = ExtResource("2_841uy")
+value = 5.0
+type_level = 0
+use_type = 0
+item_stats = Array[ExtResource("1_c866y")]([SubResource("Resource_o4w48")])

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://bj0udm3iiilry"]
+
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Item Info/Wood.tres" id="1_41jec"]
+[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_6o4tj"]
+[ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://Resource Meta/Item Info/Wheat.tres" id="3_f8rp6"]
+[ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Resource Meta/Item Info/Mystic_Fibre.tres" id="4_yb32n"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="5_1wde6"]
+
+[sub_resource type="Resource" id="Resource_hnenm"]
+script = ExtResource("2_6o4tj")
+item_info = ExtResource("1_41jec")
+amount = 20
+
+[sub_resource type="Resource" id="Resource_2apmp"]
+script = ExtResource("2_6o4tj")
+item_info = ExtResource("3_f8rp6")
+amount = 10
+
+[sub_resource type="Resource" id="Resource_t1pv4"]
+script = ExtResource("2_6o4tj")
+item_info = ExtResource("4_yb32n")
+amount = 5
+
+[resource]
+script = ExtResource("5_1wde6")
+requiered_items = Array[Object]([SubResource("Resource_hnenm"), SubResource("Resource_2apmp"), SubResource("Resource_t1pv4")])
+unlockRequirements = null

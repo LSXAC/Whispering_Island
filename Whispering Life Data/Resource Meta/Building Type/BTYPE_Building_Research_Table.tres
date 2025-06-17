@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://c2tfkto5ygm4k"]
+
+[ext_resource type="Resource" uid="uid://768blff322g7" path="res://Resource Meta/Recipes/Building_Recipies/Research_Table_Recipe.tres" id="1_p7p2b"]
+[ext_resource type="PackedScene" uid="uid://dda24vs8c7wm7" path="res://Scenes/World Objects/Buildings/Building_Research_Table.tscn" id="2_m61kj"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_7jee8"]
+
+[resource]
+script = ExtResource("3_7jee8")
+building_scene = ExtResource("2_m61kj")
+building_recipe = ExtResource("1_p7p2b")
+requirements = Array[Object]([])
+category = 3
+show_item = true

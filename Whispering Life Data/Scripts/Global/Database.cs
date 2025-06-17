@@ -16,40 +16,42 @@ public partial class Database : Node
 
     // RESEARCH LINES ------------------------------------------------------------------------------------------------
 
-    public static Dictionary<InventoryBase.ITEM_ID, ResearchLevelManager> researchs =
-        new Dictionary<InventoryBase.ITEM_ID, ResearchLevelManager>()
+    public static Dictionary<InventoryBase.ITEM_ID, ResearchLevelGroup> researchs = new Dictionary<
+        InventoryBase.ITEM_ID,
+        ResearchLevelGroup
+    >()
+    {
         {
-            {
-                InventoryBase.ITEM_ID.WOOD,
-                ResourceLoader.Load<ResearchLevelManager>(
-                    "res://Items/ItemResearchs/Wood_Research_Level_Manager.tres"
-                )
-            },
-            {
-                InventoryBase.ITEM_ID.STONE,
-                ResourceLoader.Load<ResearchLevelManager>(
-                    "res://Items/ItemResearchs/Stone_Research_Level_Manager.tres"
-                )
-            },
-            {
-                InventoryBase.ITEM_ID.SAND,
-                ResourceLoader.Load<ResearchLevelManager>(
-                    "res://Items/ItemResearchs/Sand_Research_Level_Manager.tres"
-                )
-            },
-            {
-                InventoryBase.ITEM_ID.MYSTIC_WOOD,
-                ResourceLoader.Load<ResearchLevelManager>(
-                    "res://Items/ItemResearchs/Mystic_Wood_Research_Level_Manager.tres"
-                )
-            },
-            {
-                InventoryBase.ITEM_ID.IRON_ORE,
-                ResourceLoader.Load<ResearchLevelManager>(
-                    "res://Items/ItemResearchs/Iron_Ore_Research_Level_Manager.tres"
-                )
-            }
-        };
+            InventoryBase.ITEM_ID.WOOD,
+            ResourceLoader.Load<ResearchLevelGroup>(
+                "res://Items/ItemResearchs/Wood_Research_Level_Manager.tres"
+            )
+        },
+        {
+            InventoryBase.ITEM_ID.STONE,
+            ResourceLoader.Load<ResearchLevelGroup>(
+                "res://Items/ItemResearchs/Stone_Research_Level_Manager.tres"
+            )
+        },
+        {
+            InventoryBase.ITEM_ID.SAND,
+            ResourceLoader.Load<ResearchLevelGroup>(
+                "res://Items/ItemResearchs/Sand_Research_Level_Manager.tres"
+            )
+        },
+        {
+            InventoryBase.ITEM_ID.MYSTIC_WOOD,
+            ResourceLoader.Load<ResearchLevelGroup>(
+                "res://Items/ItemResearchs/Mystic_Wood_Research_Level_Manager.tres"
+            )
+        },
+        {
+            InventoryBase.ITEM_ID.IRON_ORE,
+            ResourceLoader.Load<ResearchLevelGroup>(
+                "res://Items/ItemResearchs/Iron_Ore_Research_Level_Manager.tres"
+            )
+        }
+    };
 
     // BUILDINGS LINES ------------------------------------------------------------------------------------------------
 

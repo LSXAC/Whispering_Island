@@ -40,7 +40,7 @@ public partial class QuestMiniPanel : PanelContainer
             + "s";
     }
 
-    public void InitQuestMiniPanel(Quest currentQuest)
+    public void InitQuestMiniPanel(QuestInfo currentQuest)
     {
         foreach (h_box_item hbi in hbox_items)
             hbi.Visible = false;
@@ -48,7 +48,7 @@ public partial class QuestMiniPanel : PanelContainer
         UpdateQuestMiniPanel(currentQuest);
     }
 
-    public void UpdateQuestMiniPanel(Quest currentQuest)
+    public void UpdateQuestMiniPanel(QuestInfo currentQuest)
     {
         Array<Item> items_in_inventory = Inventory.INSTANCE.GetListOfItemsInInventory();
         for (int i = 0; i < currentQuest.quest_items.Count; i++)
