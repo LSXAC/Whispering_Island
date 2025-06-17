@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=9 format=3 uid="uid://c10rid084wdox"]
+
+[ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_fqlw0"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_kn11j"]
+[ext_resource type="Resource" uid="uid://xatv5x587fug" path="res://Resources/Items/Item_Types/Tool_Type_Classic.tres" id="2_1bryp"]
+[ext_resource type="Texture2D" uid="uid://nay062h3dror" path="res://Sprites/Items/Icons_3rd/Stone_Hoe.png" id="3_2is6l"]
+[ext_resource type="Resource" uid="uid://duirbryu00nmb" path="res://Resources/Items/Item_Types/Burnable_Type_60.tres" id="3_6hdbi"]
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Resources/Items/Item_Types/Processed_Type_Classic.tres" id="4_p5l1n"]
+
+[sub_resource type="Resource" id="Resource_mcbdc"]
+script = ExtResource("1_fqlw0")
+type = 4
+bonus = 1.0
+
+[sub_resource type="Resource" id="Resource_o3yil"]
+script = ExtResource("1_fqlw0")
+type = 1
+bonus = -1.0
+
+[resource]
+script = ExtResource("1_kn11j")
+item_types_arr = Array[Object]([ExtResource("2_1bryp"), ExtResource("3_6hdbi"), ExtResource("4_p5l1n")])
+has_durability = true
+max_durability = 50
+max_slot_amount = 1
+item_name = "WOODEN_HOE"
+unique_id = 20
+item_description = "WOODEN_HOE_DESC"
+texture = ExtResource("3_2is6l")
+value = 10.0
+type_level = 1
+use_type = 4
+item_stats = Array[ExtResource("1_fqlw0")]([SubResource("Resource_mcbdc"), SubResource("Resource_o3yil")])

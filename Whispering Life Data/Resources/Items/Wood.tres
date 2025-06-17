@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=9 format=3 uid="uid://dn1orkomhkyrw"]
+
+[ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_a3unp"]
+[ext_resource type="Resource" uid="uid://duirbryu00nmb" path="res://Resources/Items/Item_Types/Burnable_Type_60.tres" id="1_ar24l"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_dhxeo"]
+[ext_resource type="Resource" uid="uid://b4j8cjn03te4o" path="res://Resources/Items/Item_Types/Smeltable_Type_Classic.tres" id="2_lot17"]
+[ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="2_xwls3"]
+[ext_resource type="Resource" uid="uid://yh8rhrf7r458" path="res://Resources/Items/Item_Types/Resource_Type_Classic.tres" id="3_0vo6d"]
+[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableType.cs" id="4_gqnf8"]
+
+[sub_resource type="Resource" id="Resource_5f4nj"]
+script = ExtResource("4_gqnf8")
+type = 9
+
+[resource]
+script = ExtResource("1_dhxeo")
+item_types_arr = Array[Object]([ExtResource("1_ar24l"), ExtResource("2_lot17"), ExtResource("3_0vo6d"), SubResource("Resource_5f4nj")])
+has_durability = false
+max_durability = 100
+max_slot_amount = 48
+item_name = "WOOD"
+unique_id = 0
+item_description = "WOOD_DESC"
+texture = ExtResource("2_xwls3")
+value = 2.0
+type_level = 0
+use_type = 0
+item_stats = Array[ExtResource("1_a3unp")]([])

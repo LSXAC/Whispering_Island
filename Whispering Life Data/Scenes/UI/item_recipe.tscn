@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7l06c35ca42f"]
+
+[ext_resource type="Script" uid="uid://ohg3uh7id56e" path="res://Scripts/UI Scripts/itemRecipeUI.cs" id="1_ru6aw"]
+[ext_resource type="Script" uid="uid://c8olhec3yacn5" path="res://Scripts/UI Scripts/h_box_item.cs" id="2_agjxi"]
+[ext_resource type="Texture2D" uid="uid://bjana5l7fkd6a" path="res://Sprites/Items/Icons_3rd/Wood_Stick.png" id="3_g7qkb"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="4_jea1x"]
+[ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Scripts/Manager Scripts/Item_Row_Manager.cs" id="5_xygt5"]
+[ext_resource type="Texture2D" uid="uid://wquchq45ve1" path="res://Sprites/Items/Icons/Hammer_Icon.png" id="6_5dtiv"]
+
+[node name="ItemRecipe" type="Control" node_paths=PackedStringArray("item_row_manager", "craft_button", "output_item_hbox")]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ru6aw")
+item_row_manager = NodePath("MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere")
+craft_button = NodePath("MarginContainer/VSplitContainer/HBoxRequiereToCraft/CraftButton")
+output_item_hbox = NodePath("MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 42.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 7
+
+[node name="VSplitContainer" type="HSplitContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+split_offset = 250
+collapsed = true
+
+[node name="HBoxToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="CC" type="CenterContainer" parent="MarginContainer/VSplitContainer/HBoxToCraft"]
+layout_mode = 2
+
+[node name="HBoxItem" type="HBoxContainer" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC"]
+layout_mode = 2
+script = ExtResource("2_agjxi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem"]
+layout_mode = 2
+alignment = 1
+
+[node name="ItemTexture" type="TextureRect" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem/VBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("3_g7qkb")
+expand_mode = 2
+
+[node name="ItemLabel" type="Label" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_jea1x")
+theme_override_font_sizes/font_size = 8
+text = "4x Sticks"
+
+[node name="HBoxRequiereToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="CC_Requiere" type="HBoxContainer" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft"]
+layout_mode = 2
+script = ExtResource("5_xygt5")
+
+[node name="CraftButton" type="Button" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+icon = ExtResource("6_5dtiv")
+icon_alignment = 1
+expand_icon = true

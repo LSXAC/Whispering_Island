@@ -66,9 +66,9 @@ public partial class Building_Placer : Node2D
             return;
         }
 
-        if (current_building is ResourceObject)
+        if (current_building is MineableObject)
         {
-            placeable = current_building as ResourceObject;
+            placeable = current_building as MineableObject;
             placeable.GetSprite().SelfModulate = new Color(1f, 1f, 1f, 0.75f);
             return;
         }
@@ -191,9 +191,9 @@ public partial class Building_Placer : Node2D
         ip.building_manager.AddChild(temp);
         // Remove Resources
         RemoveResources();
-        if (temp is ResourceObject)
+        if (temp is MineableObject)
         {
-            ((ResourceObject)temp).SpawnPlant();
+            ((MineableObject)temp).SpawnPlant();
             if (!player_ui.INSTANCE.item_row_manager.CanCreate(building_recipe.requiered_items))
             {
                 can_create = false;

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://ugx2sc0qbion"]
+
+[ext_resource type="Resource" uid="uid://eii6r53vob16" path="res://Resources/Recipes/Building_Recipies/Belt_Recipe.tres" id="1_xuike"]
+[ext_resource type="PackedScene" uid="uid://rd7h1v4imvk6" path="res://Scenes/World Objects/Buildings/Building_Belt.tscn" id="2_oinj2"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_6opvd"]
+
+[resource]
+script = ExtResource("3_6opvd")
+building_scene = ExtResource("2_oinj2")
+building_recipe = ExtResource("1_xuike")
+requirements = Array[Object]([])
+category = 0
+show_item = true

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=9 format=3 uid="uid://ljb14i8nnpgp"]
+
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_e4sjo"]
+[ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_lgkv1"]
+[ext_resource type="Resource" uid="uid://yh8rhrf7r458" path="res://Resources/Items/Item_Types/Resource_Type_Classic.tres" id="1_vq5d2"]
+[ext_resource type="Texture2D" uid="uid://x7jiiuscayra" path="res://Sprites/Items/Icons_3rd/Sand.png" id="2_cv2vi"]
+[ext_resource type="Script" uid="uid://bdbfd68r4ogge" path="res://Scripts/Item/SmeltableType.cs" id="2_n3q7d"]
+[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableType.cs" id="3_vqdti"]
+
+[sub_resource type="Resource" id="Resource_6w6d6"]
+script = ExtResource("2_n3q7d")
+type = 6
+
+[sub_resource type="Resource" id="Resource_6dky3"]
+script = ExtResource("3_vqdti")
+type = 9
+
+[resource]
+script = ExtResource("1_e4sjo")
+item_types_arr = Array[Object]([ExtResource("1_vq5d2"), SubResource("Resource_6w6d6"), SubResource("Resource_6dky3")])
+has_durability = false
+max_durability = 100
+max_slot_amount = 48
+item_name = "SAND"
+unique_id = 31
+item_description = "SAND_DESC"
+texture = ExtResource("2_cv2vi")
+value = 5.0
+type_level = 0
+use_type = 0
+item_stats = Array[ExtResource("1_lgkv1")]([])

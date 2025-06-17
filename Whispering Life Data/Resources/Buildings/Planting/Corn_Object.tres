@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://ddh60mgjdbfna"]
+
+[ext_resource type="Resource" uid="uid://bknht87wftf3x" path="res://Resources/Recipes/Building_Recipies/Planting/Corn_Object_Recipe.tres" id="1_indfs"]
+[ext_resource type="PackedScene" uid="uid://dyhqyvmm3pp6m" path="res://Scenes/World Objects/Mineable Objects/MO_Corn.tscn" id="2_418km"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingType.cs" id="3_qmo3n"]
+
+[resource]
+script = ExtResource("3_qmo3n")
+building_scene = ExtResource("2_418km")
+building_recipe = ExtResource("1_indfs")
+requirements = Array[Object]([])
+category = 2
+show_item = true

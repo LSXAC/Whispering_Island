@@ -1,0 +1,179 @@
+[gd_scene load_steps=16 format=4 uid="uid://8ea6alhnkqok"]
+
+[ext_resource type="Script" uid="uid://o5ts5isb43np" path="res://Scripts/Building Scripts/RailStation.cs" id="1_h1uaa"]
+[ext_resource type="Texture2D" uid="uid://be1t8wuf070gp" path="res://Sprites/Rail_Station_Bottom.png" id="2_17qbx"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_detd8"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_o2pyy"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_5h1rb"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="6_8y7rk"]
+[ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Taker_Component.tscn" id="7_mdmq6"]
+[ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Giver_Component.tscn" id="8_oomir"]
+[ext_resource type="PackedScene" uid="uid://dyylrlp6acwxq" path="res://Scenes/World Objects/Buildings/Building_Rail.tscn" id="9_pslwl"]
+[ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Scripts/Building Scripts/PathConnectArea.cs" id="10_wnhjv"]
+[ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Scripts/Building Scripts/ChestBase.cs" id="11_80gpa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
+size = Vector2(80, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
+size = Vector2(78, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o32qu"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfmfo"]
+size = Vector2(23, 18)
+
+[node name="RailStation" type="StaticBody2D" node_paths=PackedStringArray("chest_in", "chest_out", "building_collider_manager", "sprite", "collision_shape")]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_h1uaa")
+building_id = 27
+tile_types = Array[int]([0])
+title = "BUILDING_RAIL_STATION"
+description = "BUILDING_RAIL_STATION_DESC"
+chest_in = NodePath("Chest_In")
+chest_out = NodePath("Chest_Out")
+building_collider_manager = NodePath("BuildingAreas")
+sprite = NodePath("BuildingSprite")
+collision_shape = NodePath("MachineCollision")
+
+[node name="BuildingSprite" type="Sprite2D" parent="."]
+visible = false
+y_sort_enabled = true
+position = Vector2(-8, -16)
+texture = ExtResource("2_17qbx")
+centered = false
+offset = Vector2(-24, -32)
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("3_detd8")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray("AAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAACAAAAAAAAAP//AAACAAAAAAD/////AAACAAAAAAD9/wAAAAACAAAAAAD9////AAACAAAAAAD9//7/AAACAAAAAAD+//7/AAACAAAAAAD///7/AAACAAAAAAAAAP7/AAACAAAAAAABAP7/AAACAAAAAAABAP//AAACAAAAAAABAAAAAAACAAAAAAA=")
+enabled = false
+tile_set = ExtResource("4_o2pyy")
+
+[node name="MachineCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -3)
+shape = SubResource("RectangleShape2D_m0htq")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-8, 5)
+scale = Vector2(5, 2)
+texture = ExtResource("5_5h1rb")
+
+[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+visible = false
+z_index = 1
+position = Vector2(-8, -8)
+collision_layer = 2
+script = ExtResource("6_8y7rk")
+building_node = NodePath("..")
+building_sprite = NodePath("../BuildingSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_fk0le")
+
+[node name="Taker" parent="." node_paths=PackedStringArray("building") instance=ExtResource("7_mdmq6")]
+z_index = 2
+position = Vector2(-24, -24)
+building = NodePath("../Chest_In")
+
+[node name="Giver" parent="." node_paths=PackedStringArray("building") instance=ExtResource("8_oomir")]
+position = Vector2(8, -37)
+direction_not_giving = 1
+building = NodePath("../Chest_Out")
+
+[node name="Holder" parent="Giver" index="0"]
+position = Vector2(0, 14)
+
+[node name="TransferTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="Rails" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Rail" parent="Rails" instance=ExtResource("9_pslwl")]
+disable_mouse_interaction = true
+disable_collision = true
+
+[node name="Rail2" parent="Rails" instance=ExtResource("9_pslwl")]
+position = Vector2(16, 0)
+disable_mouse_interaction = true
+disable_collision = true
+
+[node name="Rail3" parent="Rails" instance=ExtResource("9_pslwl")]
+position = Vector2(-32, 0)
+disable_mouse_interaction = true
+disable_collision = true
+
+[node name="Rail4" parent="Rails" instance=ExtResource("9_pslwl")]
+position = Vector2(32, 0)
+disable_mouse_interaction = true
+disable_collision = true
+
+[node name="Rail5" parent="Rails" instance=ExtResource("9_pslwl")]
+position = Vector2(-16, 0)
+disable_mouse_interaction = true
+disable_collision = true
+
+[node name="Ground" type="Sprite2D" parent="."]
+z_index = -2
+y_sort_enabled = true
+position = Vector2(0, 42)
+texture = ExtResource("2_17qbx")
+offset = Vector2(-8, -50)
+
+[node name="PathConnectArea" type="Area2D" parent="."]
+position = Vector2(32, 0)
+collision_layer = 516
+collision_mask = 0
+monitoring = false
+script = ExtResource("10_wnhjv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea"]
+position = Vector2(-8, -8)
+shape = SubResource("RectangleShape2D_o32qu")
+
+[node name="Chest_In" type="Node2D" parent="." node_paths=PackedStringArray("givers", "takers")]
+script = ExtResource("11_80gpa")
+chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+machine_enabled = true
+givers = []
+takers = [NodePath("../Taker")]
+disable_mouse_interaction = true
+tile_types = []
+
+[node name="Chest_Out" type="Node2D" parent="." node_paths=PackedStringArray("givers", "takers")]
+script = ExtResource("11_80gpa")
+chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+machine_enabled = true
+givers = [NodePath("../Giver")]
+takers = []
+disable_mouse_interaction = true
+tile_types = Array[int]([0])
+
+[node name="RailstationAREA" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+collision_priority = 0.0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RailstationAREA"]
+position = Vector2(-7.5, -8)
+shape = SubResource("RectangleShape2D_rfmfo")
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
+[connection signal="timeout" from="TransferTimer" to="." method="OnTransferTimerTimeout"]
+[connection signal="area_entered" from="RailstationAREA" to="." method="OnAreaEntered"]
+
+[editable path="Giver"]

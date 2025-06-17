@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ResearchLevelManager" load_steps=7 format=3 uid="uid://crmqrimgdf2gl"]
+
+[ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Scripts/Research/ResearchLevel.cs" id="1_fa7v7"]
+[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Resources/Items/Iron_Ingot.tres" id="2_bya61"]
+[ext_resource type="Script" uid="uid://8idh4gp832ub" path="res://Scripts/Manager Scripts/ResearchLevelManager.cs" id="2_w48cl"]
+[ext_resource type="Resource" uid="uid://dqdb68mek201l" path="res://Resources/Items/Iron_Block.tres" id="3_1usbh"]
+
+[sub_resource type="Resource" id="Resource_5ebk2"]
+script = ExtResource("1_fa7v7")
+unlocks_items = Array[Object]([ExtResource("2_bya61")])
+
+[sub_resource type="Resource" id="Resource_2mqpd"]
+script = ExtResource("1_fa7v7")
+unlocks_items = Array[Object]([ExtResource("3_1usbh")])
+
+[resource]
+script = ExtResource("2_w48cl")
+translation_string = "RESEARCH_IRON_ORE"
+research_levels = Array[Object]([SubResource("Resource_5ebk2"), SubResource("Resource_2mqpd")])

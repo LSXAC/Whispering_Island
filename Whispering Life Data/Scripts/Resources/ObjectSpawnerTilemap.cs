@@ -26,7 +26,7 @@ public partial class ObjectSpawnerTilemap : TileMapLayer
         "res://Placeable/Copper_Ore.tscn"
     );
 
-    public Array<ResourceObject> resource_objects = new Array<ResourceObject>();
+    public Array<MineableObject> resource_objects = new Array<MineableObject>();
 
     public override void _Ready()
     {
@@ -50,35 +50,35 @@ public partial class ObjectSpawnerTilemap : TileMapLayer
     {
         foreach (Vector2I cell2I in GetUsedCells())
         {
-            ResourceObject bn = null;
+            MineableObject bn = null;
             if (GetCellAtlasCoords(cell2I) == woodVec)
-                bn = (ResourceObject)tree.Instantiate();
+                bn = (MineableObject)tree.Instantiate();
             if (GetCellAtlasCoords(cell2I) == stoneVec)
-                bn = (ResourceObject)stone.Instantiate();
+                bn = (MineableObject)stone.Instantiate();
 
             if (GetCellAtlasCoords(cell2I) == mystTreeVec)
-                bn = (ResourceObject)mystTree.Instantiate();
+                bn = (MineableObject)mystTree.Instantiate();
             if (GetCellAtlasCoords(cell2I) == mystFibreVec)
-                bn = (ResourceObject)mystFibre.Instantiate();
+                bn = (MineableObject)mystFibre.Instantiate();
 
             if (GetCellAtlasCoords(cell2I) == wheatVec)
-                bn = (ResourceObject)wheat.Instantiate();
+                bn = (MineableObject)wheat.Instantiate();
             if (GetCellAtlasCoords(cell2I) == ironoreVec)
-                bn = (ResourceObject)iron_ore.Instantiate();
+                bn = (MineableObject)iron_ore.Instantiate();
             if (GetCellAtlasCoords(cell2I) == copperoreVec)
-                bn = (ResourceObject)copper_ore.Instantiate();
+                bn = (MineableObject)copper_ore.Instantiate();
 
             if (GetCellAtlasCoords(cell2I) == potatoVec)
-                bn = (ResourceObject)potato.Instantiate();
+                bn = (MineableObject)potato.Instantiate();
             if (GetCellAtlasCoords(cell2I) == carrotVec)
-                bn = (ResourceObject)carrot.Instantiate();
+                bn = (MineableObject)carrot.Instantiate();
             if (GetCellAtlasCoords(cell2I) == cornVec)
-                bn = (ResourceObject)corn.Instantiate();
+                bn = (MineableObject)corn.Instantiate();
 
             if (GetCellAtlasCoords(cell2I) == sandVec)
-                bn = (ResourceObject)sand.Instantiate();
+                bn = (MineableObject)sand.Instantiate();
             if (GetCellAtlasCoords(cell2I) == sandStoneVec)
-                bn = (ResourceObject)sand_stone.Instantiate();
+                bn = (MineableObject)sand_stone.Instantiate();
 
             if (bn == null)
                 return;

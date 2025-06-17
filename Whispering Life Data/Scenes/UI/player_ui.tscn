@@ -1,0 +1,798 @@
+[gd_scene load_steps=26 format=3 uid="uid://j1cdgg7lep78"]
+
+[ext_resource type="Script" uid="uid://6j5ep62led2i" path="res://Scripts/Player Scripts/player_ui.cs" id="1_m5svq"]
+[ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
+[ext_resource type="Texture2D" uid="uid://ddo0v2qenmv6h" path="res://Sprites/Building_Frame.png" id="2_ktroc"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="3_0pxjf"]
+[ext_resource type="Texture2D" uid="uid://dfp34ytxtppg8" path="res://Sprites/Removing_Frame.png" id="3_7rm5b"]
+[ext_resource type="PackedScene" uid="uid://u4rbvbumuiua" path="res://Scenes/UI/h_box_item.tscn" id="4_4w6kj"]
+[ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Scripts/Manager Scripts/Item_Row_Manager.cs" id="4_28ccb"]
+[ext_resource type="Script" uid="uid://b4njwqy0g4kis" path="res://Scripts/UI Scripts/QuestMiniPanel.cs" id="4_khv1d"]
+[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="7_vya4o"]
+[ext_resource type="Script" uid="uid://byutu1d7d16k7" path="res://Scripts/UI Scripts/QuestAcceptPanel.cs" id="8_3uym3"]
+[ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/UI Scripts/TranslationButton.cs" id="9_erkjv"]
+[ext_resource type="Script" uid="uid://c872ycivw0d7a" path="res://Scripts/UI Scripts/EffectPanel.cs" id="11_r7w4g"]
+[ext_resource type="Script" uid="uid://dyfm5fmxy7gua" path="res://Scripts/SkilltreeBox.cs" id="12_bhbc1"]
+[ext_resource type="Script" uid="uid://bang68hyrryto" path="res://Scripts/UI Scripts/TranslationRichTextLabel.cs" id="12_fbb8a"]
+[ext_resource type="Texture2D" uid="uid://1rxf21hw1xu5" path="res://Sprites/Heart_Icon.png" id="12_rpytx"]
+[ext_resource type="Script" uid="uid://b5gbju1jehjfy" path="res://Scripts/Manager Scripts/HeartManager.cs" id="12_twnk5"]
+[ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://Resources/Menus/Theme_Slots.tres" id="17_33i7j"]
+[ext_resource type="Script" uid="uid://cowg1oi4t5ap8" path="res://Scripts/EquipmentSelectBar.cs" id="17_450ol"]
+[ext_resource type="Texture2D" uid="uid://bb5ty4ja5q1mo" path="res://Sprites/Items/Tool_Icons/icons_30_24.png" id="17_m7yfj"]
+[ext_resource type="Script" uid="uid://x5sh7dthimfr" path="res://Scripts/Inventory Scripts/Slot.cs" id="18_2bhlg"]
+[ext_resource type="Texture2D" uid="uid://b6kjyf31e4wqm" path="res://Sprites/Items/Icons_3rd/Hammer.png" id="18_b5eon"]
+[ext_resource type="PackedScene" uid="uid://bovrg0u6tuo04" path="res://Scenes/UI/hover_menu.tscn" id="20_fdkbp"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_x1xeh"]
+color = Color(0.141176, 0.141176, 0.141176, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upggj"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qq3qp"]
+
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("equipmentSelectBar", "game_time_panel", "qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "info_vBox", "mainmenu_button", "item_label_timer")]
+script = ExtResource("1_m5svq")
+equipmentSelectBar = NodePath("EquipmentSelectBar")
+game_time_panel = NodePath("VBoxContainer/GameTimePanel")
+qcp_timer = NodePath("QuestCompletePanel/Timer")
+times_to_build_left_label = NodePath("WindowFrame/VBoxContainer/TimesLeftLabel")
+window_frame_rect = NodePath("WindowFrame")
+item_row_manager = NodePath("WindowFrame/VBoxContainer/HBoxContainer")
+building_frame = ExtResource("2_ktroc")
+removing_frame = ExtResource("3_7rm5b")
+collected_item_parent = NodePath("VBoxContainer3/ReceivedItems")
+gameover_panel = NodePath("GameOverPanel")
+info_vBox = NodePath("WindowFrame/VBoxContainer")
+mainmenu_button = NodePath("GameOverPanel/VBoxContainer/MainmenuButton")
+item_label_timer = NodePath("Item_Label_Timer")
+
+[node name="WindowFrame" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7rm5b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowFrame"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -87.0
+offset_right = -12.0
+offset_bottom = -30.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="WindowFrame/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "Rotate/Flip with [Q] or [E] | Close [ESC]"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_ROTATE_FLIP_TIP"
+
+[node name="Label" type="Label" parent="WindowFrame/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 10
+text = "Resources need "
+horizontal_alignment = 2
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_RESOURCES_NEEDED"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowFrame/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+script = ExtResource("4_28ccb")
+
+[node name="TimesLeftLabel" type="Label" parent="WindowFrame/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 8
+text = "> 2x can be build"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="."]
+custom_minimum_size = Vector2(150, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -21.0
+offset_right = 75.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_icons/grabber = ExtResource("2_jybl7")
+theme_override_styles/slider = SubResource("StyleBoxLine_x1xeh")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_upggj")
+max_value = 1.0
+step = 0.01
+scrollable = false
+
+[node name="Label" type="Label" parent="HSlider"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -79.0
+offset_top = -24.0
+offset_right = 80.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "Stamina"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -60.0
+offset_right = 128.0
+offset_bottom = -8.0
+grow_vertical = 0
+
+[node name="ReceivedItems" type="Control" parent="VBoxContainer3"]
+layout_mode = 2
+
+[node name="InventoryButton" type="Button" parent="VBoxContainer3"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 10
+text = "Inventory"
+icon = ExtResource("17_m7yfj")
+script = ExtResource("9_erkjv")
+label_translation_string = "PLAYERUI_INVENTORY_BUTTON"
+
+[node name="BuildingButton" type="Button" parent="VBoxContainer3"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 10
+text = "Building Menu"
+icon = ExtResource("18_b5eon")
+script = ExtResource("9_erkjv")
+label_translation_string = "PLAYERUI_BUILDINGMENU_BUTTON"
+
+[node name="QuestCompletePanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -128.0
+offset_right = 256.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="QuestCompletePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestCompletePanel/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="QuestCompletePanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Quest Complete!"
+horizontal_alignment = 1
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_COMPLETE_QUEST"
+
+[node name="Label2" type="Label" parent="QuestCompletePanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "The required Items got removed from your inventory."
+horizontal_alignment = 1
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_COMPLETE_QUEST_REQU_ITEMS"
+
+[node name="Timer" type="Timer" parent="QuestCompletePanel"]
+wait_time = 2.0
+
+[node name="QuestAcceptPanel" type="Panel" parent="." node_paths=PackedStringArray("title_label", "description_label", "confirm_button")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -128.0
+offset_right = 256.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("8_3uym3")
+title_label = NodePath("CenterContainer/VBoxContainer/Title")
+description_label = NodePath("CenterContainer/VBoxContainer/Description")
+confirm_button = NodePath("CenterContainer/VBoxContainer/ConfirmButton")
+
+[node name="CenterContainer" type="CenterContainer" parent="QuestAcceptPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestAcceptPanel/CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="QuestAcceptPanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "You received a Debuff!"
+horizontal_alignment = 1
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_COMPLETE_QUEST"
+
+[node name="Description" type="Label" parent="QuestAcceptPanel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "The Next Quest will only have half of the Time to complete"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_COMPLETE_QUEST_REQU_ITEMS"
+
+[node name="SPACELABEL" type="Label" parent="QuestAcceptPanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="ConfirmButton" type="Button" parent="QuestAcceptPanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 14
+text = "Confirm"
+
+[node name="Timer" type="Timer" parent="QuestAcceptPanel"]
+wait_time = 2.0
+
+[node name="EffectPanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 59.0
+grow_horizontal = 0
+script = ExtResource("11_r7w4g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EffectPanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -95.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="FatigueLabel" type="Label" parent="EffectPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 16
+text = "Fatigue: 2%"
+horizontal_alignment = 2
+
+[node name="FatigueEffects" type="Label" parent="EffectPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 2
+
+[node name="Skilltree_Box" type="Panel" parent="." node_paths=PackedStringArray("movement_label", "fatigue_label", "hit_label", "research_time")]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -65.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("12_bhbc1")
+movement_label = NodePath("VBoxContainer/Label")
+fatigue_label = NodePath("VBoxContainer/Label2")
+hit_label = NodePath("VBoxContainer/Label3")
+research_time = NodePath("VBoxContainer/Label4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Skilltree_Box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Skilltree_Box/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "Movement: 1.05%"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Skilltree_Box/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "Movement: 1.05%"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Skilltree_Box/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "Movement: 1.05%"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Skilltree_Box/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "Movement: 1.05%"
+horizontal_alignment = 1
+
+[node name="GameOverPanel" type="Panel" parent="."]
+visible = false
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameOverPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3_0pxjf")
+bbcode_enabled = true
+text = "[center][wave][font_size=25px]>[color=red]You got eaten[color=white]<"
+script = ExtResource("12_fbb8a")
+label_translation_string = "PLAYERUI_GAME_OVER"
+
+[node name="SPACELABEL" type="Label" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+text = "The Timer reached his limit and the Monster did not get his food."
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_GAME_OVER_DESC"
+
+[node name="SPACELABEL2" type="Label" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="LoadGameButton" type="Button" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+text = "Load Game"
+script = ExtResource("9_erkjv")
+label_translation_string = "SAVELOAD_MENU_LOAD_BUTTON"
+
+[node name="MainmenuButton" type="Button" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+text = "Main Menu"
+script = ExtResource("9_erkjv")
+label_translation_string = "MAINMENU_BACK_TO_MAINMENU"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 115.0
+offset_bottom = 89.0
+
+[node name="GameTimePanel" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/GameTimePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="GameTimeLabel" type="Label" parent="VBoxContainer/GameTimePanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "Game Time: X"
+horizontal_alignment = 1
+
+[node name="HeartPanel" type="Panel" parent="VBoxContainer" node_paths=PackedStringArray("parent")]
+custom_minimum_size = Vector2(100, 45)
+layout_mode = 2
+script = ExtResource("12_twnk5")
+parent = NodePath("MarginContainer/VBoxContainer/HBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HeartPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HeartPanel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HeartPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "Hearts"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HeartPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("12_rpytx")
+expand_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("12_rpytx")
+expand_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("12_rpytx")
+expand_mode = 4
+
+[node name="QuestMiniPanel" type="PanelContainer" parent="VBoxContainer" node_paths=PackedStringArray("hbox_items", "time_label")]
+layout_mode = 2
+script = ExtResource("4_khv1d")
+hbox_items = [NodePath("MarginContainer/VBoxContainer/Item1"), NodePath("MarginContainer/VBoxContainer/Item2"), NodePath("MarginContainer/VBoxContainer/Item3"), NodePath("MarginContainer/VBoxContainer/Item4")]
+time_label = NodePath("MarginContainer/VBoxContainer/TimeLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/QuestMiniPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/QuestMiniPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "Objectiv"
+horizontal_alignment = 1
+script = ExtResource("7_vya4o")
+label_translation_string = "PLAYERUI_QUEST_OBJECTIV"
+
+[node name="Item1" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+visible = false
+layout_mode = 2
+
+[node name="Item2" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+visible = false
+layout_mode = 2
+
+[node name="Item3" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+visible = false
+layout_mode = 2
+
+[node name="Item4" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+visible = false
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 10
+text = "Time Left: Unknown"
+
+[node name="EquipmentSelectBar" type="Container" parent="." node_paths=PackedStringArray("select_slots")]
+custom_minimum_size = Vector2(220, 65)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_top = 5.0
+offset_right = -11.0
+offset_bottom = 70.0
+grow_horizontal = 0
+script = ExtResource("17_450ol")
+normal_color = Color(1, 1, 1, 0)
+selected_color = Color(1, 0.839216, 0.0941176, 1)
+select_slots = [NodePath("VBoxContainer/EquipmentHBox/ColorRect/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect2/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect3/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SelectSlot")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EquipmentSelectBar"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EquipmentSelectBar/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "[1]"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "[2]"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "[3]"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "[4]"
+horizontal_alignment = 1
+
+[node name="EquipmentHBox" type="HBoxContainer" parent="EquipmentSelectBar/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
+clip_contents = true
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+color = Color(1, 0.840758, 0.0925788, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("17_33i7j")
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
+disabled = true
+script = ExtResource("18_2bhlg")
+slot_type = 2
+
+[node name="ColorRect2" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
+clip_contents = true
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect2/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("17_33i7j")
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
+disabled = true
+script = ExtResource("18_2bhlg")
+slot_type = 1
+
+[node name="ColorRect3" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
+clip_contents = true
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect3/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("17_33i7j")
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
+disabled = true
+script = ExtResource("18_2bhlg")
+slot_type = 1
+
+[node name="ColorRect4" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
+clip_contents = true
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("17_33i7j")
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
+disabled = true
+script = ExtResource("18_2bhlg")
+slot_type = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="EquipmentSelectBar/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 12
+text = "Equipment Selectbar"
+horizontal_alignment = 2
+
+[node name="Item_Label_Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="HoverMenu" parent="." instance=ExtResource("20_fdkbp")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -172.0
+offset_top = -68.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[connection signal="pressed" from="VBoxContainer3/InventoryButton" to="." method="OnInventoryButton"]
+[connection signal="pressed" from="VBoxContainer3/BuildingButton" to="." method="OnBuildingMenuButton"]
+[connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
+[connection signal="pressed" from="QuestAcceptPanel/CenterContainer/VBoxContainer/ConfirmButton" to="QuestAcceptPanel" method="OnButton"]
+[connection signal="timeout" from="QuestAcceptPanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
+[connection signal="button_up" from="GameOverPanel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButton"]

@@ -16,7 +16,7 @@ warnings/check_invalid_track_paths=false
 
 config/name="Whispering Island"
 config/version="1.1.0.0"
-run/main_scene="res://Scenes/Menus/main_menu.tscn"
+run/main_scene="res://Scenes/UI/main_menu.tscn"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -29,8 +29,8 @@ buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 
 [autoload]
 
-GlobalFunctions="*res://Scripts/GlobalFunctions.cs"
-Database="*res://Scripts/Database.cs"
+GlobalFunctions="*res://Scripts/Global/GlobalFunctions.cs"
+Database="*res://Scripts/Global/Database.cs"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://ccrtfmrky4g6y"]
+
+[ext_resource type="Resource" uid="uid://bj62tvtw6mn4v" path="res://Resources/Items/Myst_Oak_Seed.tres" id="1_paciu"]
+[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_h51g7"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="3_jgxog"]
+
+[sub_resource type="Resource" id="Resource_85pk6"]
+script = ExtResource("2_h51g7")
+item_info = ExtResource("1_paciu")
+amount = 1
+
+[resource]
+script = ExtResource("3_jgxog")
+requiered_items = Array[Object]([SubResource("Resource_85pk6")])
+unlockRequirements = Array[Object]([])

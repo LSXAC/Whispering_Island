@@ -42,9 +42,9 @@ public partial class BuildingManager : Node2D
 
         foreach (Node2D node in this.GetChildren())
         {
-            if (node is ResourceObject)
+            if (node is MineableObject)
             {
-                resource_obj_saves.Add(((ResourceObject)node).SaveResourceObject());
+                resource_obj_saves.Add(((MineableObject)node).SaveResourceObject());
                 continue;
             }
 
@@ -207,9 +207,9 @@ public partial class BuildingManager : Node2D
     {
         foreach (ResourceObjectSave ros in resource_obj_saves)
         {
-            ResourceObject temp =
+            MineableObject temp =
                 Database.GetBuildingType(ros.building_id).building_scene.Instantiate()
-                as ResourceObject;
+                as MineableObject;
             AddChild(temp);
             temp.ResourceObjectLoad(ros);
         }

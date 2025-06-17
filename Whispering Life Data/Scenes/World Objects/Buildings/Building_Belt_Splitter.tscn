@@ -1,0 +1,148 @@
+[gd_scene load_steps=17 format=3 uid="uid://3ofhn4ivr5r6"]
+
+[ext_resource type="Script" uid="uid://u3qrwso26fjd" path="res://Scripts/Building Scripts/BeltSplitter.cs" id="1_e8732"]
+[ext_resource type="Texture2D" uid="uid://c5fsef0i410ye" path="res://Sprites/Menu_Belt_Splitter_1x2.png" id="2_uevj2"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_w0ugo"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_1fjsi"]
+[ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Scenes/World Objects/Buildings/Building Components/Building_Rail_Detector_Component.tscn" id="5_q4kg8"]
+[ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_b0uqo"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="7_los21"]
+[ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Scripts/Building Scripts/PathConnectArea.cs" id="8_uwnb0"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="9_6dkwv"]
+[ext_resource type="PackedScene" uid="uid://rd7h1v4imvk6" path="res://Scenes/World Objects/Buildings/Building_Belt.tscn" id="10_gx0dn"]
+[ext_resource type="Texture2D" uid="uid://c0apie0sdpnk7" path="res://Sprites/Top_Belt_Splitter_1x2.png" id="11_di2he"]
+[ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/Manager Scripts/AnimationManager12D.cs" id="12_02247"]
+[ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://Animations/Belt_Movement_Animation.tres" id="13_tbl56"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8pj"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77bd0"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
+size = Vector2(32, 32)
+
+[node name="BeltSplitter1x2" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "item_holder", "detector", "building_collider_manager", "sprite", "collision_shape")]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_e8732")
+ignore_self_detector = true
+building_id = 21
+tile_types = Array[int]([0])
+title = "BUILDING_BELT_SPLITTER_1x2"
+description = "BUILDING_BELT_SPLITTER_1x2_DESC"
+checkAreaTimer = NodePath("CheckAreaTimer")
+belt_0 = NodePath("Belt")
+belt_1 = NodePath("Belt2")
+item_holder = NodePath("ItemHolder")
+detector = NodePath("Detector")
+building_collider_manager = NodePath("BuildingAreas")
+sprite = NodePath("BuildingSprite")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="BuildingSprite" type="Sprite2D" parent="."]
+visible = false
+y_sort_enabled = true
+position = Vector2(-8, -6)
+texture = ExtResource("2_uevj2")
+centered = false
+offset = Vector2(-8, -10)
+hframes = 5
+vframes = 5
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("3_w0ugo")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." groups=["Blocker"]]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 255, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("4_1fjsi")
+
+[node name="Detector" parent="." instance=ExtResource("5_q4kg8")]
+position = Vector2(-24, -8)
+
+[node name="ItemHolder" parent="." instance=ExtResource("6_b0uqo")]
+y_sort_enabled = true
+position = Vector2(-8, -10)
+
+[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+z_index = 1
+collision_layer = 2
+script = ExtResource("7_los21")
+building_node = NodePath("..")
+building_sprite = NodePath("../BuildingSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(-8, -8)
+shape = SubResource("RectangleShape2D_3k8pj")
+
+[node name="PathConnectArea" type="Area2D" parent="."]
+collision_layer = 516
+collision_mask = 0
+monitoring = false
+script = ExtResource("8_uwnb0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea"]
+position = Vector2(-8, -8)
+shape = SubResource("RectangleShape2D_77bd0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-16, -16)
+shape = SubResource("RectangleShape2D_xfl3k")
+
+[node name="CheckAreaTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-16, 0)
+scale = Vector2(2, 0.25)
+texture = ExtResource("9_6dkwv")
+
+[node name="Belt" parent="." instance=ExtResource("10_gx0dn")]
+position = Vector2(-16, 0)
+disable_collision = true
+
+[node name="MouseArea" parent="Belt" index="5" node_paths=PackedStringArray("building_node")]
+building_node = NodePath("../..")
+
+[node name="Belt2" parent="." instance=ExtResource("10_gx0dn")]
+position = Vector2(-16, -16)
+disable_collision = true
+
+[node name="MouseArea" parent="Belt2" index="5" node_paths=PackedStringArray("building_node")]
+building_node = NodePath("../..")
+
+[node name="Top" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-16, -1)
+texture = ExtResource("11_di2he")
+offset = Vector2(0, -19)
+
+[node name="12DAnimationManager" type="Node2D" parent="." node_paths=PackedStringArray("anim_sprite")]
+script = ExtResource("12_02247")
+anim_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="12DAnimationManager"]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(-8, -8)
+sprite_frames = ExtResource("13_tbl56")
+animation = &"UP"
+
+[connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
+[connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
+[connection signal="timeout" from="CheckAreaTimer" to="." method="CheckTimerTimeout"]
+
+[editable path="Belt"]
+[editable path="Belt2"]

@@ -1,0 +1,126 @@
+[gd_scene load_steps=17 format=4 uid="uid://bekb5fw4mpfgk"]
+
+[ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_cj282"]
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resources/Items/Wood.tres" id="2_1wx72"]
+[ext_resource type="Resource" uid="uid://dnxxeevayo83d" path="res://Resources/Items/Oak_Seed.tres" id="3_hcjni"]
+[ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="4_aoaiv"]
+[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="5_ad443"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="6_ci7ld"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="7_0yyoq"]
+[ext_resource type="Texture2D" uid="uid://bfw0elq5yfvqk" path="res://Sprites/Leave.png" id="8_tdj12"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="9_htwjv"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="10_xqfnt"]
+[ext_resource type="PackedScene" uid="uid://badiq5h8rhrc" path="res://Scenes/Spawn_ResourceObject_AnimationPlayer.tscn" id="11_k1li3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
+size = Vector2(27, 38)
+
+[sub_resource type="Curve" id="Curve_fj6mt"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lbdfl"]
+curve = SubResource("Curve_fj6mt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n07ev"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_lbdfl")
+
+[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "hit_point", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
+y_sort_enabled = true
+collision_layer = 13
+script = ExtResource("1_cj282")
+anim_player = NodePath("AnimationPlayer")
+hit_point = NodePath("HitPoint")
+type = 2
+max_durability = 5
+respawn_seconds = 30
+item_info = ExtResource("2_1wx72")
+drops_extra_item = true
+extra_item_amount = 1
+extra_item_info = ExtResource("3_hcjni")
+gpu_particles = NodePath("LeavesParticles")
+building_id = 15
+tile_types = Array[int]([0])
+building_collider_manager = NodePath("BuildingAreas")
+title = "WORLD_RESOURCE_TREE"
+description = "WORLD_RESOURCE_TREE_DESC"
+sprite = NodePath("CornSprite")
+collision_shape = NodePath("Collision")
+
+[node name="CornSprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-8, -1)
+texture = ExtResource("4_aoaiv")
+centered = false
+offset = Vector2(-15, -48)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -6)
+shape = SubResource("RectangleShape2D_m0htq")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-8, -8)
+texture = ExtResource("5_ad443")
+
+[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+z_index = 1
+position = Vector2(-6, -10)
+script = ExtResource("6_ci7ld")
+building_node = NodePath("..")
+building_sprite = NodePath("../CornSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(0.5, -16)
+shape = SubResource("RectangleShape2D_a25cn")
+
+[node name="TimerBar" parent="." instance=ExtResource("7_0yyoq")]
+offset_left = -25.0
+offset_top = -57.0
+offset_right = 15.0
+offset_bottom = -53.0
+
+[node name="LeavesParticles" type="GPUParticles2D" parent="."]
+position = Vector2(-8, -13)
+emitting = false
+amount = 15
+texture = ExtResource("8_tdj12")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_n07ev")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray("AAD/////AAACAAAAAAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAACAAAAAAAAAP//AAACAAAAAAAAAP7/AAACAAAAAAD///7/AAACAAAAAAD+//7/AAACAAAAAAA=")
+enabled = false
+tile_set = ExtResource("9_htwjv")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("10_xqfnt")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="AnimationPlayer" parent="." instance=ExtResource("11_k1li3")]
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-7, -33)
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

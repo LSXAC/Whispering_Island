@@ -1,0 +1,165 @@
+[gd_scene load_steps=29 format=4 uid="uid://cn0rjr3gah4jr"]
+
+[ext_resource type="Script" uid="uid://bb7d4vvk26up8" path="res://Scripts/Building Scripts/ProcessBuilding.cs" id="1_7ow6b"]
+[ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Resources/Items/Char_Coal.tres" id="2_iv6r1"]
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resources/Items/Wood.tres" id="3_f7wyl"]
+[ext_resource type="Script" uid="uid://csvnm2nsny2wl" path="res://Scripts/UI Scripts/Machine_Recipe.cs" id="4_8gjku"]
+[ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Resources/Items/Glass_Chunk.tres" id="5_cfsdh"]
+[ext_resource type="Resource" uid="uid://ljb14i8nnpgp" path="res://Resources/Items/Sand.tres" id="6_1cdaq"]
+[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="7_ndbhg"]
+[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Resources/Items/Iron_Ingot.tres" id="8_nurm8"]
+[ext_resource type="Resource" uid="uid://l7tf257vet4l" path="res://Resources/Items/Iron_Ore.tres" id="9_0etec"]
+[ext_resource type="Resource" uid="uid://i3ah62dd06gb" path="res://Resources/Items/Copper_Ingot.tres" id="10_akwtc"]
+[ext_resource type="Resource" uid="uid://eo8ax7whu2kb" path="res://Resources/Items/Copper_Ore.tres" id="11_o02c0"]
+[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="12_pnpvk"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="13_ph182"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="14_5ajxt"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="15_hur4y"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="16_tjyxe"]
+[ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="17_glg8d"]
+[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="18_h5gpr"]
+[ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Taker_Component.tscn" id="19_3ermy"]
+[ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Giver_Component.tscn" id="20_ujfx2"]
+
+[sub_resource type="Resource" id="Resource_njs37"]
+script = ExtResource("4_8gjku")
+import_item_info = ExtResource("3_f7wyl")
+export_item_info = ExtResource("2_iv6r1")
+import_amount = 2
+export_amount = 1
+unlockRequirement = null
+
+[sub_resource type="Resource" id="Resource_xdrkx"]
+script = ExtResource("7_ndbhg")
+required_level = 1
+item_id = 31
+
+[sub_resource type="Resource" id="Resource_u1ie4"]
+script = ExtResource("4_8gjku")
+import_item_info = ExtResource("6_1cdaq")
+export_item_info = ExtResource("5_cfsdh")
+import_amount = 2
+export_amount = 1
+unlockRequirement = Array[Object]([SubResource("Resource_xdrkx")])
+
+[sub_resource type="Resource" id="Resource_yoryk"]
+script = ExtResource("7_ndbhg")
+required_level = 1
+item_id = 7
+
+[sub_resource type="Resource" id="Resource_kg0sh"]
+script = ExtResource("4_8gjku")
+import_item_info = ExtResource("9_0etec")
+export_item_info = ExtResource("8_nurm8")
+import_amount = 2
+export_amount = 1
+unlockRequirement = Array[Object]([SubResource("Resource_yoryk")])
+
+[sub_resource type="Resource" id="Resource_3d708"]
+script = ExtResource("4_8gjku")
+import_item_info = ExtResource("11_o02c0")
+export_item_info = ExtResource("10_akwtc")
+import_amount = 2
+export_amount = 1
+unlockRequirement = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
+size = Vector2(48, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
+size = Vector2(48, 48)
+
+[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("crafting_timer", "state_timer", "givers", "takers", "building_collider_manager", "sprite", "collision_shape")]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_7ow6b")
+crafting_timer = NodePath("CraftingTimer")
+state_timer = NodePath("MachineUITimer")
+recipes = [SubResource("Resource_njs37"), SubResource("Resource_u1ie4"), SubResource("Resource_kg0sh"), SubResource("Resource_3d708")]
+givers = [NodePath("Giver")]
+takers = [NodePath("Taker")]
+building_id = 3
+tile_types = Array[int]([0])
+building_collider_manager = NodePath("BuildingAreas")
+title = "BUILDING_FURNACE"
+description = "BUILDING_FURNACE_DESC"
+sprite = NodePath("BuildingSprite")
+collision_shape = NodePath("MachineCollision")
+
+[node name="BuildingSprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-8, -16)
+texture = ExtResource("12_pnpvk")
+centered = false
+offset = Vector2(-24, -32)
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("13_ph182")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray("AAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAACAAAAAAAAAP//AAACAAAAAAD/////AAACAAAAAAA=")
+enabled = false
+tile_set = ExtResource("14_5ajxt")
+
+[node name="MachineCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 0.5)
+shape = SubResource("RectangleShape2D_m0htq")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-8, 13.5)
+scale = Vector2(2.375, 3.0625)
+texture = ExtResource("15_hur4y")
+
+[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+z_index = 1
+position = Vector2(-8, -8)
+collision_layer = 2
+script = ExtResource("16_tjyxe")
+building_node = NodePath("..")
+building_sprite = NodePath("../BuildingSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+shape = SubResource("RectangleShape2D_fk0le")
+
+[node name="Tree" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="Texture" type="Sprite2D" parent="Tree"]
+z_index = 2
+y_sort_enabled = true
+position = Vector2(-6, -28)
+texture = ExtResource("17_glg8d")
+
+[node name="Shadow" type="Sprite2D" parent="Tree"]
+modulate = Color(1, 1, 1, 0.392157)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-7, -12)
+texture = ExtResource("18_h5gpr")
+
+[node name="Taker" parent="." node_paths=PackedStringArray("building") instance=ExtResource("19_3ermy")]
+z_index = 2
+position = Vector2(8, -8)
+building = NodePath("..")
+
+[node name="Giver" parent="." node_paths=PackedStringArray("building") instance=ExtResource("20_ujfx2")]
+direction_not_giving = 1
+building = NodePath("..")
+
+[node name="CraftingTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="MachineUITimer" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
+[connection signal="timeout" from="CraftingTimer" to="." method="OnCraftingTimerTimeout"]
+[connection signal="timeout" from="MachineUITimer" to="." method="OnMachineTimeOut"]

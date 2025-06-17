@@ -52,8 +52,8 @@ public partial class TimerBar : ProgressBar
         {
             timer.Stop();
             Visible = false;
-            if (parent is ResourceObject)
-                ((ResourceObject)parent).Reset();
+            if (parent is MineableObject)
+                ((MineableObject)parent).Reset();
             return;
         }
     }

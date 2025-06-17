@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://n1o6p57v8r23"]
+
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_6xubx"]
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Resources/Items/Item_Types/Processed_Type_Classic.tres" id="1_724m4"]
+[ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_rjji7"]
+[ext_resource type="Texture2D" uid="uid://dssivsn4mo2xw" path="res://Sprites/Items/Icons_3rd/Stone_Hoe_Head.png" id="2_tbw8i"]
+
+[resource]
+script = ExtResource("1_6xubx")
+item_types_arr = Array[Object]([ExtResource("1_724m4")])
+has_durability = false
+max_durability = 100
+max_slot_amount = 48
+item_name = "WOODEN_HOE_HEAD"
+unique_id = 19
+item_description = "WOODEN_HOE_HEAD_DESC"
+texture = ExtResource("2_tbw8i")
+value = 10.0
+type_level = 0
+use_type = 0
+item_stats = Array[ExtResource("1_rjji7")]([])

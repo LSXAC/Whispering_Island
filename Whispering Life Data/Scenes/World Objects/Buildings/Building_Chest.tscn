@@ -1,0 +1,107 @@
+[gd_scene load_steps=12 format=3 uid="uid://dj73tpok8xq6p"]
+
+[ext_resource type="Script" uid="uid://bwyysbkhkliqp" path="res://Scripts/Building Scripts/Chest.cs" id="1_lcmyo"]
+[ext_resource type="Texture2D" uid="uid://cb634fgv247qi" path="res://Sprites/Chest_Building_Sprite.png" id="2_nga8c"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_vyt0n"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_u7eqm"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_ksksf"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="6_whbdv"]
+[ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="7_7w6pu"]
+[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="8_3xo3r"]
+[ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Taker_Component.tscn" id="9_vos0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
+size = Vector2(32, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
+size = Vector2(32, 32)
+
+[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("building_collider_manager", "sprite", "collision_shape")]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_lcmyo")
+building_id = 2
+tile_types = Array[int]([0])
+title = "BUILDING_CHEST"
+description = "BUILDING_CHEST_DESC"
+building_collider_manager = NodePath("BuildingAreas")
+sprite = NodePath("BuildingSprite")
+collision_shape = NodePath("MachineCollision")
+
+[node name="BuildingSprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-16, -14)
+texture = ExtResource("2_nga8c")
+centered = false
+offset = Vector2(-16, -34)
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("3_vyt0n")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 254, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("4_u7eqm")
+
+[node name="MachineCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-16, -15.5)
+shape = SubResource("RectangleShape2D_m0htq")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-16, -6)
+scale = Vector2(1.375, 1.25)
+texture = ExtResource("5_ksksf")
+
+[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+z_index = 1
+position = Vector2(-16, -18)
+collision_layer = 2
+script = ExtResource("6_whbdv")
+building_node = NodePath("..")
+building_sprite = NodePath("../BuildingSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+shape = SubResource("RectangleShape2D_fk0le")
+
+[node name="Tree" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="Texture" type="Sprite2D" parent="Tree"]
+z_index = 2
+y_sort_enabled = true
+position = Vector2(-6, -28)
+texture = ExtResource("7_7w6pu")
+
+[node name="Shadow" type="Sprite2D" parent="Tree"]
+modulate = Color(1, 1, 1, 0.392157)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-7, -12)
+texture = ExtResource("8_3xo3r")
+
+[node name="Taker" parent="." node_paths=PackedStringArray("building") instance=ExtResource("9_vos0o")]
+z_index = 2
+position = Vector2(-24, -25)
+building = NodePath("..")
+
+[node name="Taker2" parent="." node_paths=PackedStringArray("building") instance=ExtResource("9_vos0o")]
+z_index = 2
+position = Vector2(-8, -25)
+building = NodePath("..")
+
+[node name="CraftingTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
+[connection signal="timeout" from="CraftingTimer" to="." method="OnCraftingTimerTimeout"]
+
+[editable path="Taker"]
+[editable path="Taker2"]
