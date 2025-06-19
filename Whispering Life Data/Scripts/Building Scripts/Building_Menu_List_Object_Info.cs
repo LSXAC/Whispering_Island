@@ -3,7 +3,7 @@ using Godot;
 using Godot.Collections;
 
 [GlobalClass]
-public partial class Building_Menu_List_Child_Object_Info : Resource
+public partial class Building_Menu_List_Object_Info : Resource
 {
     [Export]
     public PackedScene scene;

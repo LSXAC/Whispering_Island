@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://b2fimwpxlqkw" path="res://Resource Meta/Recipes/Building_Recipies/Quarry_Recipe.tres" id="1_itao7"]
 [ext_resource type="PackedScene" uid="uid://cqc6xxau4eh7e" path="res://Scenes/World Objects/Buildings/Building_Stone_Quarry.tscn" id="2_ig20q"]
-[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Child_Object_Info.cs" id="3_xj1b3"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object_Info.cs" id="3_xj1b3"]
 
 [resource]
 script = ExtResource("3_xj1b3")

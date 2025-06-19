@@ -22,7 +22,7 @@ public partial class Building_Placer : Node2D
 
     public static Node2D moveable_selected_parent = null;
 
-    public void InitBuildingFromBuildingMenu(Building_Menu_List_Child_Object_Info scene_info)
+    public void InitBuildingFromBuildingMenu(Building_Menu_List_Object_Info scene_info)
     {
         if (scene_info == null || scene_info.scene == null)
         {

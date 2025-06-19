@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://bj0udm3iiilry" path="res://Resource Meta/Recipes/Building_Recipies/Wooden_Bed_Recipe.tres" id="1_2ke4n"]
 [ext_resource type="PackedScene" uid="uid://1kc5qr5s7veo" path="res://Scenes/World Objects/Buildings/Building_Wooden_Bed.tscn" id="2_ex62h"]
-[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Child_Object_Info.cs" id="3_isx3e"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object_Info.cs" id="3_isx3e"]
 
 [resource]
 script = ExtResource("3_isx3e")

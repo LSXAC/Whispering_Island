@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://ccrtfmrky4g6y" path="res://Resource Meta/Recipes/Building_Recipies/Planting/Mystic_Tree_Object_Recipe.tres" id="1_df5ov"]
 [ext_resource type="PackedScene" uid="uid://gb18hiamdyqj" path="res://Scenes/World Objects/Mineable Objects/MO_Mystical_Tree.tscn" id="2_4ho52"]
-[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Child_Object_Info.cs" id="3_7xwun"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object_Info.cs" id="3_7xwun"]
 
 [resource]
 script = ExtResource("3_7xwun")

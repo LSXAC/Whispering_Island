@@ -17,14 +17,14 @@ public partial class BuildingMenuChild : Control
     [Export]
     public Item_Row_Manager item_row_manager;
 
-    private Building_Menu_List_Child_Object_Info building_type;
+    private Building_Menu_List_Object_Info building_type;
 
     public override void _Ready()
     {
         build_button.Pressed += () => OnSelectButton();
     }
 
-    public void InitBuildingMenuChild(Building_Menu_List_Child_Object_Info building_type)
+    public void InitBuildingMenuChild(Building_Menu_List_Object_Info building_type)
     {
         this.building_type = building_type;
         Building_Node placeable = building_type.scene.Instantiate() as Building_Node;
