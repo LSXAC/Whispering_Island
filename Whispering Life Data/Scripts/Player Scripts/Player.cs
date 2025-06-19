@@ -3,12 +3,12 @@ using Godot;
 
 public partial class Player : CharacterBody2D
 {
-    public static Player INSTANCE = null;
+    public static Player instance = null;
     public static Camera2D camera;
     public static CharacterSave char_save = new CharacterSave();
     public AnimatedSprite2D anim;
-    public Player_Stats player_stats;
-    private Player_Stamina player_stamina;
+    public PlayerStats player_stats;
+    private PlayerStamina player_stamina;
     private string current_direction = "Up";
     private float velo_x = 0,
         velo_y = 0;
@@ -17,9 +17,9 @@ public partial class Player : CharacterBody2D
 
     public override void _Ready()
     {
-        INSTANCE = this;
-        player_stamina = GetNode<Player_Stamina>("PlayerStamina");
-        player_stats = GetNode<Player_Stats>("PlayerStats");
+        instance = this;
+        player_stamina = GetNode<PlayerStamina>("PlayerStamina");
+        player_stats = GetNode<PlayerStats>("PlayerStats");
         anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         camera = GetNode<Camera2D>("Camera2D");
 
@@ -30,7 +30,7 @@ public partial class Player : CharacterBody2D
     {
         //Disable all Events
         ChoosePlayerAnimation();
-        if (Game_Manager.gameover)
+        if (GameManager.gameover)
         {
             Velocity = Vector2.Zero;
             return;
@@ -39,14 +39,14 @@ public partial class Player : CharacterBody2D
         player_stamina.RegenerateStamina(this.velo_x, this.velo_y);
 
         // Disable Player Events
-        if (Game_Manager.In_Cutscene)
+        if (GameManager.In_Cutscene)
         {
             Velocity = Vector2.Zero;
             return;
         }
 
         if (GameMenu.IsWindowActiv())
-            if (Game_Manager.building_mode == Game_Manager.BuildingMode.None)
+            if (GameManager.building_mode == GameManager.BuildingMode.None)
                 return;
 
         ZoomCamera();

@@ -79,9 +79,9 @@ public partial class MineableObject : placeable_building
 
     public override void _PhysicsProcess(double delta)
     {
-        if (!Game_Manager.INSTANCE.tutorial_finished && Visible)
+        if (!GameManager.instance.tutorial_finished && Visible)
             Visible = false;
-        else if (Game_Manager.INSTANCE.tutorial_finished && !Visible)
+        else if (GameManager.instance.tutorial_finished && !Visible)
             Visible = true;
     }
 
@@ -126,15 +126,15 @@ public partial class MineableObject : placeable_building
 
     private void Hit()
     {
-        if (!player_ui.INSTANCE.equipmentSelectBar.HasSameUseType(type))
+        if (!PlayerUI.instance.equipmentSelectBar.HasSameUseType(type))
         {
-            player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WRONG_TOOL"));
+            PlayerUI.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WRONG_TOOL"));
             return;
         }
 
-        if (player_ui.INSTANCE.equipmentSelectBar.GetSelectedTypeLevel() < type_level)
+        if (PlayerUI.instance.equipmentSelectBar.GetSelectedTypeLevel() < type_level)
         {
-            player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WEAK_TYPE_LEVEL"));
+            PlayerUI.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WEAK_TYPE_LEVEL"));
             return;
         }
 
@@ -143,24 +143,24 @@ public partial class MineableObject : placeable_building
             (
                 current_durability
                 - (int)(
-                    Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                    Player.instance.player_stats.stat_amounts[(int)type]
                     * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
                 )
             ) > 0
         )
         {
             if (
-                !Inventory.INSTANCE.CanReceiveItem(
+                !Inventory.instance.CanReceiveItem(
                     item_info,
-                    Inventory.INSTANCE.inventory_items,
+                    Inventory.instance.inventory_items,
                     (int)(
-                        Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                        Player.instance.player_stats.stat_amounts[(int)type]
                         * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
                     )
                 )
             )
             {
-                player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
+                PlayerUI.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
                 return;
             }
         }
@@ -169,33 +169,31 @@ public partial class MineableObject : placeable_building
             int amount =
                 (int)(
                     mining_bonus
-                    * Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                    * Player.instance.player_stats.stat_amounts[(int)type]
                     * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
                 ) + current_durability;
             if (
-                !Inventory.INSTANCE.CanReceiveItem(
+                !Inventory.instance.CanReceiveItem(
                     item_info,
-                    Inventory.INSTANCE.inventory_items,
+                    Inventory.instance.inventory_items,
                     amount
                 )
             )
             {
-                player_ui.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
+                PlayerUI.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
                 return;
             }
             if (drops_extra_item)
             {
                 if (
-                    !Inventory.INSTANCE.CanReceiveItem(
+                    !Inventory.instance.CanReceiveItem(
                         extra_item_info,
-                        Inventory.INSTANCE.inventory_items,
+                        Inventory.instance.inventory_items,
                         extra_item_amount
                     )
                 )
                 {
-                    player_ui.AddItemLabelUI(
-                        TranslationServer.Translate("PLAYERUI_INVENTORY_FULL")
-                    );
+                    PlayerUI.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
                     return;
                 }
             }
@@ -210,33 +208,33 @@ public partial class MineableObject : placeable_building
                 .InitText(
                     "- "
                         + (int)(
-                            Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                            Player.instance.player_stats.stat_amounts[(int)type]
                             * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
                         )
                 );
-            Islands_Manager
-                .INSTANCE.GetNearestIsland(GetGlobalMousePosition())
-                .building_manager.AddChild(hit_lab);
+            IslandManager
+                .instance.GetNearestIsland(GetGlobalMousePosition())
+                .island_object_save_manager.AddChild(hit_lab);
 
             hit_lab.GlobalPosition = hit_point.GlobalPosition - new Vector2(11, 10);
             hit_lab.Position += new Vector2(time, 0);
         }
 
-        Player.INSTANCE.player_stats.AddFatigue(0.25f);
+        Player.instance.player_stats.AddFatigue(0.25f);
         current_durability -= (int)(
-            Player.INSTANCE.player_stats.stat_amounts[(int)type]
+            Player.instance.player_stats.stat_amounts[(int)type]
             * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
         );
 
         //Selected Item Durability + Break -------------------------------------------------------------
-        if (player_ui.INSTANCE.equipmentSelectBar.GetSelectedItem() != null)
-            if (player_ui.INSTANCE.equipmentSelectBar.GetSelectedItem().item_info.has_durability)
+        if (PlayerUI.instance.equipmentSelectBar.GetSelectedItem() != null)
+            if (PlayerUI.instance.equipmentSelectBar.GetSelectedItem().item_info.has_durability)
             {
                 EquipmentPanel
-                    .INSTANCE.slots_tool[EquipmentSelectBar.current_selected_slot]
+                    .instance.slots_tool[EquipmentSelectBar.current_selected_slot]
                     .GetItem()
                     .current_durability -= (int)(
-                    Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                    Player.instance.player_stats.stat_amounts[(int)type]
                     * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
                 );
                 EquipmentPanel.UpdateSlotDurability(EquipmentSelectBar.current_selected_slot);
@@ -250,29 +248,29 @@ public partial class MineableObject : placeable_building
             int amount =
                 (int)(
                     mining_bonus
-                    * Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                    * Player.instance.player_stats.stat_amounts[(int)type]
                     * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
                 ) + current_durability;
-            player_ui.AddItemLabelUI(
+            PlayerUI.AddItemLabelUI(
                 "Bonus: +"
                     + amount
                     + " "
                     + TranslationServer.Translate(item_info.item_name.ToString())
             );
-            Inventory.INSTANCE.AddItem(item_info, amount, Inventory.INSTANCE.inventory_items);
+            Inventory.instance.AddItem(item_info, amount, Inventory.instance.inventory_items);
 
             if (drops_extra_item)
             {
-                player_ui.AddItemLabelUI(
+                PlayerUI.AddItemLabelUI(
                     "Bonus: +"
                         + extra_item_amount
                         + " "
                         + TranslationServer.Translate(extra_item_info.item_name.ToString())
                 );
-                Inventory.INSTANCE.AddItem(
+                Inventory.instance.AddItem(
                     extra_item_info,
                     extra_item_amount,
-                    Inventory.INSTANCE.inventory_items
+                    Inventory.instance.inventory_items
                 );
             }
 
@@ -288,24 +286,24 @@ public partial class MineableObject : placeable_building
 
         anim_player.Play("Hit");
         StartTimerBar(TimerBar.state.COOLDOWN, click_cooldown_time);
-        player_ui.AddItemLabelUI(
+        PlayerUI.AddItemLabelUI(
             "+"
                 + (
                     (int)(
-                        Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                        Player.instance.player_stats.stat_amounts[(int)type]
                         * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
                     )
                 )
                 + " "
                 + TranslationServer.Translate(item_info.item_name.ToString())
         );
-        Inventory.INSTANCE.AddItem(
+        Inventory.instance.AddItem(
             item_info,
             (int)(
-                Player.INSTANCE.player_stats.stat_amounts[(int)type]
+                Player.instance.player_stats.stat_amounts[(int)type]
                 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
             ),
-            Inventory.INSTANCE.inventory_items
+            Inventory.instance.inventory_items
         );
 
         hover_menu.InitHoverMenu(this);

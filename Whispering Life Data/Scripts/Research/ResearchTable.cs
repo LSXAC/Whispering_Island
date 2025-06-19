@@ -10,6 +10,6 @@ public partial class ResearchTable : placeable_building
         if (!CheckClickDependencies(this))
             return;
 
-        GameMenu.INSTANCE.OnOpenResearchTab();
+        GameMenu.instance.OnOpenResearchTab();
     }
 }

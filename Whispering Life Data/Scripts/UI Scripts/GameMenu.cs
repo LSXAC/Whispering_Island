@@ -51,7 +51,7 @@ public partial class GameMenu : CanvasLayer
 
     [Export]
     public ColorRect minecart_tab;
-    public static GameMenu INSTANCE = null;
+    public static GameMenu instance = null;
 
     [Export]
     public HBoxContainer header_container;
@@ -61,13 +61,13 @@ public partial class GameMenu : CanvasLayer
 
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _PhysicsProcess(double delta)
     {
-        if (Game_Manager.gameover || Game_Manager.In_Cutscene)
+        if (GameManager.gameover || GameManager.In_Cutscene)
             return;
 
         if (Input.IsActionJustPressed("Escape"))
@@ -80,7 +80,7 @@ public partial class GameMenu : CanvasLayer
     {
         if (IsThisWindow(this))
         {
-            Inventory.INSTANCE.MarkSlotsWithType(null);
+            Inventory.instance.MarkSlotsWithType(null);
             CloseLastWindow();
             OnExitButton();
             return;
@@ -89,7 +89,7 @@ public partial class GameMenu : CanvasLayer
         if (IsWindowActiv())
             return;
 
-        Inventory.INSTANCE.MarkSlotsWithType(null);
+        Inventory.instance.MarkSlotsWithType(null);
         ChangeSelectedTabColor(Tabs.Inventory);
         SetWindow(this);
     }
@@ -99,26 +99,26 @@ public partial class GameMenu : CanvasLayer
         TransitionManager.StartTransition();
         await TransitionManager.IsInTransitionLoop();
 
-        MainMenu.INSTANCE.parent.Visible = true;
-        Game_Manager.INSTANCE.QueueFree();
+        MainMenu.instance.parent.Visible = true;
+        GameManager.instance.QueueFree();
 
-        TransitionManager.INSTANCE.StopTransition();
+        TransitionManager.instance.StopTransition();
     }
 
     public static void CloseLastWindow()
     {
-        if (Game_Manager.current_activ_canvaslayer != null)
+        if (GameManager.current_activ_canvaslayer != null)
         {
-            Game_Manager.current_activ_canvaslayer.Visible = false;
-            Game_Manager.current_activ_canvaslayer = null;
+            GameManager.current_activ_canvaslayer.Visible = false;
+            GameManager.current_activ_canvaslayer = null;
             Debug.Print("Last Window Closed");
         }
     }
 
     public static bool IsThisWindow(CanvasLayer layer)
     {
-        if (Game_Manager.current_activ_canvaslayer != null)
-            if (Game_Manager.current_activ_canvaslayer == layer)
+        if (GameManager.current_activ_canvaslayer != null)
+            if (GameManager.current_activ_canvaslayer == layer)
                 return true;
 
         return false;
@@ -126,7 +126,7 @@ public partial class GameMenu : CanvasLayer
 
     public static bool IsWindowActiv()
     {
-        if (Game_Manager.current_activ_canvaslayer == null)
+        if (GameManager.current_activ_canvaslayer == null)
             return false;
         return true;
     }
@@ -134,8 +134,8 @@ public partial class GameMenu : CanvasLayer
     public static void SetWindow(CanvasLayer node)
     {
         Debug.Print(node.Name);
-        Game_Manager.current_activ_canvaslayer = node;
-        Game_Manager.current_activ_canvaslayer.Visible = true;
+        GameManager.current_activ_canvaslayer = node;
+        GameManager.current_activ_canvaslayer.Visible = true;
     }
 
     enum Tabs
@@ -279,7 +279,7 @@ public partial class GameMenu : CanvasLayer
         CloseAllTabs();
         inventory_tab.Visible = true;
         furnace_tab.Visible = true;
-        Inventory.INSTANCE.MarkSlotsWithType(
+        Inventory.instance.MarkSlotsWithType(
             new ItemInfo.Type[] { ItemInfo.Type.BURNABLE, ItemInfo.Type.SMELTABLE }
         );
     }
@@ -354,7 +354,7 @@ public partial class GameMenu : CanvasLayer
         CloseAllTabs();
         inventory_tab.Visible = true;
         research_tab.Visible = true;
-        Inventory.INSTANCE.MarkSlotsWithType(new ItemInfo.Type[] { ItemInfo.Type.RESEARCHABLE });
+        Inventory.instance.MarkSlotsWithType(new ItemInfo.Type[] { ItemInfo.Type.RESEARCHABLE });
     }
 
     public void OnCloseSkilltreeTab()
@@ -396,11 +396,11 @@ public partial class GameMenu : CanvasLayer
 
     public void OnSaveButton()
     {
-        Game_Manager.INSTANCE.SaveGame();
+        GameManager.instance.SaveGame();
     }
 
     public void OnLoadButton()
     {
-        MainMenu.INSTANCE.OnLoadGameButtoN();
+        MainMenu.instance.OnLoadGameButtoN();
     }
 }

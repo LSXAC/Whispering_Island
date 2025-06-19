@@ -30,8 +30,8 @@ public partial class Item_Row_Manager : HBoxContainer
             hbc_c.InitItemUI("", item.amount, item.item_info.texture);
             hbc_c.ChangeColor(global::h_box_item.colorType.red);
 
-            Array<Item> i_list = Inventory.INSTANCE.GetItemFromList(
-                Inventory.INSTANCE.GetListOfItemsInInventory(),
+            Array<Item> i_list = Inventory.instance.GetItemFromList(
+                Inventory.instance.GetListOfItemsInInventory(),
                 item
             );
             int amount_of_item = 0;
@@ -63,12 +63,12 @@ public partial class Item_Row_Manager : HBoxContainer
                 if (times > amount)
                     times = amount;
             }
-            player_ui.INSTANCE.times_to_build_left_label.Text =
+            PlayerUI.instance.times_to_build_left_label.Text =
                 "> " + times + "x " + TranslationServer.Translate("PLAYERUI_TIMES_LEFT_TO_BUILD");
 
             return true;
         }
-        player_ui.INSTANCE.times_to_build_left_label.Text =
+        PlayerUI.instance.times_to_build_left_label.Text =
             "> 0x " + TranslationServer.Translate("PLAYERUI_TIMES_LEFT_TO_BUILD");
         ;
         return false;

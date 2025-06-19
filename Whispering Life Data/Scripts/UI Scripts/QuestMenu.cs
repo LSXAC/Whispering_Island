@@ -21,7 +21,7 @@ public partial class QuestMenu : CanvasLayer
     [Export]
     public Resource dialogue_timeline;
     public PackedScene h_box_item = ResourceLoader.Load<PackedScene>("res://h_box_item.tscn");
-    public static QuestMenu INSTANCE = null;
+    public static QuestMenu instance = null;
     public static QuestInfo currentQuest = null;
 
     private Array<Label> item_labels = new Array<Label>();
@@ -29,7 +29,7 @@ public partial class QuestMenu : CanvasLayer
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
     }
 
     public void InitQuest(QuestInfo quest)
@@ -49,7 +49,7 @@ public partial class QuestMenu : CanvasLayer
 
     public void OnCompleteButton()
     {
-        QuestManager.INSTANCE.NextQuest();
+        QuestManager.instance.NextQuest();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -68,7 +68,7 @@ public partial class QuestMenu : CanvasLayer
 
     public void OnCloseButton()
     {
-        Game_Manager.In_Cutscene = true;
+        GameManager.In_Cutscene = true;
         GlobalFunctions.MoveCameraToPosition(new Vector2(13, -256));
         if (TranslationServer.GetLocale() == "de")
             DialogueManager.ShowExampleDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_DE");
@@ -91,16 +91,16 @@ public partial class QuestMenu : CanvasLayer
         quest_name_label.Text =
             "[center]"
             + TranslationServer.Translate(
-                QuestManager.INSTANCE.quests[QuestManager.current_quest_id].quest_name
+                QuestManager.instance.quests[QuestManager.current_quest_id].quest_name
             );
         quest_description_label.Text =
             "[center]"
             + TranslationServer.Translate(
-                QuestManager.INSTANCE.quests[QuestManager.current_quest_id].quest_description
+                QuestManager.instance.quests[QuestManager.current_quest_id].quest_description
             );
-        CreateLabels(QuestManager.INSTANCE.quests[QuestManager.current_quest_id].quest_items);
+        CreateLabels(QuestManager.instance.quests[QuestManager.current_quest_id].quest_items);
 
-        if (QuestManager.INSTANCE.CheckQuestComplete())
+        if (QuestManager.instance.CheckQuestComplete())
             complete_button.Disabled = false;
         else
             complete_button.Disabled = true;
@@ -108,11 +108,11 @@ public partial class QuestMenu : CanvasLayer
 
     public void CreateLabels(Array<Item> items)
     {
-        Array<Item> items_in_inventory = Inventory.INSTANCE.GetListOfItemsInInventory();
+        Array<Item> items_in_inventory = Inventory.instance.GetListOfItemsInInventory();
         foreach (Item i in items)
         {
             h_box_item c_label = (h_box_item)h_box_item.Instantiate();
-            Array<Item> iii = Inventory.INSTANCE.GetItemFromList(items_in_inventory, i);
+            Array<Item> iii = Inventory.instance.GetItemFromList(items_in_inventory, i);
             if (QuestManager.next_quest_is_doubled_items)
                 c_label.InitItemUI(i.item_info.item_name, i.amount, i.item_info.texture);
             else

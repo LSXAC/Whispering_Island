@@ -245,8 +245,8 @@ public partial class InventoryBase : SlotUpdater
                 }
             }
 
-            QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
-                QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
+            QuestMiniPanel.instance.UpdateQuestMiniPanel(
+                QuestManager.instance.quests[QuestManager.current_quest_id]
             );
         }
 
@@ -261,8 +261,8 @@ public partial class InventoryBase : SlotUpdater
                     else
                         array[i] = new ItemSave((int)ii.unique_id, remaining);
 
-                    QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
-                        QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
+                    QuestMiniPanel.instance.UpdateQuestMiniPanel(
+                        QuestManager.instance.quests[QuestManager.current_quest_id]
                     );
                     UpdateSlot(i);
                     return;
@@ -273,8 +273,8 @@ public partial class InventoryBase : SlotUpdater
                         array[i] = new ItemSave((int)ii.unique_id, remaining, ii.max_durability);
                     else
                         array[i] = new ItemSave((int)ii.unique_id, ii.max_slot_amount);
-                    QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
-                        QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
+                    QuestMiniPanel.instance.UpdateQuestMiniPanel(
+                        QuestManager.instance.quests[QuestManager.current_quest_id]
                     );
                     remaining -= ii.max_slot_amount;
                 }
@@ -310,8 +310,8 @@ public partial class InventoryBase : SlotUpdater
         if (remaining < 0)
             GD.PrintErr("Not all resources got removed, cause not enough items!");
 
-        QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
-            QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
+        QuestMiniPanel.instance.UpdateQuestMiniPanel(
+            QuestManager.instance.quests[QuestManager.current_quest_id]
         );
     }
 
@@ -413,8 +413,8 @@ public partial class InventoryBase : SlotUpdater
             GetNode<Slot>($"GridContainer/Slot{index}").GetItem().SelfModulate =
                 pref_ref.SelfModulate;
 
-        QuestMiniPanel.INSTANCE.UpdateQuestMiniPanel(
-            QuestManager.INSTANCE.quests[QuestManager.current_quest_id]
+        QuestMiniPanel.instance.UpdateQuestMiniPanel(
+            QuestManager.instance.quests[QuestManager.current_quest_id]
         );
     }
 

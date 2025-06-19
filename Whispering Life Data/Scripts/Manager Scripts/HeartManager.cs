@@ -4,7 +4,7 @@ using Godot;
 
 public partial class HeartManager : Panel
 {
-    public static HeartManager INSTANCE = null;
+    public static HeartManager instance = null;
     public int current_hearts = 3;
     public int max_hearts = 3;
 
@@ -13,7 +13,7 @@ public partial class HeartManager : Panel
 
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
     }
 
     public void RemoveHeart()
@@ -22,7 +22,7 @@ public partial class HeartManager : Panel
         UpdateHeartUI();
 
         if (current_hearts <= 0)
-            Game_Manager.INSTANCE.GameOver();
+            GameManager.instance.GameOver();
     }
 
     public void UpdateHeartUI()

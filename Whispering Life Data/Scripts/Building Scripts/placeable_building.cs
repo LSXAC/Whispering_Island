@@ -33,16 +33,13 @@ public partial class placeable_building : Building_Node
 
     public override void OnMouseClick()
     {
-        if (Game_Manager.building_mode == Game_Manager.BuildingMode.Removing)
+        if (GameManager.building_mode == GameManager.BuildingMode.Removing)
             QueueFree();
     }
 
     public static bool CheckClickDependencies(Building_Node node)
     {
-        if (
-            GameMenu.IsWindowActiv()
-            || Game_Manager.building_mode != Game_Manager.BuildingMode.None
-        )
+        if (GameMenu.IsWindowActiv() || GameManager.building_mode != GameManager.BuildingMode.None)
             return false;
 
         if (!node.mouse_inside)

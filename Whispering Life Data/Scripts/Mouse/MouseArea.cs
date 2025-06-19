@@ -19,7 +19,7 @@ public partial class MouseArea : Area2D
 
     private void OutlineBuilding()
     {
-        if (Game_Manager.building_mode == Game_Manager.BuildingMode.None)
+        if (GameManager.building_mode == GameManager.BuildingMode.None)
         {
             if (GetParent() is MineableObject)
                 if (((MineableObject)GetParent()).in_cooldown)
@@ -30,7 +30,7 @@ public partial class MouseArea : Area2D
             hover_menu.InitHoverMenu(building_node);
             Debug.Print("Hover Menu");
         }
-        else if (Game_Manager.building_mode == Game_Manager.BuildingMode.Removing)
+        else if (GameManager.building_mode == GameManager.BuildingMode.Removing)
         {
             building_sprite.Material = remove_outline_shader;
             building_node.mouse_inside = true;
@@ -39,7 +39,7 @@ public partial class MouseArea : Area2D
 
     public void OnMouseEntered()
     {
-        if (building_node == null || Game_Manager.In_Cutscene)
+        if (building_node == null || GameManager.In_Cutscene)
         {
             return;
         }

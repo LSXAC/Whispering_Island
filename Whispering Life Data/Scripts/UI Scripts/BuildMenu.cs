@@ -61,9 +61,9 @@ public partial class BuildMenu : CanvasLayer
     public override void _Process(double delta)
     {
         if (
-            Game_Manager.building_mode != Game_Manager.BuildingMode.None
-            || Game_Manager.gameover
-            || Game_Manager.In_Cutscene
+            GameManager.building_mode != GameManager.BuildingMode.None
+            || GameManager.gameover
+            || GameManager.In_Cutscene
         )
             return;
 
@@ -103,7 +103,7 @@ public partial class BuildMenu : CanvasLayer
     public void OnRemoveButton()
     {
         this.Visible = false;
-        Game_Manager.building_mode = Game_Manager.BuildingMode.Removing;
-        player_ui.INSTANCE.SetWindowFrame();
+        GameManager.building_mode = GameManager.BuildingMode.Removing;
+        PlayerUI.instance.SetWindowFrame();
     }
 }

@@ -23,8 +23,8 @@ public partial class Trashcan : ChestBase
         if (!CheckClickDependencies(this))
             return;
 
-        GameMenu.INSTANCE.OnOpenChestTab();
+        GameMenu.instance.OnOpenChestTab();
         ChestInventory.current_chest = GetParent<ChestBase>();
-        ChestInventory.INSTANCE.OpenChest();
+        ChestInventory.instance.OpenChest();
     }
 }

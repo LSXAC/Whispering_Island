@@ -10,9 +10,9 @@ public partial class Chest : ChestBase
         if (!CheckClickDependencies(this))
             return;
 
-        GameMenu.INSTANCE.OnOpenChestTab();
-        ChestInventory.INSTANCE = ((ChestTab)GameMenu.INSTANCE.chest_tab).chest_inventory;
+        GameMenu.instance.OnOpenChestTab();
+        ChestInventory.instance = ((ChestTab)GameMenu.instance.chest_tab).chest_inventory;
         ChestInventory.current_chest = this;
-        ChestInventory.INSTANCE.OpenChest();
+        ChestInventory.instance.OpenChest();
     }
 }

@@ -18,11 +18,11 @@ public partial class RailStationTab : ColorRect
     [Export]
     public Label is_connected_label;
     public static RailStation last_rail_station = null;
-    public static RailStationTab INSTANCE = null;
+    public static RailStationTab instance = null;
 
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
     }
 
     public void OnClickCheckImport()
@@ -50,17 +50,17 @@ public partial class RailStationTab : ColorRect
         if (tab == 0)
         {
             ChestInventory.current_chest = last_rail_station.chest_in;
-            ChestInventory.INSTANCE = (
-                (RailStationTab)GameMenu.INSTANCE.rail_station_tab
+            ChestInventory.instance = (
+                (RailStationTab)GameMenu.instance.rail_station_tab
             ).chest_inventory_in;
         }
         else
         {
             ChestInventory.current_chest = last_rail_station.chest_out;
-            ChestInventory.INSTANCE = (
-                (RailStationTab)GameMenu.INSTANCE.rail_station_tab
+            ChestInventory.instance = (
+                (RailStationTab)GameMenu.instance.rail_station_tab
             ).chest_inventory_out;
         }
-        ChestInventory.INSTANCE.OpenChest();
+        ChestInventory.instance.OpenChest();
     }
 }

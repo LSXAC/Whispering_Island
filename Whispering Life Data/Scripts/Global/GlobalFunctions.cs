@@ -3,12 +3,12 @@ using Godot.Collections;
 
 public partial class GlobalFunctions : Node2D
 {
-    public static GlobalFunctions INSTANCE;
+    public static GlobalFunctions instance;
     public static float transport_moving_speed = 10f;
 
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
     }
 
     public static int RoundToNextInt(float id)
@@ -34,13 +34,13 @@ public partial class GlobalFunctions : Node2D
     {
         QuestManager.next_quest_half_time = true;
         OpenAcceptPanel();
-        player_ui.INSTANCE.quest_accept_panel.InitAcceptPanel(QuestAcceptPanel.PENEALTY.HALF_TIME);
+        PlayerUI.instance.quest_accept_panel.InitAcceptPanel(QuestAcceptPanel.PENEALTY.HALF_TIME);
     }
 
     public static void NextQuestDoubledItems()
     {
         OpenAcceptPanel();
-        player_ui.INSTANCE.quest_accept_panel.InitAcceptPanel(
+        PlayerUI.instance.quest_accept_panel.InitAcceptPanel(
             QuestAcceptPanel.PENEALTY.DOUBLE_AMOUNT
         );
     }
@@ -48,30 +48,30 @@ public partial class GlobalFunctions : Node2D
     public static void NextQuestIslandsRemoved()
     {
         OpenAcceptPanel();
-        player_ui.INSTANCE.quest_accept_panel.InitAcceptPanel(
+        PlayerUI.instance.quest_accept_panel.InitAcceptPanel(
             QuestAcceptPanel.PENEALTY.ISLAND_REMOVE
         );
     }
 
     public static void OpenAcceptPanel()
     {
-        Game_Manager.INSTANCE.cutscene_camera.Enabled = false;
-        Player.camera.Position = Game_Manager.INSTANCE.cutscene_camera.Position;
+        GameManager.instance.cutscene_camera.Enabled = false;
+        Player.camera.Position = GameManager.instance.cutscene_camera.Position;
         Player.camera.Enabled = true;
         Player.camera.Position = Vector2.Zero;
-        player_ui.INSTANCE.quest_accept_panel.Visible = true;
+        PlayerUI.instance.quest_accept_panel.Visible = true;
     }
 
     public static void SetPlayerPositionToStart()
     {
-        Game_Manager.INSTANCE.save_state.char_save.player_position = new Vector2(10f, -170f);
+        GameManager.instance.save_state.char_save.player_position = new Vector2(10f, -170f);
     }
 
     public static bool CheckResearchRequirements(Array<UnlockRequirement> br)
     {
         foreach (UnlockRequirement temp in br)
         {
-            if (ResearchTab.INSTANCE == null)
+            if (ResearchTab.instance == null)
                 return false;
             if (!ResearchTab.research_saves.ContainsKey(temp.item_id))
                 return false;
@@ -83,55 +83,55 @@ public partial class GlobalFunctions : Node2D
 
     public static float GetDistanceToPlayer(Vector2 nodePosition)
     {
-        return Player.INSTANCE.GlobalPosition.DistanceTo(nodePosition);
+        return Player.instance.GlobalPosition.DistanceTo(nodePosition);
     }
 
     public static void MoveCameraToPosition(Vector2 pos)
     {
         Player.camera.Enabled = false;
-        Game_Manager.INSTANCE.cutscene_camera.GlobalPosition = Player.camera.GlobalPosition;
-        Game_Manager.INSTANCE.cutscene_camera.Enabled = true;
-        Game_Manager.INSTANCE.cutscene_camera.Position = pos;
+        GameManager.instance.cutscene_camera.GlobalPosition = Player.camera.GlobalPosition;
+        GameManager.instance.cutscene_camera.Enabled = true;
+        GameManager.instance.cutscene_camera.Position = pos;
     }
 
     public static void StartAfterTutorial()
     {
-        Game_Manager.INSTANCE.tutorial_finished = true;
-        Game_Manager.INSTANCE.game_timer.Start();
-        QuestManager.INSTANCE.StartQuest();
+        GameManager.instance.tutorial_finished = true;
+        GameManager.instance.game_timer.Start();
+        QuestManager.instance.StartQuest();
     }
 
     public static void InDialogue()
     {
-        Game_Manager.In_Cutscene = true;
+        GameManager.In_Cutscene = true;
     }
 
     public static void QueueFreeTree()
     {
-        Tutorial.INSTANCE.Tree.QueueFree();
+        Tutorial.instance.Tree.QueueFree();
     }
 
     public static void LeaveDialogue()
     {
-        Game_Manager.INSTANCE.cutscene_camera.Enabled = false;
-        Player.camera.Position = Game_Manager.INSTANCE.cutscene_camera.Position;
+        GameManager.instance.cutscene_camera.Enabled = false;
+        Player.camera.Position = GameManager.instance.cutscene_camera.Position;
         Player.camera.Enabled = true;
         Player.camera.Position = Vector2.Zero;
-        Game_Manager.In_Cutscene = false;
-        Game_Manager.INSTANCE.SaveGame();
+        GameManager.In_Cutscene = false;
+        GameManager.instance.SaveGame();
     }
 
     public static void OutlineTree()
     {
-        Tutorial.INSTANCE.Tree.Visible = true;
-        Tutorial.INSTANCE.shadow.Visible = true;
-        Tutorial.INSTANCE.Tree.Material = Tutorial.INSTANCE.outline_shader;
+        Tutorial.instance.Tree.Visible = true;
+        Tutorial.instance.shadow.Visible = true;
+        Tutorial.instance.Tree.Material = Tutorial.instance.outline_shader;
     }
 
     public static void RemoveOutlineTree()
     {
-        Tutorial.INSTANCE.Tree.Material = null;
-        Tutorial.INSTANCE.Tree.Visible = false;
-        Tutorial.INSTANCE.shadow.Visible = false;
+        Tutorial.instance.Tree.Material = null;
+        Tutorial.instance.Tree.Visible = false;
+        Tutorial.instance.shadow.Visible = false;
     }
 }

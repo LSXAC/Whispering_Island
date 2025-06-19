@@ -16,7 +16,7 @@ public partial class Actionable : Area2D
             return;
         if (dialogueResource == null)
             return;
-        if (!Game_Manager.In_Cutscene)
+        if (!GameManager.In_Cutscene)
         {
             GlobalFunctions.InDialogue();
             DialogueManager.ShowDialogueBalloon(dialogueResource, diaglog_start);

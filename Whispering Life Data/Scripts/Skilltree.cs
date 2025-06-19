@@ -11,7 +11,7 @@ public partial class Skilltree : ColorRect
 
     [Export]
     public Label research_points_label;
-    public static Skilltree INSTANCE;
+    public static Skilltree instance;
     public static int[] skill_progress = new int[4] { -1, -1, -1, -1 };
 
     public enum SKILLTYPE
@@ -32,19 +32,19 @@ public partial class Skilltree : ColorRect
 
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
     }
 
     public static float GetSkillProgress(SKILLTYPE type)
     {
         if (skill_progress[(int)type] == -1)
         {
-            SkilltreeBox.INSTANCE.InitMove(type, 1);
+            SkilltreeBox.instance.InitMove(type, 1);
             return 1;
         }
         else
         {
-            SkilltreeBox.INSTANCE.InitMove(type, bonis[(int)type, skill_progress[(int)type]] + 1);
+            SkilltreeBox.instance.InitMove(type, bonis[(int)type, skill_progress[(int)type]] + 1);
             return bonis[(int)type, skill_progress[(int)type]] + 1;
         }
     }
@@ -62,6 +62,6 @@ public partial class Skilltree : ColorRect
         research_points_label.Text =
             TranslationServer.Translate("SKILLTREE_RESEARCH_POINTS")
             + ": "
-            + ResearchTab.INSTANCE.Research_Points;
+            + ResearchTab.instance.Research_Points;
     }
 }

@@ -4,7 +4,7 @@ using Godot;
 
 public partial class EquipmentPanel : Control
 {
-    public static EquipmentPanel INSTANCE = null;
+    public static EquipmentPanel instance = null;
 
     [Export]
     public ItemSave[] equipped_armor = new ItemSave[4];
@@ -31,20 +31,20 @@ public partial class EquipmentPanel : Control
 
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
     }
 
     public void OnVisiblityChanged()
     {
-        if (Player.INSTANCE != null)
+        if (Player.instance != null)
             UpdateProgressbars();
     }
 
     private void UpdateProgressbars()
     {
-        health_bar.Value = Player.INSTANCE.player_stats.health_value;
+        health_bar.Value = Player.instance.player_stats.health_value;
         health_bar_label.Text = TranslationServer.Translate("EQUIPMENT_PANEL_HEALTH_BAR") + ":";
-        fatigue_bar.Value = Player.INSTANCE.player_stats.fatigue_value;
+        fatigue_bar.Value = Player.instance.player_stats.fatigue_value;
         fatigue_bar_label.Text = TranslationServer.Translate("EQUIPMENT_PANEL_FATIGUE_BAR") + ":";
 
         for (int i = 0; i < Enum.GetNames(typeof(StatsPanel.stat_types)).Length; i++)
@@ -54,7 +54,7 @@ public partial class EquipmentPanel : Control
                     "EQUIPMENT_PANEL_" + ((StatsPanel.stat_types)i).ToString()
                 ) + ":";
             stats_panel.stats_container.GetChild(i).GetNode<Label>("Number").Text = Player
-                .INSTANCE.player_stats.stat_amounts[i]
+                .instance.player_stats.stat_amounts[i]
                 .ToString("N1");
         }
     }
@@ -62,76 +62,76 @@ public partial class EquipmentPanel : Control
     public static void UpdateSlotDurability(int index)
     {
         if (
-            INSTANCE
+            instance
                 .slots_tool[EquipmentSelectBar.current_selected_slot]
                 .GetItem()
                 .current_durability > 0
         )
         {
-            player_ui
-                .INSTANCE.equipmentSelectBar.GetSelectedItem()
+            PlayerUI
+                .instance.equipmentSelectBar.GetSelectedItem()
                 .SetDurability(
-                    INSTANCE
+                    instance
                         .slots_tool[EquipmentSelectBar.current_selected_slot]
                         .GetItem()
                         .current_durability
                 );
 
-            INSTANCE
+            instance
                 .slots_tool[EquipmentSelectBar.current_selected_slot]
                 .GetItem()
                 .SetDurability(
-                    INSTANCE
+                    instance
                         .slots_tool[EquipmentSelectBar.current_selected_slot]
                         .GetItem()
                         .current_durability
                 );
-            INSTANCE.equipped_tools[EquipmentSelectBar.current_selected_slot].current_durability =
-                INSTANCE
+            instance.equipped_tools[EquipmentSelectBar.current_selected_slot].current_durability =
+                instance
                     .slots_tool[EquipmentSelectBar.current_selected_slot]
                     .GetItem()
                     .current_durability;
         }
         else
         {
-            player_ui
-                .INSTANCE.equipmentSelectBar.select_slots[EquipmentSelectBar.current_selected_slot]
+            PlayerUI
+                .instance.equipmentSelectBar.select_slots[EquipmentSelectBar.current_selected_slot]
                 .ClearItem();
-            INSTANCE.slots_tool[EquipmentSelectBar.current_selected_slot].ClearItem();
-            INSTANCE.equipped_tools[EquipmentSelectBar.current_selected_slot] = null;
-            player_ui.INSTANCE.equipmentSelectBar.current_selected_item = null;
+            instance.slots_tool[EquipmentSelectBar.current_selected_slot].ClearItem();
+            instance.equipped_tools[EquipmentSelectBar.current_selected_slot] = null;
+            PlayerUI.instance.equipmentSelectBar.current_selected_item = null;
         }
-        INSTANCE.CalculateStatsFromEquipment();
+        instance.CalculateStatsFromEquipment();
     }
 
     public void CalculateStatsFromEquipment()
     {
-        Player_Stats ps = Player.INSTANCE.player_stats;
-        for (int i = 0; i < ps.stat_amounts.Length; i++)
-            ps.stat_amounts[i] = 1f;
+        PlayerStats player_stats = Player.instance.player_stats;
+        for (int i = 0; i < player_stats.stat_amounts.Length; i++)
+            player_stats.stat_amounts[i] = 1f;
 
         foreach (ItemSave s in equipped_armor)
         {
             if (s != null)
                 if (
-                    Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)s.item_id].item_stats
+                    Inventory.instance.item_Types[(InventoryBase.ITEM_ID)s.item_id].item_stats
                     != null
                 )
                     foreach (
                         ItemStats x in Inventory
-                            .INSTANCE
+                            .instance
                             .item_Types[(InventoryBase.ITEM_ID)s.item_id]
                             .item_stats
                     )
-                        ps.stat_amounts[(int)x.type] += x.bonus;
+                        player_stats.stat_amounts[(int)x.type] += x.bonus;
         }
 
-        if (player_ui.INSTANCE.equipmentSelectBar.GetSelectedItem() != null)
+        if (PlayerUI.instance.equipmentSelectBar.GetSelectedItem() != null)
         {
-            InventoryItem ii = player_ui.INSTANCE.equipmentSelectBar.GetSelectedItem();
+            InventoryItem ii = PlayerUI.instance.equipmentSelectBar.GetSelectedItem();
             if (ii.item_info.item_stats != null)
                 foreach (ItemStats x in ii.item_info.item_stats)
-                    ps.stat_amounts[(int)x.type] += x.bonus;
+                    player_stats.stat_amounts[(int)x.type] += x.bonus;
         }
         UpdateProgressbars();
     }
@@ -147,7 +147,7 @@ public partial class EquipmentPanel : Control
             if (item_save[i] != null)
                 slots_armor[i]
                     .SetItem(
-                        Inventory.INSTANCE.item_Types[(Inventory.ITEM_ID)item_save[i].item_id],
+                        Inventory.instance.item_Types[(Inventory.ITEM_ID)item_save[i].item_id],
                         item_save[i].amount
                     );
     }
@@ -164,14 +164,14 @@ public partial class EquipmentPanel : Control
             {
                 slots_tool[i]
                     .SetItem(
-                        Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)item_save[i].item_id],
+                        Inventory.instance.item_Types[(InventoryBase.ITEM_ID)item_save[i].item_id],
                         item_save[i].amount,
                         item_save[i].current_durability
                     );
-                player_ui
-                    .INSTANCE.equipmentSelectBar.select_slots[i]
+                PlayerUI
+                    .instance.equipmentSelectBar.select_slots[i]
                     .SetItem(
-                        Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)item_save[i].item_id],
+                        Inventory.instance.item_Types[(InventoryBase.ITEM_ID)item_save[i].item_id],
                         item_save[i].amount,
                         item_save[i].current_durability
                     );

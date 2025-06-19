@@ -3,12 +3,12 @@ using System.Transactions;
 
 public partial class Inventory : InventoryBase
 {
-    public static Inventory INSTANCE = null;
+    public static Inventory instance = null;
     public static InventoryItem clicked_item = null;
 
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
         slot_amount = 30;
         base._Ready();
         SetSlots();
@@ -19,7 +19,7 @@ public partial class Inventory : InventoryBase
         if (clicked_item == null)
             return;
 
-        if (Game_Manager.gameover)
+        if (GameManager.gameover)
         {
             clicked_item.Free();
             clicked_item = null;

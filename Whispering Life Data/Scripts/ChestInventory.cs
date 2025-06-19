@@ -3,12 +3,12 @@ using Godot;
 
 public partial class ChestInventory : InventoryBase
 {
-    public static ChestInventory INSTANCE = null;
+    public static ChestInventory instance = null;
     public static ChestBase current_chest;
 
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
         slot_amount = 20;
         inventory_items = new ItemSave[slot_amount];
         SetSlots();

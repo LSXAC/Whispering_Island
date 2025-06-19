@@ -2,7 +2,7 @@ using System;
 using Godot;
 using Godot.Collections;
 
-public partial class player_ui : CanvasLayer
+public partial class PlayerUI : CanvasLayer
 {
     private HSlider hslider;
     private StyleBoxFlat before_reg = new StyleBoxFlat();
@@ -46,7 +46,7 @@ public partial class player_ui : CanvasLayer
 
     [Export]
     public Panel gameover_panel;
-    public static player_ui INSTANCE;
+    public static PlayerUI instance;
 
     [Export]
     public VBoxContainer info_vBox;
@@ -70,7 +70,7 @@ public partial class player_ui : CanvasLayer
 
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
         gameover_panel.Visible = false;
         game_time_label = game_time_panel.GetChild(0).GetNode<Label>("GameTimeLabel");
         quest_complete_panel = GetNode<Panel>("QuestCompletePanel");
@@ -102,33 +102,33 @@ public partial class player_ui : CanvasLayer
     public void ToMainMenu()
     {
         gameover_panel.Visible = false;
-        GameMenu.INSTANCE.OnBackToMainMenu();
+        GameMenu.instance.OnBackToMainMenu();
     }
 
     public void OnInventoryButton()
     {
-        GameMenu.INSTANCE.OpenGameMenu();
+        GameMenu.instance.OpenGameMenu();
     }
 
     public void OnBuildingMenuButton()
     {
-        Building_Menu.instance.OpenBuildingMenu();
+        BuildMenu.instance.OpenBuildingMenu();
     }
 
     public static void CompleteQuestPanelShow()
     {
-        INSTANCE.quest_complete_panel.Visible = true;
-        INSTANCE.qcp_timer.Start();
+        instance.quest_complete_panel.Visible = true;
+        instance.qcp_timer.Start();
     }
 
     public static void LastQuestPanelShow()
     {
-        INSTANCE.quest_complete_panel.Visible = true;
-        INSTANCE.quest_complete_panel.GetChild(0).GetChild(0).GetNode<Label>("Label").Text =
+        instance.quest_complete_panel.Visible = true;
+        instance.quest_complete_panel.GetChild(0).GetChild(0).GetNode<Label>("Label").Text =
             "Last Quest Complete!";
-        INSTANCE.quest_complete_panel.GetChild(0).GetChild(0).GetNode<Label>("Label2").Text =
+        instance.quest_complete_panel.GetChild(0).GetChild(0).GetNode<Label>("Label2").Text =
             "Thanks for Playing!";
-        INSTANCE.qcp_timer.Start();
+        instance.qcp_timer.Start();
     }
 
     public void OnCompleteQuestCompletepanel()
@@ -144,45 +144,45 @@ public partial class player_ui : CanvasLayer
         game_time_label.Text =
             TranslationServer.Translate("PLAYERUI_GAMETIME")
             + ": "
-            + Game_Manager.game_time_since_start.ToString("N2")
+            + GameManager.game_time_since_start.ToString("N2")
             + "s";
     }
 
     public void OnLoadGameButton()
     {
-        GameMenu.INSTANCE.OnLoadButton();
+        GameMenu.instance.OnLoadButton();
     }
 
     public static void AddItemLabelUI(string text)
     {
-        INSTANCE.item_label_queue.Add(text);
+        instance.item_label_queue.Add(text);
     }
 
     public static void SpawnItemLabelUI()
     {
-        Label label = (Label)INSTANCE.collected_item_label.Instantiate();
-        label.Text = INSTANCE.item_label_queue[0];
-        INSTANCE.collected_item_parent.AddChild(label);
-        INSTANCE.item_label_queue.RemoveAt(0);
-        INSTANCE.queue_working = false;
-        INSTANCE.item_label_timer.Stop();
+        Label label = (Label)instance.collected_item_label.Instantiate();
+        label.Text = instance.item_label_queue[0];
+        instance.collected_item_parent.AddChild(label);
+        instance.item_label_queue.RemoveAt(0);
+        instance.queue_working = false;
+        instance.item_label_timer.Stop();
     }
 
     public void SetWindowFrame()
     {
         window_frame_rect.Visible = true;
-        switch (Game_Manager.building_mode)
+        switch (GameManager.building_mode)
         {
-            case Game_Manager.BuildingMode.Placing:
+            case GameManager.BuildingMode.Placing:
                 window_frame_rect.Texture = building_frame;
                 info_vBox.Visible = true;
                 break;
-            case Game_Manager.BuildingMode.Removing:
+            case GameManager.BuildingMode.Removing:
                 window_frame_rect.Texture = removing_frame;
                 info_vBox.Visible = false;
 
                 break;
-            case Game_Manager.BuildingMode.None:
+            case GameManager.BuildingMode.None:
                 window_frame_rect.Visible = false;
                 break;
         }
@@ -190,18 +190,18 @@ public partial class player_ui : CanvasLayer
 
     public override void _Process(double delta)
     {
-        if (Game_Manager.gameover && !gameover_panel.Visible)
+        if (GameManager.gameover && !gameover_panel.Visible)
             gameover_panel.Visible = true;
 
         if (hslider == null)
             return;
 
-        if (Player_Stamina.current_stamina < 1f && !hslider.Visible)
+        if (PlayerStamina.current_stamina < 1f && !hslider.Visible)
             hslider.Visible = true;
-        else if (Player_Stamina.current_stamina >= 1f && hslider.Visible)
+        else if (PlayerStamina.current_stamina >= 1f && hslider.Visible)
             hslider.Visible = false;
 
-        if (Player_Stamina.stamina_is_regenerating && hslider.Visible)
+        if (PlayerStamina.stamina_is_regenerating && hslider.Visible)
         {
             hslider.AddThemeStyleboxOverride("grabber_area", when_reg);
             stamina_label.Text = TranslationServer.Translate("STAMINA_OUT");
@@ -213,6 +213,6 @@ public partial class player_ui : CanvasLayer
         }
 
         if (hslider.Visible)
-            hslider.Value = Player_Stamina.current_stamina;
+            hslider.Value = PlayerStamina.current_stamina;
     }
 }

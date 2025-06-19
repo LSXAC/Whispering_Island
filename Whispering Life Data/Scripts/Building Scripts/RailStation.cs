@@ -22,13 +22,13 @@ public partial class RailStation : MachineBase
         if (!CheckClickDependencies(this))
             return;
 
-        GameMenu.INSTANCE.OnOpenRailStationTab();
+        GameMenu.instance.OnOpenRailStationTab();
         RailStationTab.last_rail_station = this;
-        ChestInventory.INSTANCE = (
-            (RailStationTab)GameMenu.INSTANCE.rail_station_tab
+        ChestInventory.instance = (
+            (RailStationTab)GameMenu.instance.rail_station_tab
         ).chest_inventory_in;
         ChestInventory.current_chest = chest_in;
-        ChestInventory.INSTANCE.OpenChest();
+        ChestInventory.instance.OpenChest();
     }
 
     public void OnAreaEntered(Area2D area)

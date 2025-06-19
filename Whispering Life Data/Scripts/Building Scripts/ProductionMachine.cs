@@ -19,7 +19,7 @@ public partial class ProductionMachine : MachineBase
             progress = 0;
         }
         progress += 5;
-        if (hover_menu.INSTANCE.current_object == this)
+        if (hover_menu.instance.current_object == this)
             hover_menu.InitHoverMenu(this);
     }
 }

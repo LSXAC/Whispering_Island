@@ -5,7 +5,7 @@ using Godot.Collections;
 public partial class IslandSave : Resource
 {
     [Export]
-    public Island_Properties.DIRECTION dir = Island_Properties.DIRECTION.NONE;
+    public Island.DIRECTION dir = Island.DIRECTION.NONE;
 
     [Export]
     public int matrix_island_id = -1;
@@ -15,7 +15,7 @@ public partial class IslandSave : Resource
 
     public IslandSave() { }
 
-    public IslandSave(Island_Properties.DIRECTION dir, int matrix_island_id, int island_id)
+    public IslandSave(Island.DIRECTION dir, int matrix_island_id, int island_id)
     {
         this.dir = dir;
         this.matrix_island_id = matrix_island_id;

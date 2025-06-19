@@ -10,7 +10,7 @@ public partial class QuestMiniPanel : PanelContainer
 
     [Export]
     public Label time_label;
-    public static QuestMiniPanel INSTANCE = null;
+    public static QuestMiniPanel instance = null;
 
     public override void _Notification(int what)
     {
@@ -22,7 +22,7 @@ public partial class QuestMiniPanel : PanelContainer
 
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
         UpdateTimeLabel(0);
     }
 
@@ -50,12 +50,12 @@ public partial class QuestMiniPanel : PanelContainer
 
     public void UpdateQuestMiniPanel(QuestInfo currentQuest)
     {
-        Array<Item> items_in_inventory = Inventory.INSTANCE.GetListOfItemsInInventory();
+        Array<Item> items_in_inventory = Inventory.instance.GetListOfItemsInInventory();
         for (int i = 0; i < currentQuest.quest_items.Count; i++)
         {
             Item item = currentQuest.quest_items[i];
 
-            Array<Item> iii = Inventory.INSTANCE.GetItemFromList(items_in_inventory, item);
+            Array<Item> iii = Inventory.instance.GetItemFromList(items_in_inventory, item);
             hbox_items[i].Visible = true;
 
             if (QuestManager.next_quest_is_doubled_items)

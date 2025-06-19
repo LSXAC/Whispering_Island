@@ -83,18 +83,18 @@ public partial class Giver : Area2D
                 if (i_s == null)
                     continue;
 
-                Inventory.INSTANCE.RemoveItem(
-                    Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)i_s.item_id],
+                Inventory.instance.RemoveItem(
+                    Inventory.instance.item_Types[(InventoryBase.ITEM_ID)i_s.item_id],
                     1,
                     ((ChestBase)building).chest_items
                 );
                 BeltItem item = (BeltItem)beltItem.Instantiate();
                 item.InitBeltItem(
-                    new Item(Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)i_s.item_id], 1)
+                    new Item(Inventory.instance.item_Types[(InventoryBase.ITEM_ID)i_s.item_id], 1)
                 );
                 Holder.AddChild(item);
                 destination.GetParent<Belt>().receive_item(item);
-                ChestInventory.INSTANCE.UpdateInventoryUI();
+                ChestInventory.instance.UpdateInventoryUI();
                 break;
             }
         }
@@ -121,7 +121,7 @@ public partial class Giver : Area2D
             item.InitBeltItem(new Item(((ProductionMachine)building).production_item_info, 1));
             Holder.AddChild(item);
             destination.GetParent<Belt>().receive_item(item);
-            FurnaceTab.INSTANCE.UpdateFurnaceUI();
+            FurnaceTab.instance.UpdateFurnaceUI();
         }
     }
 }

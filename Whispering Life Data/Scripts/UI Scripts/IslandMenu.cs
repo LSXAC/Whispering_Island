@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Godot;
 
-public partial class island_menu : ColorRect
+public partial class IslandMenu : ColorRect
 {
     private PackedScene island_1 = ResourceLoader.Load<PackedScene>("res://Prefabs/Island_1.tscn");
     private PackedScene island_2 = ResourceLoader.Load<PackedScene>("res://Prefabs/Island_2.tscn");
@@ -33,7 +33,7 @@ public partial class island_menu : ColorRect
     };
 
     public Sign current_sign = null;
-    public static island_menu instance;
+    public static IslandMenu instance;
 
     public override void _Ready()
     {
@@ -71,31 +71,31 @@ public partial class island_menu : ColorRect
         if (current_sign == null)
             return;
 
-        CreateIsland(id, current_sign.dir, current_sign.current_ip);
+        CreateIsland(id, current_sign.dir, current_sign.island_info);
 
-        GameMenu.INSTANCE.OnCloseIslandTab();
+        GameMenu.instance.OnCloseIslandTab();
         current_sign = null;
     }
 
     public void CreateIsland(
         int unique_id,
-        Island_Properties.DIRECTION dir,
-        Island_Properties current_ip,
+        Island.DIRECTION dir,
+        Island current_ip,
         bool is_loading = false
     )
     {
         Debug.Print("Get Dir.");
-        if (dir == Island_Properties.DIRECTION.UP)
-            if (Game_Manager.IsIslandOnMatrix(current_ip.matrix_x, current_ip.matrix_y - 1))
+        if (dir == Island.DIRECTION.UP)
+            if (GameManager.IsIslandOnMatrix(current_ip.matrix_x, current_ip.matrix_y - 1))
                 return;
-        if (dir == Island_Properties.DIRECTION.DOWN)
-            if (Game_Manager.IsIslandOnMatrix(current_ip.matrix_x, current_ip.matrix_y + 1))
+        if (dir == Island.DIRECTION.DOWN)
+            if (GameManager.IsIslandOnMatrix(current_ip.matrix_x, current_ip.matrix_y + 1))
                 return;
-        if (dir == Island_Properties.DIRECTION.LEFT)
-            if (Game_Manager.IsIslandOnMatrix(current_ip.matrix_x - 1, current_ip.matrix_y))
+        if (dir == Island.DIRECTION.LEFT)
+            if (GameManager.IsIslandOnMatrix(current_ip.matrix_x - 1, current_ip.matrix_y))
                 return;
-        if (dir == Island_Properties.DIRECTION.RIGHT)
-            if (Game_Manager.IsIslandOnMatrix(current_ip.matrix_x + 1, current_ip.matrix_y))
+        if (dir == Island.DIRECTION.RIGHT)
+            if (GameManager.IsIslandOnMatrix(current_ip.matrix_x + 1, current_ip.matrix_y))
                 return;
 
         Debug.Print("Found Dir.");

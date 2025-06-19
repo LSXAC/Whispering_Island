@@ -10,6 +10,6 @@ public partial class Bed : placeable_building
         if (!CheckClickDependencies(this))
             return;
 
-        Player.INSTANCE.player_stats.RemoveFatigue(seconds: 5);
+        Player.instance.player_stats.RemoveFatigue(seconds: 5);
     }
 }

@@ -68,7 +68,7 @@ public partial class EquipmentSelectBar : Container
         current_selected_item = select_slots[index].GetItem();
         current_selected_slot = index;
 
-        if (EquipmentPanel.INSTANCE != null)
-            EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
+        if (EquipmentPanel.instance != null)
+            EquipmentPanel.instance.CalculateStatsFromEquipment();
     }
 }

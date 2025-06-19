@@ -148,11 +148,11 @@ public partial class Slot : Button
                 CreateClickedItem(false, GetItem().current_durability);
                 if (GetItem().item_info.HasType(ItemInfo.Type.TOOL))
                 {
-                    EquipmentPanel.INSTANCE.equipped_tools[index] = null;
-                    EquipmentPanel.INSTANCE.slots_tool[index].ClearItem();
-                    player_ui.INSTANCE.equipmentSelectBar.select_slots[index].ClearItem();
+                    EquipmentPanel.instance.equipped_tools[index] = null;
+                    EquipmentPanel.instance.slots_tool[index].ClearItem();
+                    PlayerUI.instance.equipmentSelectBar.select_slots[index].ClearItem();
                     if (EquipmentSelectBar.current_selected_slot == index)
-                        player_ui.INSTANCE.equipmentSelectBar.current_selected_item = null;
+                        PlayerUI.instance.equipmentSelectBar.current_selected_item = null;
                 }
                 if (
                     GetItem().item_info.HasType(ItemInfo.Type.HEAD)
@@ -161,10 +161,10 @@ public partial class Slot : Button
                     || GetItem().item_info.HasType(ItemInfo.Type.SHOES)
                 )
                 {
-                    EquipmentPanel.INSTANCE.equipped_armor[index] = null;
-                    EquipmentPanel.INSTANCE.slots_armor[index].ClearItem();
+                    EquipmentPanel.instance.equipped_armor[index] = null;
+                    EquipmentPanel.instance.slots_armor[index].ClearItem();
                 }
-                EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
+                EquipmentPanel.instance.CalculateStatsFromEquipment();
             }
         }
         else
@@ -190,30 +190,30 @@ public partial class Slot : Button
                     && slot_type == ItemInfo.Type.TOOL
                 )
                 {
-                    EquipmentPanel.INSTANCE.equipped_tools[index] = new ItemSave(
+                    EquipmentPanel.instance.equipped_tools[index] = new ItemSave(
                         (int)Inventory.clicked_item.item_info.unique_id,
                         Inventory.clicked_item.amount,
                         Inventory.clicked_item.current_durability
                     );
                     EquipmentPanel
-                        .INSTANCE.slots_tool[index]
+                        .instance.slots_tool[index]
                         .SetItem(
                             Inventory.clicked_item.item_info,
                             Inventory.clicked_item.amount,
                             Inventory.clicked_item.current_durability
                         );
 
-                    player_ui
-                        .INSTANCE.equipmentSelectBar.select_slots[index]
+                    PlayerUI
+                        .instance.equipmentSelectBar.select_slots[index]
                         .SetItem(
                             Inventory.clicked_item.item_info,
                             Inventory.clicked_item.amount,
                             Inventory.clicked_item.current_durability
                         );
                     if (EquipmentSelectBar.current_selected_slot == index)
-                        player_ui.INSTANCE.equipmentSelectBar.SelectSelectSlot(index);
+                        PlayerUI.instance.equipmentSelectBar.SelectSelectSlot(index);
                     ClearClickedItem();
-                    EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
+                    EquipmentPanel.instance.CalculateStatsFromEquipment();
                 }
             }
             else // Can be Expanded, if e.g. Stackable Potions in one Equipment Slot
@@ -223,16 +223,16 @@ public partial class Slot : Button
 
     private void OnTakeItemFromArmorSlot(int index)
     {
-        EquipmentPanel.INSTANCE.equipped_armor[index] = new ItemSave(
+        EquipmentPanel.instance.equipped_armor[index] = new ItemSave(
             (int)Inventory.clicked_item.item_info.unique_id,
             Inventory.clicked_item.amount,
             Inventory.clicked_item.current_durability
         );
         EquipmentPanel
-            .INSTANCE.slots_armor[index]
+            .instance.slots_armor[index]
             .SetItem(Inventory.clicked_item.item_info, Inventory.clicked_item.amount);
         ClearClickedItem();
-        EquipmentPanel.INSTANCE.CalculateStatsFromEquipment();
+        EquipmentPanel.instance.CalculateStatsFromEquipment();
     }
 
     public void OnSlotButton(InputEventMouseButton @btn)
@@ -411,7 +411,7 @@ public partial class Slot : Button
             {
                 CreateClickedItem();
                 ResearchTab.research_slot_item = null;
-                ResearchTab.INSTANCE.UpdateLevelTabs();
+                ResearchTab.instance.UpdateLevelTabs();
             }
         }
         else
@@ -428,7 +428,7 @@ public partial class Slot : Button
                 Inventory.clicked_item.amount -= 1;
                 if (Inventory.clicked_item.amount == 0)
                     ClearClickedItem();
-                ResearchTab.INSTANCE.UpdateLevelTabs();
+                ResearchTab.instance.UpdateLevelTabs();
             }
         }
     }
@@ -449,7 +449,7 @@ public partial class Slot : Button
             ii.SetDurability(durability);
         ii.SelfModulate = GetItem().SelfModulate;
         Inventory.clicked_item = ii;
-        Inventory.INSTANCE.AddChild(ii);
+        Inventory.instance.AddChild(ii);
     }
 
     public bool ItemCanBeHalfed(InventoryItem ii)

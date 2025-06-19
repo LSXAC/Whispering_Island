@@ -9,7 +9,7 @@ public partial class QuestManager : Node
     [Export]
     public Array<QuestInfo> quests;
     public static int current_quest_id = 0;
-    public static QuestManager INSTANCE = null;
+    public static QuestManager instance = null;
     public static int current_quest_time = 0;
 
     public static bool next_quest_half_time = false;
@@ -20,7 +20,7 @@ public partial class QuestManager : Node
 
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
     }
 
     public void StartQuest(QuestSave quest_save = null)
@@ -39,9 +39,9 @@ public partial class QuestManager : Node
 
         CheckQuestDuplications();
         StartTimer();
-        QuestMenu.INSTANCE.InitQuest(quests[current_quest_id]);
-        QuestMiniPanel.INSTANCE.UpdateTimeLabel(current_quest_time);
-        QuestMiniPanel.INSTANCE.InitQuestMiniPanel(quests[current_quest_id]);
+        QuestMenu.instance.InitQuest(quests[current_quest_id]);
+        QuestMiniPanel.instance.UpdateTimeLabel(current_quest_time);
+        QuestMiniPanel.instance.InitQuestMiniPanel(quests[current_quest_id]);
     }
 
     public void PauseTimer()
@@ -60,17 +60,17 @@ public partial class QuestManager : Node
         if (current_quest_time <= 0)
         {
             //Cutscene // UH; WIEK ANNST DEN DU DID WARGEN; GÄ?
-            INSTANCE.quest_timer.Stop();
-            QuestMenu.INSTANCE.CloseQuestMenu();
-            HeartManager.INSTANCE.RemoveHeart();
-            if (Game_Manager.gameover)
+            instance.quest_timer.Stop();
+            QuestMenu.instance.CloseQuestMenu();
+            HeartManager.instance.RemoveHeart();
+            if (GameManager.gameover)
                 return;
 
             int penealty = -1;
             Random rnd = new Random();
-            if (HeartManager.INSTANCE.current_hearts == 2)
+            if (HeartManager.instance.current_hearts == 2)
                 penealty = (int)rnd.NextInt64(0, 2);
-            else if (HeartManager.INSTANCE.current_hearts == 1)
+            else if (HeartManager.instance.current_hearts == 1)
                 penealty = 2;
 
             if (penealty == 1 && next_quest_is_doubled_items)
@@ -117,13 +117,13 @@ public partial class QuestManager : Node
                     );
             }
 
-            await ToSignal(player_ui.INSTANCE.quest_accept_panel.confirm_button, "pressed");
+            await ToSignal(PlayerUI.instance.quest_accept_panel.confirm_button, "pressed");
             GlobalFunctions.LeaveDialogue();
             NextQuest(finished_correctly: false, penealty);
         }
 
         current_quest_time -= 1;
-        QuestMiniPanel.INSTANCE.UpdateTimeLabel(current_quest_time);
+        QuestMiniPanel.instance.UpdateTimeLabel(current_quest_time);
     }
 
     /// Check if duplicated ItemType exists inside one Quest.
@@ -151,8 +151,8 @@ public partial class QuestManager : Node
     {
         foreach (Item quest_item in quests[current_quest_id].quest_items)
         {
-            Array<Item> iii = Inventory.INSTANCE.GetItemFromList(
-                Inventory.INSTANCE.GetListOfItemsInInventory(),
+            Array<Item> iii = Inventory.instance.GetItemFromList(
+                Inventory.instance.GetListOfItemsInInventory(),
                 quest_item
             );
 
@@ -180,19 +180,19 @@ public partial class QuestManager : Node
         if (!next_quest_is_doubled_items)
         {
             foreach (Item quest_item in quests[current_quest_id].quest_items)
-                Inventory.INSTANCE.RemoveItem(
+                Inventory.instance.RemoveItem(
                     quest_item.item_info,
                     quest_item.amount,
-                    Inventory.INSTANCE.inventory_items
+                    Inventory.instance.inventory_items
                 );
         }
         else
         {
             foreach (Item quest_item in quests[current_quest_id].quest_items)
-                Inventory.INSTANCE.RemoveItem(
+                Inventory.instance.RemoveItem(
                     quest_item.item_info,
                     quest_item.amount * 2,
-                    Inventory.INSTANCE.inventory_items
+                    Inventory.instance.inventory_items
                 );
         }
     }
@@ -201,7 +201,7 @@ public partial class QuestManager : Node
     {
         if (finished_correctly)
         {
-            QuestMenu.INSTANCE.CloseQuestMenu();
+            QuestMenu.instance.CloseQuestMenu();
             RemoveQuestItems();
         }
 
@@ -213,9 +213,9 @@ public partial class QuestManager : Node
         if (current_quest_id == quests.Count - 1)
         {
             Debug.Print("Last Quest achieved");
-            player_ui.LastQuestPanelShow();
-            await ToSignal(player_ui.INSTANCE.qcp_timer, "timeout");
-            player_ui.INSTANCE.quest_complete_panel.Visible = false;
+            PlayerUI.LastQuestPanelShow();
+            await ToSignal(PlayerUI.instance.qcp_timer, "timeout");
+            PlayerUI.instance.quest_complete_panel.Visible = false;
             current_quest_id = -1;
         }
         current_quest_id++;
@@ -229,17 +229,17 @@ public partial class QuestManager : Node
 
         if (finished_correctly)
         {
-            player_ui.CompleteQuestPanelShow();
-            Game_Manager.In_Cutscene = true;
+            PlayerUI.CompleteQuestPanelShow();
+            GameManager.In_Cutscene = true;
             PauseTimer();
-            await ToSignal(player_ui.INSTANCE.qcp_timer, "timeout");
+            await ToSignal(PlayerUI.instance.qcp_timer, "timeout");
             StartTimer();
-            QuestMenu.INSTANCE.OnOpenQuestMenu();
+            QuestMenu.instance.OnOpenQuestMenu();
         }
 
         if (penealty == 2)
-            Islands_Manager.INSTANCE.RemoveIslandsThroughQuest();
+            IslandManager.instance.RemoveIslandsThroughQuest();
 
-        Game_Manager.In_Cutscene = false;
+        GameManager.In_Cutscene = false;
     }
 }

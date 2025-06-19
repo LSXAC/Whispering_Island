@@ -8,7 +8,7 @@ using System;
 using Godot;
 using Godot.Collections;
 
-public partial class Player_Stats : Node2D
+public partial class PlayerStats : Node2D
 {
     public float fatigue_value = 0f;
     public int health_value = 100;

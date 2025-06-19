@@ -25,12 +25,12 @@ public partial class Taker : StaticBody2D
     {
         if (building is ChestBase)
         {
-            if (Inventory.INSTANCE.HasItemInInventory(((ChestBase)building).chest_items, ii))
+            if (Inventory.instance.HasItemInInventory(((ChestBase)building).chest_items, ii))
                 Debug.Print("Has Item in Inventory");
             return item_holder_In.GetChildCount() == 0
                 && (
-                    Inventory.INSTANCE.HasEmptySlotInInventory(((ChestBase)building).chest_items)
-                    || Inventory.INSTANCE.HasItemInInventory(((ChestBase)building).chest_items, ii)
+                    Inventory.instance.HasEmptySlotInInventory(((ChestBase)building).chest_items)
+                    || Inventory.instance.HasItemInInventory(((ChestBase)building).chest_items, ii)
                 );
         }
 
@@ -48,14 +48,14 @@ public partial class Taker : StaticBody2D
 
         if (building is ChestBase)
         {
-            Inventory.INSTANCE.AddItem(
+            Inventory.instance.AddItem(
                 item.item.item_info,
                 item.item.amount,
                 ((ChestBase)building).chest_items
             );
-            ChestInventory.INSTANCE.UpdateInventoryUI();
+            ChestInventory.instance.UpdateInventoryUI();
         }
-        FurnaceTab.INSTANCE.UpdateFurnaceUI();
+        FurnaceTab.instance.UpdateFurnaceUI();
         item.QueueFree();
     }
 }

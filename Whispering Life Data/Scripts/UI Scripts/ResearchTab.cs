@@ -32,7 +32,7 @@ public partial class ResearchTab : ColorRect
     public Array<ResearchSave> research_states = new Array<ResearchSave>();
     public static ItemSave research_slot_item = null;
 
-    public static ResearchTab INSTANCE = null;
+    public static ResearchTab instance = null;
 
     [Export]
     public ColorRect working_panel;
@@ -44,7 +44,7 @@ public partial class ResearchTab : ColorRect
     public override void _Ready()
     {
         Research_Points = 0;
-        INSTANCE = this;
+        instance = this;
         ClearText();
     }
 
@@ -58,7 +58,7 @@ public partial class ResearchTab : ColorRect
         if (research_slot_item != null)
         {
             research_slot.SetItem(
-                Inventory.INSTANCE.item_Types[(InventoryBase.ITEM_ID)research_slot_item.item_id],
+                Inventory.instance.item_Types[(InventoryBase.ITEM_ID)research_slot_item.item_id],
                 research_slot_item.amount
             );
             SetText(research_slot.GetItem().item_info);
@@ -111,7 +111,7 @@ public partial class ResearchTab : ColorRect
             ""
             + TranslationServer.Translate(
                 Inventory
-                    .INSTANCE
+                    .instance
                     .item_Types[(InventoryBase.ITEM_ID)research_slot_item.item_id]
                     .item_name
             );

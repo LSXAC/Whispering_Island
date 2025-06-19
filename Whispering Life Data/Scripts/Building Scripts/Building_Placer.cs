@@ -8,7 +8,7 @@ using Godot.Collections;
 public partial class Building_Placer : Node2D
 {
     [Export]
-    public Islands_Manager islands_manager;
+    public IslandManager island_manager;
 
     public static Node2D current_building = null;
     public static PackedScene building = null;
@@ -28,23 +28,23 @@ public partial class Building_Placer : Node2D
         {
             GD.PrintErr("Building is Null, can not be initialised");
             BuildMenu.instance.Visible = false;
-            Game_Manager.building_mode = Game_Manager.BuildingMode.None;
+            GameManager.building_mode = GameManager.BuildingMode.None;
             return;
         }
 
         is_flipped = false;
         can_create = true;
         current_scale = new Vector2(1, 1);
-        Game_Manager.building_mode = Game_Manager.BuildingMode.Placing;
-        player_ui.INSTANCE.SetWindowFrame();
-        player_ui.INSTANCE.item_row_manager.CanCreate(scene_info.recipe.requiered_items);
+        GameManager.building_mode = GameManager.BuildingMode.Placing;
+        PlayerUI.instance.SetWindowFrame();
+        PlayerUI.instance.item_row_manager.CanCreate(scene_info.recipe.requiered_items);
         current_building = (Node2D)scene_info.scene.Instantiate();
         building_recipe = scene_info.recipe;
 
         building = scene_info.scene;
-        islands_manager
+        island_manager
             .GetNearestIsland(GetGlobalMousePosition())
-            .object_save_manager.AddChild(current_building);
+            .island_object_save_manager.AddChild(current_building);
         placeable = (placeable_building)current_building;
         placeable.building_collider_manager.SetTileType(placeable.tile_types);
 
@@ -89,14 +89,14 @@ public partial class Building_Placer : Node2D
 
     public override void _Process(double delta)
     {
-        if (Game_Manager.building_mode == Game_Manager.BuildingMode.Removing)
+        if (GameManager.building_mode == GameManager.BuildingMode.Removing)
             if (Input.IsActionJustPressed("Close") || Input.IsActionJustPressed("Escape"))
                 CloseMenuWithNoBuilding();
 
         if (current_building == null)
             return;
 
-        Vector2 pos = islands_manager
+        Vector2 pos = island_manager
             .GetNearestIsland(GetGlobalMousePosition())
             .building_area.LocalToMap(GetGlobalMousePosition());
         current_building.GlobalPosition = new Vector2((pos.X + 1) * 16, (pos.Y + 1) * 16);
@@ -184,17 +184,19 @@ public partial class Building_Placer : Node2D
             CloseMenuWithBuildingSelected();
             return;
         }
-        Island_Properties ip = islands_manager.GetNearestIsland(GetGlobalMousePosition());
-        Vector2 pos = ip.building_area.LocalToMap(GetGlobalMousePosition() - ip.GlobalPosition); // Global Mouse Position needs to be subtracted to local Tilemap world point
+        Island island = island_manager.GetNearestIsland(GetGlobalMousePosition());
+        Vector2 pos = island.building_area.LocalToMap(
+            GetGlobalMousePosition() - island.GlobalPosition
+        ); // Global Mouse Position needs to be subtracted to local Tilemap world point
         temp.GlobalPosition = new Vector2((pos.X + 1) * 16, (pos.Y + 1) * 16);
         temp.Scale = current_scale;
-        ip.object_save_manager.AddChild(temp);
+        island.island_object_save_manager.AddChild(temp);
         // Remove Resources
         RemoveResources();
         if (temp is MineableObject)
         {
             ((MineableObject)temp).SpawnPlant();
-            if (!player_ui.INSTANCE.item_row_manager.CanCreate(building_recipe.requiered_items))
+            if (!PlayerUI.instance.item_row_manager.CanCreate(building_recipe.requiered_items))
             {
                 can_create = false;
                 CloseMenuWithBuildingSelected();
@@ -212,7 +214,7 @@ public partial class Building_Placer : Node2D
                 temp.Name = "BeltTunnel + " + rnd.Next(0, 10000);
                 ((BeltTunnel)temp).CheckIfTunnelInDir();
             }
-            if (!player_ui.INSTANCE.item_row_manager.CanCreate(building_recipe.requiered_items))
+            if (!PlayerUI.instance.item_row_manager.CanCreate(building_recipe.requiered_items))
             {
                 can_create = false;
                 CloseMenuWithBuildingSelected();
@@ -255,10 +257,10 @@ public partial class Building_Placer : Node2D
     private void RemoveResources()
     {
         foreach (Item i in building_recipe.requiered_items)
-            Inventory.INSTANCE.RemoveItem(
+            Inventory.instance.RemoveItem(
                 i.item_info,
                 i.amount,
-                Inventory.INSTANCE.inventory_items
+                Inventory.instance.inventory_items
             );
     }
 
@@ -274,8 +276,8 @@ public partial class Building_Placer : Node2D
 
     public void CloseMenuWithNoBuilding()
     {
-        Game_Manager.building_mode = Game_Manager.BuildingMode.None;
-        player_ui.INSTANCE.SetWindowFrame();
+        GameManager.building_mode = GameManager.BuildingMode.None;
+        PlayerUI.instance.SetWindowFrame();
         BuildMenu.instance.CloseWindow();
     }
 }

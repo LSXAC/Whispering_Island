@@ -13,11 +13,11 @@ public partial class Tutorial : Node2D
 
     [Export]
     public Sprite2D shadow;
-    public static Tutorial INSTANCE;
+    public static Tutorial instance;
 
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
         Tree.Visible = false;
         shadow.Visible = false;
     }

@@ -13,7 +13,7 @@ public partial class TransitionManager : CanvasLayer
     [Export]
     public AnimationPlayer anim_player;
 
-    public static TransitionManager INSTANCE = null;
+    public static TransitionManager instance = null;
     public static STATE current_state = STATE.START;
     public static bool in_transition = false;
 
@@ -26,8 +26,8 @@ public partial class TransitionManager : CanvasLayer
 
     public override void _Ready()
     {
-        if (INSTANCE == null)
-            INSTANCE = this;
+        if (instance == null)
+            instance = this;
     }
 
     public static void StartTransition()
@@ -37,11 +37,11 @@ public partial class TransitionManager : CanvasLayer
 
         if (GetAnimationPlayer() == null)
         {
-            Debug.Print("Transition Instance not found");
+            Debug.Print("Transition instance not found");
             return;
         }
 
-        INSTANCE.Start(STATE.START);
+        instance.Start(STATE.START);
     }
 
     private async void Start(STATE state)
@@ -62,23 +62,23 @@ public partial class TransitionManager : CanvasLayer
     {
         current_state = STATE.END;
         GetAnimationPlayer().Play("Stop_Transition");
-        await INSTANCE.ToSignal(INSTANCE.anim_player, "animation_finished");
+        await instance.ToSignal(instance.anim_player, "animation_finished");
         in_transition = false;
-        INSTANCE.EmitSignal(SignalName.TransitionEndedCompletly);
+        instance.EmitSignal(SignalName.TransitionEndedCompletly);
     }
 
     public static AnimationPlayer GetAnimationPlayer()
     {
-        return INSTANCE.anim_player;
+        return instance.anim_player;
     }
 
     public static SignalAwaiter TransitionEnded()
     {
-        return INSTANCE.ToSignal(INSTANCE, "TransitionEndedCompletly");
+        return instance.ToSignal(instance, "TransitionEndedCompletly");
     }
 
     public static SignalAwaiter IsInTransitionLoop()
     {
-        return INSTANCE.ToSignal(INSTANCE, "InTransition");
+        return instance.ToSignal(instance, "InTransition");
     }
 }

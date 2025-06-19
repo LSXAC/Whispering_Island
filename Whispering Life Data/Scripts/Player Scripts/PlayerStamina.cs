@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Player_Stamina : Node2D
+public partial class PlayerStamina : Node2D
 {
     public static float current_stamina = 1f;
     private float max_stamina = 1f;
@@ -18,16 +18,16 @@ public partial class Player_Stamina : Node2D
             && (velo_x != 0 || velo_y != 0)
         )
         {
-            Player.INSTANCE.Velocity =
+            Player.instance.Velocity =
                 new Vector2(velo_x, velo_y).Normalized()
                 * speed_mult
                 * 1.75f
                 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.MOVEMENT);
-            Player.INSTANCE.anim.SpeedScale = 1.5f;
+            Player.instance.anim.SpeedScale = 1.5f;
             current_stamina -=
                 stamina_use * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.FATIGUE);
             ;
-            Player.INSTANCE.player_stats.AddFatigue(0.01f);
+            Player.instance.player_stats.AddFatigue(0.01f);
         }
         else
         {
@@ -36,12 +36,12 @@ public partial class Player_Stamina : Node2D
             if (current_stamina >= max_stamina && stamina_is_regenerating)
                 stamina_is_regenerating = false;
 
-            Player.INSTANCE.player_stats.AddFatigue(0.0025f);
-            Player.INSTANCE.Velocity =
+            Player.instance.player_stats.AddFatigue(0.0025f);
+            Player.instance.Velocity =
                 new Vector2(velo_x, velo_y)
                 * speed_mult
                 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.MOVEMENT);
-            Player.INSTANCE.anim.SpeedScale = 1f;
+            Player.instance.anim.SpeedScale = 1f;
         }
     }
 

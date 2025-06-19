@@ -1,11 +1,11 @@
 [gd_scene load_steps=30 format=3 uid="uid://vserd8wdu3iw"]
 
-[ext_resource type="Script" uid="uid://sxd7avtys7n7" path="res://Scripts/Manager Scripts/Game_Manager.cs" id="1_2n0he"]
+[ext_resource type="Script" uid="uid://sxd7avtys7n7" path="res://Scripts/Manager Scripts/GameManager.cs" id="1_2n0he"]
 [ext_resource type="Script" uid="uid://cwonaacplejxj" path="res://Scripts/Building Scripts/Building_Placer.cs" id="2_h8pdp"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="3_lj4ef"]
 [ext_resource type="PackedScene" uid="uid://njw4so7o83dw" path="res://Scenes/Player/player.tscn" id="4_wajns"]
-[ext_resource type="Script" uid="uid://fsantgyda1en" path="res://Scripts/Manager Scripts/Islands_Manager.cs" id="5_f280c"]
-[ext_resource type="PackedScene" uid="uid://bveoiwi14ha4g" path="res://Scenes/Islands/Main_Island_0.tscn" id="6_p85m3"]
+[ext_resource type="Script" uid="uid://fsantgyda1en" path="res://Scripts/Manager Scripts/IslandManager.cs" id="5_f280c"]
+[ext_resource type="PackedScene" uid="uid://bveoiwi14ha4g" path="res://Scenes/Islands/main_island.tscn" id="6_p85m3"]
 [ext_resource type="PackedScene" uid="uid://j1cdgg7lep78" path="res://Scenes/UI/player_ui.tscn" id="7_5qlke"]
 [ext_resource type="PackedScene" uid="uid://deu0spbxs5bju" path="res://Scenes/UI/game_menu.tscn" id="8_gytje"]
 [ext_resource type="PackedScene" uid="uid://en6nagvvr8d3" path="res://Scenes/UI/Build_Menu.tscn" id="9_1xtv0"]
@@ -37,9 +37,8 @@ building_placer = NodePath("BuildingManager/BuildingPlacer")
 
 [node name="BuildingManager" type="Node2D" parent="."]
 
-[node name="BuildingPlacer" type="Node2D" parent="BuildingManager" node_paths=PackedStringArray("islands_manager")]
+[node name="BuildingPlacer" type="Node2D" parent="BuildingManager"]
 script = ExtResource("2_h8pdp")
-islands_manager = NodePath("../../IslandManager")
 
 [node name="Building_Tilemap_Snapper" type="TileMapLayer" parent="BuildingManager/BuildingPlacer"]
 tile_set = ExtResource("3_lj4ef")

@@ -2,14 +2,14 @@ using System;
 using System.Runtime.ExceptionServices;
 using Godot;
 
-public partial class Island_Properties : Node2D
+public partial class Island : Node2D
 {
     [Export]
     public int unique_island_id = -1;
 
     [Export]
     public int matrix_island_id = 0;
-    public IslandObjectSaveManager object_save_manager;
+    public IslandObjectSaveManager island_object_save_manager;
     public TileMapLayer ground_tilemap;
 
     [Export]
@@ -71,12 +71,11 @@ public partial class Island_Properties : Node2D
     {
         ground_tilemap = GetNode("Tilemaps").GetNode<TileMapLayer>("Ground");
         building_area = GetNode<TileMapLayer>("BuildingArea");
-        Node2D start_node = GetNode<Node2D>("IslandProperties");
-        bridge_start_points = start_node.GetNode<Node2D>("BridgeStartPoints");
-        bridge_collision_parent = start_node.GetNode<StaticBody2D>("BridgeCollisions");
-        bridges_parent = start_node.GetNode<Node2D>("Bridges");
-        signs_parent = start_node.GetNode<Node2D>("Signs");
-        object_save_manager = GetNode<IslandObjectSaveManager>("IslandObjectSaveManager");
+        bridge_start_points = GetNode<Node2D>("BridgePoints/StartPoints");
+        bridge_collision_parent = GetNode<StaticBody2D>("BridgePoints/BridgeCollisions");
+        bridges_parent = GetNode<Node2D>("BridgePoints/Bridges");
+        signs_parent = GetNode<Node2D>("BridgePoints/Signs");
+        island_object_save_manager = GetNode<IslandObjectSaveManager>("IslandObjectSaveManager");
     }
 
     public void GetSigns()
@@ -86,7 +85,7 @@ public partial class Island_Properties : Node2D
 
         Node2D node = null;
         if (
-            (Game_Manager.IsIslandOnMatrix(matrix_x, matrix_y - 1) || up_closed)
+            (GameManager.IsIslandOnMatrix(matrix_x, matrix_y - 1) || up_closed)
             && signs_parent.HasNode("UpSign")
         )
         {
@@ -100,7 +99,7 @@ public partial class Island_Properties : Node2D
         }
 
         if (
-            (Game_Manager.IsIslandOnMatrix(matrix_x, matrix_y + 1) || down_closed)
+            (GameManager.IsIslandOnMatrix(matrix_x, matrix_y + 1) || down_closed)
             && signs_parent.HasNode("DownSign")
         )
         {
@@ -111,7 +110,7 @@ public partial class Island_Properties : Node2D
         }
 
         if (
-            (Game_Manager.IsIslandOnMatrix(matrix_x + 1, matrix_y) || right_closed)
+            (GameManager.IsIslandOnMatrix(matrix_x + 1, matrix_y) || right_closed)
             && signs_parent.HasNode("RightSign")
         )
         {
@@ -122,7 +121,7 @@ public partial class Island_Properties : Node2D
         }
 
         if (
-            (Game_Manager.IsIslandOnMatrix(matrix_x - 1, matrix_y) || left_closed)
+            (GameManager.IsIslandOnMatrix(matrix_x - 1, matrix_y) || left_closed)
             && signs_parent.HasNode("LeftSign")
         )
         {
@@ -142,66 +141,70 @@ public partial class Island_Properties : Node2D
         GD.Print("Step 1: Initialize");
         Vector2 new_pos = Vector2.Zero;
 
-        Node2D island = (Node2D)island_prefab.Instantiate();
-        Island_Properties ip = island as Island_Properties;
-        Game_Manager.INSTANCE.island_parent.AddChild(island);
+        Node2D island_scene = (Node2D)island_prefab.Instantiate();
+        Island island = island_scene as Island;
+        GameManager.instance.island_parent.AddChild(island);
 
         GD.Print("Step 2: Select Direction");
         switch (dir)
         {
             case DIRECTION.UP:
-                ip.matrix_y = matrix_y - 1;
-                ip.matrix_x = matrix_x;
-                Game_Manager.SetIslandOnMatrix(matrix_x, matrix_y - 1, true);
+                island.matrix_y = matrix_y - 1;
+                island.matrix_x = matrix_x;
+                GameManager.SetIslandOnMatrix(matrix_x, matrix_y - 1, true);
                 up_closed = true;
-                ip.down_closed = true;
-                SetPositionToNewIsland(island, ip);
-                SetBridges(bridge_start_points.GetNode<Node2D>("Up").Position, DIRECTION.UP, ip);
+                island.down_closed = true;
+                SetPositionToNewIsland(island, island);
+                SetBridges(
+                    bridge_start_points.GetNode<Node2D>("Up").Position,
+                    DIRECTION.UP,
+                    island
+                );
 
                 GD.Print("Step 2.1: Up");
                 break;
             case DIRECTION.RIGHT:
-                ip.matrix_x = matrix_x + 1;
-                ip.matrix_y = matrix_y;
-                Game_Manager.SetIslandOnMatrix(matrix_x + 1, matrix_y, true);
+                island.matrix_x = matrix_x + 1;
+                island.matrix_y = matrix_y;
+                GameManager.SetIslandOnMatrix(matrix_x + 1, matrix_y, true);
                 right_closed = true;
-                ip.left_closed = true;
-                SetPositionToNewIsland(island, ip);
+                island.left_closed = true;
+                SetPositionToNewIsland(island, island);
                 SetBridges(
                     bridge_start_points.GetNode<Node2D>("Right").Position,
                     DIRECTION.RIGHT,
-                    ip
+                    island
                 );
 
                 GD.Print("Step 2.1: Right");
                 break;
             case DIRECTION.LEFT:
-                ip.matrix_x = matrix_x - 1;
-                ip.matrix_y = matrix_y;
-                Game_Manager.SetIslandOnMatrix(matrix_x - 1, matrix_y, true);
+                island.matrix_x = matrix_x - 1;
+                island.matrix_y = matrix_y;
+                GameManager.SetIslandOnMatrix(matrix_x - 1, matrix_y, true);
                 left_closed = true;
-                ip.right_closed = true;
-                SetPositionToNewIsland(island, ip);
+                island.right_closed = true;
+                SetPositionToNewIsland(island, island);
                 SetBridges(
                     bridge_start_points.GetNode<Node2D>("Left").Position,
                     DIRECTION.LEFT,
-                    ip
+                    island
                 );
 
                 GD.Print("Step 2.1: Left");
                 break;
             case DIRECTION.DOWN:
-                ip.matrix_y = matrix_y + 1;
-                ip.matrix_x = matrix_x;
-                Game_Manager.SetIslandOnMatrix(matrix_x, matrix_y + 1, true);
-                SetPositionToNewIsland(island, ip);
+                island.matrix_y = matrix_y + 1;
+                island.matrix_x = matrix_x;
+                GameManager.SetIslandOnMatrix(matrix_x, matrix_y + 1, true);
+                SetPositionToNewIsland(island, island);
                 SetBridges(
                     bridge_start_points.GetNode<Node2D>("Down").Position,
                     DIRECTION.DOWN,
-                    ip
+                    island
                 );
                 down_closed = true;
-                ip.up_closed = true;
+                island.up_closed = true;
 
                 GD.Print("Step 2.1: Down");
                 break;
@@ -211,25 +214,25 @@ public partial class Island_Properties : Node2D
                 break;
         }
         if (!is_loading)
-            Islands_Manager.INSTANCE.SaveIsland(dir, matrix_island_id, ip.unique_island_id);
-        Islands_Manager.INSTANCE.last_island_id += 1;
+            IslandManager.instance.SaveIsland(dir, matrix_island_id, island.unique_island_id);
+        IslandManager.instance.last_island_id += 1;
 
         //Remove last 1/3 of build Islands. Reverse Building.
 
-        ip.matrix_island_id = Islands_Manager.INSTANCE.last_island_id;
-        island_menu.instance.current_sign = null;
+        island.matrix_island_id = IslandManager.instance.last_island_id;
+        IslandMenu.instance.current_sign = null;
         GetSigns();
-        ip.GetSigns();
+        island.GetSigns();
     }
 
-    private void SetPositionToNewIsland(Node2D island, Island_Properties ip)
+    private void SetPositionToNewIsland(Node2D island, Island ip)
     {
         x = ip.matrix_x * 16 * 32;
         y = ip.matrix_y * 16 * 32;
         island.Position = new Vector2(x, y);
     }
 
-    private void SetBridges(Vector2 start, DIRECTION dir, Island_Properties ip_t)
+    private void SetBridges(Vector2 start, DIRECTION dir, Island ip_t)
     {
         Node2D bridge_part = null;
 

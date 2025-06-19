@@ -36,7 +36,7 @@ public partial class FurnaceTab : SlotUpdater
 
     [Export]
     public Label description_Label;
-    public static FurnaceTab INSTANCE = null;
+    public static FurnaceTab instance = null;
 
     public enum SlotType
     {
@@ -49,7 +49,7 @@ public partial class FurnaceTab : SlotUpdater
 
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
     }
 
     public override void UpdateSlot(int index, InventoryItem ii)
@@ -79,7 +79,7 @@ public partial class FurnaceTab : SlotUpdater
         if (process_building == null)
             throw new Exception("No Process Building set");
 
-        return Inventory.INSTANCE.item_Types[
+        return Inventory.instance.item_Types[
             (InventoryBase.ITEM_ID)process_building.item_array[index].item_id
         ];
     }
@@ -189,7 +189,7 @@ public partial class FurnaceTab : SlotUpdater
     {
         OvertakeItems();
         process_building = null;
-        GameMenu.INSTANCE.OnCloseFurnaceTab();
+        GameMenu.instance.OnCloseFurnaceTab();
     }
 
     public void OnMachineStateButton()

@@ -9,11 +9,11 @@ public partial class SkilltreeBox : Panel
         hit_label,
         research_time;
 
-    public static SkilltreeBox INSTANCE;
+    public static SkilltreeBox instance;
 
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
         InitMove(
             Skilltree.SKILLTYPE.MOVEMENT,
             Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.MOVEMENT)

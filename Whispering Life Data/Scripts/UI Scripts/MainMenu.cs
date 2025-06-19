@@ -20,13 +20,13 @@ public partial class MainMenu : Control
     [Export]
     public bool skip_intro = false;
 
-    public static MainMenu INSTANCE = null;
+    public static MainMenu instance = null;
     public static LauncherSave launcherSave;
-    PackedScene game = ResourceLoader.Load<PackedScene>("res://game_manager.tscn");
+    PackedScene game = ResourceLoader.Load<PackedScene>("res://GameManager.tscn");
 
     public override void _Ready()
     {
-        INSTANCE = this;
+        instance = this;
         if (!skip_intro)
         {
             intro_player.Play();
@@ -104,14 +104,14 @@ public partial class MainMenu : Control
         TransitionManager.StartTransition();
         await TransitionManager.IsInTransitionLoop();
 
-        Game_Manager gm = game.Instantiate() as Game_Manager;
+        GameManager gm = game.Instantiate() as GameManager;
         gm.new_game = true;
         if (skip_tutorial.ButtonPressed)
             gm.tutorial_finished = true;
         GetTree().Root.AddChild(gm);
         GetTree().Root.MoveChild(gm, 0);
 
-        TransitionManager.INSTANCE.StopTransition();
+        TransitionManager.instance.StopTransition();
         parent.Visible = false;
     }
 
@@ -120,21 +120,21 @@ public partial class MainMenu : Control
         TransitionManager.StartTransition();
         await TransitionManager.IsInTransitionLoop();
 
-        if (IsInstanceValid(Game_Manager.INSTANCE))
-            Game_Manager.INSTANCE.QueueFree();
+        if (IsInstanceValid(GameManager.instance))
+            GameManager.instance.QueueFree();
 
         LoadGame();
 
-        TransitionManager.INSTANCE.StopTransition();
+        TransitionManager.instance.StopTransition();
         parent.Visible = false;
     }
 
     public void LoadGame()
     {
-        if (IsInstanceValid(Game_Manager.INSTANCE))
-            Game_Manager.INSTANCE.QueueFree();
+        if (IsInstanceValid(GameManager.instance))
+            GameManager.instance.QueueFree();
 
-        Game_Manager gm = game.Instantiate() as Game_Manager;
+        GameManager gm = game.Instantiate() as GameManager;
         GetTree().Root.AddChild(gm);
     }
 
