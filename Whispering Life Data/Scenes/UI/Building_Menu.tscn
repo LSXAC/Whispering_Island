@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://2t1ns5okffld" path="res://Scripts/UI Scripts/BuildingMenuCategory.cs" id="4_6buxp"]
 
 [node name="BuildingMenu" type="CanvasLayer" node_paths=PackedStringArray("production_panel", "decoration_panel", "planting_panel", "research_panel")]
-visible = false
 script = ExtResource("1_6maqu")
 production_panel = NodePath("ProductionTab")
 decoration_panel = NodePath("DecorationTab")

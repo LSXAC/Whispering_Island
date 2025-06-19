@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://bqx4ydedgwbwl"]
+
+[ext_resource type="Resource" uid="uid://c364pdlq2cdxi" path="res://Resource Meta/Recipes/Building_Recipies/Planting/Potato_Object_Recipe.tres" id="1_44mm3"]
+[ext_resource type="PackedScene" uid="uid://bmjn6kocpubo3" path="res://Scenes/World Objects/Mineable Objects/MO_Potato.tscn" id="2_tm2uq"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Child_Object_Info.cs" id="3_kuw48"]
+
+[resource]
+script = ExtResource("3_kuw48")
+building_scene = ExtResource("2_tm2uq")
+building_recipe = ExtResource("1_44mm3")
+requirements = Array[Object]([])
+category = 2
+show_item = true

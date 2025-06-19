@@ -17,18 +17,17 @@ public partial class BuildingMenuChild : Control
     [Export]
     public Item_Row_Manager item_row_manager;
 
-    private BuildingType building_type;
-    private BuildingType building_tye;
+    private Building_Menu_List_Child_Object_Info building_type;
 
     public override void _Ready()
     {
         build_button.Pressed += () => OnSelectButton();
     }
 
-    public void InitBuildingMenuChild(BuildingType building_type)
+    public void InitBuildingMenuChild(Building_Menu_List_Child_Object_Info building_type)
     {
-        this.building_tye = building_type;
-        Building_Node placeable = building_tye.building_scene.Instantiate() as Building_Node;
+        this.building_type = building_type;
+        Building_Node placeable = building_type.scene.Instantiate() as Building_Node;
         try
         {
             title_label.Text = ((placeable_building)placeable).GetTitle();
@@ -36,7 +35,7 @@ public partial class BuildingMenuChild : Control
             description_label.Text = ((placeable_building)placeable).GetDescription();
 
             Recipe recipe = new Recipe();
-            recipe = building_type.building_recipe;
+            recipe = building_type.recipe;
 
             if (item_row_manager.CanCreate(recipe.requiered_items))
                 build_button.Disabled = false;
@@ -53,6 +52,6 @@ public partial class BuildingMenuChild : Control
     public void OnSelectButton()
     {
         Building_Menu.instance.Visible = false;
-        Building_Menu.instance.building_placer.InitBuilding(building_tye);
+        Building_Menu.instance.building_placer.InitBuildingFromBuildingMenu(building_type);
     }
 }

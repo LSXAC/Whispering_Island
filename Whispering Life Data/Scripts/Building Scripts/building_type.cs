@@ -13,24 +13,24 @@ public partial class building_type : Panel
     [Export]
     private Button select_button;
 
-    private BuildingType building__type;
+    private Building_Menu_List_Child_Object_Info scene_info;
 
     public override void _Ready()
     {
         select_button.Pressed += () => OnSelectButton();
     }
 
-    public void InitBuildingTypeUI(BuildingType building_type)
+    public void InitBuildingTypeUI(Building_Menu_List_Child_Object_Info scene_info)
     {
-        Building_Node placeable = building_type.building_scene.Instantiate() as Building_Node;
+        Building_Node placeable = scene_info.scene.Instantiate() as Building_Node;
         title_label.Text = ((placeable_building)placeable).GetTitle();
         texture_rect.Texture = ((placeable_building)placeable).GetSprite().Texture;
-        this.building__type = building_type;
+        this.scene_info = scene_info;
     }
 
     private void OnSelectButton()
     {
         Building_Menu.instance.Visible = false;
-        Building_Menu.instance.building_placer.InitBuilding(building__type);
+        Building_Menu.instance.building_placer.InitBuildingFromBuildingMenu(scene_info);
     }
 }

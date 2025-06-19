@@ -168,8 +168,9 @@ public partial class BuildingManager : Node2D
         foreach (BeltSave belt_save in belt_saves)
         {
             Belt temp =
-                Database.GetBuildingType(Database.BUILDING_ID.BELT).building_scene.Instantiate()
-                as Belt;
+                Database
+                    .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.BELT)
+                    .scene.Instantiate() as Belt;
 
             InitBelt(temp, belt_save);
             InitBeltItem(temp, belt_save);
@@ -181,8 +182,9 @@ public partial class BuildingManager : Node2D
         foreach (RailSave rails in rail_saves)
         {
             Rail temp =
-                Database.GetBuildingType(Database.BUILDING_ID.RAIL).building_scene.Instantiate()
-                as Rail;
+                Database
+                    .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.RAIL)
+                    .scene.Instantiate() as Rail;
 
             AddChild(temp);
             temp.Position = rails.position;
@@ -194,8 +196,8 @@ public partial class BuildingManager : Node2D
             {
                 Minecart cart =
                     Database
-                        .GetBuildingType(Database.BUILDING_ID.MINECART)
-                        .building_scene.Instantiate() as Minecart;
+                        .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.MINECART)
+                        .scene.Instantiate() as Minecart;
                 cart.chestBase.chest_items = rails.chest_items;
                 temp.item_holder.AddChild(cart);
                 cart.Position = rails.minecart_position;
@@ -208,7 +210,7 @@ public partial class BuildingManager : Node2D
         foreach (ResourceObjectSave ros in resource_obj_saves)
         {
             MineableObject temp =
-                Database.GetBuildingType(ros.building_id).building_scene.Instantiate()
+                Database.GetBuildingMenuListChildObjectInfo(ros.building_id).scene.Instantiate()
                 as MineableObject;
             AddChild(temp);
             temp.ResourceObjectLoad(ros);
@@ -255,16 +257,16 @@ public partial class BuildingManager : Node2D
             {
                 BeltTunnel temp =
                     Database
-                        .GetBuildingType(Database.BUILDING_ID.BELTTUNNEL)
-                        .building_scene.Instantiate() as BeltTunnel;
+                        .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.BELTTUNNEL)
+                        .scene.Instantiate() as BeltTunnel;
 
                 InitBelt(temp, bts.beltsave1);
                 InitBeltItem(temp, bts.beltsave1);
 
                 BeltTunnel temp2 =
                     Database
-                        .GetBuildingType(Database.BUILDING_ID.BELTTUNNEL)
-                        .building_scene.Instantiate() as BeltTunnel;
+                        .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.BELTTUNNEL)
+                        .scene.Instantiate() as BeltTunnel;
 
                 InitBelt(temp2, bts.beltsave2);
                 InitBeltItem(temp, bts.beltsave2);
@@ -280,8 +282,8 @@ public partial class BuildingManager : Node2D
             {
                 BeltTunnel temp =
                     Database
-                        .GetBuildingType(Database.BUILDING_ID.BELTTUNNEL)
-                        .building_scene.Instantiate() as BeltTunnel;
+                        .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.BELTTUNNEL)
+                        .scene.Instantiate() as BeltTunnel;
 
                 InitBelt(temp, bts.beltsave1);
                 InitBeltItem(temp, bts.beltsave1);
@@ -294,7 +296,9 @@ public partial class BuildingManager : Node2D
         foreach (BeltMachineSave belt_machine_save in belt_machine_saves)
         {
             Node2D belt =
-                Database.GetBuildingType(belt_machine_save.id).building_scene.Instantiate() as Belt;
+                Database
+                    .GetBuildingMenuListChildObjectInfo(belt_machine_save.id)
+                    .scene.Instantiate() as Belt;
 
             if (belt == null)
                 return;
@@ -369,7 +373,7 @@ public partial class BuildingManager : Node2D
         foreach (PlaceableSave ps in placeable_saves)
         {
             placeable_building temp =
-                Database.GetBuildingType(ps.building_id).building_scene.Instantiate()
+                Database.GetBuildingMenuListChildObjectInfo(ps.building_id).scene.Instantiate()
                 as placeable_building;
 
             if (temp == null)
@@ -383,8 +387,9 @@ public partial class BuildingManager : Node2D
     private MachineBase SelectSavedMachine(MachineSave machine_save)
     {
         MachineBase machine =
-            Database.GetBuildingType(machine_save.building_id).building_scene.Instantiate()
-            as MachineBase;
+            Database
+                .GetBuildingMenuListChildObjectInfo(machine_save.building_id)
+                .scene.Instantiate() as MachineBase;
         if (machine != null)
             return machine;
         return null;

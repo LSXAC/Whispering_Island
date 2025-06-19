@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://cdqch07cuu7in"]
+
+[ext_resource type="Resource" uid="uid://l2m5wybg1mh1" path="res://Resource Meta/Recipes/Building_Recipies/Planting/Carrot_Object_Recipe.tres" id="1_bbk22"]
+[ext_resource type="PackedScene" uid="uid://cyayxpnsm4v16" path="res://Scenes/World Objects/Mineable Objects/MO_Carrot.tscn" id="2_sx7kf"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Child_Object_Info.cs" id="3_whc7b"]
+
+[resource]
+script = ExtResource("3_whc7b")
+building_scene = ExtResource("2_sx7kf")
+building_recipe = ExtResource("1_bbk22")
+requirements = Array[Object]([])
+category = 2
+show_item = true

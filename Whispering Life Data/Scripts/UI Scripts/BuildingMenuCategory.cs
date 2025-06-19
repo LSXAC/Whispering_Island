@@ -10,7 +10,7 @@ public partial class BuildingMenuCategory : ColorRect
     public Control parent;
 
     [Export]
-    public BuildingType.CATEGORY category;
+    public Building_Menu.CATEGORY category;
 
     private PackedScene buildingMenuChild = ResourceLoader.Load<PackedScene>(
         "res://building_menu_child.tscn"
@@ -31,19 +31,19 @@ public partial class BuildingMenuCategory : ColorRect
                 return;
             }
 
-            if (scene.category == category) //Check if Requirement is there
+            if (scene.building_menu_category == category) //Check if Requirement is there
             {
-                if (scene.requirements != null || scene.requirements.Count > 0)
-                    if (!GlobalFunctions.CheckResearchRequirements(scene.requirements))
+                if (scene.unlock_requirements != null || scene.unlock_requirements.Count > 0)
+                    if (!GlobalFunctions.CheckResearchRequirements(scene.unlock_requirements))
                         continue;
-                if (!scene.show_object_in_list)
+                if (!scene.show_object_in_building_menu_list)
                     continue;
                 InitBuildings(scene);
             }
         }
     }
 
-    private void InitBuildings(BuildingType building_type)
+    private void InitBuildings(Building_Menu_List_Child_Object_Info building_type)
     {
         BuildingMenuChild node = buildingMenuChild.Instantiate() as BuildingMenuChild;
         node.InitBuildingMenuChild(building_type);

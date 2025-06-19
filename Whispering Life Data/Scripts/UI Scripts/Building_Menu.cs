@@ -16,6 +16,15 @@ public partial class Building_Menu : CanvasLayer
         planting_panel,
         research_panel;
 
+    public enum CATEGORY
+    {
+        PRODUCTION,
+        DECORATION,
+        PLANTING,
+        RESEARCH,
+        NONE
+    }
+
     public override void _Ready()
     {
         instance = this;

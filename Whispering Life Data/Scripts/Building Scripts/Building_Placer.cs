@@ -22,9 +22,9 @@ public partial class Building_Placer : Node2D
 
     public static Node2D moveable_selected_parent = null;
 
-    public void InitBuilding(BuildingType building_tye)
+    public void InitBuildingFromBuildingMenu(Building_Menu_List_Child_Object_Info scene_info)
     {
-        if (building_tye == null || building_tye.building_scene == null)
+        if (scene_info == null || scene_info.scene == null)
         {
             GD.PrintErr("Building is Null, can not be initialised");
             Building_Menu.instance.Visible = false;
@@ -37,11 +37,11 @@ public partial class Building_Placer : Node2D
         current_scale = new Vector2(1, 1);
         Game_Manager.building_mode = Game_Manager.BuildingMode.Placing;
         player_ui.INSTANCE.SetWindowFrame();
-        player_ui.INSTANCE.item_row_manager.CanCreate(building_tye.building_recipe.requiered_items);
-        current_building = (Node2D)building_tye.building_scene.Instantiate();
-        building_recipe = building_tye.building_recipe;
+        player_ui.INSTANCE.item_row_manager.CanCreate(scene_info.recipe.requiered_items);
+        current_building = (Node2D)scene_info.scene.Instantiate();
+        building_recipe = scene_info.recipe;
 
-        building = building_tye.building_scene;
+        building = scene_info.scene;
         islands_manager
             .GetNearestIsland(GetGlobalMousePosition())
             .building_manager.AddChild(current_building);
