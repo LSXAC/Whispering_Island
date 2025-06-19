@@ -10,7 +10,7 @@
 [ext_resource type="TileSet" uid="uid://bij4wcpveo44d" path="res://Tilesets/Farming_Tileset.tres" id="8_shm84"]
 [ext_resource type="TileSet" uid="uid://bovg285rqfm1r" path="res://Tilesets/Spawn_Tileset.tres" id="9_ojp7i"]
 [ext_resource type="Script" uid="uid://qqtd0y77n1yh" path="res://Scripts/Resources/ObjectSpawnerTilemap.cs" id="10_la34f"]
-[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/BuildingManager.cs" id="11_u0eh4"]
+[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="11_u0eh4"]
 [ext_resource type="PackedScene" uid="uid://cjw7mpije2ul4" path="res://Scenes/World Objects/Mineable Objects/MO_Mystical_Fibre.tscn" id="12_8drlg"]
 [ext_resource type="PackedScene" uid="uid://gb18hiamdyqj" path="res://Scenes/World Objects/Mineable Objects/MO_Mystical_Tree.tscn" id="13_sn8nb"]
 
@@ -174,39 +174,39 @@ enabled = false
 tile_set = ExtResource("9_ojp7i")
 script = ExtResource("10_la34f")
 
-[node name="BuildingManager" type="Node2D" parent="."]
+[node name="ObjectSaveManager" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("11_u0eh4")
 
-[node name="MystFibre" parent="BuildingManager" instance=ExtResource("12_8drlg")]
+[node name="MystFibre" parent="ObjectSaveManager" instance=ExtResource("12_8drlg")]
 position = Vector2(-54, -163)
 
-[node name="MystFibre2" parent="BuildingManager" instance=ExtResource("12_8drlg")]
+[node name="MystFibre2" parent="ObjectSaveManager" instance=ExtResource("12_8drlg")]
 position = Vector2(127, -119)
 
-[node name="MystFibre3" parent="BuildingManager" instance=ExtResource("12_8drlg")]
+[node name="MystFibre3" parent="ObjectSaveManager" instance=ExtResource("12_8drlg")]
 position = Vector2(119, 51)
 
-[node name="MystFibre4" parent="BuildingManager" instance=ExtResource("12_8drlg")]
+[node name="MystFibre4" parent="ObjectSaveManager" instance=ExtResource("12_8drlg")]
 position = Vector2(-39, -13)
 
-[node name="MystFibre5" parent="BuildingManager" instance=ExtResource("12_8drlg")]
+[node name="MystFibre5" parent="ObjectSaveManager" instance=ExtResource("12_8drlg")]
 position = Vector2(-141, -46)
 
-[node name="MystFibre6" parent="BuildingManager" instance=ExtResource("12_8drlg")]
+[node name="MystFibre6" parent="ObjectSaveManager" instance=ExtResource("12_8drlg")]
 position = Vector2(-64, -128)
 
-[node name="MystTree" parent="BuildingManager" instance=ExtResource("13_sn8nb")]
+[node name="MystTree" parent="ObjectSaveManager" instance=ExtResource("13_sn8nb")]
 position = Vector2(-98, -85)
 
-[node name="MystTree2" parent="BuildingManager" instance=ExtResource("13_sn8nb")]
+[node name="MystTree2" parent="ObjectSaveManager" instance=ExtResource("13_sn8nb")]
 position = Vector2(76, -137)
 
-[node name="MystTree3" parent="BuildingManager" instance=ExtResource("13_sn8nb")]
+[node name="MystTree3" parent="ObjectSaveManager" instance=ExtResource("13_sn8nb")]
 position = Vector2(172, -66)
 
-[node name="MystTree4" parent="BuildingManager" instance=ExtResource("13_sn8nb")]
+[node name="MystTree4" parent="ObjectSaveManager" instance=ExtResource("13_sn8nb")]
 position = Vector2(-77, 55)
 
-[node name="MystTree5" parent="BuildingManager" instance=ExtResource("13_sn8nb")]
+[node name="MystTree5" parent="ObjectSaveManager" instance=ExtResource("13_sn8nb")]
 position = Vector2(-34, -102)

@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using Godot;
 
-public partial class BuildingMenuChild : Control
+public partial class BuildMenuListObject : Control
 {
     [Export]
     public TextureRect textureRect;
@@ -51,7 +51,7 @@ public partial class BuildingMenuChild : Control
 
     public void OnSelectButton()
     {
-        Building_Menu.instance.Visible = false;
-        Building_Menu.instance.building_placer.InitBuildingFromBuildingMenu(building_type);
+        BuildMenu.instance.Visible = false;
+        BuildMenu.instance.building_placer.InitBuildingFromBuildingMenu(building_type);
     }
 }

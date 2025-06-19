@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
-public partial class BuildingManager : Node2D
+public partial class IslandObjectSaveManager : Node2D
 {
     [Export]
     public Array<ResourceObjectSave> resource_obj_saves = new Array<ResourceObjectSave>();

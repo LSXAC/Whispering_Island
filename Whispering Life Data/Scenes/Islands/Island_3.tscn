@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bc2tlg8s8fxwl" path="res://Sprites/Bridge/bridge_up_end.tscn" id="11_bvxrw"]
 [ext_resource type="PackedScene" uid="uid://dqpoo3rttvrj7" path="res://Sprites/Bridge/bridge_side.tscn" id="12_esis8"]
 [ext_resource type="PackedScene" uid="uid://cmflp8mvayx8k" path="res://Sprites/Bridge/bridge_side_end.tscn" id="13_5vpd8"]
-[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/BuildingManager.cs" id="14_47dnn"]
+[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="14_47dnn"]
 [ext_resource type="PackedScene" uid="uid://cyayxpnsm4v16" path="res://Scenes/World Objects/Mineable Objects/MO_Carrot.tscn" id="15_45of6"]
 [ext_resource type="PackedScene" uid="uid://dyhqyvmm3pp6m" path="res://Scenes/World Objects/Mineable Objects/MO_Corn.tscn" id="16_tejbc"]
 [ext_resource type="PackedScene" uid="uid://bmjn6kocpubo3" path="res://Scenes/World Objects/Mineable Objects/MO_Potato.tscn" id="17_1pdp5"]
@@ -229,63 +229,63 @@ position = Vector2(-104, 0)
 position = Vector2(-8, 0)
 scale = Vector2(-1, 1)
 
-[node name="BuildingManager" type="Node2D" parent="."]
+[node name="ObjectSaveManager" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("14_47dnn")
 
-[node name="Carrot" parent="BuildingManager" instance=ExtResource("15_45of6")]
+[node name="Carrot" parent="ObjectSaveManager" instance=ExtResource("15_45of6")]
 position = Vector2(-128, -160)
 
-[node name="Carrot2" parent="BuildingManager" instance=ExtResource("15_45of6")]
+[node name="Carrot2" parent="ObjectSaveManager" instance=ExtResource("15_45of6")]
 position = Vector2(-144, -144)
 
-[node name="Carrot3" parent="BuildingManager" instance=ExtResource("15_45of6")]
+[node name="Carrot3" parent="ObjectSaveManager" instance=ExtResource("15_45of6")]
 position = Vector2(-160, -128)
 
-[node name="Carrot4" parent="BuildingManager" instance=ExtResource("15_45of6")]
+[node name="Carrot4" parent="ObjectSaveManager" instance=ExtResource("15_45of6")]
 position = Vector2(-128, -96)
 
-[node name="Corn" parent="BuildingManager" instance=ExtResource("16_tejbc")]
+[node name="Corn" parent="ObjectSaveManager" instance=ExtResource("16_tejbc")]
 position = Vector2(96, -64)
 
-[node name="Corn2" parent="BuildingManager" instance=ExtResource("16_tejbc")]
+[node name="Corn2" parent="ObjectSaveManager" instance=ExtResource("16_tejbc")]
 position = Vector2(32, -48)
 
-[node name="Corn3" parent="BuildingManager" instance=ExtResource("16_tejbc")]
+[node name="Corn3" parent="ObjectSaveManager" instance=ExtResource("16_tejbc")]
 position = Vector2(0, -112)
 
-[node name="Corn4" parent="BuildingManager" instance=ExtResource("16_tejbc")]
+[node name="Corn4" parent="ObjectSaveManager" instance=ExtResource("16_tejbc")]
 position = Vector2(32, -128)
 
-[node name="Corn5" parent="BuildingManager" instance=ExtResource("16_tejbc")]
+[node name="Corn5" parent="ObjectSaveManager" instance=ExtResource("16_tejbc")]
 position = Vector2(128, 128)
 
-[node name="Corn6" parent="BuildingManager" instance=ExtResource("16_tejbc")]
+[node name="Corn6" parent="ObjectSaveManager" instance=ExtResource("16_tejbc")]
 position = Vector2(-64, 96)
 
-[node name="Potato" parent="BuildingManager" instance=ExtResource("17_1pdp5")]
+[node name="Potato" parent="ObjectSaveManager" instance=ExtResource("17_1pdp5")]
 position = Vector2(96, 16)
 
-[node name="Potato2" parent="BuildingManager" instance=ExtResource("17_1pdp5")]
+[node name="Potato2" parent="ObjectSaveManager" instance=ExtResource("17_1pdp5")]
 position = Vector2(64, 32)
 
-[node name="Potato3" parent="BuildingManager" instance=ExtResource("17_1pdp5")]
+[node name="Potato3" parent="ObjectSaveManager" instance=ExtResource("17_1pdp5")]
 position = Vector2(-192, -88)
 
-[node name="Potato4" parent="BuildingManager" instance=ExtResource("17_1pdp5")]
+[node name="Potato4" parent="ObjectSaveManager" instance=ExtResource("17_1pdp5")]
 position = Vector2(-160, -48)
 
-[node name="Potato5" parent="BuildingManager" instance=ExtResource("17_1pdp5")]
+[node name="Potato5" parent="ObjectSaveManager" instance=ExtResource("17_1pdp5")]
 position = Vector2(-160, -80)
 
-[node name="Potato6" parent="BuildingManager" instance=ExtResource("17_1pdp5")]
+[node name="Potato6" parent="ObjectSaveManager" instance=ExtResource("17_1pdp5")]
 position = Vector2(-192, 128)
 
-[node name="Potato7" parent="BuildingManager" instance=ExtResource("17_1pdp5")]
+[node name="Potato7" parent="ObjectSaveManager" instance=ExtResource("17_1pdp5")]
 position = Vector2(-176, 160)
 
-[node name="Potato8" parent="BuildingManager" instance=ExtResource("17_1pdp5")]
+[node name="Potato8" parent="ObjectSaveManager" instance=ExtResource("17_1pdp5")]
 position = Vector2(144, 144)
 
-[node name="Potato9" parent="BuildingManager" instance=ExtResource("17_1pdp5")]
+[node name="Potato9" parent="ObjectSaveManager" instance=ExtResource("17_1pdp5")]
 position = Vector2(104, 160)

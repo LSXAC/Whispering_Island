@@ -1,20 +1,20 @@
 using Godot;
 using Godot.Collections;
 
-public partial class Building_Menu : CanvasLayer
+public partial class BuildMenu : CanvasLayer
 {
     [Export]
     public Building_Placer building_placer;
 
     [Export]
     public Array<PackedScene> buildings = new Array<PackedScene>();
-    public static Building_Menu instance;
+    public static BuildMenu instance;
 
     [Export]
-    public BuildingMenuCategory production_panel,
-        decoration_panel,
-        planting_panel,
-        research_panel;
+    public BuildMenuPageObject production_page,
+        decoration_page,
+        planting_page,
+        research_page;
 
     public enum CATEGORY
     {
@@ -37,23 +37,23 @@ public partial class Building_Menu : CanvasLayer
 
     public void OnPanelButton(int id)
     {
-        production_panel.Visible = false;
-        decoration_panel.Visible = false;
-        research_panel.Visible = false;
-        planting_panel.Visible = false;
+        production_page.Visible = false;
+        decoration_page.Visible = false;
+        research_page.Visible = false;
+        planting_page.Visible = false;
         switch (id)
         {
             case 0:
-                production_panel.Visible = true;
+                production_page.Visible = true;
                 break;
             case 1:
-                decoration_panel.Visible = true;
+                decoration_page.Visible = true;
                 break;
             case 2:
-                planting_panel.Visible = true;
+                planting_page.Visible = true;
                 break;
             case 3:
-                research_panel.Visible = true;
+                research_page.Visible = true;
                 break;
         }
     }

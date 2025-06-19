@@ -30,7 +30,7 @@ public partial class building_type : Panel
 
     private void OnSelectButton()
     {
-        Building_Menu.instance.Visible = false;
-        Building_Menu.instance.building_placer.InitBuildingFromBuildingMenu(scene_info);
+        BuildMenu.instance.Visible = false;
+        BuildMenu.instance.building_placer.InitBuildingFromBuildingMenu(scene_info);
     }
 }

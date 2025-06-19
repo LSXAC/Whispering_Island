@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://djgaq3hm83jje"]
 
-[ext_resource type="Resource" uid="uid://bj0udm3iiilry" path="res://Resource Meta/Recipes/Building_Recipies/Wooden_Bed_Recipe.tres" id="1_18alg"]
+[ext_resource type="Resource" uid="uid://bj0udm3iiilry" path="res://Resource Meta/Recipes/Build Menu Recipies/Wooden_Bed_Recipe.tres" id="1_18alg"]
 [ext_resource type="PackedScene" uid="uid://c0l4m6jxp7pau" path="res://Scenes/World Objects/Mineable Objects/MO_Iron_Ore.tscn" id="2_awh0m"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object_Info.cs" id="3_7qwwd"]
 

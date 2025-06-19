@@ -27,7 +27,7 @@ public partial class Building_Placer : Node2D
         if (scene_info == null || scene_info.scene == null)
         {
             GD.PrintErr("Building is Null, can not be initialised");
-            Building_Menu.instance.Visible = false;
+            BuildMenu.instance.Visible = false;
             Game_Manager.building_mode = Game_Manager.BuildingMode.None;
             return;
         }
@@ -44,7 +44,7 @@ public partial class Building_Placer : Node2D
         building = scene_info.scene;
         islands_manager
             .GetNearestIsland(GetGlobalMousePosition())
-            .building_manager.AddChild(current_building);
+            .object_save_manager.AddChild(current_building);
         placeable = (placeable_building)current_building;
         placeable.building_collider_manager.SetTileType(placeable.tile_types);
 
@@ -188,7 +188,7 @@ public partial class Building_Placer : Node2D
         Vector2 pos = ip.building_area.LocalToMap(GetGlobalMousePosition() - ip.GlobalPosition); // Global Mouse Position needs to be subtracted to local Tilemap world point
         temp.GlobalPosition = new Vector2((pos.X + 1) * 16, (pos.Y + 1) * 16);
         temp.Scale = current_scale;
-        ip.building_manager.AddChild(temp);
+        ip.object_save_manager.AddChild(temp);
         // Remove Resources
         RemoveResources();
         if (temp is MineableObject)
@@ -276,6 +276,6 @@ public partial class Building_Placer : Node2D
     {
         Game_Manager.building_mode = Game_Manager.BuildingMode.None;
         player_ui.INSTANCE.SetWindowFrame();
-        Building_Menu.instance.CloseWindow();
+        BuildMenu.instance.CloseWindow();
     }
 }

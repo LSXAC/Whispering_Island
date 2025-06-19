@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="10_7bt86"]
 [ext_resource type="Texture2D" uid="uid://125t5f6fiugo" path="res://Sprites/Monster_Island.png" id="11_qd1vh"]
 [ext_resource type="PackedScene" uid="uid://bekb5fw4mpfgk" path="res://Scenes/World Objects/Mineable Objects/MO_Oak_Tree.tscn" id="12_3x7uo"]
-[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/BuildingManager.cs" id="13_lo8qh"]
+[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="13_lo8qh"]
 [ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Scenes/World Objects/Mineable Objects/MO_Stone.tscn" id="13_sqojh"]
 [ext_resource type="PackedScene" uid="uid://hl3jkk2n0f7x" path="res://Scenes/World Objects/Mineable Objects/MO_Wheat.tscn" id="14_kjoym"]
 
@@ -254,77 +254,77 @@ building_sprite = NodePath("../AnimationPlayer/BuildingSprite")
 position = Vector2(-20, -100)
 shape = SubResource("RectangleShape2D_fk0le")
 
-[node name="BuildingManager" type="Node2D" parent="."]
+[node name="IslandObjectSaveManager" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("13_lo8qh")
 
-[node name="Tree" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+[node name="Tree" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(80, -181)
 
-[node name="Tree2" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+[node name="Tree2" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(110, -160)
 
-[node name="Tree3" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+[node name="Tree3" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(-158, -101)
 
-[node name="Tree4" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+[node name="Tree4" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(94, 124)
 
-[node name="Tree5" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+[node name="Tree5" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(-102, 14)
 
-[node name="Tree6" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+[node name="Tree6" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(-136, 56)
 
-[node name="Tree7" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+[node name="Tree7" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(184, -64)
 
-[node name="Tree8" parent="BuildingManager" instance=ExtResource("12_3x7uo")]
+[node name="Tree8" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(-80, -168)
 
-[node name="Stone" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+[node name="Stone" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
 position = Vector2(-75, 23)
 
-[node name="Stone2" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+[node name="Stone2" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
 position = Vector2(-32, -171)
 
-[node name="Stone5" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+[node name="Stone5" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
 position = Vector2(-24, -192)
 
-[node name="Stone6" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+[node name="Stone6" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
 position = Vector2(-96, -144)
 
-[node name="Stone7" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+[node name="Stone7" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
 position = Vector2(72, 144)
 
-[node name="Stone8" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+[node name="Stone8" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
 position = Vector2(-96, 88)
 
-[node name="Stone3" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+[node name="Stone3" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
 position = Vector2(58, -95)
 
-[node name="Stone4" parent="BuildingManager" instance=ExtResource("13_sqojh")]
+[node name="Stone4" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
 position = Vector2(91, 19)
 
-[node name="Wheat" parent="BuildingManager" instance=ExtResource("14_kjoym")]
+[node name="Wheat" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
 position = Vector2(50, -145)
 
-[node name="Wheat2" parent="BuildingManager" instance=ExtResource("14_kjoym")]
+[node name="Wheat2" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
 position = Vector2(64, -160)
 
-[node name="Wheat3" parent="BuildingManager" instance=ExtResource("14_kjoym")]
+[node name="Wheat3" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
 position = Vector2(50, -14)
 
-[node name="Wheat4" parent="BuildingManager" instance=ExtResource("14_kjoym")]
+[node name="Wheat4" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
 position = Vector2(-190, 30)
 
-[node name="Wheat5" parent="BuildingManager" instance=ExtResource("14_kjoym")]
+[node name="Wheat5" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
 position = Vector2(65, 17)
 
-[node name="Wheat6" parent="BuildingManager" instance=ExtResource("14_kjoym")]
+[node name="Wheat6" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
 position = Vector2(-177, 50)
 
-[node name="Wheat7" parent="BuildingManager" instance=ExtResource("14_kjoym")]
+[node name="Wheat7" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
 position = Vector2(65, -127)
 
 [connection signal="mouse_entered" from="QuestSign/MouseArea" to="QuestSign/MouseArea" method="OnMouseEntered"]

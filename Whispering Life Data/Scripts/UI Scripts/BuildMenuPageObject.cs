@@ -3,14 +3,14 @@ using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
-public partial class BuildingMenuCategory : ColorRect
+public partial class BuildMenuPageObject : ColorRect
 {
     // Called when the node enters the scene tree for the first time.
     [Export]
     public Control parent;
 
     [Export]
-    public Building_Menu.CATEGORY category;
+    public BuildMenu.CATEGORY category;
 
     private PackedScene buildingMenuChild = ResourceLoader.Load<PackedScene>(
         "res://building_menu_child.tscn"
@@ -45,7 +45,7 @@ public partial class BuildingMenuCategory : ColorRect
 
     private void InitBuildings(Building_Menu_List_Object_Info building_type)
     {
-        BuildingMenuChild node = buildingMenuChild.Instantiate() as BuildingMenuChild;
+        BuildMenuListObject node = buildingMenuChild.Instantiate() as BuildMenuListObject;
         node.InitBuildingMenuChild(building_type);
         parent.AddChild(node);
     }

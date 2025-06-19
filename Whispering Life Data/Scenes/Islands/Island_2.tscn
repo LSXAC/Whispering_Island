@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Shader/Water_Noise_Map.tres" id="6_5ph4o"]
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Tilesets/Water_Tileset.tres" id="7_tylo5"]
 [ext_resource type="TileSet" uid="uid://bij4wcpveo44d" path="res://Tilesets/Farming_Tileset.tres" id="8_0fich"]
-[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/BuildingManager.cs" id="9_prv3h"]
+[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="9_prv3h"]
 [ext_resource type="PackedScene" uid="uid://c0l4m6jxp7pau" path="res://Scenes/World Objects/Mineable Objects/MO_Iron_Ore.tscn" id="10_j5waq"]
 [ext_resource type="PackedScene" uid="uid://cnafp0o2cwupt" path="res://Scenes/World Objects/Mineable Objects/MO_Copper_Ore.tscn" id="11_v8vr1"]
 [ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Scenes/World Objects/Mineable Objects/MO_Stone.tscn" id="12_0bqga"]
@@ -171,48 +171,48 @@ position = Vector2(-64, 64)
 build_mode = 1
 polygon = PackedVector2Array(256, -32, 256, -48, 288, -48, 312, 48, 232, 144, 80, 160, 80, 128, 160, 128, 224, 64, 256, 64, 288, 32, 288, 0)
 
-[node name="BuildingManager" type="Node2D" parent="."]
+[node name="ObjectSaveManager" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("9_prv3h")
 
-[node name="Iron_Ore" parent="BuildingManager" instance=ExtResource("10_j5waq")]
+[node name="Iron_Ore" parent="ObjectSaveManager" instance=ExtResource("10_j5waq")]
 position = Vector2(-88, -80)
 
-[node name="Iron_Ore2" parent="BuildingManager" instance=ExtResource("10_j5waq")]
+[node name="Iron_Ore2" parent="ObjectSaveManager" instance=ExtResource("10_j5waq")]
 position = Vector2(128, -160)
 
-[node name="Iron_Ore3" parent="BuildingManager" instance=ExtResource("10_j5waq")]
+[node name="Iron_Ore3" parent="ObjectSaveManager" instance=ExtResource("10_j5waq")]
 position = Vector2(192, 112)
 
-[node name="Copper_Ore" parent="BuildingManager" instance=ExtResource("11_v8vr1")]
+[node name="Copper_Ore" parent="ObjectSaveManager" instance=ExtResource("11_v8vr1")]
 position = Vector2(-16, -8)
 
-[node name="Copper_Ore2" parent="BuildingManager" instance=ExtResource("11_v8vr1")]
+[node name="Copper_Ore2" parent="ObjectSaveManager" instance=ExtResource("11_v8vr1")]
 position = Vector2(48, -40)
 
-[node name="Copper_Ore3" parent="BuildingManager" instance=ExtResource("11_v8vr1")]
+[node name="Copper_Ore3" parent="ObjectSaveManager" instance=ExtResource("11_v8vr1")]
 position = Vector2(11, 76)
 
-[node name="Copper_Ore4" parent="BuildingManager" instance=ExtResource("11_v8vr1")]
+[node name="Copper_Ore4" parent="ObjectSaveManager" instance=ExtResource("11_v8vr1")]
 position = Vector2(128, 72)
 
-[node name="Stone" parent="BuildingManager" instance=ExtResource("12_0bqga")]
+[node name="Stone" parent="ObjectSaveManager" instance=ExtResource("12_0bqga")]
 position = Vector2(-144, 112)
 
-[node name="Stone2" parent="BuildingManager" instance=ExtResource("12_0bqga")]
+[node name="Stone2" parent="ObjectSaveManager" instance=ExtResource("12_0bqga")]
 position = Vector2(208, 80)
 
-[node name="Stone3" parent="BuildingManager" instance=ExtResource("12_0bqga")]
+[node name="Stone3" parent="ObjectSaveManager" instance=ExtResource("12_0bqga")]
 position = Vector2(-112, -56)
 
-[node name="Stone4" parent="BuildingManager" instance=ExtResource("12_0bqga")]
+[node name="Stone4" parent="ObjectSaveManager" instance=ExtResource("12_0bqga")]
 position = Vector2(168, -128)
 
-[node name="Stone5" parent="BuildingManager" instance=ExtResource("12_0bqga")]
+[node name="Stone5" parent="ObjectSaveManager" instance=ExtResource("12_0bqga")]
 position = Vector2(96, -200)
 
-[node name="Stone6" parent="BuildingManager" instance=ExtResource("12_0bqga")]
+[node name="Stone6" parent="ObjectSaveManager" instance=ExtResource("12_0bqga")]
 position = Vector2(-32, -168)
 
-[node name="Stone7" parent="BuildingManager" instance=ExtResource("12_0bqga")]
+[node name="Stone7" parent="ObjectSaveManager" instance=ExtResource("12_0bqga")]
 position = Vector2(96, -16)

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bveoiwi14ha4g" path="res://Scenes/Islands/Main_Island_0.tscn" id="6_p85m3"]
 [ext_resource type="PackedScene" uid="uid://j1cdgg7lep78" path="res://Scenes/UI/player_ui.tscn" id="7_5qlke"]
 [ext_resource type="PackedScene" uid="uid://deu0spbxs5bju" path="res://Scenes/UI/game_menu.tscn" id="8_gytje"]
-[ext_resource type="PackedScene" uid="uid://en6nagvvr8d3" path="res://Scenes/UI/Building_Menu.tscn" id="9_1xtv0"]
+[ext_resource type="PackedScene" uid="uid://en6nagvvr8d3" path="res://Scenes/UI/Build_Menu.tscn" id="9_1xtv0"]
 [ext_resource type="Script" uid="uid://b1ofqxr15cnlw" path="res://Scripts/Global/GlobalFunctions.cs" id="10_1whgu"]
 [ext_resource type="PackedScene" uid="uid://o62xek3uvpo8" path="res://Scenes/UI/quest_menu.tscn" id="11_5h8gv"]
 [ext_resource type="Resource" uid="uid://c1p7gva6jex80" path="res://Dialogues/Questing.dialogue" id="12_t3yax"]

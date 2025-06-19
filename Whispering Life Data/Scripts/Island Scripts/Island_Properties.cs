@@ -9,7 +9,7 @@ public partial class Island_Properties : Node2D
 
     [Export]
     public int matrix_island_id = 0;
-    public BuildingManager building_manager;
+    public IslandObjectSaveManager object_save_manager;
     public TileMapLayer ground_tilemap;
 
     [Export]
@@ -76,7 +76,7 @@ public partial class Island_Properties : Node2D
         bridge_collision_parent = start_node.GetNode<StaticBody2D>("BridgeCollisions");
         bridges_parent = start_node.GetNode<Node2D>("Bridges");
         signs_parent = start_node.GetNode<Node2D>("Signs");
-        building_manager = GetNode<BuildingManager>("BuildingManager");
+        object_save_manager = GetNode<IslandObjectSaveManager>("IslandObjectSaveManager");
     }
 
     public void GetSigns()

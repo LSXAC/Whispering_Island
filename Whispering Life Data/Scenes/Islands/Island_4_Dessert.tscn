@@ -7,7 +7,7 @@
 [ext_resource type="Shader" uid="uid://dcluye6ushewy" path="res://Shader/water.gdshader" id="5_2v6t4"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Shader/Water_Noise_Map.tres" id="6_76qbd"]
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Tilesets/Water_Tileset.tres" id="7_f7dal"]
-[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/BuildingManager.cs" id="8_1mkkm"]
+[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="8_1mkkm"]
 [ext_resource type="PackedScene" uid="uid://dxbndpfa2cnsl" path="res://Scenes/World Objects/Mineable Objects/MO_Sand.tscn" id="9_x8jld"]
 [ext_resource type="PackedScene" uid="uid://c6fshtcsvmam5" path="res://Scenes/World Objects/Mineable Objects/MO_Sand_Stone.tscn" id="10_l8myx"]
 
@@ -164,48 +164,48 @@ position = Vector2(-64, 64)
 build_mode = 1
 polygon = PackedVector2Array(288, -48, 320, -48, 312, 32, 288, 136, 208, 176, 80, 160, 80, 128, 128, 128, 160, 160, 224, 160, 256, 128, 256, 64, 288, 32)
 
-[node name="BuildingManager" type="Node2D" parent="."]
+[node name="ObjectSaveManager" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("8_1mkkm")
 
-[node name="Sand" parent="BuildingManager" instance=ExtResource("9_x8jld")]
+[node name="Sand" parent="ObjectSaveManager" instance=ExtResource("9_x8jld")]
 position = Vector2(-112, -128)
 
-[node name="Sand2" parent="BuildingManager" instance=ExtResource("9_x8jld")]
+[node name="Sand2" parent="ObjectSaveManager" instance=ExtResource("9_x8jld")]
 position = Vector2(-88, -104)
 
-[node name="Sand3" parent="BuildingManager" instance=ExtResource("9_x8jld")]
+[node name="Sand3" parent="ObjectSaveManager" instance=ExtResource("9_x8jld")]
 position = Vector2(-128, -80)
 
-[node name="Sand4" parent="BuildingManager" instance=ExtResource("9_x8jld")]
+[node name="Sand4" parent="ObjectSaveManager" instance=ExtResource("9_x8jld")]
 position = Vector2(-72, 56)
 
-[node name="Sand5" parent="BuildingManager" instance=ExtResource("9_x8jld")]
+[node name="Sand5" parent="ObjectSaveManager" instance=ExtResource("9_x8jld")]
 position = Vector2(-96, 40)
 
-[node name="Sand6" parent="BuildingManager" instance=ExtResource("9_x8jld")]
+[node name="Sand6" parent="ObjectSaveManager" instance=ExtResource("9_x8jld")]
 position = Vector2(176, 144)
 
-[node name="Sand7" parent="BuildingManager" instance=ExtResource("9_x8jld")]
+[node name="Sand7" parent="ObjectSaveManager" instance=ExtResource("9_x8jld")]
 position = Vector2(144, 160)
 
-[node name="Sand8" parent="BuildingManager" instance=ExtResource("9_x8jld")]
+[node name="Sand8" parent="ObjectSaveManager" instance=ExtResource("9_x8jld")]
 position = Vector2(176, 176)
 
-[node name="Sand9" parent="BuildingManager" instance=ExtResource("9_x8jld")]
+[node name="Sand9" parent="ObjectSaveManager" instance=ExtResource("9_x8jld")]
 position = Vector2(8, -80)
 
-[node name="SandStone" parent="BuildingManager" instance=ExtResource("10_l8myx")]
+[node name="SandStone" parent="ObjectSaveManager" instance=ExtResource("10_l8myx")]
 position = Vector2(40, 80)
 
-[node name="SandStone4" parent="BuildingManager" instance=ExtResource("10_l8myx")]
+[node name="SandStone4" parent="ObjectSaveManager" instance=ExtResource("10_l8myx")]
 position = Vector2(-136, 56)
 
-[node name="SandStone5" parent="BuildingManager" instance=ExtResource("10_l8myx")]
+[node name="SandStone5" parent="ObjectSaveManager" instance=ExtResource("10_l8myx")]
 position = Vector2(48, -168)
 
-[node name="SandStone2" parent="BuildingManager" instance=ExtResource("10_l8myx")]
+[node name="SandStone2" parent="ObjectSaveManager" instance=ExtResource("10_l8myx")]
 position = Vector2(72, 112)
 
-[node name="SandStone3" parent="BuildingManager" instance=ExtResource("10_l8myx")]
+[node name="SandStone3" parent="ObjectSaveManager" instance=ExtResource("10_l8myx")]
 position = Vector2(-152, 88)

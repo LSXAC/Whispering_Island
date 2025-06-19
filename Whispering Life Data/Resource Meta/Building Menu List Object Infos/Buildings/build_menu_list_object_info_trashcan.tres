@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://c8cgmkv8acr6f"]
 
-[ext_resource type="Resource" uid="uid://ce8ea3olbpkt6" path="res://Resource Meta/Recipes/Building_Recipies/Trashcan_Recipe.tres" id="1_6tv2j"]
+[ext_resource type="Resource" uid="uid://ce8ea3olbpkt6" path="res://Resource Meta/Recipes/Build Menu Recipies/Trashcan_Recipe.tres" id="1_6tv2j"]
 [ext_resource type="PackedScene" uid="uid://bdrcel864aa3s" path="res://Scenes/World Objects/Buildings/Building_Trashcan.tscn" id="2_bqmcv"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object_Info.cs" id="3_3ti5q"]
 

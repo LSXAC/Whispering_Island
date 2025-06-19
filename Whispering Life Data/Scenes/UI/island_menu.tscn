@@ -119,6 +119,7 @@ grow_horizontal = 2
 translation_string = "ISLAND MENU"
 
 [node name="ExitTabButton" type="Button" parent="Background"]
+layout_mode = 0
 offset_left = 484.0
 offset_top = 2.0
 offset_right = 511.0
@@ -407,6 +408,7 @@ selected = 0
 item_count = 2
 popup/item_0/text = "[US] ENGLISH"
 popup/item_0/icon = ExtResource("13_o0t3s")
+popup/item_0/id = 0
 popup/item_1/text = "Deutsch"
 popup/item_1/icon = ExtResource("14_bj3bb")
 popup/item_1/id = 1
@@ -472,6 +474,7 @@ selected = 0
 item_count = 1
 popup/item_0/text = "English"
 popup/item_0/icon = ExtResource("13_o0t3s")
+popup/item_0/id = 0
 
 [node name="Language2" type="HBoxContainer" parent="Background2/Island_Menu/VBoxContainer"]
 layout_mode = 2
@@ -532,8 +535,10 @@ selected = 0
 item_count = 1
 popup/item_0/text = "English"
 popup/item_0/icon = ExtResource("13_o0t3s")
+popup/item_0/id = 0
 
 [node name="HeaderColorRect" parent="Background2" instance=ExtResource("7_q7x47")]
+layout_mode = 0
 offset_top = 1.0
 offset_bottom = 25.0
 translation_string = "GAMEMENU_RESEARCH_TABLE"
