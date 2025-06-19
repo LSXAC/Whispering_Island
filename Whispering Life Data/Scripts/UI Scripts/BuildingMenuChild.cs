@@ -11,8 +11,6 @@ public partial class BuildingMenuChild : Control
     public Label title_label,
         description_label;
 
-    //ref to Resource_child
-
     [Export]
     public Button build_button;
 

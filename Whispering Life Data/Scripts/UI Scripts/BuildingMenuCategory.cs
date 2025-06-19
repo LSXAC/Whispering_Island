@@ -23,22 +23,22 @@ public partial class BuildingMenuCategory : ColorRect
         foreach (Control c in parent.GetChildren())
             c.QueueFree();
 
-        foreach (var (name, packed) in Database.buildings)
+        foreach (var (name, scene) in Database.buildings)
         {
-            if (packed == null)
+            if (scene == null)
             {
                 Debug.Print(name + " empty");
                 return;
             }
 
-            if (packed.category == category) //Check if Requirement is there
+            if (scene.category == category) //Check if Requirement is there
             {
-                if (packed.requirements != null || packed.requirements.Count > 0)
-                    if (!GlobalFunctions.CheckResearchRequirements(packed.requirements))
+                if (scene.requirements != null || scene.requirements.Count > 0)
+                    if (!GlobalFunctions.CheckResearchRequirements(scene.requirements))
                         continue;
-                if (!packed.show_item)
+                if (!scene.show_object_in_list)
                     continue;
-                InitBuildings(packed);
+                InitBuildings(scene);
             }
         }
     }

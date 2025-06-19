@@ -18,7 +18,7 @@ public partial class BuildingType : Resource
     public CATEGORY category;
 
     [Export]
-    public bool show_item = true;
+    public bool show_object_in_list = true;
 
     public enum CATEGORY
     {

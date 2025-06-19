@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://4o1h3cmusbib"]
+
+[ext_resource type="Resource" uid="uid://ccrtfmrky4g6y" path="res://Resource Meta/Recipes/Building_Recipies/Planting/Mystic_Tree_Object_Recipe.tres" id="1_df5ov"]
+[ext_resource type="PackedScene" uid="uid://gb18hiamdyqj" path="res://Scenes/World Objects/Mineable Objects/MO_Mystical_Tree.tscn" id="2_4ho52"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/BuildingMenuObjectChild.cs" id="3_7xwun"]
+
+[resource]
+script = ExtResource("3_7xwun")
+building_scene = ExtResource("2_4ho52")
+building_recipe = ExtResource("1_df5ov")
+requirements = Array[Object]([])
+category = 2
+show_item = true

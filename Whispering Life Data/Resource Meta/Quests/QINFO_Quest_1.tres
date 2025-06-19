@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Quest" load_steps=9 format=3 uid="uid://6dsfnan8rxtt"]
+[gd_resource type="Resource" script_class="QuestInfo" load_steps=9 format=3 uid="uid://6dsfnan8rxtt"]
 
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Item Info/Wood.tres" id="1_bwvgx"]
 [ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_k47aw"]
