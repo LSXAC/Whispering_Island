@@ -131,17 +131,18 @@ public partial class QuestManager : Node
     {
         for (int x = 0; x < quests.Count; x++)
         {
-            for (int i = 0; i < quests[x].quest_items.Count; i++)
-                if (i + 1 < quests[x].quest_items.Count)
+            for (int i = 0; i < quests[x].required_items.Count; i++)
+                if (i + 1 < quests[x].required_items.Count)
                     if (
-                        quests[x].quest_items[i].item_info == quests[x].quest_items[i + 1].item_info
+                        quests[x].required_items[i].resource
+                        == quests[x].required_items[i + 1].resource
                     )
                         GD.PrintErr("ITEMS IN QUEST " + x + " are in duplicated use");
 
-            if (0 != quests[x].quest_items.Count - 1)
+            if (0 != quests[x].required_items.Count - 1)
                 if (
-                    quests[x].quest_items[0]
-                    == quests[x].quest_items[quests[x].quest_items.Count - 1]
+                    quests[x].required_items[0]
+                    == quests[x].required_items[quests[x].required_items.Count - 1]
                 )
                     GD.PrintErr("ITEMS IN QUEST " + x + " are in duplicated use");
         }
@@ -149,7 +150,7 @@ public partial class QuestManager : Node
 
     public bool CheckQuestComplete()
     {
-        foreach (Item quest_item in quests[current_quest_id].quest_items)
+        foreach (Item quest_item in quests[current_quest_id].required_items)
         {
             Array<Item> iii = PlayerInventoryUI.instance.GetItemFromList(
                 PlayerInventoryUI.instance.GetListOfItemsInInventory(),
@@ -179,7 +180,7 @@ public partial class QuestManager : Node
     {
         if (!next_quest_is_doubled_items)
         {
-            foreach (Item quest_item in quests[current_quest_id].quest_items)
+            foreach (Item quest_item in quests[current_quest_id].required_items)
                 PlayerInventoryUI.instance.RemoveItem(
                     quest_item,
                     PlayerInventoryUI.instance.inventory_items
@@ -187,9 +188,9 @@ public partial class QuestManager : Node
         }
         else
         {
-            foreach (Item quest_item in quests[current_quest_id].quest_items)
+            foreach (Item quest_item in quests[current_quest_id].required_items)
                 PlayerInventoryUI.instance.RemoveItem(
-                    new Item(quest_item.item_info, quest_item.amount * 2),
+                    new Item(quest_item.resource, quest_item.amount * 2),
                     PlayerInventoryUI.instance.inventory_items
                 );
         }

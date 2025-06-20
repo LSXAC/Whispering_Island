@@ -280,7 +280,7 @@ public partial class GameMenu : CanvasLayer
         inventory_tab.Visible = true;
         furnace_tab.Visible = true;
         PlayerInventoryUI.instance.MarkSlotsWithType(
-            [ItemInfo.Type.BURNABLE, ItemInfo.Type.SMELTABLE]
+            [ItemResource.TYPE.BURNABLE, ItemResource.TYPE.SMELTABLE]
         );
     }
 
@@ -354,7 +354,7 @@ public partial class GameMenu : CanvasLayer
         CloseAllTabs();
         inventory_tab.Visible = true;
         research_tab.Visible = true;
-        PlayerInventoryUI.instance.MarkSlotsWithType([ItemInfo.Type.RESEARCHABLE]);
+        PlayerInventoryUI.instance.MarkSlotsWithType([ItemResource.TYPE.RESEARCHABLE]);
     }
 
     public void OnCloseSkilltreeTab()

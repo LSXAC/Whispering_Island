@@ -37,7 +37,7 @@ public partial class Building_Placer : Node2D
         current_scale = new Vector2(1, 1);
         GameManager.building_mode = GameManager.BuildingMode.Placing;
         PlayerUI.instance.SetWindowFrame();
-        PlayerUI.instance.item_row_manager.CanCreate(scene_info.recipe.requiered_items);
+        PlayerUI.instance.item_row_manager.CanCreate(scene_info.recipe.required_items);
         current_building = (Node2D)scene_info.scene.Instantiate();
         building_recipe = scene_info.recipe;
 
@@ -196,7 +196,7 @@ public partial class Building_Placer : Node2D
         if (temp is MineableObject)
         {
             ((MineableObject)temp).SpawnPlant();
-            if (!PlayerUI.instance.item_row_manager.CanCreate(building_recipe.requiered_items))
+            if (!PlayerUI.instance.item_row_manager.CanCreate(building_recipe.required_items))
             {
                 can_create = false;
                 CloseMenuWithBuildingSelected();
@@ -214,7 +214,7 @@ public partial class Building_Placer : Node2D
                 temp.Name = "BeltTunnel + " + rnd.Next(0, 10000);
                 ((BeltTunnel)temp).CheckIfTunnelInDir();
             }
-            if (!PlayerUI.instance.item_row_manager.CanCreate(building_recipe.requiered_items))
+            if (!PlayerUI.instance.item_row_manager.CanCreate(building_recipe.required_items))
             {
                 can_create = false;
                 CloseMenuWithBuildingSelected();
@@ -256,7 +256,7 @@ public partial class Building_Placer : Node2D
 
     private void RemoveResources()
     {
-        foreach (Item item in building_recipe.requiered_items)
+        foreach (Item item in building_recipe.required_items)
             PlayerInventoryUI.instance.RemoveItem(item, PlayerInventoryUI.instance.inventory_items);
     }
 

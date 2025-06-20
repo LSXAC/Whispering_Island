@@ -64,32 +64,32 @@ public partial class EquipmentPanel : Control
         if (
             instance
                 .slots_tool[EquipmentSelectBar.current_selected_slot]
-                .GetSlotItem()
+                .GetSlotItemUI()
                 .current_durability > 0
         )
         {
             PlayerUI
-                .instance.equipmentSelectBar.GetSelectedSlotItem()
+                .instance.equipmentSelectBar.GetSelectedSlotItemUI()
                 .SetDurability(
                     instance
                         .slots_tool[EquipmentSelectBar.current_selected_slot]
-                        .GetSlotItem()
+                        .GetSlotItemUI()
                         .current_durability
                 );
 
             instance
                 .slots_tool[EquipmentSelectBar.current_selected_slot]
-                .GetSlotItem()
+                .GetSlotItemUI()
                 .SetDurability(
                     instance
                         .slots_tool[EquipmentSelectBar.current_selected_slot]
-                        .GetSlotItem()
+                        .GetSlotItemUI()
                         .current_durability
                 );
             instance.equipped_tools[EquipmentSelectBar.current_selected_slot].current_durability =
                 instance
                     .slots_tool[EquipmentSelectBar.current_selected_slot]
-                    .GetSlotItem()
+                    .GetSlotItemUI()
                     .current_durability;
         }
         else
@@ -99,7 +99,7 @@ public partial class EquipmentPanel : Control
                 .ClearItem();
             instance.slots_tool[EquipmentSelectBar.current_selected_slot].ClearItem();
             instance.equipped_tools[EquipmentSelectBar.current_selected_slot] = null;
-            PlayerUI.instance.equipmentSelectBar.current_selected_slot_item = null;
+            PlayerUI.instance.equipmentSelectBar.current_selected_slot_item_ui = null;
         }
         instance.CalculateStatsFromEquipment();
     }
@@ -120,11 +120,11 @@ public partial class EquipmentPanel : Control
                         player_stats.stat_amounts[(int)x.type] += x.bonus;
         }
 
-        if (PlayerUI.instance.equipmentSelectBar.GetSelectedSlotItem() != null)
+        if (PlayerUI.instance.equipmentSelectBar.GetSelectedSlotItemUI() != null)
         {
-            SlotItem slot_item = PlayerUI.instance.equipmentSelectBar.GetSelectedSlotItem();
-            if (slot_item.item.item_info.item_stats != null)
-                foreach (ItemStats x in slot_item.item.item_info.item_stats)
+            SlotItemUI slot_item = PlayerUI.instance.equipmentSelectBar.GetSelectedSlotItemUI();
+            if (slot_item.item.resource.item_stats != null)
+                foreach (ItemStats x in slot_item.item.resource.item_stats)
                     player_stats.stat_amounts[(int)x.type] += x.bonus;
         }
         UpdateProgressbars();

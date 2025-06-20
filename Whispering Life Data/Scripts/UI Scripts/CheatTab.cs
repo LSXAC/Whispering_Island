@@ -36,10 +36,10 @@ public partial class CheatTab : ColorRect
     private void SetItemsInList()
     {
         item_list.Clear();
-        foreach (var (id, item_info) in Inventory.instance.item_Types)
+        foreach (var (id, item_resource) in Inventory.ITEM_TYPES)
             item_list.AddItem(
-                TranslationServer.Translate(item_info.item_name),
-                item_info.texture,
+                TranslationServer.Translate(item_resource.item_name),
+                item_resource.texture,
                 true
             );
     }
@@ -53,10 +53,12 @@ public partial class CheatTab : ColorRect
     {
         int[] items = item_list.GetSelectedItems();
         foreach (int i in items)
-            Inventory.instance.AddItem(
-                Inventory.instance.item_Types[(InventoryBase.ITEM_ID)i],
-                Inventory.instance.item_Types[(InventoryBase.ITEM_ID)i].max_slot_amount,
-                Inventory.instance.inventory_items
+            PlayerInventoryUI.instance.AddItem(
+                new Item(
+                    Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i],
+                    Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i].max_slot_amount
+                ),
+                PlayerInventoryUI.instance.inventory_items
             );
         OnDeselectAll();
     }

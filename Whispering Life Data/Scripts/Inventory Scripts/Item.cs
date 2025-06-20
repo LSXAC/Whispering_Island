@@ -1,20 +1,19 @@
 using System;
 using Godot;
 
-[GlobalClass]
 public partial class Item : Resource
 {
     public Item() { }
 
-    public Item(ItemInfo ii, int amount)
+    public Item(ItemResource resource, int amount)
     {
-        this.item_info = ii;
+        this.resource = resource;
         this.amount = amount;
     }
 
     [Export]
-    public ItemInfo item_info;
+    public ItemResource resource;
 
     [Export]
-    public int amount = 0;
+    public int amount;
 }

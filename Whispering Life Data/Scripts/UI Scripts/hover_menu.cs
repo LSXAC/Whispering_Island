@@ -148,9 +148,8 @@ public partial class hover_menu : PanelContainer
                     + "x "
                     + TranslationServer.Translate(
                         Inventory
-                            .instance
-                            .item_Types[
-                                (InventoryBase.ITEM_ID)
+                            .ITEM_TYPES[
+                                (Inventory.ITEM_ID)
                                     pb.item_array[(int)FurnaceTab.SlotType.EXPORT].item_id
                             ]
                             .item_name
@@ -166,9 +165,8 @@ public partial class hover_menu : PanelContainer
                     + "x "
                     + TranslationServer.Translate(
                         Inventory
-                            .instance
-                            .item_Types[
-                                (InventoryBase.ITEM_ID)
+                            .ITEM_TYPES[
+                                (Inventory.ITEM_ID)
                                     pb.item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
                             ]
                             .item_name
@@ -179,9 +177,9 @@ public partial class hover_menu : PanelContainer
                 );
         }
 
-        if (node is ProductionMachine pm)
+        if (node is ProductionMachine production_machine)
         {
-            if (pm == null)
+            if (production_machine == null)
             {
                 Debug.Print("PM NULL");
                 return;
@@ -190,11 +188,11 @@ public partial class hover_menu : PanelContainer
             instance.process_output_container.Visible = true;
             instance.Line2.Visible = true;
 
-            instance.process_bar_content.Text = pm.progress + "/" + 100;
+            instance.process_bar_content.Text = production_machine.progress + "/" + 100;
             instance.process_output_content.Text =
-                pm.production_count
+                production_machine.count
                 + "x "
-                + TranslationServer.Translate(pm.production_item_info.item_name);
+                + TranslationServer.Translate(production_machine.output_item_resource.item_name);
         }
 
         if (node is ChestBase chest)

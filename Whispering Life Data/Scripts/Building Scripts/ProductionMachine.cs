@@ -4,10 +4,10 @@ using Godot;
 public partial class ProductionMachine : MachineBase
 {
     [Export]
-    public ItemInfo production_item_info;
+    public ItemResource output_item_resource;
 
     [Export]
-    public int production_count = 0;
+    public int count = 0;
 
     public int progress = 0;
 
@@ -15,7 +15,7 @@ public partial class ProductionMachine : MachineBase
     {
         if (progress >= 100)
         {
-            production_count++;
+            count++;
             progress = 0;
         }
         progress += 5;

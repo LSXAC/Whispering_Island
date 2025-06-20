@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=6 format=3 uid="uid://bl35uo51q2mwf"]
 
 [ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Resource Meta/Item Info/Item_Types/RM_Processed_Type_Classic.tres" id="1_g5k8p"]
-[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_qp7xs"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemResource.cs" id="1_qp7xs"]
 [ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_xyrds"]
 [ext_resource type="Texture2D" uid="uid://8t8iildjf1jv" path="res://Sprites/Items/Icons_3rd/Wooden_Plank.png" id="2_7cxi2"]
 [ext_resource type="Resource" uid="uid://duirbryu00nmb" path="res://Resource Meta/Item Info/Item_Types/RM_Burnable_Type_60.tres" id="2_xbk7a"]

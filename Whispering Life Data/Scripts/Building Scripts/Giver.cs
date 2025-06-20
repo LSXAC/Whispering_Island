@@ -51,7 +51,10 @@ public partial class Giver : Area2D
                 BeltItem item = (BeltItem)beltItem.Instantiate();
 
                 item.Init(
-                    new Item(((ProcessBuilding)building).GetItemInfo(FurnaceTab.SlotType.EXPORT), 1)
+                    new Item(
+                        ((ProcessBuilding)building).GetItemResource(FurnaceTab.SlotType.EXPORT),
+                        1
+                    )
                 );
                 Holder.AddChild(item);
                 destination.GetParent<Belt>().receive_item(item);
@@ -100,7 +103,7 @@ public partial class Giver : Area2D
     {
         if (
             destination.GetParent<Belt>().can_receive_item()
-            && ((ProductionMachine)building).production_count > 0
+            && ((ProductionMachine)building).count > 0
         )
         {
             if (destination.GetParent() is BeltTunnel)
@@ -112,9 +115,9 @@ public partial class Giver : Area2D
             if (destination.GetParent() is BeltCombiner)
                 destination.GetParent<BeltCombiner>().GetNode<Timer>("CheckAreaTimer").Start();
 
-            ((ProductionMachine)building).production_count -= 1;
+            ((ProductionMachine)building).count -= 1;
             BeltItem item = (BeltItem)beltItem.Instantiate();
-            item.Init(new Item(((ProductionMachine)building).production_item_info, 1));
+            item.Init(new Item(((ProductionMachine)building).output_item_resource, 1));
             Holder.AddChild(item);
             destination.GetParent<Belt>().receive_item(item);
             FurnaceTab.instance.UpdateFurnaceUI();

@@ -237,11 +237,11 @@ public partial class IslandObjectSaveManager : Node2D
 
     public void InitBeltItem(Belt belt, BeltSave belt_save)
     {
-        if (belt_save.belt_holding_item != null)
+        if (belt_save.belt_holding_item_resource != null)
         {
             BeltItem belt_item = (BeltItem)belt_item_scene.Instantiate();
 
-            Item item = new Item(belt_save.belt_holding_item, 1);
+            Item item = new Item(belt_save.belt_holding_item_resource, 1);
             belt_item.Init(item);
             belt.item_holder.moving_item = belt_save.belt_item_is_moving;
             belt_item.Position = belt_save.belt_item_position;
@@ -413,7 +413,7 @@ public partial class IslandObjectSaveManager : Node2D
 
         if (belt.item_holder.hasBeltItem())
         {
-            belt_save.belt_holding_item = belt.item_holder.GetBeltItem().item.item_info;
+            belt_save.belt_holding_item_resource = belt.item_holder.GetBeltItem().item.resource;
             belt_save.belt_item_is_moving = belt.item_holder.moving_item;
             belt_save.belt_item_position = belt.item_holder.GetBeltItem().Position;
         }

@@ -6,6 +6,6 @@ public partial class ProcessedType : ItemType
 {
     public ProcessedType()
     {
-        type = ItemInfo.Type.PROCESSED;
+        type = ItemResource.TYPE.PROCESSED;
     }
 }

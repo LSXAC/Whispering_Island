@@ -5,12 +5,12 @@ using Godot;
 using Godot.Collections;
 
 [GlobalClass]
-public partial class ItemInfo : Resource
+public partial class ItemResource : Resource
 {
     [Export]
     public Array<ItemType> item_types_arr;
 
-    public enum Type
+    public enum TYPE
     {
         RESOURCE,
         TOOL,
@@ -28,7 +28,7 @@ public partial class ItemInfo : Resource
         SHOES
     };
 
-    public enum Type_Level
+    public enum TYPE_LEVEL
     {
         Hand,
         Wood,
@@ -62,7 +62,7 @@ public partial class ItemInfo : Resource
     public float value;
 
     [Export]
-    public Type_Level type_level;
+    public TYPE_LEVEL type_level;
 
     [Export]
     public StatsPanel.stat_types use_type;
@@ -70,7 +70,7 @@ public partial class ItemInfo : Resource
     [Export]
     public Array<ItemStats> item_stats = new Array<ItemStats>();
 
-    public bool HasType(Type type)
+    public bool HasType(TYPE type)
     {
         foreach (ItemType item_type in item_types_arr)
             if (item_type.type == type)
@@ -78,7 +78,7 @@ public partial class ItemInfo : Resource
         return false;
     }
 
-    public int GetTypeIndex(Type type)
+    public int GetTypeIndex(TYPE type)
     {
         for (int i = 0; i < item_types_arr.Count; i++)
             if (item_types_arr[i].type == type)

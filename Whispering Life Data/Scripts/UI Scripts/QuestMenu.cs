@@ -38,7 +38,7 @@ public partial class QuestMenu : CanvasLayer
 
         quest_name_label.Text = TranslationServer.Translate(quest.quest_name);
         quest_description_label.Text = TranslationServer.Translate(quest.quest_description);
-        CreateLabels(quest.quest_items);
+        CreateLabels(quest.required_items);
     }
 
     public void ResetParent()
@@ -98,7 +98,7 @@ public partial class QuestMenu : CanvasLayer
             + TranslationServer.Translate(
                 QuestManager.instance.quests[QuestManager.current_quest_id].quest_description
             );
-        CreateLabels(QuestManager.instance.quests[QuestManager.current_quest_id].quest_items);
+        CreateLabels(QuestManager.instance.quests[QuestManager.current_quest_id].required_items);
 
         if (QuestManager.instance.CheckQuestComplete())
             complete_button.Disabled = false;
@@ -108,15 +108,15 @@ public partial class QuestMenu : CanvasLayer
 
     public void CreateLabels(Array<Item> items)
     {
-        Array<Item> items_in_inventory = Inventory.instance.GetListOfItemsInInventory();
-        foreach (Item i in items)
+        Array<Item> items_in_inventory = PlayerInventoryUI.instance.GetListOfItemsInInventory();
+        foreach (Item item in items)
         {
             h_box_item c_label = (h_box_item)h_box_item.Instantiate();
-            Array<Item> iii = Inventory.instance.GetItemFromList(items_in_inventory, i);
+            Array<Item> iii = PlayerInventoryUI.instance.GetItemFromList(items_in_inventory, item);
             if (QuestManager.next_quest_is_doubled_items)
-                c_label.InitItemUI(i.item_info.item_name, i.amount, i.item_info.texture);
+                c_label.InitItemUI(item.resource.item_name, item.amount, item.resource.texture);
             else
-                c_label.InitItemUI(i.item_info.item_name, i.amount * 2, i.item_info.texture);
+                c_label.InitItemUI(item.resource.item_name, item.amount * 2, item.resource.texture);
 
             quest_label_parent.AddChild(c_label);
             c_label.Alignment = BoxContainer.AlignmentMode.Center;
@@ -124,17 +124,17 @@ public partial class QuestMenu : CanvasLayer
             {
                 if (QuestManager.next_quest_is_doubled_items)
                     c_label.item_label.Text =
-                        TranslationServer.Translate(i.item_info.item_name)
+                        TranslationServer.Translate(item.resource.item_name)
                         + " - "
                         + "0x /"
-                        + (i.amount * 2)
+                        + (item.amount * 2)
                         + "x";
                 else
                     c_label.item_label.Text =
-                        TranslationServer.Translate(i.item_info.item_name)
+                        TranslationServer.Translate(item.resource.item_name)
                         + " - "
                         + "0x /"
-                        + i.amount
+                        + item.amount
                         + "x";
                 continue;
             }
@@ -146,31 +146,31 @@ public partial class QuestMenu : CanvasLayer
 
             if (QuestManager.next_quest_is_doubled_items)
                 c_label.item_label.Text =
-                    TranslationServer.Translate(i.item_info.item_name)
+                    TranslationServer.Translate(item.resource.item_name)
                     + " - "
                     + amount
                     + "x /"
-                    + (i.amount * 2)
+                    + (item.amount * 2)
                     + "x";
             else
                 c_label.item_label.Text =
-                    TranslationServer.Translate(i.item_info.item_name)
+                    TranslationServer.Translate(item.resource.item_name)
                     + " - "
                     + amount
                     + "x /"
-                    + i.amount
+                    + item.amount
                     + "x";
 
             if (QuestManager.next_quest_is_doubled_items)
             {
-                if (amount >= i.amount * 2)
+                if (amount >= item.amount * 2)
                     c_label.ChangeColor(global::h_box_item.colorType.green);
                 else
                     c_label.ChangeColor(global::h_box_item.colorType.white);
             }
             else
             {
-                if (amount >= i.amount)
+                if (amount >= item.amount)
                     c_label.ChangeColor(global::h_box_item.colorType.green);
                 else
                     c_label.ChangeColor(global::h_box_item.colorType.white);

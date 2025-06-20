@@ -12,7 +12,7 @@ public partial class QuestInfo : Resource
     public string quest_description;
 
     [Export]
-    public Array<Item> quest_items;
+    public Array<Item> required_items;
 
     [Export]
     public int quest_time;

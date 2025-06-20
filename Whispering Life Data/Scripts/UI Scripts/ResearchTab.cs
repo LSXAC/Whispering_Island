@@ -58,10 +58,12 @@ public partial class ResearchTab : ColorRect
         if (research_slot_item != null)
         {
             research_slot.SetItem(
-                Inventory.ITEM_TYPES[(Inventory.ITEM_ID)research_slot_item.item_id],
-                research_slot_item.amount
+                new Item(
+                    Inventory.ITEM_TYPES[(Inventory.ITEM_ID)research_slot_item.item_id],
+                    research_slot_item.amount
+                )
             );
-            SetText(research_slot.GetSlotItem().item_info);
+            SetText(research_slot.GetSlotItemUI().item.resource);
         }
         else
         {
@@ -82,12 +84,12 @@ public partial class ResearchTab : ColorRect
             lts.QueueFree();
     }
 
-    private void SetText(ItemInfo item_info)
+    private void SetText(ItemResource item_resource)
     {
         foreach (LevelTab lts in tab_container.GetChildren())
             lts.QueueFree();
 
-        Inventory.ITEM_ID id = item_info.item_id;
+        Inventory.ITEM_ID id = item_resource.item_id;
 
         if (!Database.researchs.ContainsKey(id))
             return;
@@ -149,8 +151,8 @@ public partial class ResearchTab : ColorRect
 
     public void OnResearchFinished()
     {
-        ItemInfo item_info = research_slot.GetSlotItem().item_info;
-        Inventory.ITEM_ID id = item_info.item_id;
+        ItemResource item_resource = research_slot.GetSlotItemUI().item.resource;
+        Inventory.ITEM_ID id = item_resource.item_id;
 
         Debug.Print(tab_container.CurrentTab.ToString());
 
@@ -166,7 +168,7 @@ public partial class ResearchTab : ColorRect
             );
         Research_Points += 1;
         Debug.Print(research_saves[id].research_level + " current level <:");
-        SetText(research_slot.GetSlotItem().item_info);
+        SetText(research_slot.GetSlotItemUI().item.resource);
         tab_container.GetChild(0).QueueFree();
         working_panel.Visible = false;
     }

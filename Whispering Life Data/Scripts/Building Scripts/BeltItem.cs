@@ -26,10 +26,10 @@ public partial class BeltItem : CharacterBody2D
         MoveAndSlide();
     }
 
-    public ItemInfo GetItemInfo()
+    public ItemResource GetItemResource()
     {
         if (item != null)
-            return item.item_info;
+            return item.resource;
         return null;
     }
 
@@ -37,7 +37,7 @@ public partial class BeltItem : CharacterBody2D
     {
         sprite = GetNode<Sprite2D>("BellItemSprite");
         this.item = item;
-        this.sprite.Texture = item.item_info.texture;
+        this.sprite.Texture = item.resource.texture;
     }
 
     public void InitAtPosition(Vector2 position)

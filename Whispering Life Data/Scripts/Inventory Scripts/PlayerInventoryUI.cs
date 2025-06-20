@@ -4,7 +4,7 @@ using System.Transactions;
 public partial class PlayerInventoryUI : Inventory
 {
     public static PlayerInventoryUI instance = null;
-    public static SlotItem clicked_slot_item = null;
+    public static SlotItemUI clicked_slot_item_ui = null;
 
     public override void _Ready()
     {
@@ -16,16 +16,16 @@ public partial class PlayerInventoryUI : Inventory
 
     public override void _PhysicsProcess(double delta)
     {
-        if (clicked_slot_item == null)
+        if (clicked_slot_item_ui == null)
             return;
 
         if (GameManager.gameover)
         {
-            clicked_slot_item.Free();
-            clicked_slot_item = null;
+            clicked_slot_item_ui.Free();
+            clicked_slot_item_ui = null;
             return;
         }
 
-        clicked_slot_item.GlobalPosition = GetGlobalMousePosition();
+        clicked_slot_item_ui.GlobalPosition = GetGlobalMousePosition();
     }
 }

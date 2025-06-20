@@ -37,7 +37,7 @@ public partial class BuildMenuListObject : Control
             Recipe recipe = new Recipe();
             recipe = building_type.recipe;
 
-            if (item_row_manager.CanCreate(recipe.requiered_items))
+            if (item_row_manager.CanCreate(recipe.required_items))
                 build_button.Disabled = false;
             else
                 build_button.Disabled = true;

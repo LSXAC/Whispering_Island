@@ -11,7 +11,7 @@ public partial class EquipmentSelectBar : Container
     [Export]
     public Slot[] select_slots = new Slot[4];
 
-    public SlotItem current_selected_slot_item = null;
+    public SlotItemUI current_selected_slot_item_ui = null;
 
     public static int current_selected_slot = 0;
 
@@ -35,25 +35,25 @@ public partial class EquipmentSelectBar : Container
             SelectSelectSlot(3);
     }
 
-    public SlotItem GetSelectedSlotItem()
+    public SlotItemUI GetSelectedSlotItemUI()
     {
-        if (current_selected_slot_item == null)
+        if (current_selected_slot_item_ui == null)
             Debug.Print("No Item selected in Selectbar");
 
-        return current_selected_slot_item;
+        return current_selected_slot_item_ui;
     }
 
-    public ItemInfo.Type_Level GetSelectedTypeLevel()
+    public ItemResource.TYPE_LEVEL GetSelectedTypeLevel()
     {
-        if (GetSelectedSlotItem() != null)
-            return GetSelectedSlotItem().item.item_info.type_level;
-        return ItemInfo.Type_Level.Hand;
+        if (GetSelectedSlotItemUI() != null)
+            return GetSelectedSlotItemUI().item.resource.type_level;
+        return ItemResource.TYPE_LEVEL.Hand;
     }
 
     public bool HasSameUseType(StatsPanel.stat_types type)
     {
-        if (GetSelectedSlotItem() != null)
-            if (GetSelectedSlotItem().item.item_info.use_type == type)
+        if (GetSelectedSlotItemUI() != null)
+            if (GetSelectedSlotItemUI().item.resource.use_type == type)
                 return true;
             else
                 return false;
@@ -65,7 +65,7 @@ public partial class EquipmentSelectBar : Container
     {
         select_slots[current_selected_slot].GetParent().GetParent<ColorRect>().Color = normal_color;
         select_slots[index].GetParent().GetParent<ColorRect>().Color = selected_color;
-        current_selected_slot_item = select_slots[index].GetSlotItem();
+        current_selected_slot_item_ui = select_slots[index].GetSlotItemUI();
         current_selected_slot = index;
 
         if (EquipmentPanel.instance != null)

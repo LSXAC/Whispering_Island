@@ -6,11 +6,11 @@ using Godot.Collections;
 public partial class Recipe : Resource
 {
     [Export]
-    public Array<Item> requiered_items;
+    public Array<Item> required_items;
 
     [Export]
     public Item output_item;
 
     [Export]
-    public Array<UnlockRequirement> unlockRequirements;
+    public Array<UnlockRequirement> unlock_requirements;
 }

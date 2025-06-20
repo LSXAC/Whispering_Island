@@ -6,10 +6,10 @@ using Godot.Collections;
 public partial class ItemResearchLevel : Resource
 {
     [Export]
-    public Array<ItemInfo> items_unlocked_after_research;
+    public Array<ItemResource> unlocked_item_resources_after_research;
 
-    private Array<ItemInfo> getUnlockedItemInfosArray()
+    private Array<ItemResource> getUnlockedItemInfosArray()
     {
-        return items_unlocked_after_research;
+        return unlocked_item_resources_after_research;
     }
 }

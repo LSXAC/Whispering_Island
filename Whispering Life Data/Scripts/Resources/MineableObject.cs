@@ -14,7 +14,7 @@ public partial class MineableObject : placeable_building
     public StatsPanel.stat_types type;
 
     [Export]
-    public ItemInfo.Type_Level type_level = ItemInfo.Type_Level.Hand;
+    public ItemResource.TYPE_LEVEL type_level = ItemResource.TYPE_LEVEL.Hand;
 
     [Export]
     public int max_durability = 3;
@@ -29,7 +29,7 @@ public partial class MineableObject : placeable_building
     private int mining_bonus = 2;
 
     [Export]
-    private ItemInfo item_info;
+    private ItemResource item_resource;
 
     [Export]
     public bool drops_extra_item;
@@ -38,7 +38,7 @@ public partial class MineableObject : placeable_building
     public int extra_item_amount = 0;
 
     [Export]
-    public ItemInfo extra_item_info;
+    public ItemResource extra_item_resource;
 
     [Export]
     public GpuParticles2D gpu_particles;
@@ -152,7 +152,7 @@ public partial class MineableObject : placeable_building
             if (
                 !PlayerInventoryUI.instance.CanReceiveItem(
                     new Item(
-                        item_info,
+                        item_resource,
                         (int)(
                             Player.instance.player_stats.stat_amounts[(int)type]
                             * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
@@ -178,7 +178,7 @@ public partial class MineableObject : placeable_building
                 ) + current_durability;
             if (
                 !PlayerInventoryUI.instance.CanReceiveItem(
-                    new Item(item_info, amount),
+                    new Item(item_resource, amount),
                     PlayerInventoryUI.instance.inventory_items
                 )
             )
@@ -192,7 +192,7 @@ public partial class MineableObject : placeable_building
             {
                 if (
                     !PlayerInventoryUI.instance.CanReceiveItem(
-                        new Item(extra_item_info, extra_item_amount),
+                        new Item(extra_item_resource, extra_item_amount),
                         PlayerInventoryUI.instance.inventory_items
                     )
                 )
@@ -233,16 +233,16 @@ public partial class MineableObject : placeable_building
         );
 
         //Selected Item Durability + Break -------------------------------------------------------------
-        if (PlayerUI.instance.equipmentSelectBar.GetSelectedSlotItem() != null)
+        if (PlayerUI.instance.equipmentSelectBar.GetSelectedSlotItemUI() != null)
             if (
                 PlayerUI
-                    .instance.equipmentSelectBar.GetSelectedSlotItem()
-                    .item.item_info.has_durability
+                    .instance.equipmentSelectBar.GetSelectedSlotItemUI()
+                    .item.resource.has_durability
             )
             {
                 EquipmentPanel
                     .instance.slots_tool[EquipmentSelectBar.current_selected_slot]
-                    .GetSlotItem()
+                    .GetSlotItemUI()
                     .current_durability -= (int)(
                     Player.instance.player_stats.stat_amounts[(int)type]
                     * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
@@ -265,10 +265,10 @@ public partial class MineableObject : placeable_building
                 "Bonus: +"
                     + amount
                     + " "
-                    + TranslationServer.Translate(item_info.item_name.ToString())
+                    + TranslationServer.Translate(item_resource.item_name.ToString())
             );
             PlayerInventoryUI.instance.AddItem(
-                new Item(item_info, amount),
+                new Item(item_resource, amount),
                 PlayerInventoryUI.instance.inventory_items
             );
 
@@ -278,10 +278,10 @@ public partial class MineableObject : placeable_building
                     "Bonus: +"
                         + extra_item_amount
                         + " "
-                        + TranslationServer.Translate(extra_item_info.item_name.ToString())
+                        + TranslationServer.Translate(extra_item_resource.item_name.ToString())
                 );
                 PlayerInventoryUI.instance.AddItem(
-                    new Item(extra_item_info, extra_item_amount),
+                    new Item(extra_item_resource, extra_item_amount),
                     PlayerInventoryUI.instance.inventory_items
                 );
             }
@@ -307,11 +307,11 @@ public partial class MineableObject : placeable_building
                     )
                 )
                 + " "
-                + TranslationServer.Translate(item_info.item_name.ToString())
+                + TranslationServer.Translate(item_resource.item_name.ToString())
         );
         PlayerInventoryUI.instance.AddItem(
             new Item(
-                item_info,
+                item_resource,
                 (int)(
                     Player.instance.player_stats.stat_amounts[(int)type]
                     * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)

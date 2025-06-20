@@ -23,11 +23,11 @@ public partial class CraftingMenu : PanelContainer
         int times = 0;
         for (int i = 0; i < crafting_recipies.Count; i++)
         {
-            if (crafting_recipies[i].unlockRequirements != null)
-                if (crafting_recipies[i].unlockRequirements.Count > 0)
+            if (crafting_recipies[i].unlock_requirements != null)
+                if (crafting_recipies[i].unlock_requirements.Count > 0)
                     if (
                         !GlobalFunctions.CheckResearchRequirements(
-                            crafting_recipies[i].unlockRequirements
+                            crafting_recipies[i].unlock_requirements
                         )
                     )
                         continue;
@@ -37,14 +37,14 @@ public partial class CraftingMenu : PanelContainer
             itemRecipeUI irUI = (itemRecipeUI)recipe_slot.Instantiate();
             irUI.craftingMenu = this;
             irUI.output_item_hbox.InitItemUI(
-                recipe.output_item.item_info.item_name,
+                recipe.output_item.resource.item_name,
                 recipe.output_item.amount,
-                recipe.output_item.item_info.texture
+                recipe.output_item.resource.texture
             );
             parent.AddChild(irUI);
 
             //Get whole Inventory onces, to save performance, instead of checken for every item the
-            irUI.InitResourceItems(recipe.requiered_items, recipe.output_item);
+            irUI.InitResourceItems(recipe.required_items, recipe.output_item);
             irUI.button_id = i;
             irUI.craft_button.Pressed += () => irUI.CraftItem();
 

@@ -52,10 +52,10 @@ public partial class FurnaceTab : SlotUpdater
         instance = this;
     }
 
-    public override void UpdateSlot(int index, SlotItem ii)
+    public override void UpdateSlot(int index, SlotItemUI slot_item_ui)
     {
         ClearSlot(index);
-        SetInfo((SlotType)index, ii);
+        SetInfo((SlotType)index, slot_item_ui);
     }
 
     public override void ClearSlot(int index)
@@ -74,7 +74,7 @@ public partial class FurnaceTab : SlotUpdater
         }
     }
 
-    public override ItemInfo GetItemInfo(int index)
+    public override ItemResource GetItemResource(int index)
     {
         if (process_building == null)
             throw new Exception("No Process Building set");
@@ -87,7 +87,7 @@ public partial class FurnaceTab : SlotUpdater
         process_building.item_array[(int)type] = null;
     }
 
-    public void SetInfo(SlotType type, SlotItem ii)
+    public void SetInfo(SlotType type, SlotItemUI slot_item_ui)
     {
         UpdateFurnaceUI();
     }
@@ -165,7 +165,7 @@ public partial class FurnaceTab : SlotUpdater
             if (process_building.item_array[(int)SlotType.EXPORT].amount > 0)
                 export_slot.SetItem(
                     new Item(
-                        GetItemInfo((int)SlotType.EXPORT),
+                        GetItemResource((int)SlotType.EXPORT),
                         process_building.item_array[(int)SlotType.EXPORT].amount
                     )
                 );
@@ -174,7 +174,7 @@ public partial class FurnaceTab : SlotUpdater
             if (process_building.item_array[(int)SlotType.IMPORT].amount > 0)
                 import_slot.SetItem(
                     new Item(
-                        GetItemInfo((int)SlotType.IMPORT),
+                        GetItemResource((int)SlotType.IMPORT),
                         process_building.item_array[(int)SlotType.IMPORT].amount
                     )
                 );
@@ -183,7 +183,7 @@ public partial class FurnaceTab : SlotUpdater
             if (process_building.item_array[(int)SlotType.FUEL].amount > 0)
                 fuel_slot.SetItem(
                     new Item(
-                        GetItemInfo((int)SlotType.FUEL),
+                        GetItemResource((int)SlotType.FUEL),
                         process_building.item_array[(int)SlotType.FUEL].amount
                     )
                 );
@@ -247,39 +247,39 @@ public partial class FurnaceTab : SlotUpdater
 
     private void OvertakeItems()
     {
-        if (export_slot.GetSlotItem() == null)
+        if (export_slot.GetSlotItemUI() == null)
         {
             ClearInfo(SlotType.EXPORT);
         }
         else
         {
             process_building.item_array[(int)SlotType.EXPORT] = new ItemSave(
-                (int)export_slot.GetSlotItem().item.item_info.item_id,
-                export_slot.GetSlotItem().item.amount
+                (int)export_slot.GetSlotItemUI().item.resource.item_id,
+                export_slot.GetSlotItemUI().item.amount
             );
         }
 
-        if (import_slot.GetSlotItem() == null)
+        if (import_slot.GetSlotItemUI() == null)
         {
             ClearInfo(SlotType.IMPORT);
         }
         else
         {
             process_building.item_array[(int)SlotType.IMPORT] = new ItemSave(
-                (int)import_slot.GetSlotItem().item.item_info.item_id,
-                import_slot.GetSlotItem().item.amount
+                (int)import_slot.GetSlotItemUI().item.resource.item_id,
+                import_slot.GetSlotItemUI().item.amount
             );
         }
 
-        if (fuel_slot.GetSlotItem() == null)
+        if (fuel_slot.GetSlotItemUI() == null)
         {
             ClearInfo(SlotType.FUEL);
         }
         else
         {
             process_building.item_array[(int)SlotType.FUEL] = new ItemSave(
-                (int)fuel_slot.GetSlotItem().item.item_info.item_id,
-                fuel_slot.GetSlotItem().item.amount
+                (int)fuel_slot.GetSlotItemUI().item.resource.item_id,
+                fuel_slot.GetSlotItemUI().item.amount
             );
         }
     }

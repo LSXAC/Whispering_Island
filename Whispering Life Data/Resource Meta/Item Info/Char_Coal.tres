@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=8 format=3 uid="uid://cfqb2p8ati1jo"]
 
 [ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_3tq4c"]
-[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_fu6sg"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemResource.cs" id="1_fu6sg"]
 [ext_resource type="Resource" uid="uid://bm70n0hc2huct" path="res://Resource Meta/Item Info/Item_Types/RM_Burnable_Type_120.tres" id="2_or8g4"]
 [ext_resource type="Texture2D" uid="uid://dwaejibm3nml2" path="res://Sprites/Items/Icons_3rd/Char_Coal.png" id="2_tqr2b"]
 [ext_resource type="Resource" uid="uid://b4j8cjn03te4o" path="res://Resource Meta/Item Info/Item_Types/RM_Smeltable_Type_Classic.tres" id="3_5goo7"]
