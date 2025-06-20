@@ -50,7 +50,7 @@ public partial class ItemInfo : Resource
     public string item_name;
 
     [Export]
-    public InventoryBase.ITEM_ID unique_id;
+    public Inventory.ITEM_ID item_id;
 
     [Export]
     public string item_description;

@@ -5,8 +5,8 @@ using Godot.Collections;
 
 public partial class ResearchTab : ColorRect
 {
-    public static Dictionary<InventoryBase.ITEM_ID, ResearchSave> research_saves =
-        new Dictionary<InventoryBase.ITEM_ID, ResearchSave>();
+    public static Dictionary<Inventory.ITEM_ID, ResearchSave> research_saves =
+        new Dictionary<Inventory.ITEM_ID, ResearchSave>();
 
     [Export]
     public TabContainer tab_container;
@@ -58,10 +58,10 @@ public partial class ResearchTab : ColorRect
         if (research_slot_item != null)
         {
             research_slot.SetItem(
-                Inventory.instance.item_Types[(InventoryBase.ITEM_ID)research_slot_item.item_id],
+                Inventory.ITEM_TYPES[(Inventory.ITEM_ID)research_slot_item.item_id],
                 research_slot_item.amount
             );
-            SetText(research_slot.GetItem().item_info);
+            SetText(research_slot.GetSlotItem().item_info);
         }
         else
         {
@@ -87,12 +87,12 @@ public partial class ResearchTab : ColorRect
         foreach (LevelTab lts in tab_container.GetChildren())
             lts.QueueFree();
 
-        InventoryBase.ITEM_ID id = item_info.unique_id;
+        Inventory.ITEM_ID id = item_info.item_id;
 
         if (!Database.researchs.ContainsKey(id))
             return;
 
-        for (int i = 1; i < Database.researchs[id].research_levels.Count + 1; i++)
+        for (int i = 1; i < Database.researchs[id].item_research_levels.Count + 1; i++)
         {
             if (research_saves.ContainsKey(id))
                 if (research_saves[id].research_level >= i)
@@ -103,17 +103,14 @@ public partial class ResearchTab : ColorRect
             lt.UpdateLevelTab(
                 Database.researchs[id].translation_string,
                 i,
-                Database.researchs[id].research_levels[i - 1], //Bonus String
+                Database.researchs[id].item_research_levels[i - 1], //Bonus String
                 (Database.UPGRADE_LEVEL)i
             );
         }
         item_name_label.Text =
             ""
             + TranslationServer.Translate(
-                Inventory
-                    .instance
-                    .item_Types[(InventoryBase.ITEM_ID)research_slot_item.item_id]
-                    .item_name
+                Inventory.ITEM_TYPES[(Inventory.ITEM_ID)research_slot_item.item_id].item_name
             );
         if (research_saves.ContainsKey(id))
             item_level_label.Text =
@@ -152,8 +149,8 @@ public partial class ResearchTab : ColorRect
 
     public void OnResearchFinished()
     {
-        ItemInfo item_info = research_slot.GetItem().item_info;
-        InventoryBase.ITEM_ID id = item_info.unique_id;
+        ItemInfo item_info = research_slot.GetSlotItem().item_info;
+        Inventory.ITEM_ID id = item_info.item_id;
 
         Debug.Print(tab_container.CurrentTab.ToString());
 
@@ -169,7 +166,7 @@ public partial class ResearchTab : ColorRect
             );
         Research_Points += 1;
         Debug.Print(research_saves[id].research_level + " current level <:");
-        SetText(research_slot.GetItem().item_info);
+        SetText(research_slot.GetSlotItem().item_info);
         tab_container.GetChild(0).QueueFree();
         working_panel.Visible = false;
     }

@@ -7,5 +7,5 @@ public partial class UnlockRequirement : Resource
     public Database.UPGRADE_LEVEL required_level = Database.UPGRADE_LEVEL.Level1;
 
     [Export]
-    public InventoryBase.ITEM_ID item_id;
+    public Inventory.ITEM_ID item_id;
 }

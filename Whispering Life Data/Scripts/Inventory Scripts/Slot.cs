@@ -30,10 +30,10 @@ public partial class Slot : Button
             if (btn.ButtonMask != MouseButtonMask.Left && btn.ButtonMask != MouseButtonMask.Right)
                 return;
 
-            if (GetParent().GetParent() is Inventory)
+            if (GetParent().GetParent() is PlayerInventoryUI)
             {
-                item_array = ((InventoryBase)GetParent().GetParent()).inventory_items;
-                slotUpdater = (InventoryBase)GetParent().GetParent();
+                item_array = ((Inventory)GetParent().GetParent()).inventory_items;
+                slotUpdater = (Inventory)GetParent().GetParent();
                 OnSlotButton(btn);
             }
 
@@ -47,11 +47,11 @@ public partial class Slot : Button
                     OnSlotButton(btn);
             }
 
-            if (GetParent().GetParent() is ChestInventory)
+            if (GetParent().GetParent() is ChestInventoryUI)
             {
-                item_array = ((InventoryBase)GetParent().GetParent()).inventory_items;
-                slotUpdater = (InventoryBase)GetParent().GetParent();
-                chest = ChestInventory.current_chest;
+                item_array = ((Inventory)GetParent().GetParent()).inventory_items;
+                slotUpdater = (Inventory)GetParent().GetParent();
+                chest = ChestInventoryUI.current_chest;
                 OnSlotButton(btn);
             }
 
@@ -89,76 +89,75 @@ public partial class Slot : Button
         Text = TranslationServer.Translate(label_translation_string);
     }
 
-    public void SetItem(ItemInfo item_info, int amount, int durability = -1)
+    public void SetItem(Item item, int durability = -1)
     {
-        InventoryItem ii = new InventoryItem();
-        ii.init(item_info, durability);
-        ii.amount = amount;
-        ii.UpdateAmountLabel();
+        SlotItem slot_item = new SlotItem();
+        slot_item.init(item, durability);
+        slot_item.UpdateAmountLabel();
         if (durability != -1)
-            ii.SetDurability(durability);
-        AddChild(ii);
-        if (amount == 0)
+            slot_item.SetDurability(durability);
+        AddChild(slot_item);
+        if (item.amount == 0)
             ClearItem();
     }
 
-    public void UpdateItem(ItemInfo item_info, int amount, int durability)
+    public void UpdateItem(Item item, int durability)
     {
-        if (GetItem() != null)
+        if (GetSlotItem() != null)
         {
-            if (item_info == GetItem().item_info)
+            if (item.item_info == GetSlotItem().item.item_info)
             {
                 if (durability != -1)
-                    GetItem().SetDurability(durability);
+                    GetSlotItem().SetDurability(durability);
 
-                GetItem().amount = amount;
-                GetItem().UpdateAmountLabel();
+                GetSlotItem().item.amount = item.amount;
+                GetSlotItem().UpdateAmountLabel();
             }
             else
             {
-                GetItem().QueueFree();
-                SetItem(item_info, amount, durability);
+                GetSlotItem().QueueFree();
+                SetItem(item, durability);
             }
         }
         else
-            SetItem(item_info, amount, durability);
+            SetItem(item, durability);
     }
 
-    public InventoryItem GetItem()
+    public SlotItem GetSlotItem()
     {
         if (GetChildCount() > 0)
-            return (InventoryItem)GetChild(0);
+            return (SlotItem)GetChild(0);
         return null;
     }
 
     public void ClearItem()
     {
-        if (GetItem() == null)
+        if (GetSlotItem() == null)
             return;
-        GetItem().QueueFree();
+        GetSlotItem().QueueFree();
     }
 
     public void OnEquipSlotButton(int index)
     {
-        if (Inventory.clicked_item == null)
+        if (PlayerInventoryUI.clicked_slot_item == null)
         {
-            if (GetItem() != null)
+            if (GetSlotItem() != null)
             {
-                Debug.Print(GetItem().current_durability.ToString());
-                CreateClickedItem(false, GetItem().current_durability);
-                if (GetItem().item_info.HasType(ItemInfo.Type.TOOL))
+                Debug.Print(GetSlotItem().current_durability.ToString());
+                CreateClickedItem(false, GetSlotItem().current_durability);
+                if (GetSlotItem().item.item_info.HasType(ItemInfo.Type.TOOL))
                 {
                     EquipmentPanel.instance.equipped_tools[index] = null;
                     EquipmentPanel.instance.slots_tool[index].ClearItem();
                     PlayerUI.instance.equipmentSelectBar.select_slots[index].ClearItem();
                     if (EquipmentSelectBar.current_selected_slot == index)
-                        PlayerUI.instance.equipmentSelectBar.current_selected_item = null;
+                        PlayerUI.instance.equipmentSelectBar.current_selected_slot_item = null;
                 }
                 if (
-                    GetItem().item_info.HasType(ItemInfo.Type.HEAD)
-                    || GetItem().item_info.HasType(ItemInfo.Type.CHESTPLATE)
-                    || GetItem().item_info.HasType(ItemInfo.Type.LEGGINGS)
-                    || GetItem().item_info.HasType(ItemInfo.Type.SHOES)
+                    GetSlotItem().item.item_info.HasType(ItemInfo.Type.HEAD)
+                    || GetSlotItem().item.item_info.HasType(ItemInfo.Type.CHESTPLATE)
+                    || GetSlotItem().item.item_info.HasType(ItemInfo.Type.LEGGINGS)
+                    || GetSlotItem().item.item_info.HasType(ItemInfo.Type.SHOES)
                 )
                 {
                     EquipmentPanel.instance.equipped_armor[index] = null;
@@ -169,10 +168,10 @@ public partial class Slot : Button
         }
         else
         {
-            if (GetItem() == null)
+            if (GetSlotItem() == null)
             {
                 if (
-                    Inventory.clicked_item.item_info.HasType(slot_type)
+                    PlayerInventoryUI.clicked_slot_item.item.item_info.HasType(slot_type)
                     && (
                         slot_type == ItemInfo.Type.HEAD
                         || slot_type == ItemInfo.Type.CHESTPLATE
@@ -186,29 +185,27 @@ public partial class Slot : Button
                 }
 
                 if (
-                    Inventory.clicked_item.item_info.HasType(slot_type)
+                    PlayerInventoryUI.clicked_slot_item.item.item_info.HasType(slot_type)
                     && slot_type == ItemInfo.Type.TOOL
                 )
                 {
                     EquipmentPanel.instance.equipped_tools[index] = new ItemSave(
-                        (int)Inventory.clicked_item.item_info.unique_id,
-                        Inventory.clicked_item.amount,
-                        Inventory.clicked_item.current_durability
+                        (int)PlayerInventoryUI.clicked_slot_item.item.item_info.item_id,
+                        PlayerInventoryUI.clicked_slot_item.item.amount,
+                        PlayerInventoryUI.clicked_slot_item.current_durability
                     );
                     EquipmentPanel
                         .instance.slots_tool[index]
                         .SetItem(
-                            Inventory.clicked_item.item_info,
-                            Inventory.clicked_item.amount,
-                            Inventory.clicked_item.current_durability
+                            PlayerInventoryUI.clicked_slot_item.item,
+                            PlayerInventoryUI.clicked_slot_item.current_durability
                         );
 
                     PlayerUI
                         .instance.equipmentSelectBar.select_slots[index]
                         .SetItem(
-                            Inventory.clicked_item.item_info,
-                            Inventory.clicked_item.amount,
-                            Inventory.clicked_item.current_durability
+                            PlayerInventoryUI.clicked_slot_item.item,
+                            PlayerInventoryUI.clicked_slot_item.current_durability
                         );
                     if (EquipmentSelectBar.current_selected_slot == index)
                         PlayerUI.instance.equipmentSelectBar.SelectSelectSlot(index);
@@ -224,24 +221,24 @@ public partial class Slot : Button
     private void OnTakeItemFromArmorSlot(int index)
     {
         EquipmentPanel.instance.equipped_armor[index] = new ItemSave(
-            (int)Inventory.clicked_item.item_info.unique_id,
-            Inventory.clicked_item.amount,
-            Inventory.clicked_item.current_durability
+            (int)PlayerInventoryUI.clicked_slot_item.item.item_info.item_id,
+            PlayerInventoryUI.clicked_slot_item.item.amount,
+            PlayerInventoryUI.clicked_slot_item.current_durability
         );
         EquipmentPanel
             .instance.slots_armor[index]
-            .SetItem(Inventory.clicked_item.item_info, Inventory.clicked_item.amount);
+            .SetItem(PlayerInventoryUI.clicked_slot_item.item);
         ClearClickedItem();
         EquipmentPanel.instance.CalculateStatsFromEquipment();
     }
 
     public void OnSlotButton(InputEventMouseButton @btn)
     {
-        if (Inventory.clicked_item == null)
+        if (PlayerInventoryUI.clicked_slot_item == null)
         {
-            if (GetItem() != null)
+            if (GetSlotItem() != null)
             {
-                if (ItemCanBeHalfed(GetItem()))
+                if (ItemCanBeHalfed(GetSlotItem()))
                     if (@btn.ButtonMask == MouseButtonMask.Right)
                     {
                         CreateClickedItem(halfNext: true);
@@ -251,8 +248,8 @@ public partial class Slot : Button
                         return;
                     }
 
-                if (GetItem().item_info.has_durability)
-                    CreateClickedItem(false, GetItem().current_durability);
+                if (GetSlotItem().item.item_info.has_durability)
+                    CreateClickedItem(false, GetSlotItem().current_durability);
                 else
                     CreateClickedItem();
                 ///////////////////////
@@ -262,32 +259,32 @@ public partial class Slot : Button
         }
         else
         {
-            if (GetItem() == null)
+            if (GetSlotItem() == null)
             {
                 if (check_slot_type)
-                    if (!Inventory.clicked_item.item_info.HasType(slot_type))
+                    if (!PlayerInventoryUI.clicked_slot_item.item.item_info.HasType(slot_type))
                         return;
                 if (is_export_slot)
                     return;
 
-                if (Inventory.clicked_item.amount > 0)
+                if (PlayerInventoryUI.clicked_slot_item.item.amount > 0)
                     if (btn.ButtonMask == MouseButtonMask.Right)
                     {
                         NewSlot(
                             item_array,
-                            (int)Inventory.clicked_item.item_info.unique_id,
+                            (int)PlayerInventoryUI.clicked_slot_item.item.item_info.item_id,
                             1,
-                            Inventory.clicked_item.current_durability
+                            PlayerInventoryUI.clicked_slot_item.current_durability
                         );
-                        Inventory.clicked_item.amount -= 1;
+                        PlayerInventoryUI.clicked_slot_item.item.amount -= 1;
                         return;
                     }
 
                 NewSlot(
                     item_array,
-                    (int)Inventory.clicked_item.item_info.unique_id,
-                    Inventory.clicked_item.amount,
-                    Inventory.clicked_item.current_durability
+                    (int)PlayerInventoryUI.clicked_slot_item.item.item_info.item_id,
+                    PlayerInventoryUI.clicked_slot_item.item.amount,
+                    PlayerInventoryUI.clicked_slot_item.current_durability
                 );
                 ClearClickedItem();
                 return;
@@ -296,67 +293,78 @@ public partial class Slot : Button
             if (slot_is_switchable)
             {
                 if (check_slot_type)
-                    if (!Inventory.clicked_item.item_info.HasType(slot_type))
+                    if (!PlayerInventoryUI.clicked_slot_item.item.item_info.HasType(slot_type))
                         return;
 
-                if (GetItem().item_info != Inventory.clicked_item.item_info)
+                if (
+                    GetSlotItem().item.item_info
+                    != PlayerInventoryUI.clicked_slot_item.item.item_info
+                )
                 {
                     //Switch Items
-                    InventoryItem ii = Inventory.clicked_item;
+                    SlotItem slot_item = PlayerInventoryUI.clicked_slot_item;
                     ClearClickedItem();
                     CreateClickedItem();
                     NewSlot(
                         item_array,
-                        (int)ii.item_info.unique_id,
-                        ii.amount,
-                        ii.current_durability
+                        (int)slot_item.item.item_info.item_id,
+                        slot_item.item.amount,
+                        slot_item.current_durability
                     );
                     return;
                 }
             }
 
-            if (GetAmountOfSlot(item_array) == Inventory.clicked_item.item_info.max_slot_amount)
+            if (
+                GetAmountOfSlot(item_array)
+                == PlayerInventoryUI.clicked_slot_item.item.item_info.max_slot_amount
+            )
                 return;
 
-            if (ItemCanBeHalfed(Inventory.clicked_item))
+            if (ItemCanBeHalfed(PlayerInventoryUI.clicked_slot_item))
                 if (btn.ButtonMask == MouseButtonMask.Right)
                 {
                     if (
-                        Inventory.clicked_item.amount + GetAmountOfSlot(item_array)
-                        <= Inventory.clicked_item.item_info.max_slot_amount
+                        PlayerInventoryUI.clicked_slot_item.item.amount
+                            + GetAmountOfSlot(item_array)
+                        <= PlayerInventoryUI.clicked_slot_item.item.item_info.max_slot_amount
                     )
                     {
                         UpdateSlot(item_array, GetAmountOfSlot(item_array) + 1);
-                        Inventory.clicked_item.amount -= 1;
+                        PlayerInventoryUI.clicked_slot_item.item.amount -= 1;
                     }
                     else
                     {
                         // 48 - 30 = 18
                         int diff =
-                            Inventory.clicked_item.item_info.max_slot_amount
+                            PlayerInventoryUI.clicked_slot_item.item.item_info.max_slot_amount
                             - GetAmountOfSlot(item_array);
 
                         UpdateSlot(item_array, GetAmountOfSlot(item_array) + diff);
-                        Inventory.clicked_item.amount -= diff;
+                        PlayerInventoryUI.clicked_slot_item.item.amount -= diff;
                     }
                     return;
                 }
 
             if ( //Check if <= slot max
-                Inventory.clicked_item.amount + GetAmountOfSlot(item_array)
-                <= Inventory.clicked_item.item_info.max_slot_amount
+                PlayerInventoryUI.clicked_slot_item.item.amount + GetAmountOfSlot(item_array)
+                <= PlayerInventoryUI.clicked_slot_item.item.item_info.max_slot_amount
             )
             {
-                UpdateSlot(item_array, GetAmountOfSlot(item_array) + Inventory.clicked_item.amount);
+                UpdateSlot(
+                    item_array,
+                    GetAmountOfSlot(item_array) + PlayerInventoryUI.clicked_slot_item.item.amount
+                );
                 ClearClickedItem();
             }
             else
             {
                 int diff =
-                    Inventory.clicked_item.item_info.max_slot_amount - GetAmountOfSlot(item_array);
+                    PlayerInventoryUI.clicked_slot_item.item.item_info.max_slot_amount
+                    - GetAmountOfSlot(item_array);
 
                 UpdateSlot(item_array, GetAmountOfSlot(item_array) + diff);
-                Inventory.clicked_item.amount -= diff;
+                PlayerInventoryUI.clicked_slot_item.item.amount -= diff;
             }
         }
     }
@@ -364,7 +372,7 @@ public partial class Slot : Button
     private void UpdateSlot(ItemSave[] i_save, int amount)
     {
         i_save[GetIndex()].amount = amount;
-        slotUpdater.UpdateSlot(GetIndex(), Inventory.clicked_item);
+        slotUpdater.UpdateSlot(GetIndex(), PlayerInventoryUI.clicked_slot_item);
     }
 
     private int GetAmountOfSlot(ItemSave[] i_save)
@@ -378,7 +386,7 @@ public partial class Slot : Button
             i_save[GetIndex()] = new ItemSave(id, amount, durability);
         else
             i_save[GetIndex()] = new ItemSave(id, amount);
-        slotUpdater.UpdateSlot(GetIndex(), Inventory.clicked_item);
+        slotUpdater.UpdateSlot(GetIndex(), PlayerInventoryUI.clicked_slot_item);
     }
 
     private void ClearSlot(ItemSave[] i_save)
@@ -389,8 +397,8 @@ public partial class Slot : Button
 
     private void ClearClickedItem()
     {
-        Inventory.clicked_item.Free();
-        Inventory.clicked_item = null;
+        PlayerInventoryUI.clicked_slot_item.Free();
+        PlayerInventoryUI.clicked_slot_item = null;
     }
 
     private int HalfAmount(int amount)
@@ -405,9 +413,9 @@ public partial class Slot : Button
 
     public void OnResearchSlotButton()
     {
-        if (Inventory.clicked_item == null)
+        if (PlayerInventoryUI.clicked_slot_item == null)
         {
-            if (GetItem() != null)
+            if (GetSlotItem() != null)
             {
                 CreateClickedItem();
                 ResearchTab.research_slot_item = null;
@@ -416,17 +424,21 @@ public partial class Slot : Button
         }
         else
         {
-            if (!Inventory.clicked_item.item_info.HasType(ItemInfo.Type.RESEARCHABLE))
+            if (
+                !PlayerInventoryUI.clicked_slot_item.item.item_info.HasType(
+                    ItemInfo.Type.RESEARCHABLE
+                )
+            )
                 return;
 
-            if (GetItem() == null)
+            if (GetSlotItem() == null)
             {
                 ResearchTab.research_slot_item = new ItemSave(
-                    (int)Inventory.clicked_item.item_info.unique_id,
+                    (int)PlayerInventoryUI.clicked_slot_item.item.item_info.item_id,
                     1
                 );
-                Inventory.clicked_item.amount -= 1;
-                if (Inventory.clicked_item.amount == 0)
+                PlayerInventoryUI.clicked_slot_item.item.amount -= 1;
+                if (PlayerInventoryUI.clicked_slot_item.item.amount == 0)
                     ClearClickedItem();
                 ResearchTab.instance.UpdateLevelTabs();
             }
@@ -435,26 +447,26 @@ public partial class Slot : Button
 
     public void CreateClickedItem(bool halfNext = false, int durability = -1)
     {
-        InventoryItem ii = new InventoryItem();
-        ii.init(GetItem().item_info, durability);
+        SlotItem slot_item = new SlotItem();
+        slot_item.init(GetSlotItem().item, durability);
         Debug.Print("Durability: " + durability);
         if (!halfNext)
-            ii.amount = GetItem().amount;
+            slot_item.item.amount = GetSlotItem().item.amount;
         else
-            ii.amount = HalfAmountNextInt(GetItem().amount);
+            slot_item.item.amount = HalfAmountNextInt(GetSlotItem().item.amount);
 
-        ii.MouseFilter = MouseFilterEnum.Ignore;
-        ii.ZIndex = 10;
+        slot_item.MouseFilter = MouseFilterEnum.Ignore;
+        slot_item.ZIndex = 10;
         if (durability != -1)
-            ii.SetDurability(durability);
-        ii.SelfModulate = GetItem().SelfModulate;
-        Inventory.clicked_item = ii;
-        Inventory.instance.AddChild(ii);
+            slot_item.SetDurability(durability);
+        slot_item.SelfModulate = GetSlotItem().SelfModulate;
+        PlayerInventoryUI.clicked_slot_item = slot_item;
+        PlayerInventoryUI.instance.AddChild(slot_item);
     }
 
-    public bool ItemCanBeHalfed(InventoryItem ii)
+    public bool ItemCanBeHalfed(SlotItem slot_item)
     {
-        if (((int)(ii.amount / 2.0)) > 0)
+        if (((int)(slot_item.item.amount / 2.0)) > 0)
             return true;
         return false;
     }

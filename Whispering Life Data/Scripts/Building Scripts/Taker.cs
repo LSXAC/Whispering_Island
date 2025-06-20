@@ -25,12 +25,17 @@ public partial class Taker : StaticBody2D
     {
         if (building is ChestBase)
         {
-            if (Inventory.instance.HasItemInInventory(((ChestBase)building).chest_items, ii))
+            if (ChestInventoryUI.instance.HasItemInInventory(((ChestBase)building).chest_items, ii))
                 Debug.Print("Has Item in Inventory");
             return item_holder_In.GetChildCount() == 0
                 && (
-                    Inventory.instance.HasEmptySlotInInventory(((ChestBase)building).chest_items)
-                    || Inventory.instance.HasItemInInventory(((ChestBase)building).chest_items, ii)
+                    ChestInventoryUI.instance.HasEmptySlotInInventory(
+                        ((ChestBase)building).chest_items
+                    )
+                    || ChestInventoryUI.instance.HasItemInInventory(
+                        ((ChestBase)building).chest_items,
+                        ii
+                    )
                 );
         }
 
@@ -44,18 +49,14 @@ public partial class Taker : StaticBody2D
 
     public void OnItemHolderItemHeld()
     {
-        BeltItem item = (BeltItem)item_holder_In.offload_item();
+        BeltItem belt_item = (BeltItem)item_holder_In.offload_item();
 
         if (building is ChestBase)
         {
-            Inventory.instance.AddItem(
-                item.item.item_info,
-                item.item.amount,
-                ((ChestBase)building).chest_items
-            );
-            ChestInventory.instance.UpdateInventoryUI();
+            ChestInventoryUI.instance.AddItem(belt_item.item, ((ChestBase)building).chest_items);
+            ChestInventoryUI.instance.UpdateInventoryUI();
         }
         FurnaceTab.instance.UpdateFurnaceUI();
-        item.QueueFree();
+        belt_item.QueueFree();
     }
 }

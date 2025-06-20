@@ -14,7 +14,7 @@ public partial class IslandObjectSaveManager : Node2D
     public Array<BeltMachineSave> belt_machine_saves = new Array<BeltMachineSave>();
     public Array<RailSave> rail_saves = new Array<RailSave>();
 
-    private PackedScene belt_item = ResourceLoader.Load<PackedScene>("res://belt_item.tscn");
+    private PackedScene belt_item_scene = ResourceLoader.Load<PackedScene>("res://belt_item.tscn");
 
     public void LoadPlacedObjects()
     {
@@ -235,17 +235,17 @@ public partial class IslandObjectSaveManager : Node2D
         belt.Set_Rotation(beltsave.current_rotation);
     }
 
-    public void InitBeltItem(Belt belt, BeltSave beltsave)
+    public void InitBeltItem(Belt belt, BeltSave belt_save)
     {
-        if (beltsave.holded_item != null)
+        if (belt_save.belt_holding_item != null)
         {
-            BeltItem item = (BeltItem)belt_item.Instantiate();
+            BeltItem belt_item = (BeltItem)belt_item_scene.Instantiate();
 
-            Item ite = new Item(beltsave.holded_item, 1);
-            item.InitBeltItem(ite);
-            belt.item_holder.moving_item = beltsave.beltItem_moving;
-            item.Position = beltsave.beltItem_position;
-            belt.item_holder.AddChild(item);
+            Item item = new Item(belt_save.belt_holding_item, 1);
+            belt_item.Init(item);
+            belt.item_holder.moving_item = belt_save.belt_item_is_moving;
+            belt_item.Position = belt_save.belt_item_position;
+            belt.item_holder.AddChild(belt_item);
         }
     }
 
@@ -413,9 +413,9 @@ public partial class IslandObjectSaveManager : Node2D
 
         if (belt.item_holder.hasBeltItem())
         {
-            belt_save.holded_item = belt.item_holder.GetBeltItem().item.item_info;
-            belt_save.beltItem_moving = belt.item_holder.moving_item;
-            belt_save.beltItem_position = belt.item_holder.GetBeltItem().Position;
+            belt_save.belt_holding_item = belt.item_holder.GetBeltItem().item.item_info;
+            belt_save.belt_item_is_moving = belt.item_holder.moving_item;
+            belt_save.belt_item_position = belt.item_holder.GetBeltItem().Position;
         }
         return belt_save;
     }

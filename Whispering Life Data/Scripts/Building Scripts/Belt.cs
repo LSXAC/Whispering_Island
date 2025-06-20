@@ -68,7 +68,7 @@ public partial class Belt : TransportBase
                             var item = item_holder.offload_item();
                             ((ProcessBuilding)area.GetParent<Taker>().building).item_array[
                                 (int)FurnaceTab.SlotType.IMPORT
-                            ] = new ItemSave((int)ii.unique_id, 1);
+                            ] = new ItemSave((int)ii.item_id, 1);
                             area.GetParent<Taker>().receive_item(item);
                         }
                     }

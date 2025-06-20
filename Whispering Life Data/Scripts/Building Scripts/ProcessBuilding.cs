@@ -36,9 +36,7 @@ public partial class ProcessBuilding : MachineBase
         if (item_array[(int)slotType] == null)
             return null;
 
-        return Inventory.instance.item_Types[
-            (InventoryBase.ITEM_ID)item_array[(int)slotType].item_id
-        ];
+        return Inventory.ITEM_TYPES[(Inventory.ITEM_ID)item_array[(int)slotType].item_id];
     }
 
     public override void OnMouseClick()
@@ -70,7 +68,7 @@ public partial class ProcessBuilding : MachineBase
                 ].export_amount;
             else
                 item_array[(int)FurnaceTab.SlotType.EXPORT] = new ItemSave(
-                    (int)recipes[current_recipe].export_item_info.unique_id,
+                    (int)recipes[current_recipe].export_item_info.item_id,
                     recipes[current_recipe].export_amount
                 );
 
@@ -122,8 +120,8 @@ public partial class ProcessBuilding : MachineBase
             {
                 if (item_array[(int)FurnaceTab.SlotType.FUEL].amount > 0)
                 {
-                    ItemInfo ii = Inventory.instance.item_Types[
-                        (InventoryBase.ITEM_ID)item_array[(int)FurnaceTab.SlotType.FUEL].item_id
+                    ItemInfo ii = Inventory.ITEM_TYPES[
+                        (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.FUEL].item_id
                     ];
                     fuel_left += (
                         (BurnableType)ii.item_types_arr[ii.GetTypeIndex(ItemInfo.Type.BURNABLE)]
@@ -179,8 +177,8 @@ public partial class ProcessBuilding : MachineBase
             if (item_array[(int)FurnaceTab.SlotType.IMPORT] != null)
                 if (
                     recipes[i].import_item_info
-                    == Inventory.instance.item_Types[
-                        (InventoryBase.ITEM_ID)item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
+                    == Inventory.ITEM_TYPES[
+                        (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
                     ]
                 )
                 {
@@ -189,9 +187,8 @@ public partial class ProcessBuilding : MachineBase
                         return true;
                     else if (
                         recipes[i].export_item_info
-                        == Inventory.instance.item_Types[
-                            (InventoryBase.ITEM_ID)
-                                item_array[(int)FurnaceTab.SlotType.EXPORT].item_id
+                        == Inventory.ITEM_TYPES[
+                            (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.EXPORT].item_id
                         ]
                     )
                         return true;

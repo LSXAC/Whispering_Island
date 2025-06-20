@@ -50,7 +50,7 @@ public partial class Giver : Area2D
                 ((ProcessBuilding)building).item_array[(int)FurnaceTab.SlotType.EXPORT].amount--;
                 BeltItem item = (BeltItem)beltItem.Instantiate();
 
-                item.InitBeltItem(
+                item.Init(
                     new Item(((ProcessBuilding)building).GetItemInfo(FurnaceTab.SlotType.EXPORT), 1)
                 );
                 Holder.AddChild(item);
@@ -83,18 +83,14 @@ public partial class Giver : Area2D
                 if (i_s == null)
                     continue;
 
-                Inventory.instance.RemoveItem(
-                    Inventory.instance.item_Types[(InventoryBase.ITEM_ID)i_s.item_id],
-                    1,
-                    ((ChestBase)building).chest_items
-                );
-                BeltItem item = (BeltItem)beltItem.Instantiate();
-                item.InitBeltItem(
-                    new Item(Inventory.instance.item_Types[(InventoryBase.ITEM_ID)i_s.item_id], 1)
-                );
-                Holder.AddChild(item);
-                destination.GetParent<Belt>().receive_item(item);
-                ChestInventory.instance.UpdateInventoryUI();
+                Item item = new Item(Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i_s.item_id], 1);
+                ChestInventoryUI.instance.RemoveItem(item, ((ChestBase)building).chest_items);
+
+                BeltItem belt_item = (BeltItem)beltItem.Instantiate();
+                belt_item.Init(new Item(Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i_s.item_id], 1));
+                Holder.AddChild(belt_item);
+                destination.GetParent<Belt>().receive_item(belt_item);
+                ChestInventoryUI.instance.UpdateInventoryUI();
                 break;
             }
         }
@@ -118,7 +114,7 @@ public partial class Giver : Area2D
 
             ((ProductionMachine)building).production_count -= 1;
             BeltItem item = (BeltItem)beltItem.Instantiate();
-            item.InitBeltItem(new Item(((ProductionMachine)building).production_item_info, 1));
+            item.Init(new Item(((ProductionMachine)building).production_item_info, 1));
             Holder.AddChild(item);
             destination.GetParent<Belt>().receive_item(item);
             FurnaceTab.instance.UpdateFurnaceUI();

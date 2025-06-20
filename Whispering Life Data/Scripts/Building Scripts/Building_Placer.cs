@@ -22,7 +22,7 @@ public partial class Building_Placer : Node2D
 
     public static Node2D moveable_selected_parent = null;
 
-    public void InitBuildingFromBuildingMenu(Building_Menu_List_Object_Info scene_info)
+    public void InitBuildingFromBuildingMenu(Building_Menu_List_Object scene_info)
     {
         if (scene_info == null || scene_info.scene == null)
         {
@@ -256,12 +256,8 @@ public partial class Building_Placer : Node2D
 
     private void RemoveResources()
     {
-        foreach (Item i in building_recipe.requiered_items)
-            Inventory.instance.RemoveItem(
-                i.item_info,
-                i.amount,
-                Inventory.instance.inventory_items
-            );
+        foreach (Item item in building_recipe.requiered_items)
+            PlayerInventoryUI.instance.RemoveItem(item, PlayerInventoryUI.instance.inventory_items);
     }
 
     public void CloseMenuWithBuildingSelected()

@@ -43,7 +43,7 @@ public partial class BuildMenuPageObject : ColorRect
         }
     }
 
-    private void InitBuildings(Building_Menu_List_Object_Info building_type)
+    private void InitBuildings(Building_Menu_List_Object building_type)
     {
         BuildMenuListObject node = buildingMenuChild.Instantiate() as BuildMenuListObject;
         node.InitBuildingMenuChild(building_type);

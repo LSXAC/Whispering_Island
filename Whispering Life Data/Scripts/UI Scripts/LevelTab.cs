@@ -22,7 +22,7 @@ public partial class LevelTab : PanelContainer
     public void UpdateLevelTab(
         string translation_string,
         int id,
-        ResearchLevel researchLevel,
+        ItemResearchLevel researchLevel,
         Database.UPGRADE_LEVEL level
     )
     {
@@ -33,7 +33,7 @@ public partial class LevelTab : PanelContainer
         );
         this.level = level;
         bonus_label.Text = TranslationServer.Translate("RESEARCH_BONUS");
-        foreach (ItemInfo ii in researchLevel.unlocks_items)
+        foreach (ItemInfo ii in researchLevel.items_unlocked_after_research)
             bonus_label.Text += TranslationServer.Translate(ii.item_name) + ", ";
         Name = "Level" + id;
     }

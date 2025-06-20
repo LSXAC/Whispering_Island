@@ -30,8 +30,8 @@ public partial class Item_Row_Manager : HBoxContainer
             hbc_c.InitItemUI("", item.amount, item.item_info.texture);
             hbc_c.ChangeColor(global::h_box_item.colorType.red);
 
-            Array<Item> i_list = Inventory.instance.GetItemFromList(
-                Inventory.instance.GetListOfItemsInInventory(),
+            Array<Item> i_list = PlayerInventoryUI.instance.GetItemFromList(
+                PlayerInventoryUI.instance.GetListOfItemsInInventory(),
                 item
             );
             int amount_of_item = 0;

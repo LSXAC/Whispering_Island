@@ -36,8 +36,8 @@ public partial class SaveState : Resource
     public string dateTime_save_string;
 
     [Export]
-    public Dictionary<InventoryBase.ITEM_ID, ResearchSave> research_saves =
-        new Dictionary<InventoryBase.ITEM_ID, ResearchSave>();
+    public Dictionary<Inventory.ITEM_ID, ResearchSave> research_saves =
+        new Dictionary<Inventory.ITEM_ID, ResearchSave>();
 
     [Export]
     public int[] skill_saves = new int[4];

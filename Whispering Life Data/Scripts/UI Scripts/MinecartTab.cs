@@ -7,7 +7,7 @@ public partial class MinecartTab : ColorRect
     public Label engine_status_label;
 
     [Export]
-    public ChestInventory chest_inventory;
+    public ChestInventoryUI chest_inventory_ui;
     public static Minecart current_minecart = null;
 
     public void OnVisiblityChange()

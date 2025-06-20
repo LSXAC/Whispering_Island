@@ -16,38 +16,38 @@ public partial class Database : Node
 
     // RESEARCH LINES ------------------------------------------------------------------------------------------------
 
-    public static Dictionary<InventoryBase.ITEM_ID, ResearchLevelGroup> researchs = new Dictionary<
-        InventoryBase.ITEM_ID,
-        ResearchLevelGroup
+    public static Dictionary<Inventory.ITEM_ID, ItemResearch> researchs = new Dictionary<
+        Inventory.ITEM_ID,
+        ItemResearch
     >()
     {
         {
-            InventoryBase.ITEM_ID.WOOD,
-            ResourceLoader.Load<ResearchLevelGroup>(
+            Inventory.ITEM_ID.WOOD,
+            ResourceLoader.Load<ItemResearch>(
                 "res://Items/ItemResearchs/Wood_Research_Level_Manager.tres"
             )
         },
         {
-            InventoryBase.ITEM_ID.STONE,
-            ResourceLoader.Load<ResearchLevelGroup>(
+            Inventory.ITEM_ID.STONE,
+            ResourceLoader.Load<ItemResearch>(
                 "res://Items/ItemResearchs/Stone_Research_Level_Manager.tres"
             )
         },
         {
-            InventoryBase.ITEM_ID.SAND,
-            ResourceLoader.Load<ResearchLevelGroup>(
+            Inventory.ITEM_ID.SAND,
+            ResourceLoader.Load<ItemResearch>(
                 "res://Items/ItemResearchs/Sand_Research_Level_Manager.tres"
             )
         },
         {
-            InventoryBase.ITEM_ID.MYSTIC_WOOD,
-            ResourceLoader.Load<ResearchLevelGroup>(
+            Inventory.ITEM_ID.MYSTIC_WOOD,
+            ResourceLoader.Load<ItemResearch>(
                 "res://Items/ItemResearchs/Mystic_Wood_Research_Level_Manager.tres"
             )
         },
         {
-            InventoryBase.ITEM_ID.IRON_ORE,
-            ResourceLoader.Load<ResearchLevelGroup>(
+            Inventory.ITEM_ID.IRON_ORE,
+            ResourceLoader.Load<ItemResearch>(
                 "res://Items/ItemResearchs/Iron_Ore_Research_Level_Manager.tres"
             )
         }
@@ -56,158 +56,144 @@ public partial class Database : Node
     // BUILDINGS LINES ------------------------------------------------------------------------------------------------
 
 
-    public static Dictionary<string, Building_Menu_List_Object_Info> buildings = new Dictionary<
+    public static Dictionary<string, Building_Menu_List_Object> buildings = new Dictionary<
         string,
-        Building_Menu_List_Object_Info
+        Building_Menu_List_Object
     >()
     {
         {
             BUILDING_ID.BELT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>("res://Buildings/Belt.tres")
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Belt.tres")
         },
         {
             BUILDING_ID.BELTTUNNEL.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>("res://Buildings/Belt_Tunnel.tres")
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Belt_Tunnel.tres")
         },
         {
             BUILDING_ID.CHEST.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>("res://Buildings/Chest.tres")
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Chest.tres")
         },
         {
             BUILDING_ID.FURNACE.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>("res://Buildings/Furnace.tres")
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Furnace.tres")
         },
         {
             BUILDING_ID.TREE_GROWTHER.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
-                "res://Buildings/Tree_Growther.tres"
-            )
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Tree_Growther.tres")
         },
         {
             BUILDING_ID.QUARRY.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>("res://Buildings/Quarry.tres")
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Quarry.tres")
         },
         {
             BUILDING_ID.RESEARCH_TABLE.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
-                "res://Buildings/Research_Table.tres"
-            )
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Research_Table.tres")
         },
         {
             BUILDING_ID.WOODEN_BED.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>("res://Buildings/Wooden_Bed.tres")
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Wooden_Bed.tres")
         },
         {
             BUILDING_ID.TRASHCAN.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>("res://Buildings/Trashcan.tres")
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Trashcan.tres")
         },
         {
             BUILDING_ID.CORN_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
+            ResourceLoader.Load<Building_Menu_List_Object>(
                 "res://Buildings/Planting/Corn_Object.tres"
             )
         },
         {
             BUILDING_ID.CARROT_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
+            ResourceLoader.Load<Building_Menu_List_Object>(
                 "res://Buildings/Planting/Carrot_Object.tres"
             )
         },
         {
             BUILDING_ID.POTATO_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
+            ResourceLoader.Load<Building_Menu_List_Object>(
                 "res://Buildings/Planting/Potato_Object.tres"
             )
         },
         {
             BUILDING_ID.WHEAT_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
+            ResourceLoader.Load<Building_Menu_List_Object>(
                 "res://Buildings/Planting/Wheat_Object.tres"
             )
         },
         {
             BUILDING_ID.TREE_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
+            ResourceLoader.Load<Building_Menu_List_Object>(
                 "res://Buildings/Planting/Tree_Object.tres"
             )
         },
         {
             BUILDING_ID.MYSTIC_TREE_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
+            ResourceLoader.Load<Building_Menu_List_Object>(
                 "res://Buildings/Planting/Mystic_Tree_Object.tres"
             )
         },
         {
             BUILDING_ID.MYSTIC_FIBRE_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
+            ResourceLoader.Load<Building_Menu_List_Object>(
                 "res://Buildings/Planting/Mystic_Fibre_Object.tres"
             )
         },
         {
             BUILDING_ID.STONE_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>("res://Buildings/Stone_Object.tres")
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Stone_Object.tres")
         },
         {
             BUILDING_ID.IRON_ORE_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
+            ResourceLoader.Load<Building_Menu_List_Object>(
                 "res://Buildings/Ore/Iron_Ore_Object.tres"
             )
         },
         {
             BUILDING_ID.COPPER_ORE_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
+            ResourceLoader.Load<Building_Menu_List_Object>(
                 "res://Buildings/Ore/Copper_Ore_Object.tres"
             )
         },
         {
             BUILDING_ID.SAND_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>("res://Buildings/Sand_Object.tres")
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Sand_Object.tres")
         },
         {
             BUILDING_ID.SAND_STONE_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
-                "res://Buildings/Sand_Stone_Object.tres"
-            )
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Sand_Stone_Object.tres")
         },
         {
             BUILDING_ID.BELT_SPLITTER_1x2.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
-                "res://Buildings/Belt_Splitter_1x2.tres"
-            )
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Belt_Splitter_1x2.tres")
         },
         {
             BUILDING_ID.BELT_SPLITTER_1x3.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
-                "res://Buildings/Belt_Splitter_1x3.tres"
-            )
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Belt_Splitter_1x3.tres")
         },
         {
             BUILDING_ID.BELT_COMBINER_2x1.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
-                "res://Buildings/Belt_Combiner_2x1.tres"
-            )
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Belt_Combiner_2x1.tres")
         },
         {
             BUILDING_ID.BELT_COMBINER_3x1.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>(
-                "res://Buildings/Belt_Combiner_3x1.tres"
-            )
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Belt_Combiner_3x1.tres")
         },
         {
             BUILDING_ID.CHEST_PUFFER.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>("res://Buildings/Chest_Puffer.tres")
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Chest_Puffer.tres")
         },
         {
             BUILDING_ID.RAIL.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>("res://Buildings/Rail.tres")
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Rail.tres")
         },
         {
             BUILDING_ID.RAIL_STATION.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>("res://Buildings/Rail_Station.tres")
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Rail_Station.tres")
         },
         {
             BUILDING_ID.MINECART.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object_Info>("res://Buildings/Minecart.tres")
+            ResourceLoader.Load<Building_Menu_List_Object>("res://Buildings/Minecart.tres")
         },
     };
 
@@ -244,7 +230,7 @@ public partial class Database : Node
         MINECART
     }
 
-    public static Building_Menu_List_Object_Info GetBuildingMenuListChildObjectInfo(
+    public static Building_Menu_List_Object GetBuildingMenuListChildObjectInfo(
         BUILDING_ID building_id
     )
     {

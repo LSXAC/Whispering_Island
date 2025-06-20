@@ -91,7 +91,7 @@ public partial class GameManager : Node2D
         save_state.quest_save.quest_time_left = QuestManager.current_quest_time;
         save_state.game_time_since_start = game_time_since_start;
 
-        save_state.char_save.inventory_items = Inventory.instance.inventory_items;
+        save_state.char_save.inventory_items = PlayerInventoryUI.instance.inventory_items;
         save_state.char_save.equipped_armor = EquipmentPanel.instance.equipped_armor;
         save_state.char_save.equipped_tool = EquipmentPanel.instance.equipped_tools;
 
@@ -137,7 +137,7 @@ public partial class GameManager : Node2D
         Player.instance.Position = save_state.char_save.player_position;
         Player.instance.player_stats.health_value = save_state.char_save.health_value;
         Player.instance.player_stats.fatigue_value = save_state.char_save.fatigue_value;
-        Inventory.instance.LoadInventoryFromSave(save_state.char_save.inventory_items);
+        PlayerInventoryUI.instance.LoadInventoryFromSave(save_state.char_save.inventory_items);
 
         EquipmentPanel.instance.LoadArmorFromSave(save_state.char_save.equipped_armor);
         EquipmentPanel.instance.LoadToolFromSave(save_state.char_save.equipped_tool);

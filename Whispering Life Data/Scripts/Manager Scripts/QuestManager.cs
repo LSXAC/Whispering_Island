@@ -151,8 +151,8 @@ public partial class QuestManager : Node
     {
         foreach (Item quest_item in quests[current_quest_id].quest_items)
         {
-            Array<Item> iii = Inventory.instance.GetItemFromList(
-                Inventory.instance.GetListOfItemsInInventory(),
+            Array<Item> iii = PlayerInventoryUI.instance.GetItemFromList(
+                PlayerInventoryUI.instance.GetListOfItemsInInventory(),
                 quest_item
             );
 
@@ -180,19 +180,17 @@ public partial class QuestManager : Node
         if (!next_quest_is_doubled_items)
         {
             foreach (Item quest_item in quests[current_quest_id].quest_items)
-                Inventory.instance.RemoveItem(
-                    quest_item.item_info,
-                    quest_item.amount,
-                    Inventory.instance.inventory_items
+                PlayerInventoryUI.instance.RemoveItem(
+                    quest_item,
+                    PlayerInventoryUI.instance.inventory_items
                 );
         }
         else
         {
             foreach (Item quest_item in quests[current_quest_id].quest_items)
-                Inventory.instance.RemoveItem(
-                    quest_item.item_info,
-                    quest_item.amount * 2,
-                    Inventory.instance.inventory_items
+                PlayerInventoryUI.instance.RemoveItem(
+                    new Item(quest_item.item_info, quest_item.amount * 2),
+                    PlayerInventoryUI.instance.inventory_items
                 );
         }
     }

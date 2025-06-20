@@ -138,7 +138,7 @@ public partial class MineableObject : placeable_building
             return;
         }
 
-        //Check if Item can be in Inventory
+        //Check if Item can be in PlayerInventoryUI
         if (
             (
                 current_durability
@@ -150,17 +150,21 @@ public partial class MineableObject : placeable_building
         )
         {
             if (
-                !Inventory.instance.CanReceiveItem(
-                    item_info,
-                    Inventory.instance.inventory_items,
-                    (int)(
-                        Player.instance.player_stats.stat_amounts[(int)type]
-                        * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
-                    )
+                !PlayerInventoryUI.instance.CanReceiveItem(
+                    new Item(
+                        item_info,
+                        (int)(
+                            Player.instance.player_stats.stat_amounts[(int)type]
+                            * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+                        )
+                    ),
+                    PlayerInventoryUI.instance.inventory_items
                 )
             )
             {
-                PlayerUI.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
+                PlayerUI.AddItemLabelUI(
+                    TranslationServer.Translate("PLAYERUI_PlayerInventoryUI_FULL")
+                );
                 return;
             }
         }
@@ -173,27 +177,29 @@ public partial class MineableObject : placeable_building
                     * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
                 ) + current_durability;
             if (
-                !Inventory.instance.CanReceiveItem(
-                    item_info,
-                    Inventory.instance.inventory_items,
-                    amount
+                !PlayerInventoryUI.instance.CanReceiveItem(
+                    new Item(item_info, amount),
+                    PlayerInventoryUI.instance.inventory_items
                 )
             )
             {
-                PlayerUI.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
+                PlayerUI.AddItemLabelUI(
+                    TranslationServer.Translate("PLAYERUI_PlayerInventoryUI_FULL")
+                );
                 return;
             }
             if (drops_extra_item)
             {
                 if (
-                    !Inventory.instance.CanReceiveItem(
-                        extra_item_info,
-                        Inventory.instance.inventory_items,
-                        extra_item_amount
+                    !PlayerInventoryUI.instance.CanReceiveItem(
+                        new Item(extra_item_info, extra_item_amount),
+                        PlayerInventoryUI.instance.inventory_items
                     )
                 )
                 {
-                    PlayerUI.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_INVENTORY_FULL"));
+                    PlayerUI.AddItemLabelUI(
+                        TranslationServer.Translate("PLAYERUI_PlayerInventoryUI_FULL")
+                    );
                     return;
                 }
             }
@@ -227,12 +233,16 @@ public partial class MineableObject : placeable_building
         );
 
         //Selected Item Durability + Break -------------------------------------------------------------
-        if (PlayerUI.instance.equipmentSelectBar.GetSelectedItem() != null)
-            if (PlayerUI.instance.equipmentSelectBar.GetSelectedItem().item_info.has_durability)
+        if (PlayerUI.instance.equipmentSelectBar.GetSelectedSlotItem() != null)
+            if (
+                PlayerUI
+                    .instance.equipmentSelectBar.GetSelectedSlotItem()
+                    .item.item_info.has_durability
+            )
             {
                 EquipmentPanel
                     .instance.slots_tool[EquipmentSelectBar.current_selected_slot]
-                    .GetItem()
+                    .GetSlotItem()
                     .current_durability -= (int)(
                     Player.instance.player_stats.stat_amounts[(int)type]
                     * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
@@ -257,7 +267,10 @@ public partial class MineableObject : placeable_building
                     + " "
                     + TranslationServer.Translate(item_info.item_name.ToString())
             );
-            Inventory.instance.AddItem(item_info, amount, Inventory.instance.inventory_items);
+            PlayerInventoryUI.instance.AddItem(
+                new Item(item_info, amount),
+                PlayerInventoryUI.instance.inventory_items
+            );
 
             if (drops_extra_item)
             {
@@ -267,10 +280,9 @@ public partial class MineableObject : placeable_building
                         + " "
                         + TranslationServer.Translate(extra_item_info.item_name.ToString())
                 );
-                Inventory.instance.AddItem(
-                    extra_item_info,
-                    extra_item_amount,
-                    Inventory.instance.inventory_items
+                PlayerInventoryUI.instance.AddItem(
+                    new Item(extra_item_info, extra_item_amount),
+                    PlayerInventoryUI.instance.inventory_items
                 );
             }
 
@@ -297,13 +309,15 @@ public partial class MineableObject : placeable_building
                 + " "
                 + TranslationServer.Translate(item_info.item_name.ToString())
         );
-        Inventory.instance.AddItem(
-            item_info,
-            (int)(
-                Player.instance.player_stats.stat_amounts[(int)type]
-                * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+        PlayerInventoryUI.instance.AddItem(
+            new Item(
+                item_info,
+                (int)(
+                    Player.instance.player_stats.stat_amounts[(int)type]
+                    * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
+                )
             ),
-            Inventory.instance.inventory_items
+            PlayerInventoryUI.instance.inventory_items
         );
 
         hover_menu.InitHoverMenu(this);

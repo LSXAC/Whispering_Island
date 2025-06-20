@@ -13,14 +13,14 @@ public partial class building_type : Panel
     [Export]
     private Button select_button;
 
-    private Building_Menu_List_Object_Info scene_info;
+    private Building_Menu_List_Object scene_info;
 
     public override void _Ready()
     {
         select_button.Pressed += () => OnSelectButton();
     }
 
-    public void InitBuildingTypeUI(Building_Menu_List_Object_Info scene_info)
+    public void InitBuildingTypeUI(Building_Menu_List_Object scene_info)
     {
         Building_Node placeable = scene_info.scene.Instantiate() as Building_Node;
         title_label.Text = ((placeable_building)placeable).GetTitle();

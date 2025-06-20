@@ -24,11 +24,11 @@ public partial class RailStation : MachineBase
 
         GameMenu.instance.OnOpenRailStationTab();
         RailStationTab.last_rail_station = this;
-        ChestInventory.instance = (
+        ChestInventoryUI.instance = (
             (RailStationTab)GameMenu.instance.rail_station_tab
-        ).chest_inventory_in;
-        ChestInventory.current_chest = chest_in;
-        ChestInventory.instance.OpenChest();
+        ).chest_inventory_ui_input;
+        ChestInventoryUI.current_chest = chest_in;
+        ChestInventoryUI.instance.OpenChest();
     }
 
     public void OnAreaEntered(Area2D area)

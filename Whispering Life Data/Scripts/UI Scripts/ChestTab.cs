@@ -4,5 +4,5 @@ using Godot;
 public partial class ChestTab : ColorRect
 {
     [Export]
-    public ChestInventory chest_inventory;
+    public ChestInventoryUI chest_inventory_ui;
 }

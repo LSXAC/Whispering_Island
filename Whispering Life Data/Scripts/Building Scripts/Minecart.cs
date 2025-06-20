@@ -24,10 +24,12 @@ public partial class Minecart : MoveableBase
             return;
 
         MinecartTab.current_minecart = this;
-        ChestInventory.instance = ((MinecartTab)GameMenu.instance.minecart_tab).chest_inventory;
+        ChestInventoryUI.instance = (
+            (MinecartTab)GameMenu.instance.minecart_tab
+        ).chest_inventory_ui;
         GameMenu.instance.OnOpenMinecartTab();
-        ChestInventory.current_chest = chestBase;
-        ChestInventory.instance.OpenChest();
+        ChestInventoryUI.current_chest = chestBase;
+        ChestInventoryUI.instance.OpenChest();
     }
 
     public override void _Process(double delta)

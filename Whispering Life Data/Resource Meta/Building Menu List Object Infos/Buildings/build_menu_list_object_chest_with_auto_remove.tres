@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://tbpa4v56negm"]
+
+[ext_resource type="Resource" uid="uid://bqr0ijgjp2cdt" path="res://Resource Meta/Recipes/Build Menu Recipies/Chest_Puffer_Recipe.tres" id="1_87d0g"]
+[ext_resource type="PackedScene" uid="uid://fnriepfksbws" path="res://Scenes/World Objects/Buildings/Building_Chest_with_Auto_Remove.tscn" id="2_hidod"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_mnq4p"]
+
+[resource]
+script = ExtResource("3_mnq4p")
+building_scene = ExtResource("2_hidod")
+building_recipe = ExtResource("1_87d0g")
+requirements = Array[Object]([])
+category = 0
+show_item = true

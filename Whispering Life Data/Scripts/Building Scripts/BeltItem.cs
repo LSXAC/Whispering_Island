@@ -33,14 +33,14 @@ public partial class BeltItem : CharacterBody2D
         return null;
     }
 
-    public void InitBeltItem(Item item)
+    public void Init(Item item)
     {
         sprite = GetNode<Sprite2D>("BellItemSprite");
         this.item = item;
         this.sprite.Texture = item.item_info.texture;
     }
 
-    public void InitBeltItemAtPosition(Vector2 position)
+    public void InitAtPosition(Vector2 position)
     {
         Position = position;
     }
