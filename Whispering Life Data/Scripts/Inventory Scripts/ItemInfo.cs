@@ -8,7 +8,19 @@ using Godot.Collections;
 public partial class ItemInfo : Resource
 {
     [Export]
-    public Array<ItemAttribute> attributes;
+    public Array<ItemAttribute> attributes = new Array<ItemAttribute>() { new ResourceAttribute() };
+
+    [Export]
+    public Rarity rarity = Rarity.Common;
+
+    public enum Rarity
+    {
+        Common,
+        Uncommon,
+        Rare,
+        Epic,
+        Legendary
+    }
 
     public enum MINING_LEVEL
     {

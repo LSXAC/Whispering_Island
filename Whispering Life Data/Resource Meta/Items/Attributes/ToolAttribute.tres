@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="ToolAttribute" load_steps=2 format=3 uid="uid://xatv5x587fug"]
-
-[ext_resource type="Script" uid="uid://bqk0oi50lrdm4" path="res://Scripts/Item/ToolAttribute.cs" id="1_3ki7m"]
-
-[resource]
-script = ExtResource("1_3ki7m")
-type = 6
