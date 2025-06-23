@@ -33,7 +33,7 @@ public partial class SlotItemUI : TextureRect
         amount_label = l;
         UpdateToolTip();
         //57cb00
-        if (item.resource.has_durability)
+        if (item.info.has_durability)
         {
             VBoxContainer vbc = new VBoxContainer();
             vbc.MouseFilter = MouseFilterEnum.Ignore;
@@ -43,7 +43,7 @@ public partial class SlotItemUI : TextureRect
             pb = new ProgressBar();
             pb.MouseFilter = MouseFilterEnum.Ignore;
             pb.Size = new Vector2(40, 5);
-            pb.MaxValue = item.resource.max_durability;
+            pb.MaxValue = item.info.max_durability;
             pb.Step = 1;
             pb.Value = current_durability;
             this.current_durability = current_durability;
@@ -60,29 +60,29 @@ public partial class SlotItemUI : TextureRect
 
     private void UpdateToolTip()
     {
-        TooltipText = TranslationServer.Translate(item.resource.item_name.ToString()) + "\n";
-        TooltipText +=
-            TranslationServer.Translate(item.resource.item_description.ToString()) + "\n";
-        foreach (ItemType item_type in item.resource.item_types_arr)
+        TooltipText = TranslationServer.Translate(item.info.name.ToString()) + "\n";
+        TooltipText += TranslationServer.Translate(item.info.description.ToString()) + "\n";
+        foreach (ItemAttribute item_attribute in item.info.attributes)
         {
-            if (item_type == null)
+            if (item_attribute == null)
                 continue;
 
-            if (item_type.type == ItemResource.TYPE.BURNABLE)
+            if (item_attribute is BurnableAttribute)
                 TooltipText +=
                     TranslationServer.Translate("BURNTIME")
                     + ": "
-                    + ((BurnableType)item_type).burntime
+                    + ((BurnableAttribute)item_attribute).burntime
                     + "s"
                     + "\n";
             else
+                //TODO: item_attribute.attribute is not clean
                 TooltipText +=
                     TranslationServer.Translate("TYPE")
                     + ": "
-                    + TranslationServer.Translate(item_type.type.ToString())
+                    + TranslationServer.Translate(item_attribute.type.ToString())
                     + "\n";
         }
-        foreach (ItemStats stats in item.resource.item_stats)
+        foreach (ItemStats stats in item.info.stats)
             if (stats.bonus > 0)
                 TooltipText +=
                     "\n" + TranslationServer.Translate(stats.type.ToString()) + ": +" + stats.bonus;
@@ -104,7 +104,7 @@ public partial class SlotItemUI : TextureRect
 
     public override void _Ready()
     {
-        Texture = item.resource.texture;
+        Texture = item.info.texture;
         ExpandMode = ExpandModeEnum.IgnoreSize;
         StretchMode = StretchModeEnum.KeepAspectCentered;
     }

@@ -36,12 +36,8 @@ public partial class CheatTab : ColorRect
     private void SetItemsInList()
     {
         item_list.Clear();
-        foreach (var (id, item_resource) in Inventory.ITEM_TYPES)
-            item_list.AddItem(
-                TranslationServer.Translate(item_resource.item_name),
-                item_resource.texture,
-                true
-            );
+        foreach (var (id, info) in Inventory.ITEM_TYPES)
+            item_list.AddItem(TranslationServer.Translate(info.name), info.texture, true);
     }
 
     public void OnDeselectAll()

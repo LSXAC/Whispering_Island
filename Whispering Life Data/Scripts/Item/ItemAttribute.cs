@@ -5,14 +5,16 @@ using Godot;
 public partial class ItemAttribute : Resource
 {
     [Export]
-    public ATTRIBUTE attribute;
+    public TYPE type;
 
-    public enum ATTRIBUTE
+    public enum TYPE
     {
         PLACEABLE,
         BURNABLE,
         SMELTABLE,
         RESEARCHABLE,
         PROCESSED,
-    } 
+        WEARABLE,
+        TOOL
+    }
 }

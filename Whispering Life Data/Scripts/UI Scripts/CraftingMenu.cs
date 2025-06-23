@@ -37,9 +37,9 @@ public partial class CraftingMenu : PanelContainer
             itemRecipeUI irUI = (itemRecipeUI)recipe_slot.Instantiate();
             irUI.craftingMenu = this;
             irUI.output_item_hbox.InitItemUI(
-                recipe.output_item.resource.item_name,
+                recipe.output_item.info.name,
                 recipe.output_item.amount,
-                recipe.output_item.resource.texture
+                recipe.output_item.info.texture
             );
             parent.AddChild(irUI);
 

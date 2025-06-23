@@ -27,7 +27,7 @@ public partial class Item_Row_Manager : HBoxContainer
         foreach (Item item in items)
         {
             h_box_item hbc_c = (h_box_item)h_box_item.Instantiate();
-            hbc_c.InitItemUI("", item.amount, item.resource.texture);
+            hbc_c.InitItemUI("", item.amount, item.info.texture);
             hbc_c.ChangeColor(global::h_box_item.colorType.red);
 
             Array<Item> i_list = PlayerInventoryUI.instance.GetItemFromList(

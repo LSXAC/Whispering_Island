@@ -38,7 +38,7 @@ public partial class itemRecipeUI : Control
 
         if (
             !PlayerInventoryUI.instance.CanReceiveItem(
-                new Item(output_item.resource, output_item.amount),
+                new Item(output_item.info, output_item.amount),
                 PlayerInventoryUI.instance.inventory_items
             )
         )
@@ -50,17 +50,17 @@ public partial class itemRecipeUI : Control
 
     public void CraftItem()
     {
-        foreach (Item items in req_items)
+        foreach (Item item in req_items)
         {
             PlayerInventoryUI.instance.RemoveItem(
-                new Item(items.resource, items.amount),
+                new Item(item.info, item.amount),
                 PlayerInventoryUI.instance.inventory_items
             );
-            Debug.Print(items.resource.item_name);
+            Debug.Print(item.info.name);
         }
 
         PlayerInventoryUI.instance.AddItem(
-            new Item(output_item.resource, output_item.amount),
+            new Item(output_item.info, output_item.amount),
             PlayerInventoryUI.instance.inventory_items
         );
         craftingMenu.ReloadUIRecipes();

@@ -59,15 +59,15 @@ public partial class QuestMiniPanel : PanelContainer
             hbox_items[i].Visible = true;
 
             if (QuestManager.next_quest_is_doubled_items)
-                hbox_items[i].InitItemUI("", item.amount * 2, item.resource.texture);
+                hbox_items[i].InitItemUI("", item.amount * 2, item.info.texture);
             else
-                hbox_items[i].InitItemUI("", item.amount, item.resource.texture);
+                hbox_items[i].InitItemUI("", item.amount, item.info.texture);
 
             hbox_items[i].ChangeColor(h_box_item.colorType.white);
 
             if (iii == null)
             {
-                Debug.Print(item.resource.item_name + "NULL");
+                Debug.Print(item.info.name + "NULL");
                 if (QuestManager.next_quest_is_doubled_items)
                     hbox_items[i].item_label.Text = "0x / " + (item.amount * 2) + "x";
                 else

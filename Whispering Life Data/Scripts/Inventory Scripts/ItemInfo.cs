@@ -10,20 +10,6 @@ public partial class ItemInfo : Resource
     [Export]
     public Array<ItemAttribute> attributes;
 
-    public enum CATEGORY
-    {
-        NONE,
-        ALL,
-        RESOURCE,
-        TOOL,
-        WEAPON,
-        CLOTHS,
-        HEAD,
-        CHESTPLATE,
-        LEGGINGS,
-        SHOES
-    };
-
     public enum MINING_LEVEL
     {
         Hand,
@@ -66,21 +52,21 @@ public partial class ItemInfo : Resource
     [Export]
     public Array<ItemStats> stats = new Array<ItemStats>();
 
-    public bool HasAttribute(ItemAttribute.ATTRIBUTE attribute)
+    public bool HasAttribute(ItemAttribute.TYPE type)
     {
         foreach (ItemAttribute list_item in attributes)
-            if (list_item.attribute == attribute)
+            if (list_item.type == type)
                 return true;
         return false;
     }
 
-    public int GetAttributeIndex(ItemAttribute.ATTRIBUTE attribute)
+    public int GetAttributeIndex(ItemAttribute.TYPE type)
     {
         for (int i = 0; i < attributes.Count; i++)
-            if (attributes[i].attribute == attribute)
+            if (attributes[i].type == type)
                 return i;
 
-        Debug.Print("Attribute cannot be found in" + name);
+        Debug.Print("Attribute cannot be found in " + name);
         return -1;
     }
 }

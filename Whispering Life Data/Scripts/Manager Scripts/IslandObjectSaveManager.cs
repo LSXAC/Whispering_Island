@@ -413,7 +413,7 @@ public partial class IslandObjectSaveManager : Node2D
 
         if (belt.item_holder.hasBeltItem())
         {
-            belt_save.belt_holding_item_resource = belt.item_holder.GetBeltItem().item.resource;
+            belt_save.belt_holding_item_resource = belt.item_holder.GetBeltItem().item.info;
             belt_save.belt_item_is_moving = belt.item_holder.moving_item;
             belt_save.belt_item_position = belt.item_holder.GetBeltItem().Position;
         }

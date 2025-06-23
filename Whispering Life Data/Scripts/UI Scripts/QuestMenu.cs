@@ -114,9 +114,9 @@ public partial class QuestMenu : CanvasLayer
             h_box_item c_label = (h_box_item)h_box_item.Instantiate();
             Array<Item> iii = PlayerInventoryUI.instance.GetItemFromList(items_in_inventory, item);
             if (QuestManager.next_quest_is_doubled_items)
-                c_label.InitItemUI(item.resource.item_name, item.amount, item.resource.texture);
+                c_label.InitItemUI(item.info.name, item.amount, item.info.texture);
             else
-                c_label.InitItemUI(item.resource.item_name, item.amount * 2, item.resource.texture);
+                c_label.InitItemUI(item.info.name, item.amount * 2, item.info.texture);
 
             quest_label_parent.AddChild(c_label);
             c_label.Alignment = BoxContainer.AlignmentMode.Center;
@@ -124,14 +124,14 @@ public partial class QuestMenu : CanvasLayer
             {
                 if (QuestManager.next_quest_is_doubled_items)
                     c_label.item_label.Text =
-                        TranslationServer.Translate(item.resource.item_name)
+                        TranslationServer.Translate(item.info.name)
                         + " - "
                         + "0x /"
                         + (item.amount * 2)
                         + "x";
                 else
                     c_label.item_label.Text =
-                        TranslationServer.Translate(item.resource.item_name)
+                        TranslationServer.Translate(item.info.name)
                         + " - "
                         + "0x /"
                         + item.amount
@@ -146,7 +146,7 @@ public partial class QuestMenu : CanvasLayer
 
             if (QuestManager.next_quest_is_doubled_items)
                 c_label.item_label.Text =
-                    TranslationServer.Translate(item.resource.item_name)
+                    TranslationServer.Translate(item.info.name)
                     + " - "
                     + amount
                     + "x /"
@@ -154,7 +154,7 @@ public partial class QuestMenu : CanvasLayer
                     + "x";
             else
                 c_label.item_label.Text =
-                    TranslationServer.Translate(item.resource.item_name)
+                    TranslationServer.Translate(item.info.name)
                     + " - "
                     + amount
                     + "x /"

@@ -33,8 +33,8 @@ public partial class LevelTab : PanelContainer
         );
         this.level = level;
         bonus_label.Text = TranslationServer.Translate("RESEARCH_BONUS");
-        foreach (ItemResource item_resource in researchLevel.unlocked_item_resources_after_research)
-            bonus_label.Text += TranslationServer.Translate(item_resource.item_name) + ", ";
+        foreach (ItemInfo info in researchLevel.unlocked_item_resources_after_research)
+            bonus_label.Text += TranslationServer.Translate(info.name) + ", ";
         Name = "Level" + id;
     }
 

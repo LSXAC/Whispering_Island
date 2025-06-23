@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(6, 6)
 
-[node name="Detector" type="Area2D"]
+[node name="2" type="Area2D"]
 collision_layer = 0
 collision_mask = 4
 monitorable = false

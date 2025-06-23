@@ -65,11 +65,11 @@ public partial class ProcessBuilding : MachineBase
             if (item_array[(int)FurnaceTab.SlotType.EXPORT] != null)
                 item_array[(int)FurnaceTab.SlotType.EXPORT].amount += recipes[
                     current_recipe
-                ].export_amount;
+                ].amount_in_export;
             else
                 item_array[(int)FurnaceTab.SlotType.EXPORT] = new ItemSave(
-                    (int)recipes[current_recipe].export_item_resource.item_id,
-                    recipes[current_recipe].export_amount
+                    (int)recipes[current_recipe].export_item_info.id,
+                    recipes[current_recipe].amount_in_export
                 );
 
             is_crafting = false;
@@ -111,7 +111,7 @@ public partial class ProcessBuilding : MachineBase
         }
         if (
             item_array[(int)FurnaceTab.SlotType.IMPORT].amount
-            <= recipes[current_recipe].import_amount - 1
+            <= recipes[current_recipe].amount_in_import - 1
         )
             return;
 
@@ -120,14 +120,12 @@ public partial class ProcessBuilding : MachineBase
             {
                 if (item_array[(int)FurnaceTab.SlotType.FUEL].amount > 0)
                 {
-                    ItemInfo item_resource = Inventory.ITEM_TYPES[
+                    ItemInfo info = Inventory.ITEM_TYPES[
                         (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.FUEL].item_id
                     ];
                     fuel_left += (
-                        (BurnableType)
-                            item_resource.item_types[
-                                item_resource.GetTypeIndex(ItemInfo.TYPE.BURNABLE)
-                            ]
+                        (BurnableAttribute)
+                            info.attributes[info.GetAttributeIndex(ItemAttribute.TYPE.BURNABLE)]
                     ).burntime;
                     item_array[(int)FurnaceTab.SlotType.FUEL].amount--;
                 }
@@ -160,7 +158,9 @@ public partial class ProcessBuilding : MachineBase
         }
 
         is_crafting = true;
-        item_array[(int)FurnaceTab.SlotType.IMPORT].amount -= recipes[current_recipe].import_amount;
+        item_array[(int)FurnaceTab.SlotType.IMPORT].amount -= recipes[
+            current_recipe
+        ].amount_in_import;
         if (FurnaceTab.instance.process_building == this)
             FurnaceTab.instance.UpdateFurnaceUI();
         crafting_timer.Start();
@@ -179,7 +179,7 @@ public partial class ProcessBuilding : MachineBase
 
             if (item_array[(int)FurnaceTab.SlotType.IMPORT] != null)
                 if (
-                    recipes[i].import_item_resource
+                    recipes[i].import_item_info
                     == Inventory.ITEM_TYPES[
                         (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
                     ]
@@ -189,7 +189,7 @@ public partial class ProcessBuilding : MachineBase
                     if (item_array[(int)FurnaceTab.SlotType.EXPORT] == null)
                         return true;
                     else if (
-                        recipes[i].export_item_resource
+                        recipes[i].export_item_info
                         == Inventory.ITEM_TYPES[
                             (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.EXPORT].item_id
                         ]

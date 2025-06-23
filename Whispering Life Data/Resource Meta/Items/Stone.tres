@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="ItemResource" load_steps=7 format=3 uid="uid://b3bnpcxbnd5i1"]
 
-[ext_resource type="Resource" uid="uid://yh8rhrf7r458" path="res://Resource Meta/Items/Item_Types/RM_Resource_Type_Classic.tres" id="1_3a4nj"]
-[ext_resource type="Resource" uid="uid://b4j8cjn03te4o" path="res://Resource Meta/Items/Item_Types/RM_Smeltable_Type_Classic.tres" id="2_o4jw3"]
-[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableType.cs" id="3_sbxj5"]
+[ext_resource type="Resource" uid="uid://yh8rhrf7r458" path="res://Resource Meta/Items/Attributes/ResourceAttribute.tres" id="1_3a4nj"]
+[ext_resource type="Resource" uid="uid://b4j8cjn03te4o" path="res://Resource Meta/Items/Attributes/SmeltableAttribute.tres" id="2_o4jw3"]
+[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableAttribute.cs" id="3_sbxj5"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="4_gejfu"]
 [ext_resource type="Texture2D" uid="uid://w1k1mv22ckvl" path="res://Sprites/Items/Icons_3rd/Stone.png" id="5_yu743"]
 

@@ -8,10 +8,10 @@ public partial class Slot : Button
     public string label_translation_string;
 
     [Export]
-    public ItemInfo.TYPE slot_type;
+    public ItemAttribute.TYPE attribute_type;
 
     [Export]
-    public bool check_slot_type = false;
+    public bool check_category = false;
 
     [Export]
     public bool is_export_slot = false;
@@ -55,20 +55,13 @@ public partial class Slot : Button
                 OnSlotButton(btn);
             }
 
-            if (
-                slot_type == ItemInfo.TYPE.CLOTHS
-                || slot_type == ItemInfo.TYPE.TOOL
-                || slot_type == ItemInfo.TYPE.HEAD
-                || slot_type == ItemInfo.TYPE.CHESTPLATE
-                || slot_type == ItemInfo.TYPE.LEGGINGS
-                || slot_type == ItemInfo.TYPE.SHOES
-            )
+            if (attribute_type == ItemAttribute.TYPE.WEARABLE)
             {
                 OnEquipSlotButton(GetIndex());
                 // Slot Updater not needed now
             }
 
-            if (slot_type == ItemInfo.TYPE.RESEARCHABLE)
+            if (attribute_type == ItemAttribute.TYPE.RESEARCHABLE)
             {
                 OnResearchSlotButton();
                 //SlotUpdater not needed now
@@ -105,7 +98,7 @@ public partial class Slot : Button
     {
         if (GetSlotItemUI() != null)
         {
-            if (item.resource == GetSlotItemUI().item.resource)
+            if (item.info == GetSlotItemUI().item.info)
             {
                 if (durability != -1)
                     GetSlotItemUI().SetDurability(durability);
@@ -145,7 +138,7 @@ public partial class Slot : Button
             {
                 Debug.Print(GetSlotItemUI().current_durability.ToString());
                 CreateClickedItem(false, GetSlotItemUI().current_durability);
-                if (GetSlotItemUI().item.resource.HasType(ItemInfo.TYPE.TOOL))
+                if (GetSlotItemUI().item.info.HasAttribute(ItemAttribute.TYPE.TOOL))
                 {
                     EquipmentPanel.instance.equipped_tools[index] = null;
                     EquipmentPanel.instance.slots_tool[index].ClearItem();
@@ -153,12 +146,7 @@ public partial class Slot : Button
                     if (EquipmentSelectBar.current_selected_slot == index)
                         PlayerUI.instance.equipmentSelectBar.current_selected_slot_item_ui = null;
                 }
-                if (
-                    GetSlotItemUI().item.resource.HasType(ItemInfo.TYPE.HEAD)
-                    || GetSlotItemUI().item.resource.HasType(ItemInfo.TYPE.CHESTPLATE)
-                    || GetSlotItemUI().item.resource.HasType(ItemInfo.TYPE.LEGGINGS)
-                    || GetSlotItemUI().item.resource.HasType(ItemInfo.TYPE.SHOES)
-                )
+                if (GetSlotItemUI().item.info.HasAttribute(ItemAttribute.TYPE.WEARABLE))
                 {
                     EquipmentPanel.instance.equipped_armor[index] = null;
                     EquipmentPanel.instance.slots_armor[index].ClearItem();
@@ -171,12 +159,8 @@ public partial class Slot : Button
             if (GetSlotItemUI() == null)
             {
                 if (
-                    PlayerInventoryUI.clicked_slot_item_ui.item.resource.HasType(slot_type)
-                    && (
-                        slot_type == ItemInfo.TYPE.HEAD
-                        || slot_type == ItemInfo.TYPE.CHESTPLATE
-                        || slot_type == ItemInfo.TYPE.LEGGINGS
-                        || slot_type == ItemInfo.TYPE.SHOES
+                    PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute(
+                        ItemAttribute.TYPE.WEARABLE
                     )
                 )
                 {
@@ -185,12 +169,13 @@ public partial class Slot : Button
                 }
 
                 if (
-                    PlayerInventoryUI.clicked_slot_item_ui.item.resource.HasType(slot_type)
-                    && slot_type == ItemInfo.TYPE.TOOL
+                    PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute(
+                        ItemAttribute.TYPE.TOOL
+                    )
                 )
                 {
                     EquipmentPanel.instance.equipped_tools[index] = new ItemSave(
-                        (int)PlayerInventoryUI.clicked_slot_item_ui.item.resource.item_id,
+                        (int)PlayerInventoryUI.clicked_slot_item_ui.item.info.id,
                         PlayerInventoryUI.clicked_slot_item_ui.item.amount,
                         PlayerInventoryUI.clicked_slot_item_ui.current_durability
                     );
@@ -221,7 +206,7 @@ public partial class Slot : Button
     private void OnTakeItemFromArmorSlot(int index)
     {
         EquipmentPanel.instance.equipped_armor[index] = new ItemSave(
-            (int)PlayerInventoryUI.clicked_slot_item_ui.item.resource.item_id,
+            (int)PlayerInventoryUI.clicked_slot_item_ui.item.info.id,
             PlayerInventoryUI.clicked_slot_item_ui.item.amount,
             PlayerInventoryUI.clicked_slot_item_ui.current_durability
         );
@@ -248,7 +233,7 @@ public partial class Slot : Button
                         return;
                     }
 
-                if (GetSlotItemUI().item.resource.has_durability)
+                if (GetSlotItemUI().item.info.has_durability)
                     CreateClickedItem(false, GetSlotItemUI().current_durability);
                 else
                     CreateClickedItem();
@@ -261,8 +246,12 @@ public partial class Slot : Button
         {
             if (GetSlotItemUI() == null)
             {
-                if (check_slot_type)
-                    if (!PlayerInventoryUI.clicked_slot_item_ui.item.resource.HasType(slot_type))
+                if (check_category)
+                    if (
+                        !PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute(
+                            attribute_type
+                        )
+                    )
                         return;
                 if (is_export_slot)
                     return;
@@ -272,7 +261,7 @@ public partial class Slot : Button
                     {
                         NewSlot(
                             item_array,
-                            (int)PlayerInventoryUI.clicked_slot_item_ui.item.resource.item_id,
+                            (int)PlayerInventoryUI.clicked_slot_item_ui.item.info.id,
                             1,
                             PlayerInventoryUI.clicked_slot_item_ui.current_durability
                         );
@@ -282,7 +271,7 @@ public partial class Slot : Button
 
                 NewSlot(
                     item_array,
-                    (int)PlayerInventoryUI.clicked_slot_item_ui.item.resource.item_id,
+                    (int)PlayerInventoryUI.clicked_slot_item_ui.item.info.id,
                     PlayerInventoryUI.clicked_slot_item_ui.item.amount,
                     PlayerInventoryUI.clicked_slot_item_ui.current_durability
                 );
@@ -292,14 +281,15 @@ public partial class Slot : Button
 
             if (slot_is_switchable)
             {
-                if (check_slot_type)
-                    if (!PlayerInventoryUI.clicked_slot_item_ui.item.resource.HasType(slot_type))
+                if (check_category)
+                    if (
+                        !PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute(
+                            attribute_type
+                        )
+                    )
                         return;
 
-                if (
-                    GetSlotItemUI().item.resource
-                    != PlayerInventoryUI.clicked_slot_item_ui.item.resource
-                )
+                if (GetSlotItemUI().item.info != PlayerInventoryUI.clicked_slot_item_ui.item.info)
                 {
                     //Switch Items
                     SlotItemUI slot_item = PlayerInventoryUI.clicked_slot_item_ui;
@@ -307,7 +297,7 @@ public partial class Slot : Button
                     CreateClickedItem();
                     NewSlot(
                         item_array,
-                        (int)slot_item.item.resource.item_id,
+                        (int)slot_item.item.info.id,
                         slot_item.item.amount,
                         slot_item.current_durability
                     );
@@ -317,7 +307,7 @@ public partial class Slot : Button
 
             if (
                 GetAmountOfSlot(item_array)
-                == PlayerInventoryUI.clicked_slot_item_ui.item.resource.max_slot_amount
+                == PlayerInventoryUI.clicked_slot_item_ui.item.info.max_slot_amount
             )
                 return;
 
@@ -327,7 +317,7 @@ public partial class Slot : Button
                     if (
                         PlayerInventoryUI.clicked_slot_item_ui.item.amount
                             + GetAmountOfSlot(item_array)
-                        <= PlayerInventoryUI.clicked_slot_item_ui.item.resource.max_slot_amount
+                        <= PlayerInventoryUI.clicked_slot_item_ui.item.info.max_slot_amount
                     )
                     {
                         UpdateSlot(item_array, GetAmountOfSlot(item_array) + 1);
@@ -337,7 +327,7 @@ public partial class Slot : Button
                     {
                         // 48 - 30 = 18
                         int diff =
-                            PlayerInventoryUI.clicked_slot_item_ui.item.resource.max_slot_amount
+                            PlayerInventoryUI.clicked_slot_item_ui.item.info.max_slot_amount
                             - GetAmountOfSlot(item_array);
 
                         UpdateSlot(item_array, GetAmountOfSlot(item_array) + diff);
@@ -348,7 +338,7 @@ public partial class Slot : Button
 
             if ( //Check if <= slot max
                 PlayerInventoryUI.clicked_slot_item_ui.item.amount + GetAmountOfSlot(item_array)
-                <= PlayerInventoryUI.clicked_slot_item_ui.item.resource.max_slot_amount
+                <= PlayerInventoryUI.clicked_slot_item_ui.item.info.max_slot_amount
             )
             {
                 UpdateSlot(
@@ -360,7 +350,7 @@ public partial class Slot : Button
             else
             {
                 int diff =
-                    PlayerInventoryUI.clicked_slot_item_ui.item.resource.max_slot_amount
+                    PlayerInventoryUI.clicked_slot_item_ui.item.info.max_slot_amount
                     - GetAmountOfSlot(item_array);
 
                 UpdateSlot(item_array, GetAmountOfSlot(item_array) + diff);
@@ -425,8 +415,8 @@ public partial class Slot : Button
         else
         {
             if (
-                !PlayerInventoryUI.clicked_slot_item_ui.item.resource.HasType(
-                    ItemInfo.TYPE.RESEARCHABLE
+                !PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute(
+                    ItemAttribute.TYPE.RESEARCHABLE
                 )
             )
                 return;
@@ -434,7 +424,7 @@ public partial class Slot : Button
             if (GetSlotItemUI() == null)
             {
                 ResearchTab.research_slot_item = new ItemSave(
-                    (int)PlayerInventoryUI.clicked_slot_item_ui.item.resource.item_id,
+                    (int)PlayerInventoryUI.clicked_slot_item_ui.item.info.id,
                     1
                 );
                 PlayerInventoryUI.clicked_slot_item_ui.item.amount -= 1;

@@ -43,16 +43,16 @@ public partial class Belt : TransportBase
                     {
                         if (item_holder.hasBeltItem())
                         {
-                            ItemResource item_resource = item_holder
+                            ItemInfo info = item_holder
                                 .GetBeltItem()
-                                .GetItemResource();
+                                .GetItemInfo();
                             if (
                                 ((ProcessBuilding)area.GetParent<Taker>().building).GetItemResource(
                                     FurnaceTab.SlotType.IMPORT
                                 ) != null
                             )
                                 if (
-                                    item_resource
+                                    info
                                     != (
                                         (ProcessBuilding)area.GetParent<Taker>().building
                                     ).GetItemResource(FurnaceTab.SlotType.IMPORT)
@@ -70,7 +70,7 @@ public partial class Belt : TransportBase
                             var item = item_holder.offload_item();
                             ((ProcessBuilding)area.GetParent<Taker>().building).item_array[
                                 (int)FurnaceTab.SlotType.IMPORT
-                            ] = new ItemSave((int)item_resource.item_id, 1);
+                            ] = new ItemSave((int)info.id, 1);
                             area.GetParent<Taker>().receive_item(item);
                         }
                     }

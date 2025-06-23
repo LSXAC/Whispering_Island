@@ -123,7 +123,7 @@ public partial class hover_menu : PanelContainer
             instance.resource_type_content.Text = ro.type.ToString();
 
             //Collect Level if Ressource
-            instance.resource_type_level_content.Text = ro.type_level.ToString();
+            instance.resource_type_level_content.Text = ro.mining_level.ToString();
         }
 
         if (node is ProcessBuilding pb)
@@ -152,7 +152,7 @@ public partial class hover_menu : PanelContainer
                                 (Inventory.ITEM_ID)
                                     pb.item_array[(int)FurnaceTab.SlotType.EXPORT].item_id
                             ]
-                            .item_name
+                            .name
                     );
             else
                 instance.process_output_content.Text = TranslationServer.Translate(
@@ -169,7 +169,7 @@ public partial class hover_menu : PanelContainer
                                 (Inventory.ITEM_ID)
                                     pb.item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
                             ]
-                            .item_name
+                            .name
                     );
             else
                 instance.process_input_content.Text = TranslationServer.Translate(
@@ -192,7 +192,7 @@ public partial class hover_menu : PanelContainer
             instance.process_output_content.Text =
                 production_machine.count
                 + "x "
-                + TranslationServer.Translate(production_machine.output_item_resource.item_name);
+                + TranslationServer.Translate(production_machine.output_item_resource.name);
         }
 
         if (node is ChestBase chest)

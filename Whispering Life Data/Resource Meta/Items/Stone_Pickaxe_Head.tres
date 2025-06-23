@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://6wlgn6tdsk7b"]
 
-[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Resource Meta/Items/Item_Types/RM_Processed_Type_Classic.tres" id="1_gwktg"]
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Resource Meta/Items/Attributes/ProcessedAttribute.tres" id="1_gwktg"]
 [ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_hw0nm"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_lxl0p"]
 [ext_resource type="Texture2D" uid="uid://dssms0p4e3r0e" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe_Head.png" id="2_t5k5v"]

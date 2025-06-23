@@ -11,33 +11,21 @@ public partial class Inventory : SlotUpdater
     public ItemSave[] inventory_items;
 
     public int slot_amount = 30;
-    public static Dictionary<ITEM_ID, ItemInfo> ITEM_TYPES = new Dictionary<
-        ITEM_ID,
-        ItemInfo
-    >()
+    public static Dictionary<ITEM_ID, ItemInfo> ITEM_TYPES = new Dictionary<ITEM_ID, ItemInfo>()
     {
         { ITEM_ID.WOOD, ResourceLoader.Load<ItemInfo>("res://Items/Wood.tres") },
         { ITEM_ID.STONE, ResourceLoader.Load<ItemInfo>("res://Items/Stone.tres") },
         { ITEM_ID.WOOD_STICK, ResourceLoader.Load<ItemInfo>("res://Items/Wood_Stick.tres") },
-        {
-            ITEM_ID.STONE_PICKAXE,
-            ResourceLoader.Load<ItemInfo>("res://Items/Stone_Pickaxe.tres")
-        },
+        { ITEM_ID.STONE_PICKAXE, ResourceLoader.Load<ItemInfo>("res://Items/Stone_Pickaxe.tres") },
         { ITEM_ID.WOODEN_PLANK, ResourceLoader.Load<ItemInfo>("res://Items/Wood_Plank.tres") },
         { ITEM_ID.Wooden_Axe, ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe.tres") },
         { ITEM_ID.CHAR_COAL, ResourceLoader.Load<ItemInfo>("res://Items/Char_Coal.tres") },
         { ITEM_ID.IRON_ORE, ResourceLoader.Load<ItemInfo>("res://Items/Iron_Ore.tres") },
         { ITEM_ID.IRON_INGOT, ResourceLoader.Load<ItemInfo>("res://Items/Iron_Ingot.tres") },
         { ITEM_ID.COPPER_ORE, ResourceLoader.Load<ItemInfo>("res://Items/Copper_Ore.tres") },
-        {
-            ITEM_ID.COPPER_INGOT,
-            ResourceLoader.Load<ItemInfo>("res://Items/Copper_Ingot.tres")
-        },
+        { ITEM_ID.COPPER_INGOT, ResourceLoader.Load<ItemInfo>("res://Items/Copper_Ingot.tres") },
         { ITEM_ID.STONE_KNIFE, ResourceLoader.Load<ItemInfo>("res://Items/Stone_Knife.tres") },
-        {
-            ITEM_ID.MYSTIC_FIBRE,
-            ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Fibre.tres")
-        },
+        { ITEM_ID.MYSTIC_FIBRE, ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Fibre.tres") },
         { ITEM_ID.MYSTIC_WOOD, ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Wood.tres") },
         { ITEM_ID.FIBRE, ResourceLoader.Load<ItemInfo>("res://Items/Fibre.tres") },
         { ITEM_ID.STONE_BLADE, ResourceLoader.Load<ItemInfo>("res://Items/Stone_Blade.tres") },
@@ -87,10 +75,7 @@ public partial class Inventory : SlotUpdater
             ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Shoes.tres")
         },
         { ITEM_ID.OAK_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Oak_Seed.tres") },
-        {
-            ITEM_ID.MYST_OAK_SEED,
-            ResourceLoader.Load<ItemInfo>("res://Items/Myst_Oak_Seed.tres")
-        },
+        { ITEM_ID.MYST_OAK_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Myst_Oak_Seed.tres") },
         {
             ITEM_ID.MYST_FIBRE_SEED,
             ResourceLoader.Load<ItemInfo>("res://Items/Myst_Fibre_Seed.tres")
@@ -164,28 +149,28 @@ public partial class Inventory : SlotUpdater
         return null;
     }
 
-    public void MarkSlotsWithType(ItemInfo.TYPE[] types)
+    public void MarkSlotsWithAttributeTypes(ItemAttribute.TYPE[] types)
     {
-        Debug.Print("Updating Slots wirh markings");
+        Debug.Print("Updating Slots with markings");
         foreach (Slot slot in slots)
         {
             if (slot.GetSlotItemUI() != null)
             {
                 slot.GetSlotItemUI().SelfModulate = new Color(1f, 1f, 1f);
 
-                if (ItemHasZeroTypes(types, slot.GetSlotItemUI()))
+                if (ItemHasZeroAttributeTypes(types, slot.GetSlotItemUI()))
                     slot.GetSlotItemUI().SelfModulate = new Color(0.5f, 0.5f, 0.5f);
             }
         }
     }
 
-    private bool ItemHasZeroTypes(ItemInfo.TYPE[] types, SlotItemUI slot_item_ui)
+    private bool ItemHasZeroAttributeTypes(ItemAttribute.TYPE[] types, SlotItemUI slot_item_ui)
     {
         if (types == null)
             return false;
 
-        foreach (ItemInfo.TYPE type in types)
-            if (!slot_item_ui.item.info.HasType(type))
+        foreach (ItemAttribute.TYPE type in types)
+            if (!slot_item_ui.item.info.HasAttribute(type))
                 continue;
             else
                 return false;
@@ -215,11 +200,7 @@ public partial class Inventory : SlotUpdater
         {
             if (s != null)
             {
-                Item item = new Item
-                {
-                    info = ITEM_TYPES[(ITEM_ID)s.item_id],
-                    amount = s.amount
-                };
+                Item item = new Item { info = ITEM_TYPES[(ITEM_ID)s.item_id], amount = s.amount };
                 items.Add(item);
             }
         }

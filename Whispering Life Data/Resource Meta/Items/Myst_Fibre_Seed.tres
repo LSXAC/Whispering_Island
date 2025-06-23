@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://dpfc7scfcvgj6"]
 
 [ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_1ck1l"]
-[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Resource Meta/Items/Item_Types/RM_Processed_Type_Classic.tres" id="1_np636"]
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Resource Meta/Items/Attributes/ProcessedAttribute.tres" id="1_np636"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="2_2xap3"]
 [ext_resource type="Texture2D" uid="uid://cmqinhn108vms" path="res://Sprites/Items/Plants_Icons/Wheat_Seeds.png" id="3_uaruw"]
 

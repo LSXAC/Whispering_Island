@@ -80,7 +80,7 @@ public partial class GameMenu : CanvasLayer
     {
         if (IsThisWindow(this))
         {
-            PlayerInventoryUI.instance.MarkSlotsWithType(null);
+            PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes(null);
             CloseLastWindow();
             OnExitButton();
             return;
@@ -89,7 +89,7 @@ public partial class GameMenu : CanvasLayer
         if (IsWindowActiv())
             return;
 
-        PlayerInventoryUI.instance.MarkSlotsWithType(null);
+        PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes(null);
         ChangeSelectedTabColor(Tabs.Inventory);
         SetWindow(this);
     }
@@ -279,8 +279,8 @@ public partial class GameMenu : CanvasLayer
         CloseAllTabs();
         inventory_tab.Visible = true;
         furnace_tab.Visible = true;
-        PlayerInventoryUI.instance.MarkSlotsWithType(
-            [ItemResource.TYPE.BURNABLE, ItemResource.TYPE.SMELTABLE]
+        PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes(
+            [ItemAttribute.TYPE.BURNABLE, ItemAttribute.TYPE.SMELTABLE]
         );
     }
 
@@ -354,7 +354,7 @@ public partial class GameMenu : CanvasLayer
         CloseAllTabs();
         inventory_tab.Visible = true;
         research_tab.Visible = true;
-        PlayerInventoryUI.instance.MarkSlotsWithType([ItemResource.TYPE.RESEARCHABLE]);
+        PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes([ItemAttribute.TYPE.RESEARCHABLE]);
     }
 
     public void OnCloseSkilltreeTab()

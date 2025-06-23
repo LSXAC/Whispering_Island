@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="SmeltableType" load_steps=2 format=3 uid="uid://b4j8cjn03te4o"]
-
-[ext_resource type="Script" uid="uid://bdbfd68r4ogge" path="res://Scripts/Item/SmeltableType.cs" id="1_0pmq4"]
-
-[resource]
-script = ExtResource("1_0pmq4")
-type = 6

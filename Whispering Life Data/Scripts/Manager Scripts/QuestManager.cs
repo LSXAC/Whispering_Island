@@ -133,10 +133,7 @@ public partial class QuestManager : Node
         {
             for (int i = 0; i < quests[x].required_items.Count; i++)
                 if (i + 1 < quests[x].required_items.Count)
-                    if (
-                        quests[x].required_items[i].resource
-                        == quests[x].required_items[i + 1].resource
-                    )
+                    if (quests[x].required_items[i].info == quests[x].required_items[i + 1].info)
                         GD.PrintErr("ITEMS IN QUEST " + x + " are in duplicated use");
 
             if (0 != quests[x].required_items.Count - 1)
@@ -190,7 +187,7 @@ public partial class QuestManager : Node
         {
             foreach (Item quest_item in quests[current_quest_id].required_items)
                 PlayerInventoryUI.instance.RemoveItem(
-                    new Item(quest_item.resource, quest_item.amount * 2),
+                    new Item(quest_item.info, quest_item.amount * 2),
                     PlayerInventoryUI.instance.inventory_items
                 );
         }

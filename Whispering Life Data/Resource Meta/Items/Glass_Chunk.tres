@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://bn0p8b6sengb5"]
 
-[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Resource Meta/Items/Item_Types/RM_Processed_Type_Classic.tres" id="1_8uynm"]
+[ext_resource type="Resource" uid="uid://cofghwb0mwgj" path="res://Resource Meta/Items/Attributes/ProcessedAttribute.tres" id="1_8uynm"]
 [ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_71gui"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="2_rcqx1"]
 [ext_resource type="Texture2D" uid="uid://dxjvpwnw5yl31" path="res://Sprites/Items/Icons_3rd/Glass.png" id="3_rlumj"]

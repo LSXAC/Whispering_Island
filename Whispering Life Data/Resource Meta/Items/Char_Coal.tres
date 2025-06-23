@@ -1,27 +1,25 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=8 format=3 uid="uid://cfqb2p8ati1jo"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://cfqb2p8ati1jo"]
 
-[ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_3tq4c"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_fu6sg"]
-[ext_resource type="Resource" uid="uid://bm70n0hc2huct" path="res://Resource Meta/Items/Item_Types/RM_Burnable_Type_120.tres" id="2_or8g4"]
+[ext_resource type="Script" uid="uid://3331rwvg6cxi" path="res://Scripts/Item/ItemAttribute.cs" id="1_hdd64"]
 [ext_resource type="Texture2D" uid="uid://dwaejibm3nml2" path="res://Sprites/Items/Icons_3rd/Char_Coal.png" id="2_tqr2b"]
-[ext_resource type="Resource" uid="uid://b4j8cjn03te4o" path="res://Resource Meta/Items/Item_Types/RM_Smeltable_Type_Classic.tres" id="3_5goo7"]
-[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableType.cs" id="3_m5mjs"]
 
-[sub_resource type="Resource" id="Resource_n4hnj"]
-script = ExtResource("3_m5mjs")
-type = 9
+[sub_resource type="Resource" id="Resource_tf5mk"]
+script = ExtResource("1_hdd64")
+attribute = 1
+metadata/_custom_type_script = "uid://3331rwvg6cxi"
 
 [resource]
 script = ExtResource("1_fu6sg")
-item_types_arr = Array[Object]([ExtResource("2_or8g4"), ExtResource("3_5goo7"), SubResource("Resource_n4hnj")])
+attributes = Array[Object]([SubResource("Resource_tf5mk")])
 has_durability = false
 max_durability = 100
 max_slot_amount = 48
-item_name = "CHAR_COAL"
-unique_id = 6
-item_description = "CHAR_COAL_DESC"
+name = ""
+id = 0
+description = ""
 texture = ExtResource("2_tqr2b")
 value = 10.0
-type_level = 0
-use_type = 0
-item_stats = Array[ExtResource("1_3tq4c")]([])
+mining_level = 0
+statspanel_type = 0
+stats = []
