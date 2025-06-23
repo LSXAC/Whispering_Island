@@ -6,7 +6,7 @@ using Godot;
 public partial class ItemStats : Resource
 {
     [Export]
-    public StatsPanel.stat_types type;
+    public StatsPanel.TYPE type;
 
     [Export(PropertyHint.Range, "-50,50,0")]
     public float bonus = 0;

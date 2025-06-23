@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=7 format=3 uid="uid://b3bnpcxbnd5i1"]
+
+[ext_resource type="Resource" uid="uid://yh8rhrf7r458" path="res://Resource Meta/Items/Item_Types/RM_Resource_Type_Classic.tres" id="1_3a4nj"]
+[ext_resource type="Resource" uid="uid://b4j8cjn03te4o" path="res://Resource Meta/Items/Item_Types/RM_Smeltable_Type_Classic.tres" id="2_o4jw3"]
+[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableType.cs" id="3_sbxj5"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="4_gejfu"]
+[ext_resource type="Texture2D" uid="uid://w1k1mv22ckvl" path="res://Sprites/Items/Icons_3rd/Stone.png" id="5_yu743"]
+
+[sub_resource type="Resource" id="Resource_mhah5"]
+script = ExtResource("3_sbxj5")
+type = 9
+
+[resource]
+script = ExtResource("4_gejfu")
+item_types_arr = Array[Object]([ExtResource("1_3a4nj"), ExtResource("2_o4jw3"), SubResource("Resource_mhah5")])
+has_durability = false
+max_durability = 100
+max_slot_amount = 48
+item_name = "STONE"
+item_id = 0
+item_description = "STONE_DESC"
+texture = ExtResource("5_yu743")
+value = 3.0
+type_level = 0
+use_type = 0
+item_stats = []

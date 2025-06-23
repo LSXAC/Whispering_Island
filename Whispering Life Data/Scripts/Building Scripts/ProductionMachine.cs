@@ -4,7 +4,7 @@ using Godot;
 public partial class ProductionMachine : MachineBase
 {
     [Export]
-    public ItemResource output_item_resource;
+    public ItemInfo output_item_resource;
 
     [Export]
     public int count = 0;

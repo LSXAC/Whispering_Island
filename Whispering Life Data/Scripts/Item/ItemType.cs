@@ -5,5 +5,5 @@ using Godot;
 public partial class ItemType : Resource
 {
     [Export]
-    public ItemResource.TYPE type;
+    public ItemInfo.TYPE type;
 }

@@ -6,7 +6,7 @@ public partial class StatsPanel : ColorRect
     [Export]
     public VBoxContainer stats_container;
 
-    public enum stat_types
+    public enum TYPE
     {
         ATTACK,
         DEFENSE,

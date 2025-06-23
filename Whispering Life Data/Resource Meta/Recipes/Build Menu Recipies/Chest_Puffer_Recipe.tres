@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://bqr0ijgjp2cdt"]
 
-[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Item Info/Wood.tres" id="1_v3jbs"]
-[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_s4jkt"]
-[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Resource Meta/Item Info/Stone.tres" id="3_itgve"]
-[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Resource Meta/Item Info/Iron_Ingot.tres" id="4_io06s"]
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Items/Wood.tres" id="1_v3jbs"]
+[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_s4jkt"]
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Resource Meta/Items/Stone.tres" id="3_itgve"]
+[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Resource Meta/Items/Iron_Ingot.tres" id="4_io06s"]
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="5_2lrbv"]
 
 [sub_resource type="Resource" id="Resource_hnenm"]

@@ -11,10 +11,10 @@ public partial class MineableObject : placeable_building
     public Node2D hit_point;
 
     [Export]
-    public StatsPanel.stat_types type;
+    public StatsPanel.TYPE type;
 
     [Export]
-    public ItemResource.TYPE_LEVEL type_level = ItemResource.TYPE_LEVEL.Hand;
+    public ItemInfo.MINING_LEVEL mining_level = ItemInfo.MINING_LEVEL.Hand;
 
     [Export]
     public int max_durability = 3;
@@ -29,7 +29,7 @@ public partial class MineableObject : placeable_building
     private int mining_bonus = 2;
 
     [Export]
-    private ItemResource item_resource;
+    private ItemInfo item_resource;
 
     [Export]
     public bool drops_extra_item;
@@ -38,7 +38,7 @@ public partial class MineableObject : placeable_building
     public int extra_item_amount = 0;
 
     [Export]
-    public ItemResource extra_item_resource;
+    public ItemInfo extra_item_info;
 
     [Export]
     public GpuParticles2D gpu_particles;
@@ -74,7 +74,7 @@ public partial class MineableObject : placeable_building
     public void SpawnPlant()
     {
         anim_player.PlayBackwards("Break");
-        StartTimerBar(TimerBar.state.SPAWNING, respawn_seconds);
+        StartTimerBar(TimerBar.STATE.SPAWNING, respawn_seconds);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -93,7 +93,7 @@ public partial class MineableObject : placeable_building
         Position = ros.position;
         current_durability = ros.current_durability;
         in_cooldown = ros.in_cooldown;
-        if (ros.last_state != TimerBar.state.NONE)
+        if (ros.last_state != TimerBar.STATE.NONE)
             if (ros.time_left == 0)
                 Reset(from_loading: true);
             else
@@ -104,7 +104,7 @@ public partial class MineableObject : placeable_building
     {
         ResourceObjectSave ros = new ResourceObjectSave(
             in_cooldown: in_cooldown,
-            last_state: timer_bar.currentstate,
+            last_state: timer_bar.current_state,
             (int)timer_bar.Value,
             current_durability,
             Position,
@@ -132,7 +132,7 @@ public partial class MineableObject : placeable_building
             return;
         }
 
-        if (PlayerUI.instance.equipmentSelectBar.GetSelectedTypeLevel() < type_level)
+        if (PlayerUI.instance.equipmentSelectBar.GetSelectedTypeLevel() < mining_level)
         {
             PlayerUI.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WEAK_TYPE_LEVEL"));
             return;
@@ -192,7 +192,7 @@ public partial class MineableObject : placeable_building
             {
                 if (
                     !PlayerInventoryUI.instance.CanReceiveItem(
-                        new Item(extra_item_resource, extra_item_amount),
+                        new Item(extra_item_info, extra_item_amount),
                         PlayerInventoryUI.instance.inventory_items
                     )
                 )
@@ -237,7 +237,7 @@ public partial class MineableObject : placeable_building
             if (
                 PlayerUI
                     .instance.equipmentSelectBar.GetSelectedSlotItemUI()
-                    .item.resource.has_durability
+                    .item.info.has_durability
             )
             {
                 EquipmentPanel
@@ -265,7 +265,7 @@ public partial class MineableObject : placeable_building
                 "Bonus: +"
                     + amount
                     + " "
-                    + TranslationServer.Translate(item_resource.item_name.ToString())
+                    + TranslationServer.Translate(item_resource.name.ToString())
             );
             PlayerInventoryUI.instance.AddItem(
                 new Item(item_resource, amount),
@@ -278,10 +278,10 @@ public partial class MineableObject : placeable_building
                     "Bonus: +"
                         + extra_item_amount
                         + " "
-                        + TranslationServer.Translate(extra_item_resource.item_name.ToString())
+                        + TranslationServer.Translate(extra_item_info.name.ToString())
                 );
                 PlayerInventoryUI.instance.AddItem(
-                    new Item(extra_item_resource, extra_item_amount),
+                    new Item(extra_item_info, extra_item_amount),
                     PlayerInventoryUI.instance.inventory_items
                 );
             }
@@ -297,7 +297,7 @@ public partial class MineableObject : placeable_building
         }
 
         anim_player.Play("Hit");
-        StartTimerBar(TimerBar.state.COOLDOWN, click_cooldown_time);
+        StartTimerBar(TimerBar.STATE.COOLDOWN, click_cooldown_time);
         PlayerUI.AddItemLabelUI(
             "+"
                 + (
@@ -307,7 +307,7 @@ public partial class MineableObject : placeable_building
                     )
                 )
                 + " "
-                + TranslationServer.Translate(item_resource.item_name.ToString())
+                + TranslationServer.Translate(item_resource.name.ToString())
         );
         PlayerInventoryUI.instance.AddItem(
             new Item(
@@ -323,12 +323,12 @@ public partial class MineableObject : placeable_building
         hover_menu.InitHoverMenu(this);
     }
 
-    private void StartTimerBar(TimerBar.state state, double time, bool from_loading = false)
+    private void StartTimerBar(TimerBar.STATE state, double time, bool from_loading = false)
     {
-        if (state == TimerBar.state.SPAWNING && from_loading)
+        if (state == TimerBar.STATE.SPAWNING && from_loading)
             anim_player.PlayBackwards("Break");
 
-        if (state == TimerBar.state.SPAWNING)
+        if (state == TimerBar.STATE.SPAWNING)
             if (collision_shape != null)
                 collision_shape.Disabled = false;
 
@@ -338,7 +338,7 @@ public partial class MineableObject : placeable_building
 
     public void Reset(bool from_loading = false)
     {
-        if (timer_bar.currentstate == TimerBar.state.SPAWNING || from_loading)
+        if (timer_bar.current_state == TimerBar.STATE.SPAWNING || from_loading)
             current_durability = max_durability;
 
         if (HasNode("Shadow"))
@@ -346,6 +346,6 @@ public partial class MineableObject : placeable_building
 
         in_cooldown = false;
         interactableArea.Monitoring = true;
-        timer_bar.currentstate = TimerBar.state.NONE;
+        timer_bar.current_state = TimerBar.STATE.NONE;
     }
 }

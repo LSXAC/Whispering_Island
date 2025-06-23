@@ -3,7 +3,7 @@ using Godot;
 
 public partial class TimerBar : ProgressBar
 {
-    public enum state
+    public enum STATE
     {
         NONE,
         SPAWNING,
@@ -14,7 +14,7 @@ public partial class TimerBar : ProgressBar
     Label label;
 
     public Node2D parent;
-    public state currentstate = state.NONE;
+    public STATE current_state = STATE.NONE;
 
     StyleBoxFlat styleBoxRespawn = new StyleBoxFlat();
     StyleBoxFlat styleBoxCooldown = new StyleBoxFlat();
@@ -28,7 +28,7 @@ public partial class TimerBar : ProgressBar
         Visible = false;
     }
 
-    public void InitTimer(double max_seconds, state new_state)
+    public void InitTimer(double max_seconds, STATE new_state)
     {
         MaxValue = max_seconds;
         Value = max_seconds;
@@ -36,9 +36,9 @@ public partial class TimerBar : ProgressBar
             timer.WaitTime = max_seconds;
         else
             timer.WaitTime = 1;
-        currentstate = new_state;
+        current_state = new_state;
         AddThemeStyleboxOverride("background", styleBoxRespawn);
-        if (new_state != state.COOLDOWN)
+        if (new_state != STATE.COOLDOWN)
             Visible = true;
         UpdateLabel();
         timer.Start();

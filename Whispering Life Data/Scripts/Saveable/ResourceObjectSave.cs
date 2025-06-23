@@ -10,7 +10,7 @@ public partial class ResourceObjectSave : Resource
     public Vector2 position = Vector2.Zero;
 
     [Export]
-    public TimerBar.state last_state = TimerBar.state.NONE;
+    public TimerBar.STATE last_state = TimerBar.STATE.NONE;
 
     [Export]
     public int time_left = 0;
@@ -25,7 +25,7 @@ public partial class ResourceObjectSave : Resource
 
     public ResourceObjectSave(
         bool in_cooldown,
-        TimerBar.state last_state,
+        TimerBar.STATE last_state,
         int time_left,
         int current_durability,
         Vector2 pos,

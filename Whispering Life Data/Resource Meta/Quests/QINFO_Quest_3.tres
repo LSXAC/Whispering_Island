@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="QuestInfo" load_steps=9 format=3 uid="uid://1g8vpo6nhjtq"]
 
-[ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Resource Meta/Item Info/Stone_Pickaxe.tres" id="1_o8wv1"]
-[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_5ki2s"]
-[ext_resource type="Resource" uid="uid://dmrxwabbdyg0d" path="res://Resource Meta/Item Info/Wooden_Axe.tres" id="3_sm68m"]
-[ext_resource type="Resource" uid="uid://bvplgrho461h0" path="res://Resource Meta/Item Info/Stone_Knife.tres" id="4_acmwj"]
+[ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Resource Meta/Items/Stone_Pickaxe.tres" id="1_o8wv1"]
+[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_5ki2s"]
+[ext_resource type="Resource" uid="uid://dmrxwabbdyg0d" path="res://Resource Meta/Items/Wooden_Axe.tres" id="3_sm68m"]
+[ext_resource type="Resource" uid="uid://bvplgrho461h0" path="res://Resource Meta/Items/Stone_Knife.tres" id="4_acmwj"]
 [ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Scripts/Resources/QuestInfo.cs" id="4_h6kmg"]
 
 [sub_resource type="Resource" id="Resource_iic3g"]

@@ -74,7 +74,7 @@ public partial class FurnaceTab : SlotUpdater
         }
     }
 
-    public override ItemResource GetItemResource(int index)
+    public override ItemInfo GetItemInfo(int index)
     {
         if (process_building == null)
             throw new Exception("No Process Building set");
@@ -165,7 +165,7 @@ public partial class FurnaceTab : SlotUpdater
             if (process_building.item_array[(int)SlotType.EXPORT].amount > 0)
                 export_slot.SetItem(
                     new Item(
-                        GetItemResource((int)SlotType.EXPORT),
+                        GetItemInfo((int)SlotType.EXPORT),
                         process_building.item_array[(int)SlotType.EXPORT].amount
                     )
                 );
@@ -174,7 +174,7 @@ public partial class FurnaceTab : SlotUpdater
             if (process_building.item_array[(int)SlotType.IMPORT].amount > 0)
                 import_slot.SetItem(
                     new Item(
-                        GetItemResource((int)SlotType.IMPORT),
+                        GetItemInfo((int)SlotType.IMPORT),
                         process_building.item_array[(int)SlotType.IMPORT].amount
                     )
                 );
@@ -183,7 +183,7 @@ public partial class FurnaceTab : SlotUpdater
             if (process_building.item_array[(int)SlotType.FUEL].amount > 0)
                 fuel_slot.SetItem(
                     new Item(
-                        GetItemResource((int)SlotType.FUEL),
+                        GetItemInfo((int)SlotType.FUEL),
                         process_building.item_array[(int)SlotType.FUEL].amount
                     )
                 );
@@ -254,7 +254,7 @@ public partial class FurnaceTab : SlotUpdater
         else
         {
             process_building.item_array[(int)SlotType.EXPORT] = new ItemSave(
-                (int)export_slot.GetSlotItemUI().item.resource.item_id,
+                (int)export_slot.GetSlotItemUI().item.info.id,
                 export_slot.GetSlotItemUI().item.amount
             );
         }
@@ -266,7 +266,7 @@ public partial class FurnaceTab : SlotUpdater
         else
         {
             process_building.item_array[(int)SlotType.IMPORT] = new ItemSave(
-                (int)import_slot.GetSlotItemUI().item.resource.item_id,
+                (int)import_slot.GetSlotItemUI().item.info.id,
                 import_slot.GetSlotItemUI().item.amount
             );
         }
@@ -278,7 +278,7 @@ public partial class FurnaceTab : SlotUpdater
         else
         {
             process_building.item_array[(int)SlotType.FUEL] = new ItemSave(
-                (int)fuel_slot.GetSlotItemUI().item.resource.item_id,
+                (int)fuel_slot.GetSlotItemUI().item.info.id,
                 fuel_slot.GetSlotItemUI().item.amount
             );
         }

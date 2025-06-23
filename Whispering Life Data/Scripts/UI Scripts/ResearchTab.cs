@@ -84,12 +84,12 @@ public partial class ResearchTab : ColorRect
             lts.QueueFree();
     }
 
-    private void SetText(ItemResource item_resource)
+    private void SetText(ItemInfo info)
     {
         foreach (LevelTab lts in tab_container.GetChildren())
             lts.QueueFree();
 
-        Inventory.ITEM_ID id = item_resource.item_id;
+        Inventory.ITEM_ID id = info.item_id;
 
         if (!Database.researchs.ContainsKey(id))
             return;

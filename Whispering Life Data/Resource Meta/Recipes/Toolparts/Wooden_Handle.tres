@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3 uid="uid://cydbh0i4ql0ev"]
 
-[ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Resource Meta/Item Info/Glass_Chunk.tres" id="1_f1ywn"]
-[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_28m67"]
-[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Item Info/Wood.tres" id="3_cel7p"]
+[ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Resource Meta/Items/Glass_Chunk.tres" id="1_f1ywn"]
+[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_28m67"]
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Items/Wood.tres" id="3_cel7p"]
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="4_6epu8"]
 
 [sub_resource type="Resource" id="Resource_66y5o"]

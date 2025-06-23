@@ -8,7 +8,7 @@ public partial class BeltSave : TransportBaseSave
         Vector2 pos,
         TransportBase.Direction f_d,
         TransportBase.Direction t_d,
-        ItemResource item_resource,
+        ItemInfo item_resource,
         int curr_rot
     )
     {
@@ -20,7 +20,7 @@ public partial class BeltSave : TransportBaseSave
     }
 
     [Export]
-    public ItemResource belt_holding_item_resource = null;
+    public ItemInfo belt_holding_item_resource = null;
 
     [Export]
     public Vector2 belt_item_position = Vector2.Zero;

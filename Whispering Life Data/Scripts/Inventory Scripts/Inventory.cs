@@ -11,89 +11,89 @@ public partial class Inventory : SlotUpdater
     public ItemSave[] inventory_items;
 
     public int slot_amount = 30;
-    public static Dictionary<ITEM_ID, ItemResource> ITEM_TYPES = new Dictionary<
+    public static Dictionary<ITEM_ID, ItemInfo> ITEM_TYPES = new Dictionary<
         ITEM_ID,
-        ItemResource
+        ItemInfo
     >()
     {
-        { ITEM_ID.WOOD, ResourceLoader.Load<ItemResource>("res://Items/Wood.tres") },
-        { ITEM_ID.STONE, ResourceLoader.Load<ItemResource>("res://Items/Stone.tres") },
-        { ITEM_ID.WOOD_STICK, ResourceLoader.Load<ItemResource>("res://Items/Wood_Stick.tres") },
+        { ITEM_ID.WOOD, ResourceLoader.Load<ItemInfo>("res://Items/Wood.tres") },
+        { ITEM_ID.STONE, ResourceLoader.Load<ItemInfo>("res://Items/Stone.tres") },
+        { ITEM_ID.WOOD_STICK, ResourceLoader.Load<ItemInfo>("res://Items/Wood_Stick.tres") },
         {
             ITEM_ID.STONE_PICKAXE,
-            ResourceLoader.Load<ItemResource>("res://Items/Stone_Pickaxe.tres")
+            ResourceLoader.Load<ItemInfo>("res://Items/Stone_Pickaxe.tres")
         },
-        { ITEM_ID.WOODEN_PLANK, ResourceLoader.Load<ItemResource>("res://Items/Wood_Plank.tres") },
-        { ITEM_ID.Wooden_Axe, ResourceLoader.Load<ItemResource>("res://Items/Wooden_Axe.tres") },
-        { ITEM_ID.CHAR_COAL, ResourceLoader.Load<ItemResource>("res://Items/Char_Coal.tres") },
-        { ITEM_ID.IRON_ORE, ResourceLoader.Load<ItemResource>("res://Items/Iron_Ore.tres") },
-        { ITEM_ID.IRON_INGOT, ResourceLoader.Load<ItemResource>("res://Items/Iron_Ingot.tres") },
-        { ITEM_ID.COPPER_ORE, ResourceLoader.Load<ItemResource>("res://Items/Copper_Ore.tres") },
+        { ITEM_ID.WOODEN_PLANK, ResourceLoader.Load<ItemInfo>("res://Items/Wood_Plank.tres") },
+        { ITEM_ID.Wooden_Axe, ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe.tres") },
+        { ITEM_ID.CHAR_COAL, ResourceLoader.Load<ItemInfo>("res://Items/Char_Coal.tres") },
+        { ITEM_ID.IRON_ORE, ResourceLoader.Load<ItemInfo>("res://Items/Iron_Ore.tres") },
+        { ITEM_ID.IRON_INGOT, ResourceLoader.Load<ItemInfo>("res://Items/Iron_Ingot.tres") },
+        { ITEM_ID.COPPER_ORE, ResourceLoader.Load<ItemInfo>("res://Items/Copper_Ore.tres") },
         {
             ITEM_ID.COPPER_INGOT,
-            ResourceLoader.Load<ItemResource>("res://Items/Copper_Ingot.tres")
+            ResourceLoader.Load<ItemInfo>("res://Items/Copper_Ingot.tres")
         },
-        { ITEM_ID.STONE_KNIFE, ResourceLoader.Load<ItemResource>("res://Items/Stone_Knife.tres") },
+        { ITEM_ID.STONE_KNIFE, ResourceLoader.Load<ItemInfo>("res://Items/Stone_Knife.tres") },
         {
             ITEM_ID.MYSTIC_FIBRE,
-            ResourceLoader.Load<ItemResource>("res://Items/Mystic_Fibre.tres")
+            ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Fibre.tres")
         },
-        { ITEM_ID.MYSTIC_WOOD, ResourceLoader.Load<ItemResource>("res://Items/Mystic_Wood.tres") },
-        { ITEM_ID.FIBRE, ResourceLoader.Load<ItemResource>("res://Items/Fibre.tres") },
-        { ITEM_ID.STONE_BLADE, ResourceLoader.Load<ItemResource>("res://Items/Stone_Blade.tres") },
-        { ITEM_ID.GLASS_CHUNK, ResourceLoader.Load<ItemResource>("res://Items/Glass_Chunk.tres") },
+        { ITEM_ID.MYSTIC_WOOD, ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Wood.tres") },
+        { ITEM_ID.FIBRE, ResourceLoader.Load<ItemInfo>("res://Items/Fibre.tres") },
+        { ITEM_ID.STONE_BLADE, ResourceLoader.Load<ItemInfo>("res://Items/Stone_Blade.tres") },
+        { ITEM_ID.GLASS_CHUNK, ResourceLoader.Load<ItemInfo>("res://Items/Glass_Chunk.tres") },
         {
             ITEM_ID.STONE_AXE_HEAD,
-            ResourceLoader.Load<ItemResource>("res://Items/Stone_Axe_Head.tres")
+            ResourceLoader.Load<ItemInfo>("res://Items/Stone_Axe_Head.tres")
         },
         {
             ITEM_ID.STONE_PICKAXE_HEAD,
-            ResourceLoader.Load<ItemResource>("res://Items/Stone_Pickaxe_Head.tres")
+            ResourceLoader.Load<ItemInfo>("res://Items/Stone_Pickaxe_Head.tres")
         },
         {
             ITEM_ID.WOODEN_HOE_HEAD,
-            ResourceLoader.Load<ItemResource>("res://Items/Wooden_Hoe_Head.tres")
+            ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Hoe_Head.tres")
         },
-        { ITEM_ID.WOODEN_HOE, ResourceLoader.Load<ItemResource>("res://Items/Wooden_Hoe.tres") },
+        { ITEM_ID.WOODEN_HOE, ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Hoe.tres") },
         {
             ITEM_ID.WOODEN_AXE_HEAD,
-            ResourceLoader.Load<ItemResource>("res://Items/Wooden_Axe_Head.tres")
+            ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe_Head.tres")
         },
-        { ITEM_ID.WHEAT, ResourceLoader.Load<ItemResource>("res://Items/Wheat.tres") },
-        { ITEM_ID.IRON_BLOCK, ResourceLoader.Load<ItemResource>("res://Items/Iron_Block.tres") },
-        { ITEM_ID.WHEAT_SEED, ResourceLoader.Load<ItemResource>("res://Items/Wheat_Seed.tres") },
-        { ITEM_ID.POTATO, ResourceLoader.Load<ItemResource>("res://Items/Potato.tres") },
-        { ITEM_ID.POTATO_SEED, ResourceLoader.Load<ItemResource>("res://Items/Potato_Seed.tres") },
-        { ITEM_ID.CARROT, ResourceLoader.Load<ItemResource>("res://Items/Carrot.tres") },
-        { ITEM_ID.CARROT_SEED, ResourceLoader.Load<ItemResource>("res://Items/Carrot_Seed.tres") },
-        { ITEM_ID.CORN, ResourceLoader.Load<ItemResource>("res://Items/Corn.tres") },
-        { ITEM_ID.CORN_SEED, ResourceLoader.Load<ItemResource>("res://Items/Corn_Seed.tres") },
-        { ITEM_ID.SAND, ResourceLoader.Load<ItemResource>("res://Items/Sand.tres") },
-        { ITEM_ID.SAND_STONE, ResourceLoader.Load<ItemResource>("res://Items/Sand_Stone.tres") },
+        { ITEM_ID.WHEAT, ResourceLoader.Load<ItemInfo>("res://Items/Wheat.tres") },
+        { ITEM_ID.IRON_BLOCK, ResourceLoader.Load<ItemInfo>("res://Items/Iron_Block.tres") },
+        { ITEM_ID.WHEAT_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Wheat_Seed.tres") },
+        { ITEM_ID.POTATO, ResourceLoader.Load<ItemInfo>("res://Items/Potato.tres") },
+        { ITEM_ID.POTATO_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Potato_Seed.tres") },
+        { ITEM_ID.CARROT, ResourceLoader.Load<ItemInfo>("res://Items/Carrot.tres") },
+        { ITEM_ID.CARROT_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Carrot_Seed.tres") },
+        { ITEM_ID.CORN, ResourceLoader.Load<ItemInfo>("res://Items/Corn.tres") },
+        { ITEM_ID.CORN_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Corn_Seed.tres") },
+        { ITEM_ID.SAND, ResourceLoader.Load<ItemInfo>("res://Items/Sand.tres") },
+        { ITEM_ID.SAND_STONE, ResourceLoader.Load<ItemInfo>("res://Items/Sand_Stone.tres") },
         {
             ITEM_ID.MYSTIC_ARMOR_HEAD,
-            ResourceLoader.Load<ItemResource>("res://Items/Mystic_Armor_Helm.tres")
+            ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Helm.tres")
         },
         {
             ITEM_ID.MYSTIC_ARMOR_CHESTPLATE,
-            ResourceLoader.Load<ItemResource>("res://Items/Mystic_Armor_Chestplate.tres")
+            ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Chestplate.tres")
         },
         {
             ITEM_ID.MYSTIC_ARMOR_LEGGINGS,
-            ResourceLoader.Load<ItemResource>("res://Items/Mystic_Armor_Leggings.tres")
+            ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Leggings.tres")
         },
         {
             ITEM_ID.MYSTIC_ARMOR_SHOES,
-            ResourceLoader.Load<ItemResource>("res://Items/Mystic_Armor_Shoes.tres")
+            ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Shoes.tres")
         },
-        { ITEM_ID.OAK_SEED, ResourceLoader.Load<ItemResource>("res://Items/Oak_Seed.tres") },
+        { ITEM_ID.OAK_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Oak_Seed.tres") },
         {
             ITEM_ID.MYST_OAK_SEED,
-            ResourceLoader.Load<ItemResource>("res://Items/Myst_Oak_Seed.tres")
+            ResourceLoader.Load<ItemInfo>("res://Items/Myst_Oak_Seed.tres")
         },
         {
             ITEM_ID.MYST_FIBRE_SEED,
-            ResourceLoader.Load<ItemResource>("res://Items/Myst_Fibre_Seed.tres")
+            ResourceLoader.Load<ItemInfo>("res://Items/Myst_Fibre_Seed.tres")
         },
     };
 
@@ -158,13 +158,13 @@ public partial class Inventory : SlotUpdater
         {
             SlotItemUI slot_item = slot.GetSlotItemUI();
             if (slot_item != null)
-                if (slot_item.item.resource == item.resource)
+                if (slot_item.item.info == item.info)
                     return slot;
         }
         return null;
     }
 
-    public void MarkSlotsWithType(ItemResource.TYPE[] types)
+    public void MarkSlotsWithType(ItemInfo.TYPE[] types)
     {
         Debug.Print("Updating Slots wirh markings");
         foreach (Slot slot in slots)
@@ -179,13 +179,13 @@ public partial class Inventory : SlotUpdater
         }
     }
 
-    private bool ItemHasZeroTypes(ItemResource.TYPE[] types, SlotItemUI slot_item_ui)
+    private bool ItemHasZeroTypes(ItemInfo.TYPE[] types, SlotItemUI slot_item_ui)
     {
         if (types == null)
             return false;
 
-        foreach (ItemResource.TYPE type in types)
-            if (!slot_item_ui.item.resource.HasType(type))
+        foreach (ItemInfo.TYPE type in types)
+            if (!slot_item_ui.item.info.HasType(type))
                 continue;
             else
                 return false;
@@ -199,7 +199,7 @@ public partial class Inventory : SlotUpdater
         Array<Item> items = new Array<Item>();
 
         foreach (Item i in itemsInInventory)
-            if (i.resource.item_name.Equals(item_to_find.resource.item_name))
+            if (i.info.name.Equals(item_to_find.info.name))
                 items.Add(i);
 
         if (items.Count == 0)
@@ -217,7 +217,7 @@ public partial class Inventory : SlotUpdater
             {
                 Item item = new Item
                 {
-                    resource = ITEM_TYPES[(ITEM_ID)s.item_id],
+                    info = ITEM_TYPES[(ITEM_ID)s.item_id],
                     amount = s.amount
                 };
                 items.Add(item);
@@ -228,7 +228,7 @@ public partial class Inventory : SlotUpdater
 
     public void AddItem(Item item, ItemSave[] array)
     {
-        ItemResource resource = item.resource;
+        ItemInfo item_info = item.info;
         //Check if Item already exists // 70
         int remaining = item.amount;
         for (int i = 0; i < array.Length; i++)
@@ -236,15 +236,15 @@ public partial class Inventory : SlotUpdater
             if (array[i] == null)
                 continue;
 
-            if (array[i].item_id == (int)resource.item_id)
+            if (array[i].item_id == (int)item_info.id)
             {
                 // 20 + 70
                 if (remaining > 0)
                 {
-                    if (array[i].amount == resource.max_slot_amount)
+                    if (array[i].amount == item_info.max_slot_amount)
                         continue;
                     // 47 + 70 != 48
-                    if (array[i].amount + remaining <= resource.max_slot_amount)
+                    if (array[i].amount + remaining <= item_info.max_slot_amount)
                     {
                         array[i].amount += remaining;
                         remaining = 0;
@@ -253,8 +253,8 @@ public partial class Inventory : SlotUpdater
                     }
                     else
                     { // 48 - 47 = 1
-                        int diff = resource.max_slot_amount - array[i].amount;
-                        array[i].amount = resource.max_slot_amount;
+                        int diff = item_info.max_slot_amount - array[i].amount;
+                        array[i].amount = item_info.max_slot_amount;
                         remaining -= diff;
                         UpdateSlot(i);
                     }
@@ -270,16 +270,16 @@ public partial class Inventory : SlotUpdater
         for (int i = 0; i < array.Length; i++)
             if (array[i] == null)
             {
-                if (remaining <= resource.max_slot_amount)
+                if (remaining <= item_info.max_slot_amount)
                 {
-                    if (resource.has_durability)
+                    if (item_info.has_durability)
                         array[i] = new ItemSave(
-                            (int)resource.item_id,
+                            (int)item_info.id,
                             remaining,
-                            resource.max_durability
+                            item_info.max_durability
                         );
                     else
-                        array[i] = new ItemSave((int)resource.item_id, remaining);
+                        array[i] = new ItemSave((int)item_info.id, remaining);
 
                     QuestMiniPanel.instance.UpdateQuestMiniPanel(
                         QuestManager.instance.quests[QuestManager.current_quest_id]
@@ -289,18 +289,18 @@ public partial class Inventory : SlotUpdater
                 }
                 else
                 {
-                    if (resource.has_durability)
+                    if (item_info.has_durability)
                         array[i] = new ItemSave(
-                            (int)resource.item_id,
+                            (int)item_info.id,
                             remaining,
-                            resource.max_durability
+                            item_info.max_durability
                         );
                     else
-                        array[i] = new ItemSave((int)resource.item_id, resource.max_slot_amount);
+                        array[i] = new ItemSave((int)item_info.id, item_info.max_slot_amount);
                     QuestMiniPanel.instance.UpdateQuestMiniPanel(
                         QuestManager.instance.quests[QuestManager.current_quest_id]
                     );
-                    remaining -= resource.max_slot_amount;
+                    remaining -= item_info.max_slot_amount;
                 }
             }
     }
@@ -314,7 +314,7 @@ public partial class Inventory : SlotUpdater
             if (array[i] == null)
                 continue;
 
-            if (array[i].item_id == (int)item.resource.item_id)
+            if (array[i].item_id == (int)item.info.id)
             {
                 // 4 - 6 = -2
                 if ((array[i].amount - remaining) > 0)
@@ -347,9 +347,9 @@ public partial class Inventory : SlotUpdater
             if (array[i] == null)
                 continue;
 
-            if (array[i].item_id == (int)item.resource.item_id)
+            if (array[i].item_id == (int)item.info.id)
             {
-                if (array[i].amount + item.amount < item.resource.max_slot_amount)
+                if (array[i].amount + item.amount < item.info.max_slot_amount)
                     return true;
             }
         }
@@ -371,7 +371,7 @@ public partial class Inventory : SlotUpdater
             if (array[i] == null)
                 continue;
 
-            if (array[i].item_id == (int)item.resource.item_id)
+            if (array[i].item_id == (int)item.info.id)
             {
                 item_amount += array[i].amount;
 
@@ -395,7 +395,7 @@ public partial class Inventory : SlotUpdater
                 Debug.Print("BI IS NULL");
                 return false;
             }
-            if (array[i].item_id == (int)belt_item.item.resource.item_id)
+            if (array[i].item_id == (int)belt_item.item.info.id)
                 return true;
         }
         return false;
@@ -431,7 +431,7 @@ public partial class Inventory : SlotUpdater
 
         GetNode<Slot>($"GridContainer/Slot{index}")
             .UpdateItem(
-                new Item(GetItemResource(index), inventory_items[index].amount),
+                new Item(GetItemInfo(index), inventory_items[index].amount),
                 GetDurability(index)
             );
 
@@ -449,16 +449,16 @@ public partial class Inventory : SlotUpdater
         GetNode<Slot>($"GridContainer/Slot{index}").ClearItem();
     }
 
-    //TODO: GetItemResource ziemlich oft vertreten! Refactorn!
-    public override ItemResource GetItemResource(int index)
+    //TODO: GetItemInfo ziemlich oft vertreten! Refactorn!
+    public override ItemInfo GetItemInfo(int index)
     {
         return ITEM_TYPES[(ITEM_ID)inventory_items[index].item_id];
     }
 
     public int GetDurability(int index)
     {
-        Debug.Print("" + GetItemResource(index).has_durability);
-        if (GetItemResource(index).has_durability)
+        Debug.Print("" + GetItemInfo(index).has_durability);
+        if (GetItemInfo(index).has_durability)
         {
             Debug.Print(inventory_items[index].current_durability.ToString());
             return inventory_items[index].current_durability;

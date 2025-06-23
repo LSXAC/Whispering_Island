@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=4 uid="uid://bekb5fw4mpfgk"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_cj282"]
-[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Item Info/Wood.tres" id="2_1wx72"]
-[ext_resource type="Resource" uid="uid://dnxxeevayo83d" path="res://Resource Meta/Item Info/Oak_Seed.tres" id="3_hcjni"]
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Items/Wood.tres" id="2_1wx72"]
+[ext_resource type="Resource" uid="uid://dnxxeevayo83d" path="res://Resource Meta/Items/Oak_Seed.tres" id="3_hcjni"]
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="4_aoaiv"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="5_ad443"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="6_ci7ld"]

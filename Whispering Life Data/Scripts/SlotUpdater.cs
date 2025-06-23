@@ -7,5 +7,5 @@ public abstract partial class SlotUpdater : Control
 
     public abstract void ClearSlot(int index);
 
-    public abstract ItemResource GetItemResource(int index);
+    public abstract ItemInfo GetItemInfo(int index);
 }

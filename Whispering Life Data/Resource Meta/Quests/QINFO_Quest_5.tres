@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="QuestInfo" load_steps=5 format=3 uid="uid://brkjgnwhqbr8g"]
 
-[ext_resource type="Resource" uid="uid://dqdb68mek201l" path="res://Resource Meta/Item Info/Iron_Block.tres" id="1_5e3vy"]
-[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_edkmd"]
+[ext_resource type="Resource" uid="uid://dqdb68mek201l" path="res://Resource Meta/Items/Iron_Block.tres" id="1_5e3vy"]
+[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_edkmd"]
 [ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Scripts/Resources/QuestInfo.cs" id="4_gtnx7"]
 
 [sub_resource type="Resource" id="Resource_iic3g"]

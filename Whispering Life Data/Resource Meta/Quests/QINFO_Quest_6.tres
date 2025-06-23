@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="QuestInfo" load_steps=7 format=3 uid="uid://f440f8pp671q"]
 
-[ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://Resource Meta/Item Info/Mystic_Wood.tres" id="1_lo6ub"]
-[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_uej2x"]
+[ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://Resource Meta/Items/Mystic_Wood.tres" id="1_lo6ub"]
+[ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_uej2x"]
 [ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Scripts/Resources/QuestInfo.cs" id="3_aiyko"]
-[ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Resource Meta/Item Info/Mystic_Fibre.tres" id="3_rm47i"]
+[ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Resource Meta/Items/Mystic_Fibre.tres" id="3_rm47i"]
 
 [sub_resource type="Resource" id="Resource_iic3g"]
 script = ExtResource("2_uej2x")

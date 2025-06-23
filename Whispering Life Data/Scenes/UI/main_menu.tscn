@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://d382ft4naeqtp"]
+[gd_scene load_steps=8 format=3 uid="uid://d382ft4naeqtp"]
 
 [ext_resource type="Script" uid="uid://bm5n6v0k8up5x" path="res://Scripts/UI Scripts/MainMenu.cs" id="1_4fgt5"]
-[ext_resource type="VideoStream" uid="uid://n71dls10csc8" path="res://Videos/Last_Background.ogv" id="2_j4kqa"]
 [ext_resource type="Texture2D" uid="uid://de4l1wl47aa3q" path="res://Sprites/Menu/Menu_Overlay.png" id="3_anmaw"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="4_ftsii"]
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/UI Scripts/TranslationButton.cs" id="5_lg1h6"]
@@ -18,12 +17,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_4fgt5")
-skip_intro = true
 skip_tutorial = NodePath("Menu/Control/Panel/VBoxContainer/HBoxContainer/CheckBox")
 intro_player = NodePath("Menu/VideoStreamPlayer2")
 background_player = NodePath("Menu/Control/VideoStreamPlayer")
 parent = NodePath("Menu/Control")
 load_button = NodePath("Menu/Control/Panel/VBoxContainer/LoadGameButton")
+skip_intro = true
 
 [node name="Menu" type="Control" parent="."]
 layout_mode = 1
@@ -43,13 +42,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Menu/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("2_j4kqa")
 volume_db = -80.0
 expand = true
 loop = true

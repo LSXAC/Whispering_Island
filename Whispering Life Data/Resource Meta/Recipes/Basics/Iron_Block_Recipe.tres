@@ -1,28 +1,11 @@
-[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://cdmu1tdyjj3rf"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3 uid="uid://cdmu1tdyjj3rf"]
 
-[ext_resource type="Resource" uid="uid://dqdb68mek201l" path="res://Resource Meta/Item Info/Iron_Block.tres" id="1_p6gof"]
-[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="2_eb2kn"]
-[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Resource Meta/Item Info/Iron_Ingot.tres" id="3_axqco"]
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="4_uhppq"]
-[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="5_uk01r"]
 
 [sub_resource type="Resource" id="Resource_6mgx6"]
-script = ExtResource("2_eb2kn")
-item_info = ExtResource("1_p6gof")
-amount = 1
-
-[sub_resource type="Resource" id="Resource_q4hka"]
-script = ExtResource("2_eb2kn")
-item_info = ExtResource("3_axqco")
-amount = 5
-
-[sub_resource type="Resource" id="Resource_lndiu"]
-script = ExtResource("5_uk01r")
-required_level = 2
-item_id = 7
 
 [resource]
 script = ExtResource("4_uhppq")
-requiered_items = Array[Object]([SubResource("Resource_q4hka")])
+required_items = null
 output_item = SubResource("Resource_6mgx6")
-unlockRequirements = Array[Object]([SubResource("Resource_lndiu")])
+unlock_requirements = null

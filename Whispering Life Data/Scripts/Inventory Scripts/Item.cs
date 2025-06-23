@@ -5,14 +5,14 @@ public partial class Item : Resource
 {
     public Item() { }
 
-    public Item(ItemResource resource, int amount)
+    public Item(ItemInfo info, int amount)
     {
-        this.resource = resource;
+        this.info = info;
         this.amount = amount;
     }
 
     [Export]
-    public ItemResource resource;
+    public ItemInfo info;
 
     [Export]
     public int amount;

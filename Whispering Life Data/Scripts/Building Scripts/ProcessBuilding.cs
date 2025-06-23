@@ -31,7 +31,7 @@ public partial class ProcessBuilding : MachineBase
     public bool inStartTransition = false;
     public bool inEndTransition = false;
 
-    public ItemResource GetItemResource(FurnaceTab.SlotType slotType)
+    public ItemInfo GetItemResource(FurnaceTab.SlotType slotType)
     {
         if (item_array[(int)slotType] == null)
             return null;
@@ -120,13 +120,13 @@ public partial class ProcessBuilding : MachineBase
             {
                 if (item_array[(int)FurnaceTab.SlotType.FUEL].amount > 0)
                 {
-                    ItemResource item_resource = Inventory.ITEM_TYPES[
+                    ItemInfo item_resource = Inventory.ITEM_TYPES[
                         (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.FUEL].item_id
                     ];
                     fuel_left += (
                         (BurnableType)
-                            item_resource.item_types_arr[
-                                item_resource.GetTypeIndex(ItemResource.TYPE.BURNABLE)
+                            item_resource.item_types[
+                                item_resource.GetTypeIndex(ItemInfo.TYPE.BURNABLE)
                             ]
                     ).burntime;
                     item_array[(int)FurnaceTab.SlotType.FUEL].amount--;

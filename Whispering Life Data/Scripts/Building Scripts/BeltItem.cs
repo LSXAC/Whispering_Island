@@ -26,7 +26,7 @@ public partial class BeltItem : CharacterBody2D
         MoveAndSlide();
     }
 
-    public ItemResource GetItemResource()
+    public ItemInfo GetItemInfo()
     {
         if (item != null)
             return item.resource;

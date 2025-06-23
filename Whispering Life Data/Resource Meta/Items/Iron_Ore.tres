@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=8 format=3 uid="uid://l7tf257vet4l"]
+
+[ext_resource type="Resource" uid="uid://yh8rhrf7r458" path="res://Resource Meta/Items/Item_Types/RM_Resource_Type_Classic.tres" id="1_ppxfn"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_thvwm"]
+[ext_resource type="Script" uid="uid://do6jf2xoytmg3" path="res://Scripts/Inventory Scripts/ItemStats.cs" id="1_v7guw"]
+[ext_resource type="Texture2D" uid="uid://bhlg8ovvfb3n4" path="res://Sprites/Items/Icons_3rd/Iron_Ore.png" id="2_1b5uf"]
+[ext_resource type="Resource" uid="uid://b4j8cjn03te4o" path="res://Resource Meta/Items/Item_Types/RM_Smeltable_Type_Classic.tres" id="2_aic1r"]
+[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableType.cs" id="3_almph"]
+
+[sub_resource type="Resource" id="Resource_ystbs"]
+script = ExtResource("3_almph")
+type = 9
+
+[resource]
+script = ExtResource("1_thvwm")
+item_types_arr = Array[Object]([ExtResource("1_ppxfn"), ExtResource("2_aic1r"), SubResource("Resource_ystbs")])
+has_durability = false
+max_durability = 100
+max_slot_amount = 48
+item_name = "IRON_ORE"
+unique_id = 7
+item_description = "IRON_ORE_DESC"
+texture = ExtResource("2_1b5uf")
+value = 10.0
+type_level = 0
+use_type = 0
+item_stats = Array[ExtResource("1_v7guw")]([])

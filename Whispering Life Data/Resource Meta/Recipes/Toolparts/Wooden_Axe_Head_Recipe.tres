@@ -1,28 +1,11 @@
-[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://u2pfsg8ffel3"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3 uid="uid://u2pfsg8ffel3"]
 
-[ext_resource type="Script" uid="uid://cgkdev8221gqe" path="res://Scripts/Resources/Item.cs" id="1_5rl31"]
-[ext_resource type="Resource" uid="uid://65jron2bhtes" path="res://Resource Meta/Item Info/Wooden_Axe_Head.tres" id="1_dwcrv"]
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="1_oa5rr"]
-[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Item Info/Wood.tres" id="3_ykao6"]
-[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="5_v0aei"]
 
 [sub_resource type="Resource" id="Resource_66y5o"]
-script = ExtResource("1_5rl31")
-item_info = ExtResource("1_dwcrv")
-amount = 1
-
-[sub_resource type="Resource" id="Resource_af5nn"]
-script = ExtResource("1_5rl31")
-item_info = ExtResource("3_ykao6")
-amount = 10
-
-[sub_resource type="Resource" id="Resource_g3nv0"]
-script = ExtResource("5_v0aei")
-required_level = 1
-item_id = 0
 
 [resource]
 script = ExtResource("1_oa5rr")
-requiered_items = Array[Object]([SubResource("Resource_af5nn")])
+required_items = null
 output_item = SubResource("Resource_66y5o")
-unlockRequirements = Array[Object]([SubResource("Resource_g3nv0")])
+unlock_requirements = null
