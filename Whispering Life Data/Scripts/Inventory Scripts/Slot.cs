@@ -8,10 +8,10 @@ public partial class Slot : Button
     public string label_translation_string;
 
     [Export]
-    public ItemAttribute.TYPE attribute_type;
+    public ItemAttribute attribute;
 
     [Export]
-    public bool check_category = false;
+    public bool check_attributes = false;
 
     [Export]
     public bool is_export_slot = false;
@@ -55,13 +55,13 @@ public partial class Slot : Button
                 OnSlotButton(btn);
             }
 
-            if (attribute_type == ItemAttribute.TYPE.WEARABLE)
+            if (attribute is WearableAttribute)
             {
                 OnEquipSlotButton(GetIndex());
                 // Slot Updater not needed now
             }
 
-            if (attribute_type == ItemAttribute.TYPE.RESEARCHABLE)
+            if (attribute is ResearchableAttribute)
             {
                 OnResearchSlotButton();
                 //SlotUpdater not needed now
@@ -138,7 +138,7 @@ public partial class Slot : Button
             {
                 Debug.Print(GetSlotItemUI().current_durability.ToString());
                 CreateClickedItem(false, GetSlotItemUI().current_durability);
-                if (GetSlotItemUI().item.info.HasAttribute(ItemAttribute.TYPE.TOOL))
+                if (GetSlotItemUI().item.info.HasAttribute<ToolAttribute>())
                 {
                     EquipmentPanel.instance.equipped_tools[index] = null;
                     EquipmentPanel.instance.slots_tool[index].ClearItem();
@@ -146,7 +146,7 @@ public partial class Slot : Button
                     if (EquipmentSelectBar.current_selected_slot == index)
                         PlayerUI.instance.equipmentSelectBar.current_selected_slot_item_ui = null;
                 }
-                if (GetSlotItemUI().item.info.HasAttribute(ItemAttribute.TYPE.WEARABLE))
+                if (GetSlotItemUI().item.info.HasAttribute<WearableAttribute>())
                 {
                     EquipmentPanel.instance.equipped_armor[index] = null;
                     EquipmentPanel.instance.slots_armor[index].ClearItem();
@@ -159,20 +159,14 @@ public partial class Slot : Button
             if (GetSlotItemUI() == null)
             {
                 if (
-                    PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute(
-                        ItemAttribute.TYPE.WEARABLE
-                    )
+                    PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute<WearableAttribute>()
                 )
                 {
                     OnTakeItemFromArmorSlot(index);
                     return;
                 }
 
-                if (
-                    PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute(
-                        ItemAttribute.TYPE.TOOL
-                    )
-                )
+                if (PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute<ToolAttribute>())
                 {
                     EquipmentPanel.instance.equipped_tools[index] = new ItemSave(
                         (int)PlayerInventoryUI.clicked_slot_item_ui.item.info.id,
@@ -246,10 +240,10 @@ public partial class Slot : Button
         {
             if (GetSlotItemUI() == null)
             {
-                if (check_category)
+                if (check_attributes)
                     if (
-                        !PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute(
-                            attribute_type
+                        !PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttributByType(
+                            attribute.GetType()
                         )
                     )
                         return;
@@ -281,10 +275,10 @@ public partial class Slot : Button
 
             if (slot_is_switchable)
             {
-                if (check_category)
+                if (check_attributes)
                     if (
-                        !PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute(
-                            attribute_type
+                        !PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttributByType(
+                            attribute.GetType()
                         )
                     )
                         return;
@@ -415,9 +409,7 @@ public partial class Slot : Button
         else
         {
             if (
-                !PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute(
-                    ItemAttribute.TYPE.RESEARCHABLE
-                )
+                !PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute<ResearchableAttribute>()
             )
                 return;
 

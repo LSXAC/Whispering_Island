@@ -1,20 +1,19 @@
 using System;
+using System.Security.Cryptography.X509Certificates;
 using Godot;
 
 [GlobalClass]
 public partial class ItemAttribute : Resource
 {
     [Export]
-    public TYPE type;
+    public Rarity rarity = Rarity.Common;
 
-    public enum TYPE
+    public enum Rarity
     {
-        PLACEABLE,
-        BURNABLE,
-        SMELTABLE,
-        RESEARCHABLE,
-        PROCESSED,
-        WEARABLE,
-        TOOL
+        Common,
+        Uncommon,
+        Rare,
+        Epic,
+        Legendary
     }
 }

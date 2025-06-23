@@ -125,7 +125,7 @@ public partial class ProcessBuilding : MachineBase
                     ];
                     fuel_left += (
                         (BurnableAttribute)
-                            info.attributes[info.GetAttributeIndex(ItemAttribute.TYPE.BURNABLE)]
+                            info.attributes[info.GetAttributeIndex<BurnableAttribute>()]
                     ).burntime;
                     item_array[(int)FurnaceTab.SlotType.FUEL].amount--;
                 }

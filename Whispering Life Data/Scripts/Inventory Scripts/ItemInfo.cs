@@ -52,21 +52,37 @@ public partial class ItemInfo : Resource
     [Export]
     public Array<ItemStats> stats = new Array<ItemStats>();
 
-    public bool HasAttribute(ItemAttribute.TYPE type)
+    public bool HasAttribute<T>()
+        where T : ItemAttribute
     {
-        foreach (ItemAttribute list_item in attributes)
-            if (list_item.type == type)
+        foreach (ItemAttribute attribute in attributes)
+        {
+            if (attribute is T)
                 return true;
+        }
         return false;
     }
 
-    public int GetAttributeIndex(ItemAttribute.TYPE type)
+    public bool HasAttributByType(Type attributeType)
+    {
+        foreach (ItemAttribute attr in attributes)
+        {
+            if (attr != null && attr.GetType() == attributeType)
+                return true;
+        }
+        return false;
+    }
+
+    public int GetAttributeIndex<T>()
+        where T : ItemAttribute
     {
         for (int i = 0; i < attributes.Count; i++)
-            if (attributes[i].type == type)
+        {
+            if (attributes[i] is T)
                 return i;
+        }
 
-        Debug.Print("Attribute cannot be found in " + name);
+        Debug.Print($"Attribute of type {typeof(T).Name} cannot be found in {name}");
         return -1;
     }
 }

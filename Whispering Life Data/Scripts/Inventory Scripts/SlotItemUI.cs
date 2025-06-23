@@ -79,7 +79,7 @@ public partial class SlotItemUI : TextureRect
                 TooltipText +=
                     TranslationServer.Translate("TYPE")
                     + ": "
-                    + TranslationServer.Translate(item_attribute.type.ToString())
+                    + TranslationServer.Translate(item_attribute.ToString())
                     + "\n";
         }
         foreach (ItemStats stats in item.info.stats)

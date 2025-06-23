@@ -149,31 +149,37 @@ public partial class Inventory : SlotUpdater
         return null;
     }
 
-    public void MarkSlotsWithAttributeTypes(ItemAttribute.TYPE[] types)
+    public void MarkSlotsWithAttributeTypes(Type[] attributeTypes)
     {
-        Debug.Print("Updating Slots with markings");
+        if (attributeTypes == null || attributeTypes.Length == 0)
+        {
+            Debug.Print("No attribute types provided for marking slots.");
+            return;
+        }
+
+        Debug.Print("Updating Slots with markings for multiple attribute types");
         foreach (Slot slot in slots)
         {
             if (slot.GetSlotItemUI() != null)
             {
                 slot.GetSlotItemUI().SelfModulate = new Color(1f, 1f, 1f);
 
-                if (ItemHasZeroAttributeTypes(types, slot.GetSlotItemUI()))
+                if (ItemHasZeroAttributeTypes(attributeTypes, slot.GetSlotItemUI()))
                     slot.GetSlotItemUI().SelfModulate = new Color(0.5f, 0.5f, 0.5f);
             }
         }
     }
 
-    private bool ItemHasZeroAttributeTypes(ItemAttribute.TYPE[] types, SlotItemUI slot_item_ui)
+    private bool ItemHasZeroAttributeTypes(Type[] attributeTypes, SlotItemUI slot_item_ui)
     {
-        if (types == null)
+        if (attributeTypes == null)
             return false;
 
-        foreach (ItemAttribute.TYPE type in types)
-            if (!slot_item_ui.item.info.HasAttribute(type))
-                continue;
-            else
+        foreach (Type type in attributeTypes)
+        {
+            if (slot_item_ui.item.info.HasAttributByType(type))
                 return false;
+        }
         return true;
     }
 
