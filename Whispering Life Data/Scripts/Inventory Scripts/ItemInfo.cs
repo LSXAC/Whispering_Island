@@ -8,20 +8,16 @@ using Godot.Collections;
 public partial class ItemInfo : Resource
 {
     [Export]
-    public Array<ItemType> item_types;
+    public Array<ItemAttribute> attributes;
 
-    public enum TYPE
+    public enum CATEGORY
     {
+        NONE,
+        ALL,
         RESOURCE,
         TOOL,
         WEAPON,
         CLOTHS,
-        PLACEABLE,
-        ALL,
-        SMELTABLE,
-        BURNABLE,
-        PROCESSED,
-        RESEARCHABLE,
         HEAD,
         CHESTPLATE,
         LEGGINGS,
@@ -70,21 +66,21 @@ public partial class ItemInfo : Resource
     [Export]
     public Array<ItemStats> stats = new Array<ItemStats>();
 
-    public bool HasType(TYPE type)
+    public bool HasAttribute(ItemAttribute.ATTRIBUTE attribute)
     {
-        foreach (ItemType item_type in item_types)
-            if (item_type.type == type)
+        foreach (ItemAttribute list_item in attributes)
+            if (list_item.attribute == attribute)
                 return true;
         return false;
     }
 
-    public int GetTypeIndex(TYPE type)
+    public int GetAttributeIndex(ItemAttribute.ATTRIBUTE attribute)
     {
-        for (int i = 0; i < item_types.Count; i++)
-            if (item_types[i].type == type)
+        for (int i = 0; i < attributes.Count; i++)
+            if (attributes[i].attribute == attribute)
                 return i;
 
-        Debug.Print("Item cannot be found in Arr");
+        Debug.Print("Attribute cannot be found in" + name);
         return -1;
     }
 }
