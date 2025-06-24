@@ -63,13 +63,13 @@ public partial class FurnaceTab : SlotUpdater
         switch (index)
         {
             case 0:
-                import_slot.ClearItem();
+                import_slot.ClearSlotItem();
                 break;
             case 1:
-                export_slot.ClearItem();
+                export_slot.ClearSlotItem();
                 break;
             case 2:
-                fuel_slot.ClearItem();
+                fuel_slot.ClearSlotItem();
                 break;
         }
     }
@@ -127,9 +127,9 @@ public partial class FurnaceTab : SlotUpdater
         if (process_building == null)
             return;
 
-        export_slot.ClearItem();
-        import_slot.ClearItem();
-        fuel_slot.ClearItem();
+        export_slot.ClearSlotItem();
+        import_slot.ClearSlotItem();
+        fuel_slot.ClearSlotItem();
 
         if (process_building.ui_progress == 0 || process_building.ui_progress == 100)
             switch_button.Disabled = false;

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://1ejkff4privx"]
 
 [ext_resource type="Resource" uid="uid://dvu522o8i0uem" path="res://Resource Meta/Recipes/Build Menu Recipies/Belt_Splitter_Recipe.tres" id="1_cyonf"]
-[ext_resource type="PackedScene" uid="uid://3ofhn4ivr5r6" path="res://Scenes/World Objects/Buildings/Building_Belt_Splitter.tscn" id="2_42wqc"]
+[ext_resource type="PackedScene" uid="uid://3ofhn4ivr5r6" path="res://Scenes/World Objects/Buildings/building_belt_splitter_1x2.tscn" id="2_42wqc"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_dqmi5"]
 
 [resource]

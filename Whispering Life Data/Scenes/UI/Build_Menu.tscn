@@ -5,8 +5,12 @@
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/UI Scripts/TranslationButton.cs" id="3_ft6wq"]
 [ext_resource type="Script" uid="uid://2t1ns5okffld" path="res://Scripts/UI Scripts/BuildMenuPageObject.cs" id="4_6buxp"]
 
-[node name="BuildMenu" type="CanvasLayer"]
+[node name="BuildMenu" type="CanvasLayer" node_paths=PackedStringArray("production_page", "decoration_page", "planting_page", "research_page")]
 script = ExtResource("1_6maqu")
+production_page = NodePath("ProductionTab")
+decoration_page = NodePath("DecorationTab")
+planting_page = NodePath("PlantingTab")
+research_page = NodePath("ResearchTab")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15

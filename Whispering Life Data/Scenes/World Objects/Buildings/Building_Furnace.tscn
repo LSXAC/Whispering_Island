@@ -19,14 +19,14 @@
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="17_glg8d"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="18_h5gpr"]
 [ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Taker_Component.tscn" id="19_3ermy"]
-[ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Giver_Component.tscn" id="20_ujfx2"]
+[ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Scenes/World Objects/Buildings/Building Components/component_building_item_giver.tscn" id="20_ujfx2"]
 
 [sub_resource type="Resource" id="Resource_njs37"]
 script = ExtResource("4_8gjku")
 import_item_info = ExtResource("3_f7wyl")
 export_item_info = ExtResource("2_iv6r1")
-import_amount = 2
-export_amount = 1
+amount_in_import = 0
+amount_in_export = 0
 unlockRequirement = null
 
 [sub_resource type="Resource" id="Resource_xdrkx"]
@@ -38,8 +38,8 @@ item_id = 31
 script = ExtResource("4_8gjku")
 import_item_info = ExtResource("6_1cdaq")
 export_item_info = ExtResource("5_cfsdh")
-import_amount = 2
-export_amount = 1
+amount_in_import = 0
+amount_in_export = 0
 unlockRequirement = Array[Object]([SubResource("Resource_xdrkx")])
 
 [sub_resource type="Resource" id="Resource_yoryk"]
@@ -51,16 +51,16 @@ item_id = 7
 script = ExtResource("4_8gjku")
 import_item_info = ExtResource("9_0etec")
 export_item_info = ExtResource("8_nurm8")
-import_amount = 2
-export_amount = 1
+amount_in_import = 0
+amount_in_export = 0
 unlockRequirement = Array[Object]([SubResource("Resource_yoryk")])
 
 [sub_resource type="Resource" id="Resource_3d708"]
 script = ExtResource("4_8gjku")
 import_item_info = ExtResource("11_o02c0")
 export_item_info = ExtResource("10_akwtc")
-import_amount = 2
-export_amount = 1
+amount_in_import = 0
+amount_in_export = 0
 unlockRequirement = null
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
@@ -76,7 +76,7 @@ collision_mask = 0
 script = ExtResource("1_7ow6b")
 crafting_timer = NodePath("CraftingTimer")
 state_timer = NodePath("MachineUITimer")
-recipes = [SubResource("Resource_njs37"), SubResource("Resource_u1ie4"), SubResource("Resource_kg0sh"), SubResource("Resource_3d708")]
+recipes = Array[ExtResource("4_8gjku")]([SubResource("Resource_njs37"), SubResource("Resource_u1ie4"), SubResource("Resource_kg0sh"), SubResource("Resource_3d708")])
 givers = [NodePath("Giver")]
 takers = [NodePath("Taker")]
 building_id = 3

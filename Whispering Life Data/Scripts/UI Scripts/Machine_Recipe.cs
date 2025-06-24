@@ -6,16 +6,10 @@ using Godot.Collections;
 public partial class Machine_Recipe : Resource
 {
     [Export]
-    public ItemInfo import_item_info;
+    public Item import_item;
 
     [Export]
-    public ItemInfo export_item_info;
-
-    [Export]
-    public int amount_in_import = 0;
-
-    [Export]
-    public int amount_in_export = 0;
+    public Item export_item;
 
     [Export]
     public Array<UnlockRequirement> unlockRequirement;

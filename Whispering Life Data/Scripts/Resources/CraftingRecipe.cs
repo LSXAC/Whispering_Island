@@ -3,7 +3,7 @@ using Godot;
 using Godot.Collections;
 
 [GlobalClass]
-public partial class Recipe : Resource
+public partial class CraftingRecipe : Resource
 {
     [Export]
     public Array<Item> required_items;

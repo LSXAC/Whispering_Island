@@ -428,7 +428,7 @@ public partial class Inventory : SlotUpdater
 
     public override void ClearSlot(int index)
     {
-        GetNode<Slot>($"GridContainer/Slot{index}").ClearItem();
+        GetNode<Slot>($"GridContainer/Slot{index}").ClearSlotItem();
     }
 
     //TODO: GetItemInfo ziemlich oft vertreten! Refactorn!

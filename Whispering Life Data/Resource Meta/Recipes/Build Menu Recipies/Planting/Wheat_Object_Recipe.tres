@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://ckgu5x7reokuj" path="res://Resource Meta/Items/item_info_wheat_seed.tres" id="1_h3hcf"]
 [ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_gw3lu"]
-[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="3_kx71m"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="3_kx71m"]
 
 [sub_resource type="Resource" id="Resource_85pk6"]
 script = ExtResource("2_gw3lu")

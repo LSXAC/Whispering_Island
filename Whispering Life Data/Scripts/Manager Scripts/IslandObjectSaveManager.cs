@@ -257,7 +257,7 @@ public partial class IslandObjectSaveManager : Node2D
             {
                 BeltTunnel temp =
                     Database
-                        .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.BELTTUNNEL)
+                        .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.BELT_TUNNEL)
                         .scene.Instantiate() as BeltTunnel;
 
                 InitBelt(temp, bts.beltsave1);
@@ -265,7 +265,7 @@ public partial class IslandObjectSaveManager : Node2D
 
                 BeltTunnel temp2 =
                     Database
-                        .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.BELTTUNNEL)
+                        .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.BELT_TUNNEL)
                         .scene.Instantiate() as BeltTunnel;
 
                 InitBelt(temp2, bts.beltsave2);
@@ -282,7 +282,7 @@ public partial class IslandObjectSaveManager : Node2D
             {
                 BeltTunnel temp =
                     Database
-                        .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.BELTTUNNEL)
+                        .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.BELT_TUNNEL)
                         .scene.Instantiate() as BeltTunnel;
 
                 InitBelt(temp, bts.beltsave1);

@@ -91,7 +91,7 @@ public partial class Slot : Button
             slot_item_ui.SetDurability(durability);
         AddChild(slot_item_ui);
         if (item.amount == 0)
-            ClearItem();
+            ClearSlotItem();
     }
 
     public void UpdateItem(Item item, int durability)
@@ -123,7 +123,7 @@ public partial class Slot : Button
         return null;
     }
 
-    public void ClearItem()
+    public void ClearSlotItem()
     {
         if (GetSlotItemUI() == null)
             return;
@@ -141,15 +141,15 @@ public partial class Slot : Button
                 if (GetSlotItemUI().item.info.HasAttribute<ToolAttribute>())
                 {
                     EquipmentPanel.instance.equipped_tools[index] = null;
-                    EquipmentPanel.instance.slots_tool[index].ClearItem();
-                    PlayerUI.instance.equipmentSelectBar.select_slots[index].ClearItem();
+                    EquipmentPanel.instance.slots_tool[index].ClearSlotItem();
+                    PlayerUI.instance.equipmentSelectBar.select_slots[index].ClearSlotItem();
                     if (EquipmentSelectBar.current_selected_slot == index)
                         PlayerUI.instance.equipmentSelectBar.current_selected_slot_item_ui = null;
                 }
                 if (GetSlotItemUI().item.info.HasAttribute<WearableAttribute>())
                 {
                     EquipmentPanel.instance.equipped_armor[index] = null;
-                    EquipmentPanel.instance.slots_armor[index].ClearItem();
+                    EquipmentPanel.instance.slots_armor[index].ClearSlotItem();
                 }
                 EquipmentPanel.instance.CalculateStatsFromEquipment();
             }

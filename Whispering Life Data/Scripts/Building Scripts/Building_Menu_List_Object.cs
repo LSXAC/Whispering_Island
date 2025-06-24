@@ -9,7 +9,7 @@ public partial class Building_Menu_List_Object : Resource
     public PackedScene scene;
 
     [Export]
-    public Recipe recipe;
+    public Array<Item> required_items;
 
     [Export]
     public Array<UnlockRequirement> unlock_requirements;

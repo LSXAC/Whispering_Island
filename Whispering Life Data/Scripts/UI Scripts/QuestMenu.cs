@@ -20,7 +20,9 @@ public partial class QuestMenu : CanvasLayer
 
     [Export]
     public Resource dialogue_timeline;
-    public PackedScene h_box_item = ResourceLoader.Load<PackedScene>("res://h_box_item.tscn");
+    public PackedScene h_box_item = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/UI/h_box_item_menu_line.tscn"
+    );
     public static QuestMenu instance = null;
     public static QuestInfo currentQuest = null;
 

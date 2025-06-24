@@ -68,7 +68,7 @@ public partial class ResearchTab : ColorRect
         else
         {
             ClearText();
-            research_slot.ClearItem();
+            research_slot.ClearSlotItem();
         }
     }
 

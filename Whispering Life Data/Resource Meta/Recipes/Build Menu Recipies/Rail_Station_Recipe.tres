@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Resource Meta/Items/item_info_stone.tres" id="1_5q5ih"]
 [ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_0306x"]
-[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="3_fwk6w"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="3_fwk6w"]
 
 [sub_resource type="Resource" id="Resource_odrd4"]
 script = ExtResource("2_0306x")

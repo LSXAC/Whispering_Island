@@ -12,10 +12,11 @@ public partial class Building_Placer : Node2D
 
     public static Node2D current_building = null;
     public static PackedScene building = null;
-    public static Recipe building_recipe = null;
     private placeable_building placeable;
     private int current_belt_rotation = 3;
     private Vector2 current_scale = new Vector2(1, 1);
+
+    private Array<Item> required_items = new Array<Item>();
 
     private bool can_create = false;
     private bool is_flipped = false;
@@ -37,9 +38,9 @@ public partial class Building_Placer : Node2D
         current_scale = new Vector2(1, 1);
         GameManager.building_mode = GameManager.BuildingMode.Placing;
         PlayerUI.instance.SetWindowFrame();
-        PlayerUI.instance.item_row_manager.CanCreate(scene_info.recipe.required_items);
+        PlayerUI.instance.item_row_manager.CanCreate(scene_info.required_items);
         current_building = (Node2D)scene_info.scene.Instantiate();
-        building_recipe = scene_info.recipe;
+        required_items = scene_info.required_items;
 
         building = scene_info.scene;
         island_manager
@@ -196,7 +197,7 @@ public partial class Building_Placer : Node2D
         if (temp is MineableObject)
         {
             ((MineableObject)temp).SpawnPlant();
-            if (!PlayerUI.instance.item_row_manager.CanCreate(building_recipe.required_items))
+            if (!PlayerUI.instance.item_row_manager.CanCreate(required_items))
             {
                 can_create = false;
                 CloseMenuWithBuildingSelected();
@@ -214,7 +215,7 @@ public partial class Building_Placer : Node2D
                 temp.Name = "BeltTunnel + " + rnd.Next(0, 10000);
                 ((BeltTunnel)temp).CheckIfTunnelInDir();
             }
-            if (!PlayerUI.instance.item_row_manager.CanCreate(building_recipe.required_items))
+            if (!PlayerUI.instance.item_row_manager.CanCreate(required_items))
             {
                 can_create = false;
                 CloseMenuWithBuildingSelected();
@@ -256,7 +257,7 @@ public partial class Building_Placer : Node2D
 
     private void RemoveResources()
     {
-        foreach (Item item in building_recipe.required_items)
+        foreach (Item item in required_items)
             PlayerInventoryUI.instance.RemoveItem(item, PlayerInventoryUI.instance.inventory_items);
     }
 
@@ -264,7 +265,7 @@ public partial class Building_Placer : Node2D
     {
         Node2D tempB = current_building;
         current_building = null;
-        building_recipe = null;
+        required_items.Clear();
         tempB.QueueFree();
         placeable = null;
         CloseMenuWithNoBuilding();

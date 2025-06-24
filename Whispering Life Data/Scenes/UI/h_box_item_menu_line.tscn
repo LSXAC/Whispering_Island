@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://u4rbvbumuiua"]
 
-[ext_resource type="Script" uid="uid://c8olhec3yacn5" path="res://Scripts/UI Scripts/h_box_item.cs" id="1_fptl0"]
-[ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="2_8ded4"]
-[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="3_kc14i"]
+[ext_resource type="Script" uid="uid://c8olhec3yacn5" path="res://Scripts/UI Scripts/h_box_item.cs" id="1_aorx3"]
+[ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="2_0ekd3"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="3_kupbm"]
 
 [node name="HBoxItem" type="HBoxContainer"]
 offset_right = 80.0
 offset_bottom = 24.0
-script = ExtResource("1_fptl0")
+script = ExtResource("1_aorx3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -16,13 +16,13 @@ alignment = 1
 [node name="ItemTexture" type="TextureRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-texture = ExtResource("2_8ded4")
+texture = ExtResource("2_0ekd3")
 expand_mode = 4
 
 [node name="ItemLabel" type="Label" parent="."]
 layout_mode = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("3_kc14i")
+theme_override_fonts/font = ExtResource("3_kupbm")
 theme_override_font_sizes/font_size = 8
 text = "2x"
 horizontal_alignment = 2

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3 uid="uid://b3t04yx2ddd54"]
 
-[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="6_nka1e"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="6_nka1e"]
 
 [sub_resource type="Resource" id="Resource_6mgx6"]
 

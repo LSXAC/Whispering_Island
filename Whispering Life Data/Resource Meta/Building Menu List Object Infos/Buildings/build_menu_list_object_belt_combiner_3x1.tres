@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BuildingType" load_steps=4 format=3 uid="uid://8b8h6neopltv"]
 
 [ext_resource type="Resource" uid="uid://bdn4bxfkepb3m" path="res://Resource Meta/Recipes/Build Menu Recipies/Belt_Combiner_3x1_Recipe.tres" id="1_urtto"]
-[ext_resource type="PackedScene" uid="uid://dsmt6k3efm7p6" path="res://Scenes/World Objects/Buildings/Building_Belt_Combiner_3x1.tscn" id="2_0fnj6"]
+[ext_resource type="PackedScene" uid="uid://dsmt6k3efm7p6" path="res://Scenes/World Objects/Buildings/building_belt_combiner_3x1.tscn" id="2_0fnj6"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_n3dby"]
 
 [resource]

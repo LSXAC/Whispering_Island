@@ -63,13 +63,13 @@ public partial class ProcessBuilding : MachineBase
         if (progress >= 100)
         {
             if (item_array[(int)FurnaceTab.SlotType.EXPORT] != null)
-                item_array[(int)FurnaceTab.SlotType.EXPORT].amount += recipes[
-                    current_recipe
-                ].amount_in_export;
+                item_array[(int)FurnaceTab.SlotType.EXPORT].amount += recipes[current_recipe]
+                    .export_item
+                    .amount;
             else
                 item_array[(int)FurnaceTab.SlotType.EXPORT] = new ItemSave(
-                    (int)recipes[current_recipe].export_item_info.id,
-                    recipes[current_recipe].amount_in_export
+                    (int)recipes[current_recipe].export_item.info.id,
+                    recipes[current_recipe].export_item.amount
                 );
 
             is_crafting = false;
@@ -111,7 +111,7 @@ public partial class ProcessBuilding : MachineBase
         }
         if (
             item_array[(int)FurnaceTab.SlotType.IMPORT].amount
-            <= recipes[current_recipe].amount_in_import - 1
+            <= recipes[current_recipe].import_item.amount - 1
         )
             return;
 
@@ -159,9 +159,9 @@ public partial class ProcessBuilding : MachineBase
         }
 
         is_crafting = true;
-        item_array[(int)FurnaceTab.SlotType.IMPORT].amount -= recipes[
-            current_recipe
-        ].amount_in_import;
+        item_array[(int)FurnaceTab.SlotType.IMPORT].amount -= recipes[current_recipe]
+            .import_item
+            .amount;
         if (FurnaceTab.instance.process_building == this)
             FurnaceTab.instance.UpdateFurnaceUI();
         crafting_timer.Start();
@@ -180,7 +180,7 @@ public partial class ProcessBuilding : MachineBase
 
             if (item_array[(int)FurnaceTab.SlotType.IMPORT] != null)
                 if (
-                    recipes[i].import_item_info
+                    recipes[i].import_item.info
                     == Inventory.ITEM_TYPES[
                         (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
                     ]
@@ -190,7 +190,7 @@ public partial class ProcessBuilding : MachineBase
                     if (item_array[(int)FurnaceTab.SlotType.EXPORT] == null)
                         return true;
                     else if (
-                        recipes[i].export_item_info
+                        recipes[i].export_item.info
                         == Inventory.ITEM_TYPES[
                             (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.EXPORT].item_id
                         ]

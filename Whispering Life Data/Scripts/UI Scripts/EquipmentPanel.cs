@@ -95,8 +95,8 @@ public partial class EquipmentPanel : Control
         {
             PlayerUI
                 .instance.equipmentSelectBar.select_slots[EquipmentSelectBar.current_selected_slot]
-                .ClearItem();
-            instance.slots_tool[EquipmentSelectBar.current_selected_slot].ClearItem();
+                .ClearSlotItem();
+            instance.slots_tool[EquipmentSelectBar.current_selected_slot].ClearSlotItem();
             instance.equipped_tools[EquipmentSelectBar.current_selected_slot] = null;
             PlayerUI.instance.equipmentSelectBar.current_selected_slot_item_ui = null;
         }
@@ -139,7 +139,7 @@ public partial class EquipmentPanel : Control
     public void LoadArmorFromSave(ItemSave[] item_save)
     {
         for (int i = 0; i < slots_armor.Length; i++)
-            slots_armor[i].ClearItem();
+            slots_armor[i].ClearSlotItem();
 
         equipped_armor = item_save;
 
@@ -157,7 +157,7 @@ public partial class EquipmentPanel : Control
     public void LoadToolFromSave(ItemSave[] item_save)
     {
         for (int i = 0; i < slots_armor.Length; i++)
-            slots_tool[i].ClearItem();
+            slots_tool[i].ClearSlotItem();
 
         equipped_tools = item_save;
 

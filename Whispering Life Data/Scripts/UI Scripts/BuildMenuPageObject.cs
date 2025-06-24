@@ -13,7 +13,7 @@ public partial class BuildMenuPageObject : ColorRect
     public BuildMenu.CATEGORY category;
 
     private PackedScene buildingMenuChild = ResourceLoader.Load<PackedScene>(
-        "res://building_menu_child.tscn"
+        "res://Scenes/UI/build_menu_child.tscn"
     );
 
     public override void _Ready() { }

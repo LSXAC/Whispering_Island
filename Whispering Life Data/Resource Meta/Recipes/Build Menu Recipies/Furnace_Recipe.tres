@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://delu8mnq6anq6"]
 
-[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="1_mxkls"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="1_mxkls"]
 [ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_jdyxn"]
 [ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Resource Meta/Items/item_info_stone.tres" id="3_p82w5"]
 

@@ -1,15 +1,14 @@
-[gd_scene load_steps=13 format=4 uid="uid://c3qnrt64xg6eg"]
+[gd_scene load_steps=12 format=4 uid="uid://c3qnrt64xg6eg"]
 
-[ext_resource type="Script" uid="uid://bf4jfxorbdivo" path="res://Scripts/Building Scripts/ProductionMachine.cs" id="1_s0fjq"]
-[ext_resource type="Texture2D" uid="uid://bm1alvnfn87kq" path="res://Sprites/Buildings/Tree_Growther_Sprite.png" id="3_hdi0y"]
-[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="5_17ipw"]
-[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="5_bvfyh"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="5_haeqn"]
-[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="6_gkdsr"]
-[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="6_mw30c"]
-[ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="7_0bq2m"]
-[ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Giver_Component.tscn" id="8_iut5d"]
-[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Items/item_info_wood.tres" id="9_jf153"]
+[ext_resource type="Script" uid="uid://bf4jfxorbdivo" path="res://Scripts/Building Scripts/ProductionMachine.cs" id="1_01v3s"]
+[ext_resource type="Texture2D" uid="uid://bm1alvnfn87kq" path="res://Sprites/Buildings/Tree_Growther_Sprite.png" id="2_4wm06"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_fs0bn"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_c24j7"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_004cs"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="6_r3nyr"]
+[ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="7_h8vyg"]
+[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="8_0eevy"]
+[ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Scenes/World Objects/Buildings/Building Components/component_building_item_giver.tscn" id="9_kii5u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(48, 41)
@@ -21,8 +20,7 @@ size = Vector2(48, 48)
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
-script = ExtResource("1_s0fjq")
-production_item_info = ExtResource("9_jf153")
+script = ExtResource("1_01v3s")
 givers = [NodePath("Giver"), NodePath("Giver2")]
 takers = []
 building_id = 5
@@ -35,19 +33,19 @@ collision_shape = NodePath("MachineCollision")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
-texture = ExtResource("3_hdi0y")
+texture = ExtResource("2_4wm06")
 centered = false
 offset = Vector2(-32, -32)
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
-script = ExtResource("5_haeqn")
+script = ExtResource("3_fs0bn")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
 z_index = -2
 tile_map_data = PackedByteArray("AAD+//7/AAACAAAAAAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAD/////AAACAAAAAAD///7/AAACAAAAAAAAAP7/AAACAAAAAAAAAP//AAACAAAAAAAAAAAAAAACAAAAAAA=")
 enabled = false
-tile_set = ExtResource("5_17ipw")
+tile_set = ExtResource("4_c24j7")
 
 [node name="MachineCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-8, -5.5)
@@ -59,12 +57,12 @@ z_index = -1
 z_as_relative = false
 position = Vector2(-8, 6.5)
 scale = Vector2(3, 2.1875)
-texture = ExtResource("6_mw30c")
+texture = ExtResource("5_004cs")
 
 [node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
 position = Vector2(-8, -8)
 collision_layer = 2
-script = ExtResource("6_gkdsr")
+script = ExtResource("6_r3nyr")
 building_node = NodePath("..")
 building_sprite = NodePath("../BuildingSprite")
 
@@ -79,20 +77,20 @@ y_sort_enabled = true
 z_index = 2
 y_sort_enabled = true
 position = Vector2(-6, -28)
-texture = ExtResource("7_0bq2m")
+texture = ExtResource("7_h8vyg")
 
 [node name="Shadow" type="Sprite2D" parent="Tree"]
 modulate = Color(1, 1, 1, 0.392157)
 z_index = 1
 y_sort_enabled = true
 position = Vector2(-7, -12)
-texture = ExtResource("5_bvfyh")
+texture = ExtResource("8_0eevy")
 
-[node name="Giver" parent="." node_paths=PackedStringArray("building") instance=ExtResource("8_iut5d")]
+[node name="Giver" parent="." node_paths=PackedStringArray("building") instance=ExtResource("9_kii5u")]
 direction_not_giving = 1
 building = NodePath("..")
 
-[node name="Giver2" parent="." node_paths=PackedStringArray("building") instance=ExtResource("8_iut5d")]
+[node name="Giver2" parent="." node_paths=PackedStringArray("building") instance=ExtResource("9_kii5u")]
 position = Vector2(23, -9)
 direction_not_giving = 3
 building = NodePath("..")

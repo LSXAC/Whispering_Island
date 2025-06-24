@@ -6,8 +6,6 @@ public partial class BuildMenu : CanvasLayer
     [Export]
     public Building_Placer building_placer;
 
-    [Export]
-    public Array<PackedScene> buildings = new Array<PackedScene>();
     public static BuildMenu instance;
 
     [Export]

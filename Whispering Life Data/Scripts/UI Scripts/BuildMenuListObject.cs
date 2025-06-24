@@ -34,10 +34,7 @@ public partial class BuildMenuListObject : Control
             textureRect.Texture = ((placeable_building)placeable).GetSprite().Texture;
             description_label.Text = ((placeable_building)placeable).GetDescription();
 
-            Recipe recipe = new Recipe();
-            recipe = building_type.recipe;
-
-            if (item_row_manager.CanCreate(recipe.required_items))
+            if (item_row_manager.CanCreate(building_type.required_items))
                 build_button.Disabled = false;
             else
                 build_button.Disabled = true;

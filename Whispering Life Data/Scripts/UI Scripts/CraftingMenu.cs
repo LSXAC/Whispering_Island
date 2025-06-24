@@ -6,11 +6,15 @@ public partial class CraftingMenu : PanelContainer
     [Export]
     public Control parent;
 
-    public PackedScene recipe_slot = ResourceLoader.Load<PackedScene>("res://item_recipe.tscn");
-    public PackedScene no_recipies = ResourceLoader.Load<PackedScene>("res://No_Recipies.tscn");
+    public PackedScene recipe_slot = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/UI/crafting_menu_crafting_line.tscn"
+    );
+    public PackedScene no_recipies = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/UI/crafting_menu_message_no_recipies.tscn"
+    );
 
     [Export]
-    public Array<Recipe> crafting_recipies = new Array<Recipe>();
+    public Array<CraftingRecipe> crafting_recipies = new Array<CraftingRecipe>();
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta) { }
@@ -32,7 +36,7 @@ public partial class CraftingMenu : PanelContainer
                     )
                         continue;
             times++;
-            Recipe recipe = crafting_recipies[i];
+            CraftingRecipe recipe = crafting_recipies[i];
 
             itemRecipeUI irUI = (itemRecipeUI)recipe_slot.Instantiate();
             irUI.craftingMenu = this;

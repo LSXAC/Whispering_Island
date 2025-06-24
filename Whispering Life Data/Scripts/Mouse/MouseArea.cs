@@ -11,10 +11,10 @@ public partial class MouseArea : Area2D
     public Sprite2D building_sprite;
 
     private ShaderMaterial outline_shader = ResourceLoader.Load<ShaderMaterial>(
-        "res://Shader Objects/Outline_Shader.tres"
+        "res://Shader/Outline_Shader.tres"
     );
     private ShaderMaterial remove_outline_shader = ResourceLoader.Load<ShaderMaterial>(
-        "res://Shader Objects/Remove_Outline_Color.tres"
+        "res://Shader/Remove_Outline_Color.tres"
     );
 
     private void OutlineBuilding()

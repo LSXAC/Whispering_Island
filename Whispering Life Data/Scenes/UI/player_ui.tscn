@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ddo0v2qenmv6h" path="res://Sprites/Building_Frame.png" id="2_ktroc"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="3_0pxjf"]
 [ext_resource type="Texture2D" uid="uid://dfp34ytxtppg8" path="res://Sprites/Removing_Frame.png" id="3_7rm5b"]
-[ext_resource type="PackedScene" uid="uid://u4rbvbumuiua" path="res://Scenes/UI/h_box_item.tscn" id="4_4w6kj"]
+[ext_resource type="PackedScene" uid="uid://u4rbvbumuiua" path="res://Scenes/UI/h_box_item_menu_line.tscn" id="4_4w6kj"]
 [ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Scripts/Manager Scripts/Item_Row_Manager.cs" id="4_28ccb"]
 [ext_resource type="Script" uid="uid://b4njwqy0g4kis" path="res://Scripts/UI Scripts/QuestMiniPanel.cs" id="4_khv1d"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="7_vya4o"]
