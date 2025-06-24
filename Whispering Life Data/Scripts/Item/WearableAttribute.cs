@@ -1,21 +1,26 @@
 using System;
 using Godot;
+using Godot.Collections;
 
 [GlobalClass]
-public partial class WearableAttribute : ItemAttribute
+public partial class WearableAttribute : ItemAttributeBase
 {
     [Export]
-    public TYPE type = TYPE.NONE; // head, chest, legs, feet, hands, back, face, neck, waist, wrist
+    public SLOT_TYPE slot_type = SLOT_TYPE.NONE; // head, chest, legs, feet, hands, back, face, neck, waist, wrist
 
     [Export]
-    public int armor_points = 0; // Armor value of the wearable item
+    public int durability = 100;
 
-    public enum TYPE
+    [Export]
+    public Array<PlayerStat> stats = new Array<PlayerStat>();
+
+    public enum SLOT_TYPE
     {
         NONE,
         HEAD,
         CHEST,
         LEGS,
-        FEET
+        FEET,
+        HAND
     }
 }

@@ -43,22 +43,29 @@ public partial class EquipmentSelectBar : Container
         return current_selected_slot_item_ui;
     }
 
-    public ItemInfo.MINING_LEVEL GetSelectedTypeLevel()
+    public MineableObject.MINING_LEVEL GetSelectedTypeLevel()
     {
         if (GetSelectedSlotItemUI() != null)
-            return GetSelectedSlotItemUI().item.info.mining_level;
-        return ItemInfo.MINING_LEVEL.Hand;
+        {
+            ToolAttribute attribute = GetSelectedSlotItemUI()
+                .item.info.GetAttributeOrNull<ToolAttribute>();
+            if (attribute != null)
+                return attribute.mining_level;
+        }
+        return MineableObject.MINING_LEVEL.Hand;
     }
 
-    public bool HasSameUseType(StatsPanel.TYPE type)
+    public bool HasSameUseType(PlayerStats.TYPE type)
     {
         if (GetSelectedSlotItemUI() != null)
-            if (GetSelectedSlotItemUI().item.info.statspanel_type == type)
-                return true;
-            else
-                return false;
-
-        return true;
+        {
+            ToolAttribute attribute = GetSelectedSlotItemUI()
+                .item.info.GetAttributeOrNull<ToolAttribute>();
+            if (attribute != null)
+                if (attribute.use_type == type)
+                    return true;
+        }
+        return false;
     }
 
     public void SelectSelectSlot(int index)

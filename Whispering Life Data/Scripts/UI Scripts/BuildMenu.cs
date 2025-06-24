@@ -28,6 +28,8 @@ public partial class BuildMenu : CanvasLayer
     public override void _Ready()
     {
         instance = this;
+        if (Visible)
+            Visible = false;
     }
 
     public void OnVisiblityChange()

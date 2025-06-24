@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://bqmofblxswr12"]
 
-[ext_resource type="Resource" uid="uid://dpfc7scfcvgj6" path="res://Resource Meta/Items/Myst_Fibre_Seed.tres" id="1_6mix3"]
+[ext_resource type="Resource" uid="uid://dpfc7scfcvgj6" path="res://Resource Meta/Items/item_info_myst_fibre_seed.tres" id="1_6mix3"]
 [ext_resource type="Script" path="res://Scripts/Resources/Item.cs" id="2_nanwy"]
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/Recipe.cs" id="3_63irg"]
 

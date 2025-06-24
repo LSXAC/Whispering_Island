@@ -2,4 +2,4 @@ using System;
 using Godot;
 
 [GlobalClass]
-public partial class ResourceAttribute : ItemAttribute { }
+public partial class ResourceAttribute : ItemAttributeBase { }

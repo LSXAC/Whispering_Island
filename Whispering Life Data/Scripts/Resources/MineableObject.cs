@@ -11,10 +11,10 @@ public partial class MineableObject : placeable_building
     public Node2D hit_point;
 
     [Export]
-    public StatsPanel.TYPE type;
+    public PlayerStats.TYPE type;
 
     [Export]
-    public ItemInfo.MINING_LEVEL mining_level = ItemInfo.MINING_LEVEL.Hand;
+    public MINING_LEVEL mining_level = MINING_LEVEL.Hand;
 
     [Export]
     public int max_durability = 3;
@@ -49,8 +49,17 @@ public partial class MineableObject : placeable_building
     public bool in_cooldown = false;
     Random rnd = new Random();
 
+    public enum MINING_LEVEL
+    {
+        Hand,
+        Wood,
+        Stone,
+        Mystic,
+        Iron,
+    }
+
     private PackedScene hit_label = ResourceLoader.Load<PackedScene>(
-        "res://Prefabs/hit_label.tscn"
+        "res://Scenes/UI/hit_label.tscn"
     );
 
     [Signal]
@@ -139,25 +148,11 @@ public partial class MineableObject : placeable_building
         }
 
         //Check if Item can be in PlayerInventoryUI
-        if (
-            (
-                current_durability
-                - (int)(
-                    Player.instance.player_stats.stat_amounts[(int)type]
-                    * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
-                )
-            ) > 0
-        )
+        if ((current_durability - CalculateMiningAmountInt()) > 0)
         {
             if (
                 !PlayerInventoryUI.instance.CanReceiveItem(
-                    new Item(
-                        item_resource,
-                        (int)(
-                            Player.instance.player_stats.stat_amounts[(int)type]
-                            * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
-                        )
-                    ),
+                    new Item(item_resource, CalculateMiningAmountInt()),
                     PlayerInventoryUI.instance.inventory_items
                 )
             )
@@ -170,12 +165,7 @@ public partial class MineableObject : placeable_building
         }
         else
         {
-            int amount =
-                (int)(
-                    mining_bonus
-                    * Player.instance.player_stats.stat_amounts[(int)type]
-                    * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
-                ) + current_durability;
+            int amount = (int)(mining_bonus * CalculateMiningAmountInt()) + current_durability;
             if (
                 !PlayerInventoryUI.instance.CanReceiveItem(
                     new Item(item_resource, amount),
@@ -209,15 +199,7 @@ public partial class MineableObject : placeable_building
         {
             CharacterBody2D hit_lab = hit_label.Instantiate() as CharacterBody2D;
             int time = rnd.Next(-8, 9);
-            hit_lab
-                .GetChild<HitLabel>(0)
-                .InitText(
-                    "- "
-                        + (int)(
-                            Player.instance.player_stats.stat_amounts[(int)type]
-                            * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
-                        )
-                );
+            hit_lab.GetChild<HitLabel>(0).InitText("- " + CalculateMiningAmountInt());
             IslandManager
                 .instance.GetNearestIsland(GetGlobalMousePosition())
                 .island_object_save_manager.AddChild(hit_lab);
@@ -227,40 +209,28 @@ public partial class MineableObject : placeable_building
         }
 
         Player.instance.player_stats.AddFatigue(0.25f);
-        current_durability -= (int)(
-            Player.instance.player_stats.stat_amounts[(int)type]
-            * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
-        );
+        current_durability -= CalculateMiningAmountInt();
 
         //Selected Item Durability + Break -------------------------------------------------------------
         if (PlayerUI.instance.equipmentSelectBar.GetSelectedSlotItemUI() != null)
-            if (
-                PlayerUI
-                    .instance.equipmentSelectBar.GetSelectedSlotItemUI()
-                    .item.info.has_durability
-            )
+        {
+            SlotItemUI slot_item_ui = PlayerUI.instance.equipmentSelectBar.GetSelectedSlotItemUI();
+            if (slot_item_ui.item.info.HasAttribute<ToolAttribute>())
             {
                 EquipmentPanel
                     .instance.slots_tool[EquipmentSelectBar.current_selected_slot]
                     .GetSlotItemUI()
-                    .current_durability -= (int)(
-                    Player.instance.player_stats.stat_amounts[(int)type]
-                    * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
-                );
+                    .current_durability -= CalculateMiningAmountInt();
                 EquipmentPanel.UpdateSlotDurability(EquipmentSelectBar.current_selected_slot);
             }
+        }
         //-----------------------------------------------------------------------------------------------------
 
         gpu_particles.Emitting = true;
         if (current_durability <= 0)
         {
             anim_player.Play("Break");
-            int amount =
-                (int)(
-                    mining_bonus
-                    * Player.instance.player_stats.stat_amounts[(int)type]
-                    * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
-                ) + current_durability;
+            int amount = (int)(mining_bonus * CalculateMiningAmountInt()) + current_durability;
             PlayerUI.AddItemLabelUI(
                 "Bonus: +"
                     + amount
@@ -300,27 +270,21 @@ public partial class MineableObject : placeable_building
         StartTimerBar(TimerBar.STATE.COOLDOWN, click_cooldown_time);
         PlayerUI.AddItemLabelUI(
             "+"
-                + (
-                    (int)(
-                        Player.instance.player_stats.stat_amounts[(int)type]
-                        * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
-                    )
-                )
+                + CalculateMiningAmountInt()
                 + " "
                 + TranslationServer.Translate(item_resource.name.ToString())
         );
         PlayerInventoryUI.instance.AddItem(
-            new Item(
-                item_resource,
-                (int)(
-                    Player.instance.player_stats.stat_amounts[(int)type]
-                    * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT)
-                )
-            ),
+            new Item(item_resource, CalculateMiningAmountInt()),
             PlayerInventoryUI.instance.inventory_items
         );
 
         hover_menu.InitHoverMenu(this);
+    }
+
+    public int CalculateMiningAmountInt()
+    {
+        return (int)(1 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT));
     }
 
     private void StartTimerBar(TimerBar.STATE state, double time, bool from_loading = false)

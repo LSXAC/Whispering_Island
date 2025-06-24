@@ -22,7 +22,7 @@ public partial class MainMenu : Control
 
     public static MainMenu instance = null;
     public static LauncherSave launcherSave;
-    PackedScene game = ResourceLoader.Load<PackedScene>("res://GameManager.tscn");
+    PackedScene game = ResourceLoader.Load<PackedScene>("res://Scenes/Manager/game_manager.tscn");
 
     public override void _Ready()
     {

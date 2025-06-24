@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cnafp0o2cwupt"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_igor6"]
-[ext_resource type="Resource" uid="uid://eo8ax7whu2kb" path="res://Resource Meta/Items/Copper_Ore.tres" id="2_yrpvd"]
+[ext_resource type="Resource" uid="uid://eo8ax7whu2kb" path="res://Resource Meta/Items/item_info_copper_ore.tres" id="2_yrpvd"]
 [ext_resource type="Texture2D" uid="uid://b1ko86hk6yisc" path="res://Sprites/Copper_ore.png" id="3_tqg5t"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_a8k6t"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_asj4m"]

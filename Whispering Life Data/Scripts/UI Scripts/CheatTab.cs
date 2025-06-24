@@ -52,7 +52,7 @@ public partial class CheatTab : ColorRect
             PlayerInventoryUI.instance.AddItem(
                 new Item(
                     Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i],
-                    Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i].max_slot_amount
+                    Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i].max_stackable_size
                 ),
                 PlayerInventoryUI.instance.inventory_items
             );

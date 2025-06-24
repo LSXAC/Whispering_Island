@@ -7,7 +7,7 @@ public partial class Building_Collider_Manager : Node2D
 {
     [Export]
     private PackedScene building_collider = ResourceLoader.Load<PackedScene>(
-        "res://Placeable/BuildingCollider.tscn"
+        "res://Scenes/World Objects/Buildings/Building Components/Building_Collider_Component.tscn"
     );
 
     [Export]

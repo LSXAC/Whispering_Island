@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=21 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" uid="uid://sxd7avtys7n7" path="res://Scripts/Manager Scripts/GameManager.cs" id="1_2n0he"]
 [ext_resource type="Script" uid="uid://cwonaacplejxj" path="res://Scripts/Building Scripts/Building_Placer.cs" id="2_h8pdp"]
@@ -13,16 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://o62xek3uvpo8" path="res://Scenes/UI/quest_menu.tscn" id="11_5h8gv"]
 [ext_resource type="Resource" uid="uid://c1p7gva6jex80" path="res://Dialogues/Questing.dialogue" id="12_t3yax"]
 [ext_resource type="Script" uid="uid://diq6llslgpl4r" path="res://Scripts/Manager Scripts/QuestManager.cs" id="13_irdkv"]
-[ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Resource Meta/Quests/QINFO_Quest_1.tres" id="14_sw2xm"]
-[ext_resource type="Resource" uid="uid://f440f8pp671q" path="res://Resource Meta/Quests/QINFO_Quest_6.tres" id="15_uv8n6"]
-[ext_resource type="Resource" uid="uid://cdk8sna5iiegp" path="res://Resource Meta/Quests/QINFO_Quest_2.tres" id="16_4xc4d"]
-[ext_resource type="Resource" uid="uid://1g8vpo6nhjtq" path="res://Resource Meta/Quests/QINFO_Quest_3.tres" id="17_veqyt"]
-[ext_resource type="Resource" uid="uid://dgro7e15kytdm" path="res://Resource Meta/Quests/QINFO_Quest_4.tres" id="18_phjjy"]
-[ext_resource type="Resource" uid="uid://brkjgnwhqbr8g" path="res://Resource Meta/Quests/QINFO_Quest_5.tres" id="19_syrcv"]
-[ext_resource type="Resource" uid="uid://dcy3vpjgge5ds" path="res://Resource Meta/Quests/QINFO_Quest_7.tres" id="20_fgvwr"]
-[ext_resource type="Resource" uid="uid://c38ri0vpagiep" path="res://Resource Meta/Quests/QINFO_Quest_8.tres" id="21_b4hk5"]
-[ext_resource type="Resource" uid="uid://blm63gas5igti" path="res://Resource Meta/Quests/QINFO_Quest_9.tres" id="22_kcww1"]
-[ext_resource type="Resource" uid="uid://vl3pot0l2l0n" path="res://Resource Meta/Quests/QINFO_Quest_10.tres" id="23_1oo0o"]
+[ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Resource Meta/Quests/quest_info_1.tres" id="14_sw2xm"]
 [ext_resource type="Script" uid="uid://duioi7flou3wn" path="res://Scripts/Tutorial.cs" id="24_f4sbj"]
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="25_47dgn"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="26_nq6jg"]
@@ -76,7 +67,7 @@ dialogue_timeline = ExtResource("12_t3yax")
 
 [node name="QuestManager" type="Node2D" parent="." node_paths=PackedStringArray("quest_timer")]
 script = ExtResource("13_irdkv")
-quests = Array[Object]([ExtResource("14_sw2xm"), ExtResource("15_uv8n6"), ExtResource("16_4xc4d"), ExtResource("17_veqyt"), ExtResource("18_phjjy"), ExtResource("19_syrcv"), ExtResource("20_fgvwr"), ExtResource("21_b4hk5"), ExtResource("22_kcww1"), ExtResource("23_1oo0o")])
+quests = Array[Object]([ExtResource("14_sw2xm")])
 quest_timer = NodePath("QuestTimer")
 
 [node name="QuestTimer" type="Timer" parent="QuestManager"]

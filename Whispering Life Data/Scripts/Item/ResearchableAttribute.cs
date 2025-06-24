@@ -2,4 +2,4 @@ using System;
 using Godot;
 
 [GlobalClass]
-public partial class ResearchableAttribute : ItemAttribute { }
+public partial class ResearchableAttribute : ItemAttributeBase { }

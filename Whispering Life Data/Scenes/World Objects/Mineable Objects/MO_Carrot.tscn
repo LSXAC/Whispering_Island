@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://cyayxpnsm4v16"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_ywllv"]
-[ext_resource type="Resource" uid="uid://ch1b1ltixbads" path="res://Resource Meta/Items/ITEMINFO_Carrot.tres" id="2_v7k63"]
-[ext_resource type="Resource" uid="uid://dcpvayh8hlqbo" path="res://Resource Meta/Items/Carrot_Seed.tres" id="3_6cyct"]
+[ext_resource type="Resource" uid="uid://ch1b1ltixbads" path="res://Resource Meta/Items/item_info_carrot.tres" id="2_v7k63"]
+[ext_resource type="Resource" uid="uid://dcpvayh8hlqbo" path="res://Resource Meta/Items/item_info_carrot_seed.tres" id="3_6cyct"]
 [ext_resource type="Texture2D" uid="uid://b3xd7qx5g1j24" path="res://Sprites/Carrots.png" id="3_f7c6g"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_va1aa"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="6_4rs16"]

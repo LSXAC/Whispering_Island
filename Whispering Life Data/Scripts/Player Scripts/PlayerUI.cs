@@ -38,7 +38,7 @@ public partial class PlayerUI : CanvasLayer
 
     [Export]
     public PackedScene collected_item_label = ResourceLoader.Load<PackedScene>(
-        "res://Prefabs/collect_item_label.tscn"
+        "res://Scenes/UI/collect_item_label.tscn"
     );
 
     [Export]

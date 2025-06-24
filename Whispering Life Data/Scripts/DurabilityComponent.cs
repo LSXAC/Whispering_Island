@@ -1,13 +1,10 @@
-using Godot;
 using System;
+using Godot;
 
 public partial class DurabilityComponent : Node2D
 {
     [Export]
-    public int max_durability;
-
-    [Export]
-    public int current_durability;
+    public int durability;
     bool is_broken = false;
 
     public bool IsBroken()
@@ -20,10 +17,10 @@ public partial class DurabilityComponent : Node2D
         if (is_broken)
             return;
 
-        current_durability -= amount;
-        if (current_durability <= 0)
+        durability -= amount;
+        if (durability <= 0)
         {
-            current_durability = 0;
+            durability = 0;
             is_broken = true;
         }
     }

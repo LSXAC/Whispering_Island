@@ -19,7 +19,7 @@ public partial class EquipmentPanel : Control
     public Slot[] slots_tool = new Slot[4];
 
     [Export]
-    public StatsPanel stats_panel;
+    public PlayerStatsUI player_stats_ui;
 
     [Export]
     public Label health_bar_label,
@@ -47,13 +47,13 @@ public partial class EquipmentPanel : Control
         fatigue_bar.Value = Player.instance.player_stats.fatigue_value;
         fatigue_bar_label.Text = TranslationServer.Translate("EQUIPMENT_PANEL_FATIGUE_BAR") + ":";
 
-        for (int i = 0; i < Enum.GetNames(typeof(StatsPanel.TYPE)).Length; i++)
+        for (int i = 0; i < Enum.GetNames(typeof(PlayerStats.TYPE)).Length; i++)
         {
-            stats_panel.stats_container.GetChild(i).GetNode<Label>("Type").Text =
-                TranslationServer.Translate("EQUIPMENT_PANEL_" + ((StatsPanel.TYPE)i).ToString())
+            player_stats_ui.stats_container.GetChild(i).GetNode<Label>("Type").Text =
+                TranslationServer.Translate("EQUIPMENT_PANEL_" + ((PlayerStats.TYPE)i).ToString())
                 + ":";
-            stats_panel.stats_container.GetChild(i).GetNode<Label>("Number").Text = Player
-                .instance.player_stats.stat_amounts[i]
+            player_stats_ui.stats_container.GetChild(i).GetNode<Label>("Number").Text = Player
+                .instance.player_stats.GetStatAmount((PlayerStats.TYPE)i)
                 .ToString("N1");
         }
     }
@@ -106,25 +106,32 @@ public partial class EquipmentPanel : Control
     public void CalculateStatsFromEquipment()
     {
         PlayerStats player_stats = Player.instance.player_stats;
-        for (int i = 0; i < player_stats.stat_amounts.Length; i++)
-            player_stats.stat_amounts[i] = 1f;
+        for (int i = 0; i < player_stats.GetStatsLength(); i++)
+            player_stats.SetStat((PlayerStats.TYPE)i, 1f);
 
         foreach (ItemSave s in equipped_armor)
         {
             if (s != null)
-                if (Inventory.ITEM_TYPES[(Inventory.ITEM_ID)s.item_id].stats != null)
-                    foreach (
-                        ItemStats x in Inventory.ITEM_TYPES[(Inventory.ITEM_ID)s.item_id].stats
-                    )
-                        player_stats.stat_amounts[(int)x.type] += x.bonus;
+            {
+                WearableAttribute attribute = Inventory
+                    .ITEM_TYPES[(Inventory.ITEM_ID)s.item_id]
+                    .GetAttributeOrNull<WearableAttribute>();
+
+                if (attribute.stats != null)
+                    foreach (PlayerStat x in attribute.stats)
+                        player_stats.IncreaseStat(x.type, x.value);
+            }
         }
 
         if (PlayerUI.instance.equipmentSelectBar.GetSelectedSlotItemUI() != null)
         {
             SlotItemUI slot_item_ui = PlayerUI.instance.equipmentSelectBar.GetSelectedSlotItemUI();
-            if (slot_item_ui.item.info.stats != null)
-                foreach (ItemStats x in slot_item_ui.item.info.stats)
-                    player_stats.stat_amounts[(int)x.type] += x.bonus;
+            WearableAttribute attribute =
+                slot_item_ui.item.info.GetAttributeOrNull<WearableAttribute>();
+            if (attribute != null)
+                if (attribute.stats != null)
+                    foreach (PlayerStat x in attribute.stats)
+                        player_stats.IncreaseStat(x.type, x.value);
         }
         UpdateProgressbars();
     }

@@ -32,37 +32,40 @@ public partial class SlotItemUI : TextureRect
         l.VerticalAlignment = VerticalAlignment.Bottom;
         amount_label = l;
         UpdateToolTip();
-        //57cb00
-        if (item.info.has_durability)
-        {
-            VBoxContainer vbc = new VBoxContainer();
-            vbc.MouseFilter = MouseFilterEnum.Ignore;
-            vbc.Size = new Vector2(40, 40);
-            vbc.Alignment = BoxContainer.AlignmentMode.End;
 
-            pb = new ProgressBar();
-            pb.MouseFilter = MouseFilterEnum.Ignore;
-            pb.Size = new Vector2(40, 5);
-            pb.MaxValue = item.info.max_durability;
-            pb.Step = 1;
-            pb.Value = current_durability;
-            this.current_durability = current_durability;
-            pb.ShowPercentage = false;
-            StyleBoxFlat sbf = new StyleBoxFlat();
-            sbf.BgColor = new Color(0.34f, 0.796f, 0);
-            pb.AddThemeStyleboxOverride("fill", sbf);
-            vbc.AddChild(pb);
-            AddChild(vbc);
-        }
-        else
+        //57cb00
+        ToolAttribute attribute = item.info.GetAttributeOrNull<ToolAttribute>();
+        if (attribute == null)
+        {
             AddChild(l);
+            return;
+        }
+
+        VBoxContainer vbc = new VBoxContainer();
+        vbc.MouseFilter = MouseFilterEnum.Ignore;
+        vbc.Size = new Vector2(40, 40);
+        vbc.Alignment = BoxContainer.AlignmentMode.End;
+
+        pb = new ProgressBar();
+        pb.MouseFilter = MouseFilterEnum.Ignore;
+        pb.Size = new Vector2(40, 5);
+        pb.MaxValue = attribute.durability;
+        pb.Step = 1;
+        pb.Value = current_durability;
+        this.current_durability = current_durability;
+        pb.ShowPercentage = false;
+        StyleBoxFlat sbf = new StyleBoxFlat();
+        sbf.BgColor = new Color(0.34f, 0.796f, 0);
+        pb.AddThemeStyleboxOverride("fill", sbf);
+        vbc.AddChild(pb);
+        AddChild(vbc);
     }
 
     private void UpdateToolTip()
     {
         TooltipText = TranslationServer.Translate(item.info.name.ToString()) + "\n";
         TooltipText += TranslationServer.Translate(item.info.description.ToString()) + "\n";
-        foreach (ItemAttribute item_attribute in item.info.attributes)
+        foreach (ItemAttributeBase item_attribute in item.info.attributes)
         {
             if (item_attribute == null)
                 continue;
@@ -82,13 +85,6 @@ public partial class SlotItemUI : TextureRect
                     + TranslationServer.Translate(item_attribute.ToString())
                     + "\n";
         }
-        foreach (ItemStats stats in item.info.stats)
-            if (stats.bonus > 0)
-                TooltipText +=
-                    "\n" + TranslationServer.Translate(stats.type.ToString()) + ": +" + stats.bonus;
-            else if (stats.bonus < 0)
-                TooltipText +=
-                    "\n" + TranslationServer.Translate(stats.type.ToString()) + ": " + stats.bonus;
     }
 
     public void UpdateAmountLabel()

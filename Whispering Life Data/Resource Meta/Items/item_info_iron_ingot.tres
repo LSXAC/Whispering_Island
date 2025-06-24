@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://d2e6om0f0jfhd"]
+
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_iji41"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_jjdqw"]
+[ext_resource type="Texture2D" uid="uid://d1wddls2semmy" path="res://Sprites/Items/Icons_3rd/Iron_Ingot.png" id="2_jjdqw"]
+
+[sub_resource type="Resource" id="Resource_56ioh"]
+script = ExtResource("1_jjdqw")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("1_iji41")
+attributes = Array[Object]([SubResource("Resource_56ioh")])
+max_stackable_size = 50
+name = "IRON_INGOT"
+id = 0
+description = "IRON_INGOT_DESC"
+texture = ExtResource("2_jjdqw")
+value = 100.0

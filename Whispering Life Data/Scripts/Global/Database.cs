@@ -22,7 +22,7 @@ public partial class Database : Node
     >()
     {
         {
-            Inventory.ITEM_ID.WOOD,
+            Inventory.ITEM_ID.OAK_WOOD,
             ResourceLoader.Load<ItemResearch>(
                 "res://Items/ItemResearchs/Wood_Research_Level_Manager.tres"
             )

@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
@@ -8,37 +6,10 @@ using Godot.Collections;
 public partial class ItemInfo : Resource
 {
     [Export]
-    public Array<ItemAttribute> attributes = new Array<ItemAttribute>() { new ResourceAttribute() };
+    public Array<ItemAttributeBase> attributes;
 
     [Export]
-    public Rarity rarity = Rarity.Common;
-
-    public enum Rarity
-    {
-        Common,
-        Uncommon,
-        Rare,
-        Epic,
-        Legendary
-    }
-
-    public enum MINING_LEVEL
-    {
-        Hand,
-        Wood,
-        Stone,
-        Mystic,
-        Iron,
-    }
-
-    [Export]
-    public bool has_durability = false;
-
-    [Export]
-    public int max_durability = 100;
-
-    [Export]
-    public int max_slot_amount = 48;
+    public int max_stackable_size = 48;
 
     [Export]
     public string name;
@@ -55,19 +26,10 @@ public partial class ItemInfo : Resource
     [Export(PropertyHint.Range, "0,1000,1")]
     public float value;
 
-    [Export]
-    public MINING_LEVEL mining_level;
-
-    [Export]
-    public StatsPanel.TYPE statspanel_type;
-
-    [Export]
-    public Array<ItemStats> stats = new Array<ItemStats>();
-
     public bool HasAttribute<T>()
-        where T : ItemAttribute
+        where T : ItemAttributeBase
     {
-        foreach (ItemAttribute attribute in attributes)
+        foreach (ItemAttributeBase attribute in attributes)
         {
             if (attribute is T)
                 return true;
@@ -75,26 +37,24 @@ public partial class ItemInfo : Resource
         return false;
     }
 
+    public T GetAttributeOrNull<T>()
+        where T : ItemAttributeBase
+    {
+        foreach (T attribute in attributes)
+        {
+            if (attribute is T)
+                return attribute;
+        }
+        return null;
+    }
+
     public bool HasAttributByType(Type attributeType)
     {
-        foreach (ItemAttribute attr in attributes)
+        foreach (ItemAttributeBase attr in attributes)
         {
             if (attr != null && attr.GetType() == attributeType)
                 return true;
         }
         return false;
-    }
-
-    public int GetAttributeIndex<T>()
-        where T : ItemAttribute
-    {
-        for (int i = 0; i < attributes.Count; i++)
-        {
-            if (attributes[i] is T)
-                return i;
-        }
-
-        Debug.Print($"Attribute of type {typeof(T).Name} cannot be found in {name}");
-        return -1;
     }
 }

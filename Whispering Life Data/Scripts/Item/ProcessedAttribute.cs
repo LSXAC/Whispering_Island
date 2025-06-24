@@ -2,4 +2,4 @@ using System;
 using Godot;
 
 [GlobalClass]
-public partial class ProcessedAttribute : ItemAttribute { }
+public partial class ProcessedAttribute : ItemAttributeBase { }

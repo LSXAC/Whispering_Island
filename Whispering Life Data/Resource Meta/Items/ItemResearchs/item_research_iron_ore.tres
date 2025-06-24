@@ -1,19 +1,21 @@
-[gd_resource type="Resource" script_class="ResearchLevelGroup" load_steps=7 format=3 uid="uid://crmqrimgdf2gl"]
+[gd_resource type="Resource" script_class="ItemResearch" load_steps=7 format=3 uid="uid://crmqrimgdf2gl"]
 
 [ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Scripts/Research/ItemResearchLevel.cs" id="1_lqmlk"]
-[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Resource Meta/Items/Iron_Ingot.tres" id="2_bya61"]
-[ext_resource type="Resource" uid="uid://dqdb68mek201l" path="res://Resource Meta/Items/Iron_Block.tres" id="3_1usbh"]
+[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Resource Meta/Items/item_info_iron_ingot.tres" id="2_mw4ry"]
+[ext_resource type="Resource" uid="uid://dqdb68mek201l" path="res://Resource Meta/Items/item_info_iron_block.tres" id="3_n5h0i"]
 [ext_resource type="Script" uid="uid://8idh4gp832ub" path="res://Scripts/Research/ItemResearch.cs" id="4_lqmlk"]
 
-[sub_resource type="Resource" id="Resource_5ebk2"]
+[sub_resource type="Resource" id="Resource_g0bps"]
 script = ExtResource("1_lqmlk")
-unlocks_items = Array[Object]([ExtResource("2_bya61")])
+unlocked_item_infos_after_research = Array[Object]([ExtResource("2_mw4ry")])
+metadata/_custom_type_script = "uid://kjnoywvj7caa"
 
-[sub_resource type="Resource" id="Resource_2mqpd"]
+[sub_resource type="Resource" id="Resource_jil08"]
 script = ExtResource("1_lqmlk")
-unlocks_items = Array[Object]([ExtResource("3_1usbh")])
+unlocked_item_infos_after_research = Array[Object]([ExtResource("3_n5h0i")])
+metadata/_custom_type_script = "uid://kjnoywvj7caa"
 
 [resource]
 script = ExtResource("4_lqmlk")
+item_research_levels = Array[Object]([SubResource("Resource_g0bps"), SubResource("Resource_jil08")])
 translation_string = "RESEARCH_IRON_ORE"
-research_levels = Array[Object]([SubResource("Resource_5ebk2"), SubResource("Resource_2mqpd")])

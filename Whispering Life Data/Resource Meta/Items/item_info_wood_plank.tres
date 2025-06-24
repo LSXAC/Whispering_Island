@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://bl35uo51q2mwf"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_pbcq7"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_qp7xs"]
+[ext_resource type="Texture2D" uid="uid://8t8iildjf1jv" path="res://Sprites/Items/Icons_3rd/Wooden_Plank.png" id="2_7cxi2"]
+
+[sub_resource type="Resource" id="Resource_hpgts"]
+script = ExtResource("1_pbcq7")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("1_qp7xs")
+attributes = Array[Object]([SubResource("Resource_hpgts")])
+max_stackable_size = 50
+name = "WOOD_PLANK"
+id = 4
+description = "WOOD_PLANK_DESC"
+texture = ExtResource("2_7cxi2")
+value = 5.0

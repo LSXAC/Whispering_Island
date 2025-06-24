@@ -8,7 +8,7 @@ public partial class Slot : Button
     public string label_translation_string;
 
     [Export]
-    public ItemAttribute attribute;
+    public ItemAttributeBase attribute;
 
     [Export]
     public bool check_attributes = false;
@@ -226,8 +226,9 @@ public partial class Slot : Button
                         ///////////////////////
                         return;
                     }
-
-                if (GetSlotItemUI().item.info.has_durability)
+                ToolAttribute attribute = GetSlotItemUI()
+                    .item.info.GetAttributeOrNull<ToolAttribute>();
+                if (attribute != null)
                     CreateClickedItem(false, GetSlotItemUI().current_durability);
                 else
                     CreateClickedItem();
@@ -301,7 +302,7 @@ public partial class Slot : Button
 
             if (
                 GetAmountOfSlot(item_array)
-                == PlayerInventoryUI.clicked_slot_item_ui.item.info.max_slot_amount
+                == PlayerInventoryUI.clicked_slot_item_ui.item.info.max_stackable_size
             )
                 return;
 
@@ -311,7 +312,7 @@ public partial class Slot : Button
                     if (
                         PlayerInventoryUI.clicked_slot_item_ui.item.amount
                             + GetAmountOfSlot(item_array)
-                        <= PlayerInventoryUI.clicked_slot_item_ui.item.info.max_slot_amount
+                        <= PlayerInventoryUI.clicked_slot_item_ui.item.info.max_stackable_size
                     )
                     {
                         UpdateSlot(item_array, GetAmountOfSlot(item_array) + 1);
@@ -321,7 +322,7 @@ public partial class Slot : Button
                     {
                         // 48 - 30 = 18
                         int diff =
-                            PlayerInventoryUI.clicked_slot_item_ui.item.info.max_slot_amount
+                            PlayerInventoryUI.clicked_slot_item_ui.item.info.max_stackable_size
                             - GetAmountOfSlot(item_array);
 
                         UpdateSlot(item_array, GetAmountOfSlot(item_array) + diff);
@@ -332,7 +333,7 @@ public partial class Slot : Button
 
             if ( //Check if <= slot max
                 PlayerInventoryUI.clicked_slot_item_ui.item.amount + GetAmountOfSlot(item_array)
-                <= PlayerInventoryUI.clicked_slot_item_ui.item.info.max_slot_amount
+                <= PlayerInventoryUI.clicked_slot_item_ui.item.info.max_stackable_size
             )
             {
                 UpdateSlot(
@@ -344,7 +345,7 @@ public partial class Slot : Button
             else
             {
                 int diff =
-                    PlayerInventoryUI.clicked_slot_item_ui.item.info.max_slot_amount
+                    PlayerInventoryUI.clicked_slot_item_ui.item.info.max_stackable_size
                     - GetAmountOfSlot(item_array);
 
                 UpdateSlot(item_array, GetAmountOfSlot(item_array) + diff);

@@ -9,7 +9,7 @@
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="8_xv6mj"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="9_h0qrp"]
 [ext_resource type="PackedScene" uid="uid://badiq5h8rhrc" path="res://Scenes/Spawn_ResourceObject_AnimationPlayer.tscn" id="10_saal6"]
-[ext_resource type="Script" uid="uid://dm6cthpkwo5kq" path="res://Scripts/DurabilityComponent.cs" id="10_wf1uw"]
+[ext_resource type="PackedScene" uid="uid://cdkme6odd6vky" path="res://Scenes/World Objects/Buildings/Building Components/Durability_Component.tscn" id="10_wf1uw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(16, 8)
@@ -116,8 +116,7 @@ collision_tilemap = NodePath("../CollisionTemplateTilemap")
 [node name="HitPoint" type="Node2D" parent="."]
 position = Vector2(-8, -9)
 
-[node name="DurabilityComponent" type="Node2D" parent="."]
-script = ExtResource("10_wf1uw")
+[node name="DurabilityComponent" parent="." instance=ExtResource("10_wf1uw")]
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

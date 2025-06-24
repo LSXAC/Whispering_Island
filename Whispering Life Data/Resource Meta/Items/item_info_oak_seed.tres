@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://dnxxeevayo83d"]
+
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_xbk2u"]
+[ext_resource type="Texture2D" uid="uid://cmqinhn108vms" path="res://Sprites/Items/Plants_Icons/Wheat_Seeds.png" id="2_00ho8"]
+
+[resource]
+script = ExtResource("1_xbk2u")
+attributes = null
+max_stackable_size = 50
+name = "OAK_SEED"
+id = 37
+description = "OAK_SEED_DESC"
+texture = ExtResource("2_00ho8")
+value = 5.0

@@ -1,7 +1,6 @@
 /*
   Copyright 2024: Leon Schröder Asset Creations
   Website: Leon-Schroeder.net
-  Project: Whispering Island
 */
 
 using System;
@@ -15,13 +14,40 @@ public partial class PlayerStats : Node2D
     public const float fatigue_amount = 0.1f;
     public const float fatigue_remove_by_sleep_amount = 0.1f;
 
-    public float[] stat_amounts = new float[5] { 1f, 1f, 1f, 1f, 1f };
+    float[] stat_amounts = new float[5] { 1f, 1f, 1f, 1f, 1f };
+
+    public enum TYPE
+    {
+        ATTACK,
+        DEFENSE,
+        FORESTRY,
+        MINING,
+        FARMING
+    };
 
     public override void _Ready() { }
 
-    public void UpdateStatsByEquipmentChange()
+    public void IncreaseStat(TYPE type, float amount)
     {
-        //EquipmentPanel.INSTANCE
+        stat_amounts[(int)type] += amount;
+    }
+
+    public void SetStat(TYPE type, float amount)
+    {
+        if (amount < 1f)
+            amount = 1f;
+
+        stat_amounts[(int)type] = amount;
+    }
+
+    public float GetStatAmount(TYPE type)
+    {
+        return stat_amounts[(int)type];
+    }
+
+    public int GetStatsLength()
+    {
+        return stat_amounts.Length;
     }
 
     public void AddFatigue(float amount)

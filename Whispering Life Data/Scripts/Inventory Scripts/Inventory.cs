@@ -13,12 +13,12 @@ public partial class Inventory : SlotUpdater
     public int slot_amount = 30;
     public static Dictionary<ITEM_ID, ItemInfo> ITEM_TYPES = new Dictionary<ITEM_ID, ItemInfo>()
     {
-        { ITEM_ID.WOOD, ResourceLoader.Load<ItemInfo>("res://Items/Wood.tres") },
+        { ITEM_ID.OAK_WOOD, ResourceLoader.Load<ItemInfo>("res://Items/Wood.tres") },
         { ITEM_ID.STONE, ResourceLoader.Load<ItemInfo>("res://Items/Stone.tres") },
         { ITEM_ID.WOOD_STICK, ResourceLoader.Load<ItemInfo>("res://Items/Wood_Stick.tres") },
         { ITEM_ID.STONE_PICKAXE, ResourceLoader.Load<ItemInfo>("res://Items/Stone_Pickaxe.tres") },
-        { ITEM_ID.WOODEN_PLANK, ResourceLoader.Load<ItemInfo>("res://Items/Wood_Plank.tres") },
-        { ITEM_ID.Wooden_Axe, ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe.tres") },
+        { ITEM_ID.WOOD_PLANK, ResourceLoader.Load<ItemInfo>("res://Items/Wood_Plank.tres") },
+        { ITEM_ID.WOOD_AXE, ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe.tres") },
         { ITEM_ID.CHAR_COAL, ResourceLoader.Load<ItemInfo>("res://Items/Char_Coal.tres") },
         { ITEM_ID.IRON_ORE, ResourceLoader.Load<ItemInfo>("res://Items/Iron_Ore.tres") },
         { ITEM_ID.IRON_INGOT, ResourceLoader.Load<ItemInfo>("res://Items/Iron_Ingot.tres") },
@@ -39,12 +39,12 @@ public partial class Inventory : SlotUpdater
             ResourceLoader.Load<ItemInfo>("res://Items/Stone_Pickaxe_Head.tres")
         },
         {
-            ITEM_ID.WOODEN_HOE_HEAD,
+            ITEM_ID.WOOD_HOE_HEAD,
             ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Hoe_Head.tres")
         },
-        { ITEM_ID.WOODEN_HOE, ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Hoe.tres") },
+        { ITEM_ID.WOOD_HOE, ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Hoe.tres") },
         {
-            ITEM_ID.WOODEN_AXE_HEAD,
+            ITEM_ID.WOOD_AXE_HEAD,
             ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe_Head.tres")
         },
         { ITEM_ID.WHEAT, ResourceLoader.Load<ItemInfo>("res://Items/Wheat.tres") },
@@ -75,21 +75,24 @@ public partial class Inventory : SlotUpdater
             ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Shoes.tres")
         },
         { ITEM_ID.OAK_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Oak_Seed.tres") },
-        { ITEM_ID.MYST_OAK_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Myst_Oak_Seed.tres") },
         {
-            ITEM_ID.MYST_FIBRE_SEED,
+            ITEM_ID.MYSTIC_OAK_SEED,
+            ResourceLoader.Load<ItemInfo>("res://Items/Myst_Oak_Seed.tres")
+        },
+        {
+            ITEM_ID.MYSTIC_FIBRE_SEED,
             ResourceLoader.Load<ItemInfo>("res://Items/Myst_Fibre_Seed.tres")
         },
     };
 
     public enum ITEM_ID
     {
-        WOOD,
+        OAK_WOOD,
         STONE,
         WOOD_STICK,
         STONE_PICKAXE,
-        WOODEN_PLANK,
-        Wooden_Axe,
+        WOOD_PLANK,
+        WOOD_AXE,
         CHAR_COAL,
         IRON_ORE,
         IRON_INGOT,
@@ -103,9 +106,9 @@ public partial class Inventory : SlotUpdater
         GLASS_CHUNK,
         STONE_AXE_HEAD,
         STONE_PICKAXE_HEAD,
-        WOODEN_HOE_HEAD,
-        WOODEN_HOE,
-        WOODEN_AXE_HEAD,
+        WOOD_HOE_HEAD,
+        WOOD_HOE,
+        WOOD_AXE_HEAD,
         WHEAT,
         IRON_BLOCK,
         WHEAT_SEED,
@@ -122,8 +125,8 @@ public partial class Inventory : SlotUpdater
         MYSTIC_ARMOR_LEGGINGS,
         MYSTIC_ARMOR_SHOES,
         OAK_SEED,
-        MYST_OAK_SEED,
-        MYST_FIBRE_SEED
+        MYSTIC_OAK_SEED,
+        MYSTIC_FIBRE_SEED
     }
 
     public override void _Ready()
@@ -228,10 +231,10 @@ public partial class Inventory : SlotUpdater
                 // 20 + 70
                 if (remaining > 0)
                 {
-                    if (array[i].amount == item_info.max_slot_amount)
+                    if (array[i].amount == item_info.max_stackable_size)
                         continue;
                     // 47 + 70 != 48
-                    if (array[i].amount + remaining <= item_info.max_slot_amount)
+                    if (array[i].amount + remaining <= item_info.max_stackable_size)
                     {
                         array[i].amount += remaining;
                         remaining = 0;
@@ -240,8 +243,8 @@ public partial class Inventory : SlotUpdater
                     }
                     else
                     { // 48 - 47 = 1
-                        int diff = item_info.max_slot_amount - array[i].amount;
-                        array[i].amount = item_info.max_slot_amount;
+                        int diff = item_info.max_stackable_size - array[i].amount;
+                        array[i].amount = item_info.max_stackable_size;
                         remaining -= diff;
                         UpdateSlot(i);
                     }
@@ -252,19 +255,15 @@ public partial class Inventory : SlotUpdater
                 QuestManager.instance.quests[QuestManager.current_quest_id]
             );
         }
-
+        ToolAttribute attribute = item_info.GetAttributeOrNull<ToolAttribute>();
         //Check latest Slot which is Null
         for (int i = 0; i < array.Length; i++)
             if (array[i] == null)
             {
-                if (remaining <= item_info.max_slot_amount)
+                if (remaining <= item_info.max_stackable_size)
                 {
-                    if (item_info.has_durability)
-                        array[i] = new ItemSave(
-                            (int)item_info.id,
-                            remaining,
-                            item_info.max_durability
-                        );
+                    if (attribute != null)
+                        array[i] = new ItemSave((int)item_info.id, remaining, attribute.durability);
                     else
                         array[i] = new ItemSave((int)item_info.id, remaining);
 
@@ -276,18 +275,14 @@ public partial class Inventory : SlotUpdater
                 }
                 else
                 {
-                    if (item_info.has_durability)
-                        array[i] = new ItemSave(
-                            (int)item_info.id,
-                            remaining,
-                            item_info.max_durability
-                        );
+                    if (attribute != null)
+                        array[i] = new ItemSave((int)item_info.id, remaining, attribute.durability);
                     else
-                        array[i] = new ItemSave((int)item_info.id, item_info.max_slot_amount);
+                        array[i] = new ItemSave((int)item_info.id, item_info.max_stackable_size);
                     QuestMiniPanel.instance.UpdateQuestMiniPanel(
                         QuestManager.instance.quests[QuestManager.current_quest_id]
                     );
-                    remaining -= item_info.max_slot_amount;
+                    remaining -= item_info.max_stackable_size;
                 }
             }
     }
@@ -336,7 +331,7 @@ public partial class Inventory : SlotUpdater
 
             if (array[i].item_id == (int)item.info.id)
             {
-                if (array[i].amount + item.amount < item.info.max_slot_amount)
+                if (array[i].amount + item.amount < item.info.max_stackable_size)
                     return true;
             }
         }
@@ -444,12 +439,9 @@ public partial class Inventory : SlotUpdater
 
     public int GetDurability(int index)
     {
-        Debug.Print("" + GetItemInfo(index).has_durability);
-        if (GetItemInfo(index).has_durability)
-        {
-            Debug.Print(inventory_items[index].current_durability.ToString());
+        ToolAttribute attribute = GetItemInfo(index).GetAttributeOrNull<ToolAttribute>();
+        if (attribute != null)
             return inventory_items[index].current_durability;
-        }
         else
             return -1;
     }

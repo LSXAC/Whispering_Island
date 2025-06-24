@@ -123,11 +123,12 @@ public partial class ProcessBuilding : MachineBase
                     ItemInfo info = Inventory.ITEM_TYPES[
                         (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.FUEL].item_id
                     ];
-                    fuel_left += (
-                        (BurnableAttribute)
-                            info.attributes[info.GetAttributeIndex<BurnableAttribute>()]
-                    ).burntime;
-                    item_array[(int)FurnaceTab.SlotType.FUEL].amount--;
+                    BurnableAttribute attribute = info.GetAttributeOrNull<BurnableAttribute>();
+                    if (attribute != null)
+                    {
+                        fuel_left += attribute.burntime;
+                        item_array[(int)FurnaceTab.SlotType.FUEL].amount--;
+                    }
                 }
                 else
                 {
