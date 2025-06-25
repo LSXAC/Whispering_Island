@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=78 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://Scripts/UI Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://74pm7gmanqf2" path="res://Scenes/UI/player_inventory.tscn" id="3_ub0ut"]
 [ext_resource type="Script" uid="uid://bpr1ymr8thsmp" path="res://Scripts/UI Scripts/CraftingMenu.cs" id="4_3cwxu"]
 [ext_resource type="Script" uid="uid://cfwlly4mpd05v" path="res://Scripts/UI Scripts/EquipmentPanel.cs" id="4_e3tur"]
-[ext_resource type="PackedScene" uid="uid://bj72iumyf7nxx" path="res://Scenes/UI/ChestInventory.tscn" id="4_eoykc"]
+[ext_resource type="PackedScene" uid="uid://bj72iumyf7nxx" path="res://Scenes/UI/chest_inventory.tscn" id="4_eoykc"]
 [ext_resource type="Script" uid="uid://omdw880ahi7w" path="res://Scripts/UI Scripts/FurnaceTab.cs" id="4_kmuua"]
 [ext_resource type="Script" uid="uid://x5sh7dthimfr" path="res://Scripts/Inventory Scripts/Slot.cs" id="4_v56ys"]
 [ext_resource type="Texture2D" uid="uid://ne3oahdi530f" path="res://Sprites/Char_Profil.png" id="5_6jpat"]
@@ -21,16 +21,15 @@
 [ext_resource type="Texture2D" uid="uid://be2xmt8674o1k" path="res://Sprites/Items/Icons/rejected.png" id="10_yfud7"]
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://Scenes/UI/header_color_rect.tscn" id="11_45saq"]
 [ext_resource type="Script" uid="uid://dmhek11432ok0" path="res://Scripts/UI Scripts/ResearchTab.cs" id="11_hr8uu"]
-[ext_resource type="PackedScene" uid="uid://cd8pn6e2fwrpm" path="res://Scenes/UI/Research_Level_Tab.tscn" id="12_3k1qw"]
-[ext_resource type="Resource" uid="uid://dr5yac7cj8scc" path="res://Resource Meta/Recipes/Basics/crafting_recipe_wood_plank.tres" id="12_h3bpf"]
-[ext_resource type="Resource" uid="uid://bedyblbr23cwl" path="res://Resource Meta/Recipes/Basics/crafting_recipe_wood_stick.tres" id="13_o680h"]
-[ext_resource type="Resource" uid="uid://bp4wq2ypl075m" path="res://Resource Meta/Recipes/Tools/Wooden_Axe_Recipe.tres" id="16_1o4en"]
+[ext_resource type="PackedScene" uid="uid://cd8pn6e2fwrpm" path="res://Scenes/UI/research_level_tab.tscn" id="12_3k1qw"]
+[ext_resource type="Resource" uid="uid://dr5yac7cj8scc" path="res://Resource Meta/Crafting Recipies/Basics/crafting_recipe_wood_plank.tres" id="12_h3bpf"]
+[ext_resource type="Resource" uid="uid://bedyblbr23cwl" path="res://Resource Meta/Crafting Recipies/Basics/crafting_recipe_wood_stick.tres" id="13_o680h"]
+[ext_resource type="Resource" uid="uid://bp4wq2ypl075m" path="res://Resource Meta/Crafting Recipies/Tools/crafting_recipe_wood_axe.tres" id="16_1o4en"]
 [ext_resource type="Script" uid="uid://c1q35nbh8sb51" path="res://Scripts/UI Scripts/IslandMenu.cs" id="16_burxg"]
 [ext_resource type="Script" uid="uid://c7qu86gm6haea" path="res://Scripts/UI Scripts/CheatTab.cs" id="16_f2xax"]
 [ext_resource type="Script" uid="uid://btkxakelo3d1y" path="res://Scripts/UI Scripts/SettingsTab.cs" id="16_jv3kw"]
 [ext_resource type="Texture2D" uid="uid://syf34dx878d5" path="res://Sprites/Flaggs/US_FLAG.png" id="16_ldk1u"]
 [ext_resource type="Script" uid="uid://c8gcdq44rac7i" path="res://Scripts/Skilltree.cs" id="16_x6qgy"]
-[ext_resource type="Resource" uid="uid://b7a6dtp0rqub1" path="res://Resource Meta/Recipes/Tools/Wooden_Hoe_Recipe.tres" id="17_7eamj"]
 [ext_resource type="Script" uid="uid://mtwprpv04hll" path="res://Scripts/UI Scripts/ChestTab.cs" id="17_8qgvy"]
 [ext_resource type="Script" uid="uid://kt6251mwvbjq" path="res://Scripts/SkillBox.cs" id="17_44ufd"]
 [ext_resource type="StyleBox" uid="uid://beanw2e3ddca1" path="res://Resource Meta/Menus/OptionButtonStyle.tres" id="17_hyydq"]
@@ -40,32 +39,27 @@
 [ext_resource type="Texture2D" uid="uid://b52ffyqisk5i1" path="res://Sprites/Mining_Island.png" id="18_k8cqj"]
 [ext_resource type="Texture2D" uid="uid://w1k1mv22ckvl" path="res://Sprites/Items/Icons_3rd/Stone.png" id="18_ou1xm"]
 [ext_resource type="StyleBox" uid="uid://ch5faigjhjxlm" path="res://Resource Meta/Menus/OptionButtonStylePressed.tres" id="18_q7nbm"]
-[ext_resource type="Resource" uid="uid://g5iegjlxch46" path="res://Resource Meta/Recipes/Toolparts/Stone_Blade_Recipe.tres" id="18_vv5t7"]
-[ext_resource type="Resource" uid="uid://crbwxmyjqlafm" path="res://Resource Meta/Recipes/Toolparts/Stone_Pickaxe_Head_Recipe.tres" id="19_f07lv"]
-[ext_resource type="Resource" uid="uid://c61tkydmwleam" path="res://Resource Meta/Recipes/Tools/Stone_Knife_Recipe.tres" id="19_pe00a"]
+[ext_resource type="Resource" uid="uid://g5iegjlxch46" path="res://Resource Meta/Crafting Recipies/Toolparts/crafting_recipe_stone_blade.tres" id="18_vv5t7"]
+[ext_resource type="Resource" uid="uid://crbwxmyjqlafm" path="res://Resource Meta/Crafting Recipies/Toolparts/crafting_recipe_stone_pickaxe_head.tres" id="19_f07lv"]
+[ext_resource type="Resource" uid="uid://c61tkydmwleam" path="res://Resource Meta/Crafting Recipies/Tools/crafting_recipe_stone_knife.tres" id="19_pe00a"]
 [ext_resource type="Texture2D" uid="uid://g5tq6jiacbx3" path="res://Sprites/Farming_Island.png" id="19_wr86d"]
 [ext_resource type="Texture2D" uid="uid://bjp5wy4new0rg" path="res://Sprites/Island_Dessert.png" id="20_23y7x"]
-[ext_resource type="Resource" uid="uid://u2pfsg8ffel3" path="res://Resource Meta/Recipes/Toolparts/Wooden_Axe_Head_Recipe.tres" id="20_jycfp"]
+[ext_resource type="Resource" uid="uid://u2pfsg8ffel3" path="res://Resource Meta/Crafting Recipies/Toolparts/crafting_recipe_wood_axe_head.tres" id="20_jycfp"]
 [ext_resource type="Texture2D" uid="uid://04ccgfwkqldn" path="res://Sprites/Items/Icons/Fuel.png" id="20_s2f2w"]
-[ext_resource type="Resource" uid="uid://b3t04yx2ddd54" path="res://Resource Meta/Recipes/Tools/Stone_Pickaxe_Recipe.tres" id="20_ujqyg"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Shader/Water_Noise_Map.tres" id="21_7smve"]
-[ext_resource type="Resource" uid="uid://br1o134cy0afx" path="res://Resource Meta/Recipes/Toolparts/Wooden_Hoe_Head_Recipe.tres" id="21_13841"]
+[ext_resource type="Resource" uid="uid://br1o134cy0afx" path="res://Resource Meta/Crafting Recipies/Toolparts/crafting_recipe_wood_hoe_head.tres" id="21_13841"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="26_tl5yt"]
 [ext_resource type="Script" uid="uid://bypwrqe8vcas8" path="res://Scripts/UI Scripts/SaveLoadTab.cs" id="27_ku6dj"]
-[ext_resource type="Resource" uid="uid://cdmu1tdyjj3rf" path="res://Resource Meta/Recipes/Basics/crafting_recipe_iron_block.tres" id="30_ai4s4"]
-[ext_resource type="Resource" uid="uid://cfioc6hnfrwbd" path="res://Resource Meta/Recipes/Armor/crafting_recipe_mystic_armor_chestplate.tres" id="31_33fii"]
-[ext_resource type="Resource" path="res://Resource Meta/Recipes/Armor/Mystic_Armor_Helm_Recipe.tres" id="32_d7b8n"]
-[ext_resource type="Resource" path="res://Resource Meta/Recipes/Armor/Mystic_Armor_Leggings_Recipe.tres" id="33_d8q64"]
-[ext_resource type="Resource" path="res://Resource Meta/Recipes/Armor/Mystic_Armor_Shoes_Recipe.tres" id="34_m32cx"]
-[ext_resource type="Resource" path="res://Resource Meta/Recipes/Agriculture/carrots_to_carrot_seeds_Recipe.tres" id="35_3p2ru"]
-[ext_resource type="Resource" path="res://Resource Meta/Recipes/Agriculture/Corn_Seeds_Recipe.tres" id="36_bw518"]
+[ext_resource type="Resource" uid="uid://cdmu1tdyjj3rf" path="res://Resource Meta/Crafting Recipies/Basics/crafting_recipe_iron_block.tres" id="30_ai4s4"]
+[ext_resource type="Resource" uid="uid://cfioc6hnfrwbd" path="res://Resource Meta/Crafting Recipies/Armor/crafting_recipe_mystic_armor_chestplate.tres" id="31_33fii"]
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="37_vb8f1"]
 [ext_resource type="Script" uid="uid://b3t4ic6iwowss" path="res://Scripts/UI Scripts/SoundSlider.cs" id="37_vnnff"]
-[ext_resource type="Resource" path="res://Resource Meta/Recipes/Agriculture/Potato_Seeds_Recipe.tres" id="37_xn11s"]
-[ext_resource type="Resource" path="res://Resource Meta/Recipes/Agriculture/Wheat_Seeds_Recipe.tres" id="38_sep6l"]
-[ext_resource type="Resource" path="res://Resource Meta/Recipes/Agriculture/Wheat_Seeds_To_Carrot_Seeds_Recipe.tres" id="39_um0ua"]
-[ext_resource type="Resource" path="res://Resource Meta/Recipes/Agriculture/Wheat_Seeds_To_Corn_Seeds_Recipe.tres" id="40_rv3r3"]
-[ext_resource type="Resource" path="res://Resource Meta/Recipes/Agriculture/Wheat_Seeds_To_Potato_Seeds_Recipe.tres" id="41_bd22e"]
+[ext_resource type="Resource" uid="uid://d4jfhgrp8h07j" path="res://Resource Meta/Crafting Recipies/Tools/crafting_recipe_stone_pickaxe.tres" id="42_1phxn"]
+[ext_resource type="Resource" uid="uid://cxk2altccown" path="res://Resource Meta/Crafting Recipies/Tools/crafting_recipe_wood_hoe.tres" id="44_t54eg"]
+[ext_resource type="Resource" uid="uid://cydbh0i4ql0ev" path="res://Resource Meta/Crafting Recipies/Toolparts/crafting_recipe_wood_handle.tres" id="48_jkil6"]
+[ext_resource type="Resource" uid="uid://1g4h4yonp7qa" path="res://Resource Meta/Crafting Recipies/Armor/crafting_recipe_mystic_armor_head.tres" id="51_7ai0l"]
+[ext_resource type="Resource" uid="uid://7jxhn0rpjspo" path="res://Resource Meta/Crafting Recipies/Armor/crafting_recipe_mystic_armor_leggings.tres" id="52_jqjem"]
+[ext_resource type="Resource" uid="uid://cggf7uciyws1" path="res://Resource Meta/Crafting Recipies/Armor/crafting_recipe_mystic_armor_shoes.tres" id="53_8ll2j"]
 [ext_resource type="Script" uid="uid://b6v18h1yxba4y" path="res://Scripts/UI Scripts/HelpTab.cs" id="56_74gou"]
 [ext_resource type="Texture2D" uid="uid://dy7kd53s6cn22" path="res://Sprites/Mouse.png" id="58_0k4ta"]
 [ext_resource type="Texture2D" uid="uid://cn8y6cj766xw0" path="res://Sprites/Items/Icons_3rd/Chest.png" id="59_aahk4"]
@@ -304,9 +298,9 @@ offset_left = 32.0
 offset_top = 35.0
 offset_right = 15.0
 offset_bottom = 17.0
-inventory_items = Array[Resource]([])
+inventory_items = Array[Resource]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 
-[node name="EquipmentPanel" type="Control" parent="Background/InventoryTab" node_paths=PackedStringArray("slots_armor", "slots_tool", "stats_panel", "health_bar_label", "fatigue_bar_label", "health_bar", "fatigue_bar")]
+[node name="EquipmentPanel" type="Control" parent="Background/InventoryTab" node_paths=PackedStringArray("slots_armor", "slots_tool", "player_stats_ui", "health_bar_label", "fatigue_bar_label", "health_bar", "fatigue_bar")]
 anchors_preset = 0
 offset_left = 353.0
 offset_top = 35.0
@@ -315,7 +309,7 @@ offset_bottom = 292.0
 script = ExtResource("4_e3tur")
 slots_armor = [NodePath("Character/GridContainer/HeadSlot"), NodePath("Character/GridContainer/ChestSlot"), NodePath("Character/GridContainer/LegSlot"), NodePath("Character/GridContainer/ShoesSlot")]
 slots_tool = [NodePath("EquipmentHBox/EquipSlot1"), NodePath("EquipmentHBox/EquipSlot2"), NodePath("EquipmentHBox/EquipSlot3"), NodePath("EquipmentHBox/EquipSlot4")]
-stats_panel = NodePath("StatsPanel")
+player_stats_ui = NodePath("PlayerStatsUI")
 health_bar_label = NodePath("GridContainer/HealthHBox/Label")
 fatigue_bar_label = NodePath("GridContainer/FatigueBox/Label")
 health_bar = NodePath("GridContainer/HealthHBox/HealthProgressbar")
@@ -344,7 +338,6 @@ theme_override_font_sizes/font_size = 6
 text = "[Head]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_HEAD"
-slot_type = 10
 
 [node name="ChestSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -355,7 +348,6 @@ theme_override_font_sizes/font_size = 6
 text = "[Chest]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_CHEST"
-slot_type = 11
 
 [node name="LegSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -366,7 +358,6 @@ theme_override_font_sizes/font_size = 6
 text = "[Legs]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_LEGS"
-slot_type = 12
 
 [node name="ShoesSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -377,7 +368,6 @@ theme_override_font_sizes/font_size = 6
 text = "[Foots]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_FOOTS"
-slot_type = 13
 
 [node name="ColorRectProfil" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel"]
 layout_mode = 0
@@ -419,7 +409,6 @@ theme_override_font_sizes/font_size = 5
 text = "[Weapon]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_WEAPON"
-slot_type = 2
 
 [node name="EquipSlot2" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
 custom_minimum_size = Vector2(32, 32)
@@ -430,7 +419,6 @@ theme_override_font_sizes/font_size = 5
 text = "[TOOL]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_TOOL"
-slot_type = 1
 
 [node name="EquipSlot3" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
 custom_minimum_size = Vector2(32, 32)
@@ -441,7 +429,6 @@ theme_override_font_sizes/font_size = 5
 text = "[TOOL]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_TOOL"
-slot_type = 1
 
 [node name="EquipSlot4" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
 custom_minimum_size = Vector2(32, 32)
@@ -452,7 +439,6 @@ theme_override_font_sizes/font_size = 5
 text = "[TOOL]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_TOOL"
-slot_type = 1
 
 [node name="GridContainer" type="GridContainer" parent="Background/InventoryTab/EquipmentPanel"]
 layout_mode = 0
@@ -520,7 +506,7 @@ size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
 
-[node name="StatsPanel" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel" node_paths=PackedStringArray("stats_container")]
+[node name="PlayerStatsUI" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel" node_paths=PackedStringArray("stats_container")]
 layout_mode = 0
 offset_left = 117.0
 offset_top = -12.0
@@ -532,7 +518,7 @@ color = Color(0, 0, 0, 0.537255)
 script = ExtResource("7_hhlnf")
 stats_container = NodePath("VBoxContainer")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/InventoryTab/EquipmentPanel/StatsPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI"]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 9.0
@@ -540,85 +526,85 @@ offset_right = 66.0
 offset_bottom = 133.0
 alignment = 1
 
-[node name="Attack" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/StatsPanel/VBoxContainer"]
+[node name="Attack" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer"]
 layout_mode = 2
 
-[node name="Type" type="Label" parent="Background/InventoryTab/EquipmentPanel/StatsPanel/VBoxContainer/Attack"]
+[node name="Type" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Attack"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "Attack:"
 
-[node name="Number" type="Label" parent="Background/InventoryTab/EquipmentPanel/StatsPanel/VBoxContainer/Attack"]
+[node name="Number" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Attack"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "25"
 horizontal_alignment = 1
 
-[node name="Defense" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/StatsPanel/VBoxContainer"]
+[node name="Defense" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer"]
 layout_mode = 2
 
-[node name="Type" type="Label" parent="Background/InventoryTab/EquipmentPanel/StatsPanel/VBoxContainer/Defense"]
+[node name="Type" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Defense"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "Defense:"
 
-[node name="Number" type="Label" parent="Background/InventoryTab/EquipmentPanel/StatsPanel/VBoxContainer/Defense"]
+[node name="Number" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Defense"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "25"
 horizontal_alignment = 1
 
-[node name="Harvesting" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/StatsPanel/VBoxContainer"]
+[node name="Harvesting" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer"]
 layout_mode = 2
 
-[node name="Type" type="Label" parent="Background/InventoryTab/EquipmentPanel/StatsPanel/VBoxContainer/Harvesting"]
+[node name="Type" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Harvesting"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "Harvesting:"
 
-[node name="Number" type="Label" parent="Background/InventoryTab/EquipmentPanel/StatsPanel/VBoxContainer/Harvesting"]
+[node name="Number" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Harvesting"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "25"
 horizontal_alignment = 1
 
-[node name="Mining" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/StatsPanel/VBoxContainer"]
+[node name="Mining" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer"]
 layout_mode = 2
 
-[node name="Type" type="Label" parent="Background/InventoryTab/EquipmentPanel/StatsPanel/VBoxContainer/Mining"]
+[node name="Type" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Mining"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "Mining:"
 
-[node name="Number" type="Label" parent="Background/InventoryTab/EquipmentPanel/StatsPanel/VBoxContainer/Mining"]
+[node name="Number" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Mining"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "25"
 horizontal_alignment = 1
 
-[node name="Farming" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/StatsPanel/VBoxContainer"]
+[node name="Farming" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer"]
 layout_mode = 2
 
-[node name="Type" type="Label" parent="Background/InventoryTab/EquipmentPanel/StatsPanel/VBoxContainer/Farming"]
+[node name="Type" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Farming"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "Farming:"
 
-[node name="Number" type="Label" parent="Background/InventoryTab/EquipmentPanel/StatsPanel/VBoxContainer/Farming"]
+[node name="Number" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Farming"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
@@ -637,7 +623,7 @@ theme_override_font_sizes/font_size = 16
 text = "Bagpack"
 vertical_alignment = 1
 
-[node name="ChestTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("chest_inventory")]
+[node name="ChestTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("chest_inventory_ui")]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -651,7 +637,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
 script = ExtResource("17_8qgvy")
-chest_inventory = NodePath("ChestInventory")
+chest_inventory_ui = NodePath("ChestInventory")
 
 [node name="Label" type="Label" parent="Background/ChestTab"]
 layout_mode = 0
@@ -746,8 +732,6 @@ theme_override_font_sizes/font_size = 4
 text = "[Eingang]"
 script = ExtResource("4_v56ys")
 label_translation_string = "FURNACE_MENU_SLOT_INPUT"
-slot_type = 6
-check_slot_type = true
 
 [node name="ExportSlot" type="Button" parent="Background/FurnaceTab/PanelContainer/Slots"]
 custom_minimum_size = Vector2(32, 32)
@@ -763,7 +747,6 @@ theme_override_font_sizes/font_size = 4
 text = "[OUTPUT]"
 script = ExtResource("4_v56ys")
 label_translation_string = "FURNACE_MENU_SLOT_EXPORT"
-check_slot_type = true
 is_export_slot = true
 
 [node name="FuelSlot" type="Button" parent="Background/FurnaceTab/PanelContainer/Slots"]
@@ -783,8 +766,6 @@ autowrap_mode = 3
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("4_v56ys")
-slot_type = 7
-check_slot_type = true
 
 [node name="WorkingProgressBar" type="ProgressBar" parent="Background/FurnaceTab/PanelContainer"]
 layout_mode = 0
@@ -937,7 +918,6 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "[Item]"
 script = ExtResource("4_v56ys")
-slot_type = 9
 
 [node name="WorkingProgressBar" type="ProgressBar" parent="Background/ResearchTab/PanelContainer"]
 layout_mode = 0
@@ -1908,7 +1888,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = Array[ExtResource("37_vb8f1")]([ExtResource("19_pe00a"), ExtResource("20_ujqyg"), ExtResource("16_1o4en"), ExtResource("17_7eamj")])
+crafting_recipies = Array[ExtResource("37_vb8f1")]([ExtResource("19_pe00a"), ExtResource("42_1phxn"), ExtResource("16_1o4en"), ExtResource("44_t54eg")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuTools"]
 custom_minimum_size = Vector2(320, 220)
@@ -1922,7 +1902,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = Array[ExtResource("37_vb8f1")]([ExtResource("18_vv5t7"), ExtResource("19_f07lv"), ExtResource("20_jycfp"), ExtResource("21_13841")])
+crafting_recipies = Array[ExtResource("37_vb8f1")]([ExtResource("18_vv5t7"), ExtResource("19_f07lv"), ExtResource("20_jycfp"), ExtResource("48_jkil6"), ExtResource("21_13841")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuToolparts"]
 custom_minimum_size = Vector2(320, 220)
@@ -1936,7 +1916,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = Array[ExtResource("37_vb8f1")]([ExtResource("32_d7b8n"), ExtResource("31_33fii"), ExtResource("33_d8q64"), ExtResource("34_m32cx")])
+crafting_recipies = Array[ExtResource("37_vb8f1")]([ExtResource("31_33fii"), ExtResource("51_7ai0l"), ExtResource("52_jqjem"), ExtResource("53_8ll2j")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuArmor"]
 custom_minimum_size = Vector2(320, 220)
@@ -1950,7 +1930,6 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = Array[ExtResource("37_vb8f1")]([ExtResource("39_um0ua"), ExtResource("40_rv3r3"), ExtResource("41_bd22e"), ExtResource("35_3p2ru"), ExtResource("36_bw518"), ExtResource("37_xn11s"), ExtResource("38_sep6l")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuAgriculture"]
 custom_minimum_size = Vector2(320, 220)
@@ -3134,7 +3113,8 @@ text = "Exit Game"
 script = ExtResource("3_pwamf")
 label_translation_string = "MAINMENU_EXIT_GAME"
 
-[node name="RailStationTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("chest_inventory_in", "chest_inventory_out", "container", "import_box", "export_box")]
+[node name="RailStationTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("container", "import_box", "export_box")]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -3147,8 +3127,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
 script = ExtResource("76_6ikjc")
-chest_inventory_in = NodePath("TabContainer/Storage In/ChestInventoryIn")
-chest_inventory_out = NodePath("TabContainer/Storage Out/ChestInventoryOut")
 container = NodePath("TabContainer")
 import_box = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/ImportBox")
 export_box = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/ExportBox")
@@ -3298,7 +3276,7 @@ offset_bottom = 213.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="MinecartTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("engine_status_label", "chest_inventory")]
+[node name="MinecartTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("engine_status_label")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -3313,7 +3291,6 @@ grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
 script = ExtResource("74_5ehlf")
 engine_status_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Engine_Status")
-chest_inventory = NodePath("PanelContainer/ChestInventory")
 
 [node name="PanelContainer" type="Control" parent="Background/MinecartTab"]
 layout_mode = 1

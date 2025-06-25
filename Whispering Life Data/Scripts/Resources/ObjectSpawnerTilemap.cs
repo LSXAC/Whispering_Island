@@ -6,24 +6,42 @@ using Godot.Collections;
 
 public partial class ObjectSpawnerTilemap : TileMapLayer
 {
-    public PackedScene tree = ResourceLoader.Load<PackedScene>("res://Placeable/Tree.tscn");
+    public PackedScene tree = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/World Objects/Mineable Objects/mineable_object_oak_tree.tscn"
+    );
 
-    public PackedScene stone = ResourceLoader.Load<PackedScene>("res://Placeable/Stone.tscn");
-    public PackedScene mystTree = ResourceLoader.Load<PackedScene>("res://Placeable/MystTree.tscn");
+    public PackedScene stone = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/World Objects/Mineable Objects/mineable_object_stone.tscn"
+    );
+    public PackedScene mystTree = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/World Objects/Mineable Objects/mineable_object_myst_oak_tree.tscn"
+    );
     public PackedScene mystFibre = ResourceLoader.Load<PackedScene>(
-        "res://Placeable/MystFibre.tscn"
+        "res://Scenes/World Objects/Mineable Objects/mineable_object_myst_fibre.tscn"
     );
-    public PackedScene wheat = ResourceLoader.Load<PackedScene>("res://Placeable/Wheat.tscn");
-    public PackedScene potato = ResourceLoader.Load<PackedScene>("res://Placeable/Potato.tscn");
-    public PackedScene carrot = ResourceLoader.Load<PackedScene>("res://Placeable/Carrot.tscn");
-    public PackedScene corn = ResourceLoader.Load<PackedScene>("res://Placeable/Corn.tscn");
-    public PackedScene sand = ResourceLoader.Load<PackedScene>("res://Placeable/Sand.tscn");
+    public PackedScene wheat = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/World Objects/Mineable Objects/mineable_object_wheat.tscn"
+    );
+    public PackedScene potato = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/World Objects/Mineable Objects/mineable_object_potato.tscn"
+    );
+    public PackedScene carrot = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/World Objects/Mineable Objects/mineable_object_carrot.tscn"
+    );
+    public PackedScene corn = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/World Objects/Mineable Objects/mineable_object_corn.tscn"
+    );
+    public PackedScene sand = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/World Objects/Mineable Objects/mineable_object_sand.tscn"
+    );
     public PackedScene sand_stone = ResourceLoader.Load<PackedScene>(
-        "res://Placeable/Sand_Stone.tscn"
+        "res://Scenes/World Objects/Mineable Objects/mineable_object_sand_stone.tscn"
     );
-    public PackedScene iron_ore = ResourceLoader.Load<PackedScene>("res://Placeable/Iron_Ore.tscn");
+    public PackedScene iron_ore = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/World Objects/Mineable Objects/mineable_object_iron_ore.tscn"
+    );
     public PackedScene copper_ore = ResourceLoader.Load<PackedScene>(
-        "res://Placeable/Copper_Ore.tscn"
+        "res://Scenes/World Objects/Mineable Objects/mineable_object_copper_ore.tscn"
     );
 
     public Array<MineableObject> resource_objects = new Array<MineableObject>();

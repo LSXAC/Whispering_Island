@@ -50,6 +50,11 @@ public partial class QuestMiniPanel : PanelContainer
 
     public void UpdateQuestMiniPanel(QuestInfo currentQuest)
     {
+        if (PlayerInventoryUI.instance == null)
+        {
+            Debug.Print("PlayerInventoryUI.instance is null, cannot update quest mini panel.");
+            return;
+        }
         Array<Item> items_in_inventory = PlayerInventoryUI.instance.GetListOfItemsInInventory();
         for (int i = 0; i < currentQuest.required_items.Count; i++)
         {

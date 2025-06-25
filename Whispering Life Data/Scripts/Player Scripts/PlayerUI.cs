@@ -28,7 +28,7 @@ public partial class PlayerUI : CanvasLayer
     public TextureRect window_frame_rect;
 
     [Export]
-    public Item_Row_Manager item_row_manager;
+    public ItemRowManager item_row_manager;
 
     [Export]
     public Texture2D building_frame;

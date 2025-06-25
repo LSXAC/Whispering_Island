@@ -11,77 +11,75 @@ public partial class Inventory : SlotUpdater
     public ItemSave[] inventory_items;
 
     public int slot_amount = 30;
+    public static string item_path = "res://Resource Meta/Items/item_info_";
     public static Dictionary<ITEM_ID, ItemInfo> ITEM_TYPES = new Dictionary<ITEM_ID, ItemInfo>()
     {
-        { ITEM_ID.OAK_WOOD, ResourceLoader.Load<ItemInfo>("res://Items/Wood.tres") },
-        { ITEM_ID.STONE, ResourceLoader.Load<ItemInfo>("res://Items/Stone.tres") },
-        { ITEM_ID.WOOD_STICK, ResourceLoader.Load<ItemInfo>("res://Items/Wood_Stick.tres") },
-        { ITEM_ID.STONE_PICKAXE, ResourceLoader.Load<ItemInfo>("res://Items/Stone_Pickaxe.tres") },
-        { ITEM_ID.WOOD_PLANK, ResourceLoader.Load<ItemInfo>("res://Items/Wood_Plank.tres") },
-        { ITEM_ID.WOOD_AXE, ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe.tres") },
-        { ITEM_ID.CHAR_COAL, ResourceLoader.Load<ItemInfo>("res://Items/Char_Coal.tres") },
-        { ITEM_ID.IRON_ORE, ResourceLoader.Load<ItemInfo>("res://Items/Iron_Ore.tres") },
-        { ITEM_ID.IRON_INGOT, ResourceLoader.Load<ItemInfo>("res://Items/Iron_Ingot.tres") },
-        { ITEM_ID.COPPER_ORE, ResourceLoader.Load<ItemInfo>("res://Items/Copper_Ore.tres") },
-        { ITEM_ID.COPPER_INGOT, ResourceLoader.Load<ItemInfo>("res://Items/Copper_Ingot.tres") },
-        { ITEM_ID.STONE_KNIFE, ResourceLoader.Load<ItemInfo>("res://Items/Stone_Knife.tres") },
-        { ITEM_ID.MYSTIC_FIBRE, ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Fibre.tres") },
-        { ITEM_ID.MYSTIC_WOOD, ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Wood.tres") },
-        { ITEM_ID.FIBRE, ResourceLoader.Load<ItemInfo>("res://Items/Fibre.tres") },
-        { ITEM_ID.STONE_BLADE, ResourceLoader.Load<ItemInfo>("res://Items/Stone_Blade.tres") },
-        { ITEM_ID.GLASS_CHUNK, ResourceLoader.Load<ItemInfo>("res://Items/Glass_Chunk.tres") },
+        { ITEM_ID.OAK_WOOD, ResourceLoader.Load<ItemInfo>(item_path + "wood.tres") },
+        { ITEM_ID.STONE, ResourceLoader.Load<ItemInfo>(item_path + "stone.tres") },
+        { ITEM_ID.WOOD_STICK, ResourceLoader.Load<ItemInfo>(item_path + "wood_stick.tres") },
+        { ITEM_ID.STONE_PICKAXE, ResourceLoader.Load<ItemInfo>(item_path + "stone_pickaxe.tres") },
+        { ITEM_ID.WOOD_PLANK, ResourceLoader.Load<ItemInfo>(item_path + "wood_plank.tres") },
+        { ITEM_ID.WOOD_AXE, ResourceLoader.Load<ItemInfo>(item_path + "wood_axe.tres") },
+        { ITEM_ID.CHAR_COAL, ResourceLoader.Load<ItemInfo>(item_path + "char_coal.tres") },
+        { ITEM_ID.IRON_ORE, ResourceLoader.Load<ItemInfo>(item_path + "iron_ore.tres") },
+        { ITEM_ID.IRON_INGOT, ResourceLoader.Load<ItemInfo>(item_path + "iron_ingot.tres") },
+        { ITEM_ID.COPPER_ORE, ResourceLoader.Load<ItemInfo>(item_path + "copper_ore.tres") },
+        { ITEM_ID.COPPER_INGOT, ResourceLoader.Load<ItemInfo>(item_path + "copper_ingot.tres") },
+        { ITEM_ID.STONE_KNIFE, ResourceLoader.Load<ItemInfo>(item_path + "stone_knife.tres") },
+        { ITEM_ID.MYSTIC_FIBRE, ResourceLoader.Load<ItemInfo>(item_path + "mystic_fibre.tres") },
+        {
+            ITEM_ID.MYSTIC_OAK_WOOD,
+            ResourceLoader.Load<ItemInfo>(item_path + "mystic_oak_wood.tres")
+        },
+        { ITEM_ID.FIBRE, ResourceLoader.Load<ItemInfo>(item_path + "fibre.tres") },
+        { ITEM_ID.STONE_BLADE, ResourceLoader.Load<ItemInfo>(item_path + "stone_blade.tres") },
+        { ITEM_ID.GLASS_CHUNK, ResourceLoader.Load<ItemInfo>(item_path + "glass_chunk.tres") },
         {
             ITEM_ID.STONE_AXE_HEAD,
-            ResourceLoader.Load<ItemInfo>("res://Items/Stone_Axe_Head.tres")
+            ResourceLoader.Load<ItemInfo>(item_path + "stone_axe_head.tres")
         },
         {
             ITEM_ID.STONE_PICKAXE_HEAD,
-            ResourceLoader.Load<ItemInfo>("res://Items/Stone_Pickaxe_Head.tres")
+            ResourceLoader.Load<ItemInfo>(item_path + "stone_pickaxe_head.tres")
         },
-        {
-            ITEM_ID.WOOD_HOE_HEAD,
-            ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Hoe_Head.tres")
-        },
-        { ITEM_ID.WOOD_HOE, ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Hoe.tres") },
-        {
-            ITEM_ID.WOOD_AXE_HEAD,
-            ResourceLoader.Load<ItemInfo>("res://Items/Wooden_Axe_Head.tres")
-        },
-        { ITEM_ID.WHEAT, ResourceLoader.Load<ItemInfo>("res://Items/Wheat.tres") },
-        { ITEM_ID.IRON_BLOCK, ResourceLoader.Load<ItemInfo>("res://Items/Iron_Block.tres") },
-        { ITEM_ID.WHEAT_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Wheat_Seed.tres") },
-        { ITEM_ID.POTATO, ResourceLoader.Load<ItemInfo>("res://Items/Potato.tres") },
-        { ITEM_ID.POTATO_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Potato_Seed.tres") },
-        { ITEM_ID.CARROT, ResourceLoader.Load<ItemInfo>("res://Items/Carrot.tres") },
-        { ITEM_ID.CARROT_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Carrot_Seed.tres") },
-        { ITEM_ID.CORN, ResourceLoader.Load<ItemInfo>("res://Items/Corn.tres") },
-        { ITEM_ID.CORN_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Corn_Seed.tres") },
-        { ITEM_ID.SAND, ResourceLoader.Load<ItemInfo>("res://Items/Sand.tres") },
-        { ITEM_ID.SAND_STONE, ResourceLoader.Load<ItemInfo>("res://Items/Sand_Stone.tres") },
+        { ITEM_ID.WOOD_HOE_HEAD, ResourceLoader.Load<ItemInfo>(item_path + "wood_hoe_head.tres") },
+        { ITEM_ID.WOOD_HOE, ResourceLoader.Load<ItemInfo>(item_path + "wood_hoe.tres") },
+        { ITEM_ID.WOOD_AXE_HEAD, ResourceLoader.Load<ItemInfo>(item_path + "wood_axe_head.tres") },
+        { ITEM_ID.WHEAT, ResourceLoader.Load<ItemInfo>(item_path + "wheat.tres") },
+        { ITEM_ID.IRON_BLOCK, ResourceLoader.Load<ItemInfo>(item_path + "iron_block.tres") },
+        { ITEM_ID.WHEAT_SEED, ResourceLoader.Load<ItemInfo>(item_path + "wheat_seed.tres") },
+        { ITEM_ID.POTATO, ResourceLoader.Load<ItemInfo>(item_path + "potato.tres") },
+        { ITEM_ID.POTATO_SEED, ResourceLoader.Load<ItemInfo>(item_path + "potato_seed.tres") },
+        { ITEM_ID.CARROT, ResourceLoader.Load<ItemInfo>(item_path + "carrot.tres") },
+        { ITEM_ID.CARROT_SEED, ResourceLoader.Load<ItemInfo>(item_path + "carrot_seed.tres") },
+        { ITEM_ID.CORN, ResourceLoader.Load<ItemInfo>(item_path + "corn.tres") },
+        { ITEM_ID.CORN_SEED, ResourceLoader.Load<ItemInfo>(item_path + "corn_seed.tres") },
+        { ITEM_ID.SAND, ResourceLoader.Load<ItemInfo>(item_path + "sand.tres") },
+        { ITEM_ID.SAND_STONE, ResourceLoader.Load<ItemInfo>(item_path + "sand_stone.tres") },
         {
             ITEM_ID.MYSTIC_ARMOR_HEAD,
-            ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Helm.tres")
+            ResourceLoader.Load<ItemInfo>(item_path + "mystic_armor_head.tres")
         },
         {
             ITEM_ID.MYSTIC_ARMOR_CHESTPLATE,
-            ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Chestplate.tres")
+            ResourceLoader.Load<ItemInfo>(item_path + "mystic_armor_chestplate.tres")
         },
         {
             ITEM_ID.MYSTIC_ARMOR_LEGGINGS,
-            ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Leggings.tres")
+            ResourceLoader.Load<ItemInfo>(item_path + "mystic_armor_leggings.tres")
         },
         {
             ITEM_ID.MYSTIC_ARMOR_SHOES,
-            ResourceLoader.Load<ItemInfo>("res://Items/Mystic_Armor_Shoes.tres")
+            ResourceLoader.Load<ItemInfo>(item_path + "mystic_armor_shoes.tres")
         },
-        { ITEM_ID.OAK_SEED, ResourceLoader.Load<ItemInfo>("res://Items/Oak_Seed.tres") },
+        { ITEM_ID.OAK_SEED, ResourceLoader.Load<ItemInfo>(item_path + "oak_seed.tres") },
         {
             ITEM_ID.MYSTIC_OAK_SEED,
-            ResourceLoader.Load<ItemInfo>("res://Items/Myst_Oak_Seed.tres")
+            ResourceLoader.Load<ItemInfo>(item_path + "mystic_oak_seed.tres")
         },
         {
             ITEM_ID.MYSTIC_FIBRE_SEED,
-            ResourceLoader.Load<ItemInfo>("res://Items/Myst_Fibre_Seed.tres")
+            ResourceLoader.Load<ItemInfo>(item_path + "mystic_fibre_seed.tres")
         },
     };
 
@@ -100,7 +98,7 @@ public partial class Inventory : SlotUpdater
         COPPER_INGOT,
         STONE_KNIFE,
         MYSTIC_FIBRE,
-        MYSTIC_WOOD,
+        MYSTIC_OAK_WOOD,
         FIBRE,
         STONE_BLADE,
         GLASS_CHUNK,
@@ -255,6 +253,7 @@ public partial class Inventory : SlotUpdater
                 QuestManager.instance.quests[QuestManager.current_quest_id]
             );
         }
+
         ToolAttribute attribute = item_info.GetAttributeOrNull<ToolAttribute>();
         //Check latest Slot which is Null
         for (int i = 0; i < array.Length; i++)

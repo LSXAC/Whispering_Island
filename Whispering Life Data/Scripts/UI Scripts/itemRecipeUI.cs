@@ -6,7 +6,7 @@ using Godot.Collections;
 public partial class itemRecipeUI : Control
 {
     [Export]
-    public Item_Row_Manager item_row_manager;
+    public ItemRowManager item_row_manager;
     public CraftingMenu craftingMenu;
 
     [Export]

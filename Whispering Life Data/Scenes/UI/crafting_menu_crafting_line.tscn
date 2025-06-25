@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c8olhec3yacn5" path="res://Scripts/UI Scripts/h_box_item.cs" id="2_kx56k"]
 [ext_resource type="Texture2D" uid="uid://bjana5l7fkd6a" path="res://Sprites/Items/Icons_3rd/Wood_Stick.png" id="3_f48sm"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="4_7yc62"]
-[ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Scripts/Manager Scripts/Item_Row_Manager.cs" id="5_xiqxj"]
+[ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Scripts/Manager Scripts/ItemRowManager.cs" id="5_xiqxj"]
 [ext_resource type="Texture2D" uid="uid://wquchq45ve1" path="res://Sprites/Items/Icons/Hammer_Icon.png" id="6_qi7a5"]
 
 [node name="ItemRecipe" type="Control" node_paths=PackedStringArray("item_row_manager", "craft_button", "output_item_hbox")]

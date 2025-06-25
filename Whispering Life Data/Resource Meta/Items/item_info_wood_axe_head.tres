@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://65jron2bhtes"]
+
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_3i56y"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_e4kxv"]
+[ext_resource type="Texture2D" uid="uid://qe07rw2lwgwt" path="res://Sprites/Items/Icons_3rd/Wood_Axe_Head.png" id="2_e4kxv"]
+
+[sub_resource type="Resource" id="Resource_5510b"]
+script = ExtResource("1_e4kxv")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("1_3i56y")
+attributes = Array[Object]([SubResource("Resource_5510b")])
+max_stackable_size = 50
+name = "WOODEN_AXE_HEAD"
+id = 21
+description = "WOODEN_AXE_HEAD_DESC"
+texture = ExtResource("2_e4kxv")
+value = 10.0

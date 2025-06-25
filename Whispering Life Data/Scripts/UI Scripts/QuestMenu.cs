@@ -110,6 +110,11 @@ public partial class QuestMenu : CanvasLayer
 
     public void CreateLabels(Array<Item> items)
     {
+        if (PlayerInventoryUI.instance == null)
+        {
+            GD.PrintErr("PlayerInventoryUI.instance is null in QuestMenu.CreateLabels");
+            return;
+        }
         Array<Item> items_in_inventory = PlayerInventoryUI.instance.GetListOfItemsInInventory();
         foreach (Item item in items)
         {

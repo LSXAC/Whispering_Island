@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=7 format=3 uid="uid://dvojtgqho3ajj"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=8 format=3 uid="uid://dvojtgqho3ajj"]
 
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_gch1y"]
 [ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_hmejg"]
 [ext_resource type="Script" uid="uid://v7dew0yr5trl" path="res://Scripts/Item/ToolAttribute.cs" id="2_eqi65"]
 [ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe.png" id="2_sr75n"]
+[ext_resource type="Script" uid="uid://bu58bbjdvh5bk" path="res://Scripts/Player Scripts/PlayerStat.cs" id="3_eqi65"]
 
 [sub_resource type="Resource" id="Resource_6ovnv"]
 script = ExtResource("1_hmejg")
@@ -16,7 +17,7 @@ use_type = 3
 mining_level = 2
 slot_type = 5
 durability = 100
-stats = []
+stats = Array[ExtResource("3_eqi65")]([])
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
 [resource]

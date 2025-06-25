@@ -5,7 +5,7 @@ using Godot;
 public partial class Sign : Building_Node
 {
     [Export]
-    public Island island_info;
+    public Island island;
 
     [Export]
     public Island.DIRECTION dir;

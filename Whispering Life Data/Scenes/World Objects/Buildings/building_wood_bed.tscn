@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://1kc5qr5s7veo"]
 
 [ext_resource type="Script" uid="uid://gt3yisn4bdn2" path="res://Scripts/Building Scripts/Bed.cs" id="1_8y476"]
-[ext_resource type="Texture2D" uid="uid://c2yvdku225ug1" path="res://Sprites/Wooden_Bed.png" id="2_s6a6o"]
+[ext_resource type="Texture2D" uid="uid://c2yvdku225ug1" path="res://Sprites/Wood_Bed.png" id="2_s6a6o"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="4_aqiu5"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="5_wwg0f"]
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="6_5o0it"]

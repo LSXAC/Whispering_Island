@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=3 format=3 uid="uid://dvamcu1lg3joc"]
+
+[ext_resource type="PackedScene" uid="uid://1kc5qr5s7veo" path="res://Scenes/World Objects/Buildings/building_wood_bed.tscn" id="2_ex62h"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_isx3e"]
+
+[resource]
+script = ExtResource("3_isx3e")
+scene = ExtResource("2_ex62h")
+required_items = null
+unlock_requirements = null
+building_menu_category = 0
+show_object_in_building_menu_list = true

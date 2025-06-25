@@ -15,7 +15,7 @@ public partial class BuildMenuListObject : Control
     public Button build_button;
 
     [Export]
-    public Item_Row_Manager item_row_manager;
+    public ItemRowManager item_row_manager;
 
     private Building_Menu_List_Object building_type;
 

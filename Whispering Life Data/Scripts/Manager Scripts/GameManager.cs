@@ -91,7 +91,9 @@ public partial class GameManager : Node2D
         save_state.quest_save.quest_time_left = QuestManager.current_quest_time;
         save_state.game_time_since_start = game_time_since_start;
 
-        save_state.char_save.inventory_items = PlayerInventoryUI.instance.inventory_items;
+        if (PlayerInventoryUI.instance != null)
+            save_state.char_save.inventory_items = PlayerInventoryUI.instance.inventory_items;
+
         save_state.char_save.equipped_armor = EquipmentPanel.instance.equipped_armor;
         save_state.char_save.equipped_tool = EquipmentPanel.instance.equipped_tools;
 

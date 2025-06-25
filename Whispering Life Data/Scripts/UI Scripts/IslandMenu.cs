@@ -5,11 +5,17 @@ using Godot;
 
 public partial class IslandMenu : ColorRect
 {
-    private PackedScene island_1 = ResourceLoader.Load<PackedScene>("res://Prefabs/Island_1.tscn");
-    private PackedScene island_2 = ResourceLoader.Load<PackedScene>("res://Prefabs/Island_2.tscn");
-    private PackedScene island_3 = ResourceLoader.Load<PackedScene>("res://Prefabs/Island_3.tscn");
-    private PackedScene island_4 = ResourceLoader.Load<PackedScene>(
-        "res://Prefabs/Island_4_Dessert.tscn"
+    private PackedScene mystic_island = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/Islands/mystical_island.tscn"
+    );
+    private PackedScene mining_island = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/Islands/mining_island.tscn"
+    );
+    private PackedScene farming_island = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/Islands/farming_island.tscn"
+    );
+    private PackedScene dessert_island = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/Islands/dessert_island.tscn"
     );
 
     [Export]
@@ -71,7 +77,7 @@ public partial class IslandMenu : ColorRect
         if (current_sign == null)
             return;
 
-        CreateIsland(id, current_sign.dir, current_sign.island_info);
+        CreateIsland(id, current_sign.dir, current_sign.island);
 
         GameMenu.instance.OnCloseIslandTab();
         current_sign = null;
@@ -103,19 +109,19 @@ public partial class IslandMenu : ColorRect
         {
             case 0:
                 Debug.Print("Island 0.");
-                current_ip.CreateAnotherIsland(island_1, dir, is_loading);
+                current_ip.CreateAnotherIsland(mystic_island, dir, is_loading);
                 break;
             case 1:
                 Debug.Print("Island 1.");
-                current_ip.CreateAnotherIsland(island_2, dir, is_loading);
+                current_ip.CreateAnotherIsland(mining_island, dir, is_loading);
                 break;
             case 2:
                 Debug.Print("Island 2.");
-                current_ip.CreateAnotherIsland(island_3, dir, is_loading);
+                current_ip.CreateAnotherIsland(farming_island, dir, is_loading);
                 break;
             case 3:
                 Debug.Print("Island 3.");
-                current_ip.CreateAnotherIsland(island_4, dir, is_loading);
+                current_ip.CreateAnotherIsland(dessert_island, dir, is_loading);
                 break;
             default:
                 Debug.Print("No matching Island ID found");

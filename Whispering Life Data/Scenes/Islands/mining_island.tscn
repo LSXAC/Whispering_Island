@@ -9,9 +9,9 @@
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Tilesets/Water_Tileset.tres" id="7_tylo5"]
 [ext_resource type="TileSet" uid="uid://bij4wcpveo44d" path="res://Tilesets/Farming_Tileset.tres" id="8_0fich"]
 [ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="9_prv3h"]
-[ext_resource type="PackedScene" uid="uid://c0l4m6jxp7pau" path="res://Scenes/World Objects/Mineable Objects/MO_Iron_Ore.tscn" id="10_j5waq"]
-[ext_resource type="PackedScene" uid="uid://cnafp0o2cwupt" path="res://Scenes/World Objects/Mineable Objects/MO_Copper_Ore.tscn" id="11_v8vr1"]
-[ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Scenes/World Objects/Mineable Objects/MO_Stone.tscn" id="12_0bqga"]
+[ext_resource type="PackedScene" uid="uid://c0l4m6jxp7pau" path="res://Scenes/World Objects/Mineable Objects/mineable_object_iron_ore.tscn" id="10_j5waq"]
+[ext_resource type="PackedScene" uid="uid://cnafp0o2cwupt" path="res://Scenes/World Objects/Mineable Objects/mineable_object_copper_ore.tscn" id="11_v8vr1"]
+[ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Scenes/World Objects/Mineable Objects/mineable_object_stone.tscn" id="12_0bqga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpdmr"]
 size = Vector2(32, 32)
@@ -61,20 +61,24 @@ y_sort_enabled = true
 [node name="Signs" type="Node2D" parent="BridgePoints"]
 y_sort_enabled = true
 
-[node name="UpSign" parent="BridgePoints/Signs" instance=ExtResource("3_s5ihi")]
+[node name="UpSign" parent="BridgePoints/Signs" node_paths=PackedStringArray("island") instance=ExtResource("3_s5ihi")]
 position = Vector2(32, -168)
+island = NodePath("../../..")
 dir = 1
 
-[node name="RightSign" parent="BridgePoints/Signs" instance=ExtResource("3_s5ihi")]
+[node name="RightSign" parent="BridgePoints/Signs" node_paths=PackedStringArray("island") instance=ExtResource("3_s5ihi")]
 position = Vector2(152, -24)
+island = NodePath("../../..")
 dir = 2
 
-[node name="LeftSign" parent="BridgePoints/Signs" instance=ExtResource("3_s5ihi")]
+[node name="LeftSign" parent="BridgePoints/Signs" node_paths=PackedStringArray("island") instance=ExtResource("3_s5ihi")]
 position = Vector2(-128, -32)
+island = NodePath("../../..")
 dir = 3
 
-[node name="DownSign" parent="BridgePoints/Signs" instance=ExtResource("3_s5ihi")]
+[node name="DownSign" parent="BridgePoints/Signs" node_paths=PackedStringArray("island") instance=ExtResource("3_s5ihi")]
 position = Vector2(32, 168)
+island = NodePath("../../..")
 dir = 4
 
 [node name="BridgeCollisions" type="StaticBody2D" parent="BridgePoints"]

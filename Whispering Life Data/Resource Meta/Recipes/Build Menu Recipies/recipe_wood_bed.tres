@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://bj0udm3iiilry"]
-
-[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="1_n5lgx"]
-
-[resource]
-script = ExtResource("1_n5lgx")
-required_items = null
-unlock_requirements = Array[Object]([])

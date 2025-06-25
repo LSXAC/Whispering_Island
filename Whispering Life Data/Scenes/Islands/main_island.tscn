@@ -11,10 +11,10 @@
 [ext_resource type="Script" uid="uid://cqvshjr3dd25t" path="res://Scripts/QuestSign.cs" id="8_dl61a"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="10_7bt86"]
 [ext_resource type="Texture2D" uid="uid://125t5f6fiugo" path="res://Sprites/Monster_Island.png" id="11_qd1vh"]
-[ext_resource type="PackedScene" uid="uid://bekb5fw4mpfgk" path="res://Scenes/World Objects/Mineable Objects/MO_Oak_Tree.tscn" id="12_3x7uo"]
+[ext_resource type="PackedScene" uid="uid://bekb5fw4mpfgk" path="res://Scenes/World Objects/Mineable Objects/mineable_object_oak_tree.tscn" id="12_3x7uo"]
 [ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="13_lo8qh"]
-[ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Scenes/World Objects/Mineable Objects/MO_Stone.tscn" id="13_sqojh"]
-[ext_resource type="PackedScene" uid="uid://hl3jkk2n0f7x" path="res://Scenes/World Objects/Mineable Objects/MO_Wheat.tscn" id="14_kjoym"]
+[ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Scenes/World Objects/Mineable Objects/mineable_object_stone.tscn" id="13_sqojh"]
+[ext_resource type="PackedScene" uid="uid://hl3jkk2n0f7x" path="res://Scenes/World Objects/Mineable Objects/mineable_object_wheat.tscn" id="14_kjoym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cugrr"]
 size = Vector2(32, 32)
@@ -111,20 +111,24 @@ y_sort_enabled = true
 [node name="Signs" type="Node2D" parent="BridgePoints"]
 y_sort_enabled = true
 
-[node name="UpSign" parent="BridgePoints/Signs" instance=ExtResource("2_wsc2u")]
+[node name="UpSign" parent="BridgePoints/Signs" node_paths=PackedStringArray("island") instance=ExtResource("2_wsc2u")]
 position = Vector2(13, -200)
+island = NodePath("../../..")
 dir = 1
 
-[node name="RightSign" parent="BridgePoints/Signs" instance=ExtResource("2_wsc2u")]
+[node name="RightSign" parent="BridgePoints/Signs" node_paths=PackedStringArray("island") instance=ExtResource("2_wsc2u")]
 position = Vector2(165, 1)
+island = NodePath("../../..")
 dir = 2
 
-[node name="LeftSign" parent="BridgePoints/Signs" instance=ExtResource("2_wsc2u")]
+[node name="LeftSign" parent="BridgePoints/Signs" node_paths=PackedStringArray("island") instance=ExtResource("2_wsc2u")]
 position = Vector2(-203, -30)
+island = NodePath("../../..")
 dir = 3
 
-[node name="DownSign" parent="BridgePoints/Signs" instance=ExtResource("2_wsc2u")]
+[node name="DownSign" parent="BridgePoints/Signs" node_paths=PackedStringArray("island") instance=ExtResource("2_wsc2u")]
 position = Vector2(32, 159)
+island = NodePath("../../..")
 dir = 4
 
 [node name="BridgeCollisions" type="StaticBody2D" parent="BridgePoints"]

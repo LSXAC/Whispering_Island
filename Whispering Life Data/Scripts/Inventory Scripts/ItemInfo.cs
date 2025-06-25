@@ -40,10 +40,10 @@ public partial class ItemInfo : Resource
     public T GetAttributeOrNull<T>()
         where T : ItemAttributeBase
     {
-        foreach (T attribute in attributes)
+        foreach (ItemAttributeBase attribute in attributes)
         {
             if (attribute is T)
-                return attribute;
+                return (T)attribute;
         }
         return null;
     }

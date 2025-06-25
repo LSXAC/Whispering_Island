@@ -21,7 +21,7 @@ public partial class ProcessBuilding : MachineBase
     public Timer state_timer;
 
     [Export]
-    public Array<Machine_Recipe> recipes = new Array<Machine_Recipe>();
+    public Array<MachineRecipe> recipes = new Array<MachineRecipe>();
 
     public bool is_crafting = false;
     public int ui_progress = 0;

@@ -49,13 +49,22 @@ public partial class CheatTab : ColorRect
     {
         int[] items = item_list.GetSelectedItems();
         foreach (int i in items)
-            PlayerInventoryUI.instance.AddItem(
-                new Item(
-                    Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i],
-                    Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i].max_stackable_size
-                ),
-                PlayerInventoryUI.instance.inventory_items
-            );
+        {
+            try
+            {
+                PlayerInventoryUI.instance.AddItem(
+                    new Item(
+                        Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i],
+                        Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i].max_stackable_size
+                    ),
+                    PlayerInventoryUI.instance.inventory_items
+                );
+            }
+            catch (Exception e)
+            {
+                GD.PrintErr($"Error creating item with ID {i}: {e.Message}");
+            }
+        }
         OnDeselectAll();
     }
 }

@@ -26,7 +26,7 @@ public partial class ResearchTab : ColorRect
     [Export]
     public Timer timer;
     public PackedScene research_level_tab = ResourceLoader.Load<PackedScene>(
-        "res://Prefabs/Research_Level_Tab.tscn"
+        "res://Scenes/UI/research_level_tab.tscn"
     );
 
     public Array<ResearchSave> research_states = new Array<ResearchSave>();

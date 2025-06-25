@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemResearch" load_steps=8 format=3 uid="uid://cx06xbdvfg7nw"]
 
 [ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Scripts/Research/ItemResearchLevel.cs" id="1_fnrid"]
-[ext_resource type="Resource" uid="uid://j02uscprm0pm" path="res://Resource Meta/Items/item_info_mystic_armor_helm.tres" id="2_h44xc"]
+[ext_resource type="Resource" uid="uid://j02uscprm0pm" path="res://Resource Meta/Items/item_info_mystic_armor_head.tres" id="2_h44xc"]
 [ext_resource type="Resource" uid="uid://bwoxb4s5viywy" path="res://Resource Meta/Items/item_info_mystic_armor_chestplate.tres" id="3_51x35"]
 [ext_resource type="Resource" uid="uid://dk6vef80itp5v" path="res://Resource Meta/Items/item_info_mystic_armor_leggings.tres" id="4_67wp5"]
 [ext_resource type="Resource" uid="uid://gjds5x8w8irk" path="res://Resource Meta/Items/item_info_mystic_armor_shoes.tres" id="5_u224a"]
