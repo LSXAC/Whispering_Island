@@ -12,76 +12,7 @@ public partial class Inventory : SlotUpdater
 
     public int slot_amount = 30;
     public static string item_path = "res://Resource Meta/Items/item_info_";
-    public static Dictionary<ITEM_ID, ItemInfo> ITEM_TYPES = new Dictionary<ITEM_ID, ItemInfo>()
-    {
-        { ITEM_ID.OAK_WOOD, ResourceLoader.Load<ItemInfo>(item_path + "wood.tres") },
-        { ITEM_ID.STONE, ResourceLoader.Load<ItemInfo>(item_path + "stone.tres") },
-        { ITEM_ID.WOOD_STICK, ResourceLoader.Load<ItemInfo>(item_path + "wood_stick.tres") },
-        { ITEM_ID.STONE_PICKAXE, ResourceLoader.Load<ItemInfo>(item_path + "stone_pickaxe.tres") },
-        { ITEM_ID.WOOD_PLANK, ResourceLoader.Load<ItemInfo>(item_path + "wood_plank.tres") },
-        { ITEM_ID.WOOD_AXE, ResourceLoader.Load<ItemInfo>(item_path + "wood_axe.tres") },
-        { ITEM_ID.CHAR_COAL, ResourceLoader.Load<ItemInfo>(item_path + "char_coal.tres") },
-        { ITEM_ID.IRON_ORE, ResourceLoader.Load<ItemInfo>(item_path + "iron_ore.tres") },
-        { ITEM_ID.IRON_INGOT, ResourceLoader.Load<ItemInfo>(item_path + "iron_ingot.tres") },
-        { ITEM_ID.COPPER_ORE, ResourceLoader.Load<ItemInfo>(item_path + "copper_ore.tres") },
-        { ITEM_ID.COPPER_INGOT, ResourceLoader.Load<ItemInfo>(item_path + "copper_ingot.tres") },
-        { ITEM_ID.STONE_KNIFE, ResourceLoader.Load<ItemInfo>(item_path + "stone_knife.tres") },
-        { ITEM_ID.MYSTIC_FIBRE, ResourceLoader.Load<ItemInfo>(item_path + "mystic_fibre.tres") },
-        {
-            ITEM_ID.MYSTIC_OAK_WOOD,
-            ResourceLoader.Load<ItemInfo>(item_path + "mystic_oak_wood.tres")
-        },
-        { ITEM_ID.FIBRE, ResourceLoader.Load<ItemInfo>(item_path + "fibre.tres") },
-        { ITEM_ID.STONE_BLADE, ResourceLoader.Load<ItemInfo>(item_path + "stone_blade.tres") },
-        { ITEM_ID.GLASS_CHUNK, ResourceLoader.Load<ItemInfo>(item_path + "glass_chunk.tres") },
-        {
-            ITEM_ID.STONE_AXE_HEAD,
-            ResourceLoader.Load<ItemInfo>(item_path + "stone_axe_head.tres")
-        },
-        {
-            ITEM_ID.STONE_PICKAXE_HEAD,
-            ResourceLoader.Load<ItemInfo>(item_path + "stone_pickaxe_head.tres")
-        },
-        { ITEM_ID.WOOD_HOE_HEAD, ResourceLoader.Load<ItemInfo>(item_path + "wood_hoe_head.tres") },
-        { ITEM_ID.WOOD_HOE, ResourceLoader.Load<ItemInfo>(item_path + "wood_hoe.tres") },
-        { ITEM_ID.WOOD_AXE_HEAD, ResourceLoader.Load<ItemInfo>(item_path + "wood_axe_head.tres") },
-        { ITEM_ID.WHEAT, ResourceLoader.Load<ItemInfo>(item_path + "wheat.tres") },
-        { ITEM_ID.IRON_BLOCK, ResourceLoader.Load<ItemInfo>(item_path + "iron_block.tres") },
-        { ITEM_ID.WHEAT_SEED, ResourceLoader.Load<ItemInfo>(item_path + "wheat_seed.tres") },
-        { ITEM_ID.POTATO, ResourceLoader.Load<ItemInfo>(item_path + "potato.tres") },
-        { ITEM_ID.POTATO_SEED, ResourceLoader.Load<ItemInfo>(item_path + "potato_seed.tres") },
-        { ITEM_ID.CARROT, ResourceLoader.Load<ItemInfo>(item_path + "carrot.tres") },
-        { ITEM_ID.CARROT_SEED, ResourceLoader.Load<ItemInfo>(item_path + "carrot_seed.tres") },
-        { ITEM_ID.CORN, ResourceLoader.Load<ItemInfo>(item_path + "corn.tres") },
-        { ITEM_ID.CORN_SEED, ResourceLoader.Load<ItemInfo>(item_path + "corn_seed.tres") },
-        { ITEM_ID.SAND, ResourceLoader.Load<ItemInfo>(item_path + "sand.tres") },
-        { ITEM_ID.SAND_STONE, ResourceLoader.Load<ItemInfo>(item_path + "sand_stone.tres") },
-        {
-            ITEM_ID.MYSTIC_ARMOR_HEAD,
-            ResourceLoader.Load<ItemInfo>(item_path + "mystic_armor_head.tres")
-        },
-        {
-            ITEM_ID.MYSTIC_ARMOR_CHESTPLATE,
-            ResourceLoader.Load<ItemInfo>(item_path + "mystic_armor_chestplate.tres")
-        },
-        {
-            ITEM_ID.MYSTIC_ARMOR_LEGGINGS,
-            ResourceLoader.Load<ItemInfo>(item_path + "mystic_armor_leggings.tres")
-        },
-        {
-            ITEM_ID.MYSTIC_ARMOR_SHOES,
-            ResourceLoader.Load<ItemInfo>(item_path + "mystic_armor_shoes.tres")
-        },
-        { ITEM_ID.OAK_SEED, ResourceLoader.Load<ItemInfo>(item_path + "oak_seed.tres") },
-        {
-            ITEM_ID.MYSTIC_OAK_SEED,
-            ResourceLoader.Load<ItemInfo>(item_path + "mystic_oak_seed.tres")
-        },
-        {
-            ITEM_ID.MYSTIC_FIBRE_SEED,
-            ResourceLoader.Load<ItemInfo>(item_path + "mystic_fibre_seed.tres")
-        },
-    };
+    public static Dictionary<ITEM_ID, ItemInfo> ITEM_TYPES = new Dictionary<ITEM_ID, ItemInfo>();
 
     public enum ITEM_ID
     {
@@ -130,6 +61,35 @@ public partial class Inventory : SlotUpdater
     public override void _Ready()
     {
         inventory_items = new ItemSave[slot_amount];
+        LoadAllItemInfos("res://Resource Meta/Items/");
+    }
+
+    private void LoadAllItemInfos(string directoryPath)
+    {
+        var dir = DirAccess.Open(directoryPath);
+        if (dir == null)
+        {
+            GD.PrintErr($"Directory not found: {directoryPath}");
+            return;
+        }
+
+        dir.ListDirBegin();
+        string fileName = dir.GetNext();
+        while (fileName != "")
+        {
+            if (!dir.CurrentIsDir() && fileName.EndsWith(".tres"))
+            {
+                string fullPath = directoryPath.TrimEnd('/') + "/" + fileName;
+                var itemInfo = ResourceLoader.Load<ItemInfo>(fullPath);
+                if (itemInfo != null)
+                {
+                    Debug.Print(itemInfo.id.ToString() + " | " + itemInfo.name);
+                    ITEM_TYPES[itemInfo.id] = itemInfo;
+                }
+            }
+            fileName = dir.GetNext();
+        }
+        dir.ListDirEnd();
     }
 
     public void SetSlots()

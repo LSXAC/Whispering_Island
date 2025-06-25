@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bj72iumyf7nxx"]
 
-[ext_resource type="Script" uid="uid://ck6hcox7174uj" path="res://Scripts/ChestInventoryUI.cs" id="1_r1544"]
+[ext_resource type="Script" uid="uid://ck6hcox7174uj" path="res://Scripts/Inventory Scripts/ChestInventoryUI.cs" id="1_r1544"]
 [ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://Resource Meta/Menus/Theme_Slots.tres" id="2_3btuv"]
 [ext_resource type="Script" uid="uid://x5sh7dthimfr" path="res://Scripts/Inventory Scripts/Slot.cs" id="2_ols8c"]
 

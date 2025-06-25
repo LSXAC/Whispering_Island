@@ -26,20 +26,24 @@ y_sort_enabled = true
 script = ExtResource("1_2n0he")
 building_placer = NodePath("BuildingManager/BuildingPlacer")
 
+[node name="Global" type="Node2D" parent="."]
+script = ExtResource("10_1whgu")
+
+[node name="Player" parent="." instance=ExtResource("4_wajns")]
+position = Vector2(10, -170)
+scale = Vector2(0.75, 0.75)
+
 [node name="BuildingManager" type="Node2D" parent="."]
 
-[node name="BuildingPlacer" type="Node2D" parent="BuildingManager"]
+[node name="BuildingPlacer" type="Node2D" parent="BuildingManager" node_paths=PackedStringArray("island_manager")]
 script = ExtResource("2_h8pdp")
+island_manager = NodePath("../../IslandManager")
 
 [node name="Building_Tilemap_Snapper" type="TileMapLayer" parent="BuildingManager/BuildingPlacer"]
 tile_set = ExtResource("3_lj4ef")
 
 [node name="Buildings" type="Node2D" parent="."]
 y_sort_enabled = true
-
-[node name="Player" parent="." instance=ExtResource("4_wajns")]
-position = Vector2(10, -170)
-scale = Vector2(0.75, 0.75)
 
 [node name="IslandManager" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -51,30 +55,12 @@ script = ExtResource("5_f280c")
 title = "Monster"
 description = "...."
 
-[node name="PlayerUI" parent="." instance=ExtResource("7_5qlke")]
-
-[node name="GameMenu" parent="." instance=ExtResource("8_gytje")]
-visible = false
-
-[node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer") instance=ExtResource("9_1xtv0")]
-visible = false
-building_placer = NodePath("../BuildingManager/BuildingPlacer")
-
-[node name="Global" type="Node2D" parent="."]
-script = ExtResource("10_1whgu")
-
-[node name="QuestMenu" parent="." instance=ExtResource("11_5h8gv")]
-dialogue_timeline = ExtResource("12_t3yax")
-
 [node name="QuestManager" type="Node2D" parent="." node_paths=PackedStringArray("quest_timer")]
 script = ExtResource("13_irdkv")
 quests = Array[Object]([ExtResource("14_sw2xm")])
 quest_timer = NodePath("QuestTimer")
 
 [node name="QuestTimer" type="Timer" parent="QuestManager"]
-
-[node name="GameTimer" type="Timer" parent="."]
-wait_time = 0.1
 
 [node name="CutsceneCamera" type="Camera2D" parent="."]
 position = Vector2(32, -160)
@@ -106,6 +92,18 @@ z_as_relative = false
 position = Vector2(0, 6)
 texture = ExtResource("26_nq6jg")
 
+[node name="PlayerUI" parent="." instance=ExtResource("7_5qlke")]
+
+[node name="GameMenu" parent="." instance=ExtResource("8_gytje")]
+visible = false
+
+[node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer") instance=ExtResource("9_1xtv0")]
+visible = false
+building_placer = NodePath("../BuildingManager/BuildingPlacer")
+
+[node name="QuestMenu" parent="." instance=ExtResource("11_5h8gv")]
+dialogue_timeline = ExtResource("12_t3yax")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("27_73301")
 autoplay = true
@@ -123,9 +121,12 @@ wait_time = 0.2
 autostart = true
 script = ExtResource("29_q20se")
 
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 0.1
+
 [connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
-[connection signal="timeout" from="GameTimer" to="." method="OnGameTimerTimeout"]
 [connection signal="timeout" from="GlobalAnimationTimer" to="GlobalAnimationTimer" method="OnAnimationGlobalTimerTimeout"]
+[connection signal="timeout" from="GameTimer" to="." method="OnGameTimerTimeout"]
 
 [editable path="IslandManager/MainIsland"]
 [editable path="BuildingMenu"]

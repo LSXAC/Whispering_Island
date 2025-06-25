@@ -1,10 +1,12 @@
 using System;
 using Godot;
+using Godot.Collections;
 
 public partial class CheatTab : ColorRect
 {
     [Export]
     public ItemList item_list;
+    private Array<ItemInfo> item_infos = new Array<ItemInfo>();
 
     [Export]
     public Label timeStateLabel;
@@ -37,7 +39,10 @@ public partial class CheatTab : ColorRect
     {
         item_list.Clear();
         foreach (var (id, info) in Inventory.ITEM_TYPES)
+        {
+            item_infos.Add(info);
             item_list.AddItem(TranslationServer.Translate(info.name), info.texture, true);
+        }
     }
 
     public void OnDeselectAll()
@@ -53,10 +58,7 @@ public partial class CheatTab : ColorRect
             try
             {
                 PlayerInventoryUI.instance.AddItem(
-                    new Item(
-                        Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i],
-                        Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i].max_stackable_size
-                    ),
+                    new Item(item_infos[i], item_infos[i].max_stackable_size),
                     PlayerInventoryUI.instance.inventory_items
                 );
             }

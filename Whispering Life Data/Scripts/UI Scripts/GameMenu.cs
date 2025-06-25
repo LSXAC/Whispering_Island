@@ -89,7 +89,8 @@ public partial class GameMenu : CanvasLayer
         if (IsWindowActiv())
             return;
 
-        PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes(null);
+        if (PlayerInventoryUI.instance != null)
+            PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes(null);
         ChangeSelectedTabColor(Tabs.Inventory);
         SetWindow(this);
     }
