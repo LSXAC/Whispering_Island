@@ -589,10 +589,11 @@ grow_horizontal = 0
 script = ExtResource("17_450ol")
 normal_color = Color(1, 1, 1, 0)
 selected_color = Color(1, 0.839216, 0.0941176, 1)
-select_slots = [NodePath("VBoxContainer/EquipmentHBox/ColorRect/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect2/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect3/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SelectSlot")]
+select_slots = [NodePath("VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SelectSlot")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EquipmentSelectBar"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="EquipmentSelectBar/VBoxContainer"]
 layout_mode = 2
@@ -638,121 +639,29 @@ layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
-clip_contents = true
-custom_minimum_size = Vector2(52, 52)
-layout_mode = 2
-color = Color(1, 0.840758, 0.0925788, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 24.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect/MarginContainer"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-theme = ExtResource("17_33i7j")
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
-disabled = true
-script = ExtResource("18_2bhlg")
-slot_type = 2
-
-[node name="ColorRect2" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
-clip_contents = true
-custom_minimum_size = Vector2(52, 52)
-layout_mode = 2
-color = Color(1, 1, 1, 0)
-
-[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 24.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect2/MarginContainer"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-theme = ExtResource("17_33i7j")
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
-disabled = true
-script = ExtResource("18_2bhlg")
-slot_type = 1
-
-[node name="ColorRect3" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
-clip_contents = true
-custom_minimum_size = Vector2(52, 52)
-layout_mode = 2
-color = Color(1, 1, 1, 0)
-
-[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect3"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 24.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect3/MarginContainer"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-theme = ExtResource("17_33i7j")
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
-disabled = true
-script = ExtResource("18_2bhlg")
-slot_type = 1
-
 [node name="ColorRect4" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
 clip_contents = true
-custom_minimum_size = Vector2(52, 52)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
 [node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 24.0
-offset_bottom = 24.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("17_33i7j")
 theme_override_fonts/font = ExtResource("3_0pxjf")
@@ -760,19 +669,99 @@ theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
 disabled = true
 script = ExtResource("18_2bhlg")
-slot_type = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="EquipmentSelectBar/VBoxContainer"]
+[node name="ColorRect5" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
+clip_contents = true
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+color = Color(1, 1, 1, 0)
 
-[node name="Label" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/outline_size = 5
+theme = ExtResource("17_33i7j")
 theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
-text = "Equipment Selectbar"
-horizontal_alignment = 2
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
+disabled = true
+script = ExtResource("18_2bhlg")
+
+[node name="ColorRect6" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
+clip_contents = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("17_33i7j")
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
+disabled = true
+script = ExtResource("18_2bhlg")
+
+[node name="ColorRect7" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
+clip_contents = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("17_33i7j")
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
+disabled = true
+script = ExtResource("18_2bhlg")
 
 [node name="Item_Label_Timer" type="Timer" parent="."]
 wait_time = 0.2

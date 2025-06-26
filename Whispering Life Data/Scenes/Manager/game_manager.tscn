@@ -51,9 +51,14 @@ script = ExtResource("5_f280c")
 
 [node name="MainIsland" parent="IslandManager" instance=ExtResource("6_p85m3")]
 
-[node name="QuestSign" parent="IslandManager/MainIsland" index="6"]
+[node name="QuestSign" parent="IslandManager/MainIsland" index="6" node_paths=PackedStringArray("sprite", "collision_shape")]
 title = "Monster"
 description = "...."
+sprite = NodePath("AnimationPlayer/BuildingSprite")
+collision_shape = NodePath("Collision")
+
+[node name="Tree7" parent="IslandManager/MainIsland/IslandObjectSaveManager" index="6"]
+position = Vector2(-7, -79)
 
 [node name="QuestManager" type="Node2D" parent="." node_paths=PackedStringArray("quest_timer")]
 script = ExtResource("13_irdkv")
@@ -104,13 +109,13 @@ building_placer = NodePath("../BuildingManager/BuildingPlacer")
 [node name="QuestMenu" parent="." instance=ExtResource("11_5h8gv")]
 dialogue_timeline = ExtResource("12_t3yax")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AtmosphereAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("27_73301")
 autoplay = true
 bus = &"SFX"
 playback_type = 1
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+[node name="SFXAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_2plat")
 autoplay = true
 bus = &"Music"

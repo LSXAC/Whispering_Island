@@ -132,11 +132,13 @@ public partial class Slot : Button
 
     public void OnEquipSlotButton(int index)
     {
+        SlotItemUI slot_item_ui = GetSlotItemUI();
+        SlotItemUI clicked_slot_item_ui = PlayerInventoryUI.clicked_slot_item_ui;
+
         if (PlayerInventoryUI.clicked_slot_item_ui == null)
         {
             if (GetSlotItemUI() != null)
             {
-                Debug.Print(GetSlotItemUI().current_durability.ToString());
                 CreateClickedItem(false, GetSlotItemUI().current_durability);
                 if (GetSlotItemUI().item.info.HasAttribute<ToolAttribute>())
                 {
@@ -146,7 +148,7 @@ public partial class Slot : Button
                     if (EquipmentSelectBar.current_selected_slot == index)
                         PlayerUI.instance.equipmentSelectBar.current_selected_slot_item_ui = null;
                 }
-                if (GetSlotItemUI().item.info.HasAttribute<WearableAttribute>())
+                if (GetSlotItemUI().item.info.HasAttribute<ArmorAttribute>())
                 {
                     EquipmentPanel.instance.equipped_armor[index] = null;
                     EquipmentPanel.instance.slots_armor[index].ClearSlotItem();
@@ -158,9 +160,7 @@ public partial class Slot : Button
         {
             if (GetSlotItemUI() == null)
             {
-                if (
-                    PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute<WearableAttribute>()
-                )
+                if (PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute<ArmorAttribute>())
                 {
                     OnTakeItemFromArmorSlot(index);
                     return;

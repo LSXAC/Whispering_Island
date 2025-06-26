@@ -244,11 +244,9 @@ scale = Vector2(2, 2)
 texture = ExtResource("11_qd1vh")
 offset = Vector2(0, -6)
 
-[node name="MouseArea" type="Area2D" parent="QuestSign" node_paths=PackedStringArray("building_node", "building_sprite")]
+[node name="MouseArea" type="Area2D" parent="QuestSign"]
 collision_layer = 2
 script = ExtResource("10_7bt86")
-building_node = NodePath("..")
-building_sprite = NodePath("../AnimationPlayer/BuildingSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QuestSign/MouseArea"]
 position = Vector2(-20, -100)

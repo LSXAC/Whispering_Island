@@ -57,6 +57,9 @@ public partial class EquipmentSelectBar : Container
 
     public bool HasSameUseType(PlayerStats.TYPE type)
     {
+        if (GetSelectedTypeLevel() == MineableObject.MINING_LEVEL.Hand)
+            return true;
+
         if (GetSelectedSlotItemUI() != null)
         {
             ToolAttribute attribute = GetSelectedSlotItemUI()

@@ -4,8 +4,7 @@ using Godot;
 
 public partial class MineableObject : placeable_building
 {
-    [Export]
-    public AnimationPlayer anim_player;
+    private SpriteAnimationPlayer sprite_anim_player;
 
     [Export]
     public Node2D hit_point;
@@ -70,6 +69,7 @@ public partial class MineableObject : placeable_building
         current_durability = max_durability;
         interactableArea = GetNode<Area2D>("MouseArea");
 
+        sprite_anim_player = GetNode<SpriteAnimationPlayer>("SpriteAnimationPlayer");
         if (HasNode("TimerBar"))
         {
             timer_bar = GetNode<TimerBar>("TimerBar");
@@ -82,7 +82,7 @@ public partial class MineableObject : placeable_building
 
     public void SpawnPlant()
     {
-        anim_player.PlayBackwards("Break");
+        sprite_anim_player.animation_player.PlayBackwards("Break");
         StartTimerBar(TimerBar.STATE.SPAWNING, respawn_seconds);
     }
 
@@ -129,8 +129,15 @@ public partial class MineableObject : placeable_building
 
         if (in_cooldown)
             return;
-
-        Hit();
+        try
+        {
+            Hit();
+        }
+        catch (Exception e)
+        {
+            GD.PrintErr("Error while hitting MineableObject: " + e.Message);
+            PlayerUI.AddItemLabelUI("ERROR: " + e.Message);
+        }
     }
 
     private void Hit()
@@ -229,7 +236,7 @@ public partial class MineableObject : placeable_building
         gpu_particles.Emitting = true;
         if (current_durability <= 0)
         {
-            anim_player.Play("Break");
+            sprite_anim_player.animation_player.Play("Break");
             int amount = (int)(mining_bonus * CalculateMiningAmountInt()) + current_durability;
             PlayerUI.AddItemLabelUI(
                 "Bonus: +"
@@ -266,7 +273,7 @@ public partial class MineableObject : placeable_building
             return;
         }
 
-        anim_player.Play("Hit");
+        sprite_anim_player.animation_player.Play("Hit");
         StartTimerBar(TimerBar.STATE.COOLDOWN, click_cooldown_time);
         PlayerUI.AddItemLabelUI(
             "+"
@@ -290,7 +297,7 @@ public partial class MineableObject : placeable_building
     private void StartTimerBar(TimerBar.STATE state, double time, bool from_loading = false)
     {
         if (state == TimerBar.STATE.SPAWNING && from_loading)
-            anim_player.PlayBackwards("Break");
+            sprite_anim_player.animation_player.PlayBackwards("Break");
 
         if (state == TimerBar.STATE.SPAWNING)
             if (collision_shape != null)
