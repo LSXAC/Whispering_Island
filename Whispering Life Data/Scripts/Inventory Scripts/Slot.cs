@@ -56,16 +56,10 @@ public partial class Slot : Button
             }
 
             if (attribute is WearableAttribute)
-            {
                 OnEquipSlotButton(GetIndex());
-                // Slot Updater not needed now
-            }
 
             if (attribute is ResearchableAttribute)
-            {
                 OnResearchSlotButton();
-                //SlotUpdater not needed now
-            }
 
             AcceptEvent();
         }
@@ -82,54 +76,6 @@ public partial class Slot : Button
         Text = TranslationServer.Translate(label_translation_string);
     }
 
-    public void SetItem(Item item, int durability = -1)
-    {
-        SlotItemUI slot_item_ui = new SlotItemUI();
-        slot_item_ui.init(item, durability);
-        slot_item_ui.UpdateAmountLabel();
-        if (durability != -1)
-            slot_item_ui.SetDurability(durability);
-        AddChild(slot_item_ui);
-        if (item.amount == 0)
-            ClearSlotItem();
-    }
-
-    public void UpdateItem(Item item, int durability)
-    {
-        if (GetSlotItemUI() != null)
-        {
-            if (item.info == GetSlotItemUI().item.info)
-            {
-                if (durability != -1)
-                    GetSlotItemUI().SetDurability(durability);
-
-                GetSlotItemUI().item.amount = item.amount;
-                GetSlotItemUI().UpdateAmountLabel();
-            }
-            else
-            {
-                GetSlotItemUI().QueueFree();
-                SetItem(item, durability);
-            }
-        }
-        else
-            SetItem(item, durability);
-    }
-
-    public SlotItemUI GetSlotItemUI()
-    {
-        if (GetChildCount() > 0)
-            return (SlotItemUI)GetChild(0);
-        return null;
-    }
-
-    public void ClearSlotItem()
-    {
-        if (GetSlotItemUI() == null)
-            return;
-        GetSlotItemUI().QueueFree();
-    }
-
     public void OnEquipSlotButton(int index)
     {
         SlotItemUI slot_item_ui = GetSlotItemUI();
@@ -137,139 +83,90 @@ public partial class Slot : Button
 
         if (PlayerInventoryUI.clicked_slot_item_ui == null)
         {
-            if (GetSlotItemUI() != null)
+            if (slot_item_ui != null) //Take Item from Slot
             {
-                CreateClickedItem(false, GetSlotItemUI().current_durability);
-                if (GetSlotItemUI().item.info.HasAttribute<ToolAttribute>())
+                CreateClickedItem(false, slot_item_ui.current_durability);
+                if (slot_item_ui.item.info.HasAttribute<ToolAttribute>())
                 {
-                    EquipmentPanel.instance.equipped_tools[index] = null;
-                    EquipmentPanel.instance.slots_tool[index].ClearSlotItem();
-                    PlayerUI.instance.equipmentSelectBar.select_slots[index].ClearSlotItem();
-                    if (EquipmentSelectBar.current_selected_slot == index)
-                        PlayerUI.instance.equipmentSelectBar.current_selected_slot_item_ui = null;
+                    EquipmentPanel.instance.ClearToolSlotItem(index);
+                    PlayerUI.instance.equipmentSelectBar.ClearSelectSlot(index);
                 }
-                if (GetSlotItemUI().item.info.HasAttribute<ArmorAttribute>())
-                {
-                    EquipmentPanel.instance.equipped_armor[index] = null;
-                    EquipmentPanel.instance.slots_armor[index].ClearSlotItem();
-                }
+                if (slot_item_ui.item.info.HasAttribute<ArmorAttribute>())
+                    EquipmentPanel.instance.ClearArmorSlotItem(index);
+
                 EquipmentPanel.instance.CalculateStatsFromEquipment();
             }
         }
         else
         {
-            if (GetSlotItemUI() == null)
+            if (slot_item_ui == null)
             {
                 if (PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute<ArmorAttribute>())
-                {
-                    OnTakeItemFromArmorSlot(index);
-                    return;
-                }
+                    EquipmentPanel.instance.SetArmorSlotItem(index, clicked_slot_item_ui);
 
                 if (PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttribute<ToolAttribute>())
                 {
-                    EquipmentPanel.instance.equipped_tools[index] = new ItemSave(
-                        (int)PlayerInventoryUI.clicked_slot_item_ui.item.info.id,
-                        PlayerInventoryUI.clicked_slot_item_ui.item.amount,
-                        PlayerInventoryUI.clicked_slot_item_ui.current_durability
+                    EquipmentPanel.instance.SetToolSlotItem(index, clicked_slot_item_ui);
+                    PlayerUI.instance.equipmentSelectBar.SetItemInSelectSlot(
+                        index,
+                        clicked_slot_item_ui
                     );
-                    EquipmentPanel
-                        .instance.slots_tool[index]
-                        .SetItem(
-                            PlayerInventoryUI.clicked_slot_item_ui.item,
-                            PlayerInventoryUI.clicked_slot_item_ui.current_durability
-                        );
-
-                    PlayerUI
-                        .instance.equipmentSelectBar.select_slots[index]
-                        .SetItem(
-                            PlayerInventoryUI.clicked_slot_item_ui.item,
-                            PlayerInventoryUI.clicked_slot_item_ui.current_durability
-                        );
-                    if (EquipmentSelectBar.current_selected_slot == index)
-                        PlayerUI.instance.equipmentSelectBar.SelectSelectSlot(index);
-                    ClearClickedItem();
-                    EquipmentPanel.instance.CalculateStatsFromEquipment();
                 }
+
+                ClearClickedItem();
+                EquipmentPanel.instance.CalculateStatsFromEquipment();
             }
             else // Can be Expanded, if e.g. Stackable Potions in one Equipment Slot
                 return;
         }
     }
 
-    private void OnTakeItemFromArmorSlot(int index)
-    {
-        EquipmentPanel.instance.equipped_armor[index] = new ItemSave(
-            (int)PlayerInventoryUI.clicked_slot_item_ui.item.info.id,
-            PlayerInventoryUI.clicked_slot_item_ui.item.amount,
-            PlayerInventoryUI.clicked_slot_item_ui.current_durability
-        );
-        EquipmentPanel
-            .instance.slots_armor[index]
-            .SetItem(PlayerInventoryUI.clicked_slot_item_ui.item);
-        ClearClickedItem();
-        EquipmentPanel.instance.CalculateStatsFromEquipment();
-    }
-
     public void OnSlotButton(InputEventMouseButton @btn)
     {
-        if (PlayerInventoryUI.clicked_slot_item_ui == null)
+        SlotItemUI slot_item_ui = GetSlotItemUI();
+        SlotItemUI clicked_slot_item_ui = PlayerInventoryUI.clicked_slot_item_ui;
+
+        if (clicked_slot_item_ui == null)
         {
-            if (GetSlotItemUI() != null)
+            if (slot_item_ui != null) //Take Item from Slot
             {
-                if (ItemCanBeHalfed(GetSlotItemUI()))
+                if (ItemCanBeHalfed(slot_item_ui))
                     if (@btn.ButtonMask == MouseButtonMask.Right)
                     {
                         CreateClickedItem(halfNext: true);
-                        ///////////////////////
                         UpdateSlot(item_array, HalfAmount(item_array[GetIndex()].amount));
-                        ///////////////////////
                         return;
                     }
-                ToolAttribute attribute = GetSlotItemUI()
-                    .item.info.GetAttributeOrNull<ToolAttribute>();
-                if (attribute != null)
-                    CreateClickedItem(false, GetSlotItemUI().current_durability);
+
+                if (slot_item_ui.item.info.HasAttribute<ToolAttribute>())
+                    CreateClickedItem(false, slot_item_ui.current_durability);
                 else
                     CreateClickedItem();
-                ///////////////////////
+
                 ClearSlot(item_array);
-                ///////////////////////
             }
         }
         else
         {
-            if (GetSlotItemUI() == null)
+            if (slot_item_ui == null)
             {
                 if (check_attributes)
-                    if (
-                        !PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttributByType(
-                            attribute.GetType()
-                        )
-                    )
+                    if (!clicked_slot_item_ui.item.info.HasAttributByType(attribute.GetType()))
                         return;
+
                 if (is_export_slot)
                     return;
 
-                if (PlayerInventoryUI.clicked_slot_item_ui.item.amount > 0)
+                if (clicked_slot_item_ui.item.amount > 0)
                     if (btn.ButtonMask == MouseButtonMask.Right)
                     {
-                        NewSlot(
-                            item_array,
-                            (int)PlayerInventoryUI.clicked_slot_item_ui.item.info.id,
-                            1,
-                            PlayerInventoryUI.clicked_slot_item_ui.current_durability
-                        );
+                        clicked_slot_item_ui.item.amount = 1;
+                        NewSlotItem(clicked_slot_item_ui);
                         PlayerInventoryUI.clicked_slot_item_ui.item.amount -= 1;
                         return;
                     }
 
-                NewSlot(
-                    item_array,
-                    (int)PlayerInventoryUI.clicked_slot_item_ui.item.info.id,
-                    PlayerInventoryUI.clicked_slot_item_ui.item.amount,
-                    PlayerInventoryUI.clicked_slot_item_ui.current_durability
-                );
+                NewSlotItem(clicked_slot_item_ui);
                 ClearClickedItem();
                 return;
             }
@@ -277,25 +174,14 @@ public partial class Slot : Button
             if (slot_is_switchable)
             {
                 if (check_attributes)
-                    if (
-                        !PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttributByType(
-                            attribute.GetType()
-                        )
-                    )
+                    if (!clicked_slot_item_ui.item.info.HasAttributByType(attribute.GetType()))
                         return;
 
                 if (GetSlotItemUI().item.info != PlayerInventoryUI.clicked_slot_item_ui.item.info)
                 {
-                    //Switch Items
-                    SlotItemUI slot_item = PlayerInventoryUI.clicked_slot_item_ui;
                     ClearClickedItem();
                     CreateClickedItem();
-                    NewSlot(
-                        item_array,
-                        (int)slot_item.item.info.id,
-                        slot_item.item.amount,
-                        slot_item.current_durability
-                    );
+                    NewSlotItem(clicked_slot_item_ui);
                     return;
                 }
             }
@@ -354,6 +240,54 @@ public partial class Slot : Button
         }
     }
 
+    public void SetItem(Item item, int durability = -1)
+    {
+        SlotItemUI slot_item_ui = new SlotItemUI();
+        slot_item_ui.init(item, durability);
+        slot_item_ui.UpdateAmountLabel();
+        if (durability != -1)
+            slot_item_ui.SetDurability(durability);
+        AddChild(slot_item_ui);
+        if (item.amount == 0)
+            ClearSlotItem();
+    }
+
+    public void UpdateItem(Item item, int durability)
+    {
+        if (GetSlotItemUI() != null)
+        {
+            if (item.info == GetSlotItemUI().item.info)
+            {
+                if (durability != -1)
+                    GetSlotItemUI().SetDurability(durability);
+
+                GetSlotItemUI().item.amount = item.amount;
+                GetSlotItemUI().UpdateAmountLabel();
+            }
+            else
+            {
+                GetSlotItemUI().QueueFree();
+                SetItem(item, durability);
+            }
+        }
+        else
+            SetItem(item, durability);
+    }
+
+    public SlotItemUI GetSlotItemUI()
+    {
+        if (GetChildCount() > 0)
+            return (SlotItemUI)GetChild(0);
+        return null;
+    }
+
+    public void ClearSlotItem()
+    {
+        if (GetSlotItemUI() == null)
+            return;
+        GetSlotItemUI().QueueFree();
+    }
+
     private void UpdateSlot(ItemSave[] i_save, int amount)
     {
         i_save[GetIndex()].amount = amount;
@@ -365,12 +299,19 @@ public partial class Slot : Button
         return i_save[GetIndex()].amount;
     }
 
-    private void NewSlot(ItemSave[] i_save, int id, int amount, int durability = -1)
+    private void NewSlotItem(SlotItemUI slot_item_ui)
     {
-        if (durability != -1)
-            i_save[GetIndex()] = new ItemSave(id, amount, durability);
+        if (slot_item_ui.current_durability != -1)
+            item_array[GetIndex()] = new ItemSave(
+                (int)slot_item_ui.item.info.id,
+                slot_item_ui.item.amount,
+                slot_item_ui.current_durability
+            );
         else
-            i_save[GetIndex()] = new ItemSave(id, amount);
+            item_array[GetIndex()] = new ItemSave(
+                (int)slot_item_ui.item.info.id,
+                slot_item_ui.item.amount
+            );
         slotUpdater.UpdateSlot(GetIndex(), PlayerInventoryUI.clicked_slot_item_ui);
     }
 

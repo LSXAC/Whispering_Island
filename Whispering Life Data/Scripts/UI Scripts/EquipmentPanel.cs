@@ -103,6 +103,38 @@ public partial class EquipmentPanel : Control
         instance.CalculateStatsFromEquipment();
     }
 
+    public void SetArmorSlotItem(int index, SlotItemUI slot_item_ui)
+    {
+        equipped_armor[index] = new ItemSave(
+            (int)slot_item_ui.item.info.id,
+            slot_item_ui.item.amount,
+            slot_item_ui.current_durability
+        );
+        slots_armor[index].SetItem(slot_item_ui.item, slot_item_ui.current_durability);
+    }
+
+    public void SetToolSlotItem(int index, SlotItemUI slot_item_ui)
+    {
+        equipped_tools[index] = new ItemSave(
+            (int)slot_item_ui.item.info.id,
+            slot_item_ui.item.amount,
+            slot_item_ui.current_durability
+        );
+        slots_tool[index].SetItem(slot_item_ui.item, slot_item_ui.current_durability);
+    }
+
+    public void ClearArmorSlotItem(int index)
+    {
+        equipped_armor[index] = null;
+        slots_armor[index].ClearSlotItem();
+    }
+
+    public void ClearToolSlotItem(int index)
+    {
+        equipped_tools[index] = null;
+        slots_tool[index].ClearSlotItem();
+    }
+
     public void CalculateStatsFromEquipment()
     {
         PlayerStats player_stats = Player.instance.player_stats;

@@ -43,6 +43,24 @@ public partial class EquipmentSelectBar : Container
         return current_selected_slot_item_ui;
     }
 
+    public void ClearSelectSlot(int index)
+    {
+        select_slots[index].ClearSlotItem();
+        if (current_selected_slot == index)
+            current_selected_slot_item_ui = null;
+    }
+
+    public void SetItemInSelectSlot(int index, SlotItemUI slot_item_ui)
+    {
+        select_slots[index]
+            .SetItem(
+                PlayerInventoryUI.clicked_slot_item_ui.item,
+                PlayerInventoryUI.clicked_slot_item_ui.current_durability
+            );
+        if (current_selected_slot == index)
+            SelectSelectSlot(index);
+    }
+
     public MineableObject.MINING_LEVEL GetSelectedTypeLevel()
     {
         if (GetSelectedSlotItemUI() != null)
