@@ -5,14 +5,10 @@ using Godot;
 public partial class BuildMenuListObject : Control
 {
     [Export]
-    public TextureRect textureRect;
-
-    [Export]
-    public Label title_label,
-        description_label;
-
-    [Export]
     public Button build_button;
+
+    [Export]
+    public TextureRect texture;
 
     [Export]
     public ItemRowManager item_row_manager;
@@ -30,9 +26,12 @@ public partial class BuildMenuListObject : Control
         Building_Node placeable = building_type.scene.Instantiate() as Building_Node;
         try
         {
-            title_label.Text = ((placeable_building)placeable).GetTitle();
-            textureRect.Texture = ((placeable_building)placeable).GetSprite().Texture;
-            description_label.Text = ((placeable_building)placeable).GetDescription();
+            texture.TooltipText =
+                TranslationServer.Translate(((placeable_building)placeable).GetTitle()) + "\n";
+            texture.Texture = ((placeable_building)placeable).GetSprite().Texture;
+            texture.TooltipText += TranslationServer.Translate(
+                ((placeable_building)placeable).GetDescription()
+            );
 
             if (item_row_manager.CanCreate(building_type.required_items))
                 build_button.Disabled = false;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bveoiwi14ha4g"]
+[gd_scene load_steps=25 format=4 uid="uid://bveoiwi14ha4g"]
 
 [ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island.cs" id="1_sbvtb"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="2_naawu"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="13_lo8qh"]
 [ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Scenes/World Objects/Mineable Objects/mineable_object_stone.tscn" id="13_sqojh"]
 [ext_resource type="PackedScene" uid="uid://hl3jkk2n0f7x" path="res://Scenes/World Objects/Mineable Objects/mineable_object_wheat.tscn" id="14_kjoym"]
+[ext_resource type="PackedScene" uid="uid://eshgc8yqihmh" path="res://Scenes/World Objects/Mineable Objects/mineable_object_fibre.tscn" id="16_eltw0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cugrr"]
 size = Vector2(32, 32)
@@ -324,6 +325,15 @@ position = Vector2(-177, 50)
 
 [node name="Wheat7" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
 position = Vector2(65, -127)
+
+[node name="Fibre" parent="IslandObjectSaveManager" instance=ExtResource("16_eltw0")]
+position = Vector2(138, 46)
+
+[node name="Fibre2" parent="IslandObjectSaveManager" instance=ExtResource("16_eltw0")]
+position = Vector2(26, -77)
+
+[node name="Fibre3" parent="IslandObjectSaveManager" instance=ExtResource("16_eltw0")]
+position = Vector2(106, 45)
 
 [connection signal="mouse_entered" from="QuestSign/MouseArea" to="QuestSign/MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="QuestSign/MouseArea" to="QuestSign/MouseArea" method="OnMouseLeaved"]
