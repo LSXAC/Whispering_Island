@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=89 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://Scripts/UI Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -56,6 +56,7 @@
 [ext_resource type="Resource" uid="uid://cdmu1tdyjj3rf" path="res://Resource Meta/Crafting Recipies/Basics/crafting_recipe_iron_block.tres" id="30_ai4s4"]
 [ext_resource type="Resource" uid="uid://cfioc6hnfrwbd" path="res://Resource Meta/Crafting Recipies/Armor/crafting_recipe_mystic_armor_chestplate.tres" id="31_33fii"]
 [ext_resource type="Script" uid="uid://b3t4ic6iwowss" path="res://Scripts/UI Scripts/SoundSlider.cs" id="37_vnnff"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="40_7ai0l"]
 [ext_resource type="Resource" uid="uid://d4jfhgrp8h07j" path="res://Resource Meta/Crafting Recipies/Tools/crafting_recipe_stone_pickaxe.tres" id="42_1phxn"]
 [ext_resource type="Resource" uid="uid://cxk2altccown" path="res://Resource Meta/Crafting Recipies/Tools/crafting_recipe_wood_hoe.tres" id="44_t54eg"]
 [ext_resource type="Resource" uid="uid://cydbh0i4ql0ev" path="res://Resource Meta/Crafting Recipies/Toolparts/crafting_recipe_wood_handle.tres" id="48_jkil6"]
@@ -79,28 +80,28 @@
 script = ExtResource("15_jkil6")
 slot_type = 1
 durability = 100
-stats = []
+stats = Array[ExtResource("17_jkil6")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_8ll2j"]
 script = ExtResource("15_jkil6")
 slot_type = 2
 durability = 100
-stats = []
+stats = Array[ExtResource("17_jkil6")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_vb8f1"]
 script = ExtResource("15_jkil6")
 slot_type = 3
 durability = 100
-stats = []
+stats = Array[ExtResource("17_jkil6")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_bxu4c"]
 script = ExtResource("15_jkil6")
 slot_type = 4
 durability = 100
-stats = []
+stats = Array[ExtResource("17_jkil6")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_kimtu"]
@@ -1950,7 +1951,7 @@ label_translation_string = "CRAFTING_MENU_TOPBAR_RESOURCE_NEEDED"
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = [ExtResource("12_h3bpf"), ExtResource("13_o680h"), ExtResource("30_ai4s4")]
+crafting_recipies = Array[ExtResource("40_7ai0l")]([ExtResource("12_h3bpf"), ExtResource("13_o680h"), ExtResource("30_ai4s4")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuBasic"]
 custom_minimum_size = Vector2(320, 222)
@@ -1966,7 +1967,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = [ExtResource("19_pe00a"), ExtResource("42_1phxn"), ExtResource("16_1o4en"), ExtResource("44_t54eg")]
+crafting_recipies = Array[ExtResource("40_7ai0l")]([ExtResource("19_pe00a"), ExtResource("42_1phxn"), ExtResource("16_1o4en"), ExtResource("44_t54eg")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuTools"]
 custom_minimum_size = Vector2(320, 220)
@@ -1980,7 +1981,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = [ExtResource("18_vv5t7"), ExtResource("19_f07lv"), ExtResource("20_jycfp"), ExtResource("48_jkil6"), ExtResource("21_13841")]
+crafting_recipies = Array[ExtResource("40_7ai0l")]([ExtResource("18_vv5t7"), ExtResource("19_f07lv"), ExtResource("20_jycfp"), ExtResource("48_jkil6"), ExtResource("21_13841")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuToolparts"]
 custom_minimum_size = Vector2(320, 220)
@@ -1994,7 +1995,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
 parent = NodePath("ScrollContainer/VBoxContainer")
-crafting_recipies = [ExtResource("31_33fii"), ExtResource("51_7ai0l"), ExtResource("52_jqjem"), ExtResource("53_8ll2j")]
+crafting_recipies = Array[ExtResource("40_7ai0l")]([ExtResource("31_33fii"), ExtResource("51_7ai0l"), ExtResource("52_jqjem"), ExtResource("53_8ll2j")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuArmor"]
 custom_minimum_size = Vector2(320, 220)

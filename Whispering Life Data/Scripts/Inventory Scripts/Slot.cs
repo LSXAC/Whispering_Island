@@ -22,9 +22,7 @@ public partial class Slot : Button
     ItemSave[] item_array = null;
     SlotUpdater slotUpdater;
     ChestBase chest = null;
-    PackedScene slot_item_ui_scene = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/UI/slot_item_ui.tscn"
-    );
+    PackedScene slot_item_ui_scene = GD.Load<PackedScene>("res://Scenes/UI/slot_item_ui.tscn");
 
     public override void _Ready()
     {
@@ -160,7 +158,7 @@ public partial class Slot : Button
                         return;
                     }
 
-                if (slot_item_ui.item.info.HasAttribute<ToolAttribute>())
+                if (slot_item_ui.item.info.HasAttribute<WearableAttribute>())
                     CreateClickedItem(
                         HalfAmountNextInt(slot_item_ui.item.amount),
                         slot_item_ui.current_durability
@@ -173,6 +171,12 @@ public partial class Slot : Button
         }
         else
         {
+            if (
+                GetAmountOfSlot(item_array)
+                == PlayerInventoryUI.clicked_slot_item_ui.item.info.max_stackable_size
+            )
+                return;
+
             if (slot_item_ui == null)
             {
                 if (check_attributes)
@@ -218,12 +222,6 @@ public partial class Slot : Button
                     return;
                 }
             }
-
-            if (
-                GetAmountOfSlot(item_array)
-                == PlayerInventoryUI.clicked_slot_item_ui.item.info.max_stackable_size
-            )
-                return;
 
             if (ItemCanBeHalfed(PlayerInventoryUI.clicked_slot_item_ui))
                 if (btn.ButtonMask == MouseButtonMask.Right)
@@ -287,24 +285,25 @@ public partial class Slot : Button
 
     public void UpdateItem(Item item, int durability)
     {
-        if (GetSlotItemUI() != null)
+        if (GetSlotItemUI() == null)
         {
-            if (item.info == GetSlotItemUI().item.info)
-            {
-                if (durability != -1)
-                    GetSlotItemUI().SetDurability(durability);
+            SetItem(item, durability);
+            return;
+        }
 
-                GetSlotItemUI().item.amount = item.amount;
-                GetSlotItemUI().UpdateAmountLabel();
-            }
-            else
-            {
-                GetSlotItemUI().QueueFree();
-                SetItem(item, durability);
-            }
+        if (item.info == GetSlotItemUI().item.info)
+        {
+            if (durability != -1)
+                GetSlotItemUI().SetDurability(durability);
+
+            GetSlotItemUI().item.amount = item.amount;
+            GetSlotItemUI().UpdateAmountLabel();
         }
         else
+        {
+            GetSlotItemUI().QueueFree();
             SetItem(item, durability);
+        }
     }
 
     public SlotItemUI GetSlotItemUI()

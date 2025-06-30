@@ -26,7 +26,7 @@ public partial class SlotItemUI : TextureRect
         amount_label.Text = item.amount + "x";
         UpdateToolTip();
 
-        ToolAttribute attribute = item.info.GetAttributeOrNull<ToolAttribute>();
+        WearableAttribute attribute = item.info.GetAttributeOrNull<WearableAttribute>();
         //57cb00
         if (attribute == null)
         {

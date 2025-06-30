@@ -174,35 +174,35 @@ public partial class Inventory : SlotUpdater
         return items;
     }
 
-    public void AddItem(Item item, ItemSave[] array)
+    public void AddItem(Item item, ItemSave[] inventory)
     {
         ItemInfo item_info = item.info;
         //Check if Item already exists // 70
         int remaining = item.amount;
-        for (int i = 0; i < array.Length; i++)
+        for (int i = 0; i < inventory.Length; i++)
         {
-            if (array[i] == null)
+            if (inventory[i] == null)
                 continue;
 
-            if (array[i].item_id == (int)item_info.id)
+            if (inventory[i].item_id == (int)item_info.id)
             {
                 // 20 + 70
                 if (remaining > 0)
                 {
-                    if (array[i].amount == item_info.max_stackable_size)
+                    if (inventory[i].amount == item_info.max_stackable_size)
                         continue;
                     // 47 + 70 != 48
-                    if (array[i].amount + remaining <= item_info.max_stackable_size)
+                    if (inventory[i].amount + remaining <= item_info.max_stackable_size)
                     {
-                        array[i].amount += remaining;
+                        inventory[i].amount += remaining;
                         remaining = 0;
                         UpdateSlot(i);
                         return;
                     }
                     else
                     { // 48 - 47 = 1
-                        int diff = item_info.max_stackable_size - array[i].amount;
-                        array[i].amount = item_info.max_stackable_size;
+                        int diff = item_info.max_stackable_size - inventory[i].amount;
+                        inventory[i].amount = item_info.max_stackable_size;
                         remaining -= diff;
                         UpdateSlot(i);
                     }
@@ -214,17 +214,21 @@ public partial class Inventory : SlotUpdater
             );
         }
 
-        ToolAttribute attribute = item_info.GetAttributeOrNull<ToolAttribute>();
+        WearableAttribute attribute = item_info.GetAttributeOrNull<WearableAttribute>();
         //Check latest Slot which is Null
-        for (int i = 0; i < array.Length; i++)
-            if (array[i] == null)
+        for (int i = 0; i < inventory.Length; i++)
+            if (inventory[i] == null)
             {
                 if (remaining <= item_info.max_stackable_size)
                 {
                     if (attribute != null)
-                        array[i] = new ItemSave((int)item_info.id, remaining, attribute.durability);
+                        inventory[i] = new ItemSave(
+                            (int)item_info.id,
+                            remaining,
+                            attribute.durability
+                        );
                     else
-                        array[i] = new ItemSave((int)item_info.id, remaining);
+                        inventory[i] = new ItemSave((int)item_info.id, remaining);
 
                     QuestMiniPanel.instance.UpdateQuestMiniPanel(
                         QuestManager.instance.quests[QuestManager.current_quest_id]
@@ -235,9 +239,16 @@ public partial class Inventory : SlotUpdater
                 else
                 {
                     if (attribute != null)
-                        array[i] = new ItemSave((int)item_info.id, remaining, attribute.durability);
+                        inventory[i] = new ItemSave(
+                            (int)item_info.id,
+                            remaining,
+                            attribute.durability
+                        );
                     else
-                        array[i] = new ItemSave((int)item_info.id, item_info.max_stackable_size);
+                        inventory[i] = new ItemSave(
+                            (int)item_info.id,
+                            item_info.max_stackable_size
+                        );
                     QuestMiniPanel.instance.UpdateQuestMiniPanel(
                         QuestManager.instance.quests[QuestManager.current_quest_id]
                     );
@@ -398,7 +409,7 @@ public partial class Inventory : SlotUpdater
 
     public int GetDurability(int index)
     {
-        ToolAttribute attribute = GetItemInfo(index).GetAttributeOrNull<ToolAttribute>();
+        WearableAttribute attribute = GetItemInfo(index).GetAttributeOrNull<WearableAttribute>();
         if (attribute != null)
             return inventory_items[index].current_durability;
         else

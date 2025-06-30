@@ -91,10 +91,10 @@ public partial class ResearchTab : ColorRect
 
         Inventory.ITEM_ID id = info.id;
 
-        if (!Database.researchs.ContainsKey(id))
+        if (!Database.instance.researchs.ContainsKey(id))
             return;
 
-        for (int i = 1; i < Database.researchs[id].item_research_levels.Count + 1; i++)
+        for (int i = 1; i < Database.instance.researchs[id].item_research_levels.Count + 1; i++)
         {
             if (research_saves.ContainsKey(id))
                 if (research_saves[id].research_level >= i)
@@ -103,9 +103,9 @@ public partial class ResearchTab : ColorRect
             LevelTab lt = research_level_tab.Instantiate() as LevelTab;
             tab_container.AddChild(lt);
             lt.UpdateLevelTab(
-                Database.researchs[id].translation_string,
+                Database.instance.researchs[id].translation_string,
                 i,
-                Database.researchs[id].item_research_levels[i - 1], //Bonus String
+                Database.instance.researchs[id].item_research_levels[i - 1], //Bonus String
                 (Database.UPGRADE_LEVEL)i
             );
         }

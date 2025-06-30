@@ -4,6 +4,14 @@ using Godot.Collections;
 
 public partial class Database : Node
 {
+    public static Database instance;
+
+    public override void _Ready()
+    {
+        instance = this;
+        GD.Print("Database is ready.");
+    }
+
     public enum UPGRADE_LEVEL
     {
         Level0,
@@ -16,7 +24,8 @@ public partial class Database : Node
 
     // RESEARCH LINES ------------------------------------------------------------------------------------------------
 
-    public static Dictionary<Inventory.ITEM_ID, ItemResearch> researchs = new Dictionary<
+    [Export]
+    public Dictionary<Inventory.ITEM_ID, ItemResearch> researchs = new Dictionary<
         Inventory.ITEM_ID,
         ItemResearch
     >()

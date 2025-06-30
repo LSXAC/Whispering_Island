@@ -64,7 +64,7 @@ public partial class CheatTab : ColorRect
             }
             catch (Exception e)
             {
-                GD.PrintErr($"Error creating item with ID {i}: {e.Message}");
+                GD.PrintErr($"Error creating item with ID {i}: {e.Message} {item_infos[i].name}");
             }
         }
         OnDeselectAll();
