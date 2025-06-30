@@ -36,8 +36,7 @@ public partial class QuestMiniPanel : PanelContainer
             + ": "
             + min.ToString("D2")
             + ":"
-            + sec.ToString("D2")
-            + "s";
+            + sec.ToString("D2");
     }
 
     public void InitQuestMiniPanel(QuestInfo currentQuest)

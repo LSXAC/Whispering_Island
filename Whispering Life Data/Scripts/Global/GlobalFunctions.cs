@@ -97,7 +97,7 @@ public partial class GlobalFunctions : Node2D
     public static void StartAfterTutorial()
     {
         GameManager.instance.tutorial_finished = true;
-        GameManager.instance.game_timer.Start();
+        TimeManager.instance.game_timer.Start();
         QuestManager.instance.StartQuest();
     }
 

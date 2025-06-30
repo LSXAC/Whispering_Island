@@ -30,7 +30,7 @@ public partial class BuildingCollider : Area2D
 
     public override void _Process(double delta)
     {
-        if (Building_Placer.current_building == GetParent().GetParent())
+        if (BuildingPlacer.current_building == GetParent().GetParent())
             MakeInvisibleRect(true);
         else if (rect.Texture == grid_outline_green)
             MakeInvisibleRect(false);
@@ -52,7 +52,7 @@ public partial class BuildingCollider : Area2D
                 if (node is RailArea)
                 {
                     on_building = true;
-                    Building_Placer.moveable_selected_parent = node.GetParent<Rail>().item_holder;
+                    BuildingPlacer.moveable_selected_parent = node.GetParent<Rail>().item_holder;
                     break;
                 }
                 continue;

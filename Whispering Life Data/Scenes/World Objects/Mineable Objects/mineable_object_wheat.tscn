@@ -171,7 +171,6 @@ script = ExtResource("4_632dl")
 animation_player = NodePath("AnimationPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="SpriteAnimationPlayer"]
-self_modulate = Color(0.9238, 0.555292, 0.974702, 1)
 y_sort_enabled = true
 texture = ExtResource("3_ubji6")
 offset = Vector2(-8, -14)

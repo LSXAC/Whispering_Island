@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="3_2gr0d"]
 [ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Scripts/Manager Scripts/ItemRowManager.cs" id="4_n07vt"]
 
-[node name="BuildingMenuChild" type="Control" node_paths=PackedStringArray("build_button", "texture", "title_label", "item_row_manager")]
+[node name="BuildingMenuChild" type="Control" node_paths=PackedStringArray("build_button", "texture", "item_row_manager")]
 custom_minimum_size = Vector2(96, 128)
 layout_mode = 3
 anchors_preset = 0
@@ -14,7 +14,6 @@ offset_bottom = 128.0
 script = ExtResource("1_d5smx")
 build_button = NodePath("ColorRect/VBoxContainer/Button")
 texture = NodePath("ColorRect/VBoxContainer/ColorRect/TextureButton")
-title_label = NodePath("ColorRect/VBoxContainer/TitleLabel")
 item_row_manager = NodePath("ColorRect/VBoxContainer/HBoxContainer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -38,13 +37,6 @@ offset_right = 32.0
 offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TitleLabel" type="Label" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_2gr0d")
-theme_override_font_sizes/font_size = 10
-text = "BELT"
-horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(60, 60)

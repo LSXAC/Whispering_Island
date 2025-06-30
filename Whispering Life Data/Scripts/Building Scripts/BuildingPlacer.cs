@@ -5,7 +5,7 @@ using System.Reflection.PortableExecutable;
 using Godot;
 using Godot.Collections;
 
-public partial class Building_Placer : Node2D
+public partial class BuildingPlacer : Node2D
 {
     [Export]
     public IslandManager island_manager;

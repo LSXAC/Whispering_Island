@@ -4,7 +4,7 @@ using Godot.Collections;
 public partial class BuildMenu : CanvasLayer
 {
     [Export]
-    public Building_Placer building_placer;
+    public BuildingPlacer building_placer;
 
     public static BuildMenu instance;
 

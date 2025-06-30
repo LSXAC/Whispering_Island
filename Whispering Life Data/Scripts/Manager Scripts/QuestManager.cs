@@ -122,7 +122,7 @@ public partial class QuestManager : Node
             NextQuest(finished_correctly: false, penealty);
         }
 
-        current_quest_time -= 1;
+        current_quest_time -= GameManager.time_multiplier;
         QuestMiniPanel.instance.UpdateTimeLabel(current_quest_time);
     }
 

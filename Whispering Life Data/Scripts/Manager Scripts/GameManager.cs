@@ -9,7 +9,7 @@ using Godot.Collections;
 public partial class GameManager : Node2D
 {
     [Export]
-    public Building_Placer building_placer;
+    public BuildingPlacer building_placer;
 
     public static CanvasLayer current_activ_canvaslayer = null;
 
@@ -18,10 +18,9 @@ public partial class GameManager : Node2D
     public static bool gameover = false;
 
     public static bool[,] island_matrix;
+    public static int time_multiplier = 5;
 
     public static BuildingMode building_mode = BuildingMode.None;
-
-    public static float game_time_since_start;
 
     public static bool In_Cutscene = false;
     public bool tutorial_finished = false;
@@ -35,8 +34,6 @@ public partial class GameManager : Node2D
         Placing,
         Removing
     }
-
-    public Timer game_timer;
 
     public SaveState save_state = new SaveState();
 
@@ -62,10 +59,8 @@ public partial class GameManager : Node2D
         In_Cutscene = false;
         island_matrix = new bool[21, 21];
         current_activ_canvaslayer = null;
-        game_time_since_start = 0f;
 
         cutscene_camera = GetNode<Camera2D>("CutsceneCamera");
-        game_timer = GetNode<Timer>("GameTimer");
         island_parent = GetNode<Node2D>("IslandManager");
         Node2D main_island_scene = island_parent.GetNode<Node2D>("MainIsland");
 
@@ -89,7 +84,6 @@ public partial class GameManager : Node2D
         //Save Quest
         save_state.quest_save.current_quest_id = QuestManager.current_quest_id;
         save_state.quest_save.quest_time_left = QuestManager.current_quest_time;
-        save_state.game_time_since_start = game_time_since_start;
 
         if (PlayerInventoryUI.instance != null)
             save_state.char_save.inventory_items = PlayerInventoryUI.instance.inventory_items;
@@ -155,8 +149,6 @@ public partial class GameManager : Node2D
         Skilltree.skill_progress = save_state.skill_saves;
         ResearchTab.instance.Research_Points = save_state.Research_Points;
 
-        game_time_since_start = save_state.game_time_since_start;
-
         HeartManager.instance.current_hearts = save_state.current_hearts;
         HeartManager.instance.UpdateHeartUI();
 
@@ -164,13 +156,7 @@ public partial class GameManager : Node2D
         QuestManager.next_quest_is_doubled_items = save_state.is_doubled_quest;
         QuestManager.instance.StartQuest(save_state.quest_save);
 
-        game_timer.Start();
-    }
-
-    public void OnGameTimerTimeout()
-    {
-        game_time_since_start += 0.1f;
-        PlayerUI.instance.UpdateGameTimeLabel();
+        TimeManager.instance.game_timer.Start();
     }
 
     private void CreateIslands()
@@ -229,7 +215,7 @@ public partial class GameManager : Node2D
         GameMenu.instance.Visible = false;
         BuildMenu.instance.Visible = false;
         QuestMenu.instance.Visible = false;
-        instance.game_timer.Stop();
+        TimeManager.instance.game_timer.Stop();
         gameover = true;
     }
 }

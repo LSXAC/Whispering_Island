@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://syryag1vxgf7" path="res://Scripts/UI Scripts/BuildMenu.cs" id="1_6maqu"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_e7u7j"]
 [ext_resource type="Texture2D" uid="uid://b6kjyf31e4wqm" path="res://Sprites/Items/Icons_3rd/Hammer.png" id="3_0xt1x"]
-[ext_resource type="PackedScene" uid="uid://cdhcxqbnihsdo" path="res://Scenes/UI/build_menu_child.tscn" id="3_dc85r"]
+[ext_resource type="PackedScene" uid="uid://cbe4yue61l823" path="res://Scenes/UI/build_menu_child.tscn" id="3_dc85r"]
 [ext_resource type="Script" uid="uid://2t1ns5okffld" path="res://Scripts/UI Scripts/BuildMenuPageObject.cs" id="4_6buxp"]
 
 [node name="BuildMenu" type="CanvasLayer" node_paths=PackedStringArray("production_page", "decoration_page", "planting_page", "research_page")]

@@ -144,8 +144,7 @@ public partial class PlayerUI : CanvasLayer
         game_time_label.Text =
             TranslationServer.Translate("PLAYERUI_GAMETIME")
             + ": "
-            + GameManager.game_time_since_start.ToString("N2")
-            + "s";
+            + TimeManager.instance.GetTimeFormat();
     }
 
     public void OnLoadGameButton()

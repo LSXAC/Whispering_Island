@@ -1,7 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=24 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" uid="uid://sxd7avtys7n7" path="res://Scripts/Manager Scripts/GameManager.cs" id="1_2n0he"]
-[ext_resource type="Script" uid="uid://cwonaacplejxj" path="res://Scripts/Building Scripts/Building_Placer.cs" id="2_h8pdp"]
+[ext_resource type="Script" uid="uid://cwonaacplejxj" path="res://Scripts/Building Scripts/BuildingPlacer.cs" id="2_h8pdp"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="3_lj4ef"]
 [ext_resource type="PackedScene" uid="uid://njw4so7o83dw" path="res://Scenes/Player/player.tscn" id="4_wajns"]
 [ext_resource type="Script" uid="uid://fsantgyda1en" path="res://Scripts/Manager Scripts/IslandManager.cs" id="5_f280c"]
@@ -14,6 +14,9 @@
 [ext_resource type="Resource" uid="uid://c1p7gva6jex80" path="res://Dialogues/Questing.dialogue" id="12_t3yax"]
 [ext_resource type="Script" uid="uid://diq6llslgpl4r" path="res://Scripts/Manager Scripts/QuestManager.cs" id="13_irdkv"]
 [ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Resource Meta/Quests/quest_info_1.tres" id="14_sw2xm"]
+[ext_resource type="Script" uid="uid://c54qloxkixlh" path="res://Scenes/Manager/TimeManager.cs" id="21_3gobv"]
+[ext_resource type="Script" uid="uid://blf1q1vqdlpkq" path="res://Scenes/Manager/DayNightManager.cs" id="22_3jk2j"]
+[ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Resource Meta/daynightcycle-gradient-texture.tres" id="23_rd84m"]
 [ext_resource type="Script" uid="uid://duioi7flou3wn" path="res://Scripts/Tutorial.cs" id="24_f4sbj"]
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="25_47dgn"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="26_nq6jg"]
@@ -126,12 +129,19 @@ wait_time = 0.2
 autostart = true
 script = ExtResource("29_q20se")
 
-[node name="GameTimer" type="Timer" parent="."]
-wait_time = 0.1
+[node name="TimeManager" type="Node2D" parent="." node_paths=PackedStringArray("game_timer")]
+script = ExtResource("21_3gobv")
+game_timer = NodePath("GameTimer")
+
+[node name="GameTimer" type="Timer" parent="TimeManager"]
+
+[node name="DayNightManager" type="CanvasModulate" parent="."]
+script = ExtResource("22_3jk2j")
+dayNightGradient = ExtResource("23_rd84m")
 
 [connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
 [connection signal="timeout" from="GlobalAnimationTimer" to="GlobalAnimationTimer" method="OnAnimationGlobalTimerTimeout"]
-[connection signal="timeout" from="GameTimer" to="." method="OnGameTimerTimeout"]
+[connection signal="timeout" from="TimeManager/GameTimer" to="TimeManager" method="OnGameTimerTimeout"]
 
 [editable path="IslandManager/MainIsland"]
 [editable path="BuildingMenu"]
