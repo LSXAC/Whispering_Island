@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=88 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://Scripts/UI Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -24,13 +24,14 @@
 [ext_resource type="PackedScene" uid="uid://cd8pn6e2fwrpm" path="res://Scenes/UI/research_level_tab.tscn" id="12_3k1qw"]
 [ext_resource type="Resource" uid="uid://dr5yac7cj8scc" path="res://Resource Meta/Crafting Recipies/Basics/crafting_recipe_wood_plank.tres" id="12_h3bpf"]
 [ext_resource type="Resource" uid="uid://bedyblbr23cwl" path="res://Resource Meta/Crafting Recipies/Basics/crafting_recipe_wood_stick.tres" id="13_o680h"]
-[ext_resource type="Script" uid="uid://drcwlj30bop67" path="res://Scripts/Item/WearableAttribute.cs" id="15_jkil6"]
+[ext_resource type="Script" uid="uid://c80nhtlc3g8ga" path="res://Scripts/Item/ArmorAttribute.cs" id="15_jkil6"]
 [ext_resource type="Resource" uid="uid://bp4wq2ypl075m" path="res://Resource Meta/Crafting Recipies/Tools/crafting_recipe_wood_axe.tres" id="16_1o4en"]
 [ext_resource type="Script" uid="uid://c1q35nbh8sb51" path="res://Scripts/UI Scripts/IslandMenu.cs" id="16_burxg"]
 [ext_resource type="Script" uid="uid://c7qu86gm6haea" path="res://Scripts/UI Scripts/CheatTab.cs" id="16_f2xax"]
 [ext_resource type="Script" uid="uid://btkxakelo3d1y" path="res://Scripts/UI Scripts/SettingsTab.cs" id="16_jv3kw"]
 [ext_resource type="Texture2D" uid="uid://syf34dx878d5" path="res://Sprites/Flaggs/US_FLAG.png" id="16_ldk1u"]
 [ext_resource type="Script" uid="uid://c8gcdq44rac7i" path="res://Scripts/Skilltree.cs" id="16_x6qgy"]
+[ext_resource type="Script" uid="uid://v7dew0yr5trl" path="res://Scripts/Item/ToolAttribute.cs" id="17_7ai0l"]
 [ext_resource type="Script" uid="uid://mtwprpv04hll" path="res://Scripts/UI Scripts/ChestTab.cs" id="17_8qgvy"]
 [ext_resource type="Script" uid="uid://kt6251mwvbjq" path="res://Scripts/SkillBox.cs" id="17_44ufd"]
 [ext_resource type="StyleBox" uid="uid://beanw2e3ddca1" path="res://Resource Meta/Menus/OptionButtonStyle.tres" id="17_hyydq"]
@@ -78,57 +79,69 @@
 script = ExtResource("15_jkil6")
 slot_type = 1
 durability = 100
-stats = Array[ExtResource("17_jkil6")]([])
-metadata/_custom_type_script = "uid://drcwlj30bop67"
+stats = []
+metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_8ll2j"]
 script = ExtResource("15_jkil6")
 slot_type = 2
 durability = 100
-stats = Array[ExtResource("17_jkil6")]([])
-metadata/_custom_type_script = "uid://drcwlj30bop67"
+stats = []
+metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_vb8f1"]
 script = ExtResource("15_jkil6")
 slot_type = 3
 durability = 100
-stats = Array[ExtResource("17_jkil6")]([])
-metadata/_custom_type_script = "uid://drcwlj30bop67"
+stats = []
+metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_bxu4c"]
 script = ExtResource("15_jkil6")
 slot_type = 4
 durability = 100
-stats = Array[ExtResource("17_jkil6")]([])
-metadata/_custom_type_script = "uid://drcwlj30bop67"
-
-[sub_resource type="Resource" id="Resource_t54eg"]
-script = ExtResource("15_jkil6")
-slot_type = 5
-durability = 100
-stats = Array[ExtResource("17_jkil6")]([])
-metadata/_custom_type_script = "uid://drcwlj30bop67"
-
-[sub_resource type="Resource" id="Resource_jkil6"]
-script = ExtResource("15_jkil6")
-slot_type = 5
-durability = 100
-stats = Array[ExtResource("17_jkil6")]([])
-metadata/_custom_type_script = "uid://drcwlj30bop67"
-
-[sub_resource type="Resource" id="Resource_7ai0l"]
-script = ExtResource("15_jkil6")
-slot_type = 5
-durability = 100
-stats = Array[ExtResource("17_jkil6")]([])
-metadata/_custom_type_script = "uid://drcwlj30bop67"
+stats = []
+metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_kimtu"]
-script = ExtResource("15_jkil6")
+script = ExtResource("17_7ai0l")
+type = 0
+use_type = 3
+mining_level = 0
 slot_type = 5
 durability = 100
 stats = Array[ExtResource("17_jkil6")]([])
-metadata/_custom_type_script = "uid://drcwlj30bop67"
+metadata/_custom_type_script = "uid://v7dew0yr5trl"
+
+[sub_resource type="Resource" id="Resource_68nsa"]
+script = ExtResource("17_7ai0l")
+type = 0
+use_type = 3
+mining_level = 0
+slot_type = 5
+durability = 100
+stats = Array[ExtResource("17_jkil6")]([])
+metadata/_custom_type_script = "uid://v7dew0yr5trl"
+
+[sub_resource type="Resource" id="Resource_gix8t"]
+script = ExtResource("17_7ai0l")
+type = 0
+use_type = 3
+mining_level = 0
+slot_type = 5
+durability = 100
+stats = Array[ExtResource("17_jkil6")]([])
+metadata/_custom_type_script = "uid://v7dew0yr5trl"
+
+[sub_resource type="Resource" id="Resource_tkty2"]
+script = ExtResource("17_7ai0l")
+type = 0
+use_type = 3
+mining_level = 0
+slot_type = 5
+durability = 100
+stats = Array[ExtResource("17_jkil6")]([])
+metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tibut"]
 bg_color = Color(1, 1, 1, 0)
@@ -395,7 +408,7 @@ theme_override_font_sizes/font_size = 6
 text = "[Head]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_HEAD"
-attribute = SubResource("Resource_jqjem")
+attribute_to_check = SubResource("Resource_jqjem")
 
 [node name="ChestSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -406,7 +419,7 @@ theme_override_font_sizes/font_size = 6
 text = "[Chest]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_CHEST"
-attribute = SubResource("Resource_8ll2j")
+attribute_to_check = SubResource("Resource_8ll2j")
 
 [node name="LegSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -417,7 +430,7 @@ theme_override_font_sizes/font_size = 6
 text = "[Legs]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_LEGS"
-attribute = SubResource("Resource_vb8f1")
+attribute_to_check = SubResource("Resource_vb8f1")
 
 [node name="ShoesSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -428,7 +441,7 @@ theme_override_font_sizes/font_size = 6
 text = "[Foots]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_FOOTS"
-attribute = SubResource("Resource_bxu4c")
+attribute_to_check = SubResource("Resource_bxu4c")
 
 [node name="ColorRectProfil" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel"]
 layout_mode = 0
@@ -470,7 +483,7 @@ theme_override_font_sizes/font_size = 5
 text = "[Weapon]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_WEAPON"
-attribute = SubResource("Resource_t54eg")
+attribute_to_check = SubResource("Resource_kimtu")
 
 [node name="EquipSlot2" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
 custom_minimum_size = Vector2(32, 32)
@@ -481,7 +494,7 @@ theme_override_font_sizes/font_size = 5
 text = "[TOOL]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_TOOL"
-attribute = SubResource("Resource_jkil6")
+attribute_to_check = SubResource("Resource_68nsa")
 
 [node name="EquipSlot3" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
 custom_minimum_size = Vector2(32, 32)
@@ -492,7 +505,7 @@ theme_override_font_sizes/font_size = 5
 text = "[TOOL]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_TOOL"
-attribute = SubResource("Resource_7ai0l")
+attribute_to_check = SubResource("Resource_gix8t")
 
 [node name="EquipSlot4" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
 custom_minimum_size = Vector2(32, 32)
@@ -503,7 +516,7 @@ theme_override_font_sizes/font_size = 5
 text = "[TOOL]"
 script = ExtResource("4_v56ys")
 label_translation_string = "EQUIPMENT_SLOT_TOOL"
-attribute = SubResource("Resource_kimtu")
+attribute_to_check = SubResource("Resource_tkty2")
 
 [node name="GridContainer" type="GridContainer" parent="Background/InventoryTab/EquipmentPanel"]
 layout_mode = 0

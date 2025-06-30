@@ -589,7 +589,7 @@ grow_horizontal = 0
 script = ExtResource("17_450ol")
 normal_color = Color(1, 1, 1, 0)
 selected_color = Color(1, 0.839216, 0.0941176, 1)
-select_slots = [NodePath("VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SelectSlot")]
+select_slots = [NodePath("VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer/SelectSlot")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EquipmentSelectBar"]
 layout_mode = 2

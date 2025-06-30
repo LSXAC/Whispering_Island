@@ -5,8 +5,9 @@ using Godot;
 public partial class SlotItemUI : TextureRect
 {
     public Label amount_label;
+
+    public ProgressBar progress_bar;
     public int current_durability = -1;
-    public ProgressBar pb;
     public Item item;
 
     public override void _Notification(int what)
@@ -21,23 +22,16 @@ public partial class SlotItemUI : TextureRect
     public void init(Item item, int current_durability = -1)
     {
         this.item = item;
-        this.Size = new Vector2(20, 20);
-        this.Position = new Vector2(6, 6);
-
-        Label l = new Label { ZIndex = 1 };
-        l.HorizontalAlignment = HorizontalAlignment.Right;
-        l.AddThemeFontSizeOverride("font_size", 10);
-        l.CustomMinimumSize = new Vector2(30, 32);
-        l.Position = new Vector2(-6, -6);
-        l.VerticalAlignment = VerticalAlignment.Bottom;
-        amount_label = l;
+        Texture = item.info.texture;
+        amount_label.Text = item.amount + "x";
         UpdateToolTip();
 
-        //57cb00
         ToolAttribute attribute = item.info.GetAttributeOrNull<ToolAttribute>();
+        //57cb00
         if (attribute == null)
         {
-            AddChild(l);
+            amount_label.Visible = true;
+            progress_bar.Visible = false;
             return;
         }
 
@@ -46,23 +40,20 @@ public partial class SlotItemUI : TextureRect
         vbc.Size = new Vector2(40, 40);
         vbc.Alignment = BoxContainer.AlignmentMode.End;
 
-        pb = new ProgressBar();
-        pb.MouseFilter = MouseFilterEnum.Ignore;
-        pb.Size = new Vector2(40, 5);
-        pb.MaxValue = attribute.durability;
-        pb.Step = 1;
-        pb.Value = current_durability;
+        //Durability Bar
+        progress_bar.MaxValue = attribute.durability;
+        progress_bar.Value = current_durability;
         this.current_durability = current_durability;
-        pb.ShowPercentage = false;
+
         StyleBoxFlat sbf = new StyleBoxFlat();
         sbf.BgColor = new Color(0.34f, 0.796f, 0);
-        pb.AddThemeStyleboxOverride("fill", sbf);
-        vbc.AddChild(pb);
-        AddChild(vbc);
+        progress_bar.AddThemeStyleboxOverride("fill", sbf);
     }
 
     private void UpdateToolTip()
     {
+        return;
+
         TooltipText = TranslationServer.Translate(item.info.name.ToString()) + "\n";
         TooltipText += TranslationServer.Translate(item.info.description.ToString()) + "\n";
         foreach (ItemAttributeBase item_attribute in item.info.attributes)
@@ -95,13 +86,13 @@ public partial class SlotItemUI : TextureRect
 
     public void SetDurability(int durability)
     {
-        pb.Value = durability;
+        progress_bar.Value = durability;
     }
 
     public override void _Ready()
     {
-        Texture = item.info.texture;
-        ExpandMode = ExpandModeEnum.IgnoreSize;
-        StretchMode = StretchModeEnum.KeepAspectCentered;
+        amount_label = GetNode<Label>("Label");
+        progress_bar = GetNode<VBoxContainer>("VBoxContainer").GetNode<ProgressBar>("ProgressBar");
+        amount_label.Visible = false;
     }
 }
