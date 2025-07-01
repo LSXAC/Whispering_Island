@@ -21,7 +21,7 @@ public partial class ItemRowManager : HBoxContainer
         foreach (Control c in GetChildren())
             c.QueueFree();
 
-        if (items == null)
+        if (items == null || items.Count == 0)
             return false;
 
         int x = 0;

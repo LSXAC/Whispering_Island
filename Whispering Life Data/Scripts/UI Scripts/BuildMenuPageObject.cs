@@ -16,8 +16,6 @@ public partial class BuildMenuPageObject : ColorRect
         "res://Scenes/UI/build_menu_child.tscn"
     );
 
-    public override void _Ready() { }
-
     public void SetBuildings()
     {
         foreach (Control c in parent.GetChildren())

@@ -190,7 +190,7 @@ animations = [{
 "speed": 4.0
 }]
 
-[node name="BeltTunnel" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "item_holder", "detector", "building_collider_manager", "sprite", "collision_shape")]
+[node name="BeltTunnel" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "item_holder", "detector", "anim_manager12D", "building_collider_manager", "sprite", "collision_shape")]
 z_index = -1
 y_sort_enabled = true
 collision_layer = 13
@@ -199,6 +199,7 @@ script = ExtResource("1_8pw6g")
 checkAreaTimer = NodePath("CheckAreaTimer")
 item_holder = NodePath("ItemHolder")
 detector = NodePath("Detector")
+anim_manager12D = NodePath("AnimatedSprite2D")
 building_id = 1
 tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
@@ -234,12 +235,10 @@ position = Vector2(-24, -8)
 y_sort_enabled = true
 position = Vector2(-8, -10)
 
-[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+[node name="MouseArea" type="Area2D" parent="."]
 z_index = 1
 collision_layer = 2
 script = ExtResource("7_nklsv")
-building_node = NodePath("..")
-building_sprite = NodePath("../BuildingSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 position = Vector2(-8, -8)

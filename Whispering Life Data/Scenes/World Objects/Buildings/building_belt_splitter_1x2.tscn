@@ -23,22 +23,23 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
 size = Vector2(32, 32)
 
-[node name="BeltSplitter1x2" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "item_holder", "detector", "building_collider_manager", "sprite", "collision_shape")]
+[node name="BeltSplitter1x2" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "item_holder", "detector", "anim_manager12D", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_e8732")
-ignore_self_detector = true
-building_id = 21
-tile_types = Array[int]([0])
-title = "BUILDING_BELT_SPLITTER_1x2"
-description = "BUILDING_BELT_SPLITTER_1x2_DESC"
 checkAreaTimer = NodePath("CheckAreaTimer")
 belt_0 = NodePath("Belt")
 belt_1 = NodePath("Belt2")
 item_holder = NodePath("ItemHolder")
 detector = NodePath("Detector")
+ignore_self_detector = true
+anim_manager12D = NodePath("12DAnimationManager")
+building_id = 21
+tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
+title = "BUILDING_BELT_SPLITTER_1x2"
+description = "BUILDING_BELT_SPLITTER_1x2_DESC"
 sprite = NodePath("BuildingSprite")
 collision_shape = NodePath("CollisionShape2D")
 
@@ -69,12 +70,10 @@ position = Vector2(-24, -8)
 y_sort_enabled = true
 position = Vector2(-8, -10)
 
-[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+[node name="MouseArea" type="Area2D" parent="."]
 z_index = 1
 collision_layer = 2
 script = ExtResource("7_los21")
-building_node = NodePath("..")
-building_sprite = NodePath("../BuildingSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 position = Vector2(-8, -8)
@@ -111,15 +110,9 @@ texture = ExtResource("9_6dkwv")
 position = Vector2(-16, 0)
 disable_collision = true
 
-[node name="MouseArea" parent="Belt" index="5" node_paths=PackedStringArray("building_node")]
-building_node = NodePath("../..")
-
 [node name="Belt2" parent="." instance=ExtResource("10_gx0dn")]
 position = Vector2(-16, -16)
 disable_collision = true
-
-[node name="MouseArea" parent="Belt2" index="5" node_paths=PackedStringArray("building_node")]
-building_node = NodePath("../..")
 
 [node name="Top" type="Sprite2D" parent="."]
 y_sort_enabled = true

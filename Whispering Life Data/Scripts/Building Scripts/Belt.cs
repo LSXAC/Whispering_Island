@@ -43,9 +43,7 @@ public partial class Belt : TransportBase
                     {
                         if (item_holder.hasBeltItem())
                         {
-                            ItemInfo info = item_holder
-                                .GetBeltItem()
-                                .GetItemInfo();
+                            ItemInfo info = item_holder.GetBeltItem().GetItemInfo();
                             if (
                                 ((ProcessBuilding)area.GetParent<Taker>().building).GetItemResource(
                                     FurnaceTab.SlotType.IMPORT

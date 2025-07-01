@@ -73,13 +73,11 @@ position = Vector2(-8, -8)
 scale = Vector2(1, 0.75)
 texture = ExtResource("7_dvnnb")
 
-[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+[node name="MouseArea" type="Area2D" parent="."]
 z_index = 1
 position = Vector2(-16, -18)
 collision_layer = 2
 script = ExtResource("8_fmbrg")
-building_node = NodePath("..")
-building_sprite = NodePath("../BuildingSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 position = Vector2(8, 7)

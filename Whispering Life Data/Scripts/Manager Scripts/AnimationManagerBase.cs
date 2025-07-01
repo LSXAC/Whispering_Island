@@ -9,15 +9,32 @@ public partial class AnimationManagerBase : Node2D
 
     public void setFrame(int frame, double diff)
     {
-        if (GetTree() == null || !IsInstanceValid(this))
+        // Prüfe, ob das Objekt noch im Szenenbaum ist
+        SceneTree tree = null;
+
+        if (IsInsideTree())
+            tree = GetTree();
+        else
             return;
-        GetTree().CreateTimer(diff).Timeout += () => SetAnim(frame);
+
+        if (!IsInstanceValid(this) || tree == null)
+            return;
+
+        var timer = tree.CreateTimer(diff);
+        timer.Timeout += () =>
+        {
+            if (!IsInstanceValid(this))
+                return;
+
+            if (!IsInsideTree())
+                return;
+
+            SetAnim(frame);
+        };
     }
 
     private void SetAnim(int frame)
     {
-        if (!IsInstanceValid(this))
-            return;
         anim_sprite.Play(dir);
         anim_sprite.Frame = frame;
     }

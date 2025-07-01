@@ -23,7 +23,7 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
 size = Vector2(32, 48)
 
-[node name="BeltSplitter1x3" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "belt_2", "item_holder", "detector", "building_collider_manager", "sprite", "collision_shape")]
+[node name="BeltSplitter1x3" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "belt_2", "item_holder", "detector", "anim_manager12D", "building_collider_manager", "sprite", "collision_shape")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -35,6 +35,7 @@ belt_2 = NodePath("Belt3")
 item_holder = NodePath("ItemHolder")
 detector = NodePath("Detector")
 ignore_self_detector = true
+anim_manager12D = NodePath("12DAnimationManager")
 building_id = 22
 tile_types = Array[int]([0])
 building_collider_manager = NodePath("BuildingAreas")
@@ -70,12 +71,10 @@ position = Vector2(-24, -8)
 z_as_relative = false
 position = Vector2(-8, -8)
 
-[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+[node name="MouseArea" type="Area2D" parent="."]
 z_index = 1
 collision_layer = 2
 script = ExtResource("7_omdat")
-building_node = NodePath("..")
-building_sprite = NodePath("../BuildingSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 position = Vector2(-8, -8)
@@ -112,22 +111,13 @@ texture = ExtResource("9_16cul")
 position = Vector2(-16, 0)
 disable_collision = true
 
-[node name="MouseArea" parent="Belt" index="5" node_paths=PackedStringArray("building_node")]
-building_node = NodePath("../..")
-
 [node name="Belt2" parent="." instance=ExtResource("10_imdpi")]
 position = Vector2(-16, -16)
 disable_collision = true
 
-[node name="MouseArea" parent="Belt2" index="5" node_paths=PackedStringArray("building_node")]
-building_node = NodePath("../..")
-
 [node name="Belt3" parent="." instance=ExtResource("10_imdpi")]
 position = Vector2(-16, 16)
 disable_collision = true
-
-[node name="MouseArea" parent="Belt3" index="5" node_paths=PackedStringArray("building_node")]
-building_node = NodePath("../..")
 
 [node name="Top" type="Sprite2D" parent="."]
 y_sort_enabled = true

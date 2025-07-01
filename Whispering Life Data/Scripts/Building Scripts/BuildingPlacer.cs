@@ -11,7 +11,7 @@ public partial class BuildingPlacer : Node2D
     public IslandManager island_manager;
 
     public static Node2D current_building = null;
-    public static PackedScene building = null;
+    public static PackedScene selected_building = null;
     private placeable_building placeable;
     private int current_belt_rotation = 3;
     private Vector2 current_scale = new Vector2(1, 1);
@@ -33,86 +33,98 @@ public partial class BuildingPlacer : Node2D
             return;
         }
 
+        // Grundzustand setzen
+        selected_building = scene_info.scene;
+        current_building = (Node2D)scene_info.scene.Instantiate();
+        required_items = scene_info.required_items;
         is_flipped = false;
         can_create = true;
         current_scale = new Vector2(1, 1);
         GameManager.building_mode = GameManager.BuildingMode.Placing;
+
+        // UI aktualisieren
+        PlayerUI.instance.item_row_manager.CanCreate(required_items);
         PlayerUI.instance.SetWindowFrame();
-        PlayerUI.instance.item_row_manager.CanCreate(scene_info.required_items);
-        current_building = (Node2D)scene_info.scene.Instantiate();
-        required_items = scene_info.required_items;
 
-        building = scene_info.scene;
-        island_manager
-            .GetNearestIsland(GetGlobalMousePosition())
-            .island_object_save_manager.AddChild(current_building);
-        placeable = (placeable_building)current_building;
+        // Building ins Insel-Objekt einfügen
+        Island nearestIsland = island_manager.GetNearestIsland(GetGlobalMousePosition());
+        nearestIsland.island_object_save_manager.AddChild(current_building);
+
+        // Placeable-Referenz setzen und Grundzustand
+        placeable = current_building as placeable_building;
+        if (placeable == null)
+        {
+            GD.PrintErr("Current building is not a placeable_building!");
+            return;
+        }
         placeable.building_collider_manager.SetTileType(placeable.tile_types);
+        placeable.ZIndex = 10;
+        placeable.GetSprite().SelfModulate = new Color(1f, 1f, 1f, 0.75f);
 
-        if (((placeable_building)current_building).collision_shape != null)
-            ((placeable_building)current_building).collision_shape.Disabled = true;
+        // Spezialfälle behandeln
+        if (current_building is Belt belt)
+        {
+            placeable = belt;
+            belt.Set_Rotation(current_belt_rotation);
+            belt.GetNode<Area2D>("PathConnectArea").Monitorable = false;
+            if (belt is BeltTunnel tunnel)
+                tunnel.GetNode<TunnelArea>("TunnelArea").Monitoring = false;
+        }
+
+        if (current_building is MineableObject mineable)
+            placeable = mineable;
+
+        if (placeable is MachineBase machine_base)
+            machine_base.DisableTakers();
+
+        // Collider deaktivieren
+        if (placeable.collision_shape != null)
+            placeable.collision_shape.Disabled = true;
         else
             Debug.Print("CollisionShape fehlt!!");
-
-        placeable.ZIndex = 10;
-
-        if (current_building is Belt)
-        {
-            placeable = current_building as Belt;
-            ((Belt)placeable).Set_Rotation(current_belt_rotation);
-            placeable.GetNode<Area2D>("PathConnectArea").Monitorable = false;
-            placeable.GetSprite().SelfModulate = new Color(1f, 1f, 1f, 0.75f);
-            if (current_building is BeltTunnel)
-                placeable.GetNode<TunnelArea>("TunnelArea").Monitoring = false;
-            return;
-        }
-
-        if (current_building is MineableObject)
-        {
-            placeable = current_building as MineableObject;
-            placeable.GetSprite().SelfModulate = new Color(1f, 1f, 1f, 0.75f);
-            return;
-        }
-
-        if (current_building is placeable_building)
-        {
-            placeable = current_building as placeable_building;
-            if (placeable is MachineBase)
-            {
-                foreach (Taker taker in ((MachineBase)placeable).takers)
-                    taker.DisableMonitorable();
-            }
-            placeable.GetSprite().SelfModulate = new Color(1f, 1f, 1f, 0.75f);
-
-            return;
-        }
     }
 
     public override void _Process(double delta)
     {
+        // Handle building mode removal
         if (GameManager.building_mode == GameManager.BuildingMode.Removing)
+        {
             if (Input.IsActionJustPressed("Close") || Input.IsActionJustPressed("Escape"))
                 CloseMenuWithNoBuilding();
 
+            return;
+        }
+
+        // No building selected
         if (current_building == null)
             return;
 
-        Vector2 pos = island_manager
-            .GetNearestIsland(GetGlobalMousePosition())
-            .building_area.LocalToMap(GetGlobalMousePosition());
-        current_building.GlobalPosition = new Vector2((pos.X + 1) * 16, (pos.Y + 1) * 16);
+        // Update building position
+        Island island = island_manager.GetNearestIsland(GetGlobalMousePosition());
+        current_building.GlobalPosition = GetBuildingPositionVec2(island);
 
+        // Handle escape to cancel building
         if (Input.IsActionJustPressed("Escape"))
+        {
             CloseMenuWithBuildingSelected();
+            return;
+        }
 
-        if (
-            (
-                placeable is Belt belt
-                && placeable is not BeltCombiner
-                && placeable is not BeltSplitter
-            )
-            || placeable is Rail
-        )
+        // Handle rotation or flipping
+        HandleRotationInput();
+
+        // Place building on left mouse click
+        if (Input.IsActionJustPressed("MouseLeft") && placeable != null)
+            PlaceBuilding();
+    }
+
+    private void HandleRotationInput()
+    {
+        bool is_belt_or_rail =
+            (placeable is Belt && placeable is not BeltCombiner && placeable is not BeltSplitter)
+            || placeable is Rail;
+
+        if (is_belt_or_rail)
         {
             if (Input.IsActionJustPressed("Rotate_Right"))
                 RotateRight();
@@ -135,10 +147,6 @@ public partial class BuildingPlacer : Node2D
                 placeable.Scale = current_scale;
             }
         }
-
-        if (Input.IsActionJustPressed("MouseLeft"))
-            if (placeable != null)
-                PlaceBuilding();
     }
 
     private void RotateLeft()
@@ -172,90 +180,87 @@ public partial class BuildingPlacer : Node2D
         if (!can_create)
             return;
 
-        Node2D temp = (Node2D)building.Instantiate();
+        Node2D temp = (Node2D)selected_building.Instantiate();
+        Island island = island_manager.GetNearestIsland(GetGlobalMousePosition());
+        temp.GlobalPosition = GetBuildingPositionVec2(island);
+        temp.Scale = current_scale;
+        island.island_object_save_manager.AddChild(temp);
+
+        BuildBuildingByBase(temp);
+        RemoveBuildingResources();
+
+        if (!PlayerUI.instance.item_row_manager.CanCreate(required_items))
+        {
+            can_create = false;
+            CloseMenuWithBuildingSelected();
+        }
+    }
+
+    public void BuildBuildingByBase(Node2D temp)
+    {
         if (temp is Minecart)
         {
             if (moveable_selected_parent == null)
                 return;
+            SetBuildingWithMoveableBase(temp);
+        }
 
-            RemoveResources();
-            temp.Position = Vector2.Zero;
-            moveable_selected_parent.AddChild(temp);
-            moveable_selected_parent = null;
-            CloseMenuWithBuildingSelected();
-            return;
-        }
-        Island island = island_manager.GetNearestIsland(GetGlobalMousePosition());
-        Vector2 pos = island.building_area.LocalToMap(
-            GetGlobalMousePosition() - island.GlobalPosition
-        ); // Global Mouse Position needs to be subtracted to local Tilemap world point
-        temp.GlobalPosition = new Vector2((pos.X + 1) * 16, (pos.Y + 1) * 16);
-        temp.Scale = current_scale;
-        island.island_object_save_manager.AddChild(temp);
-        // Remove Resources
-        RemoveResources();
         if (temp is MineableObject)
-        {
             ((MineableObject)temp).SpawnPlant();
-            if (!PlayerUI.instance.item_row_manager.CanCreate(required_items))
-            {
-                can_create = false;
-                CloseMenuWithBuildingSelected();
-            }
-            return;
-        }
 
         if (temp is TransportBase)
         {
             ((TransportBase)temp).Set_Rotation(current_belt_rotation);
             if (temp is BeltTunnel)
-            {
-                Debug.Print("BeltTunnel XX");
-                Random rnd = new Random();
-                temp.Name = "BeltTunnel + " + rnd.Next(0, 10000);
                 ((BeltTunnel)temp).CheckIfTunnelInDir();
-            }
-            if (!PlayerUI.instance.item_row_manager.CanCreate(required_items))
-            {
-                can_create = false;
-                CloseMenuWithBuildingSelected();
-            }
-            return;
         }
 
         if (temp is MachineBase)
+            SetBuildingWithMachineBase(temp);
+    }
+
+    public Vector2 GetBuildingPositionVec2(Island island)
+    {
+        Vector2 pos = island.building_area.LocalToMap(
+            GetGlobalMousePosition() - island.GlobalPosition
+        );
+        return new Vector2((pos.X + 1) * 16, (pos.Y + 1) * 16);
+    }
+
+    public void SetBuildingWithMoveableBase(Node2D node)
+    {
+        node.Position = Vector2.Zero;
+        moveable_selected_parent.AddChild(node);
+        moveable_selected_parent = null;
+    }
+
+    public void SetBuildingWithMachineBase(Node2D node)
+    {
+        MachineBase pb = node as MachineBase;
+        if (pb.givers != null)
         {
-            if (is_flipped)
+            foreach (Giver giv in pb.givers)
             {
-                MachineBase pb = temp as MachineBase;
-                if (pb.givers != null)
+                switch (giv.direction_not_giving)
                 {
-                    foreach (Giver giv in pb.givers)
-                    {
-                        Debug.Print("GIver GIv");
-                        switch (giv.direction_not_giving)
-                        {
-                            case TransportBase.Direction.Top:
-                                giv.direction_not_giving = TransportBase.Direction.Down;
-                                break;
-                            case TransportBase.Direction.Down:
-                                giv.direction_not_giving = TransportBase.Direction.Top;
-                                break;
-                            case TransportBase.Direction.Right:
-                                giv.direction_not_giving = TransportBase.Direction.Left;
-                                break;
-                            case TransportBase.Direction.Left:
-                                giv.direction_not_giving = TransportBase.Direction.Right;
-                                break;
-                        }
-                    }
+                    case TransportBase.Direction.Top:
+                        giv.direction_not_giving = TransportBase.Direction.Down;
+                        break;
+                    case TransportBase.Direction.Down:
+                        giv.direction_not_giving = TransportBase.Direction.Top;
+                        break;
+                    case TransportBase.Direction.Right:
+                        giv.direction_not_giving = TransportBase.Direction.Left;
+                        break;
+                    case TransportBase.Direction.Left:
+                        giv.direction_not_giving = TransportBase.Direction.Right;
+                        break;
                 }
             }
         }
-        CloseMenuWithBuildingSelected();
     }
 
-    private void RemoveResources()
+    private void RemoveBuildingResources()
     {
         foreach (Item item in required_items)
             PlayerInventoryUI.instance.RemoveItem(item, PlayerInventoryUI.instance.inventory_items);
@@ -265,9 +270,8 @@ public partial class BuildingPlacer : Node2D
     {
         Node2D tempB = current_building;
         current_building = null;
-        required_items.Clear();
-        tempB.QueueFree();
         placeable = null;
+        tempB.QueueFree();
         CloseMenuWithNoBuilding();
     }
 
