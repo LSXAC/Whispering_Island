@@ -105,16 +105,6 @@ public partial class PlayerUI : CanvasLayer
         GameMenu.instance.OnBackToMainMenu();
     }
 
-    public void OnInventoryButton()
-    {
-        GameMenu.instance.OpenGameMenu();
-    }
-
-    public void OnBuildingMenuButton()
-    {
-        BuildMenu.instance.OpenBuildingMenu();
-    }
-
     public static void CompleteQuestPanelShow()
     {
         instance.quest_complete_panel.Visible = true;

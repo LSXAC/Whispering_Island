@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://o62xek3uvpo8"]
+[gd_scene load_steps=5 format=3 uid="uid://o62xek3uvpo8"]
 
 [ext_resource type="Script" uid="uid://dmteju1kppf72" path="res://Scripts/UI Scripts/QuestMenu.cs" id="1_rjdwy"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_8enkj"]
+[ext_resource type="Resource" uid="uid://c1p7gva6jex80" path="res://Dialogues/Questing.dialogue" id="2_jlx1a"]
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://Scenes/UI/header_color_rect.tscn" id="2_vqvtn"]
 
 [node name="QuestMenu" type="CanvasLayer" node_paths=PackedStringArray("quest_label_parent", "quest_name_label", "complete_button", "quest_description_label")]
@@ -11,6 +12,7 @@ quest_label_parent = NodePath("Background/MarginContainer/VBoxContainer2/VBoxCon
 quest_name_label = NodePath("Background/MarginContainer/VBoxContainer2/Label")
 complete_button = NodePath("Background/MarginContainer/VBoxContainer2/CompleteQuestButton")
 quest_description_label = NodePath("Background/MarginContainer/VBoxContainer2/Description")
+dialogue_timeline = ExtResource("2_jlx1a")
 
 [node name="TransBackground" type="ColorRect" parent="."]
 anchors_preset = 15

@@ -55,7 +55,8 @@ public partial class Inventory : SlotUpdater
         MYSTIC_ARMOR_SHOES,
         OAK_SEED,
         MYSTIC_OAK_SEED,
-        MYSTIC_FIBRE_SEED
+        MYSTIC_FIBRE_SEED,
+        FIBRE_SEED
     }
 
     public override void _Ready()
