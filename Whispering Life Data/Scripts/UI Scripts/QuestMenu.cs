@@ -119,7 +119,10 @@ public partial class QuestMenu : CanvasLayer
         foreach (Item item in items)
         {
             h_box_item c_label = (h_box_item)h_box_item.Instantiate();
-            Array<Item> iii = PlayerInventoryUI.instance.GetItemFromList(items_in_inventory, item);
+            Array<Item> iii = PlayerInventoryUI.instance.GetItemFromListOrNull(
+                items_in_inventory,
+                item
+            );
             if (QuestManager.next_quest_is_doubled_items)
                 c_label.InitItemUI(item.info.name, item.amount, item.info.texture);
             else

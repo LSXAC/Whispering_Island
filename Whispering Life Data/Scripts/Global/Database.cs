@@ -9,7 +9,6 @@ public partial class Database : Node
     public override void _Ready()
     {
         instance = this;
-        GD.Print("Database is ready.");
     }
 
     public enum UPGRADE_LEVEL

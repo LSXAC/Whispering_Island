@@ -76,6 +76,13 @@ public partial class TransportBase : placeable_building
 
     public void set_direction()
     {
+        if (
+            !Logger.NodeIsNotNull(cbm)
+            || !Logger.NodeIsNotNull(detector)
+            || !Logger.NodeIsNotNull(anim_manager12D)
+        )
+            return;
+
         switch (to_direction)
         {
             case Direction.Left:
@@ -166,10 +173,4 @@ public partial class TransportBase : placeable_building
                 break;
         }
     }
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready() { }
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta) { }
 }

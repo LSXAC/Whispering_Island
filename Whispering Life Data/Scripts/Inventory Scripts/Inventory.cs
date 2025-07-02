@@ -145,7 +145,7 @@ public partial class Inventory : SlotUpdater
         return true;
     }
 
-    public Array<Item> GetItemFromList(Array<Item> itemsInInventory, Item item_to_find)
+    public Array<Item> GetItemFromListOrNull(Array<Item> itemsInInventory, Item item_to_find)
     {
         if (item_to_find == null)
             return null;

@@ -149,7 +149,7 @@ public partial class QuestManager : Node
     {
         foreach (Item quest_item in quests[current_quest_id].required_items)
         {
-            Array<Item> iii = PlayerInventoryUI.instance.GetItemFromList(
+            Array<Item> iii = PlayerInventoryUI.instance.GetItemFromListOrNull(
                 PlayerInventoryUI.instance.GetListOfItemsInInventory(),
                 quest_item
             );
@@ -158,9 +158,8 @@ public partial class QuestManager : Node
                 return false;
 
             int amount = 0;
-            if (iii != null)
-                foreach (Item i_x in iii)
-                    amount += i_x.amount;
+            foreach (Item i_x in iii)
+                amount += i_x.amount;
 
             if (next_quest_is_doubled_items)
             {

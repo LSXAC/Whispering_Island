@@ -55,11 +55,15 @@ public abstract partial class Building_Node : Node2D
 
     public Vector2 GetBuildingPosition()
     {
-        if (GetSprite() == null)
-        {
-            Debug.Print("Kein Sprite referenziert! Position für Hovermenu nicht erkannt", this);
-            return new Vector2(0, 0);
-        }
-        return new Vector2(sprite.GlobalPosition.X, sprite.GlobalPosition.Y - 40f);
+        if (Logger.NodeIsNotNull(GetSprite()))
+            return new Vector2(sprite.GlobalPosition.X, sprite.GlobalPosition.Y - 40f);
+
+        return new Vector2(0, 0);
+    }
+
+    public void DisableCollision()
+    {
+        if (Logger.NodeIsNotNull(collision_shape))
+            collision_shape.Disabled = true;
     }
 }

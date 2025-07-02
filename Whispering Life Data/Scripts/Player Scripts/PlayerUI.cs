@@ -99,6 +99,13 @@ public partial class PlayerUI : CanvasLayer
         }
     }
 
+    public void SetBuildingUI(Array<Item> required_items)
+    {
+        if (Logger.NodeIsNotNull(item_row_manager))
+            item_row_manager?.SetResourcesOnUI(required_items);
+        SetWindowFrame();
+    }
+
     public void ToMainMenu()
     {
         gameover_panel.Visible = false;

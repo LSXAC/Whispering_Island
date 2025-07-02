@@ -33,7 +33,7 @@ public partial class itemRecipeUI : Control
         req_items = items;
         can_craft = false;
 
-        if (item_row_manager.CanCreate(items))
+        if (item_row_manager.CheckEnoughResources(items))
             can_craft = true;
 
         if (

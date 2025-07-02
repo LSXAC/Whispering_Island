@@ -26,8 +26,8 @@ public partial class BuildMenu : CanvasLayer
     public override void _Ready()
     {
         instance = this;
-        if (Visible)
-            Visible = false;
+        if (this.Visible)
+            this.Visible = false;
     }
 
     public void OnVisiblityChange()
@@ -77,9 +77,7 @@ public partial class BuildMenu : CanvasLayer
 
         if (Input.IsActionJustPressed("Escape"))
             if (GameMenu.IsThisWindow(this))
-            {
                 CloseWindow();
-            }
     }
 
     public void OpenBuildingMenu()

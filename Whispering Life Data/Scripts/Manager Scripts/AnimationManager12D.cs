@@ -90,7 +90,11 @@ public partial class AnimationManager12D : AnimationManagerBase
                     dir = GetAnimationNameFromMatrix(dir: ANIMATION_DIRECTION.CORNER_LEFT_DOWN);
                     break;
             }
-        RefTimer ref_timer = GlobalAnimationTimer.INSTANCE.GetCurrentFrame();
-        setFrame(ref_timer.frame, GlobalAnimationTimer.INSTANCE.TimeLeft);
+
+        if (Logger.NodeIsNotNull(GlobalAnimationTimer.INSTANCE))
+        {
+            RefTimer ref_timer = GlobalAnimationTimer.INSTANCE.GetCurrentFrame();
+            setFrame(ref_timer.frame, GlobalAnimationTimer.INSTANCE.TimeLeft);
+        }
     }
 }

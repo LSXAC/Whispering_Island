@@ -21,6 +21,11 @@ public partial class CheatTab : ColorRect
         QuestManager.current_quest_time = time;
     }
 
+    public void OnCheckBoxToggled(bool check_box)
+    {
+        GameManager.dev_build_mode = check_box;
+    }
+
     public void OnResumeTimeButton()
     {
         TimeManager.instance.game_timer.Start();
@@ -33,6 +38,12 @@ public partial class CheatTab : ColorRect
         TimeManager.instance.game_timer.Stop();
         QuestManager.instance.PauseTimer();
         timeStateLabel.Text = "Time is stopped! Relief!";
+    }
+
+    public void OnTimeMultiplier(int mult)
+    {
+        GameManager.time_multiplier = mult;
+        timeStateLabel.Text = $"Time multiplier set to {mult / 5}x";
     }
 
     private void SetItemsInList()

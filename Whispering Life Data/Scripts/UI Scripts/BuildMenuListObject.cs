@@ -24,7 +24,8 @@ public partial class BuildMenuListObject : Control
     {
         this.building_type = building_type;
         Building_Node placeable = building_type.scene.Instantiate() as Building_Node;
-        try
+
+        if (Logger.NodeIsNotNull(texture))
         {
             texture.TooltipText =
                 TranslationServer.Translate(((placeable_building)placeable).GetTitle()) + "\n";
@@ -32,16 +33,15 @@ public partial class BuildMenuListObject : Control
             texture.TooltipText += TranslationServer.Translate(
                 ((placeable_building)placeable).GetDescription()
             );
+        }
 
-            if (item_row_manager.CanCreate(building_type.required_items))
+        if (Logger.NodeIsNotNull(item_row_manager) && Logger.NodeIsNotNull(build_button))
+        {
+            item_row_manager.SetResourcesOnUI(building_type.required_items);
+            if (item_row_manager.CheckEnoughResources(building_type.required_items))
                 build_button.Disabled = false;
             else
                 build_button.Disabled = true;
-        }
-        catch (Exception e)
-        {
-            Debug.Print("Objekt: " + placeable.Name + " has problems");
-            Debug.Print(e.StackTrace);
         }
     }
 

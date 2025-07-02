@@ -1,11 +1,10 @@
 using System;
+using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
 public partial class placeable_building : Building_Node
 {
-    public bool colliding_Wall = false;
-
     [Export]
     public Database.BUILDING_ID building_id;
 
@@ -17,6 +16,8 @@ public partial class placeable_building : Building_Node
 
     [Export]
     public Building_Collider_Manager building_collider_manager;
+    public bool colliding_Wall = false;
+    private MouseArea mouse_area;
 
     public enum TILETYPE
     {
@@ -26,9 +27,25 @@ public partial class placeable_building : Building_Node
 
     public override void _Ready()
     {
+        mouse_area = GetNode<MouseArea>("MouseArea");
+
         if (disable_mouse_interaction)
-            if (HasNode("MouseArea"))
-                GetNode<MouseArea>("MouseArea").Monitorable = false;
+            if (Logger.NodeIsNotNull(mouse_area))
+                mouse_area.Monitorable = false;
+    }
+
+    public void MakeSpriteTransparent()
+    {
+        if (Logger.NodeIsNotNull(GetSprite()))
+            GetSprite().SelfModulate = new Color(1f, 1f, 1f, 0.75f);
+    }
+
+    public void PrepareForBuild()
+    {
+        building_collider_manager.SetTileType(tile_types);
+        ZIndex = 10;
+        MakeSpriteTransparent();
+        DisableCollision();
     }
 
     public override void OnMouseClick()

@@ -59,7 +59,10 @@ public partial class QuestMiniPanel : PanelContainer
         {
             Item item = currentQuest.required_items[i];
 
-            Array<Item> iii = PlayerInventoryUI.instance.GetItemFromList(items_in_inventory, item);
+            Array<Item> iii = PlayerInventoryUI.instance.GetItemFromListOrNull(
+                items_in_inventory,
+                item
+            );
             hbox_items[i].Visible = true;
 
             if (QuestManager.next_quest_is_doubled_items)

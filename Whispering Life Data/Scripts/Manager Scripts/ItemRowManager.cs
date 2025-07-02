@@ -10,69 +10,106 @@ public partial class ItemRowManager : HBoxContainer
         "res://Scenes/UI/h_box_item_menu_line.tscn"
     );
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready() { }
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta) { }
-
-    public bool CanCreate(Array<Item> items)
+    public void SetResourcesOnUI(Array<Item> items)
     {
-        foreach (Control c in GetChildren())
-            c.QueueFree();
+        ClearChildren();
+        Array<Item> items_to_use = GetNormalListOrDevList(items);
+        if (Logger.NodeIsNull(items_to_use) || Logger.ListHasZeroItems(items_to_use))
+            return;
 
-        if (items == null || items.Count == 0)
-            return false;
-
-        int x = 0;
-        Dictionary<Item, int> amount_of_each_item = new Dictionary<Item, int>();
-        foreach (Item item in items)
+        foreach (Item item in items_to_use)
         {
-            h_box_item hbc_c = (h_box_item)h_box_item.Instantiate();
-            hbc_c.InitItemUI("", item.amount, item.info.texture);
-            hbc_c.ChangeColor(global::h_box_item.colorType.red);
-
-            Array<Item> i_list = PlayerInventoryUI.instance.GetItemFromList(
-                PlayerInventoryUI.instance.GetListOfItemsInInventory(),
+            h_box_item hbc_c = CreateHBoxItem(item);
+            Array<Item> i_list = PlayerInventoryUI.instance?.GetItemFromListOrNull(
+                PlayerInventoryUI.instance?.GetListOfItemsInInventory(),
                 item
             );
+
             int amount_of_item = 0;
             if (i_list != null)
+            {
                 foreach (Item i in i_list)
                     amount_of_item += i.amount;
 
-            if (i_list != null)
-            {
-                if (amount_of_item >= item.amount)
-                {
-                    if (item.amount > 0)
-                    {
-                        amount_of_each_item[item] = amount_of_item / item.amount;
-                        hbc_c.ChangeColor(global::h_box_item.colorType.white);
-                    }
-                    x++;
-                }
+                if (amount_of_item >= item.amount && item.amount > 0)
+                    hbc_c.ChangeColor(global::h_box_item.colorType.white);
             }
             AddChild(hbc_c);
         }
-        if (x == items.Count)
+    }
+
+    public bool CheckEnoughResources(Array<Item> items)
+    {
+        if (Logger.NodeIsNull(items) || Logger.ListHasZeroItems(items))
         {
-            var (Item, amount_first) = amount_of_each_item.First();
-            int times = amount_first;
+            SetTimesToBuildLabel(0);
+            return false;
+        }
+        Array<Item> items_to_use = GetNormalListOrDevList(items);
 
-            foreach (var (item, amount) in amount_of_each_item)
+        int different_item_types = 0;
+        Dictionary<Item, int> amount_of_each_item = new Dictionary<Item, int>();
+
+        foreach (Item item in items_to_use)
+        {
+            Array<Item> i_list = PlayerInventoryUI.instance?.GetItemFromListOrNull(
+                PlayerInventoryUI.instance?.GetListOfItemsInInventory(),
+                item
+            );
+
+            int amount_of_item = 0;
+            if (i_list == null)
+                continue;
+
+            foreach (Item i in i_list)
+                amount_of_item += i.amount;
+
+            if (amount_of_item >= item.amount && item.amount > 0)
             {
-                if (times > amount)
-                    times = amount;
+                amount_of_each_item[item] = amount_of_item / item.amount;
+                different_item_types++;
             }
-            PlayerUI.instance.times_to_build_left_label.Text =
-                "> " + times + "x " + TranslationServer.Translate("PLAYERUI_TIMES_LEFT_TO_BUILD");
+        }
 
+        if (different_item_types == items_to_use.Count)
+        {
+            int times = amount_of_each_item.Values.Min();
+            SetTimesToBuildLabel(times);
             return true;
         }
-        PlayerUI.instance.times_to_build_left_label.Text =
-            "> 0x " + TranslationServer.Translate("PLAYERUI_TIMES_LEFT_TO_BUILD");
-        ;
+        SetTimesToBuildLabel(0);
         return false;
+    }
+
+    public Array<Item> GetNormalListOrDevList(Array<Item> items)
+    {
+        if (GameManager.dev_build_mode)
+            return new Array<Item>()
+            {
+                new Item(Inventory.ITEM_TYPES[Inventory.ITEM_ID.OAK_WOOD], 1)
+            };
+        return items;
+    }
+
+    private void SetTimesToBuildLabel(int times)
+    {
+        PlayerUI.instance?.times_to_build_left_label?.Set(
+            "text",
+            $"> {times}x {TranslationServer.Translate("PLAYERUI_TIMES_LEFT_TO_BUILD")}"
+        );
+    }
+
+    private void ClearChildren()
+    {
+        foreach (Control c in GetChildren())
+            c.QueueFree();
+    }
+
+    private h_box_item CreateHBoxItem(Item item)
+    {
+        h_box_item hbi = (h_box_item)h_box_item.Instantiate();
+        hbi.InitItemUI("", item.amount, item.info.texture);
+        hbi.ChangeColor(global::h_box_item.colorType.red);
+        return hbi;
     }
 }

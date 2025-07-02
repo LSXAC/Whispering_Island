@@ -12,6 +12,7 @@ public partial class GameManager : Node2D
     public BuildingPlacer building_placer;
 
     public static CanvasLayer current_activ_canvaslayer = null;
+    public static bool dev_build_mode = false;
 
     public static GameManager instance = null;
     public static string player_name = "Player";
