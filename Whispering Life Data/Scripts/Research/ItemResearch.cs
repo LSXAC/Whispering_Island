@@ -9,6 +9,9 @@ public partial class ItemResearch : Resource
     public Array<ItemResearchLevel> item_research_levels;
 
     [Export]
+    public Inventory.ITEM_ID id;
+
+    [Export]
     public string translation_string = "";
 
     public ItemResearchLevel getResearchLevelByIndex(int index)

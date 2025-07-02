@@ -9,6 +9,9 @@ public partial class CraftingRecipe : Resource
     public Array<Item> required_items;
 
     [Export]
+    public CraftingMenu.CATEGORY category;
+
+    [Export]
     public Item output_item;
 
     [Export]

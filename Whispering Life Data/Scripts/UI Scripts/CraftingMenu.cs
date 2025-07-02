@@ -6,6 +6,10 @@ public partial class CraftingMenu : PanelContainer
     [Export]
     public Control parent;
 
+    [Export]
+    public CATEGORY category;
+
+    [Export]
     public PackedScene recipe_slot = ResourceLoader.Load<PackedScene>(
         "res://Scenes/UI/crafting_menu_crafting_line.tscn"
     );
@@ -13,8 +17,15 @@ public partial class CraftingMenu : PanelContainer
         "res://Scenes/UI/crafting_menu_message_no_recipies.tscn"
     );
 
-    [Export]
-    public Array<CraftingRecipe> crafting_recipies = new Array<CraftingRecipe>();
+    public enum CATEGORY
+    {
+        BASIC,
+        TOOLPARTS,
+        TOOLS,
+        ARMOR,
+        AGRICULTURE,
+        MACHINEPARTS
+    }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta) { }
@@ -25,18 +36,20 @@ public partial class CraftingMenu : PanelContainer
             c.QueueFree();
 
         int times = 0;
-        for (int i = 0; i < crafting_recipies.Count; i++)
+        for (int i = 0; i < Database.recipies.Count; i++)
         {
-            if (crafting_recipies[i].unlock_requirements != null)
-                if (crafting_recipies[i].unlock_requirements.Count > 0)
+            if (Database.recipies[i].category != category)
+                continue;
+            if (Database.recipies[i].unlock_requirements != null)
+                if (Database.recipies[i].unlock_requirements.Count > 0)
                     if (
                         !GlobalFunctions.CheckResearchRequirements(
-                            crafting_recipies[i].unlock_requirements
+                            Database.recipies[i].unlock_requirements
                         )
                     )
                         continue;
             times++;
-            CraftingRecipe recipe = crafting_recipies[i];
+            CraftingRecipe recipe = Database.recipies[i];
 
             itemRecipeUI irUI = (itemRecipeUI)recipe_slot.Instantiate();
             irUI.craftingMenu = this;

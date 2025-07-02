@@ -34,5 +34,6 @@ metadata/_custom_type_script = "uid://cee63igbpybf"
 [resource]
 script = ExtResource("6_fjmp3")
 required_items = Array[Object]([SubResource("Resource_7ixnr"), SubResource("Resource_8ebcg"), SubResource("Resource_qtk7r")])
+category = 2
 output_item = SubResource("Resource_17v3c")
 unlock_requirements = null

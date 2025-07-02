@@ -9,6 +9,9 @@ public partial class Database : Node
     public override void _Ready()
     {
         instance = this;
+        recipies = LoadAllResourcesRecursive<CraftingRecipe>(recipe_path);
+        researchs = LoadResearchsRecursive(research_path);
+        buildings = LoadBuildingsRecursive(building_path, building_plants_path);
     }
 
     public enum UPGRADE_LEVEL
@@ -21,190 +24,96 @@ public partial class Database : Node
         Level5
     }
 
-    // RESEARCH LINES ------------------------------------------------------------------------------------------------
-
-    [Export]
-    public Dictionary<Inventory.ITEM_ID, ItemResearch> researchs = new Dictionary<
-        Inventory.ITEM_ID,
-        ItemResearch
-    >()
-    {
-        {
-            Inventory.ITEM_ID.OAK_WOOD,
-            ResourceLoader.Load<ItemResearch>(
-                "res://Resource Meta/Items/ItemResearchs/item_research_oak_wood.tres"
-            )
-        },
-        {
-            Inventory.ITEM_ID.STONE,
-            ResourceLoader.Load<ItemResearch>(
-                "res://Resource Meta/Items/ItemResearchs/item_research_stone.tres"
-            )
-        },
-        {
-            Inventory.ITEM_ID.SAND,
-            ResourceLoader.Load<ItemResearch>(
-                "res://Resource Meta/Items/ItemResearchs/item_research_sand.tres"
-            )
-        },
-        {
-            Inventory.ITEM_ID.MYSTIC_OAK_WOOD,
-            ResourceLoader.Load<ItemResearch>(
-                "res://Resource Meta/Items/ItemResearchs/item_research_mystic_oak_wood.tres"
-            )
-        },
-        {
-            Inventory.ITEM_ID.IRON_ORE,
-            ResourceLoader.Load<ItemResearch>(
-                "res://Resource Meta/Items/ItemResearchs/item_research_iron_ore.tres"
-            )
-        }
-    };
-
-    // BUILDINGS LINES ------------------------------------------------------------------------------------------------
-
+    public string recipe_path = "res://Resource Meta/Crafting Recipies/";
+    public string research_path = "res://Resource Meta/Items/ItemResearchs/";
+    public static Array<CraftingRecipe> recipies = new Array<CraftingRecipe>();
+    public static Dictionary<Inventory.ITEM_ID, ItemResearch> researchs =
+        new Dictionary<Inventory.ITEM_ID, ItemResearch>();
     public static string building_path =
-        "res://Resource Meta/Building Menu List Object Infos/Buildings/build_menu_list_object_";
+        "res://Resource Meta/Building Menu List Object Infos/Buildings/";
     public static string building_plants_path =
-        "res://Resource Meta/Building Menu List Object Infos/Planting/build_menu_list_object_";
-    public static Dictionary<string, Building_Menu_List_Object> buildings = new Dictionary<
-        string,
-        Building_Menu_List_Object
-    >()
+        "res://Resource Meta/Building Menu List Object Infos/Planting/";
+    public static Dictionary<string, Building_Menu_List_Object> buildings =
+        new Dictionary<string, Building_Menu_List_Object>();
+
+    // Generische Methode zum rekursiven Laden aller Ressourcen eines Typs
+    public static Array<T> LoadAllResourcesRecursive<[MustBeVariant] T>(string directoryPath)
+        where T : Resource
     {
+        var result = new Array<T>();
+        var dir = DirAccess.Open(directoryPath);
+        if (dir == null)
         {
-            BUILDING_ID.BELT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "belt.tres")
-        },
+            GD.PrintErr($"Directory not found: {directoryPath}");
+            return result;
+        }
+
+        dir.ListDirBegin();
+        string fileName = dir.GetNext();
+        while (fileName != "")
         {
-            BUILDING_ID.BELT_TUNNEL.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "belt_tunnel.tres")
-        },
+            if (dir.CurrentIsDir())
+            {
+                if (fileName != "." && fileName != "..")
+                {
+                    var subResult = LoadAllResourcesRecursive<T>(
+                        directoryPath.TrimEnd('/') + "/" + fileName
+                    );
+                    foreach (var res in subResult)
+                        result.Add(res);
+                }
+            }
+            else if (fileName.EndsWith(".tres"))
+            {
+                string fullPath = directoryPath.TrimEnd('/') + "/" + fileName;
+                var resource = ResourceLoader.Load<T>(fullPath);
+                if (resource != null)
+                    result.Add(resource);
+            }
+            fileName = dir.GetNext();
+        }
+        dir.ListDirEnd();
+        return result;
+    }
+
+    // Lädt alle ItemResearchs rekursiv und ordnet sie nach ITEM_ID zu
+    public static Dictionary<Inventory.ITEM_ID, ItemResearch> LoadResearchsRecursive(
+        string directoryPath
+    )
+    {
+        var result = new Dictionary<Inventory.ITEM_ID, ItemResearch>();
+        var researchList = LoadAllResourcesRecursive<ItemResearch>(directoryPath);
+        foreach (var research in researchList)
         {
-            BUILDING_ID.CHEST.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "chest.tres")
-        },
+            // Stelle sicher, dass ItemResearch eine id-Property vom Typ Inventory.ITEM_ID hat!
+            if (research != null && research.id is Inventory.ITEM_ID id)
+                result[id] = research;
+        }
+        return result;
+    }
+
+    // Lädt alle Building_Menu_List_Object aus beiden Pfaden und ordnet sie nach Dateinamen (ohne Endung) zu
+    public static Dictionary<string, Building_Menu_List_Object> LoadBuildingsRecursive(
+        string buildingsPath,
+        string plantsPath
+    )
+    {
+        var result = new Dictionary<string, Building_Menu_List_Object>();
+        var allBuildings = LoadAllResourcesRecursive<Building_Menu_List_Object>(buildingsPath);
+        var allPlants = LoadAllResourcesRecursive<Building_Menu_List_Object>(plantsPath);
+
+        foreach (var b in allBuildings)
         {
-            BUILDING_ID.FURNACE.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "furnace.tres")
-        },
+            if (b != null)
+                result[System.IO.Path.GetFileNameWithoutExtension(b.ResourcePath)] = b;
+        }
+        foreach (var p in allPlants)
         {
-            BUILDING_ID.TREE_GROWTHER.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "tree_growther.tres")
-        },
-        {
-            BUILDING_ID.QUARRY.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "quarry.tres")
-        },
-        {
-            BUILDING_ID.RESEARCH_TABLE.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "research_table.tres")
-        },
-        {
-            BUILDING_ID.WOOD_BED.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "wood_bed.tres")
-        },
-        {
-            BUILDING_ID.TRASHCAN.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "trashcan.tres")
-        },
-        {
-            BUILDING_ID.CORN_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_plants_path + "corn.tres")
-        },
-        {
-            BUILDING_ID.CARROT_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_plants_path + "carrot.tres")
-        },
-        {
-            BUILDING_ID.POTATO_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_plants_path + "potato.tres")
-        },
-        {
-            BUILDING_ID.WHEAT_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_plants_path + "wheat.tres")
-        },
-        {
-            BUILDING_ID.OAK_TREE_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_plants_path + "oak_tree.tres")
-        },
-        {
-            BUILDING_ID.MYSTIC_OAK_TREE_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(
-                building_plants_path + "mystic_oak_tree.tres"
-            )
-        },
-        {
-            BUILDING_ID.MYSTIC_FIBRE_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(
-                building_plants_path + "mystic_fibre.tres"
-            )
-        },
-        {
-            BUILDING_ID.DUMMY_STONE_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(
-                "res://Resource Meta/Building Menu List Object Infos/Buildings/build_menu_list_object_dummy.tres"
-            )
-        },
-        {
-            BUILDING_ID.DUMMY_IRON_ORE_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(
-                "res://Resource Meta/Building Menu List Object Infos/Buildings/build_menu_list_object_dummy.tres"
-            )
-        },
-        {
-            BUILDING_ID.DUMMY_COPPER_ORE_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(
-                "res://Resource Meta/Building Menu List Object Infos/Buildings/build_menu_list_object_dummy.tres"
-            )
-        },
-        {
-            BUILDING_ID.DUMMY_SAND_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(
-                "res://Resource Meta/Building Menu List Object Infos/Buildings/build_menu_list_object_dummy.tres"
-            )
-        },
-        {
-            BUILDING_ID.DUMMY_SAND_STONE_OBJECT.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(
-                "res://Resource Meta/Building Menu List Object Infos/Buildings/build_menu_list_object_dummy.tres"
-            )
-        },
-        {
-            BUILDING_ID.BELT_SPLITTER_1x2.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "belt_splitter_1x2.tres")
-        },
-        {
-            BUILDING_ID.BELT_SPLITTER_1x3.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "belt_splitter_1x3.tres")
-        },
-        {
-            BUILDING_ID.BELT_COMBINER_2x1.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "belt_combiner_2x1.tres")
-        },
-        {
-            BUILDING_ID.BELT_COMBINER_3x1.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "belt_combiner_3x1.tres")
-        },
-        {
-            BUILDING_ID.CHEST_WITH_AUTO_REMOVE.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(
-                building_path + "chest_with_auto_remove.tres"
-            )
-        },
-        {
-            BUILDING_ID.RAIL.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "rail.tres")
-        },
-        {
-            BUILDING_ID.RAIL_STATION.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "rail_station.tres")
-        },
-        {
-            BUILDING_ID.MINECART.ToString(),
-            ResourceLoader.Load<Building_Menu_List_Object>(building_path + "minecart.tres")
-        },
-    };
+            if (p != null)
+                result[System.IO.Path.GetFileNameWithoutExtension(p.ResourcePath)] = p;
+        }
+        return result;
+    }
 
     public enum BUILDING_ID
     {
@@ -225,13 +134,9 @@ public partial class Database : Node
         MYSTIC_FIBRE_OBJECT,
         OAK_TREE_OBJECT,
         DUMMY_STONE_OBJECT,
-
         DUMMY_IRON_ORE_OBJECT,
-
         DUMMY_COPPER_ORE_OBJECT,
-
         DUMMY_SAND_STONE_OBJECT,
-
         DUMMY_SAND_OBJECT,
         BELT_SPLITTER_1x2,
         BELT_SPLITTER_1x3,
@@ -247,10 +152,11 @@ public partial class Database : Node
         BUILDING_ID building_id
     )
     {
-        if (buildings.ContainsKey(building_id.ToString()))
-            return buildings[building_id.ToString()];
+        string key = building_id.ToString();
+        if (buildings.ContainsKey(key))
+            return buildings[key];
 
-        GD.PrintErr("No Building found for: " + building_id.ToString());
+        GD.PrintErr("No Building found for: " + key);
         return null;
     }
 }

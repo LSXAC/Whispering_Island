@@ -15,4 +15,5 @@ metadata/_custom_type_script = "uid://kjnoywvj7caa"
 [resource]
 script = ExtResource("6_cb20l")
 item_research_levels = Array[Object]([SubResource("Resource_munos")])
+id = 13
 translation_string = "RESEARCH_MYSTIC_WOOD"
