@@ -64,6 +64,7 @@ public partial class MineableObject : placeable_building
 
     public override void _Ready()
     {
+        base._Ready();
         current_durability = max_durability;
         interactableArea = GetNode<Area2D>("MouseArea");
 

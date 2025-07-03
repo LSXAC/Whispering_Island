@@ -10,8 +10,10 @@
 [ext_resource type="TileSet" uid="uid://bij4wcpveo44d" path="res://Tilesets/Farming_Tileset.tres" id="8_a2a5u"]
 [ext_resource type="Script" uid="uid://cqvshjr3dd25t" path="res://Scripts/QuestSign.cs" id="8_dl61a"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="10_7bt86"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="10_k0wjm"]
+[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="11_000go"]
 [ext_resource type="Texture2D" uid="uid://125t5f6fiugo" path="res://Sprites/Monster_Island.png" id="11_qd1vh"]
-[ext_resource type="PackedScene" uid="uid://bekb5fw4mpfgk" path="res://Scenes/World Objects/Mineable Objects/mineable_object_oak_tree.tscn" id="12_3x7uo"]
+[ext_resource type="PackedScene" uid="uid://cxtq18i442ldo" path="res://Scenes/World Objects/Mineable Objects/mineable_object_oak_tree.tscn" id="12_3x7uo"]
 [ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="13_lo8qh"]
 [ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Scenes/World Objects/Mineable Objects/mineable_object_stone.tscn" id="13_sqojh"]
 [ext_resource type="PackedScene" uid="uid://hl3jkk2n0f7x" path="res://Scenes/World Objects/Mineable Objects/mineable_object_wheat.tscn" id="14_kjoym"]
@@ -29,46 +31,16 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_wjywr")
 shader_parameter/speed = Vector2(0.1, 0.1)
 shader_parameter/distortion = 0.005
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_wl4wn"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6kej"]
 size = Vector2(32, 18)
-
-[sub_resource type="Animation" id="Animation_l5n1y"]
-resource_name = "Moving"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/BuildingSprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(0.5, 1, 2),
-"update": 0,
-"values": [Vector2(13, -270), Vector2(13, -280), Vector2(13, -270)]
-}
-
-[sub_resource type="Animation" id="Animation_631f2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/BuildingSprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(13, -275)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_d4xkj"]
-_data = {
-&"Moving": SubResource("Animation_l5n1y"),
-&"RESET": SubResource("Animation_631f2")
-}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(168, 152)
@@ -220,30 +192,40 @@ polygon = PackedVector2Array(-80, 112, -80, 80, -112, 48, -144, 48, -176, 16, -1
 position = Vector2(-64, 64)
 polygon = PackedVector2Array(192, 32, 224, 32, 288, -32, 288, -48, 320, -48, 280, 32, 272, 128, 128, 160, 80, 160, 80, 128, 96, 128, 136, 88, 160, 88, 192, 64)
 
-[node name="QuestSign" type="StaticBody2D" parent="." node_paths=PackedStringArray("anim_player")]
+[node name="QuestSign" type="StaticBody2D" parent="."]
 y_sort_enabled = true
 position = Vector2(32, -200)
 script = ExtResource("8_dl61a")
-anim_player = NodePath("AnimationPlayer")
 title = "Quest Sign"
 description = "123414"
 
-[node name="Collision" type="CollisionShape2D" parent="QuestSign"]
+[node name="SpriteAnimationManager" type="Node2D" parent="QuestSign"]
+script = ExtResource("10_k0wjm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="QuestSign/SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_wl4wn")
+animation = &"Normal"
+centered = false
+
+[node name="Shadow" type="Sprite2D" parent="QuestSign/SpriteAnimationManager"]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-8.5, -9)
+scale = Vector2(1.0625, 1)
+texture = ExtResource("11_000go")
+
+[node name="Sprite2D" type="Sprite2D" parent="QuestSign/SpriteAnimationManager"]
+z_index = -5
+y_sort_enabled = true
+position = Vector2(-84, -123)
+texture = ExtResource("11_qd1vh")
+centered = false
+
+[node name="BuildingCollision" type="CollisionShape2D" parent="QuestSign"]
 position = Vector2(-32, -31)
 shape = SubResource("RectangleShape2D_g6kej")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="QuestSign"]
-libraries = {
-&"": SubResource("AnimationLibrary_d4xkj")
-}
-
-[node name="BuildingSprite" type="Sprite2D" parent="QuestSign/AnimationPlayer"]
-z_index = -6
-y_sort_enabled = true
-position = Vector2(13, -275)
-scale = Vector2(2, 2)
-texture = ExtResource("11_qd1vh")
-offset = Vector2(0, -6)
 
 [node name="MouseArea" type="Area2D" parent="QuestSign"]
 collision_layer = 2
@@ -254,7 +236,6 @@ position = Vector2(-20, -100)
 shape = SubResource("RectangleShape2D_fk0le")
 
 [node name="IslandObjectSaveManager" type="Node2D" parent="."]
-visible = false
 y_sort_enabled = true
 script = ExtResource("13_lo8qh")
 

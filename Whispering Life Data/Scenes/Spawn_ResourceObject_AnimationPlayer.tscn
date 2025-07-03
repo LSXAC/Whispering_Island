@@ -73,5 +73,5 @@ _data = {
 
 [node name="AnimationPlayer" type="AnimationPlayer"]
 libraries = {
-"": SubResource("AnimationLibrary_v2ngb")
+&"": SubResource("AnimationLibrary_v2ngb")
 }

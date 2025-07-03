@@ -126,7 +126,7 @@ anim_player = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_nfebf")
+&"": SubResource("AnimationLibrary_nfebf")
 }
 
 [node name="Background" type="ColorRect" parent="AnimationPlayer"]

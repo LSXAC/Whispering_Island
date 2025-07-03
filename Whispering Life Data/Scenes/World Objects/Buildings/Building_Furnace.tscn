@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://bb7d4vvk26up8" path="res://Scripts/Building Scripts/ProcessBuilding.cs" id="1_7ow6b"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_2jdlk"]
 [ext_resource type="Script" uid="uid://csvnm2nsny2wl" path="res://Scripts/UI Scripts/MachineRecipe.cs" id="4_8gjku"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_63l45"]
 [ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="7_ndbhg"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="12_pnpvk"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="13_ph182"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="14_5ajxt"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="16_tjyxe"]
-[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="18_h5gpr"]
 [ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Taker_Component.tscn" id="19_3ermy"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Scenes/World Objects/Buildings/Building Components/component_building_item_giver.tscn" id="20_ujfx2"]
 
@@ -80,8 +80,9 @@ centered = false
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
-position = Vector2(-8, -9)
-texture = ExtResource("18_h5gpr")
+position = Vector2(-8, 11)
+scale = Vector2(3, 1.125)
+texture = ExtResource("5_63l45")
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
 position = Vector2(-32, -48)

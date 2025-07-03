@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=4 uid="uid://c3qnrt64xg6eg"]
+[gd_scene load_steps=14 format=4 uid="uid://c3qnrt64xg6eg"]
 
 [ext_resource type="Script" uid="uid://bf4jfxorbdivo" path="res://Scripts/Building Scripts/ProductionMachine.cs" id="1_01v3s"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_01v3s"]
 [ext_resource type="Texture2D" uid="uid://bm1alvnfn87kq" path="res://Sprites/Buildings/Tree_Growther_Sprite.png" id="2_4wm06"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="3_fs0bn"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_c24j7"]
@@ -9,6 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="7_h8vyg"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="8_0eevy"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Scenes/World Objects/Buildings/Building Components/component_building_item_giver.tscn" id="9_kii5u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fs0bn"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(48, 41)
@@ -28,11 +37,27 @@ tile_types = Array[int]([0])
 title = "BUILDING_WOOD_GROWTHER"
 description = "BUILDING_WOOD_GROWTHER"
 
-[node name="BuildingSprite" type="Sprite2D" parent="."]
-y_sort_enabled = true
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("2_01v3s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_fs0bn")
+animation = &"Normal"
+centered = false
+
+[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-8, 11)
+scale = Vector2(2.875, 1)
+texture = ExtResource("5_004cs")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -32)
 texture = ExtResource("2_4wm06")
 centered = false
-offset = Vector2(-32, -32)
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("3_fs0bn")
@@ -44,17 +69,9 @@ tile_map_data = PackedByteArray("AAD+//7/AAACAAAAAAD+////AAACAAAAAAD+/wAAAAACAAA
 enabled = false
 tile_set = ExtResource("4_c24j7")
 
-[node name="MachineCollision" type="CollisionShape2D" parent="."]
+[node name="BuildingCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-8, -5.5)
 shape = SubResource("RectangleShape2D_m0htq")
-
-[node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.196078)
-z_index = -1
-z_as_relative = false
-position = Vector2(-8, 6.5)
-scale = Vector2(3, 2.1875)
-texture = ExtResource("5_004cs")
 
 [node name="MouseArea" type="Area2D" parent="."]
 position = Vector2(-8, -8)

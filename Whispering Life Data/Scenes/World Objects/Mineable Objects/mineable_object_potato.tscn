@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bmjn6kocpubo3"]
+[gd_scene load_steps=18 format=3 uid="uid://bmjn6kocpubo3"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_p10p7"]
 [ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Resource Meta/Items/item_info_potato.tres" id="2_yytp3"]
@@ -12,112 +12,16 @@
 [ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="7_vysf8"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="8_b1wo6"]
 
-[sub_resource type="Animation" id="Animation_2ey6b"]
-resource_name = "Break"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Pivot/Sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/Pivot/Shadow:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_ib3ix"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
 
-[sub_resource type="Animation" id="Animation_a1g7f"]
-resource_name = "Hit"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Pivot/Sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 0.8), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_2nxpf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Pivot/Sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/Pivot/Shadow:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_c5l8r"]
-resource_name = "Respawning"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Pivot/Sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/Pivot/Shadow:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2ngb"]
-_data = {
-&"Break": SubResource("Animation_2ey6b"),
-&"Hit": SubResource("Animation_a1g7f"),
-&"RESET": SubResource("Animation_2nxpf"),
-&"Respawning": SubResource("Animation_c5l8r")
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0utc"]
+size = Vector2(12, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
 size = Vector2(13, 16)
@@ -143,10 +47,7 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_lfoib")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0utc"]
-size = Vector2(12, 9)
-
-[node name="Potato" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
+[node name="Potato" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "gpu_particles")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -162,34 +63,33 @@ extra_item_info = ExtResource("3_42a5b")
 gpu_particles = NodePath("PotatoParticle")
 building_id = 11
 tile_types = Array[int]([1])
-building_collider_manager = NodePath("BuildingAreas")
 title = "WORLD_RESOURCE_POTATO"
 description = "WORLD_RESOURCE_POTATO_DESC"
-sprite = NodePath("SpriteAnimationPlayer/Sprite")
-collision_shape = NodePath("Collision")
 
-[node name="SpriteAnimationPlayer" type="Node2D" parent="." node_paths=PackedStringArray("animation_player")]
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
 script = ExtResource("4_ib3ix")
-animation_player = NodePath("AnimationPlayer")
 
-[node name="Sprite" type="Sprite2D" parent="SpriteAnimationPlayer"]
-self_modulate = Color(0.9238, 0.555292, 0.974702, 1)
-y_sort_enabled = true
-position = Vector2(-7, -2)
-texture = ExtResource("3_sn143")
-offset = Vector2(0, -8)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_ib3ix")
+animation = &"Normal"
+centered = false
 
-[node name="Shadow" type="Sprite2D" parent="SpriteAnimationPlayer"]
+[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
-position = Vector2(-8, -9)
+position = Vector2(-8, -8)
 texture = ExtResource("6_tcsi8")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteAnimationPlayer"]
-libraries = {
-&"": SubResource("AnimationLibrary_v2ngb")
-}
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-20, -22)
+texture = ExtResource("3_sn143")
+centered = false
+
+[node name="BuildingCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-7, -8)
+shape = SubResource("RectangleShape2D_x0utc")
 
 [node name="MouseArea" type="Area2D" parent="."]
 z_index = 1
@@ -227,10 +127,6 @@ tile_set = ExtResource("7_khusd")
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("8_b1wo6")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
-
-[node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(-7, -8)
-shape = SubResource("RectangleShape2D_x0utc")
 
 [node name="HitPoint" type="Node2D" parent="."]
 position = Vector2(-8, -11)

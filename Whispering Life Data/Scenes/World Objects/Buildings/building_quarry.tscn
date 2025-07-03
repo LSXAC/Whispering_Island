@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://cqc6xxau4eh7e"]
+[gd_scene load_steps=14 format=4 uid="uid://cqc6xxau4eh7e"]
 
 [ext_resource type="Script" uid="uid://bf4jfxorbdivo" path="res://Scripts/Building Scripts/ProductionMachine.cs" id="1_rsbck"]
-[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Resource Meta/Items/item_info_stone.tres" id="2_6bbma"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_c0gkt"]
 [ext_resource type="Texture2D" uid="uid://bm1alvnfn87kq" path="res://Sprites/Buildings/Tree_Growther_Sprite.png" id="3_7b4ad"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="4_65eiu"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="5_8y1t1"]
@@ -11,33 +11,57 @@
 [ext_resource type="Texture2D" uid="uid://cep6pkf1xs5cc" path="res://Sprites/Stone.png" id="8_33cw1"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Scenes/World Objects/Buildings/Building Components/component_building_item_giver.tscn" id="9_dvgwj"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_nowyl"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(48, 41)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(48, 48)
 
-[node name="Quarry" type="StaticBody2D" node_paths=PackedStringArray("givers", "takers", "building_collider_manager", "sprite", "collision_shape")]
+[node name="Quarry" type="StaticBody2D" node_paths=PackedStringArray("givers", "takers")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_rsbck")
-production_item_info = ExtResource("2_6bbma")
 givers = [NodePath("Giver"), NodePath("Giver2")]
 takers = []
 building_id = 4
 tile_types = Array[int]([0])
-building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_QUARRY"
 description = "BUILDING_QUARRY_DESC"
-sprite = NodePath("BuildingSprite")
-collision_shape = NodePath("MachineCollision")
 
-[node name="BuildingSprite" type="Sprite2D" parent="."]
-y_sort_enabled = true
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("2_c0gkt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_nowyl")
+animation = &"Normal"
+centered = false
+
+[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-8, 11)
+scale = Vector2(2.875, 1.1875)
+texture = ExtResource("6_fmaua")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -32)
 texture = ExtResource("3_7b4ad")
 centered = false
-offset = Vector2(-32, -32)
+
+[node name="BuildingCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -5.5)
+shape = SubResource("RectangleShape2D_m0htq")
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("4_65eiu")
@@ -49,25 +73,11 @@ tile_map_data = PackedByteArray("AAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAACAAA
 enabled = false
 tile_set = ExtResource("5_8y1t1")
 
-[node name="MachineCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-8, -5.5)
-shape = SubResource("RectangleShape2D_m0htq")
-
-[node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.196078)
-z_index = -1
-z_as_relative = false
-position = Vector2(-8, 6)
-scale = Vector2(3, 2.125)
-texture = ExtResource("6_fmaua")
-
-[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+[node name="MouseArea" type="Area2D" parent="."]
 z_index = 1
 position = Vector2(-8, -8)
 collision_layer = 2
 script = ExtResource("7_sy75k")
-building_node = NodePath("..")
-building_sprite = NodePath("../BuildingSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 shape = SubResource("RectangleShape2D_fk0le")

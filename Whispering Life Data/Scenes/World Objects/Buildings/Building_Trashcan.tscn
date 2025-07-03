@@ -17,7 +17,7 @@ size = Vector2(32, 25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(32, 32)
 
-[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("deletion_timer", "givers", "takers", "building_collider_manager", "sprite", "collision_shape")]
+[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("deletion_timer", "givers", "takers")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -27,11 +27,8 @@ givers = []
 takers = [NodePath("Taker"), NodePath("Taker2")]
 building_id = 8
 tile_types = Array[int]([0])
-building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_TRASHCAN"
 description = "BUILDING_TRASHCAN_DESC"
-sprite = NodePath("BuildingSprite")
-collision_shape = NodePath("MachineCollision")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -65,13 +62,11 @@ position = Vector2(-16, -6)
 scale = Vector2(1.375, 1.25)
 texture = ExtResource("5_5y75v")
 
-[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+[node name="MouseArea" type="Area2D" parent="."]
 z_index = 1
 position = Vector2(-16, -18)
 collision_layer = 2
 script = ExtResource("6_ap67j")
-building_node = NodePath("..")
-building_sprite = NodePath("../BuildingSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 shape = SubResource("RectangleShape2D_fk0le")

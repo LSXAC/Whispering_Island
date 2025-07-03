@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://8ea6alhnkqok"]
+[gd_scene load_steps=18 format=4 uid="uid://8ea6alhnkqok"]
 
 [ext_resource type="Script" uid="uid://o5ts5isb43np" path="res://Scripts/Building Scripts/RailStation.cs" id="1_h1uaa"]
 [ext_resource type="Texture2D" uid="uid://be1t8wuf070gp" path="res://Sprites/Rail_Station_Bottom.png" id="2_17qbx"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_ih5oe"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="3_detd8"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_o2pyy"]
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_5h1rb"]
@@ -11,6 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://dyylrlp6acwxq" path="res://Scenes/World Objects/Buildings/building_rail.tscn" id="9_pslwl"]
 [ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Scripts/Building Scripts/PathConnectArea.cs" id="10_wnhjv"]
 [ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Scripts/Building Scripts/ChestBase.cs" id="11_80gpa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6iojv"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(80, 38)
@@ -24,28 +33,45 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfmfo"]
 size = Vector2(23, 18)
 
-[node name="RailStation" type="StaticBody2D" node_paths=PackedStringArray("chest_in", "chest_out", "building_collider_manager", "sprite", "collision_shape")]
+[node name="RailStation" type="StaticBody2D" node_paths=PackedStringArray("chest_in", "chest_out", "givers", "takers")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_h1uaa")
+chest_in = NodePath("Chest_In")
+chest_out = NodePath("Chest_Out")
+givers = []
+takers = []
 building_id = 27
 tile_types = Array[int]([0])
 title = "BUILDING_RAIL_STATION"
 description = "BUILDING_RAIL_STATION_DESC"
-chest_in = NodePath("Chest_In")
-chest_out = NodePath("Chest_Out")
-building_collider_manager = NodePath("BuildingAreas")
-sprite = NodePath("BuildingSprite")
-collision_shape = NodePath("MachineCollision")
 
-[node name="BuildingSprite" type="Sprite2D" parent="."]
-visible = false
-y_sort_enabled = true
-position = Vector2(-8, -16)
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("2_ih5oe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_6iojv")
+animation = &"Normal"
+centered = false
+
+[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-8, 15.5)
+scale = Vector2(5, 0.4375)
+texture = ExtResource("5_5h1rb")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-48, -32)
 texture = ExtResource("2_17qbx")
 centered = false
-offset = Vector2(-24, -32)
+
+[node name="BuildingCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -3)
+shape = SubResource("RectangleShape2D_m0htq")
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("3_detd8")
@@ -57,26 +83,12 @@ tile_map_data = PackedByteArray("AAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAA
 enabled = false
 tile_set = ExtResource("4_o2pyy")
 
-[node name="MachineCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-8, -3)
-shape = SubResource("RectangleShape2D_m0htq")
-
-[node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.196078)
-z_index = -1
-z_as_relative = false
-position = Vector2(-8, 5)
-scale = Vector2(5, 2)
-texture = ExtResource("5_5h1rb")
-
-[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+[node name="MouseArea" type="Area2D" parent="."]
 visible = false
 z_index = 1
 position = Vector2(-8, -8)
 collision_layer = 2
 script = ExtResource("6_8y7rk")
-building_node = NodePath("..")
-building_sprite = NodePath("../BuildingSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 position = Vector2(0, -4.5)
@@ -126,6 +138,7 @@ disable_mouse_interaction = true
 disable_collision = true
 
 [node name="Ground" type="Sprite2D" parent="."]
+visible = false
 z_index = -2
 y_sort_enabled = true
 position = Vector2(0, 42)

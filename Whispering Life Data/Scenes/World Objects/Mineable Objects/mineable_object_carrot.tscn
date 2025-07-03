@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_k6fxe"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_va1aa"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="6_4rs16"]
-[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="6_k6fxe"]
+[ext_resource type="Texture2D" uid="uid://b3xd7qx5g1j24" path="res://Sprites/Carrots.png" id="6_k6fxe"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="6_pnqwy"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="7_8i61u"]
 [ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="7_ec4u3"]
@@ -19,6 +19,9 @@ animations = [{
 "name": &"Normal",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i064e"]
+size = Vector2(12, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
 size = Vector2(14, 14)
@@ -43,9 +46,6 @@ gravity = Vector3(0, 98, 0)
 scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_lfoib")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i064e"]
-size = Vector2(12, 10)
 
 [node name="Carrot" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "gpu_particles")]
 y_sort_enabled = true
@@ -76,13 +76,18 @@ animation = &"Normal"
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
-position = Vector2(-8, -9)
+position = Vector2(-10, -9)
 texture = ExtResource("6_pnqwy")
 
 [node name="BuildingSprite" type="Sprite2D" parent="SpriteAnimationPlayer"]
+position = Vector2(-24, -24)
 texture = ExtResource("6_k6fxe")
 centered = false
-offset = Vector2(-24, -64)
+
+[node name="BuildingCollision" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-8, -7)
+shape = SubResource("RectangleShape2D_i064e")
 
 [node name="MouseArea" type="Area2D" parent="."]
 z_index = 1
@@ -119,11 +124,6 @@ tile_set = ExtResource("7_8i61u")
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("8_csmfn")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
-
-[node name="MachineCollision" type="CollisionShape2D" parent="."]
-y_sort_enabled = true
-position = Vector2(-8, -7)
-shape = SubResource("RectangleShape2D_i064e")
 
 [node name="HitPoint" type="Node2D" parent="."]
 position = Vector2(-8, -8)

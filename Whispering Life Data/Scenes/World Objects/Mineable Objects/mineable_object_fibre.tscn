@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://eshgc8yqihmh"]
+[gd_scene load_steps=17 format=3 uid="uid://eshgc8yqihmh"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_ro5yu"]
 [ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://Resource Meta/Items/item_info_fibre.tres" id="3_ro5yu"]
@@ -11,112 +11,13 @@
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="10_4hweu"]
 [ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="11_ro5yu"]
 
-[sub_resource type="Animation" id="Animation_2ey6b"]
-resource_name = "Break"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Pivot/Sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/Pivot/Shadow:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_a1g7f"]
-resource_name = "Hit"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Pivot/Sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 0.8), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_2nxpf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Pivot/Sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/Pivot/Shadow:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_c5l8r"]
-resource_name = "Respawning"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Pivot/Sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/Pivot/Shadow:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2ngb"]
-_data = {
-&"Break": SubResource("Animation_2ey6b"),
-&"Hit": SubResource("Animation_a1g7f"),
-&"RESET": SubResource("Animation_2nxpf"),
-&"Respawning": SubResource("Animation_c5l8r")
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojekw"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(16, 8)
@@ -162,29 +63,29 @@ tile_types = Array[int]([0])
 title = "WORLD_RESOURCE_MFIBRE"
 description = "WORLD_RESOURCE_FIBRE_DESC"
 
-[node name="SpriteAnimationPlayer" type="Node2D" parent="."]
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
 script = ExtResource("4_ro5yu")
 
-[node name="Sprite" type="Sprite2D" parent="SpriteAnimationPlayer"]
-self_modulate = Color(0.673487, 0.911648, 0.0594572, 1)
-y_sort_enabled = true
-position = Vector2(-7, -2)
-texture = ExtResource("4_itx3h")
-offset = Vector2(0, -24)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_ojekw")
+animation = &"Normal"
+centered = false
 
-[node name="Shadow" type="Sprite2D" parent="SpriteAnimationPlayer"]
+[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
-position = Vector2(-8, -9)
+position = Vector2(-8, -8)
 texture = ExtResource("5_vs733")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteAnimationPlayer"]
-libraries = {
-&"": SubResource("AnimationLibrary_v2ngb")
-}
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+self_modulate = Color(0.491929, 0.842814, 0.46252, 1)
+position = Vector2(-24, -48)
+texture = ExtResource("4_itx3h")
+centered = false
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="BuildingCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-7, -7)
 shape = SubResource("RectangleShape2D_m0htq")
 
