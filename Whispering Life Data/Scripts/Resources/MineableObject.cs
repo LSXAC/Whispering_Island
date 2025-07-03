@@ -4,8 +4,6 @@ using Godot;
 
 public partial class MineableObject : placeable_building
 {
-    private SpriteAnimationPlayer sprite_anim_player;
-
     [Export]
     public Node2D hit_point;
 
@@ -69,7 +67,6 @@ public partial class MineableObject : placeable_building
         current_durability = max_durability;
         interactableArea = GetNode<Area2D>("MouseArea");
 
-        sprite_anim_player = GetNode<SpriteAnimationPlayer>("SpriteAnimationPlayer");
         if (HasNode("TimerBar"))
         {
             timer_bar = GetNode<TimerBar>("TimerBar");
@@ -82,7 +79,7 @@ public partial class MineableObject : placeable_building
 
     public void SpawnPlant()
     {
-        sprite_anim_player.animation_player.PlayBackwards("Break");
+        //sprite_anim_player.animation_player.PlayBackwards("Break");
         StartTimerBar(TimerBar.STATE.SPAWNING, respawn_seconds);
     }
 
@@ -236,7 +233,7 @@ public partial class MineableObject : placeable_building
         gpu_particles.Emitting = true;
         if (current_durability <= 0)
         {
-            sprite_anim_player.animation_player.Play("Break");
+            //sprite_anim_player.animation_player.Play("Break");
             int amount = (int)(mining_bonus * CalculateMiningAmountInt()) + current_durability;
             PlayerUI.AddItemLabelUI(
                 "Bonus: +"
@@ -273,7 +270,7 @@ public partial class MineableObject : placeable_building
             return;
         }
 
-        sprite_anim_player.animation_player.Play("Hit");
+        //sprite_anim_player.animation_player.Play("Hit");
         StartTimerBar(TimerBar.STATE.COOLDOWN, click_cooldown_time);
         PlayerUI.AddItemLabelUI(
             "+"
@@ -296,8 +293,8 @@ public partial class MineableObject : placeable_building
 
     private void StartTimerBar(TimerBar.STATE state, double time, bool from_loading = false)
     {
-        if (state == TimerBar.STATE.SPAWNING && from_loading)
-            sprite_anim_player.animation_player.PlayBackwards("Break");
+        //if (state == TimerBar.STATE.SPAWNING && from_loading)
+        //   sprite_anim_player.animation_player.PlayBackwards("Break");
 
         if (state == TimerBar.STATE.SPAWNING)
             if (collision_shape != null)

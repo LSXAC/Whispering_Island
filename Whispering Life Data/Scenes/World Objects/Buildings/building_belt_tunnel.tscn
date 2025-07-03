@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbbnp7617yuu5" path="res://Scripts/Building Scripts/BeltTunnel.cs" id="1_8pw6g"]
 [ext_resource type="Texture2D" uid="uid://dh7i821w2aucb" path="res://Sprites/Belt_Side.png" id="2_pptf6"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_03v8s"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="3_03v8s"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_u84hi"]
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Scenes/World Objects/Buildings/Building Components/Building_Rail_Detector_Component.tscn" id="5_cqme2"]
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_edykq"]
@@ -23,23 +23,17 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
 size = Vector2(16, 14)
 
-[node name="BeltTunnel" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "item_holder", "detector", "anim_manager12D", "building_collider_manager", "sprite", "collision_shape")]
+[node name="BeltTunnel" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer")]
 z_index = -1
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_8pw6g")
 checkAreaTimer = NodePath("CheckAreaTimer")
-item_holder = NodePath("ItemHolder")
-detector = NodePath("Detector")
-anim_manager12D = NodePath("12DAnimationManager")
 building_id = 1
 tile_types = Array[int]([0])
-building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_BELT_TUNNEL"
 description = "BUILDING_BELT_TUNNEL_DESC"
-sprite = NodePath("BuildingSprite")
-collision_shape = NodePath("CollisionShape2D")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 visible = false

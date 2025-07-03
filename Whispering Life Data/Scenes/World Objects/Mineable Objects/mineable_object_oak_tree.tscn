@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_cj282"]
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Items/item_info_wood.tres" id="2_1wx72"]
 [ext_resource type="Resource" uid="uid://dnxxeevayo83d" path="res://Resource Meta/Items/item_info_oak_seed.tres" id="3_hcjni"]
-[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scenes/World Objects/Buildings/Building Components/SpriteAnimationPlayer.cs" id="4_5wwwk"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_5wwwk"]
 [ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="4_aoaiv"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="5_ad443"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="6_ci7ld"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="7_0yyoq"]
 [ext_resource type="Texture2D" uid="uid://bfw0elq5yfvqk" path="res://Sprites/Leave.png" id="8_tdj12"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="9_htwjv"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="10_xqfnt"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="10_xqfnt"]
 
 [sub_resource type="Animation" id="Animation_2ey6b"]
 resource_name = "Break"
@@ -146,7 +146,7 @@ scale_min = 0.5
 scale_max = 0.7
 scale_curve = SubResource("CurveTexture_lbdfl")
 
-[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
+[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "gpu_particles")]
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_cj282")
@@ -161,15 +161,11 @@ extra_item_info = ExtResource("3_hcjni")
 gpu_particles = NodePath("LeavesParticles")
 building_id = 15
 tile_types = Array[int]([0])
-building_collider_manager = NodePath("BuildingAreas")
 title = "WORLD_RESOURCE_TREE"
 description = "WORLD_RESOURCE_TREE_DESC"
-sprite = NodePath("SpriteAnimationPlayer/Sprite")
-collision_shape = NodePath("Collision")
 
-[node name="SpriteAnimationPlayer" type="Node2D" parent="." node_paths=PackedStringArray("animation_player")]
+[node name="SpriteAnimationPlayer" type="Node2D" parent="."]
 script = ExtResource("4_5wwwk")
-animation_player = NodePath("AnimationPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="SpriteAnimationPlayer"]
 y_sort_enabled = true

@@ -1,14 +1,13 @@
 [gd_scene load_steps=21 format=4 uid="uid://cn0rjr3gah4jr"]
 
 [ext_resource type="Script" uid="uid://bb7d4vvk26up8" path="res://Scripts/Building Scripts/ProcessBuilding.cs" id="1_7ow6b"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_2jdlk"]
 [ext_resource type="Script" uid="uid://csvnm2nsny2wl" path="res://Scripts/UI Scripts/MachineRecipe.cs" id="4_8gjku"]
 [ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="7_ndbhg"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="12_pnpvk"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="13_ph182"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="13_ph182"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="14_5ajxt"]
-[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="15_hur4y"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="16_tjyxe"]
-[ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="17_glg8d"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="18_h5gpr"]
 [ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Taker_Component.tscn" id="19_3ermy"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Scenes/World Objects/Buildings/Building Components/component_building_item_giver.tscn" id="20_ujfx2"]
@@ -39,13 +38,21 @@ unlockRequirement = Array[Object]([SubResource("Resource_yoryk")])
 script = ExtResource("4_8gjku")
 unlockRequirement = null
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_g1nkg"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(48, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(48, 48)
 
-[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("crafting_timer", "state_timer", "givers", "takers", "building_collider_manager", "sprite", "collision_shape")]
+[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("crafting_timer", "state_timer", "givers", "takers")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -57,18 +64,29 @@ givers = [NodePath("Giver")]
 takers = [NodePath("Taker")]
 building_id = 3
 tile_types = Array[int]([0])
-building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_FURNACE"
 description = "BUILDING_FURNACE_DESC"
-sprite = NodePath("BuildingSprite")
-collision_shape = NodePath("MachineCollision")
 
-[node name="BuildingSprite" type="Sprite2D" parent="."]
-y_sort_enabled = true
-position = Vector2(-8, -16)
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("4_2jdlk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_g1nkg")
+animation = &"Normal"
+centered = false
+
+[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-8, -9)
+texture = ExtResource("18_h5gpr")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
 texture = ExtResource("12_pnpvk")
 centered = false
-offset = Vector2(-24, -32)
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("13_ph182")
@@ -80,17 +98,9 @@ tile_map_data = PackedByteArray("AAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAA
 enabled = false
 tile_set = ExtResource("14_5ajxt")
 
-[node name="MachineCollision" type="CollisionShape2D" parent="."]
+[node name="BuildingCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-8, 0.5)
 shape = SubResource("RectangleShape2D_m0htq")
-
-[node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.196078)
-z_index = -1
-z_as_relative = false
-position = Vector2(-8, 13.5)
-scale = Vector2(2.375, 3.0625)
-texture = ExtResource("15_hur4y")
 
 [node name="MouseArea" type="Area2D" parent="."]
 z_index = 1
@@ -100,23 +110,6 @@ script = ExtResource("16_tjyxe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 shape = SubResource("RectangleShape2D_fk0le")
-
-[node name="Tree" type="Node2D" parent="."]
-visible = false
-y_sort_enabled = true
-
-[node name="Texture" type="Sprite2D" parent="Tree"]
-z_index = 2
-y_sort_enabled = true
-position = Vector2(-6, -28)
-texture = ExtResource("17_glg8d")
-
-[node name="Shadow" type="Sprite2D" parent="Tree"]
-modulate = Color(1, 1, 1, 0.392157)
-z_index = 1
-y_sort_enabled = true
-position = Vector2(-7, -12)
-texture = ExtResource("18_h5gpr")
 
 [node name="Taker" parent="." node_paths=PackedStringArray("building") instance=ExtResource("19_3ermy")]
 z_index = 2

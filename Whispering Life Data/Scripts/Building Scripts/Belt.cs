@@ -7,8 +7,6 @@ public partial class Belt : TransportBase
 
     public override void _Ready()
     {
-        set_direction();
-        building_collider_manager = GetNode<Node2D>("BuildingAreas") as Building_Collider_Manager;
         path_connect_area = GetNode<Area2D>("PathConnectArea");
     }
 

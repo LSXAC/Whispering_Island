@@ -24,7 +24,7 @@ public partial class building_type : Panel
     {
         Building_Node placeable = scene_info.scene.Instantiate() as Building_Node;
         title_label.Text = ((placeable_building)placeable).GetTitle();
-        texture_rect.Texture = ((placeable_building)placeable).GetSprite().Texture;
+        texture_rect.Texture = ((placeable_building)placeable).GetTextureFromSpriteManager();
         this.scene_info = scene_info;
     }
 

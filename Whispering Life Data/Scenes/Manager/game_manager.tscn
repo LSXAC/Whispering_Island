@@ -61,11 +61,9 @@ script = ExtResource("5_f280c")
 
 [node name="MainIsland" parent="IslandManager" instance=ExtResource("6_p85m3")]
 
-[node name="QuestSign" parent="IslandManager/MainIsland" index="6" node_paths=PackedStringArray("sprite", "collision_shape")]
+[node name="QuestSign" parent="IslandManager/MainIsland" index="6"]
 title = "Monster"
 description = "...."
-sprite = NodePath("AnimationPlayer/BuildingSprite")
-collision_shape = NodePath("Collision")
 
 [node name="Tree7" parent="IslandManager/MainIsland/IslandObjectSaveManager" index="6"]
 position = Vector2(-7, -79)

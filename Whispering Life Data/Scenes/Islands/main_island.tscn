@@ -254,6 +254,7 @@ position = Vector2(-20, -100)
 shape = SubResource("RectangleShape2D_fk0le")
 
 [node name="IslandObjectSaveManager" type="Node2D" parent="."]
+visible = false
 y_sort_enabled = true
 script = ExtResource("13_lo8qh")
 

@@ -23,16 +23,13 @@ public partial class BuildMenuListObject : Control
     public void InitBuildingMenuChild(Building_Menu_List_Object building_type)
     {
         this.building_type = building_type;
-        Building_Node placeable = building_type.scene.Instantiate() as Building_Node;
+        Building_Node building_node = building_type.scene.Instantiate() as Building_Node;
 
         if (Logger.NodeIsNotNull(texture))
         {
-            texture.TooltipText =
-                TranslationServer.Translate(((placeable_building)placeable).GetTitle()) + "\n";
-            texture.Texture = ((placeable_building)placeable).GetSprite().Texture;
-            texture.TooltipText += TranslationServer.Translate(
-                ((placeable_building)placeable).GetDescription()
-            );
+            texture.TooltipText = TranslationServer.Translate(building_node.GetTitle()) + "\n";
+            texture.Texture = building_type.texture_in_build_menu;
+            texture.TooltipText += TranslationServer.Translate(building_node.GetDescription());
         }
 
         if (Logger.NodeIsNotNull(item_row_manager) && Logger.NodeIsNotNull(build_button))

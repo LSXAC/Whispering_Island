@@ -31,7 +31,7 @@ public partial class BuildingPlacer : Node2D
             return;
         }
 
-        ResetBasicParameters(scene_info);
+        InitPlacingParameter(scene_info);
 
         if (Logger.NodeIsNotNull(PlayerUI.instance))
             PlayerUI.instance.SetBuildingUI(required_items);
@@ -60,7 +60,7 @@ public partial class BuildingPlacer : Node2D
             machine_base.DisableTakers();
     }
 
-    private void ResetBasicParameters(Building_Menu_List_Object scene_info)
+    private void InitPlacingParameter(Building_Menu_List_Object scene_info)
     {
         selected_building = scene_info.scene;
         current_building = (Node2D)scene_info.scene.Instantiate();
@@ -73,7 +73,6 @@ public partial class BuildingPlacer : Node2D
 
     public override void _Process(double delta)
     {
-        // Handle building mode removal
         if (GameManager.building_mode == GameManager.BuildingMode.Removing)
         {
             if (Input.IsActionJustPressed("Close") || Input.IsActionJustPressed("Escape"))
@@ -82,25 +81,20 @@ public partial class BuildingPlacer : Node2D
             return;
         }
 
-        // No building selected
         if (current_building == null)
             return;
 
-        // Update building position
         Island island = island_manager.GetNearestIsland(GetGlobalMousePosition());
         current_building.GlobalPosition = GetBuildingPositionVec2(island);
 
-        // Handle escape to cancel building
         if (Input.IsActionJustPressed("Escape"))
         {
             CloseMenuWithBuildingSelected();
             return;
         }
 
-        // Handle rotation or flipping
         HandleRotationInput();
 
-        // Place building on left mouse click
         if (Input.IsActionJustPressed("MouseLeft") && placeable != null)
             PlaceBuilding();
     }
@@ -114,10 +108,10 @@ public partial class BuildingPlacer : Node2D
         if (is_belt_or_rail)
         {
             if (Input.IsActionJustPressed("Rotate_Right"))
-                RotateRight((Belt)placeable);
+                ((Belt)placeable).RotateRight();
 
             if (Input.IsActionJustPressed("Rotate_Left"))
-                RotateLeft((Belt)placeable);
+                ((Belt)placeable).RotateLeft();
         }
         else
         {
@@ -127,38 +121,17 @@ public partial class BuildingPlacer : Node2D
             )
             {
                 current_scale = new Vector2(placeable.Scale.X * -1, 1);
-                if (placeable is MachineBase)
-                {
-                    is_flipped = !is_flipped;
-                }
                 placeable.Scale = current_scale;
+
+                if (placeable is MachineBase)
+                    is_flipped = !is_flipped;
             }
         }
     }
 
-    private void RotateLeft(Belt belt)
-    {
-        belt.current_rotation--;
-        if (belt.current_rotation == -1)
-            belt.current_rotation = 3;
-        ((TransportBase)placeable).Set_Rotation(belt.current_rotation);
-    }
-
-    private void RotateRight(Belt belt)
-    {
-        belt.current_rotation++;
-        if (belt.current_rotation == 4)
-            belt.current_rotation = 0;
-        ((TransportBase)placeable).Set_Rotation(belt.current_rotation);
-    }
-
     private void PlaceBuilding()
     {
-        if (placeable == null)
-            Debug.Print("Placeable NULL");
-        if (placeable.building_collider_manager == null)
-            Debug.Print("BCM NULL");
-        if (placeable.building_collider_manager.AllCollidersOnBuildingLayer())
+        if (placeable.CheckBuildingColliders())
             BuildBuilding();
     }
 

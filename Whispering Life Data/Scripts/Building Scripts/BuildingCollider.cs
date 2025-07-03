@@ -1,5 +1,3 @@
-using System;
-using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
@@ -13,95 +11,91 @@ public partial class BuildingCollider : Area2D
 
     [Export]
     private Texture2D grid_outline_red;
+
     private TextureRect rect;
     public Array<placeable_building.TILETYPE> types;
     private bool activated = true;
-    public Building_Collider_Manager.PLACE_TYPE type = Building_Collider_Manager
-        .PLACE_TYPE
-        .BUILDING;
-
-    // Called when the node enters the scene tree for the first time.
+    public BuildingColliderManager.PLACE_TYPE type = BuildingColliderManager.PLACE_TYPE.BUILDING;
 
     public override void _Ready()
     {
         rect = GetNode<TextureRect>("TextureRect");
-        MakeInvisibleRect(false);
+        if (Logger.NodeIsNull(rect))
+            return;
+
+        SetRectVisible(false);
     }
 
     public override void _Process(double delta)
     {
-        if (BuildingPlacer.current_building == GetParent().GetParent())
-            MakeInvisibleRect(true);
+        if (
+            Logger.NodeIsNull(rect)
+            || Logger.NodeIsNull(grid_outline_green)
+            || Logger.NodeIsNull(grid_outline_red)
+        )
+            return;
+
+        if (IsCurrentBuilding())
+            SetRectVisible(true);
         else if (rect.Texture == grid_outline_green)
-            MakeInvisibleRect(false);
+            SetRectVisible(false);
     }
 
-    public void OnBodyEntered(Node2D node)
-    {
-        Calc();
-    }
+    public void OnBodyEntered(Node2D node) => Calc();
+
+    public void OnBodyLeaved(Node2D node) => Calc();
 
     public void Calc()
     {
-        bool on_building = false;
+        bool found = false;
         foreach (Node2D node in GetOverlappingBodies())
         {
-            Debug.Print(node.Name);
-            if (type == Building_Collider_Manager.PLACE_TYPE.MOVEABLE)
+            if (type == BuildingColliderManager.PLACE_TYPE.MOVEABLE)
             {
                 if (node is RailArea)
                 {
-                    on_building = true;
-                    BuildingPlacer.moveable_selected_parent = node.GetParent<Rail>().item_holder;
+                    found = true;
+                    BuildingPlacer.moveable_selected_parent = node.GetParent<Rail>()?.item_holder;
                     break;
                 }
                 continue;
             }
 
-            if (node is Building_Node n)
+            if (node is Building_Node building_node && !building_node.disable_collision)
             {
-                if (!n.disable_collision)
-                {
-                    on_building = false;
-                    break;
-                }
+                found = false;
+                break;
             }
 
-            if (node is StaticBody2D)
-                if (node.Name.ToString().Contains("Bridge"))
+            if (node is StaticBody2D && node.Name.ToString().Contains("Bridge"))
+            {
+                found = false;
+                break;
+            }
+
+            if (types != null)
+            {
+                foreach (var t in types)
                 {
-                    on_building = false;
-                    break;
+                    if (node.IsInGroup(t.ToString()))
+                        found = true;
                 }
-
-            if (types == null)
-                continue;
-
-            foreach (placeable_building.TILETYPE type in types)
-                if (node.IsInGroup(type.ToString()))
-                    on_building = true;
+            }
         }
 
-        if (on_building)
-        {
-            on_building_layer = true;
-            rect.Texture = grid_outline_green;
-        }
-        else
-        {
-            on_building_layer = false;
-            rect.Texture = grid_outline_red;
-        }
+        on_building_layer = found;
+        rect.Texture = found ? grid_outline_green : grid_outline_red;
     }
 
-    private void MakeInvisibleRect(bool state)
+    private void SetRectVisible(bool state)
     {
         activated = state;
-        rect.Visible = state;
+        if (rect != null)
+            rect.Visible = state;
     }
 
-    public void OnBodyLeaved(Node2D node)
+    private bool IsCurrentBuilding()
     {
-        Calc();
+        return BuildingPlacer.current_building == GetParent()?.GetParent();
     }
 }

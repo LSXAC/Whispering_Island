@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bwyysbkhkliqp" path="res://Scripts/Building Scripts/Chest.cs" id="1_lcmyo"]
 [ext_resource type="Texture2D" uid="uid://cb634fgv247qi" path="res://Sprites/Chest_Building_Sprite.png" id="2_nga8c"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_vyt0n"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="3_vyt0n"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_u7eqm"]
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_ksksf"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="6_whbdv"]
@@ -16,7 +16,7 @@ size = Vector2(32, 25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(32, 32)
 
-[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("givers", "takers", "building_collider_manager", "sprite", "collision_shape")]
+[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("givers", "takers")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -25,11 +25,8 @@ givers = []
 takers = []
 building_id = 2
 tile_types = Array[int]([0])
-building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_CHEST"
 description = "BUILDING_CHEST_DESC"
-sprite = NodePath("BuildingSprite")
-collision_shape = NodePath("MachineCollision")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true

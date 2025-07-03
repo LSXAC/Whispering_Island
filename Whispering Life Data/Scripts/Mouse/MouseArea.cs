@@ -31,7 +31,7 @@ public partial class MouseArea : Area2D
 
     private void OutlineBuilding()
     {
-        if (building_node.GetSprite() == null)
+        if (Logger.NodeIsNull(building_node?.sprite_anim_manager?.GetCanvasItem()))
         {
             Debug.Print("No sprite referenced! Position for hover menu not recognized", this);
             return;
@@ -43,14 +43,13 @@ public partial class MouseArea : Area2D
                 if (((MineableObject)GetParent()).in_cooldown)
                     return;
 
-            building_node.GetSprite().Material = outline_shader;
+            building_node.sprite_anim_manager.GetCanvasItem().Material = outline_shader;
             building_node.mouse_inside = true;
             hover_menu.InitHoverMenu(building_node);
-            Debug.Print("Hover Menu");
         }
         else if (GameManager.building_mode == GameManager.BuildingMode.Removing)
         {
-            building_node.GetSprite().Material = remove_outline_shader;
+            building_node.sprite_anim_manager.GetCanvasItem().Material = remove_outline_shader;
             building_node.mouse_inside = true;
         }
     }
@@ -66,17 +65,13 @@ public partial class MouseArea : Area2D
 
     public void OnMouseLeaved()
     {
-        if (building_node == null)
-        {
-            return;
-        }
-        if (building_node.GetSprite() == null)
+        if (Logger.NodeIsNull(building_node?.sprite_anim_manager?.GetCanvasItem()))
         {
             Debug.Print("No sprite referenced! Position for hover menu not recognized", this);
             return;
         }
 
-        building_node.GetSprite().Material = null;
+        building_node.sprite_anim_manager.GetCanvasItem().Material = null;
         if (building_node != null)
         {
             building_node.mouse_inside = false;

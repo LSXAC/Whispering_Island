@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b16hq6yipkway" path="res://Scripts/Building Scripts/BeltCombiner.cs" id="1_ri5mj"]
 [ext_resource type="Texture2D" uid="uid://vqnoy2nvry33" path="res://Sprites/Menu_Belt_Combiner_2x1.png" id="2_bxt4y"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_o1cmi"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="3_o1cmi"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_1m3b1"]
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Scenes/World Objects/Buildings/Building Components/Building_Rail_Detector_Component.tscn" id="5_snf1v"]
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_l1sf1"]
@@ -23,7 +23,7 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
 size = Vector2(32, 32)
 
-[node name="BeltCombiner2x1" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "item_holder", "detector", "anim_manager12D", "building_collider_manager", "sprite", "collision_shape")]
+[node name="BeltCombiner2x1" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -31,16 +31,10 @@ script = ExtResource("1_ri5mj")
 checkAreaTimer = NodePath("CheckAreaTimer")
 belt_0 = NodePath("Belt")
 belt_1 = NodePath("Belt2")
-item_holder = NodePath("ItemHolder")
-detector = NodePath("Detector")
-anim_manager12D = NodePath("12DAnimationManager")
 building_id = 23
 tile_types = Array[int]([0])
-building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_BELT_COMBINER_2x1"
 description = "BUILDING_BELT_COMBINER_2x1_DESC"
-sprite = NodePath("BuildingSprite")
-collision_shape = NodePath("CollisionShape2D")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 visible = false

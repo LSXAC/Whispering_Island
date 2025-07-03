@@ -58,7 +58,7 @@ public partial class hover_menu : PanelContainer
     public static void InitHoverMenu(Node2D node)
     {
         instance.current_object = node;
-        if (node is Building_Node b)
+        if (node is Building_Node building_node)
         {
             instance.title_container.Visible = false;
             instance.descriptiion_container.Visible = false;
@@ -77,18 +77,17 @@ public partial class hover_menu : PanelContainer
             instance.Line1.Visible = false;
             instance.Line2.Visible = false;
 
-            if (b.GetSprite() == null)
-                return;
-
             instance.title_container.Visible = true;
             instance.descriptiion_container.Visible = true;
             instance.object_type_container.Visible = true;
 
             //Title ---------------
-            instance.title_content.Text = TranslationServer.Translate(b.GetTitle());
+            instance.title_content.Text = TranslationServer.Translate(building_node.GetTitle());
 
             //Description -------------
-            instance.description_content.Text = TranslationServer.Translate(b.GetDescription());
+            instance.description_content.Text = TranslationServer.Translate(
+                building_node.GetDescription()
+            );
 
             //Object Type -------------
             if (node is MineableObject)

@@ -14,8 +14,7 @@ public partial class placeable_building : Building_Node
     [Export]
     public Array<TILETYPE> tile_types;
 
-    [Export]
-    public Building_Collider_Manager building_collider_manager;
+    private BuildingColliderManager building_collider_manager;
     public bool colliding_Wall = false;
     private MouseArea mouse_area;
 
@@ -27,22 +26,33 @@ public partial class placeable_building : Building_Node
 
     public override void _Ready()
     {
+        base._Ready();
         mouse_area = GetNode<MouseArea>("MouseArea");
+        building_collider_manager = GetNode<Node2D>("BuildingAreas") as BuildingColliderManager;
 
         if (disable_mouse_interaction)
             if (Logger.NodeIsNotNull(mouse_area))
                 mouse_area.Monitorable = false;
     }
 
+    public bool CheckBuildingColliders()
+    {
+        if (Logger.NodeIsNotNull(building_collider_manager))
+            if (building_collider_manager.AllCollidersOnBuildingLayer())
+                return true;
+        return false;
+    }
+
     public void MakeSpriteTransparent()
     {
-        if (Logger.NodeIsNotNull(GetSprite()))
-            GetSprite().SelfModulate = new Color(1f, 1f, 1f, 0.75f);
+        if (Logger.NodeIsNotNull(sprite_anim_manager))
+            sprite_anim_manager.MakeTransparent();
     }
 
     public void PrepareForBuild()
     {
-        building_collider_manager.SetTileType(tile_types);
+        if (Logger.NodeIsNotNull(building_collider_manager))
+            building_collider_manager.SetTileType(tile_types);
         ZIndex = 10;
         MakeSpriteTransparent();
         DisableCollision();

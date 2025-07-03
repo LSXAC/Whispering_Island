@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bow1jhtrsydv4"]
 
-[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scenes/World Objects/Buildings/Building Components/SpriteAnimationPlayer.cs" id="1_d7y58"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="1_d7y58"]
 [ext_resource type="Texture2D" uid="uid://bv0y2lln1foop" path="res://Sprites/MystFibre.png" id="1_x2v8r"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="2_d7y58"]
 

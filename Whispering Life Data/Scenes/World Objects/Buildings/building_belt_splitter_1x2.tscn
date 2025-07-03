@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://u3qrwso26fjd" path="res://Scripts/Building Scripts/BeltSplitter.cs" id="1_e8732"]
 [ext_resource type="Texture2D" uid="uid://c5fsef0i410ye" path="res://Sprites/Menu_Belt_Splitter_1x2.png" id="2_uevj2"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_w0ugo"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="3_w0ugo"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_1fjsi"]
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Scenes/World Objects/Buildings/Building Components/Building_Rail_Detector_Component.tscn" id="5_q4kg8"]
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_b0uqo"]
@@ -23,7 +23,7 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
 size = Vector2(32, 32)
 
-[node name="BeltSplitter1x2" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "item_holder", "detector", "anim_manager12D", "building_collider_manager", "sprite", "collision_shape")]
+[node name="BeltSplitter1x2" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -31,17 +31,11 @@ script = ExtResource("1_e8732")
 checkAreaTimer = NodePath("CheckAreaTimer")
 belt_0 = NodePath("Belt")
 belt_1 = NodePath("Belt2")
-item_holder = NodePath("ItemHolder")
-detector = NodePath("Detector")
 ignore_self_detector = true
-anim_manager12D = NodePath("12DAnimationManager")
 building_id = 21
 tile_types = Array[int]([0])
-building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_BELT_SPLITTER_1x2"
 description = "BUILDING_BELT_SPLITTER_1x2_DESC"
-sprite = NodePath("BuildingSprite")
-collision_shape = NodePath("CollisionShape2D")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 visible = false

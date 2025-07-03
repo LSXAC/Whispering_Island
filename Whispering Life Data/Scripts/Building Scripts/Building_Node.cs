@@ -13,15 +13,19 @@ public abstract partial class Building_Node : Node2D
     [Export]
     public bool disable_collision = false;
 
-    [Export]
-    public Sprite2D sprite;
+    public SpriteAnimationManager sprite_anim_manager;
 
-    [Export]
     public CollisionShape2D collision_shape;
 
     public bool mouse_inside = false;
 
     public abstract void OnMouseClick();
+
+    public override void _Ready()
+    {
+        sprite_anim_manager = GetNode<SpriteAnimationManager>("SpriteAnimationManager");
+        collision_shape = GetNode<CollisionShape2D>("BuildingCollision");
+    }
 
     public override void _UnhandledInput(InputEvent @event)
     {
@@ -32,11 +36,19 @@ public abstract partial class Building_Node : Node2D
             }
     }
 
-    public Sprite2D GetSprite()
+    public Texture2D GetTextureFromSpriteManager()
     {
-        if (sprite != null)
-            return sprite;
-        return null;
+        if (Logger.NodeIsNull(sprite_anim_manager))
+            return null;
+
+        return sprite_anim_manager.GetTexture2D();
+    }
+
+    public new Vector2 GetGlobalPosition()
+    {
+        if (Logger.NodeIsNotNull(sprite_anim_manager))
+            return sprite_anim_manager.GetGlobalPosition();
+        return new Vector2(0, 0);
     }
 
     public string GetTitle()
@@ -55,10 +67,8 @@ public abstract partial class Building_Node : Node2D
 
     public Vector2 GetBuildingPosition()
     {
-        if (Logger.NodeIsNotNull(GetSprite()))
-            return new Vector2(sprite.GlobalPosition.X, sprite.GlobalPosition.Y - 40f);
-
-        return new Vector2(0, 0);
+        Vector2 vec = GetGlobalPosition();
+        return new Vector2(vec.X, vec.Y - 40f);
     }
 
     public void DisableCollision()

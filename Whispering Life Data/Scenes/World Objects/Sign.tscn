@@ -11,14 +11,13 @@ size = Vector2(16, 4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(16, 21)
 
-[node name="Sign" type="StaticBody2D" node_paths=PackedStringArray("sprite")]
+[node name="Sign" type="StaticBody2D"]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_2geee")
 title = "BUILDING_SIGN"
 description = "BUILDING_SIGN_DESC"
-sprite = NodePath("BuildingSprite")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_g6kej")
@@ -36,10 +35,8 @@ position = Vector2(-2.98023e-08, 1.35)
 scale = Vector2(0.875, 0.33125)
 texture = ExtResource("3_wdf1c")
 
-[node name="MouseArea" type="Area2D" parent="." node_paths=PackedStringArray("building_node", "building_sprite")]
+[node name="MouseArea" type="Area2D" parent="."]
 script = ExtResource("4_2gr3e")
-building_node = NodePath("..")
-building_sprite = NodePath("../BuildingSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 position = Vector2(0, -6)

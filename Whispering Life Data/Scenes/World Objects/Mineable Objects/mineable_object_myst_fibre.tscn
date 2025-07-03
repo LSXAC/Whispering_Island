@@ -5,12 +5,12 @@
 [ext_resource type="Resource" uid="uid://dpfc7scfcvgj6" path="res://Resource Meta/Items/item_info_mystic_fibre_seed.tres" id="3_dw06p"]
 [ext_resource type="Texture2D" uid="uid://bv0y2lln1foop" path="res://Sprites/MystFibre.png" id="3_wt8vm"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_ccab7"]
-[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scenes/World Objects/Buildings/Building Components/SpriteAnimationPlayer.cs" id="4_j4q50"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_j4q50"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_h2g1a"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="6_hn3tl"]
 [ext_resource type="Texture2D" uid="uid://w5h1vxawvg88" path="res://Sprites/Myst_Particle.png" id="7_7jxkm"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="8_vh1ys"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="9_nobcd"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="9_nobcd"]
 
 [sub_resource type="Animation" id="Animation_2ey6b"]
 resource_name = "Break"
@@ -146,7 +146,7 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_lfoib")
 
-[node name="MystFibre" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "gpu_particles", "building_collider_manager", "sprite", "collision_shape")]
+[node name="MystFibre" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "gpu_particles")]
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_g4r0j")
@@ -160,15 +160,11 @@ extra_item_info = ExtResource("3_dw06p")
 gpu_particles = NodePath("FibreParticles")
 building_id = 14
 tile_types = Array[int]([0])
-building_collider_manager = NodePath("BuildingAreas")
 title = "WORLD_RESOURCE_MYSTIC_FIBRE"
 description = "WORLD_RESOURCE_MYSTIC_FIBRE_DESC"
-sprite = NodePath("SpriteAnimationPlayer/Sprite")
-collision_shape = NodePath("Collision")
 
-[node name="SpriteAnimationPlayer" type="Node2D" parent="." node_paths=PackedStringArray("animation_player")]
+[node name="SpriteAnimationPlayer" type="Node2D" parent="."]
 script = ExtResource("4_j4q50")
-animation_player = NodePath("AnimationPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="SpriteAnimationPlayer"]
 self_modulate = Color(0.9238, 0.555292, 0.974702, 1)

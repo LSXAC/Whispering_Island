@@ -32,16 +32,17 @@ public partial class Minecart : MoveableBase
         ChestInventoryUI.instance.OpenChest();
     }
 
+    //TODO: Animation by moving
     public override void _Process(double delta)
     {
         if (is_running)
         {
             if (moving_vector.X == 0 && moving_vector.Y == 0)
                 return;
-            if (moving_vector.Y == 0)
-                GetSprite().Texture = minecart_side;
-            if (moving_vector.X == 0)
-                GetSprite().Texture = minecart_top;
+            //if (moving_vector.Y == 0)
+            //    GetSprite().Texture = minecart_side;
+            //if (moving_vector.X == 0)
+            //    GetSprite().Texture = minecart_top;
         }
     }
 }

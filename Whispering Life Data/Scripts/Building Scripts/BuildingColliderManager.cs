@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
-public partial class Building_Collider_Manager : Node2D
+public partial class BuildingColliderManager : Node2D
 {
     [Export]
     private PackedScene building_collider = ResourceLoader.Load<PackedScene>(
@@ -54,12 +54,15 @@ public partial class Building_Collider_Manager : Node2D
 
     private void CreateBuildingCollider()
     {
-        foreach (Vector2I cell in collision_tilemap.GetUsedCells())
-        {
-            Debug.Print("NEw Areas");
-            Area2D area = (Area2D)building_collider.Instantiate();
-            area.Position = new Vector2(cell.X * 16 + 8, cell.Y * 16 + 8);
-            AddChild(area);
-        }
+        if (Logger.NodeIsNotNull(collision_tilemap))
+            foreach (Vector2I cell in collision_tilemap.GetUsedCells())
+            {
+                if (Logger.NodeIsNull(building_collider))
+                    continue;
+
+                Area2D area = (Area2D)building_collider.Instantiate();
+                area.Position = new Vector2(cell.X * 16 + 8, cell.Y * 16 + 8);
+                AddChild(area);
+            }
     }
 }

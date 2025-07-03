@@ -4,12 +4,6 @@ using Godot;
 
 public partial class Rail : TransportBase
 {
-    public override void _Ready()
-    {
-        set_direction();
-        building_collider_manager = GetNode<Node2D>("BuildingAreas") as Building_Collider_Manager;
-    }
-
     public void OnDetectorRailDetected(Area2D area)
     {
         if (ignore_self_detector)

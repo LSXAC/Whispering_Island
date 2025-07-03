@@ -5,12 +5,6 @@ using Godot;
 public partial class TransportBase : placeable_building
 {
     [Export]
-    public ItemHolder item_holder;
-
-    [Export]
-    public Detector detector;
-
-    [Export]
     public bool ignore_self_detector = false;
 
     [Export]
@@ -18,11 +12,11 @@ public partial class TransportBase : placeable_building
 
     [Export]
     public Direction from_direction = Direction.Right;
+    public ItemHolder item_holder;
 
-    [Export]
+    public Detector detector;
     public ConnectedBeltsManager cbm;
 
-    [Export]
     public AnimationManager12D anim_manager12D;
     public int current_rotation = 0;
 
@@ -35,14 +29,43 @@ public partial class TransportBase : placeable_building
         NONE
     };
 
+    public override void _Ready()
+    {
+        cbm = GetNode<ConnectedBeltsManager>("ConnectedBeltsManager");
+        anim_manager12D = GetNode<AnimationManager12D>("12DAnimationManager");
+        detector = GetNode<Detector>("Detector");
+        item_holder = GetNode<ItemHolder>("ItemHolder");
+        set_direction();
+    }
+
     public bool can_receive_item()
     {
+        if (Logger.NodeIsNull(item_holder))
+            return false;
         return item_holder.GetChildCount() == 0;
     }
 
     public void receive_item(Node2D item)
     {
+        if (Logger.NodeIsNull(item_holder))
+            return;
         item_holder.receive_item(item);
+    }
+
+    public void RotateLeft()
+    {
+        current_rotation--;
+        if (current_rotation == -1)
+            current_rotation = 3;
+        Set_Rotation(current_rotation);
+    }
+
+    public void RotateRight()
+    {
+        current_rotation++;
+        if (current_rotation == 4)
+            current_rotation = 0;
+        Set_Rotation(current_rotation);
     }
 
     public void Set_Rotation(int id)

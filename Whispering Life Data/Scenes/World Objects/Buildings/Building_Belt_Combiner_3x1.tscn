@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b16hq6yipkway" path="res://Scripts/Building Scripts/BeltCombiner.cs" id="1_enwf2"]
 [ext_resource type="Texture2D" uid="uid://kq8u6dxlwywg" path="res://Sprites/Menu_Belt_Combiner_3x1.png" id="2_m0mr5"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="3_fu8mu"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="3_fu8mu"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_gmjjv"]
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Scenes/World Objects/Buildings/Building Components/Building_Rail_Detector_Component.tscn" id="5_fsbsv"]
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_sja4p"]
@@ -23,7 +23,7 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfl3k"]
 size = Vector2(32, 48)
 
-[node name="BeltCombiner3x1" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "belt_2", "item_holder", "detector", "anim_manager12D", "building_collider_manager", "sprite", "collision_shape")]
+[node name="BeltCombiner3x1" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "belt_2")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -32,16 +32,10 @@ checkAreaTimer = NodePath("CheckAreaTimer")
 belt_0 = NodePath("Belt")
 belt_1 = NodePath("Belt2")
 belt_2 = NodePath("Belt3")
-item_holder = NodePath("ItemHolder")
-detector = NodePath("Detector")
-anim_manager12D = NodePath("12DAnimationManager")
 building_id = 24
 tile_types = Array[int]([0])
-building_collider_manager = NodePath("BuildingAreas")
 title = "BUILDING_BELT_COMBINER_3x1"
 description = "BUILDING_BELT_COMBINER_3x1_DESC"
-sprite = NodePath("BuildingSprite")
-collision_shape = NodePath("CollisionShape2D")
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 visible = false

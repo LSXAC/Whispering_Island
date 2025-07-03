@@ -35,7 +35,7 @@ public partial class itemRecipeUI : Control
 
         if (item_row_manager.CheckEnoughResources(items))
             can_craft = true;
-
+        item_row_manager.SetResourcesOnUI(items);
         if (
             !PlayerInventoryUI.instance.CanReceiveItem(
                 new Item(output_item.info, output_item.amount),

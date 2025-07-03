@@ -4,13 +4,13 @@
 [ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Resource Meta/Items/item_info_potato.tres" id="2_yytp3"]
 [ext_resource type="Resource" uid="uid://1vfo1rr84pk7" path="res://Resource Meta/Items/item_info_potato_seed.tres" id="3_42a5b"]
 [ext_resource type="Texture2D" uid="uid://5wixfgb6rrob" path="res://Sprites/Potatos.png" id="3_sn143"]
-[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scenes/World Objects/Buildings/Building Components/SpriteAnimationPlayer.cs" id="4_ib3ix"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_ib3ix"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_c8ur1"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="6_4fyyb"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="6_tcsi8"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="7_khusd"]
 [ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="7_vysf8"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/Building_Collider_Manager.cs" id="8_b1wo6"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="8_b1wo6"]
 
 [sub_resource type="Animation" id="Animation_2ey6b"]
 resource_name = "Break"
