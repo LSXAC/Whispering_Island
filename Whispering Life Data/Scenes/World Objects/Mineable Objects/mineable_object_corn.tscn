@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dyhqyvmm3pp6m"]
+[gd_scene load_steps=21 format=3 uid="uid://dyhqyvmm3pp6m"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_8yybw"]
 [ext_resource type="Resource" uid="uid://bp4gggmthi11e" path="res://Resource Meta/Items/item_info_corn.tres" id="2_der1d"]
 [ext_resource type="Resource" uid="uid://cbpupb53ocwp4" path="res://Resource Meta/Items/item_info_corn_seed.tres" id="3_1qyy3"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="3_3ele3"]
 [ext_resource type="Texture2D" uid="uid://d25mort4mi1r" path="res://Sprites/Corns.png" id="3_son7a"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_wuk7t"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_nfn24"]
@@ -11,6 +12,18 @@
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="7_jntfc"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="7_mdwsr"]
 [ext_resource type="Texture2D" uid="uid://brdyj2udwaxpm" path="res://Sprites/Sand_Particle.png" id="8_p3330"]
+
+[sub_resource type="Resource" id="Resource_mcoev"]
+script = ExtResource("3_3ele3")
+info = ExtResource("2_der1d")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_lqd03"]
+script = ExtResource("3_3ele3")
+info = ExtResource("3_1qyy3")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wuk7t"]
 animations = [{
@@ -53,13 +66,10 @@ collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_8yybw")
 hit_point = NodePath("HitPoint")
-type = 4
 max_durability = 2
 respawn_seconds = 30
-item_resource = ExtResource("2_der1d")
-drops_extra_item = true
-extra_item_amount = 1
-extra_item_info = ExtResource("3_1qyy3")
+resource_item = SubResource("Resource_mcoev")
+extra_item = SubResource("Resource_lqd03")
 gpu_particles = NodePath("CornParticles")
 building_id = 9
 tile_types = Array[int]([1])

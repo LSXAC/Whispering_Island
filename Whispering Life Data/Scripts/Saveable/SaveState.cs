@@ -30,10 +30,13 @@ public partial class SaveState : Resource
     public bool tutorial_finished = false;
 
     [Export]
-    public float game_time_since_start = 0;
+    public string dateTime_save_string;
 
     [Export]
-    public string dateTime_save_string;
+    public int current_days = 0;
+
+    [Export]
+    public int current_game_time = 0;
 
     [Export]
     public Dictionary<Inventory.ITEM_ID, ResearchSave> research_saves =

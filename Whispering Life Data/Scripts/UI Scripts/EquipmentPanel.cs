@@ -47,13 +47,14 @@ public partial class EquipmentPanel : Control
         fatigue_bar.Value = Player.instance.player_stats.fatigue_value;
         fatigue_bar_label.Text = TranslationServer.Translate("EQUIPMENT_PANEL_FATIGUE_BAR") + ":";
 
-        for (int i = 0; i < Enum.GetNames(typeof(PlayerStats.TYPE)).Length; i++)
+        for (int i = 0; i < Enum.GetNames(typeof(PlayerStats.TOOLTYPE)).Length; i++)
         {
             player_stats_ui.stats_container.GetChild(i).GetNode<Label>("Type").Text =
-                TranslationServer.Translate("EQUIPMENT_PANEL_" + ((PlayerStats.TYPE)i).ToString())
-                + ":";
+                TranslationServer.Translate(
+                    "EQUIPMENT_PANEL_" + ((PlayerStats.TOOLTYPE)i).ToString()
+                ) + ":";
             player_stats_ui.stats_container.GetChild(i).GetNode<Label>("Number").Text = Player
-                .instance.player_stats.GetStatAmount((PlayerStats.TYPE)i)
+                .instance.player_stats.GetStatAmount((PlayerStats.TOOLTYPE)i)
                 .ToString("N1");
         }
     }
@@ -139,7 +140,7 @@ public partial class EquipmentPanel : Control
     {
         PlayerStats player_stats = Player.instance.player_stats;
         for (int i = 0; i < player_stats.GetStatsLength(); i++)
-            player_stats.SetStat((PlayerStats.TYPE)i, 1f);
+            player_stats.SetStat((PlayerStats.TOOLTYPE)i, 1f);
 
         foreach (ItemSave s in equipped_armor)
         {
@@ -151,7 +152,7 @@ public partial class EquipmentPanel : Control
 
                 if (attribute.stats != null)
                     foreach (PlayerStat x in attribute.stats)
-                        player_stats.IncreaseStat(x.type, x.value);
+                        player_stats.IncreaseStat(x.tool_type, x.value);
             }
         }
 
@@ -163,7 +164,7 @@ public partial class EquipmentPanel : Control
             if (attribute != null)
                 if (attribute.stats != null)
                     foreach (PlayerStat x in attribute.stats)
-                        player_stats.IncreaseStat(x.type, x.value);
+                        player_stats.IncreaseStat(x.tool_type, x.value);
         }
         UpdateProgressbars();
     }

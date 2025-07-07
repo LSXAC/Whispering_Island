@@ -8,10 +8,10 @@ public partial class MineableObject : placeable_building
     public Node2D hit_point;
 
     [Export]
-    public PlayerStats.TYPE type;
+    public PlayerStats.TOOLTYPE tool_type;
 
     [Export]
-    public MINING_LEVEL mining_level = MINING_LEVEL.Hand;
+    public MINING_LEVEL mining_level = MINING_LEVEL.HAND;
 
     [Export]
     public int max_durability = 3;
@@ -23,19 +23,10 @@ public partial class MineableObject : placeable_building
     private float click_cooldown_time = 0.5f;
 
     [Export]
-    private int mining_bonus = 2;
+    public Item resource_item;
 
     [Export]
-    private ItemInfo item_resource;
-
-    [Export]
-    public bool drops_extra_item;
-
-    [Export]
-    public int extra_item_amount = 0;
-
-    [Export]
-    public ItemInfo extra_item_info;
+    public Item extra_item;
 
     [Export]
     public GpuParticles2D gpu_particles;
@@ -44,15 +35,15 @@ public partial class MineableObject : placeable_building
     TimerBar timer_bar;
     Area2D interactableArea;
     public bool in_cooldown = false;
-    Random rnd = new Random();
 
     public enum MINING_LEVEL
     {
-        Hand,
-        Wood,
-        Stone,
-        Mystic,
-        Iron,
+        HAND,
+        WOOD,
+        STONE,
+        IRON,
+        OBSIDIAN,
+        MYSTIC,
     }
 
     private PackedScene hit_label = ResourceLoader.Load<PackedScene>(
@@ -66,21 +57,15 @@ public partial class MineableObject : placeable_building
     {
         base._Ready();
         current_durability = max_durability;
+        timer_bar = GetNode<TimerBar>("TimerBar");
         interactableArea = GetNode<Area2D>("MouseArea");
 
-        if (HasNode("TimerBar"))
-        {
-            timer_bar = GetNode<TimerBar>("TimerBar");
+        if (Logger.NodeIsNotNull(timer_bar))
             timer_bar.parent = this;
-        }
-
-        if (timer_bar == null)
-            GD.PrintErr("ResourceObject: " + this.Name + " | doesn't have TimerBar");
     }
 
     public void SpawnPlant()
     {
-        //sprite_anim_player.animation_player.PlayBackwards("Break");
         StartTimerBar(TimerBar.STATE.SPAWNING, respawn_seconds);
     }
 
@@ -90,34 +75,6 @@ public partial class MineableObject : placeable_building
             Visible = false;
         else if (GameManager.instance.tutorial_finished && !Visible)
             Visible = true;
-    }
-
-    public void ResourceObjectLoad(ResourceObjectSave ros)
-    {
-        if (ros == null)
-            return;
-
-        Position = ros.position;
-        current_durability = ros.current_durability;
-        in_cooldown = ros.in_cooldown;
-        if (ros.last_state != TimerBar.STATE.NONE)
-            if (ros.time_left == 0)
-                Reset(from_loading: true);
-            else
-                StartTimerBar(ros.last_state, ros.time_left, from_loading: true);
-    }
-
-    public ResourceObjectSave SaveResourceObject()
-    {
-        ResourceObjectSave ros = new ResourceObjectSave(
-            in_cooldown: in_cooldown,
-            last_state: timer_bar.current_state,
-            (int)timer_bar.Value,
-            current_durability,
-            Position,
-            building_id
-        );
-        return ros;
     }
 
     public override void OnMouseClick()
@@ -134,13 +91,12 @@ public partial class MineableObject : placeable_building
         catch (Exception e)
         {
             GD.PrintErr("Error while hitting MineableObject: " + e.Message);
-            PlayerUI.AddItemLabelUI("ERROR: " + e.Message);
         }
     }
 
     private void Hit()
     {
-        if (!PlayerUI.instance.equipmentSelectBar.HasSameUseType(type))
+        if (!PlayerUI.instance.equipmentSelectBar.HasSameUseType(tool_type))
         {
             PlayerUI.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WRONG_TOOL"));
             return;
@@ -152,151 +108,119 @@ public partial class MineableObject : placeable_building
             return;
         }
 
-        //Check if Item can be in PlayerInventoryUI
-        if ((current_durability - CalculateMiningAmountInt()) > 0)
+        // 2. Inventar-Prüfung für normalen und letzten Schlag
+        int miningAmount = CalculateMiningAmountInt();
+        int durabilityAfterHit = current_durability - miningAmount;
+        int bonusAmount = (int)(resource_item.amount * miningAmount);
+
+        if (durabilityAfterHit > 0)
         {
-            if (
-                !PlayerInventoryUI.instance.CanReceiveItem(
-                    new Item(item_resource, CalculateMiningAmountInt()),
-                    PlayerInventoryUI.instance.inventory_items
-                )
-            )
-            {
-                PlayerUI.AddItemLabelUI(
-                    TranslationServer.Translate("PLAYERUI_PlayerInventoryUI_FULL")
-                );
+            if (!CanReceiveItem(resource_item))
                 return;
-            }
         }
         else
         {
-            int amount = (int)(mining_bonus * CalculateMiningAmountInt()) + current_durability;
-            if (
-                !PlayerInventoryUI.instance.CanReceiveItem(
-                    new Item(item_resource, amount),
-                    PlayerInventoryUI.instance.inventory_items
-                )
-            )
-            {
-                PlayerUI.AddItemLabelUI(
-                    TranslationServer.Translate("PLAYERUI_PlayerInventoryUI_FULL")
-                );
+            if (!CanReceiveItem(resource_item))
                 return;
-            }
-            if (drops_extra_item)
-            {
-                if (
-                    !PlayerInventoryUI.instance.CanReceiveItem(
-                        new Item(extra_item_info, extra_item_amount),
-                        PlayerInventoryUI.instance.inventory_items
-                    )
-                )
-                {
-                    PlayerUI.AddItemLabelUI(
-                        TranslationServer.Translate("PLAYERUI_PlayerInventoryUI_FULL")
-                    );
-                    return;
-                }
-            }
+
+            if (extra_item != null && !CanReceiveItem(extra_item))
+                return;
         }
 
-        if (hit_point != null)
-        {
-            CharacterBody2D hit_lab = hit_label.Instantiate() as CharacterBody2D;
-            int time = rnd.Next(-8, 9);
-            hit_lab.GetChild<HitLabel>(0).InitText("- " + CalculateMiningAmountInt());
-            IslandManager
-                .instance.GetNearestIsland(GetGlobalMousePosition())
-                .island_object_save_manager.AddChild(hit_lab);
-
-            hit_lab.GlobalPosition = hit_point.GlobalPosition - new Vector2(11, 10);
-            hit_lab.Position += new Vector2(time, 0);
-        }
+        ShowHitLabel(miningAmount);
 
         Player.instance.player_stats.AddFatigue(0.25f);
-        current_durability -= CalculateMiningAmountInt();
+        current_durability -= miningAmount;
 
-        //Selected Item Durability + Break -------------------------------------------------------------
-        if (PlayerUI.instance.equipmentSelectBar.GetSelectedSlotItemUI() != null)
-        {
-            SlotItemUI slot_item_ui = PlayerUI.instance.equipmentSelectBar.GetSelectedSlotItemUI();
-            if (slot_item_ui.item.info.HasAttribute<ToolAttribute>())
-            {
-                EquipmentPanel
-                    .instance.slots_tool[EquipmentSelectBar.current_selected_slot]
-                    .GetSlotItemUI()
-                    .current_durability -= CalculateMiningAmountInt();
-                EquipmentPanel.UpdateSlotDurability(EquipmentSelectBar.current_selected_slot);
-            }
-        }
-        //-----------------------------------------------------------------------------------------------------
+        UpdateToolDurability(miningAmount);
 
         gpu_particles.Emitting = true;
+
         if (current_durability <= 0)
         {
-            //sprite_anim_player.animation_player.Play("Break");
-            int amount = (int)(mining_bonus * CalculateMiningAmountInt()) + current_durability;
-            PlayerUI.AddItemLabelUI(
-                "Bonus: +"
-                    + amount
-                    + " "
-                    + TranslationServer.Translate(item_resource.name.ToString())
-            );
-            PlayerInventoryUI.instance.AddItem(
-                new Item(item_resource, amount),
-                PlayerInventoryUI.instance.inventory_items
-            );
-
-            if (drops_extra_item)
-            {
-                PlayerUI.AddItemLabelUI(
-                    "Bonus: +"
-                        + extra_item_amount
-                        + " "
-                        + TranslationServer.Translate(extra_item_info.name.ToString())
-                );
-                PlayerInventoryUI.instance.AddItem(
-                    new Item(extra_item_info, extra_item_amount),
-                    PlayerInventoryUI.instance.inventory_items
-                );
-            }
-
-            if (HasNode("Collision"))
-                GetNode<CollisionShape2D>("Collision").Disabled = true;
-            if (HasNode("Shadow"))
-                GetNode<Sprite2D>("Shadow").Visible = false;
-
-            hover_menu.DisableHoverMenu();
-            QueueFree();
+            HandleBreak(bonusAmount);
             return;
         }
 
-        //sprite_anim_player.animation_player.Play("Hit");
         StartTimerBar(TimerBar.STATE.COOLDOWN, click_cooldown_time);
-        PlayerUI.AddItemLabelUI(
-            "+"
-                + CalculateMiningAmountInt()
-                + " "
-                + TranslationServer.Translate(item_resource.name.ToString())
-        );
+        PlayerUI.AddItemLabelMineableUI(resource_item);
         PlayerInventoryUI.instance.AddItem(
-            new Item(item_resource, CalculateMiningAmountInt()),
+            resource_item,
             PlayerInventoryUI.instance.inventory_items
         );
 
         hover_menu.InitHoverMenu(this);
     }
 
-    public int CalculateMiningAmountInt()
+    private bool CanReceiveItem(Item item)
     {
-        return (int)(1 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT));
+        if (
+            !PlayerInventoryUI.instance.CanReceiveItem(
+                item,
+                PlayerInventoryUI.instance.inventory_items
+            )
+        )
+        {
+            PlayerUI.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_PlayerInventoryUI_FULL"));
+            return false;
+        }
+        return true;
+    }
+
+    private void ShowHitLabel(int miningAmount)
+    {
+        if (hit_point == null)
+            return;
+
+        CharacterBody2D hit_lab = hit_label.Instantiate() as CharacterBody2D;
+        hit_lab.GetChild<HitLabel>(0).Init(miningAmount, hit_point);
+        IslandManager
+            .instance.GetNearestIsland(GetGlobalMousePosition())
+            .island_object_save_manager.AddChild(hit_lab);
+    }
+
+    private void UpdateToolDurability(int miningAmount)
+    {
+        var slot_item_ui = PlayerUI.instance.equipmentSelectBar.GetSelectedSlotItemUI();
+        if (slot_item_ui != null && slot_item_ui.item.info.HasAttribute<ToolAttribute>())
+        {
+            EquipmentPanel
+                .instance.slots_tool[EquipmentSelectBar.current_selected_slot]
+                .GetSlotItemUI()
+                .current_durability -= miningAmount;
+            EquipmentPanel.UpdateSlotDurability(EquipmentSelectBar.current_selected_slot);
+        }
+    }
+
+    private void HandleBreak(int bonusAmount)
+    {
+        PlayerUI.AddItemLabelMineableBonusItemUI(resource_item);
+        PlayerInventoryUI.instance.AddItem(
+            resource_item,
+            PlayerInventoryUI.instance.inventory_items
+        );
+
+        if (extra_item != null)
+        {
+            PlayerUI.AddItemLabelMineableBonusItemUI(extra_item);
+            PlayerInventoryUI.instance.AddItem(
+                extra_item,
+                PlayerInventoryUI.instance.inventory_items
+            );
+        }
+
+        // Collider und Shadow deaktivieren
+        if (HasNode("Collision"))
+            GetNode<CollisionShape2D>("Collision").Disabled = true;
+        if (HasNode("Shadow"))
+            GetNode<Sprite2D>("Shadow").Visible = false;
+
+        hover_menu.DisableHoverMenu();
+        QueueFree();
     }
 
     private void StartTimerBar(TimerBar.STATE state, double time, bool from_loading = false)
     {
-        //if (state == TimerBar.STATE.SPAWNING && from_loading)
-        //   sprite_anim_player.animation_player.PlayBackwards("Break");
-
         if (state == TimerBar.STATE.SPAWNING)
             if (collision_shape != null)
                 collision_shape.Disabled = false;
@@ -316,5 +240,39 @@ public partial class MineableObject : placeable_building
         in_cooldown = false;
         interactableArea.Monitoring = true;
         timer_bar.current_state = TimerBar.STATE.NONE;
+    }
+
+    public int CalculateMiningAmountInt()
+    {
+        return (int)(1 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT));
+    }
+
+    public override ResourceObjectSave Save()
+    {
+        return new ResourceObjectSave(
+            in_cooldown: in_cooldown,
+            last_state: timer_bar.current_state,
+            (int)timer_bar.Value,
+            current_durability,
+            Position,
+            building_id
+        );
+    }
+
+    public override void Load(Resource resource)
+    {
+        if (resource is ResourceObjectSave ros)
+        {
+            Position = ros.position;
+            current_durability = ros.current_durability;
+            in_cooldown = ros.in_cooldown;
+            if (ros.last_state != TimerBar.STATE.NONE)
+                if (ros.time_left == 0)
+                    Reset(from_loading: true);
+                else
+                    StartTimerBar(ros.last_state, ros.time_left, from_loading: true);
+        }
+        else
+            GD.PrintErr("Wrong Resource for MineableObject", resource.ResourceName);
     }
 }

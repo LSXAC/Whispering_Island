@@ -12,4 +12,14 @@ public partial class Bed : placeable_building
 
         Player.instance.player_stats.RemoveFatigue(seconds: 5);
     }
+
+    public override Resource Save()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Load(Resource save)
+    {
+        throw new NotImplementedException();
+    }
 }

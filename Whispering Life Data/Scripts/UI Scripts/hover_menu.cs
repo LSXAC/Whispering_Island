@@ -119,7 +119,7 @@ public partial class hover_menu : PanelContainer
             instance.hitpoint_content.Text = ro.current_durability + "/" + ro.max_durability;
 
             //Type if Ressource
-            instance.resource_type_content.Text = ro.type.ToString();
+            instance.resource_type_content.Text = ro.tool_type.ToString();
 
             //Collect Level if Ressource
             instance.resource_type_level_content.Text = ro.mining_level.ToString();

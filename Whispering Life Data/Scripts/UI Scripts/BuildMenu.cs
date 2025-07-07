@@ -20,6 +20,7 @@ public partial class BuildMenu : CanvasLayer
         DECORATION,
         PLANTING,
         RESEARCH,
+        ADMIN,
         NONE
     }
 

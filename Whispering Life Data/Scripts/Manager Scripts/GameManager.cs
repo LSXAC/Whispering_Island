@@ -95,6 +95,8 @@ public partial class GameManager : Node2D
         save_state.tutorial_finished = tutorial_finished;
 
         save_state.dateTime_save_string = DateTime.Now.ToString();
+        save_state.current_days = TimeManager.instance.current_day;
+        save_state.current_game_time = TimeManager.instance.current_game_time;
 
         save_state.char_save.research_slot_item = ResearchTab.research_slot_item;
         save_state.research_saves = ResearchTab.research_saves;
@@ -157,7 +159,11 @@ public partial class GameManager : Node2D
         QuestManager.next_quest_is_doubled_items = save_state.is_doubled_quest;
         QuestManager.instance.StartQuest(save_state.quest_save);
 
+        TimeManager.instance.current_day = save_state.current_days;
+        TimeManager.instance.current_game_time = save_state.current_game_time;
         TimeManager.instance.game_timer.Start();
+        TimeManager.instance.day_night_manager.UpdateColor();
+        TimeManager.instance.UpdatePlayerUITime();
     }
 
     private void CreateIslands()

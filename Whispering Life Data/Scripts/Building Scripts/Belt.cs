@@ -7,6 +7,8 @@ public partial class Belt : TransportBase
 
     public override void _Ready()
     {
+        base._Ready();
+
         path_connect_area = GetNode<Area2D>("PathConnectArea");
     }
 
@@ -100,5 +102,18 @@ public partial class Belt : TransportBase
         Set_Rotation(rotation);
         if (Logger.NodeIsNotNull(path_connect_area))
             path_connect_area.Monitorable = false;
+    }
+
+    public override Resource Save()
+    {
+        TransportBaseSave tb_save = (TransportBaseSave)base.Save();
+        BeltSave belt_save = new BeltSave(tb_save, null, current_rotation);
+        if (item_holder.hasBeltItem())
+        {
+            belt_save.belt_holding_item_resource = item_holder.GetBeltItem().item.info;
+            belt_save.belt_item_is_moving = item_holder.moving_item;
+            belt_save.belt_item_position = item_holder.GetBeltItem().Position;
+        }
+        return belt_save;
     }
 }

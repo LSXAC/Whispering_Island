@@ -31,7 +31,9 @@ public partial class TransportBase : placeable_building
 
     public override void _Ready()
     {
-        cbm = GetNode<ConnectedBeltsManager>("ConnectedBeltsManager");
+        base._Ready();
+        if (HasNode("ConnectedBeltsManager"))
+            cbm = GetNode<ConnectedBeltsManager>("ConnectedBeltsManager");
         anim_manager12D = GetNode<AnimationManager12D>("12DAnimationManager");
         detector = GetNode<Detector>("Detector");
         item_holder = GetNode<ItemHolder>("ItemHolder");
@@ -195,5 +197,46 @@ public partial class TransportBase : placeable_building
                 anim_manager12D.SetAnimation(from_direction, to_direction);
                 break;
         }
+    }
+
+    public override Resource Save()
+    {
+        TransportBaseSave tbs = new TransportBaseSave(
+            Position,
+            from_direction,
+            to_direction,
+            current_rotation
+        );
+        return tbs;
+    }
+
+    public override void Load(Resource save)
+    {
+        if (save is TransportBaseSave belt_save)
+        {
+            Position = belt_save.position;
+            from_direction = belt_save.from_direction;
+            to_direction = belt_save.to_direction;
+            set_direction();
+            Set_Rotation(belt_save.current_rotation);
+        }
+        else
+            Logger.PrintWrongSaveType();
+    }
+
+    public void InitBeltItem(BeltSave belt_save)
+    {
+        PackedScene belt_item_scene = ResourceLoader.Load<PackedScene>(
+            "res://Scenes/Items/belt_item.tscn"
+        );
+        if (Logger.NodeIsNull(belt_item_scene))
+            return;
+
+        BeltItem belt_item = (BeltItem)belt_item_scene.Instantiate();
+        Item item = new Item(belt_save.belt_holding_item_resource, 1);
+        belt_item.Init(item);
+        item_holder.moving_item = belt_save.belt_item_is_moving;
+        belt_item.Position = belt_save.belt_item_position;
+        item_holder.AddChild(belt_item);
     }
 }

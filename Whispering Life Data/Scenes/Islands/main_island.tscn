@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bveoiwi14ha4g"]
+[gd_scene load_steps=28 format=4 uid="uid://bveoiwi14ha4g"]
 
 [ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island.cs" id="1_sbvtb"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="2_naawu"]
@@ -38,6 +38,44 @@ animations = [{
 "name": &"Normal",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_k0wjm"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-84, -123), Vector2(-84, -130), Vector2(-84, -123)]
+}
+
+[sub_resource type="Animation" id="Animation_000go"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-84, -123)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wl4wn"]
+_data = {
+&"Idle": SubResource("Animation_k0wjm"),
+&"RESET": SubResource("Animation_000go")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6kej"]
 size = Vector2(32, 18)
@@ -201,6 +239,7 @@ description = "123414"
 
 [node name="SpriteAnimationManager" type="Node2D" parent="QuestSign"]
 script = ExtResource("10_k0wjm")
+has_animation_player = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="QuestSign/SpriteAnimationManager"]
 position = Vector2(-32, -48)
@@ -223,6 +262,11 @@ position = Vector2(-84, -123)
 texture = ExtResource("11_qd1vh")
 centered = false
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="QuestSign/SpriteAnimationManager"]
+libraries = {
+&"": SubResource("AnimationLibrary_wl4wn")
+}
+
 [node name="BuildingCollision" type="CollisionShape2D" parent="QuestSign"]
 position = Vector2(-32, -31)
 shape = SubResource("RectangleShape2D_g6kej")
@@ -240,52 +284,52 @@ y_sort_enabled = true
 script = ExtResource("13_lo8qh")
 
 [node name="Tree" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
-position = Vector2(80, -181)
+position = Vector2(80, -192)
 
 [node name="Tree2" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
-position = Vector2(110, -160)
+position = Vector2(112, -160)
 
 [node name="Tree3" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
-position = Vector2(-158, -101)
+position = Vector2(-160, -96)
 
 [node name="Tree4" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(94, 124)
 
 [node name="Tree5" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
-position = Vector2(-102, 14)
+position = Vector2(-96, 0)
 
 [node name="Tree6" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
-position = Vector2(-136, 56)
+position = Vector2(-144, 16)
 
 [node name="Tree7" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
-position = Vector2(184, -64)
+position = Vector2(176, -64)
 
 [node name="Tree8" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
-position = Vector2(-80, -168)
+position = Vector2(-80, -176)
 
 [node name="Stone" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-75, 23)
+position = Vector2(-64, 16)
 
 [node name="Stone2" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-32, -171)
+position = Vector2(-32, -160)
 
 [node name="Stone5" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-24, -192)
+position = Vector2(-16, -192)
 
 [node name="Stone6" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-96, -144)
+position = Vector2(-112, -144)
 
 [node name="Stone7" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
 position = Vector2(72, 144)
 
 [node name="Stone8" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-96, 88)
+position = Vector2(-80, 64)
 
 [node name="Stone3" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(58, -95)
+position = Vector2(32, -64)
 
 [node name="Stone4" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(91, 19)
+position = Vector2(96, 16)
 
 [node name="Wheat" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
 position = Vector2(50, -145)
@@ -309,13 +353,13 @@ position = Vector2(-177, 50)
 position = Vector2(65, -127)
 
 [node name="Fibre" parent="IslandObjectSaveManager" instance=ExtResource("16_eltw0")]
-position = Vector2(138, 46)
+position = Vector2(144, 48)
 
 [node name="Fibre2" parent="IslandObjectSaveManager" instance=ExtResource("16_eltw0")]
-position = Vector2(26, -77)
+position = Vector2(64, -96)
 
 [node name="Fibre3" parent="IslandObjectSaveManager" instance=ExtResource("16_eltw0")]
-position = Vector2(106, 45)
+position = Vector2(128, -128)
 
 [connection signal="mouse_entered" from="QuestSign/MouseArea" to="QuestSign/MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="QuestSign/MouseArea" to="QuestSign/MouseArea" method="OnMouseLeaved"]

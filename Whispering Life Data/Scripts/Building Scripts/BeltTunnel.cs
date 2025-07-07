@@ -22,6 +22,7 @@ public partial class BeltTunnel : Belt
 
     public override void _Ready()
     {
+        base._Ready();
         checkArea = GetNode<Area2D>("TunnelArea");
     }
 

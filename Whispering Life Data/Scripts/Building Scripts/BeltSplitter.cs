@@ -71,4 +71,30 @@ public partial class BeltSplitter : Belt
                 return;
             }
     }
+
+    public override Resource Save()
+    {
+        BeltMachineSave belt_machine = new BeltMachineSave();
+        belt_machine.id = building_id;
+        belt_machine.b1 = (BeltSave)Save();
+        belt_machine.b2 = (BeltSave)belt_0.Save();
+        belt_machine.b3 = (BeltSave)belt_1.Save();
+        if (belt_2 != null)
+            belt_machine.b4 = (BeltSave)belt_2.Save();
+        return belt_machine;
+    }
+
+    public override void Load(Resource save)
+    {
+        if (save is BeltMachineSave belt_machine_save)
+        {
+            InitBeltItem(belt_machine_save.b1);
+            belt_0.InitBeltItem(belt_machine_save.b2);
+            belt_1.InitBeltItem(belt_machine_save.b3);
+            if (belt_machine_save.b4 != null)
+                belt_2.InitBeltItem(belt_machine_save.b4);
+        }
+        else
+            Logger.PrintWrongSaveType();
+    }
 }

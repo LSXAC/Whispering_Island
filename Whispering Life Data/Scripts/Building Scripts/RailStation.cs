@@ -59,4 +59,26 @@ public partial class RailStation : MachineBase
         this.minecart = null;
         transfer_timer.Stop();
     }
+
+    public override void Load(Resource save)
+    {
+        if (save is MachineSave machine_save)
+        {
+            base.Load(machine_save);
+            for (int i = 0; i < machine_save.chest_items.Length; i++)
+                chest_in.chest_items[i] = machine_save.chest_items[i];
+            for (int i = 0; i < machine_save.second_chest_items.Length; i++)
+                chest_out.chest_items[i] = machine_save.second_chest_items[i];
+        }
+        else
+            Logger.PrintWrongSaveType();
+    }
+
+    public override Resource Save()
+    {
+        MachineSave ms = (MachineSave)base.Save();
+        ms.chest_items = chest_in.chest_items;
+        ms.second_chest_items = chest_out.chest_items;
+        return ms;
+    }
 }

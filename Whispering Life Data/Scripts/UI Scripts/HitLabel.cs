@@ -18,9 +18,13 @@ public partial class HitLabel : Label
         GetParent<CharacterBody2D>().Velocity = new Vector2(t, -15f + t2);
     }
 
-    public void InitText(string text)
+    public void Init(int amount, Node2D hit_point)
     {
-        Text = text;
+        Random rnd = new Random();
+        int time = rnd.Next(-8, 9);
+        Text = "-" + amount;
+        GlobalPosition = hit_point.GlobalPosition - new Vector2(11, 10);
+        Position += new Vector2(time, 0);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
-public partial class placeable_building : Building_Node
+public abstract partial class placeable_building : Building_Node
 {
     [Export]
     public Database.BUILDING_ID building_id;
@@ -34,6 +34,10 @@ public partial class placeable_building : Building_Node
             if (Logger.NodeIsNotNull(mouse_area))
                 mouse_area.Monitorable = false;
     }
+
+    public abstract Resource Save();
+
+    public abstract void Load(Resource save);
 
     public bool CheckBuildingColliders()
     {

@@ -5,7 +5,7 @@ using Godot;
 public partial class PlayerStat : Resource
 {
     [Export]
-    public PlayerStats.TYPE type;
+    public PlayerStats.TOOLTYPE tool_type;
 
     [Export]
     public float value = 0.0f;

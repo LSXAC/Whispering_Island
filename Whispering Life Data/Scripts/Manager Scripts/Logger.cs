@@ -13,7 +13,7 @@ public partial class Logger
     {
         if (reference == null)
         {
-            GD.PrintErr(
+            GD.PushWarning(
                 $"Reference is null: {typeof(Node).Name} (Line {lineNumber}) in {System.IO.Path.GetFileName(filePath)}::{memberName} (Node name: {(reference as Godot.Node)?.Name ?? "unknown"})"
             );
             return false;
@@ -30,12 +30,23 @@ public partial class Logger
     {
         if (reference == null)
         {
-            GD.PrintErr(
+            GD.PushWarning(
                 $"Reference is null: {typeof(Node).Name} (Line {lineNumber}) in {System.IO.Path.GetFileName(filePath)}::{memberName}"
             );
             return true;
         }
         return false;
+    }
+
+    public static void PrintWrongSaveType(
+        [CallerLineNumber] int lineNumber = 0,
+        [CallerFilePath] string filePath = "",
+        [CallerMemberName] string memberName = ""
+    )
+    {
+        GD.PrintErr(
+            $"Wrong save type! (Line {lineNumber}) in {System.IO.Path.GetFileName(filePath)}::{memberName}"
+        );
     }
 
     public static bool HasNodeOrPrintError(Node parent, string nodePath)

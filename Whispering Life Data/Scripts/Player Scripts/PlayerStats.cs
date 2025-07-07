@@ -16,7 +16,7 @@ public partial class PlayerStats : Node2D
 
     float[] stat_amounts = new float[5] { 1f, 1f, 1f, 1f, 1f };
 
-    public enum TYPE
+    public enum TOOLTYPE
     {
         ATTACK,
         DEFENSE,
@@ -27,22 +27,22 @@ public partial class PlayerStats : Node2D
 
     public override void _Ready() { }
 
-    public void IncreaseStat(TYPE type, float amount)
+    public void IncreaseStat(TOOLTYPE tool_type, float amount)
     {
-        stat_amounts[(int)type] += amount;
+        stat_amounts[(int)tool_type] += amount;
     }
 
-    public void SetStat(TYPE type, float amount)
+    public void SetStat(TOOLTYPE tool_type, float amount)
     {
         if (amount < 1f)
             amount = 1f;
 
-        stat_amounts[(int)type] = amount;
+        stat_amounts[(int)tool_type] = amount;
     }
 
-    public float GetStatAmount(TYPE type)
+    public float GetStatAmount(TOOLTYPE tool_type)
     {
-        return stat_amounts[(int)type];
+        return stat_amounts[(int)tool_type];
     }
 
     public int GetStatsLength()

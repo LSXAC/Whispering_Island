@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 [sub_resource type="Resource" id="Resource_frr0t"]
 script = ExtResource("2_eqi65")
 type = 2
-use_type = 3
+tool_type = 3
 mining_level = 2
 slot_type = 5
 durability = 100

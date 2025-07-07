@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
@@ -11,7 +12,7 @@ public partial class Database : Node
         instance = this;
         recipies = LoadAllResourcesRecursive<CraftingRecipe>(recipe_path);
         researchs = LoadResearchsRecursive(research_path);
-        buildings = LoadBuildingsRecursive(building_path, building_plants_path);
+        buildings = LoadBuildingsRecursive(building_path, building_plants_path, objects_path);
     }
 
     public enum UPGRADE_LEVEL
@@ -31,6 +32,8 @@ public partial class Database : Node
         new Dictionary<Inventory.ITEM_ID, ItemResearch>();
     public static string building_path =
         "res://Resource Meta/Building Menu List Object Infos/Buildings/";
+    public static string objects_path =
+        "res://Resource Meta/Building Menu List Object Infos/Objects/";
     public static string building_plants_path =
         "res://Resource Meta/Building Menu List Object Infos/Planting/";
     public static Dictionary<string, Building_Menu_List_Object> buildings =
@@ -67,6 +70,7 @@ public partial class Database : Node
             {
                 string fullPath = directoryPath.TrimEnd('/') + "/" + fileName;
                 var resource = ResourceLoader.Load<T>(fullPath);
+
                 if (resource != null)
                     result.Add(resource);
             }
@@ -95,22 +99,45 @@ public partial class Database : Node
     // Lädt alle Building_Menu_List_Object aus beiden Pfaden und ordnet sie nach Dateinamen (ohne Endung) zu
     public static Dictionary<string, Building_Menu_List_Object> LoadBuildingsRecursive(
         string buildingsPath,
-        string plantsPath
+        string plantsPath,
+        string objectPath
     )
     {
         var result = new Dictionary<string, Building_Menu_List_Object>();
         var allBuildings = LoadAllResourcesRecursive<Building_Menu_List_Object>(buildingsPath);
         var allPlants = LoadAllResourcesRecursive<Building_Menu_List_Object>(plantsPath);
+        var allObjects = LoadAllResourcesRecursive<Building_Menu_List_Object>(objectPath);
 
         foreach (var b in allBuildings)
         {
             if (b != null)
-                result[System.IO.Path.GetFileNameWithoutExtension(b.ResourcePath)] = b;
+            {
+                string key = System.IO.Path.GetFileNameWithoutExtension(b.ResourcePath);
+                if (key.StartsWith("build_menu_list_object_", StringComparison.OrdinalIgnoreCase))
+                    key = key.Substring("build_menu_list_object_".Length);
+                result[key] = b;
+            }
         }
         foreach (var p in allPlants)
         {
             if (p != null)
-                result[System.IO.Path.GetFileNameWithoutExtension(p.ResourcePath)] = p;
+            {
+                string key = System.IO.Path.GetFileNameWithoutExtension(p.ResourcePath);
+                if (key.StartsWith("build_menu_list_object_", StringComparison.OrdinalIgnoreCase))
+                    key = key.Substring("build_menu_list_object_".Length);
+                result[key] = p;
+            }
+        }
+        foreach (var o in allObjects)
+        {
+            if (o != null)
+            {
+                string key = System.IO.Path.GetFileNameWithoutExtension(o.ResourcePath);
+                if (key.StartsWith("build_menu_list_object_", StringComparison.OrdinalIgnoreCase))
+                    key = key.Substring("build_menu_list_object_".Length);
+                Debug.Print(key);
+                result[key] = o;
+            }
         }
         return result;
     }
@@ -126,18 +153,18 @@ public partial class Database : Node
         RESEARCH_TABLE,
         WOOD_BED,
         TRASHCAN,
-        CORN_OBJECT,
-        WHEAT_OBJECT,
-        POTATO_OBJECT,
-        CARROT_OBJECT,
-        MYSTIC_OAK_TREE_OBJECT,
-        MYSTIC_FIBRE_OBJECT,
-        OAK_TREE_OBJECT,
-        DUMMY_STONE_OBJECT,
-        DUMMY_IRON_ORE_OBJECT,
-        DUMMY_COPPER_ORE_OBJECT,
-        DUMMY_SAND_STONE_OBJECT,
-        DUMMY_SAND_OBJECT,
+        CORN,
+        WHEAT,
+        POTATO,
+        CARROT,
+        MYSTIC_OAK_TREE,
+        MYSTIC_FIBRE,
+        OAK_TREE,
+        STONE,
+        IRON_ORE,
+        COPPER_ORE,
+        SAND_STONE,
+        SAND,
         BELT_SPLITTER_1x2,
         BELT_SPLITTER_1x3,
         BELT_COMBINER_2x1,
@@ -145,14 +172,15 @@ public partial class Database : Node
         CHEST_WITH_AUTO_REMOVE,
         RAIL,
         RAIL_STATION,
-        MINECART
+        MINECART,
+        FIBRE
     }
 
     public static Building_Menu_List_Object GetBuildingMenuListChildObjectInfo(
         BUILDING_ID building_id
     )
     {
-        string key = building_id.ToString();
+        string key = building_id.ToString().ToLower();
         if (buildings.ContainsKey(key))
             return buildings[key];
 

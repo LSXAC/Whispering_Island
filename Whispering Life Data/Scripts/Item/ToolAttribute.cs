@@ -8,10 +8,10 @@ public partial class ToolAttribute : WearableAttribute
     public TYPE type = TYPE.None;
 
     [Export]
-    public PlayerStats.TYPE use_type = PlayerStats.TYPE.MINING;
+    public PlayerStats.TOOLTYPE tool_type = PlayerStats.TOOLTYPE.MINING;
 
     [Export]
-    public MineableObject.MINING_LEVEL mining_level = MineableObject.MINING_LEVEL.Hand;
+    public MineableObject.MINING_LEVEL mining_level = MineableObject.MINING_LEVEL.HAND;
 
     public enum TYPE
     {

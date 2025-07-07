@@ -139,7 +139,7 @@ game_timer = NodePath("GameTimer")
 
 [node name="GameTimer" type="Timer" parent="TimeManager"]
 
-[node name="DayNightManager" type="CanvasModulate" parent="."]
+[node name="DayNightManager" type="CanvasModulate" parent="TimeManager"]
 script = ExtResource("22_3jk2j")
 dayNightGradient = ExtResource("23_rd84m")
 

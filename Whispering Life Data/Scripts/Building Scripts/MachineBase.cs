@@ -23,4 +23,21 @@ public partial class MachineBase : placeable_building
             taker.DisableMonitorable();
         }
     }
+
+    public override Resource Save()
+    {
+        return new MachineSave(building_id, Position, Scale, machine_enabled);
+    }
+
+    public override void Load(Resource save)
+    {
+        if (save is MachineSave machine_save)
+        {
+            Position = machine_save.pos;
+            Scale = machine_save.scale;
+            machine_enabled = machine_save.machine_enabled;
+        }
+        else
+            Logger.PrintWrongSaveType();
+    }
 }

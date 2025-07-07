@@ -16,18 +16,16 @@ public partial class RailSave : TransportBaseSave
     public RailSave() { }
 
     public RailSave(
-        Vector2 pos,
-        TransportBase.Direction f_d,
-        TransportBase.Direction t_d,
+        TransportBaseSave tbs,
         bool has_minecart,
         Vector2 minecart_position,
         ItemSave[] chest_array,
         int curr_rot
     )
     {
-        this.position = pos;
-        this.from_direction = f_d;
-        this.to_direction = t_d;
+        this.position = tbs.position;
+        this.from_direction = tbs.from_direction;
+        this.to_direction = tbs.to_direction;
         this.has_minecart = has_minecart;
         this.minecart_position = minecart_position;
         this.chest_items = chest_array;

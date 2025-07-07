@@ -70,12 +70,12 @@ public partial class EquipmentSelectBar : Container
             if (attribute != null)
                 return attribute.mining_level;
         }
-        return MineableObject.MINING_LEVEL.Hand;
+        return MineableObject.MINING_LEVEL.HAND;
     }
 
-    public bool HasSameUseType(PlayerStats.TYPE type)
+    public bool HasSameUseType(PlayerStats.TOOLTYPE tool_type)
     {
-        if (GetSelectedTypeLevel() == MineableObject.MINING_LEVEL.Hand)
+        if (GetSelectedTypeLevel() == MineableObject.MINING_LEVEL.HAND)
             return true;
 
         if (GetSelectedSlotItemUI() != null)
@@ -83,7 +83,7 @@ public partial class EquipmentSelectBar : Container
             ToolAttribute attribute = GetSelectedSlotItemUI()
                 .item.info.GetAttributeOrNull<ToolAttribute>();
             if (attribute != null)
-                if (attribute.use_type == type)
+                if (attribute.tool_type == tool_type)
                     return true;
         }
         return false;

@@ -6,14 +6,27 @@ public partial class SpriteAnimationManager : Node2D
     [Export]
     public SpriteFrames sprite_frames;
 
+    [Export]
+    public bool has_animation_player = false;
+
+    [Export]
+    public string anim_name = "Idle";
+
     private AnimatedSprite2D animated_sprite;
     private Sprite2D sprite;
+    private AnimationPlayer anim_player;
     private string current_animation = "";
 
     public override void _Ready()
     {
         animated_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         sprite = GetNode<Sprite2D>("Sprite2D");
+        if (has_animation_player)
+        {
+            anim_player = GetNode<AnimationPlayer>("AnimationPlayer");
+            anim_player.Play(anim_name);
+        }
+
         if (animated_sprite != null && sprite_frames != null)
             animated_sprite.SpriteFrames = sprite_frames;
     }

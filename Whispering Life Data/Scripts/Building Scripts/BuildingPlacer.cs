@@ -169,11 +169,11 @@ public partial class BuildingPlacer : Node2D
         if (temp is MineableObject)
             ((MineableObject)temp).SpawnPlant();
 
-        if (temp is TransportBase)
+        if (temp is TransportBase transport_base)
         {
-            ((TransportBase)temp).Set_Rotation(((Belt)placeable).current_rotation);
-            if (temp is BeltTunnel)
-                ((BeltTunnel)temp).CheckIfTunnelInDir();
+            transport_base.Set_Rotation(transport_base.current_rotation);
+            if (temp is BeltTunnel belt_tunnel)
+                belt_tunnel.CheckIfTunnelInDir();
         }
 
         if (temp is MachineBase)

@@ -44,50 +44,33 @@ public partial class IslandObjectSaveManager : Node2D
 
         foreach (Node2D node in this.GetChildren())
         {
-            if (node is MineableObject)
+            if (node is MineableObject mineable_object)
             {
-                resource_obj_saves.Add(((MineableObject)node).SaveResourceObject());
+                resource_obj_saves.Add((ResourceObjectSave)(mineable_object.Save()));
                 continue;
             }
 
-            if (node is Rail)
+            if (node is Rail rail)
             {
-                RailSave rail_save = CreateRailSave((Rail)node);
-                rail_saves.Add(rail_save);
+                rail_saves.Add((RailSave)rail.Save());
                 continue;
             }
 
-            if (node is Belt)
+            if (node is Belt belt)
             {
-                BeltSave belt_save = CreateBeltSave((Belt)node);
-
                 if (node is BeltSplitter splitter)
                 {
-                    BeltMachineSave belt_machine = new BeltMachineSave();
-                    belt_machine.id = splitter.building_id;
-                    belt_machine.b1 = belt_save;
-                    belt_machine.b2 = CreateBeltSave(splitter.belt_0);
-                    belt_machine.b3 = CreateBeltSave(splitter.belt_1);
-                    if (splitter.belt_2 != null)
-                        belt_machine.b4 = CreateBeltSave(splitter.belt_2);
-                    belt_machine_saves.Add(belt_machine);
+                    belt_machine_saves.Add((BeltMachineSave)splitter.Save());
                     continue;
                 }
 
                 if (node is BeltCombiner combiner)
                 {
-                    BeltMachineSave belt_machine = new BeltMachineSave();
-                    belt_machine.id = combiner.building_id;
-                    belt_machine.b1 = belt_save;
-                    belt_machine.b2 = CreateBeltSave(combiner.belt_0);
-                    belt_machine.b3 = CreateBeltSave(combiner.belt_1);
-                    if (combiner.belt_2 != null)
-                        belt_machine.b4 = CreateBeltSave(combiner.belt_2);
-                    belt_machine_saves.Add(belt_machine);
+                    belt_machine_saves.Add((BeltMachineSave)combiner.Save());
                     continue;
                 }
 
-                if (node is BeltTunnel)
+                if (node is BeltTunnel belt_tunnel)
                 {
                     bool placed = false;
                     if (((BeltTunnel)node).is_tunnel_connected)
@@ -101,7 +84,7 @@ public partial class IslandObjectSaveManager : Node2D
                                         .Position
                                 )
                                 {
-                                    bts.beltsave2 = belt_save;
+                                    bts.beltsave2 = (BeltSave)belt_tunnel.Save();
                                     placed = true;
                                     break;
                                 }
@@ -111,53 +94,43 @@ public partial class IslandObjectSaveManager : Node2D
 
                     belt_transmitter_saves.Add(
                         new BeltTransmitterSave(
-                            belt_save,
+                            (BeltSave)belt_tunnel.Save(),
                             ((BeltTunnel)node).is_tunnel_connected,
                             null
                         )
                     );
                 }
                 else
-                    belt_saves.Add(belt_save);
+                    belt_saves.Add((BeltSave)belt.Save());
                 continue;
             }
 
             if (node is MachineBase)
             {
-                MachineSave ms = new MachineSave(
-                    ((placeable_building)node).building_id,
-                    ((MachineBase)node).Position,
-                    ((MachineBase)node).Scale,
-                    ((MachineBase)node).machine_enabled
-                );
+                if (node is ProcessBuilding process_building)
+                    machine_saves.Add((MachineSave)process_building.Save());
 
-                if (node is ProcessBuilding)
-                {
-                    ms.current_recipe = ((ProcessBuilding)node).current_recipe;
-                    for (int i = 0; i < 3; i++)
-                        ms.furnace_slots[i] = ((ProcessBuilding)node).item_array[i];
-                    ms.fuel_left = ((ProcessBuilding)node).fuel_left;
-                }
-                if (node is RailStation)
-                {
-                    ms.chest_items = ((RailStation)node).chest_in.chest_items;
-                    ms.second_chest_items = ((RailStation)node).chest_out.chest_items;
-                }
+                if (node is RailStation rail_station)
+                    machine_saves.Add((MachineSave)rail_station.Save());
 
-                if (node is ChestBase || node is Trashcan)
-                    ms.chest_items = ((ChestBase)node).chest_items;
+                if (node is ChestBase chest_base)
+                    machine_saves.Add((MachineSave)chest_base.Save());
 
-                machine_saves.Add(ms);
+                if (node is Trashcan trash_can)
+                    machine_saves.Add((MachineSave)trash_can.Save());
                 continue;
             }
 
-            if (node is placeable_building)
+            if (node is placeable_building placeable_building)
             {
-                PlaceableSave ps = new PlaceableSave(
-                    ((placeable_building)node).building_id,
-                    node.Position
-                );
-                placeable_saves.Add(ps);
+                try
+                {
+                    placeable_saves.Add((PlaceableSave)placeable_building.Save());
+                }
+                catch (NotImplementedException ex)
+                {
+                    Debug.Print(node.GetClass() + ex.StackTrace);
+                }
                 continue;
             }
 
@@ -169,13 +142,13 @@ public partial class IslandObjectSaveManager : Node2D
     {
         foreach (BeltSave belt_save in belt_saves)
         {
-            Belt temp =
+            Belt belt =
                 Database
                     .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.BELT)
                     .scene.Instantiate() as Belt;
 
-            InitBelt(temp, belt_save);
-            InitBeltItem(temp, belt_save);
+            AddChild(belt);
+            belt.Load(belt_save);
         }
     }
 
@@ -183,27 +156,13 @@ public partial class IslandObjectSaveManager : Node2D
     {
         foreach (RailSave rails in rail_saves)
         {
-            Rail temp =
+            Rail rail =
                 Database
                     .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.RAIL)
                     .scene.Instantiate() as Rail;
 
-            AddChild(temp);
-            temp.Position = rails.position;
-            temp.from_direction = rails.from_direction;
-            temp.to_direction = rails.to_direction;
-            temp.set_direction();
-            temp.Set_Rotation(rails.current_rotation);
-            if (rails.has_minecart)
-            {
-                Minecart cart =
-                    Database
-                        .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.MINECART)
-                        .scene.Instantiate() as Minecart;
-                cart.chestBase.chest_items = rails.chest_items;
-                temp.item_holder.AddChild(cart);
-                cart.Position = rails.minecart_position;
-            }
+            AddChild(rail);
+            rail.Load(rails);
         }
     }
 
@@ -211,43 +170,11 @@ public partial class IslandObjectSaveManager : Node2D
     {
         foreach (ResourceObjectSave ros in resource_obj_saves)
         {
-            MineableObject temp =
+            MineableObject mineable_object =
                 Database.GetBuildingMenuListChildObjectInfo(ros.building_id).scene.Instantiate()
                 as MineableObject;
-            AddChild(temp);
-            temp.ResourceObjectLoad(ros);
-        }
-    }
-
-    private void InitBelt(Belt belt, BeltSave beltsave)
-    {
-        if (belt == null || beltsave == null)
-        {
-            if (beltsave == null)
-                Debug.Print("BeltSave is Null");
-            if (belt == null)
-                Debug.Print("Belt is Null");
-            return;
-        }
-        AddChild(belt);
-        belt.Position = beltsave.position;
-        belt.from_direction = beltsave.from_direction;
-        belt.to_direction = beltsave.to_direction;
-        belt.set_direction();
-        belt.Set_Rotation(beltsave.current_rotation);
-    }
-
-    public void InitBeltItem(Belt belt, BeltSave belt_save)
-    {
-        if (belt_save.belt_holding_item_resource != null)
-        {
-            BeltItem belt_item = (BeltItem)belt_item_scene.Instantiate();
-
-            Item item = new Item(belt_save.belt_holding_item_resource, 1);
-            belt_item.Init(item);
-            belt.item_holder.moving_item = belt_save.belt_item_is_moving;
-            belt_item.Position = belt_save.belt_item_position;
-            belt.item_holder.AddChild(belt_item);
+            AddChild(mineable_object);
+            mineable_object.Load(ros);
         }
     }
 
@@ -255,40 +182,28 @@ public partial class IslandObjectSaveManager : Node2D
     {
         foreach (BeltTransmitterSave bts in belt_transmitter_saves)
         {
+            BeltTunnel belt_tunnel =
+                Database
+                    .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.BELT_TUNNEL)
+                    .scene.Instantiate() as BeltTunnel;
+
+            AddChild(belt_tunnel);
+            belt_tunnel.Load(bts.beltsave1);
+
             if (bts.is_connected)
             {
-                BeltTunnel temp =
+                BeltTunnel belt_tunnel_2 =
                     Database
                         .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.BELT_TUNNEL)
                         .scene.Instantiate() as BeltTunnel;
 
-                InitBelt(temp, bts.beltsave1);
-                InitBeltItem(temp, bts.beltsave1);
+                AddChild(belt_tunnel_2);
+                belt_tunnel_2.Load(bts.beltsave2);
 
-                BeltTunnel temp2 =
-                    Database
-                        .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.BELT_TUNNEL)
-                        .scene.Instantiate() as BeltTunnel;
-
-                InitBelt(temp2, bts.beltsave2);
-                InitBeltItem(temp, bts.beltsave2);
-
-                temp.is_tunnel_connected = true;
-                temp.Name = "BeltTunnel1";
-                temp2.is_tunnel_connected = true;
-                temp2.Name = "BeltTunnel2";
-                temp.connected_itemholder = temp2.item_holder;
-                temp2.connected_itemholder = temp.item_holder;
-            }
-            else
-            {
-                BeltTunnel temp =
-                    Database
-                        .GetBuildingMenuListChildObjectInfo(Database.BUILDING_ID.BELT_TUNNEL)
-                        .scene.Instantiate() as BeltTunnel;
-
-                InitBelt(temp, bts.beltsave1);
-                InitBeltItem(temp, bts.beltsave1);
+                belt_tunnel.is_tunnel_connected = true;
+                belt_tunnel_2.is_tunnel_connected = true;
+                belt_tunnel.connected_itemholder = belt_tunnel_2.item_holder;
+                belt_tunnel_2.connected_itemholder = belt_tunnel.item_holder;
             }
         }
     }
@@ -306,24 +221,12 @@ public partial class IslandObjectSaveManager : Node2D
                 return;
 
             AddChild(belt);
-            belt.Position = belt_machine_save.b1.position;
 
             if (belt is BeltSplitter splitter)
-            {
-                InitBeltItem(splitter, belt_machine_save.b1);
-                InitBeltItem(splitter.belt_0, belt_machine_save.b2);
-                InitBeltItem(splitter.belt_1, belt_machine_save.b3);
-                if (belt_machine_save.b4 != null)
-                    InitBeltItem(splitter.belt_2, belt_machine_save.b4);
-            }
+                splitter.Load(belt_machine_save);
+
             if (belt is BeltCombiner combiner)
-            {
-                InitBeltItem(combiner, belt_machine_save.b1);
-                InitBeltItem(combiner.belt_0, belt_machine_save.b2);
-                InitBeltItem(combiner.belt_1, belt_machine_save.b3);
-                if (belt_machine_save.b4 != null)
-                    InitBeltItem(combiner.belt_2, belt_machine_save.b4);
-            }
+                combiner.Load(belt_machine_save);
         }
     }
 
@@ -337,36 +240,15 @@ public partial class IslandObjectSaveManager : Node2D
                 return;
 
             AddChild(temp);
-            temp.Position = machine_save.pos;
-            temp.Scale = machine_save.scale;
-            temp.machine_enabled = machine_save.machine_enabled;
 
-            if (temp is ProcessBuilding)
-            {
-                for (int i = 0; i < machine_save.furnace_slots.Length; i++)
-                    ((ProcessBuilding)temp).item_array[i] = machine_save.furnace_slots[i];
+            if (temp is ProcessBuilding process_building)
+                process_building.Load(machine_save);
 
-                ((ProcessBuilding)temp).fuel_left = machine_save.fuel_left;
-            }
-            if (temp is RailStation)
-            {
-                for (int i = 0; i < machine_save.chest_items.Length; i++)
-                    ((RailStation)temp).chest_in.chest_items[i] = machine_save.chest_items[i];
-                for (int i = 0; i < machine_save.second_chest_items.Length; i++)
-                    ((RailStation)temp).chest_out.chest_items[i] = machine_save.second_chest_items[
-                        i
-                    ];
-            }
-            if (temp is ChestBase)
-            {
-                for (int i = 0; i < machine_save.chest_items.Length; i++)
-                    ((ChestBase)temp).chest_items[i] = machine_save.chest_items[i];
-            }
-            if (temp is Trashcan)
-            {
-                for (int i = 0; i < machine_save.chest_items.Length; i++)
-                    ((ChestBase)temp).chest_items[i] = machine_save.chest_items[i];
-            }
+            if (temp is RailStation rail_station)
+                rail_station.Load(machine_save);
+
+            if (temp is ChestBase chest_base)
+                chest_base.Load(machine_save);
         }
     }
 
@@ -374,15 +256,16 @@ public partial class IslandObjectSaveManager : Node2D
     {
         foreach (PlaceableSave ps in placeable_saves)
         {
-            placeable_building temp =
+            placeable_building placeable =
                 Database.GetBuildingMenuListChildObjectInfo(ps.building_id).scene.Instantiate()
                 as placeable_building;
 
-            if (temp == null)
+            if (placeable == null)
                 return;
 
-            AddChild(temp);
-            temp.Position = ps.pos;
+            AddChild(placeable);
+            // TODO:
+            placeable.Position = ps.pos; //placeable is abstract, no implementation of save/load
         }
     }
 
@@ -401,48 +284,5 @@ public partial class IslandObjectSaveManager : Node2D
     {
         foreach (Node2D node in GetChildren())
             node.QueueFree();
-    }
-
-    public BeltSave CreateBeltSave(Belt belt)
-    {
-        BeltSave belt_save = new BeltSave(
-            belt.Position,
-            belt.from_direction,
-            belt.to_direction,
-            null,
-            belt.current_rotation
-        );
-
-        if (belt.item_holder.hasBeltItem())
-        {
-            belt_save.belt_holding_item_resource = belt.item_holder.GetBeltItem().item.info;
-            belt_save.belt_item_is_moving = belt.item_holder.moving_item;
-            belt_save.belt_item_position = belt.item_holder.GetBeltItem().Position;
-        }
-        return belt_save;
-    }
-
-    public RailSave CreateRailSave(Rail rail)
-    {
-        bool has_minecart = false;
-        Vector2 minecart_positon = Vector2.Zero;
-        ItemSave[] chest_items = new ItemSave[20];
-        if (rail.item_holder.GetChildCount() > 0)
-        {
-            has_minecart = true;
-            minecart_positon = rail.item_holder.GetMinecart().Position;
-            chest_items = rail.item_holder.GetMinecart().chestBase.chest_items;
-        }
-
-        RailSave rail_save = new RailSave(
-            rail.Position,
-            rail.from_direction,
-            rail.to_direction,
-            has_minecart,
-            minecart_positon,
-            chest_items,
-            rail.current_rotation
-        );
-        return rail_save;
     }
 }

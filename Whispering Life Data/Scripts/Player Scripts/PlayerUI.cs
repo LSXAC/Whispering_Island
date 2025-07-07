@@ -15,6 +15,9 @@ public partial class PlayerUI : CanvasLayer
     public EquipmentSelectBar equipmentSelectBar;
 
     [Export]
+    public TimeStripe time_stripe;
+
+    [Export]
     private PanelContainer game_time_panel;
     private Label game_time_label;
 
@@ -152,6 +155,20 @@ public partial class PlayerUI : CanvasLayer
     public static void AddItemLabelUI(string text)
     {
         instance.item_label_queue.Add(text);
+    }
+
+    public static void AddItemLabelMineableUI(Item item)
+    {
+        instance.item_label_queue.Add(
+            "Bonus: " + item.amount + "x " + TranslationServer.Translate(item.ResourceName)
+        );
+    }
+
+    public static void AddItemLabelMineableBonusItemUI(Item item)
+    {
+        instance.item_label_queue.Add(
+            "Bonus: " + item.amount + "x " + TranslationServer.Translate(item.ResourceName)
+        );
     }
 
     public static void SpawnItemLabelUI()

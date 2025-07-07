@@ -7,18 +7,27 @@ public partial class TimeManager : Node2D
     public Timer game_timer;
 
     public static TimeManager instance;
+    public DayNightManager day_night_manager;
     public int current_game_time = 360; // Start at 6:00 AM (360 minutes)
     public int current_day = 0;
 
     public override void _Ready()
     {
         instance = this;
+        day_night_manager = GetNode<DayNightManager>("DayNightManager");
+        if (Logger.NodeIsNotNull(day_night_manager))
+        {
+            PlayerUI.instance.time_stripe.SetStripe();
+            day_night_manager.UpdateColor();
+            UpdatePlayerUITime();
+        }
+        else
+            game_timer.Stop();
     }
 
     public void OnGameTimerTimeout()
     {
-        UpdatePlayerUITime();
-        DayNightManager.instance.UpdateColor();
+        day_night_manager.UpdateColor();
         current_game_time += GameManager.time_multiplier; // Increment game time by 5 minutes
         if (CheckIfNewDay())
         {
@@ -27,6 +36,7 @@ public partial class TimeManager : Node2D
             // Handle new day logic here, e.g., reset daily quests, update UI, etc.
             GD.Print("New day started! Current day: " + current_day);
         }
+        UpdatePlayerUITime();
         // GameManager.game_time_since_start = current_game_time;
         // QuestManager.current_quest_time = current_game_time;
     }

@@ -244,4 +244,28 @@ public partial class ProcessBuilding : MachineBase
                 FurnaceTab.instance.SetMachineProgressbar(ui_progress);
         }
     }
+
+    public override void Load(Resource save)
+    {
+        if (save is MachineSave machine_save)
+        {
+            base.Load(save);
+            for (int i = 0; i < machine_save.furnace_slots.Length; i++)
+                item_array[i] = machine_save.furnace_slots[i];
+
+            fuel_left = machine_save.fuel_left;
+        }
+        else
+            Logger.PrintWrongSaveType();
+    }
+
+    public override Resource Save()
+    {
+        MachineSave ms = (MachineSave)base.Save();
+        ms.current_recipe = current_recipe;
+        for (int i = 0; i < 3; i++)
+            ms.furnace_slots[i] = item_array[i];
+        ms.fuel_left = fuel_left;
+        return ms;
+    }
 }
