@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=76 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://Scripts/UI Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -43,6 +43,8 @@
 [ext_resource type="Texture2D" uid="uid://bjp5wy4new0rg" path="res://Sprites/Island_Dessert.png" id="20_23y7x"]
 [ext_resource type="Texture2D" uid="uid://04ccgfwkqldn" path="res://Sprites/Items/Icons/Fuel.png" id="20_s2f2w"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Shader/Water_Noise_Map.tres" id="21_7smve"]
+[ext_resource type="Script" uid="uid://bdbfd68r4ogge" path="res://Scripts/Item/SmeltableAttribute.cs" id="24_wocxu"]
+[ext_resource type="Script" uid="uid://bfnqqg6a2on8k" path="res://Scripts/Item/BurnableAttribute.cs" id="26_7icba"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="26_tl5yt"]
 [ext_resource type="Script" uid="uid://bypwrqe8vcas8" path="res://Scripts/UI Scripts/SaveLoadTab.cs" id="27_ku6dj"]
 [ext_resource type="Script" uid="uid://b3t4ic6iwowss" path="res://Scripts/UI Scripts/SoundSlider.cs" id="37_vnnff"]
@@ -126,6 +128,16 @@ slot_type = 5
 durability = 100
 stats = Array[ExtResource("17_jkil6")]([])
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
+
+[sub_resource type="Resource" id="Resource_djfqw"]
+script = ExtResource("24_wocxu")
+amount_to_smelt = 1
+metadata/_custom_type_script = "uid://bdbfd68r4ogge"
+
+[sub_resource type="Resource" id="Resource_sy28q"]
+script = ExtResource("26_7icba")
+burntime = 60
+metadata/_custom_type_script = "uid://bfnqqg6a2on8k"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tibut"]
 bg_color = Color(1, 1, 1, 0)
@@ -794,6 +806,7 @@ theme_override_font_sizes/font_size = 4
 text = "[Eingang]"
 script = ExtResource("4_v56ys")
 label_translation_string = "FURNACE_MENU_SLOT_INPUT"
+attribute_to_check = SubResource("Resource_djfqw")
 
 [node name="ExportSlot" type="Button" parent="Background/FurnaceTab/PanelContainer/Slots"]
 custom_minimum_size = Vector2(32, 32)
@@ -828,6 +841,7 @@ autowrap_mode = 3
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("4_v56ys")
+attribute_to_check = SubResource("Resource_sy28q")
 
 [node name="WorkingProgressBar" type="ProgressBar" parent="Background/FurnaceTab/PanelContainer"]
 layout_mode = 0
@@ -1923,6 +1937,7 @@ layout_mode = 2
 text = "24x"
 
 [node name="CraftingTab" type="ColorRect" parent="Background"]
+visible = false
 z_index = 3
 layout_mode = 1
 anchors_preset = 15
@@ -2817,6 +2832,7 @@ text = "---"
 script = ExtResource("3_pwamf")
 
 [node name="SaveLoadTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("lastsave_label", "fromsave_label")]
+visible = false
 z_index = 5
 layout_mode = 1
 anchors_preset = 15

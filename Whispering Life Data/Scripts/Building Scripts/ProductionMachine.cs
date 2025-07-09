@@ -22,4 +22,22 @@ public partial class ProductionMachine : MachineBase
         if (hover_menu.instance.current_object == this)
             hover_menu.InitHoverMenu(this);
     }
+
+    public override void Load(Resource save)
+    {
+        if (save is MachineSave machine_save)
+        {
+            base.Load(save);
+            count = machine_save.count;
+        }
+        else
+            Logger.PrintWrongSaveType();
+    }
+
+    public override Resource Save()
+    {
+        MachineSave machine_save = (MachineSave)base.Save();
+        machine_save.count = count;
+        return machine_save;
+    }
 }

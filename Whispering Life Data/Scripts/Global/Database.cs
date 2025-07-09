@@ -13,6 +13,7 @@ public partial class Database : Node
         recipies = LoadAllResourcesRecursive<CraftingRecipe>(recipe_path);
         researchs = LoadResearchsRecursive(research_path);
         buildings = LoadBuildingsRecursive(building_path, building_plants_path, objects_path);
+        Debug.Print("Loaded all Resources!");
     }
 
     public enum UPGRADE_LEVEL
@@ -39,7 +40,6 @@ public partial class Database : Node
     public static Dictionary<string, Building_Menu_List_Object> buildings =
         new Dictionary<string, Building_Menu_List_Object>();
 
-    // Generische Methode zum rekursiven Laden aller Ressourcen eines Typs
     public static Array<T> LoadAllResourcesRecursive<[MustBeVariant] T>(string directoryPath)
         where T : Resource
     {
@@ -80,7 +80,6 @@ public partial class Database : Node
         return result;
     }
 
-    // Lädt alle ItemResearchs rekursiv und ordnet sie nach ITEM_ID zu
     public static Dictionary<Inventory.ITEM_ID, ItemResearch> LoadResearchsRecursive(
         string directoryPath
     )
@@ -96,7 +95,6 @@ public partial class Database : Node
         return result;
     }
 
-    // Lädt alle Building_Menu_List_Object aus beiden Pfaden und ordnet sie nach Dateinamen (ohne Endung) zu
     public static Dictionary<string, Building_Menu_List_Object> LoadBuildingsRecursive(
         string buildingsPath,
         string plantsPath,

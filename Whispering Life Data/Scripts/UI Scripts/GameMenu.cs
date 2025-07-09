@@ -80,7 +80,7 @@ public partial class GameMenu : CanvasLayer
     {
         if (IsThisWindow(this))
         {
-            PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes(null);
+            PlayerInventoryUI.instance?.MarkSlotsWithAttributeTypes(null);
             CloseLastWindow();
             OnExitButton();
             return;

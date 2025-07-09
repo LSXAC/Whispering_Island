@@ -110,6 +110,9 @@ public partial class IslandObjectSaveManager : Node2D
                 if (node is ProcessBuilding process_building)
                     machine_saves.Add((MachineSave)process_building.Save());
 
+                if (node is ProductionMachine production_machine)
+                    machine_saves.Add((MachineSave)production_machine.Save());
+
                 if (node is RailStation rail_station)
                     machine_saves.Add((MachineSave)rail_station.Save());
 
@@ -243,6 +246,9 @@ public partial class IslandObjectSaveManager : Node2D
 
             if (temp is ProcessBuilding process_building)
                 process_building.Load(machine_save);
+
+            if (temp is ProductionMachine production_machine)
+                production_machine.Load(machine_save);
 
             if (temp is RailStation rail_station)
                 rail_station.Load(machine_save);

@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://cqc6xxau4eh7e"]
+[gd_scene load_steps=15 format=4 uid="uid://cqc6xxau4eh7e"]
 
 [ext_resource type="Script" uid="uid://bf4jfxorbdivo" path="res://Scripts/Building Scripts/ProductionMachine.cs" id="1_rsbck"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_c0gkt"]
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Resource Meta/Items/item_info_stone.tres" id="2_nowyl"]
 [ext_resource type="Texture2D" uid="uid://bm1alvnfn87kq" path="res://Sprites/Buildings/Tree_Growther_Sprite.png" id="3_7b4ad"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="4_65eiu"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="5_8y1t1"]
@@ -30,6 +31,7 @@ y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_rsbck")
+output_item_resource = ExtResource("2_nowyl")
 building_id = 4
 tile_types = Array[int]([0])
 title = "BUILDING_QUARRY"
