@@ -18,7 +18,7 @@ public partial class BeltTunnel : Belt
 
     public static int length = 16;
     public bool break_search = false;
-    Area2D checkArea;
+    private Area2D checkArea;
 
     public override void _Ready()
     {
@@ -47,7 +47,6 @@ public partial class BeltTunnel : Belt
 
         if (connected_itemholder.GetParent<BeltTunnel>().item_holder.GetChildCount() == 0)
         {
-            Debug.Print("offload from Tunnel A");
             var item = item_holder.offload_item();
             connected_itemholder.GetParent<Belt>().receive_item(item);
         }
@@ -72,7 +71,6 @@ public partial class BeltTunnel : Belt
             if (break_search)
             {
                 break_search = false;
-                Debug.Print("Breaked Loop");
                 ResetCheckArea();
                 break;
             }
@@ -94,7 +92,6 @@ public partial class BeltTunnel : Belt
             if (break_search)
             {
                 break_search = false;
-                Debug.Print("Breaked Loop");
                 ResetCheckArea();
                 break;
             }

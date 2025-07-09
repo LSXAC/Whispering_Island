@@ -33,15 +33,13 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfmfo"]
 size = Vector2(23, 18)
 
-[node name="RailStation" type="StaticBody2D" node_paths=PackedStringArray("chest_in", "chest_out", "givers", "takers")]
+[node name="RailStation" type="StaticBody2D" node_paths=PackedStringArray("chest_in", "chest_out")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_h1uaa")
 chest_in = NodePath("Chest_In")
 chest_out = NodePath("Chest_Out")
-givers = []
-takers = []
 building_id = 27
 tile_types = Array[int]([0])
 title = "BUILDING_RAIL_STATION"
@@ -156,21 +154,17 @@ script = ExtResource("10_wnhjv")
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_o32qu")
 
-[node name="Chest_In" type="Node2D" parent="." node_paths=PackedStringArray("givers", "takers")]
+[node name="Chest_In" type="Node2D" parent="."]
 script = ExtResource("11_80gpa")
 chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
 machine_enabled = true
-givers = []
-takers = [NodePath("../Taker")]
 disable_mouse_interaction = true
 tile_types = []
 
-[node name="Chest_Out" type="Node2D" parent="." node_paths=PackedStringArray("givers", "takers")]
+[node name="Chest_Out" type="Node2D" parent="."]
 script = ExtResource("11_80gpa")
 chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
 machine_enabled = true
-givers = [NodePath("../Giver")]
-takers = []
 disable_mouse_interaction = true
 tile_types = Array[int]([0])
 

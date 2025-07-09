@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=6 format=3 uid="uid://b6m2k6awxcpck"]
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=7 format=3 uid="uid://b6m2k6awxcpck"]
 
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Items/item_info_wood.tres" id="1_nhoye"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_2r0ja"]
 [ext_resource type="PackedScene" uid="uid://dyylrlp6acwxq" path="res://Scenes/World Objects/Buildings/building_rail.tscn" id="2_e1dqm"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_cilbi"]
+[ext_resource type="Texture2D" uid="uid://c3w7sol4rqgfm" path="res://Sprites/Rail.png" id="5_2r0ja"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
 script = ExtResource("2_2r0ja")
@@ -17,4 +18,5 @@ scene = ExtResource("2_e1dqm")
 required_items = Array[Object]([SubResource("Resource_yo73i")])
 unlock_requirements = null
 building_menu_category = 0
+texture_in_build_menu = ExtResource("5_2r0ja")
 show_object_in_building_menu_list = true

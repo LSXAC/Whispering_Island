@@ -66,11 +66,9 @@ centered = false
 position = Vector2(-8, -11)
 shape = SubResource("RectangleShape2D_m0htq")
 
-[node name="Chest" type="Node2D" parent="." node_paths=PackedStringArray("givers", "takers")]
+[node name="Chest" type="Node2D" parent="."]
 script = ExtResource("4_u8gqw")
 chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]]
-givers = Array[int]([])
-takers = Array[int]([])
 disable_mouse_interaction = true
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]

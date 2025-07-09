@@ -160,14 +160,14 @@ public partial class PlayerUI : CanvasLayer
     public static void AddItemLabelMineableUI(Item item)
     {
         instance.item_label_queue.Add(
-            "Bonus: " + item.amount + "x " + TranslationServer.Translate(item.ResourceName)
+            item.amount + "x " + TranslationServer.Translate(item.info.name)
         );
     }
 
     public static void AddItemLabelMineableBonusItemUI(Item item)
     {
         instance.item_label_queue.Add(
-            "Bonus: " + item.amount + "x " + TranslationServer.Translate(item.ResourceName)
+            "Bonus: " + item.amount + "x " + TranslationServer.Translate(item.info.name)
         );
     }
 

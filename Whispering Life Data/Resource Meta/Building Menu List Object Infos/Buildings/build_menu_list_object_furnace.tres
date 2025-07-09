@@ -17,6 +17,6 @@ script = ExtResource("2_s1ai4")
 scene = ExtResource("1_biikl")
 required_items = Array[Object]([SubResource("Resource_yo73i")])
 unlock_requirements = null
-building_menu_category = 1
+building_menu_category = 0
 texture_in_build_menu = ExtResource("5_j8f4f")
 show_object_in_building_menu_list = true

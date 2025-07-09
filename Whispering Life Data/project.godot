@@ -29,8 +29,8 @@ buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 
 [autoload]
 
-GlobalFunctions="*res://Scripts/Global/GlobalFunctions.cs"
 Database="*res://Scripts/Global/Database.cs"
+GlobalFunctions="*res://Scripts/Global/GlobalFunctions.cs"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]

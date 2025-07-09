@@ -8,87 +8,68 @@ public partial class Belt : TransportBase
     public override void _Ready()
     {
         base._Ready();
-
         path_connect_area = GetNode<Area2D>("PathConnectArea");
     }
 
     public void OnDetectorBeltDetected(Area2D area)
     {
-        if (ignore_self_detector)
+        if (ignore_self_detector || area is not PathConnectArea)
             return;
 
-        if (area is PathConnectArea)
-        {
-            if (area.GetParent() is Belt && area.GetParent() is not BeltTunnel)
-                if (area.GetParent<TransportBase>().can_receive_item())
-                {
-                    var item = item_holder.offload_item();
-                    area.GetParent<Belt>().receive_item(item);
-                }
+        var item = item_holder.offload_item();
 
-            if (area.GetParent() is BeltTunnel)
-                if (area.GetParent<BeltTunnel>().is_tunnel_connected)
-                    if (area.GetParent<BeltTunnel>().connected_itemholder != null)
-                        if (area.GetParent<BeltTunnel>().item_holder.GetChildCount() == 0)
-                        {
-                            Debug.Print("Deposit Item");
-                            var item = item_holder.offload_item();
-                            area.GetParent<BeltTunnel>().from_Belt = true;
-                            area.GetParent<BeltTunnel>().GetNode<Timer>("CheckTimer").Start();
-                            area.GetParent<BeltTunnel>().item_holder.receive_item(item);
-                        }
+        if (area.GetParent() is Belt belt && area.GetParent() is not BeltTunnel)
+            if (belt.can_receive_item())
+                belt.receive_item(item);
 
-            if (area.GetParent() is Taker)
-            {
-                if (area.GetParent().GetParent() is ProcessBuilding)
-                {
-                    if (area.GetParent<Taker>().can_receive_item())
+        if (area.GetParent() is BeltTunnel belt_tunnel)
+            if (belt_tunnel.is_tunnel_connected)
+                if (belt_tunnel.connected_itemholder != null)
+                    if (belt_tunnel.item_holder.GetChildCount() == 0)
                     {
-                        if (item_holder.hasBeltItem())
-                        {
-                            ItemInfo info = item_holder.GetBeltItem().GetItemInfo();
+                        belt_tunnel.from_Belt = true;
+                        belt_tunnel.GetNode<Timer>("CheckTimer").Start();
+                        belt_tunnel.item_holder.receive_item(item);
+                    }
+
+        if (area.GetParent() is Taker taker)
+        {
+            if (taker.GetParent() is ProcessBuilding process_building)
+            {
+                if (taker.can_receive_item())
+                {
+                    if (item_holder.hasBeltItem())
+                    {
+                        ItemInfo info = item_holder.GetBeltItem().GetItemInfo();
+                        if (process_building.GetItemResource(FurnaceTab.SlotType.IMPORT) != null)
                             if (
-                                ((ProcessBuilding)area.GetParent<Taker>().building).GetItemResource(
-                                    FurnaceTab.SlotType.IMPORT
-                                ) != null
+                                info != process_building.GetItemResource(FurnaceTab.SlotType.IMPORT)
                             )
-                                if (
-                                    info
-                                    != (
-                                        (ProcessBuilding)area.GetParent<Taker>().building
-                                    ).GetItemResource(FurnaceTab.SlotType.IMPORT)
-                                )
-                                    return;
-                                else
-                                {
-                                    var item2 = item_holder.offload_item();
-                                    ((ProcessBuilding)area.GetParent<Taker>().building)
-                                        .item_array[(int)FurnaceTab.SlotType.IMPORT]
-                                        .amount += 1;
-                                    area.GetParent<Taker>().receive_item(item2);
-                                    return;
-                                }
-                            var item = item_holder.offload_item();
-                            ((ProcessBuilding)area.GetParent<Taker>().building).item_array[
-                                (int)FurnaceTab.SlotType.IMPORT
-                            ] = new ItemSave((int)info.id, 1);
-                            area.GetParent<Taker>().receive_item(item);
-                        }
+                                return;
+                            else
+                            {
+                                var item2 = item_holder.offload_item();
+                                process_building
+                                    .item_array[(int)FurnaceTab.SlotType.IMPORT]
+                                    .amount += 1;
+                                taker.receive_item(item2);
+                                return;
+                            }
+                        process_building.item_array[(int)FurnaceTab.SlotType.IMPORT] = new ItemSave(
+                            (int)info.id,
+                            1
+                        );
+                        taker.receive_item(item);
                     }
                 }
-                if (area.GetParent().GetParent() is ChestBase)
-                {
-                    var item = item_holder.offload_item();
-                    if (area.GetParent<Taker>().can_receive_item((BeltItem)item))
-                        area.GetParent<Taker>().receive_item(item);
-                }
-                if (area.GetParent().GetParent() is RailStation)
-                {
-                    var item = item_holder.offload_item();
-                    if (area.GetParent<Taker>().can_receive_item((BeltItem)item))
-                        area.GetParent<Taker>().receive_item(item);
-                }
             }
+            if (area.GetParent().GetParent() is ChestBase)
+                if (taker.can_receive_item((BeltItem)item))
+                    taker.receive_item(item);
+
+            if (area.GetParent().GetParent() is RailStation)
+                if (taker.can_receive_item((BeltItem)item))
+                    taker.receive_item(item);
         }
     }
 

@@ -89,7 +89,7 @@ shadow = NodePath("Tree/Shadow")
 
 [node name="Tree" type="StaticBody2D" parent="Tutorial"]
 y_sort_enabled = true
-position = Vector2(48, -176)
+position = Vector2(40, -191)
 
 [node name="Sprite" type="Sprite2D" parent="Tutorial/Tree"]
 y_sort_enabled = true

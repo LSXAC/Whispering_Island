@@ -49,6 +49,17 @@ public partial class Logger
         );
     }
 
+    public static void PrintEmptyList(
+        [CallerLineNumber] int lineNumber = 0,
+        [CallerFilePath] string filePath = "",
+        [CallerMemberName] string memberName = ""
+    )
+    {
+        GD.PrintErr(
+            $"List is Empty! (Line {lineNumber}) in {System.IO.Path.GetFileName(filePath)}::{memberName}"
+        );
+    }
+
     public static bool HasNodeOrPrintError(Node parent, string nodePath)
     {
         if (!parent.HasNode(nodePath))

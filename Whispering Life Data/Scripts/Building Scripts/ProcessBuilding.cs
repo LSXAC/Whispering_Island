@@ -94,19 +94,17 @@ public partial class ProcessBuilding : MachineBase
         if (is_crafting)
             return;
 
+        Label description = FurnaceTab.instance.description_Label;
+
         if (item_array[(int)FurnaceTab.SlotType.IMPORT] == null)
         {
-            FurnaceTab.instance.description_Label.Text = TranslationServer.Translate(
-                "FURNACE_MENU_DESC_NO_RESOURCE"
-            );
+            description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_RESOURCE");
             return;
         }
 
         if (!SelectAndCheckCanCraft())
         {
-            FurnaceTab.instance.description_Label.Text = TranslationServer.Translate(
-                "FURNACE_MENU_DESC_NO_RECIPE"
-            );
+            description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_RECIPE");
             return;
         }
         if (
@@ -132,30 +130,24 @@ public partial class ProcessBuilding : MachineBase
                 }
                 else
                 {
-                    FurnaceTab.instance.description_Label.Text = TranslationServer.Translate(
-                        "FURNACE_MENU_DESC_NO_FUEL"
-                    );
+                    description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_FUEL");
                     return;
                 }
             }
             else
             {
-                FurnaceTab.instance.description_Label.Text = TranslationServer.Translate(
-                    "FURNACE_MENU_DESC_NO_FUEL"
-                );
+                description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_FUEL");
                 return;
             }
 
         if (!machine_enabled)
         {
-            FurnaceTab.instance.description_Label.Text = "";
+            description.Text = "";
             return;
         }
         else
         {
-            FurnaceTab.instance.description_Label.Text = TranslationServer.Translate(
-                "FURNACE_MENU_DESC"
-            );
+            description.Text = TranslationServer.Translate("FURNACE_MENU_DESC");
         }
 
         is_crafting = true;
@@ -203,31 +195,34 @@ public partial class ProcessBuilding : MachineBase
 
     public void OnMachineTimeOut()
     {
+        Button switch_button = FurnaceTab.instance.switch_button;
+        ProcessBuilding process_building = FurnaceTab.instance.process_building;
+
         if (!inEndTransition)
         {
-            FurnaceTab.instance.switch_button.Disabled = true;
+            switch_button.Disabled = true;
             if (ui_progress > 0)
                 ui_progress -= 2;
 
             if (ui_progress <= 0)
             {
                 ui_progress = 0;
-                if (FurnaceTab.instance.process_building == this)
-                    FurnaceTab.instance.switch_button.Disabled = false;
+                if (process_building == this)
+                    switch_button.Disabled = false;
 
                 FurnaceTab.instance.safty_panel.Visible = false;
                 FurnaceTab.instance.ChangeEndStateLabel(true);
                 state_timer.Stop();
                 inStartTransition = false;
             }
-            if (FurnaceTab.instance.process_building == this)
+            if (process_building == this)
                 FurnaceTab.instance.SetMachineProgressbar(ui_progress);
             return;
         }
 
         if (!inStartTransition)
         {
-            FurnaceTab.instance.switch_button.Disabled = true;
+            switch_button.Disabled = true;
             if (ui_progress < 100)
                 ui_progress += 2;
 
@@ -235,12 +230,12 @@ public partial class ProcessBuilding : MachineBase
             {
                 ui_progress = 100;
                 FurnaceTab.instance.ChangeEndStateLabel(false);
-                if (FurnaceTab.instance.process_building == this)
-                    FurnaceTab.instance.switch_button.Disabled = false;
+                if (process_building == this)
+                    switch_button.Disabled = false;
                 state_timer.Stop();
                 inEndTransition = false;
             }
-            if (FurnaceTab.instance.process_building == this)
+            if (process_building == this)
                 FurnaceTab.instance.SetMachineProgressbar(ui_progress);
         }
     }
@@ -261,11 +256,11 @@ public partial class ProcessBuilding : MachineBase
 
     public override Resource Save()
     {
-        MachineSave ms = (MachineSave)base.Save();
-        ms.current_recipe = current_recipe;
+        MachineSave machine_save = (MachineSave)base.Save();
+        machine_save.current_recipe = current_recipe;
         for (int i = 0; i < 3; i++)
-            ms.furnace_slots[i] = item_array[i];
-        ms.fuel_left = fuel_left;
-        return ms;
+            machine_save.furnace_slots[i] = item_array[i];
+        machine_save.fuel_left = fuel_left;
+        return machine_save;
     }
 }

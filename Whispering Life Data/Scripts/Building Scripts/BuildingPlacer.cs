@@ -171,7 +171,7 @@ public partial class BuildingPlacer : Node2D
 
         if (temp is TransportBase transport_base)
         {
-            transport_base.Set_Rotation(transport_base.current_rotation);
+            transport_base.Set_Rotation(((TransportBase)current_building).current_rotation);
             if (temp is BeltTunnel belt_tunnel)
                 belt_tunnel.CheckIfTunnelInDir();
         }

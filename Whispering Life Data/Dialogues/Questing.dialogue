@@ -12,6 +12,7 @@ do GlobalFunctions.LeaveDialogue()
 % Boss: The time is running!
 % Boss: I'AM HUNGRY!
 %2 Boss: Don't let me wait so long!
+Boss: ROAW!
 do GlobalFunctions.LeaveDialogue()
 
 => END

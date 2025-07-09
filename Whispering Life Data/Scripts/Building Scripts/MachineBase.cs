@@ -7,21 +7,39 @@ public partial class MachineBase : placeable_building
     [Export]
     public bool machine_enabled = false;
 
-    [Export]
-    public Array<Giver> givers;
+    public Array<Giver> givers = new Array<Giver>();
 
-    [Export]
-    public Array<Taker> takers;
+    public Array<Taker> takers = new Array<Taker>();
+
+    public override void _Ready()
+    {
+        base._Ready();
+
+        takers.Clear();
+        givers.Clear();
+
+        foreach (Node node in GetChildren())
+        {
+            if (node is Taker taker)
+                takers.Add(taker);
+            if (node is Giver giver)
+                givers.Add(giver);
+        }
+
+        if (givers.Count == 0 || takers.Count == 0)
+            Logger.PrintEmptyList();
+    }
 
     public void DisableTakers()
     {
-        if (takers == null)
-            return;
-
         foreach (Taker taker in takers)
-        {
             taker.DisableMonitorable();
-        }
+    }
+
+    public void DisableGivers()
+    {
+        foreach (Giver giver in givers)
+            giver.DisableMonitoring();
     }
 
     public override Resource Save()
