@@ -55,7 +55,7 @@ public partial class FurnaceTab : SlotUpdater
     public override void UpdateSlot(int index, SlotItemUI slot_item_ui)
     {
         ClearSlot(index);
-        SetInfo((SlotType)index, slot_item_ui);
+        UpdateFurnaceUI();
     }
 
     public override void ClearSlot(int index)
@@ -85,11 +85,6 @@ public partial class FurnaceTab : SlotUpdater
     public void ClearInfo(SlotType type)
     {
         process_building.item_array[(int)type] = null;
-    }
-
-    public void SetInfo(SlotType type, SlotItemUI slot_item_ui)
-    {
-        UpdateFurnaceUI();
     }
 
     public void UpdateInfoHalf(SlotType type)

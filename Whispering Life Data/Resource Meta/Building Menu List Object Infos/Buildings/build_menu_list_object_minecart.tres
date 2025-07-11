@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Items/item_info_wood.tres" id="1_36t0w"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_6nvoa"]
-[ext_resource type="PackedScene" uid="uid://cjyetki082f0p" path="res://Scenes/World Objects/Buildings/building_minecart.tscn" id="2_spxii"]
+[ext_resource type="PackedScene" uid="uid://cjyetki082f0p" path="res://Scenes/World Objects/Buildings/Building_Minecart.tscn" id="2_spxii"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_4kosm"]
 [ext_resource type="Texture2D" uid="uid://cujtfa5wi4dgp" path="res://Sprites/Minecart.png" id="5_6nvoa"]
 
@@ -17,6 +17,6 @@ script = ExtResource("3_4kosm")
 scene = ExtResource("2_spxii")
 required_items = Array[Object]([SubResource("Resource_yo73i")])
 unlock_requirements = null
-building_menu_category = 0
+building_menu_category = 5
 texture_in_build_menu = ExtResource("5_6nvoa")
 show_object_in_building_menu_list = true

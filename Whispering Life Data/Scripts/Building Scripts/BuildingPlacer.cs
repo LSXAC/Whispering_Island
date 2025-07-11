@@ -166,8 +166,8 @@ public partial class BuildingPlacer : Node2D
             SetBuildingWithMoveableBase(temp);
         }
 
-        if (temp is MineableObject)
-            ((MineableObject)temp).SpawnPlant();
+        if (temp is MineableObject mineable_object)
+            mineable_object.SpawnPlant();
 
         if (temp is TransportBase transport_base)
         {
@@ -190,27 +190,8 @@ public partial class BuildingPlacer : Node2D
     public void SetBuildingWithMachineBase(Node2D node)
     {
         MachineBase pb = node as MachineBase;
-        if (pb.givers != null)
-        {
-            foreach (Giver giv in pb.givers)
-            {
-                switch (giv.direction_not_giving)
-                {
-                    case TransportBase.Direction.Top:
-                        giv.direction_not_giving = TransportBase.Direction.Down;
-                        break;
-                    case TransportBase.Direction.Down:
-                        giv.direction_not_giving = TransportBase.Direction.Top;
-                        break;
-                    case TransportBase.Direction.Right:
-                        giv.direction_not_giving = TransportBase.Direction.Left;
-                        break;
-                    case TransportBase.Direction.Left:
-                        giv.direction_not_giving = TransportBase.Direction.Right;
-                        break;
-                }
-            }
-        }
+        pb.EnableGivers();
+        pb.EnableTakers();
     }
 
     public Vector2 GetBuildingPositionVec2(Island island)

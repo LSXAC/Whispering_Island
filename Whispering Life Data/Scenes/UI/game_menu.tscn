@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://be2xmt8674o1k" path="res://Sprites/Items/Icons/rejected.png" id="10_yfud7"]
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://Scenes/UI/header_color_rect.tscn" id="11_45saq"]
 [ext_resource type="Script" uid="uid://dmhek11432ok0" path="res://Scripts/UI Scripts/ResearchTab.cs" id="11_hr8uu"]
-[ext_resource type="PackedScene" uid="uid://cd8pn6e2fwrpm" path="res://Scenes/UI/research_level_tab.tscn" id="12_3k1qw"]
+[ext_resource type="PackedScene" uid="uid://cd8pn6e2fwrpm" path="res://Scenes/UI/Research_Level_Tab.tscn" id="12_3k1qw"]
 [ext_resource type="Script" uid="uid://c80nhtlc3g8ga" path="res://Scripts/Item/ArmorAttribute.cs" id="15_jkil6"]
 [ext_resource type="Script" uid="uid://c1q35nbh8sb51" path="res://Scripts/UI Scripts/IslandMenu.cs" id="16_burxg"]
 [ext_resource type="Script" uid="uid://c7qu86gm6haea" path="res://Scripts/UI Scripts/CheatTab.cs" id="16_f2xax"]

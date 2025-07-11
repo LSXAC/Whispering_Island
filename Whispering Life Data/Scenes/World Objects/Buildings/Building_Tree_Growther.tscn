@@ -59,6 +59,10 @@ position = Vector2(-32, -32)
 texture = ExtResource("2_4wm06")
 centered = false
 
+[node name="BuildingCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -5.5)
+shape = SubResource("RectangleShape2D_m0htq")
+
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("3_fs0bn")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
@@ -68,10 +72,6 @@ z_index = -2
 tile_map_data = PackedByteArray("AAD+//7/AAACAAAAAAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAD/////AAACAAAAAAD///7/AAACAAAAAAAAAP7/AAACAAAAAAAAAP//AAACAAAAAAAAAAAAAAACAAAAAAA=")
 enabled = false
 tile_set = ExtResource("4_c24j7")
-
-[node name="BuildingCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-8, -5.5)
-shape = SubResource("RectangleShape2D_m0htq")
 
 [node name="MouseArea" type="Area2D" parent="."]
 position = Vector2(-8, -8)

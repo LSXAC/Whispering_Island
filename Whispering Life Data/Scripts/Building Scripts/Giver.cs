@@ -7,7 +7,7 @@ public partial class Giver : Area2D
     public Detector detector;
 
     [Export]
-    public Belt.Direction direction_not_giving;
+    public TransportBase.Direction direction_not_giving;
 
     [Export]
     public MachineBase building;
@@ -28,10 +28,16 @@ public partial class Giver : Area2D
         detector.Monitoring = false;
     }
 
+    public void EnableMonitoring()
+    {
+        detector.Monitoring = true;
+    }
+
     public void OnDetectorBeltDetected(Area2D destination)
     {
         if (destination.GetParent() is Belt belt)
         {
+            Debug.Print(belt.to_direction.ToString() + " | " + direction_not_giving.ToString());
             if (belt.to_direction == direction_not_giving)
                 return;
 

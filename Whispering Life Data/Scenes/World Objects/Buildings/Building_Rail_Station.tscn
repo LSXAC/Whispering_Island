@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="6_8y7rk"]
 [ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Taker_Component.tscn" id="7_mdmq6"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Scenes/World Objects/Buildings/Building Components/component_building_item_giver.tscn" id="8_oomir"]
-[ext_resource type="PackedScene" uid="uid://dyylrlp6acwxq" path="res://Scenes/World Objects/Buildings/building_rail.tscn" id="9_pslwl"]
+[ext_resource type="PackedScene" uid="uid://dyylrlp6acwxq" path="res://Scenes/World Objects/Buildings/Building_Rail.tscn" id="9_pslwl"]
 [ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Scripts/Building Scripts/PathConnectArea.cs" id="10_wnhjv"]
 [ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Scripts/Building Scripts/ChestBase.cs" id="11_80gpa"]
 

@@ -6,7 +6,7 @@ using Godot.Collections;
 public partial class ProcessBuilding : MachineBase
 {
     [Export]
-    public ItemSave[] item_array = new ItemSave[3] { null, null, null };
+    public ItemSave[] item_array = [null, null, null];
 
     [Export]
     public int max_fuel_count = 250;

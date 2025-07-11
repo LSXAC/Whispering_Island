@@ -42,6 +42,18 @@ public partial class MachineBase : placeable_building
             giver.DisableMonitoring();
     }
 
+    public void EnableTakers()
+    {
+        foreach (Taker taker in takers)
+            taker.EnableMonitorable();
+    }
+
+    public void EnableGivers()
+    {
+        foreach (Giver giver in givers)
+            giver.EnableMonitoring();
+    }
+
     public override Resource Save()
     {
         return new MachineSave(building_id, Position, Scale, machine_enabled);

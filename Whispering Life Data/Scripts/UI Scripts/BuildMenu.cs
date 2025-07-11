@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
@@ -9,10 +10,15 @@ public partial class BuildMenu : CanvasLayer
     public static BuildMenu instance;
 
     [Export]
+    public HBoxContainer[] hbox_category;
+
+    [Export]
     public BuildMenuPageObject production_page,
         decoration_page,
         planting_page,
-        research_page;
+        research_page,
+        transport_page,
+        machine_page;
 
     public enum CATEGORY
     {
@@ -21,6 +27,8 @@ public partial class BuildMenu : CanvasLayer
         PLANTING,
         RESEARCH,
         ADMIN,
+        TRANSPORT,
+        MACHINES,
         NONE
     }
 
@@ -33,7 +41,7 @@ public partial class BuildMenu : CanvasLayer
 
     public void OnVisiblityChange()
     {
-        OnPanelButton(0);
+        OnPanelButton(4);
     }
 
     public void OnPanelButton(int id)
@@ -42,6 +50,9 @@ public partial class BuildMenu : CanvasLayer
         decoration_page.Visible = false;
         research_page.Visible = false;
         planting_page.Visible = false;
+        transport_page.Visible = false;
+        machine_page.Visible = false;
+        //hbox_category[0].Visible = false;
         switch (id)
         {
             case 0:
@@ -56,7 +67,21 @@ public partial class BuildMenu : CanvasLayer
             case 3:
                 research_page.Visible = true;
                 break;
+            case 4:
+                transport_page.Visible = true;
+                break;
+            case 5:
+                machine_page.Visible = true;
+                break;
         }
+    }
+
+    public void OnCategoryButton(int id)
+    {
+        Debug.Print("ID: " + id);
+        //hbox_category[id].Visible = true;
+        if (id == 0)
+            OnPanelButton(4);
     }
 
     public override void _Process(double delta)

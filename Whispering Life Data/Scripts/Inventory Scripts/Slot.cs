@@ -322,12 +322,16 @@ public partial class Slot : Button
 
     private void UpdateSlot(ItemSave[] i_save, int amount)
     {
+        if (amount == -1)
+            return;
         i_save[GetIndex()].amount = amount;
         slotUpdater.UpdateSlot(GetIndex(), PlayerInventoryUI.clicked_slot_item_ui);
     }
 
     private int GetAmountOfSlot(ItemSave[] i_save)
     {
+        if (item_array[GetIndex()] == null)
+            return -1;
         return i_save[GetIndex()].amount;
     }
 

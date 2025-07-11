@@ -97,4 +97,16 @@ public partial class Belt : TransportBase
         }
         return belt_save;
     }
+
+    public override void Load(Resource save)
+    {
+        if (save is BeltSave belt_save)
+        {
+            base.Load(belt_save);
+            if (belt_save.belt_holding_item_resource != null)
+                InitBeltItem(belt_save);
+        }
+        else
+            Logger.PrintWrongSaveType();
+    }
 }

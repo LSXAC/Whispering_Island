@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Items/item_info_wood.tres" id="1_bk5w5"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_euvdd"]
-[ext_resource type="PackedScene" uid="uid://dj73tpok8xq6p" path="res://Scenes/World Objects/Buildings/building_chest.tscn" id="2_wjc7p"]
+[ext_resource type="PackedScene" uid="uid://dj73tpok8xq6p" path="res://Scenes/World Objects/Buildings/Building_Chest.tscn" id="2_wjc7p"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_8dfgs"]
 [ext_resource type="Texture2D" uid="uid://cb634fgv247qi" path="res://Sprites/Chest_Building_Sprite.png" id="5_euvdd"]
 
@@ -17,6 +17,6 @@ script = ExtResource("3_8dfgs")
 scene = ExtResource("2_wjc7p")
 required_items = Array[Object]([SubResource("Resource_yo73i")])
 unlock_requirements = null
-building_menu_category = 0
+building_menu_category = 6
 texture_in_build_menu = ExtResource("5_euvdd")
 show_object_in_building_menu_list = true

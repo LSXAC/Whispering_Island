@@ -22,6 +22,12 @@ public partial class Taker : StaticBody2D
             area.Monitorable = false;
     }
 
+    public void EnableMonitorable()
+    {
+        if (Logger.NodeIsNotNull(area))
+            area.Monitorable = true;
+    }
+
     public bool can_receive_item(BeltItem ii = null)
     {
         if (building is ChestBase chest_base)
