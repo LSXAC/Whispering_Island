@@ -30,8 +30,9 @@ public partial class MachineBase : placeable_building
                 particles.Add(gp2d);
         }
 
-        if (givers.Count == 0 || takers.Count == 0)
-            Logger.PrintEmptyList();
+        //can cause extrem lags, when multiple machines placed! - Only use, when few Machines
+        /*if (givers.Count == 0 || takers.Count == 0)
+            Logger.PrintEmptyList(); */
     }
 
     public void DisableTakers()

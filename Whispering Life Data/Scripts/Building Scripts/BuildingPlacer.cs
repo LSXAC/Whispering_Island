@@ -111,10 +111,10 @@ public partial class BuildingPlacer : Node2D
         if (is_belt_or_rail)
         {
             if (Input.IsActionJustPressed("Rotate_Right"))
-                ((Belt)placeable).RotateRight();
+                ((TransportBase)placeable).RotateRight();
 
             if (Input.IsActionJustPressed("Rotate_Left"))
-                ((Belt)placeable).RotateLeft();
+                ((TransportBase)placeable).RotateLeft();
         }
         else
         {
@@ -147,7 +147,8 @@ public partial class BuildingPlacer : Node2D
         Island island = island_manager.GetNearestIsland(GetGlobalMousePosition());
         temp.GlobalPosition = GetBuildingPositionVec2(island);
         temp.Scale = current_scale;
-        island.island_object_save_manager.AddChild(temp);
+        if (temp is not Minecart)
+            island.island_object_save_manager.AddChild(temp);
 
         SetBuildBuildingByBase(temp);
         RemoveBuildingResources();

@@ -24,6 +24,7 @@ public partial class RailStation : MachineBase
 
         GameMenu.instance.OnOpenRailStationTab();
         RailStationTab.last_rail_station = this;
+
         ChestInventoryUI.instance = (
             (RailStationTab)GameMenu.instance.rail_station_tab
         ).chest_inventory_ui_input;
@@ -49,6 +50,7 @@ public partial class RailStation : MachineBase
         minecart_connected = true;
         this.minecart = minecart;
         minecart.is_running = false;
+        Debug.Print("Minecart connected!");
         transfer_timer.Start();
     }
 
@@ -57,6 +59,7 @@ public partial class RailStation : MachineBase
         minecart_connected = false;
         this.minecart.is_running = true;
         this.minecart = null;
+        Debug.Print("Minecard disconnected!");
         transfer_timer.Stop();
     }
 

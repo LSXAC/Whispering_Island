@@ -244,7 +244,8 @@ public partial class MineableObject : placeable_building
 
     public int CalculateMiningAmountInt()
     {
-        return (int)(1 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT));
+        return (int)(1 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT))
+            + (int)PlayerUI.instance.equipmentSelectBar.GetSelectedTypeLevel();
     }
 
     public override ResourceObjectSave Save()

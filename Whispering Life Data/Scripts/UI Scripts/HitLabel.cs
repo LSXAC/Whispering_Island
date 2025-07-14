@@ -35,6 +35,6 @@ public partial class HitLabel : Label
 
     private void DestroyLabel()
     {
-        QueueFree();
+        GetParent().QueueFree();
     }
 }

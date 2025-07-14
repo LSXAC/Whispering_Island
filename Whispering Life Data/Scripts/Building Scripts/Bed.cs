@@ -15,11 +15,11 @@ public partial class Bed : placeable_building
 
     public override Resource Save()
     {
-        throw new NotImplementedException();
+        return new PlaceableSave(building_id, Position);
     }
 
     public override void Load(Resource save)
     {
-        throw new NotImplementedException();
+        LoadPlaceable(save);
     }
 }

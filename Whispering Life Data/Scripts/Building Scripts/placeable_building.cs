@@ -26,6 +26,8 @@ public abstract partial class placeable_building : Building_Node
 
     public override void _Ready()
     {
+        if (ignore_node_structure)
+            return;
         base._Ready();
         mouse_area = GetNode<MouseArea>("MouseArea");
         building_collider_manager = GetNode<Node2D>("BuildingAreas") as BuildingColliderManager;
@@ -80,5 +82,18 @@ public abstract partial class placeable_building : Building_Node
             return false;
 
         return true;
+    }
+
+    public void SavePlaceable() { }
+
+    public void LoadPlaceable(Resource save)
+    {
+        if (save is PlaceableSave placeable_save)
+        {
+            Position = placeable_save.pos;
+            building_id = placeable_save.building_id;
+        }
+        else
+            Logger.PrintWrongSaveType();
     }
 }

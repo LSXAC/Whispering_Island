@@ -961,6 +961,7 @@ offset_bottom = 278.0
 color = Color(0, 0, 0, 1)
 
 [node name="ResearchTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("tab_container", "item_name_label", "item_level_label", "research_slot", "progressBar", "timer", "working_panel")]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -988,12 +989,12 @@ offset_right = 320.0
 offset_bottom = 262.0
 
 [node name="ResearchSlot" type="Button" parent="Background/ResearchTab/PanelContainer"]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 offset_left = 2.0
-offset_top = -200.0
-offset_right = 50.0
-offset_bottom = -152.0
+offset_top = -181.0
+offset_right = 36.0
+offset_bottom = -149.0
 theme = ExtResource("10_8x2l6")
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
@@ -1004,19 +1005,20 @@ check_attributes = true
 
 [node name="WorkingProgressBar" type="ProgressBar" parent="Background/ResearchTab/PanelContainer"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = -8.0
-offset_right = 314.0
-offset_bottom = 19.0
+offset_left = 1.0
+offset_top = -19.0
+offset_right = 313.0
+offset_bottom = -4.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
 
 [node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer"]
 layout_mode = 0
 offset_left = 1.0
-offset_top = 22.0
+offset_top = -1.0
 offset_right = 313.0
-offset_bottom = 54.0
+offset_bottom = 31.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
 text = "Start Research"
@@ -1032,8 +1034,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -154.0
 offset_top = -168.0
-offset_right = 150.0
-offset_bottom = -40.0
+offset_right = 155.0
+offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/side_margin = 0
@@ -1051,26 +1053,26 @@ metadata/_tab_index = 1
 
 [node name="ItemLabel" type="Label" parent="Background/ResearchTab/PanelContainer"]
 layout_mode = 0
-offset_left = 58.0
-offset_top = -200.0
-offset_right = 258.0
-offset_bottom = -177.0
+offset_left = 45.0
+offset_top = -165.0
+offset_right = 305.0
+offset_bottom = -155.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 10
 text = "Keine Ressource im Erforschungsslot."
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="CurrentLevelLabel" type="Label" parent="Background/ResearchTab/PanelContainer"]
 layout_mode = 0
-offset_left = 58.0
-offset_top = -167.0
-offset_right = 258.0
-offset_bottom = -153.0
+offset_left = 45.0
+offset_top = -180.0
+offset_right = 245.0
+offset_bottom = -166.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "Erforschungsstufe: 0"
 vertical_alignment = 1
 
@@ -3238,7 +3240,7 @@ text = "Exit Game"
 script = ExtResource("3_pwamf")
 label_translation_string = "MAINMENU_EXIT_GAME"
 
-[node name="RailStationTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("container", "import_box", "export_box")]
+[node name="RailStationTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("chest_inventory_ui_input", "chest_inventory_ui_output", "container", "import_box", "export_box", "is_connected_label")]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -3252,9 +3254,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
 script = ExtResource("76_6ikjc")
+chest_inventory_ui_input = NodePath("TabContainer/Storage In/ChestInventoryIn")
+chest_inventory_ui_output = NodePath("TabContainer/Storage Out/ChestInventoryOut")
 container = NodePath("TabContainer")
 import_box = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/ImportBox")
 export_box = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/ExportBox")
+is_connected_label = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/IsConnectedLabel")
 
 [node name="HeaderColorRect" parent="Background/RailStationTab" instance=ExtResource("11_45saq")]
 layout_mode = 1
@@ -3382,9 +3387,8 @@ metadata/_tab_index = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_top = 16.0
 offset_right = 244.0
-offset_bottom = 229.0
+offset_bottom = 213.0
 grow_horizontal = 1
 grow_vertical = 1
 
@@ -3401,7 +3405,7 @@ offset_bottom = 213.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="MinecartTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("engine_status_label")]
+[node name="MinecartTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("engine_status_label", "chest_inventory_ui")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -3416,6 +3420,7 @@ grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
 script = ExtResource("74_5ehlf")
 engine_status_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Engine_Status")
+chest_inventory_ui = NodePath("PanelContainer/ChestInventory")
 
 [node name="PanelContainer" type="Control" parent="Background/MinecartTab"]
 layout_mode = 1

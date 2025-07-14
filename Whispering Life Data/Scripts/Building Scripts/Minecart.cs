@@ -24,6 +24,7 @@ public partial class Minecart : MoveableBase
             return;
 
         MinecartTab.current_minecart = this;
+
         ChestInventoryUI.instance = (
             (MinecartTab)GameMenu.instance.minecart_tab
         ).chest_inventory_ui;

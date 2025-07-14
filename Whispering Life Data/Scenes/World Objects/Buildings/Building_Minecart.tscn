@@ -70,6 +70,7 @@ shape = SubResource("RectangleShape2D_m0htq")
 script = ExtResource("4_u8gqw")
 chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]]
 disable_mouse_interaction = true
+ignore_node_structure = true
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("5_ciaio")

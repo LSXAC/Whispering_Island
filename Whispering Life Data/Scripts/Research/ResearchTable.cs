@@ -20,12 +20,6 @@ public partial class ResearchTable : placeable_building
 
     public override void Load(Resource save)
     {
-        if (save is PlaceableSave placeable_save)
-        {
-            Position = placeable_save.pos;
-            building_id = placeable_save.building_id;
-        }
-        else
-            Logger.PrintWrongSaveType();
+        LoadPlaceable(save);
     }
 }

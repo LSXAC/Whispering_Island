@@ -5,6 +5,9 @@ using Godot;
 public abstract partial class Building_Node : Node2D
 {
     [Export]
+    public bool ignore_node_structure = false;
+
+    [Export]
     private string title = "";
 
     [Export]
@@ -23,6 +26,8 @@ public abstract partial class Building_Node : Node2D
 
     public override void _Ready()
     {
+        if (ignore_node_structure)
+            return;
         sprite_anim_manager = GetNode<SpriteAnimationManager>("SpriteAnimationManager");
         collision_shape = GetNode<CollisionShape2D>("BuildingCollision");
     }

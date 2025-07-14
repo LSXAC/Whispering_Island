@@ -33,13 +33,14 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfmfo"]
 size = Vector2(23, 18)
 
-[node name="RailStation" type="StaticBody2D" node_paths=PackedStringArray("chest_in", "chest_out")]
+[node name="RailStation" type="StaticBody2D" node_paths=PackedStringArray("chest_in", "chest_out", "transfer_timer")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_h1uaa")
 chest_in = NodePath("Chest_In")
 chest_out = NodePath("Chest_Out")
+transfer_timer = NodePath("TransferTimer")
 building_id = 27
 tile_types = Array[int]([0])
 title = "BUILDING_RAIL_STATION"
@@ -63,6 +64,7 @@ scale = Vector2(5, 0.4375)
 texture = ExtResource("5_5h1rb")
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+z_index = -2
 position = Vector2(-48, -32)
 texture = ExtResource("2_17qbx")
 centered = false
@@ -81,32 +83,10 @@ tile_map_data = PackedByteArray("AAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAA
 enabled = false
 tile_set = ExtResource("4_o2pyy")
 
-[node name="MouseArea" type="Area2D" parent="."]
-visible = false
-z_index = 1
-position = Vector2(-8, -8)
-collision_layer = 2
-script = ExtResource("6_8y7rk")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
-position = Vector2(0, -4.5)
-shape = SubResource("RectangleShape2D_fk0le")
-
 [node name="Taker" parent="." node_paths=PackedStringArray("building") instance=ExtResource("7_mdmq6")]
 z_index = 2
 position = Vector2(-24, -24)
 building = NodePath("../Chest_In")
-
-[node name="Giver" parent="." node_paths=PackedStringArray("building") instance=ExtResource("8_oomir")]
-position = Vector2(8, -37)
-direction_not_giving = 1
-building = NodePath("../Chest_Out")
-
-[node name="Holder" parent="Giver" index="0"]
-position = Vector2(0, 14)
-
-[node name="TransferTimer" type="Timer" parent="."]
-wait_time = 0.25
 
 [node name="Rails" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -143,6 +123,43 @@ position = Vector2(0, 42)
 texture = ExtResource("2_17qbx")
 offset = Vector2(-8, -50)
 
+[node name="Chest_In" type="Node2D" parent="."]
+script = ExtResource("11_80gpa")
+chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+machine_enabled = true
+disable_mouse_interaction = true
+tile_types = []
+ignore_node_structure = true
+
+[node name="Chest_Out" type="Node2D" parent="."]
+script = ExtResource("11_80gpa")
+chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+machine_enabled = true
+disable_mouse_interaction = true
+tile_types = Array[int]([0])
+ignore_node_structure = true
+
+[node name="MouseArea" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-8, -8)
+collision_layer = 2
+script = ExtResource("6_8y7rk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_fk0le")
+
+[node name="Giver" parent="." node_paths=PackedStringArray("building") instance=ExtResource("8_oomir")]
+position = Vector2(8, -37)
+direction_not_giving = 1
+building = NodePath("../Chest_Out")
+
+[node name="Holder" parent="Giver" index="0"]
+position = Vector2(0, 14)
+
+[node name="TransferTimer" type="Timer" parent="."]
+wait_time = 0.25
+
 [node name="PathConnectArea" type="Area2D" parent="."]
 position = Vector2(32, 0)
 collision_layer = 516
@@ -153,20 +170,6 @@ script = ExtResource("10_wnhjv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea"]
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_o32qu")
-
-[node name="Chest_In" type="Node2D" parent="."]
-script = ExtResource("11_80gpa")
-chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
-machine_enabled = true
-disable_mouse_interaction = true
-tile_types = []
-
-[node name="Chest_Out" type="Node2D" parent="."]
-script = ExtResource("11_80gpa")
-chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
-machine_enabled = true
-disable_mouse_interaction = true
-tile_types = Array[int]([0])
 
 [node name="RailstationAREA" type="Area2D" parent="."]
 collision_layer = 0

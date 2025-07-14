@@ -47,6 +47,12 @@ public partial class RailStationTab : ColorRect
     public void OnTabSelected(int tab)
     {
         container.GetChild<Control>(tab).Visible = true;
+        if (Logger.NodeIsNull(last_rail_station))
+            return;
+
+        if (last_rail_station.chest_in == null || last_rail_station.chest_out == null)
+            return;
+
         if (tab == 0)
         {
             ChestInventoryUI.current_chest = last_rail_station.chest_in;
