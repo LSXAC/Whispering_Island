@@ -82,6 +82,7 @@ public partial class EquipmentSelectBar : Container
         {
             ToolAttribute attribute = GetSelectedSlotItemUI()
                 .item.info.GetAttributeOrNull<ToolAttribute>();
+
             if (attribute != null)
                 if (attribute.tool_type == tool_type)
                     return true;

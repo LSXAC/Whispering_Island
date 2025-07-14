@@ -59,6 +59,7 @@ y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_u2kx6")
 hit_point = NodePath("HitPoint")
+tool_type = 3
 max_durability = 7
 resource_item = SubResource("Resource_o5wt5")
 gpu_particles = NodePath("StoneParticles")

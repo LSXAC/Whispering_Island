@@ -57,7 +57,10 @@ public partial class BuildingPlacer : Node2D
             placeable = mineable;
 
         if (placeable is MachineBase machine_base)
+        {
             machine_base.DisableTakers();
+            machine_base.DisableParticles();
+        }
     }
 
     private void InitPlacingParameter(Building_Menu_List_Object scene_info)

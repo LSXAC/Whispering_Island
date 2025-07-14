@@ -10,10 +10,10 @@
 script = ExtResource("1_wjh8c")
 metadata/_custom_type_script = "uid://b40cejs4t88i5"
 
-[sub_resource type="Resource" id="Resource_ewc7e"]
+[sub_resource type="Resource" id="Resource_qy7ma"]
 script = ExtResource("2_85vdb")
 type = 0
-use_type = 4
+tool_type = 0
 mining_level = 2
 slot_type = 5
 durability = 100
@@ -22,7 +22,7 @@ metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
 [resource]
 script = ExtResource("1_hlfru")
-attributes = Array[Object]([SubResource("Resource_kcqj4"), SubResource("Resource_ewc7e")])
+attributes = Array[Object]([SubResource("Resource_kcqj4"), SubResource("Resource_qy7ma")])
 max_stackable_size = 1
 name = "STONE_KNIFE"
 id = 11

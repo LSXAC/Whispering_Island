@@ -62,6 +62,9 @@ public partial class Giver : Area2D
                     new Item(process_building.GetItemResource(FurnaceTab.SlotType.EXPORT), 1)
                 );
 
+                if (process_building.item_array[(int)FurnaceTab.SlotType.EXPORT].amount == 0)
+                    process_building.ResetExportSlot();
+
                 if (belt is BeltTunnel belt_tunnel)
                 {
                     belt_tunnel.from_Belt = true;

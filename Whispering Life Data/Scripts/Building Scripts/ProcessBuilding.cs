@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Linq;
 using Godot;
 using Godot.Collections;
@@ -20,12 +21,8 @@ public partial class ProcessBuilding : MachineBase
     [Export]
     public Timer state_timer;
 
-    [Export]
-    public Array<MachineRecipe> recipes = new Array<MachineRecipe>();
-
     public bool is_crafting = false;
     public int ui_progress = 0;
-    public int current_recipe = 0;
     public int progress = 0;
 
     public bool inStartTransition = false;
@@ -60,16 +57,21 @@ public partial class ProcessBuilding : MachineBase
                 (int)((double)fuel_left / max_fuel_count * 100)
             );
 
+        ItemInfo import_item_info = Inventory.ITEM_TYPES[
+            (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
+        ];
+        SmeltableAttribute smeltable = import_item_info.GetAttributeOrNull<SmeltableAttribute>();
+
         if (progress >= 100)
         {
             if (item_array[(int)FurnaceTab.SlotType.EXPORT] != null)
-                item_array[(int)FurnaceTab.SlotType.EXPORT].amount += recipes[current_recipe]
-                    .export_item
+                item_array[(int)FurnaceTab.SlotType.EXPORT].amount += smeltable
+                    .smelted_to_item
                     .amount;
             else
                 item_array[(int)FurnaceTab.SlotType.EXPORT] = new ItemSave(
-                    (int)recipes[current_recipe].export_item.info.id,
-                    recipes[current_recipe].export_item.amount
+                    (int)smeltable.smelted_to_item.info.id,
+                    smeltable.smelted_to_item.amount
                 );
 
             is_crafting = false;
@@ -107,11 +109,11 @@ public partial class ProcessBuilding : MachineBase
             description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_RECIPE");
             return;
         }
-        if (
-            item_array[(int)FurnaceTab.SlotType.IMPORT].amount
-            <= recipes[current_recipe].import_item.amount - 1
-        )
-            return;
+
+        ItemInfo import_item_info = Inventory.ITEM_TYPES[
+            (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
+        ];
+        SmeltableAttribute smeltable = import_item_info.GetAttributeOrNull<SmeltableAttribute>();
 
         if (fuel_left < 20)
             if (item_array[(int)FurnaceTab.SlotType.FUEL] != null)
@@ -126,6 +128,11 @@ public partial class ProcessBuilding : MachineBase
                     {
                         fuel_left += attribute.burntime;
                         item_array[(int)FurnaceTab.SlotType.FUEL].amount--;
+                    }
+                    else
+                    {
+                        description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_FUEL");
+                        return;
                     }
                 }
                 else
@@ -151,9 +158,7 @@ public partial class ProcessBuilding : MachineBase
         }
 
         is_crafting = true;
-        item_array[(int)FurnaceTab.SlotType.IMPORT].amount -= recipes[current_recipe]
-            .import_item
-            .amount;
+        item_array[(int)FurnaceTab.SlotType.IMPORT].amount -= smeltable.amount_to_smelt;
         if (FurnaceTab.instance.process_building == this)
             FurnaceTab.instance.UpdateFurnaceUI();
         crafting_timer.Start();
@@ -164,33 +169,35 @@ public partial class ProcessBuilding : MachineBase
         if (item_array[(int)FurnaceTab.SlotType.IMPORT] == null)
             return false;
 
-        for (int i = 0; i < recipes.Count; i++)
-        {
-            if (recipes[i].unlockRequirement != null || recipes[i].unlockRequirement.Count > 0)
-                if (!GlobalFunctions.CheckResearchRequirements(recipes[i].unlockRequirement))
-                    continue;
+        ItemInfo import_item_info = Inventory.ITEM_TYPES[
+            (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
+        ];
+        SmeltableAttribute smeltable = import_item_info.GetAttributeOrNull<SmeltableAttribute>();
 
-            if (item_array[(int)FurnaceTab.SlotType.IMPORT] != null)
-                if (
-                    recipes[i].import_item.info
-                    == Inventory.ITEM_TYPES[
-                        (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
-                    ]
-                )
-                {
-                    current_recipe = i;
-                    if (item_array[(int)FurnaceTab.SlotType.EXPORT] == null)
-                        return true;
-                    else if (
-                        recipes[i].export_item.info
-                        == Inventory.ITEM_TYPES[
-                            (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.EXPORT].item_id
-                        ]
-                    )
-                        return true;
-                }
-        }
-        return false;
+        if (smeltable == null)
+            return false;
+
+        /*if (smeltable.unlock_requirements != null || smeltable.unlock_requirements.Count > 0)
+            if (!GlobalFunctions.CheckResearchRequirements(smeltable.unlock_requirements))
+                return false;*/
+
+        if (item_array[(int)FurnaceTab.SlotType.IMPORT].amount < smeltable.amount_to_smelt)
+            return false;
+
+        if (item_array[(int)FurnaceTab.SlotType.EXPORT] == null)
+            return true;
+        else if (
+            item_array[(int)FurnaceTab.SlotType.EXPORT].item_id
+            != (int)smeltable.smelted_to_item.info.id
+        )
+            return false;
+
+        return true;
+    }
+
+    public void ResetExportSlot()
+    {
+        item_array[(int)FurnaceTab.SlotType.EXPORT] = null;
     }
 
     public void OnMachineTimeOut()
@@ -257,7 +264,6 @@ public partial class ProcessBuilding : MachineBase
     public override Resource Save()
     {
         MachineSave machine_save = (MachineSave)base.Save();
-        machine_save.current_recipe = current_recipe;
         for (int i = 0; i < 3; i++)
             machine_save.furnace_slots[i] = item_array[i];
         machine_save.fuel_left = fuel_left;

@@ -65,6 +65,7 @@ y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_oeonl")
 hit_point = NodePath("HitPoint")
+tool_type = 2
 max_durability = 5
 resource_item = SubResource("Resource_v5bcu")
 extra_item = SubResource("Resource_hdk4m")

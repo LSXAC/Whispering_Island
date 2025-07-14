@@ -11,6 +11,8 @@ public partial class MachineBase : placeable_building
 
     public Array<Taker> takers = new Array<Taker>();
 
+    public Array<GpuParticles2D> particles = new Array<GpuParticles2D>();
+
     public override void _Ready()
     {
         base._Ready();
@@ -24,6 +26,8 @@ public partial class MachineBase : placeable_building
                 takers.Add(taker);
             if (node is Giver giver)
                 givers.Add(giver);
+            if (node is GpuParticles2D gp2d)
+                particles.Add(gp2d);
         }
 
         if (givers.Count == 0 || takers.Count == 0)
@@ -34,6 +38,18 @@ public partial class MachineBase : placeable_building
     {
         foreach (Taker taker in takers)
             taker.DisableMonitorable();
+    }
+
+    public void DisableParticles()
+    {
+        foreach (GpuParticles2D gp2d in particles)
+            gp2d.Visible = false;
+    }
+
+    public void EnableParticles()
+    {
+        foreach (GpuParticles2D gp2d in particles)
+            gp2d.Visible = true;
     }
 
     public void DisableGivers()

@@ -1,107 +1,15 @@
-[gd_scene load_steps=38 format=4 uid="uid://cn0rjr3gah4jr"]
+[gd_scene load_steps=17 format=4 uid="uid://cn0rjr3gah4jr"]
 
 [ext_resource type="Script" uid="uid://bb7d4vvk26up8" path="res://Scripts/Building Scripts/ProcessBuilding.cs" id="1_7ow6b"]
-[ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Resource Meta/Items/item_info_char_coal.tres" id="2_e7d0d"]
-[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="3_n5pco"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_2jdlk"]
-[ext_resource type="Script" uid="uid://csvnm2nsny2wl" path="res://Scripts/UI Scripts/MachineRecipe.cs" id="4_8gjku"]
-[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Items/item_info_wood.tres" id="4_rw6at"]
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_63l45"]
-[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Resource Meta/Items/item_info_iron_ingot.tres" id="6_rw6at"]
-[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="7_ndbhg"]
-[ext_resource type="Resource" uid="uid://l7tf257vet4l" path="res://Resource Meta/Items/item_info_iron_ore.tres" id="7_rknys"]
-[ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Resource Meta/Items/item_info_glass_chunk.tres" id="9_pdgnw"]
-[ext_resource type="Resource" uid="uid://ljb14i8nnpgp" path="res://Resource Meta/Items/item_info_sand.tres" id="10_vffew"]
-[ext_resource type="Resource" uid="uid://i3ah62dd06gb" path="res://Resource Meta/Items/item_info_copper_ingot.tres" id="11_to3oo"]
-[ext_resource type="Resource" uid="uid://eo8ax7whu2kb" path="res://Resource Meta/Items/item_info_copper_ore.tres" id="12_l0ybn"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="12_pnpvk"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="13_ph182"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="14_5ajxt"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="16_tjyxe"]
 [ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Taker_Component.tscn" id="19_3ermy"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Scenes/World Objects/Buildings/Building Components/component_building_item_giver.tscn" id="20_ujfx2"]
-
-[sub_resource type="Resource" id="Resource_rknys"]
-script = ExtResource("3_n5pco")
-info = ExtResource("2_e7d0d")
-amount = 1
-metadata/_custom_type_script = "uid://cee63igbpybf"
-
-[sub_resource type="Resource" id="Resource_pdgnw"]
-script = ExtResource("3_n5pco")
-info = ExtResource("4_rw6at")
-amount = 2
-metadata/_custom_type_script = "uid://cee63igbpybf"
-
-[sub_resource type="Resource" id="Resource_njs37"]
-script = ExtResource("4_8gjku")
-import_item = SubResource("Resource_pdgnw")
-export_item = SubResource("Resource_rknys")
-unlockRequirement = null
-
-[sub_resource type="Resource" id="Resource_vffew"]
-script = ExtResource("3_n5pco")
-info = ExtResource("6_rw6at")
-amount = 1
-metadata/_custom_type_script = "uid://cee63igbpybf"
-
-[sub_resource type="Resource" id="Resource_to3oo"]
-script = ExtResource("3_n5pco")
-info = ExtResource("7_rknys")
-amount = 2
-metadata/_custom_type_script = "uid://cee63igbpybf"
-
-[sub_resource type="Resource" id="Resource_xdrkx"]
-script = ExtResource("7_ndbhg")
-required_level = 1
-item_id = 31
-
-[sub_resource type="Resource" id="Resource_u1ie4"]
-script = ExtResource("4_8gjku")
-import_item = SubResource("Resource_to3oo")
-export_item = SubResource("Resource_vffew")
-unlockRequirement = Array[Object]([SubResource("Resource_xdrkx")])
-
-[sub_resource type="Resource" id="Resource_l0ybn"]
-script = ExtResource("3_n5pco")
-info = ExtResource("9_pdgnw")
-amount = 1
-metadata/_custom_type_script = "uid://cee63igbpybf"
-
-[sub_resource type="Resource" id="Resource_cvuei"]
-script = ExtResource("3_n5pco")
-info = ExtResource("10_vffew")
-amount = 2
-metadata/_custom_type_script = "uid://cee63igbpybf"
-
-[sub_resource type="Resource" id="Resource_yoryk"]
-script = ExtResource("7_ndbhg")
-required_level = 1
-item_id = 7
-
-[sub_resource type="Resource" id="Resource_kg0sh"]
-script = ExtResource("4_8gjku")
-import_item = SubResource("Resource_cvuei")
-export_item = SubResource("Resource_l0ybn")
-unlockRequirement = Array[Object]([SubResource("Resource_yoryk")])
-
-[sub_resource type="Resource" id="Resource_davvm"]
-script = ExtResource("3_n5pco")
-info = ExtResource("11_to3oo")
-amount = 1
-metadata/_custom_type_script = "uid://cee63igbpybf"
-
-[sub_resource type="Resource" id="Resource_0aj3m"]
-script = ExtResource("3_n5pco")
-info = ExtResource("12_l0ybn")
-amount = 2
-metadata/_custom_type_script = "uid://cee63igbpybf"
-
-[sub_resource type="Resource" id="Resource_3d708"]
-script = ExtResource("4_8gjku")
-import_item = SubResource("Resource_0aj3m")
-export_item = SubResource("Resource_davvm")
-unlockRequirement = null
+[ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sprites/Stone_Particle.png" id="21_l0ybn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g1nkg"]
 animations = [{
@@ -117,6 +25,32 @@ size = Vector2(48, 31)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(48, 48)
 
+[sub_resource type="Gradient" id="Gradient_l0ybn"]
+offsets = PackedFloat32Array(0, 0.412791, 0.854651, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0.627006, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cvuei"]
+gradient = SubResource("Gradient_l0ybn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cvuei"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1.2, 1.2, 1)
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector3(0.2, 0, 0)
+spread = 0.5
+angular_velocity_min = 0.999984
+angular_velocity_max = 2.49998
+gravity = Vector3(5, -20, 0)
+radial_accel_min = 5.0
+radial_accel_max = 14.95
+scale_min = 0.2
+scale_over_velocity_max = 1.0
+color_ramp = SubResource("GradientTexture1D_cvuei")
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+
 [node name="Building" type="StaticBody2D" node_paths=PackedStringArray("crafting_timer", "state_timer")]
 y_sort_enabled = true
 collision_layer = 13
@@ -124,7 +58,6 @@ collision_mask = 0
 script = ExtResource("1_7ow6b")
 crafting_timer = NodePath("CraftingTimer")
 state_timer = NodePath("MachineUITimer")
-recipes = [SubResource("Resource_njs37"), SubResource("Resource_u1ie4"), SubResource("Resource_kg0sh"), SubResource("Resource_3d708")]
 building_id = 3
 tile_types = Array[int]([0])
 title = "BUILDING_FURNACE"
@@ -189,6 +122,18 @@ wait_time = 0.1
 
 [node name="MachineUITimer" type="Timer" parent="."]
 wait_time = 0.05
+
+[node name="Smoke" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(-8, -41)
+amount = 100
+texture = ExtResource("21_l0ybn")
+lifetime = 2.5
+preprocess = 1.0
+explosiveness = 1.0
+randomness = 0.8
+trail_lifetime = 1.0
+process_material = SubResource("ParticleProcessMaterial_cvuei")
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

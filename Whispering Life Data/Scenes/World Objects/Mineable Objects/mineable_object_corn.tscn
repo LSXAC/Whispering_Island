@@ -66,6 +66,7 @@ collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_8yybw")
 hit_point = NodePath("HitPoint")
+tool_type = 4
 max_durability = 2
 respawn_seconds = 30
 resource_item = SubResource("Resource_mcoev")

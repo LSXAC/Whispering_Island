@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d382ft4naeqtp"]
+[gd_scene load_steps=9 format=3 uid="uid://d382ft4naeqtp"]
 
 [ext_resource type="Script" uid="uid://bm5n6v0k8up5x" path="res://Scripts/UI Scripts/MainMenu.cs" id="1_4fgt5"]
+[ext_resource type="VideoStream" uid="uid://n71dls10csc8" path="res://Videos/Last_Background.ogv" id="2_k33u3"]
 [ext_resource type="Texture2D" uid="uid://de4l1wl47aa3q" path="res://Sprites/Menu/Menu_Overlay.png" id="3_anmaw"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="4_ftsii"]
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/UI Scripts/TranslationButton.cs" id="5_lg1h6"]
@@ -42,13 +43,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Menu/Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+stream = ExtResource("2_k33u3")
 volume_db = -80.0
 expand = true
 loop = true
@@ -96,7 +97,7 @@ theme_override_font_sizes/normal_font_size = 22
 theme_override_font_sizes/bold_font_size = 22
 bbcode_enabled = true
 text = "[center][b][color=gold][wave]> Whispering Island <[/wave]
-[font_size=14px][color=white]Prototype [ver 1.4.0]"
+[font_size=14px][color=white]Prototype [Ver 0.1.4]"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/Control/Panel"]
 custom_minimum_size = Vector2(200, 0)

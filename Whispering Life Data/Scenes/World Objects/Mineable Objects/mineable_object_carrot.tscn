@@ -43,7 +43,7 @@ size = Vector2(14, 14)
 _data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_lfoib"]
+[sub_resource type="CurveTexture" id="CurveTexture_lbp57"]
 curve = SubResource("Curve_uq5h3")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n5030"]
@@ -58,7 +58,7 @@ radial_velocity_max = 25.0
 gravity = Vector3(0, 98, 0)
 scale_min = 0.1
 scale_max = 0.2
-scale_curve = SubResource("CurveTexture_lfoib")
+scale_curve = SubResource("CurveTexture_lbp57")
 
 [node name="Carrot" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "gpu_particles")]
 y_sort_enabled = true
@@ -66,6 +66,7 @@ collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_ywllv")
 hit_point = NodePath("HitPoint")
+tool_type = 4
 respawn_seconds = 20
 resource_item = SubResource("Resource_pnqwy")
 extra_item = SubResource("Resource_orn52")

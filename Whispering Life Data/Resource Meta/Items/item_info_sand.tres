@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=10 format=3 uid="uid://ljb14i8nnpgp"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=12 format=3 uid="uid://ljb14i8nnpgp"]
 
 [ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_fbvlc"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_imi7w"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bdbfd68r4ogge" path="res://Scripts/Item/SmeltableAttribute.cs" id="2_f7w2b"]
 [ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Resource Meta/Items/item_info_glass_chunk.tres" id="3_l6jg2"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="4_j7yvl"]
+[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableAttribute.cs" id="5_p01gy"]
 
 [sub_resource type="Resource" id="Resource_iym8u"]
 script = ExtResource("1_fbvlc")
@@ -21,11 +22,16 @@ metadata/_custom_type_script = "uid://cee63igbpybf"
 script = ExtResource("2_f7w2b")
 smelted_to_item = SubResource("Resource_unc0a")
 amount_to_smelt = 2
+unlock_requirements = null
 metadata/_custom_type_script = "uid://bdbfd68r4ogge"
+
+[sub_resource type="Resource" id="Resource_brp8s"]
+script = ExtResource("5_p01gy")
+metadata/_custom_type_script = "uid://doosgdjr0ddtl"
 
 [resource]
 script = ExtResource("1_imi7w")
-attributes = Array[Object]([SubResource("Resource_iym8u"), SubResource("Resource_yidfc")])
+attributes = Array[Object]([SubResource("Resource_iym8u"), SubResource("Resource_yidfc"), SubResource("Resource_brp8s")])
 max_stackable_size = 50
 name = "SAND"
 id = 31
