@@ -49,6 +49,14 @@ public abstract partial class Building_Node : Node2D
         return sprite_anim_manager.GetTexture2D();
     }
 
+    public void SetTextureToSpriteManager(Texture2D texture)
+    {
+        if (Logger.NodeIsNull(sprite_anim_manager))
+            return;
+
+        sprite_anim_manager.SetTexture2D(texture);
+    }
+
     public new Vector2 GetGlobalPosition()
     {
         if (Logger.NodeIsNotNull(sprite_anim_manager))

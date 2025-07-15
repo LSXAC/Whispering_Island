@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Godot;
+using Godot.Collections;
 
 public partial class MineableObject : placeable_building
 {
@@ -12,6 +14,9 @@ public partial class MineableObject : placeable_building
 
     [Export]
     public MINING_LEVEL mining_level = MINING_LEVEL.HAND;
+
+    [Export]
+    public Array<Texture2D> mine_textures;
 
     [Export]
     public int max_durability = 3;
@@ -131,6 +136,11 @@ public partial class MineableObject : placeable_building
 
         Player.instance.player_stats.AddFatigue(0.25f);
         current_durability -= miningAmount;
+
+        if (current_durability - 1 >= 0)
+            if (mine_textures.Count > current_durability - 1)
+                if (mine_textures[current_durability - 1] != null)
+                    SetTextureToSpriteManager(mine_textures[current_durability - 1]);
 
         UpdateToolDurability(miningAmount);
 

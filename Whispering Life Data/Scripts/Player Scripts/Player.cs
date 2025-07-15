@@ -13,7 +13,7 @@ public partial class Player : CharacterBody2D
     private float velo_x = 0,
         velo_y = 0;
 
-    private float max_zoom_offset = 2f;
+    private float max_zoom_offset = 3f;
 
     public override void _Ready()
     {
@@ -21,8 +21,8 @@ public partial class Player : CharacterBody2D
         player_stamina = GetNode<PlayerStamina>("PlayerStamina");
         player_stats = GetNode<PlayerStats>("PlayerStats");
         anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        camera = GetNode<Camera2D>("Camera2D");
 
+        camera = GetNode<Camera2D>("Camera2D");
         camera.Zoom = new Vector2(1.5f, 1.5f);
     }
 
@@ -106,14 +106,14 @@ public partial class Player : CharacterBody2D
     {
         if (Input.IsActionJustReleased("Zoom_In"))
             if (
-                (camera.Zoom + new Godot.Vector2(0.15f, 0.15f))
-                <= new Godot.Vector2(max_zoom_offset, max_zoom_offset)
+                (camera.Zoom + new Vector2(0.15f, 0.15f))
+                <= new Vector2(max_zoom_offset, max_zoom_offset)
             )
-                camera.Zoom += new Godot.Vector2(0.15f, 0.15f);
+                camera.Zoom += new Vector2(0.15f, 0.15f);
 
         if (Input.IsActionJustReleased("Zoom_Out"))
-            if ((camera.Zoom - new Godot.Vector2(0.15f, 0.15f)) >= new Godot.Vector2(0.8f, 0.8f))
-                camera.Zoom += new Godot.Vector2(-0.15f, -0.15f);
+            if ((camera.Zoom - new Vector2(0.15f, 0.15f)) >= new Vector2(0.8f, 0.8f))
+                camera.Zoom += new Vector2(-0.15f, -0.15f);
     }
 
     private string GetDirection()

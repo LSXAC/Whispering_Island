@@ -54,6 +54,14 @@ public partial class SpriteAnimationManager : Node2D
         return null;
     }
 
+    public void SetTexture2D(Texture2D texture)
+    {
+        if (IsAnimated())
+            return;
+        if (sprite != null)
+            sprite.Texture = texture;
+    }
+
     public new CanvasItem GetCanvasItem()
     {
         if (IsAnimated())
