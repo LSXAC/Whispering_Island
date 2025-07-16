@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="6_fmaua"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="6_iudpf"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="7_sy75k"]
-[ext_resource type="Texture2D" uid="uid://cep6pkf1xs5cc" path="res://Sprites/Stone.png" id="8_33cw1"]
+[ext_resource type="Texture2D" uid="uid://cep6pkf1xs5cc" path="res://Sprites/Spritesheets/Ores/Stone.png" id="8_33cw1"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Scenes/World Objects/Buildings/Building Components/component_building_item_giver.tscn" id="9_dvgwj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nowyl"]

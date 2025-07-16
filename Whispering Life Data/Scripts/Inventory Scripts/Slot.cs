@@ -161,18 +161,25 @@ public partial class Slot : Button
             if (slot_item_ui == null)
             {
                 if (btn.ButtonMask == MouseButtonMask.Right)
-                    if (clicked_slot_item_ui.item.amount > 1)
-                    {
-                        Debug.Print("Rightclick Slot 1 Item");
-                        int last = clicked_slot_item_ui.item.amount;
-                        clicked_slot_item_ui.item.amount = 1;
-                        NewSlotItem(clicked_slot_item_ui);
-                        clicked_slot_item_ui.item.amount = last - 1;
-                        clicked_slot_item_ui.UpdateAmountLabel();
-                        return;
-                    }
+                {
+                    Debug.Print("Rightclick Slot 1 Item");
+                    NewSlotItem(
+                        (int)clicked_slot_item_ui.item.info.id,
+                        1,
+                        clicked_slot_item_ui.current_durability
+                    );
+                    clicked_slot_item_ui.item.amount -= 1;
+                    clicked_slot_item_ui.UpdateAmountLabel();
+                    if (clicked_slot_item_ui.item.amount <= 0)
+                        ClearClickedItem();
+                    return;
+                }
 
-                NewSlotItem(clicked_slot_item_ui);
+                NewSlotItem(
+                    (int)clicked_slot_item_ui.item.info.id,
+                    clicked_slot_item_ui.item.amount,
+                    clicked_slot_item_ui.current_durability
+                );
                 ClearClickedItem();
                 return;
             }
@@ -184,7 +191,12 @@ public partial class Slot : Button
                     Debug.Print("Switch Slot");
                     ClearClickedItem();
                     CreateClickedItem(slot_item_ui.item.amount, slot_item_ui.current_durability);
-                    NewSlotItem(clicked_slot_item_ui);
+
+                    NewSlotItem(
+                        (int)clicked_slot_item_ui.item.info.id,
+                        clicked_slot_item_ui.item.amount,
+                        clicked_slot_item_ui.current_durability
+                    );
                     return;
                 }
             }
@@ -196,9 +208,9 @@ public partial class Slot : Button
             {
                 Debug.Print("Rightclick Slot");
                 UpdateSlot(item_array, GetAmountOfSlot(item_array) + 1);
-                clicked_slot_item_ui.item.amount -= 1;
-                clicked_slot_item_ui.UpdateAmountLabel();
-                if (clicked_slot_item_ui.item.amount <= 0)
+                PlayerInventoryUI.clicked_slot_item_ui.item.amount -= 1;
+                PlayerInventoryUI.clicked_slot_item_ui.UpdateAmountLabel();
+                if (PlayerInventoryUI.clicked_slot_item_ui.item.amount <= 0)
                     ClearClickedItem();
                 return;
             }
@@ -335,19 +347,12 @@ public partial class Slot : Button
         return i_save[GetIndex()].amount;
     }
 
-    private void NewSlotItem(SlotItemUI slot_item_ui)
+    private void NewSlotItem(int id, int amount, int durability)
     {
-        if (slot_item_ui.current_durability != -1)
-            item_array[GetIndex()] = new ItemSave(
-                (int)slot_item_ui.item.info.id,
-                slot_item_ui.item.amount,
-                slot_item_ui.current_durability
-            );
+        if (durability != -1)
+            item_array[GetIndex()] = new ItemSave(id, amount, durability);
         else
-            item_array[GetIndex()] = new ItemSave(
-                (int)slot_item_ui.item.info.id,
-                slot_item_ui.item.amount
-            );
+            item_array[GetIndex()] = new ItemSave(id, amount);
         slotUpdater.UpdateSlot(GetIndex(), PlayerInventoryUI.clicked_slot_item_ui);
     }
 

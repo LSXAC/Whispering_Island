@@ -137,7 +137,7 @@ public partial class MineableObject : placeable_building
         Player.instance.player_stats.AddFatigue(0.25f);
         current_durability -= miningAmount;
 
-        if (current_durability - 1 >= 0)
+        if (current_durability - 1 >= 0 && mine_textures != null)
             if (mine_textures.Count > current_durability - 1)
                 if (mine_textures[current_durability - 1] != null)
                     SetTextureToSpriteManager(mine_textures[current_durability - 1]);

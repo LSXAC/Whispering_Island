@@ -12,6 +12,11 @@ public partial class Item : Resource
         this.amount = amount;
     }
 
+    public Item Clone()
+    {
+        return new Item(this.info, this.amount);
+    }
+
     [Export]
     public ItemInfo info;
 

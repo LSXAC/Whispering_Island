@@ -1,12 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://cjw7mpije2ul4"]
+[gd_scene load_steps=24 format=3 uid="uid://cjw7mpije2ul4"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_g4r0j"]
 [ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Resource Meta/Items/item_info_mystic_fibre.tres" id="2_8xjas"]
+[ext_resource type="Texture2D" uid="uid://r2q4dr004vgo" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Plant_0.png" id="2_gjefc"]
 [ext_resource type="Resource" uid="uid://dpfc7scfcvgj6" path="res://Resource Meta/Items/item_info_mystic_fibre_seed.tres" id="3_dw06p"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="3_vwh7s"]
-[ext_resource type="Texture2D" uid="uid://bv0y2lln1foop" path="res://Sprites/MystFibre.png" id="3_wt8vm"]
+[ext_resource type="Texture2D" uid="uid://decld7gwbdtj3" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Plant_1.png" id="3_wk8jp"]
+[ext_resource type="Texture2D" uid="uid://bv0y2lln1foop" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Plant.png" id="3_wt8vm"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_ccab7"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_j4q50"]
+[ext_resource type="Texture2D" uid="uid://b0kpew66aynse" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Plant_2.png" id="4_k2so2"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_h2g1a"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="6_hn3tl"]
 [ext_resource type="Texture2D" uid="uid://w5h1vxawvg88" path="res://Sprites/Myst_Particle.png" id="7_7jxkm"]
@@ -66,7 +69,8 @@ collision_layer = 13
 script = ExtResource("1_g4r0j")
 hit_point = NodePath("HitPoint")
 tool_type = 4
-max_durability = 5
+mine_textures = Array[Texture2D]([ExtResource("2_gjefc"), ExtResource("3_wk8jp"), ExtResource("4_k2so2")])
+max_durability = 4
 resource_item = SubResource("Resource_yly7u")
 extra_item = SubResource("Resource_x0ixx")
 gpu_particles = NodePath("FibreParticles")

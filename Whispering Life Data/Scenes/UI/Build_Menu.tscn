@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cbe4yue61l823" path="res://Scenes/UI/build_menu_child.tscn" id="3_dc85r"]
 [ext_resource type="Script" uid="uid://2t1ns5okffld" path="res://Scripts/UI Scripts/BuildMenuPageObject.cs" id="4_6buxp"]
 [ext_resource type="Texture2D" uid="uid://c2yvdku225ug1" path="res://Sprites/Wood_Bed.png" id="4_dc85r"]
-[ext_resource type="Texture2D" uid="uid://b3xd7qx5g1j24" path="res://Sprites/Carrots.png" id="5_t5cf7"]
+[ext_resource type="Texture2D" uid="uid://b3xd7qx5g1j24" path="res://Sprites/Spritesheets/Plants/Carrots.png" id="5_t5cf7"]
 [ext_resource type="Texture2D" uid="uid://bf5m0183737nx" path="res://Sprites/Items/Plants_Icons/icons_29_07.png" id="6_6q0cw"]
 [ext_resource type="Texture2D" uid="uid://dfa2imjkie3p2" path="res://Sprites/Items/Icons/letter-x.png" id="7_a3rrq"]
 [ext_resource type="Texture2D" uid="uid://dh7i821w2aucb" path="res://Sprites/Belt_Side.png" id="8_u0km2"]

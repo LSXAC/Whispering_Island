@@ -1,17 +1,22 @@
-[gd_scene load_steps=30 format=4 uid="uid://gb18hiamdyqj"]
+[gd_scene load_steps=35 format=4 uid="uid://gb18hiamdyqj"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_oeonl"]
+[ext_resource type="Texture2D" uid="uid://c3l5f36qwvaam" path="res://Sprites/Spritesheets/Plants/Wood_Stump_Plant_Sheet_0.png" id="2_tvtd7"]
 [ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://Resource Meta/Items/item_info_mystic_oak_wood.tres" id="2_wvxkc"]
 [ext_resource type="Resource" uid="uid://bj62tvtw6mn4v" path="res://Resource Meta/Items/item_info_mystic_oak_seed.tres" id="3_5fbt7"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="3_6homl"]
+[ext_resource type="Texture2D" uid="uid://cw8t2j4i8ecfv" path="res://Sprites/Spritesheets/Plants/Wood_Stump_Plant_Sheet_1.png" id="3_x8tnf"]
+[ext_resource type="Texture2D" uid="uid://dw6xjpi82wbee" path="res://Sprites/Spritesheets/Plants/Wood_Stump_Plant_Sheet_2.png" id="4_3mm4v"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_bvs21"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_kigwh"]
+[ext_resource type="Texture2D" uid="uid://do2x6ywfni8n1" path="res://Sprites/Spritesheets/Plants/Wood_Stump_Plant_Sheet_3.png" id="5_mg47l"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_ntkvk"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="6_j0pn3"]
+[ext_resource type="Texture2D" uid="uid://c5r0saayjro6x" path="res://Sprites/Spritesheets/Plants/Wood_Stump_Plant_Sheet_4.png" id="6_rdmv8"]
 [ext_resource type="Texture2D" uid="uid://cl12s2tah4vc3" path="res://Sprites/Tree/Myst_Leaves.png" id="6_v5bcu"]
 [ext_resource type="Texture2D" uid="uid://bleogitdknxq1" path="res://Sprites/Myst_Leave_Particle.png" id="7_038wo"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="8_4renc"]
-[ext_resource type="Texture2D" uid="uid://b18t84mi1huam" path="res://Sprites/Tree/Wood_Stump.png" id="8_hdk4m"]
+[ext_resource type="Texture2D" uid="uid://b18t84mi1huam" path="res://Sprites/Spritesheets/Plants/Wood_Stump.png" id="8_hdk4m"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="9_0gvrl"]
 
 [sub_resource type="Resource" id="Resource_v5bcu"]
@@ -33,6 +38,21 @@ animations = [{
 "name": &"Normal",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_l6moi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_pnxny"]
 resource_name = "Tree_Idle"
@@ -183,21 +203,6 @@ tracks/11/keys = {
 "values": [0.0, 0.0349066, -0.0261799, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_l6moi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_14qf6"]
 _data = {
 &"RESET": SubResource("Animation_l6moi"),
@@ -265,7 +270,8 @@ collision_layer = 13
 script = ExtResource("1_oeonl")
 hit_point = NodePath("HitPoint")
 tool_type = 2
-max_durability = 5
+mine_textures = Array[Texture2D]([ExtResource("2_tvtd7"), ExtResource("3_x8tnf"), ExtResource("4_3mm4v"), ExtResource("5_mg47l"), ExtResource("6_rdmv8")])
+max_durability = 6
 resource_item = SubResource("Resource_v5bcu")
 extra_item = SubResource("Resource_hdk4m")
 gpu_particles = NodePath("LeavesParticles")

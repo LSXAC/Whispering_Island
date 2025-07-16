@@ -21,7 +21,7 @@ public partial class SlotItemUI : TextureRect
     //TODO: Extract Durability to extra Class
     public void init(Item item, int current_durability = -1)
     {
-        this.item = item;
+        this.item = item.Clone();
         Texture = item.info.texture;
         amount_label.Text = item.amount + "x";
         UpdateToolTip();

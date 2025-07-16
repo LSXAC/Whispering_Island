@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Items/item_info_wood.tres" id="2_fs0bn"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="3_fs0bn"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_c24j7"]
-[ext_resource type="Texture2D" uid="uid://b18t84mi1huam" path="res://Sprites/Tree/Wood_Stump.png" id="4_pnxny"]
+[ext_resource type="Texture2D" uid="uid://b18t84mi1huam" path="res://Sprites/Spritesheets/Plants/Wood_Stump.png" id="4_pnxny"]
 [ext_resource type="Texture2D" uid="uid://xph8b14pkbju" path="res://Sprites/Tree/Tree_Leave.png" id="5_l6moi"]
 [ext_resource type="Texture2D" uid="uid://bfw0elq5yfvqk" path="res://Sprites/Leave.png" id="6_l6moi"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="6_r3nyr"]
@@ -20,6 +20,21 @@ animations = [{
 "name": &"Normal",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_l6moi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_pnxny"]
 resource_name = "Tree_Idle"
@@ -168,21 +183,6 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0349066, -0.0261799, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_l6moi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_14qf6"]
