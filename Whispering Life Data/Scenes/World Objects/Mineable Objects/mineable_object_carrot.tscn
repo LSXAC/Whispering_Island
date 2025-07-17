@@ -82,21 +82,21 @@ tile_types = Array[int]([1])
 title = "WORLD_RESOURCE_CARROT"
 description = "WORLD_RESOURCE_CARROT_DESC"
 
-[node name="SpriteAnimationPlayer" type="Node2D" parent="."]
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
 script = ExtResource("4_k6fxe")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationPlayer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
 sprite_frames = SubResource("SpriteFrames_asrbt")
 animation = &"Normal"
 
-[node name="Shadow" type="Sprite2D" parent="SpriteAnimationPlayer"]
+[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
 position = Vector2(-10, -9)
 texture = ExtResource("6_pnqwy")
 
-[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationPlayer"]
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
 position = Vector2(-24, -24)
 texture = ExtResource("6_k6fxe")
 centered = false

@@ -16,7 +16,7 @@ public partial class Inventory : SlotUpdater
 
     public enum ITEM_ID
     {
-        OAK_WOOD,
+        NULL,
         STONE,
         WOOD_STICK,
         STONE_PICKAXE,
@@ -56,41 +56,13 @@ public partial class Inventory : SlotUpdater
         OAK_SEED,
         MYSTIC_OAK_SEED,
         MYSTIC_FIBRE_SEED,
-        FIBRE_SEED
+        FIBRE_SEED,
+        OAK_WOOD
     }
 
     public override void _Ready()
     {
         inventory_items = new ItemSave[slot_amount];
-        LoadAllItemInfos("res://Resource Meta/Items/");
-    }
-
-    private void LoadAllItemInfos(string directoryPath)
-    {
-        var dir = DirAccess.Open(directoryPath);
-        if (dir == null)
-        {
-            GD.PrintErr($"Directory not found: {directoryPath}");
-            return;
-        }
-
-        dir.ListDirBegin();
-        string fileName = dir.GetNext();
-        while (fileName != "")
-        {
-            if (!dir.CurrentIsDir() && fileName.EndsWith(".tres"))
-            {
-                string fullPath = directoryPath.TrimEnd('/') + "/" + fileName;
-                var itemInfo = ResourceLoader.Load<ItemInfo>(fullPath);
-                if (itemInfo != null)
-                {
-                    Debug.Print(itemInfo.id.ToString() + " | " + itemInfo.name);
-                    ITEM_TYPES[itemInfo.id] = itemInfo;
-                }
-            }
-            fileName = dir.GetNext();
-        }
-        dir.ListDirEnd();
     }
 
     public void SetSlots()

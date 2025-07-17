@@ -9,6 +9,9 @@ public partial class Building_Menu_List_Object : Resource
     public PackedScene scene;
 
     [Export]
+    public Database.BUILDING_ID scene_building_id;
+
+    [Export]
     public Array<Item> required_items;
 
     [Export]

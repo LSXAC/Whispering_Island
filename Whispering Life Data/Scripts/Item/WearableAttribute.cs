@@ -23,4 +23,9 @@ public partial class WearableAttribute : ItemAttributeBase
         FEET,
         HAND
     }
+
+    public override string GetNameOfAttribute()
+    {
+        return "EMPTY WEARABLE \n";
+    }
 }

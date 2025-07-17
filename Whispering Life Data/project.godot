@@ -31,7 +31,6 @@ buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 
 GlobalFunctions="*res://Scripts/Global/GlobalFunctions.cs"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-Database="*res://Scripts/Global/Database.cs"
 
 [dialogue_manager]
 
@@ -207,4 +206,5 @@ locale/translations_pot_files=PackedStringArray("res://Dialogues/Questing.dialog
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.376189, 0.645378, 1, 1)
 2d/canvas_textures/default_texture_filter=1

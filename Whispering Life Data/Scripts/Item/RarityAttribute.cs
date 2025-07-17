@@ -14,4 +14,9 @@ public partial class RarityAttribute : ItemAttributeBase
         Epic,
         Legendary
     }
+
+    public override string GetNameOfAttribute()
+    {
+        return TranslationServer.Translate("RARITY") + ": " + rarity + "" + "\n";
+    }
 }

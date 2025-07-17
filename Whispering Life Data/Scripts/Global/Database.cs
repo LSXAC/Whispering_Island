@@ -5,15 +5,78 @@ using Godot.Collections;
 
 public partial class Database : Node
 {
+    [Export]
+    public Array<Building_Menu_List_Object> building_menu_list_objects { get; set; }
+
+    [Export]
+    public Array<ItemResearch> item_research_list { get; set; }
+
+    [Export]
+    public Array<CraftingRecipe> crafting_recipies_list { get; set; }
+
+    [Export]
+    public Array<ItemInfo> item_info_list { get; set; }
+
     public static Database instance;
 
     public override void _Ready()
     {
         instance = this;
-        recipies = LoadAllResourcesRecursive<CraftingRecipe>(recipe_path);
-        researchs = LoadResearchsRecursive(research_path);
-        buildings = LoadBuildingsRecursive(building_path, building_plants_path, objects_path);
+        researchs = GetResearchList(item_research_list);
+        buildings = GetBuildingsList(building_menu_list_objects);
+        Inventory.ITEM_TYPES = GetItemInfoList(item_info_list);
+        CheckLoadedResources();
+        DebugListValues();
+        CheckForDuplicates();
         Debug.Print("Loaded all Resources!");
+    }
+
+    public void CheckLoadedResources()
+    {
+        foreach (BUILDING_ID id in Enum.GetValues(typeof(BUILDING_ID)))
+        {
+            if (!buildings.ContainsKey(id))
+                GD.PrintErr($"Building missing in list: {id}");
+        }
+
+        foreach (Inventory.ITEM_ID id in Enum.GetValues(typeof(Inventory.ITEM_ID)))
+        {
+            if (!Inventory.ITEM_TYPES.ContainsKey(id))
+                GD.PrintErr($"Item missing in list: {id}");
+        }
+    }
+
+    public void CheckForDuplicates()
+    {
+        // ItemInfo
+        var itemInfoIds = new System.Collections.Generic.HashSet<Inventory.ITEM_ID>();
+        foreach (var info in item_info_list)
+        {
+            if (info != null)
+            {
+                if (!itemInfoIds.Add(info.id))
+                    GD.PrintErr($"Duplicate ItemInfo ID: {info.id}");
+            }
+        }
+
+        // Building_Menu_List_Object
+        var buildingIds = new System.Collections.Generic.HashSet<BUILDING_ID>();
+        foreach (var bmlo in building_menu_list_objects)
+        {
+            if (bmlo != null)
+            {
+                if (!buildingIds.Add(bmlo.scene_building_id))
+                    GD.PrintErr($"Duplicate Building ID: {bmlo.scene_building_id}");
+            }
+        }
+    }
+
+    public void DebugListValues()
+    {
+        Debug.Print("Buildings Found: " + buildings.Count);
+        Debug.Print("Items Found: " + Inventory.ITEM_TYPES.Count);
+        Debug.Print("Crafting Recipies Found: " + crafting_recipies_list.Count);
+        Debug.Print("Researchs Found: " + researchs.Count);
     }
 
     public enum UPGRADE_LEVEL
@@ -28,121 +91,81 @@ public partial class Database : Node
 
     public string recipe_path = "res://Resource Meta/Crafting Recipies/";
     public string research_path = "res://Resource Meta/Items/ItemResearchs/";
-    public static Array<CraftingRecipe> recipies = new Array<CraftingRecipe>();
-    public static Dictionary<Inventory.ITEM_ID, ItemResearch> researchs =
-        new Dictionary<Inventory.ITEM_ID, ItemResearch>();
     public static string building_path =
         "res://Resource Meta/Building Menu List Object Infos/Buildings/";
     public static string objects_path =
         "res://Resource Meta/Building Menu List Object Infos/Objects/";
     public static string building_plants_path =
         "res://Resource Meta/Building Menu List Object Infos/Planting/";
-    public static Dictionary<string, Building_Menu_List_Object> buildings =
-        new Dictionary<string, Building_Menu_List_Object>();
+    public static Dictionary<Inventory.ITEM_ID, ItemResearch> researchs =
+        new Dictionary<Inventory.ITEM_ID, ItemResearch>();
+    public static Dictionary<BUILDING_ID, Building_Menu_List_Object> buildings =
+        new Dictionary<BUILDING_ID, Building_Menu_List_Object>();
 
-    public static Array<T> LoadAllResourcesRecursive<[MustBeVariant] T>(string directoryPath)
-        where T : Resource
+    public Dictionary<Inventory.ITEM_ID, ItemInfo> GetItemInfoList(Array<ItemInfo> itemInfoList)
     {
-        var result = new Array<T>();
-        var dir = DirAccess.Open(directoryPath);
-        if (dir == null)
+        Dictionary<Inventory.ITEM_ID, ItemInfo> dict =
+            new Dictionary<Inventory.ITEM_ID, ItemInfo>();
+        foreach (ItemInfo info in itemInfoList)
         {
-            GD.PrintErr($"Directory not found: {directoryPath}");
-            return result;
-        }
-
-        dir.ListDirBegin();
-        string fileName = dir.GetNext();
-        while (fileName != "")
-        {
-            if (dir.CurrentIsDir())
+            if (info != null && info.id != Inventory.ITEM_ID.NULL)
             {
-                if (fileName != "." && fileName != "..")
-                {
-                    var subResult = LoadAllResourcesRecursive<T>(
-                        directoryPath.TrimEnd('/') + "/" + fileName
-                    );
-                    foreach (var res in subResult)
-                        result.Add(res);
-                }
+                Inventory.ITEM_ID key = info.id;
+                dict[key] = info;
             }
-            else if (fileName.EndsWith(".tres"))
-            {
-                string fullPath = directoryPath.TrimEnd('/') + "/" + fileName;
-                var resource = ResourceLoader.Load<T>(fullPath);
-
-                if (resource != null)
-                    result.Add(resource);
-            }
-            fileName = dir.GetNext();
         }
-        dir.ListDirEnd();
-        return result;
+        return dict;
     }
 
-    public static Dictionary<Inventory.ITEM_ID, ItemResearch> LoadResearchsRecursive(
-        string directoryPath
+    public Dictionary<Inventory.ITEM_ID, ItemResearch> GetResearchList(
+        Array<ItemResearch> itemResearchList
     )
     {
-        var result = new Dictionary<Inventory.ITEM_ID, ItemResearch>();
-        var researchList = LoadAllResourcesRecursive<ItemResearch>(directoryPath);
-        foreach (var research in researchList)
+        Dictionary<Inventory.ITEM_ID, ItemResearch> dict =
+            new Dictionary<Inventory.ITEM_ID, ItemResearch>();
+        foreach (ItemResearch research in itemResearchList)
         {
-            // Stelle sicher, dass ItemResearch eine id-Property vom Typ Inventory.ITEM_ID hat!
-            if (research != null && research.id is Inventory.ITEM_ID id)
-                result[id] = research;
+            if (research != null && research.id != Inventory.ITEM_ID.NULL)
+            {
+                Inventory.ITEM_ID key = research.id;
+                dict[key] = research;
+            }
         }
-        return result;
+        return dict;
     }
 
-    public static Dictionary<string, Building_Menu_List_Object> LoadBuildingsRecursive(
-        string buildingsPath,
-        string plantsPath,
-        string objectPath
+    public Dictionary<BUILDING_ID, Building_Menu_List_Object> GetBuildingsList(
+        Array<Building_Menu_List_Object> buildings_list
     )
     {
-        var result = new Dictionary<string, Building_Menu_List_Object>();
-        var allBuildings = LoadAllResourcesRecursive<Building_Menu_List_Object>(buildingsPath);
-        var allPlants = LoadAllResourcesRecursive<Building_Menu_List_Object>(plantsPath);
-        var allObjects = LoadAllResourcesRecursive<Building_Menu_List_Object>(objectPath);
+        Dictionary<BUILDING_ID, Building_Menu_List_Object> dict =
+            new Dictionary<BUILDING_ID, Building_Menu_List_Object>();
+        foreach (Building_Menu_List_Object bmlo in buildings_list)
+        {
+            if (bmlo != null && bmlo.scene_building_id != BUILDING_ID.NULL)
+            {
+                BUILDING_ID key = bmlo.scene_building_id;
+                dict[key] = bmlo;
+            }
+        }
+        return dict;
+    }
 
-        foreach (var b in allBuildings)
-        {
-            if (b != null)
-            {
-                string key = System.IO.Path.GetFileNameWithoutExtension(b.ResourcePath);
-                if (key.StartsWith("build_menu_list_object_", StringComparison.OrdinalIgnoreCase))
-                    key = key.Substring("build_menu_list_object_".Length);
-                result[key] = b;
-            }
-        }
-        foreach (var p in allPlants)
-        {
-            if (p != null)
-            {
-                string key = System.IO.Path.GetFileNameWithoutExtension(p.ResourcePath);
-                if (key.StartsWith("build_menu_list_object_", StringComparison.OrdinalIgnoreCase))
-                    key = key.Substring("build_menu_list_object_".Length);
-                result[key] = p;
-            }
-        }
-        foreach (var o in allObjects)
-        {
-            if (o != null)
-            {
-                string key = System.IO.Path.GetFileNameWithoutExtension(o.ResourcePath);
-                if (key.StartsWith("build_menu_list_object_", StringComparison.OrdinalIgnoreCase))
-                    key = key.Substring("build_menu_list_object_".Length);
-                Debug.Print(key);
-                result[key] = o;
-            }
-        }
-        return result;
+    public static Building_Menu_List_Object GetBuildingMenuListChildObjectInfo(
+        BUILDING_ID building_id
+    )
+    {
+        BUILDING_ID key = building_id;
+        if (buildings.ContainsKey(key))
+            return buildings[key];
+
+        GD.PrintErr("No Building found for: " + key);
+        return null;
     }
 
     public enum BUILDING_ID
     {
-        BELT,
+        NULL,
         BELT_TUNNEL,
         CHEST,
         FURNACE,
@@ -171,18 +194,7 @@ public partial class Database : Node
         RAIL,
         RAIL_STATION,
         MINECART,
-        FIBRE
-    }
-
-    public static Building_Menu_List_Object GetBuildingMenuListChildObjectInfo(
-        BUILDING_ID building_id
-    )
-    {
-        string key = building_id.ToString().ToLower();
-        if (buildings.ContainsKey(key))
-            return buildings[key];
-
-        GD.PrintErr("No Building found for: " + key);
-        return null;
+        FIBRE,
+        BELT
     }
 }

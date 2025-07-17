@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
@@ -63,12 +64,14 @@ public partial class BuildingCollider : Area2D
 
             if (node is Building_Node building_node && !building_node.disable_collision)
             {
+                Debug.Print("Building Node in Weg!");
                 found = false;
                 break;
             }
 
             if (node is StaticBody2D && node.Name.ToString().Contains("Bridge"))
             {
+                Debug.Print("Static Body in Weg!");
                 found = false;
                 break;
             }
@@ -78,7 +81,10 @@ public partial class BuildingCollider : Area2D
                 foreach (var t in types)
                 {
                     if (node.IsInGroup(t.ToString()))
+                    {
+                        Debug.Print("Right Layer!");
                         found = true;
+                    }
                 }
             }
         }

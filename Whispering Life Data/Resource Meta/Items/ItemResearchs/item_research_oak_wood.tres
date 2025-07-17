@@ -16,4 +16,5 @@ metadata/_custom_type_script = "uid://kjnoywvj7caa"
 [resource]
 script = ExtResource("6_uwnl3")
 item_research_levels = Array[Object]([SubResource("Resource_pvmdy")])
+id = 0
 translation_string = "RESEARCH_WOOD"

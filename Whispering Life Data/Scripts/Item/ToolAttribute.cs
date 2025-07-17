@@ -26,4 +26,9 @@ public partial class ToolAttribute : WearableAttribute
         Scythe,
         Shears
     }
+
+    public override string GetNameOfAttribute()
+    {
+        return TranslationServer.Translate("TOOL") + "\n";
+    }
 }

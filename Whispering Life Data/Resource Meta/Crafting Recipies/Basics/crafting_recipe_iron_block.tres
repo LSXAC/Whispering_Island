@@ -20,5 +20,6 @@ metadata/_custom_type_script = "uid://cee63igbpybf"
 [resource]
 script = ExtResource("4_uhppq")
 required_items = Array[Object]([SubResource("Resource_l28yx")])
+category = 0
 output_item = SubResource("Resource_p5hs0")
 unlock_requirements = null

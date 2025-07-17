@@ -35,21 +35,18 @@ public partial class CraftingMenu : PanelContainer
         foreach (Control c in parent.GetChildren())
             c.QueueFree();
 
+        Array<CraftingRecipe> recipies = Database.instance.crafting_recipies_list;
         int times = 0;
-        for (int i = 0; i < Database.recipies.Count; i++)
+        for (int i = 0; i < recipies.Count; i++)
         {
-            if (Database.recipies[i].category != category)
+            if (recipies[i].category != category)
                 continue;
-            if (Database.recipies[i].unlock_requirements != null)
-                if (Database.recipies[i].unlock_requirements.Count > 0)
-                    if (
-                        !GlobalFunctions.CheckResearchRequirements(
-                            Database.recipies[i].unlock_requirements
-                        )
-                    )
+            if (recipies[i].unlock_requirements != null)
+                if (recipies[i].unlock_requirements.Count > 0)
+                    if (!GlobalFunctions.CheckResearchRequirements(recipies[i].unlock_requirements))
                         continue;
             times++;
-            CraftingRecipe recipe = Database.recipies[i];
+            CraftingRecipe recipe = recipies[i];
 
             itemRecipeUI irUI = (itemRecipeUI)recipe_slot.Instantiate();
             irUI.craftingMenu = this;

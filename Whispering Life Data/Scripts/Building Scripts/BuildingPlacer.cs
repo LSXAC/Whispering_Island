@@ -21,6 +21,7 @@ public partial class BuildingPlacer : Node2D
     private bool is_flipped = false;
 
     public static Node2D moveable_selected_parent = null;
+    private Island current_island = null;
 
     public void InitBuildingFromBuildingMenu(Building_Menu_List_Object scene_info)
     {
@@ -87,8 +88,8 @@ public partial class BuildingPlacer : Node2D
         if (current_building == null)
             return;
 
-        Island island = island_manager.GetNearestIsland(GetGlobalMousePosition());
-        current_building.GlobalPosition = GetBuildingPositionVec2(island);
+        current_island = island_manager.GetNearestIsland(GetGlobalMousePosition());
+        current_building.GlobalPosition = GetBuildingPositionVec2(current_island);
 
         if (Input.IsActionJustPressed("Escape"))
         {
@@ -144,11 +145,16 @@ public partial class BuildingPlacer : Node2D
             return;
 
         Node2D temp = (Node2D)selected_building.Instantiate();
-        Island island = island_manager.GetNearestIsland(GetGlobalMousePosition());
-        temp.GlobalPosition = GetBuildingPositionVec2(island);
-        temp.Scale = current_scale;
+        // Gebäude als Child der Insel platzieren und lokale Position setzen
         if (temp is not Minecart)
-            island.island_object_save_manager.AddChild(temp);
+            current_island.island_object_save_manager.AddChild(temp);
+        // Lokale Tile-Position bestimmen
+        Vector2 globalMouse = GetGlobalMousePosition();
+        Vector2I localTile = current_island.building_area.LocalToMap(
+            globalMouse - current_island.building_area.GlobalPosition
+        );
+        temp.Position = current_island.building_area.MapToLocal(localTile);
+        temp.Scale = current_scale;
 
         SetBuildBuildingByBase(temp);
         RemoveBuildingResources();
@@ -200,10 +206,13 @@ public partial class BuildingPlacer : Node2D
 
     public Vector2 GetBuildingPositionVec2(Island island)
     {
-        Vector2 pos = island.building_area.LocalToMap(
-            GetGlobalMousePosition() - island.GlobalPosition
+        Vector2 globalMouse = GetGlobalMousePosition();
+        Vector2I localTile = island.building_area.LocalToMap(
+            globalMouse - island.building_area.GlobalPosition
         );
-        return new Vector2((pos.X + 1) * 16, (pos.Y + 1) * 16);
+        Vector2 tileCenter =
+            island.building_area.MapToLocal(localTile) + island.building_area.GlobalPosition;
+        return tileCenter;
     }
 
     private void RemoveBuildingResources()

@@ -24,7 +24,7 @@ public partial class Trashcan : ChestBase
             return;
 
         GameMenu.instance.OnOpenChestTab();
-        ChestInventoryUI.current_chest = GetParent<ChestBase>();
+        ChestInventoryUI.current_chest = this;
         ChestInventoryUI.instance.OpenChest();
     }
 }

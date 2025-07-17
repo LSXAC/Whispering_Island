@@ -13,4 +13,9 @@ public partial class SmeltableAttribute : ItemAttributeBase
 
     [Export]
     public Array<UnlockRequirement> unlock_requirements;
+
+    public override string GetNameOfAttribute()
+    {
+        return TranslationServer.Translate("SMELTABLE") + "\n";
+    }
 }

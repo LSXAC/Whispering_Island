@@ -52,29 +52,17 @@ public partial class SlotItemUI : TextureRect
 
     private void UpdateToolTip()
     {
-        return;
-
+        if (item?.info == null)
+            return;
         TooltipText = TranslationServer.Translate(item.info.name.ToString()) + "\n";
         TooltipText += TranslationServer.Translate(item.info.description.ToString()) + "\n";
+        TooltipText += "\n";
         foreach (ItemAttributeBase item_attribute in item.info.attributes)
         {
             if (item_attribute == null)
                 continue;
 
-            if (item_attribute is BurnableAttribute)
-                TooltipText +=
-                    TranslationServer.Translate("BURNTIME")
-                    + ": "
-                    + ((BurnableAttribute)item_attribute).burntime
-                    + "s"
-                    + "\n";
-            else
-                //TODO: item_attribute.attribute is not clean
-                TooltipText +=
-                    TranslationServer.Translate("TYPE")
-                    + ": "
-                    + TranslationServer.Translate(item_attribute.ToString())
-                    + "\n";
+            TooltipText += item_attribute.GetNameOfAttribute();
         }
     }
 

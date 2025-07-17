@@ -2,4 +2,7 @@ using System;
 using Godot;
 
 [GlobalClass]
-public partial class ItemAttributeBase : Resource { }
+public abstract partial class ItemAttributeBase : Resource
+{
+    public abstract string GetNameOfAttribute();
+}
