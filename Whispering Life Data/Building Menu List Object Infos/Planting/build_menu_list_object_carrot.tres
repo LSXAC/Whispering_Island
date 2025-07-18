@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=6 format=3 uid="uid://cdqch07cuu7in"]
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=7 format=3 uid="uid://cdqch07cuu7in"]
 
+[ext_resource type="Resource" uid="uid://dcpvayh8hlqbo" path="res://Resource Meta/Items/item_info_carrot_seed.tres" id="1_2waaa"]
 [ext_resource type="PackedScene" uid="uid://cyayxpnsm4v16" path="res://Scenes/World Objects/Mineable Objects/mineable_object_carrot.tscn" id="1_5168t"]
-[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Items/item_info_wood.tres" id="1_ioblo"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_slufw"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_whc7b"]
+[ext_resource type="Texture2D" uid="uid://byeg4uf6p2ldq" path="res://Sprites/Items/Fruits_Icons/Carrot.png" id="5_2waaa"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
 script = ExtResource("2_slufw")
-info = ExtResource("1_ioblo")
+info = ExtResource("1_2waaa")
 amount = 1
 metadata/_custom_type_script = "uid://cee63igbpybf"
 
@@ -18,4 +19,5 @@ scene_building_id = 12
 required_items = Array[Object]([SubResource("Resource_yo73i")])
 unlock_requirements = Array[Object]([])
 building_menu_category = 2
+texture_in_build_menu = ExtResource("5_2waaa")
 show_object_in_building_menu_list = true
