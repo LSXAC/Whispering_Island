@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://njw4so7o83dw"]
+[gd_scene load_steps=34 format=3 uid="uid://njw4so7o83dw"]
 
 [ext_resource type="Script" uid="uid://gvudefjfv4jx" path="res://Scripts/Player Scripts/Player.cs" id="1_2p5ml"]
 [ext_resource type="Texture2D" uid="uid://b4214y7h1nkv7" path="res://Sprites/Char_Animation.png" id="2_c6oqb"]
@@ -220,6 +220,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjp5d"]
 size = Vector2(48, 50)
 
+[sub_resource type="Gradient" id="Gradient_k0wjm"]
+offsets = PackedFloat32Array(0, 0.162835, 0.837165)
+colors = PackedColorArray(1, 1, 1, 1, 0.961538, 0.961538, 0.961538, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_htcer"]
+gradient = SubResource("Gradient_k0wjm")
+fill = 1
+fill_from = Vector2(0.512821, 0.498576)
+fill_to = Vector2(0.94302, 0.0740741)
+
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 motion_mode = 1
@@ -263,6 +273,13 @@ texture = ExtResource("6_k5wdo")
 
 [node name="PlayerStats" type="Node2D" parent="."]
 script = ExtResource("5_f3lay")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -2)
+energy = 0.3
+range_z_min = -11
+range_z_max = 0
+texture = SubResource("GradientTexture2D_htcer")
 
 [connection signal="area_entered" from="Area2D" to="." method="OnAreaEntered"]
 [connection signal="area_exited" from="Area2D" to="." method="OnAreaLeaved"]

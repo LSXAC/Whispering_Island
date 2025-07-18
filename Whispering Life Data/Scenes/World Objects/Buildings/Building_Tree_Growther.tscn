@@ -194,14 +194,14 @@ _data = {
 [sub_resource type="Gradient" id="Gradient_14qf6"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cgqts"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l6moi"]
 gradient = SubResource("Gradient_14qf6")
 
 [sub_resource type="Curve" id="Curve_yml2p"]
 _data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_lbdfl"]
+[sub_resource type="CurveTexture" id="CurveTexture_14qf6"]
 curve = SubResource("Curve_yml2p")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kb2k7"]
@@ -216,8 +216,8 @@ radial_velocity_max = 25.0
 gravity = Vector3(0, 45, 0)
 scale_min = 0.5
 scale_max = 0.7
-scale_curve = SubResource("CurveTexture_lbdfl")
-color_ramp = SubResource("GradientTexture1D_cgqts")
+scale_curve = SubResource("CurveTexture_14qf6")
+color_ramp = SubResource("GradientTexture1D_l6moi")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(48, 41)
@@ -382,8 +382,8 @@ centered = false
 modulate = Color(0, 0, 0, 0.196078)
 z_index = 1
 z_as_relative = false
-position = Vector2(-7, -13)
-scale = Vector2(2.875, 1.8125)
+position = Vector2(-5, -12)
+scale = Vector2(2.5, 1.46875)
 texture = ExtResource("8_0eevy")
 
 [node name="BuildingCollision" type="CollisionShape2D" parent="."]

@@ -2,11 +2,15 @@ using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Godot;
+using Godot.Collections;
 
-public partial class DayNightManager : CanvasModulate
+public partial class DayNightManager : Node2D
 {
     [Export]
     public GradientTexture1D dayNightGradient;
+
+    [Export]
+    public Array<CanvasModulate> canvases;
 
     public void UpdateColor()
     {
@@ -18,13 +22,14 @@ public partial class DayNightManager : CanvasModulate
         PlayerUI.instance.time_stripe.SetPointer((time / 1440.0f));
         if (dayNightGradient != null && dayNightGradient.Gradient != null)
         {
-            Debug.Print("Color Sample");
             Color color = dayNightGradient.Gradient.Sample(value);
-            Color = color;
+            foreach (CanvasModulate cm in canvases)
+                cm.Color = color;
         }
         else
         {
-            Color = new Color(1, 1, 1, value); // Fallback: nur Alpha ändern
+            foreach (CanvasModulate cm in canvases)
+                cm.Color = new Color(1, 1, 1, value); // Fallback: nur Alpha ändern
         }
     }
 }

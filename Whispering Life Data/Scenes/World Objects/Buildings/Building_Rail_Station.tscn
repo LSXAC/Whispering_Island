@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://8ea6alhnkqok"]
+[gd_scene load_steps=19 format=4 uid="uid://8ea6alhnkqok"]
 
 [ext_resource type="Script" uid="uid://o5ts5isb43np" path="res://Scripts/Building Scripts/RailStation.cs" id="1_h1uaa"]
 [ext_resource type="Texture2D" uid="uid://be1t8wuf070gp" path="res://Sprites/Rail_Station_Bottom.png" id="2_17qbx"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dyylrlp6acwxq" path="res://Scenes/World Objects/Buildings/Building_Rail.tscn" id="9_pslwl"]
 [ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Scripts/Building Scripts/PathConnectArea.cs" id="10_wnhjv"]
 [ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Scripts/Building Scripts/ChestBase.cs" id="11_80gpa"]
+[ext_resource type="Script" uid="uid://blyipdolm77vm" path="res://Scenes/World Objects/Buildings/RailstationArea.cs" id="13_rciws"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6iojv"]
 animations = [{
@@ -22,7 +23,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
-size = Vector2(80, 38)
+size = Vector2(80, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(78, 39)
@@ -31,7 +32,7 @@ size = Vector2(78, 39)
 size = Vector2(14, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfmfo"]
-size = Vector2(23, 18)
+size = Vector2(3, 15)
 
 [node name="RailStation" type="StaticBody2D" node_paths=PackedStringArray("chest_in", "chest_out", "transfer_timer")]
 y_sort_enabled = true
@@ -70,7 +71,7 @@ texture = ExtResource("2_17qbx")
 centered = false
 
 [node name="BuildingCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-8, -3)
+position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_m0htq")
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
@@ -86,7 +87,7 @@ tile_set = ExtResource("4_o2pyy")
 [node name="Taker" parent="." node_paths=PackedStringArray("building") instance=ExtResource("7_mdmq6")]
 z_index = 2
 position = Vector2(-24, -24)
-building = NodePath("../Chest_In")
+building = NodePath("../Chest_Out")
 
 [node name="Rails" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -152,13 +153,12 @@ shape = SubResource("RectangleShape2D_fk0le")
 [node name="Giver" parent="." node_paths=PackedStringArray("building") instance=ExtResource("8_oomir")]
 position = Vector2(8, -37)
 direction_not_giving = 1
-building = NodePath("../Chest_Out")
+building = NodePath("../Chest_In")
 
 [node name="Holder" parent="Giver" index="0"]
 position = Vector2(0, 14)
 
 [node name="TransferTimer" type="Timer" parent="."]
-wait_time = 0.25
 
 [node name="PathConnectArea" type="Area2D" parent="."]
 position = Vector2(32, 0)
@@ -172,18 +172,34 @@ position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_o32qu")
 
 [node name="RailstationAREA" type="Area2D" parent="."]
+position = Vector2(7, 0)
 collision_layer = 0
 collision_mask = 256
 collision_priority = 0.0
 monitorable = false
+script = ExtResource("13_rciws")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RailstationAREA"]
-position = Vector2(-7.5, -8)
+position = Vector2(-8, -8.5)
+shape = SubResource("RectangleShape2D_rfmfo")
+
+[node name="RailstationAREA2" type="Area2D" parent="."]
+position = Vector2(-32, 0)
+collision_layer = 0
+collision_mask = 256
+collision_priority = 0.0
+monitorable = false
+script = ExtResource("13_rciws")
+rail_station_point = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RailstationAREA2"]
+position = Vector2(-1.5, -8.5)
 shape = SubResource("RectangleShape2D_rfmfo")
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
 [connection signal="timeout" from="TransferTimer" to="." method="OnTransferTimerTimeout"]
-[connection signal="area_entered" from="RailstationAREA" to="." method="OnAreaEntered"]
+[connection signal="area_entered" from="RailstationAREA" to="RailstationAREA" method="OnAreaEntered"]
+[connection signal="area_entered" from="RailstationAREA2" to="RailstationAREA2" method="OnAreaEntered"]
 
 [editable path="Giver"]

@@ -267,6 +267,50 @@ theme_override_font_sizes/font_size = 10
 text = "Copyright © 2025. Leon Schröder Asset Creations"
 horizontal_alignment = 2
 
+[node name="Control" type="Control" parent="Menu/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="ColorRect2" type="ColorRect" parent="Menu/Control/Control"]
+layout_mode = 2
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 141.0
+offset_bottom = 31.0
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="Menu/Control/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="Menu/Control/Control/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/Control/Control/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Menu/Control/Control/MarginContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.341896, 0.374305, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_ftsii")
+theme_override_font_sizes/font_size = 10
+text = "Footage is outdated!"
+
 [node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="Menu"]
 layout_mode = 1
 anchors_preset = 15

@@ -42,11 +42,11 @@ public partial class BuildingPlacer : Node2D
         placeable.PrepareForBuild();
 
         // Spezialfälle behandeln
-        if (current_building is Belt belt)
+        if (current_building is TransportBase transport_base)
         {
-            placeable = belt;
-            belt.SetRotationAndDisableMonitoring(rotation: 3);
-            if (belt is BeltTunnel tunnel)
+            placeable = transport_base;
+            transport_base.SetRotationAndDisableMonitoring(rotation: 3);
+            if (transport_base is BeltTunnel tunnel)
             {
                 TunnelArea belt_tunnel = GetNode<TunnelArea>("TunnelArea");
                 if (Logger.NodeIsNotNull(belt_tunnel))
@@ -153,7 +153,7 @@ public partial class BuildingPlacer : Node2D
         Vector2I localTile = current_island.building_area.LocalToMap(
             globalMouse - current_island.building_area.GlobalPosition
         );
-        temp.Position = current_island.building_area.MapToLocal(localTile);
+        temp.Position = current_island.building_area.MapToLocal(localTile) + new Vector2(8, 8);
         temp.Scale = current_scale;
 
         SetBuildBuildingByBase(temp);
@@ -211,7 +211,9 @@ public partial class BuildingPlacer : Node2D
             globalMouse - island.building_area.GlobalPosition
         );
         Vector2 tileCenter =
-            island.building_area.MapToLocal(localTile) + island.building_area.GlobalPosition;
+            island.building_area.MapToLocal(localTile)
+            + island.building_area.GlobalPosition
+            + new Vector2(8, 8);
         return tileCenter;
     }
 

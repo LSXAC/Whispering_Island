@@ -28,8 +28,8 @@ public partial class RailStationTab : ColorRect
     public void OnClickCheckImport()
     {
         export_box.ButtonPressed = false;
-        last_rail_station.export = false;
-        last_rail_station.import = true;
+        last_rail_station.current_station = RailstationArea.STATION.IMPORT;
+        last_rail_station.DisconnectMinecart();
     }
 
     public void UpdateConnectedLabel(bool state)
@@ -40,8 +40,9 @@ public partial class RailStationTab : ColorRect
     public void OnClickCheckExport()
     {
         import_box.ButtonPressed = false;
-        last_rail_station.import = false;
-        last_rail_station.export = true;
+
+        last_rail_station.current_station = RailstationArea.STATION.EXPORT;
+        last_rail_station.DisconnectMinecart();
     }
 
     public void OnTabSelected(int tab)

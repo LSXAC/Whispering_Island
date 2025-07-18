@@ -230,6 +230,17 @@ public partial class Inventory : SlotUpdater
             }
     }
 
+    public Item GetLastItemFromInventoryOrNull(ItemSave[] inventory)
+    {
+        foreach (ItemSave item_save in inventory)
+        {
+            if (item_save == null)
+                continue;
+            return new Item(ITEM_TYPES[(ITEM_ID)item_save.item_id], 1);
+        }
+        return null;
+    }
+
     public void RemoveItem(Item item, ItemSave[] array)
     {
         //Check if Item already exists
@@ -307,7 +318,7 @@ public partial class Inventory : SlotUpdater
         return false;
     }
 
-    public bool HasItemInInventory(ItemSave[] array, BeltItem belt_item)
+    public bool HasItemInInventory(ItemSave[] array, Item item)
     {
         //Check if Item already exists
         for (int i = 0; i < array.Length; i++)
@@ -315,12 +326,12 @@ public partial class Inventory : SlotUpdater
             if (array[i] == null)
                 continue;
 
-            if (belt_item == null)
+            if (item == null)
             {
                 Debug.Print("BI IS NULL");
                 return false;
             }
-            if (array[i].item_id == (int)belt_item.item.info.id)
+            if (array[i].item_id == (int)item.info.id)
                 return true;
         }
         return false;

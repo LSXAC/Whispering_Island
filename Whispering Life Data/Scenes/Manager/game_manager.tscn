@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=52 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" uid="uid://sxd7avtys7n7" path="res://Scripts/Manager Scripts/GameManager.cs" id="1_2n0he"]
 [ext_resource type="Script" uid="uid://cwonaacplejxj" path="res://Scripts/Building Scripts/BuildingPlacer.cs" id="2_h8pdp"]
@@ -21,15 +21,317 @@
 [ext_resource type="Resource" uid="uid://bbb0mqt5qpmap" path="res://Resource Meta/Quests/quest_info_7.tres" id="15_5qlke"]
 [ext_resource type="Resource" uid="uid://b4f0pdj2v6jfh" path="res://Resource Meta/Quests/quest_info_8.tres" id="16_gytje"]
 [ext_resource type="Resource" uid="uid://c2p2638k7calp" path="res://Resource Meta/Quests/quest_info_9.tres" id="17_1xtv0"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="19_f280c"]
+[ext_resource type="Texture2D" uid="uid://xph8b14pkbju" path="res://Sprites/Tree/Tree_Leave.png" id="20_p85m3"]
 [ext_resource type="Script" uid="uid://c54qloxkixlh" path="res://Scripts/Manager Scripts/TimeManager.cs" id="21_3gobv"]
+[ext_resource type="Texture2D" uid="uid://bfw0elq5yfvqk" path="res://Sprites/Leave.png" id="21_5qlke"]
 [ext_resource type="Script" uid="uid://blf1q1vqdlpkq" path="res://Scripts/Manager Scripts/DayNightManager.cs" id="22_3jk2j"]
+[ext_resource type="Texture2D" uid="uid://b18t84mi1huam" path="res://Sprites/Spritesheets/Plants/Wood_Stump.png" id="23_gytje"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Resource Meta/daynightcycle-gradient-texture.tres" id="23_rd84m"]
 [ext_resource type="Script" uid="uid://duioi7flou3wn" path="res://Scripts/Tutorial.cs" id="24_f4sbj"]
-[ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="25_47dgn"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="26_nq6jg"]
 [ext_resource type="AudioStream" uid="uid://baxwufa73fl35" path="res://Audio/Atmosphere Sounds/441638__naturenotesuk__birds-at-feeder.wav" id="27_73301"]
 [ext_resource type="AudioStream" uid="uid://bwod2wh4o0qwt" path="res://Audio/Background Music/759996__josefpres__piano-loops-167-octave-short-loop-120-bpm.wav" id="28_2plat"]
 [ext_resource type="Script" uid="uid://c3aa8j0h5bxr1" path="res://Scripts/GlobalAnimationTimer.cs" id="29_q20se"]
+[ext_resource type="Material" uid="uid://6f3r1pj1aoib" path="res://Tilesets/Clouds.tres" id="31_p85m3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1xtv0"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_l6moi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pnxny"]
+resource_name = "Tree_Idle"
+length = 1.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.8, 1.23333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0261799, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.966667, 1.23333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0523599, -0.0261799, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.7, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0261799, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.9, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0523599, -0.0261799, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave5:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.9, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0261799, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave6:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.933333, 1.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0261799, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave7:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.266667, 1.06667, 1.33333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0523599, -0.0261799, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave8:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.266667, 1.06667, 1.33333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0261799, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave9:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.7, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0261799, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave10:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.266667, 1.13333, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0523599, -0.0261799, 0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave11:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1.13333, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0523599, -0.0261799, 0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave12:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.866667, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0261799, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_14qf6"]
+_data = {
+&"RESET": SubResource("Animation_l6moi"),
+&"Tree_Idle": SubResource("Animation_pnxny")
+}
+
+[sub_resource type="Gradient" id="Gradient_1whgu"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uwm61"]
+gradient = SubResource("Gradient_1whgu")
+
+[sub_resource type="Curve" id="Curve_5h8gv"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cgqts"]
+curve = SubResource("Curve_5h8gv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t3yax"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 45, 0)
+scale_min = 0.5
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_cgqts")
+color_ramp = SubResource("GradientTexture1D_uwm61")
+
+[sub_resource type="Shader" id="Shader_000go"]
+code = "shader_type canvas_item;
+//render_mode unshaded; // optional
+
+// Noise texture
+uniform sampler2D noise_texture: repeat_enable, filter_nearest;
+// Fog density
+uniform float density: hint_range(0.0, 1.0) = 1;
+// Fog speed
+uniform vec2 speed = vec2(0.02, 0.01);
+
+
+// Called for every pixel the material is visible on
+void fragment() {
+	// Make the fog slowly move
+	vec2 uv = UV + speed * TIME;
+	// Sample the noise texture
+	float noise = texture(noise_texture, uv).r;
+	// Convert the noise from the (0.0, 1.0) range to the (-1.0, 1.0) range
+	// and clamp it between 0.0 and 1.0 again
+	float fog = clamp(noise * 2.4 - 1.0, 0, 1);
+	// Apply the fog effect
+	COLOR.a *= fog * density;
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5qlke"]
+seed = 75
+frequency = 0.005
+fractal_octaves = 6
+fractal_gain = 0.6
+domain_warp_enabled = true
+domain_warp_amplitude = 256.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jgou8"]
+width = 640
+height = 360
+seamless = true
+seamless_blend_skirt = 0.6
+noise = SubResource("FastNoiseLite_5qlke")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gytje"]
+shader = SubResource("Shader_000go")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_jgou8")
+shader_parameter/density = 0.5
+shader_parameter/speed = Vector2(0.01, 0.002)
+
+[sub_resource type="Shader" id="Shader_wl4wn"]
+code = "shader_type canvas_item;
+//render_mode unshaded; // optional
+
+// Noise texture
+uniform sampler2D noise_texture: repeat_enable, filter_nearest;
+// Fog density
+uniform float density: hint_range(0.0, 1.0) = 1;
+// Fog speed
+uniform vec2 speed = vec2(0.02, 0.01);
+
+
+// Called for every pixel the material is visible on
+void fragment() {
+	// Make the fog slowly move
+	vec2 uv = UV + speed * TIME;
+	// Sample the noise texture
+	float noise = texture(noise_texture, uv).r;
+	// Convert the noise from the (0.0, 1.0) range to the (-1.0, 1.0) range
+	// and clamp it between 0.0 and 1.0 again
+	float fog = clamp(noise * 2.4 - 1.0, 0, 1);
+	// Apply the fog effect
+	COLOR.a *= fog * density;
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1xtv0"]
+seed = 200
+frequency = 0.007
+fractal_octaves = 6
+fractal_gain = 0.6
+domain_warp_enabled = true
+domain_warp_amplitude = 256.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tjejx"]
+width = 640
+height = 360
+seamless = true
+seamless_blend_skirt = 0.6
+noise = SubResource("FastNoiseLite_1xtv0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1whgu"]
+shader = SubResource("Shader_wl4wn")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_tjejx")
+shader_parameter/density = 1.0
+shader_parameter/speed = Vector2(0.008, 0.003)
 
 [node name="GameManager" type="Node2D" node_paths=PackedStringArray("building_placer")]
 y_sort_enabled = true
@@ -82,28 +384,166 @@ zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="Tutorial" type="Node2D" parent="." node_paths=PackedStringArray("Tree", "shadow")]
+[node name="Tutorial" type="Node2D" parent="." node_paths=PackedStringArray("Tree")]
 script = ExtResource("24_f4sbj")
-Tree = NodePath("Tree/Sprite")
-shadow = NodePath("Tree/Shadow")
+Tree = NodePath("SpriteAnimationManager")
 
-[node name="Tree" type="StaticBody2D" parent="Tutorial"]
-y_sort_enabled = true
-position = Vector2(40, -191)
+[node name="SpriteAnimationManager" type="Node2D" parent="Tutorial"]
+visible = false
+position = Vector2(47, -179)
+script = ExtResource("19_f280c")
+has_animation_player = true
+anim_name = "Tree_Idle"
 
-[node name="Sprite" type="Sprite2D" parent="Tutorial/Tree"]
-y_sort_enabled = true
-position = Vector2(1, 6)
-texture = ExtResource("25_47dgn")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tutorial/SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_1xtv0")
+animation = &"Normal"
 centered = false
-offset = Vector2(-16, -40)
 
-[node name="Shadow" type="Sprite2D" parent="Tutorial/Tree"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tutorial/SpriteAnimationManager"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_14qf6")
+}
+
+[node name="Animated_Tree" type="Node2D" parent="Tutorial/SpriteAnimationManager"]
+y_sort_enabled = true
+
+[node name="Leaves" type="Node2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree"]
+y_sort_enabled = true
+
+[node name="Leave" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-5.70505, -31.8279)
+texture = ExtResource("20_p85m3")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave2" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(4.29495, -27.8279)
+rotation = -0.0206425
+texture = ExtResource("20_p85m3")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave3" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-5.70505, -25.8279)
+rotation = -0.009264
+texture = ExtResource("20_p85m3")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave4" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-17.7051, -27.8279)
+rotation = -0.018125
+texture = ExtResource("20_p85m3")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave5" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-14.7051, -34.8279)
+rotation = -0.0140975
+texture = ExtResource("20_p85m3")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave6" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(2.29495, -36.8279)
+rotation = -0.0197727
+texture = ExtResource("20_p85m3")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave7" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-5.70505, -39.8279)
+rotation = -0.0218999
+texture = ExtResource("20_p85m3")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave8" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-20.7051, -24.8279)
+rotation = -0.022851
+texture = ExtResource("20_p85m3")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave9" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-13.7051, -21.8279)
+rotation = -0.00805572
+texture = ExtResource("20_p85m3")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave10" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-0.705051, -20.8279)
+rotation = -0.0161876
+texture = ExtResource("20_p85m3")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave11" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(7.29495, -23.8279)
+rotation = -0.0117466
+texture = ExtResource("20_p85m3")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave12" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(10.2949, -29.8279)
+rotation = -0.013896
+texture = ExtResource("20_p85m3")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="FallingLeaves" type="GPUParticles2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-5, -27)
+amount = 7
+texture = ExtResource("21_5qlke")
+lifetime = 0.7
+speed_scale = 0.7
+explosiveness = 0.3
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_t3yax")
+
+[node name="Shadow" type="Sprite2D" parent="Tutorial/SpriteAnimationManager"]
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
-position = Vector2(0, 6)
+position = Vector2(-5, -12)
+scale = Vector2(2.5, 1.46875)
 texture = ExtResource("26_nq6jg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial/SpriteAnimationManager"]
+y_sort_enabled = true
+position = Vector2(-6, -32)
+texture = ExtResource("23_gytje")
 
 [node name="PlayerUI" parent="." instance=ExtResource("7_5qlke")]
 
@@ -134,15 +574,62 @@ wait_time = 0.2
 autostart = true
 script = ExtResource("29_q20se")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -15
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(640, 360)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
+z_index = 1
+material = ExtResource("31_p85m3")
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+visible = false
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground2"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_mirroring = Vector2(640, 360)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground2/ParallaxLayer"]
+z_index = 1
+material = SubResource("ShaderMaterial_gytje")
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+
+[node name="ParallaxBackground3" type="ParallaxBackground" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground3"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground3"]
+motion_mirroring = Vector2(640, 360)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground3/ParallaxLayer"]
+z_index = 1
+material = SubResource("ShaderMaterial_1whgu")
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+
 [node name="TimeManager" type="Node2D" parent="." node_paths=PackedStringArray("game_timer")]
 script = ExtResource("21_3gobv")
 game_timer = NodePath("GameTimer")
 
 [node name="GameTimer" type="Timer" parent="TimeManager"]
 
-[node name="DayNightManager" type="CanvasModulate" parent="TimeManager"]
+[node name="CanvasModulate" type="CanvasModulate" parent="TimeManager"]
+
+[node name="DayNightManager" type="Node2D" parent="TimeManager" node_paths=PackedStringArray("canvases")]
 script = ExtResource("22_3jk2j")
 dayNightGradient = ExtResource("23_rd84m")
+canvases = [NodePath("../CanvasModulate"), NodePath("../../ParallaxBackground3/CanvasModulate"), NodePath("../../ParallaxBackground2/CanvasModulate"), NodePath("../../ParallaxBackground/CanvasModulate")]
 
 [connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
 [connection signal="timeout" from="GlobalAnimationTimer" to="GlobalAnimationTimer" method="OnAnimationGlobalTimerTimeout"]

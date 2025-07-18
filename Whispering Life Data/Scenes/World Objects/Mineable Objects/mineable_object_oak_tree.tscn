@@ -212,14 +212,14 @@ _data = {
 [sub_resource type="Gradient" id="Gradient_uwm61"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_uwm61"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i7g1i"]
 gradient = SubResource("Gradient_uwm61")
 
 [sub_resource type="Curve" id="Curve_fj6mt"]
 _data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_cgqts"]
+[sub_resource type="CurveTexture" id="CurveTexture_5dwf0"]
 curve = SubResource("Curve_fj6mt")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pa158"]
@@ -234,8 +234,8 @@ radial_velocity_max = 25.0
 gravity = Vector3(0, 45, 0)
 scale_min = 0.5
 scale_max = 0.7
-scale_curve = SubResource("CurveTexture_cgqts")
-color_ramp = SubResource("GradientTexture1D_uwm61")
+scale_curve = SubResource("CurveTexture_5dwf0")
+color_ramp = SubResource("GradientTexture1D_i7g1i")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(16, 8)
@@ -427,8 +427,8 @@ process_material = SubResource("ParticleProcessMaterial_pa158")
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
-position = Vector2(-7, -13)
-scale = Vector2(2.875, 1.8125)
+position = Vector2(-5, -12)
+scale = Vector2(2.5, 1.46875)
 texture = ExtResource("5_ad443")
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]

@@ -17,7 +17,7 @@ void fragment() {
 	float noise = texture(noise_texture, uv).r;
 	// Convert the noise from the (0.0, 1.0) range to the (-1.0, 1.0) range
 	// and clamp it between 0.0 and 1.0 again
-	float fog = clamp(noise * 2.5 - 1.0, 0.0, 1.0);
+	float fog = clamp(noise * 2.4 - 1.0, 0, 1);
 	// Apply the fog effect
 	COLOR.a *= fog * density;
 }

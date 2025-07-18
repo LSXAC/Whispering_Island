@@ -34,7 +34,7 @@ public partial class Taker : StaticBody2D
         {
             return item_holder_In.GetChildCount() == 0
                 && (
-                    ChestInventoryUI.instance.HasItemInInventory(chest_base.chest_items, ii)
+                    ChestInventoryUI.instance.HasItemInInventory(chest_base.chest_items, ii.item)
                     || ChestInventoryUI.instance.HasEmptySlotInInventory(chest_base.chest_items)
                 );
         }

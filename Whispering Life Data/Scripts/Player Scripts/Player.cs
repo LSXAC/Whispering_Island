@@ -52,8 +52,7 @@ public partial class Player : CharacterBody2D
             )
                 return;
 
-        if (!GameMenu.IsThisWindow(BuildMenu.instance))
-            ZoomCamera();
+        ZoomCamera();
         this.velo_x = 0;
         this.velo_y = 0;
 

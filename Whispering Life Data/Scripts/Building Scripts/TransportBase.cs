@@ -13,7 +13,7 @@ public partial class TransportBase : placeable_building
     [Export]
     public Direction from_direction = Direction.Right;
     public ItemHolder item_holder;
-
+    public Area2D path_connect_area;
     public Detector detector;
     public ConnectedBeltsManager cbm;
 
@@ -32,6 +32,8 @@ public partial class TransportBase : placeable_building
     public override void _Ready()
     {
         base._Ready();
+
+        path_connect_area = GetNode<Area2D>("PathConnectArea");
         if (HasNode("ConnectedBeltsManager"))
             cbm = GetNode<ConnectedBeltsManager>("ConnectedBeltsManager");
         anim_manager12D = GetNode<AnimationManager12D>("12DAnimationManager");
@@ -68,6 +70,13 @@ public partial class TransportBase : placeable_building
         if (current_rotation == 4)
             current_rotation = 0;
         Set_Rotation(current_rotation);
+    }
+
+    public void SetRotationAndDisableMonitoring(int rotation)
+    {
+        Set_Rotation(rotation);
+        if (Logger.NodeIsNotNull(path_connect_area))
+            path_connect_area.Monitorable = false;
     }
 
     public void Set_Rotation(int id)

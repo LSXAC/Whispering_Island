@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Linq;
 using Godot;
 
 public partial class RailStation : MachineBase
@@ -10,9 +11,12 @@ public partial class RailStation : MachineBase
 
     [Export]
     public Timer transfer_timer;
+
     public Minecart minecart = null;
-    public bool export = true;
-    public bool import = false;
+
+    [Export]
+    public RailstationArea.STATION current_station;
+
     public bool minecart_connected = false;
 
     public override void OnMouseClick()
@@ -32,34 +36,80 @@ public partial class RailStation : MachineBase
         ChestInventoryUI.instance.OpenChest();
     }
 
-    public void OnAreaEntered(Area2D area)
-    {
-        Debug.Print("Object: " + area.GetParent().Name);
-        if (area.GetParent() is Minecart cart)
-            ConnectMinecart(cart);
-    }
-
     public void OnTransferTimerTimeout()
     {
-        Debug.Print("Connected! & Disconnected!");
+        if (current_station == RailstationArea.STATION.IMPORT)
+        {
+            Item item = ChestInventoryUI.instance.GetLastItemFromInventoryOrNull(
+                minecart.chestBase.chest_items
+            );
+
+            if (item != null)
+            {
+                if (
+                    ChestInventoryUI.instance.HasItemInInventory(chest_in.chest_items, item)
+                    || ChestInventoryUI.instance.HasEmptySlotInInventory(chest_in.chest_items)
+                )
+                {
+                    ChestInventoryUI.instance.AddItem(item, chest_in.chest_items);
+                    ChestInventoryUI.instance.RemoveItem(item, minecart.chestBase.chest_items);
+                    ChestInventoryUI.instance.UpdateInventoryUI();
+                    return;
+                }
+            }
+        }
+
+        if (current_station == RailstationArea.STATION.EXPORT)
+        {
+            Item item = ChestInventoryUI.instance.GetLastItemFromInventoryOrNull(
+                chest_out.chest_items
+            );
+
+            if (item != null)
+            {
+                if (
+                    ChestInventoryUI.instance.HasItemInInventory(
+                        minecart.chestBase.chest_items,
+                        item
+                    )
+                    || ChestInventoryUI.instance.HasEmptySlotInInventory(
+                        minecart.chestBase.chest_items
+                    )
+                )
+                {
+                    ChestInventoryUI.instance.AddItem(item, minecart.chestBase.chest_items);
+                    ChestInventoryUI.instance.RemoveItem(item, chest_out.chest_items);
+                    ChestInventoryUI.instance.UpdateInventoryUI();
+                    return;
+                }
+            }
+        }
+
+        Debug.Print("Transfertimer timeout -> Disconnected!");
         DisconnectMinecart();
     }
 
-    public void ConnectMinecart(Minecart minecart)
+    public void ConnectMinecart(Minecart minecart, RailstationArea.STATION station)
     {
+        if (current_station != station)
+            return;
+
         minecart_connected = true;
         this.minecart = minecart;
+        this.minecart.Position = new Vector2(0, 0);
         minecart.is_running = false;
-        Debug.Print("Minecart connected!");
+        Debug.Print("Minecart now connected!");
         transfer_timer.Start();
     }
 
     public void DisconnectMinecart()
     {
+        if (this.minecart == null)
+            return;
         minecart_connected = false;
         this.minecart.is_running = true;
         this.minecart = null;
-        Debug.Print("Minecard disconnected!");
+        Debug.Print("Minecard now disconnected!");
         transfer_timer.Stop();
     }
 

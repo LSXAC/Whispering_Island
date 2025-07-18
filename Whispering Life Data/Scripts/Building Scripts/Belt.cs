@@ -3,12 +3,9 @@ using Godot;
 
 public partial class Belt : TransportBase
 {
-    private Area2D path_connect_area;
-
     public override void _Ready()
     {
         base._Ready();
-        path_connect_area = GetNode<Area2D>("PathConnectArea");
     }
 
     public void OnDetectorBeltDetected(Area2D area)
@@ -76,13 +73,6 @@ public partial class Belt : TransportBase
     public void OnItemHolderItemHeld()
     {
         detector.Detect();
-    }
-
-    public void SetRotationAndDisableMonitoring(int rotation)
-    {
-        Set_Rotation(rotation);
-        if (Logger.NodeIsNotNull(path_connect_area))
-            path_connect_area.Monitorable = false;
     }
 
     public override Resource Save()

@@ -428,8 +428,8 @@ process_material = SubResource("ParticleProcessMaterial_tvtd7")
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
-position = Vector2(-7, -13)
-scale = Vector2(2.875, 1.8125)
+position = Vector2(-5, -12)
+scale = Vector2(2.5, 1.46875)
 texture = ExtResource("4_bvs21")
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]

@@ -9,16 +9,13 @@ public partial class Tutorial : Node2D
     );
 
     [Export]
-    public Sprite2D Tree;
+    public SpriteAnimationManager Tree;
 
-    [Export]
-    public Sprite2D shadow;
     public static Tutorial instance;
 
     public override void _Ready()
     {
         instance = this;
         Tree.Visible = false;
-        shadow.Visible = false;
     }
 }

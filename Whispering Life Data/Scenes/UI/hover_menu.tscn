@@ -7,10 +7,8 @@
 [node name="HoverMenu" type="PanelContainer" node_paths=PackedStringArray("title_container", "descriptiion_container", "object_type_container", "hitpoint_container", "resource_type_container", "resource_type_level_container", "process_bar_container", "process_fuel_container", "process_input_container", "process_output_container", "chest_slots_container", "title_content", "description_content", "object_type_content", "hitpoint_content", "resource_type_content", "resource_type_level_content", "process_bar_content", "process_fuel_content", "process_input_content", "process_output_content", "chest_slots_content", "Line1", "Line2")]
 z_index = 5
 z_as_relative = false
-custom_minimum_size = Vector2(150, 34)
-offset_right = 170.0
-offset_bottom = 58.0
-pivot_offset = Vector2(0, 58)
+offset_right = 164.0
+offset_bottom = 159.0
 script = ExtResource("1_ywqhi")
 title_container = NodePath("MarginContainer/VBoxContainer/HBoxTitle")
 descriptiion_container = NodePath("MarginContainer/VBoxContainer/HBoxDescription")
@@ -57,12 +55,12 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxTitle"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "Object:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -71,13 +69,13 @@ script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_OBJECT"
 
 [node name="TitleContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxTitle"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "Tree Tree Tree "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -87,13 +85,13 @@ autowrap_mode = 3
 layout_mode = 2
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxDescription"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "Description:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -102,13 +100,13 @@ script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_DESCRIPTION"
 
 [node name="DescriptionContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxDescription"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "This is a
 Description!"
 horizontal_alignment = 1
@@ -119,13 +117,13 @@ autowrap_mode = 3
 layout_mode = 2
 
 [node name="ObjectTypeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxObjectType"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "Description:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -134,13 +132,13 @@ script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_OBJECT_TYPE"
 
 [node name="ObjectTypeContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxObjectType"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "This is a Description!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -154,13 +152,13 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="HealthLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxHitPoint"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "Durability"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -169,13 +167,13 @@ script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_HITPOINTS"
 
 [node name="HealthContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxHitPoint"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "This is a Description!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -185,13 +183,13 @@ autowrap_mode = 3
 layout_mode = 2
 
 [node name="TypeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxType"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "Durability"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -200,13 +198,13 @@ script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_OBJECT_TYPE"
 
 [node name="TypeContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxType"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "This is a Description!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -216,13 +214,13 @@ autowrap_mode = 3
 layout_mode = 2
 
 [node name="CollectLevelLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxCollectLevel"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "Durability"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -231,13 +229,13 @@ script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_RESOURCE_TYPE"
 
 [node name="CollectLevelContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxCollectLevel"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "This is a Description!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -251,13 +249,13 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxProgress"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "Progress"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -266,13 +264,13 @@ script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_PROCESS_PROGRESS"
 
 [node name="ProgressContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxProgress"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "100/100"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -282,13 +280,13 @@ autowrap_mode = 3
 layout_mode = 2
 
 [node name="FuelLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxFuel"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "Fuel"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -297,13 +295,13 @@ script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_PROCESS_FUEL"
 
 [node name="FuelContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxFuel"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "24"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -313,13 +311,13 @@ autowrap_mode = 3
 layout_mode = 2
 
 [node name="InputLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxInput"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "Input"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -328,13 +326,13 @@ script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_PROCESS_INPUT"
 
 [node name="InputContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxInput"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "2x Wood"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -344,13 +342,13 @@ autowrap_mode = 3
 layout_mode = 2
 
 [node name="OutputLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxOutput"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "Output"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -359,13 +357,13 @@ script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_PROCESS_OUTPUT"
 
 [node name="OutputContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxOutput"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "1x Charcoal"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -375,13 +373,13 @@ autowrap_mode = 3
 layout_mode = 2
 
 [node name="SlotsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxSlots"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "Free Slots"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -390,13 +388,13 @@ script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_CHEST_SLOTS"
 
 [node name="SlotsContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxSlots"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_mkuyp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "x/20"
 horizontal_alignment = 1
 vertical_alignment = 1

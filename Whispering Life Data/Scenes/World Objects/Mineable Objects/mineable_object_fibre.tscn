@@ -76,7 +76,7 @@ extra_item = SubResource("Resource_vs733")
 gpu_particles = NodePath("FibreParticles")
 building_id = 29
 tile_types = Array[int]([0])
-title = "WORLD_RESOURCE_MFIBRE"
+title = "WORLD_RESOURCE_FIBRE"
 description = "WORLD_RESOURCE_FIBRE_DESC"
 
 [node name="SpriteAnimationManager" type="Node2D" parent="."]

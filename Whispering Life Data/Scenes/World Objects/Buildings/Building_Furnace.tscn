@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cn0rjr3gah4jr"]
+[gd_scene load_steps=19 format=4 uid="uid://cn0rjr3gah4jr"]
 
 [ext_resource type="Script" uid="uid://bb7d4vvk26up8" path="res://Scripts/Building Scripts/ProcessBuilding.cs" id="1_7ow6b"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_2jdlk"]
@@ -50,6 +50,15 @@ scale_over_velocity_max = 1.0
 color_ramp = SubResource("GradientTexture1D_cvuei")
 hue_variation_min = -2.23517e-08
 hue_variation_max = -2.23517e-08
+
+[sub_resource type="Gradient" id="Gradient_k0wjm"]
+offsets = PackedFloat32Array(0, 0.162835, 0.628352)
+colors = PackedColorArray(1, 1, 1, 1, 0.961538, 0.961538, 0.961538, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k7rv1"]
+gradient = SubResource("Gradient_k0wjm")
+fill = 1
+fill_from = Vector2(0.512821, 0.498576)
 
 [node name="Building" type="StaticBody2D" node_paths=PackedStringArray("crafting_timer", "state_timer")]
 y_sort_enabled = true
@@ -134,6 +143,12 @@ explosiveness = 1.0
 randomness = 0.8
 trail_lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_cvuei")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-8, 4)
+scale = Vector2(0.71875, 0.5)
+color = Color(0.919034, 0.796493, 2.69532e-06, 1)
+texture = SubResource("GradientTexture2D_k7rv1")
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

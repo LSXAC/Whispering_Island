@@ -51,10 +51,10 @@ STONE_AXE_HEAD,Stone Axe Head,Steinaxtkopf
 STONE_AXE_HEAD_DESC,A stone formed as a axe head,Ein Stein geformt wie ein Axtkopf
 STONE_PICKAXE_HEAD,Stone Pickaxe Head,Steinspitzhackenkopf
 STONE_PICKAXE_HEAD_DESC,A stone formed as a pickaxe head,Ein Stein geformt wie ein Spitzhackenkopf
+WOODEN_HOE_HEAD,Wooden Hoe Head,Holzhackenkopf
+WOODEN_HOE_HEAD_DESC,A piece of wood formed as a hoe head,Ein Holzstück geformt als ein Hackenkopf
 WOODEN_HOE,Wooden Hoe,Holzhacke
 WOODEN_HOE_DESC,A tool to break plants faster,Ein Werkzeug um schneller Pflanzen zu säen
-,,
-,,
 WOODEN_AXE_HEAD,Wooden Axe Head,Holzaxtkopf
 WOODEN_AXE_HEAD_DESC,A piece of wood formed as a axe head,Ein Holzstück geformt als ein Axtkopf
 WHEAT,Wheat,Weizen
@@ -79,11 +79,44 @@ SAND,Sand,Sand
 SAND_DESC,A handfull sand,Eine Schaufel Sand
 SAND_STONE,sandstone,Sandstein
 SAND_STONE_DESC,has a chance to give more sand,Ein Sandstein gibt die möglichkeit auf mehr Sand
-MYSTIC_ARMOR_HELM,Mystic Helm,Mystischer Helm
-MYSTIC_ARMOR_HELM_DESC,A mysterious helm,Ein mysteriöser Helm
+MYSTIC_ARMOR_HEAD,Mystic Helm,Mystischer Helm
+MYSTIC_ARMOR_HEAD_DESC,A mysterious head,Ein mysteriöser Helm
 MYSTIC_ARMOR_CHESTPLATE,Mystic Chestplate,Mystischer Brustpanzer
 MYSTIC_ARMOR_CHESTPLATE_DESC,A mysterious chestplate,Ein mysteriöser Brustpanzer
 MYSTIC_ARMOR_LEGGINGS,Mystic Leggings,Mystische Hose
 MYSTIC_ARMOR_LEGGINGS_DESC,A mysterious leggings,Eine mysteriöse Hose
 MYSTIC_ARMOR_SHOES,Mystic Shoes,Mystische Schuhe
 MYSTIC_ARMOR_SHOES_DESC,A mysterious shoes,Ein mysteriöses Paar Schuhe
+OAK_SEED,Oak Seed,Eichensamen
+OAK_SEED_DESC,A seed to plant Oak.,Ein Samen um Eichen anzupflanzen
+MYST_OAK_SEED,Mystic Oak Seed,Mystischer Eichensamen
+MYST_OAK_SEED_DESC,A seed to plant mystic Oak.,Ein Samen um mystische Eichen anzupflanzen
+MYST_FIBRE_SEED,Mystic Fibre Seed,Mystischer Fasernsamen
+MYST_FIBRE_SEED_DESC,A seed to plant mystic Fibre.,Ein Samen um mystische Fasern anzupflanzen
+,,
+LEATHER,Leather,Leder
+LEATHER_DESC,Leather from a cow,Leder von einer Kuh
+BEEF,beef,Rindfleisch
+BEFF_DESC,Meat from a cow,Fleisch von einer Bio Kuh
+BONES,Bones,Knochen
+BONES_DESC,Bones from an Animal,Knochen von verschiedenen Tieren / Kreaturen
+FAT,Fat,Fett
+FAT_DESC,Fat from different animals,Fett von verschiedenen Tieren
+HIDE,Hide,Schwarte
+HIDE_DESC,,Schwarte von einem Schwein
+PORK,Pork,Schweinefleisch
+PORK_DESC,meat from a Pig,Schweinefleisch vom Bio Schwein
+FEATHER,Feather,Feder
+FEATHER_DESC,Feather from a Chicken,Feder von einem Huhn / Vogel
+EGG,Egg,Ei
+EGG_DESC,Egg from a happy Chicken,Ein Bio Ei von einem glücklichen Huhn
+CHICKEN,Chicken,Hühnchen
+CHICKEN_DESC,Meat from a Chicken,Fleisch von einem Huhn
+HIDE,Hide,Fell
+HIDE_DESC,Hide from a Horse,Fell von einem Kanickel / Pferd
+OAK_SEED,Oak Tree Seeds,Eichenbaumsamen
+OAK_SEED_DESC,A seed to plant oak trees.,Ein Samen um Eichenbäume anzupflanzen
+FIBRE_SEED,Fibre Seeds,Fasernsamen
+FIBRE_SEED_DESC,A seed to plant fibre.,Ein Samen um Fasern anzupflanzen
+MYSTIC_OAK_SEED,Mystic Oak Tree Seeds,Mystische Eichenbaumsamen
+MYSTIC_OAK_SEED_DESC,A seed to plant mystic oak trees.,Ein Samen um mystische Eichenbäume anzupflanzen
