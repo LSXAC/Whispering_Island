@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=7 format=3 uid="uid://u2pfsg8ffel3"]
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=9 format=3 uid="uid://u2pfsg8ffel3"]
 
 [ext_resource type="Resource" uid="uid://65jron2bhtes" path="res://Resource Meta/Items/item_info_wood_axe_head.tres" id="1_h3lh2"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_7vbar"]
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Items/item_info_wood.tres" id="3_4mntj"]
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="4_snvls"]
+[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="5_7vbar"]
 
 [sub_resource type="Resource" id="Resource_mkorb"]
 script = ExtResource("2_7vbar")
@@ -17,9 +18,15 @@ info = ExtResource("3_4mntj")
 amount = 5
 metadata/_custom_type_script = "uid://cee63igbpybf"
 
+[sub_resource type="Resource" id="Resource_4mntj"]
+script = ExtResource("5_7vbar")
+required_level = 1
+item_id = 41
+metadata/_custom_type_script = "uid://blxths6rov8b8"
+
 [resource]
 script = ExtResource("4_snvls")
 required_items = Array[Object]([SubResource("Resource_8wisq")])
 category = 1
 output_item = SubResource("Resource_mkorb")
-unlock_requirements = null
+unlock_requirements = Array[Object]([SubResource("Resource_4mntj")])

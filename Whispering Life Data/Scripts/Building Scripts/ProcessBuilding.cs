@@ -177,9 +177,9 @@ public partial class ProcessBuilding : MachineBase
         if (smeltable == null)
             return false;
 
-        /*if (smeltable.unlock_requirements != null || smeltable.unlock_requirements.Count > 0)
+        if (smeltable.unlock_requirements != null || smeltable.unlock_requirements.Count > 0)
             if (!GlobalFunctions.CheckResearchRequirements(smeltable.unlock_requirements))
-                return false;*/
+                return false;
 
         if (item_array[(int)FurnaceTab.SlotType.IMPORT].amount < smeltable.amount_to_smelt)
             return false;

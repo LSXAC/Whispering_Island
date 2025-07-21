@@ -186,8 +186,26 @@ position = Vector2(-88, -80)
 [node name="Iron_Ore2" parent="IslandObjectSaveManager" instance=ExtResource("10_j5waq")]
 position = Vector2(128, -160)
 
+[node name="Iron_Ore4" parent="IslandObjectSaveManager" instance=ExtResource("10_j5waq")]
+position = Vector2(104, -144)
+
+[node name="Iron_Ore5" parent="IslandObjectSaveManager" instance=ExtResource("10_j5waq")]
+position = Vector2(64, -176)
+
+[node name="Iron_Ore6" parent="IslandObjectSaveManager" instance=ExtResource("10_j5waq")]
+position = Vector2(-64, -64)
+
+[node name="Iron_Ore7" parent="IslandObjectSaveManager" instance=ExtResource("10_j5waq")]
+position = Vector2(-120, 96)
+
 [node name="Iron_Ore3" parent="IslandObjectSaveManager" instance=ExtResource("10_j5waq")]
 position = Vector2(192, 112)
+
+[node name="Iron_Ore8" parent="IslandObjectSaveManager" instance=ExtResource("10_j5waq")]
+position = Vector2(176, 88)
+
+[node name="Iron_Ore9" parent="IslandObjectSaveManager" instance=ExtResource("10_j5waq")]
+position = Vector2(-48, 184)
 
 [node name="Copper_Ore" parent="IslandObjectSaveManager" instance=ExtResource("11_v8vr1")]
 position = Vector2(-16, -8)

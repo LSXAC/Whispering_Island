@@ -5,7 +5,8 @@ using Godot;
 public partial class SettingsTab : ColorRect
 {
     [Export]
-    public OptionButton option_button;
+    public OptionButton option_button,
+        window_mode_button;
 
     // Called when the node enters the scene tree for the first time.
 
@@ -20,6 +21,11 @@ public partial class SettingsTab : ColorRect
         GetOption();
     }
 
+    public void OnVisiblityChanged()
+    {
+        window_mode_button.Selected = (int)DisplayServer.WindowGetMode();
+    }
+
     private void GetOption()
     {
         Debug.Print(TranslationServer.GetLocale());
@@ -32,6 +38,12 @@ public partial class SettingsTab : ColorRect
                 option_button.Selected = 1;
                 break;
         }
+    }
+
+    //TODO: Translation for OptionButton Items
+    public void ToggleMaximizedWindow(int index)
+    {
+        DisplayServer.WindowSetMode((DisplayServer.WindowMode)index);
     }
 
     public void OnItemSelected(int index)

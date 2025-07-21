@@ -66,28 +66,28 @@
 script = ExtResource("15_jkil6")
 slot_type = 1
 durability = 100
-stats = []
+stats = Array[ExtResource("17_jkil6")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_8ll2j"]
 script = ExtResource("15_jkil6")
 slot_type = 2
 durability = 100
-stats = []
+stats = Array[ExtResource("17_jkil6")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_vb8f1"]
 script = ExtResource("15_jkil6")
 slot_type = 3
 durability = 100
-stats = []
+stats = Array[ExtResource("17_jkil6")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_bxu4c"]
 script = ExtResource("15_jkil6")
 slot_type = 4
 durability = 100
-stats = []
+stats = Array[ExtResource("17_jkil6")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_kimtu"]
@@ -97,7 +97,7 @@ tool_type = 3
 mining_level = 0
 slot_type = 5
 durability = 100
-stats = Array[ExtResource("17_jkil6")]([])
+stats = []
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
 [sub_resource type="Resource" id="Resource_68nsa"]
@@ -107,7 +107,7 @@ tool_type = 3
 mining_level = 0
 slot_type = 5
 durability = 100
-stats = Array[ExtResource("17_jkil6")]([])
+stats = []
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
 [sub_resource type="Resource" id="Resource_gix8t"]
@@ -117,7 +117,7 @@ tool_type = 3
 mining_level = 0
 slot_type = 5
 durability = 100
-stats = Array[ExtResource("17_jkil6")]([])
+stats = []
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
 [sub_resource type="Resource" id="Resource_tkty2"]
@@ -127,7 +127,7 @@ tool_type = 3
 mining_level = 0
 slot_type = 5
 durability = 100
-stats = Array[ExtResource("17_jkil6")]([])
+stats = []
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
 [sub_resource type="Resource" id="Resource_djfqw"]
@@ -2902,7 +2902,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 text = "Game savefile from: 16.10.2024 - 12:55:23"
 horizontal_alignment = 1
 
-[node name="SettingsTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("option_button")]
+[node name="SettingsTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("option_button", "window_mode_button")]
 visible = false
 z_index = 6
 layout_mode = 0
@@ -2912,6 +2912,7 @@ offset_bottom = 304.0
 color = Color(0.576471, 0.807843, 1, 1)
 script = ExtResource("16_jv3kw")
 option_button = NodePath("VBoxContainer/Language/PanelContainer/MarginContainerRight/OptionButton")
+window_mode_button = NodePath("VBoxContainer/Window Mode/PanelContainer/MarginContainerRight/WindowOptionButton")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/SettingsTab"]
 layout_mode = 0
@@ -3177,6 +3178,81 @@ popup/item_0/id = 0
 popup/item_1/text = "Deutsch"
 popup/item_1/icon = ExtResource("18_1qrrt")
 popup/item_1/id = 1
+
+[node name="Window Mode" type="HBoxContainer" parent="Background/SettingsTab/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/Window Mode"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/Window Mode/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainerLeft" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/Window Mode/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Background/SettingsTab/VBoxContainer/Window Mode/Container/MarginContainerLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Window Mode"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("26_tl5yt")
+label_translation_string = "SETTINGS_WINDOW_LABEL"
+
+[node name="PanelContainer" type="PanelContainer" parent="Background/SettingsTab/VBoxContainer/Window Mode"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Background/SettingsTab/VBoxContainer/Window Mode/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainerRight" type="MarginContainer" parent="Background/SettingsTab/VBoxContainer/Window Mode/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="WindowOptionButton" type="OptionButton" parent="Background/SettingsTab/VBoxContainer/Window Mode/PanelContainer/MarginContainerRight"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = ExtResource("18_q7nbm")
+theme_override_styles/hover = ExtResource("18_q7nbm")
+theme_override_styles/pressed = ExtResource("18_q7nbm")
+theme_override_styles/normal = ExtResource("17_hyydq")
+alignment = 1
+expand_icon = true
+selected = 0
+item_count = 5
+popup/item_0/text = "WINDOWED"
+popup/item_0/id = 0
+popup/item_1/text = "MINIMIZED"
+popup/item_1/id = 1
+popup/item_2/text = "MAXIMIZED"
+popup/item_2/id = 2
+popup/item_3/text = "FULLSCREEN"
+popup/item_3/id = 3
+popup/item_4/text = "Exclusiv Fullscreen"
+popup/item_4/id = 4
 
 [node name="ExitGame" type="HBoxContainer" parent="Background/SettingsTab/VBoxContainer"]
 layout_mode = 2
@@ -3570,6 +3646,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="visibility_changed" from="Background/SaveLoadTab" to="Background/SaveLoadTab" method="OnVisiblityChange"]
 [connection signal="pressed" from="Background/SaveLoadTab/HBoxContainer/SaveGameButton" to="." method="OnSaveButton"]
 [connection signal="pressed" from="Background/SaveLoadTab/HBoxContainer/LoadGameButton" to="." method="OnLoadButton"]
+[connection signal="visibility_changed" from="Background/SettingsTab" to="Background/SettingsTab" method="OnVisiblityChanged"]
 [connection signal="value_changed" from="Background/SettingsTab/VBoxContainer/MasterVolume/PanelContainer/MarginContainerRight/HSlider" to="Background/SettingsTab/VBoxContainer/MasterVolume/PanelContainer/MarginContainerRight/HSlider" method="OnValueChanged"]
 [connection signal="visibility_changed" from="Background/SettingsTab/VBoxContainer/MasterVolume/PanelContainer/MarginContainerRight/HSlider" to="Background/SettingsTab/VBoxContainer/MasterVolume/PanelContainer/MarginContainerRight/HSlider" method="OnVisiblityChange"]
 [connection signal="value_changed" from="Background/SettingsTab/VBoxContainer/MusicVolume/PanelContainer/MarginContainerRight/HSlider" to="Background/SettingsTab/VBoxContainer/MusicVolume/PanelContainer/MarginContainerRight/HSlider" method="OnValueChanged"]
@@ -3577,6 +3654,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="value_changed" from="Background/SettingsTab/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" to="Background/SettingsTab/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" method="OnValueChanged"]
 [connection signal="visibility_changed" from="Background/SettingsTab/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" to="Background/SettingsTab/VBoxContainer/SFXVolume/PanelContainer/MarginContainerRight/HSlider" method="OnVisiblityChange"]
 [connection signal="item_selected" from="Background/SettingsTab/VBoxContainer/Language/PanelContainer/MarginContainerRight/OptionButton" to="Background/SettingsTab" method="OnItemSelected"]
+[connection signal="item_selected" from="Background/SettingsTab/VBoxContainer/Window Mode/PanelContainer/MarginContainerRight/WindowOptionButton" to="Background/SettingsTab" method="ToggleMaximizedWindow"]
 [connection signal="pressed" from="Background/SettingsTab/VBoxContainer/ExitGame/PanelContainer/MarginContainerRight/Button" to="." method="OnBackToMainMenu"]
 [connection signal="pressed" from="Background/RailStationTab/VBoxContainer/HBoxContainer/VBoxContainer2/ExportBox" to="Background/RailStationTab" method="OnClickCheckExport"]
 [connection signal="pressed" from="Background/RailStationTab/VBoxContainer/HBoxContainer/VBoxContainer2/ImportBox" to="Background/RailStationTab" method="OnClickCheckImport"]

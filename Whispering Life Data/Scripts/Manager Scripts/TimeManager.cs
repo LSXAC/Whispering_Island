@@ -9,6 +9,7 @@ public partial class TimeManager : Node2D
     public static TimeManager instance;
     public DayNightManager day_night_manager;
     public int current_game_time = 360; // Start at 6:00 AM (360 minutes)
+    public static float light_factor = 0f; // Default light factor
     public int current_day = 0;
 
     public override void _Ready()
@@ -29,6 +30,16 @@ public partial class TimeManager : Node2D
     {
         day_night_manager.UpdateColor();
         current_game_time += GameManager.time_multiplier; // Increment game time by 5 minutes
+        // 3 - 5
+        if (current_game_time >= 1140 && current_game_time <= 1260)
+            light_factor = (current_game_time - 1140) / 120f; // Normalize light factor between 0 and 1
+        else if (current_game_time > 1260 || current_game_time < 180)
+            light_factor = 1f;
+        else if (current_game_time >= 180 && current_game_time <= 300)
+            light_factor = 1 - (current_game_time - 180) / 120f; // Normalize light factor between 0 and 1
+        else
+            light_factor = 0f; // Default light factor for other times
+
         if (CheckIfNewDay())
         {
             current_game_time = 0;

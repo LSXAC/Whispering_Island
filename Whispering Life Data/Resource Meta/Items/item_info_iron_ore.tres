@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=12 format=3 uid="uid://l7tf257vet4l"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=14 format=3 uid="uid://l7tf257vet4l"]
 
 [ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_8nudm"]
 [ext_resource type="Script" uid="uid://bdbfd68r4ogge" path="res://Scripts/Item/SmeltableAttribute.cs" id="2_gklv8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bhlg8ovvfb3n4" path="res://Sprites/Items/Icons_3rd/Iron_Ore.png" id="4_6taru"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="4_k7i7j"]
 [ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableAttribute.cs" id="5_77etd"]
+[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="5_p7l0v"]
 
 [sub_resource type="Resource" id="Resource_k7i7j"]
 script = ExtResource("1_8nudm")
@@ -18,11 +19,17 @@ info = ExtResource("3_77etd")
 amount = 1
 metadata/_custom_type_script = "uid://cee63igbpybf"
 
+[sub_resource type="Resource" id="Resource_l26i7"]
+script = ExtResource("5_p7l0v")
+required_level = 1
+item_id = 7
+metadata/_custom_type_script = "uid://blxths6rov8b8"
+
 [sub_resource type="Resource" id="Resource_xqoq5"]
 script = ExtResource("2_gklv8")
 smelted_to_item = SubResource("Resource_pomm1")
 amount_to_smelt = 2
-unlock_requirements = Array[Object]([])
+unlock_requirements = Array[Object]([SubResource("Resource_l26i7")])
 metadata/_custom_type_script = "uid://bdbfd68r4ogge"
 
 [sub_resource type="Resource" id="Resource_p7l0v"]

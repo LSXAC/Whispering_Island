@@ -17,6 +17,9 @@ public partial class LauncherSave : Resource
     [Export]
     public float sfx_volume = 5;
 
+    [Export]
+    public int window_mode = 0;
+
     public void WriteSave()
     {
         ResourceSaver.Save(this, save_path);

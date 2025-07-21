@@ -56,6 +56,8 @@ public partial class MainMenu : Control
                 AudioServer.GetBusIndex(SoundSlider.BUS.SFX.ToString()),
                 launcherSave.sfx_volume
             );
+
+            DisplayServer.WindowSetMode((DisplayServer.WindowMode)launcherSave.window_mode);
             return;
         }
 
@@ -77,6 +79,7 @@ public partial class MainMenu : Control
         launcherSave.sfx_volume = AudioServer.GetBusVolumeDb(
             AudioServer.GetBusIndex(SoundSlider.BUS.SFX.ToString())
         );
+        launcherSave.window_mode = (int)DisplayServer.WindowGetMode();
         launcherSave.WriteSave();
     }
 
