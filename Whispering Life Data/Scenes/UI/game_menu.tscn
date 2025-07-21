@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=79 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://Scripts/UI Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -54,6 +54,7 @@
 [ext_resource type="Texture2D" uid="uid://cn8y6cj766xw0" path="res://Sprites/Items/Icons_3rd/Chest.png" id="59_aahk4"]
 [ext_resource type="Texture2D" uid="uid://caucfvq00j5hu" path="res://Sprites/Research_Table.png" id="60_cjy3p"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="61_0s004"]
+[ext_resource type="Script" uid="uid://dmwxrhivem12e" path="res://Scripts/DestroyMenu.cs" id="62_djfqw"]
 [ext_resource type="Texture2D" uid="uid://1rxf21hw1xu5" path="res://Sprites/Heart_Icon.png" id="62_g0ojh"]
 [ext_resource type="Texture2D" uid="uid://nd03oe33c2v2" path="res://Sprites/Objectiv.png" id="63_38eqn"]
 [ext_resource type="Texture2D" uid="uid://125t5f6fiugo" path="res://Sprites/Monster_Island.png" id="64_jkgj7"]
@@ -183,10 +184,11 @@ border_width_top = 2
 border_color = Color(0, 0, 0, 1)
 border_blend = true
 
-[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "rail_station_tab", "minecart_tab", "header_container")]
+[node name="GameMenu" type="CanvasLayer" node_paths=PackedStringArray("load_button", "destroy_menu", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "rail_station_tab", "minecart_tab", "header_container")]
 process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/SaveLoadTab/HBoxContainer/LoadGameButton")
+destroy_menu = NodePath("Background/DestroyMenu")
 inventory_tab_button = NodePath("Background/HBoxHeader/InvTabButton")
 crafting_tab_button = NodePath("Background/HBoxHeader/CraftingTabButton")
 inventory_tab = NodePath("Background/InventoryTab")
@@ -1406,6 +1408,7 @@ theme_override_font_sizes/font_size = 16
 text = "Upgrade"
 
 [node name="SkillBox4" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
@@ -3604,6 +3607,96 @@ offset_right = 4.0
 offset_bottom = 278.0
 color = Color(0, 0, 0, 1)
 
+[node name="DestroyMenu" type="ColorRect" parent="Background" node_paths=PackedStringArray("quest_description_label", "quest_title_label", "parent", "destroy_button")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
+script = ExtResource("62_djfqw")
+translation_string_title = "DESTROY_MENU_TITLE"
+translation_string_description = "DESTROY_MENU_DESCRIPTION"
+quest_description_label = NodePath("MarginContainer/VBoxContainer2/Description")
+quest_title_label = NodePath("MarginContainer/VBoxContainer2/Label")
+parent = NodePath("MarginContainer/VBoxContainer2/VBoxContainer")
+destroy_button = NodePath("MarginContainer/VBoxContainer2/CompleteQuestButton")
+
+[node name="HeaderColorRect" parent="Background/DestroyMenu" instance=ExtResource("11_45saq")]
+layout_mode = 0
+offset_right = 560.0
+translation_string = "GAMEMENU_DESTROY_MENU"
+
+[node name="X" type="Button" parent="Background/DestroyMenu/HeaderColorRect"]
+layout_mode = 0
+offset_left = 527.0
+offset_top = 1.0
+offset_right = 559.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+text = "<X>"
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/DestroyMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.0
+offset_top = -124.0
+offset_right = 251.0
+offset_bottom = 149.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background/DestroyMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="Background/DestroyMenu/MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("2_6nb4j")
+theme_override_fonts/bold_font = ExtResource("2_6nb4j")
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 18
+bbcode_enabled = true
+text = "[center]Die hungrige Insel #1"
+
+[node name="Description" type="RichTextLabel" parent="Background/DestroyMenu/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("2_6nb4j")
+theme_override_fonts/bold_font = ExtResource("2_6nb4j")
+theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/bold_font_size = 16
+bbcode_enabled = true
+text = "Du bist zufällig auf eine hungrige Insel getroffen. Du bist dir nicht Sicher, wie, oder warum es dazu kam. Aber du hast dich dazu verpflichtet eine [b][color=gold]Insel auf ewig[/color][/b] mit Ressourcen [b][color=gold]zu füttern.[/color][/b]
+Naja, das was die Insel grade will, sieht eigentlich noch nicht so schwer aus!"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/DestroyMenu/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="CompleteQuestButton" type="Button" parent="Background/DestroyMenu/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+text = "Finish Quest"
+script = ExtResource("3_pwamf")
+label_translation_string = "DESTROY_MENU_BUTTON"
+
 [connection signal="pressed" from="Background/HBoxHeader/InvTabButton" to="." method="OnInventoryTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]
 [connection signal="pressed" from="Background/HBoxHeader/SaveTabButton" to="." method="OnSaveLoadTabButton"]
@@ -3662,3 +3755,6 @@ color = Color(0, 0, 0, 1)
 [connection signal="visibility_changed" from="Background/MinecartTab" to="Background/MinecartTab" method="OnVisiblityChange"]
 [connection signal="pressed" from="Background/MinecartTab/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StartEngineBtn" to="Background/MinecartTab" method="StartEngine"]
 [connection signal="pressed" from="Background/MinecartTab/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StopEngineBtn" to="Background/MinecartTab" method="StopEngine"]
+[connection signal="visibility_changed" from="Background/DestroyMenu" to="Background/DestroyMenu" method="OnVisiblityChanged"]
+[connection signal="pressed" from="Background/DestroyMenu/HeaderColorRect/X" to="." method="OnCloseDestroyTab"]
+[connection signal="pressed" from="Background/DestroyMenu/MarginContainer/VBoxContainer2/CompleteQuestButton" to="Background/DestroyMenu" method="OnDestroyButton"]

@@ -46,7 +46,7 @@ public partial class BuildingCollider : Area2D
 
     public void OnBodyLeaved(Node2D node) => Calc();
 
-    public void Calc()
+    public void Calc(bool on_air = false)
     {
         bool found = false;
         foreach (Node2D node in GetOverlappingBodies())
@@ -72,6 +72,18 @@ public partial class BuildingCollider : Area2D
             if (node is StaticBody2D && node.Name.ToString().Contains("Bridge"))
             {
                 Debug.Print("Static Body in Weg!");
+                found = false;
+                break;
+            }
+
+            if (on_air)
+            {
+                found = true;
+                break;
+            }
+            if (node.IsInGroup("BLOCKING"))
+            {
+                Debug.Print("Blocking Node in Weg!");
                 found = false;
                 break;
             }

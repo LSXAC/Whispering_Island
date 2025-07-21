@@ -137,7 +137,7 @@ public partial class TransportBase : placeable_building
                         from_direction = Direction.Right;
                 }
                 Debug.Print(from_direction.ToString());
-                anim_manager12D.SetAnimation(from_direction, to_direction);
+                anim_manager12D.SetAnimation(from_direction, to_direction, can_be_build_on_air);
                 break;
             case Direction.Right:
                 detector.Position = new Vector2(8f, -8);
@@ -158,7 +158,7 @@ public partial class TransportBase : placeable_building
                     )
                         from_direction = Direction.Right;
                 }
-                anim_manager12D.SetAnimation(from_direction, to_direction);
+                anim_manager12D.SetAnimation(from_direction, to_direction, can_be_build_on_air);
                 break;
             case Direction.Top:
                 detector.Position = new Vector2(-8, -24);
@@ -181,7 +181,7 @@ public partial class TransportBase : placeable_building
                     )
                         from_direction = Direction.Down;
                 }
-                anim_manager12D.SetAnimation(from_direction, to_direction);
+                anim_manager12D.SetAnimation(from_direction, to_direction, can_be_build_on_air);
                 break;
             case Direction.Down:
                 detector.Position = new Vector2(-8, 8);
@@ -203,7 +203,7 @@ public partial class TransportBase : placeable_building
                     )
                         from_direction = Direction.Top;
                 }
-                anim_manager12D.SetAnimation(from_direction, to_direction);
+                anim_manager12D.SetAnimation(from_direction, to_direction, can_be_build_on_air);
                 break;
         }
     }

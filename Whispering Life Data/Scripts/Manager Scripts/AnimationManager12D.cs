@@ -4,6 +4,13 @@ using Godot;
 
 public partial class AnimationManager12D : AnimationManagerBase
 {
+    [Export]
+    public Texture2D bridge_corner,
+        bridge_hori,
+        bridge_vert;
+
+    [Export]
+    public Sprite2D bridge_sprite;
     public string[,] animation_matrix = new string[4, 3]
     {
         { "LEFT", "CORNER_DOWN_LEFT", "CORNER_UP_LEFT" },
@@ -36,7 +43,11 @@ public partial class AnimationManager12D : AnimationManagerBase
         return animation_matrix[y, x];
     }
 
-    public void SetAnimation(Belt.Direction from_direction, Belt.Direction to_direction)
+    public void SetAnimation(
+        Belt.Direction from_direction,
+        Belt.Direction to_direction,
+        bool on_air
+    )
     {
         if (to_direction == Belt.Direction.Left)
             switch (from_direction)

@@ -8,6 +8,9 @@ public partial class GameMenu : CanvasLayer
     public Button load_button;
 
     [Export]
+    public DestroyMenu destroy_menu;
+
+    [Export]
     public Button inventory_tab_button;
 
     [Export]
@@ -340,6 +343,7 @@ public partial class GameMenu : CanvasLayer
         help_tab.Visible = false;
         rail_station_tab.Visible = false;
         minecart_tab.Visible = false;
+        destroy_menu.Visible = false;
     }
 
     public void OnCloseResearchTab()
@@ -383,11 +387,25 @@ public partial class GameMenu : CanvasLayer
         CloseLastWindow();
     }
 
+    public void OnCloseDestroyTab()
+    {
+        CloseAllTabs();
+        inventory_tab.Visible = true;
+        CloseLastWindow();
+    }
+
     public void OnOpenIslandTab()
     {
         SetWindow(this);
         CloseAllTabs();
         island_tab.Visible = true;
+    }
+
+    public void OnOpenDestroyTab()
+    {
+        SetWindow(this);
+        CloseAllTabs();
+        destroy_menu.Visible = true;
     }
 
     public void OnCloseIslandTab()

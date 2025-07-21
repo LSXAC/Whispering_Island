@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://Scenes/UI/header_color_rect.tscn" id="2_vqvtn"]
 
 [node name="QuestMenu" type="CanvasLayer" node_paths=PackedStringArray("quest_label_parent", "quest_name_label", "complete_button", "quest_description_label")]
-visible = false
 script = ExtResource("1_rjdwy")
 quest_label_parent = NodePath("Background/MarginContainer/VBoxContainer2/VBoxContainer")
 quest_name_label = NodePath("Background/MarginContainer/VBoxContainer2/Label")

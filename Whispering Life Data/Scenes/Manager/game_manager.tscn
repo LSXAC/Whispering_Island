@@ -367,7 +367,7 @@ script = ExtResource("5_f280c")
 title = "Monster"
 description = "...."
 
-[node name="Tree7" parent="IslandManager/MainIsland/IslandObjectSaveManager" index="6"]
+[node name="Tree7" parent="IslandManager/MainIsland/IslandObjectSaveManager" index="7"]
 position = Vector2(-7, -79)
 
 [node name="QuestManager" type="Node2D" parent="." node_paths=PackedStringArray("quest_timer")]
@@ -556,6 +556,7 @@ building_placer = NodePath("../BuildingManager/BuildingPlacer")
 hbox_category = []
 
 [node name="QuestMenu" parent="." instance=ExtResource("11_5h8gv")]
+visible = false
 
 [node name="AtmosphereAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("27_73301")

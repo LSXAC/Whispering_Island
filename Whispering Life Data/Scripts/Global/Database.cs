@@ -195,6 +195,7 @@ public partial class Database : Node
         RAIL_STATION,
         MINECART,
         FIBRE,
-        BELT
+        BELT,
+        RAIL_BRIDGE
     }
 }

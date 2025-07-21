@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dyylrlp6acwxq" path="res://Scenes/World Objects/Buildings/Building_Rail.tscn" id="9_pslwl"]
 [ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Scripts/Building Scripts/PathConnectArea.cs" id="10_wnhjv"]
 [ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Scripts/Building Scripts/ChestBase.cs" id="11_80gpa"]
-[ext_resource type="Script" uid="uid://blyipdolm77vm" path="res://Scenes/World Objects/Buildings/RailstationArea.cs" id="13_rciws"]
+[ext_resource type="Script" uid="uid://blyipdolm77vm" path="res://Scripts/Building Scripts/RailstationArea.cs" id="13_rciws"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6iojv"]
 animations = [{

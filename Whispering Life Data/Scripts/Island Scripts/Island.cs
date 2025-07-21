@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.ExceptionServices;
 using Godot;
+using Godot.Collections;
 
 public partial class Island : Node2D
 {
@@ -9,6 +10,7 @@ public partial class Island : Node2D
 
     [Export]
     public int matrix_island_id = 0;
+    public RemovableObjectsManager removable_objects_manager;
     public IslandObjectSaveManager island_object_save_manager;
     public TileMapLayer ground_tilemap;
 
@@ -76,6 +78,10 @@ public partial class Island : Node2D
         bridges_parent = GetNode<Node2D>("BridgePoints/Bridges");
         signs_parent = GetNode<Node2D>("BridgePoints/Signs");
         island_object_save_manager = GetNode<IslandObjectSaveManager>("IslandObjectSaveManager");
+        if (HasNode("RemovableObjectsManager"))
+            removable_objects_manager = GetNode<RemovableObjectsManager>("RemovableObjectsManager");
+        else
+            removable_objects_manager = new RemovableObjectsManager();
     }
 
     public void GetSigns()

@@ -36,7 +36,7 @@ public partial class BuildingColliderManager : Node2D
         }
     }
 
-    public bool AllCollidersOnBuildingLayer()
+    public bool AllCollidersOnBuildingLayer(placeable_building building)
     {
         if (GetChildren().Count == 0)
             return false;
@@ -45,7 +45,7 @@ public partial class BuildingColliderManager : Node2D
         {
             BuildingCollider bc = node as BuildingCollider;
             bc.type = current_type;
-            bc.Calc();
+            bc.Calc(building.can_be_build_on_air);
             if (!bc.on_building_layer)
                 return false;
         }

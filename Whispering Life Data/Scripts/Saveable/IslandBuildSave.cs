@@ -29,5 +29,8 @@ public partial class IslandBuildSave : Resource
     [Export]
     public int matrix_island_id = -1;
 
+    [Export]
+    public Array<int> removed_objects = new Array<int>();
+
     public IslandBuildSave() { }
 }

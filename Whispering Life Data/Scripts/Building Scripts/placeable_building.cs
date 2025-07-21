@@ -14,6 +14,9 @@ public abstract partial class placeable_building : Building_Node
     [Export]
     public Array<TILETYPE> tile_types;
 
+    [Export]
+    public bool can_be_build_on_air = false;
+
     private BuildingColliderManager building_collider_manager;
     public bool colliding_Wall = false;
     private MouseArea mouse_area;
@@ -44,7 +47,7 @@ public abstract partial class placeable_building : Building_Node
     public bool CheckBuildingColliders()
     {
         if (Logger.NodeIsNotNull(building_collider_manager))
-            if (building_collider_manager.AllCollidersOnBuildingLayer())
+            if (building_collider_manager.AllCollidersOnBuildingLayer(this))
                 return true;
         return false;
     }

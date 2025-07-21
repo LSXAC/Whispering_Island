@@ -12,12 +12,30 @@ SETTINGS_MASTER_VOLUME,Master Volume,Gesamtlautstärke
 SETTINGS_SFX_VOLUME,SFX Volume,SFX Lautstärke
 SETTINGS_MUSIC_VOLUME,Music Volume,Musik Lautstärke
 SETTINGS_HAVE_SAVED,Don't forget to save!,Vergiss nicht zu speichern!
+SETTINGS_WINDOW_LABEL,Window Mode,Fenstermodus
 ,,
+,,
+,,
+GAMEMENU_DESTROY_MENU,Destroy Window,Vernichtungsfenster
+DESTROY_MENU_TITLE,Destroy this object.,Objekt zerstören.
+DESTROY_MENU_DESCRIPTION,Do you really want to destroy this object? You are not able to restore this object in the future.,Möchtest du dieses Objekt wirklich zerstören? Du kannst es in der Zukunft nicht rückgängig machen.
+DESTROY_MENU_BUTTON,Destroy Object,Objekt zerstören
 GAMEMENU_FURNACE,> Furnace,> Ofen
 GAMEMENU_CHEST,> Chest,> Kiste
 GAMEMENU_RESEARCH_TABLE,> Research Table,> Forschungstisch
 GAMEMENU_QUEST_MENU,> Quest Overview,> Aufgabenübersicht
 GAMEMENU_TRASHCHEST,> Trash Chest,> Müll Kiste
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
 ,,
 ,,
 ,,
