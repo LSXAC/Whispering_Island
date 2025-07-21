@@ -93,6 +93,11 @@ public partial class QuestMenu : CanvasLayer
             return;
 
         ResetParent();
+        if (QuestManager.instance == null)
+        {
+            GD.PrintErr("QuestManager.instance is null in QuestMenu.OnVisiblityChanged");
+            return;
+        }
         quest_name_label.Text =
             "[center]"
             + TranslationServer.Translate(
