@@ -3,7 +3,7 @@
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Resource Meta/Items/item_info_wood.tres" id="1_n3b1t"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="2_lpv1q"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_v5twl"]
-[ext_resource type="PackedScene" uid="uid://dxbndpfa2cnsl" path="res://Scenes/World Objects/Mineable Objects/mineable_object_sand.tscn" id="3_df1tw"]
+[ext_resource type="PackedScene" uid="uid://c6fshtcsvmam5" path="res://Scenes/World Objects/Mineable Objects/mineable_object_sand_stone.tscn" id="3_2bqsw"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
 script = ExtResource("2_v5twl")
@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://cee63igbpybf"
 
 [resource]
 script = ExtResource("2_lpv1q")
-scene = ExtResource("3_df1tw")
+scene = ExtResource("3_2bqsw")
 scene_building_id = 19
 required_items = Array[Object]([SubResource("Resource_yo73i")])
 unlock_requirements = Array[Object]([])

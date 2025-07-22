@@ -278,6 +278,7 @@ public partial class MineableObject : placeable_building
                     Reset(from_loading: true);
                 else
                     StartTimerBar(ros.last_state, ros.time_left, from_loading: true);
+            SetResourceTexture();
         }
         else
             GD.PrintErr("Wrong Resource for MineableObject", resource.ResourceName);
