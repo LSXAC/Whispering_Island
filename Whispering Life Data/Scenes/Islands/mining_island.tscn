@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://frwl0u2a1cwh"]
+[gd_scene load_steps=26 format=4 uid="uid://frwl0u2a1cwh"]
 
 [ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island.cs" id="1_tvb31"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="2_v84e8"]
@@ -12,6 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://c0l4m6jxp7pau" path="res://Scenes/World Objects/Mineable Objects/mineable_object_iron_ore.tscn" id="10_j5waq"]
 [ext_resource type="PackedScene" uid="uid://cnafp0o2cwupt" path="res://Scenes/World Objects/Mineable Objects/mineable_object_copper_ore.tscn" id="11_v8vr1"]
 [ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Scenes/World Objects/Mineable Objects/mineable_object_stone.tscn" id="12_0bqga"]
+[ext_resource type="Script" uid="uid://d24qfaj5tmqyv" path="res://Scenes/Islands/RemovableObjectsManager.cs" id="13_wdsc0"]
+[ext_resource type="PackedScene" uid="uid://c1d1aayf8y2d0" path="res://Scenes/World Objects/remove_sign.tscn" id="14_qt6jd"]
+[ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Resource Meta/Items/item_info_stone_pickaxe.tres" id="15_cew1n"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="16_mygv5"]
+[ext_resource type="Resource" uid="uid://dmrxwabbdyg0d" path="res://Resource Meta/Items/item_info_wood_axe.tres" id="17_8h34p"]
+[ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://Resource Meta/Items/item_info_wheat.tres" id="18_8blsp"]
+[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Resource Meta/Items/item_info_potato.tres" id="19_n7col"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpdmr"]
 size = Vector2(32, 32)
@@ -21,6 +28,30 @@ shader = ExtResource("5_e773m")
 shader_parameter/noise_texture = ExtResource("6_5ph4o")
 shader_parameter/speed = Vector2(0.1, 0.1)
 shader_parameter/distortion = 0.005
+
+[sub_resource type="Resource" id="Resource_0sl6k"]
+script = ExtResource("16_mygv5")
+info = ExtResource("15_cew1n")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_2vll2"]
+script = ExtResource("16_mygv5")
+info = ExtResource("17_8h34p")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_tdjhn"]
+script = ExtResource("16_mygv5")
+info = ExtResource("18_8blsp")
+amount = 10
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_uavw5"]
+script = ExtResource("16_mygv5")
+info = ExtResource("19_n7col")
+amount = 10
+metadata/_custom_type_script = "uid://cee63igbpybf"
 
 [node name="Island_2" type="Node2D" groups=["Island_Properties"]]
 y_sort_enabled = true
@@ -141,7 +172,6 @@ tile_set = ExtResource("4_oxa82")
 [node name="Top" type="TileMapLayer" parent="Tilemaps"]
 z_index = -1
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD7//3/AAAEAA4AAAD7//v/AAAFABAAAAD8//v/AAABAA4AAAD6//z/AAAFAA8AAAD6//v/AAAGAA4AAAD8//3/AAAHAA8AAAD6//3/AAAGAA8AAAD8//z/AAADAA4AAAD7//z/AAABAA4AAAD9//z/AAAEAA4AAAD9//v/AAABAA4AAAD9//r/AAABAA4AAAD8//r/AAAFABAAAAD7//r/AAAGAA4AAAD+//z/AAAEAA4AAAD///z/AAAHAA8AAAD///v/AAADAA8AAAD///r/AAAHAA4AAAD+//r/AAADABAAAAD9//n/AAAEABAAAAD+//v/AAABAA4AAAACAAIAAAAEAA4AAAABAAIAAAAEAA4AAAAAAAEAAAAFAA4AAAD//wEAAAAEAA4AAAD/////AAAFABAAAAAAAP//AAABAA4AAAABAP//AAABAA4AAAABAP7/AAAEABAAAAACAP7/AAAHAA4AAAACAP//AAADABAAAAADAAAAAAADAA8AAAADAAEAAAADAA8AAAADAAIAAAAHAA8AAAADAP//AAAHAA4AAAAAAAIAAAAGAA8AAAD+/wEAAAAGAA8AAAD+/wAAAAAFAA8AAAAAAP7/AAAEABAAAAAAAAAAAAABAA4AAAABAAAAAAABAA4AAAABAAEAAAABAA4AAAACAAEAAAABAA4AAAACAAAAAAABAA4AAAD//wAAAAABAA4AAAD+////AAAGAA4AAAD///7/AAAGAA4AAAD8//n/AAAGAA4AAAD+//n/AAAHAA4AAAA=")
 tile_set = ExtResource("4_oxa82")
 
 [node name="FarmlandLayer" type="TileMapLayer" parent="Tilemaps" groups=["FARMINGGROUND"]]
@@ -181,7 +211,7 @@ y_sort_enabled = true
 script = ExtResource("9_prv3h")
 
 [node name="Iron_Ore" parent="IslandObjectSaveManager" instance=ExtResource("10_j5waq")]
-position = Vector2(-88, -80)
+position = Vector2(-96, -104)
 
 [node name="Iron_Ore2" parent="IslandObjectSaveManager" instance=ExtResource("10_j5waq")]
 position = Vector2(128, -160)
@@ -193,7 +223,7 @@ position = Vector2(104, -144)
 position = Vector2(64, -176)
 
 [node name="Iron_Ore6" parent="IslandObjectSaveManager" instance=ExtResource("10_j5waq")]
-position = Vector2(-64, -64)
+position = Vector2(-72, -40)
 
 [node name="Iron_Ore7" parent="IslandObjectSaveManager" instance=ExtResource("10_j5waq")]
 position = Vector2(-120, 96)
@@ -208,16 +238,16 @@ position = Vector2(176, 88)
 position = Vector2(-48, 184)
 
 [node name="Copper_Ore" parent="IslandObjectSaveManager" instance=ExtResource("11_v8vr1")]
-position = Vector2(-16, -8)
+position = Vector2(-32, -24)
 
 [node name="Copper_Ore2" parent="IslandObjectSaveManager" instance=ExtResource("11_v8vr1")]
-position = Vector2(48, -40)
+position = Vector2(24, -72)
 
 [node name="Copper_Ore3" parent="IslandObjectSaveManager" instance=ExtResource("11_v8vr1")]
-position = Vector2(11, 76)
+position = Vector2(32, 88)
 
 [node name="Copper_Ore4" parent="IslandObjectSaveManager" instance=ExtResource("11_v8vr1")]
-position = Vector2(128, 72)
+position = Vector2(88, 56)
 
 [node name="Stone" parent="IslandObjectSaveManager" instance=ExtResource("12_0bqga")]
 position = Vector2(-144, 112)
@@ -239,3 +269,73 @@ position = Vector2(-32, -168)
 
 [node name="Stone7" parent="IslandObjectSaveManager" instance=ExtResource("12_0bqga")]
 position = Vector2(96, -16)
+
+[node name="RemovableObjectsManager" type="Node2D" parent="." node_paths=PackedStringArray("tilemap_parent", "sign_parent")]
+y_sort_enabled = true
+script = ExtResource("13_wdsc0")
+tilemap_parent = NodePath("Tilemaps")
+sign_parent = NodePath("Signs")
+
+[node name="Signs" type="Node2D" parent="RemovableObjectsManager"]
+y_sort_enabled = true
+
+[node name="RemoveSign1" parent="RemovableObjectsManager/Signs" node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "island") instance=ExtResource("14_qt6jd")]
+position = Vector2(0, -32)
+removable_objects_Manager = NodePath("../..")
+object_connected = NodePath("../../Tilemaps/Object1")
+required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Resource_2vll2"), SubResource("Resource_tdjhn"), SubResource("Resource_uavw5")])
+id = 1
+island = NodePath("../../..")
+
+[node name="RemoveSign0" parent="RemovableObjectsManager/Signs" node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "island") instance=ExtResource("14_qt6jd")]
+position = Vector2(96, 160)
+removable_objects_Manager = NodePath("../..")
+object_connected = NodePath("../../Tilemaps/Object0")
+required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Resource_2vll2"), SubResource("Resource_tdjhn"), SubResource("Resource_uavw5")])
+island = NodePath("../../..")
+
+[node name="Tilemaps" type="Node2D" parent="RemovableObjectsManager"]
+
+[node name="Object0" type="Node2D" parent="RemovableObjectsManager/Tilemaps"]
+
+[node name="Ground2" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+z_index = -1
+tile_map_data = PackedByteArray("AAADAAQAAAAEAA4AAAACAAQAAAAIAA4AAAABAAMAAAAFAA4AAAAAAAMAAAAEAA4AAAABAAAAAAAEABAAAAACAAAAAAAEABAAAAADAAAAAAAHAA4AAAADAAEAAAADAA8AAAADAAIAAAADABAAAAAEAAMAAAADAA8AAAAEAAQAAAAHAA8AAAAEAAIAAAAHAA4AAAABAAQAAAAGAA8AAAD//wMAAAAGAA8AAAD//wIAAAAFAA8AAAD//wEAAAAGAA4AAAAAAAEAAAAFABAAAAAAAAAAAAAGAA4AAAAAAAIAAAABAA4AAAABAAIAAAAAAAwAAAACAAIAAAABAA4AAAACAAEAAAABAA4AAAABAAEAAAABAA4AAAACAAMAAAABAA4AAAADAAMAAAAAAAwAAAA=")
+tile_set = ExtResource("4_oxa82")
+
+[node name="Ground" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+z_index = -2
+tile_map_data = PackedByteArray("AAACAAQAAAAIAAAAAAA=")
+tile_set = ExtResource("4_oxa82")
+
+[node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+tile_map_data = PackedByteArray("AAADAAMAAAAGAAAAAAABAAEAAAAGAAAAAAA=")
+tile_set = ExtResource("4_oxa82")
+
+[node name="Blocking" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0" groups=["BLOCKING"]]
+light_mask = 0
+visibility_layer = 0
+tile_map_data = PackedByteArray("AAAHAAgAAQACAAEAAAAIAAgAAQACAAEAAAAIAAcAAQACAAEAAAAIAAYAAQACAAEAAAAIAAUAAQACAAEAAAAHAAUAAQACAAEAAAAGAAUAAQACAAEAAAAGAAQAAQACAAEAAAAGAAMAAQACAAEAAAAGAAIAAQACAAEAAAAGAAEAAQACAAEAAAAFAAEAAQACAAEAAAAEAAEAAQACAAEAAAADAAEAAQACAAEAAAACAAEAAQACAAEAAAABAAEAAQACAAEAAAABAAIAAQACAAEAAAABAAMAAQACAAEAAAAAAAMAAQACAAEAAAD//wMAAQACAAEAAAD//wQAAQACAAEAAAD//wUAAQACAAEAAAD//wYAAQACAAEAAAAAAAYAAQACAAEAAAABAAYAAQACAAEAAAACAAYAAQACAAEAAAADAAYAAQACAAEAAAADAAcAAQACAAEAAAADAAgAAQACAAEAAAAEAAgAAQACAAEAAAAFAAgAAQACAAEAAAAGAAgAAQACAAEAAAAHAAYAAQACAAEAAAAGAAYAAQACAAEAAAAGAAcAAQACAAEAAAAHAAcAAQACAAEAAAAFAAYAAQACAAEAAAAFAAcAAQACAAEAAAAFAAUAAQACAAEAAAAEAAUAAQACAAEAAAAEAAYAAQACAAEAAAAEAAcAAQACAAEAAAAFAAQAAQACAAEAAAAFAAMAAQACAAEAAAAFAAIAAQACAAEAAAAEAAQAAQACAAEAAAAEAAIAAQACAAEAAAAEAAMAAQACAAEAAAADAAIAAQACAAEAAAACAAIAAQACAAEAAAACAAMAAQACAAEAAAACAAQAAQACAAEAAAADAAQAAQACAAEAAAADAAMAAQACAAEAAAADAAUAAQACAAEAAAACAAUAAQACAAEAAAABAAUAAQACAAEAAAABAAQAAQACAAEAAAAAAAQAAQACAAEAAAAAAAUAAQACAAEAAAA=")
+tile_set = ExtResource("2_v84e8")
+
+[node name="Object1" type="Node2D" parent="RemovableObjectsManager/Tilemaps"]
+
+[node name="Ground2" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
+z_index = -1
+tile_map_data = PackedByteArray("AAD///7/AAAIAA4AAAD+//7/AAADAA4AAAD+//3/AAABAA4AAAD9//3/AAABAA4AAAD9//z/AAABAA4AAAD8//z/AAABAA4AAAD8//v/AAAFABAAAAD8//r/AAAGAA4AAAD9//r/AAAEABAAAAD+//r/AAAEABAAAAD///r/AAAHAA4AAAD///v/AAADABAAAAAAAPv/AAAHAA4AAAAAAPz/AAADABAAAAABAPz/AAAEABAAAAACAPz/AAAHAA4AAAACAP3/AAADAA8AAAACAP7/AAAHAA8AAAABAP7/AAAEAA4AAAAAAP7/AAAEAA4AAAABAP3/AAABAA4AAAAAAP3/AAABAA4AAAD///3/AAAAAAwAAAD///z/AAABAA4AAAD+//z/AAABAA4AAAD+//v/AAABAA4AAAD9//v/AAAAAAwAAAD+////AAAHAA8AAAD9////AAAEAA4AAAD8////AAAGAA8AAAD8//7/AAAFAA8AAAD8//3/AAAFAA4AAAD9//7/AAABAA4AAAD7//3/AAAGAA8AAAD7//z/AAAFAA8AAAD7//v/AAAGAA4AAAA=")
+tile_set = ExtResource("4_oxa82")
+
+[node name="Ground" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
+z_index = -2
+tile_map_data = PackedByteArray("AAD///7/AAAHAAAAAAD/////AAAIAAAAAAA=")
+tile_set = ExtResource("4_oxa82")
+
+[node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
+tile_map_data = PackedByteArray("AAABAAIAAAAGAA8AAAACAAIAAAAHAA8AAAACAAEAAAAHAA4AAAABAAEAAAAGAA4AAAD+//z/AAAGAAAAAAABAP3/AAAGAAAAAAA=")
+tile_set = ExtResource("4_oxa82")
+
+[node name="Blocking" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1" groups=["BLOCKING"]]
+light_mask = 0
+visibility_layer = 0
+tile_map_data = PackedByteArray("AAD5//7/AQACAAEAAAD6//7/AQACAAEAAAD7//7/AQACAAEAAAD8//7/AQACAAEAAAD8//3/AQACAAEAAAD8//z/AQACAAEAAAD9//z/AQACAAEAAAD+//z/AQACAAEAAAD///z/AQACAAEAAAAAAPz/AQACAAEAAAABAPz/AQACAAEAAAACAPz/AQACAAEAAAADAPz/AQACAAEAAAAEAPz/AQACAAEAAAAEAPv/AQACAAEAAAAEAPr/AQACAAEAAAAEAPn/AQACAAEAAAADAPn/AQACAAEAAAACAPn/AQACAAEAAAABAPn/AQACAAEAAAAAAPn/AQACAAEAAAAAAPj/AQACAAEAAAAAAPf/AQACAAEAAAD///f/AQACAAEAAAD+//f/AQACAAEAAAD+//b/AQACAAEAAAD+//X/AQACAAEAAAD9//X/AQACAAEAAAD8//X/AQACAAEAAAD7//X/AQACAAEAAAD6//X/AQACAAEAAAD5//X/AQACAAEAAAD5//b/AQACAAEAAAD5//f/AQACAAEAAAD4//f/AQACAAEAAAD3//f/AQACAAEAAAD3//j/AQACAAEAAAD3//n/AQACAAEAAAD3//r/AQACAAEAAAD4//r/AQACAAEAAAD5//r/AQACAAEAAAD5//v/AQACAAEAAAD5//z/AQACAAEAAAD5//3/AQACAAEAAAD6//3/AQACAAEAAAD7//3/AQACAAEAAAD7//z/AQACAAEAAAD7//v/AQACAAEAAAD7//r/AQACAAEAAAD6//r/AQACAAEAAAD6//v/AQACAAEAAAD6//z/AQACAAEAAAD7//n/AQACAAEAAAD6//n/AQACAAEAAAD6//j/AQACAAEAAAD5//j/AQACAAEAAAD5//n/AQACAAEAAAD4//n/AQACAAEAAAD4//j/AQACAAEAAAD7//j/AQACAAEAAAD8//f/AQACAAEAAAD7//f/AQACAAEAAAD7//b/AQACAAEAAAD6//b/AQACAAEAAAD6//f/AQACAAEAAAD8//j/AQACAAEAAAD9//j/AQACAAEAAAD9//f/AQACAAEAAAD9//b/AQACAAEAAAD8//n/AQACAAEAAAD8//r/AQACAAEAAAD9//r/AQACAAEAAAD9//n/AQACAAEAAAD8//b/AQACAAEAAAD8//v/AQACAAEAAAD+//n/AQACAAEAAAD+//j/AQACAAEAAAD+//r/AQACAAEAAAD+//v/AQACAAEAAAD///v/AQACAAEAAAD///r/AQACAAEAAAD///n/AQACAAEAAAD///j/AQACAAEAAAD9//v/AQACAAEAAAAAAPr/AQACAAEAAAABAPr/AQACAAEAAAABAPv/AQACAAEAAAACAPv/AQACAAEAAAACAPr/AQACAAEAAAAAAPv/AQACAAEAAAADAPv/AQACAAEAAAADAPr/AQACAAEAAAA=")
+tile_set = ExtResource("2_v84e8")

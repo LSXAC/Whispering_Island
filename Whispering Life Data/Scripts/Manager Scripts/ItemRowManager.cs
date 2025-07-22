@@ -13,7 +13,7 @@ public partial class ItemRowManager : HBoxContainer
     public void SetResourcesOnUI(Array<Item> items)
     {
         ClearChildren();
-        Array<Item> items_to_use = GetNormalListOrDevList(items);
+        Array<Item> items_to_use = GlobalFunctions.GetNormalListOrDevList(items);
         if (Logger.NodeIsNull(items_to_use) || Logger.ListHasZeroItems(items_to_use))
             return;
 
@@ -45,7 +45,7 @@ public partial class ItemRowManager : HBoxContainer
             SetTimesToBuildLabel(0);
             return false;
         }
-        Array<Item> items_to_use = GetNormalListOrDevList(items);
+        Array<Item> items_to_use = GlobalFunctions.GetNormalListOrDevList(items);
 
         int different_item_types = 0;
         Dictionary<Item, int> amount_of_each_item = new Dictionary<Item, int>();
@@ -79,16 +79,6 @@ public partial class ItemRowManager : HBoxContainer
         }
         SetTimesToBuildLabel(0);
         return false;
-    }
-
-    public Array<Item> GetNormalListOrDevList(Array<Item> items)
-    {
-        if (GameManager.dev_build_mode)
-            return new Array<Item>()
-            {
-                new Item(Inventory.ITEM_TYPES[Inventory.ITEM_ID.OAK_WOOD], 1)
-            };
-        return items;
     }
 
     private void SetTimesToBuildLabel(int times)

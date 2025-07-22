@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bi8dopb46mfob"]
+[gd_scene load_steps=25 format=4 uid="uid://bi8dopb46mfob"]
 
 [ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island.cs" id="1_uk6cx"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="2_j0ysi"]
@@ -10,7 +10,14 @@
 [ext_resource type="TileSet" uid="uid://bij4wcpveo44d" path="res://Tilesets/Farming_Tileset.tres" id="8_shm84"]
 [ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="11_u0eh4"]
 [ext_resource type="PackedScene" uid="uid://cjw7mpije2ul4" path="res://Scenes/World Objects/Mineable Objects/mineable_object_myst_fibre.tscn" id="12_8drlg"]
+[ext_resource type="Script" uid="uid://d24qfaj5tmqyv" path="res://Scenes/Islands/RemovableObjectsManager.cs" id="12_hv1cu"]
 [ext_resource type="PackedScene" uid="uid://gb18hiamdyqj" path="res://Scenes/World Objects/Mineable Objects/mineable_object_myst_oak_tree.tscn" id="13_sn8nb"]
+[ext_resource type="PackedScene" uid="uid://c1d1aayf8y2d0" path="res://Scenes/World Objects/remove_sign.tscn" id="13_ulfit"]
+[ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Resource Meta/Items/item_info_stone_pickaxe.tres" id="14_s8t3c"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="15_nyspn"]
+[ext_resource type="Resource" uid="uid://dmrxwabbdyg0d" path="res://Resource Meta/Items/item_info_wood_axe.tres" id="16_j5dp2"]
+[ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://Resource Meta/Items/item_info_wheat.tres" id="17_q6116"]
+[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Resource Meta/Items/item_info_potato.tres" id="18_lwg4b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud7jl"]
 size = Vector2(32, 32)
@@ -20,6 +27,30 @@ shader = ExtResource("5_xx44u")
 shader_parameter/noise_texture = ExtResource("6_rms6p")
 shader_parameter/speed = Vector2(0.1, 0.1)
 shader_parameter/distortion = 0.005
+
+[sub_resource type="Resource" id="Resource_0sl6k"]
+script = ExtResource("15_nyspn")
+info = ExtResource("14_s8t3c")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_2vll2"]
+script = ExtResource("15_nyspn")
+info = ExtResource("16_j5dp2")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_tdjhn"]
+script = ExtResource("15_nyspn")
+info = ExtResource("17_q6116")
+amount = 10
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_uavw5"]
+script = ExtResource("15_nyspn")
+info = ExtResource("18_lwg4b")
+amount = 10
+metadata/_custom_type_script = "uid://cee63igbpybf"
 
 [node name="Island_1" type="Node2D" groups=["Island_Properties"]]
 y_sort_enabled = true
@@ -118,7 +149,7 @@ tile_set = ExtResource("4_xws4w")
 
 [node name="Decoration" type="TileMapLayer" parent="Tilemaps"]
 z_index = -4
-tile_map_data = PackedByteArray("AAD6/wIAAAAGAAAAAAAEAAQAAAAGAAAAAAABAPr/AAAGAAAAAAD7//z/AAAGAAAAAAACAAEAAAAJAAAAAAD8/wQAAAAJAAAAAAD+/wAAAAAKAAAAAAABAPv/AAALAAAAAAA=")
+tile_map_data = PackedByteArray("AAD6/wIAAAAGAAAAAAAEAAQAAAAGAAAAAAABAPr/AAAGAAAAAAD7//z/AAAGAAAAAAACAAEAAAAJAAAAAAD8/wQAAAAJAAAAAAD+/wAAAAAKAAAAAAABAPv/AAALAAAAAAD7//7/AAAKAAAAAAD8//z/AAALAAAAAAA=")
 tile_set = ExtResource("4_xws4w")
 
 [node name="Water" type="TileMapLayer" parent="Tilemaps"]
@@ -136,12 +167,11 @@ tile_set = ExtResource("4_xws4w")
 [node name="Top" type="TileMapLayer" parent="Tilemaps"]
 z_index = -1
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD7//3/AAAEAAgAAAD7//v/AAAFAAoAAAD8//v/AAABAAgAAAD6//z/AAAFAAkAAAD6//v/AAAGAAgAAAD8//3/AAAHAAkAAAD6//3/AAAGAAkAAAD8//z/AAADAAgAAAD7//z/AAABAAgAAAD9//z/AAAHAAkAAAD9//v/AAADAAkAAAD9//r/AAAHAAgAAAD8//r/AAAEAAoAAAD7//r/AAAGAAgAAAA=")
 tile_set = ExtResource("4_xws4w")
 
 [node name="FarmingLayer" type="TileMapLayer" parent="Tilemaps" groups=["FARMINGGROUND"]]
 z_index = -2
-tile_map_data = PackedByteArray("AAAGAPf/AQAFAAQAAAAFAPf/AQADAAUAAAAGAPj/AQAEAAUAAAD4//z/AQAGAAUAAAACAP7/AQACAAQAAAACAP//AQACAAIAAAADAP7/AQAEAAIAAAADAP//AQAEAAMAAAAEAP7/AQACAAMAAAAEAP3/AQACAAUAAAACAAAAAQAHAAQAAAAAAAAAAQACAAQAAAABAAEAAQABAAMAAAAEAP//AQAGAAQAAAADAAEAAQAGAAUAAAACAAIAAQAFAAUAAAABAAIAAQABAAUAAAAAAAEAAQAAAAUAAAABAAAAAQAFAAIAAAA=")
+tile_map_data = PackedByteArray("AAAGAPf/AQAFAAQAAAAFAPf/AQADAAUAAAAGAPj/AQAEAAUAAAACAP7/AQACAAQAAAACAP//AQACAAIAAAADAP7/AQAEAAIAAAADAP//AQAEAAMAAAAEAP7/AQACAAMAAAAEAP3/AQACAAUAAAACAAAAAQAHAAQAAAAAAAAAAQACAAQAAAABAAEAAQABAAMAAAAEAP//AQAGAAQAAAADAAEAAQAGAAUAAAACAAIAAQAFAAUAAAABAAIAAQABAAUAAAAAAAEAAQAAAAUAAAABAAAAAQAFAAIAAAA=")
 tile_set = ExtResource("8_shm84")
 
 [node name="IslandMaxBorder" type="Node2D" parent="."]
@@ -174,7 +204,7 @@ y_sort_enabled = true
 script = ExtResource("11_u0eh4")
 
 [node name="MystFibre" parent="IslandObjectSaveManager" instance=ExtResource("12_8drlg")]
-position = Vector2(-54, -163)
+position = Vector2(-48, -176)
 
 [node name="MystFibre2" parent="IslandObjectSaveManager" instance=ExtResource("12_8drlg")]
 position = Vector2(127, -119)
@@ -186,13 +216,13 @@ position = Vector2(119, 51)
 position = Vector2(-39, -13)
 
 [node name="MystFibre5" parent="IslandObjectSaveManager" instance=ExtResource("12_8drlg")]
-position = Vector2(-141, -46)
+position = Vector2(-104, -72)
 
 [node name="MystFibre6" parent="IslandObjectSaveManager" instance=ExtResource("12_8drlg")]
 position = Vector2(-64, -128)
 
 [node name="MystTree" parent="IslandObjectSaveManager" instance=ExtResource("13_sn8nb")]
-position = Vector2(-98, -85)
+position = Vector2(-136, -104)
 
 [node name="MystTree2" parent="IslandObjectSaveManager" instance=ExtResource("13_sn8nb")]
 position = Vector2(76, -137)
@@ -204,4 +234,44 @@ position = Vector2(172, -66)
 position = Vector2(-77, 55)
 
 [node name="MystTree5" parent="IslandObjectSaveManager" instance=ExtResource("13_sn8nb")]
-position = Vector2(-34, -102)
+position = Vector2(-104, -144)
+
+[node name="RemovableObjectsManager" type="Node2D" parent="." node_paths=PackedStringArray("tilemap_parent", "sign_parent")]
+y_sort_enabled = true
+script = ExtResource("12_hv1cu")
+tilemap_parent = NodePath("Tilemaps")
+sign_parent = NodePath("Signs")
+
+[node name="Signs" type="Node2D" parent="RemovableObjectsManager"]
+y_sort_enabled = true
+
+[node name="RemoveSign0" parent="RemovableObjectsManager/Signs" node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "island") instance=ExtResource("13_ulfit")]
+position = Vector2(-64, -104)
+removable_objects_Manager = NodePath("../..")
+object_connected = NodePath("../../Tilemaps/Object0")
+required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Resource_2vll2"), SubResource("Resource_tdjhn"), SubResource("Resource_uavw5")])
+island = NodePath("../../..")
+
+[node name="Tilemaps" type="Node2D" parent="RemovableObjectsManager"]
+
+[node name="Object0" type="Node2D" parent="RemovableObjectsManager/Tilemaps"]
+
+[node name="Ground2" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+z_index = -1
+tile_map_data = PackedByteArray("AAD9//7/AAAHAAkAAAD8//7/AAAEAAgAAAD7//7/AAAEAAgAAAD9//3/AAADAAkAAAD9//z/AAADAAgAAAD+//v/AAABAAgAAAD+//r/AAABAAgAAAD9//r/AAAFAAoAAAD8//r/AAAEAAoAAAD7//r/AAAGAAgAAAD6//v/AAAGAAgAAAD7//v/AAAFAAoAAAD6//z/AAAFAAkAAAD6//3/AAAFAAkAAAD6//7/AAAGAAkAAAD7//3/AAABAAgAAAD8//3/AAABAAgAAAD8//z/AAABAAgAAAD7//z/AAABAAgAAAD8//v/AAABAAgAAAD9//v/AAABAAgAAAD+//z/AAAIAAgAAAD///z/AAAHAAkAAAD///v/AAADAAkAAAD///r/AAADAAkAAAD///n/AAAHAAgAAAD+//n/AAAEAAoAAAA=")
+tile_set = ExtResource("4_xws4w")
+
+[node name="Ground" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+z_index = -2
+tile_map_data = PackedByteArray("AAD+//z/AAAIAAAAAAA=")
+tile_set = ExtResource("4_xws4w")
+
+[node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+tile_map_data = PackedByteArray("AAD7//3/AAAGAAAAAAD+//v/AAAKAAAAAAA=")
+tile_set = ExtResource("4_xws4w")
+
+[node name="Blocking" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0" groups=["BLOCKING"]]
+light_mask = 0
+visibility_layer = 0
+tile_map_data = PackedByteArray("AAD1//z/AQACAAEAAAD2//z/AQACAAEAAAD3//z/AQACAAEAAAD4//z/AQACAAEAAAD5//z/AQACAAEAAAD6//z/AQACAAEAAAD6//v/AQACAAEAAAD6//r/AQACAAEAAAD6//n/AQACAAEAAAD6//j/AQACAAEAAAD7//j/AQACAAEAAAD8//j/AQACAAEAAAD9//j/AQACAAEAAAD+//j/AQACAAEAAAD+//f/AQACAAEAAAD+//b/AQACAAEAAAD+//X/AQACAAEAAAD+//T/AQACAAEAAAD9//T/AQACAAEAAAD8//T/AQACAAEAAAD8//X/AQACAAEAAAD9//X/AQACAAEAAAD9//b/AQACAAEAAAD8//b/AQACAAEAAAD8//f/AQACAAEAAAD9//f/AQACAAEAAAD7//T/AQACAAEAAAD7//X/AQACAAEAAAD7//b/AQACAAEAAAD7//f/AQACAAEAAAD6//f/AQACAAEAAAD6//b/AQACAAEAAAD5//b/AQACAAEAAAD5//f/AQACAAEAAAD4//f/AQACAAEAAAD4//b/AQACAAEAAAD3//f/AQACAAEAAAD3//b/AQACAAEAAAD3//j/AQACAAEAAAD2//j/AQACAAEAAAD1//j/AQACAAEAAAD1//n/AQACAAEAAAD1//r/AQACAAEAAAD2//r/AQACAAEAAAD2//n/AQACAAEAAAD3//n/AQACAAEAAAD2//v/AQACAAEAAAD1//v/AQACAAEAAAD3//r/AQACAAEAAAD3//v/AQACAAEAAAD4//v/AQACAAEAAAD4//r/AQACAAEAAAD4//n/AQACAAEAAAD4//j/AQACAAEAAAD5//r/AQACAAEAAAD5//n/AQACAAEAAAD5//j/AQACAAEAAAD5//v/AQACAAEAAAA=")
+tile_set = ExtResource("2_j0ysi")

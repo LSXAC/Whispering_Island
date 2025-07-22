@@ -34,7 +34,7 @@ public partial class DestroyMenu : Control
         if (current_sign == null)
             return;
 
-        required_items = current_sign.required_items;
+        required_items = GlobalFunctions.GetNormalListOrDevList(current_sign.required_items);
         quest_title_label.Text = "[center]" + TranslationServer.Translate(translation_string_title);
         quest_description_label.Text =
             "[center]" + TranslationServer.Translate(translation_string_description);

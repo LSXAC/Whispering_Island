@@ -21,6 +21,16 @@ public partial class GlobalFunctions : Node2D
         return transport_moving_speed;
     }
 
+    public static Array<Item> GetNormalListOrDevList(Array<Item> items)
+    {
+        if (GameManager.dev_build_mode)
+            return new Array<Item>()
+            {
+                new Item(Inventory.ITEM_TYPES[Inventory.ITEM_ID.OAK_WOOD], 1)
+            };
+        return items;
+    }
+
     public static bool HasResearchLevel(Inventory.ITEM_ID id, Database.UPGRADE_LEVEL level)
     {
         if (ResearchTab.research_saves.ContainsKey(id))
