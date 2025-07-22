@@ -11,9 +11,9 @@ public partial class RemovableObjectsManager : Node2D
     public Node2D tilemap_parent,
         sign_parent;
 
-    public void RemoveSigns(Array<int> removed_signs)
+    public void RemoveSigns()
     {
-        foreach (int rs_id in removed_signs)
+        foreach (int rs_id in removed_objects)
         {
             foreach (RemoveSign r_sign in sign_parent.GetChildren())
             {

@@ -64,6 +64,7 @@ public partial class MineableObject : placeable_building
         current_durability = max_durability;
         timer_bar = GetNode<TimerBar>("TimerBar");
         interactableArea = GetNode<Area2D>("MouseArea");
+        SetResourceTexture();
 
         if (Logger.NodeIsNotNull(timer_bar))
             timer_bar.parent = this;
@@ -132,16 +133,11 @@ public partial class MineableObject : placeable_building
                 return;
         }
 
-        ShowHitLabel(miningAmount);
-
         Player.instance.player_stats.AddFatigue(0.25f);
         current_durability -= miningAmount;
 
-        if (current_durability - 1 >= 0 && mine_textures != null)
-            if (mine_textures.Count > current_durability - 1)
-                if (mine_textures[current_durability - 1] != null)
-                    SetTextureToSpriteManager(mine_textures[current_durability - 1]);
-
+        SetResourceTexture();
+        ShowHitLabel(miningAmount);
         UpdateToolDurability(miningAmount);
 
         gpu_particles.Emitting = true;
@@ -285,5 +281,13 @@ public partial class MineableObject : placeable_building
         }
         else
             GD.PrintErr("Wrong Resource for MineableObject", resource.ResourceName);
+    }
+
+    public void SetResourceTexture()
+    {
+        if (current_durability - 1 >= 0 && mine_textures != null)
+            if (mine_textures.Count > current_durability - 1)
+                if (mine_textures[current_durability - 1] != null)
+                    SetTextureToSpriteManager(mine_textures[current_durability - 1]);
     }
 }

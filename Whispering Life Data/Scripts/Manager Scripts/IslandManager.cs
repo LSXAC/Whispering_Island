@@ -58,7 +58,8 @@ public partial class IslandManager : Node2D
                     island.island_object_save_manager.belt_machine_saves = ibs.belt_machine_saves;
                     island.island_object_save_manager.rail_saves = ibs.rail_saves;
                     island.island_object_save_manager.LoadPlacedObjects();
-                    island.removable_objects_manager.RemoveSigns(ibs.removed_objects);
+                    island.removable_objects_manager.removed_objects = ibs.removed_objects;
+                    island.removable_objects_manager.RemoveSigns();
                 }
         }
     }
