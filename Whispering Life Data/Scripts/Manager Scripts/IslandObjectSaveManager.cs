@@ -46,7 +46,7 @@ public partial class IslandObjectSaveManager : Node2D
         {
             if (node is MineableObject mineable_object)
             {
-                resource_obj_saves.Add((ResourceObjectSave)(mineable_object.Save()));
+                resource_obj_saves.Add(mineable_object.Save());
                 continue;
             }
 

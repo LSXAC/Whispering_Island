@@ -111,7 +111,7 @@ public partial class Player : CharacterBody2D
                 camera.Zoom += new Vector2(0.15f, 0.15f);
 
         if (Input.IsActionJustReleased("Zoom_Out"))
-            if ((camera.Zoom - new Vector2(0.15f, 0.15f)) >= new Vector2(0.8f, 0.8f))
+            if ((camera.Zoom - new Vector2(0.15f, 0.15f)) >= new Vector2(1f, 1f))
                 camera.Zoom += new Vector2(-0.15f, -0.15f);
     }
 
