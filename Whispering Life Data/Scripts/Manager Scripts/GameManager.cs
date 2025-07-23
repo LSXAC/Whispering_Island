@@ -53,6 +53,22 @@ public partial class GameManager : Node2D
         return false;
     }
 
+    public static Island GetIslandOnMatrixOrNull(int x, int y)
+    {
+        Array<Island> islands = new Array<Island>();
+        foreach (Node node in IslandManager.instance.GetChildren())
+        {
+            if (node is Island island)
+                islands.Add(island);
+        }
+        foreach (Island island in islands)
+        {
+            if (island.matrix_x == x && island.matrix_y == y)
+                return island;
+        }
+        return null;
+    }
+
     public override void _Ready()
     {
         instance = this;
@@ -171,7 +187,7 @@ public partial class GameManager : Node2D
         Island main_island = island_parent.GetNode<Island>("MainIsland");
         SetIslandOnMatrix(0, 0, true); //Main Island
         SetIslandOnMatrix(0, -1, true); //Monster Island
-        main_island.GetSigns();
+        main_island.DisableCollisions();
     }
 
     private void CheckGameSave()
