@@ -267,6 +267,7 @@ tile_map_data = PackedByteArray("AAD+//z/AAAIAAAAAAA=")
 tile_set = ExtResource("4_xws4w")
 
 [node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+z_index = -1
 tile_map_data = PackedByteArray("AAD7//3/AAAGAAAAAAD+//v/AAAKAAAAAAA=")
 tile_set = ExtResource("4_xws4w")
 

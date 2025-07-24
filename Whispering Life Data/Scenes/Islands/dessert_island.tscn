@@ -291,6 +291,7 @@ z_index = -2
 tile_set = ExtResource("4_qkol0")
 
 [node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+z_index = -1
 tile_map_data = PackedByteArray("AAD9/wIAAAAGAAAAAAD8/wQAAAAGAAAAAAA=")
 tile_set = ExtResource("4_qkol0")
 
@@ -313,6 +314,7 @@ tile_map_data = PackedByteArray("AAACAP7/AAAHAAAAAAACAP//AAAIAAAAAAA=")
 tile_set = ExtResource("4_qkol0")
 
 [node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
+z_index = -1
 tile_map_data = PackedByteArray("AAACAP3/AAAGAAAAAAA=")
 tile_set = ExtResource("4_qkol0")
 
@@ -334,6 +336,7 @@ z_index = -2
 tile_set = ExtResource("4_qkol0")
 
 [node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object2"]
+z_index = -1
 tile_map_data = PackedByteArray("AAAEAAIAAAAGAAAAAAA=")
 tile_set = ExtResource("4_qkol0")
 

@@ -280,6 +280,7 @@ tile_map_data = PackedByteArray("AAD9/wMAAAAHAAAAAAD9/wQAAAAIAAAAAAA=")
 tile_set = ExtResource("4_i3iyq")
 
 [node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+z_index = -1
 tile_map_data = PackedByteArray("AAD8////AAAGAAAAAAD7/wAAAAAJAAAAAAD9/wEAAAALAAAAAAA=")
 tile_set = ExtResource("4_i3iyq")
 
@@ -302,7 +303,8 @@ tile_map_data = PackedByteArray("AAD7//3/AAAIAAAAAAA=")
 tile_set = ExtResource("4_i3iyq")
 
 [node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
-tile_map_data = PackedByteArray("AAD7//v/AAAJAAAAAAD9//r/AAALAAAAAAA=")
+z_index = -1
+tile_map_data = PackedByteArray("AAD8//v/AAALAAAAAAA=")
 tile_set = ExtResource("4_i3iyq")
 
 [node name="Blocking" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1" groups=["BLOCKING"]]
