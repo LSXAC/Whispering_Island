@@ -172,7 +172,6 @@ public partial class Island : Node2D
 
         Node2D island_scene = (Node2D)island_prefab.Instantiate();
         Island new_island = island_scene as Island;
-        GameManager.instance.island_parent.AddChild(new_island);
 
         GD.Print("Step 2: Select Direction");
         switch (dir)
@@ -181,6 +180,8 @@ public partial class Island : Node2D
                 new_island.matrix_y = matrix_y - 1;
                 new_island.matrix_x = matrix_x;
                 GameManager.SetIslandOnMatrix(matrix_x, matrix_y - 1, true);
+
+                GameManager.instance.island_parent.AddChild(new_island);
                 up_closed = true;
                 new_island.down_closed = true;
                 SetPositionToNewIsland(new_island, new_island);
@@ -196,6 +197,8 @@ public partial class Island : Node2D
                 new_island.matrix_x = matrix_x + 1;
                 new_island.matrix_y = matrix_y;
                 GameManager.SetIslandOnMatrix(matrix_x + 1, matrix_y, true);
+
+                GameManager.instance.island_parent.AddChild(new_island);
                 right_closed = true;
                 new_island.left_closed = true;
                 SetPositionToNewIsland(new_island, new_island);
@@ -211,6 +214,8 @@ public partial class Island : Node2D
                 new_island.matrix_x = matrix_x - 1;
                 new_island.matrix_y = matrix_y;
                 GameManager.SetIslandOnMatrix(matrix_x - 1, matrix_y, true);
+
+                GameManager.instance.island_parent.AddChild(new_island);
                 left_closed = true;
                 new_island.right_closed = true;
                 SetPositionToNewIsland(new_island, new_island);
@@ -226,6 +231,8 @@ public partial class Island : Node2D
                 new_island.matrix_y = matrix_y + 1;
                 new_island.matrix_x = matrix_x;
                 GameManager.SetIslandOnMatrix(matrix_x, matrix_y + 1, true);
+
+                GameManager.instance.island_parent.AddChild(new_island);
                 SetPositionToNewIsland(new_island, new_island);
                 SetBridges(
                     bridge_start_points.GetNode<Node2D>("Down").Position,

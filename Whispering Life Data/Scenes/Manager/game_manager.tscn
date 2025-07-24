@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=59 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" uid="uid://sxd7avtys7n7" path="res://Scripts/Manager Scripts/GameManager.cs" id="1_2n0he"]
 [ext_resource type="Script" uid="uid://cwonaacplejxj" path="res://Scripts/Building Scripts/BuildingPlacer.cs" id="2_h8pdp"]
@@ -34,6 +34,10 @@
 [ext_resource type="AudioStream" uid="uid://bwod2wh4o0qwt" path="res://Audio/Background Music/759996__josefpres__piano-loops-167-octave-short-loop-120-bpm.wav" id="28_2plat"]
 [ext_resource type="Script" uid="uid://c3aa8j0h5bxr1" path="res://Scripts/GlobalAnimationTimer.cs" id="29_q20se"]
 [ext_resource type="Material" uid="uid://6f3r1pj1aoib" path="res://Tilesets/Clouds.tres" id="31_p85m3"]
+[ext_resource type="Script" uid="uid://b4ut7ah1qfwrh" path="res://Scenes/UI/WorldMap.cs" id="35_1whgu"]
+[ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://Scenes/UI/header_color_rect.tscn" id="35_gytje"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="36_1xtv0"]
+[ext_resource type="Texture2D" uid="uid://dddls25tkt8sw" path="res://Sprites/Tileset Sprites/WorldMap_Tileset.png" id="37_1xtv0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1xtv0"]
 animations = [{
@@ -333,6 +337,27 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_tjejx")
 shader_parameter/density = 1.0
 shader_parameter/speed = Vector2(0.008, 0.003)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1whgu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1whgu"]
+texture = ExtResource("37_1xtv0")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5h8gv"]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource("TileSetAtlasSource_1whgu")
+
 [node name="GameManager" type="Node2D" node_paths=PackedStringArray("building_placer")]
 y_sort_enabled = true
 script = ExtResource("1_2n0he")
@@ -631,6 +656,63 @@ game_timer = NodePath("GameTimer")
 script = ExtResource("22_3jk2j")
 dayNightGradient = ExtResource("23_rd84m")
 canvases = [NodePath("../CanvasModulate"), NodePath("../../ParallaxBackground3/CanvasModulate"), NodePath("../../ParallaxBackground2/CanvasModulate"), NodePath("../../ParallaxBackground/CanvasModulate")]
+
+[node name="WorldMap" type="CanvasLayer" parent="." node_paths=PackedStringArray("ground_layer", "top_layer", "bridge_layer", "scroll_container")]
+visible = false
+script = ExtResource("35_1whgu")
+ground_layer = NodePath("ScrollContainer/PanelContainer/Ground")
+top_layer = NodePath("ScrollContainer/PanelContainer/Top")
+bridge_layer = NodePath("ScrollContainer/PanelContainer/Bridges")
+scroll_container = NodePath("ScrollContainer")
+
+[node name="ColorRect" type="ColorRect" parent="WorldMap"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
+
+[node name="HeaderColorRect" parent="WorldMap" instance=ExtResource("35_gytje")]
+offset_right = 640.0
+translation_string = "GAMEMENU_WORLD_MAP"
+
+[node name="X" type="Button" parent="WorldMap/HeaderColorRect"]
+layout_mode = 0
+offset_left = 608.0
+offset_right = 640.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("36_1xtv0")
+theme_override_font_sizes/font_size = 16
+text = "<X>"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="WorldMap"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_horizontal = 100
+scroll_vertical = 100
+
+[node name="PanelContainer" type="PanelContainer" parent="WorldMap/ScrollContainer"]
+custom_minimum_size = Vector2(2560, 2560)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1whgu")
+
+[node name="Ground" type="TileMapLayer" parent="WorldMap/ScrollContainer/PanelContainer"]
+tile_set = SubResource("TileSet_5h8gv")
+
+[node name="Top" type="TileMapLayer" parent="WorldMap/ScrollContainer/PanelContainer"]
+tile_set = SubResource("TileSet_5h8gv")
+
+[node name="Bridges" type="TileMapLayer" parent="WorldMap/ScrollContainer/PanelContainer"]
+tile_set = SubResource("TileSet_5h8gv")
+
+[node name="ColorRect" type="ColorRect" parent="WorldMap/ScrollContainer/PanelContainer"]
+layout_mode = 2
+color = Color(1, 1, 1, 0.00392157)
 
 [connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
 [connection signal="timeout" from="GlobalAnimationTimer" to="GlobalAnimationTimer" method="OnAnimationGlobalTimerTimeout"]

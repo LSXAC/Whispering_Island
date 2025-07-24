@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=4 uid="uid://d0trh47s348ub"]
+[gd_scene load_steps=25 format=4 uid="uid://d0trh47s348ub"]
 
 [ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island.cs" id="1_dab55"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="2_hrgwo"]
 [ext_resource type="PackedScene" uid="uid://717sbs8rvfvt" path="res://Scenes/World Objects/Sign.tscn" id="3_wllt8"]
 [ext_resource type="TileSet" uid="uid://knopq4xq3ef2" path="res://Tilesets/Islands.tres" id="4_qkol0"]
+[ext_resource type="Script" uid="uid://deg7wn0524otn" path="res://Scenes/Islands/WorldMapData.cs" id="5_6qjww"]
 [ext_resource type="Shader" uid="uid://dcluye6ushewy" path="res://Shader/water.gdshader" id="5_iegpm"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Shader/Water_Noise_Map.tres" id="6_wttyb"]
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Tilesets/Water_Tileset.tres" id="7_184uu"]
@@ -142,11 +143,14 @@ tile_map_data = PackedByteArray("AAD4//j/AAABAAAAAAD4//n/AAABAAAAAAD4//r/AAABAAA
 tile_set = ExtResource("4_qkol0")
 y_sort_origin = -4
 
-[node name="Ground" type="TileMapLayer" parent="Tilemaps"]
+[node name="Ground" type="TileMapLayer" parent="Tilemaps" node_paths=PackedStringArray("island")]
 z_index = -5
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD///7/AAABABoAAAD+//7/AAABABoAAAD+////AAABABoAAAABAAAAAAABABoAAAABAP//AAABABoAAAABAP7/AAABABoAAAAAAP7/AAABABoAAAD//wEAAAABABoAAAD+/wEAAAABABoAAAD+/wAAAAABABoAAAAAAAEAAAABABoAAAABAAEAAAABABoAAAD9/wIAAAABABoAAAD+/wIAAAABABoAAAD//wIAAAABABoAAAAAAAIAAAABABoAAAABAAIAAAABABoAAAACAAIAAAABABoAAAACAAEAAAABABoAAAACAAAAAAABABoAAAACAP//AAABABoAAAACAP7/AAABABoAAAABAP3/AAABABoAAAAAAP3/AAABABoAAAACAP3/AAABABoAAAD///3/AAABABoAAAD+//3/AAABABoAAAD9//7/AAABABoAAAD9////AAABABoAAAD9/wAAAAABABoAAAD9/wEAAAABABoAAAD9//3/AAABABoAAAD//wAAAAABABoAAAD/////AAABABoAAAAAAAAAAAABABoAAAAAAP//AAABABoAAAD///r/AAABABoAAAAAAPr/AAABABoAAAABAPr/AAABABoAAAACAPr/AAABABkAAAADAPr/AAACABkAAAADAPv/AAABABoAAAADAPz/AAABABoAAAAEAPz/AAACABoAAAAEAP3/AAABABoAAAAFAP7/AAABABoAAAAFAP//AAABABoAAAAGAP//AAACABoAAAAGAAAAAAACABoAAAAGAAEAAAACABoAAAAFAAEAAAABABoAAAAFAAIAAAABABoAAAAEAAMAAAABABoAAAAFAAMAAAABABoAAAAEAAQAAAABABoAAAADAAQAAAABABoAAAADAAUAAAABABoAAAAEAAUAAAABABoAAAADAAYAAAABABsAAAACAAYAAAAAAB0AAAABAAUAAAABABsAAAAAAAUAAAABABsAAAD//wUAAAABABsAAAD+/wUAAAABABsAAAD9/wYAAAABAB0AAAD8/wYAAAABABsAAAD7/wUAAAAAABoAAAD7/wQAAAABABoAAAD6/wQAAAAAABsAAAD6/wMAAAAAABoAAAD6/wIAAAABABoAAAD6/wEAAAABABoAAAD6/wAAAAABABoAAAD7/wAAAAABABoAAAD7////AAABABoAAAD6////AAABABoAAAD5/wEAAAAAABoAAAD5/wAAAAAAABoAAAD5////AAAAABoAAAD5//7/AAAAABkAAAD6//7/AAABABoAAAD7//7/AAABABoAAAD7//3/AAABABoAAAD7//z/AAAAABoAAAD8//z/AAABABoAAAD8//v/AAABABoAAAD9//v/AAABABoAAAD8//r/AAAAABoAAAD8//n/AAAAABkAAAD9//n/AAABABkAAAD+//n/AAABABkAAAD///n/AAABABkAAAD+//r/AAABABoAAAD9//r/AAABABoAAAAAAPn/AAABABkAAAABAPn/AAACABkAAAD9//z/AAABABoAAAD8//3/AAABABoAAAD8//7/AAABABoAAAD8////AAABABoAAAD8/wAAAAABABoAAAD8/wEAAAABABoAAAD8/wIAAAABABoAAAD7/wEAAAABABoAAAD7/wIAAAABABoAAAD7/wMAAAABABoAAAD8/wQAAAABABoAAAD8/wMAAAABABoAAAD8/wUAAAABABoAAAD9/wQAAAABABoAAAD9/wMAAAABABoAAAD9/wUAAAABABoAAAD+/wMAAAABABoAAAD+/wQAAAABABoAAAD//wQAAAABABoAAAD//wMAAAABABoAAAAAAAQAAAABABoAAAABAAMAAAABABoAAAAAAAMAAAABABoAAAABAAQAAAABABoAAAACAAUAAAABABoAAAACAAQAAAABABoAAAACAAMAAAABABoAAAADAAMAAAABABoAAAADAAIAAAABABoAAAADAAEAAAABABoAAAADAAAAAAABABoAAAAEAAIAAAABABoAAAAEAAEAAAABABoAAAAEAAAAAAABABoAAAAEAP//AAABABoAAAAFAAAAAAABABoAAAADAP//AAABABoAAAAEAP7/AAABABoAAAADAP3/AAABABoAAAADAP7/AAABABoAAAACAPz/AAABABoAAAABAPz/AAABABoAAAAAAPz/AAABABoAAAD///z/AAABABoAAAD+//z/AAABABoAAAACAPv/AAABABoAAAABAPv/AAABABoAAAAAAPv/AAABABoAAAD///v/AAABABoAAAD+//v/AAABABoAAAAGAP7/AAACABkAAAAFAP3/AAACABkAAAAEAPv/AAACABkAAAD6//3/AAAAABkAAAD7//v/AAAAABkAAAD5/wIAAAAAABsAAAD7/wYAAAAAAB0AAAAFAAYAAAABAB0AAAAGAAMAAAACABsAAAAGAAIAAAACABoAAAAFAAQAAAACABoAAAAFAAUAAAACABoAAAAEAAYAAAABABsAAAD+/wYAAAABABwAAAD//wYAAAABABwAAAAAAAYAAAABABwAAAABAAYAAAABABwAAAADAAcAAAABABwAAAAEAAcAAAABABwAAAD8/wcAAAABABwAAAAFAAcAAAACABwAAAACAAcAAAAAABwAAAD9/wcAAAACABwAAAD7/wcAAAAAABwAAAD6/wUAAAAAABwAAAD5/wMAAAAAABwAAAAGAAQAAAACABwAAAA=")
 tile_set = ExtResource("4_qkol0")
+script = ExtResource("5_6qjww")
+tile = 8
+island = NodePath("../..")
 
 [node name="Decoration" type="TileMapLayer" parent="Tilemaps"]
 z_index = -3
@@ -281,10 +285,14 @@ island = NodePath("../../..")
 
 [node name="Object0" type="Node2D" parent="RemovableObjectsManager/Tilemaps"]
 
-[node name="Ground2" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+[node name="Ground2" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0" node_paths=PackedStringArray("island")]
 z_index = -1
 tile_map_data = PackedByteArray("AAD8/wUAAAAEABoAAAD9/wUAAAAEABoAAAD+/wQAAAADABoAAAD7/wQAAAAFABoAAAD6/wQAAAAGABsAAAD7/wUAAAAGABsAAAD+/wUAAAAHABsAAAD//wQAAAAHABsAAAD//wMAAAADABsAAAD+/wIAAAADABwAAAD8/wEAAAAEABwAAAD7/wIAAAAFABwAAAD6/wMAAAAFABsAAAD6/wIAAAAGABoAAAD7/wEAAAAGABoAAAD//wIAAAAHABoAAAD+/wEAAAAHABoAAAD9/wEAAAAEABwAAAD8/wQAAAABABoAAAD9/wQAAAABABoAAAD9/wMAAAABABoAAAD8/wMAAAABABoAAAD8/wIAAAABABoAAAD9/wIAAAABABoAAAD+/wMAAAABABoAAAD7/wMAAAABABoAAAA=")
 tile_set = ExtResource("4_qkol0")
+script = ExtResource("5_6qjww")
+tile = 9
+layer = 1
+island = NodePath("../../../..")
 
 [node name="Ground" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
 z_index = -2
@@ -303,10 +311,14 @@ tile_set = ExtResource("2_hrgwo")
 
 [node name="Object1" type="Node2D" parent="RemovableObjectsManager/Tilemaps"]
 
-[node name="Ground2" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
+[node name="Ground2" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1" node_paths=PackedStringArray("island")]
 z_index = -1
 tile_map_data = PackedByteArray("AAAEAP7/AAAHABsAAAADAP7/AAAEABoAAAACAP7/AAAIABoAAAABAP3/AAAFABoAAAAAAPz/AAAFABoAAAD///z/AAAGABsAAAAAAP3/AAAGABsAAAABAP7/AAAGABsAAAD///v/AAAFABsAAAAAAPr/AAAEABwAAAABAPr/AAAEABwAAAACAPr/AAAEABwAAAADAPv/AAADABwAAAAEAP3/AAADABsAAAAEAPz/AAADABsAAAAEAPv/AAAHABoAAAADAPr/AAAHABoAAAD///r/AAAGABoAAAADAP3/AAABABoAAAACAP3/AAABABoAAAACAPz/AAABABoAAAADAPz/AAABABoAAAABAPz/AAABABoAAAABAPv/AAABABoAAAACAPv/AAABABoAAAAAAPv/AAABABoAAAA=")
 tile_set = ExtResource("4_qkol0")
+script = ExtResource("5_6qjww")
+tile = 9
+layer = 1
+island = NodePath("../../../..")
 
 [node name="Ground" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
 z_index = -2
@@ -326,10 +338,14 @@ tile_set = ExtResource("2_hrgwo")
 
 [node name="Object2" type="Node2D" parent="RemovableObjectsManager/Tilemaps"]
 
-[node name="Ground2" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object2"]
+[node name="Ground2" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object2" node_paths=PackedStringArray("island")]
 z_index = -1
 tile_map_data = PackedByteArray("AAAFAAMAAAAEABoAAAAEAAMAAAAEABoAAAADAAIAAAAFABoAAAACAAIAAAAEABoAAAABAAIAAAAGABsAAAADAAMAAAAGABsAAAACAAAAAAAEABwAAAADAAAAAAAEABwAAAAEAAAAAAAEABwAAAAFAAEAAAADABwAAAAGAAMAAAAHABsAAAAGAAIAAAADABsAAAAGAAEAAAAHABoAAAAFAAAAAAAHABoAAAABAAAAAAAGABoAAAABAAEAAAAFABsAAAAEAAIAAAABABoAAAAFAAIAAAABABoAAAAEAAEAAAABABoAAAADAAEAAAABABoAAAACAAEAAAABABoAAAA=")
 tile_set = ExtResource("4_qkol0")
+script = ExtResource("5_6qjww")
+tile = 9
+layer = 1
+island = NodePath("../../../..")
 
 [node name="Ground" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object2"]
 z_index = -2
