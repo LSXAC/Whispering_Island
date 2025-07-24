@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=58 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" uid="uid://sxd7avtys7n7" path="res://Scripts/Manager Scripts/GameManager.cs" id="1_2n0he"]
 [ext_resource type="Script" uid="uid://cwonaacplejxj" path="res://Scripts/Building Scripts/BuildingPlacer.cs" id="2_h8pdp"]
@@ -37,7 +37,8 @@
 [ext_resource type="Script" uid="uid://b4ut7ah1qfwrh" path="res://Scenes/UI/WorldMap.cs" id="35_1whgu"]
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://Scenes/UI/header_color_rect.tscn" id="35_gytje"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="36_1xtv0"]
-[ext_resource type="Texture2D" uid="uid://dddls25tkt8sw" path="res://Sprites/Tileset Sprites/WorldMap_Tileset.png" id="37_1xtv0"]
+[ext_resource type="TileSet" uid="uid://cul1wgsnkjbm5" path="res://Sprites/Tileset Sprites/World_map_tileset.tres" id="38_5h8gv"]
+[ext_resource type="Texture2D" uid="uid://dptiqr3ul1c5u" path="res://Sprites/Icons/world_map_player.png" id="39_5h8gv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1xtv0"]
 animations = [{
@@ -340,24 +341,6 @@ shader_parameter/speed = Vector2(0.008, 0.003)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1whgu"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1whgu"]
-texture = ExtResource("37_1xtv0")
-texture_region_size = Vector2i(8, 8)
-0:0/0 = 0
-1:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_5h8gv"]
-tile_size = Vector2i(8, 8)
-sources/0 = SubResource("TileSetAtlasSource_1whgu")
-
 [node name="GameManager" type="Node2D" node_paths=PackedStringArray("building_placer")]
 y_sort_enabled = true
 script = ExtResource("1_2n0he")
@@ -657,13 +640,14 @@ script = ExtResource("22_3jk2j")
 dayNightGradient = ExtResource("23_rd84m")
 canvases = [NodePath("../CanvasModulate"), NodePath("../../ParallaxBackground3/CanvasModulate"), NodePath("../../ParallaxBackground2/CanvasModulate"), NodePath("../../ParallaxBackground/CanvasModulate")]
 
-[node name="WorldMap" type="CanvasLayer" parent="." node_paths=PackedStringArray("ground_layer", "top_layer", "bridge_layer", "scroll_container")]
+[node name="WorldMap" type="CanvasLayer" parent="." node_paths=PackedStringArray("ground_layer", "top_layer", "bridge_layer", "scroll_container", "player_texture_rect")]
 visible = false
 script = ExtResource("35_1whgu")
 ground_layer = NodePath("ScrollContainer/PanelContainer/Ground")
 top_layer = NodePath("ScrollContainer/PanelContainer/Top")
 bridge_layer = NodePath("ScrollContainer/PanelContainer/Bridges")
 scroll_container = NodePath("ScrollContainer")
+player_texture_rect = NodePath("ScrollContainer/PanelContainer/Icons/Player")
 
 [node name="ColorRect" type="ColorRect" parent="WorldMap"]
 anchors_preset = 15
@@ -695,28 +679,39 @@ grow_horizontal = 2
 grow_vertical = 2
 scroll_horizontal = 100
 scroll_vertical = 100
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="WorldMap/ScrollContainer"]
+clip_contents = true
 custom_minimum_size = Vector2(2560, 2560)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1whgu")
 
 [node name="Ground" type="TileMapLayer" parent="WorldMap/ScrollContainer/PanelContainer"]
-tile_set = SubResource("TileSet_5h8gv")
+tile_set = ExtResource("38_5h8gv")
 
 [node name="Top" type="TileMapLayer" parent="WorldMap/ScrollContainer/PanelContainer"]
-tile_set = SubResource("TileSet_5h8gv")
+tile_set = ExtResource("38_5h8gv")
 
 [node name="Bridges" type="TileMapLayer" parent="WorldMap/ScrollContainer/PanelContainer"]
-tile_set = SubResource("TileSet_5h8gv")
+tile_set = ExtResource("38_5h8gv")
 
-[node name="ColorRect" type="ColorRect" parent="WorldMap/ScrollContainer/PanelContainer"]
+[node name="Icons" type="Control" parent="WorldMap/ScrollContainer/PanelContainer"]
 layout_mode = 2
-color = Color(1, 1, 1, 0.00392157)
+
+[node name="Player" type="TextureRect" parent="WorldMap/ScrollContainer/PanelContainer/Icons"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+pivot_offset = Vector2(8, 8)
+texture = ExtResource("39_5h8gv")
 
 [connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
 [connection signal="timeout" from="GlobalAnimationTimer" to="GlobalAnimationTimer" method="OnAnimationGlobalTimerTimeout"]
 [connection signal="timeout" from="TimeManager/GameTimer" to="TimeManager" method="OnGameTimerTimeout"]
+[connection signal="pressed" from="WorldMap/HeaderColorRect/X" to="WorldMap" method="CloseMap"]
 
 [editable path="IslandManager/MainIsland"]
 [editable path="BuildingMenu"]

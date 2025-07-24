@@ -16,6 +16,9 @@ public partial class WorldMap : CanvasLayer
     [Export]
     public ScrollContainer scroll_container;
 
+    [Export]
+    public TextureRect player_texture_rect;
+
     public enum LAYER
     {
         GROUND,
@@ -34,7 +37,8 @@ public partial class WorldMap : CanvasLayer
         FARMING_NORMAL,
         FARMING_TOP,
         DESSERT_NORMAL,
-        DESSERT_TOP
+        DESSERT_TOP,
+        BRIDGE
     }
 
     public override void _Ready()
@@ -75,8 +79,15 @@ public partial class WorldMap : CanvasLayer
         // Setze Scroll-Position so, dass Spieler mittig angezeigt wird
         scroll_container.ScrollVertical = new_pos.Y;
         scroll_container.ScrollHorizontal = new_pos.X;
-        //Vector2I player_pos = offset / 8 + new Vector2I(160, 160);
-        //player_texture_rect.Position = player_pos;
+        player_texture_rect.Position = GlobalPositionToWorldMap(
+            Player.instance.GlobalPosition + new Vector2(-16, -16)
+        );
+    }
+
+    public Vector2 GlobalPositionToWorldMap(Vector2 position)
+    {
+        Vector2I player_base_pos = new Vector2I(1280, 1280); // Center position in tile units
+        return player_base_pos + position / 4;
     }
 
     public Vector2I GetTile(WORLDTILE tile)
@@ -103,6 +114,8 @@ public partial class WorldMap : CanvasLayer
                 return new Vector2I(0, 4);
             case WORLDTILE.MINING_TOP:
                 return new Vector2I(1, 4);
+            case WORLDTILE.BRIDGE:
+                return new Vector2I(2, 0);
         }
         return new Vector2I(0, 0); // Default case
     }
@@ -136,20 +149,28 @@ public partial class WorldMap : CanvasLayer
         WORLDTILE tile
     )
     {
+        foreach (Vector2I pos in tilemap.GetUsedCells())
+            SetSingleTileToWorldMap(island_offset, pos, layer, tile);
+    }
+
+    public void SetSingleTileToWorldMap(
+        Vector2 island_offset,
+        Vector2I position,
+        LAYER layer,
+        WORLDTILE tile
+    )
+    {
         // Calculate offset in tile units (not pixels)
         Vector2I offset = new Vector2I((int)island_offset.X * 16, (int)island_offset.Y * 16);
         Vector2I base_pos = new Vector2I(1280 / 8, 1280 / 8); // Center position in tile units
 
-        foreach (Vector2I pos in tilemap.GetUsedCells())
-        {
-            Vector2I new_pos = base_pos + pos + offset;
-            if (layer == LAYER.GROUND)
-                ground_layer.SetCell(new_pos, 0, GetTile(tile));
-            else if (layer == LAYER.TOP)
-                top_layer.SetCell(new_pos, 0, GetTile(tile));
-            else if (layer == LAYER.BRIDGE)
-                bridge_layer.SetCell(new_pos, 0, GetTile(tile));
-        }
+        Vector2I new_pos = base_pos + position + offset;
+        if (layer == LAYER.GROUND)
+            ground_layer.SetCell(new_pos, 0, GetTile(tile));
+        else if (layer == LAYER.TOP)
+            top_layer.SetCell(new_pos, 0, GetTile(tile));
+        else if (layer == LAYER.BRIDGE)
+            bridge_layer.SetCell(new_pos, 0, GetTile(tile));
     }
 
     public void CloseMap()
