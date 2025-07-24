@@ -161,52 +161,6 @@ public partial class Island : Node2D
             }
     }
 
-    public void DisableCollisions()
-    {
-        //Get Signs und Set next_ip (from instantiated Island) = current_ip;
-        //Also disable Signs, when from X <- Y | X (Right), Y (Left) Depending on Matrix
-
-        Node2D node = null;
-        if (
-            (GameManager.IsIslandOnMatrix(matrix_x, matrix_y - 1) || up_closed)
-            && signs_parent.HasNode("UpSign")
-        )
-        {
-            node = signs_parent.GetNode<Node2D>("UpSign");
-            bridge_collision_parent.GetNode<CollisionShape2D>("Up").Disabled = true;
-            //Get Island_Properties of Matrix overlapping
-            // Sign Left I1 and Right I2 -> disabled
-            //Has not Bridge (LEFT_RIGHT or RIGHT_LEFT), build bridge
-        }
-
-        if (
-            (GameManager.IsIslandOnMatrix(matrix_x, matrix_y + 1) || down_closed)
-            && signs_parent.HasNode("DownSign")
-        )
-        {
-            node = signs_parent.GetNode<Node2D>("DownSign");
-            bridge_collision_parent.GetNode<CollisionShape2D>("Down").Disabled = true;
-        }
-
-        if (
-            (GameManager.IsIslandOnMatrix(matrix_x + 1, matrix_y) || right_closed)
-            && signs_parent.HasNode("RightSign")
-        )
-        {
-            node = signs_parent.GetNode<Node2D>("RightSign");
-            bridge_collision_parent.GetNode<CollisionShape2D>("Right").Disabled = true;
-        }
-
-        if (
-            (GameManager.IsIslandOnMatrix(matrix_x - 1, matrix_y) || left_closed)
-            && signs_parent.HasNode("LeftSign")
-        )
-        {
-            node = signs_parent.GetNode<Node2D>("LeftSign");
-            bridge_collision_parent.GetNode<CollisionShape2D>("Left").Disabled = true;
-        }
-    }
-
     public void CreateAnotherIsland(
         PackedScene island_prefab,
         DIRECTION dir,
@@ -294,8 +248,6 @@ public partial class Island : Node2D
 
         new_island.matrix_island_id = IslandManager.instance.last_island_id;
         IslandMenu.instance.current_sign = null;
-        DisableCollisions();
-        new_island.DisableCollisions();
         new_island.AddNeighbourBridges(dir);
     }
 
@@ -339,6 +291,10 @@ public partial class Island : Node2D
 
                 signs_parent.GetNode<Node2D>("UpSign").QueueFree();
                 ip_t.signs_parent.GetNode<Node2D>("DownSign").QueueFree();
+
+                bridge_collision_parent.GetNode<CollisionShape2D>("Up").Disabled = true;
+                ip_t.bridge_collision_parent.GetNode<CollisionShape2D>("Down").Disabled = true;
+
                 break;
             case DIRECTION.RIGHT:
                 temp =
@@ -367,6 +323,8 @@ public partial class Island : Node2D
 
                 signs_parent.GetNode<Node2D>("RightSign").QueueFree();
                 ip_t.signs_parent.GetNode<Node2D>("LeftSign").QueueFree();
+                bridge_collision_parent.GetNode<CollisionShape2D>("Right").Disabled = true;
+                ip_t.bridge_collision_parent.GetNode<CollisionShape2D>("Left").Disabled = true;
                 break;
             case DIRECTION.LEFT:
                 temp =
@@ -393,6 +351,8 @@ public partial class Island : Node2D
 
                 signs_parent.GetNode<Node2D>("LeftSign").QueueFree();
                 ip_t.signs_parent.GetNode<Node2D>("RightSign").QueueFree();
+                bridge_collision_parent.GetNode<CollisionShape2D>("Left").Disabled = true;
+                ip_t.bridge_collision_parent.GetNode<CollisionShape2D>("Right").Disabled = true;
 
                 break;
             case DIRECTION.DOWN:
@@ -420,6 +380,8 @@ public partial class Island : Node2D
 
                 signs_parent.GetNode<Node2D>("DownSign").QueueFree();
                 ip_t.signs_parent.GetNode<Node2D>("UpSign").QueueFree();
+                bridge_collision_parent.GetNode<CollisionShape2D>("Down").Disabled = true;
+                ip_t.bridge_collision_parent.GetNode<CollisionShape2D>("Up").Disabled = true;
                 break;
         }
     }

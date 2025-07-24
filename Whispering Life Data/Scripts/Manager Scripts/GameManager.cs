@@ -187,7 +187,6 @@ public partial class GameManager : Node2D
         Island main_island = island_parent.GetNode<Island>("MainIsland");
         SetIslandOnMatrix(0, 0, true); //Main Island
         SetIslandOnMatrix(0, -1, true); //Monster Island
-        main_island.DisableCollisions();
     }
 
     private void CheckGameSave()
