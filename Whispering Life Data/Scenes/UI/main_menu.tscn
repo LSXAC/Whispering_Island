@@ -114,7 +114,6 @@ intro_player = NodePath("Menu/VideoStreamPlayer2")
 background_player = NodePath("Menu/Control/VideoStreamPlayer")
 parent = NodePath("Menu/Control")
 load_button = NodePath("Menu/Control/Panel/VBoxContainer/LoadGameButton")
-skip_intro = true
 
 [node name="Menu" type="Control" parent="."]
 layout_mode = 1
