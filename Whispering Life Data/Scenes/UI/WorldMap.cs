@@ -48,20 +48,12 @@ public partial class WorldMap : CanvasLayer
 
     public override void _PhysicsProcess(double delta)
     {
-        if (GameManager.gameover || GameManager.In_Cutscene)
-            return;
-
-        if (Input.IsActionJustPressed("Map"))
+        /*if (Input.IsActionJustPressed("Map"))
         {
             UpdateMap();
             SetPlayerPositionToWorldMap();
             GameMenu.SetWindow(this);
-        }
-
-        if (Input.IsActionJustPressed("Escape"))
-        {
-            CloseMap();
-        }
+        }*/
     }
 
     public void SetPlayerPositionToWorldMap()
@@ -171,11 +163,6 @@ public partial class WorldMap : CanvasLayer
             top_layer.SetCell(new_pos, 0, GetTile(tile));
         else if (layer == LAYER.BRIDGE)
             bridge_layer.SetCell(new_pos, 0, GetTile(tile));
-    }
-
-    public void CloseMap()
-    {
-        GameMenu.CloseLastWindow();
     }
 }
 

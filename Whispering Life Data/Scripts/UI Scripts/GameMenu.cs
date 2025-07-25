@@ -73,22 +73,24 @@ public partial class GameMenu : CanvasLayer
         if (GameManager.gameover || GameManager.In_Cutscene)
             return;
 
-        if (Input.IsActionJustPressed("Escape"))
+        if (Input.IsActionJustPressed("Inventory"))
         {
             OpenGameMenu();
+        }
+        if (Input.IsActionJustPressed("Escape"))
+        {
+            if (IsThisWindow(this))
+            {
+                PlayerInventoryUI.instance?.MarkSlotsWithAttributeTypes(null);
+                CloseLastWindow();
+                OnExitButton();
+                return;
+            }
         }
     }
 
     public void OpenGameMenu()
     {
-        if (IsThisWindow(this))
-        {
-            PlayerInventoryUI.instance?.MarkSlotsWithAttributeTypes(null);
-            CloseLastWindow();
-            OnExitButton();
-            return;
-        }
-
         if (IsWindowActiv())
             return;
 
@@ -113,6 +115,7 @@ public partial class GameMenu : CanvasLayer
     {
         if (GameManager.current_activ_canvaslayer != null)
         {
+            Debug.Print(GameManager.current_activ_canvaslayer.Name);
             GameManager.current_activ_canvaslayer.Visible = false;
             GameManager.current_activ_canvaslayer = null;
             Debug.Print("Last Window Closed");

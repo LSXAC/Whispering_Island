@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://njw4so7o83dw"]
+[gd_scene load_steps=37 format=3 uid="uid://njw4so7o83dw"]
 
 [ext_resource type="Script" uid="uid://gvudefjfv4jx" path="res://Scripts/Player Scripts/Player.cs" id="1_2p5ml"]
 [ext_resource type="Texture2D" uid="uid://b4214y7h1nkv7" path="res://Sprites/Char_Animation.png" id="2_c6oqb"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://bphfcvdv87vxh" path="res://Scripts/Player Scripts/PlayerStamina.cs" id="5_l640a"]
 [ext_resource type="Script" uid="uid://bkcah5h7fcbm5" path="res://Scenes/Player/LightBehaviour.cs" id="6_dd0ac"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="6_k5wdo"]
+[ext_resource type="Texture2D" uid="uid://dptiqr3ul1c5u" path="res://Sprites/Icons/world_map_player.png" id="7_0u5uq"]
+[ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://Scripts/WorldMapIcon.cs" id="7_jlvik"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wxsri"]
 radius = 4.0
@@ -282,6 +284,11 @@ range_z_min = -11
 range_z_max = 0
 texture = SubResource("GradientTexture2D_htcer")
 script = ExtResource("6_dd0ac")
+
+[node name="WorldMapIcon" type="Node2D" parent="." node_paths=PackedStringArray("parent")]
+script = ExtResource("7_jlvik")
+icon_texture = ExtResource("7_0u5uq")
+parent = NodePath("..")
 
 [connection signal="area_entered" from="Area2D" to="." method="OnAreaEntered"]
 [connection signal="area_exited" from="Area2D" to="." method="OnAreaLeaved"]
