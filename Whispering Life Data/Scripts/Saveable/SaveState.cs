@@ -21,6 +21,9 @@ public partial class SaveState : Resource
     public int current_hearts = 3;
 
     [Export]
+    public int money = 0;
+
+    [Export]
     public bool is_doubled_quest = false;
 
     [Export]

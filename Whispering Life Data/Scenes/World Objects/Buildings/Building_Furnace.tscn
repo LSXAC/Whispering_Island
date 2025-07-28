@@ -53,8 +53,8 @@ hue_variation_min = -2.23517e-08
 hue_variation_max = -2.23517e-08
 
 [sub_resource type="Gradient" id="Gradient_k0wjm"]
-offsets = PackedFloat32Array(0, 0.162835, 0.628352)
-colors = PackedColorArray(1, 1, 1, 1, 0.961538, 0.961538, 0.961538, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.162835, 0.630268)
+colors = PackedColorArray(1, 1, 1, 1, 0.961538, 0.961538, 0.961538, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_k7rv1"]
 gradient = SubResource("Gradient_k0wjm")
@@ -148,7 +148,7 @@ process_material = SubResource("ParticleProcessMaterial_cvuei")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-8, 4)
 scale = Vector2(0.71875, 0.5)
-color = Color(0.919034, 0.796493, 2.69532e-06, 1)
+blend_mode = 2
 texture = SubResource("GradientTexture2D_k7rv1")
 script = ExtResource("11_w5rqh")
 

@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=8 format=3 uid="uid://bwoxb4s5viywy"]
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=7 format=3 uid="uid://bwoxb4s5viywy"]
 
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_guc0e"]
 [ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_s5wek"]
 [ext_resource type="Texture2D" uid="uid://cnvvdeihm1guu" path="res://Sprites/Items/Armor/Mystic_Armor_Chestplate.png" id="2_lcgun"]
 [ext_resource type="Script" uid="uid://c80nhtlc3g8ga" path="res://Scripts/Item/ArmorAttribute.cs" id="2_s5wek"]
-[ext_resource type="Script" uid="uid://bu58bbjdvh5bk" path="res://Scripts/Player Scripts/PlayerStat.cs" id="3_0dbbj"]
 
 [sub_resource type="Resource" id="Resource_brf0j"]
 script = ExtResource("1_s5wek")
@@ -14,7 +13,7 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 script = ExtResource("2_s5wek")
 slot_type = 2
 durability = 100
-stats = Array[ExtResource("3_0dbbj")]([])
+stats = []
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [resource]

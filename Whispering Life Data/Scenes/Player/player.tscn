@@ -224,11 +224,13 @@ animations = [{
 size = Vector2(48, 50)
 
 [sub_resource type="Gradient" id="Gradient_k0wjm"]
-offsets = PackedFloat32Array(0, 0.162835, 0.837165)
-colors = PackedColorArray(1, 1, 1, 1, 0.961538, 0.961538, 0.961538, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.0862069, 0.850575)
+colors = PackedColorArray(1, 1, 1, 1, 0.961538, 0.961538, 0.961538, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_htcer"]
 gradient = SubResource("Gradient_k0wjm")
+width = 128
+height = 128
 fill = 1
 fill_from = Vector2(0.512821, 0.498576)
 fill_to = Vector2(0.94302, 0.0740741)
@@ -278,8 +280,7 @@ texture = ExtResource("6_k5wdo")
 script = ExtResource("5_f3lay")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, -2)
-energy = 0.3
+blend_mode = 2
 range_z_min = -11
 range_z_max = 0
 texture = SubResource("GradientTexture2D_htcer")

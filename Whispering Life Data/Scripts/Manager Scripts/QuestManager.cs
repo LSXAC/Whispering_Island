@@ -60,6 +60,7 @@ public partial class QuestManager : Node
         if (current_quest_time <= 0)
         {
             //Cutscene // UH; WIEK ANNST DEN DU DID WARGEN; GÄ?
+            GameMenu.CloseLastWindow();
             instance.quest_timer.Stop();
             QuestMenu.instance.CloseQuestMenu();
             HeartManager.instance.RemoveHeart();

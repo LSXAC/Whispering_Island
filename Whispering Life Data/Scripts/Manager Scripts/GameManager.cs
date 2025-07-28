@@ -24,6 +24,7 @@ public partial class GameManager : Node2D
     public static BuildingMode building_mode = BuildingMode.None;
 
     public static bool In_Cutscene = false;
+    public static int money = 0;
     public bool tutorial_finished = false;
     public Node2D island_parent;
     public Camera2D cutscene_camera;
@@ -75,6 +76,7 @@ public partial class GameManager : Node2D
         gameover = false;
         In_Cutscene = false;
         island_matrix = new bool[21, 21];
+        money = 0;
         current_activ_canvaslayer = null;
 
         cutscene_camera = GetNode<Camera2D>("CutsceneCamera");
@@ -88,6 +90,7 @@ public partial class GameManager : Node2D
     public void SaveGame()
     {
         save_state.char_save = Player.char_save;
+        save_state.money = money;
         save_state.char_save.player_position = Player.instance.Position;
         save_state.char_save.health_value = Player.instance.player_stats.health_value;
         save_state.char_save.fatigue_value = Player.instance.player_stats.fatigue_value;
@@ -149,6 +152,8 @@ public partial class GameManager : Node2D
         }
 
         Player.char_save = save_state.char_save;
+
+        money = save_state.money;
         Player.instance.Position = save_state.char_save.player_position;
         Player.instance.player_stats.health_value = save_state.char_save.health_value;
         Player.instance.player_stats.fatigue_value = save_state.char_save.fatigue_value;

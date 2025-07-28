@@ -52,6 +52,9 @@ public partial class PlayerUI : CanvasLayer
     public static PlayerUI instance;
 
     [Export]
+    public Label money_label;
+
+    [Export]
     public VBoxContainer info_vBox;
 
     [Export]
@@ -88,6 +91,7 @@ public partial class PlayerUI : CanvasLayer
         hslider.AddThemeStyleboxOverride("grabber_area", before_reg);
         mainmenu_button.Pressed += () => ToMainMenu();
         item_label_timer.Timeout += () => SpawnItemLabelUI();
+        UpdateMoneyLabel();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -150,6 +154,28 @@ public partial class PlayerUI : CanvasLayer
     public void OnLoadGameButton()
     {
         GameMenu.instance.OnLoadButton();
+    }
+
+    public void AddMoney(int amount)
+    {
+        GameManager.money += amount;
+
+        UpdateMoneyLabel();
+    }
+
+    public void RemoveMoney(int amount)
+    {
+        GameManager.money -= amount;
+
+        UpdateMoneyLabel();
+    }
+
+    public void UpdateMoneyLabel()
+    {
+        if (money_label != null)
+            money_label.Text = GameManager.money.ToString();
+        else
+            GD.PrintErr("PlayerUI money_label is null, cannot update money label.");
     }
 
     public static void AddItemLabelUI(string text)

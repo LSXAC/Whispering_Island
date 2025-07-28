@@ -650,7 +650,7 @@ script = ExtResource("35_gytje")
 camera = NodePath("Camera2D")
 min_camera_zoom = 0.7
 speed = 8.0
-icons_parent = NodePath("../Icons")
+icons_parent = NodePath("../WorldIcons/Icons")
 
 [node name="ColorRect" type="ColorRect" parent="World/WorldMap"]
 anchors_preset = 15
@@ -689,8 +689,13 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 texture = ExtResource("41_irdkv")
 
-[node name="Icons" type="Control" parent="World"]
+[node name="WorldIcons" type="CanvasLayer" parent="World"]
+follow_viewport_enabled = true
+
+[node name="Icons" type="Control" parent="World/WorldIcons"]
+light_mask = 0
 z_index = 99
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

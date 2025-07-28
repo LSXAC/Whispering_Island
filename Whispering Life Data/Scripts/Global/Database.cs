@@ -196,6 +196,7 @@ public partial class Database : Node
         MINECART,
         FIBRE,
         BELT,
-        RAIL_BRIDGE
+        RAIL_BRIDGE,
+        OUTDOOR_LAMP
     }
 }
