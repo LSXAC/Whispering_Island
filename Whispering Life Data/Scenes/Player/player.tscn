@@ -286,9 +286,11 @@ texture = SubResource("GradientTexture2D_htcer")
 script = ExtResource("6_dd0ac")
 
 [node name="WorldMapIcon" type="Node2D" parent="." node_paths=PackedStringArray("parent")]
+scale = Vector2(4, 4)
 script = ExtResource("7_jlvik")
 icon_texture = ExtResource("7_0u5uq")
 parent = NodePath("..")
+scale = Vector2(4, 4)
 
 [connection signal="area_entered" from="Area2D" to="." method="OnAreaEntered"]
 [connection signal="area_exited" from="Area2D" to="." method="OnAreaLeaved"]

@@ -284,12 +284,6 @@ public partial class Island : Node2D
                     bridge_part = (Node2D)BRIDGE_UP.Instantiate();
                     bridge_part.Position = new Vector2(start.X, start.Y - bridge_size_width * i);
                     bridges_parent.AddChild(bridge_part);
-                    WorldMap.instance.SetSingleTileToWorldMap(
-                        new Vector2(matrix_x, matrix_y),
-                        new Vector2I((int)start.X / 32, (int)start.Y / bridge_size_width - i),
-                        WorldMap.LAYER.BRIDGE,
-                        WorldMap.WORLDTILE.BRIDGE
-                    );
                 }
 
                 //Bridge Start and End Tile
@@ -323,12 +317,6 @@ public partial class Island : Node2D
                     bridge_part = (Node2D)BRIDGE_SIDE.Instantiate();
                     bridge_part.Position = new Vector2(start.X + bridge_size_width * i, start.Y);
                     bridges_parent.AddChild(bridge_part);
-                    WorldMap.instance.SetSingleTileToWorldMap(
-                        new Vector2(matrix_x, matrix_y),
-                        new Vector2I((int)start.X / bridge_size_width + i, (int)start.Y / 32),
-                        WorldMap.LAYER.BRIDGE,
-                        WorldMap.WORLDTILE.BRIDGE
-                    );
                 }
                 //Bridge Start and End Tile
                 bridge_part = (Node2D)BRIDGE_SIDE_END.Instantiate();
@@ -356,12 +344,6 @@ public partial class Island : Node2D
                     bridge_part = (Node2D)BRIDGE_SIDE.Instantiate();
                     bridge_part.Position = new Vector2(start.X - bridge_size_width * i, start.Y);
                     bridges_parent.AddChild(bridge_part);
-                    WorldMap.instance.SetSingleTileToWorldMap(
-                        new Vector2(matrix_x, matrix_y),
-                        new Vector2I((int)start.X / bridge_size_width - i, (int)start.Y / 32),
-                        WorldMap.LAYER.BRIDGE,
-                        WorldMap.WORLDTILE.BRIDGE
-                    );
                 }
 
                 //Bridge Start and End Tile
@@ -391,12 +373,6 @@ public partial class Island : Node2D
                     bridge_part = (Node2D)BRIDGE_UP.Instantiate();
                     bridge_part.Position = new Vector2(start.X, start.Y + bridge_size_width * i);
                     bridges_parent.AddChild(bridge_part);
-                    WorldMap.instance.SetSingleTileToWorldMap(
-                        new Vector2(matrix_x, matrix_y),
-                        new Vector2I((int)start.X / 32, (int)start.Y / bridge_size_width + i),
-                        WorldMap.LAYER.BRIDGE,
-                        WorldMap.WORLDTILE.BRIDGE
-                    );
                 }
 
                 //Bridge Start and End Tile

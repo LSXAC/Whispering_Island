@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://bveoiwi14ha4g"]
+[gd_scene load_steps=44 format=4 uid="uid://bveoiwi14ha4g"]
 
 [ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island.cs" id="1_sbvtb"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="2_naawu"]
@@ -27,10 +27,59 @@
 [ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Resource Meta/Items/item_info_potato.tres" id="14_7wf5s"]
 [ext_resource type="PackedScene" uid="uid://hl3jkk2n0f7x" path="res://Scenes/World Objects/Mineable Objects/mineable_object_wheat.tscn" id="14_kjoym"]
 [ext_resource type="PackedScene" uid="uid://eshgc8yqihmh" path="res://Scenes/World Objects/Mineable Objects/mineable_object_fibre.tscn" id="16_eltw0"]
-[ext_resource type="Script" uid="uid://deg7wn0524otn" path="res://Scenes/Islands/WorldMapData.cs" id="16_tbesv"]
+[ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://Scripts/WorldMapIcon.cs" id="17_7wf5s"]
+[ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe.png" id="18_0sl6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cugrr"]
 size = Vector2(32, 32)
+
+[sub_resource type="CSharpScript" id="CSharpScript_tbesv"]
+script/source = "using System;
+using Godot;
+
+public partial class WorldMapData : TileMapLayer
+{
+    [Export]
+    public WorldMap.WORLDTILE tile;
+
+    [Export]
+    public WorldMap.LAYER layer;
+
+    [Export]
+    public Island island;
+
+    public override void _Ready()
+    {
+        AddTileMapWorldData();
+    }
+
+    public void AddTileMapWorldData()
+    {
+        WorldMap.data.Add(
+            new TileMapWorldData(
+                new Vector2(island.matrix_x, island.matrix_y),
+                this,
+                layer,
+                tile,
+                TileMapWorldData.STATE.ADD
+            )
+        );
+    }
+
+    /*public void RemoveTileMapFromWorldMap()
+    {
+        if (WorldMap.instance == null)
+            return;
+
+        if (tile == WorldMap.WORLDTILE.GREEN_NORMAL || tile == WorldMap.WORLDTILE.GREEN_TOP)
+            WorldMap.instance.ground_layer.SetCellv(this.Position, -1);
+        else if (tile == WorldMap.WORLDTILE.MYSTIC_NORMAL || tile == WorldMap.WORLDTILE.MYSTIC_TOP)
+            WorldMap.instance.top_layer.SetCellv(this.Position, -1);
+        else if (tile == WorldMap.WORLDTILE.MINING_NORMAL || tile == WorldMap.WORLDTILE.MINING_TOP)
+            WorldMap.instance.bridge_layer.SetCellv(this.Position, -1);
+    }*/
+}
+"
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wjywr"]
 noise = ExtResource("6_r1dg3")
@@ -207,7 +256,9 @@ z_index = -5
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD+//3/AAABAAIAAAD+//7/AAABAAIAAAD+////AAABAAIAAAD/////AAABAAIAAAD//wAAAAABAAIAAAAAAAAAAAABAAIAAAAAAP//AAABAAIAAAAAAP7/AAABAAIAAAAAAP3/AAABAAIAAAD///3/AAABAAIAAAD///7/AAABAAIAAAABAP//AAAAAAAAAAABAAAAAAABAAIAAAD+/wAAAAABAAIAAAD9//7/AAABAAIAAAD9////AAAAAAAAAAD9//3/AAABAAIAAAD+//z/AAAAAAAAAAD///z/AAABAAIAAAAAAPz/AAABAAIAAAABAPz/AAABAAIAAAD9/wAAAAABAAIAAAD+/wEAAAAAAAAAAAD//wIAAAABAAIAAAAAAAIAAAABAAIAAAACAAIAAAABAAIAAAACAAEAAAABAAIAAAABAPv/AAABAAIAAAD///v/AAABAAIAAAAAAPv/AAABAAIAAAD9/wEAAAABAAIAAAD+/wIAAAABAAIAAAD//wEAAAABAAIAAAAAAAEAAAABAAIAAAACAAAAAAABAAIAAAD8//3/AAABAAIAAAD9/wIAAAABAAIAAAAAAAMAAAABAAIAAAD//wMAAAABAAIAAAD//wQAAAABAAIAAAAAAAQAAAABAAIAAAD+//v/AAABAAIAAAADAAEAAAABAAIAAAADAAIAAAAAAAAAAAD8/wEAAAABAAIAAAD8/wIAAAABAAIAAAD8/wAAAAABAAIAAAD8////AAABAAIAAAD8//7/AAABAAIAAAABAAIAAAABAAIAAAD+/wQAAAABAAIAAAD+/wMAAAABAAIAAAABAAEAAAABAAIAAAABAAMAAAAAAAAAAAD5/wAAAAAAAAIAAAD5////AAAAAAIAAAD5//7/AAAAAAEAAAD6//3/AAAAAAIAAAD6//z/AAAAAAEAAAD7//r/AAAAAAEAAAD8//r/AAABAAEAAAD+//n/AAAAAAEAAAACAPn/AAACAAEAAAAFAPv/AAACAAEAAAAGAP//AAACAAIAAAAGAAAAAAACAAIAAAAGAAEAAAACAAMAAAABAAYAAAACAAQAAAAAAAYAAAABAAQAAAD//wYAAAABAAQAAAD+/wYAAAABAAQAAAD9/wUAAAABAAMAAAD8/wUAAAAAAAMAAAD5/wEAAAAAAAIAAAD5/wMAAAAAAAQAAAD6/wMAAAABAAQAAAD9/wYAAAABAAQAAAAGAP7/AAACAAIAAAACAAUAAAABAAQAAAABAAUAAAABAAUAAAAAAAUAAAABAAMAAAD//wUAAAABAAMAAAD+/wUAAAABAAMAAAD9/wQAAAABAAIAAAD8/wQAAAAAAAIAAAD7/wMAAAAAAAUAAAD8/wMAAAABAAIAAAD9/wMAAAABAAIAAAABAAQAAAAAAAAAAAACAAQAAAABAAMAAAACAAMAAAABAAIAAAAEAAMAAAABAAQAAAAEAAIAAAABAAMAAAADAAQAAAACAAMAAAAFAAMAAAACAAQAAAAFAAIAAAABAAUAAAAFAAEAAAABAAIAAAAFAAAAAAABAAIAAAAEAAEAAAABAAIAAAADAPr/AAACAAEAAAACAPr/AAABAAIAAAACAPv/AAABAAIAAAABAPr/AAABAAIAAAAAAPr/AAABAAIAAAD///r/AAABAAIAAAD+//r/AAAAAAAAAAD9//r/AAABAAEAAAD9//v/AAABAAIAAAD9//z/AAABAAIAAAD8//v/AAABAAIAAAD8//z/AAABAAIAAAD7//v/AAAAAAIAAAD7//z/AAABAAIAAAD7//3/AAABAAIAAAD7//7/AAABAAIAAAD7////AAABAAIAAAD7/wAAAAABAAIAAAD7/wEAAAAAAAAAAAD7/wIAAAABAAIAAAD6/wEAAAABAAIAAAD6/wAAAAABAAIAAAD6////AAABAAIAAAD6//7/AAAAAAAAAAD6/wIAAAABAAMAAAD8/wYAAAAAAAQAAAAGAAIAAAACAAQAAAD7/wQAAAAAAAQAAAD5/wIAAAAAAAMAAAADAAUAAAACAAQAAAADAAMAAAACAAIAAAADAPv/AAABAAIAAAAEAPv/AAABAAEAAAAFAPz/AAACAAIAAAAFAP3/AAABAAIAAAABAP7/AAADAAQAAAABAP3/AAADAAIAAAACAP7/AAAHAAIAAAACAP3/AAAHAAMAAAACAPz/AAADAAIAAAADAPz/AAAEAAIAAAAEAPz/AAAFAAIAAAAEAP3/AAAFAAMAAAAEAP7/AAAGAAMAAAAFAP7/AAAFAAIAAAAFAP//AAAFAAQAAAAEAP//AAAGAAIAAAAEAAAAAAAFAAQAAAADAAAAAAADAAQAAAADAP//AAAHAAIAAAACAP//AAADAAQAAAAGAP3/AAACAAEAAAD///n/AAABAAEAAAAAAPn/AAABAAEAAAABAPn/AAABAAEAAAA=")
 tile_set = ExtResource("4_i3iyq")
-script = ExtResource("16_tbesv")
+script = SubResource("CSharpScript_tbesv")
+tile = null
+layer = null
 island = NodePath("../..")
 
 [node name="Decoration" type="TileMapLayer" parent="Tilemaps"]
@@ -286,7 +337,7 @@ island = NodePath("../../..")
 z_index = -1
 tile_map_data = PackedByteArray("AAD8/wIAAAAFAAIAAAD9/wIAAAABAAIAAAD+/wIAAAADAAIAAAD7/wIAAAAEAAIAAAD6/wIAAAAGAAMAAAD6/wEAAAAFAAMAAAD6/wAAAAAFAAMAAAD6////AAAGAAIAAAD7////AAAFAAQAAAD7//7/AAAGAAIAAAD8//7/AAAEAAQAAAD9//7/AAAEAAQAAAD+//7/AAAHAAIAAAD+////AAADAAMAAAD+/wAAAAADAAQAAAD+/wEAAAABAAIAAAD//wAAAAAHAAIAAAD//wEAAAADAAMAAAD//wIAAAAHAAMAAAD9/wEAAAABAAIAAAD8/wEAAAABAAIAAAD7/wEAAAABAAIAAAD7/wAAAAABAAIAAAD8/wAAAAAAAAAAAAD9/wAAAAABAAIAAAD9////AAABAAIAAAD8////AAABAAIAAAD8/wMAAAAGAAMAAAD+/wMAAAAHAAMAAAD9/wMAAAAIAAIAAAA=")
 tile_set = ExtResource("4_i3iyq")
-script = ExtResource("16_tbesv")
+script = SubResource("CSharpScript_tbesv")
 tile = 1
 layer = 1
 island = NodePath("../../../..")
@@ -307,13 +358,23 @@ visibility_layer = 0
 tile_map_data = PackedByteArray("AAD6/wUAAQACAAEAAAD7/wUAAQACAAEAAAD7/wQAAQACAAEAAAD6/wQAAQACAAEAAAD6/wMAAQACAAEAAAD7/wMAAQACAAEAAAD8/wMAAQACAAEAAAD9/wMAAQACAAEAAAD9/wIAAQACAAEAAAD8/wIAAQACAAEAAAD7/wIAAQACAAEAAAD6/wIAAQACAAEAAAD6/wEAAQACAAEAAAD7/wEAAQACAAEAAAD7/wAAAQACAAEAAAD6/wAAAQACAAEAAAD7////AQACAAEAAAD7//7/AQACAAEAAAD6////AQACAAEAAAD6//7/AQACAAEAAAD5////AQACAAEAAAD5//7/AQACAAEAAAD4////AQACAAEAAAD4/wAAAQACAAEAAAD4//7/AQACAAEAAAD4/wEAAQACAAEAAAD4/wIAAQACAAEAAAD5/wEAAQACAAEAAAD5/wAAAQACAAEAAAD5/wIAAQACAAEAAAD5/wMAAQACAAEAAAD4/wMAAQACAAEAAAD3/wMAAQACAAEAAAD2/wMAAQACAAEAAAD2/wIAAQACAAEAAAD3/wIAAQACAAEAAAD3/wEAAQACAAEAAAD2/wEAAQACAAEAAAD3/wAAAQACAAEAAAD2/wAAAQACAAEAAAD5/wYAAQACAAEAAAD6/wYAAQACAAEAAAD7/wYAAQACAAEAAAD8/wYAAQACAAEAAAD8/wUAAQACAAEAAAD8/wQAAQACAAEAAAD9/wQAAQACAAEAAAD+/wQAAQACAAEAAAD+/wMAAQACAAEAAAD+/wIAAQACAAEAAAD+/wEAAQACAAEAAAD9/wEAAQACAAEAAAD8/wEAAQACAAEAAAD8/wAAAQACAAEAAAD8////AQACAAEAAAD8//7/AQACAAEAAAD8//3/AQACAAEAAAD7//3/AQACAAEAAAD6//3/AQACAAEAAAD5//3/AQACAAEAAAD4//3/AQACAAEAAAD3//3/AQACAAEAAAD3//7/AQACAAEAAAD3////AQACAAEAAAD2////AQACAAEAAAD1////AQACAAEAAAD1/wAAAQACAAEAAAD1/wEAAQACAAEAAAD1/wIAAQACAAEAAAD1/wMAAQACAAEAAAD1/wQAAQACAAEAAAD2/wQAAQACAAEAAAD3/wQAAQACAAEAAAD4/wQAAQACAAEAAAD5/wQAAQACAAEAAAD5/wUAAQACAAEAAAA=")
 tile_set = ExtResource("2_naawu")
 
+[node name="Point" type="Node2D" parent="RemovableObjectsManager/Tilemaps/Object0"]
+position = Vector2(-104, 32)
+
+[node name="WorldMapIcon" type="Node2D" parent="RemovableObjectsManager/Tilemaps/Object0/Point" node_paths=PackedStringArray("parent")]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("17_7wf5s")
+icon_texture = ExtResource("18_0sl6k")
+parent = NodePath("..")
+scale = Vector2(2.5, 2.5)
+
 [node name="Object1" type="Node2D" parent="RemovableObjectsManager/Tilemaps"]
 
 [node name="Ground2" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1" node_paths=PackedStringArray("island")]
 z_index = -1
 tile_map_data = PackedByteArray("AAD9//z/AAAEAAIAAAD+//z/AAAHAAMAAAD+//v/AAADAAMAAAD+//r/AAADAAMAAAD+//n/AAAHAAIAAAD9//n/AAAEAAQAAAD8//n/AAAGAAIAAAD8//r/AAAFAAQAAAD7//r/AAAEAAQAAAD6//r/AAAGAAIAAAD6//v/AAAFAAMAAAD6//z/AAAFAAMAAAD6//3/AAAGAAMAAAD8//3/AAAHAAMAAAD8//z/AAADAAIAAAD7//3/AAAIAAIAAAD7//z/AAABAAIAAAD7//v/AAABAAIAAAD8//v/AAABAAIAAAD9//v/AAABAAIAAAD9//r/AAABAAIAAAA=")
 tile_set = ExtResource("4_i3iyq")
-script = ExtResource("16_tbesv")
+script = SubResource("CSharpScript_tbesv")
 tile = 1
 layer = 1
 island = NodePath("../../../..")
@@ -333,6 +394,16 @@ light_mask = 0
 visibility_layer = 0
 tile_map_data = PackedByteArray("AAD4//r/AQACAAEAAAD4//n/AQACAAEAAAD4//j/AQACAAEAAAD5//j/AQACAAEAAAD6//j/AQACAAEAAAD7//j/AQACAAEAAAD8//j/AQACAAEAAAD8//f/AQACAAEAAAD8//b/AQACAAEAAAD8//X/AQACAAEAAAD8//T/AQACAAEAAAD8//P/AQACAAEAAAD7//P/AQACAAEAAAD6//P/AQACAAEAAAD5//P/AQACAAEAAAD5//T/AQACAAEAAAD5//X/AQACAAEAAAD4//X/AQACAAEAAAD3//X/AQACAAEAAAD2//X/AQACAAEAAAD1//X/AQACAAEAAAD1//b/AQACAAEAAAD1//f/AQACAAEAAAD1//j/AQACAAEAAAD1//n/AQACAAEAAAD1//r/AQACAAEAAAD2//r/AQACAAEAAAD3//r/AQACAAEAAAD3//n/AQACAAEAAAD3//j/AQACAAEAAAD2//j/AQACAAEAAAD2//n/AQACAAEAAAD3//f/AQACAAEAAAD3//b/AQACAAEAAAD2//f/AQACAAEAAAD2//b/AQACAAEAAAD4//f/AQACAAEAAAD4//b/AQACAAEAAAD5//b/AQACAAEAAAD5//f/AQACAAEAAAD6//b/AQACAAEAAAD6//X/AQACAAEAAAD6//f/AQACAAEAAAD7//b/AQACAAEAAAD7//X/AQACAAEAAAD7//T/AQACAAEAAAD6//T/AQACAAEAAAD7//f/AQACAAEAAAA=")
 tile_set = ExtResource("2_naawu")
+
+[node name="Point" type="Node2D" parent="RemovableObjectsManager/Tilemaps/Object1"]
+position = Vector2(-112, -136)
+
+[node name="WorldMapIcon" type="Node2D" parent="RemovableObjectsManager/Tilemaps/Object1/Point" node_paths=PackedStringArray("parent")]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("17_7wf5s")
+icon_texture = ExtResource("18_0sl6k")
+parent = NodePath("..")
+scale = Vector2(2.5, 2.5)
 
 [node name="IslandMaxBorder" type="Node2D" parent="."]
 

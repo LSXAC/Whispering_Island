@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
-public partial class TestMap : CanvasLayer
+public partial class WorldMap : CanvasLayer
 {
     [Export]
     public Camera2D camera;
@@ -21,6 +21,9 @@ public partial class TestMap : CanvasLayer
     public Control icons_parent;
 
     public static Array<WorldMapIcon> connected_icons = new Array<WorldMapIcon>();
+    public PackedScene icon_object = ResourceLoader.Load<PackedScene>(
+        "res://Scenes/UI/icon_object.tscn"
+    );
 
     public override void _PhysicsProcess(double delta)
     {
@@ -36,6 +39,10 @@ public partial class TestMap : CanvasLayer
             camera.Enabled = true;
             icons_parent.Visible = true;
 
+            camera.GlobalPosition = IslandManager
+                .instance.GetNearestIsland(Player.instance.GlobalPosition)
+                .GlobalPosition;
+
             PlayerUI.instance.Visible = false;
             foreach (Control c in icons_parent.GetChildren())
                 c.QueueFree();
@@ -44,18 +51,23 @@ public partial class TestMap : CanvasLayer
             {
                 if (icon == null || IsInstanceValid(icon) == false)
                     continue;
-                TextureRect rect = new TextureRect();
-                rect.Texture = icon.icon_texture;
-                rect.Scale = new Vector2(3, 3);
-                rect.GlobalPosition =
+
+                IconObject icon_obj = icon_object.Instantiate<IconObject>();
+
+                icon_obj.texture.Texture = icon.icon_texture;
+                //icon_obj.Scale = icon.scale;
+                icon_obj.GlobalPosition =
                     icon.parent.GlobalPosition
                     - new Vector2(
                         icon.icon_texture.GetWidth() * 3 / 2,
                         icon.icon_texture.GetHeight() * 3 / 2
                     );
-                icons_parent.AddChild(rect);
+                icons_parent.AddChild(icon_obj);
             }
         }
+        if (!Visible)
+            return;
+
         if (Input.IsActionJustPressed("Escape"))
         {
             if (GameMenu.IsThisWindow(this))

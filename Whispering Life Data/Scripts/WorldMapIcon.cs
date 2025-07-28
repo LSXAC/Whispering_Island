@@ -12,13 +12,16 @@ public partial class WorldMapIcon : Node2D
     [Export]
     public Node2D parent;
 
+    [Export]
+    public Vector2 scale;
+
     public override void _Ready()
     {
-        TestMap.connected_icons.Add(this);
+        WorldMap.connected_icons.Add(this);
     }
 
     public void RemoveWorldIcon()
     {
-        TestMap.connected_icons.Remove(this);
+        WorldMap.connected_icons.Remove(this);
     }
 }
