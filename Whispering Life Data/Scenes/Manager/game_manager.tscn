@@ -770,7 +770,7 @@ offset_bottom = 40.0
 [connection signal="timeout" from="TimeManager/GameTimer" to="TimeManager" method="OnGameTimerTimeout"]
 [connection signal="toggled" from="World/WorldMap/VBoxContainer/CheckBox" to="World/WorldMap" method="OnCheckBoxRemoveableToggled"]
 [connection signal="toggled" from="World/WorldMap/VBoxContainer/CheckBox2" to="World/WorldMap" method="OnCheckBoxTradersToggled"]
-[connection signal="toggled" from="World/WorldMap/VBoxContainer/CheckBox3" to="World/WorldMap" method="OnCheckBoxTradersToggled"]
+[connection signal="toggled" from="World/WorldMap/VBoxContainer/CheckBox3" to="World/WorldMap" method="OnCheckBoxQuestToggled"]
 [connection signal="pressed" from="World/WorldMap/VBoxContainer/Button" to="World/WorldMap" method="OnClearFilters"]
 
 [editable path="IslandManager/MainIsland"]

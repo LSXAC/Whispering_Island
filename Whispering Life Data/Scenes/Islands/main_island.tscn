@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://bveoiwi14ha4g"]
+[gd_scene load_steps=45 format=4 uid="uid://bveoiwi14ha4g"]
 
 [ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island.cs" id="1_sbvtb"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="2_naawu"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://eshgc8yqihmh" path="res://Scenes/World Objects/Mineable Objects/mineable_object_fibre.tscn" id="16_eltw0"]
 [ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://Scripts/WorldMapIcon.cs" id="17_7wf5s"]
 [ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe.png" id="18_0sl6k"]
+[ext_resource type="Texture2D" uid="uid://ce16w5jut6adl" path="res://Sprites/Icons/world_map_quest_icon.png" id="25_0sl6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cugrr"]
 size = Vector2(32, 32)
@@ -490,6 +491,17 @@ script = ExtResource("10_7bt86")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QuestSign/MouseArea"]
 position = Vector2(-20, -100)
 shape = SubResource("RectangleShape2D_oyyds")
+
+[node name="Point" type="Node2D" parent="QuestSign"]
+position = Vector2(-20, -60)
+
+[node name="WorldMapIcon" type="Node2D" parent="QuestSign/Point" node_paths=PackedStringArray("parent")]
+scale = Vector2(3, 3)
+script = ExtResource("17_7wf5s")
+icon_texture = ExtResource("25_0sl6k")
+icon_type = 3
+parent = NodePath("..")
+scale = Vector2(3, 3)
 
 [node name="IslandObjectSaveManager" type="Node2D" parent="."]
 y_sort_enabled = true

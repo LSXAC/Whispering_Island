@@ -70,12 +70,7 @@ public partial class WorldMap : CanvasLayer
                 icon_obj.texture.Texture = icon.icon_texture;
                 icon_obj.icon_type = icon.icon_type;
                 //icon_obj.Scale = icon.scale;
-                icon_obj.GlobalPosition =
-                    icon.parent.GlobalPosition
-                    - new Vector2(
-                        icon.icon_texture.GetWidth() * 3 / 2,
-                        icon.icon_texture.GetHeight() * 3 / 2
-                    );
+                icon_obj.GlobalPosition = icon.parent.GlobalPosition - new Vector2(32, 32);
                 icons_parent.AddChild(icon_obj);
             }
         }
