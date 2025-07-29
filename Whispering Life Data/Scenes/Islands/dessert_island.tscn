@@ -366,6 +366,7 @@ position = Vector2(72, -120)
 scale = Vector2(2.5, 2.5)
 script = ExtResource("18_bgudc")
 icon_texture = ExtResource("19_ub2wh")
+icon_type = 1
 parent = NodePath("..")
 scale = Vector2(2.5, 2.5)
 
@@ -403,6 +404,7 @@ position = Vector2(120, 64)
 scale = Vector2(2.5, 2.5)
 script = ExtResource("18_bgudc")
 icon_texture = ExtResource("19_ub2wh")
+icon_type = 1
 parent = NodePath("..")
 scale = Vector2(2.5, 2.5)
 
@@ -439,5 +441,6 @@ position = Vector2(-96, 112)
 scale = Vector2(2.5, 2.5)
 script = ExtResource("18_bgudc")
 icon_texture = ExtResource("19_ub2wh")
+icon_type = 1
 parent = NodePath("..")
 scale = Vector2(2.5, 2.5)

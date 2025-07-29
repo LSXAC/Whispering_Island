@@ -7,6 +7,9 @@ public partial class WorldMapIcon : Node2D
     public Texture2D icon_texture;
 
     [Export]
+    public WorldMap.WorldMapIconType icon_type = WorldMap.WorldMapIconType.NONE;
+
+    [Export]
     public string tooltip_text;
 
     [Export]

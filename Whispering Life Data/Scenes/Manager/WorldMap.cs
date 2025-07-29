@@ -20,6 +20,19 @@ public partial class WorldMap : CanvasLayer
     [Export]
     public Control icons_parent;
 
+    [Export]
+    public CheckBox quest_checkbox,
+        traders_checkbox,
+        removeable_checkbox;
+
+    public enum WorldMapIconType
+    {
+        NONE,
+        REMOVEABLE,
+        TRADERS,
+        QUESTS,
+    }
+
     public static Array<WorldMapIcon> connected_icons = new Array<WorldMapIcon>();
     public PackedScene icon_object = ResourceLoader.Load<PackedScene>(
         "res://Scenes/UI/icon_object.tscn"
@@ -55,6 +68,7 @@ public partial class WorldMap : CanvasLayer
                 IconObject icon_obj = icon_object.Instantiate<IconObject>();
 
                 icon_obj.texture.Texture = icon.icon_texture;
+                icon_obj.icon_type = icon.icon_type;
                 //icon_obj.Scale = icon.scale;
                 icon_obj.GlobalPosition =
                     icon.parent.GlobalPosition
@@ -83,6 +97,50 @@ public partial class WorldMap : CanvasLayer
 
         ZoomCamera();
         Movement();
+    }
+
+    public void OnClearFilters()
+    {
+        foreach (IconObject icon in icons_parent.GetChildren())
+        {
+            icon.Visible = true;
+        }
+        quest_checkbox.ButtonPressed = true;
+        traders_checkbox.ButtonPressed = true;
+        removeable_checkbox.ButtonPressed = true;
+    }
+
+    public void OnCheckBoxQuestToggled(bool btn_ticked)
+    {
+        foreach (IconObject icon in icons_parent.GetChildren())
+        {
+            if (icon.icon_type == WorldMapIconType.QUESTS)
+            {
+                icon.Visible = btn_ticked;
+            }
+        }
+    }
+
+    public void OnCheckBoxRemoveableToggled(bool btn_ticked)
+    {
+        foreach (IconObject icon in icons_parent.GetChildren())
+        {
+            if (icon.icon_type == WorldMapIconType.REMOVEABLE)
+            {
+                icon.Visible = btn_ticked;
+            }
+        }
+    }
+
+    public void OnCheckBoxTradersToggled(bool btn_ticked)
+    {
+        foreach (IconObject icon in icons_parent.GetChildren())
+        {
+            if (icon.icon_type == WorldMapIconType.TRADERS)
+            {
+                icon.Visible = btn_ticked;
+            }
+        }
     }
 
     private void Movement()

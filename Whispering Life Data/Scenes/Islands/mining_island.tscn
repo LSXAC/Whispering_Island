@@ -384,6 +384,7 @@ position = Vector2(64, 80)
 scale = Vector2(2.5, 2.5)
 script = ExtResource("20_cew1n")
 icon_texture = ExtResource("21_mygv5")
+icon_type = 1
 parent = NodePath("..")
 scale = Vector2(2.5, 2.5)
 
@@ -421,5 +422,6 @@ position = Vector2(-56, -104)
 scale = Vector2(2.5, 2.5)
 script = ExtResource("20_cew1n")
 icon_texture = ExtResource("21_mygv5")
+icon_type = 1
 parent = NodePath("..")
 scale = Vector2(2.5, 2.5)

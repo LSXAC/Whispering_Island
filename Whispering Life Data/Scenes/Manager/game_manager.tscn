@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=60 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" uid="uid://sxd7avtys7n7" path="res://Scripts/Manager Scripts/GameManager.cs" id="1_2n0he"]
 [ext_resource type="Script" uid="uid://cwonaacplejxj" path="res://Scripts/Building Scripts/BuildingPlacer.cs" id="2_h8pdp"]
@@ -36,6 +36,10 @@
 [ext_resource type="Material" uid="uid://6f3r1pj1aoib" path="res://Tilesets/Clouds.tres" id="31_p85m3"]
 [ext_resource type="Script" uid="uid://cmmjy732ib0f2" path="res://Scenes/Manager/WorldMap.cs" id="35_gytje"]
 [ext_resource type="Texture2D" uid="uid://clui1muhyuoce" path="res://Sprites/MAP_OVERLAY.png" id="36_1xtv0"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="38_irdkv"]
+[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="39_sw2xm"]
+[ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/UI Scripts/TranslationButton.cs" id="40_uv8n6"]
+[ext_resource type="Script" uid="uid://dlnqgvorydc7m" path="res://Scripts/UI Scripts/TranslationCheckBox.cs" id="41_4xc4d"]
 [ext_resource type="Texture2D" uid="uid://wyobtxm8epgl" path="res://Sprites/Icons/world_compass.png" id="41_irdkv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1xtv0"]
@@ -644,13 +648,16 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="WorldMap" type="CanvasLayer" parent="World" node_paths=PackedStringArray("camera", "icons_parent")]
+[node name="WorldMap" type="CanvasLayer" parent="World" node_paths=PackedStringArray("camera", "icons_parent", "quest_checkbox", "traders_checkbox", "removeable_checkbox")]
 visible = false
 script = ExtResource("35_gytje")
 camera = NodePath("Camera2D")
 min_camera_zoom = 0.7
 speed = 8.0
 icons_parent = NodePath("../WorldIcons/Icons")
+quest_checkbox = NodePath("VBoxContainer/CheckBox3")
+traders_checkbox = NodePath("VBoxContainer/CheckBox2")
+removeable_checkbox = NodePath("VBoxContainer/CheckBox")
 
 [node name="ColorRect" type="ColorRect" parent="World/WorldMap"]
 anchors_preset = 15
@@ -689,6 +696,64 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 texture = ExtResource("41_irdkv")
 
+[node name="VBoxContainer" type="VBoxContainer" parent="World/WorldMap"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -63.0
+offset_top = 23.0
+offset_right = -23.0
+offset_bottom = 63.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="World/WorldMap/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("38_irdkv")
+theme_override_font_sizes/font_size = 14
+text = "World Filter"
+script = ExtResource("39_sw2xm")
+label_translation_string = "WORLD_MAP_WORLD_FILTER"
+
+[node name="CheckBox" type="CheckBox" parent="World/WorldMap/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("38_irdkv")
+theme_override_font_sizes/font_size = 12
+button_pressed = true
+text = "Removeable"
+script = ExtResource("41_4xc4d")
+label_translation_string = "WORLD_MAP_REMOVEABLE"
+
+[node name="CheckBox2" type="CheckBox" parent="World/WorldMap/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("38_irdkv")
+theme_override_font_sizes/font_size = 12
+button_pressed = true
+text = "Traders"
+script = ExtResource("41_4xc4d")
+label_translation_string = "WORLD_MAP_TRADER"
+
+[node name="CheckBox3" type="CheckBox" parent="World/WorldMap/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("38_irdkv")
+theme_override_font_sizes/font_size = 12
+button_pressed = true
+text = "Quests"
+script = ExtResource("41_4xc4d")
+label_translation_string = "WORLD_MAP_QUESTS"
+
+[node name="Button" type="Button" parent="World/WorldMap/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("38_irdkv")
+theme_override_font_sizes/font_size = 12
+text = "Clear Filter"
+script = ExtResource("40_uv8n6")
+label_translation_string = "WORLD_MAP_CLEAR_FILTER"
+
 [node name="WorldIcons" type="CanvasLayer" parent="World"]
 follow_viewport_enabled = true
 
@@ -703,6 +768,10 @@ offset_bottom = 40.0
 [connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
 [connection signal="timeout" from="GlobalAnimationTimer" to="GlobalAnimationTimer" method="OnAnimationGlobalTimerTimeout"]
 [connection signal="timeout" from="TimeManager/GameTimer" to="TimeManager" method="OnGameTimerTimeout"]
+[connection signal="toggled" from="World/WorldMap/VBoxContainer/CheckBox" to="World/WorldMap" method="OnCheckBoxRemoveableToggled"]
+[connection signal="toggled" from="World/WorldMap/VBoxContainer/CheckBox2" to="World/WorldMap" method="OnCheckBoxTradersToggled"]
+[connection signal="toggled" from="World/WorldMap/VBoxContainer/CheckBox3" to="World/WorldMap" method="OnCheckBoxTradersToggled"]
+[connection signal="pressed" from="World/WorldMap/VBoxContainer/Button" to="World/WorldMap" method="OnClearFilters"]
 
 [editable path="IslandManager/MainIsland"]
 [editable path="BuildingMenu"]

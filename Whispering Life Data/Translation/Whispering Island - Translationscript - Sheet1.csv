@@ -13,26 +13,26 @@ SETTINGS_SFX_VOLUME,SFX Volume,SFX Lautstärke
 SETTINGS_MUSIC_VOLUME,Music Volume,Musik Lautstärke
 SETTINGS_HAVE_SAVED,Don't forget to save!,Vergiss nicht zu speichern!
 SETTINGS_WINDOW_LABEL,Window Mode,Fenstermodus
-,,
-,,
-,,
 GAMEMENU_DESTROY_MENU,Destroy Window,Vernichtungsfenster
+GAMEMENU_WORLD_MAP,World Map,Weltkarte
+,,
+,,
 DESTROY_MENU_TITLE,Destroy this object.,Objekt zerstören.
 DESTROY_MENU_DESCRIPTION,Do you really want to destroy this object? You are not able to restore this object in the future.,Möchtest du dieses Objekt wirklich zerstören? Du kannst es in der Zukunft nicht rückgängig machen.
 DESTROY_MENU_BUTTON,Destroy Object,Objekt zerstören
+,,
+,,
 GAMEMENU_FURNACE,> Furnace,> Ofen
 GAMEMENU_CHEST,> Chest,> Kiste
 GAMEMENU_RESEARCH_TABLE,> Research Table,> Forschungstisch
 GAMEMENU_QUEST_MENU,> Quest Overview,> Aufgabenübersicht
 GAMEMENU_TRASHCHEST,> Trash Chest,> Müll Kiste
 ,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
+WORLD_MAP_WORLD_FILTER,World Filter,Weltfilter
+WORLD_MAP_CLEAR_FILTER,Clear Filter,Filter entfernen
+WORLD_MAP_REMOVEABLE,Removeable,Entfernbar
+WORLD_MAP_TRADER,Traders,Händler
+WORLD_MAP_QUESTS,Quests,Aufgaben
 ,,
 ,,
 ,,
@@ -54,8 +54,6 @@ PLAYERUI_WEAK_TYPE_LEVEL,The Tool Level is to weak.,Das Werkzeuglevel ist zu sch
 PLAYERUI_WRONG_TOOL,Wrong Tool!,Falsches Werkzeug!
 PLAYERUI_INVENTORY_BUTTON,Inventory,Inventar
 PLAYERUI_BUILDINGMENU_BUTTON,Building Menu,Baumenü
-,,
-,,
 ,,
 EQUIPMENT_SLOT_HEAD,Head,Kopf
 EQUIPMENT_SLOT_CHEST,Chest,Brust
@@ -126,8 +124,8 @@ BUILDING_RAIL,Rail,Gleise
 BUILDING_RAIL_DESC,"A Minecart can be placed on top, to Transports resources","Eine Lohre kann auf die Gleise gesetzt werden, um Ressourcen zu transportieren"
 BUILDING_MINECART,Minecart,Lohre
 BUILDING_MINECART_DESC,Can be placed on top of rails and store resources,Kann auf Gleisen gesetzt werden und speichert Ressourcen
-BUILDING_RAIL_STATION,Railstation,Bahnhof
-BUILDING_RAIL_STATION_DESC,Can import/export resources from minecart. Can also export/import to belts,Kann Importieren/Exportieren Ressourcen von einer Lohre. Kann auch Importieren/Exportieren zu Fließbändern
+,,
+,,
 ,,
 ,,
 WORLD_RESOURCE_STONE,Stone,Stein
@@ -187,8 +185,8 @@ BUILDING_CHEST_PUFFER,Chest Puffer,Kistenzwischenlager
 BUILDING_CHEST_PUFFER_DESC,"Collects Items from one side, stores it and gives it to the next belt.","Sammelt Gegenstände von einer Seite, lagert diese und gibt diese auf ein anderes Belt aus."
 BUILDING_RAIL_STATION,Rail Station,Bahnstation
 BUILDING_RAIL_STATION_DESC,A Station that imports or exports resources from Train,Eine Station die Ressourcen vom Zug importiert oder exportiert.
-,,
-,,
+BUILDING_OUTDOOR_LAMP,Outdoor Lamp,Außenlampe
+BUILDING_OUTDOOR_LAMP_DESC,Lights the enviourment up,Erleuchtet die Umgebung
 ,,
 ,,
 ,,
@@ -198,6 +196,8 @@ QUEST_ACCEPT_PANEL_HALF_TIME_TITLE,> Half Time - Punishment,> Halbzeit - Strafe
 QUEST_ACCEPT_PANEL_HALF_TIME_DESC,The Next Quest will only have half of the Time to complete,Für die nächste Aufgabe wird nur die halbe Zeit zur Verfügung stehen
 QUEST_ACCEPT_PANEL_DOUBLE_AMOUNT_TITLE,> Double Amount - Punishment,> Doppelte Menge - Strafe
 QUEST_ACCEPT_PANEL_DOUBLE_AMOUNT_DESC,The Next Quest will have the doubled amount of resources to deliver.,Für die nächste Aufgabe musst du die doppelte Anzahl an Ressourcen abgeben.
+QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_TITLE,> Island - Punishment,> Insel - Strafe
+QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_DESC,You will lose the last build Island,Du wirst die letzte gebaute Insel verlieren.
 QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_TITLE,> Island - Punishment,> Insel - Strafe
 QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_DESC,You will lose the last build Island,Du wirst die letzte gebaute Insel verlieren.
 ,,
