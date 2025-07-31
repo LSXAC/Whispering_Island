@@ -66,9 +66,13 @@ public partial class QuestMiniPanel : PanelContainer
             hbox_items[i].Visible = true;
 
             if (QuestManager.next_quest_is_doubled_items)
-                hbox_items[i].InitItemUI("", item.amount * 2, item.info.texture);
+            {
+                Item item2 = item.Clone();
+                item2.amount = item.amount * 2;
+                hbox_items[i].InitItemUI(item2);
+            }
             else
-                hbox_items[i].InitItemUI("", item.amount, item.info.texture);
+                hbox_items[i].InitItemUI(item);
 
             hbox_items[i].ChangeColor(h_box_item.colorType.white);
 

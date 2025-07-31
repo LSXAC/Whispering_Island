@@ -57,12 +57,37 @@ public partial class Inventory : SlotUpdater
         MYSTIC_OAK_SEED,
         MYSTIC_FIBRE_SEED,
         FIBRE_SEED,
-        OAK_WOOD
+        OAK_WOOD,
+        GEAR,
+        MACHINE_COMPONENT,
+        TRANSPORT_COMPONENT,
+        COAL,
+        SMELT_COMPONENT,
+        GROWTH_COMPONENT,
+        SOIL
     }
 
     public override void _Ready()
     {
         inventory_items = new ItemSave[slot_amount];
+    }
+
+    public static string GetToolTipItem(Item item)
+    {
+        string result = "";
+        if (item?.info == null)
+            return "";
+        result = TranslationServer.Translate(item.info.name.ToString()) + "\n";
+        result += TranslationServer.Translate(item.info.description.ToString()) + "\n";
+        result += "\n";
+        foreach (ItemAttributeBase item_attribute in item.info.attributes)
+        {
+            if (item_attribute == null)
+                continue;
+
+            result += item_attribute.GetNameOfAttribute();
+        }
+        return result;
     }
 
     public void SetSlots()

@@ -98,7 +98,7 @@ public partial class ItemRowManager : HBoxContainer
     private h_box_item CreateHBoxItem(Item item)
     {
         h_box_item hbi = (h_box_item)h_box_item.Instantiate();
-        hbi.InitItemUI("", item.amount, item.info.texture);
+        hbi.InitItemUI(item);
         hbi.ChangeColor(global::h_box_item.colorType.red);
         return hbi;
     }

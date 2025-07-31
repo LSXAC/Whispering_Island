@@ -25,7 +25,7 @@ public partial class h_box_item : HBoxContainer
         item_texture = GetNode<VBoxContainer>("VBoxContainer").GetNode<TextureRect>("ItemTexture");
     }
 
-    public void InitItemUI(string item_name, int amount, Texture2D texture)
+    public void InitItemUI(Item item)
     {
         if (item_label == null)
             item_label = GetNode<Label>("ItemLabel");
@@ -33,8 +33,9 @@ public partial class h_box_item : HBoxContainer
             item_texture = GetNode<VBoxContainer>("VBoxContainer")
                 .GetNode<TextureRect>("ItemTexture");
 
-        item_label.Text = TranslationServer.Translate(item_name) + " " + amount + "x";
-        item_texture.Texture = texture;
+        item_label.Text = " " + item.amount + "x";
+        item_texture.Texture = item.info.texture;
+        item_texture.TooltipText = Inventory.GetToolTipItem(item);
     }
 
     public void ChangeColor(colorType type)

@@ -197,6 +197,7 @@ public partial class Database : Node
         FIBRE,
         BELT,
         RAIL_BRIDGE,
-        OUTDOOR_LAMP
+        OUTDOOR_LAMP,
+        COAL_ORE
     }
 }

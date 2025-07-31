@@ -381,13 +381,6 @@ description = "...."
 [node name="Tree7" parent="IslandManager/MainIsland/IslandObjectSaveManager" index="7"]
 position = Vector2(-7, -79)
 
-[node name="QuestManager" type="Node2D" parent="." node_paths=PackedStringArray("quest_timer")]
-script = ExtResource("13_irdkv")
-quests = Array[Object]([ExtResource("14_sw2xm"), ExtResource("10_h8pdp"), ExtResource("11_lj4ef"), ExtResource("12_wajns"), ExtResource("13_f280c"), ExtResource("14_p85m3"), ExtResource("15_5qlke"), ExtResource("16_gytje"), ExtResource("17_1xtv0")])
-quest_timer = NodePath("QuestTimer")
-
-[node name="QuestTimer" type="Timer" parent="QuestManager"]
-
 [node name="CutsceneCamera" type="Camera2D" parent="."]
 position = Vector2(32, -160)
 enabled = false
@@ -568,6 +561,13 @@ hbox_category = []
 
 [node name="QuestMenu" parent="." instance=ExtResource("11_5h8gv")]
 visible = false
+
+[node name="QuestManager" type="Node2D" parent="." node_paths=PackedStringArray("quest_timer")]
+script = ExtResource("13_irdkv")
+quests = Array[Object]([ExtResource("14_sw2xm"), ExtResource("10_h8pdp"), ExtResource("11_lj4ef"), ExtResource("12_wajns"), ExtResource("13_f280c"), ExtResource("14_p85m3"), ExtResource("15_5qlke"), ExtResource("16_gytje"), ExtResource("17_1xtv0")])
+quest_timer = NodePath("QuestTimer")
+
+[node name="QuestTimer" type="Timer" parent="QuestManager"]
 
 [node name="AtmosphereAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("27_73301")

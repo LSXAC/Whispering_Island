@@ -1961,11 +1961,12 @@ grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 0
-offset_left = 226.0
-offset_top = 20.0
-offset_right = 547.0
-offset_bottom = 260.0
+offset_left = 189.0
+offset_top = 18.0
+offset_right = 539.0
+offset_bottom = 258.0
 
 [node name="PanelContainer" type="PanelContainer" parent="Background/CraftingTab/VBoxContainer"]
 layout_mode = 2
@@ -2068,11 +2069,25 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuAgriculture/ScrollContainer"]
 layout_mode = 2
 
+[node name="CraftingMenuMachineParts" type="PanelContainer" parent="Background/CraftingTab/VBoxContainer" node_paths=PackedStringArray("parent")]
+visible = false
+layout_mode = 2
+script = ExtResource("4_3cwxu")
+parent = NodePath("ScrollContainer/VBoxContainer")
+category = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuMachineParts"]
+custom_minimum_size = Vector2(320, 220)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuMachineParts/ScrollContainer"]
+layout_mode = 2
+
 [node name="CategoryPanel" type="PanelContainer" parent="Background/CraftingTab"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 21.0
-offset_right = 217.0
+offset_right = 180.0
 offset_bottom = 260.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tibut")
 
@@ -2084,7 +2099,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 12
 text = "Basic"
 script = ExtResource("3_pwamf")
 label_translation_string = "CRAFTING_MENU_GENERAL"
@@ -2094,7 +2109,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 12
 text = "Tools"
 script = ExtResource("3_pwamf")
 label_translation_string = "CRAFTING_MENU_TOOLS"
@@ -2104,7 +2119,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 12
 text = "Toolparts"
 script = ExtResource("3_pwamf")
 label_translation_string = "CRAFTING_MENU_TOOLPARTS"
@@ -2114,7 +2129,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 12
 text = "CRAFTING_MENU_ARMOR"
 script = ExtResource("3_pwamf")
 label_translation_string = "CRAFTING_MENU_ARMOR"
@@ -2124,27 +2139,27 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 12
 text = "CRAFTING_MENU_ARMOR"
 script = ExtResource("3_pwamf")
 label_translation_string = "CRAFTING_MENU_AGRICULTURE"
 
-[node name="Button6" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer"]
+[node name="MachineButton" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
-disabled = true
-text = "---"
+theme_override_font_sizes/font_size = 12
+text = "Machine Parts"
 script = ExtResource("3_pwamf")
+label_translation_string = "CRAFTING_MENU_MACHINE_PARTS"
 
 [node name="Button7" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 12
 disabled = true
 text = "---"
 script = ExtResource("3_pwamf")
@@ -2154,7 +2169,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 12
 disabled = true
 text = "---"
 script = ExtResource("3_pwamf")
@@ -2164,7 +2179,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 12
 disabled = true
 text = "---"
 script = ExtResource("3_pwamf")
@@ -3729,6 +3744,7 @@ label_translation_string = "DESTROY_MENU_BUTTON"
 [connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/ToolspartsButton" to="." method="OnCraftingCategoryButton" binds= [2]]
 [connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/ArmorButton" to="." method="OnCraftingCategoryButton" binds= [3]]
 [connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/AgricultureButton" to="." method="OnCraftingCategoryButton" binds= [4]]
+[connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/MachineButton" to="." method="OnCraftingCategoryButton" binds= [5]]
 [connection signal="pressed" from="Background/StatsTab/HBoxContainer/SaveGameButton" to="." method="OnSaveButton"]
 [connection signal="pressed" from="Background/StatsTab/HBoxContainer/LoadGameButton" to="." method="OnLoadButton"]
 [connection signal="visibility_changed" from="Background/HelpTab" to="Background/HelpTab" method="OnVisiblityChange"]

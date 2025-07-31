@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://frwl0u2a1cwh"]
+[gd_scene load_steps=30 format=4 uid="uid://frwl0u2a1cwh"]
 
 [ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island.cs" id="1_tvb31"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="2_v84e8"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c0l4m6jxp7pau" path="res://Scenes/World Objects/Mineable Objects/mineable_object_iron_ore.tscn" id="10_j5waq"]
 [ext_resource type="PackedScene" uid="uid://cnafp0o2cwupt" path="res://Scenes/World Objects/Mineable Objects/mineable_object_copper_ore.tscn" id="11_v8vr1"]
 [ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Scenes/World Objects/Mineable Objects/mineable_object_stone.tscn" id="12_0bqga"]
+[ext_resource type="PackedScene" uid="uid://cu7twrrsfeup4" path="res://Scenes/World Objects/Mineable Objects/mineable_object_coal_ore.tscn" id="13_mygv5"]
 [ext_resource type="Script" uid="uid://d24qfaj5tmqyv" path="res://Scenes/Islands/RemovableObjectsManager.cs" id="13_wdsc0"]
 [ext_resource type="PackedScene" uid="uid://c1d1aayf8y2d0" path="res://Scenes/World Objects/remove_sign.tscn" id="14_qt6jd"]
 [ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Resource Meta/Items/item_info_stone_pickaxe.tres" id="15_cew1n"]
@@ -323,6 +324,24 @@ position = Vector2(-32, -168)
 
 [node name="Stone7" parent="IslandObjectSaveManager" instance=ExtResource("12_0bqga")]
 position = Vector2(96, -16)
+
+[node name="Coal_Ore" parent="IslandObjectSaveManager" instance=ExtResource("13_mygv5")]
+position = Vector2(-40, -136)
+
+[node name="Coal_Ore2" parent="IslandObjectSaveManager" instance=ExtResource("13_mygv5")]
+position = Vector2(-144, -88)
+
+[node name="Coal_Ore3" parent="IslandObjectSaveManager" instance=ExtResource("13_mygv5")]
+position = Vector2(128, 88)
+
+[node name="Coal_Ore4" parent="IslandObjectSaveManager" instance=ExtResource("13_mygv5")]
+position = Vector2(48, 136)
+
+[node name="Coal_Ore5" parent="IslandObjectSaveManager" instance=ExtResource("13_mygv5")]
+position = Vector2(-96, 128)
+
+[node name="Coal_Ore6" parent="IslandObjectSaveManager" instance=ExtResource("13_mygv5")]
+position = Vector2(-152, 88)
 
 [node name="RemovableObjectsManager" type="Node2D" parent="." node_paths=PackedStringArray("tilemap_parent", "sign_parent")]
 y_sort_enabled = true

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=7 format=3 uid="uid://be1nc8l8gn6il"]
+
+[ext_resource type="Resource" uid="uid://dwkycg546ofn2" path="res://Resource Meta/Items/Machine Items/item_info_gear.tres" id="1_73prl"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_g4ayo"]
+[ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Resource Meta/Items/item_info_wood_plank.tres" id="3_x2gxs"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="6_san4d"]
+
+[sub_resource type="Resource" id="Resource_h7nag"]
+script = ExtResource("2_g4ayo")
+info = ExtResource("1_73prl")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_fgffq"]
+script = ExtResource("2_g4ayo")
+info = ExtResource("3_x2gxs")
+amount = 4
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("6_san4d")
+required_items = Array[Object]([SubResource("Resource_fgffq")])
+category = 5
+output_item = SubResource("Resource_h7nag")
+unlock_requirements = null

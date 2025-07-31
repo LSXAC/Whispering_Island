@@ -207,6 +207,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="UpSign" parent="BridgePoints/Signs" node_paths=PackedStringArray("island") instance=ExtResource("2_wsc2u")]
+visible = false
 position = Vector2(13, -200)
 island = NodePath("../../..")
 dir = 1

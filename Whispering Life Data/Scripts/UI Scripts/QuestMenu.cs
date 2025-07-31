@@ -141,7 +141,7 @@ public partial class QuestMenu : CanvasLayer
             );
             parent.AddChild(c_label);
             item.amount = item.amount * multi;
-            c_label.InitItemUI(item.info.name, item.amount, item.info.texture);
+            c_label.InitItemUI(item);
 
             c_label.Alignment = BoxContainer.AlignmentMode.Center;
             if (iii == null)
