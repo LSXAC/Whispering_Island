@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 [resource]
 script = ExtResource("1_t7wrt")
 attributes = Array[Object]([SubResource("Resource_3ryys")])
-max_stackable_size = 50
+max_stackable_size = 250
 name = "SAND_STONE"
 id = 32
 description = "SAND_STONE_DESC"

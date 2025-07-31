@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 [resource]
 script = ExtResource("2_ijxgg")
 attributes = Array[Object]([SubResource("Resource_r82ro")])
-max_stackable_size = 50
+max_stackable_size = 250
 name = "FIBRE"
 id = 14
 description = "FIBRE_DESC"

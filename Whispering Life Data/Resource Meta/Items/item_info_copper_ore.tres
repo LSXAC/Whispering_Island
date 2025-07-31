@@ -32,7 +32,7 @@ metadata/_custom_type_script = "uid://doosgdjr0ddtl"
 [resource]
 script = ExtResource("1_5d0qr")
 attributes = Array[Object]([SubResource("Resource_1onh1"), SubResource("Resource_ulseh"), SubResource("Resource_djce8")])
-max_stackable_size = 50
+max_stackable_size = 250
 name = "COPPER_ORE"
 id = 9
 description = "COPPER_ORE_DESC"

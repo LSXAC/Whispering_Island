@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 [resource]
 script = ExtResource("1_jdahr")
 attributes = Array[Object]([SubResource("Resource_p5dji")])
-max_stackable_size = 50
+max_stackable_size = 250
 name = "CORN_SEED"
 id = 30
 description = "CORN_SEED_DESC"

@@ -39,7 +39,7 @@ metadata/_custom_type_script = "uid://doosgdjr0ddtl"
 [resource]
 script = ExtResource("1_imi7w")
 attributes = Array[Object]([SubResource("Resource_iym8u"), SubResource("Resource_yidfc"), SubResource("Resource_brp8s")])
-max_stackable_size = 50
+max_stackable_size = 250
 name = "SAND"
 id = 31
 description = "SAND_DESC"

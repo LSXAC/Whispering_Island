@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 [resource]
 script = ExtResource("2_ohbge")
 attributes = [SubResource("Resource_cqovr")]
-max_stackable_size = 50
+max_stackable_size = 250
 name = "CARROT"
 id = 27
 description = "CARROT_DESC"

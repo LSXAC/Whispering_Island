@@ -16,7 +16,7 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 [resource]
 script = ExtResource("3_gerlm")
 attributes = Array[Object]([SubResource("Resource_h2t5y"), SubResource("Resource_gjvhw")])
-max_stackable_size = 50
+max_stackable_size = 250
 name = "SOIL"
 id = 48
 description = "SOIL_DESC"

@@ -39,7 +39,7 @@ metadata/_custom_type_script = "uid://doosgdjr0ddtl"
 [resource]
 script = ExtResource("3_v2nwp")
 attributes = Array[Object]([SubResource("Resource_k7i7j"), SubResource("Resource_xqoq5"), SubResource("Resource_p7l0v")])
-max_stackable_size = 50
+max_stackable_size = 250
 name = "IRON_ORE"
 id = 7
 description = "IRON_ORE_DESC"

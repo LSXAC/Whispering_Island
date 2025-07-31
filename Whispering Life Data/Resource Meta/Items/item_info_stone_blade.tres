@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_lud8s")
 attributes = null
-max_stackable_size = 50
+max_stackable_size = 250
 name = "STONE_BLADE"
 id = 15
 description = "STONE_BLADE_DESC"

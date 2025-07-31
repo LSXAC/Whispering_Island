@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 [resource]
 script = ExtResource("2_x8qwc")
 attributes = Array[Object]([SubResource("Resource_eslbv")])
-max_stackable_size = 50
+max_stackable_size = 250
 name = "MYSTIC_WOOD"
 id = 13
 description = "MYSTIC_WOOD_DESC"

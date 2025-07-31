@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 [resource]
 script = ExtResource("1_6xtys")
 attributes = Array[Object]([SubResource("Resource_rsqbh")])
-max_stackable_size = 50
+max_stackable_size = 250
 name = "CORN"
 id = 29
 description = "CORN_DESC"

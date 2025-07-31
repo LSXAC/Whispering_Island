@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 [resource]
 script = ExtResource("1_iganl")
 attributes = Array[Object]([SubResource("Resource_xb0iv")])
-max_stackable_size = 50
+max_stackable_size = 250
 name = "MYST_FIBRE_SEED"
 id = 39
 description = "MYST_FIBRE_SEED_DESC"

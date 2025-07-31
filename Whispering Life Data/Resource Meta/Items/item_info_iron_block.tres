@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_8rtrt")
 attributes = Array[Object]([])
-max_stackable_size = 50
+max_stackable_size = 250
 name = "IRON_BLOCK"
 id = 23
 description = "IRON_BLOCK_DESC"

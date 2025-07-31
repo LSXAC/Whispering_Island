@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 [resource]
 script = ExtResource("1_gjxb7")
 attributes = Array[Object]([SubResource("Resource_aymev")])
-max_stackable_size = 50
+max_stackable_size = 250
 name = "MYSTIC_FIBRE"
 id = 12
 description = "MYSTIC_FIBRE_DESC"

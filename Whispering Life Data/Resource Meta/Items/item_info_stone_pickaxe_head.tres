@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 [resource]
 script = ExtResource("2_o8o4w")
 attributes = Array[Object]([SubResource("Resource_3j10c")])
-max_stackable_size = 50
+max_stackable_size = 250
 name = "STONE_PICKAXE_HEAD"
 id = 18
 description = "STONE_PICKAXE_HEAD_DESC"

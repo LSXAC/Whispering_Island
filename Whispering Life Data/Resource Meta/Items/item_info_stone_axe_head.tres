@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_dgxxr")
 attributes = null
-max_stackable_size = 50
+max_stackable_size = 250
 name = "STONE_AXE_HEAD"
 id = 17
 description = "STONE_AXE_HEAD_DESC"
