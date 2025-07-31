@@ -66,7 +66,10 @@ public partial class Inventory : SlotUpdater
         GROWTH_COMPONENT,
         SOIL,
         RESEARCH_COMPONENT,
-        LIGHT_COMPONENT
+        LIGHT_COMPONENT,
+        INVENTORY_COMPONENT,
+        DESTROY_COMPONENT,
+        SLEEP_COMPONENT
     }
 
     public override void _Ready()

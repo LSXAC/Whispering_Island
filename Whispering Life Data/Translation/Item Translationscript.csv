@@ -138,3 +138,9 @@ RESEARCH_COMPONENT,Research Component,Forschungskomponente
 RESEARCH_COMPONENT_DESC,Used as base resource for research Machines,Wird als Grundressource für Forschungsmaschinen verwendet.
 LIGHT_COMPONENT,Light Component,Lichtkomponente
 LIGHT_COMPONENT_DESC,Used as base resource for Light Machines,Wird als Grundressource für Lichtmaschinen verwendet.
+INVENTORY_COMPONENT,Inventory Component,Inventarkomponente
+INVENTORY_COMPONENT_DESC,Used as base resource for Machines with inventory.,Wird als Grundressource für Maschinen mit Inventar verwendet.
+DESTROY_COMPONENT,Destroy Component,Zerstörungskomponente
+DESTROY_COMPONENT_DESC,Used as base resource for Machines that destroy things.,"Wird als Grundressource für Maschinen verwendet, die Sachen zerstören."
+SLEEP_COMPONENT,Sleep Component,Schlafkomponente
+SLEEP_COMPONENT_DESC,Used as base resource for Machines that lets you sleep.,"Wird als Grundressource für Maschinen verwendet, die dich schlafen lassen."

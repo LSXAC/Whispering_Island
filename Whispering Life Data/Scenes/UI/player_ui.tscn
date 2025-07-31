@@ -606,20 +606,32 @@ script = ExtResource("7_vya4o")
 label_translation_string = "PLAYERUI_QUEST_OBJECTIV"
 
 [node name="Item1" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
-visible = false
 layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ItemTexture" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item1" index="0"]
+size_flags_horizontal = 4
 
 [node name="Item2" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
-visible = false
 layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ItemTexture" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item2" index="0"]
+size_flags_horizontal = 4
 
 [node name="Item3" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
-visible = false
 layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ItemTexture" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item3" index="0"]
+size_flags_horizontal = 4
 
 [node name="Item4" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
-visible = false
 layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ItemTexture" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item4" index="0"]
+size_flags_horizontal = 4
 
 [node name="TimeLabel" type="Label" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -628,6 +640,7 @@ theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_0pxjf")
 theme_override_font_sizes/font_size = 10
 text = "Time Left: Unknown"
+horizontal_alignment = 1
 
 [node name="EquipmentSelectBar" type="Container" parent="." node_paths=PackedStringArray("select_slots")]
 custom_minimum_size = Vector2(220, 65)
@@ -838,3 +851,8 @@ grow_vertical = 0
 [connection signal="pressed" from="QuestAcceptPanel/CenterContainer/VBoxContainer/ConfirmButton" to="QuestAcceptPanel" method="OnButton"]
 [connection signal="timeout" from="QuestAcceptPanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="button_up" from="GameOverPanel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButton"]
+
+[editable path="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item1"]
+[editable path="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item2"]
+[editable path="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item3"]
+[editable path="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item4"]

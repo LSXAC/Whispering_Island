@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using Godot;
 
-public partial class h_box_item : HBoxContainer
+public partial class h_box_item : VBoxContainer
 {
     public enum colorType
     {
@@ -22,7 +22,7 @@ public partial class h_box_item : HBoxContainer
     public override void _Ready()
     {
         item_label = GetNode<Label>("ItemLabel");
-        item_texture = GetNode<VBoxContainer>("VBoxContainer").GetNode<TextureRect>("ItemTexture");
+        item_texture = GetNode<TextureRect>("ItemTexture");
     }
 
     public void InitItemUI(Item item, bool with_name = false)
@@ -30,8 +30,7 @@ public partial class h_box_item : HBoxContainer
         if (item_label == null)
             item_label = GetNode<Label>("ItemLabel");
         if (item_texture == null)
-            item_texture = GetNode<VBoxContainer>("VBoxContainer")
-                .GetNode<TextureRect>("ItemTexture");
+            item_texture = GetNode<TextureRect>("ItemTexture");
 
         if (with_name)
             item_label.Text =
