@@ -120,3 +120,21 @@ FIBRE_SEED,Fibre Seeds,Fasernsamen
 FIBRE_SEED_DESC,A seed to plant fibre.,Ein Samen um Fasern anzupflanzen
 MYSTIC_OAK_SEED,Mystic Oak Tree Seeds,Mystische Eichenbaumsamen
 MYSTIC_OAK_SEED_DESC,A seed to plant mystic oak trees.,Ein Samen um mystische Eichenbäume anzupflanzen
+GEAR,Gear,Zahnrad
+GEAR_DESC,Used for Machines to build,Wird für Maschinen benötigt
+MACHINE_COMPONENT,Machine Component,Maschinenkomponente
+MACHINE_COMPONENT_DESC,Used as base Resource for Machines,Wird als Grundressource für Maschinen verwendet
+COAL,Coal,Kohle
+COAL_DESC,A ore to fuel machines,Ein Erz um Maschinen zu befeuern
+TRANSPORT_COMPONENT,Transport Component,Transportkomponente
+TRANSPORT_COMPONENT_DESC,Used as base resource for transport Machines,Wird als Grundressource für Transportmaschinen verwendet.
+SMELT_COMPONENT,Smelt Component,Schmelzkomponente
+SMELT_COMPONENT_DESC,Used as base resource for smelting Machines,Wird als Grundressource für Schmelzmaschinen verwendet.
+GROWTH_COMPONENT,Growth Component,Wachstumskomponente
+GROWTH_COMPONENT_DESC,Used as base resource for growing Machines,Wird als Grundressource für Gewächsmaschinen verwendet.
+SOIL,Soil,Ackererde
+SOIL_DESC,A resource used for quality planting,Eine Ressource für Qualitätspflanzen
+RESEARCH_COMPONENT,Research Component,Forschungskomponente
+RESEARCH_COMPONENT_DESC,Used as base resource for research Machines,Wird als Grundressource für Forschungsmaschinen verwendet.
+LIGHT_COMPONENT,Light Component,Lichtkomponente
+LIGHT_COMPONENT_DESC,Used as base resource for Light Machines,Wird als Grundressource für Lichtmaschinen verwendet.

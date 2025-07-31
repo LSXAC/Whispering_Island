@@ -21,4 +21,4 @@ name = "GROWTH_COMPONENT"
 id = 47
 description = "GROWTH_COMPONENT_DESC"
 texture = ExtResource("4_ty3vl")
-value = 10.0
+value = 20.0

@@ -21,4 +21,4 @@ name = "TRANSPORT_COMPONENT"
 id = 44
 description = "TRANSPORT_COMPONENT_DESC"
 texture = ExtResource("4_o61dj")
-value = 10.0
+value = 20.0

@@ -25,7 +25,7 @@ public partial class h_box_item : HBoxContainer
         item_texture = GetNode<VBoxContainer>("VBoxContainer").GetNode<TextureRect>("ItemTexture");
     }
 
-    public void InitItemUI(Item item)
+    public void InitItemUI(Item item, bool with_name = false)
     {
         if (item_label == null)
             item_label = GetNode<Label>("ItemLabel");
@@ -33,7 +33,11 @@ public partial class h_box_item : HBoxContainer
             item_texture = GetNode<VBoxContainer>("VBoxContainer")
                 .GetNode<TextureRect>("ItemTexture");
 
-        item_label.Text = " " + item.amount + "x";
+        if (with_name)
+            item_label.Text =
+                TranslationServer.Translate(item.info.name) + " - " + item.amount + "x";
+        else
+            item_label.Text = " " + item.amount + "x";
         item_texture.Texture = item.info.texture;
         item_texture.TooltipText = Inventory.GetToolTipItem(item);
     }

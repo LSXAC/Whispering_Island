@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c5itgpsv1ila4" path="res://Sprites/Spritesheets/Ores/coal_ore_Ore_Sheet_2.png" id="4_7cy14"]
 [ext_resource type="Texture2D" uid="uid://cbdqddyn3bcs0" path="res://Sprites/Spritesheets/Ores/coal_ore_Ore_Sheet_3.png" id="5_6l4u1"]
 [ext_resource type="Texture2D" uid="uid://bht2wucdqitc0" path="res://Sprites/Spritesheets/Ores/coal_ore_Ore.png" id="6_lhi5o"]
-[ext_resource type="Resource" uid="uid://l7tf257vet4l" path="res://Resource Meta/Items/item_info_iron_ore.tres" id="7_47k8k"]
+[ext_resource type="Resource" uid="uid://dgqnscgejksc" path="res://Resource Meta/Items/item_info_coal.tres" id="7_pmx4x"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="8_m4oc5"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="9_14wsq"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="10_dc3pb"]
@@ -18,7 +18,7 @@
 
 [sub_resource type="Resource" id="Resource_gbxlv"]
 script = ExtResource("8_m4oc5")
-info = ExtResource("7_47k8k")
+info = ExtResource("7_pmx4x")
 amount = 1
 metadata/_custom_type_script = "uid://cee63igbpybf"
 

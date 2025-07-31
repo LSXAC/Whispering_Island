@@ -50,7 +50,7 @@ public partial class CraftingMenu : PanelContainer
 
             itemRecipeUI irUI = (itemRecipeUI)recipe_slot.Instantiate();
             irUI.craftingMenu = this;
-            irUI.output_item_hbox.InitItemUI(recipe.output_item);
+            irUI.output_item_hbox.InitItemUI(recipe.output_item, true);
             parent.AddChild(irUI);
 
             //Get whole Inventory onces, to save performance, instead of checken for every item the

@@ -275,7 +275,7 @@ public partial class GameMenu : CanvasLayer
                     true;
                 crafting_tab
                     .GetChild(0)
-                    .GetNode<CraftingMenu>("CraftingMenuACraftingMenuMachinePartsgriculture")
+                    .GetNode<CraftingMenu>("CraftingMenuMachineParts")
                     .ReloadUIRecipes();
                 break;
         }

@@ -64,7 +64,9 @@ public partial class Inventory : SlotUpdater
         COAL,
         SMELT_COMPONENT,
         GROWTH_COMPONENT,
-        SOIL
+        SOIL,
+        RESEARCH_COMPONENT,
+        LIGHT_COMPONENT
     }
 
     public override void _Ready()

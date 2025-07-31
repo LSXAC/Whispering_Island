@@ -79,7 +79,7 @@ CRAFTING_MENU_TOPBAR_RESOURCE_NEEDED,Resources needed,Benötigte Ressourcen
 CRAFTING_MENU_ARMOR,Armor,Rüstung
 CRAFTING_MENU_AGRICULTURE,Agriculture,Landwirdschaft
 CRAFTING_MENU_NO_RECIPIES,There are currently no recipies unlocked.,Aktuell sind keine Rezepte freigeschaltet.
-,,
+CRAFTING_MENU_MACHINE_PARTS,Machine Parts,Maschinenteile
 SAVELOAD_MENU_SAVE_BUTTON,Save Game,Spielstand speichern
 SAVELOAD_MENU_LOAD_BUTTON,Load Game,Spielstand laden
 SAVELOAD_MENU_SAVE_LAST,Game was saved,Spiel wurde gespeichert vor
@@ -124,8 +124,8 @@ BUILDING_RAIL,Rail,Gleise
 BUILDING_RAIL_DESC,"A Minecart can be placed on top, to Transports resources","Eine Lohre kann auf die Gleise gesetzt werden, um Ressourcen zu transportieren"
 BUILDING_MINECART,Minecart,Lohre
 BUILDING_MINECART_DESC,Can be placed on top of rails and store resources,Kann auf Gleisen gesetzt werden und speichert Ressourcen
-,,
-,,
+BUILDING_RAIL_STATION,Railstation,Bahnhof
+BUILDING_RAIL_STATION_DESC,Can import/export resources from minecart. Can also export/import to belts,Kann Importieren/Exportieren Ressourcen von einer Lohre. Kann auch Importieren/Exportieren zu Fließbändern
 ,,
 ,,
 WORLD_RESOURCE_STONE,Stone,Stein
@@ -198,8 +198,8 @@ QUEST_ACCEPT_PANEL_DOUBLE_AMOUNT_TITLE,> Double Amount - Punishment,> Doppelte M
 QUEST_ACCEPT_PANEL_DOUBLE_AMOUNT_DESC,The Next Quest will have the doubled amount of resources to deliver.,Für die nächste Aufgabe musst du die doppelte Anzahl an Ressourcen abgeben.
 QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_TITLE,> Island - Punishment,> Insel - Strafe
 QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_DESC,You will lose the last build Island,Du wirst die letzte gebaute Insel verlieren.
-QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_TITLE,> Island - Punishment,> Insel - Strafe
-QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_DESC,You will lose the last build Island,Du wirst die letzte gebaute Insel verlieren.
+,,
+,,
 ,,
 ,,
 ,,
