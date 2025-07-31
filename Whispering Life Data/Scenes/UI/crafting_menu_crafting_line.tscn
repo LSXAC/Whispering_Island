@@ -18,8 +18,8 @@ output_item_hbox = NodePath("MarginContainer/VSplitContainer/HBoxToCraft/CC/HBox
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_right = 320.0
-offset_bottom = 42.0
+offset_right = 350.0
+offset_bottom = 46.0
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 7
 theme_override_constants/margin_right = 12
@@ -34,7 +34,6 @@ collapsed = true
 [node name="HBoxToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer"]
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
-alignment = 1
 
 [node name="CC" type="CenterContainer" parent="MarginContainer/VSplitContainer/HBoxToCraft"]
 layout_mode = 2
@@ -60,12 +59,33 @@ theme_override_font_sizes/font_size = 8
 text = "Sticks 4x"
 
 [node name="HBoxRequiereToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer"]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 alignment = 2
 
 [node name="CC_Requiere" type="HBoxContainer" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft"]
 layout_mode = 2
 script = ExtResource("5_xiqxj")
+
+[node name="HBoxItem" type="VBoxContainer" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("2_kx56k")
+
+[node name="ItemTexture" type="TextureRect" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere/HBoxItem"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("3_f48sm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemLabel" type="Label" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere/HBoxItem"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_7yc62")
+theme_override_font_sizes/font_size = 8
+text = "Sticks 4x"
 
 [node name="CraftButton" type="Button" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft"]
 custom_minimum_size = Vector2(32, 32)

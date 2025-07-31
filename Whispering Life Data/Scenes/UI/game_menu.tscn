@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=80 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://Scripts/UI Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -49,6 +49,7 @@
 [ext_resource type="Script" uid="uid://bypwrqe8vcas8" path="res://Scripts/UI Scripts/SaveLoadTab.cs" id="27_ku6dj"]
 [ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableAttribute.cs" id="29_7icba"]
 [ext_resource type="Script" uid="uid://b3t4ic6iwowss" path="res://Scripts/UI Scripts/SoundSlider.cs" id="37_vnnff"]
+[ext_resource type="PackedScene" uid="uid://b7l06c35ca42f" path="res://Scenes/UI/crafting_menu_crafting_line.tscn" id="43_sy28q"]
 [ext_resource type="Script" uid="uid://b6v18h1yxba4y" path="res://Scripts/UI Scripts/HelpTab.cs" id="56_74gou"]
 [ext_resource type="Texture2D" uid="uid://dy7kd53s6cn22" path="res://Sprites/Mouse.png" id="58_0k4ta"]
 [ext_resource type="Texture2D" uid="uid://cn8y6cj766xw0" path="res://Sprites/Items/Icons_3rd/Chest.png" id="59_aahk4"]
@@ -2012,6 +2013,9 @@ horizontal_scroll_mode = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuBasic/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ItemRecipe" parent="Background/CraftingTab/VBoxContainer/CraftingMenuBasic/ScrollContainer/VBoxContainer" instance=ExtResource("43_sy28q")]
+layout_mode = 2
 
 [node name="CraftingMenuTools" type="PanelContainer" parent="Background/CraftingTab/VBoxContainer" node_paths=PackedStringArray("parent")]
 visible = false
