@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=81 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://Scripts/UI Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -24,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://cd8pn6e2fwrpm" path="res://Scenes/UI/Research_Level_Tab.tscn" id="12_3k1qw"]
 [ext_resource type="Script" uid="uid://c80nhtlc3g8ga" path="res://Scripts/Item/ArmorAttribute.cs" id="15_jkil6"]
 [ext_resource type="Script" uid="uid://c1q35nbh8sb51" path="res://Scripts/UI Scripts/IslandMenu.cs" id="16_burxg"]
-[ext_resource type="Script" uid="uid://bu58bbjdvh5bk" path="res://Scripts/Player Scripts/PlayerStat.cs" id="16_djfqw"]
 [ext_resource type="Script" uid="uid://c7qu86gm6haea" path="res://Scripts/UI Scripts/CheatTab.cs" id="16_f2xax"]
 [ext_resource type="Script" uid="uid://btkxakelo3d1y" path="res://Scripts/UI Scripts/SettingsTab.cs" id="16_jv3kw"]
 [ext_resource type="Texture2D" uid="uid://syf34dx878d5" path="res://Sprites/Flaggs/US_FLAG.png" id="16_ldk1u"]
@@ -48,6 +47,8 @@
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="26_tl5yt"]
 [ext_resource type="Script" uid="uid://bypwrqe8vcas8" path="res://Scripts/UI Scripts/SaveLoadTab.cs" id="27_ku6dj"]
 [ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableAttribute.cs" id="29_7icba"]
+[ext_resource type="Script" uid="uid://dbau0pr5c35mu" path="res://Scenes/UI/SkillSlot.cs" id="31_1f68p"]
+[ext_resource type="Texture2D" uid="uid://raaamx5w323j" path="res://Sprites/currency_icon.png" id="31_sy28q"]
 [ext_resource type="Script" uid="uid://b3t4ic6iwowss" path="res://Scripts/UI Scripts/SoundSlider.cs" id="37_vnnff"]
 [ext_resource type="PackedScene" uid="uid://b7l06c35ca42f" path="res://Scenes/UI/crafting_menu_crafting_line.tscn" id="43_sy28q"]
 [ext_resource type="Script" uid="uid://b6v18h1yxba4y" path="res://Scripts/UI Scripts/HelpTab.cs" id="56_74gou"]
@@ -68,28 +69,28 @@
 script = ExtResource("15_jkil6")
 slot_type = 1
 durability = 100
-stats = Array[ExtResource("16_djfqw")]([])
+stats = []
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_8ll2j"]
 script = ExtResource("15_jkil6")
 slot_type = 2
 durability = 100
-stats = Array[ExtResource("16_djfqw")]([])
+stats = []
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_vb8f1"]
 script = ExtResource("15_jkil6")
 slot_type = 3
 durability = 100
-stats = Array[ExtResource("16_djfqw")]([])
+stats = []
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_bxu4c"]
 script = ExtResource("15_jkil6")
 slot_type = 4
 durability = 100
-stats = Array[ExtResource("16_djfqw")]([])
+stats = []
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_kimtu"]
@@ -1141,7 +1142,6 @@ script = ExtResource("26_tl5yt")
 label_translation_string = "RESEARCH_SAVE_INFO"
 
 [node name="Skilltree" type="ColorRect" parent="Background" node_paths=PackedStringArray("skillboxes", "research_points_label")]
-visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -1203,7 +1203,265 @@ theme_override_font_sizes/font_size = 16
 text = "Research Points: 1"
 horizontal_alignment = 1
 
+[node name="ColorRect" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 248)
+layout_mode = 2
+color = Color(0, 0, 0, 0)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "dwdwdwdw"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="SkillSlot" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.448067, 0.448067, 0.448067, 1)
+script = ExtResource("31_1f68p")
+
+[node name="Line2D" type="Line2D" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer/SkillSlot"]
+z_index = -1
+position = Vector2(35, 3)
+points = PackedVector2Array(-15, 18, 45, 68)
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer/SkillSlot"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 39.0
+offset_bottom = 39.0
+icon = ExtResource("31_sy28q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Placeholder" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.447059, 0.447059, 0.447059, 0)
+
+[node name="ColorRect2" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.448067, 0.448067, 0.448067, 1)
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer/ColorRect2"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 39.0
+offset_bottom = 39.0
+icon = ExtResource("31_sy28q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ColorRect3" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.448067, 0.448067, 0.448067, 1)
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer/ColorRect3"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 39.0
+offset_bottom = 39.0
+icon = ExtResource("31_sy28q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ColorRect4" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.448067, 0.448067, 0.448067, 1)
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer/ColorRect4"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 39.0
+offset_bottom = 39.0
+icon = ExtResource("31_sy28q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ColorRect5" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.448067, 0.448067, 0.448067, 1)
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer/ColorRect5"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 39.0
+offset_bottom = 39.0
+icon = ExtResource("31_sy28q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Placeholder" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.447059, 0.447059, 0.447059, 0)
+
+[node name="ColorRect2" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.448067, 0.448067, 0.448067, 1)
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2/ColorRect2"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 39.0
+offset_bottom = 39.0
+icon = ExtResource("31_sy28q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ColorRect3" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.448067, 0.448067, 0.448067, 1)
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2/ColorRect3"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 39.0
+offset_bottom = 39.0
+icon = ExtResource("31_sy28q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ColorRect4" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.448067, 0.448067, 0.448067, 1)
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2/ColorRect4"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 39.0
+offset_bottom = 39.0
+icon = ExtResource("31_sy28q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ColorRect5" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.448067, 0.448067, 0.448067, 1)
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2/ColorRect5"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 39.0
+offset_bottom = 39.0
+icon = ExtResource("31_sy28q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label2" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "dwdwdwdw"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ColorRect2" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.448067, 0.448067, 0.448067, 1)
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3/ColorRect2"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 39.0
+offset_bottom = 39.0
+icon = ExtResource("31_sy28q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ColorRect3" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.448067, 0.448067, 0.448067, 1)
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3/ColorRect3"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 39.0
+offset_bottom = 39.0
+icon = ExtResource("31_sy28q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ColorRect4" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.448067, 0.448067, 0.448067, 1)
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3/ColorRect4"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 39.0
+offset_bottom = 39.0
+icon = ExtResource("31_sy28q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ColorRect5" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.448067, 0.448067, 0.448067, 1)
+
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3/ColorRect5"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 39.0
+offset_bottom = 39.0
+icon = ExtResource("31_sy28q")
+icon_alignment = 1
+expand_icon = true
+
 [node name="SkillBox" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
@@ -1272,6 +1530,7 @@ theme_override_font_sizes/font_size = 16
 text = "Upgrade"
 
 [node name="SkillBox2" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
@@ -1341,6 +1600,7 @@ theme_override_font_sizes/font_size = 16
 text = "Upgrade"
 
 [node name="SkillBox3" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
