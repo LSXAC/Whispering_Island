@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://d382ft4naeqtp"]
+[gd_scene load_steps=122 format=3 uid="uid://d382ft4naeqtp"]
 
 [ext_resource type="Script" uid="uid://bm5n6v0k8up5x" path="res://Scripts/UI Scripts/MainMenu.cs" id="1_4fgt5"]
 [ext_resource type="VideoStream" uid="uid://n71dls10csc8" path="res://Videos/Last_Background.ogv" id="2_k33u3"]
@@ -117,6 +117,10 @@
 [ext_resource type="Resource" uid="uid://12ulsclh6l5e" path="res://Resource Meta/Items/Machine Items/item_info_soil.tres" id="107_d6ha0"]
 [ext_resource type="Resource" uid="uid://dwn06prfv5ios" path="res://Resource Meta/Items/Machine Items/item_info_research_component.tres" id="114_qgnha"]
 [ext_resource type="Resource" uid="uid://dkmmck8e6wv2v" path="res://Resource Meta/Items/Machine Items/item_info_light_component.tres" id="117_tb28b"]
+[ext_resource type="Resource" uid="uid://dgqnscgejksc" path="res://Resource Meta/Items/item_info_coal.tres" id="118_qisdu"]
+[ext_resource type="Resource" uid="uid://cwipvir80puex" path="res://Resource Meta/Items/Machine Items/item_info_inventory_component.tres" id="119_tb28b"]
+[ext_resource type="Resource" uid="uid://cvimpjdxil5uq" path="res://Resource Meta/Items/Machine Items/item_info_sleep_component.tres" id="120_n07kk"]
+[ext_resource type="Resource" uid="uid://j7d4ldttvjxk" path="res://Resource Meta/Items/Machine Items/item_info_destroy_component.tres" id="121_hl337"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("skip_tutorial", "intro_player", "background_player", "parent", "load_button")]
 layout_mode = 3
@@ -206,7 +210,7 @@ theme_override_font_sizes/normal_font_size = 22
 theme_override_font_sizes/bold_font_size = 22
 bbcode_enabled = true
 text = "[center][b][color=gold][wave]> Whispering Island <[/wave]
-[font_size=14px][color=white]Prototype [Ver 0.1.6]"
+[font_size=14px][color=white]Prototype [Ver 0.1.7]"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/Control/Panel"]
 custom_minimum_size = Vector2(200, 0)
@@ -349,7 +353,7 @@ script = ExtResource("9_lrjdf")
 building_menu_list_objects = Array[Object]([ExtResource("10_jwp00"), ExtResource("11_72xhr"), ExtResource("12_kwrrk"), ExtResource("13_ghmun"), ExtResource("14_k1ei0"), ExtResource("15_7c2jn"), ExtResource("16_h6xty"), ExtResource("17_f4xsv"), ExtResource("18_qksji"), ExtResource("19_puyxk"), ExtResource("20_1lq4d"), ExtResource("21_ipigi"), ExtResource("22_rbu7y"), ExtResource("23_5xltb"), ExtResource("24_d6ha0"), ExtResource("25_7fr2h"), ExtResource("26_37sxy"), ExtResource("27_pjd70"), ExtResource("28_brqoj"), ExtResource("29_0rrvn"), ExtResource("30_ttxcc"), ExtResource("31_qgnha"), ExtResource("32_i7cpp"), ExtResource("33_y2mbf"), ExtResource("34_su11i"), ExtResource("35_qisdu"), ExtResource("36_tb28b"), ExtResource("37_2xfbu"), ExtResource("38_n07kk"), ExtResource("39_hl337"), ExtResource("40_20xjl"), ExtResource("41_f4xsv"), ExtResource("42_1lq4d")])
 item_research_list = Array[Object]([ExtResource("41_pjxs1"), ExtResource("42_h6xty"), ExtResource("43_f4xsv"), ExtResource("44_qksji"), ExtResource("45_puyxk")])
 crafting_recipies_list = Array[Object]([ExtResource("42_jutee"), ExtResource("42_jutee"), ExtResource("42_jutee"), ExtResource("42_jutee"), ExtResource("43_3nnw4"), ExtResource("44_p6xq8"), ExtResource("45_nq3p2"), ExtResource("46_10iqw"), ExtResource("47_bw5ne"), ExtResource("48_idfr6"), ExtResource("49_jyt4h"), ExtResource("50_ngkbr"), ExtResource("51_byqsf"), ExtResource("52_ylju8"), ExtResource("53_mi2ay"), ExtResource("54_iwtl8"), ExtResource("61_ttxcc"), ExtResource("62_qgnha"), ExtResource("63_i7cpp"), ExtResource("64_y2mbf"), ExtResource("65_su11i"), ExtResource("66_qisdu"), ExtResource("67_su11i"), ExtResource("68_qisdu")])
-item_info_list = Array[Object]([ExtResource("55_2h6yx"), ExtResource("56_kwrrk"), ExtResource("56_ujkk6"), ExtResource("57_xu7jt"), ExtResource("58_hw2lr"), ExtResource("59_q3gfc"), ExtResource("60_bpmov"), ExtResource("61_abyj8"), ExtResource("62_b2ygq"), ExtResource("63_dyabb"), ExtResource("64_cioph"), ExtResource("65_l464e"), ExtResource("66_nqf7v"), ExtResource("67_owkwu"), ExtResource("68_hlew3"), ExtResource("69_mpody"), ExtResource("70_3jp71"), ExtResource("71_5kq1m"), ExtResource("72_csn1j"), ExtResource("73_psvxc"), ExtResource("74_mmttm"), ExtResource("75_7jn2h"), ExtResource("76_vm5m4"), ExtResource("77_bxob3"), ExtResource("78_rqmsr"), ExtResource("79_sip4i"), ExtResource("80_tpbcc"), ExtResource("81_c4pph"), ExtResource("82_g85o2"), ExtResource("83_aqsru"), ExtResource("84_64bwy"), ExtResource("85_f1k14"), ExtResource("86_euauc"), ExtResource("87_7fio7"), ExtResource("88_ikmmo"), ExtResource("89_wefja"), ExtResource("90_kkrb7"), ExtResource("91_743cm"), ExtResource("92_7glmp"), ExtResource("93_u8gx4"), ExtResource("95_ghmun"), ExtResource("102_ipigi"), ExtResource("103_rbu7y"), ExtResource("104_5xltb"), ExtResource("105_d6ha0"), ExtResource("106_7fr2h"), ExtResource("107_d6ha0"), ExtResource("114_qgnha"), ExtResource("117_tb28b")])
+item_info_list = Array[Object]([ExtResource("55_2h6yx"), ExtResource("56_kwrrk"), ExtResource("56_ujkk6"), ExtResource("57_xu7jt"), ExtResource("58_hw2lr"), ExtResource("59_q3gfc"), ExtResource("60_bpmov"), ExtResource("61_abyj8"), ExtResource("62_b2ygq"), ExtResource("63_dyabb"), ExtResource("64_cioph"), ExtResource("65_l464e"), ExtResource("66_nqf7v"), ExtResource("67_owkwu"), ExtResource("68_hlew3"), ExtResource("69_mpody"), ExtResource("70_3jp71"), ExtResource("71_5kq1m"), ExtResource("72_csn1j"), ExtResource("73_psvxc"), ExtResource("74_mmttm"), ExtResource("75_7jn2h"), ExtResource("76_vm5m4"), ExtResource("77_bxob3"), ExtResource("78_rqmsr"), ExtResource("79_sip4i"), ExtResource("80_tpbcc"), ExtResource("81_c4pph"), ExtResource("82_g85o2"), ExtResource("83_aqsru"), ExtResource("84_64bwy"), ExtResource("85_f1k14"), ExtResource("86_euauc"), ExtResource("87_7fio7"), ExtResource("88_ikmmo"), ExtResource("89_wefja"), ExtResource("90_kkrb7"), ExtResource("91_743cm"), ExtResource("92_7glmp"), ExtResource("93_u8gx4"), ExtResource("95_ghmun"), ExtResource("102_ipigi"), ExtResource("103_rbu7y"), ExtResource("104_5xltb"), ExtResource("105_d6ha0"), ExtResource("106_7fr2h"), ExtResource("107_d6ha0"), ExtResource("114_qgnha"), ExtResource("117_tb28b"), ExtResource("118_qisdu"), ExtResource("119_tb28b"), ExtResource("120_n07kk"), ExtResource("121_hl337")])
 
 [connection signal="visibility_changed" from="." to="." method="OnVisiblityChanged"]
 [connection signal="pressed" from="Menu/Control/Panel/VBoxContainer/HBoxContainer/NewGameButton" to="." method="OnNewGameButtoN"]

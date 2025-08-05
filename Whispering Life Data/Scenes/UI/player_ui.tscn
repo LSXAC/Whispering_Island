@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://ddo0v2qenmv6h" path="res://Sprites/Building_Frame.png" id="2_ktroc"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="3_0pxjf"]
 [ext_resource type="Texture2D" uid="uid://dfp34ytxtppg8" path="res://Sprites/Removing_Frame.png" id="3_7rm5b"]
-[ext_resource type="PackedScene" uid="uid://u4rbvbumuiua" path="res://Scenes/UI/h_box_item_menu_line.tscn" id="4_4w6kj"]
 [ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Scripts/Manager Scripts/ItemRowManager.cs" id="4_28ccb"]
 [ext_resource type="Script" uid="uid://b4njwqy0g4kis" path="res://Scripts/UI Scripts/QuestMiniPanel.cs" id="4_khv1d"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="7_vya4o"]
@@ -21,6 +20,7 @@
 [ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://Resource Meta/Menus/Theme_Slots.tres" id="17_33i7j"]
 [ext_resource type="Script" uid="uid://cowg1oi4t5ap8" path="res://Scripts/EquipmentSelectBar.cs" id="17_450ol"]
 [ext_resource type="Script" uid="uid://x5sh7dthimfr" path="res://Scripts/Inventory Scripts/Slot.cs" id="18_2bhlg"]
+[ext_resource type="PackedScene" uid="uid://bnf8yngk7oyy0" path="res://Scenes/UI/h_box_item_menu_line_horizontal.tscn" id="18_uwodk"]
 [ext_resource type="PackedScene" uid="uid://bovrg0u6tuo04" path="res://Scenes/UI/hover_menu.tscn" id="20_fdkbp"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_x1xeh"]
@@ -582,7 +582,7 @@ expand_mode = 4
 [node name="QuestMiniPanel" type="PanelContainer" parent="VBoxContainer" node_paths=PackedStringArray("hbox_items", "time_label")]
 layout_mode = 2
 script = ExtResource("4_khv1d")
-hbox_items = [NodePath("MarginContainer/VBoxContainer/Item1"), NodePath("MarginContainer/VBoxContainer/Item2"), NodePath("MarginContainer/VBoxContainer/Item3"), NodePath("MarginContainer/VBoxContainer/Item4")]
+hbox_items = [NodePath("MarginContainer/VBoxContainer/HBoxItem"), NodePath("MarginContainer/VBoxContainer/HBoxItem2"), NodePath("MarginContainer/VBoxContainer/HBoxItem3"), NodePath("MarginContainer/VBoxContainer/HBoxItem4")]
 time_label = NodePath("MarginContainer/VBoxContainer/TimeLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/QuestMiniPanel"]
@@ -605,33 +605,17 @@ horizontal_alignment = 1
 script = ExtResource("7_vya4o")
 label_translation_string = "PLAYERUI_QUEST_OBJECTIV"
 
-[node name="Item1" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+[node name="HBoxItem" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("18_uwodk")]
 layout_mode = 2
-size_flags_horizontal = 4
 
-[node name="ItemTexture" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item1" index="0"]
-size_flags_horizontal = 4
-
-[node name="Item2" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+[node name="HBoxItem2" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("18_uwodk")]
 layout_mode = 2
-size_flags_horizontal = 4
 
-[node name="ItemTexture" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item2" index="0"]
-size_flags_horizontal = 4
-
-[node name="Item3" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+[node name="HBoxItem3" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("18_uwodk")]
 layout_mode = 2
-size_flags_horizontal = 4
 
-[node name="ItemTexture" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item3" index="0"]
-size_flags_horizontal = 4
-
-[node name="Item4" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("4_4w6kj")]
+[node name="HBoxItem4" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("18_uwodk")]
 layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="ItemTexture" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item4" index="0"]
-size_flags_horizontal = 4
 
 [node name="TimeLabel" type="Label" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -851,8 +835,3 @@ grow_vertical = 0
 [connection signal="pressed" from="QuestAcceptPanel/CenterContainer/VBoxContainer/ConfirmButton" to="QuestAcceptPanel" method="OnButton"]
 [connection signal="timeout" from="QuestAcceptPanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="button_up" from="GameOverPanel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButton"]
-
-[editable path="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item1"]
-[editable path="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item2"]
-[editable path="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item3"]
-[editable path="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/Item4"]

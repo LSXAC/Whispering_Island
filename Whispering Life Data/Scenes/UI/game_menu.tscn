@@ -68,28 +68,28 @@
 script = ExtResource("15_jkil6")
 slot_type = 1
 durability = 100
-stats = []
+stats = Array[ExtResource("16_djfqw")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_8ll2j"]
 script = ExtResource("15_jkil6")
 slot_type = 2
 durability = 100
-stats = []
+stats = Array[ExtResource("16_djfqw")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_vb8f1"]
 script = ExtResource("15_jkil6")
 slot_type = 3
 durability = 100
-stats = []
+stats = Array[ExtResource("16_djfqw")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_bxu4c"]
 script = ExtResource("15_jkil6")
 slot_type = 4
 durability = 100
-stats = []
+stats = Array[ExtResource("16_djfqw")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_kimtu"]
@@ -99,7 +99,7 @@ tool_type = 3
 mining_level = 0
 slot_type = 5
 durability = 100
-stats = Array[ExtResource("16_djfqw")]([])
+stats = []
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
 [sub_resource type="Resource" id="Resource_68nsa"]
@@ -109,7 +109,7 @@ tool_type = 3
 mining_level = 0
 slot_type = 5
 durability = 100
-stats = Array[ExtResource("16_djfqw")]([])
+stats = []
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
 [sub_resource type="Resource" id="Resource_gix8t"]
@@ -119,7 +119,7 @@ tool_type = 3
 mining_level = 0
 slot_type = 5
 durability = 100
-stats = Array[ExtResource("16_djfqw")]([])
+stats = []
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
 [sub_resource type="Resource" id="Resource_tkty2"]
@@ -129,7 +129,7 @@ tool_type = 3
 mining_level = 0
 slot_type = 5
 durability = 100
-stats = Array[ExtResource("16_djfqw")]([])
+stats = []
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
 [sub_resource type="Resource" id="Resource_djfqw"]
@@ -308,6 +308,7 @@ flat = true
 script = ExtResource("3_pwamf")
 
 [node name="AdminButton" type="Button" parent="Background/HBoxHeader"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -1950,6 +1951,7 @@ layout_mode = 2
 text = "24x"
 
 [node name="CraftingTab" type="ColorRect" parent="Background"]
+visible = false
 z_index = 3
 layout_mode = 1
 anchors_preset = 15

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://o62xek3uvpo8"]
+[gd_scene load_steps=6 format=3 uid="uid://o62xek3uvpo8"]
 
 [ext_resource type="Script" uid="uid://dmteju1kppf72" path="res://Scripts/UI Scripts/QuestMenu.cs" id="1_rjdwy"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_8enkj"]
 [ext_resource type="Resource" uid="uid://c1p7gva6jex80" path="res://Dialogues/Questing.dialogue" id="2_jlx1a"]
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://Scenes/UI/header_color_rect.tscn" id="2_vqvtn"]
+[ext_resource type="PackedScene" uid="uid://bnf8yngk7oyy0" path="res://Scenes/UI/h_box_item_menu_line_horizontal.tscn" id="5_ao47r"]
 
 [node name="QuestMenu" type="CanvasLayer" node_paths=PackedStringArray("quest_label_parent", "quest_name_label", "complete_button", "quest_description_label")]
 script = ExtResource("1_rjdwy")
@@ -96,8 +97,18 @@ Naja, das was die Insel grade will, sieht eigentlich noch nicht so schwer aus!"
 fit_content = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 alignment = 1
+
+[node name="HBoxItem" parent="Background/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("5_ao47r")]
+layout_mode = 2
+
+[node name="HBoxItem2" parent="Background/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("5_ao47r")]
+layout_mode = 2
+
+[node name="HBoxItem3" parent="Background/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("5_ao47r")]
+layout_mode = 2
 
 [node name="CompleteQuestButton" type="Button" parent="Background/MarginContainer/VBoxContainer2"]
 layout_mode = 2

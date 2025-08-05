@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7l06c35ca42f"]
+[gd_scene load_steps=8 format=3 uid="uid://b7l06c35ca42f"]
 
 [ext_resource type="Script" uid="uid://ohg3uh7id56e" path="res://Scripts/UI Scripts/itemRecipeUI.cs" id="1_fxdbo"]
+[ext_resource type="PackedScene" uid="uid://bnf8yngk7oyy0" path="res://Scenes/UI/h_box_item_menu_line_horizontal.tscn" id="2_f48sm"]
 [ext_resource type="Script" uid="uid://c8olhec3yacn5" path="res://Scripts/UI Scripts/h_box_item.cs" id="2_kx56k"]
 [ext_resource type="Texture2D" uid="uid://bjana5l7fkd6a" path="res://Sprites/Items/Icons_3rd/Wood_Stick.png" id="3_f48sm"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="4_7yc62"]
@@ -38,25 +39,14 @@ layout_mode = 2
 [node name="CC" type="CenterContainer" parent="MarginContainer/VSplitContainer/HBoxToCraft"]
 layout_mode = 2
 
-[node name="HBoxItem" type="VBoxContainer" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC"]
+[node name="HBoxItem" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC" instance=ExtResource("2_f48sm")]
 layout_mode = 2
-alignment = 1
-script = ExtResource("2_kx56k")
 
-[node name="ItemTexture" type="TextureRect" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-texture = ExtResource("3_f48sm")
-expand_mode = 1
-stretch_mode = 5
+[node name="ItemTexture" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem" index="0"]
+custom_minimum_size = Vector2(24, 24)
 
-[node name="ItemLabel" type="Label" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("4_7yc62")
-theme_override_font_sizes/font_size = 8
-text = "Sticks 4x"
+[node name="ItemLabel" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem" index="1"]
+theme_override_font_sizes/font_size = 10
 
 [node name="HBoxRequiereToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer"]
 custom_minimum_size = Vector2(75, 0)
@@ -94,3 +84,5 @@ theme_override_font_sizes/font_size = 13
 icon = ExtResource("6_qi7a5")
 icon_alignment = 1
 expand_icon = true
+
+[editable path="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem"]

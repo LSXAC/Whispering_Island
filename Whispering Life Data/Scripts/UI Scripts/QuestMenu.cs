@@ -21,7 +21,7 @@ public partial class QuestMenu : CanvasLayer
     [Export]
     public Resource dialogue_timeline;
     public PackedScene h_box_item = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/UI/h_box_item_menu_line.tscn"
+        "res://Scenes/UI/h_box_item_menu_line_horizontal.tscn"
     );
     public static QuestMenu instance = null;
     public static QuestInfo currentQuest = null;
@@ -146,12 +146,7 @@ public partial class QuestMenu : CanvasLayer
             c_label.Alignment = BoxContainer.AlignmentMode.Center;
             if (iii == null)
             {
-                c_label.item_label.Text =
-                    TranslationServer.Translate(item.info.name)
-                    + " - "
-                    + "0x /"
-                    + item.amount
-                    + "x";
+                c_label.item_label.Text = "0x /" + item.amount + "x";
                 continue;
             }
 
@@ -160,13 +155,7 @@ public partial class QuestMenu : CanvasLayer
                 foreach (Item i_x in iii)
                     amount += i_x.amount;
 
-            c_label.item_label.Text =
-                TranslationServer.Translate(item.info.name)
-                + " - "
-                + amount
-                + "x /"
-                + item.amount
-                + "x";
+            c_label.item_label.Text = amount + "x /" + item.amount + "x";
 
             if (amount >= item.amount)
                 c_label.ChangeColor(global::h_box_item.colorType.green);

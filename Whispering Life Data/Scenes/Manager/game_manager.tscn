@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=57 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" uid="uid://sxd7avtys7n7" path="res://Scripts/Manager Scripts/GameManager.cs" id="1_2n0he"]
 [ext_resource type="Script" uid="uid://cwonaacplejxj" path="res://Scripts/Building Scripts/BuildingPlacer.cs" id="2_h8pdp"]
@@ -36,6 +36,7 @@
 [ext_resource type="Material" uid="uid://6f3r1pj1aoib" path="res://Tilesets/Clouds.tres" id="31_p85m3"]
 [ext_resource type="Script" uid="uid://cmmjy732ib0f2" path="res://Scenes/Manager/WorldMap.cs" id="35_gytje"]
 [ext_resource type="Texture2D" uid="uid://clui1muhyuoce" path="res://Sprites/MAP_OVERLAY.png" id="36_1xtv0"]
+[ext_resource type="Texture2D" uid="uid://cqrxk5fhdhnu5" path="res://Sprites/Compass.png" id="37_sw2xm"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="38_irdkv"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="39_sw2xm"]
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/UI Scripts/TranslationButton.cs" id="40_uv8n6"]
@@ -248,52 +249,6 @@ scale_max = 0.7
 scale_curve = SubResource("CurveTexture_cgqts")
 color_ramp = SubResource("GradientTexture1D_uwm61")
 
-[sub_resource type="Shader" id="Shader_000go"]
-code = "shader_type canvas_item;
-//render_mode unshaded; // optional
-
-// Noise texture
-uniform sampler2D noise_texture: repeat_enable, filter_nearest;
-// Fog density
-uniform float density: hint_range(0.0, 1.0) = 1;
-// Fog speed
-uniform vec2 speed = vec2(0.02, 0.01);
-
-
-// Called for every pixel the material is visible on
-void fragment() {
-	// Make the fog slowly move
-	vec2 uv = UV + speed * TIME;
-	// Sample the noise texture
-	float noise = texture(noise_texture, uv).r;
-	// Convert the noise from the (0.0, 1.0) range to the (-1.0, 1.0) range
-	// and clamp it between 0.0 and 1.0 again
-	float fog = clamp(noise * 2.4 - 1.0, 0, 1);
-	// Apply the fog effect
-	COLOR.a *= fog * density;
-}"
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_5qlke"]
-seed = 75
-frequency = 0.005
-fractal_octaves = 6
-fractal_gain = 0.6
-domain_warp_enabled = true
-domain_warp_amplitude = 256.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jgou8"]
-width = 2560
-height = 1440
-seamless = true
-seamless_blend_skirt = 0.6
-noise = SubResource("FastNoiseLite_5qlke")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gytje"]
-shader = SubResource("Shader_000go")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_jgou8")
-shader_parameter/density = 0.5
-shader_parameter/speed = Vector2(0.003, 0.001)
-
 [sub_resource type="Shader" id="Shader_wl4wn"]
 code = "shader_type canvas_item;
 //render_mode unshaded; // optional
@@ -328,8 +283,8 @@ domain_warp_enabled = true
 domain_warp_amplitude = 256.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tjejx"]
-width = 2560
-height = 1440
+width = 1280
+height = 720
 seamless = true
 seamless_blend_skirt = 0.6
 noise = SubResource("FastNoiseLite_1xtv0")
@@ -353,7 +308,7 @@ building_placer = NodePath("BuildingManager/BuildingPlacer")
 script = ExtResource("10_1whgu")
 
 [node name="Player" parent="." instance=ExtResource("4_wajns")]
-position = Vector2(187, 132)
+position = Vector2(0, -160)
 scale = Vector2(0.75, 0.75)
 
 [node name="BuildingManager" type="Node2D" parent="."]
@@ -601,20 +556,6 @@ offset_right = 2560.0
 offset_bottom = 1440.0
 mouse_filter = 2
 
-[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
-
-[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground2"]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
-motion_mirroring = Vector2(2560, 1440)
-
-[node name="ColorRect" type="ColorRect" parent="ParallaxBackground2/ParallaxLayer"]
-z_index = 1
-material = SubResource("ShaderMaterial_gytje")
-offset_right = 2560.0
-offset_bottom = 1440.0
-mouse_filter = 2
-
 [node name="ParallaxBackground3" type="ParallaxBackground" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground3"]
@@ -640,7 +581,7 @@ game_timer = NodePath("GameTimer")
 [node name="DayNightManager" type="Node2D" parent="TimeManager" node_paths=PackedStringArray("canvases")]
 script = ExtResource("22_3jk2j")
 dayNightGradient = ExtResource("23_rd84m")
-canvases = [NodePath("../CanvasModulate"), NodePath("../../ParallaxBackground3/CanvasModulate"), NodePath("../../ParallaxBackground2/CanvasModulate"), NodePath("../../ParallaxBackground/CanvasModulate")]
+canvases = [NodePath("../CanvasModulate"), NodePath("../../ParallaxBackground3/CanvasModulate"), NodePath("../../ParallaxBackground/CanvasModulate")]
 
 [node name="World" type="Control" parent="."]
 layout_mode = 3
@@ -649,6 +590,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="WorldMap" type="CanvasLayer" parent="World" node_paths=PackedStringArray("camera", "icons_parent", "quest_checkbox", "traders_checkbox", "removeable_checkbox")]
+layer = 2
 visible = false
 script = ExtResource("35_gytje")
 camera = NodePath("Camera2D")
@@ -665,9 +607,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.184314, 0.184314, 0.184314, 0.196078)
+color = Color(0.823529, 0.721569, 0, 0.00392157)
 
 [node name="Camera2D" type="Camera2D" parent="World/WorldMap"]
+enabled = false
 zoom = Vector2(0.3, 0.3)
 
 [node name="TextureRect" type="TextureRect" parent="World/WorldMap"]
@@ -681,6 +624,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -136.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t3yax")
@@ -691,6 +636,11 @@ theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
+
+[node name="LightTextureRect" type="TextureRect" parent="World/WorldMap/PanelContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("37_sw2xm")
+expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="World/WorldMap/PanelContainer/MarginContainer"]
 layout_mode = 2
@@ -774,4 +724,5 @@ offset_bottom = 40.0
 [connection signal="pressed" from="World/WorldMap/VBoxContainer/Button" to="World/WorldMap" method="OnClearFilters"]
 
 [editable path="IslandManager/MainIsland"]
+[editable path="IslandManager/MainIsland/BridgePoints/Signs/UpSign"]
 [editable path="BuildingMenu"]

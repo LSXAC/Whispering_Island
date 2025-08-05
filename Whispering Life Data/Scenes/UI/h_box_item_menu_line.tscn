@@ -7,7 +7,7 @@
 [node name="HBoxItem" type="VBoxContainer"]
 offset_right = 16.0
 offset_bottom = 25.0
-theme_override_constants/separation = 1
+theme_override_constants/separation = 2
 script = ExtResource("1_aorx3")
 
 [node name="ItemTexture" type="TextureRect" parent="."]
