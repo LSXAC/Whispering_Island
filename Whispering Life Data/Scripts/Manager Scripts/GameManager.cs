@@ -171,6 +171,7 @@ public partial class GameManager : Node2D
         ResearchTab.research_saves = save_state.research_saves;
 
         Skilltree.skill_progress = save_state.skill_saves;
+
         ResearchTab.instance.Research_Points = save_state.Research_Points;
 
         HeartManager.instance.current_hearts = save_state.current_hearts;

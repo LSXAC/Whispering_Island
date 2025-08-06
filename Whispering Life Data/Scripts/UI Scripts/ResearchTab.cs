@@ -133,7 +133,7 @@ public partial class ResearchTab : ColorRect
         //Remove Items, for Prototype, researching is only time consuming
 
         progressBar.Value = 0;
-        progressBar.MaxValue = 100 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.RESEARCH_TIME);
+        progressBar.MaxValue = 100;
         working_panel.Visible = true;
         timer.Start();
     }

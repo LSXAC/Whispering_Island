@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=114 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://Scripts/UI Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -30,7 +30,6 @@
 [ext_resource type="Script" uid="uid://c8gcdq44rac7i" path="res://Scripts/Skilltree.cs" id="16_x6qgy"]
 [ext_resource type="Script" uid="uid://v7dew0yr5trl" path="res://Scripts/Item/ToolAttribute.cs" id="17_7ai0l"]
 [ext_resource type="Script" uid="uid://mtwprpv04hll" path="res://Scripts/UI Scripts/ChestTab.cs" id="17_8qgvy"]
-[ext_resource type="Script" uid="uid://kt6251mwvbjq" path="res://Scripts/SkillBox.cs" id="17_44ufd"]
 [ext_resource type="StyleBox" uid="uid://beanw2e3ddca1" path="res://Resource Meta/Menus/OptionButtonStyle.tres" id="17_hyydq"]
 [ext_resource type="Texture2D" uid="uid://y7p1sna6t1lh" path="res://Sprites/Mystic_Island.png" id="17_i4snh"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="17_iq1ex"]
@@ -49,17 +48,51 @@
 [ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableAttribute.cs" id="29_7icba"]
 [ext_resource type="Script" uid="uid://dbau0pr5c35mu" path="res://Scenes/UI/SkillSlot.cs" id="31_1f68p"]
 [ext_resource type="Texture2D" uid="uid://raaamx5w323j" path="res://Sprites/currency_icon.png" id="31_sy28q"]
+[ext_resource type="Resource" uid="uid://3ogfbqscw3my" path="res://Resource Meta/Skills/deep_vein.tres" id="31_w6gy4"]
+[ext_resource type="Resource" uid="uid://mac0ixoaehnt" path="res://Resource Meta/Skills/instant_theorie.tres" id="32_bhpct"]
+[ext_resource type="Resource" uid="uid://cko43u2l7lke3" path="res://Resource Meta/Skills/island_cap_1.tres" id="33_m8k7p"]
+[ext_resource type="Resource" uid="uid://bv7e8qpi015ag" path="res://Resource Meta/Skills/island_cap_2.tres" id="34_7gwna"]
+[ext_resource type="Resource" uid="uid://cgivx1urddx8h" path="res://Resource Meta/Skills/island_cap_3.tres" id="35_j657e"]
+[ext_resource type="Resource" uid="uid://bw673prmegm7a" path="res://Resource Meta/Skills/island_cap_4.tres" id="36_etc0m"]
+[ext_resource type="Resource" uid="uid://cp2mf2ku12l3p" path="res://Resource Meta/Skills/mining_amount_1.tres" id="37_mmhr0"]
 [ext_resource type="Script" uid="uid://b3t4ic6iwowss" path="res://Scripts/UI Scripts/SoundSlider.cs" id="37_vnnff"]
+[ext_resource type="Resource" uid="uid://dp3tion70fql4" path="res://Resource Meta/Skills/mining_amount_2.tres" id="38_6662a"]
+[ext_resource type="Resource" uid="uid://cdw70hdkybi4u" path="res://Resource Meta/Skills/mining_amount_3.tres" id="39_gcthi"]
+[ext_resource type="Resource" uid="uid://b8kpuf47jao76" path="res://Resource Meta/Skills/mining_bonus_1.tres" id="40_rgd55"]
+[ext_resource type="Resource" uid="uid://drpg8ggybgde0" path="res://Resource Meta/Skills/mining_bonus_2.tres" id="41_gqg20"]
+[ext_resource type="Resource" uid="uid://cwsmufe0vpjku" path="res://Resource Meta/Skills/recycle_unused_data.tres" id="42_j0nuq"]
 [ext_resource type="PackedScene" uid="uid://b7l06c35ca42f" path="res://Scenes/UI/crafting_menu_crafting_line.tscn" id="43_sy28q"]
+[ext_resource type="Resource" uid="uid://v0dvikuvb5ye" path="res://Resource Meta/Skills/research_cost_1.tres" id="43_w3vm4"]
+[ext_resource type="Resource" uid="uid://cvu5w0pnoqciu" path="res://Resource Meta/Skills/research_cost_2.tres" id="44_sy5xb"]
+[ext_resource type="Resource" uid="uid://drhhc6h2sqh7q" path="res://Resource Meta/Skills/research_cost_3.tres" id="45_fato5"]
+[ext_resource type="Resource" uid="uid://bph73ie1h0cfw" path="res://Resource Meta/Skills/research_speed_1.tres" id="46_4awxy"]
+[ext_resource type="Resource" uid="uid://07voex1otlqm" path="res://Resource Meta/Skills/research_speed_2.tres" id="47_8a6lo"]
+[ext_resource type="Resource" uid="uid://blc4hqmuyk06k" path="res://Resource Meta/Skills/research_speed_3.tres" id="48_tmrav"]
+[ext_resource type="Resource" uid="uid://fw0fc6jo8rm6" path="res://Resource Meta/Skills/research_xp_1.tres" id="49_mkmfo"]
+[ext_resource type="Resource" uid="uid://cyjlrhsdwqgbe" path="res://Resource Meta/Skills/research_xp_2.tres" id="50_n542t"]
+[ext_resource type="Resource" uid="uid://cgy1s2ijgbhoj" path="res://Resource Meta/Skills/research_xp_3.tres" id="51_wshxr"]
+[ext_resource type="Resource" uid="uid://f3x0wfe6fexf" path="res://Resource Meta/Skills/research_xp_4.tres" id="52_1y8h4"]
+[ext_resource type="Resource" uid="uid://800f124r5ofl" path="res://Resource Meta/Skills/resource_reducer.tres" id="53_tbpku"]
+[ext_resource type="Resource" uid="uid://c4m7kevrrx6ie" path="res://Resource Meta/Skills/second_wind.tres" id="54_b00gh"]
+[ext_resource type="Resource" uid="uid://3q3x53ungw2j" path="res://Resource Meta/Skills/stamina_max_1.tres" id="55_gsgii"]
 [ext_resource type="Script" uid="uid://b6v18h1yxba4y" path="res://Scripts/UI Scripts/HelpTab.cs" id="56_74gou"]
+[ext_resource type="Resource" uid="uid://d3wwyv1gtnaof" path="res://Resource Meta/Skills/stamina_max_2.tres" id="56_q1i6k"]
+[ext_resource type="Resource" uid="uid://c5dic65xtm1uk" path="res://Resource Meta/Skills/stamina_max_3.tres" id="57_2n3si"]
 [ext_resource type="Texture2D" uid="uid://dy7kd53s6cn22" path="res://Sprites/Mouse.png" id="58_0k4ta"]
+[ext_resource type="Resource" uid="uid://kwhh2bywaff8" path="res://Resource Meta/Skills/stamina_reduction_1.tres" id="58_oe67i"]
 [ext_resource type="Texture2D" uid="uid://cn8y6cj766xw0" path="res://Sprites/Items/Icons_3rd/Chest.png" id="59_aahk4"]
+[ext_resource type="Resource" uid="uid://bp57tmf0gbptu" path="res://Resource Meta/Skills/stamina_reduction_2.tres" id="59_vp08v"]
+[ext_resource type="Resource" uid="uid://dsj1hesihjsre" path="res://Resource Meta/Skills/stamina_reduction_3.tres" id="60_avet4"]
 [ext_resource type="Texture2D" uid="uid://caucfvq00j5hu" path="res://Sprites/Research_Table.png" id="60_cjy3p"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="61_0s004"]
+[ext_resource type="Resource" uid="uid://b5xrr1vil5hj2" path="res://Resource Meta/Skills/tool_durability_1.tres" id="61_5o10j"]
 [ext_resource type="Script" uid="uid://dmwxrhivem12e" path="res://Scripts/DestroyMenu.cs" id="62_djfqw"]
 [ext_resource type="Texture2D" uid="uid://1rxf21hw1xu5" path="res://Sprites/Heart_Icon.png" id="62_g0ojh"]
+[ext_resource type="Resource" uid="uid://b0x6hysultfer" path="res://Resource Meta/Skills/tool_durability_2.tres" id="62_qmedj"]
 [ext_resource type="Texture2D" uid="uid://nd03oe33c2v2" path="res://Sprites/Objectiv.png" id="63_38eqn"]
+[ext_resource type="Resource" uid="uid://11ss8d11sxoe" path="res://Resource Meta/Skills/tool_durability_3.tres" id="63_opwmy"]
 [ext_resource type="Texture2D" uid="uid://125t5f6fiugo" path="res://Sprites/Monster_Island.png" id="64_jkgj7"]
+[ext_resource type="Resource" uid="uid://5seoa7j2xqog" path="res://Resource Meta/Skills/tool_regeneration.tres" id="64_nhr3t"]
 [ext_resource type="Texture2D" uid="uid://dlln1ly5u41as" path="res://Sprites/Screenshots/Island_1.png" id="65_shum4"]
 [ext_resource type="Texture2D" uid="uid://dfa2imjkie3p2" path="res://Sprites/Items/Icons/letter-x.png" id="66_17ja5"]
 [ext_resource type="Script" uid="uid://cuumqpn4sqi6h" path="res://Scripts/UI Scripts/MinecartTab.cs" id="74_5ehlf"]
@@ -309,7 +342,6 @@ flat = true
 script = ExtResource("3_pwamf")
 
 [node name="AdminButton" type="Button" parent="Background/HBoxHeader"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -1141,7 +1173,7 @@ autowrap_mode = 3
 script = ExtResource("26_tl5yt")
 label_translation_string = "RESEARCH_SAVE_INFO"
 
-[node name="Skilltree" type="ColorRect" parent="Background" node_paths=PackedStringArray("skillboxes", "research_points_label")]
+[node name="Skilltree" type="ColorRect" parent="Background" node_paths=PackedStringArray("research_points_label", "title", "description", "required_skill_points", "unlock_skill_button")]
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -1152,8 +1184,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.576471, 0.807843, 1, 1)
 script = ExtResource("16_x6qgy")
-skillboxes = [NodePath("MarginContainer/VBoxContainer/SkillBox"), NodePath("MarginContainer/VBoxContainer/SkillBox2"), NodePath("MarginContainer/VBoxContainer/SkillBox3"), NodePath("MarginContainer/VBoxContainer/SkillBox4")]
 research_points_label = NodePath("MarginContainer/VBoxContainer/PointsHeader/MarginContainer/VBoxContainer/HBoxContainer/Label")
+title = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Label")
+description = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Label2")
+required_skill_points = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Label3")
+unlock_skill_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Button")
+skill_datas = Array[Object]([ExtResource("31_w6gy4"), ExtResource("32_bhpct"), ExtResource("33_m8k7p"), ExtResource("34_7gwna"), ExtResource("35_j657e"), ExtResource("36_etc0m"), ExtResource("37_mmhr0"), ExtResource("38_6662a"), ExtResource("39_gcthi"), ExtResource("40_rgd55"), ExtResource("41_gqg20"), ExtResource("42_j0nuq"), ExtResource("43_w3vm4"), ExtResource("44_sy5xb"), ExtResource("45_fato5"), ExtResource("46_4awxy"), ExtResource("47_8a6lo"), ExtResource("48_tmrav"), ExtResource("49_mkmfo"), ExtResource("50_n542t"), ExtResource("51_wshxr"), ExtResource("52_1y8h4"), ExtResource("53_tbpku"), ExtResource("54_b00gh"), ExtResource("55_gsgii"), ExtResource("56_q1i6k"), ExtResource("57_2n3si"), ExtResource("58_oe67i"), ExtResource("59_vp08v"), ExtResource("60_avet4"), ExtResource("61_5o10j"), ExtResource("62_qmedj"), ExtResource("63_opwmy"), ExtResource("64_nhr3t")])
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree"]
 layout_mode = 1
@@ -1204,6 +1240,7 @@ text = "Research Points: 1"
 horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 248)
 layout_mode = 2
 color = Color(0, 0, 0, 0)
@@ -1218,23 +1255,28 @@ theme_override_constants/separation = 10
 layout_mode = 2
 text = "dwdwdwdw"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(550, 128)
 layout_mode = 2
-theme_override_constants/separation = 20
+color = Color(0, 0, 0, 1)
 
-[node name="SkillSlot" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer"]
+[node name="SkillSlot" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/ColorRect"]
 z_index = 1
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 47.0
+offset_bottom = 47.0
 color = Color(0.448067, 0.448067, 0.448067, 1)
 script = ExtResource("31_1f68p")
 
-[node name="Line2D" type="Line2D" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer/SkillSlot"]
+[node name="Line2D" type="Line2D" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/ColorRect/SkillSlot"]
 z_index = -1
 position = Vector2(35, 3)
 points = PackedVector2Array(-15, 18, 45, 68)
 
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer/SkillSlot"]
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/ColorRect/SkillSlot"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
@@ -1244,19 +1286,17 @@ icon = ExtResource("31_sy28q")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Placeholder" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer"]
+[node name="ColorRect2" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/ColorRect"]
 z_index = 1
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-color = Color(0.447059, 0.447059, 0.447059, 0)
-
-[node name="ColorRect2" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer"]
-z_index = 1
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
+offset_left = 71.0
+offset_top = 8.0
+offset_right = 111.0
+offset_bottom = 48.0
 color = Color(0.448067, 0.448067, 0.448067, 1)
 
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer/ColorRect2"]
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/ColorRect/ColorRect2"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
@@ -1266,13 +1306,16 @@ icon = ExtResource("31_sy28q")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ColorRect3" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer"]
+[node name="ColorRect3" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/ColorRect"]
 z_index = 1
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+offset_top = 160.0
+offset_right = 40.0
+offset_bottom = 200.0
 color = Color(0.448067, 0.448067, 0.448067, 1)
 
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer/ColorRect3"]
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/ColorRect/ColorRect3"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
@@ -1282,13 +1325,16 @@ icon = ExtResource("31_sy28q")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ColorRect4" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer"]
+[node name="ColorRect4" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/ColorRect"]
 z_index = 1
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+offset_top = 210.0
+offset_right = 40.0
+offset_bottom = 250.0
 color = Color(0.448067, 0.448067, 0.448067, 1)
 
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer/ColorRect4"]
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/ColorRect/ColorRect4"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
@@ -1298,13 +1344,16 @@ icon = ExtResource("31_sy28q")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ColorRect5" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer"]
+[node name="ColorRect5" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/ColorRect"]
 z_index = 1
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+offset_top = 260.0
+offset_right = 40.0
+offset_bottom = 300.0
 color = Color(0.448067, 0.448067, 0.448067, 1)
 
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer/ColorRect5"]
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/ColorRect/ColorRect5"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
@@ -1314,23 +1363,85 @@ icon = ExtResource("31_sy28q")
 icon_alignment = 1
 expand_icon = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
 
-[node name="Placeholder" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MiningButton" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Mining"
+
+[node name="ToolButton" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Mining"
+
+[node name="ResearchButton" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Mining"
+
+[node name="BuildingButton" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Mining"
+
+[node name="StaminaButton" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Mining"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 224)
+layout_mode = 2
+
+[node name="MiningColorRect" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(385, 224)
+layout_mode = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 43.5
+offset_right = 155.0
+offset_bottom = 66.5
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Mining Amount"
+
+[node name="SkillSlot" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect"]
 z_index = 1
 custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-color = Color(0.447059, 0.447059, 0.447059, 0)
-
-[node name="ColorRect2" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2"]
-z_index = 1
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
+layout_mode = 0
+offset_left = 62.0
+offset_top = 58.5
+offset_right = 102.0
+offset_bottom = 98.5
 color = Color(0.448067, 0.448067, 0.448067, 1)
+script = ExtResource("31_1f68p")
+is_start = true
 
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2/ColorRect2"]
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlot"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
@@ -1340,13 +1451,20 @@ icon = ExtResource("31_sy28q")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ColorRect3" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2"]
+[node name="SkillSlot2" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect"]
 z_index = 1
 custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
+layout_mode = 0
+offset_left = 106.0
+offset_top = 59.5
+offset_right = 146.0
+offset_bottom = 99.5
 color = Color(0.448067, 0.448067, 0.448067, 1)
+script = ExtResource("31_1f68p")
+is_start = true
+id = 1
 
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2/ColorRect3"]
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlot2"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
@@ -1356,13 +1474,20 @@ icon = ExtResource("31_sy28q")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ColorRect4" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2"]
+[node name="SkillSlot3" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect"]
 z_index = 1
 custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
+layout_mode = 0
+offset_left = 151.0
+offset_top = 59.5
+offset_right = 191.0
+offset_bottom = 99.5
 color = Color(0.448067, 0.448067, 0.448067, 1)
+script = ExtResource("31_1f68p")
+is_start = true
+id = 2
 
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2/ColorRect4"]
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlot3"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
@@ -1372,372 +1497,57 @@ icon = ExtResource("31_sy28q")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ColorRect5" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2"]
-z_index = 1
-custom_minimum_size = Vector2(40, 40)
+[node name="PanelContainer" type="PanelContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(160, 243)
 layout_mode = 2
-color = Color(0.448067, 0.448067, 0.448067, 1)
 
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer2/ColorRect5"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 39.0
-offset_bottom = 39.0
-icon = ExtResource("31_sy28q")
-icon_alignment = 1
-expand_icon = true
-
-[node name="Label2" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
-text = "dwdwdwdw"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="ColorRect2" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3"]
-z_index = 1
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-color = Color(0.448067, 0.448067, 0.448067, 1)
-
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3/ColorRect2"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 39.0
-offset_bottom = 39.0
-icon = ExtResource("31_sy28q")
-icon_alignment = 1
-expand_icon = true
-
-[node name="ColorRect3" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3"]
-z_index = 1
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-color = Color(0.448067, 0.448067, 0.448067, 1)
-
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3/ColorRect3"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 39.0
-offset_bottom = 39.0
-icon = ExtResource("31_sy28q")
-icon_alignment = 1
-expand_icon = true
-
-[node name="ColorRect4" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3"]
-z_index = 1
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-color = Color(0.448067, 0.448067, 0.448067, 1)
-
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3/ColorRect4"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 39.0
-offset_bottom = 39.0
-icon = ExtResource("31_sy28q")
-icon_alignment = 1
-expand_icon = true
-
-[node name="ColorRect5" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3"]
-z_index = 1
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-color = Color(0.448067, 0.448067, 0.448067, 1)
-
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/ColorRect/VBoxContainer/HBoxContainer3/ColorRect5"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 39.0
-offset_bottom = 39.0
-icon = ExtResource("31_sy28q")
-icon_alignment = 1
-expand_icon = true
-
-[node name="SkillBox" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-script = ExtResource("17_44ufd")
-
-[node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
-alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
-text = "Movement"
+theme_override_font_sizes/font_size = 12
+text = "Title"
 horizontal_alignment = 1
 
-[node name="CheckBox0" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
-button_mask = 0
-text = "+10%"
-
-[node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 12
-button_mask = 0
-text = "+15%"
-
-[node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 12
-button_mask = 0
-text = "+20%"
-
-[node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
-text = "10%"
-horizontal_alignment = 2
-
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
-text = "Upgrade"
-
-[node name="SkillBox2" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-script = ExtResource("17_44ufd")
-type = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
-text = "Movement"
+text = "Description"
 horizontal_alignment = 1
 
-[node name="CheckBox0" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="EmptyLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
-button_mask = 0
-text = "+10%"
 
-[node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label3" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
-button_mask = 0
-text = "+15%"
-
-[node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 12
-button_mask = 0
-text = "+20%"
-
-[node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
-text = "10%"
-horizontal_alignment = 2
-
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox2/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
-text = "Upgrade"
-
-[node name="SkillBox3" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-script = ExtResource("17_44ufd")
-type = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
-text = "Movement"
+text = "Required Points: 1"
 horizontal_alignment = 1
 
-[node name="CheckBox0" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
-button_mask = 0
-text = "+10%"
-
-[node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 12
-button_mask = 0
-text = "+15%"
-
-[node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 12
-button_mask = 0
-text = "+20%"
-
-[node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
-text = "10%"
-horizontal_alignment = 2
-
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox3/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
-text = "Upgrade"
-
-[node name="SkillBox4" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-script = ExtResource("17_44ufd")
-type = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
-text = "Erforschungszeit"
-horizontal_alignment = 1
-
-[node name="CheckBox0" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 12
-button_mask = 0
-text = "+10%"
-
-[node name="CheckBox1" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 12
-button_mask = 0
-text = "+15%"
-
-[node name="CheckBox2" type="CheckBox" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 12
-button_mask = 0
-text = "+20%"
-
-[node name="ResultLabel" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
-text = "10%"
-horizontal_alignment = 2
-
-[node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/SkillBox4/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 16
-text = "Upgrade"
+text = "Unlock Skill"
 
 [node name="IslandTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("button1", "button2", "button3", "button4")]
 visible = false
@@ -3992,6 +3802,10 @@ label_translation_string = "DESTROY_MENU_BUTTON"
 [connection signal="pressed" from="Background/ResearchTab/PanelContainer/Button" to="Background/ResearchTab" method="OnResearchButton"]
 [connection signal="timeout" from="Background/ResearchTab/PanelContainer/Timer" to="Background/ResearchTab" method="OnTimerTimeout"]
 [connection signal="visibility_changed" from="Background/Skilltree" to="Background/Skilltree" method="OnVisiblityChanged"]
+[connection signal="pressed" from="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlot/Button" to="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlot" method="OnButtonClicked"]
+[connection signal="pressed" from="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlot2/Button" to="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlot2" method="OnButtonClicked"]
+[connection signal="pressed" from="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlot3/Button" to="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlot3" method="OnButtonClicked"]
+[connection signal="pressed" from="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="Background/Skilltree" method="OnUnlockSkillButton"]
 [connection signal="visibility_changed" from="Background/IslandTab" to="Background/IslandTab" method="OnVisiblityChanged"]
 [connection signal="visibility_changed" from="Background/AdminTab" to="Background/AdminTab" method="OnVisiblityChange"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/CreateButton" to="Background/AdminTab" method="OnCreateItems"]

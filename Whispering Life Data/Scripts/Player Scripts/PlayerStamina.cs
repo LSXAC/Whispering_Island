@@ -19,13 +19,14 @@ public partial class PlayerStamina : Node2D
         )
         {
             Player.instance.Velocity =
-                new Vector2(velo_x, velo_y).Normalized()
-                * speed_mult
-                * 1.75f
-                * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.MOVEMENT);
+                new Vector2(velo_x, velo_y).Normalized() * speed_mult * 1.75f;
             Player.instance.anim.SpeedScale = 1.5f;
             current_stamina -=
-                stamina_use * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.FATIGUE);
+                stamina_use
+                * (
+                    Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.STAMINA_REDUCTION)
+                    + 1f
+                );
             ;
             Player.instance.player_stats.AddFatigue(0.01f);
         }
@@ -33,14 +34,16 @@ public partial class PlayerStamina : Node2D
         {
             if (current_stamina <= 0f)
                 stamina_is_regenerating = true;
-            if (current_stamina >= max_stamina && stamina_is_regenerating)
+            if (
+                current_stamina
+                    >= max_stamina
+                        * Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.STAMINA_MAX)
+                && stamina_is_regenerating
+            )
                 stamina_is_regenerating = false;
 
             Player.instance.player_stats.AddFatigue(0.0025f);
-            Player.instance.Velocity =
-                new Vector2(velo_x, velo_y)
-                * speed_mult
-                * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.MOVEMENT);
+            Player.instance.Velocity = new Vector2(velo_x, velo_y) * speed_mult;
             Player.instance.anim.SpeedScale = 1f;
         }
     }
@@ -52,7 +55,11 @@ public partial class PlayerStamina : Node2D
             || stamina_is_regenerating
             || (Input.IsActionPressed("Shift") && velo_x == 0 && velo_y == 0)
         )
-            if (current_stamina <= max_stamina)
+            if (
+                current_stamina
+                <= max_stamina
+                    * Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.STAMINA_MAX)
+            )
                 current_stamina += stamina_regeneration;
     }
 }

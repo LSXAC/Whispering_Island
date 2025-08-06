@@ -1,30 +1,48 @@
 using System;
 using Godot;
+using Godot.Collections;
 
 public partial class SkillSlot : ColorRect
 {
-    public Line2D line;
+    [Export]
+    public bool is_start = false;
+
+    [Export]
+    public SkillData.ID id;
+    public Button button;
+
+    public Array<Line2D> lines;
+
+    public Color normal_color = new Color(1f, 1f, 1f, 1);
+    public Color green_color = new Color(0.2f, 1f, 0.2f, 1);
 
     public override void _Ready()
     {
         base._Ready();
-        line = GetNodeOrNull<Line2D>("Line2D");
+        button = GetNode<Button>("Button");
+        /*if (!is_start)
+        {
+            foreach (Node child in GetChildren())
+            {
+                if (child is Line2D line)
+                    lines.Add(line);
+            }
+            SetLineColor(normal_color);
+        }*/
     }
 
     public void OnButtonClicked()
     {
-        if (ResearchTab.instance.Research_Points < 1)
-            return;
-
-        SetLineColor(new Color(1, 1, 1, 1));
+        Skilltree.current_selected_skill = this;
+        Skilltree.instance.UpdateViewPanel();
     }
 
-    public void SetLineColor(Color color)
+    /*public void SetLineColor(Color color)
     {
-        if (line != null)
+        foreach (Line2D line in lines)
         {
             line.DefaultColor = color;
             line.Visible = true;
         }
-    }
+    }*/
 }

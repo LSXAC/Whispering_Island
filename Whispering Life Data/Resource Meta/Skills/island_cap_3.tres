@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=3 format=3 uid="uid://cgivx1urddx8h"]
+
+[ext_resource type="Texture2D" uid="uid://dgdgpeeiw5ea0" path="res://Sprites/Items/Icons_3rd/Copper_Ingot.png" id="1_bdpxr"]
+[ext_resource type="Script" uid="uid://cen3q64nvicau" path="res://Scripts/SkillData.cs" id="2_1vlms"]
+
+[resource]
+script = ExtResource("2_1vlms")
+id = 24
+type_category = 9
+is_big_skill = false
+DisplayName = "Island Cap 3"
+Description = "Mega krass"
+Icon = ExtResource("1_bdpxr")
+skill_amount = 2.0
+required_skill_points = 1
+metadata/_custom_type_script = "uid://cen3q64nvicau"

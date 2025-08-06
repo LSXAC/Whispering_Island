@@ -113,20 +113,27 @@ public partial class MineableObject : placeable_building
             PlayerUI.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WEAK_TYPE_LEVEL"));
             return;
         }
-
+        Item item = resource_item.Clone();
         // 2. Inventar-Prüfung für normalen und letzten Schlag
         int miningAmount = CalculateMiningAmountInt();
         int durabilityAfterHit = current_durability - miningAmount;
         int bonusAmount = (int)(resource_item.amount * miningAmount);
 
+        item.amount =
+            miningAmount
+            * (
+                (int)Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.MINING_AMOUNT)
+                + 1
+            );
+
         if (durabilityAfterHit > 0)
         {
-            if (!CanReceiveItem(resource_item))
+            if (!CanReceiveItem(item))
                 return;
         }
         else
         {
-            if (!CanReceiveItem(resource_item))
+            if (!CanReceiveItem(item))
                 return;
 
             if (extra_item != null && !CanReceiveItem(extra_item))
@@ -149,11 +156,8 @@ public partial class MineableObject : placeable_building
         }
 
         StartTimerBar(TimerBar.STATE.COOLDOWN, click_cooldown_time);
-        PlayerUI.AddItemLabelMineableUI(resource_item);
-        PlayerInventoryUI.instance.AddItem(
-            resource_item,
-            PlayerInventoryUI.instance.inventory_items
-        );
+        PlayerUI.AddItemLabelMineableUI(item);
+        PlayerInventoryUI.instance.AddItem(item, PlayerInventoryUI.instance.inventory_items);
 
         hover_menu.InitHoverMenu(this);
     }
@@ -250,8 +254,7 @@ public partial class MineableObject : placeable_building
 
     public int CalculateMiningAmountInt()
     {
-        return (int)(1 * Skilltree.GetSkillProgress(Skilltree.SKILLTYPE.HIT))
-            + (int)PlayerUI.instance.equipmentSelectBar.GetSelectedTypeLevel();
+        return 1 + (int)PlayerUI.instance.equipmentSelectBar.GetSelectedTypeLevel();
     }
 
     public override ResourceObjectSave Save()

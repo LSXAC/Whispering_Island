@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://j1cdgg7lep78"]
+[gd_scene load_steps=25 format=3 uid="uid://j1cdgg7lep78"]
 
 [ext_resource type="Script" uid="uid://6j5ep62led2i" path="res://Scripts/Player Scripts/PlayerUI.cs" id="1_m5svq"]
 [ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://byutu1d7d16k7" path="res://Scripts/UI Scripts/QuestAcceptPanel.cs" id="8_3uym3"]
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/UI Scripts/TranslationButton.cs" id="9_erkjv"]
 [ext_resource type="Script" uid="uid://c872ycivw0d7a" path="res://Scripts/UI Scripts/EffectPanel.cs" id="11_r7w4g"]
-[ext_resource type="Script" uid="uid://dyfm5fmxy7gua" path="res://Scripts/SkilltreeBox.cs" id="12_bhbc1"]
 [ext_resource type="Script" uid="uid://bang68hyrryto" path="res://Scripts/UI Scripts/TranslationRichTextLabel.cs" id="12_fbb8a"]
 [ext_resource type="Texture2D" uid="uid://1rxf21hw1xu5" path="res://Sprites/Heart_Icon.png" id="12_rpytx"]
 [ext_resource type="Script" uid="uid://b5gbju1jehjfy" path="res://Scripts/Manager Scripts/HeartManager.cs" id="12_twnk5"]
@@ -311,61 +310,6 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 2
-
-[node name="Skilltree_Box" type="Panel" parent="." node_paths=PackedStringArray("movement_label", "fatigue_label", "hit_label", "research_time")]
-visible = false
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -127.0
-offset_top = -65.0
-grow_horizontal = 0
-grow_vertical = 0
-script = ExtResource("12_bhbc1")
-movement_label = NodePath("VBoxContainer/Label")
-fatigue_label = NodePath("VBoxContainer/Label2")
-hit_label = NodePath("VBoxContainer/Label3")
-research_time = NodePath("VBoxContainer/Label4")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Skilltree_Box"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="Skilltree_Box/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
-text = "Movement: 1.05%"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="Skilltree_Box/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
-text = "Movement: 1.05%"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="Skilltree_Box/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
-text = "Movement: 1.05%"
-horizontal_alignment = 1
-
-[node name="Label4" type="Label" parent="Skilltree_Box/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
-text = "Movement: 1.05%"
-horizontal_alignment = 1
 
 [node name="GameOverPanel" type="Panel" parent="."]
 visible = false
