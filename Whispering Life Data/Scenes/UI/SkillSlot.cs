@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
@@ -9,6 +10,11 @@ public partial class SkillSlot : ColorRect
 
     [Export]
     public SkillData.ID id;
+
+    [Export]
+    public Array<SkillData.ID> need_skill_ids,
+        next_skill_ids;
+
     public Button button;
 
     public Array<Line2D> lines;
@@ -20,15 +26,28 @@ public partial class SkillSlot : ColorRect
     {
         base._Ready();
         button = GetNode<Button>("Button");
-        /*if (!is_start)
+
+        if (!is_start)
+            button.Disabled = true;
+    }
+
+    public bool IsUnlocked()
+    {
+        if (need_skill_ids == null)
+            return false;
+
+        foreach (SkillData.ID id in need_skill_ids)
         {
-            foreach (Node child in GetChildren())
-            {
-                if (child is Line2D line)
-                    lines.Add(line);
-            }
-            SetLineColor(normal_color);
-        }*/
+            if (Skilltree.instance.skill_progress[(int)id] == 0)
+                return false;
+            Debug.Print("Skill " + id + " is unlocked.");
+        }
+        return true;
+    }
+
+    public void Unlock()
+    {
+        button.Disabled = false;
     }
 
     public void OnButtonClicked()

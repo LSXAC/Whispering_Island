@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource("2_1s8ut")
-id = 21
-type_category = 8
+id = 22
+type_category = 9
 is_big_skill = true
-DisplayName = "Recycle unused data"
+DisplayName = "Island Cap 1"
 Description = "Mega krass"
 Icon = ExtResource("1_pof25")
 skill_amount = 1.0

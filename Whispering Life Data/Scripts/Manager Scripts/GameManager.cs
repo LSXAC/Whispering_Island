@@ -120,7 +120,8 @@ public partial class GameManager : Node2D
         save_state.char_save.research_slot_item = ResearchTab.research_slot_item;
         save_state.research_saves = ResearchTab.research_saves;
 
-        save_state.skill_saves = Skilltree.skill_progress;
+        save_state.skill_saves = Skilltree.instance.skill_progress;
+
         save_state.Research_Points = ResearchTab.instance.Research_Points;
 
         save_state.current_hearts = HeartManager.instance.current_hearts;
@@ -170,7 +171,15 @@ public partial class GameManager : Node2D
         ResearchTab.research_slot_item = save_state.char_save.research_slot_item;
         ResearchTab.research_saves = save_state.research_saves;
 
-        Skilltree.skill_progress = save_state.skill_saves;
+        if (Skilltree.instance.skill_datas.Count == save_state.skill_saves.Length)
+            Skilltree.instance.skill_progress = save_state.skill_saves;
+        else
+        {
+            int[] skill_progress = new int[Skilltree.instance.skill_datas.Count];
+            for (int i = 0; i < save_state.skill_saves.Length; i++)
+                skill_progress[i] = save_state.skill_saves[i];
+            Skilltree.instance.skill_progress = skill_progress;
+        }
 
         ResearchTab.instance.Research_Points = save_state.Research_Points;
 

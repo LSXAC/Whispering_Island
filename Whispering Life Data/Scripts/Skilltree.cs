@@ -19,9 +19,16 @@ public partial class Skilltree : ColorRect
 
     [Export]
     public Array<SkillData> skill_datas;
+
+    [Export]
+    public Control slots_parent;
     public static Skilltree instance;
-    public static int[] skill_progress = new int[99];
+
+    [Export]
+    public int[] skill_progress = new int[99];
     public static SkillSlot current_selected_skill = null;
+
+    public Array<SkillSlot> skill_slots = new Array<SkillSlot>();
 
     public enum SKILLTYPE
     {
@@ -35,11 +42,22 @@ public partial class Skilltree : ColorRect
     {
         instance = this;
         skill_progress = new int[skill_datas.Count];
+
+        foreach (Node child in slots_parent.GetChildren())
+            if (child is SkillSlot skillSlot)
+            {
+                skill_slots.Add(skillSlot);
+            }
     }
 
     public void OnVisiblityChanged()
     {
         UpdateResearchPoints();
+        /*foreach (SkillSlot slot in skill_slots)
+        {
+            if (slot.IsUnlocked())
+                slot.button.Disabled = false;
+        }*/
     }
 
     public void OnUnlockSkillButton()
@@ -49,9 +67,20 @@ public partial class Skilltree : ColorRect
             return;*/
 
         //ResearchTab.instance.Research_Points -= data.required_skill_points;
+        Debug.Print("Unlocking skill: " + data.id);
+        Debug.Print("Length: " + skill_progress.Length);
         skill_progress[(int)data.id] = 1;
-
         current_selected_skill.button.Disabled = true;
+
+        if (current_selected_skill.next_skill_ids == null)
+            return;
+
+        foreach (SkillData.ID id in current_selected_skill.next_skill_ids)
+        {
+            SkillSlot next_data = GetSkillSlot(id);
+            if (next_data.IsUnlocked())
+                next_data.Unlock();
+        }
 
         /* if (!current_selected_skill.is_start)
              current_selected_skill.SetLineColor(current_selected_skill.green_color);
@@ -65,6 +94,8 @@ public partial class Skilltree : ColorRect
         {
             if (skill.type_category == category)
             {
+                if (skill_progress.Length <= (int)skill.id)
+                    continue; // Skill not unlocked
                 if (skill_progress[(int)skill.id] == 1)
                     if (!skill.is_big_skill)
                         bonus += skill.skill_amount;
@@ -80,6 +111,8 @@ public partial class Skilltree : ColorRect
     {
         foreach (SkillData skill in skill_datas)
         {
+            if (skill_progress.Length <= (int)skill.id)
+                continue; // Skill not unlocked
             if (skill.type_category == category)
                 if (skill.is_big_skill)
                 {
@@ -121,6 +154,17 @@ public partial class Skilltree : ColorRect
         title.Text = TranslationServer.Translate(data.DisplayName);
         description.Text = TranslationServer.Translate(data.Description);
         required_skill_points.Text = "" + data.required_skill_points;
+    }
+
+    public SkillSlot GetSkillSlot(SkillData.ID id)
+    {
+        foreach (SkillSlot slot in skill_slots)
+        {
+            if (slot.id == id)
+                return slot;
+        }
+        GD.PrintErr($"SkillSlot with ID {id} not found!");
+        return null;
     }
 
     public SkillData GetSkillData(SkillData.ID id)

@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource("2_a45ym")
-id = 18
+id = 19
 type_category = 7
 is_big_skill = false
-DisplayName = "Research Cost 1"
+DisplayName = "Research Cost 2"
 Description = "Mega krass"
 Icon = ExtResource("1_ell5t")
 skill_amount = 0.1

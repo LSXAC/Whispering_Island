@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_s0ljq")
-id = 30
+id = 31
 type_category = 12
 is_big_skill = false
 DisplayName = "Stamina Reduction 1"
