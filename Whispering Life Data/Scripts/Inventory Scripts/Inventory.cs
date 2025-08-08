@@ -113,6 +113,31 @@ public partial class Inventory : SlotUpdater
         return null;
     }
 
+    public void AddDurabilityToItemsThroughAutoRepair()
+    {
+        for (int i = 0; i < inventory_items.Length; i++)
+        {
+            if (inventory_items[i] == null)
+                continue;
+
+            if (inventory_items[i].current_durability == -1)
+                continue;
+
+            if (
+                ITEM_TYPES[(ITEM_ID)inventory_items[i].item_id].GetAttributeOrNull<ToolAttribute>()
+                != null
+            )
+                if (
+                    inventory_items[i].current_durability
+                    < ITEM_TYPES[(ITEM_ID)inventory_items[i].item_id]
+                        .GetAttributeOrNull<ToolAttribute>()
+                        .durability
+                )
+                    inventory_items[i].current_durability += 1;
+            UpdateSlot(i);
+        }
+    }
+
     public void MarkSlotsWithAttributeTypes(Type[] attributeTypes)
     {
         if (attributeTypes == null || attributeTypes.Length == 0)

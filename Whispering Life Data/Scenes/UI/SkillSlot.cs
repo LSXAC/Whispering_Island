@@ -17,7 +17,7 @@ public partial class SkillSlot : ColorRect
 
     public Button button;
 
-    public Array<Line2D> lines;
+    public Array<Line2D> lines = new Array<Line2D>();
 
     public Color normal_color = new Color(1f, 1f, 1f, 1);
     public Color green_color = new Color(0.2f, 1f, 0.2f, 1);
@@ -26,6 +26,9 @@ public partial class SkillSlot : ColorRect
     {
         base._Ready();
         button = GetNode<Button>("Button");
+        foreach (Node node in GetChildren())
+            if (node is Line2D line)
+                lines.Add(line);
 
         if (!is_start)
             button.Disabled = true;
@@ -45,9 +48,22 @@ public partial class SkillSlot : ColorRect
         return true;
     }
 
+    public void SetLinesWithColor(Color color)
+    {
+        foreach (Line2D line in lines)
+        {
+            line.DefaultColor = color;
+        }
+    }
+
     public void Unlock()
     {
         button.Disabled = false;
+    }
+
+    public void Lock()
+    {
+        button.Disabled = true;
     }
 
     public void OnButtonClicked()

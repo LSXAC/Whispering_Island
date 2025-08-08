@@ -53,11 +53,18 @@ public partial class Skilltree : ColorRect
     public void OnVisiblityChanged()
     {
         UpdateResearchPoints();
-        /*foreach (SkillSlot slot in skill_slots)
+        foreach (SkillSlot slot in skill_slots)
         {
             if (slot.IsUnlocked())
-                slot.button.Disabled = false;
-        }*/
+            {
+                slot.Unlock();
+            }
+            if (skill_progress[(int)slot.id] == 1)
+            {
+                slot.SetLinesWithColor(slot.green_color);
+                slot.Lock();
+            }
+        }
     }
 
     public void OnUnlockSkillButton()
@@ -71,6 +78,7 @@ public partial class Skilltree : ColorRect
         Debug.Print("Length: " + skill_progress.Length);
         skill_progress[(int)data.id] = 1;
         current_selected_skill.button.Disabled = true;
+        current_selected_skill.SetLinesWithColor(current_selected_skill.green_color);
 
         if (current_selected_skill.next_skill_ids == null)
             return;

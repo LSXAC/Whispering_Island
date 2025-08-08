@@ -28,6 +28,10 @@ public partial class TimeManager : Node2D
 
     public void OnGameTimerTimeout()
     {
+        if (PlayerInventoryUI.instance != null && Skilltree.instance != null)
+            if (Skilltree.instance.HasBigSkill(SkillData.TYPE_CATEGORY.TOOL_REGENERATION))
+                PlayerInventoryUI.instance.AddDurabilityToItemsThroughAutoRepair();
+
         day_night_manager.UpdateColor();
         current_game_time += GameManager.time_multiplier; // Increment game time by 5 minutes
         // 3 - 5
