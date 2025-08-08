@@ -235,9 +235,23 @@ public partial class PlayerUI : CanvasLayer
         if (hslider == null)
             return;
 
-        if (PlayerStamina.current_stamina < 1f && !hslider.Visible)
+        if (
+            hslider.MaxValue
+            != 1f * Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.STAMINA_MAX)
+        )
+            hslider.MaxValue =
+                1f * Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.STAMINA_MAX);
+        if (
+            PlayerStamina.current_stamina
+                < 1f * Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.STAMINA_MAX)
+            && !hslider.Visible
+        )
             hslider.Visible = true;
-        else if (PlayerStamina.current_stamina >= 1f && hslider.Visible)
+        else if (
+            PlayerStamina.current_stamina
+                >= 1f * Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.STAMINA_MAX)
+            && hslider.Visible
+        )
             hslider.Visible = false;
 
         if (PlayerStamina.stamina_is_regenerating && hslider.Visible)

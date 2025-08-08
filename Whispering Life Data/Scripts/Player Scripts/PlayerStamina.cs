@@ -23,9 +23,9 @@ public partial class PlayerStamina : Node2D
             Player.instance.anim.SpeedScale = 1.5f;
             current_stamina -=
                 stamina_use
-                * (
+                * 1f
+                / (
                     Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.STAMINA_REDUCTION)
-                    + 1f
                 );
             ;
             Player.instance.player_stats.AddFatigue(0.01f);
@@ -37,7 +37,11 @@ public partial class PlayerStamina : Node2D
             if (
                 current_stamina
                     >= max_stamina
-                        * Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.STAMINA_MAX)
+                        * (
+                            Skilltree.instance.GetBonusOfCategory(
+                                SkillData.TYPE_CATEGORY.STAMINA_MAX
+                            )
+                        )
                 && stamina_is_regenerating
             )
                 stamina_is_regenerating = false;

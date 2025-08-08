@@ -111,6 +111,8 @@ public partial class Skilltree : ColorRect
                         GD.PrintErr("Wrong Function used - use HasBigSkill instead!" + skill.id);
             }
         }
+        if (bonus == 0)
+            return 1;
         return bonus;
     }
 
