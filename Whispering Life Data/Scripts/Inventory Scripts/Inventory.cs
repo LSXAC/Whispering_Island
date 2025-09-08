@@ -5,6 +5,7 @@ using Godot.Collections;
 
 public partial class Inventory : SlotUpdater
 {
+    [Export]
     public Array<Slot> slots = new Array<Slot>();
 
     [Export]
@@ -97,8 +98,8 @@ public partial class Inventory : SlotUpdater
 
     public void SetSlots()
     {
-        foreach (Slot s in GetNode<GridContainer>($"GridContainer").GetChildren())
-            slots.Add(s);
+        foreach (ColorRect rect in GetNode<GridContainer>($"GridContainer").GetChildren())
+            slots.Add(rect.GetChild<Slot>(0));
     }
 
     public Slot GetSlotWithItem(Item item)
@@ -458,16 +459,17 @@ public partial class Inventory : SlotUpdater
             ClearSlot(index);
             return;
         }
-
-        GetNode<Slot>($"GridContainer/Slot{index}")
+        Debug.Print("index: " + index);
+        GetNode<Slot>($"GridContainer/SlotBackground{index}/Slot0")
             .UpdateItem(
                 new Item(GetItemInfo(index), inventory_items[index].amount),
                 GetDurability(index)
             );
 
         if (pref_ref != null)
-            GetNode<Slot>($"GridContainer/Slot{index}").GetSlotItemUI().SelfModulate =
-                pref_ref.SelfModulate;
+            GetNode<Slot>($"GridContainer/SlotBackground{index}/Slot0")
+                .GetSlotItemUI()
+                .SelfModulate = pref_ref.SelfModulate;
 
         QuestMiniPanel.instance.UpdateQuestMiniPanel(
             QuestManager.instance.quests[QuestManager.current_quest_id]
@@ -476,7 +478,8 @@ public partial class Inventory : SlotUpdater
 
     public override void ClearSlot(int index)
     {
-        GetNode<Slot>($"GridContainer/Slot{index}").ClearSlotItem();
+        Debug.Print("index clear: " + index);
+        GetNode<Slot>($"GridContainer/SlotBackground{index}/Slot0").ClearSlotItem();
     }
 
     //TODO: GetItemInfo ziemlich oft vertreten! Refactorn!

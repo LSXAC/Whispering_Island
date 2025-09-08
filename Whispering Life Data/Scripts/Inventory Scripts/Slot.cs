@@ -18,6 +18,7 @@ public partial class Slot : Button
 
     [Export]
     public bool slot_is_switchable = true;
+    private int index = 0;
 
     ItemSave[] item_array = null;
     SlotUpdater slotUpdater;
@@ -37,10 +38,11 @@ public partial class Slot : Button
             if (btn.ButtonMask != MouseButtonMask.Left && btn.ButtonMask != MouseButtonMask.Right)
                 return;
 
-            if (GetParent().GetParent() is PlayerInventoryUI)
+            if (GetParent().GetParent().GetParent() is PlayerInventoryUI)
             {
-                item_array = ((Inventory)GetParent().GetParent()).inventory_items;
-                slotUpdater = (Inventory)GetParent().GetParent();
+                item_array = ((Inventory)GetParent().GetParent().GetParent()).inventory_items;
+                slotUpdater = (Inventory)GetParent().GetParent().GetParent();
+                index = GetParent().GetIndex();
                 OnSlotButton(btn);
             }
 
@@ -54,16 +56,20 @@ public partial class Slot : Button
                     OnSlotButton(btn);
             }
 
-            if (GetParent().GetParent() is ChestInventoryUI)
+            if (GetParent().GetParent().GetParent() is ChestInventoryUI)
             {
-                item_array = ((Inventory)GetParent().GetParent()).inventory_items;
-                slotUpdater = (Inventory)GetParent().GetParent();
+                item_array = ((Inventory)GetParent().GetParent().GetParent()).inventory_items;
+                slotUpdater = (Inventory)GetParent().GetParent().GetParent();
                 chest = ChestInventoryUI.current_chest;
+                index = GetParent().GetIndex();
                 OnSlotButton(btn);
             }
 
             if (attribute_to_check is WearableAttribute)
-                OnEquipSlotButton(GetIndex());
+            {
+                index = GetParent().GetIndex();
+                OnEquipSlotButton(index);
+            }
 
             if (attribute_to_check is ResearchableAttribute)
                 OnResearchSlotButton();
@@ -343,30 +349,30 @@ public partial class Slot : Button
     {
         if (amount == -1)
             return;
-        i_save[GetIndex()].amount = amount;
-        slotUpdater.UpdateSlot(GetIndex(), PlayerInventoryUI.clicked_slot_item_ui);
+        i_save[index].amount = amount;
+        slotUpdater.UpdateSlot(index, PlayerInventoryUI.clicked_slot_item_ui);
     }
 
     private int GetAmountOfSlot(ItemSave[] i_save)
     {
-        if (item_array[GetIndex()] == null)
+        if (item_array[index] == null)
             return -1;
-        return i_save[GetIndex()].amount;
+        return i_save[index].amount;
     }
 
     private void NewSlotItem(int id, int amount, int durability)
     {
         if (durability != -1)
-            item_array[GetIndex()] = new ItemSave(id, amount, durability);
+            item_array[index] = new ItemSave(id, amount, durability);
         else
-            item_array[GetIndex()] = new ItemSave(id, amount);
-        slotUpdater.UpdateSlot(GetIndex(), PlayerInventoryUI.clicked_slot_item_ui);
+            item_array[index] = new ItemSave(id, amount);
+        slotUpdater.UpdateSlot(index, PlayerInventoryUI.clicked_slot_item_ui);
     }
 
     private void ClearSlot(ItemSave[] i_save)
     {
-        i_save[GetIndex()] = null;
-        slotUpdater.ClearSlot(GetIndex());
+        i_save[index] = null;
+        slotUpdater.ClearSlot(index);
     }
 
     private void ClearClickedItem()

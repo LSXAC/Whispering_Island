@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=120 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://Scripts/UI Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -22,8 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://Scenes/UI/header_color_rect.tscn" id="11_45saq"]
 [ext_resource type="Script" uid="uid://dmhek11432ok0" path="res://Scripts/UI Scripts/ResearchTab.cs" id="11_hr8uu"]
 [ext_resource type="PackedScene" uid="uid://cd8pn6e2fwrpm" path="res://Scenes/UI/Research_Level_Tab.tscn" id="12_3k1qw"]
+[ext_resource type="PackedScene" uid="uid://ceypkxf7dox6w" path="res://Scenes/UI/slot_background.tscn" id="13_m8k7p"]
+[ext_resource type="Texture2D" uid="uid://e6d1pgbiv2dn" path="res://Sprites/Items/Armor/Placeholder_Armor_Head.png" id="14_mmhr0"]
 [ext_resource type="Script" uid="uid://c80nhtlc3g8ga" path="res://Scripts/Item/ArmorAttribute.cs" id="15_jkil6"]
-[ext_resource type="Script" uid="uid://bu58bbjdvh5bk" path="res://Scripts/Player Scripts/PlayerStat.cs" id="16_bhpct"]
+[ext_resource type="Script" uid="uid://bu58bbjdvh5bk" path="res://Scripts/Player Scripts/PlayerStat.cs" id="15_m8k7p"]
 [ext_resource type="Script" uid="uid://c1q35nbh8sb51" path="res://Scripts/UI Scripts/IslandMenu.cs" id="16_burxg"]
 [ext_resource type="Script" uid="uid://c7qu86gm6haea" path="res://Scripts/UI Scripts/CheatTab.cs" id="16_f2xax"]
 [ext_resource type="Script" uid="uid://btkxakelo3d1y" path="res://Scripts/UI Scripts/SettingsTab.cs" id="16_jv3kw"]
@@ -31,13 +33,16 @@
 [ext_resource type="Script" uid="uid://c8gcdq44rac7i" path="res://Scripts/Skilltree.cs" id="16_x6qgy"]
 [ext_resource type="Script" uid="uid://v7dew0yr5trl" path="res://Scripts/Item/ToolAttribute.cs" id="17_7ai0l"]
 [ext_resource type="Script" uid="uid://mtwprpv04hll" path="res://Scripts/UI Scripts/ChestTab.cs" id="17_8qgvy"]
+[ext_resource type="Texture2D" uid="uid://bktanws4eilvv" path="res://Sprites/Items/Armor/Placeholder_Armor_Chest.png" id="17_6662a"]
 [ext_resource type="StyleBox" uid="uid://beanw2e3ddca1" path="res://Resource Meta/Menus/OptionButtonStyle.tres" id="17_hyydq"]
 [ext_resource type="Texture2D" uid="uid://y7p1sna6t1lh" path="res://Sprites/Mystic_Island.png" id="17_i4snh"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="17_iq1ex"]
 [ext_resource type="Texture2D" uid="uid://d24spwn8n1w7w" path="res://Sprites/Flaggs/DE_FLAG.png" id="18_1qrrt"]
+[ext_resource type="Texture2D" uid="uid://ih5t52rdyjcs" path="res://Sprites/Items/Armor/Placeholder_Armor_Legs.png" id="18_gcthi"]
 [ext_resource type="Texture2D" uid="uid://b52ffyqisk5i1" path="res://Sprites/Mining_Island.png" id="18_k8cqj"]
 [ext_resource type="Texture2D" uid="uid://w1k1mv22ckvl" path="res://Sprites/Items/Icons_3rd/Stone.png" id="18_ou1xm"]
 [ext_resource type="StyleBox" uid="uid://ch5faigjhjxlm" path="res://Resource Meta/Menus/OptionButtonStylePressed.tres" id="18_q7nbm"]
+[ext_resource type="Texture2D" uid="uid://dpkjoc1lf1fa5" path="res://Sprites/Items/Armor/Placeholder_Armor_Shoes.png" id="19_rgd55"]
 [ext_resource type="Texture2D" uid="uid://g5tq6jiacbx3" path="res://Sprites/Farming_Island.png" id="19_wr86d"]
 [ext_resource type="Texture2D" uid="uid://bjp5wy4new0rg" path="res://Sprites/Island_Dessert.png" id="20_23y7x"]
 [ext_resource type="Texture2D" uid="uid://04ccgfwkqldn" path="res://Sprites/Items/Icons/Fuel.png" id="20_s2f2w"]
@@ -99,72 +104,72 @@
 [ext_resource type="Script" uid="uid://cuumqpn4sqi6h" path="res://Scripts/UI Scripts/MinecartTab.cs" id="74_5ehlf"]
 [ext_resource type="Script" uid="uid://djyj8ngmhjavn" path="res://Scripts/UI Scripts/RailStationTab.cs" id="76_6ikjc"]
 
-[sub_resource type="Resource" id="Resource_jqjem"]
+[sub_resource type="Resource" id="Resource_7gwna"]
 script = ExtResource("15_jkil6")
 slot_type = 1
 durability = 100
-stats = Array[ExtResource("16_bhpct")]([])
+stats = Array[ExtResource("15_m8k7p")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
-[sub_resource type="Resource" id="Resource_8ll2j"]
+[sub_resource type="Resource" id="Resource_j657e"]
 script = ExtResource("15_jkil6")
 slot_type = 2
 durability = 100
-stats = Array[ExtResource("16_bhpct")]([])
+stats = Array[ExtResource("15_m8k7p")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
-[sub_resource type="Resource" id="Resource_vb8f1"]
+[sub_resource type="Resource" id="Resource_etc0m"]
 script = ExtResource("15_jkil6")
 slot_type = 3
 durability = 100
-stats = Array[ExtResource("16_bhpct")]([])
+stats = Array[ExtResource("15_m8k7p")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
-[sub_resource type="Resource" id="Resource_bxu4c"]
+[sub_resource type="Resource" id="Resource_mmhr0"]
 script = ExtResource("15_jkil6")
 slot_type = 4
 durability = 100
-stats = Array[ExtResource("16_bhpct")]([])
+stats = Array[ExtResource("15_m8k7p")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
-[sub_resource type="Resource" id="Resource_kimtu"]
+[sub_resource type="Resource" id="Resource_m8k7p"]
 script = ExtResource("17_7ai0l")
 type = 0
 tool_type = 3
 mining_level = 0
-slot_type = 5
+slot_type = 0
 durability = 100
-stats = Array[ExtResource("16_bhpct")]([])
+stats = Array[ExtResource("15_m8k7p")]([])
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
-[sub_resource type="Resource" id="Resource_68nsa"]
+[sub_resource type="Resource" id="Resource_6662a"]
 script = ExtResource("17_7ai0l")
 type = 0
 tool_type = 3
 mining_level = 0
-slot_type = 5
+slot_type = 0
 durability = 100
-stats = Array[ExtResource("16_bhpct")]([])
+stats = Array[ExtResource("15_m8k7p")]([])
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
-[sub_resource type="Resource" id="Resource_gix8t"]
+[sub_resource type="Resource" id="Resource_gcthi"]
 script = ExtResource("17_7ai0l")
 type = 0
 tool_type = 3
 mining_level = 0
-slot_type = 5
+slot_type = 0
 durability = 100
-stats = Array[ExtResource("16_bhpct")]([])
+stats = Array[ExtResource("15_m8k7p")]([])
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
-[sub_resource type="Resource" id="Resource_tkty2"]
+[sub_resource type="Resource" id="Resource_rgd55"]
 script = ExtResource("17_7ai0l")
 type = 0
 tool_type = 3
 mining_level = 0
-slot_type = 5
+slot_type = 0
 durability = 100
-stats = Array[ExtResource("16_bhpct")]([])
+stats = Array[ExtResource("15_m8k7p")]([])
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
 [sub_resource type="Resource" id="Resource_djfqw"]
@@ -419,25 +424,31 @@ anchor_bottom = 1.0
 offset_top = 24.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Forground" type="ColorRect" parent="Background/InventoryTab"]
+offset_left = 1.0
+offset_right = 559.0
+offset_bottom = 279.0
 color = Color(0.67451, 0.654902, 0.796078, 1)
 
 [node name="Inventory" parent="Background/InventoryTab" instance=ExtResource("3_ub0ut")]
 layout_mode = 1
 offset_left = 32.0
-offset_top = 35.0
-offset_right = 15.0
-offset_bottom = 17.0
+offset_top = 37.0
+offset_right = -280.0
+offset_bottom = 22.0
 inventory_items = Array[Resource]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 
 [node name="EquipmentPanel" type="Control" parent="Background/InventoryTab" node_paths=PackedStringArray("slots_armor", "slots_tool", "player_stats_ui", "health_bar_label", "fatigue_bar_label", "health_bar", "fatigue_bar")]
 anchors_preset = 0
-offset_left = 353.0
-offset_top = 35.0
-offset_right = 689.0
-offset_bottom = 292.0
+offset_left = 381.0
+offset_top = 49.0
+offset_right = 717.0
+offset_bottom = 306.0
 script = ExtResource("4_e3tur")
-slots_armor = [NodePath("Character/GridContainer/HeadSlot"), NodePath("Character/GridContainer/ChestSlot"), NodePath("Character/GridContainer/LegSlot"), NodePath("Character/GridContainer/ShoesSlot")]
-slots_tool = [NodePath("EquipmentHBox/EquipSlot1"), NodePath("EquipmentHBox/EquipSlot2"), NodePath("EquipmentHBox/EquipSlot3"), NodePath("EquipmentHBox/EquipSlot4")]
+slots_armor = [null, null, null, null]
+slots_tool = [null, null, null, null]
 player_stats_ui = NodePath("PlayerStatsUI")
 health_bar_label = NodePath("GridContainer/HealthHBox/Label")
 fatigue_bar_label = NodePath("GridContainer/FatigueBox/Label")
@@ -458,59 +469,67 @@ offset_top = 3.0
 offset_right = 58.0
 offset_bottom = 71.0
 
-[node name="HeadSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="HeadSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer" instance=ExtResource("13_m8k7p")]
 layout_mode = 2
-theme = ExtResource("10_8x2l6")
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 6
-text = "[Head]"
-script = ExtResource("4_v56ys")
-label_translation_string = "EQUIPMENT_SLOT_HEAD"
-attribute_to_check = SubResource("Resource_jqjem")
 
-[node name="ChestSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/HeadSlotBackground" index="0"]
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
+theme_override_constants/icon_max_width = 24
+theme_override_font_sizes/font_size = 8
+icon = ExtResource("14_mmhr0")
+icon_alignment = 1
+attribute_to_check = SubResource("Resource_7gwna")
+
+[node name="ChestSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer" instance=ExtResource("13_m8k7p")]
 layout_mode = 2
-theme = ExtResource("10_8x2l6")
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 6
-text = "[Chest]"
-script = ExtResource("4_v56ys")
-label_translation_string = "EQUIPMENT_SLOT_CHEST"
-attribute_to_check = SubResource("Resource_8ll2j")
 
-[node name="LegSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/ChestSlotBackground" index="0"]
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
+theme_override_constants/icon_max_width = 24
+theme_override_font_sizes/font_size = 8
+icon = ExtResource("17_6662a")
+icon_alignment = 1
+attribute_to_check = SubResource("Resource_j657e")
+
+[node name="LegSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer" instance=ExtResource("13_m8k7p")]
 layout_mode = 2
-theme = ExtResource("10_8x2l6")
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 6
-text = "[Legs]"
-script = ExtResource("4_v56ys")
-label_translation_string = "EQUIPMENT_SLOT_LEGS"
-attribute_to_check = SubResource("Resource_vb8f1")
 
-[node name="ShoesSlot" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/LegSlotBackground" index="0"]
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
+theme_override_constants/icon_max_width = 24
+theme_override_font_sizes/font_size = 8
+icon = ExtResource("18_gcthi")
+icon_alignment = 1
+attribute_to_check = SubResource("Resource_etc0m")
+
+[node name="ShoesSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer" instance=ExtResource("13_m8k7p")]
 layout_mode = 2
-theme = ExtResource("10_8x2l6")
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 6
-text = "[Foots]"
-script = ExtResource("4_v56ys")
-label_translation_string = "EQUIPMENT_SLOT_FOOTS"
-attribute_to_check = SubResource("Resource_bxu4c")
 
-[node name="ColorRectProfil" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel"]
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/ShoesSlotBackground" index="0"]
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
+theme_override_constants/icon_max_width = 24
+theme_override_font_sizes/font_size = 8
+icon = ExtResource("19_rgd55")
+icon_alignment = 1
+attribute_to_check = SubResource("Resource_mmhr0")
+
+[node name="ColorRectProfilBackground" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = -12.0
-offset_right = 112.0
+offset_right = 76.0
 offset_bottom = 128.0
-color = Color(0, 0, 0, 0.537255)
+color = Color(0, 0, 0, 1)
 
-[node name="TextureRect" type="TextureRect" parent="Background/InventoryTab/EquipmentPanel/ColorRectProfil"]
+[node name="Forground" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel/ColorRectProfilBackground"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 67.0
+offset_bottom = 139.0
+color = Color(0.278431, 0.270588, 0.329412, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Background/InventoryTab/EquipmentPanel/ColorRectProfilBackground"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -533,49 +552,33 @@ offset_right = 151.0
 offset_bottom = 165.0
 theme_override_constants/separation = 4
 
-[node name="EquipSlot1" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
-custom_minimum_size = Vector2(32, 32)
+[node name="HeadSlotBackground" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox" instance=ExtResource("13_m8k7p")]
 layout_mode = 2
-theme = ExtResource("10_8x2l6")
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 5
-text = "[Weapon]"
-script = ExtResource("4_v56ys")
-label_translation_string = "EQUIPMENT_SLOT_WEAPON"
-attribute_to_check = SubResource("Resource_kimtu")
 
-[node name="EquipSlot2" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-theme = ExtResource("10_8x2l6")
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 5
-text = "[TOOL]"
-script = ExtResource("4_v56ys")
-label_translation_string = "EQUIPMENT_SLOT_TOOL"
-attribute_to_check = SubResource("Resource_68nsa")
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground" index="0"]
+theme_override_font_sizes/font_size = 8
+attribute_to_check = SubResource("Resource_m8k7p")
 
-[node name="EquipSlot3" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
-custom_minimum_size = Vector2(32, 32)
+[node name="HeadSlotBackground2" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox" instance=ExtResource("13_m8k7p")]
 layout_mode = 2
-theme = ExtResource("10_8x2l6")
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 5
-text = "[TOOL]"
-script = ExtResource("4_v56ys")
-label_translation_string = "EQUIPMENT_SLOT_TOOL"
-attribute_to_check = SubResource("Resource_gix8t")
 
-[node name="EquipSlot4" type="Button" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox"]
-custom_minimum_size = Vector2(32, 32)
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground2" index="0"]
+theme_override_font_sizes/font_size = 8
+attribute_to_check = SubResource("Resource_6662a")
+
+[node name="HeadSlotBackground3" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox" instance=ExtResource("13_m8k7p")]
 layout_mode = 2
-theme = ExtResource("10_8x2l6")
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 5
-text = "[TOOL]"
-script = ExtResource("4_v56ys")
-label_translation_string = "EQUIPMENT_SLOT_TOOL"
-attribute_to_check = SubResource("Resource_tkty2")
+
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground3" index="0"]
+theme_override_font_sizes/font_size = 8
+attribute_to_check = SubResource("Resource_gcthi")
+
+[node name="HeadSlotBackground4" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox" instance=ExtResource("13_m8k7p")]
+layout_mode = 2
+
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground4" index="0"]
+theme_override_font_sizes/font_size = 8
+attribute_to_check = SubResource("Resource_rgd55")
 
 [node name="GridContainer" type="GridContainer" parent="Background/InventoryTab/EquipmentPanel"]
 layout_mode = 0
@@ -585,6 +588,7 @@ offset_right = 185.0
 offset_bottom = 221.0
 
 [node name="HealthHBox" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/GridContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
@@ -605,6 +609,7 @@ theme_override_font_sizes/font_size = 10
 value = 15.0
 
 [node name="FatigueBox" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/GridContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
@@ -625,6 +630,7 @@ theme_override_font_sizes/font_size = 10
 value = 15.0
 
 [node name="KnowledgeHBox" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/GridContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
@@ -645,15 +651,23 @@ theme_override_font_sizes/font_size = 10
 
 [node name="PlayerStatsUI" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel" node_paths=PackedStringArray("stats_container")]
 layout_mode = 0
-offset_left = 117.0
+offset_left = 80.0
 offset_top = -12.0
-offset_right = 185.0
+offset_right = 148.0
 offset_bottom = 128.0
 tooltip_text = "
 "
-color = Color(0, 0, 0, 0.537255)
+color = Color(0, 0, 0, 1)
 script = ExtResource("7_hhlnf")
 stats_container = NodePath("VBoxContainer")
+
+[node name="Forground" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 67.0
+offset_bottom = 139.0
+color = Color(0.278431, 0.270588, 0.329412, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI"]
 layout_mode = 0
@@ -669,12 +683,14 @@ layout_mode = 2
 [node name="Type" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Attack"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "Attack:"
 
 [node name="Number" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Attack"]
 layout_mode = 2
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "25"
@@ -686,12 +702,14 @@ layout_mode = 2
 [node name="Type" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Defense"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "Defense:"
 
 [node name="Number" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Defense"]
 layout_mode = 2
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "25"
@@ -703,12 +721,14 @@ layout_mode = 2
 [node name="Type" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Harvesting"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "Harvesting:"
 
 [node name="Number" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Harvesting"]
 layout_mode = 2
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "25"
@@ -720,12 +740,14 @@ layout_mode = 2
 [node name="Type" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Mining"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "Mining:"
 
 [node name="Number" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Mining"]
 layout_mode = 2
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "25"
@@ -737,12 +759,14 @@ layout_mode = 2
 [node name="Type" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Farming"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "Farming:"
 
 [node name="Number" type="Label" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI/VBoxContainer/Farming"]
 layout_mode = 2
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "25"
@@ -4914,3 +4938,12 @@ label_translation_string = "DESTROY_MENU_BUTTON"
 [connection signal="visibility_changed" from="Background/DestroyMenu" to="Background/DestroyMenu" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/DestroyMenu/HeaderColorRect/X" to="." method="OnCloseDestroyTab"]
 [connection signal="pressed" from="Background/DestroyMenu/MarginContainer/VBoxContainer2/CompleteQuestButton" to="Background/DestroyMenu" method="OnDestroyButton"]
+
+[editable path="Background/InventoryTab/EquipmentPanel/Character/GridContainer/HeadSlotBackground"]
+[editable path="Background/InventoryTab/EquipmentPanel/Character/GridContainer/ChestSlotBackground"]
+[editable path="Background/InventoryTab/EquipmentPanel/Character/GridContainer/LegSlotBackground"]
+[editable path="Background/InventoryTab/EquipmentPanel/Character/GridContainer/ShoesSlotBackground"]
+[editable path="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground"]
+[editable path="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground2"]
+[editable path="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground3"]
+[editable path="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground4"]

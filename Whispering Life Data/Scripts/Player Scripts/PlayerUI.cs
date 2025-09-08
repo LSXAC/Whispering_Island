@@ -143,7 +143,8 @@ public partial class PlayerUI : CanvasLayer
         if (game_time_label == null)
             return;
 
-        game_time_label.Text = TimeManager.instance.GetTimeFormat();
+        if (game_time_label != null)
+            game_time_label.Text = TimeManager.instance.GetTimeFormat();
     }
 
     public void OnLoadGameButton()

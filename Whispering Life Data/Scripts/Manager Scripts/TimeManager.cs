@@ -67,7 +67,7 @@ public partial class TimeManager : Node2D
     public string GetTimeFormat()
     {
         int hours = current_game_time / 60;
-        int minutes = (current_game_time % 60); // 5 minutes per game hour
+        int minutes = current_game_time % 60; // 5 minutes per game hour
         string formattedTime = $"{hours:D2}:{minutes:D2}";
         return formattedTime;
     }
