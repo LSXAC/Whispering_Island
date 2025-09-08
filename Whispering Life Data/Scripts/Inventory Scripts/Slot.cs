@@ -290,7 +290,10 @@ public partial class Slot : Button
         slot_item_ui.init(item, durability);
         slot_item_ui.UpdateAmountLabel();
         if (durability != -1)
+        {
+            GetSlotItemUI().RescaleDurabilityBar();
             slot_item_ui.SetDurability(durability);
+        }
         if (item.amount == 0)
             ClearSlotItem();
     }
@@ -306,10 +309,14 @@ public partial class Slot : Button
         if (item.info == GetSlotItemUI().item.info)
         {
             if (durability != -1)
+            {
+                GetSlotItemUI().RescaleDurabilityBar();
                 GetSlotItemUI().SetDurability(durability);
+            }
 
             GetSlotItemUI().item.amount = item.amount;
             GetSlotItemUI().UpdateAmountLabel();
+            GetSlotItemUI().UpdateToolTip();
         }
         else
         {

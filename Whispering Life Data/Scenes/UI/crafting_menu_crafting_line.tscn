@@ -45,9 +45,6 @@ layout_mode = 2
 [node name="ItemTexture" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem" index="0"]
 custom_minimum_size = Vector2(24, 24)
 
-[node name="ItemLabel" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem" index="1"]
-theme_override_font_sizes/font_size = 10
-
 [node name="HBoxRequiereToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2

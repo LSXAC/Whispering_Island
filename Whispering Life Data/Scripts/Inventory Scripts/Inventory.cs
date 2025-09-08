@@ -125,16 +125,44 @@ public partial class Inventory : SlotUpdater
 
             if (
                 ITEM_TYPES[(ITEM_ID)inventory_items[i].item_id].GetAttributeOrNull<ToolAttribute>()
-                != null
+                == null
             )
-                if (
-                    inventory_items[i].current_durability
-                    < ITEM_TYPES[(ITEM_ID)inventory_items[i].item_id]
-                        .GetAttributeOrNull<ToolAttribute>()
-                        .durability
-                )
-                    inventory_items[i].current_durability += 1;
+                continue;
+
+            if (
+                inventory_items[i].current_durability
+                < ITEM_TYPES[(ITEM_ID)inventory_items[i].item_id]
+                    .GetAttributeOrNull<ToolAttribute>()
+                    .durability
+                    * Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.TOOL_DURABILITY)
+            )
+                inventory_items[i].current_durability += 1;
+
             UpdateSlot(i);
+        }
+
+        ItemSave[] equip = EquipmentPanel.instance.equipped_tools;
+        for (int i = 0; i < equip.Length; i++)
+        {
+            if (equip[i] == null)
+                continue;
+
+            if (equip[i].current_durability == -1)
+                continue;
+
+            if (ITEM_TYPES[(ITEM_ID)equip[i].item_id].GetAttributeOrNull<ToolAttribute>() == null)
+                continue;
+
+            if (
+                equip[i].current_durability
+                < ITEM_TYPES[(ITEM_ID)equip[i].item_id]
+                    .GetAttributeOrNull<ToolAttribute>()
+                    .durability
+                    * Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.TOOL_DURABILITY)
+            )
+                equip[i].current_durability += 1;
+
+            EquipmentPanel.UpdateSlots();
         }
     }
 
@@ -253,7 +281,12 @@ public partial class Inventory : SlotUpdater
                         inventory[i] = new ItemSave(
                             (int)item_info.id,
                             remaining,
-                            attribute.durability
+                            (int)(
+                                attribute.durability
+                                * Skilltree.instance.GetBonusOfCategory(
+                                    SkillData.TYPE_CATEGORY.TOOL_DURABILITY
+                                )
+                            )
                         );
                     else
                         inventory[i] = new ItemSave((int)item_info.id, remaining);
@@ -270,7 +303,12 @@ public partial class Inventory : SlotUpdater
                         inventory[i] = new ItemSave(
                             (int)item_info.id,
                             remaining,
-                            attribute.durability
+                            (int)(
+                                attribute.durability
+                                * Skilltree.instance.GetBonusOfCategory(
+                                    SkillData.TYPE_CATEGORY.TOOL_DURABILITY
+                                )
+                            )
                         );
                     else
                         inventory[i] = new ItemSave(
@@ -410,6 +448,7 @@ public partial class Inventory : SlotUpdater
     {
         for (int i = 0; i < inventory_items.Length; i++)
             UpdateSlot(i);
+        EquipmentPanel.UpdateSlots();
     }
 
     public override void UpdateSlot(int index, SlotItemUI pref_ref = null)

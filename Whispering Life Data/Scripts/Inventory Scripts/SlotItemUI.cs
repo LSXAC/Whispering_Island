@@ -7,6 +7,7 @@ public partial class SlotItemUI : TextureRect
     public Label amount_label;
 
     public ProgressBar progress_bar;
+    public int max_durability = 0;
     public int current_durability = -1;
     public Item item;
 
@@ -34,28 +35,47 @@ public partial class SlotItemUI : TextureRect
             progress_bar.Visible = false;
             return;
         }
-
+        max_durability = (int)(
+            attribute.durability
+            * Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.TOOL_DURABILITY)
+        );
         VBoxContainer vbc = new VBoxContainer();
         vbc.MouseFilter = MouseFilterEnum.Ignore;
         vbc.Size = new Vector2(40, 40);
         vbc.Alignment = BoxContainer.AlignmentMode.End;
 
         //Durability Bar
-        progress_bar.MaxValue = attribute.durability;
+        progress_bar.MaxValue = max_durability;
         progress_bar.Value = current_durability;
         this.current_durability = current_durability;
 
         StyleBoxFlat sbf = new StyleBoxFlat();
         sbf.BgColor = new Color(0.34f, 0.796f, 0);
         progress_bar.AddThemeStyleboxOverride("fill", sbf);
+        UpdateToolTip();
     }
 
-    private void UpdateToolTip()
+    public void RescaleDurabilityBar()
+    {
+        WearableAttribute attribute = item.info.GetAttributeOrNull<WearableAttribute>();
+        //57cb00
+        if (attribute != null)
+        {
+            max_durability = (int)(
+                attribute.durability
+                * Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.TOOL_DURABILITY)
+            );
+            progress_bar.MaxValue = max_durability;
+        }
+    }
+
+    public void UpdateToolTip()
     {
         if (item?.info == null)
             return;
         TooltipText = TranslationServer.Translate(item.info.name.ToString()) + "\n";
         TooltipText += TranslationServer.Translate(item.info.description.ToString()) + "\n";
+        TooltipText += "Durability: " + current_durability + "/" + max_durability;
         TooltipText += "\n";
         foreach (ItemAttributeBase item_attribute in item.info.attributes)
         {

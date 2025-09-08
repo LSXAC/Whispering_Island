@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using Godot;
 
-public partial class HeartManager : Panel
+public partial class HeartManager : ColorRect
 {
     public static HeartManager instance = null;
     public int current_hearts = 3;

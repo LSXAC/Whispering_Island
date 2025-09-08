@@ -225,8 +225,8 @@ process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/SaveLoadTab/HBoxContainer/LoadGameButton")
 destroy_menu = NodePath("Background/DestroyMenu")
-inventory_tab_button = NodePath("Background/HBoxHeader/InvTabButton")
-crafting_tab_button = NodePath("Background/HBoxHeader/CraftingTabButton")
+inventory_tab_button = NodePath("Background/ColorRect/ColorRect/HBoxHeader/InvTabButton")
+crafting_tab_button = NodePath("Background/ColorRect/ColorRect/HBoxHeader/CraftingTabButton")
 inventory_tab = NodePath("Background/InventoryTab")
 crafting_tab = NodePath("Background/CraftingTab")
 furnace_tab = NodePath("Background/FurnaceTab")
@@ -240,7 +240,7 @@ skilltree_tab = NodePath("Background/Skilltree")
 help_tab = NodePath("Background/HelpTab")
 rail_station_tab = NodePath("Background/RailStationTab")
 minecart_tab = NodePath("Background/MinecartTab")
-header_container = NodePath("Background/HBoxHeader")
+header_container = NodePath("Background/ColorRect/ColorRect/HBoxHeader")
 
 [node name="TransBackground" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -261,20 +261,39 @@ offset_right = -40.0
 offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.278431, 0.270588, 0.329412, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+layout_mode = 0
+offset_right = 560.0
+offset_bottom = 24.0
 color = Color(0, 0, 0, 1)
 
-[node name="HBoxHeader" type="HBoxContainer" parent="Background"]
+[node name="ColorRect" type="ColorRect" parent="Background/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.278431, 0.270588, 0.329412, 1)
+
+[node name="HBoxHeader" type="HBoxContainer" parent="Background/ColorRect/ColorRect"]
 layout_mode = 0
 offset_right = 560.0
 offset_bottom = 24.0
 alignment = 1
 
-[node name="InvTabButton" type="Button" parent="Background/HBoxHeader"]
+[node name="InvTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
+theme_override_constants/outline_size = 3
 theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
@@ -284,12 +303,12 @@ flat = true
 script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_INVENTORY_BUTTON"
 
-[node name="CraftingTabButton" type="Button" parent="Background/HBoxHeader"]
+[node name="CraftingTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
+theme_override_constants/outline_size = 3
 theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
@@ -299,12 +318,12 @@ flat = true
 script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_CRAFTING_BUTTON"
 
-[node name="SaveTabButton" type="Button" parent="Background/HBoxHeader"]
+[node name="SaveTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
+theme_override_constants/outline_size = 3
 theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
@@ -314,13 +333,13 @@ flat = true
 script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_SAVELOAD_BUTTON"
 
-[node name="StatsTabButton" type="Button" parent="Background/HBoxHeader"]
+[node name="StatsTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
 disabled = true
@@ -328,12 +347,12 @@ text = "Stats"
 flat = true
 script = ExtResource("3_pwamf")
 
-[node name="SkillTreeTabButton" type="Button" parent="Background/HBoxHeader"]
+[node name="SkillTreeTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
+theme_override_constants/outline_size = 3
 theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
@@ -342,23 +361,23 @@ icon = ExtResource("7_lai0m")
 flat = true
 script = ExtResource("3_pwamf")
 
-[node name="AdminButton" type="Button" parent="Background/HBoxHeader"]
+[node name="AdminButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
 text = "ADMIN"
 flat = true
 script = ExtResource("3_pwamf")
 
-[node name="HelpButton" type="Button" parent="Background/HBoxHeader"]
+[node name="HelpButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
+theme_override_constants/outline_size = 3
 theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
@@ -368,11 +387,11 @@ flat = true
 script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_HELP_BUTTON"
 
-[node name="SettingsTabButton" type="Button" parent="Background/HBoxHeader"]
+[node name="SettingsTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
+theme_override_constants/outline_size = 3
 theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
@@ -380,11 +399,11 @@ icon = ExtResource("9_4wwa8")
 flat = true
 script = ExtResource("3_pwamf")
 
-[node name="ExitTabButton" type="Button" parent="Background/HBoxHeader"]
+[node name="ExitTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
+theme_override_constants/outline_size = 3
 theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
@@ -400,7 +419,7 @@ anchor_bottom = 1.0
 offset_top = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.576471, 0.807843, 1, 1)
+color = Color(0.67451, 0.654902, 0.796078, 1)
 
 [node name="Inventory" parent="Background/InventoryTab" instance=ExtResource("3_ub0ut")]
 layout_mode = 1
@@ -1175,6 +1194,7 @@ script = ExtResource("26_tl5yt")
 label_translation_string = "RESEARCH_SAVE_INFO"
 
 [node name="Skilltree" type="ColorRect" parent="Background" node_paths=PackedStringArray("research_points_label", "title", "description", "required_skill_points", "unlock_skill_button", "slots_parent")]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -4797,14 +4817,14 @@ text = "Finish Quest"
 script = ExtResource("3_pwamf")
 label_translation_string = "DESTROY_MENU_BUTTON"
 
-[connection signal="pressed" from="Background/HBoxHeader/InvTabButton" to="." method="OnInventoryTabButton"]
-[connection signal="pressed" from="Background/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]
-[connection signal="pressed" from="Background/HBoxHeader/SaveTabButton" to="." method="OnSaveLoadTabButton"]
-[connection signal="pressed" from="Background/HBoxHeader/SkillTreeTabButton" to="." method="OnOpenSkilltreeTab"]
-[connection signal="pressed" from="Background/HBoxHeader/AdminButton" to="." method="OnOpenAdminTab"]
-[connection signal="pressed" from="Background/HBoxHeader/HelpButton" to="." method="OnHelpTabButton"]
-[connection signal="pressed" from="Background/HBoxHeader/SettingsTabButton" to="." method="OnSettingsTabButton"]
-[connection signal="pressed" from="Background/HBoxHeader/ExitTabButton" to="." method="OnExitButton"]
+[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/InvTabButton" to="." method="OnInventoryTabButton"]
+[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]
+[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/SaveTabButton" to="." method="OnSaveLoadTabButton"]
+[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/SkillTreeTabButton" to="." method="OnOpenSkilltreeTab"]
+[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/AdminButton" to="." method="OnOpenAdminTab"]
+[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/HelpButton" to="." method="OnHelpTabButton"]
+[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/SettingsTabButton" to="." method="OnSettingsTabButton"]
+[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/ExitTabButton" to="." method="OnExitButton"]
 [connection signal="visibility_changed" from="Background/InventoryTab" to="Background/InventoryTab/Inventory" method="OnVisiblityChange"]
 [connection signal="visibility_changed" from="Background/InventoryTab/EquipmentPanel" to="Background/InventoryTab/EquipmentPanel" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/EnableDisableButton" to="Background/FurnaceTab" method="OnMachineStateButton"]

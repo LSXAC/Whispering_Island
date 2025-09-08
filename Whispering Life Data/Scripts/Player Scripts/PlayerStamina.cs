@@ -9,17 +9,16 @@ public partial class PlayerStamina : Node2D
     private float speed_mult = 65f;
     private float stamina_use = 0.0025f;
 
-    public void UpdateStaminaDependencies(float velo_x, float velo_y)
+    public void UpdateStaminaDependencies(Vector2 velo)
     {
         if (
             Input.IsActionPressed("Shift")
             && current_stamina > 0f
             && !stamina_is_regenerating
-            && (velo_x != 0 || velo_y != 0)
+            && (velo.X != 0 || velo.Y != 0)
         )
         {
-            Player.instance.Velocity =
-                new Vector2(velo_x, velo_y).Normalized() * speed_mult * 1.75f;
+            Player.instance.Velocity = velo.Normalized() * speed_mult * 1.75f;
             Player.instance.anim.SpeedScale = 1.5f;
             current_stamina -=
                 stamina_use
@@ -47,17 +46,17 @@ public partial class PlayerStamina : Node2D
                 stamina_is_regenerating = false;
 
             Player.instance.player_stats.AddFatigue(0.0025f);
-            Player.instance.Velocity = new Vector2(velo_x, velo_y) * speed_mult;
+            Player.instance.Velocity = velo * speed_mult;
             Player.instance.anim.SpeedScale = 1f;
         }
     }
 
-    public void RegenerateStamina(float velo_x, float velo_y)
+    public void RegenerateStamina(Vector2 velo)
     {
         if (
             !Input.IsActionPressed("Shift")
             || stamina_is_regenerating
-            || (Input.IsActionPressed("Shift") && velo_x == 0 && velo_y == 0)
+            || (Input.IsActionPressed("Shift") && velo.X == 0 && velo.Y == 0)
         )
             if (
                 current_stamina

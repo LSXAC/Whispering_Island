@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://j1cdgg7lep78"]
+[gd_scene load_steps=26 format=3 uid="uid://j1cdgg7lep78"]
 
 [ext_resource type="Script" uid="uid://6j5ep62led2i" path="res://Scripts/Player Scripts/PlayerUI.cs" id="1_m5svq"]
 [ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://1rxf21hw1xu5" path="res://Sprites/Heart_Icon.png" id="12_rpytx"]
 [ext_resource type="Script" uid="uid://b5gbju1jehjfy" path="res://Scripts/Manager Scripts/HeartManager.cs" id="12_twnk5"]
 [ext_resource type="Script" uid="uid://chwavdauv6ifd" path="res://Scenes/UI/TimeStripe.cs" id="13_kaodh"]
+[ext_resource type="Theme" uid="uid://pft8ltrg588m" path="res://Main_Theme.tres" id="13_uwodk"]
 [ext_resource type="Texture2D" uid="uid://raaamx5w323j" path="res://Sprites/currency_icon.png" id="14_uwodk"]
 [ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://Resource Meta/Menus/Theme_Slots.tres" id="17_33i7j"]
 [ext_resource type="Script" uid="uid://cowg1oi4t5ap8" path="res://Scripts/EquipmentSelectBar.cs" id="17_450ol"]
@@ -33,11 +34,11 @@ bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qq3qp"]
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("equipmentSelectBar", "time_stripe", "game_time_panel", "qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "money_label", "info_vBox", "mainmenu_button", "item_label_timer")]
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("equipmentSelectBar", "time_stripe", "game_time_label", "qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "money_label", "info_vBox", "mainmenu_button", "item_label_timer")]
 script = ExtResource("1_m5svq")
 equipmentSelectBar = NodePath("EquipmentSelectBar")
 time_stripe = NodePath("VBoxContainer/TimeStripe")
-game_time_panel = NodePath("VBoxContainer/GameTimePanel")
+game_time_label = NodePath("VBoxContainer/TimeStripe/ColorRect3/HBoxContainer2/GameTimeLabel")
 qcp_timer = NodePath("QuestCompletePanel/Timer")
 times_to_build_left_label = NodePath("WindowFrame/VBoxContainer/TimesLeftLabel")
 window_frame_rect = NodePath("WindowFrame")
@@ -46,7 +47,7 @@ building_frame = ExtResource("2_ktroc")
 removing_frame = ExtResource("3_7rm5b")
 collected_item_parent = NodePath("VBoxContainer3/ReceivedItems")
 gameover_panel = NodePath("GameOverPanel")
-money_label = NodePath("VBoxContainer/MoneyPanel/MarginContainer/HBoxContainer/MoneyLabel")
+money_label = NodePath("VBoxContainer/TimeStripe/ColorRect3/HBoxContainer/MoneyLabel")
 info_vBox = NodePath("WindowFrame/VBoxContainer")
 mainmenu_button = NodePath("GameOverPanel/VBoxContainer/MainmenuButton")
 item_label_timer = NodePath("Item_Label_Timer")
@@ -378,14 +379,15 @@ script = ExtResource("9_erkjv")
 label_translation_string = "MAINMENU_BACK_TO_MAINMENU"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 0)
 offset_left = 5.0
 offset_top = 5.0
-offset_right = 115.0
-offset_bottom = 89.0
+offset_right = 95.0
+offset_bottom = 201.0
 theme_override_constants/separation = 3
 
 [node name="TimeStripe" type="Panel" parent="VBoxContainer" node_paths=PackedStringArray("left", "right", "pointer")]
-custom_minimum_size = Vector2(20, 20)
+custom_minimum_size = Vector2(20, 30)
 layout_mode = 2
 script = ExtResource("13_kaodh")
 left = NodePath("ColorRect/HBoxContainer/TextureRect")
@@ -399,7 +401,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.67451, 0.654902, 0.796078, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimeStripe/ColorRect"]
 layout_mode = 1
@@ -421,65 +423,99 @@ size_flags_horizontal = 3
 expand_mode = 1
 
 [node name="Pointer" type="ColorRect" parent="VBoxContainer/TimeStripe"]
-custom_minimum_size = Vector2(2, 20)
+custom_minimum_size = Vector2(2, 15)
 layout_mode = 0
 offset_right = 2.0
 offset_bottom = 20.0
 color = Color(0, 0, 0, 1)
 
-[node name="GameTimePanel" type="PanelContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/TimeStripe"]
+layout_mode = 0
+offset_top = 18.0
+offset_right = 100.0
+offset_bottom = 30.0
+color = Color(0.278431, 0.270588, 0.329412, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/GameTimePanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 0
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/TimeStripe"]
+custom_minimum_size = Vector2(26, 10)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -11.0
+offset_right = 99.0
+offset_bottom = -1.0
+grow_vertical = 0
+theme = ExtResource("13_uwodk")
+color = Color(0.576471, 0.807843, 1, 1)
 
-[node name="GameTimeLabel" type="Label" parent="VBoxContainer/GameTimePanel/MarginContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
-text = "Game Time: X"
-horizontal_alignment = 1
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimeStripe/ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 2
 
-[node name="MoneyPanel" type="PanelContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MoneyPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MoneyPanel/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="MoneyLabel" type="Label" parent="VBoxContainer/MoneyPanel/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
-text = "2883"
-horizontal_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MoneyPanel/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TimeStripe/ColorRect3/HBoxContainer"]
+custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 texture = ExtResource("14_uwodk")
 expand_mode = 1
+stretch_mode = 5
 
-[node name="HeartPanel" type="Panel" parent="VBoxContainer" node_paths=PackedStringArray("parent")]
-custom_minimum_size = Vector2(100, 45)
+[node name="MoneyLabel" type="Label" parent="VBoxContainer/TimeStripe/ColorRect3/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 8
+text = "2883"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/TimeStripe/ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameTimeLabel" type="Label" parent="VBoxContainer/TimeStripe/ColorRect3/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 8
+text = "23:33"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="HeartPanel" type="ColorRect" parent="VBoxContainer" node_paths=PackedStringArray("parent")]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 2
+color = Color(0.278431, 0.270588, 0.329412, 1)
 script = ExtResource("12_twnk5")
 parent = NodePath("MarginContainer/VBoxContainer/HBoxContainer")
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HeartPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HeartPanel"]
 layout_mode = 1
@@ -493,32 +529,24 @@ grow_vertical = 2
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HeartPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
-text = "Hearts"
-horizontal_alignment = 1
-
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HeartPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(20, 20)
+custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 texture = ExtResource("12_rpytx")
 expand_mode = 4
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(20, 20)
+custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 texture = ExtResource("12_rpytx")
 expand_mode = 4
 
 [node name="TextureRect3" type="TextureRect" parent="VBoxContainer/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(20, 20)
+custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 texture = ExtResource("12_rpytx")
 expand_mode = 4
@@ -543,11 +571,20 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 10
 text = "Objectiv"
 horizontal_alignment = 1
 script = ExtResource("7_vya4o")
 label_translation_string = "PLAYERUI_QUEST_OBJECTIV"
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_0pxjf")
+theme_override_font_sizes/font_size = 8
+text = "Time Left: Unknown"
+horizontal_alignment = 1
 
 [node name="HBoxItem" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("18_uwodk")]
 layout_mode = 2
@@ -560,15 +597,6 @@ layout_mode = 2
 
 [node name="HBoxItem4" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("18_uwodk")]
 layout_mode = 2
-
-[node name="TimeLabel" type="Label" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 10
-text = "Time Left: Unknown"
-horizontal_alignment = 1
 
 [node name="EquipmentSelectBar" type="Container" parent="." node_paths=PackedStringArray("select_slots")]
 custom_minimum_size = Vector2(220, 65)

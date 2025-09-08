@@ -10,10 +10,12 @@ public partial class Player : CharacterBody2D
     public PlayerStats player_stats;
     private PlayerStamina player_stamina;
     private string current_direction = "Up";
-    private float velo_x = 0,
-        velo_y = 0;
+    private Vector2 velo = Vector2.Zero;
 
-    private float max_zoom_offset = 3f;
+    private float max_zoom_offset = 2.5f;
+    private float min_zoom_offset = 1f;
+    private float normal_zoom_offset = 1.5f;
+    private float zoom_speed = 0.1f;
 
     public override void _Ready()
     {
@@ -23,7 +25,7 @@ public partial class Player : CharacterBody2D
         anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
         camera = GetNode<Camera2D>("Camera2D");
-        camera.Zoom = new Vector2(1.5f, 1.5f);
+        camera.Zoom = new Vector2(normal_zoom_offset, normal_zoom_offset);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -36,7 +38,7 @@ public partial class Player : CharacterBody2D
             return;
         }
         // Regenerate indepentend from Player Events
-        player_stamina.RegenerateStamina(this.velo_x, this.velo_y);
+        player_stamina.RegenerateStamina(this.velo);
 
         // Disable Player Events
         if (GameManager.In_Cutscene)
@@ -53,22 +55,21 @@ public partial class Player : CharacterBody2D
                 return;
 
         ZoomCamera();
-        this.velo_x = 0;
-        this.velo_y = 0;
+        this.velo = Vector2.Zero;
 
         if (Input.IsActionPressed("Up"))
-            velo_y = -1;
+            velo = new Vector2(velo.X, -1);
 
         if (Input.IsActionPressed("Down"))
-            velo_y = 1;
+            velo = new Vector2(velo.X, 1);
 
         if (Input.IsActionPressed("Left"))
-            velo_x = -1;
+            velo = new Vector2(-1, velo.Y);
 
         if (Input.IsActionPressed("Right"))
-            velo_x = 1;
+            velo = new Vector2(1, velo.Y);
 
-        if (this.Velocity == Godot.Vector2.Zero)
+        if (this.Velocity == Vector2.Zero)
         {
             if (current_direction == "Down")
                 anim.Play("Idle_Down");
@@ -79,15 +80,15 @@ public partial class Player : CharacterBody2D
             if (current_direction == "Right")
                 anim.Play("Idle_Right");
         }
-        this.Velocity = new Godot.Vector2(this.velo_x, this.velo_y);
-        player_stamina.UpdateStaminaDependencies(velo_x, velo_y);
+        this.Velocity = velo;
+        player_stamina.UpdateStaminaDependencies(velo);
         ChoosePlayerAnimation();
         MoveAndSlide();
     }
 
     private void ChoosePlayerAnimation()
     {
-        if (this.Velocity == Godot.Vector2.Zero)
+        if (this.Velocity == Vector2.Zero)
         {
             if (current_direction == "Down")
                 anim.Play("Idle_Down");
@@ -105,22 +106,25 @@ public partial class Player : CharacterBody2D
     {
         if (Input.IsActionJustReleased("Zoom_In"))
             if (
-                (camera.Zoom + new Vector2(0.15f, 0.15f))
+                (camera.Zoom + new Vector2(zoom_speed, zoom_speed))
                 <= new Vector2(max_zoom_offset, max_zoom_offset)
             )
-                camera.Zoom += new Vector2(0.15f, 0.15f);
+                camera.Zoom += new Vector2(zoom_speed, zoom_speed);
 
         if (Input.IsActionJustReleased("Zoom_Out"))
-            if ((camera.Zoom - new Vector2(0.15f, 0.15f)) >= new Vector2(1f, 1f))
-                camera.Zoom += new Vector2(-0.15f, -0.15f);
+            if (
+                (camera.Zoom - new Vector2(zoom_speed, zoom_speed))
+                >= new Vector2(min_zoom_offset, min_zoom_offset)
+            )
+                camera.Zoom += new Vector2(-zoom_speed, -zoom_speed);
     }
 
     private string GetDirection()
     {
-        bool isUp = this.velo_y < 0;
-        bool isDown = this.velo_y > 0;
-        bool isLeft = this.velo_x < 0;
-        bool isRight = this.velo_x > 0;
+        bool isUp = this.velo.Y < 0;
+        bool isDown = this.velo.Y > 0;
+        bool isLeft = this.velo.X < 0;
+        bool isRight = this.velo.X > 0;
 
         if (isUp && current_direction == "Up")
             return current_direction;

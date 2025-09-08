@@ -121,10 +121,7 @@ public partial class MineableObject : placeable_building
 
         item.amount =
             miningAmount
-            * (
-                (int)Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.MINING_AMOUNT)
-                + 1
-            );
+            * (int)Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.MINING_AMOUNT);
 
         if (durabilityAfterHit > 0)
         {
@@ -195,10 +192,10 @@ public partial class MineableObject : placeable_building
         if (slot_item_ui != null && slot_item_ui.item.info.HasAttribute<ToolAttribute>())
         {
             EquipmentPanel
-                .instance.slots_tool[EquipmentSelectBar.current_selected_slot]
-                .GetSlotItemUI()
+                .instance
+                .equipped_tools[EquipmentSelectBar.current_selected_slot]
                 .current_durability -= miningAmount;
-            EquipmentPanel.UpdateSlotDurability(EquipmentSelectBar.current_selected_slot);
+            EquipmentPanel.UpdateSlots();
         }
     }
 

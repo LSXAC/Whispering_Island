@@ -97,7 +97,7 @@ public partial class Skilltree : ColorRect
 
     public float GetBonusOfCategory(SkillData.TYPE_CATEGORY category)
     {
-        float bonus = 0f;
+        float bonus = 1f;
         foreach (SkillData skill in skill_datas)
         {
             if (skill.type_category == category)

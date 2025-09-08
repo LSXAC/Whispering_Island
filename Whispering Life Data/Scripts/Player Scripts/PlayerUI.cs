@@ -18,8 +18,7 @@ public partial class PlayerUI : CanvasLayer
     public TimeStripe time_stripe;
 
     [Export]
-    private PanelContainer game_time_panel;
-    private Label game_time_label;
+    public Label game_time_label;
 
     [Export]
     public Timer qcp_timer;
@@ -78,7 +77,6 @@ public partial class PlayerUI : CanvasLayer
     {
         instance = this;
         gameover_panel.Visible = false;
-        game_time_label = game_time_panel.GetChild(0).GetNode<Label>("GameTimeLabel");
         quest_complete_panel = GetNode<Panel>("QuestCompletePanel");
         quest_accept_panel = GetNode<QuestAcceptPanel>("QuestAcceptPanel");
         hslider = GetNode<HSlider>("HSlider");
@@ -145,10 +143,7 @@ public partial class PlayerUI : CanvasLayer
         if (game_time_label == null)
             return;
 
-        game_time_label.Text =
-            TranslationServer.Translate("PLAYERUI_GAMETIME")
-            + ": "
-            + TimeManager.instance.GetTimeFormat();
+        game_time_label.Text = TimeManager.instance.GetTimeFormat();
     }
 
     public void OnLoadGameButton()

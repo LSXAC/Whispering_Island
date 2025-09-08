@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Godot;
 
 public partial class EquipmentPanel : Control
@@ -59,49 +60,55 @@ public partial class EquipmentPanel : Control
         }
     }
 
-    public static void UpdateSlotDurability(int index)
+    public static void UpdateSlots()
     {
-        if (
-            instance
-                .slots_tool[EquipmentSelectBar.current_selected_slot]
-                .GetSlotItemUI()
-                .current_durability > 0
-        )
+        for (int i = 0; i < 4; i++)
         {
-            PlayerUI
-                .instance.equipmentSelectBar.GetSelectedSlotItemUI()
-                .SetDurability(
-                    instance
-                        .slots_tool[EquipmentSelectBar.current_selected_slot]
-                        .GetSlotItemUI()
-                        .current_durability
+            if (instance.equipped_tools[i] == null)
+                continue;
+
+            if (instance.equipped_tools[i].current_durability > 0)
+            {
+                Debug.Print(i + " | " + instance.equipped_tools[i]);
+                Item item = new Item(
+                    Inventory.ITEM_TYPES[(Inventory.ITEM_ID)instance.equipped_tools[i].item_id],
+                    instance.equipped_tools[i].amount
                 );
 
-            instance
-                .slots_tool[EquipmentSelectBar.current_selected_slot]
-                .GetSlotItemUI()
-                .SetDurability(
-                    instance
-                        .slots_tool[EquipmentSelectBar.current_selected_slot]
-                        .GetSlotItemUI()
-                        .current_durability
-                );
-            instance.equipped_tools[EquipmentSelectBar.current_selected_slot].current_durability =
-                instance
-                    .slots_tool[EquipmentSelectBar.current_selected_slot]
-                    .GetSlotItemUI()
+                Debug.Print("Durability: " + instance.equipped_tools[i].current_durability);
+
+                instance.slots_tool[i].GetSlotItemUI().current_durability = instance
+                    .equipped_tools[i]
                     .current_durability;
+
+                instance
+                    .slots_tool[i]
+                    .UpdateItem(item, instance.equipped_tools[i].current_durability);
+
+                PlayerUI
+                    .instance.equipmentSelectBar.select_slots[i]
+                    .GetSlotItemUI()
+                    .current_durability = instance.equipped_tools[i].current_durability;
+
+                PlayerUI
+                    .instance.equipmentSelectBar.select_slots[i]
+                    .UpdateItem(item, instance.equipped_tools[i].current_durability);
+            }
+            else
+            {
+                /*
+                    PlayerUI
+                        .instance.equipmentSelectBar.select_slots[
+                            EquipmentSelectBar.current_selected_slot
+                        ]
+                        .ClearSlotItem();
+                    instance.slots_tool[EquipmentSelectBar.current_selected_slot].ClearSlotItem();
+                    instance.equipped_tools[EquipmentSelectBar.current_selected_slot] = null;
+                    PlayerUI.instance.equipmentSelectBar.current_selected_slot_item_ui = null;
+                */
+            }
+            instance.CalculateStatsFromEquipment();
         }
-        else
-        {
-            PlayerUI
-                .instance.equipmentSelectBar.select_slots[EquipmentSelectBar.current_selected_slot]
-                .ClearSlotItem();
-            instance.slots_tool[EquipmentSelectBar.current_selected_slot].ClearSlotItem();
-            instance.equipped_tools[EquipmentSelectBar.current_selected_slot] = null;
-            PlayerUI.instance.equipmentSelectBar.current_selected_slot_item_ui = null;
-        }
-        instance.CalculateStatsFromEquipment();
     }
 
     public void SetArmorSlotItem(int index, SlotItemUI slot_item_ui)
