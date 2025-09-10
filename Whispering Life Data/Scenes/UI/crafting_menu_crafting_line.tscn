@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7l06c35ca42f"]
+[gd_scene load_steps=13 format=3 uid="uid://b7l06c35ca42f"]
 
 [ext_resource type="Script" uid="uid://ohg3uh7id56e" path="res://Scripts/UI Scripts/itemRecipeUI.cs" id="1_fxdbo"]
 [ext_resource type="PackedScene" uid="uid://bnf8yngk7oyy0" path="res://Scenes/UI/h_box_item_menu_line_horizontal.tscn" id="2_f48sm"]
@@ -7,6 +7,11 @@
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="4_7yc62"]
 [ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Scripts/Manager Scripts/ItemRowManager.cs" id="5_xiqxj"]
 [ext_resource type="Texture2D" uid="uid://wquchq45ve1" path="res://Sprites/Items/Icons/Hammer_Icon.png" id="6_qi7a5"]
+[ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://Scenes/UI/slot_focus_style.tres" id="7_10go1"]
+[ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://Scenes/UI/Button_Disabled_Style.tres.tres" id="8_ewir5"]
+[ext_resource type="StyleBox" uid="uid://c0rrcqgclnbps" path="res://Scenes/UI/Button_Hover_Style.tres" id="9_f7icn"]
+[ext_resource type="StyleBox" uid="uid://bbbtpagi6kny3" path="res://Scenes/UI/Button_Pressed_Style.tres.tres" id="10_l8jxo"]
+[ext_resource type="StyleBox" uid="uid://h4o1ussquiqb" path="res://Scenes/UI/button_hover_pressed_style.tres" id="11_10go1"]
 
 [node name="ItemRecipe" type="Control" node_paths=PackedStringArray("item_row_manager", "craft_button", "output_item_hbox")]
 custom_minimum_size = Vector2(0, 42)
@@ -77,7 +82,13 @@ text = "Sticks 4x"
 [node name="CraftButton" type="Button" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_constants/icon_max_width = 24
 theme_override_font_sizes/font_size = 13
+theme_override_styles/focus = ExtResource("7_10go1")
+theme_override_styles/disabled = ExtResource("8_ewir5")
+theme_override_styles/hover = ExtResource("9_f7icn")
+theme_override_styles/pressed = ExtResource("10_l8jxo")
+theme_override_styles/normal = ExtResource("11_10go1")
 icon = ExtResource("6_qi7a5")
 icon_alignment = 1
 expand_icon = true

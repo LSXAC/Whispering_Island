@@ -7,7 +7,7 @@
 [node name="HeaderColorRect" type="ColorRect"]
 offset_right = 529.0
 offset_bottom = 24.0
-color = Color(0, 0, 0, 1)
+color = Color(0.278431, 0.270588, 0.329412, 1)
 script = ExtResource("1_wq3hn")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -15,11 +15,14 @@ layout_mode = 0
 offset_right = 327.0
 offset_bottom = 24.0
 theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 1
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_msnuq")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 10
 text = "> Research Table"
 vertical_alignment = 1
 script = ExtResource("3_kh3u6")

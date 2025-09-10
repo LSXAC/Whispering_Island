@@ -21,10 +21,10 @@ size_flags_vertical = 4
 [node name="FeatureLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.998561, 0.859831, 0, 1)
+theme_override_colors/font_color = Color(0.976471, 0.972549, 0.443137, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_66jv3")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 10
 text = "The iron age begins"
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
@@ -32,7 +32,7 @@ layout_mode = 2
 size_flags_vertical = 6
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_66jv3")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "Iron ingot can be produced inside a furnace."
 autowrap_mode = 3
 
@@ -47,9 +47,9 @@ theme_override_font_sizes/font_size = 14
 [node name="BonusLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-theme_override_colors/font_color = Color(0.498413, 0.814262, 0.395717, 1)
+theme_override_colors/font_color = Color(1, 0.721569, 0.627451, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_66jv3")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "Unlocks: Iron Ingot"
 autowrap_mode = 3

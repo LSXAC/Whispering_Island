@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://b4njwqy0g4kis" path="res://Scripts/UI Scripts/QuestMiniPanel.cs" id="4_khv1d"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="7_vya4o"]
 [ext_resource type="Script" uid="uid://byutu1d7d16k7" path="res://Scripts/UI Scripts/QuestAcceptPanel.cs" id="8_3uym3"]
+[ext_resource type="StyleBox" uid="uid://cfrmx1sogqkln" path="res://Scenes/UI/Slider_Style.tres" id="8_f1ae0"]
+[ext_resource type="StyleBox" uid="uid://b2c5h8k14gscx" path="res://Scenes/UI/Slider_Grabber_Style.tres" id="9_7vqgd"]
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/UI Scripts/TranslationButton.cs" id="9_erkjv"]
 [ext_resource type="Script" uid="uid://c872ycivw0d7a" path="res://Scripts/UI Scripts/EffectPanel.cs" id="11_r7w4g"]
 [ext_resource type="Script" uid="uid://bang68hyrryto" path="res://Scripts/UI Scripts/TranslationRichTextLabel.cs" id="12_fbb8a"]
@@ -17,22 +19,14 @@
 [ext_resource type="Script" uid="uid://chwavdauv6ifd" path="res://Scenes/UI/TimeStripe.cs" id="13_kaodh"]
 [ext_resource type="Theme" uid="uid://pft8ltrg588m" path="res://Main_Theme.tres" id="13_uwodk"]
 [ext_resource type="Texture2D" uid="uid://raaamx5w323j" path="res://Sprites/currency_icon.png" id="14_uwodk"]
-[ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://Resource Meta/Menus/Theme_Slots.tres" id="17_33i7j"]
 [ext_resource type="Script" uid="uid://cowg1oi4t5ap8" path="res://Scripts/EquipmentSelectBar.cs" id="17_450ol"]
-[ext_resource type="Script" uid="uid://x5sh7dthimfr" path="res://Scripts/Inventory Scripts/Slot.cs" id="18_2bhlg"]
+[ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://Scenes/UI/tab_container_panel_style.tres.tres" id="17_rkorj"]
 [ext_resource type="PackedScene" uid="uid://bnf8yngk7oyy0" path="res://Scenes/UI/h_box_item_menu_line_horizontal.tscn" id="18_uwodk"]
 [ext_resource type="PackedScene" uid="uid://bovrg0u6tuo04" path="res://Scenes/UI/hover_menu.tscn" id="20_fdkbp"]
+[ext_resource type="PackedScene" uid="uid://ceypkxf7dox6w" path="res://Scenes/UI/slot_background.tscn" id="21_uwodk"]
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_x1xeh"]
-color = Color(0.141176, 0.141176, 0.141176, 1)
-grow_begin = 0.0
-grow_end = 0.0
-thickness = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upggj"]
-bg_color = Color(1, 0, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qq3qp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4utg2"]
+bg_color = Color(0.278431, 0.270588, 0.329412, 1)
 
 [node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("equipmentSelectBar", "time_stripe", "game_time_label", "qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "money_label", "info_vBox", "mainmenu_button", "item_label_timer")]
 script = ExtResource("1_m5svq")
@@ -123,8 +117,8 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_icons/grabber = ExtResource("2_jybl7")
-theme_override_styles/slider = SubResource("StyleBoxLine_x1xeh")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_upggj")
+theme_override_styles/slider = ExtResource("8_f1ae0")
+theme_override_styles/grabber_area = ExtResource("9_7vqgd")
 max_value = 1.0
 step = 0.01
 scrollable = false
@@ -146,7 +140,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 10
 text = "Stamina"
 horizontal_alignment = 1
 
@@ -384,7 +378,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = 95.0
 offset_bottom = 201.0
-theme_override_constants/separation = 3
+theme_override_constants/separation = 0
 
 [node name="TimeStripe" type="Panel" parent="VBoxContainer" node_paths=PackedStringArray("left", "right", "pointer")]
 custom_minimum_size = Vector2(20, 30)
@@ -434,7 +428,7 @@ layout_mode = 0
 offset_top = 18.0
 offset_right = 100.0
 offset_bottom = 30.0
-color = Color(0.278431, 0.270588, 0.329412, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="VBoxContainer/TimeStripe"]
 custom_minimum_size = Vector2(26, 10)
@@ -448,7 +442,7 @@ offset_right = 99.0
 offset_bottom = -1.0
 grow_vertical = 0
 theme = ExtResource("13_uwodk")
-color = Color(0.576471, 0.807843, 1, 1)
+color = Color(0.67451, 0.654902, 0.796078, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimeStripe/ColorRect3"]
 layout_mode = 1
@@ -500,7 +494,7 @@ vertical_alignment = 2
 [node name="HeartPanel" type="ColorRect" parent="VBoxContainer" node_paths=PackedStringArray("parent")]
 custom_minimum_size = Vector2(50, 10)
 layout_mode = 2
-color = Color(0.278431, 0.270588, 0.329412, 1)
+color = Color(0, 0, 0, 1)
 script = ExtResource("12_twnk5")
 parent = NodePath("MarginContainer/VBoxContainer/HBoxContainer")
 
@@ -510,12 +504,10 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1.0
-offset_top = 1.0
 offset_right = -1.0
-offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.576471, 0.807843, 1, 1)
+color = Color(0.67451, 0.654902, 0.796078, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HeartPanel"]
 layout_mode = 1
@@ -553,6 +545,7 @@ expand_mode = 4
 
 [node name="QuestMiniPanel" type="PanelContainer" parent="VBoxContainer" node_paths=PackedStringArray("hbox_items", "time_label")]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("17_rkorj")
 script = ExtResource("4_khv1d")
 hbox_items = [NodePath("MarginContainer/VBoxContainer/HBoxItem"), NodePath("MarginContainer/VBoxContainer/HBoxItem2"), NodePath("MarginContainer/VBoxContainer/HBoxItem3"), NodePath("MarginContainer/VBoxContainer/HBoxItem4")]
 time_label = NodePath("MarginContainer/VBoxContainer/TimeLabel")
@@ -611,7 +604,7 @@ grow_vertical = 0
 script = ExtResource("17_450ol")
 normal_color = Color(1, 1, 1, 0)
 selected_color = Color(1, 0.839216, 0.0941176, 1)
-select_slots = [NodePath("VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer/SelectSlot"), NodePath("VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer/SelectSlot")]
+select_slots = [NodePath("VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SlotBackground0/Slot0"), NodePath("VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SlotBackground0/Slot0"), NodePath("VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer/SlotBackground0/Slot0"), NodePath("VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer/SlotBackground0/Slot0")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EquipmentSelectBar"]
 layout_mode = 2
@@ -627,7 +620,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 10
 text = "[1]"
 horizontal_alignment = 1
 
@@ -636,7 +629,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 10
 text = "[2]"
 horizontal_alignment = 1
 
@@ -645,7 +638,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 10
 text = "[3]"
 horizontal_alignment = 1
 
@@ -654,7 +647,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 10
 text = "[4]"
 horizontal_alignment = 1
 
@@ -684,15 +677,12 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer" instance=ExtResource("21_uwodk")]
 layout_mode = 2
-theme = ExtResource("17_33i7j")
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
+
+[node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SlotBackground0" index="0"]
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
-script = ExtResource("18_2bhlg")
 
 [node name="ColorRect5" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
 clip_contents = true
@@ -715,15 +705,12 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer" instance=ExtResource("21_uwodk")]
 layout_mode = 2
-theme = ExtResource("17_33i7j")
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
+
+[node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SlotBackground0" index="0"]
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
-script = ExtResource("18_2bhlg")
 
 [node name="ColorRect6" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
 clip_contents = true
@@ -746,15 +733,12 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer" instance=ExtResource("21_uwodk")]
 layout_mode = 2
-theme = ExtResource("17_33i7j")
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
+
+[node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer/SlotBackground0" index="0"]
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
-script = ExtResource("18_2bhlg")
 
 [node name="ColorRect7" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
 clip_contents = true
@@ -777,15 +761,12 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SelectSlot" type="Button" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer" instance=ExtResource("21_uwodk")]
 layout_mode = 2
-theme = ExtResource("17_33i7j")
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qq3qp")
+
+[node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer/SlotBackground0" index="0"]
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
-script = ExtResource("18_2bhlg")
 
 [node name="Item_Label_Timer" type="Timer" parent="."]
 wait_time = 0.2
@@ -802,8 +783,14 @@ offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_styles/panel = ExtResource("17_rkorj")
 
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="pressed" from="QuestAcceptPanel/CenterContainer/VBoxContainer/ConfirmButton" to="QuestAcceptPanel" method="OnButton"]
 [connection signal="timeout" from="QuestAcceptPanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="button_up" from="GameOverPanel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButton"]
+
+[editable path="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SlotBackground0"]
+[editable path="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SlotBackground0"]
+[editable path="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer/SlotBackground0"]
+[editable path="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer/SlotBackground0"]

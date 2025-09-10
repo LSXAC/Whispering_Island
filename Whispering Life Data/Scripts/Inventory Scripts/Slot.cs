@@ -38,20 +38,21 @@ public partial class Slot : Button
             if (btn.ButtonMask != MouseButtonMask.Left && btn.ButtonMask != MouseButtonMask.Right)
                 return;
 
+            index = GetParent().GetIndex();
+
             if (GetParent().GetParent().GetParent() is PlayerInventoryUI)
             {
                 item_array = ((Inventory)GetParent().GetParent().GetParent()).inventory_items;
                 slotUpdater = (Inventory)GetParent().GetParent().GetParent();
-                index = GetParent().GetIndex();
                 OnSlotButton(btn);
             }
 
-            if (GetParent().GetParent().GetParent() is FurnaceTab)
+            if (GetParent().GetParent().GetParent().GetParent() is FurnaceTab)
             {
-                item_array = ((FurnaceTab)GetParent().GetParent().GetParent())
+                item_array = ((FurnaceTab)GetParent().GetParent().GetParent().GetParent())
                     .process_building
                     .item_array;
-                slotUpdater = (FurnaceTab)GetParent().GetParent().GetParent();
+                slotUpdater = (FurnaceTab)GetParent().GetParent().GetParent().GetParent();
                 if (item_array != null)
                     OnSlotButton(btn);
             }
@@ -61,15 +62,11 @@ public partial class Slot : Button
                 item_array = ((Inventory)GetParent().GetParent().GetParent()).inventory_items;
                 slotUpdater = (Inventory)GetParent().GetParent().GetParent();
                 chest = ChestInventoryUI.current_chest;
-                index = GetParent().GetIndex();
                 OnSlotButton(btn);
             }
 
             if (attribute_to_check is WearableAttribute)
-            {
-                index = GetParent().GetIndex();
                 OnEquipSlotButton(index);
-            }
 
             if (attribute_to_check is ResearchableAttribute)
                 OnResearchSlotButton();

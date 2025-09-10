@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://o62xek3uvpo8"]
+[gd_scene load_steps=12 format=3 uid="uid://o62xek3uvpo8"]
 
 [ext_resource type="Script" uid="uid://dmteju1kppf72" path="res://Scripts/UI Scripts/QuestMenu.cs" id="1_rjdwy"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_8enkj"]
 [ext_resource type="Resource" uid="uid://c1p7gva6jex80" path="res://Dialogues/Questing.dialogue" id="2_jlx1a"]
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://Scenes/UI/header_color_rect.tscn" id="2_vqvtn"]
 [ext_resource type="PackedScene" uid="uid://bnf8yngk7oyy0" path="res://Scenes/UI/h_box_item_menu_line_horizontal.tscn" id="5_ao47r"]
+[ext_resource type="Texture2D" uid="uid://be2xmt8674o1k" path="res://Sprites/Items/Icons/rejected.png" id="5_ge13q"]
+[ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://Scenes/UI/slot_focus_style.tres" id="7_nkwgi"]
+[ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://Scenes/UI/Button_Disabled_Style.tres.tres" id="8_s53b1"]
+[ext_resource type="StyleBox" uid="uid://c0rrcqgclnbps" path="res://Scenes/UI/Button_Hover_Style.tres" id="9_vqd04"]
+[ext_resource type="StyleBox" uid="uid://bbbtpagi6kny3" path="res://Scenes/UI/Button_Pressed_Style.tres.tres" id="10_jc1py"]
+[ext_resource type="StyleBox" uid="uid://dblsyajhbmtwa" path="res://Scenes/UI/Button_Normal_Style.tres" id="11_rjicv"]
 
 [node name="QuestMenu" type="CanvasLayer" node_paths=PackedStringArray("quest_label_parent", "quest_name_label", "complete_button", "quest_description_label")]
 script = ExtResource("1_rjdwy")
@@ -25,6 +31,20 @@ grow_vertical = 2
 focus_mode = 2
 color = Color(0.172549, 0.172549, 0.172549, 0.294118)
 
+[node name="TransBackground" type="ColorRect" parent="TransBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 62.0
+offset_top = 29.0
+offset_right = -64.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+color = Color(0, 0, 0, 1)
+
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +55,19 @@ offset_right = -64.0
 offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.576471, 0.807843, 1, 1)
+color = Color(0.67451, 0.654902, 0.796078, 1)
+
+[node name="TransBackground" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+offset_bottom = -275.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+color = Color(0, 0, 0, 1)
 
 [node name="HeaderColorRect" parent="Background" instance=ExtResource("2_vqvtn")]
 layout_mode = 0
@@ -44,12 +76,15 @@ translation_string = "GAMEMENU_QUEST_MENU"
 
 [node name="X" type="Button" parent="Background/HeaderColorRect"]
 layout_mode = 0
-offset_left = 480.0
+offset_left = 488.0
 offset_right = 512.0
-offset_bottom = 23.0
+offset_bottom = 24.0
 theme_override_fonts/font = ExtResource("2_8enkj")
 theme_override_font_sizes/font_size = 16
-text = "<X>"
+icon = ExtResource("5_ge13q")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Background"]
 layout_mode = 1
@@ -78,8 +113,8 @@ layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = ExtResource("2_8enkj")
 theme_override_fonts/bold_font = ExtResource("2_8enkj")
-theme_override_font_sizes/normal_font_size = 16
-theme_override_font_sizes/bold_font_size = 18
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 12
 bbcode_enabled = true
 text = "[center]Die hungrige Insel #1"
 
@@ -89,8 +124,8 @@ size_flags_vertical = 3
 theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("2_8enkj")
 theme_override_fonts/bold_font = ExtResource("2_8enkj")
-theme_override_font_sizes/normal_font_size = 14
-theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
 text = "Du bist zufällig auf eine hungrige Insel getroffen. Du bist dir nicht Sicher, wie, oder warum es dazu kam. Aber du hast dich dazu verpflichtet eine [b][color=gold]Insel auf ewig[/color][/b] mit Ressourcen [b][color=gold]zu füttern.[/color][/b]
 Naja, das was die Insel grade will, sieht eigentlich noch nicht so schwer aus!"
@@ -111,10 +146,16 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="CompleteQuestButton" type="Button" parent="Background/MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_8enkj")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("7_nkwgi")
+theme_override_styles/disabled = ExtResource("8_s53b1")
+theme_override_styles/hover = ExtResource("9_vqd04")
+theme_override_styles/pressed = ExtResource("10_jc1py")
+theme_override_styles/normal = ExtResource("11_rjicv")
 text = "Finish Quest"
 
 [connection signal="visibility_changed" from="." to="." method="OnVisiblityChanged"]
