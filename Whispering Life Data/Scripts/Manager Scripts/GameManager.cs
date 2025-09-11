@@ -119,6 +119,7 @@ public partial class GameManager : Node2D
 
         save_state.char_save.research_slot_item = ResearchTab.research_slot_item;
         save_state.research_saves = ResearchTab.research_saves;
+        save_state.discovered_items = DiscoverManager.discovered_items;
 
         save_state.skill_saves = Skilltree.instance.skill_progress;
 
@@ -170,6 +171,8 @@ public partial class GameManager : Node2D
 
         ResearchTab.research_slot_item = save_state.char_save.research_slot_item;
         ResearchTab.research_saves = save_state.research_saves;
+
+        DiscoverManager.discovered_items = save_state.discovered_items;
 
         if (Skilltree.instance.skill_datas.Count == save_state.skill_saves.Length)
             Skilltree.instance.skill_progress = save_state.skill_saves;

@@ -5,30 +5,30 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1xea0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xea0"]
+content_margin_left = 7.0
+content_margin_top = 7.0
+content_margin_right = 7.0
+content_margin_bottom = 7.0
 bg_color = Color(0.278431, 0.270588, 0.329412, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 corner_detail = 16
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
 
 [resource]
 default_font = ExtResource("1_c88cg")
-default_font_size = 16
+default_font_size = 8
 TooltipLabel/colors/font_color = Color(1, 1, 1, 1)
 TooltipLabel/colors/font_outline_color = Color(0, 0, 0, 1)
 TooltipLabel/constants/outline_size = 3
-TooltipLabel/font_sizes/font_size = 16
+TooltipLabel/font_sizes/font_size = 8
 TooltipLabel/fonts/font = ExtResource("1_c88cg")
 TooltipLabel/styles/normal = SubResource("StyleBoxEmpty_1xea0")
-TooltipPanel/font_sizes/title_font_size = 16
+TooltipPanel/font_sizes/title_font_size = 8
 TooltipPanel/styles/panel = SubResource("StyleBoxFlat_1xea0")

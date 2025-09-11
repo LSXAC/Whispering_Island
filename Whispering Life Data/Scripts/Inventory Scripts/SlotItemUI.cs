@@ -73,9 +73,10 @@ public partial class SlotItemUI : TextureRect
     {
         if (item?.info == null)
             return;
-        TooltipText = TranslationServer.Translate(item.info.name.ToString()) + "\n";
-        TooltipText += TranslationServer.Translate(item.info.description.ToString()) + "\n";
-        TooltipText += "Durability: " + current_durability + "/" + max_durability;
+        TooltipText = TranslationServer.Translate(item.info.name.ToString()) + "\n\n";
+        TooltipText += TranslationServer.Translate(item.info.description.ToString()) + "\n\n";
+        if (current_durability != -1)
+            TooltipText += "Durability: " + current_durability + "/" + max_durability;
         TooltipText += "\n";
         foreach (ItemAttributeBase item_attribute in item.info.attributes)
         {

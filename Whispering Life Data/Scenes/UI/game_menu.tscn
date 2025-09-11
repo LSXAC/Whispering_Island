@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=130 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://Scripts/UI Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -111,33 +111,34 @@
 [ext_resource type="Script" uid="uid://djyj8ngmhjavn" path="res://Scripts/UI Scripts/RailStationTab.cs" id="76_6ikjc"]
 [ext_resource type="StyleBox" uid="uid://cfrmx1sogqkln" path="res://Scenes/UI/Slider_Style.tres" id="103_sy5xb"]
 [ext_resource type="StyleBox" uid="uid://b2c5h8k14gscx" path="res://Scenes/UI/Slider_Grabber_Style.tres" id="104_fato5"]
+[ext_resource type="Texture2D" uid="uid://deai4c50jpvjn" path="res://Sprites/Items/Tool_Icons/icons_30_11.png" id="109_4awxy"]
 
 [sub_resource type="Resource" id="Resource_7gwna"]
 script = ExtResource("15_jkil6")
 slot_type = 1
 durability = 100
-stats = Array[ExtResource("17_gcthi")]([])
+stats = []
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_j657e"]
 script = ExtResource("15_jkil6")
 slot_type = 2
 durability = 100
-stats = Array[ExtResource("17_gcthi")]([])
+stats = []
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_etc0m"]
 script = ExtResource("15_jkil6")
 slot_type = 3
 durability = 100
-stats = Array[ExtResource("17_gcthi")]([])
+stats = []
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_mmhr0"]
 script = ExtResource("15_jkil6")
 slot_type = 4
 durability = 100
-stats = Array[ExtResource("17_gcthi")]([])
+stats = []
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_m8k7p"]
@@ -809,18 +810,6 @@ theme_override_font_sizes/font_size = 8
 text = "25"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Background/InventoryTab"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 15.0
-offset_right = 100.0
-offset_bottom = 38.0
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-text = "Bagpack"
-vertical_alignment = 1
-
 [node name="ChestTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("chest_inventory_ui")]
 visible = false
 z_index = 1
@@ -837,18 +826,6 @@ grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("17_8qgvy")
 chest_inventory_ui = NodePath("ChestInventory")
-
-[node name="Label" type="Label" parent="Background/ChestTab"]
-layout_mode = 0
-offset_left = 45.0
-offset_top = 16.0
-offset_right = 113.0
-offset_bottom = 38.0
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-text = "Storage"
-vertical_alignment = 1
 
 [node name="ChestInventory" parent="Background/ChestTab" instance=ExtResource("4_eoykc")]
 layout_mode = 1
@@ -1290,9 +1267,8 @@ label_translation_string = "RESEARCH_SAVE_INFO"
 
 [node name="Border" type="ColorRect" parent="Background/ResearchTab"]
 layout_mode = 0
-offset_left = 1.0
+offset_left = -2.0
 offset_top = -2.0
-offset_right = 3.0
 offset_bottom = 278.0
 color = Color(0, 0, 0, 1)
 
@@ -1346,7 +1322,7 @@ offset_left = 1.0
 offset_top = 1.0
 offset_right = 547.0
 offset_bottom = 19.0
-color = Color(0.67451, 0.654902, 0.796078, 1)
+color = Color(0.529412, 0.509804, 0.647059, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/PointsHeader/PointsHeader"]
 layout_mode = 2
@@ -1549,12 +1525,14 @@ text = "Mining"
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 248)
 layout_mode = 2
+theme_override_styles/panel = ExtResource("43_fato5")
+theme_override_styles/focus = ExtResource("28_gcthi")
 horizontal_scroll_mode = 3
 
 [node name="MiningColorRect" type="ColorRect" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer"]
 custom_minimum_size = Vector2(385, 590)
 layout_mode = 2
-color = Color(0, 0, 0, 0.490196)
+color = Color(1, 1, 1, 0)
 
 [node name="Label" type="Label" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect"]
 layout_mode = 0
@@ -2687,6 +2665,7 @@ text = "Required Points: 1"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
@@ -3232,6 +3211,7 @@ category = 2
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuTools"]
 custom_minimum_size = Vector2(320, 220)
 layout_mode = 2
+theme_override_styles/panel = ExtResource("43_fato5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuTools/ScrollContainer"]
 layout_mode = 2
@@ -3246,6 +3226,7 @@ category = 1
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuToolparts"]
 custom_minimum_size = Vector2(320, 220)
 layout_mode = 2
+theme_override_styles/panel = ExtResource("43_fato5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuToolparts/ScrollContainer"]
 layout_mode = 2
@@ -3260,6 +3241,7 @@ category = 3
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuArmor"]
 custom_minimum_size = Vector2(320, 220)
 layout_mode = 2
+theme_override_styles/panel = ExtResource("43_fato5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuArmor/ScrollContainer"]
 layout_mode = 2
@@ -3274,6 +3256,7 @@ category = 4
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuAgriculture"]
 custom_minimum_size = Vector2(320, 220)
 layout_mode = 2
+theme_override_styles/panel = ExtResource("43_fato5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuAgriculture/ScrollContainer"]
 layout_mode = 2
@@ -3288,6 +3271,7 @@ category = 5
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuMachineParts"]
 custom_minimum_size = Vector2(320, 220)
 layout_mode = 2
+theme_override_styles/panel = ExtResource("43_fato5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuMachineParts/ScrollContainer"]
 layout_mode = 2
@@ -4568,6 +4552,7 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
 [node name="OptionButton" type="OptionButton" parent="Background/SettingsTab/VBoxContainer/Language/PanelContainer/MarginContainerRight"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4648,6 +4633,7 @@ layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
 theme_override_styles/focus = ExtResource("28_gcthi")
@@ -4656,18 +4642,22 @@ theme_override_styles/hover = ExtResource("32_w3vm4")
 theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/normal = ExtResource("34_sy5xb")
 alignment = 1
-expand_icon = true
 selected = 0
 item_count = 5
 popup/item_0/text = "WINDOWED"
+popup/item_0/icon = ExtResource("109_4awxy")
 popup/item_0/id = 0
 popup/item_1/text = "MINIMIZED"
+popup/item_1/icon = ExtResource("109_4awxy")
 popup/item_1/id = 1
 popup/item_2/text = "MAXIMIZED"
+popup/item_2/icon = ExtResource("109_4awxy")
 popup/item_2/id = 2
 popup/item_3/text = "FULLSCREEN"
+popup/item_3/icon = ExtResource("109_4awxy")
 popup/item_3/id = 3
 popup/item_4/text = "Exclusiv Fullscreen"
+popup/item_4/icon = ExtResource("109_4awxy")
 popup/item_4/id = 4
 
 [node name="ExitGame" type="HBoxContainer" parent="Background/SettingsTab/VBoxContainer"]

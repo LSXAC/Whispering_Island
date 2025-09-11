@@ -504,17 +504,17 @@ y_sort_enabled = true
 position = Vector2(-6, -32)
 texture = ExtResource("23_gytje")
 
-[node name="PlayerUI" parent="." instance=ExtResource("7_5qlke")]
-
-[node name="GameMenu" parent="." instance=ExtResource("8_gytje")]
-visible = false
-
 [node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer", "hbox_category") instance=ExtResource("9_1xtv0")]
 visible = false
 building_placer = NodePath("../BuildingManager/BuildingPlacer")
 hbox_category = []
 
 [node name="QuestMenu" parent="." instance=ExtResource("11_5h8gv")]
+visible = false
+
+[node name="PlayerUI" parent="." instance=ExtResource("7_5qlke")]
+
+[node name="GameMenu" parent="." instance=ExtResource("8_gytje")]
 visible = false
 
 [node name="QuestManager" type="Node2D" parent="." node_paths=PackedStringArray("quest_timer")]

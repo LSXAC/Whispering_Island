@@ -146,6 +146,7 @@ public partial class MineableObject : placeable_building
 
         gpu_particles.Emitting = true;
 
+        DiscoverManager.instance.StartDiscovery(resource_item.info);
         if (current_durability <= 0)
         {
             HandleBreak(bonusAmount);

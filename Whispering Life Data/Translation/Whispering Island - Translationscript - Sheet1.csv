@@ -17,9 +17,9 @@ GAMEMENU_DESTROY_MENU,Destroy Window,Vernichtungsfenster
 GAMEMENU_WORLD_MAP,World Map,Weltkarte
 ,,
 ,,
-DESTROY_MENU_TITLE,Destroy this object.,Objekt zerstören.
-DESTROY_MENU_DESCRIPTION,Do you really want to destroy this object? You are not able to restore this object in the future.,Möchtest du dieses Objekt wirklich zerstören? Du kannst es in der Zukunft nicht rückgängig machen.
-DESTROY_MENU_BUTTON,Destroy Object,Objekt zerstören
+DISCOVERY_TITLE,New Item Discovered!,Neue Ressource entdeckt!
+DISCOVERY_DESC,Du hast gefunden: ,You Found: 
+DISCORVERY_SAVE,Daten archivieren,Archiving data
 ,,
 ,,
 GAMEMENU_FURNACE,> Furnace,> Ofen
@@ -34,9 +34,9 @@ WORLD_MAP_REMOVEABLE,Removeable,Entfernbar
 WORLD_MAP_TRADER,Traders,Händler
 WORLD_MAP_QUESTS,Quests,Aufgaben
 ,,
-,,
-,,
-,,
+DESTROY_MENU_TITLE,Destroy this object.,Objekt zerstören.
+DESTROY_MENU_DESCRIPTION,Do you really want to destroy this object? You are not able to restore this object in the future.,Möchtest du dieses Objekt wirklich zerstören? Du kannst es in der Zukunft nicht rückgängig machen.
+DESTROY_MENU_BUTTON,Destroy Object,Objekt zerstören
 ,,
 ,,
 PLAYERUI_GAMETIME,Game time,Spielzeit
