@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
 
@@ -7,6 +8,9 @@ public partial class ItemResearchLevel : Resource
 {
     [Export]
     public Array<ItemInfo> unlocked_item_infos_after_research;
+
+    [Export]
+    public Array<ItemSubResearchLevel> sub_levels;
 
     private Array<ItemInfo> getUnlockedItemInfosArray()
     {

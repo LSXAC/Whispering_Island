@@ -64,7 +64,7 @@ public partial class EquipmentPanel : Control
     {
         for (int i = 0; i < 4; i++)
         {
-            if (instance.equipped_tools[i] == null)
+            if (instance?.equipped_tools[i] == null)
                 continue;
 
             if (instance.equipped_tools[i].current_durability > 0)

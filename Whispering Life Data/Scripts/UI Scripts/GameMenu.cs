@@ -369,11 +369,7 @@ public partial class GameMenu : CanvasLayer
     {
         SetWindow(this);
         CloseAllTabs();
-        inventory_tab.Visible = true;
         research_tab.Visible = true;
-        PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes(
-            new Type[] { typeof(ResearchableAttribute) }
-        );
     }
 
     public void OnCloseSkilltreeTab()

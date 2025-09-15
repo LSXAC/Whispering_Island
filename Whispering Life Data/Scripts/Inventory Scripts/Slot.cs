@@ -406,7 +406,7 @@ public partial class Slot : Button
             {
                 CreateClickedItem(slot_item_ui.item.amount);
                 ResearchTab.research_slot_item = null;
-                ResearchTab.instance.UpdateLevelTabs();
+                //ResearchTab.instance.UpdateLevelTabs();
             }
         }
         else
@@ -423,7 +423,7 @@ public partial class Slot : Button
                 clicked_slot_item_ui.item.amount -= 1;
                 if (clicked_slot_item_ui.item.amount == 0)
                     ClearClickedItem();
-                ResearchTab.instance.UpdateLevelTabs();
+                //ResearchTab.instance.UpdateLevelTabs();
             }
         }
     }

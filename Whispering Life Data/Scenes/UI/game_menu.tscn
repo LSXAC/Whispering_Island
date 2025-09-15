@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=133 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://Scripts/UI Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://Scenes/UI/header_color_rect.tscn" id="11_45saq"]
 [ext_resource type="Script" uid="uid://dmhek11432ok0" path="res://Scripts/UI Scripts/ResearchTab.cs" id="11_hr8uu"]
 [ext_resource type="Texture2D" uid="uid://dvbxwe6an2st" path="res://Sprites/Menu/Menu_Front_Style_1.png" id="11_mmhr0"]
-[ext_resource type="PackedScene" uid="uid://cd8pn6e2fwrpm" path="res://Scenes/UI/Research_Level_Tab.tscn" id="12_3k1qw"]
 [ext_resource type="PackedScene" uid="uid://ceypkxf7dox6w" path="res://Scenes/UI/slot_background.tscn" id="13_m8k7p"]
 [ext_resource type="Texture2D" uid="uid://e6d1pgbiv2dn" path="res://Sprites/Items/Armor/Placeholder_Armor_Head.png" id="14_mmhr0"]
 [ext_resource type="Script" uid="uid://c80nhtlc3g8ga" path="res://Scripts/Item/ArmorAttribute.cs" id="15_jkil6"]
@@ -47,7 +46,6 @@
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="26_tl5yt"]
 [ext_resource type="Script" uid="uid://bypwrqe8vcas8" path="res://Scripts/UI Scripts/SaveLoadTab.cs" id="27_ku6dj"]
 [ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://Scenes/UI/slot_focus_style.tres" id="28_gcthi"]
-[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableAttribute.cs" id="29_7icba"]
 [ext_resource type="StyleBox" uid="uid://ulbautjxg081" path="res://Scenes/UI/Progress_Bar_Background_Style.tres" id="29_sy5xb"]
 [ext_resource type="StyleBox" uid="uid://cuqs05ejcf73o" path="res://Scenes/UI/Progress_Bar_Fill_Style.tres" id="30_fato5"]
 [ext_resource type="Script" uid="uid://dbau0pr5c35mu" path="res://Scenes/UI/SkillSlot.cs" id="31_1f68p"]
@@ -71,14 +69,20 @@
 [ext_resource type="StyleBox" uid="uid://dk5rjv85ef65x" path="res://Scenes/UI/tab_container_selected_style.tres" id="40_sy5xb"]
 [ext_resource type="StyleBox" uid="uid://b6stjn6fub30f" path="res://Scenes/UI/tab_container_unselected_style.tres.tres" id="41_fato5"]
 [ext_resource type="Resource" uid="uid://drpg8ggybgde0" path="res://Resource Meta/Skills/mining_bonus_2.tres" id="41_gqg20"]
+[ext_resource type="StyleBox" uid="uid://5gmmubnpn3xd" path="res://Panel_Brighter_Style.tres" id="42_8a6lo"]
 [ext_resource type="Resource" uid="uid://cwsmufe0vpjku" path="res://Resource Meta/Skills/recycle_unused_data.tres" id="42_j0nuq"]
 [ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://Scenes/UI/tab_container_panel_style.tres.tres" id="43_fato5"]
+[ext_resource type="Script" uid="uid://ef1nl1hlprq7" path="res://Scenes/UI/SubResearchPanel.cs" id="43_mkmfo"]
 [ext_resource type="PackedScene" uid="uid://b7l06c35ca42f" path="res://Scenes/UI/crafting_menu_crafting_line.tscn" id="43_sy28q"]
 [ext_resource type="Resource" uid="uid://v0dvikuvb5ye" path="res://Resource Meta/Skills/research_cost_1.tres" id="43_w3vm4"]
 [ext_resource type="Resource" uid="uid://cvu5w0pnoqciu" path="res://Resource Meta/Skills/research_cost_2.tres" id="44_sy5xb"]
 [ext_resource type="Resource" uid="uid://drhhc6h2sqh7q" path="res://Resource Meta/Skills/research_cost_3.tres" id="45_fato5"]
+[ext_resource type="StyleBox" uid="uid://lsceogbom7oo" path="res://Panel_No_Outline.tres" id="45_mkmfo"]
 [ext_resource type="Resource" uid="uid://bph73ie1h0cfw" path="res://Resource Meta/Skills/research_speed_1.tres" id="46_4awxy"]
+[ext_resource type="StyleBox" uid="uid://dblsyajhbmtwa" path="res://Scenes/UI/Button_Normal_Style.tres" id="46_tmrav"]
 [ext_resource type="Resource" uid="uid://07voex1otlqm" path="res://Resource Meta/Skills/research_speed_2.tres" id="47_8a6lo"]
+[ext_resource type="PackedScene" uid="uid://bjpg4c1oc0gf2" path="res://Scenes/UI/classic_button.tscn" id="47_n542t"]
+[ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Scripts/Manager Scripts/ItemRowManager.cs" id="48_mkmfo"]
 [ext_resource type="Resource" uid="uid://blc4hqmuyk06k" path="res://Resource Meta/Skills/research_speed_3.tres" id="48_tmrav"]
 [ext_resource type="Resource" uid="uid://fw0fc6jo8rm6" path="res://Resource Meta/Skills/research_xp_1.tres" id="49_mkmfo"]
 [ext_resource type="Resource" uid="uid://cyjlrhsdwqgbe" path="res://Resource Meta/Skills/research_xp_2.tres" id="50_n542t"]
@@ -215,10 +219,6 @@ border_width_left = 1
 border_width_top = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Resource" id="Resource_sy5xb"]
-script = ExtResource("29_7icba")
-metadata/_custom_type_script = "uid://doosgdjr0ddtl"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy5xb"]
 bg_color = Color(0.529412, 0.509804, 0.639216, 1)
@@ -1023,7 +1023,7 @@ offset_top = 22.0
 offset_right = 291.0
 offset_bottom = 54.0
 focus_neighbor_top = NodePath("../Slots/SlotBackgroundFuel/Slot0")
-theme_override_constants/outline_size = 5
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
 theme_override_styles/focus = ExtResource("28_gcthi")
@@ -1079,14 +1079,13 @@ offset_right = 3.0
 offset_bottom = 278.0
 color = Color(0, 0, 0, 1)
 
-[node name="ResearchTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("tab_container", "item_name_label", "item_level_label", "progressBar", "timer", "working_panel")]
-visible = false
+[node name="ResearchTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("full_researched_panel", "sub_research_panel_types", "research_current_title", "research_current_time_left", "research_current_progress", "item_row_manager", "research_title", "research_description", "research_subresearches_left", "research_activ_rect", "select_container", "timer")]
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 253.0
+offset_left = 1.0
 offset_top = 24.0
 offset_right = -1.0
 offset_bottom = -1.0
@@ -1094,51 +1093,37 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("11_hr8uu")
-tab_container = NodePath("PanelContainer/TabContainer")
-item_name_label = NodePath("PanelContainer/ItemLabel")
-item_level_label = NodePath("PanelContainer/CurrentLevelLabel")
-progressBar = NodePath("PanelContainer/WorkingProgressBar")
+full_researched_panel = NodePath("FullyResearched")
+sub_research_panel_types = [NodePath("PanelContainer/Container/Type1"), NodePath("PanelContainer/Container/Type2")]
+research_current_title = NodePath("BLACK/Research_Game_Panel/MarginContainer/VBoxContainer/activ_Title_Label")
+research_current_time_left = NodePath("BLACK/Research_Game_Panel/MarginContainer/VBoxContainer/activ_time_label")
+research_current_progress = NodePath("BLACK/Research_Game_Panel/MarginContainer/VBoxContainer/activ_ProgressBar")
+item_row_manager = NodePath("Panel/VBoxContainer/HBoxContainer")
+research_title = NodePath("Panel/VBoxContainer/Title_Label")
+research_description = NodePath("Panel/VBoxContainer/Description_Label")
+research_subresearches_left = NodePath("PanelContainer/Sub_researches_left_label")
+research_activ_rect = NodePath("BLACK")
+select_container = NodePath("TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer")
 timer = NodePath("PanelContainer/Timer")
-working_panel = NodePath("ColorRect")
 
-[node name="PanelContainer" type="Control" parent="Background/ResearchTab"]
-anchors_preset = 0
-offset_left = 8.0
-offset_top = 214.0
-offset_right = 320.0
-offset_bottom = 262.0
-
-[node name="SlotBackground0" parent="Background/ResearchTab/PanelContainer" instance=ExtResource("13_m8k7p")]
+[node name="PanelContainer" type="Panel" parent="Background/ResearchTab"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = -181.0
-offset_right = 35.0
-offset_bottom = -149.0
+offset_left = 183.0
+offset_top = 9.0
+offset_right = 550.0
+offset_bottom = 272.0
+theme_override_styles/panel = ExtResource("43_fato5")
 
-[node name="Slot0" parent="Background/ResearchTab/PanelContainer/SlotBackground0" index="0"]
-attribute_to_check = SubResource("Resource_sy5xb")
-check_attributes = true
-
-[node name="WorkingProgressBar" type="ProgressBar" parent="Background/ResearchTab/PanelContainer"]
+[node name="StartResearchButton" type="Button" parent="Background/ResearchTab/PanelContainer"]
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 0
-offset_left = 2.0
-offset_top = 7.0
-offset_right = 288.0
-offset_bottom = 20.0
+offset_left = 195.0
+offset_top = 243.0
+offset_right = 362.0
+offset_bottom = 258.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 12
-theme_override_styles/background = ExtResource("29_sy5xb")
-theme_override_styles/fill = ExtResource("30_fato5")
-
-[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 24.0
-offset_right = 288.0
-offset_bottom = 56.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
 theme_override_styles/focus = ExtResource("28_gcthi")
 theme_override_styles/disabled = ExtResource("31_j0nuq")
 theme_override_styles/hover = ExtResource("32_w3vm4")
@@ -1148,129 +1133,1352 @@ text = "Start Research"
 script = ExtResource("3_pwamf")
 label_translation_string = "RESEARCH_BUTTON"
 
-[node name="TabContainer" type="TabContainer" parent="Background/ResearchTab/PanelContainer"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -154.0
-offset_top = -168.0
-offset_right = 132.0
-offset_bottom = -64.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_unselected_color = Color(1, 1, 1, 1)
-theme_override_colors/font_selected_color = Color(0.976471, 0.972549, 0.443137, 1)
-theme_override_constants/outline_size = 3
-theme_override_constants/side_margin = 0
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-theme_override_styles/tab_selected = ExtResource("40_sy5xb")
-theme_override_styles/tab_unselected = ExtResource("41_fato5")
-current_tab = 0
-
-[node name="Level 1" parent="Background/ResearchTab/PanelContainer/TabContainer" instance=ExtResource("12_3k1qw")]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("43_fato5")
-
-[node name="Level 2" parent="Background/ResearchTab/PanelContainer/TabContainer" instance=ExtResource("12_3k1qw")]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="ItemLabel" type="Label" parent="Background/ResearchTab/PanelContainer"]
-layout_mode = 0
-offset_left = 45.0
-offset_top = -165.0
-offset_right = 305.0
-offset_bottom = -155.0
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 8
-text = "Keine Ressource im Erforschungsslot."
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="CurrentLevelLabel" type="Label" parent="Background/ResearchTab/PanelContainer"]
-layout_mode = 0
-offset_left = 45.0
-offset_top = -180.0
-offset_right = 245.0
-offset_bottom = -166.0
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-text = "Erforschungsstufe: 0"
-vertical_alignment = 1
-
 [node name="Timer" type="Timer" parent="Background/ResearchTab/PanelContainer"]
 wait_time = 0.01
 
+[node name="Container" type="Panel" parent="Background/ResearchTab/PanelContainer"]
+layout_mode = 0
+offset_right = 367.0
+offset_bottom = 190.0
+theme_override_styles/panel = ExtResource("43_fato5")
+
+[node name="ViewBox" type="Panel" parent="Background/ResearchTab/PanelContainer/Container"]
+z_index = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("42_8a6lo")
+
+[node name="TextureRect" type="TextureRect" parent="Background/ResearchTab/PanelContainer/Container/ViewBox"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_iq1ex")
+
+[node name="Type1" type="Control" parent="Background/ResearchTab/PanelContainer/Container"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubResearchPanel" type="Panel" parent="Background/ResearchTab/PanelContainer/Container/Type1" node_paths=PackedStringArray("category_title_label", "category_button")]
+z_index = 1
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 15.0
+offset_top = 6.0
+offset_right = 115.0
+offset_bottom = 56.0
+theme_override_styles/panel = ExtResource("42_8a6lo")
+script = ExtResource("43_mkmfo")
+category_title_label = NodePath("Title")
+category_button = NodePath("Button")
+
+[node name="Line2D" type="Line2D" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel"]
+z_index = -1
+position = Vector2(99, 49)
+points = PackedVector2Array(0, 0, 40, 22)
+width = 1.5
+default_color = Color(0.517647, 0.709804, 0.647059, 1)
+
+[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 73.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("34_sy5xb")
+text = "Select"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_BUTTON"
+
+[node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Texture"
+horizontal_alignment = 1
+
+[node name="SubResearchPanel2" type="Panel" parent="Background/ResearchTab/PanelContainer/Container/Type1" node_paths=PackedStringArray("category_title_label", "category_button")]
+z_index = 1
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 22.0
+offset_top = 108.0
+offset_right = 122.0
+offset_bottom = 158.0
+theme_override_styles/panel = ExtResource("42_8a6lo")
+script = ExtResource("43_mkmfo")
+category_title_label = NodePath("Title")
+category_button = NodePath("Button")
+
+[node name="Line2D" type="Line2D" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel2"]
+z_index = -1
+position = Vector2(99, 49)
+points = PackedVector2Array(1, -36, 37, -60)
+width = 1.5
+default_color = Color(0.517647, 0.709804, 0.647059, 1)
+
+[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel2"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 73.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("34_sy5xb")
+text = "Select"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_BUTTON"
+
+[node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel2"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Texture"
+horizontal_alignment = 1
+
+[node name="SubResearchPanel3" type="Panel" parent="Background/ResearchTab/PanelContainer/Container/Type1" node_paths=PackedStringArray("category_title_label", "category_button")]
+z_index = 1
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 190.0
+offset_top = 5.0
+offset_right = 290.0
+offset_bottom = 55.0
+theme_override_styles/panel = ExtResource("42_8a6lo")
+script = ExtResource("43_mkmfo")
+category_title_label = NodePath("Title")
+category_button = NodePath("Button")
+
+[node name="Line2D" type="Line2D" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel3"]
+z_index = -1
+position = Vector2(24, 50)
+points = PackedVector2Array(0, 0, -31, 16)
+width = 1.5
+default_color = Color(0.517647, 0.709804, 0.647059, 1)
+
+[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel3"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 73.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("34_sy5xb")
+text = "Select"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_BUTTON"
+
+[node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel3"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Texture"
+horizontal_alignment = 1
+
+[node name="SubResearchPanel4" type="Panel" parent="Background/ResearchTab/PanelContainer/Container/Type1" node_paths=PackedStringArray("category_title_label", "category_button")]
+z_index = 1
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 245.0
+offset_top = 70.0
+offset_right = 345.0
+offset_bottom = 120.0
+theme_override_styles/panel = ExtResource("42_8a6lo")
+script = ExtResource("43_mkmfo")
+category_title_label = NodePath("Title")
+category_button = NodePath("Button")
+
+[node name="Line2D" type="Line2D" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel4"]
+z_index = -1
+position = Vector2(99, 49)
+points = PackedVector2Array(-98, -42, -136, -33)
+width = 1.5
+default_color = Color(0.517647, 0.709804, 0.647059, 1)
+
+[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel4"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 73.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("34_sy5xb")
+text = "Select"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_BUTTON"
+
+[node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel4"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Texture"
+horizontal_alignment = 1
+
+[node name="SubResearchPanel5" type="Panel" parent="Background/ResearchTab/PanelContainer/Container/Type1" node_paths=PackedStringArray("category_title_label", "category_button")]
+z_index = 1
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 189.0
+offset_top = 134.0
+offset_right = 289.0
+offset_bottom = 184.0
+theme_override_styles/panel = ExtResource("42_8a6lo")
+script = ExtResource("43_mkmfo")
+category_title_label = NodePath("Title")
+category_button = NodePath("Button")
+
+[node name="Line2D" type="Line2D" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel5"]
+z_index = -1
+position = Vector2(26, 1)
+points = PackedVector2Array(0, 0, -18, -13)
+width = 1.5
+default_color = Color(0.517647, 0.709804, 0.647059, 1)
+
+[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel5"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 73.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("34_sy5xb")
+text = "Select"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_BUTTON"
+
+[node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel5"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Texture"
+horizontal_alignment = 1
+
+[node name="Type2" type="Control" parent="Background/ResearchTab/PanelContainer/Container"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubResearchPanel" type="Panel" parent="Background/ResearchTab/PanelContainer/Container/Type2" node_paths=PackedStringArray("category_title_label", "category_button")]
+z_index = 1
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 31.0
+offset_top = 42.0
+offset_right = 131.0
+offset_bottom = 92.0
+theme_override_styles/panel = ExtResource("42_8a6lo")
+script = ExtResource("43_mkmfo")
+category_title_label = NodePath("Title")
+category_button = NodePath("Button")
+
+[node name="Line2D" type="Line2D" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel"]
+z_index = -1
+position = Vector2(99, 49)
+points = PackedVector2Array(-5, -32, 27, -6)
+width = 1.5
+default_color = Color(0.517647, 0.709804, 0.647059, 1)
+
+[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 73.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("34_sy5xb")
+text = "Select"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_BUTTON"
+
+[node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Texture"
+horizontal_alignment = 1
+
+[node name="SubResearchPanel2" type="Panel" parent="Background/ResearchTab/PanelContainer/Container/Type2" node_paths=PackedStringArray("category_title_label", "category_button")]
+z_index = 1
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 39.0
+offset_top = 132.0
+offset_right = 139.0
+offset_bottom = 182.0
+theme_override_styles/panel = ExtResource("42_8a6lo")
+script = ExtResource("43_mkmfo")
+category_title_label = NodePath("Title")
+category_button = NodePath("Button")
+
+[node name="Line2D" type="Line2D" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel2"]
+z_index = -1
+position = Vector2(99.0192, 47.0833)
+scale = Vector2(1.03846, 0.944444)
+points = PackedVector2Array(-25.0555, -45.6176, 18.2778, -78.4412)
+width = 1.5
+default_color = Color(0.517647, 0.709804, 0.647059, 1)
+
+[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel2"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 73.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("34_sy5xb")
+text = "Select"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_BUTTON"
+
+[node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel2"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Texture"
+horizontal_alignment = 1
+
+[node name="SubResearchPanel3" type="Panel" parent="Background/ResearchTab/PanelContainer/Container/Type2" node_paths=PackedStringArray("category_title_label", "category_button")]
+z_index = 1
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 159.0
+offset_top = 4.0
+offset_right = 259.0
+offset_bottom = 54.0
+theme_override_styles/panel = ExtResource("42_8a6lo")
+script = ExtResource("43_mkmfo")
+category_title_label = NodePath("Title")
+category_button = NodePath("Button")
+
+[node name="Line2D" type="Line2D" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel3"]
+z_index = -1
+position = Vector2(24, 50)
+points = PackedVector2Array(61, -5, 25, 33)
+width = 1.5
+default_color = Color(0.517647, 0.709804, 0.647059, 1)
+
+[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel3"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 73.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("34_sy5xb")
+text = "Select"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_BUTTON"
+
+[node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel3"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Texture"
+horizontal_alignment = 1
+
+[node name="SubResearchPanel4" type="Panel" parent="Background/ResearchTab/PanelContainer/Container/Type2" node_paths=PackedStringArray("category_title_label", "category_button")]
+z_index = 1
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 262.0
+offset_top = 49.0
+offset_right = 362.0
+offset_bottom = 99.0
+theme_override_styles/panel = ExtResource("42_8a6lo")
+script = ExtResource("43_mkmfo")
+category_title_label = NodePath("Title")
+category_button = NodePath("Button")
+
+[node name="Line2D" type="Line2D" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel4"]
+z_index = -1
+position = Vector2(99, 49)
+points = PackedVector2Array(-94, -8, -149, 8)
+width = 1.5
+default_color = Color(0.517647, 0.709804, 0.647059, 1)
+
+[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel4"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 73.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("34_sy5xb")
+text = "Select"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_BUTTON"
+
+[node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel4"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Texture"
+horizontal_alignment = 1
+
+[node name="SubResearchPanel5" type="Panel" parent="Background/ResearchTab/PanelContainer/Container/Type2" node_paths=PackedStringArray("category_title_label", "category_button")]
+z_index = 1
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 229.0
+offset_top = 124.0
+offset_right = 329.0
+offset_bottom = 174.0
+theme_override_styles/panel = ExtResource("42_8a6lo")
+script = ExtResource("43_mkmfo")
+category_title_label = NodePath("Title")
+category_button = NodePath("Button")
+
+[node name="Line2D" type="Line2D" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel5"]
+z_index = -1
+position = Vector2(25.5094, 1)
+scale = Vector2(0.99375, 1)
+points = PackedVector2Array(-14.6006, 38, -77, -1)
+width = 1.5
+default_color = Color(0.517647, 0.709804, 0.647059, 1)
+
+[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel5"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 73.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("34_sy5xb")
+text = "Select"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_BUTTON"
+
+[node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel5"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Texture"
+horizontal_alignment = 1
+
+[node name="Sub_researches_left_label" type="Label" parent="Background/ResearchTab/PanelContainer"]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 206.0
+offset_right = 355.0
+offset_bottom = 229.0
+theme_override_colors/font_color = Color(0.976471, 0.972549, 0.443137, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "You unlocked 0/5 Researchs
+to upgrade"
+horizontal_alignment = 1
+
 [node name="HeaderColorRect" parent="Background/ResearchTab" instance=ExtResource("11_45saq")]
 layout_mode = 1
-offset_left = -252.0
+offset_left = 1.0
 offset_top = -23.0
-offset_right = 286.0
+offset_right = 539.0
 offset_bottom = -1.0
 translation_string = "GAMEMENU_RESEARCH_TABLE"
 
-[node name="ColorRect" type="ColorRect" parent="Background/ResearchTab"]
-visible = false
+[node name="TabContainer" type="TabContainer" parent="Background/ResearchTab"]
 layout_mode = 0
-offset_right = 334.0
-offset_bottom = 274.0
-color = Color(0, 0, 0, 0.294118)
-
-[node name="Label" type="Label" parent="Background/ResearchTab/ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -39.0
-offset_top = -11.5
-offset_right = 39.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 20
-text = "WORKING"
-script = ExtResource("26_tl5yt")
-label_translation_string = "RESEARCH_WORKING"
-
-[node name="Label2" type="Label" parent="Background/ResearchTab/ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = 12.0
-offset_right = 129.0
-offset_bottom = 37.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 177.0
+offset_bottom = 272.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 12
-text = "Passed Research time will not be saved, only result"
-horizontal_alignment = 1
-autowrap_mode = 3
-script = ExtResource("26_tl5yt")
-label_translation_string = "RESEARCH_SAVE_INFO"
+theme_override_font_sizes/font_size = 10
+theme_override_styles/tab_focus = ExtResource("28_gcthi")
+theme_override_styles/panel = ExtResource("43_fato5")
+theme_override_styles/tab_selected = ExtResource("40_sy5xb")
+theme_override_styles/tab_unselected = ExtResource("41_fato5")
+tab_alignment = 1
+current_tab = 0
 
-[node name="Border" type="ColorRect" parent="Background/ResearchTab"]
+[node name="Resources" type="Panel" parent="Background/ResearchTab/TabContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("45_mkmfo")
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/ResearchTab/TabContainer/Resources"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 161.0
+offset_bottom = 240.0
+theme_override_styles/panel = ExtResource("45_mkmfo")
+theme_override_styles/focus = ExtResource("28_gcthi")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("47_n542t")]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button4" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button5" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button6" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button7" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button8" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button9" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button10" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button11" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button12" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button13" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button14" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button15" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button16" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button17" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button18" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button19" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button20" type="Button" parent="Background/ResearchTab/TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Machines" type="Panel" parent="Background/ResearchTab/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = ExtResource("45_mkmfo")
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/ResearchTab/TabContainer/Machines"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 161.0
+offset_bottom = 240.0
+theme_override_styles/panel = ExtResource("45_mkmfo")
+theme_override_styles/focus = ExtResource("28_gcthi")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Button" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button4" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button5" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button6" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button7" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button8" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button9" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button10" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button11" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button12" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button13" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button14" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button15" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button16" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button17" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button18" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button19" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Button20" type="Button" parent="Background/ResearchTab/TabContainer/Machines/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("46_tmrav")
+icon = ExtResource("17_iq1ex")
+icon_alignment = 1
+
+[node name="Panel" type="Panel" parent="Background/ResearchTab"]
 layout_mode = 0
-offset_left = -2.0
-offset_top = -2.0
-offset_bottom = 278.0
-color = Color(0, 0, 0, 1)
+offset_left = 183.0
+offset_top = 198.0
+offset_right = 375.0
+offset_bottom = 272.0
+theme_override_styles/panel = ExtResource("43_fato5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ResearchTab/Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 189.0
+offset_bottom = 70.0
+
+[node name="Title_Label" type="Label" parent="Background/ResearchTab/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.976471, 0.972549, 0.443137, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Category: Texture"
+
+[node name="Description_Label" type="Label" parent="Background/ResearchTab/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+text = "The current category is not researched yet!"
+autowrap_mode = 2
+
+[node name="Required_Label" type="Label" parent="Background/ResearchTab/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.721569, 0.627451, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+text = "Required for Research:"
+horizontal_alignment = 2
+autowrap_mode = 2
+script = ExtResource("26_tl5yt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ResearchTab/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+alignment = 2
+script = ExtResource("48_mkmfo")
+
+[node name="BLACK" type="ColorRect" parent="Background/ResearchTab"]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 549.0
+offset_bottom = 272.0
+color = Color(0, 0, 0, 0.490196)
+
+[node name="Research_Game_Panel" type="Panel" parent="Background/ResearchTab/BLACK"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -39.0
+offset_right = 100.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("43_fato5")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/ResearchTab/BLACK/Research_Game_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ResearchTab/BLACK/Research_Game_Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="activ_Title_Label" type="Label" parent="Background/ResearchTab/BLACK/Research_Game_Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.976471, 0.972549, 0.443137, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Researching: Texture"
+horizontal_alignment = 1
+
+[node name="activ_ProgressBar" type="ProgressBar" parent="Background/ResearchTab/BLACK/Research_Game_Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/background = ExtResource("29_sy5xb")
+theme_override_styles/fill = ExtResource("30_fato5")
+
+[node name="activ_time_label" type="Label" parent="Background/ResearchTab/BLACK/Research_Game_Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "time left: 25 s"
+horizontal_alignment = 1
+
+[node name="FullyResearched" type="ColorRect" parent="Background/ResearchTab"]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = 183.0
+offset_top = 9.0
+offset_right = 549.0
+offset_bottom = 272.0
+color = Color(0, 0, 0, 0.490196)
+
+[node name="Research_Game_Panel" type="Panel" parent="Background/ResearchTab/FullyResearched"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -39.0
+offset_right = 100.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("43_fato5")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/ResearchTab/FullyResearched/Research_Game_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ResearchTab/FullyResearched/Research_Game_Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Title_Label" type="Label" parent="Background/ResearchTab/FullyResearched/Research_Game_Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.976471, 0.972549, 0.443137, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Wood"
+horizontal_alignment = 1
+
+[node name="Description_Label" type="Label" parent="Background/ResearchTab/FullyResearched/Research_Game_Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Fully Researched!"
+horizontal_alignment = 1
 
 [node name="Skilltree" type="ColorRect" parent="Background" node_paths=PackedStringArray("research_points_label", "title", "description", "required_skill_points", "unlock_skill_button", "slots_parent")]
 visible = false
@@ -3499,7 +4707,7 @@ offset_right = -1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.576471, 0.807843, 1, 1)
+color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("56_74gou")
 pages = [NodePath("VBoxContainer/HP_Resources"), NodePath("VBoxContainer/HP_Machine"), NodePath("VBoxContainer/HP_Quests"), NodePath("VBoxContainer/HP_Islands")]
 
@@ -5194,8 +6402,19 @@ alignment = 1
 [connection signal="visibility_changed" from="Background/InventoryTab" to="Background/InventoryTab/Inventory" method="OnVisiblityChange"]
 [connection signal="visibility_changed" from="Background/InventoryTab/EquipmentPanel" to="Background/InventoryTab/EquipmentPanel" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/EnableDisableButton" to="Background/FurnaceTab" method="OnMachineStateButton"]
-[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Button" to="Background/ResearchTab" method="OnResearchButton"]
+[connection signal="visibility_changed" from="Background/ResearchTab" to="Background/ResearchTab" method="OnVisiblityChanged"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/StartResearchButton" to="Background/ResearchTab" method="OnResearchButton"]
 [connection signal="timeout" from="Background/ResearchTab/PanelContainer/Timer" to="Background/ResearchTab" method="OnTimerTimeout"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel2/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel3/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel4/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel5/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel2/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel3/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel4/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel5/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
 [connection signal="visibility_changed" from="Background/Skilltree" to="Background/Skilltree" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlotMA1/Button" to="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlotMA1" method="OnButtonClicked"]
 [connection signal="pressed" from="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlot2MA2/Button" to="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlot2MA2" method="OnButtonClicked"]
@@ -5291,4 +6510,3 @@ alignment = 1
 [editable path="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundInput"]
 [editable path="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundExport"]
 [editable path="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundFuel"]
-[editable path="Background/ResearchTab/PanelContainer/SlotBackground0"]

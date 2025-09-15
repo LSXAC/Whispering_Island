@@ -18,8 +18,8 @@ GAMEMENU_WORLD_MAP,World Map,Weltkarte
 ,,
 ,,
 DISCOVERY_TITLE,New Item Discovered!,Neue Ressource entdeckt!
-DISCOVERY_DESC,Du hast gefunden: ,You Found: 
-DISCORVERY_SAVE,Daten archivieren,Archiving data
+DISCOVERY_DESC,You Found: ,Du hast gefunden: 
+DISCORVERY_SAVE,Archiving data,Daten archivieren
 ,,
 ,,
 GAMEMENU_FURNACE,> Furnace,> Ofen
