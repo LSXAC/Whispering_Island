@@ -46,6 +46,18 @@ public partial class SaveState : Resource
         new Dictionary<Inventory.ITEM_ID, ResearchSave>();
 
     [Export]
+    public bool in_research = false;
+
+    [Export]
+    public Inventory.ITEM_ID current_selected_item_id = Inventory.ITEM_ID.NULL;
+
+    [Export]
+    public int current_research_prog = 0;
+
+    [Export]
+    public int selected_sub_id = -1;
+
+    [Export]
     public Dictionary<Inventory.ITEM_ID, bool> discovered_items =
         new Dictionary<Inventory.ITEM_ID, bool>();
 

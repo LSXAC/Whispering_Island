@@ -39,6 +39,7 @@ metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
 script = ExtResource("1_2hiwq")
 unlocked_item_infos_after_research = Array[Object]([ExtResource("2_o3cmm")])
 sub_levels = Array[Object]([SubResource("Resource_xurx7"), SubResource("Resource_q7l8g"), SubResource("Resource_o62nt"), SubResource("Resource_bsna4"), SubResource("Resource_4tnfo")])
+time_needed = 300
 metadata/_custom_type_script = "uid://kjnoywvj7caa"
 
 [resource]

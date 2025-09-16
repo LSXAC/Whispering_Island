@@ -119,6 +119,12 @@ public partial class GameManager : Node2D
 
         save_state.char_save.research_slot_item = ResearchTab.research_slot_item;
         save_state.research_saves = ResearchTab.research_saves;
+
+        save_state.in_research = ResearchTab.in_research;
+        save_state.current_research_prog = ResearchTab.current_research_prog;
+        save_state.current_selected_item_id = ResearchTab.current_selected_item_id;
+        save_state.selected_sub_id = ResearchTab.selected_sub_id;
+
         save_state.discovered_items = DiscoverManager.discovered_items;
 
         save_state.skill_saves = Skilltree.instance.skill_progress;
@@ -171,6 +177,11 @@ public partial class GameManager : Node2D
 
         ResearchTab.research_slot_item = save_state.char_save.research_slot_item;
         ResearchTab.research_saves = save_state.research_saves;
+
+        ResearchTab.in_research = save_state.in_research;
+        ResearchTab.current_research_prog = save_state.current_research_prog;
+        ResearchTab.current_selected_item_id = save_state.current_selected_item_id;
+        ResearchTab.selected_sub_id = save_state.selected_sub_id;
 
         DiscoverManager.discovered_items = save_state.discovered_items;
 

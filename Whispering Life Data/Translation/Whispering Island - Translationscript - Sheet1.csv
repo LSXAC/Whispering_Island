@@ -199,6 +199,24 @@ QUEST_ACCEPT_PANEL_DOUBLE_AMOUNT_DESC,The Next Quest will have the doubled amoun
 QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_TITLE,> Island - Punishment,> Insel - Strafe
 QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_DESC,You will lose the last build Island,Du wirst die letzte gebaute Insel verlieren.
 ,,
+RESEARCH_SELECT_BUTTON,Select,Auswählen
+RESEARCH_BUTTON,Start Research,Forschung starten
+RESEARCH_UPGRADE_BUTTON,Upgrade Knowledge,Stufe aufwerten
+RESEARCH_UPGRADE_BUTTON_DESC,You unlocked,Du hast
+RESEARCH_UPGRADE_BUTTON_DESC_2,Subresearches for a upgrade!,für ein Stufenaufstieg!
+RESEARCH_UPGRADE_BUTTON_NOW_UPGRADE,You can now upgrade your Knowledge!,Du kannst nun eine Stufe aufsteigen!
+RESEARCH_CURRENT_UPGRADE_LEVELING,Upgrading Knowledge Level,Wissenstufe wird aufgewertet
+RESEARCH_NO_ITEMS_DISCOVERED,There are currently no Items discovered to research!,"Es sind aktuell keine Resourcen gefunden worden, die erforscht werden sollen!"
+RESEARCH_ALL_SUB_RESEARCHED,All sub researches has been completed!,Alle Teilforschungen wurden erledigt!
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
 ,,
 ,,
 ,,

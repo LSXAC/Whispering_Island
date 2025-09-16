@@ -10,5 +10,6 @@ public partial class ResearchSave : Resource
     public int research_level = 0;
 
     [Export]
-    public int[] sub_level_progress;
+    public Dictionary<ItemSubResearchLevel.CATEGORY, bool> sub_level_progress =
+        new Dictionary<ItemSubResearchLevel.CATEGORY, bool>();
 }

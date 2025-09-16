@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=135 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://Scripts/UI Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -65,10 +65,12 @@
 [ext_resource type="Script" uid="uid://b3t4ic6iwowss" path="res://Scripts/UI Scripts/SoundSlider.cs" id="37_vnnff"]
 [ext_resource type="Resource" uid="uid://dp3tion70fql4" path="res://Resource Meta/Skills/mining_amount_2.tres" id="38_6662a"]
 [ext_resource type="Resource" uid="uid://cdw70hdkybi4u" path="res://Resource Meta/Skills/mining_amount_3.tres" id="39_gcthi"]
+[ext_resource type="Texture2D" uid="uid://fjxfspyktgmd" path="res://Sprites/Icons/UI_Star.png" id="40_1y8h4"]
 [ext_resource type="Resource" uid="uid://b8kpuf47jao76" path="res://Resource Meta/Skills/mining_bonus_1.tres" id="40_rgd55"]
 [ext_resource type="StyleBox" uid="uid://dk5rjv85ef65x" path="res://Scenes/UI/tab_container_selected_style.tres" id="40_sy5xb"]
 [ext_resource type="StyleBox" uid="uid://b6stjn6fub30f" path="res://Scenes/UI/tab_container_unselected_style.tres.tres" id="41_fato5"]
 [ext_resource type="Resource" uid="uid://drpg8ggybgde0" path="res://Resource Meta/Skills/mining_bonus_2.tres" id="41_gqg20"]
+[ext_resource type="Texture2D" uid="uid://bl2slcpf1wvaf" path="res://Sprites/Icons/UI_Star_Empty.png" id="41_tbpku"]
 [ext_resource type="StyleBox" uid="uid://5gmmubnpn3xd" path="res://Panel_Brighter_Style.tres" id="42_8a6lo"]
 [ext_resource type="Resource" uid="uid://cwsmufe0vpjku" path="res://Resource Meta/Skills/recycle_unused_data.tres" id="42_j0nuq"]
 [ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://Scenes/UI/tab_container_panel_style.tres.tres" id="43_fato5"]
@@ -1079,7 +1081,7 @@ offset_right = 3.0
 offset_bottom = 278.0
 color = Color(0, 0, 0, 1)
 
-[node name="ResearchTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("full_researched_panel", "sub_research_panel_types", "research_current_title", "research_current_time_left", "research_current_progress", "item_row_manager", "research_title", "research_description", "research_subresearches_left", "research_activ_rect", "select_container", "timer")]
+[node name="ResearchTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("view_icon", "sub_all_research_panel", "no_items_discovered_panel", "full_researched_panel", "sub_research_panel_types", "research_current_title", "research_current_time_left", "research_current_progress", "item_row_manager", "research_title", "research_description", "research_subresearches_left", "research_activ_rect", "select_container", "timer", "start_research_button")]
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -1093,8 +1095,11 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("11_hr8uu")
+view_icon = NodePath("PanelContainer/Container/ViewBox/TextureRect")
+sub_all_research_panel = NodePath("AllSubs")
+no_items_discovered_panel = NodePath("NoItemsDiscovered")
 full_researched_panel = NodePath("FullyResearched")
-sub_research_panel_types = [NodePath("PanelContainer/Container/Type1"), NodePath("PanelContainer/Container/Type2")]
+sub_research_panel_types = [NodePath("PanelContainer/Container/Type1"), NodePath("PanelContainer/Container/Type2"), NodePath("PanelContainer/Container/Type3")]
 research_current_title = NodePath("BLACK/Research_Game_Panel/MarginContainer/VBoxContainer/activ_Title_Label")
 research_current_time_left = NodePath("BLACK/Research_Game_Panel/MarginContainer/VBoxContainer/activ_time_label")
 research_current_progress = NodePath("BLACK/Research_Game_Panel/MarginContainer/VBoxContainer/activ_ProgressBar")
@@ -1105,6 +1110,12 @@ research_subresearches_left = NodePath("PanelContainer/Sub_researches_left_label
 research_activ_rect = NodePath("BLACK")
 select_container = NodePath("TabContainer/Resources/ScrollContainer/MarginContainer/GridContainer")
 timer = NodePath("PanelContainer/Timer")
+select_color = Color(0.517647, 0.709804, 0.647059, 1)
+unselect_color = Color(1, 1, 1, 1)
+complete_color = Color(1, 0.721569, 0.627451, 1)
+start_research_button = NodePath("PanelContainer/StartResearchButton")
+star_full_texture = ExtResource("40_1y8h4")
+star_empty_texture = ExtResource("41_tbpku")
 
 [node name="PanelContainer" type="Panel" parent="Background/ResearchTab"]
 layout_mode = 0
@@ -1134,7 +1145,7 @@ script = ExtResource("3_pwamf")
 label_translation_string = "RESEARCH_BUTTON"
 
 [node name="Timer" type="Timer" parent="Background/ResearchTab/PanelContainer"]
-wait_time = 0.01
+wait_time = 0.2
 
 [node name="Container" type="Panel" parent="Background/ResearchTab/PanelContainer"]
 layout_mode = 0
@@ -1173,7 +1184,6 @@ offset_right = 24.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("17_iq1ex")
 
 [node name="Type1" type="Control" parent="Background/ResearchTab/PanelContainer/Container"]
 visible = false
@@ -1218,7 +1228,7 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/normal = ExtResource("34_sy5xb")
 text = "Select"
 script = ExtResource("3_pwamf")
-label_translation_string = "RESEARCH_BUTTON"
+label_translation_string = "RESEARCH_SELECT_BUTTON"
 
 [node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel"]
 layout_mode = 0
@@ -1269,7 +1279,7 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/normal = ExtResource("34_sy5xb")
 text = "Select"
 script = ExtResource("3_pwamf")
-label_translation_string = "RESEARCH_BUTTON"
+label_translation_string = "RESEARCH_SELECT_BUTTON"
 
 [node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel2"]
 layout_mode = 0
@@ -1320,7 +1330,7 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/normal = ExtResource("34_sy5xb")
 text = "Select"
 script = ExtResource("3_pwamf")
-label_translation_string = "RESEARCH_BUTTON"
+label_translation_string = "RESEARCH_SELECT_BUTTON"
 
 [node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel3"]
 layout_mode = 0
@@ -1371,7 +1381,7 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/normal = ExtResource("34_sy5xb")
 text = "Select"
 script = ExtResource("3_pwamf")
-label_translation_string = "RESEARCH_BUTTON"
+label_translation_string = "RESEARCH_SELECT_BUTTON"
 
 [node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel4"]
 layout_mode = 0
@@ -1422,7 +1432,7 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/normal = ExtResource("34_sy5xb")
 text = "Select"
 script = ExtResource("3_pwamf")
-label_translation_string = "RESEARCH_BUTTON"
+label_translation_string = "RESEARCH_SELECT_BUTTON"
 
 [node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel5"]
 layout_mode = 0
@@ -1479,7 +1489,7 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/normal = ExtResource("34_sy5xb")
 text = "Select"
 script = ExtResource("3_pwamf")
-label_translation_string = "RESEARCH_BUTTON"
+label_translation_string = "RESEARCH_SELECT_BUTTON"
 
 [node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel"]
 layout_mode = 0
@@ -1531,7 +1541,7 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/normal = ExtResource("34_sy5xb")
 text = "Select"
 script = ExtResource("3_pwamf")
-label_translation_string = "RESEARCH_BUTTON"
+label_translation_string = "RESEARCH_SELECT_BUTTON"
 
 [node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel2"]
 layout_mode = 0
@@ -1582,7 +1592,7 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/normal = ExtResource("34_sy5xb")
 text = "Select"
 script = ExtResource("3_pwamf")
-label_translation_string = "RESEARCH_BUTTON"
+label_translation_string = "RESEARCH_SELECT_BUTTON"
 
 [node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel3"]
 layout_mode = 0
@@ -1633,7 +1643,7 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/normal = ExtResource("34_sy5xb")
 text = "Select"
 script = ExtResource("3_pwamf")
-label_translation_string = "RESEARCH_BUTTON"
+label_translation_string = "RESEARCH_SELECT_BUTTON"
 
 [node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel4"]
 layout_mode = 0
@@ -1685,9 +1695,272 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/normal = ExtResource("34_sy5xb")
 text = "Select"
 script = ExtResource("3_pwamf")
-label_translation_string = "RESEARCH_BUTTON"
+label_translation_string = "RESEARCH_SELECT_BUTTON"
 
 [node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel5"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Texture"
+horizontal_alignment = 1
+
+[node name="Type3" type="Control" parent="Background/ResearchTab/PanelContainer/Container"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubResearchPanel" type="Panel" parent="Background/ResearchTab/PanelContainer/Container/Type3" node_paths=PackedStringArray("category_title_label", "category_button")]
+z_index = 1
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 37.0
+offset_top = 25.0
+offset_right = 137.0
+offset_bottom = 75.0
+theme_override_styles/panel = ExtResource("42_8a6lo")
+script = ExtResource("43_mkmfo")
+category_title_label = NodePath("Title")
+category_button = NodePath("Button")
+
+[node name="Line2D" type="Line2D" parent="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel"]
+z_index = -1
+position = Vector2(99, 49)
+points = PackedVector2Array(-48, -4, 20, 33)
+width = 1.5
+default_color = Color(0.517647, 0.709804, 0.647059, 1)
+
+[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 73.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("34_sy5xb")
+text = "Select"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_SELECT_BUTTON"
+
+[node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Texture"
+horizontal_alignment = 1
+
+[node name="SubResearchPanel2" type="Panel" parent="Background/ResearchTab/PanelContainer/Container/Type3" node_paths=PackedStringArray("category_title_label", "category_button")]
+z_index = 1
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 119.0
+offset_right = 120.0
+offset_bottom = 169.0
+theme_override_styles/panel = ExtResource("42_8a6lo")
+script = ExtResource("43_mkmfo")
+category_title_label = NodePath("Title")
+category_button = NodePath("Button")
+
+[node name="Line2D" type="Line2D" parent="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel2"]
+z_index = -1
+position = Vector2(99, 74)
+scale = Vector2(0.186, 1)
+points = PackedVector2Array(-34.2623, -47.8431, 258.064, -79)
+width = 1.5
+default_color = Color(0.517647, 0.709804, 0.647059, 1)
+
+[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel2"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 73.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("34_sy5xb")
+text = "Select"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_SELECT_BUTTON"
+
+[node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel2"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Texture"
+horizontal_alignment = 1
+
+[node name="SubResearchPanel3" type="Panel" parent="Background/ResearchTab/PanelContainer/Container/Type3" node_paths=PackedStringArray("category_title_label", "category_button")]
+z_index = 1
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 182.0
+offset_top = 8.0
+offset_right = 282.0
+offset_bottom = 58.0
+theme_override_styles/panel = ExtResource("42_8a6lo")
+script = ExtResource("43_mkmfo")
+category_title_label = NodePath("Title")
+category_button = NodePath("Button")
+
+[node name="Line2D" type="Line2D" parent="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel3"]
+z_index = -1
+position = Vector2(24, 50)
+points = PackedVector2Array(-19, -35, -38, 8)
+width = 1.5
+default_color = Color(0.517647, 0.709804, 0.647059, 1)
+
+[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel3"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 73.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("34_sy5xb")
+text = "Select"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_SELECT_BUTTON"
+
+[node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel3"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Texture"
+horizontal_alignment = 1
+
+[node name="SubResearchPanel4" type="Panel" parent="Background/ResearchTab/PanelContainer/Container/Type3" node_paths=PackedStringArray("category_title_label", "category_button")]
+z_index = 1
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 244.0
+offset_top = 76.0
+offset_right = 344.0
+offset_bottom = 126.0
+theme_override_styles/panel = ExtResource("42_8a6lo")
+script = ExtResource("43_mkmfo")
+category_title_label = NodePath("Title")
+category_button = NodePath("Button")
+
+[node name="Line2D" type="Line2D" parent="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel4"]
+z_index = -1
+position = Vector2(99, 49)
+points = PackedVector2Array(-92, -37, -134, -18)
+width = 1.5
+default_color = Color(0.517647, 0.709804, 0.647059, 1)
+
+[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel4"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 73.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("34_sy5xb")
+text = "Select"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_SELECT_BUTTON"
+
+[node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel4"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 93.0
+offset_bottom = 33.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Texture"
+horizontal_alignment = 1
+
+[node name="SubResearchPanel5" type="Panel" parent="Background/ResearchTab/PanelContainer/Container/Type3" node_paths=PackedStringArray("category_title_label", "category_button")]
+z_index = 1
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 183.0
+offset_top = 137.0
+offset_right = 283.0
+offset_bottom = 187.0
+theme_override_styles/panel = ExtResource("42_8a6lo")
+script = ExtResource("43_mkmfo")
+category_title_label = NodePath("Title")
+category_button = NodePath("Button")
+
+[node name="Line2D" type="Line2D" parent="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel5"]
+z_index = -1
+position = Vector2(25.5094, 1)
+scale = Vector2(0.99375, 1)
+points = PackedVector2Array(14.5817, 4, -38.7516, -18)
+width = 1.5
+default_color = Color(0.517647, 0.709804, 0.647059, 1)
+
+[node name="Button" type="Button" parent="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel5"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 73.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = ExtResource("28_gcthi")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/normal = ExtResource("34_sy5xb")
+text = "Select"
+script = ExtResource("3_pwamf")
+label_translation_string = "RESEARCH_SELECT_BUTTON"
+
+[node name="Title" type="Label" parent="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel5"]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 10.0
@@ -1712,6 +1985,7 @@ theme_override_font_sizes/font_size = 10
 text = "You unlocked 0/5 Researchs
 to upgrade"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="HeaderColorRect" parent="Background/ResearchTab" instance=ExtResource("11_45saq")]
 layout_mode = 1
@@ -2316,6 +2590,7 @@ offset_left = 5.0
 offset_top = 4.0
 offset_right = 189.0
 offset_bottom = 70.0
+theme_override_constants/separation = 2
 
 [node name="Title_Label" type="Label" parent="Background/ResearchTab/Panel/VBoxContainer"]
 layout_mode = 2
@@ -2418,6 +2693,114 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
 text = "time left: 25 s"
 horizontal_alignment = 1
+
+[node name="AllSubs" type="ColorRect" parent="Background/ResearchTab"]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = 183.0
+offset_top = 9.0
+offset_right = 549.0
+offset_bottom = 199.0
+color = Color(0, 0, 0, 0.490196)
+
+[node name="Research_Game_Panel" type="Panel" parent="Background/ResearchTab/AllSubs"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -39.0
+offset_right = 100.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("43_fato5")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/ResearchTab/AllSubs/Research_Game_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ResearchTab/AllSubs/Research_Game_Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="activ_Title_Label" type="Label" parent="Background/ResearchTab/AllSubs/Research_Game_Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.976471, 0.972549, 0.443137, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "All Subs Researched!"
+horizontal_alignment = 1
+script = ExtResource("26_tl5yt")
+label_translation_string = "RESEARCH_ALL_SUB_RESEARCHED"
+
+[node name="NoItemsDiscovered" type="ColorRect" parent="Background/ResearchTab"]
+z_index = 2
+layout_mode = 0
+offset_left = 183.0
+offset_top = 9.0
+offset_right = 549.0
+offset_bottom = 272.0
+color = Color(0, 0, 0, 0.490196)
+
+[node name="Research_Game_Panel" type="Panel" parent="Background/ResearchTab/NoItemsDiscovered"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -39.0
+offset_right = 100.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("43_fato5")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/ResearchTab/NoItemsDiscovered/Research_Game_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ResearchTab/NoItemsDiscovered/Research_Game_Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="activ_Title_Label" type="Label" parent="Background/ResearchTab/NoItemsDiscovered/Research_Game_Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.976471, 0.972549, 0.443137, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "There are currently, no Items dicovered!"
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("26_tl5yt")
+label_translation_string = "RESEARCH_NO_ITEMS_DISCOVERED"
 
 [node name="FullyResearched" type="ColorRect" parent="Background/ResearchTab"]
 visible = false
@@ -6403,7 +6786,6 @@ alignment = 1
 [connection signal="visibility_changed" from="Background/InventoryTab/EquipmentPanel" to="Background/InventoryTab/EquipmentPanel" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/EnableDisableButton" to="Background/FurnaceTab" method="OnMachineStateButton"]
 [connection signal="visibility_changed" from="Background/ResearchTab" to="Background/ResearchTab" method="OnVisiblityChanged"]
-[connection signal="pressed" from="Background/ResearchTab/PanelContainer/StartResearchButton" to="Background/ResearchTab" method="OnResearchButton"]
 [connection signal="timeout" from="Background/ResearchTab/PanelContainer/Timer" to="Background/ResearchTab" method="OnTimerTimeout"]
 [connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
 [connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel2/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
@@ -6415,6 +6797,11 @@ alignment = 1
 [connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel3/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
 [connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel4/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
 [connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type2/SubResearchPanel5/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel2/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel3/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel4/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
+[connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type3/SubResearchPanel5/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
 [connection signal="visibility_changed" from="Background/Skilltree" to="Background/Skilltree" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlotMA1/Button" to="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlotMA1" method="OnButtonClicked"]
 [connection signal="pressed" from="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlot2MA2/Button" to="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect/SkillSlot2MA2" method="OnButtonClicked"]
