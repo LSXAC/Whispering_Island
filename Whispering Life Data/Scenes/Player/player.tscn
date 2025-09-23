@@ -224,8 +224,8 @@ animations = [{
 size = Vector2(48, 50)
 
 [sub_resource type="Gradient" id="Gradient_k0wjm"]
-offsets = PackedFloat32Array(0, 0.02, 0.8)
-colors = PackedColorArray(1, 1, 1, 1, 0.961538, 0.961538, 0.961538, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.8)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_htcer"]
 gradient = SubResource("Gradient_k0wjm")
@@ -251,6 +251,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 zoom = Vector2(1.5, 1.5)
 limit_smoothed = true
 position_smoothing_enabled = true
+position_smoothing_speed = 6.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
@@ -262,6 +263,7 @@ offset = Vector2(0, -15)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -15)
@@ -281,8 +283,6 @@ script = ExtResource("5_f3lay")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 blend_mode = 2
-range_z_min = -11
-range_z_max = 0
 texture = SubResource("GradientTexture2D_htcer")
 offset = Vector2(-3, -3)
 script = ExtResource("6_dd0ac")

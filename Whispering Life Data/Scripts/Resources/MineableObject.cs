@@ -113,6 +113,7 @@ public partial class MineableObject : placeable_building
             PlayerUI.AddItemLabelUI(TranslationServer.Translate("PLAYERUI_WEAK_TYPE_LEVEL"));
             return;
         }
+
         Item item = resource_item.Clone();
         // 2. Inventar-Prüfung für normalen und letzten Schlag
         int miningAmount = CalculateMiningAmountInt();

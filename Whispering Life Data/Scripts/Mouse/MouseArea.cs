@@ -39,10 +39,6 @@ public partial class MouseArea : Area2D
 
         if (GameManager.building_mode == GameManager.BuildingMode.None)
         {
-            if (GetParent() is MineableObject)
-                if (((MineableObject)GetParent()).in_cooldown)
-                    return;
-
             building_node.sprite_anim_manager.GetCanvasItem().Material = outline_shader;
             building_node.mouse_inside = true;
             hover_menu.InitHoverMenu(building_node);

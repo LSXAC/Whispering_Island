@@ -27,7 +27,7 @@ metadata/_custom_type_script = "uid://cee63igbpybf"
 size = Vector2(16, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
-size = Vector2(19, 12)
+size = Vector2(23, 16)
 
 [sub_resource type="Curve" id="Curve_bk6ie"]
 _data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
@@ -104,6 +104,7 @@ offset_left = -26.0
 offset_top = -31.0
 offset_right = 14.0
 offset_bottom = -27.0
+mouse_filter = 2
 
 [node name="SandStoneParticles" type="GPUParticles2D" parent="."]
 z_index = 1
@@ -128,7 +129,7 @@ script = ExtResource("9_hetxp")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
 [node name="HitPoint" type="Node2D" parent="."]
-position = Vector2(-7, -10)
+position = Vector2(23, -23)
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

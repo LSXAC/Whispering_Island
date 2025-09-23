@@ -72,6 +72,7 @@ public partial class GameManager : Node2D
 
     public override void _Ready()
     {
+        Input.UseAccumulatedInput = false;
         instance = this;
         gameover = false;
         In_Cutscene = false;

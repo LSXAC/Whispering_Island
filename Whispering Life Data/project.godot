@@ -219,6 +219,10 @@ locale/translation_remaps={
 locale/translations=PackedStringArray("res://Translation/Item Translationscript.de.translation", "res://Translation/Item Translationscript.en.translation", "res://Translation/Quest Translationscript.de.translation", "res://Translation/Quest Translationscript.en.translation", "res://Translation/Research_Translationscript.de.translation", "res://Translation/Research_Translationscript.en.translation", "res://Translation/Whispering Island - Translationscript - Sheet1.de.translation", "res://Translation/Whispering Island - Translationscript - Sheet1.en.translation", "res://Dialogues/Tutorial_General.de.translation", "res://Dialogues/Tutorial_General.en.translation", "res://Translation/HelpGuide Translation.de.translation", "res://Translation/HelpGuide Translation.en.translation")
 locale/translations_pot_files=PackedStringArray("res://Dialogues/Questing.dialogue", "res://Dialogues/Tutorial_General.dialogue")
 
+[physics]
+
+2d/run_on_separate_thread=true
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

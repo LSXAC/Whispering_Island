@@ -1082,6 +1082,7 @@ offset_bottom = 278.0
 color = Color(0, 0, 0, 1)
 
 [node name="ResearchTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("view_icon", "sub_all_research_panel", "no_items_discovered_panel", "full_researched_panel", "sub_research_panel_types", "research_current_title", "research_current_time_left", "research_current_progress", "item_row_manager", "research_title", "research_description", "research_subresearches_left", "research_activ_rect", "select_container", "timer", "start_research_button")]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15

@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://b3felu4fawx3c" path="res://Scripts/UI Scripts/HitLabel.cs" id="2_vtkfl"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
 
 [node name="HitLabel" type="Label" parent="." node_paths=PackedStringArray("timer")]
 z_index = 10

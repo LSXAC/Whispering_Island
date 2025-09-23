@@ -154,8 +154,8 @@ WORLD_RESOURCE_SAND_STONE,Sandstone,Sandstein
 WORLD_RESOURCE_SAND_STONE_DESC,Mine to receive sandstone,Erhalte Sandstein beim abbauen
 WORLD_RESOURCE_FIBRE,Fibre,Fasern
 WORLD_RESOURCE_FIBRE_DESC,Collect to receive fibre,Erhalte Fasern beim sammeln
-,,
-,,
+WORLD_RESOURCE_SUGAR_CANE,Sugar Cane,Zuckerrohr
+WORLD_RESOURCE_SUGAR_DESC,Harvest to receive sugar cane,Erhalte Zuckerrohr beim ernten
 ,,
 SKILLTREE_RESEARCH_POINTS,Research Points,Erforschungspunkte
 SKILLTREE_MOVEMENT,Movement,Beweglichkeit

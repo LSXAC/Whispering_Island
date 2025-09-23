@@ -25,6 +25,7 @@ public partial class DiscoverManager : Control
 
     public override void _Ready()
     {
+        discovered_items = new Dictionary<Inventory.ITEM_ID, bool>();
         instance = this;
         discovery_panel.Visible = false;
     }

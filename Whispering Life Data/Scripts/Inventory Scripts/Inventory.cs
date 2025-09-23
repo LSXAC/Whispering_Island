@@ -70,7 +70,13 @@ public partial class Inventory : SlotUpdater
         LIGHT_COMPONENT,
         INVENTORY_COMPONENT,
         DESTROY_COMPONENT,
-        SLEEP_COMPONENT
+        SLEEP_COMPONENT,
+        SUGAR_CANE,
+        SUGAR_CANE_SEED,
+        SUGAR,
+        RESEARCH_BOOK_SUB,
+        RESEARCH_BOOK_LEVEL,
+        PAPER
     }
 
     public override void _Ready()

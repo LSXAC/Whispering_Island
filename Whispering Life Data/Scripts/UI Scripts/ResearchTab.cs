@@ -78,6 +78,9 @@ public partial class ResearchTab : ColorRect
     public Texture2D star_full_texture,
         star_empty_texture;
 
+    [Export]
+    public int item_amount = 5;
+
     public static ItemInfo current_selected_research_info = null;
     public static ItemResearch current_research = null;
     public static int current_research_level = -1;
@@ -94,6 +97,7 @@ public partial class ResearchTab : ColorRect
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        research_saves = new Dictionary<Inventory.ITEM_ID, ResearchSave>();
         Research_Points = 0;
         instance = this;
         //ClearText();
@@ -227,10 +231,10 @@ public partial class ResearchTab : ColorRect
             if (selected_sub_id != -1)
             {
                 OnSelectSubResearch(selected_sub_id);
-                OnResearchButton();
+                OnResearchButton(false);
             }
             else
-                OnUpgradeButton();
+                OnUpgradeButton(false);
             UpdateResearchProgress();
             return;
         }
@@ -256,6 +260,24 @@ public partial class ResearchTab : ColorRect
                 research_subresearches_left.Text = TranslationServer.Translate(
                     "RESEARCH_UPGRADE_BUTTON_NOW_UPGRADE"
                 );
+
+                Array<Item> items =
+                [
+                    new Item(
+                        current_selected_research_info,
+                        item_amount * (current_research_level + 1)
+                    ),
+                    new Item(
+                        Inventory.ITEM_TYPES[Inventory.ITEM_ID.RESEARCH_BOOK_LEVEL],
+                        item_amount * (current_research_level + 1)
+                    ),
+                ];
+
+                item_row_manager.SetResourcesOnUI(items);
+                if (item_row_manager.CheckEnoughResources(items))
+                    start_research_button.Disabled = false;
+                else
+                    start_research_button.Disabled = true;
                 start_research_button.Pressed += () => OnUpgradeButton();
                 selected_sub_id = -1;
             }
@@ -291,15 +313,48 @@ public partial class ResearchTab : ColorRect
         selected_sub_id = id;
         research_title.Text = "SUB Title: " + id;
         research_description.Text = "SUB Description: " + id;
-        item_row_manager.SetResourcesOnUI(
-            new Array<Item> { new Item(current_selected_research_info, 5) }
-        );
+
+        Array<Item> items =
+        [
+            new Item(current_selected_research_info, item_amount * (current_research_level + 1)),
+            new Item(
+                Inventory.ITEM_TYPES[Inventory.ITEM_ID.RESEARCH_BOOK_SUB],
+                item_amount * (current_research_level + 1)
+            ),
+        ];
+        item_row_manager.SetResourcesOnUI(items);
+        if (item_row_manager.CheckEnoughResources(items))
+            start_research_button.Disabled = false;
+        else
+            start_research_button.Disabled = true;
     }
 
-    public void OnResearchButton()
+    public void OnResearchButton(bool take_items = true)
     {
         if (selected_sub_id == -1)
             return;
+
+        Array<Item> items =
+        [
+            new Item(current_selected_research_info, item_amount * (current_research_level + 1)),
+            new Item(
+                Inventory.ITEM_TYPES[Inventory.ITEM_ID.RESEARCH_BOOK_SUB],
+                item_amount * (current_research_level + 1)
+            ),
+        ];
+
+        if (take_items)
+        {
+            foreach (Item item in items)
+            {
+                PlayerInventoryUI.instance.RemoveItem(
+                    item,
+                    PlayerInventoryUI.instance.inventory_items
+                );
+            }
+        }
+
+        item_row_manager.SetResourcesOnUI(items);
 
         in_research = true;
         research_activ_rect.Visible = true;
@@ -320,8 +375,30 @@ public partial class ResearchTab : ColorRect
         timer.Start();
     }
 
-    public void OnUpgradeButton()
+    public void OnUpgradeButton(bool take_items = true)
     {
+        Array<Item> items =
+        [
+            new Item(current_selected_research_info, item_amount * (current_research_level + 1)),
+            new Item(
+                Inventory.ITEM_TYPES[Inventory.ITEM_ID.RESEARCH_BOOK_LEVEL],
+                item_amount * (current_research_level + 1)
+            ),
+        ];
+
+        if (take_items)
+        {
+            foreach (Item item in items)
+            {
+                PlayerInventoryUI.instance.RemoveItem(
+                    item,
+                    PlayerInventoryUI.instance.inventory_items
+                );
+            }
+        }
+
+        item_row_manager.SetResourcesOnUI(items);
+
         in_research = true;
         sub_all_research_panel.Visible = false;
         in_upgrade_knowledge = true;

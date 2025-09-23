@@ -34,10 +34,15 @@ public abstract partial class Building_Node : Node2D
 
     public override void _UnhandledInput(InputEvent @event)
     {
+        base._UnhandledInput(@event);
         if (@event is InputEventMouseButton buttonevent)
             if (buttonevent.ButtonIndex == MouseButton.Left && buttonevent.Pressed && mouse_inside)
             {
-                OnMouseClick();
+                if (mouse_inside)
+                {
+                    GetViewport().SetInputAsHandled();
+                    OnMouseClick();
+                }
             }
     }
 

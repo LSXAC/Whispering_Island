@@ -112,6 +112,7 @@ offset_left = -27.0
 offset_top = -32.0
 offset_right = 13.0
 offset_bottom = -28.0
+mouse_filter = 2
 
 [node name="StoneParticles" type="GPUParticles2D" parent="."]
 z_index = 1

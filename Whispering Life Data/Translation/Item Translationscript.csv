@@ -144,3 +144,15 @@ DESTROY_COMPONENT,Destroy Component,Zerstörungskomponente
 DESTROY_COMPONENT_DESC,Used as base resource for Machines that destroy things.,"Wird als Grundressource für Maschinen verwendet, die Sachen zerstören."
 SLEEP_COMPONENT,Sleep Component,Schlafkomponente
 SLEEP_COMPONENT_DESC,Used as base resource for Machines that lets you sleep.,"Wird als Grundressource für Maschinen verwendet, die dich schlafen lassen."
+SUGAR_CANE,Sugar Cane,Zuckerrohr
+SUGAR_CANE_DESC,A plant made of sugar!,Eine Pflanze aus Zucker!
+SUGAR_CANE_SEED,Sugar Cane Seed,Zuckerrohrsamen
+SUGAR_CANE_SEED_DESC,Seeds of the sugar cane plant,Samen der Zuckerrohrpflanze
+SUGAR,Sugar,Zucker
+SUGAR_DESC,A mineral that sweets things!,Ein Mineral das Sachen versüßt!
+RESEARCH_BOOK_SUB,Research Book (Sub),Forschungsbuch (Teil)
+RESEARCH_BOOK_SUB_DESC,A book that is used for Sub-Researches!,Ein Buch was für Teilforschungen benötigt wird!
+RESEARCH_BOOK_LEVEL,Research Book (Level),Forschungsbuch (Stufe)
+RESEARCH_BOOK_LEVEL_DESC,A book that is used for Level upgrades!,Ein Buch was für Stufenaufstiege benötigt wird!
+PAPER,Paper,Papier
+PAPER_DESC,Material used for crafting,Material für die Herstellung.

@@ -241,7 +241,7 @@ color_ramp = SubResource("GradientTexture1D_i7g1i")
 size = Vector2(16, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
-size = Vector2(27, 38)
+size = Vector2(27, 41)
 
 [sub_resource type="Curve" id="Curve_yml2p"]
 _data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
@@ -446,7 +446,7 @@ position = Vector2(-6, -10)
 script = ExtResource("6_ci7ld")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
-position = Vector2(0.5, -16)
+position = Vector2(0.5, -14.5)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("7_0yyoq")]

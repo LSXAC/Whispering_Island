@@ -111,9 +111,8 @@ _data = {
 &"Respawning": SubResource("Animation_c5l8r")
 }
 
-[node name="SpriteAnimationPlayer" type="Node2D" node_paths=PackedStringArray("animation_player")]
+[node name="SpriteAnimationPlayer" type="Node2D"]
 script = ExtResource("1_d7y58")
-animation_player = NodePath("AnimationPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 self_modulate = Color(0.9238, 0.555292, 0.974702, 1)
