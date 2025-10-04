@@ -9,9 +9,6 @@ public partial class MainMenu : Control
     public VideoStreamPlayer intro_player;
 
     [Export]
-    public VideoStreamPlayer background_player;
-
-    [Export]
     public Control parent;
 
     [Export]
@@ -86,7 +83,7 @@ public partial class MainMenu : Control
     public void OpenMenu()
     {
         parent.Visible = true;
-        background_player.Play();
+        //background_player.Play();
         intro_player.Stop();
         intro_player.Visible = false;
     }

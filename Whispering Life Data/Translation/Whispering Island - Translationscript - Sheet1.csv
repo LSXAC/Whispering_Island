@@ -17,7 +17,7 @@ GAMEMENU_DESTROY_MENU,Destroy Window,Vernichtungsfenster
 GAMEMENU_WORLD_MAP,World Map,Weltkarte
 ,,
 ,,
-DISCOVERY_TITLE,New Item Discovered!,Neue Ressource entdeckt!
+DISCOVERY_TITLE,Discovered:,Entdeckt:
 DISCOVERY_DESC,You Found: ,Du hast gefunden: 
 DISCORVERY_SAVE,Archiving data,Daten archivieren
 ,,

@@ -48,7 +48,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/VBoxContainer/Title:self_modulate")
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/Title:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -60,10 +60,22 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MarginContainer/VBoxContainer/TextureRect:self_modulate")
+tracks/2/path = NodePath("MarginContainer/HBoxContainer/Panel/VBoxContainer/TextureRect:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/HBoxContainer/Panel:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -88,7 +100,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/VBoxContainer/Title:self_modulate")
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/Title:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -100,7 +112,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MarginContainer/VBoxContainer/TextureRect:self_modulate")
+tracks/2/path = NodePath("MarginContainer/HBoxContainer/Panel/VBoxContainer/TextureRect:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -112,7 +124,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MarginContainer/VBoxContainer/Item:self_modulate")
+tracks/3/path = NodePath("MarginContainer/HBoxContainer/Panel/VBoxContainer/Item:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -120,6 +132,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/HBoxContainer/Panel:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_14rcw"]
@@ -899,10 +923,10 @@ mouse_filter = 2
 script = ExtResource("25_7vqgd")
 anim = NodePath("AnimationPlayer")
 discovery_panel = NodePath("DiscoverManager")
-title = NodePath("DiscoverManager/MarginContainer/VBoxContainer/Title")
-type = NodePath("DiscoverManager/MarginContainer/VBoxContainer/Item")
+title = NodePath("DiscoverManager/MarginContainer/HBoxContainer/Title")
+type = NodePath("DiscoverManager/MarginContainer/HBoxContainer/Panel/VBoxContainer/Item")
 timer = NodePath("DiscoverManager/Timer")
-item_icon = NodePath("DiscoverManager/MarginContainer/VBoxContainer/TextureRect")
+item_icon = NodePath("DiscoverManager/MarginContainer/HBoxContainer/Panel/VBoxContainer/TextureRect")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
 root_node = NodePath("../DiscoverManager")
@@ -915,18 +939,17 @@ wait_time = 0.2
 autostart = true
 
 [node name="DiscoverManager" type="PanelContainer" parent="Control"]
-visible = false
-custom_minimum_size = Vector2(150, 75)
+custom_minimum_size = Vector2(140, 40)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -149.0
-offset_top = -16.0
+offset_left = -127.0
+offset_top = -15.0
 offset_right = 16.0
-offset_bottom = 59.0
+offset_bottom = 47.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("20_kobl8")
@@ -934,32 +957,54 @@ theme_override_styles/panel = ExtResource("20_kobl8")
 [node name="MarginContainer" type="MarginContainer" parent="Control/DiscoverManager"]
 y_sort_enabled = true
 layout_mode = 2
-theme_override_constants/margin_left = 20
+theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 20
+theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/DiscoverManager/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/DiscoverManager/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Title" type="Label" parent="Control/DiscoverManager/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="Control/DiscoverManager/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_0pxjf")
 theme_override_font_sizes/font_size = 10
-text = "New Item discovered!"
+text = "Discovered: "
 horizontal_alignment = 1
 script = ExtResource("7_vya4o")
 label_translation_string = "DISCOVERY_TITLE"
 
-[node name="TextureRect" type="TextureRect" parent="Control/DiscoverManager/MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="Control/DiscoverManager/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("20_kobl8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/DiscoverManager/MarginContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -18.0
+offset_right = 19.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/DiscoverManager/MarginContainer/HBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture = ExtResource("26_d27p6")
+expand_mode = 1
 stretch_mode = 5
 
-[node name="Item" type="Label" parent="Control/DiscoverManager/MarginContainer/VBoxContainer"]
+[node name="Item" type="Label" parent="Control/DiscoverManager/MarginContainer/HBoxContainer/Panel/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/outline_size = 3

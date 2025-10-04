@@ -1,8 +1,7 @@
-[gd_scene load_steps=144 format=3 uid="uid://d382ft4naeqtp"]
+[gd_scene load_steps=143 format=3 uid="uid://d382ft4naeqtp"]
 
 [ext_resource type="Script" uid="uid://bm5n6v0k8up5x" path="res://Scripts/UI Scripts/MainMenu.cs" id="1_4fgt5"]
 [ext_resource type="Texture2D" uid="uid://8e8352g0ttd6" path="res://Sprites/Menu/Screenshot 2025-07-21 100910.png" id="2_bw5ne"]
-[ext_resource type="VideoStream" uid="uid://n71dls10csc8" path="res://Videos/Last_Background.ogv" id="2_k33u3"]
 [ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://Scenes/UI/tab_container_panel_style.tres.tres" id="3_10iqw"]
 [ext_resource type="Texture2D" uid="uid://clui1muhyuoce" path="res://Sprites/MAP_OVERLAY.png" id="3_idfr6"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="4_ftsii"]
@@ -144,7 +143,7 @@
 [ext_resource type="Resource" uid="uid://t5v8qm6eoktq" path="res://Resource Meta/Items/item_info_research_book_sub.tres" id="137_bpmov"]
 [ext_resource type="Resource" uid="uid://2g7pnssy57fa" path="res://Resource Meta/Items/item_info_sugar.tres" id="138_abyj8"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("skip_tutorial", "intro_player", "background_player", "parent", "load_button")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("skip_tutorial", "intro_player", "parent", "load_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,7 +154,6 @@ mouse_filter = 2
 script = ExtResource("1_4fgt5")
 skip_tutorial = NodePath("Menu/Control/Panel/VBoxContainer/HBoxContainer/CheckBox")
 intro_player = NodePath("Menu/VideoStreamPlayer2")
-background_player = NodePath("Menu/Control/VideoStreamPlayer")
 parent = NodePath("Menu/Control")
 load_button = NodePath("Menu/Control/Panel/VBoxContainer/LoadGameButton")
 skip_intro = true
@@ -197,19 +195,6 @@ offset_top = -360.0
 offset_right = 640.0
 grow_vertical = 0
 texture = ExtResource("3_idfr6")
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Menu/Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stream = ExtResource("2_k33u3")
-volume_db = -80.0
-expand = true
-loop = true
 
 [node name="Panel" type="Panel" parent="Menu/Control"]
 layout_mode = 1
