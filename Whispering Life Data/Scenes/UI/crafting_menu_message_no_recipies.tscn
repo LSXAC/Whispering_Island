@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdpgxwdw76lk3"]
+[gd_scene load_steps=4 format=3 uid="uid://cdpgxwdw76lk3"]
 
+[ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://Scenes/UI/tab_container_panel_style.tres.tres" id="1_7hdo0"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="1_byhje"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="2_7hdo0"]
 
 [node name="Panel" type="Panel"]
 self_modulate = Color(1, 1, 1, 0.490196)
 show_behind_parent = true
-custom_minimum_size = Vector2(350, 25)
+custom_minimum_size = Vector2(349, 25)
+offset_right = 349.0
+offset_bottom = 25.0
 size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_7hdo0")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

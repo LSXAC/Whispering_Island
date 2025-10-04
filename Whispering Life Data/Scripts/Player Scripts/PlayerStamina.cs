@@ -7,7 +7,7 @@ public partial class PlayerStamina : Node2D
     private float stamina_regeneration = 0.0025f;
     public static bool stamina_is_regenerating = false;
     private float speed_mult = 65f;
-    private float stamina_use = 0.0025f;
+    private float stamina_use = 0.005f;
 
     public void UpdateStaminaDependencies(Vector2 velo)
     {

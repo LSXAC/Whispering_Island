@@ -209,6 +209,21 @@ RESEARCH_CURRENT_UPGRADE_LEVELING,Upgrading Knowledge Level,Wissenstufe wird auf
 RESEARCH_NO_ITEMS_DISCOVERED,There are currently no Items discovered to research!,"Es sind aktuell keine Resourcen gefunden worden, die erforscht werden sollen!"
 RESEARCH_ALL_SUB_RESEARCHED,All sub researches has been completed!,Alle Teilforschungen wurden erledigt!
 ,,
+RESEARCH_MAIN_TITLE,Research Object,Forschungsobjekt
+RESEARCH_MAIN_DESCRIPTION,Description,Beschreibung
+RESEARCH_SUB_TITLE,Research Part,Forschungsteil
+RESEARCH_SUB_0,Texture,Textur
+RESEARCH_SUB_0_DESC,"Surface structure of a material, influences appearance, feel, and use.","Oberflächenstruktur eines Materials, beeinflusst Aussehen, Haptik und Nutzung."
+RESEARCH_SUB_1,Density,Dichte
+RESEARCH_SUB_1_DESC,"Ratio of mass to volume, determines material weight and stability.","Verhältnis von Masse zu Volumen, bestimmt Materialschwere und Stabilität."
+RESEARCH_SUB_2,Hardness,Härte
+RESEARCH_SUB_2_DESC,"Resistance to scratches, pressure, or deformation by forces.","Widerstandsfähigkeit gegen Kratzer, Druck oder Verformung durch Kräfte."
+RESEARCH_SUB_3,Composition,Zusammensetzung
+RESEARCH_SUB_3_DESC,"Chemical and physical composition, determines material properties and behavior.","Chemische und physikalische Zusammensetzung, bestimmt Materialeigenschaften und Verhalten."
+RESEARCH_SUB_4,Behavior,Verhalten
+RESEARCH_SUB_4_DESC,How a material reacts to external conditions and stresses.,Reaktionsweise eines Materials auf äußere Bedingungen und Belastungen.
+RESEARCH_TAB_RESOURCES,Resources,Ressourcen
+RESEARCH_TAB_MACHINES,Machines,Maschinen
 ,,
 ,,
 ,,

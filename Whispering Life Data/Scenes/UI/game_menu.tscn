@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=3 uid="uid://deu0spbxs5bju"]
+[gd_scene load_steps=136 format=3 uid="uid://deu0spbxs5bju"]
 
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://Scripts/UI Scripts/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_6nb4j"]
@@ -85,6 +85,7 @@
 [ext_resource type="Resource" uid="uid://07voex1otlqm" path="res://Resource Meta/Skills/research_speed_2.tres" id="47_8a6lo"]
 [ext_resource type="PackedScene" uid="uid://bjpg4c1oc0gf2" path="res://Scenes/UI/classic_button.tscn" id="47_n542t"]
 [ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Scripts/Manager Scripts/ItemRowManager.cs" id="48_mkmfo"]
+[ext_resource type="Script" uid="uid://bgckysx121ct8" path="res://Scenes/UI/TranslationPanel.cs" id="48_tbpku"]
 [ext_resource type="Resource" uid="uid://blc4hqmuyk06k" path="res://Resource Meta/Skills/research_speed_3.tres" id="48_tmrav"]
 [ext_resource type="Resource" uid="uid://fw0fc6jo8rm6" path="res://Resource Meta/Skills/research_xp_1.tres" id="49_mkmfo"]
 [ext_resource type="Resource" uid="uid://cyjlrhsdwqgbe" path="res://Resource Meta/Skills/research_xp_2.tres" id="50_n542t"]
@@ -1975,10 +1976,10 @@ horizontal_alignment = 1
 
 [node name="Sub_researches_left_label" type="Label" parent="Background/ResearchTab/PanelContainer"]
 layout_mode = 0
-offset_left = 205.0
-offset_top = 206.0
+offset_left = 204.0
+offset_top = 193.0
 offset_right = 355.0
-offset_bottom = 229.0
+offset_bottom = 241.0
 theme_override_colors/font_color = Color(0.976471, 0.972549, 0.443137, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
@@ -1986,6 +1987,7 @@ theme_override_font_sizes/font_size = 10
 text = "You unlocked 0/5 Researchs
 to upgrade"
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="HeaderColorRect" parent="Background/ResearchTab" instance=ExtResource("11_45saq")]
@@ -2015,6 +2017,8 @@ current_tab = 0
 [node name="Resources" type="Panel" parent="Background/ResearchTab/TabContainer"]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("45_mkmfo")
+script = ExtResource("48_tbpku")
+label_translation_string = "RESEARCH_TAB_RESOURCES"
 metadata/_tab_index = 0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/ResearchTab/TabContainer/Resources"]
@@ -2293,6 +2297,8 @@ icon_alignment = 1
 visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("45_mkmfo")
+script = ExtResource("48_tbpku")
+label_translation_string = "RESEARCH_TAB_MACHINES"
 metadata/_tab_index = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/ResearchTab/TabContainer/Machines"]
@@ -2599,27 +2605,16 @@ theme_override_colors/font_color = Color(0.976471, 0.972549, 0.443137, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
-text = "Category: Texture"
+text = "////////////////////////////"
 
 [node name="Description_Label" type="Label" parent="Background/ResearchTab/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 8
 text = "The current category is not researched yet!"
 autowrap_mode = 2
-
-[node name="Required_Label" type="Label" parent="Background/ResearchTab/Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.721569, 0.627451, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 8
-text = "Required for Research:"
-horizontal_alignment = 2
-autowrap_mode = 2
-script = ExtResource("26_tl5yt")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/ResearchTab/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 16)
@@ -2746,10 +2741,12 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
 text = "All Subs Researched!"
 horizontal_alignment = 1
+autowrap_mode = 2
 script = ExtResource("26_tl5yt")
 label_translation_string = "RESEARCH_ALL_SUB_RESEARCHED"
 
 [node name="NoItemsDiscovered" type="ColorRect" parent="Background/ResearchTab"]
+visible = false
 z_index = 2
 layout_mode = 0
 offset_left = 183.0
@@ -2854,6 +2851,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
 text = "Wood"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Description_Label" type="Label" parent="Background/ResearchTab/FullyResearched/Research_Game_Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -2863,6 +2861,7 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
 text = "Fully Researched!"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Skilltree" type="ColorRect" parent="Background" node_paths=PackedStringArray("research_points_label", "title", "description", "required_skill_points", "unlock_skill_button", "slots_parent")]
 visible = false
@@ -4804,6 +4803,7 @@ category = 2
 custom_minimum_size = Vector2(320, 220)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("43_fato5")
+horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuTools/ScrollContainer"]
 layout_mode = 2
@@ -4819,6 +4819,7 @@ category = 1
 custom_minimum_size = Vector2(320, 220)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("43_fato5")
+horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuToolparts/ScrollContainer"]
 layout_mode = 2
@@ -4834,6 +4835,7 @@ category = 3
 custom_minimum_size = Vector2(320, 220)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("43_fato5")
+horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuArmor/ScrollContainer"]
 layout_mode = 2
@@ -4849,6 +4851,7 @@ category = 4
 custom_minimum_size = Vector2(320, 220)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("43_fato5")
+horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuAgriculture/ScrollContainer"]
 layout_mode = 2
@@ -4864,6 +4867,7 @@ category = 5
 custom_minimum_size = Vector2(320, 220)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("43_fato5")
+horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuMachineParts/ScrollContainer"]
 layout_mode = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://j1cdgg7lep78"]
+[gd_scene load_steps=32 format=3 uid="uid://j1cdgg7lep78"]
 
 [ext_resource type="Script" uid="uid://6j5ep62led2i" path="res://Scripts/Player Scripts/PlayerUI.cs" id="1_m5svq"]
 [ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://Sprites/Slider_Line.png" id="2_jybl7"]
@@ -27,11 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://ceypkxf7dox6w" path="res://Scenes/UI/slot_background.tscn" id="21_uwodk"]
 [ext_resource type="Script" uid="uid://beq75bhjwesgy" path="res://Scripts/Manager Scripts/DiscoverManager.cs" id="25_7vqgd"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="26_d27p6"]
-[ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://Scenes/UI/slot_focus_style.tres" id="27_kobl8"]
-[ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://Scenes/UI/Button_Disabled_Style.tres.tres" id="28_14rcw"]
-[ext_resource type="StyleBox" uid="uid://c0rrcqgclnbps" path="res://Scenes/UI/Button_Hover_Style.tres" id="29_aptt5"]
-[ext_resource type="StyleBox" uid="uid://bbbtpagi6kny3" path="res://Scenes/UI/Button_Pressed_Style.tres.tres" id="30_2fhy3"]
-[ext_resource type="StyleBox" uid="uid://dblsyajhbmtwa" path="res://Scenes/UI/Button_Normal_Style.tres" id="31_ym5a1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4utg2"]
 bg_color = Color(0.278431, 0.270588, 0.329412, 1)
@@ -69,30 +64,6 @@ tracks/2/path = NodePath("MarginContainer/VBoxContainer/TextureRect:self_modulat
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MarginContainer/VBoxContainer/Item:self_modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("MarginContainer/VBoxContainer/Button:self_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -146,18 +117,6 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 2.25, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("MarginContainer/VBoxContainer/Button:self_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 3, 3.75),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -258,10 +217,13 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_icons/grabber = ExtResource("2_jybl7")
+theme_override_icons/grabber_highlight = ExtResource("2_jybl7")
+theme_override_icons/grabber_disabled = ExtResource("2_jybl7")
+theme_override_icons/tick = ExtResource("2_jybl7")
 theme_override_styles/slider = ExtResource("8_f1ae0")
 theme_override_styles/grabber_area = ExtResource("9_7vqgd")
-max_value = 1.0
 step = 0.01
+value = 25.0
 editable = false
 scrollable = false
 
@@ -922,26 +884,24 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = ExtResource("20_kobl8")
 
-[node name="Control" type="Control" parent="." node_paths=PackedStringArray("anim", "discovery_panel", "title", "type", "item_icon")]
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("anim", "discovery_panel", "title", "type", "timer", "item_icon")]
 z_index = 5
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 44.0
+grow_horizontal = 0
 mouse_filter = 2
 script = ExtResource("25_7vqgd")
 anim = NodePath("AnimationPlayer")
 discovery_panel = NodePath("DiscoverManager")
 title = NodePath("DiscoverManager/MarginContainer/VBoxContainer/Title")
 type = NodePath("DiscoverManager/MarginContainer/VBoxContainer/Item")
+timer = NodePath("DiscoverManager/Timer")
 item_icon = NodePath("DiscoverManager/MarginContainer/VBoxContainer/TextureRect")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
@@ -950,19 +910,23 @@ libraries = {
 &"": SubResource("AnimationLibrary_14rcw")
 }
 
+[node name="CheckTimer" type="Timer" parent="Control"]
+wait_time = 0.2
+autostart = true
+
 [node name="DiscoverManager" type="PanelContainer" parent="Control"]
 visible = false
-custom_minimum_size = Vector2(250, 100)
+custom_minimum_size = Vector2(150, 75)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -149.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("20_kobl8")
@@ -996,6 +960,7 @@ texture = ExtResource("26_d27p6")
 stretch_mode = 5
 
 [node name="Item" type="Label" parent="Control/DiscoverManager/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_0pxjf")
@@ -1005,27 +970,16 @@ horizontal_alignment = 1
 script = ExtResource("7_vya4o")
 label_translation_string = "DISCOVERY_DESC"
 
-[node name="Button" type="Button" parent="Control/DiscoverManager/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 10
-theme_override_styles/focus = ExtResource("27_kobl8")
-theme_override_styles/disabled = ExtResource("28_14rcw")
-theme_override_styles/hover = ExtResource("29_aptt5")
-theme_override_styles/pressed = ExtResource("30_2fhy3")
-theme_override_styles/normal = ExtResource("31_ym5a1")
-text = "Archivieren"
-script = ExtResource("9_erkjv")
-label_translation_string = "DISCORVERY_SAVE"
+[node name="Timer" type="Timer" parent="Control/DiscoverManager"]
+wait_time = 4.0
 
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="pressed" from="QuestAcceptPanel/CenterContainer/VBoxContainer/ConfirmButton" to="QuestAcceptPanel" method="OnButton"]
 [connection signal="timeout" from="QuestAcceptPanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="button_up" from="GameOverPanel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButton"]
 [connection signal="animation_finished" from="Control/AnimationPlayer" to="Control" method="OnAnimationFinished"]
-[connection signal="pressed" from="Control/DiscoverManager/MarginContainer/VBoxContainer/Button" to="Control" method="OnButton"]
+[connection signal="timeout" from="Control/CheckTimer" to="Control" method="OnCheckTimerTimeout"]
+[connection signal="timeout" from="Control/DiscoverManager/Timer" to="Control" method="OnTimerTimeout"]
 
 [editable path="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SlotBackground0"]
 [editable path="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SlotBackground0"]

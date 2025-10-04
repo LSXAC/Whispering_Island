@@ -100,7 +100,6 @@ public partial class ResearchTab : ColorRect
         research_saves = new Dictionary<Inventory.ITEM_ID, ResearchSave>();
         Research_Points = 0;
         instance = this;
-        //ClearText();
         start_research_button.Pressed += () => OnResearchButton();
     }
 
@@ -191,10 +190,10 @@ public partial class ResearchTab : ColorRect
 
         if (current_research_level >= Database.researchs[id].item_research_levels.Count)
         {
-            start_research_button.Text = "//////";
-            research_subresearches_left.Text = "///////////";
-            research_title.Text = "////// ";
-            research_description.Text = "///////////";
+            start_research_button.Text = "////////////////////////////";
+            research_subresearches_left.Text = "////////////////////////////";
+            research_title.Text = "////////////////////////////";
+            research_description.Text = "////////////////////////////";
             full_researched_panel.Visible = true;
             return;
         }
@@ -242,9 +241,17 @@ public partial class ResearchTab : ColorRect
         foreach (Control c in item_row_manager.GetChildren())
             c.QueueFree();
 
-        research_title.Text = "Title MAIN: " + id;
-        research_description.Text = "Description MAIN: " + id;
+        research_title.Text =
+            TranslationServer.Translate("RESEARCH_MAIN_TITLE")
+            + ": "
+            + TranslationServer.Translate(info.name);
+
+        research_description.Text =
+            TranslationServer.Translate("RESEARCH_MAIN_DESCRIPTION")
+            + ": "
+            + TranslationServer.Translate(info.description);
         start_research_button.Text = TranslationServer.Translate("RESEARCH_BUTTON");
+
         research_subresearches_left.Text =
             TranslationServer.Translate("RESEARCH_UPGRADE_BUTTON_DESC")
             + " "
@@ -311,8 +318,14 @@ public partial class ResearchTab : ColorRect
     public void OnSelectSubResearch(int id)
     {
         selected_sub_id = id;
-        research_title.Text = "SUB Title: " + id;
-        research_description.Text = "SUB Description: " + id;
+        research_title.Text =
+            TranslationServer.Translate("RESEARCH_SUB_TITLE")
+            + ": "
+            + TranslationServer.Translate("RESEARCH_SUB_" + id);
+        research_description.Text =
+            TranslationServer.Translate("RESEARCH_MAIN_DESCRIPTION")
+            + ": "
+            + TranslationServer.Translate("RESEARCH_SUB_" + id + "_DESC");
 
         Array<Item> items =
         [
@@ -358,10 +371,14 @@ public partial class ResearchTab : ColorRect
 
         in_research = true;
         research_activ_rect.Visible = true;
-        research_current_title.Text = current_research
-            .item_research_levels[current_research_level]
-            .sub_levels[selected_sub_id]
-            .category.ToString();
+        research_current_title.Text = TranslationServer.Translate(
+            "RESEARCH_SUB_"
+                + (int)
+                    current_research
+                        .item_research_levels[current_research_level]
+                        .sub_levels[selected_sub_id]
+                        .category
+        );
 
         if (current_research_prog != 0)
             research_current_progress.Value = current_research_prog;

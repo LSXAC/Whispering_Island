@@ -83,7 +83,15 @@ public partial class PlayerUI : CanvasLayer
         stamina_label = hslider.GetNode<Label>("Label");
 
         before_reg.BgColor = new Color(99f / 255f, 176f / 255f, 57f / 255f, 1f);
+        before_reg.BorderWidthTop = 1;
+        before_reg.BorderWidthLeft = 1;
+        before_reg.BorderWidthBottom = 1;
+        before_reg.BorderColor = new Color(0, 0, 0, 1f);
         when_reg.BgColor = new Color(1f, 0, 0, 1f);
+        when_reg.BorderWidthTop = 1;
+        when_reg.BorderWidthLeft = 1;
+        when_reg.BorderWidthBottom = 1;
+        when_reg.BorderColor = new Color(0, 0, 0, 1f);
         stamina_label.Text = TranslationServer.Translate("STAMINA_LEFT");
 
         hslider.AddThemeStyleboxOverride("grabber_area", before_reg);
