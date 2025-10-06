@@ -30,6 +30,9 @@ public partial class IslandMenu : ColorRect
     [Export]
     private Button button4;
 
+    [Export]
+    public Label island_to_build_left_label;
+
     public enum ISLANDS
     {
         ISLAND_0,
@@ -52,6 +55,13 @@ public partial class IslandMenu : ColorRect
 
     public void OnVisiblityChanged()
     {
+        island_to_build_left_label.Text =
+            TranslationServer.Translate("ISLAND_MENU_PRE_ISLANDSBUILD")
+            + ": "
+            + (GameManager.GetIslandCountOnMatrix() - 1)
+            + " / "
+            + (GameManager.island_matrix.Length - 1)
+            + TranslationServer.Translate("ISLAND_MENU_AFTER_ISLANDSBUILD");
         DisableButtons();
         GetTree().CreateTimer(0.2f).Timeout += () => SetButtons();
     }

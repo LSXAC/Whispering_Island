@@ -78,8 +78,7 @@ public partial class ResearchTab : ColorRect
     public Texture2D star_full_texture,
         star_empty_texture;
 
-    [Export]
-    public int item_amount = 1;
+    int item_amount = 1;
 
     public static ItemInfo current_selected_research_info = null;
     public static ItemResearch current_research = null;

@@ -124,28 +124,28 @@
 script = ExtResource("15_jkil6")
 slot_type = 1
 durability = 100
-stats = Array[ExtResource("17_gcthi")]([])
+stats = []
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_j657e"]
 script = ExtResource("15_jkil6")
 slot_type = 2
 durability = 100
-stats = Array[ExtResource("17_gcthi")]([])
+stats = []
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_etc0m"]
 script = ExtResource("15_jkil6")
 slot_type = 3
 durability = 100
-stats = Array[ExtResource("17_gcthi")]([])
+stats = []
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_mmhr0"]
 script = ExtResource("15_jkil6")
 slot_type = 4
 durability = 100
-stats = Array[ExtResource("17_gcthi")]([])
+stats = []
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_m8k7p"]
@@ -4268,7 +4268,7 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/normal = ExtResource("34_sy5xb")
 text = "Unlock Skill"
 
-[node name="IslandTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("button1", "button2", "button3", "button4")]
+[node name="IslandTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("button1", "button2", "button3", "button4", "island_to_build_left_label")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -4287,6 +4287,7 @@ button1 = NodePath("MarginContainer/ScrollContainer/GridContainer/ColorRect/Butt
 button2 = NodePath("MarginContainer/ScrollContainer/GridContainer/ColorRect7/Button")
 button3 = NodePath("MarginContainer/ScrollContainer/GridContainer/ColorRect8/Button")
 button4 = NodePath("MarginContainer/ScrollContainer/GridContainer/ColorRect9/Button")
+island_to_build_left_label = NodePath("IslandsToBuildLabel")
 
 [node name="HeaderColorRect" parent="Background/IslandTab" instance=ExtResource("11_45saq")]
 layout_mode = 1
@@ -4295,12 +4296,22 @@ offset_right = 537.0
 offset_bottom = -1.0
 translation_string = "ISLAND MENU"
 
+[node name="IslandsToBuildLabel" type="Label" parent="Background/IslandTab"]
+offset_left = 11.0
+offset_right = 532.0
+offset_bottom = 23.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "You build 0/100 Islands."
+vertical_alignment = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="Background/IslandTab"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -2.0
+offset_top = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10

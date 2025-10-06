@@ -41,15 +41,25 @@ public partial class GameManager : Node2D
 
     public static void SetIslandOnMatrix(int x, int y, bool state)
     {
-        island_matrix[x + 10, y + 10] = state;
+        island_matrix[x + 5, y + 5] = state;
+    }
+
+    public static int GetIslandCountOnMatrix()
+    {
+        int count = 0;
+        for (int x = 0; x < 11; x++)
+        for (int y = 0; y < 11; y++)
+            if (island_matrix[x, y])
+                count++;
+        return count;
     }
 
     public static bool IsIslandOnMatrix(int x, int y)
     {
-        if (x > 10 || y > 10 || x < -10 || y < -10)
+        if (x > 5 || y > 5 || x < -5 || y < -5)
             return true;
 
-        if (island_matrix[x + 10, y + 10])
+        if (island_matrix[x + 5, y + 5])
             return true;
         return false;
     }
@@ -76,7 +86,7 @@ public partial class GameManager : Node2D
         instance = this;
         gameover = false;
         In_Cutscene = false;
-        island_matrix = new bool[21, 21];
+        island_matrix = new bool[11, 11];
         money = 0;
         current_activ_canvaslayer = null;
 
