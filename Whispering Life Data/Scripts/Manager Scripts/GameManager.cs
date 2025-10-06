@@ -46,6 +46,8 @@ public partial class GameManager : Node2D
 
     public static int GetIslandCountOnMatrix()
     {
+        if (island_matrix == null)
+            return 0;
         int count = 0;
         for (int x = 0; x < 11; x++)
         for (int y = 0; y < 11; y++)

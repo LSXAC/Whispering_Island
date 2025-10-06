@@ -14,9 +14,12 @@ public partial class IslandManager : Node2D
     public Array<IslandBuildSave> build_saves = new Array<IslandBuildSave>();
     public int last_island_id;
 
+    public int[] island_types_build;
+
     public override void _Ready()
     {
         instance = this;
+        island_types_build = new int[] { 0, 0, 0, 0 };
         last_island_id = 0;
     }
 

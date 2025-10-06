@@ -19,19 +19,16 @@ public partial class IslandMenu : ColorRect
     );
 
     [Export]
-    private Button button1;
+    private Button[] buttons;
 
     [Export]
-    private Button button2;
-
-    [Export]
-    private Button button3;
-
-    [Export]
-    private Button button4;
+    public Label[] island_cost;
 
     [Export]
     public Label island_to_build_left_label;
+
+    [Export]
+    public int base_cost = 10;
 
     public enum ISLANDS
     {
@@ -47,10 +44,10 @@ public partial class IslandMenu : ColorRect
     public override void _Ready()
     {
         instance = this;
-        button1.Pressed += () => SelectIsland(0);
-        button2.Pressed += () => SelectIsland(1);
-        button3.Pressed += () => SelectIsland(2);
-        button4.Pressed += () => SelectIsland(3);
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].Pressed += () => SelectIsland(i);
+        }
     }
 
     public void OnVisiblityChanged()
@@ -68,18 +65,22 @@ public partial class IslandMenu : ColorRect
 
     public void SetButtons()
     {
-        button1.Disabled = false;
-        button2.Disabled = false;
-        button3.Disabled = false;
-        button4.Disabled = false;
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            island_cost[i].Text = (
+                base_cost * (IslandManager.instance.island_types_build[i] + 1)
+            ).ToString();
+            if (GameManager.money >= base_cost * (IslandManager.instance.island_types_build[i] + 1))
+                buttons[i].Disabled = false;
+        }
     }
 
     public void DisableButtons()
     {
-        button1.Disabled = true;
-        button2.Disabled = true;
-        button3.Disabled = true;
-        button4.Disabled = true;
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].Disabled = true;
+        }
     }
 
     public void SelectIsland(int id)
@@ -87,6 +88,8 @@ public partial class IslandMenu : ColorRect
         if (current_sign == null)
             return;
 
+        IslandManager.instance.island_types_build[id]++;
+        GameManager.money -= base_cost * (IslandManager.instance.island_types_build[id] + 1);
         CreateIsland(id, current_sign.dir, current_sign.island);
 
         GameMenu.instance.OnCloseIslandTab();
