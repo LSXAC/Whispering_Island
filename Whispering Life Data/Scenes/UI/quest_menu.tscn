@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://o62xek3uvpo8"]
+[gd_scene load_steps=14 format=3 uid="uid://o62xek3uvpo8"]
 
 [ext_resource type="Script" uid="uid://dmteju1kppf72" path="res://Scripts/UI Scripts/QuestMenu.cs" id="1_rjdwy"]
 [ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_8enkj"]
@@ -7,18 +7,21 @@
 [ext_resource type="PackedScene" uid="uid://bnf8yngk7oyy0" path="res://Scenes/UI/h_box_item_menu_line_horizontal.tscn" id="5_ao47r"]
 [ext_resource type="Texture2D" uid="uid://be2xmt8674o1k" path="res://Sprites/Items/Icons/rejected.png" id="5_ge13q"]
 [ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://Scenes/UI/slot_focus_style.tres" id="7_nkwgi"]
+[ext_resource type="Texture2D" uid="uid://raaamx5w323j" path="res://Sprites/currency_icon.png" id="7_s53b1"]
+[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="7_vqd04"]
 [ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://Scenes/UI/Button_Disabled_Style.tres.tres" id="8_s53b1"]
 [ext_resource type="StyleBox" uid="uid://c0rrcqgclnbps" path="res://Scenes/UI/Button_Hover_Style.tres" id="9_vqd04"]
 [ext_resource type="StyleBox" uid="uid://bbbtpagi6kny3" path="res://Scenes/UI/Button_Pressed_Style.tres.tres" id="10_jc1py"]
 [ext_resource type="StyleBox" uid="uid://dblsyajhbmtwa" path="res://Scenes/UI/Button_Normal_Style.tres" id="11_rjicv"]
 
-[node name="QuestMenu" type="CanvasLayer" node_paths=PackedStringArray("quest_label_parent", "quest_name_label", "complete_button", "quest_description_label")]
+[node name="QuestMenu" type="CanvasLayer" node_paths=PackedStringArray("quest_label_parent", "quest_name_label", "complete_button", "quest_description_label", "reward_label")]
 script = ExtResource("1_rjdwy")
 quest_label_parent = NodePath("Background/MarginContainer/VBoxContainer2/VBoxContainer")
 quest_name_label = NodePath("Background/MarginContainer/VBoxContainer2/Label")
 complete_button = NodePath("Background/MarginContainer/VBoxContainer2/CompleteQuestButton")
 quest_description_label = NodePath("Background/MarginContainer/VBoxContainer2/Description")
 dialogue_timeline = ExtResource("2_jlx1a")
+reward_label = NodePath("Background/MarginContainer/VBoxContainer2/HBoxContainer/MoneyLabel")
 
 [node name="TransBackground" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -144,6 +147,45 @@ layout_mode = 2
 
 [node name="HBoxItem3" parent="Background/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("5_ao47r")]
 layout_mode = 2
+
+[node name="Label3" type="Label" parent="Background/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_8enkj")
+theme_override_font_sizes/font_size = 10
+text = "Reward:"
+horizontal_alignment = 1
+script = ExtResource("7_vqd04")
+label_translation_string = "QUEST_MENU_REWARD"
+
+[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("7_s53b1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoneyLabel" type="Label" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_8enkj")
+theme_override_font_sizes/font_size = 10
+text = "2883"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
 
 [node name="CompleteQuestButton" type="Button" parent="Background/MarginContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 20)

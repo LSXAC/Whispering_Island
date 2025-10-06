@@ -64,6 +64,9 @@ public partial class SaveState : Resource
     [Export]
     public int[] skill_saves = new int[4];
 
+    [Export]
+    public int[] island_types_build = new int[4];
+
     private static string save_path = "user://save.tres";
     public static string game_version = "a.0.1";
 

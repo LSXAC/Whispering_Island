@@ -17,7 +17,7 @@
 [ext_resource type="Resource" uid="uid://bxwgmp1fse4m" path="res://Resource Meta/Quests/quest_info_5.tres" id="13_f280c"]
 [ext_resource type="Script" uid="uid://diq6llslgpl4r" path="res://Scripts/Manager Scripts/QuestManager.cs" id="13_irdkv"]
 [ext_resource type="Resource" uid="uid://bmkxnaw3cirb8" path="res://Resource Meta/Quests/quest_info_6.tres" id="14_p85m3"]
-[ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Building Menu List Object Infos/Objects/quest_info_1.tres" id="14_sw2xm"]
+[ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Resource Meta/Quests/quest_info_1.tres" id="14_sw2xm"]
 [ext_resource type="Resource" uid="uid://bbb0mqt5qpmap" path="res://Resource Meta/Quests/quest_info_7.tres" id="15_5qlke"]
 [ext_resource type="Resource" uid="uid://b4f0pdj2v6jfh" path="res://Resource Meta/Quests/quest_info_8.tres" id="16_gytje"]
 [ext_resource type="Resource" uid="uid://c2p2638k7calp" path="res://Resource Meta/Quests/quest_info_9.tres" id="17_1xtv0"]

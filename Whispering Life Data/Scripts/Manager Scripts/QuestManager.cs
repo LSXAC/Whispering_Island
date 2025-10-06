@@ -199,6 +199,8 @@ public partial class QuestManager : Node
         {
             QuestMenu.instance.CloseQuestMenu();
             RemoveQuestItems();
+            GameManager.money += quests[current_quest_id].reward_money;
+            PlayerUI.instance.UpdateMoneyLabel();
         }
 
         next_quest_is_doubled_items = false;

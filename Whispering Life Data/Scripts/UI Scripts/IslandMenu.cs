@@ -44,10 +44,10 @@ public partial class IslandMenu : ColorRect
     public override void _Ready()
     {
         instance = this;
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            buttons[i].Pressed += () => SelectIsland(i);
-        }
+        buttons[0].Pressed += () => SelectIsland(0);
+        buttons[1].Pressed += () => SelectIsland(1);
+        buttons[2].Pressed += () => SelectIsland(2);
+        buttons[3].Pressed += () => SelectIsland(3);
     }
 
     public void OnVisiblityChanged()
@@ -87,9 +87,12 @@ public partial class IslandMenu : ColorRect
     {
         if (current_sign == null)
             return;
-
+        Debug.Print("Selected Island ID: " + id.ToString());
         IslandManager.instance.island_types_build[id]++;
+
         GameManager.money -= base_cost * (IslandManager.instance.island_types_build[id] + 1);
+        PlayerUI.instance.UpdateMoneyLabel();
+
         CreateIsland(id, current_sign.dir, current_sign.island);
 
         GameMenu.instance.OnCloseIslandTab();

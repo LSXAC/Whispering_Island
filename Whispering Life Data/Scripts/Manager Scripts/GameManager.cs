@@ -113,6 +113,7 @@ public partial class GameManager : Node2D
         IslandManager.instance.SaveResourceObjects();
         save_state.env_save.resource_object_manager_saves = IslandManager.instance.roms;
         save_state.build_saves = IslandManager.instance.build_saves;
+        save_state.island_types_build = IslandManager.instance.island_types_build;
 
         //Save Quest
         save_state.quest_save.current_quest_id = QuestManager.current_quest_id;
@@ -175,6 +176,7 @@ public partial class GameManager : Node2D
         Player.char_save = save_state.char_save;
 
         money = save_state.money;
+        PlayerUI.instance.UpdateMoneyLabel();
         Player.instance.Position = save_state.char_save.player_position;
         Player.instance.player_stats.health_value = save_state.char_save.health_value;
         Player.instance.player_stats.fatigue_value = save_state.char_save.fatigue_value;
@@ -187,6 +189,7 @@ public partial class GameManager : Node2D
         IslandManager.instance.island_saves = save_state.env_save.island_Saves;
         IslandManager.instance.build_saves = save_state.build_saves;
         IslandManager.instance.LoadIslands(save_state.env_save.resource_object_manager_saves);
+        IslandManager.instance.island_types_build = save_state.island_types_build;
 
         ResearchTab.research_slot_item = save_state.char_save.research_slot_item;
         ResearchTab.research_saves = save_state.research_saves;

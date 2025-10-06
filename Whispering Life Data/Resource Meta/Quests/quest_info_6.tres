@@ -16,3 +16,4 @@ quest_name = "QUEST_TITLE_6"
 quest_description = "QUEST_DESC_6"
 required_items = Array[Object]([SubResource("Resource_wj2aq")])
 quest_time = 1440
+reward_money = 10

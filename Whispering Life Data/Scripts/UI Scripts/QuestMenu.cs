@@ -20,6 +20,9 @@ public partial class QuestMenu : CanvasLayer
 
     [Export]
     public Resource dialogue_timeline;
+
+    [Export]
+    public Label reward_label;
     public PackedScene h_box_item = ResourceLoader.Load<PackedScene>(
         "res://Scenes/UI/h_box_item_menu_line_horizontal.tscn"
     );
@@ -108,6 +111,9 @@ public partial class QuestMenu : CanvasLayer
             + TranslationServer.Translate(
                 QuestManager.instance.quests[QuestManager.current_quest_id].quest_description
             );
+        reward_label.Text = QuestManager
+            .instance.quests[QuestManager.current_quest_id]
+            .reward_money.ToString();
         int multi = 1;
         if (QuestManager.next_quest_is_doubled_items)
             multi = 2;

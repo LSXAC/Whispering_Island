@@ -16,4 +16,7 @@ public partial class QuestInfo : Resource
 
     [Export]
     public int quest_time;
+
+    [Export]
+    public int reward_money = 10;
 }

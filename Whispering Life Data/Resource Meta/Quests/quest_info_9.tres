@@ -30,3 +30,4 @@ quest_name = "QUEST_TITLE_9"
 quest_description = "QUEST_DESC_9"
 required_items = Array[Object]([SubResource("Resource_c6knq"), SubResource("Resource_qo0b6"), SubResource("Resource_sq2ci")])
 quest_time = 1440
+reward_money = 10
