@@ -124,28 +124,28 @@
 script = ExtResource("15_jkil6")
 slot_type = 1
 durability = 100
-stats = []
+stats = Array[ExtResource("17_gcthi")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_j657e"]
 script = ExtResource("15_jkil6")
 slot_type = 2
 durability = 100
-stats = []
+stats = Array[ExtResource("17_gcthi")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_etc0m"]
 script = ExtResource("15_jkil6")
 slot_type = 3
 durability = 100
-stats = []
+stats = Array[ExtResource("17_gcthi")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_mmhr0"]
 script = ExtResource("15_jkil6")
 slot_type = 4
 durability = 100
-stats = []
+stats = Array[ExtResource("17_gcthi")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [sub_resource type="Resource" id="Resource_m8k7p"]
@@ -4269,7 +4269,6 @@ theme_override_styles/normal = ExtResource("34_sy5xb")
 text = "Unlock Skill"
 
 [node name="IslandTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("button1", "button2", "button3", "button4", "island_to_build_left_label")]
-visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -4297,6 +4296,7 @@ offset_bottom = -1.0
 translation_string = "ISLAND MENU"
 
 [node name="IslandsToBuildLabel" type="Label" parent="Background/IslandTab"]
+layout_mode = 0
 offset_left = 11.0
 offset_right = 532.0
 offset_bottom = 23.0

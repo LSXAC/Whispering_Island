@@ -18,6 +18,6 @@ scene = ExtResource("3_5nso2")
 scene_building_id = 29
 required_items = Array[Object]([SubResource("Resource_yo73i")])
 unlock_requirements = Array[Object]([])
-building_menu_category = 4
+building_menu_category = 2
 texture_in_build_menu = ExtResource("5_g8k67")
 show_object_in_building_menu_list = true
