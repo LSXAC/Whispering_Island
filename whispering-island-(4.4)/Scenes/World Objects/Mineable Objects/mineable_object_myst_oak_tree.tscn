@@ -1,0 +1,484 @@
+[gd_scene load_steps=35 format=4 uid="uid://gb18hiamdyqj"]
+
+[ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_oeonl"]
+[ext_resource type="Texture2D" uid="uid://c3l5f36qwvaam" path="res://Sprites/Spritesheets/Plants/Wood_Stump_Plant_Sheet_0.png" id="2_tvtd7"]
+[ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://Resource Meta/Items/item_info_mystic_oak_wood.tres" id="2_wvxkc"]
+[ext_resource type="Resource" uid="uid://bj62tvtw6mn4v" path="res://Resource Meta/Items/item_info_mystic_oak_seed.tres" id="3_5fbt7"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="3_6homl"]
+[ext_resource type="Texture2D" uid="uid://cw8t2j4i8ecfv" path="res://Sprites/Spritesheets/Plants/Wood_Stump_Plant_Sheet_1.png" id="3_x8tnf"]
+[ext_resource type="Texture2D" uid="uid://dw6xjpi82wbee" path="res://Sprites/Spritesheets/Plants/Wood_Stump_Plant_Sheet_2.png" id="4_3mm4v"]
+[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="4_bvs21"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_kigwh"]
+[ext_resource type="Texture2D" uid="uid://do2x6ywfni8n1" path="res://Sprites/Spritesheets/Plants/Wood_Stump_Plant_Sheet_3.png" id="5_mg47l"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_ntkvk"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="6_j0pn3"]
+[ext_resource type="Texture2D" uid="uid://c5r0saayjro6x" path="res://Sprites/Spritesheets/Plants/Wood_Stump_Plant_Sheet_4.png" id="6_rdmv8"]
+[ext_resource type="Texture2D" uid="uid://cl12s2tah4vc3" path="res://Sprites/Tree/Myst_Leaves.png" id="6_v5bcu"]
+[ext_resource type="Texture2D" uid="uid://bleogitdknxq1" path="res://Sprites/Myst_Leave_Particle.png" id="7_038wo"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="8_4renc"]
+[ext_resource type="Texture2D" uid="uid://b18t84mi1huam" path="res://Sprites/Spritesheets/Plants/Wood_Stump.png" id="8_hdk4m"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="9_0gvrl"]
+
+[sub_resource type="Resource" id="Resource_v5bcu"]
+script = ExtResource("3_6homl")
+info = ExtResource("2_wvxkc")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_hdk4m"]
+script = ExtResource("3_6homl")
+info = ExtResource("3_5fbt7")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71pts"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_l6moi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pnxny"]
+resource_name = "Tree_Idle"
+length = 1.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.8, 1.23333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0261799, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.966667, 1.23333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0523599, -0.0261799, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.7, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0261799, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.9, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0523599, -0.0261799, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave5:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.9, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0261799, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave6:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.933333, 1.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0261799, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave7:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.266667, 1.06667, 1.33333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0523599, -0.0261799, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave8:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.266667, 1.06667, 1.33333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0261799, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave9:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.7, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0261799, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave10:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.266667, 1.13333, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0523599, -0.0261799, 0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave11:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1.13333, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0523599, -0.0261799, 0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave12:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.866667, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, -0.0261799, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_14qf6"]
+_data = {
+&"RESET": SubResource("Animation_l6moi"),
+&"Tree_Idle": SubResource("Animation_pnxny")
+}
+
+[sub_resource type="Gradient" id="Gradient_hdk4m"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_71pts"]
+gradient = SubResource("Gradient_hdk4m")
+
+[sub_resource type="Curve" id="Curve_qod1g"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eoya5"]
+curve = SubResource("Curve_qod1g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tvtd7"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 45, 0)
+scale_min = 0.5
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_eoya5")
+color_ramp = SubResource("GradientTexture1D_71pts")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
+size = Vector2(28, 37)
+
+[sub_resource type="Curve" id="Curve_lkdxx"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_osh17"]
+curve = SubResource("Curve_lkdxx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6nogx"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_osh17")
+
+[node name="MystTree" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "gpu_particles")]
+y_sort_enabled = true
+collision_layer = 13
+script = ExtResource("1_oeonl")
+hit_point = NodePath("HitPoint")
+tool_type = 2
+mine_textures = Array[Texture2D]([ExtResource("2_tvtd7"), ExtResource("3_x8tnf"), ExtResource("4_3mm4v"), ExtResource("5_mg47l"), ExtResource("6_rdmv8")])
+max_durability = 6
+resource_item = SubResource("Resource_v5bcu")
+extra_item = SubResource("Resource_hdk4m")
+gpu_particles = NodePath("LeavesParticles")
+building_id = 13
+tile_types = Array[int]([0])
+title = "WORLD_RESOURCE_MYSTIC_TREE"
+description = "WORLD_RESOURCE_MYSTIC_TREE_DESC"
+
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("4_kigwh")
+has_animation_player = true
+anim_name = "Tree_Idle"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_71pts")
+animation = &"Normal"
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteAnimationManager"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_14qf6")
+}
+
+[node name="Animated_Tree" type="Node2D" parent="SpriteAnimationManager"]
+y_sort_enabled = true
+
+[node name="Leaves" type="Node2D" parent="SpriteAnimationManager/Animated_Tree"]
+y_sort_enabled = true
+
+[node name="Leave" type="Sprite2D" parent="SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-6.70505, -32.8279)
+texture = ExtResource("6_v5bcu")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave2" type="Sprite2D" parent="SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(3.29495, -28.8279)
+rotation = -0.0206425
+texture = ExtResource("6_v5bcu")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave3" type="Sprite2D" parent="SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-6.70505, -26.8279)
+rotation = -0.009264
+texture = ExtResource("6_v5bcu")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave4" type="Sprite2D" parent="SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-18.7051, -28.8279)
+rotation = -0.018125
+texture = ExtResource("6_v5bcu")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave5" type="Sprite2D" parent="SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-15.7051, -35.8279)
+rotation = -0.0140975
+texture = ExtResource("6_v5bcu")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave6" type="Sprite2D" parent="SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(1.29495, -37.8279)
+rotation = -0.0197727
+texture = ExtResource("6_v5bcu")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave7" type="Sprite2D" parent="SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-6.70505, -40.8279)
+rotation = -0.0218999
+texture = ExtResource("6_v5bcu")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave8" type="Sprite2D" parent="SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-21.7051, -25.8279)
+rotation = -0.022851
+texture = ExtResource("6_v5bcu")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave9" type="Sprite2D" parent="SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-14.7051, -22.8279)
+rotation = -0.00805572
+texture = ExtResource("6_v5bcu")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave10" type="Sprite2D" parent="SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-1.70505, -21.8279)
+rotation = -0.0161876
+texture = ExtResource("6_v5bcu")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave11" type="Sprite2D" parent="SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(6.29495, -24.8279)
+rotation = -0.0117466
+texture = ExtResource("6_v5bcu")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="Leave12" type="Sprite2D" parent="SpriteAnimationManager/Animated_Tree/Leaves"]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(9.29495, -30.8279)
+rotation = -0.013896
+texture = ExtResource("6_v5bcu")
+centered = false
+offset = Vector2(-8, -13)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SpriteAnimationManager/Animated_Tree/Leaves"]
+
+[node name="FallingLeaves" type="GPUParticles2D" parent="SpriteAnimationManager/Animated_Tree"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-5, -27)
+amount = 7
+texture = ExtResource("7_038wo")
+lifetime = 0.7
+speed_scale = 0.7
+explosiveness = 0.3
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_tvtd7")
+
+[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-5, -12)
+scale = Vector2(2.5, 1.46875)
+texture = ExtResource("4_bvs21")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+y_sort_enabled = true
+position = Vector2(-6, -32)
+texture = ExtResource("8_hdk4m")
+
+[node name="BuildingCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -6)
+shape = SubResource("RectangleShape2D_m0htq")
+
+[node name="MouseArea" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-8, -8)
+script = ExtResource("5_ntkvk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(1, -17)
+shape = SubResource("RectangleShape2D_a25cn")
+
+[node name="TimerBar" parent="." instance=ExtResource("6_j0pn3")]
+offset_left = -26.0
+offset_top = -58.0
+offset_right = 14.0
+offset_bottom = -54.0
+
+[node name="LeavesParticles" type="GPUParticles2D" parent="."]
+position = Vector2(-8, -13)
+emitting = false
+amount = 15
+texture = ExtResource("7_038wo")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_6nogx")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray("AAD/////AAACAAAAAAD//wAAAAACAAAAAAD+/wAAAAACAAAAAAD+////AAACAAAAAAD+//7/AAACAAAAAAD///7/AAACAAAAAAAAAP7/AAACAAAAAAAAAP//AAACAAAAAAAAAAAAAAACAAAAAAA=")
+enabled = false
+tile_set = ExtResource("8_4renc")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("9_0gvrl")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-7, -33)
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=7 format=3 uid="uid://qpxoldygoivu"]
+
+[ext_resource type="Script" uid="uid://cmmub3ei8m4o8" path="res://Scripts/Item/ProcessedAttribute.cs" id="1_5gkkc"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="2_4wecf"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="3_2qrm1"]
+[ext_resource type="Texture2D" uid="uid://bpdprdhorqg8g" path="res://Sprites/smelt_component.png" id="4_5gkkc"]
+
+[sub_resource type="Resource" id="Resource_h2t5y"]
+script = ExtResource("1_5gkkc")
+metadata/_custom_type_script = "uid://cmmub3ei8m4o8"
+
+[sub_resource type="Resource" id="Resource_gjvhw"]
+script = ExtResource("2_4wecf")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("3_2qrm1")
+attributes = Array[Object]([SubResource("Resource_h2t5y"), SubResource("Resource_gjvhw")])
+max_stackable_size = 250
+name = "SMELT_COMPONENT"
+id = 46
+description = "SMELT_COMPONENT_DESC"
+texture = ExtResource("4_5gkkc")
+value = 20.0

@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://dda24vs8c7wm7"]
+
+[ext_resource type="Script" uid="uid://6qmxpohi4qkf" path="res://Scripts/Research/ResearchTable.cs" id="1_6uycx"]
+[ext_resource type="Texture2D" uid="uid://caucfvq00j5hu" path="res://Sprites/Research_Table.png" id="2_q5cu6"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_tssht"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="4_l1eoh"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="5_plk1p"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="6_bupco"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="7_762gh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0cyvk"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
+size = Vector2(48, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
+size = Vector2(48, 32)
+
+[node name="Building" type="StaticBody2D"]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_6uycx")
+building_id = 6
+tile_types = Array[int]([0])
+title = "Research Table"
+description = "A Table to do research (NOT DOCS SET)"
+
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("2_tssht")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_0cyvk")
+animation = &"Normal"
+centered = false
+
+[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-8, -6.5)
+scale = Vector2(3, 1.3125)
+texture = ExtResource("6_bupco")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -32)
+texture = ExtResource("2_q5cu6")
+centered = false
+
+[node name="BuildingCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -14)
+shape = SubResource("RectangleShape2D_m0htq")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("4_l1eoh")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 254, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("5_plk1p")
+
+[node name="MouseArea" type="Area2D" parent="."]
+position = Vector2(-8, -8)
+collision_layer = 2
+script = ExtResource("7_762gh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_fk0le")
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

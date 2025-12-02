@@ -1,0 +1,29 @@
+,en,de
+RESEARCH_BONUS,Unlocks:,Schaltet Frei:
+RESEARCH_RESEARCHLEVEL,Research Level,Erforschungsstufe
+RESEARCH_NO_ITEM,No Item in Research Slot.,Keine Ressource im Erforschungsslot.
+RESEARCH_BUTTON,Start Research,Erforschung starten
+RESEARCH_WORKING,Researching,Erforschen
+RESEARCH_SAVE_INFO,"Passed Research time will not be saved, only result",Vergangene Erforschungszeit wird nicht gespeichert. Nur das Endergebnis!
+,,
+,,
+RESEARCH_WOOD_LVL_1,Craftsman #1,Handwerker #1
+RESEARCH_WOOD_LVL_1_DESC,Wooden tools can be crafted in the crafting menu.,Werkzeuge aus Holz können im Herstellungsmenü hergestellt werden.
+RESEARCH_WOOD_LVL_2,Craftsman #2,Handwerker #2
+RESEARCH_WOOD_LVL_2_DESC,Storage Chests can be build in the building menu [J].,Lagerkisten können im Baumenü hergestellt werden. [J]
+,,
+RESEARCH_IRON_ORE_LVL_1,The iron Age #1,Das eiserne Zeitalter #1
+RESEARCH_IRON_ORE_LVL_1_DESC,"Glass can be produced in the furnace, by burning 2x Iron Ore","Eisenbarren können im Ofen hergestellt werden, indem 2x Eisenerz gebrannt wird."
+RESEARCH_IRON_ORE_LVL_2,The iron Age #2,Das eiserne Zeitalter #2
+RESEARCH_IRON_ORE_LVL_2_DESC,Iron blocks can be crafted in the crafting menu.,Eisenblöcke können im Herstellungsmenü hergestellt werden.
+,,
+RESEARCH_STONE_LVL_1,Stonecutter #1,Steinmetz #1
+RESEARCH_STONE_LVL_1_DESC,Stone tools can be crafted in the crafting menu.,Werkzeuge aus Stein können im Herstellungsmenü hergestellt werden.
+,,
+,,
+,,
+RESEARCH_MYSTIC_WOOD_LVL_1,Mystic Researcher #1,Mystischer Forscher #1
+RESEARCH_MYSTIC_WOOD_LVL_1_DESC,Mystic Armorparts can be crafted in the crafting menu.,Mystische Rüstungsteile können im Herstellungsmenü hergestellt werden.
+,,
+RESEARCH_SAND_LVL_1,Sand Flames,Sandflammen
+RESEARCH_SAND_LVL_1_DESC,"Glass can be produced in the furnace, by burning 2x Sand","Glas kann im Ofen hergestellt werden, indem 2x Sand gebrannt wird."

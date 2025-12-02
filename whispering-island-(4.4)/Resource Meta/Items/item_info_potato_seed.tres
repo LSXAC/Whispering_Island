@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://1vfo1rr84pk7"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_2xoe6"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_3ci7m"]
+[ext_resource type="Texture2D" uid="uid://bh7u3xtchj2nl" path="res://Sprites/Items/Plants_Icons/Potato_Seed.png" id="2_dyiwm"]
+
+[sub_resource type="Resource" id="Resource_c2r46"]
+script = ExtResource("1_2xoe6")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("1_3ci7m")
+attributes = Array[Object]([SubResource("Resource_c2r46")])
+max_stackable_size = 250
+name = "POTATO_SEED"
+id = 26
+description = "POTATO_SEED_DESC"
+texture = ExtResource("2_dyiwm")
+value = 5.0

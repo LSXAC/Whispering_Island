@@ -13,8 +13,6 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 [sub_resource type="Resource" id="Resource_g5bwj"]
 script = ExtResource("2_1akuj")
 slot_type = 1
-durability = 100
-stats = Array[ExtResource("3_1akuj")]([])
 metadata/_custom_type_script = "uid://c80nhtlc3g8ga"
 
 [resource]

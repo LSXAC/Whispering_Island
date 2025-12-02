@@ -17,7 +17,6 @@ tool_type = 2
 mining_level = 1
 slot_type = 5
 durability = 50
-stats = Array[ExtResource("3_gigmh")]([])
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
 [resource]

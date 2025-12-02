@@ -1,0 +1,38 @@
+,en,de
+HELP_BUTTON_RESOURCES,Resources,Ressourcen
+,,
+HELP_BUTTON_QUESTING,Quests,Aufträge
+HELP_BUTTON_ISLANDS,Islands,Inseln
+HELP_BUTTON_MACHINE,Machines,Maschinen
+,,
+,,
+,,
+,,
+,,
+HELP_RESOURCE_TITLE,About Resources,Über Ressourcen
+HELP_RESOURCES_1,"Resources are needed to produce buildings, machines or decorations.","Ressourcen werden benötigt um Gebäude, Maschinen oder Dekorationen herzustellen."
+HELP_RESOURCES_2,Resources can be removed with a left mouse click (Mouse 1).,Ressourcen können über einen Linken Mausklick (Mouse 1) abgebaut werden.
+HELP_RESOURCES_3,"If there is no space in the inventory, no resources can be mined or produced.","Wenn kein Platz im Inventar ist, können keine Ressourcen abgebaut oder hergestellt werden."
+,,
+,,
+HELP_MACHINES_TITLE,About Machines,Über Maschinen
+HELP_MACHINES_1,Machines are objects that perform a processing step for you. ,Maschinen sind Objekte die einen Verarbeitungschritt für dich übernehmen. 
+HELP_MACHINES_2,Machines can be operated with the mouse or via the connections. Pay attention to the arrows for input and output.,Maschinen können mit der Maus oder über die Anschlüsse betätigt werden. Achte auf die Pfeile für den Eingang und Ausgang.
+HELP_MACHINES_3,Machines can be built via the building menu (j).,Maschinen können über das Baumenü (j) gebaut werden.
+,,
+,,
+HELP_QUEST_TITLE,About Quests,Über Aufträge
+HELP_QUEST_1,"You have 3 hearts, which are deducted each time a task is not completed. After each unfulfilled task, there is a debuff. With the first heart: less time or double the delivery items and with the second heart, the last island you built is taken away from you. If all 3 hearts are gone, you will be eaten off the island!","Du hast 3 Herzen, die jeweils bei einer nicht erfüllten Aufgabe abgezogen werden. Nach jeder nicht erfüllten Aufgabe, gibt es einen Debuff. Beim ersten Herz: Weniger Zeit, oder Doppelte Abgabeitems und beim zweiten Herz, wird dir die letzte gebaute Insel entzogen. Sind alle 3 Herzen weg, wirst du von der Insel gegessen!"
+HELP_QUEST_2,"The tasks are generated dynamically and are always different. Depending on your current research status, heavier resources are required. (currently static)","Die Aufgaben werden dynamisch generiert und sind immer unterschiedlich. Abhängig von deinen aktuellen Forschungsstand, werden schwerere Ressourcen benötigt. (aktuell statisch)"
+HELP_QUEST_3,Resources and tips can be given or received via the Monster Island.,Ressourcen und Tipps können über die Monster Insel abgegeben/oder erhalten werden.
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+HELP_ISLANDS_TITLE,About Islands,Über Inseln
+HELP_ISLANDS_1,Islands can be built using the signs on the edges of the island. Each island has different resources and functions.,Inseln können über die Schilder an den Inselrändern gebaut werden. Jede Insel hat unterschiedliche Ressourcen und funktionen.
+HELP_ISLANDS_2,Built islands cannot currently be removed manually! An island can be removed by not completing a quest as a punishment.,"Gebaute Inseln können aktuell nicht manuell entfernt werden! Eine Insel kann entfernt werden, durch eine nicht erfüllung einer Quest als bestrafung."

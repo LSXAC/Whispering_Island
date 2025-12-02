@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://bj62tvtw6mn4v"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_n76md"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_uyayj"]
+[ext_resource type="Texture2D" uid="uid://cmqinhn108vms" path="res://Sprites/Items/Plants_Icons/Wheat_Seeds.png" id="2_n76md"]
+
+[sub_resource type="Resource" id="Resource_dcisc"]
+script = ExtResource("1_n76md")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("1_uyayj")
+attributes = Array[Object]([SubResource("Resource_dcisc")])
+max_stackable_size = 250
+name = "MYST_OAK_SEED"
+id = 38
+description = "MYST_OAK_SEED_DESC"
+texture = ExtResource("2_n76md")
+value = 5.0

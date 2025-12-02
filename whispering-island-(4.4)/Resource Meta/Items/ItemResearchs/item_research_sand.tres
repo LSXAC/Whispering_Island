@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="ItemResearch" load_steps=11 format=3 uid="uid://dfwyt0twaxq6e"]
+
+[ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Scripts/Research/ItemResearchLevel.cs" id="1_2hiwq"]
+[ext_resource type="Script" uid="uid://bk5jdxlwj4pol" path="res://Scripts/Research/ItemSubResearchLevel.cs" id="2_0ur2p"]
+[ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Resource Meta/Items/item_info_glass_chunk.tres" id="2_o3cmm"]
+[ext_resource type="Script" uid="uid://8idh4gp832ub" path="res://Scripts/Research/ItemResearch.cs" id="3_jdy0n"]
+
+[sub_resource type="Resource" id="Resource_xurx7"]
+script = ExtResource("2_0ur2p")
+category = 0
+time_needed = 60
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_q7l8g"]
+script = ExtResource("2_0ur2p")
+category = 1
+time_needed = 60
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_o62nt"]
+script = ExtResource("2_0ur2p")
+category = 2
+time_needed = 60
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_bsna4"]
+script = ExtResource("2_0ur2p")
+category = 3
+time_needed = 60
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_4tnfo"]
+script = ExtResource("2_0ur2p")
+category = 4
+time_needed = 60
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_erbjc"]
+script = ExtResource("1_2hiwq")
+unlocked_item_infos_after_research = Array[Object]([ExtResource("2_o3cmm")])
+sub_levels = Array[Object]([SubResource("Resource_xurx7"), SubResource("Resource_q7l8g"), SubResource("Resource_o62nt"), SubResource("Resource_bsna4"), SubResource("Resource_4tnfo")])
+time_needed = 300
+metadata/_custom_type_script = "uid://kjnoywvj7caa"
+
+[resource]
+script = ExtResource("3_jdy0n")
+item_research_levels = Array[Object]([SubResource("Resource_erbjc")])
+id = 31
+translation_string = "RESEARCH_SAND"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://w5f8nrctnh1j"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_lwqyj"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="2_aaf8r"]
+[ext_resource type="Texture2D" uid="uid://cmqinhn108vms" path="res://Sprites/Items/Plants_Icons/Wheat_Seeds.png" id="3_lwqyj"]
+
+[sub_resource type="Resource" id="Resource_r82ro"]
+script = ExtResource("1_lwqyj")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("2_aaf8r")
+attributes = Array[Object]([SubResource("Resource_r82ro")])
+max_stackable_size = 250
+name = "FIBRE_SEED"
+id = 40
+description = "FIBRE_SEED_DESC"
+texture = ExtResource("3_lwqyj")
+value = 2.0

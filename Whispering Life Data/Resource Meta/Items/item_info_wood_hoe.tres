@@ -13,11 +13,9 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 [sub_resource type="Resource" id="Resource_ncu3p"]
 script = ExtResource("2_mc3s4")
 type = 4
-tool_type = 3
 mining_level = 1
 slot_type = 5
 durability = 50
-stats = Array[ExtResource("3_4ys2m")]([])
 metadata/_custom_type_script = "uid://v7dew0yr5trl"
 
 [resource]

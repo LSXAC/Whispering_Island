@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=9 format=3 uid="uid://dybk77tyk8w7y"]
+
+[ext_resource type="Resource" uid="uid://c75vavx28440q" path="res://Resource Meta/Items/item_info_research_book_level.tres" id="1_uxqoa"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_bavuu"]
+[ext_resource type="Resource" uid="uid://c05grb4hfdt0e" path="res://Resource Meta/Items/item_info_paper.tres" id="3_w0wyu"]
+[ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Resource Meta/Items/item_info_mystic_fibre.tres" id="4_bavuu"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="5_37vak"]
+
+[sub_resource type="Resource" id="Resource_1wdfg"]
+script = ExtResource("2_bavuu")
+info = ExtResource("1_uxqoa")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_5g03u"]
+script = ExtResource("2_bavuu")
+info = ExtResource("3_w0wyu")
+amount = 5
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_w0wyu"]
+script = ExtResource("2_bavuu")
+info = ExtResource("4_bavuu")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("5_37vak")
+required_items = Array[Object]([SubResource("Resource_5g03u"), SubResource("Resource_w0wyu")])
+category = 0
+output_item = SubResource("Resource_1wdfg")
+unlock_requirements = null

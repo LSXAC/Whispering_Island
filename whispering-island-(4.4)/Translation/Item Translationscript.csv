@@ -1,0 +1,158 @@
+,en,de
+RESOURCE,Resource,Ressource
+TOOL,Tool,Werkzeug
+WEAPON,Weapon,Waffe
+CLOTHS,Cloths,Kleidung
+PLACEABLE,Placeable,Platzierbar
+ALL,All,Alles
+SMELTABLE,Smeltable,Schmelzbar
+BURNABLE,Burnable,Brennbar
+PROCESSED,Processed,Verarbeitet
+RESEARCHABLE,Researchable,Erforschbar
+TYPE,Type,Typ
+BURNTIME,Burntime,Brennzeit
+RARITY,Rarity,Seltenheit
+,,
+WOOD,Wood,Holz
+WOOD_DESC,Material from a tree,Material von einem Baum
+STONE,Stone,Stein
+STONE_DESC,A hard natural material,ein natürliches Hartprodukt
+WOOD_STICK,Wooden Stick,Holzstab
+WOOD_STICK_DESC,A long piece of wood,Ein längliches Stück Holz
+STONE_PICKAXE,Stone Pickaxe,Steinspitzhacke
+STONE_PICKAXE_DESC,A tool for faster mining,Ein Werkzeug zum schnelleren abbauen
+WOOD_PLANK,Wooden Plank,Holzplatte
+WOOD_PLANK_DESC,A processed piece of wood,Ein Stück verarbeitetes Holz
+WOODEN_AXE,Wooden Axe,Holzaxt
+WOODEN_AXE_DESC,A tool to break trees faster,Ein Werkzeug um schneller Bäume zu fällen
+CHAR_COAL,Char Coal,Holzkohle
+CHAR_COAL_DESC,A burned piece of wood,Ein verbranntes Stück Holz
+IRON_ORE,Iron Ore,Eisenerz
+IRON_ORE_DESC,A lump of Iron,Ein klumpen Eisenerz
+IRON_INGOT,Iron Ingot,Eisenbarren
+IRON_INGOT_DESC,A processed piece of Iron,Ein geschmiedetes Stück Eisen
+COPPER_ORE,Copper Ore,Kupfererz
+COPPER_ORE_DESC,A lump of Copper,Ein klumpen Kupfererz
+COPPER_INGOT,Copper Ingot,Kupferbarren
+COPPER_INGOT_DESC,a processed piece of copper,Ein geschmiedetes Stück Kupfer
+STONE_KNIFE,Stone Knife,Steinmesser
+STONE_KNIFE_DESC,A tool for cutting,Ein Werkzeug zum schneiden
+MYSTIC_FIBRE,Mystic Fibre,Mystische Fasern
+MYSTIC_FIBRE_DESC,A XXXXXXXX,A XXXXXXXX
+MYSTIC_WOOD,Mystic Wood,Mystisches Holz
+MYSTIC_WOOD_DESC,A XXXXXXXX,A XXXXXXXX
+FIBRE,Fibre,Faser
+FIBRE_DESC,A fibre to bind tools,Eine Faser um Werkzeuge zu binden
+STONE_BLADE,Stone Blade,Steinschneide
+STONE_BLADE_DESC,A stone with a sharp edge,Ein Stein mit einer scharfen Kante
+GLASS_CHUNK,Glass chunk,Glasbrocken
+GLASS_CHUNK_DESC,Glass made of sand ,Aus Sand geschmolzenes Glas
+STONE_AXE_HEAD,Stone Axe Head,Steinaxtkopf
+STONE_AXE_HEAD_DESC,A stone formed as a axe head,Ein Stein geformt wie ein Axtkopf
+STONE_PICKAXE_HEAD,Stone Pickaxe Head,Steinspitzhackenkopf
+STONE_PICKAXE_HEAD_DESC,A stone formed as a pickaxe head,Ein Stein geformt wie ein Spitzhackenkopf
+WOODEN_HOE_HEAD,Wooden Hoe Head,Holzhackenkopf
+WOODEN_HOE_HEAD_DESC,A piece of wood formed as a hoe head,Ein Holzstück geformt als ein Hackenkopf
+WOODEN_HOE,Wooden Hoe,Holzhacke
+WOODEN_HOE_DESC,A tool to break plants faster,Ein Werkzeug um schneller Pflanzen zu säen
+WOODEN_AXE_HEAD,Wooden Axe Head,Holzaxtkopf
+WOODEN_AXE_HEAD_DESC,A piece of wood formed as a axe head,Ein Holzstück geformt als ein Axtkopf
+WHEAT,Wheat,Weizen
+WHEAT_DESC,fresh wheat,Frisch geernteter Weizenstängel
+IRON_BLOCK,Iron Block,Eisenblock
+IRON_BLOCK_DESC,Block of Iron,Block aus Eisen
+WHEAT_SEED,Wheat Seeds,Weizensamen
+WHEAT_SEED_DESC,Seeds made from wheat,Samen hergestellt aus Weizen
+POTATO,Potato,Kartoffel
+POTATO_DESC,fresh potato,Frisch ausgebuddelte Kartoffel
+POTATO_SEED,Potato Seeds,Kartoffelsamen
+POTATO_SEED_DESC,Seeds made from potatos,Samen hergestellt aus Kartoffeln
+CARROT,Carrot,Karotte
+CARROT_DESC,fresh carrot,Frisch gezogene Karotte
+CARROT_SEED,Carrot Seeds,Karottensamen
+CARROT_SEED_DESC,Seeds made from Carrots,Samen hergestellt aus Karotten
+CORN,Corn,Mais
+CORN_DESC,fresh corn,Frisch geflückter Mais
+CORN_SEED,Corn Seeds,Maissamen
+CORN_SEED_DESC,Seeds made from Corn,Samen hergestellt aus Mais
+SAND,Sand,Sand
+SAND_DESC,A handfull sand,Eine Schaufel Sand
+SAND_STONE,sandstone,Sandstein
+SAND_STONE_DESC,has a chance to give more sand,Ein Sandstein gibt die möglichkeit auf mehr Sand
+MYSTIC_ARMOR_HEAD,Mystic Helm,Mystischer Helm
+MYSTIC_ARMOR_HEAD_DESC,A mysterious head,Ein mysteriöser Helm
+MYSTIC_ARMOR_CHESTPLATE,Mystic Chestplate,Mystischer Brustpanzer
+MYSTIC_ARMOR_CHESTPLATE_DESC,A mysterious chestplate,Ein mysteriöser Brustpanzer
+MYSTIC_ARMOR_LEGGINGS,Mystic Leggings,Mystische Hose
+MYSTIC_ARMOR_LEGGINGS_DESC,A mysterious leggings,Eine mysteriöse Hose
+MYSTIC_ARMOR_SHOES,Mystic Shoes,Mystische Schuhe
+MYSTIC_ARMOR_SHOES_DESC,A mysterious shoes,Ein mysteriöses Paar Schuhe
+OAK_SEED,Oak Seed,Eichensamen
+OAK_SEED_DESC,A seed to plant Oak.,Ein Samen um Eichen anzupflanzen
+MYST_OAK_SEED,Mystic Oak Seed,Mystischer Eichensamen
+MYST_OAK_SEED_DESC,A seed to plant mystic Oak.,Ein Samen um mystische Eichen anzupflanzen
+MYST_FIBRE_SEED,Mystic Fibre Seed,Mystischer Fasernsamen
+MYST_FIBRE_SEED_DESC,A seed to plant mystic Fibre.,Ein Samen um mystische Fasern anzupflanzen
+,,
+LEATHER,Leather,Leder
+LEATHER_DESC,Leather from a cow,Leder von einer Kuh
+BEEF,beef,Rindfleisch
+BEFF_DESC,Meat from a cow,Fleisch von einer Bio Kuh
+BONES,Bones,Knochen
+BONES_DESC,Bones from an Animal,Knochen von verschiedenen Tieren / Kreaturen
+FAT,Fat,Fett
+FAT_DESC,Fat from different animals,Fett von verschiedenen Tieren
+HIDE,Hide,Schwarte
+HIDE_DESC,,Schwarte von einem Schwein
+PORK,Pork,Schweinefleisch
+PORK_DESC,meat from a Pig,Schweinefleisch vom Bio Schwein
+FEATHER,Feather,Feder
+FEATHER_DESC,Feather from a Chicken,Feder von einem Huhn / Vogel
+EGG,Egg,Ei
+EGG_DESC,Egg from a happy Chicken,Ein Bio Ei von einem glücklichen Huhn
+CHICKEN,Chicken,Hühnchen
+CHICKEN_DESC,Meat from a Chicken,Fleisch von einem Huhn
+HIDE,Hide,Fell
+HIDE_DESC,Hide from a Horse,Fell von einem Kanickel / Pferd
+OAK_SEED,Oak Tree Seeds,Eichenbaumsamen
+OAK_SEED_DESC,A seed to plant oak trees.,Ein Samen um Eichenbäume anzupflanzen
+FIBRE_SEED,Fibre Seeds,Fasernsamen
+FIBRE_SEED_DESC,A seed to plant fibre.,Ein Samen um Fasern anzupflanzen
+MYSTIC_OAK_SEED,Mystic Oak Tree Seeds,Mystische Eichenbaumsamen
+MYSTIC_OAK_SEED_DESC,A seed to plant mystic oak trees.,Ein Samen um mystische Eichenbäume anzupflanzen
+GEAR,Gear,Zahnrad
+GEAR_DESC,Used for Machines to build,Wird für Maschinen benötigt
+MACHINE_COMPONENT,Machine Component,Maschinenkomponente
+MACHINE_COMPONENT_DESC,Used as base Resource for Machines,Wird als Grundressource für Maschinen verwendet
+COAL,Coal,Kohle
+COAL_DESC,A ore to fuel machines,Ein Erz um Maschinen zu befeuern
+TRANSPORT_COMPONENT,Transport Component,Transportkomponente
+TRANSPORT_COMPONENT_DESC,Used as base resource for transport Machines,Wird als Grundressource für Transportmaschinen verwendet.
+SMELT_COMPONENT,Smelt Component,Schmelzkomponente
+SMELT_COMPONENT_DESC,Used as base resource for smelting Machines,Wird als Grundressource für Schmelzmaschinen verwendet.
+GROWTH_COMPONENT,Growth Component,Wachstumskomponente
+GROWTH_COMPONENT_DESC,Used as base resource for growing Machines,Wird als Grundressource für Gewächsmaschinen verwendet.
+SOIL,Soil,Ackererde
+SOIL_DESC,A resource used for quality planting,Eine Ressource für Qualitätspflanzen
+RESEARCH_COMPONENT,Research Component,Forschungskomponente
+RESEARCH_COMPONENT_DESC,Used as base resource for research Machines,Wird als Grundressource für Forschungsmaschinen verwendet.
+LIGHT_COMPONENT,Light Component,Lichtkomponente
+LIGHT_COMPONENT_DESC,Used as base resource for Light Machines,Wird als Grundressource für Lichtmaschinen verwendet.
+INVENTORY_COMPONENT,Inventory Component,Inventarkomponente
+INVENTORY_COMPONENT_DESC,Used as base resource for Machines with inventory.,Wird als Grundressource für Maschinen mit Inventar verwendet.
+DESTROY_COMPONENT,Destroy Component,Zerstörungskomponente
+DESTROY_COMPONENT_DESC,Used as base resource for Machines that destroy things.,"Wird als Grundressource für Maschinen verwendet, die Sachen zerstören."
+SLEEP_COMPONENT,Sleep Component,Schlafkomponente
+SLEEP_COMPONENT_DESC,Used as base resource for Machines that lets you sleep.,"Wird als Grundressource für Maschinen verwendet, die dich schlafen lassen."
+SUGAR_CANE,Sugar Cane,Zuckerrohr
+SUGAR_CANE_DESC,A plant made of sugar!,Eine Pflanze aus Zucker!
+SUGAR_CANE_SEED,Sugar Cane Seed,Zuckerrohrsamen
+SUGAR_CANE_SEED_DESC,Seeds of the sugar cane plant,Samen der Zuckerrohrpflanze
+SUGAR,Sugar,Zucker
+SUGAR_DESC,A mineral that sweets things!,Ein Mineral das Sachen versüßt!
+RESEARCH_BOOK_SUB,Research Book (Sub),Forschungsbuch (Teil)
+RESEARCH_BOOK_SUB_DESC,A book that is used for Sub-Researches!,Ein Buch was für Teilforschungen benötigt wird!
+RESEARCH_BOOK_LEVEL,Research Book (Level),Forschungsbuch (Stufe)
+RESEARCH_BOOK_LEVEL_DESC,A book that is used for Level upgrades!,Ein Buch was für Stufenaufstiege benötigt wird!
+PAPER,Paper,Papier
+PAPER_DESC,Material used for crafting,Material für die Herstellung.

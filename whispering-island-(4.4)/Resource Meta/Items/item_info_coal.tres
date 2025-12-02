@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=7 format=3 uid="uid://dgqnscgejksc"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_1o52u"]
+[ext_resource type="Script" uid="uid://bfnqqg6a2on8k" path="res://Scripts/Item/BurnableAttribute.cs" id="2_hbvml"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="3_cenk4"]
+[ext_resource type="Texture2D" uid="uid://3krvv00h3sv8" path="res://Sprites/Items/Icons_3rd/Coal.png" id="4_1o52u"]
+
+[sub_resource type="Resource" id="Resource_n8o0a"]
+script = ExtResource("1_1o52u")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[sub_resource type="Resource" id="Resource_cn0iw"]
+script = ExtResource("2_hbvml")
+burntime = 120
+metadata/_custom_type_script = "uid://bfnqqg6a2on8k"
+
+[resource]
+script = ExtResource("3_cenk4")
+attributes = Array[Object]([SubResource("Resource_n8o0a"), SubResource("Resource_cn0iw")])
+max_stackable_size = 250
+name = "COAL"
+id = 45
+description = "COAL_DESC"
+texture = ExtResource("4_1o52u")
+value = 15.0

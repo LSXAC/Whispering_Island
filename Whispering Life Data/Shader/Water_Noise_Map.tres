@@ -4,6 +4,6 @@
 frequency = 0.005
 
 [resource]
+noise = SubResource("FastNoiseLite_crv25")
 seamless = true
 seamless_blend_skirt = 1.0
-noise = SubResource("FastNoiseLite_crv25")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=3 format=3 uid="uid://bph73ie1h0cfw"]
+
+[ext_resource type="Texture2D" uid="uid://dgdgpeeiw5ea0" path="res://Sprites/Items/Icons_3rd/Copper_Ingot.png" id="1_u3byw"]
+[ext_resource type="Script" uid="uid://cen3q64nvicau" path="res://Scripts/SkillData.cs" id="2_sbsqv"]
+
+[resource]
+script = ExtResource("2_sbsqv")
+id = 10
+type_category = 5
+is_big_skill = false
+DisplayName = "Research Speed 1"
+Description = "Mega krass"
+Icon = ExtResource("1_u3byw")
+skill_amount = 0.05
+required_skill_points = 1
+metadata/_custom_type_script = "uid://cen3q64nvicau"

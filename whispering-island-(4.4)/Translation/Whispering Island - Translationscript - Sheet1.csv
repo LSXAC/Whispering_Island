@@ -1,0 +1,258 @@
+,en,de
+LANGUAGE,English,Deutsch
+STAMINA_LEFT,Stamina,Ausdauer
+STAMINA_OUT,Stamina,Atemlos
+SETTINGS_LANGUAGE_LABEL,Language,Sprache
+GAMEMENU_INVENTORY_BUTTON,Inventory,Inventar
+GAMEMENU_CRAFTING_BUTTON,Crafting,Herstellen
+GAMEMENU_SAVELOAD_BUTTON,Save,Speichern
+GAMEMENU_SETTINGS_BUTTON,Settings,Einstellungen
+GAMEMENU_HELP_BUTTON,Guide,Handbuch
+SETTINGS_MASTER_VOLUME,Master Volume,Gesamtlautstärke
+SETTINGS_SFX_VOLUME,SFX Volume,SFX Lautstärke
+SETTINGS_MUSIC_VOLUME,Music Volume,Musik Lautstärke
+SETTINGS_HAVE_SAVED,Don't forget to save!,Vergiss nicht zu speichern!
+SETTINGS_WINDOW_LABEL,Window Mode,Fenstermodus
+GAMEMENU_DESTROY_MENU,Destroy Window,Vernichtungsfenster
+GAMEMENU_WORLD_MAP,World Map,Weltkarte
+,,
+,,
+DISCOVERY_TITLE,Discovered:,Entdeckt:
+DISCOVERY_DESC,You Found: ,Du hast gefunden: 
+DISCORVERY_SAVE,Archiving data,Daten archivieren
+,,
+,,
+GAMEMENU_FURNACE,> Furnace,> Ofen
+GAMEMENU_CHEST,> Chest,> Kiste
+GAMEMENU_RESEARCH_TABLE,> Research Table,> Forschungstisch
+GAMEMENU_QUEST_MENU,> Quest Overview,> Aufgabenübersicht
+GAMEMENU_TRASHCHEST,> Trash Chest,> Müll Kiste
+,,
+WORLD_MAP_WORLD_FILTER,World Filter,Weltfilter
+WORLD_MAP_CLEAR_FILTER,Clear Filter,Filter entfernen
+WORLD_MAP_REMOVEABLE,Removeable,Entfernbar
+WORLD_MAP_TRADER,Traders,Händler
+WORLD_MAP_QUESTS,Quests,Aufgaben
+,,
+DESTROY_MENU_TITLE,Destroy this object.,Objekt zerstören.
+DESTROY_MENU_DESCRIPTION,Do you really want to destroy this object? You are not able to restore this object in the future.,Möchtest du dieses Objekt wirklich zerstören? Du kannst es in der Zukunft nicht rückgängig machen.
+DESTROY_MENU_BUTTON,Destroy Object,Objekt zerstören
+,,
+,,
+PLAYERUI_GAMETIME,Game time,Spielzeit
+PLAYERUI_QUEST_OBJECTIV,Objectiv,Aufgabe
+PLAYERUI_QUEST_TIME_LEFT,Time left,Zeit übrig
+PLAYERUI_GAME_OVER,[center][wave][font_size=25px]>[color=red]You got eaten![color=white]<,[center][wave][font_size=25px]>[color=red]Du wurdest gegessen![color=white]<
+PLAYERUI_GAME_OVER_DESC,The Timer reached his limit and the Monster did not get his food.,Die Zeit ist abgelaufen und das Monster hat nichts zuessen bekommen.
+PLAYERUI_ROTATE_FLIP_TIP,Rotate/Flip with [Q] or [E] | Close [ESC],Rotiere/Flip mit [Q] oder [E] | Schließen [ESC]
+PLAYERUI_RESOURCES_NEEDED,Buildingresources:,Bauressourcen:
+PLAYERUI_TIMES_LEFT_TO_BUILD,can be build.,kann gebaut werden.
+PLAYERUI_INVENTORY_FULL,Inventory overloaded!,Inventar überladen!
+PLAYERUI_COMPLETE_QUEST,Quest completed!,Aufgabe erfüllt!
+PLAYERUI_COMPLETE_QUEST_REQU_ITEMS,The required Items got removed from your inventory.,Die erforderlichen Items wurden aus dem Inventar entfernt.
+PLAYERUI_WEAK_TYPE_LEVEL,The Tool Level is to weak.,Das Werkzeuglevel ist zu schwach.
+PLAYERUI_WRONG_TOOL,Wrong Tool!,Falsches Werkzeug!
+PLAYERUI_INVENTORY_BUTTON,Inventory,Inventar
+PLAYERUI_BUILDINGMENU_BUTTON,Building Menu,Baumenü
+,,
+EQUIPMENT_SLOT_HEAD,Head,Kopf
+EQUIPMENT_SLOT_CHEST,Chest,Brust
+EQUIPMENT_SLOT_LEGS,Legs,Beine
+EQUIPMENT_SLOT_FOOTS,Foots,Füße
+EQUIPMENT_SLOT_WEAPON,Weapon,Waffe
+EQUIPMENT_SLOT_TOOL,Tool,Werkzeug
+,,
+EQUIPMENT_PANEL_ATTACK,Attack,Angriff
+EQUIPMENT_PANEL_DEFENSE,Defense,Block
+EQUIPMENT_PANEL_FORESTRY,Forestry,Forsten
+EQUIPMENT_PANEL_MINING,Mining,Bergbau
+EQUIPMENT_PANEL_FARMING,Farming,Landwirt
+EQUIPMENT_PANEL_HEALTH_BAR,Health,Gesundheit
+EQUIPMENT_PANEL_FATIGUE_BAR,Fatigue,Erschöpfung
+,,
+,,
+CRAFTING_MENU_GENERAL,General,Allgemein
+CRAFTING_MENU_TOOLPARTS,Toolparts,Werkzeugteile
+CRAFTING_MENU_TOOLS,Tools,Werkzeuge
+CRAFTING_MENU_TOPBAR_ITEM,Item,Gegenstand
+CRAFTING_MENU_TOPBAR_RESOURCE_NEEDED,Resources needed,Benötigte Ressourcen
+CRAFTING_MENU_ARMOR,Armor,Rüstung
+CRAFTING_MENU_AGRICULTURE,Agriculture,Landwirdschaft
+CRAFTING_MENU_NO_RECIPIES,There are currently no recipies unlocked.,Aktuell sind keine Rezepte freigeschaltet.
+CRAFTING_MENU_MACHINE_PARTS,Machine Parts,Maschinenteile
+SAVELOAD_MENU_SAVE_BUTTON,Save Game,Spielstand speichern
+SAVELOAD_MENU_LOAD_BUTTON,Load Game,Spielstand laden
+SAVELOAD_MENU_SAVE_LAST,Game was saved,Spiel wurde gespeichert vor
+SAVELOAD_MENU_SAVE_FROM,Game save from,Spielstand vom
+,,
+FURNACE_MENU_ENABLE_MACHINE,Enable Machine,Maschine einschalten
+FURNACE_MENU_DISABLE_MACHINE,Disable Machine,Maschine ausschalten
+FURNACE_MENU_SLOT_INPUT,Input,Eingang
+FURNACE_MENU_SLOT_EXPORT,Export,Ausgang
+FURNACE_MENU_SLOT_FUEL,Fuel,Kraftstoff
+FURNACE_MENU_WORKING,Machine Online - Working,Maschine Aktiviert - Arbeitet
+FURNACE_MENU_NOT_WORKING,Machine Offline,Maschine Deaktiviert
+FURNACE_MENU_DESC,"You cannot import or export items by hand, when the machine is working! Hot!","Ressourcen per Hand, während dem Aktivzustand, zu verändern, ist nicht möglich. Heiß!"
+FURNACE_MENU_HEATING_UP,Machine is heating up!,Maschine heizt auf!
+FURNACE_MENU_COOLING_DOWN,Machine is cooling down!,Maschine kühlt ab!
+FURNACE_MENU_DESC_NO_RECIPE,There is currently no available recipe for this resource. Do you miss a research level?,Aktuell gibt es kein Rezept für diese Ressource. Fehlt dir ein Forschungslevel?
+FURNACE_MENU_DESC_NO_RESOURCE,There is no Resource to be processed.,Es gibt keine Ressource zum verarbeiten.
+FURNACE_MENU_DESC_NO_FUEL,There is not enough fuel to process this ressource!,Es gibt nicht genügend Treibstoff um diese Ressource zu verarbeiten!
+,,
+BUILDING_MENU_RESOURCES_USED_INFO,"Resources not used, until building placed.","Ressourcen werden nur verbraucht, wenn Gebäude platziert wird."
+BUILDING_MENU_BUILD_BUTTON,Build Building,Gebäude bauen
+BUILDING_MENU_PRODUCTION,> Production,> Produktion
+BUILDING_MENU_DECORATION,> Decoration,> Dekoration
+BUILDING_MENU_RESEARCH,> Research,> Forschung
+BUILDING_MENU_REMOVE_BUILDINGS,> Remove Building,> Gebäude entfernen
+BUILDING_MENU_PLANTS,> Plants,> Pflanzen
+,,
+BUILDING_FURNACE,Furnace,Ofen
+BUILDING_FURNACE_DESC,Smelts Resources that are smeltable,"Schmilzt Ressourcen 
+die schmelzbar sind"
+BUILDING_CHEST,Chest,Kiste
+BUILDING_CHEST_DESC,Can hold Resources,Kann Ressourcen speichern
+BUILDING_WOOD_GROWTHER,Wood Producer,Holz Produzierer
+BUILDING_WOOD_GROWTHER_DESC,Generates continuesly wood,Produziert stetig Holz
+BUILDING_BED,Bed,Bett
+BUILDING_BED_DESC,"Sleep removes fatigue, but sacrifice Time",Schlafen entfernt Erschöpfung und benötigt Zeit
+BUILDING_QUARRY,Quarry,Steinbruch
+BUILDING_QUARRY_DESC,Generates continuesly stone,Produziert stetig Stein
+BUILDING_SIGN,Sign,Schild
+BUILDING_SIGN_DESC,Sign where a Bridge can be build,Schild an dem eine Brücke gebaut werden kann
+BUILDING_RAIL,Rail,Gleise
+BUILDING_RAIL_DESC,"A Minecart can be placed on top, to Transports resources","Eine Lohre kann auf die Gleise gesetzt werden, um Ressourcen zu transportieren"
+BUILDING_MINECART,Minecart,Lohre
+BUILDING_MINECART_DESC,Can be placed on top of rails and store resources,Kann auf Gleisen gesetzt werden und speichert Ressourcen
+BUILDING_RAIL_STATION,Railstation,Bahnhof
+BUILDING_RAIL_STATION_DESC,Can import/export resources from minecart. Can also export/import to belts,Kann Importieren/Exportieren Ressourcen von einer Lohre. Kann auch Importieren/Exportieren zu Fließbändern
+,,
+,,
+WORLD_RESOURCE_STONE,Stone,Stein
+WORLD_RESOURCE_STONE_DESC,Mine to receive stone,Erhalte Stein beim abbauen
+WORLD_RESOURCE_TREE,Tree,Baum
+WORLD_RESOURCE_TREE_DESC,Harvest to receive wood,Erhalte Holz beim fällen
+WORLD_RESOURCE_MYSTIC_TREE,Mystic Tree,Mystischer Baum
+WORLD_RESOURCE_MYSTIC_TREE_DESC,Harvest to receive mystic wood,Erhalte mystisches Holz beim fällen
+WORLD_RESOURCE_MYSTIC_FIBRE,Mystic Fibre,Mystische Fasern
+WORLD_RESOURCE_MYSTIC_FIBRE_DESC,Collect to receive mystic fibre,Erhalte mystische Fasern beim sammeln
+WORLD_RESOURCE_WHEAT,Wheat,Weizen
+WORLD_RESOURCE_WHEAT_DESC,Harvest to receive wheat,Erhalte Weizen beim ernten
+WORLD_RESOURCE_IRON_ORE,Iron Ore,Eisenerz
+WORLD_RESOURCE_IRON_ORE_DESC,Receive Iron Ore by mining,Erhalte Eisenerz beim abbauen
+WORLD_RESOURCE_COPPER_ORE,Copper Ore,Kupfererz
+WORLD_RESOURCE_COPPER_ORE_DESC,Receive Copper Ore by mining,Erhalte Kupfererz beim abbauen
+WORLD_RESOURCE_POTATO,Potato,Kartoffel
+WORLD_RESOURCE_POTATO_DESC,Harvest to receive potatos,Erhalte Kartoffeln beim ernten
+WORLD_RESOURCE_CARROT,Carrot,Karotte
+WORLD_RESOURCE_CARROT_DESC,Harvest to receive carrots,Erhalte Karotten beim ernten
+WORLD_RESOURCE_CORN,Corn,Mais
+WORLD_RESOURCE_CORN_DESC,Harvest to receive corns,Erhalte Mais beim ernten
+WORLD_RESOURCE_SAND,Sand,Sand
+WORLD_RESOURCE_SAND_DESC,Mine to receive sand,Erhalte Sand beim abbauen
+WORLD_RESOURCE_SAND_STONE,Sandstone,Sandstein
+WORLD_RESOURCE_SAND_STONE_DESC,Mine to receive sandstone,Erhalte Sandstein beim abbauen
+WORLD_RESOURCE_FIBRE,Fibre,Fasern
+WORLD_RESOURCE_FIBRE_DESC,Collect to receive fibre,Erhalte Fasern beim sammeln
+WORLD_RESOURCE_SUGAR_CANE,Sugar Cane,Zuckerrohr
+WORLD_RESOURCE_SUGAR_DESC,Harvest to receive sugar cane,Erhalte Zuckerrohr beim ernten
+,,
+SKILLTREE_RESEARCH_POINTS,Research Points,Erforschungspunkte
+SKILLTREE_MOVEMENT,Movement,Beweglichkeit
+SKILLTREE_FATIGUE,Fatigue,Erschöpfung
+SKILLTREE_HIT,Hit,Schlag
+SKILLTREE_RESEARCH_TIME,Research Time,Erforschungszeit
+,,
+MAINMENU_NEW_GAME,Start New Game,Neues Spiel beginnen
+MAINMENU_EXIT_GAME,Exit Game :(,Spiel verlassen :(
+MAINMENU_SKIP_TUTORIAL,Skip Tutorial,Start überspringen
+MAINMENU_BACK_TO_MAINMENU,Main Menu,Hauptmenü
+,,
+,,
+BUILDING_BELT,Belt,Fließband
+BUILDING_BELT_DESC,Transports resources.,Transportiert Ressourcen.
+BUILDING_BELT_TUNNEL,Transmitter belt,Übertragungs Fließband
+BUILDING_BELT_TUNNEL_DESC,Transports resources over air.,Transportiert Ressourcen über Luft.
+BUILDING_BELT_SPLITTER_1x2,Belt Splitter 1x2,Fließbandteiler 1x2
+BUILDING_BELT_SPLITTER_1x2_DESC,Splits Items from one belt to two other.,Verteilt Gegenstände von einen Fließband zu zwei anderen.
+BUILDING_BELT_SPLITTER_1x3,Belt Splitter 1x3,Fließbandteiler 1x3
+BUILDING_BELT_SPLITTER_1x3_DESC,Splits Items from one belt to three other.,Verteilt Gegenstände von einen Fließband zu drei anderen.
+BUILDING_BELT_COMBINER_2x1,Belt Combiner 2x1,Fließbandverbinder 2x1
+BUILDING_BELT_COMBINER_2x1_DESC,Combines Items from 2 belts to 1 belt,Kombiniert Gegenstände von zwei Fließbändern zu einem Fließband.
+BUILDING_BELT_COMBINER_3x1,Belt Combiner 3x1,Fließbandverbinder 3x1
+BUILDING_BELT_COMBINER_3x1_DESC,Combines Items from 3 belts to 1 belt,Kombiniert Gegenstände von drei Fließbändern zu einem Fließband.
+BUILDING_CHEST_PUFFER,Chest Puffer,Kistenzwischenlager
+BUILDING_CHEST_PUFFER_DESC,"Collects Items from one side, stores it and gives it to the next belt.","Sammelt Gegenstände von einer Seite, lagert diese und gibt diese auf ein anderes Belt aus."
+BUILDING_RAIL_STATION,Rail Station,Bahnstation
+BUILDING_RAIL_STATION_DESC,A Station that imports or exports resources from Train,Eine Station die Ressourcen vom Zug importiert oder exportiert.
+BUILDING_OUTDOOR_LAMP,Outdoor Lamp,Außenlampe
+BUILDING_OUTDOOR_LAMP_DESC,Lights the enviourment up,Erleuchtet die Umgebung
+,,
+QUEST_MENU_REWARD,Rewards after completion:,Belohnung nach Vollendung:
+,,
+,,
+,,
+QUEST_ACCEPT_PANEL_HALF_TIME_TITLE,> Half Time - Punishment,> Halbzeit - Strafe
+QUEST_ACCEPT_PANEL_HALF_TIME_DESC,The Next Quest will only have half of the Time to complete,Für die nächste Aufgabe wird nur die halbe Zeit zur Verfügung stehen
+QUEST_ACCEPT_PANEL_DOUBLE_AMOUNT_TITLE,> Double Amount - Punishment,> Doppelte Menge - Strafe
+QUEST_ACCEPT_PANEL_DOUBLE_AMOUNT_DESC,The Next Quest will have the doubled amount of resources to deliver.,Für die nächste Aufgabe musst du die doppelte Anzahl an Ressourcen abgeben.
+QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_TITLE,> Island - Punishment,> Insel - Strafe
+QUEST_ACCEPT_PANEL_REMOVE_ISLANDS_DESC,You will lose the last build Island,Du wirst die letzte gebaute Insel verlieren.
+,,
+RESEARCH_SELECT_BUTTON,Select,Auswählen
+RESEARCH_BUTTON,Start Research,Forschung starten
+RESEARCH_UPGRADE_BUTTON,Upgrade Knowledge,Stufe aufwerten
+RESEARCH_UPGRADE_BUTTON_DESC,You unlocked,Du hast
+RESEARCH_UPGRADE_BUTTON_DESC_2,Subresearches for a upgrade!,für ein Stufenaufstieg!
+RESEARCH_UPGRADE_BUTTON_NOW_UPGRADE,You can now upgrade your Knowledge!,Du kannst nun eine Stufe aufsteigen!
+RESEARCH_CURRENT_UPGRADE_LEVELING,Upgrading Knowledge Level,Wissenstufe wird aufgewertet
+RESEARCH_NO_ITEMS_DISCOVERED,There are currently no Items discovered to research!,"Es sind aktuell keine Resourcen gefunden worden, die erforscht werden sollen!"
+RESEARCH_ALL_SUB_RESEARCHED,All sub researches has been completed!,Alle Teilforschungen wurden erledigt!
+,,
+RESEARCH_MAIN_TITLE,Research Object,Forschungsobjekt
+RESEARCH_MAIN_DESCRIPTION,Description,Beschreibung
+RESEARCH_SUB_TITLE,Research Part,Forschungsteil
+RESEARCH_SUB_0,Texture,Textur
+RESEARCH_SUB_0_DESC,"Surface structure of a material, influences appearance, feel, and use.","Oberflächenstruktur eines Materials, beeinflusst Aussehen, Haptik und Nutzung."
+RESEARCH_SUB_1,Density,Dichte
+RESEARCH_SUB_1_DESC,"Ratio of mass to volume, determines material weight and stability.","Verhältnis von Masse zu Volumen, bestimmt Materialschwere und Stabilität."
+RESEARCH_SUB_2,Hardness,Härte
+RESEARCH_SUB_2_DESC,"Resistance to scratches, pressure, or deformation by forces.","Widerstandsfähigkeit gegen Kratzer, Druck oder Verformung durch Kräfte."
+RESEARCH_SUB_3,Composition,Zusammensetzung
+RESEARCH_SUB_3_DESC,"Chemical and physical composition, determines material properties and behavior.","Chemische und physikalische Zusammensetzung, bestimmt Materialeigenschaften und Verhalten."
+RESEARCH_SUB_4,Behavior,Verhalten
+RESEARCH_SUB_4_DESC,How a material reacts to external conditions and stresses.,Reaktionsweise eines Materials auf äußere Bedingungen und Belastungen.
+RESEARCH_TAB_RESOURCES,Resources,Ressourcen
+RESEARCH_TAB_MACHINES,Machines,Maschinen
+,,
+,,
+ISLAND_MENU_PRE_ISLANDSBUILD,You build,Du hast
+ISLAND_MENU_AFTER_ISLANDSBUILD,Islands.,Inseln.
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+HOVER_MENU_OBJECT,Object,Objekt
+HOVER_MENU_DESCRIPTION,Description,Beschreibung
+HOVER_MENU_HITPOINTS,Hitpoints,Lebenspunkte
+HOVER_MENU_RESOURCE_TYPE,Collect Type,Sammeltyp
+HOVER_MENU_RESOURCE_TYPE_LEVEL,Tool Level,Werkzeuglevel
+HOVER_MENU_OBJECT_TYPE,Type,Typ
+HOVER_MENU_OBJECT_TYPE_RESOURCE,Resource,Ressource
+HOVER_MENU_OBJECT_TYPE_MACHINE_PRODUCTION,Production Machine,Produktionsmaschine
+HOVER_MENU_OBJECT_TYPE_MACHINE_PROCESSING,Processing Machine,Verarbeitungsmaschine
+HOVER_MENU_OBJECT_TYPE_CHEST,Storage,Lager
+HOVER_MENU_PROCESS_PROGRESS,Progress,Fortschritt
+HOVER_MENU_PROCESS_FUEL,Fuel,Treibstoff
+HOVER_MENU_PROCESS_INPUT,Input,Eingang
+HOVER_MENU_PROCESS_OUTPUT,Output,Ausgang
+HOVER_MENU_PROCESS_NO_ITEM,None,Keins
+HOVER_MENU_CHEST_SLOTS,Free Slots,Freie Plätze

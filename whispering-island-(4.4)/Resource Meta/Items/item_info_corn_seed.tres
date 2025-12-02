@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://cbpupb53ocwp4"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_7mjbx"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_jdahr"]
+[ext_resource type="Texture2D" uid="uid://bwa8pldkfr7on" path="res://Sprites/Items/Plants_Icons/Corn_Seeds.png" id="2_jsf3g"]
+
+[sub_resource type="Resource" id="Resource_p5dji"]
+script = ExtResource("1_7mjbx")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("1_jdahr")
+attributes = Array[Object]([SubResource("Resource_p5dji")])
+max_stackable_size = 250
+name = "CORN_SEED"
+id = 30
+description = "CORN_SEED_DESC"
+texture = ExtResource("2_jsf3g")
+value = 5.0

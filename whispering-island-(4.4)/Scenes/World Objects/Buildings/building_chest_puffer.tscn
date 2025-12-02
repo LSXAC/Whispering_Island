@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=3 uid="uid://fnriepfksbws"]
+
+[ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Scripts/Building Scripts/ChestBase.cs" id="1_g0r8h"]
+[ext_resource type="Texture2D" uid="uid://cb634fgv247qi" path="res://Sprites/Chest_Building_Sprite.png" id="2_7he67"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_imrc6"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="3_xnv4c"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_21cte"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_x0myg"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="6_ji5wf"]
+[ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Taker_Component.tscn" id="9_opabt"]
+[ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Scenes/World Objects/Buildings/Building Components/component_building_item_giver.tscn" id="10_n5u6u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y4h3m"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
+size = Vector2(32, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
+size = Vector2(32, 32)
+
+[node name="ChestPuffer" type="StaticBody2D"]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_g0r8h")
+building_id = 25
+tile_types = Array[int]([0])
+title = "BUILDING_CHEST_PUFFER"
+description = "BUILDING_CHEST_PUFFER_DESC"
+
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("2_imrc6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_y4h3m")
+animation = &"Normal"
+centered = false
+
+[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
+modulate = Color(0, 0, 0, 0.196078)
+z_index = -1
+z_as_relative = false
+position = Vector2(-16, -9)
+scale = Vector2(2, 1)
+texture = ExtResource("5_x0myg")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+texture = ExtResource("2_7he67")
+centered = false
+
+[node name="BuildingCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-16, -15.5)
+shape = SubResource("RectangleShape2D_m0htq")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("3_xnv4c")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 254, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("4_21cte")
+
+[node name="MouseArea" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-16, -18)
+collision_layer = 2
+script = ExtResource("6_ji5wf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+shape = SubResource("RectangleShape2D_fk0le")
+
+[node name="Taker" parent="." node_paths=PackedStringArray("building") instance=ExtResource("9_opabt")]
+z_index = 2
+position = Vector2(-24, -25)
+building = NodePath("..")
+
+[node name="ProductionTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Giver" parent="." node_paths=PackedStringArray("building") instance=ExtResource("10_n5u6u")]
+position = Vector2(6, -23)
+direction_not_giving = 3
+building = NodePath("..")
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
+[connection signal="timeout" from="ProductionTimer" to="." method="OnCraftingTimerTimeout"]
+
+[editable path="Taker"]

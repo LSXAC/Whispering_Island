@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://cij4xtg6ixn5i"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_ba2xf"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_t7wrt"]
+[ext_resource type="Texture2D" uid="uid://cvc84eav5n4cf" path="res://Sprites/Items/Icons_3rd/Sand_Stone.png" id="2_iqepi"]
+
+[sub_resource type="Resource" id="Resource_3ryys"]
+script = ExtResource("1_ba2xf")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("1_t7wrt")
+attributes = Array[Object]([SubResource("Resource_3ryys")])
+max_stackable_size = 250
+name = "SAND_STONE"
+id = 32
+description = "SAND_STONE_DESC"
+texture = ExtResource("2_iqepi")
+value = 5.0

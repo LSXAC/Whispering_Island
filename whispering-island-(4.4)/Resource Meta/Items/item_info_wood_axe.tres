@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=8 format=3 uid="uid://dmrxwabbdyg0d"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_7n84d"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_8fx8c"]
+[ext_resource type="Script" uid="uid://v7dew0yr5trl" path="res://Scripts/Item/ToolAttribute.cs" id="2_gigmh"]
+[ext_resource type="Texture2D" uid="uid://ccv3tqh14oetx" path="res://Sprites/Items/Icons_3rd/Wood_Axe.png" id="3_7xvs7"]
+[ext_resource type="Script" uid="uid://bu58bbjdvh5bk" path="res://Scripts/Player Scripts/PlayerStat.cs" id="3_gigmh"]
+
+[sub_resource type="Resource" id="Resource_pp0cl"]
+script = ExtResource("1_7n84d")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[sub_resource type="Resource" id="Resource_urj0i"]
+script = ExtResource("2_gigmh")
+type = 1
+tool_type = 2
+mining_level = 1
+slot_type = 5
+durability = 50
+stats = Array[ExtResource("3_gigmh")]([])
+metadata/_custom_type_script = "uid://v7dew0yr5trl"
+
+[resource]
+script = ExtResource("1_8fx8c")
+attributes = Array[Object]([SubResource("Resource_pp0cl"), SubResource("Resource_urj0i")])
+max_stackable_size = 1
+name = "WOODEN_AXE"
+id = 5
+description = "WOODEN_AXE_DESC"
+texture = ExtResource("3_7xvs7")
+value = 30.0

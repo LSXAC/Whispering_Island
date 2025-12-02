@@ -1,10 +1,10 @@
-[gd_scene load_steps=143 format=3 uid="uid://d382ft4naeqtp"]
+[gd_scene load_steps=145 format=3 uid="uid://d382ft4naeqtp"]
 
 [ext_resource type="Script" uid="uid://bm5n6v0k8up5x" path="res://Scripts/UI Scripts/MainMenu.cs" id="1_4fgt5"]
 [ext_resource type="Texture2D" uid="uid://8e8352g0ttd6" path="res://Sprites/Menu/Screenshot 2025-07-21 100910.png" id="2_bw5ne"]
 [ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://Scenes/UI/tab_container_panel_style.tres.tres" id="3_10iqw"]
 [ext_resource type="Texture2D" uid="uid://clui1muhyuoce" path="res://Sprites/MAP_OVERLAY.png" id="3_idfr6"]
-[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="4_ftsii"]
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://Fonts/upheavtt.ttf" id="4_ftsii"]
 [ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://Scenes/UI/slot_focus_style.tres" id="5_bw5ne"]
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/UI Scripts/TranslationButton.cs" id="5_lg1h6"]
 [ext_resource type="Script" uid="uid://dlnqgvorydc7m" path="res://Scripts/UI Scripts/TranslationCheckBox.cs" id="6_80s4p"]
@@ -20,8 +20,10 @@
 [ext_resource type="Resource" uid="uid://8b8h6neopltv" path="res://Building Menu List Object Infos/Buildings/build_menu_list_object_belt_combiner_3x1.tres" id="12_kwrrk"]
 [ext_resource type="StyleBox" uid="uid://h4o1ussquiqb" path="res://Scenes/UI/button_hover_pressed_style.tres" id="13_bpmov"]
 [ext_resource type="Resource" uid="uid://1ejkff4privx" path="res://Building Menu List Object Infos/Buildings/build_menu_list_object_belt_splitter_1x2.tres" id="13_ghmun"]
+[ext_resource type="Texture2D" uid="uid://ohliqjn77b03" path="res://Sprites/Menu/Island_Thumbnail.png" id="14_abyj8"]
 [ext_resource type="Resource" uid="uid://dquqoenmraf8c" path="res://Building Menu List Object Infos/Buildings/build_menu_list_object_belt_splitter_1x3.tres" id="14_k1ei0"]
 [ext_resource type="Resource" uid="uid://1ly4bpu26gsu" path="res://Building Menu List Object Infos/Buildings/build_menu_list_object_belt_tunnel.tres" id="15_7c2jn"]
+[ext_resource type="Texture2D" uid="uid://bwgbp0d15ql58" path="res://Sprites/Menu/WI_Logo.png" id="15_b2ygq"]
 [ext_resource type="Resource" uid="uid://cxyl31duovsut" path="res://Building Menu List Object Infos/Buildings/build_menu_list_object_chest.tres" id="16_h6xty"]
 [ext_resource type="Resource" uid="uid://tbpa4v56negm" path="res://Building Menu List Object Infos/Buildings/build_menu_list_object_chest_with_auto_remove.tres" id="17_f4xsv"]
 [ext_resource type="Resource" uid="uid://ff6xtojeeokj" path="res://Building Menu List Object Infos/Buildings/build_menu_list_object_dummy.tres" id="18_qksji"]
@@ -152,10 +154,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_4fgt5")
-skip_tutorial = NodePath("Menu/Control/Panel/VBoxContainer/HBoxContainer/CheckBox")
+skip_tutorial = NodePath("Menu/Control/VBoxContainer/CheckBox")
 intro_player = NodePath("Menu/VideoStreamPlayer2")
 parent = NodePath("Menu/Control")
-load_button = NodePath("Menu/Control/Panel/VBoxContainer/LoadGameButton")
+load_button = NodePath("Menu/Control/VBoxContainer/LoadGameButton")
 skip_intro = true
 
 [node name="Menu" type="Control" parent="."]
@@ -175,7 +177,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Menu/Control"]
+[node name="Background" type="TextureRect" parent="Menu/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -185,7 +187,7 @@ grow_vertical = 2
 texture = ExtResource("2_bw5ne")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="Menu/Control"]
+[node name="Fade_Out_Overlay" type="TextureRect" parent="Menu/Control"]
 modulate = Color(0, 0, 0, 0.588235)
 layout_mode = 1
 anchors_preset = 2
@@ -196,154 +198,140 @@ offset_right = 640.0
 grow_vertical = 0
 texture = ExtResource("3_idfr6")
 
-[node name="Panel" type="Panel" parent="Menu/Control"]
+[node name="LogoParent" type="Control" parent="Menu/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -45.0
+offset_right = -5.0
+offset_bottom = 40.0
+grow_horizontal = 0
+scale = Vector2(1.2, 1.2)
+
+[node name="Island" type="TextureRect" parent="Menu/Control/LogoParent"]
+layout_mode = 0
+offset_left = -102.99994
+offset_top = -3.0
+offset_right = 153.00006
+offset_bottom = 253.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("14_abyj8")
+
+[node name="WI_Logo" type="TextureRect" parent="Menu/Control/LogoParent"]
+layout_mode = 0
+offset_left = -158.0
+offset_top = 9.0
+offset_right = 62.117188
+offset_bottom = 170.0
+texture = ExtResource("15_b2ygq")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Control"]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 143.0
+offset_right = 615.0
+offset_bottom = 322.0
+
+[node name="CheckBox" type="CheckBox" parent="Menu/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_ftsii")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("9_byqsf")
+theme_override_styles/pressed = ExtResource("8_ngkbr")
+theme_override_styles/hover = ExtResource("7_jyt4h")
+theme_override_styles/hover_pressed = ExtResource("13_bpmov")
+theme_override_styles/disabled = ExtResource("6_idfr6")
+theme_override_styles/focus = ExtResource("5_bw5ne")
+theme_override_constants/check_v_offset = 0
+text = "Skip Tutorial"
+alignment = 1
+script = ExtResource("6_80s4p")
+label_translation_string = "MAINMENU_SKIP_TUTORIAL"
+
+[node name="NewGameButton" type="Button" parent="Menu/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_ftsii")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("9_byqsf")
+theme_override_styles/pressed = ExtResource("8_ngkbr")
+theme_override_styles/hover = ExtResource("7_jyt4h")
+theme_override_styles/disabled = ExtResource("6_idfr6")
+theme_override_styles/focus = ExtResource("5_bw5ne")
+text = "NEW GAME"
+script = ExtResource("5_lg1h6")
+label_translation_string = "MAINMENU_NEW_GAME"
+
+[node name="LoadGameButton" type="Button" parent="Menu/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/h_separation = 0
+theme_override_fonts/font = ExtResource("4_ftsii")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("9_byqsf")
+theme_override_styles/pressed = ExtResource("8_ngkbr")
+theme_override_styles/hover = ExtResource("7_jyt4h")
+theme_override_styles/disabled = ExtResource("6_idfr6")
+theme_override_styles/focus = ExtResource("5_bw5ne")
+text = "LOAD GAME"
+script = ExtResource("5_lg1h6")
+label_translation_string = "SAVELOAD_MENU_LOAD_BUTTON"
+
+[node name="ExitButton" type="Button" parent="Menu/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_ftsii")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("9_byqsf")
+theme_override_styles/pressed = ExtResource("8_ngkbr")
+theme_override_styles/hover = ExtResource("7_jyt4h")
+theme_override_styles/disabled = ExtResource("6_idfr6")
+theme_override_styles/focus = ExtResource("5_bw5ne")
+text = "EXIT GAME"
+script = ExtResource("5_lg1h6")
+label_translation_string = "MAINMENU_EXIT_GAME"
+
+[node name="Fill2" type="ColorRect" parent="Menu/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Menu/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_ftsii")
+theme_override_font_sizes/font_size = 8
+text = "© 2025 Leon Schröder"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Control" type="Control" parent="Menu/Control"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -230.0
-offset_top = -150.0
-offset_right = -10.0
-offset_bottom = -10.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_styles/panel = ExtResource("3_10iqw")
-
-[node name="MarginContainer" type="MarginContainer" parent="Menu/Control/Panel"]
-layout_mode = 2
-offset_top = -4.0
-offset_right = 218.0
-offset_bottom = 154.0
-grow_horizontal = 0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Menu/Control/Panel/MarginContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 5
-theme_override_fonts/normal_font = ExtResource("4_ftsii")
-theme_override_fonts/bold_font = ExtResource("4_ftsii")
-theme_override_font_sizes/bold_italics_font_size = 25
-theme_override_font_sizes/normal_font_size = 10
-theme_override_font_sizes/bold_font_size = 16
-bbcode_enabled = true
-text = "[center][b][color=#f9f871][wave]> Whispering Island <[/wave]
- [font_size=10px][color=white]Prototype [Ver 0.2.0]"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Control/Panel"]
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-offset_left = 5.0
-offset_top = 41.0
-offset_right = 215.0
-offset_bottom = 140.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Fill" type="ColorRect" parent="Menu/Control/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 1)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Menu/Control/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="NewGameButton" type="Button" parent="Menu/Control/Panel/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("4_ftsii")
-theme_override_font_sizes/font_size = 10
-theme_override_styles/focus = ExtResource("5_bw5ne")
-theme_override_styles/disabled = ExtResource("6_idfr6")
-theme_override_styles/hover = ExtResource("7_jyt4h")
-theme_override_styles/pressed = ExtResource("8_ngkbr")
-theme_override_styles/normal = ExtResource("9_byqsf")
-text = "NEW GAME"
-script = ExtResource("5_lg1h6")
-label_translation_string = "MAINMENU_NEW_GAME"
-
-[node name="CheckBox" type="CheckBox" parent="Menu/Control/Panel/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("4_ftsii")
-theme_override_font_sizes/font_size = 10
-theme_override_styles/focus = ExtResource("5_bw5ne")
-theme_override_styles/disabled = ExtResource("6_idfr6")
-theme_override_styles/hover_pressed = ExtResource("13_bpmov")
-theme_override_styles/hover = ExtResource("7_jyt4h")
-theme_override_styles/pressed = ExtResource("8_ngkbr")
-theme_override_styles/normal = ExtResource("9_byqsf")
-theme_override_constants/check_v_offset = 0
-text = "Skip tutorial"
-script = ExtResource("6_80s4p")
-label_translation_string = "MAINMENU_SKIP_TUTORIAL"
-
-[node name="LoadGameButton" type="Button" parent="Menu/Control/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("4_ftsii")
-theme_override_font_sizes/font_size = 10
-theme_override_styles/focus = ExtResource("5_bw5ne")
-theme_override_styles/disabled = ExtResource("6_idfr6")
-theme_override_styles/hover = ExtResource("7_jyt4h")
-theme_override_styles/pressed = ExtResource("8_ngkbr")
-theme_override_styles/normal = ExtResource("9_byqsf")
-text = "LOAD GAME"
-script = ExtResource("5_lg1h6")
-label_translation_string = "SAVELOAD_MENU_LOAD_BUTTON"
-
-[node name="ExitButton" type="Button" parent="Menu/Control/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("4_ftsii")
-theme_override_font_sizes/font_size = 10
-theme_override_styles/focus = ExtResource("5_bw5ne")
-theme_override_styles/disabled = ExtResource("6_idfr6")
-theme_override_styles/hover = ExtResource("7_jyt4h")
-theme_override_styles/pressed = ExtResource("8_ngkbr")
-theme_override_styles/normal = ExtResource("9_byqsf")
-text = "EXIT GAME"
-script = ExtResource("5_lg1h6")
-label_translation_string = "MAINMENU_EXIT_GAME"
-
-[node name="Fill2" type="ColorRect" parent="Menu/Control/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 1)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="Menu/Control/Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("4_ftsii")
-theme_override_font_sizes/font_size = 8
-text = "Copyright © 2025. Leon Schröder Asset Creations"
-horizontal_alignment = 1
-
-[node name="Control" type="Control" parent="Menu/Control"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
+offset_left = -40.0
 offset_top = -40.0
-offset_right = 40.0
+grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Panel" type="Panel" parent="Menu/Control/Control"]
 layout_mode = 0
-offset_left = 511.0
-offset_top = -134.0
-offset_right = 630.0
-offset_bottom = -115.0
+offset_left = -90.0
+offset_top = 10.0
+offset_right = 29.0
+offset_bottom = 29.0
 theme_override_styles/panel = ExtResource("3_10iqw")
 
 [node name="MarginContainer" type="MarginContainer" parent="Menu/Control/Control/Panel"]
@@ -389,6 +377,6 @@ crafting_recipies_list = Array[Object]([ExtResource("48_pjxs1"), ExtResource("42
 item_info_list = Array[Object]([ExtResource("55_2h6yx"), ExtResource("56_kwrrk"), ExtResource("56_ujkk6"), ExtResource("57_xu7jt"), ExtResource("58_hw2lr"), ExtResource("59_q3gfc"), ExtResource("60_bpmov"), ExtResource("61_abyj8"), ExtResource("62_b2ygq"), ExtResource("63_dyabb"), ExtResource("64_cioph"), ExtResource("65_l464e"), ExtResource("66_nqf7v"), ExtResource("67_owkwu"), ExtResource("68_hlew3"), ExtResource("69_mpody"), ExtResource("70_3jp71"), ExtResource("71_5kq1m"), ExtResource("72_csn1j"), ExtResource("73_psvxc"), ExtResource("74_mmttm"), ExtResource("75_7jn2h"), ExtResource("76_vm5m4"), ExtResource("77_bxob3"), ExtResource("78_rqmsr"), ExtResource("79_sip4i"), ExtResource("80_tpbcc"), ExtResource("81_c4pph"), ExtResource("82_g85o2"), ExtResource("83_aqsru"), ExtResource("84_64bwy"), ExtResource("85_f1k14"), ExtResource("86_euauc"), ExtResource("87_7fio7"), ExtResource("88_ikmmo"), ExtResource("89_wefja"), ExtResource("90_kkrb7"), ExtResource("91_743cm"), ExtResource("92_7glmp"), ExtResource("93_u8gx4"), ExtResource("95_ghmun"), ExtResource("102_ipigi"), ExtResource("103_rbu7y"), ExtResource("104_5xltb"), ExtResource("105_d6ha0"), ExtResource("106_7fr2h"), ExtResource("107_d6ha0"), ExtResource("114_qgnha"), ExtResource("117_tb28b"), ExtResource("118_qisdu"), ExtResource("119_tb28b"), ExtResource("120_n07kk"), ExtResource("121_hl337"), ExtResource("133_ujkk6"), ExtResource("134_xu7jt"), ExtResource("135_hw2lr"), ExtResource("136_q3gfc"), ExtResource("137_bpmov"), ExtResource("138_abyj8")])
 
 [connection signal="visibility_changed" from="." to="." method="OnVisiblityChanged"]
-[connection signal="pressed" from="Menu/Control/Panel/VBoxContainer/HBoxContainer/NewGameButton" to="." method="OnNewGameButtoN"]
-[connection signal="pressed" from="Menu/Control/Panel/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButtoN"]
-[connection signal="pressed" from="Menu/Control/Panel/VBoxContainer/ExitButton" to="." method="OnExitGameButtoN"]
+[connection signal="pressed" from="Menu/Control/VBoxContainer/NewGameButton" to="." method="OnNewGameButtoN"]
+[connection signal="pressed" from="Menu/Control/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButtoN"]
+[connection signal="pressed" from="Menu/Control/VBoxContainer/ExitButton" to="." method="OnExitGameButtoN"]

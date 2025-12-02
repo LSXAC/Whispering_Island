@@ -11,76 +11,62 @@
 
 [sub_resource type="Resource" id="Resource_evsaf"]
 script = ExtResource("2_3kwe6")
-category = 0
-time_needed = 60
 metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
 
 [sub_resource type="Resource" id="Resource_dxtok"]
 script = ExtResource("2_3kwe6")
 category = 1
-time_needed = 60
 metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
 
 [sub_resource type="Resource" id="Resource_26ig3"]
 script = ExtResource("2_3kwe6")
 category = 2
-time_needed = 60
 metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
 
 [sub_resource type="Resource" id="Resource_0j68u"]
 script = ExtResource("2_3kwe6")
 category = 3
-time_needed = 60
 metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
 
 [sub_resource type="Resource" id="Resource_2iosk"]
 script = ExtResource("2_3kwe6")
 category = 4
-time_needed = 60
 metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
 
 [sub_resource type="Resource" id="Resource_mv2xp"]
 script = ExtResource("1_bp6mb")
 unlocked_item_infos_after_research = Array[Object]([ExtResource("3_ur1tu"), ExtResource("2_kmc7b"), ExtResource("6_58dhi")])
 sub_levels = Array[Object]([SubResource("Resource_evsaf"), SubResource("Resource_dxtok"), SubResource("Resource_26ig3"), SubResource("Resource_0j68u"), SubResource("Resource_2iosk")])
-time_needed = 300
 metadata/_custom_type_script = "uid://kjnoywvj7caa"
 
 [sub_resource type="Resource" id="Resource_s8jt0"]
 script = ExtResource("2_3kwe6")
-category = 0
-time_needed = 60
 metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
 
 [sub_resource type="Resource" id="Resource_ffy6c"]
 script = ExtResource("2_3kwe6")
 category = 1
-time_needed = 60
 metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
 
 [sub_resource type="Resource" id="Resource_1bcua"]
 script = ExtResource("2_3kwe6")
 category = 2
-time_needed = 60
 metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
 
 [sub_resource type="Resource" id="Resource_2ia05"]
 script = ExtResource("2_3kwe6")
 category = 3
-time_needed = 60
 metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
 
 [sub_resource type="Resource" id="Resource_mxxf4"]
 script = ExtResource("2_3kwe6")
 category = 4
-time_needed = 60
 metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
 
 [sub_resource type="Resource" id="Resource_g3fxs"]
 script = ExtResource("1_bp6mb")
 unlocked_item_infos_after_research = Array[Object]([ExtResource("5_15fb7"), ExtResource("4_ntisa")])
 sub_levels = Array[Object]([SubResource("Resource_s8jt0"), SubResource("Resource_ffy6c"), SubResource("Resource_1bcua"), SubResource("Resource_2ia05"), SubResource("Resource_mxxf4")])
-time_needed = 300
 metadata/_custom_type_script = "uid://kjnoywvj7caa"
 
 [resource]

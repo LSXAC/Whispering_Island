@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=9 format=3 uid="uid://crbwxmyjqlafm"]
+
+[ext_resource type="Resource" uid="uid://6wlgn6tdsk7b" path="res://Resource Meta/Items/item_info_stone_pickaxe_head.tres" id="1_2syfq"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_y51lw"]
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Resource Meta/Items/item_info_stone.tres" id="3_l7vek"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="4_pqqo0"]
+[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="5_y51lw"]
+
+[sub_resource type="Resource" id="Resource_tb56y"]
+script = ExtResource("2_y51lw")
+info = ExtResource("1_2syfq")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_ggi5s"]
+script = ExtResource("2_y51lw")
+info = ExtResource("3_l7vek")
+amount = 5
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_l7vek"]
+script = ExtResource("5_y51lw")
+required_level = 1
+item_id = 41
+metadata/_custom_type_script = "uid://blxths6rov8b8"
+
+[resource]
+script = ExtResource("4_pqqo0")
+required_items = Array[Object]([SubResource("Resource_ggi5s")])
+category = 1
+output_item = SubResource("Resource_tb56y")
+unlock_requirements = Array[Object]([SubResource("Resource_l7vek")])

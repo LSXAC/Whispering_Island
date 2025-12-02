@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://bp4gggmthi11e"]
+
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_6xtys"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_61n3k"]
+[ext_resource type="Texture2D" uid="uid://dsheiojtc2vgm" path="res://Sprites/Items/Fruits_Icons/Corn.png" id="2_wa533"]
+
+[sub_resource type="Resource" id="Resource_rsqbh"]
+script = ExtResource("1_61n3k")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("1_6xtys")
+attributes = Array[Object]([SubResource("Resource_rsqbh")])
+max_stackable_size = 250
+name = "CORN"
+id = 29
+description = "CORN_DESC"
+texture = ExtResource("2_wa533")
+value = 5.0

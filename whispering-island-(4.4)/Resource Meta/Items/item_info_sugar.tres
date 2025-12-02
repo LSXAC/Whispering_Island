@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://2g7pnssy57fa"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_jneof"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="2_48po7"]
+[ext_resource type="Texture2D" uid="uid://xuun5kp840c7" path="res://Sprites/Items/Icons_3rd/Sugar.png" id="3_jneof"]
+
+[sub_resource type="Resource" id="Resource_cqovr"]
+script = ExtResource("1_jneof")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("2_48po7")
+attributes = [SubResource("Resource_cqovr")]
+max_stackable_size = 250
+name = "SUGAR"
+id = 56
+description = "SUGAR_DESC"
+texture = ExtResource("3_jneof")
+value = 10.0

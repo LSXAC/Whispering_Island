@@ -18,4 +18,3 @@ scene_building_id = 19
 required_items = Array[Object]([SubResource("Resource_yo73i")])
 unlock_requirements = Array[Object]([])
 building_menu_category = 4
-show_object_in_building_menu_list = true

@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmb5mvim8jqcp"]
+
+[ext_resource type="Script" uid="uid://deld2y73dp2fk" path="res://Scripts/Resources/TimerBar.cs" id="1_60n7p"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="2_gkuag"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bu67"]
+bg_color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="TimerBar" type="ProgressBar"]
+z_index = 5
+offset_left = -20.0
+offset_top = -4.0
+offset_right = 20.0
+theme_override_styles/background = SubResource("StyleBoxFlat_5bu67")
+max_value = 3.0
+value = 2.0
+show_percentage = false
+script = ExtResource("1_60n7p")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -10.0
+offset_right = 73.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_gkuag")
+theme_override_font_sizes/font_size = 10
+text = "60s"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

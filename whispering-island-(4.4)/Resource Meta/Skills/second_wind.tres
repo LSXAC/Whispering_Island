@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=3 format=3 uid="uid://c4m7kevrrx6ie"]
+
+[ext_resource type="Texture2D" uid="uid://dgdgpeeiw5ea0" path="res://Sprites/Items/Icons_3rd/Copper_Ingot.png" id="1_lal5h"]
+[ext_resource type="Script" uid="uid://cen3q64nvicau" path="res://Scripts/SkillData.cs" id="2_y7od3"]
+
+[resource]
+script = ExtResource("2_y7od3")
+id = 33
+type_category = 13
+is_big_skill = true
+DisplayName = "Second Wind"
+Description = "Mega krass"
+Icon = ExtResource("1_lal5h")
+skill_amount = 1.0
+required_skill_points = 1
+metadata/_custom_type_script = "uid://cen3q64nvicau"

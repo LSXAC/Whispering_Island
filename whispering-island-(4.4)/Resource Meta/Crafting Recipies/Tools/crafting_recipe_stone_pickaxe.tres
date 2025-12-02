@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=13 format=3 uid="uid://d4jfhgrp8h07j"]
+
+[ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Resource Meta/Items/item_info_stone_pickaxe.tres" id="1_2t3pp"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_1jucq"]
+[ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Resource Meta/Items/item_info_wood_stick.tres" id="3_wc4cf"]
+[ext_resource type="Resource" uid="uid://6wlgn6tdsk7b" path="res://Resource Meta/Items/item_info_stone_pickaxe_head.tres" id="4_1jucq"]
+[ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://Resource Meta/Items/item_info_fibre.tres" id="5_w1pb8"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="6_fjmp3"]
+[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="7_1jucq"]
+
+[sub_resource type="Resource" id="Resource_17v3c"]
+script = ExtResource("2_1jucq")
+info = ExtResource("1_2t3pp")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_7ixnr"]
+script = ExtResource("2_1jucq")
+info = ExtResource("3_wc4cf")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_8ebcg"]
+script = ExtResource("2_1jucq")
+info = ExtResource("4_1jucq")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_qtk7r"]
+script = ExtResource("2_1jucq")
+info = ExtResource("5_w1pb8")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_wc4cf"]
+script = ExtResource("7_1jucq")
+required_level = 1
+item_id = 41
+metadata/_custom_type_script = "uid://blxths6rov8b8"
+
+[resource]
+script = ExtResource("6_fjmp3")
+required_items = Array[Object]([SubResource("Resource_7ixnr"), SubResource("Resource_8ebcg"), SubResource("Resource_qtk7r")])
+category = 2
+output_item = SubResource("Resource_17v3c")
+unlock_requirements = Array[Object]([SubResource("Resource_wc4cf")])

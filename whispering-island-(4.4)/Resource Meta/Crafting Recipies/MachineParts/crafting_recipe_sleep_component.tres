@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=11 format=3 uid="uid://ctiwfa1ehiauq"]
+
+[ext_resource type="Resource" uid="uid://cvimpjdxil5uq" path="res://Resource Meta/Items/Machine Items/item_info_sleep_component.tres" id="1_jfhir"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_4eoly"]
+[ext_resource type="Resource" uid="uid://bf8iixn70725o" path="res://Resource Meta/Items/Machine Items/item_info_machine_component.tres" id="3_pr5sg"]
+[ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://Resource Meta/Items/item_info_wheat.tres" id="4_jfhir"]
+[ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://Resource Meta/Items/item_info_fibre.tres" id="5_4eoly"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="6_0o3lg"]
+
+[sub_resource type="Resource" id="Resource_h7nag"]
+script = ExtResource("2_4eoly")
+info = ExtResource("1_jfhir")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_fgffq"]
+script = ExtResource("2_4eoly")
+info = ExtResource("3_pr5sg")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_lxuvy"]
+script = ExtResource("2_4eoly")
+info = ExtResource("4_jfhir")
+amount = 10
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_pr5sg"]
+script = ExtResource("2_4eoly")
+info = ExtResource("5_4eoly")
+amount = 5
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("6_0o3lg")
+required_items = Array[Object]([SubResource("Resource_fgffq"), SubResource("Resource_lxuvy"), SubResource("Resource_pr5sg")])
+category = 5
+output_item = SubResource("Resource_h7nag")
+unlock_requirements = null

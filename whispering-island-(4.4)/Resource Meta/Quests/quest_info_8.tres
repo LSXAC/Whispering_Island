@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="QuestInfo" load_steps=11 format=3 uid="uid://b4f0pdj2v6jfh"]
+
+[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Resource Meta/Items/item_info_potato.tres" id="1_sq2ci"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_0cg5t"]
+[ext_resource type="Resource" uid="uid://ch1b1ltixbads" path="res://Resource Meta/Items/item_info_carrot.tres" id="3_0cg5t"]
+[ext_resource type="Resource" uid="uid://bp4gggmthi11e" path="res://Resource Meta/Items/item_info_corn.tres" id="4_bf2id"]
+[ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://Resource Meta/Items/item_info_wheat.tres" id="5_y8yf0"]
+[ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Scripts/Resources/QuestInfo.cs" id="6_c6knq"]
+
+[sub_resource type="Resource" id="Resource_wj2aq"]
+script = ExtResource("2_0cg5t")
+info = ExtResource("1_sq2ci")
+amount = 5
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_srggu"]
+script = ExtResource("2_0cg5t")
+info = ExtResource("3_0cg5t")
+amount = 5
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_c6knq"]
+script = ExtResource("2_0cg5t")
+info = ExtResource("4_bf2id")
+amount = 5
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_qo0b6"]
+script = ExtResource("2_0cg5t")
+info = ExtResource("5_y8yf0")
+amount = 5
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("6_c6knq")
+quest_name = "QUEST_TITLE_8"
+quest_description = "QUEST_DESC_8"
+required_items = Array[Object]([SubResource("Resource_wj2aq"), SubResource("Resource_srggu"), SubResource("Resource_c6knq"), SubResource("Resource_qo0b6")])
+quest_time = 1440
+reward_money = 10
