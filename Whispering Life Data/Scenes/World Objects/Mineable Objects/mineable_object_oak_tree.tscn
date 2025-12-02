@@ -425,7 +425,6 @@ process_material = SubResource("ParticleProcessMaterial_pa158")
 
 [node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
 modulate = Color(0, 0, 0, 0.196078)
-z_index = -1
 z_as_relative = false
 position = Vector2(-5, -12)
 scale = Vector2(2.5, 1.46875)

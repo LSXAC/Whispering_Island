@@ -1,9 +1,8 @@
-[gd_scene load_steps=145 format=3 uid="uid://d382ft4naeqtp"]
+[gd_scene load_steps=144 format=3 uid="uid://d382ft4naeqtp"]
 
 [ext_resource type="Script" uid="uid://bm5n6v0k8up5x" path="res://Scripts/UI Scripts/MainMenu.cs" id="1_4fgt5"]
 [ext_resource type="Texture2D" uid="uid://8e8352g0ttd6" path="res://Sprites/Menu/Screenshot 2025-07-21 100910.png" id="2_bw5ne"]
-[ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://Scenes/UI/tab_container_panel_style.tres.tres" id="3_10iqw"]
-[ext_resource type="Texture2D" uid="uid://clui1muhyuoce" path="res://Sprites/MAP_OVERLAY.png" id="3_idfr6"]
+[ext_resource type="Texture2D" uid="uid://dieu75n53gdpm" path="res://Sprites/main_menu_fade_out.png" id="3_abyj8"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://Fonts/upheavtt.ttf" id="4_ftsii"]
 [ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://Scenes/UI/slot_focus_style.tres" id="5_bw5ne"]
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/UI Scripts/TranslationButton.cs" id="5_lg1h6"]
@@ -188,15 +187,15 @@ texture = ExtResource("2_bw5ne")
 expand_mode = 1
 
 [node name="Fade_Out_Overlay" type="TextureRect" parent="Menu/Control"]
-modulate = Color(0, 0, 0, 0.588235)
+modulate = Color(0, 0, 0, 1)
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -360.0
-offset_right = 640.0
-grow_vertical = 0
-texture = ExtResource("3_idfr6")
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_abyj8")
+expand_mode = 1
 
 [node name="LogoParent" type="Control" parent="Menu/Control"]
 layout_mode = 1
@@ -211,10 +210,10 @@ scale = Vector2(1.2, 1.2)
 
 [node name="Island" type="TextureRect" parent="Menu/Control/LogoParent"]
 layout_mode = 0
-offset_left = -102.99994
-offset_top = -3.0
-offset_right = 153.00006
-offset_bottom = 253.0
+offset_left = -94.16668
+offset_top = -3.3333335
+offset_right = 161.83331
+offset_bottom = 252.66667
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("14_abyj8")
 
@@ -230,12 +229,13 @@ expand_mode = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/Control"]
 layout_mode = 0
 offset_left = 484.0
-offset_top = 143.0
+offset_top = 150.0
 offset_right = 615.0
-offset_bottom = 322.0
+offset_bottom = 329.0
 
 [node name="CheckBox" type="CheckBox" parent="Menu/Control/VBoxContainer"]
-custom_minimum_size = Vector2(0, 16)
+clip_contents = true
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/outline_size = 3
@@ -248,13 +248,15 @@ theme_override_styles/hover_pressed = ExtResource("13_bpmov")
 theme_override_styles/disabled = ExtResource("6_idfr6")
 theme_override_styles/focus = ExtResource("5_bw5ne")
 theme_override_constants/check_v_offset = 0
+keep_pressed_outside = true
 text = "Skip Tutorial"
 alignment = 1
 script = ExtResource("6_80s4p")
 label_translation_string = "MAINMENU_SKIP_TUTORIAL"
 
 [node name="NewGameButton" type="Button" parent="Menu/Control/VBoxContainer"]
-custom_minimum_size = Vector2(0, 16)
+clip_contents = true
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -265,12 +267,14 @@ theme_override_styles/pressed = ExtResource("8_ngkbr")
 theme_override_styles/hover = ExtResource("7_jyt4h")
 theme_override_styles/disabled = ExtResource("6_idfr6")
 theme_override_styles/focus = ExtResource("5_bw5ne")
+keep_pressed_outside = true
 text = "NEW GAME"
 script = ExtResource("5_lg1h6")
 label_translation_string = "MAINMENU_NEW_GAME"
 
 [node name="LoadGameButton" type="Button" parent="Menu/Control/VBoxContainer"]
-custom_minimum_size = Vector2(0, 16)
+clip_contents = true
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_constants/h_separation = 0
@@ -281,12 +285,14 @@ theme_override_styles/pressed = ExtResource("8_ngkbr")
 theme_override_styles/hover = ExtResource("7_jyt4h")
 theme_override_styles/disabled = ExtResource("6_idfr6")
 theme_override_styles/focus = ExtResource("5_bw5ne")
+keep_pressed_outside = true
 text = "LOAD GAME"
 script = ExtResource("5_lg1h6")
 label_translation_string = "SAVELOAD_MENU_LOAD_BUTTON"
 
 [node name="ExitButton" type="Button" parent="Menu/Control/VBoxContainer"]
-custom_minimum_size = Vector2(0, 16)
+clip_contents = true
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_ftsii")
@@ -296,6 +302,7 @@ theme_override_styles/pressed = ExtResource("8_ngkbr")
 theme_override_styles/hover = ExtResource("7_jyt4h")
 theme_override_styles/disabled = ExtResource("6_idfr6")
 theme_override_styles/focus = ExtResource("5_bw5ne")
+keep_pressed_outside = true
 text = "EXIT GAME"
 script = ExtResource("5_lg1h6")
 label_translation_string = "MAINMENU_EXIT_GAME"
@@ -310,49 +317,9 @@ layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_ftsii")
 theme_override_font_sizes/font_size = 8
-text = "© 2025 Leon Schröder"
+text = "© 2025 Leon Schröder. V0.1.6"
 horizontal_alignment = 1
 autowrap_mode = 3
-
-[node name="Control" type="Control" parent="Menu/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Panel" type="Panel" parent="Menu/Control/Control"]
-layout_mode = 0
-offset_left = -90.0
-offset_top = 10.0
-offset_right = 29.0
-offset_bottom = 29.0
-theme_override_styles/panel = ExtResource("3_10iqw")
-
-[node name="MarginContainer" type="MarginContainer" parent="Menu/Control/Control/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 5
-
-[node name="Label" type="Label" parent="Menu/Control/Control/Panel/MarginContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("4_ftsii")
-theme_override_font_sizes/font_size = 10
-text = "Footage from V0.1.6"
 
 [node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="Menu"]
 layout_mode = 1
