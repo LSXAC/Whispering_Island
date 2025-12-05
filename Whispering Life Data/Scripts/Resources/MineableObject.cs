@@ -10,6 +10,12 @@ public partial class MineableObject : placeable_building
     public Node2D hit_point;
 
     [Export]
+    public bool rnd_height = false;
+
+    [Export]
+    public bool growable = false;
+
+    [Export]
     public PlayerStats.TOOLTYPE tool_type;
 
     [Export]
@@ -18,9 +24,13 @@ public partial class MineableObject : placeable_building
     [Export]
     public MINING_LEVEL mining_level = MINING_LEVEL.HAND;
     public Array<Texture2D> mine_textures = null;
+    public Array<Texture2D> growth_textures = null;
 
     [Export]
     public Node2D variants_parent;
+
+    [Export]
+    public Node2D growth_variants_parent;
 
     [Export]
     private int respawn_seconds = 60;
@@ -64,13 +74,24 @@ public partial class MineableObject : placeable_building
     {
         Texture2DArray t2d_array = variants_parent.GetChild<Texture2DArray>(variant);
         mine_textures = t2d_array.textures;
+        if (!growable)
+            return;
+        Texture2DArray growth_t2d_array = growth_variants_parent.GetChild<Texture2DArray>(variant);
+        growth_textures = growth_t2d_array.textures;
     }
 
     public override void _Ready()
     {
         base._Ready();
+        if (rnd_height)
+        {
+            Random random = new Random();
+            float rnd_y = 0.75f + (float)(random.NextDouble() / 2f);
+            Scale = new Vector2(rnd_y, rnd_y);
+        }
         if (variants_parent == null)
             return;
+
         GetTexture2DArray(variant);
         max_durability = mine_textures.Count - 1;
         current_durability = max_durability;
@@ -101,7 +122,6 @@ public partial class MineableObject : placeable_building
     {
         if (variants_parent == null)
             return;
-        Debug.Print("in cooldown: " + in_cooldown);
         if (!CheckClickDependencies(this))
             return;
 
@@ -248,12 +268,28 @@ public partial class MineableObject : placeable_building
     private void StartTimerBar(TimerBar.STATE state, double time, bool from_loading = false)
     {
         Debug.Print("Starting TimerBar with state: " + state.ToString() + " for time: " + time);
+        in_cooldown = true;
         if (state == TimerBar.STATE.SPAWNING)
+        {
             if (collision_shape != null)
                 collision_shape.Disabled = false;
+            timer_bar.InitTimer(max_seconds: time, new_state: state, UpdateGrowthTexture);
+            return;
+        }
 
         timer_bar.InitTimer(max_seconds: time, new_state: state);
-        in_cooldown = true;
+    }
+
+    //Check if % of Timer is next current frame
+    public void UpdateGrowthTexture()
+    {
+        double progress_percent = timer_bar.GetInvertedProgressPercent();
+        int frame_index = (int)(progress_percent * (growth_textures.Count - 1));
+        if (frame_index < 0)
+            frame_index = 0;
+        if (frame_index >= growth_textures.Count)
+            frame_index = growth_textures.Count - 1;
+        sprite_anim_manager.SetTexture2D(growth_textures[frame_index]);
     }
 
     public void Reset(bool from_loading = false)

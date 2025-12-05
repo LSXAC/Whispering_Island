@@ -37,7 +37,7 @@
 [ext_resource type="Script" uid="uid://cmmjy732ib0f2" path="res://Scenes/Manager/WorldMap.cs" id="35_gytje"]
 [ext_resource type="Texture2D" uid="uid://clui1muhyuoce" path="res://Sprites/MAP_OVERLAY.png" id="36_1xtv0"]
 [ext_resource type="Texture2D" uid="uid://cqrxk5fhdhnu5" path="res://Sprites/Compass.png" id="37_sw2xm"]
-[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="38_irdkv"]
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://Fonts/upheavtt.ttf" id="38_irdkv"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="39_sw2xm"]
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/UI Scripts/TranslationButton.cs" id="40_uv8n6"]
 [ext_resource type="Script" uid="uid://dlnqgvorydc7m" path="res://Scripts/UI Scripts/TranslationCheckBox.cs" id="41_4xc4d"]
@@ -351,7 +351,6 @@ Tree = NodePath("SpriteAnimationManager")
 visible = false
 position = Vector2(47, -179)
 script = ExtResource("19_f280c")
-has_animation_player = true
 anim_name = "Tree_Idle"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tutorial/SpriteAnimationManager"]

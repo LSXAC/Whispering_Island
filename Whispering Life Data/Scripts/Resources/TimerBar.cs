@@ -19,6 +19,7 @@ public partial class TimerBar : ProgressBar
 
     StyleBoxFlat styleBoxRespawn = new StyleBoxFlat();
     StyleBoxFlat styleBoxCooldown = new StyleBoxFlat();
+    Action action = null;
 
     public override void _Ready()
     {
@@ -29,8 +30,11 @@ public partial class TimerBar : ProgressBar
         Visible = false;
     }
 
-    public void InitTimer(double max_seconds, STATE new_state)
+    public void InitTimer(double max_seconds, STATE new_state, Action action = null)
     {
+        // Assign action to be called on timer completion
+        this.action = action;
+
         MaxValue = max_seconds;
         Value = max_seconds;
         if (max_seconds < 1)
@@ -54,6 +58,10 @@ public partial class TimerBar : ProgressBar
             GD.PrintErr("TimerBar parent is null!");
 
         Value--;
+        // Invoke the assigned action if any
+        if (action != null)
+            action.Invoke();
+
         UpdateLabel();
         if (Value <= 0)
         {
@@ -63,6 +71,11 @@ public partial class TimerBar : ProgressBar
                 ((MineableObject)parent).Reset();
             return;
         }
+    }
+
+    public double GetInvertedProgressPercent()
+    {
+        return 1.0 - (Value / MaxValue);
     }
 
     private void UpdateLabel()
