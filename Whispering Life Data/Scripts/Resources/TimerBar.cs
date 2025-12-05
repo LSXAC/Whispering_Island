@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class TimerBar : ProgressBar
@@ -42,10 +43,16 @@ public partial class TimerBar : ProgressBar
             Visible = true;
         UpdateLabel();
         timer.Start();
+        Debug.Print(
+            "Timer started with max_seconds: " + max_seconds + " and state: " + new_state.ToString()
+        );
     }
 
     public void OnTimerTimeout()
     {
+        if (parent == null)
+            GD.PrintErr("TimerBar parent is null!");
+
         Value--;
         UpdateLabel();
         if (Value <= 0)

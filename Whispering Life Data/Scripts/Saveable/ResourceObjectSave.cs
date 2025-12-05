@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class ResourceObjectSave : Resource
@@ -21,6 +22,9 @@ public partial class ResourceObjectSave : Resource
     [Export]
     public Database.BUILDING_ID building_id;
 
+    [Export]
+    public int variant;
+
     public ResourceObjectSave() { }
 
     public ResourceObjectSave(
@@ -29,7 +33,8 @@ public partial class ResourceObjectSave : Resource
         int time_left,
         int current_durability,
         Vector2 pos,
-        Database.BUILDING_ID building_id
+        Database.BUILDING_ID building_id,
+        int variant
     )
     {
         this.in_cooldown = in_cooldown;
@@ -38,5 +43,6 @@ public partial class ResourceObjectSave : Resource
         this.current_durability = current_durability;
         this.position = pos;
         this.building_id = building_id;
+        this.variant = variant;
     }
 }

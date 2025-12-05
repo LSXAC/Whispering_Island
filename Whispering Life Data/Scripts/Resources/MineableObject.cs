@@ -13,13 +13,14 @@ public partial class MineableObject : placeable_building
     public PlayerStats.TOOLTYPE tool_type;
 
     [Export]
+    public int variant = 0;
+
+    [Export]
     public MINING_LEVEL mining_level = MINING_LEVEL.HAND;
+    public Array<Texture2D> mine_textures = null;
 
     [Export]
-    public Array<Texture2D> mine_textures;
-
-    [Export]
-    public int max_durability = 3;
+    public Node2D variants_parent;
 
     [Export]
     private int respawn_seconds = 60;
@@ -35,6 +36,7 @@ public partial class MineableObject : placeable_building
 
     [Export]
     public GpuParticles2D gpu_particles;
+    public int max_durability;
     public int current_durability;
 
     TimerBar timer_bar;
@@ -58,16 +60,28 @@ public partial class MineableObject : placeable_building
     [Signal]
     public delegate void ReadyFinishedEventHandler();
 
+    public void GetTexture2DArray(int variant)
+    {
+        Texture2DArray t2d_array = variants_parent.GetChild<Texture2DArray>(variant);
+        mine_textures = t2d_array.textures;
+    }
+
     public override void _Ready()
     {
         base._Ready();
+        if (variants_parent == null)
+            return;
+        GetTexture2DArray(variant);
+        max_durability = mine_textures.Count - 1;
         current_durability = max_durability;
-        timer_bar = GetNode<TimerBar>("TimerBar");
+        sprite_anim_manager.SetTexture2D(mine_textures[current_durability]);
+        if (Logger.NodeIsNotNull(GetNode<TimerBar>("TimerBar")))
+        {
+            timer_bar = GetNode<TimerBar>("TimerBar");
+            timer_bar.parent = this;
+        }
         interactableArea = GetNode<Area2D>("MouseArea");
         SetResourceTexture();
-
-        if (Logger.NodeIsNotNull(timer_bar))
-            timer_bar.parent = this;
     }
 
     public void SpawnPlant()
@@ -85,6 +99,9 @@ public partial class MineableObject : placeable_building
 
     public override void OnMouseClick()
     {
+        if (variants_parent == null)
+            return;
+        Debug.Print("in cooldown: " + in_cooldown);
         if (!CheckClickDependencies(this))
             return;
 
@@ -230,6 +247,7 @@ public partial class MineableObject : placeable_building
 
     private void StartTimerBar(TimerBar.STATE state, double time, bool from_loading = false)
     {
+        Debug.Print("Starting TimerBar with state: " + state.ToString() + " for time: " + time);
         if (state == TimerBar.STATE.SPAWNING)
             if (collision_shape != null)
                 collision_shape.Disabled = false;
@@ -258,13 +276,19 @@ public partial class MineableObject : placeable_building
 
     public override ResourceObjectSave Save()
     {
+        if (Logger.NodeIsNotNull(GetNode<TimerBar>("TimerBar")))
+        {
+            timer_bar = GetNode<TimerBar>("TimerBar");
+            timer_bar.parent = this;
+        }
         return new ResourceObjectSave(
             in_cooldown: in_cooldown,
             last_state: timer_bar.current_state,
             (int)timer_bar.Value,
             current_durability,
             Position,
-            building_id
+            building_id,
+            variant
         );
     }
 
@@ -275,6 +299,7 @@ public partial class MineableObject : placeable_building
             Position = ros.position;
             current_durability = ros.current_durability;
             in_cooldown = ros.in_cooldown;
+            variant = ros.variant;
             if (ros.last_state != TimerBar.STATE.NONE)
                 if (ros.time_left == 0)
                     Reset(from_loading: true);
@@ -288,9 +313,9 @@ public partial class MineableObject : placeable_building
 
     public void SetResourceTexture()
     {
-        if (current_durability - 1 >= 0 && mine_textures != null)
-            if (mine_textures.Count > current_durability - 1)
-                if (mine_textures[current_durability - 1] != null)
-                    SetTextureToSpriteManager(mine_textures[current_durability - 1]);
+        if (current_durability >= 0 && mine_textures != null)
+            if (mine_textures.Count > current_durability)
+                if (mine_textures[current_durability] != null)
+                    SetTextureToSpriteManager(mine_textures[current_durability]);
     }
 }

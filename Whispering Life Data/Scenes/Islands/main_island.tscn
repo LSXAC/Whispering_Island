@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://bveoiwi14ha4g"]
+[gd_scene load_steps=45 format=4 uid="uid://bveoiwi14ha4g"]
 
 [ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island.cs" id="1_sbvtb"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="2_naawu"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://Scripts/WorldMapIcon.cs" id="17_7wf5s"]
 [ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe.png" id="18_0sl6k"]
 [ext_resource type="Texture2D" uid="uid://ce16w5jut6adl" path="res://Sprites/Icons/world_map_quest_icon.png" id="25_0sl6k"]
+[ext_resource type="PackedScene" uid="uid://coeye4llpicv7" path="res://Scenes/World Objects/Mineable Objects/mineable_object_big_stone.tscn" id="28_2vll2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cugrr"]
 size = Vector2(32, 32)
@@ -385,7 +386,6 @@ description = "123414"
 
 [node name="SpriteAnimationManager" type="Node2D" parent="QuestSign"]
 script = ExtResource("10_k0wjm")
-has_animation_player = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="QuestSign/SpriteAnimationManager"]
 position = Vector2(-32, -48)
@@ -478,35 +478,46 @@ position = Vector2(176, -64)
 [node name="Tree8" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(-144, -144)
 
+[node name="BigStone1" parent="IslandObjectSaveManager" instance=ExtResource("28_2vll2")]
+position = Vector2(-27, 13)
+
+[node name="BigStone2" parent="IslandObjectSaveManager" instance=ExtResource("28_2vll2")]
+position = Vector2(-95, 164)
+variant = 1
+
+[node name="BigStone3" parent="IslandObjectSaveManager" instance=ExtResource("28_2vll2")]
+position = Vector2(164, -133)
+
+[node name="BigStone4" parent="IslandObjectSaveManager" instance=ExtResource("28_2vll2")]
+position = Vector2(-13, -180)
+variant = 1
+
 [node name="Stone" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
 position = Vector2(-64, 16)
 
 [node name="Stone2" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-32, -160)
-
-[node name="Stone5" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-16, -192)
+position = Vector2(-32, -162)
+variant = 1
 
 [node name="Stone9" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
 position = Vector2(-160, -56)
 
 [node name="Stone6" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-80, -144)
+position = Vector2(-119, -143)
 
 [node name="Stone10" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-144, -112)
+position = Vector2(-141, -129)
+variant = 1
 
 [node name="Stone7" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(72, 145)
+position = Vector2(-43, 47)
 
 [node name="Stone8" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-104, 96)
-
-[node name="Stone3" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(24, -64)
+position = Vector2(-120, 99)
 
 [node name="Stone4" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
 position = Vector2(96, 16)
+variant = 1
 
 [node name="Wheat" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
 position = Vector2(50, -145)

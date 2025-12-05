@@ -199,6 +199,7 @@ public partial class Database : Node
         RAIL_BRIDGE,
         OUTDOOR_LAMP,
         COAL_ORE,
-        SUGER_CANE
+        SUGER_CANE,
+        BIG_STONE,
     }
 }

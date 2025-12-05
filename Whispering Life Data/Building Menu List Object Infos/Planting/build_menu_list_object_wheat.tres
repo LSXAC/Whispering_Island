@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://hl3jkk2n0f7x" path="res://Scenes/World Objects/Mineable Objects/mineable_object_wheat.tscn" id="2_5d21s"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_ttpxt"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_b75mc"]
-[ext_resource type="Texture2D" uid="uid://c8lcew4fxuuxm" path="res://Sprites/Items/Plants_Icons/Wheat.png" id="5_ls3tw"]
+[ext_resource type="Texture2D" uid="uid://l68o3eq38ww1" path="res://Sprites/Items/Fruits_Icons/Wheat.png" id="5_ls3tw"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
 script = ExtResource("2_ttpxt")
