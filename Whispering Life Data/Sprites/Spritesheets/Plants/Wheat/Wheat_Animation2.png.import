@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcn4jjamqsulm"
-path="res://.godot/imported/Wheat_Animation1.png-011f46a486c18d8edb42aa902d5c7c20.ctex"
+uid="uid://bswhcu1ergego"
+path="res://.godot/imported/Wheat_Animation2.png-a88bca13e952eb849daf4f627480ef36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Spritesheets/Plants/Wheat_Animation1.png"
-dest_files=["res://.godot/imported/Wheat_Animation1.png-011f46a486c18d8edb42aa902d5c7c20.ctex"]
+source_file="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation2.png"
+dest_files=["res://.godot/imported/Wheat_Animation2.png-a88bca13e952eb849daf4f627480ef36.ctex"]
 
 [params]
 

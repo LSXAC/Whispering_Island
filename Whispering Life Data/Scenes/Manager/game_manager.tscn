@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=58 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" uid="uid://sxd7avtys7n7" path="res://Scripts/Manager Scripts/GameManager.cs" id="1_2n0he"]
 [ext_resource type="Script" uid="uid://cwonaacplejxj" path="res://Scripts/Building Scripts/BuildingPlacer.cs" id="2_h8pdp"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bveoiwi14ha4g" path="res://Scenes/Islands/main_island.tscn" id="6_p85m3"]
 [ext_resource type="PackedScene" uid="uid://j1cdgg7lep78" path="res://Scenes/UI/player_ui.tscn" id="7_5qlke"]
 [ext_resource type="PackedScene" uid="uid://deu0spbxs5bju" path="res://Scenes/UI/game_menu.tscn" id="8_gytje"]
+[ext_resource type="PackedScene" uid="uid://hl3jkk2n0f7x" path="res://Scenes/World Objects/Mineable Objects/mineable_object_wheat.tscn" id="8_uv8n6"]
 [ext_resource type="PackedScene" uid="uid://44ev1js8tcvp" path="res://Scenes/UI/Build_Menu.tscn" id="9_1xtv0"]
 [ext_resource type="Script" uid="uid://b1ofqxr15cnlw" path="res://Scripts/Global/GlobalFunctions.cs" id="10_1whgu"]
 [ext_resource type="Resource" uid="uid://bixdfcui86uar" path="res://Resource Meta/Quests/quest_info_2.tres" id="10_h8pdp"]
@@ -333,8 +334,17 @@ script = ExtResource("5_f280c")
 title = "Monster"
 description = "...."
 
+[node name="Tree9" parent="IslandManager/MainIsland/IslandObjectSaveManager" index="3"]
+position = Vector2(-66, -128)
+
 [node name="Tree7" parent="IslandManager/MainIsland/IslandObjectSaveManager" index="7"]
-position = Vector2(-7, -79)
+position = Vector2(-41, -183)
+
+[node name="Wheat8" parent="IslandManager/MainIsland/IslandObjectSaveManager" index="22" instance=ExtResource("8_uv8n6")]
+position = Vector2(79, -128)
+
+[node name="Wheat9" parent="IslandManager/MainIsland/IslandObjectSaveManager" index="23" instance=ExtResource("8_uv8n6")]
+position = Vector2(79, -144)
 
 [node name="CutsceneCamera" type="Camera2D" parent="."]
 position = Vector2(32, -160)

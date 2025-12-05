@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://p7nxdwibna32"]
+[gd_scene load_steps=35 format=3 uid="uid://p7nxdwibna32"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_u2kx6"]
 [ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Resource Meta/Items/item_info_stone.tres" id="2_vwpn5"]
@@ -40,6 +40,8 @@ animations = [{
 "name": &"Normal",
 "speed": 5.0
 }]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mbq8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(15, 12)
@@ -92,6 +94,7 @@ animation = &"Normal"
 centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+material = SubResource("CanvasItemMaterial_mbq8b")
 position = Vector2(-8, -12)
 texture = ExtResource("20_jrb50")
 

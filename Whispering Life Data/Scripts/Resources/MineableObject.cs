@@ -107,6 +107,7 @@ public partial class MineableObject : placeable_building
 
     public void SpawnPlant()
     {
+        UpdateGrowthTexture();
         StartTimerBar(TimerBar.STATE.SPAWNING, respawn_seconds);
     }
 
@@ -283,8 +284,9 @@ public partial class MineableObject : placeable_building
     //Check if % of Timer is next current frame
     public void UpdateGrowthTexture()
     {
-        double progress_percent = timer_bar.GetInvertedProgressPercent();
+        double progress_percent = timer_bar.GetProgressPercent();
         int frame_index = (int)(progress_percent * (growth_textures.Count - 1));
+        timer_bar.UpdateLabel("Growth: " + (int)(progress_percent * 100) + "%");
         if (frame_index < 0)
             frame_index = 0;
         if (frame_index >= growth_textures.Count)

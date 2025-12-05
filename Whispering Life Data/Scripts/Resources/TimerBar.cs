@@ -17,16 +17,18 @@ public partial class TimerBar : ProgressBar
     public Node2D parent;
     public STATE current_state = STATE.NONE;
 
+    [Export]
     StyleBoxFlat styleBoxRespawn = new StyleBoxFlat();
+
+    [Export]
     StyleBoxFlat styleBoxCooldown = new StyleBoxFlat();
     Action action = null;
 
     public override void _Ready()
     {
-        styleBoxRespawn.BgColor = new Color(1, 0, 0, 1);
-        styleBoxCooldown.BgColor = new Color(0.3f, 0.3f, 0.3f, 1);
         timer = GetNode<Timer>("Timer");
         label = GetNode<Label>("Label");
+        label.Text = "";
         Visible = false;
     }
 
@@ -36,16 +38,12 @@ public partial class TimerBar : ProgressBar
         this.action = action;
 
         MaxValue = max_seconds;
-        Value = max_seconds;
-        if (max_seconds < 1)
-            timer.WaitTime = max_seconds;
-        else
-            timer.WaitTime = 1;
+        Value = 0;
+        timer.WaitTime = 1;
         current_state = new_state;
-        AddThemeStyleboxOverride("background", styleBoxRespawn);
+        AddThemeStyleboxOverride("fill", styleBoxRespawn);
         if (new_state != STATE.COOLDOWN)
             Visible = true;
-        UpdateLabel();
         timer.Start();
         Debug.Print(
             "Timer started with max_seconds: " + max_seconds + " and state: " + new_state.ToString()
@@ -57,13 +55,12 @@ public partial class TimerBar : ProgressBar
         if (parent == null)
             GD.PrintErr("TimerBar parent is null!");
 
-        Value--;
+        Value++;
         // Invoke the assigned action if any
         if (action != null)
             action.Invoke();
 
-        UpdateLabel();
-        if (Value <= 0)
+        if (Value > MaxValue)
         {
             timer.Stop();
             Visible = false;
@@ -73,13 +70,13 @@ public partial class TimerBar : ProgressBar
         }
     }
 
-    public double GetInvertedProgressPercent()
+    public double GetProgressPercent()
     {
-        return 1.0 - (Value / MaxValue);
+        return Value / MaxValue;
     }
 
-    private void UpdateLabel()
+    public void UpdateLabel(string text)
     {
-        label.Text = Value + "";
+        label.Text = text;
     }
 }
