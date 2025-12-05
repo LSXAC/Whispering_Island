@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=59 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" uid="uid://sxd7avtys7n7" path="res://Scripts/Manager Scripts/GameManager.cs" id="1_2n0he"]
 [ext_resource type="Script" uid="uid://cwonaacplejxj" path="res://Scripts/Building Scripts/BuildingPlacer.cs" id="2_h8pdp"]
@@ -43,6 +43,7 @@
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/UI Scripts/TranslationButton.cs" id="40_uv8n6"]
 [ext_resource type="Script" uid="uid://dlnqgvorydc7m" path="res://Scripts/UI Scripts/TranslationCheckBox.cs" id="41_4xc4d"]
 [ext_resource type="Texture2D" uid="uid://wyobtxm8epgl" path="res://Sprites/Icons/world_compass.png" id="41_irdkv"]
+[ext_resource type="Script" uid="uid://bn8il7ud0h80t" path="res://Scenes/Manager/ShadowManager.cs" id="44_4xc4d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1xtv0"]
 animations = [{
@@ -300,10 +301,12 @@ shader_parameter/speed = Vector2(0.002, 0.001)
 bg_color = Color(0.184314, 0.184314, 0.184314, 0.196078)
 draw_center = false
 
-[node name="GameManager" type="Node2D" node_paths=PackedStringArray("building_placer")]
+[node name="GameManager" type="Node2D" node_paths=PackedStringArray("building_placer", "shadow_manager")]
+process_priority = 1000
 y_sort_enabled = true
 script = ExtResource("1_2n0he")
 building_placer = NodePath("BuildingManager/BuildingPlacer")
+shadow_manager = NodePath("ShadowManager")
 
 [node name="Global" type="Node2D" parent="."]
 script = ExtResource("10_1whgu")
@@ -724,6 +727,10 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+
+[node name="ShadowManager" type="CanvasGroup" parent="."]
+self_modulate = Color(1, 1, 1, 0.19607843)
+script = ExtResource("44_4xc4d")
 
 [connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
 [connection signal="timeout" from="GlobalAnimationTimer" to="GlobalAnimationTimer" method="OnAnimationGlobalTimerTimeout"]

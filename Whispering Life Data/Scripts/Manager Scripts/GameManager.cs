@@ -14,6 +14,9 @@ public partial class GameManager : Node2D
     public static CanvasLayer current_activ_canvaslayer = null;
     public static bool dev_build_mode = false;
 
+    [Export]
+    public ShadowManager shadow_manager;
+
     public static GameManager instance = null;
     public static string player_name = "Player";
     public static bool gameover = false;
@@ -82,10 +85,15 @@ public partial class GameManager : Node2D
         return null;
     }
 
+    public override void _EnterTree()
+    {
+        GD.Print("Node entered the tree!");
+        instance = this;
+    }
+
     public override void _Ready()
     {
         Input.UseAccumulatedInput = false;
-        instance = this;
         gameover = false;
         In_Cutscene = false;
         island_matrix = new bool[11, 11];

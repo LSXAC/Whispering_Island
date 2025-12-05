@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://p7nxdwibna32"]
+[gd_scene load_steps=44 format=3 uid="uid://p7nxdwibna32"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_u2kx6"]
 [ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Resource Meta/Items/item_info_stone.tres" id="2_vwpn5"]
@@ -26,6 +26,15 @@
 [ext_resource type="Texture2D" uid="uid://dfuwhpmne08ke" path="res://Sprites/Spritesheets/Stones/Rock_3.png" id="18_eyvkr"]
 [ext_resource type="Texture2D" uid="uid://xleodvpmluii" path="res://Sprites/Spritesheets/Stones/Rock_2.png" id="19_73s73"]
 [ext_resource type="Texture2D" uid="uid://boakekb2ig4u4" path="res://Sprites/Spritesheets/Stones/Rock_1.png" id="20_jrb50"]
+[ext_resource type="Texture2D" uid="uid://cktjc6j83djo5" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow9.png" id="21_hx0kv"]
+[ext_resource type="Texture2D" uid="uid://0v8mk61bu27f" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow8.png" id="22_4xwme"]
+[ext_resource type="Texture2D" uid="uid://dmompm2qurw4l" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow7.png" id="23_ap75o"]
+[ext_resource type="Texture2D" uid="uid://bgyx040gyebp7" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow6.png" id="24_gcxhf"]
+[ext_resource type="Texture2D" uid="uid://bq3x7ktb3ar7" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow5.png" id="25_h0pa2"]
+[ext_resource type="Texture2D" uid="uid://h6440aj4lkws" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow4.png" id="26_mlxdn"]
+[ext_resource type="Texture2D" uid="uid://bmd7q0laykfg6" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow3.png" id="27_upn62"]
+[ext_resource type="Texture2D" uid="uid://b51lq6xr2gh55" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow2.png" id="28_a18hy"]
+[ext_resource type="Texture2D" uid="uid://84hn2xmrjl6v" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow1.png" id="29_78vli"]
 
 [sub_resource type="Resource" id="Resource_o5wt5"]
 script = ExtResource("3_qgqm3")
@@ -70,11 +79,12 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_4ikef")
 
-[node name="Stone" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "variants_parent", "gpu_particles")]
+[node name="Stone" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "remote_transform", "variants_parent", "gpu_particles")]
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_u2kx6")
 hit_point = NodePath("HitPoint")
+remote_transform = NodePath("SpriteAnimationManager/ShadowRemote")
 tool_type = 3
 variants_parent = NodePath("SpriteAnimationManager/Variants")
 resource_item = SubResource("Resource_o5wt5")
@@ -107,6 +117,12 @@ textures = Array[Texture2D]([ExtResource("7_3tgrj"), ExtResource("8_eo6lx"), Ext
 [node name="Variant_1" type="Node2D" parent="SpriteAnimationManager/Variants"]
 script = ExtResource("6_ohxhc")
 textures = Array[Texture2D]([ExtResource("12_mbq8b"), ExtResource("13_odv37"), ExtResource("14_pya2l"), ExtResource("15_nkyxh"), ExtResource("16_siybx"), ExtResource("17_xismg"), ExtResource("18_eyvkr"), ExtResource("19_73s73"), ExtResource("20_jrb50")])
+shadow_textures = Array[Texture2D]([ExtResource("21_hx0kv"), ExtResource("22_4xwme"), ExtResource("23_ap75o"), ExtResource("24_gcxhf"), ExtResource("25_h0pa2"), ExtResource("26_mlxdn"), ExtResource("27_upn62"), ExtResource("28_a18hy"), ExtResource("29_78vli")])
+
+[node name="ShadowRemote" type="RemoteTransform2D" parent="SpriteAnimationManager"]
+position = Vector2(-8, -12)
+update_rotation = false
+update_scale = false
 
 [node name="BuildingCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-7.5, -7)

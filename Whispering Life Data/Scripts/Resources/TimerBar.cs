@@ -40,10 +40,10 @@ public partial class TimerBar : ProgressBar
         MaxValue = max_seconds;
         Value = 0;
         timer.WaitTime = 1;
+        if (max_seconds < 1)
+            timer.WaitTime = max_seconds;
         current_state = new_state;
         AddThemeStyleboxOverride("fill", styleBoxRespawn);
-        if (new_state != STATE.COOLDOWN)
-            Visible = true;
         timer.Start();
         Debug.Print(
             "Timer started with max_seconds: " + max_seconds + " and state: " + new_state.ToString()
@@ -60,7 +60,7 @@ public partial class TimerBar : ProgressBar
         if (action != null)
             action.Invoke();
 
-        if (Value > MaxValue)
+        if (Value >= MaxValue)
         {
             timer.Stop();
             Visible = false;

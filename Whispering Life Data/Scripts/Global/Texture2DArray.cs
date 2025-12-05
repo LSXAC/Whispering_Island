@@ -7,4 +7,7 @@ public partial class Texture2DArray : Node2D
 {
     [Export]
     public Array<Texture2D> textures = [];
+
+    [Export]
+    public Array<Texture2D> shadow_textures = [];
 }

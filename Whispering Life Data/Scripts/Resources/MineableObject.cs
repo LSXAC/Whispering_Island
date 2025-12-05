@@ -16,6 +16,9 @@ public partial class MineableObject : placeable_building
     public bool growable = false;
 
     [Export]
+    public RemoteTransform2D remote_transform;
+
+    [Export]
     public PlayerStats.TOOLTYPE tool_type;
 
     [Export]
@@ -23,8 +26,8 @@ public partial class MineableObject : placeable_building
 
     [Export]
     public MINING_LEVEL mining_level = MINING_LEVEL.HAND;
-    public Array<Texture2D> mine_textures = null;
-    public Array<Texture2D> growth_textures = null;
+    public Texture2DArray mine_textures = null;
+    public Texture2DArray growth_textures = null;
 
     [Export]
     public Node2D variants_parent;
@@ -48,6 +51,7 @@ public partial class MineableObject : placeable_building
     public GpuParticles2D gpu_particles;
     public int max_durability;
     public int current_durability;
+    public Sprite2D shadow_sprite;
 
     TimerBar timer_bar;
     Area2D interactableArea;
@@ -73,15 +77,21 @@ public partial class MineableObject : placeable_building
     public void GetTexture2DArray(int variant)
     {
         Texture2DArray t2d_array = variants_parent.GetChild<Texture2DArray>(variant);
-        mine_textures = t2d_array.textures;
+        mine_textures = t2d_array;
         if (!growable)
             return;
         Texture2DArray growth_t2d_array = growth_variants_parent.GetChild<Texture2DArray>(variant);
-        growth_textures = growth_t2d_array.textures;
+        growth_textures = growth_t2d_array;
     }
 
     public override void _Ready()
     {
+        //Create & Link RemoteTransform2D to Sprite2D for Shadows
+        shadow_sprite = new Sprite2D();
+        shadow_sprite.Centered = true;
+        GameManager.instance.shadow_manager.AddChild(shadow_sprite);
+        remote_transform.RemotePath = shadow_sprite.GetPath();
+
         base._Ready();
         if (rnd_height)
         {
@@ -93,9 +103,10 @@ public partial class MineableObject : placeable_building
             return;
 
         GetTexture2DArray(variant);
-        max_durability = mine_textures.Count - 1;
+        max_durability = mine_textures.textures.Count - 1;
         current_durability = max_durability;
-        sprite_anim_manager.SetTexture2D(mine_textures[current_durability]);
+        sprite_anim_manager.SetTexture2D(mine_textures.textures[current_durability]);
+        shadow_sprite.Texture = mine_textures.shadow_textures[current_durability];
         if (Logger.NodeIsNotNull(GetNode<TimerBar>("TimerBar")))
         {
             timer_bar = GetNode<TimerBar>("TimerBar");
@@ -103,6 +114,12 @@ public partial class MineableObject : placeable_building
         }
         interactableArea = GetNode<Area2D>("MouseArea");
         SetResourceTexture();
+    }
+
+    public void RemoveShadow()
+    {
+        shadow_sprite.QueueFree();
+        remote_transform.RemotePath = null;
     }
 
     public void SpawnPlant()
@@ -189,6 +206,7 @@ public partial class MineableObject : placeable_building
         if (current_durability <= 0)
         {
             HandleBreak(bonusAmount);
+            RemoveShadow();
             return;
         }
 
@@ -285,22 +303,20 @@ public partial class MineableObject : placeable_building
     public void UpdateGrowthTexture()
     {
         double progress_percent = timer_bar.GetProgressPercent();
-        int frame_index = (int)(progress_percent * (growth_textures.Count - 1));
+        int frame_index = (int)(progress_percent * (growth_textures.textures.Count - 1));
         timer_bar.UpdateLabel("Growth: " + (int)(progress_percent * 100) + "%");
         if (frame_index < 0)
             frame_index = 0;
-        if (frame_index >= growth_textures.Count)
-            frame_index = growth_textures.Count - 1;
-        sprite_anim_manager.SetTexture2D(growth_textures[frame_index]);
+        if (frame_index >= growth_textures.textures.Count)
+            frame_index = growth_textures.textures.Count - 1;
+        sprite_anim_manager.SetTexture2D(growth_textures.textures[frame_index]);
+        shadow_sprite.Texture = growth_textures.shadow_textures[frame_index];
     }
 
     public void Reset(bool from_loading = false)
     {
         if (timer_bar.current_state == TimerBar.STATE.SPAWNING || from_loading)
             current_durability = max_durability;
-
-        if (HasNode("Shadow"))
-            GetNode<Sprite2D>("Shadow").Visible = true;
 
         in_cooldown = false;
         interactableArea.Monitoring = true;
@@ -352,8 +368,11 @@ public partial class MineableObject : placeable_building
     public void SetResourceTexture()
     {
         if (current_durability >= 0 && mine_textures != null)
-            if (mine_textures.Count > current_durability)
-                if (mine_textures[current_durability] != null)
-                    SetTextureToSpriteManager(mine_textures[current_durability]);
+            if (mine_textures.textures.Count > current_durability)
+                if (mine_textures.textures[current_durability] != null)
+                {
+                    SetTextureToSpriteManager(mine_textures.textures[current_durability]);
+                    shadow_sprite.Texture = mine_textures.shadow_textures[current_durability];
+                }
     }
 }
