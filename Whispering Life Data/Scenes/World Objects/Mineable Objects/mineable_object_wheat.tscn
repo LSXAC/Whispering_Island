@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://hl3jkk2n0f7x"]
+[gd_scene load_steps=26 format=3 uid="uid://hl3jkk2n0f7x"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_hu0bp"]
 [ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://Resource Meta/Items/item_info_wheat.tres" id="2_02xrx"]
@@ -8,12 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="6_sfdjg"]
 [ext_resource type="Resource" uid="uid://ckgu5x7reokuj" path="res://Resource Meta/Items/item_info_wheat_seed.tres" id="6_xl1cx"]
 [ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sprites/Stone_Particle.png" id="7_mcr0j"]
+[ext_resource type="Texture2D" uid="uid://cpchlo6v4pow6" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation_shadow3.png" id="8_2thpl"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="8_3rn1o"]
 [ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="8_7blpy"]
 [ext_resource type="Texture2D" uid="uid://bcn4jjamqsulm" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation1.png" id="8_xl1cx"]
 [ext_resource type="Texture2D" uid="uid://bswhcu1ergego" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation2.png" id="9_j5s5c"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="9_vc3u4"]
 [ext_resource type="Texture2D" uid="uid://8xd8cthwkhg3" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation3.png" id="9_xl1cx"]
+[ext_resource type="Texture2D" uid="uid://byqyirm258rxa" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation_shadow1.png" id="11_1fk6w"]
+[ext_resource type="Texture2D" uid="uid://dcv6oempy0ls3" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation_shadow2.png" id="12_ode4i"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="13_1fk6w"]
 
 [sub_resource type="Resource" id="Resource_gq40s"]
 script = ExtResource("3_632dl")
@@ -34,9 +38,6 @@ animations = [{
 "name": &"Normal",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
-size = Vector2(9, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
 size = Vector2(18, 24)
@@ -90,25 +91,30 @@ animation = &"Normal"
 centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
-position = Vector2(-23, -42)
+position = Vector2(-7, -18)
 texture = ExtResource("9_xl1cx")
-centered = false
 
 [node name="Variations" type="Node2D" parent="SpriteAnimationManager"]
 
 [node name="Variation0" type="Node2D" parent="SpriteAnimationManager/Variations"]
 script = ExtResource("8_7blpy")
+polygon_points = PackedVector2Array(-4, -7, -6, -5, -9, -5, -11, -7, -11, -8, -9, -10, -6, -10, -4, -8)
 textures = Array[Texture2D]([ExtResource("9_xl1cx")])
+shadow_textures = Array[Texture2D]([ExtResource("8_2thpl")])
 
 [node name="GrowingVariations" type="Node2D" parent="SpriteAnimationManager"]
 
 [node name="Variation0" type="Node2D" parent="SpriteAnimationManager/GrowingVariations"]
 script = ExtResource("8_7blpy")
+polygon_points = PackedVector2Array(-4, -7, -6, -5, -9, -5, -11, -7, -11, -8, -9, -10, -6, -10, -4, -8)
 textures = Array[Texture2D]([ExtResource("8_xl1cx"), ExtResource("9_j5s5c"), ExtResource("9_xl1cx")])
+shadow_textures = Array[Texture2D]([ExtResource("11_1fk6w"), ExtResource("12_ode4i"), ExtResource("8_2thpl")])
 
-[node name="BuildingCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-7.5, -7.5)
-shape = SubResource("RectangleShape2D_m0htq")
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("13_1fk6w")]
+position = Vector2(-7, -18)
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-4, -7, -6, -5, -9, -5, -11, -7, -11, -8, -9, -10, -6, -10, -4, -8)
 
 [node name="MouseArea" type="Area2D" parent="."]
 z_index = 1

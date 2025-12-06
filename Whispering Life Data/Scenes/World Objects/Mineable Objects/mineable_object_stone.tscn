@@ -133,9 +133,8 @@ position = Vector2(-16, -12)
 polygon = PackedVector2Array(-9, -4, -12, -1, -19, -1, -22, -4, -22, -7, -20, -8, -11, -8, -9, -7)
 
 [node name="MouseArea" type="Area2D" parent="."]
-visible = false
 z_index = 1
-position = Vector2(-8, -8)
+position = Vector2(-15, -8)
 script = ExtResource("4_qgqm3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
@@ -143,10 +142,10 @@ position = Vector2(0, -1.75)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("5_o5wt5")]
-offset_left = -27.0
-offset_top = -32.0
-offset_right = 13.0
-offset_bottom = -31.0
+offset_left = -37.0
+offset_top = -33.0
+offset_right = 3.0
+offset_bottom = -32.0
 mouse_filter = 2
 
 [node name="StoneParticles" type="GPUParticles2D" parent="."]
