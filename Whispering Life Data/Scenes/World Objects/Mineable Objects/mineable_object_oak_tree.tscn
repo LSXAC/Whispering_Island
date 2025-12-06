@@ -448,7 +448,7 @@ shape = SubResource("RectangleShape2D_a25cn")
 offset_left = -25.0
 offset_top = -57.0
 offset_right = 15.0
-offset_bottom = -53.0
+offset_bottom = -56.0
 
 [node name="LeavesParticles" type="GPUParticles2D" parent="."]
 position = Vector2(-8, -13)

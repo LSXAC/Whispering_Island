@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://p7nxdwibna32"]
+[gd_scene load_steps=50 format=3 uid="uid://p7nxdwibna32"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_u2kx6"]
 [ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Resource Meta/Items/item_info_stone.tres" id="2_vwpn5"]
@@ -19,11 +19,17 @@
 [ext_resource type="Texture2D" uid="uid://cjg5w6c4hj1ch" path="res://Sprites/Spritesheets/Stones/Rock0.png" id="11_wcywb"]
 [ext_resource type="Texture2D" uid="uid://dexi1wnjua3cf" path="res://Sprites/Spritesheets/Stones/Rock_9.png" id="12_mbq8b"]
 [ext_resource type="Texture2D" uid="uid://d081o80r5xku" path="res://Sprites/Spritesheets/Stones/Rock_8.png" id="13_odv37"]
+[ext_resource type="Texture2D" uid="uid://b8b32ncto66yj" path="res://Sprites/Spritesheets/Stones/Rock0_shadow6.png" id="13_upn62"]
+[ext_resource type="Texture2D" uid="uid://bdmutoqf6xa0q" path="res://Sprites/Spritesheets/Stones/Rock0_shadow5.png" id="14_a18hy"]
 [ext_resource type="Texture2D" uid="uid://dwefh67tn2fml" path="res://Sprites/Spritesheets/Stones/Rock_7.png" id="14_pya2l"]
+[ext_resource type="Texture2D" uid="uid://d2si2bhlmvsob" path="res://Sprites/Spritesheets/Stones/Rock0_shadow4.png" id="15_78vli"]
 [ext_resource type="Texture2D" uid="uid://qxojh3b015xg" path="res://Sprites/Spritesheets/Stones/Rock_6.png" id="15_nkyxh"]
 [ext_resource type="Texture2D" uid="uid://dg14eg3xtrpdk" path="res://Sprites/Spritesheets/Stones/Rock_5.png" id="16_siybx"]
+[ext_resource type="Texture2D" uid="uid://chex052x4cxf" path="res://Sprites/Spritesheets/Stones/Rock0_shadow3.png" id="16_tside"]
+[ext_resource type="Texture2D" uid="uid://cgpb4p3bfb6u6" path="res://Sprites/Spritesheets/Stones/Rock0_shadow2.png" id="17_gqg28"]
 [ext_resource type="Texture2D" uid="uid://dkfowbuioflac" path="res://Sprites/Spritesheets/Stones/Rock_4.png" id="17_xismg"]
 [ext_resource type="Texture2D" uid="uid://dfuwhpmne08ke" path="res://Sprites/Spritesheets/Stones/Rock_3.png" id="18_eyvkr"]
+[ext_resource type="Texture2D" uid="uid://bc8dbyb4femac" path="res://Sprites/Spritesheets/Stones/Rock0_shadow1.png" id="18_k2j78"]
 [ext_resource type="Texture2D" uid="uid://xleodvpmluii" path="res://Sprites/Spritesheets/Stones/Rock_2.png" id="19_73s73"]
 [ext_resource type="Texture2D" uid="uid://boakekb2ig4u4" path="res://Sprites/Spritesheets/Stones/Rock_1.png" id="20_jrb50"]
 [ext_resource type="Texture2D" uid="uid://cktjc6j83djo5" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow9.png" id="21_hx0kv"]
@@ -35,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://bmd7q0laykfg6" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow3.png" id="27_upn62"]
 [ext_resource type="Texture2D" uid="uid://b51lq6xr2gh55" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow2.png" id="28_a18hy"]
 [ext_resource type="Texture2D" uid="uid://84hn2xmrjl6v" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow1.png" id="29_78vli"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="36_a18hy"]
 
 [sub_resource type="Resource" id="Resource_o5wt5"]
 script = ExtResource("3_qgqm3")
@@ -51,9 +58,6 @@ animations = [{
 }]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mbq8b"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
-size = Vector2(15, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
 size = Vector2(16, 18.5)
@@ -79,12 +83,11 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_4ikef")
 
-[node name="Stone" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "remote_transform", "variants_parent", "gpu_particles")]
+[node name="Stone" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "variants_parent", "gpu_particles")]
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_u2kx6")
 hit_point = NodePath("HitPoint")
-remote_transform = NodePath("SpriteAnimationManager/ShadowRemote")
 tool_type = 3
 variants_parent = NodePath("SpriteAnimationManager/Variants")
 resource_item = SubResource("Resource_o5wt5")
@@ -104,31 +107,33 @@ animation = &"Normal"
 centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+y_sort_enabled = true
 material = SubResource("CanvasItemMaterial_mbq8b")
-position = Vector2(-8, -12)
-texture = ExtResource("20_jrb50")
+position = Vector2(-16, -12)
+texture = ExtResource("11_wcywb")
 
 [node name="Variants" type="Node2D" parent="SpriteAnimationManager"]
 
 [node name="Variant_0" type="Node2D" parent="SpriteAnimationManager/Variants"]
 script = ExtResource("6_ohxhc")
+polygon_points = PackedVector2Array(-9, -4, -12, -1, -19, -1, -22, -4, -22, -7, -20, -8, -11, -8, -9, -7)
 textures = Array[Texture2D]([ExtResource("7_3tgrj"), ExtResource("8_eo6lx"), ExtResource("9_lvvda"), ExtResource("10_aplkg"), ExtResource("11_l15c7"), ExtResource("11_wcywb")])
+shadow_textures = Array[Texture2D]([ExtResource("13_upn62"), ExtResource("14_a18hy"), ExtResource("15_78vli"), ExtResource("16_tside"), ExtResource("17_gqg28"), ExtResource("18_k2j78")])
 
 [node name="Variant_1" type="Node2D" parent="SpriteAnimationManager/Variants"]
 script = ExtResource("6_ohxhc")
+polygon_points = PackedVector2Array(-9, -5, -12, -2, -16, -1, -21, -1, -23, -3, -23, -10, -21, -12, -18, -13, -13, -13, -11, -12, -9, -10)
 textures = Array[Texture2D]([ExtResource("12_mbq8b"), ExtResource("13_odv37"), ExtResource("14_pya2l"), ExtResource("15_nkyxh"), ExtResource("16_siybx"), ExtResource("17_xismg"), ExtResource("18_eyvkr"), ExtResource("19_73s73"), ExtResource("20_jrb50")])
 shadow_textures = Array[Texture2D]([ExtResource("21_hx0kv"), ExtResource("22_4xwme"), ExtResource("23_ap75o"), ExtResource("24_gcxhf"), ExtResource("25_h0pa2"), ExtResource("26_mlxdn"), ExtResource("27_upn62"), ExtResource("28_a18hy"), ExtResource("29_78vli")])
 
-[node name="ShadowRemote" type="RemoteTransform2D" parent="SpriteAnimationManager"]
-position = Vector2(-8, -12)
-update_rotation = false
-update_scale = false
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("36_a18hy")]
+position = Vector2(-16, -12)
 
-[node name="BuildingCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-7.5, -7)
-shape = SubResource("RectangleShape2D_m0htq")
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-9, -4, -12, -1, -19, -1, -22, -4, -22, -7, -20, -8, -11, -8, -9, -7)
 
 [node name="MouseArea" type="Area2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(-8, -8)
 script = ExtResource("4_qgqm3")
@@ -141,7 +146,7 @@ shape = SubResource("RectangleShape2D_a25cn")
 offset_left = -27.0
 offset_top = -32.0
 offset_right = 13.0
-offset_bottom = -28.0
+offset_bottom = -31.0
 mouse_filter = 2
 
 [node name="StoneParticles" type="GPUParticles2D" parent="."]

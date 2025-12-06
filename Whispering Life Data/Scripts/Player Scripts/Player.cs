@@ -3,6 +3,8 @@ using Godot;
 
 public partial class Player : CharacterBody2D
 {
+    [Export]
+    public Texture2D shadow_texture;
     public static Player instance = null;
     public static Camera2D camera;
     public static CharacterSave char_save = new CharacterSave();
@@ -16,13 +18,20 @@ public partial class Player : CharacterBody2D
     private float min_zoom_offset = 1f;
     private float normal_zoom_offset = 1.5f;
     private float zoom_speed = 0.1f;
+    private ShadowNode shadowNode;
 
     public override void _Ready()
     {
+        anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        if (Logger.NodeIsNotNull(GetNode<ShadowNode>("ShadowNode")))
+        {
+            shadowNode = GetNode<ShadowNode>("ShadowNode");
+            shadowNode.SetTexture(shadow_texture);
+        }
+
         instance = this;
         player_stamina = GetNode<PlayerStamina>("PlayerStamina");
         player_stats = GetNode<PlayerStats>("PlayerStats");
-        anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
         camera = GetNode<Camera2D>("Camera2D");
         camera.Zoom = new Vector2(normal_zoom_offset, normal_zoom_offset);

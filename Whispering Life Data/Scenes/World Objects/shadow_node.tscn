@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr71wklpfy30f"]
+
+[ext_resource type="Script" uid="uid://cfu54blfime0u" path="res://Scenes/World Objects/Mineable Objects/ShadowNode.cs" id="1_fe1km"]
+
+[node name="ShadowNode" type="Node2D" node_paths=PackedStringArray("remote_transform")]
+script = ExtResource("1_fe1km")
+remote_transform = NodePath("ShadowRemote")
+
+[node name="ShadowRemote" type="RemoteTransform2D" parent="."]
+update_rotation = false
+update_scale = false

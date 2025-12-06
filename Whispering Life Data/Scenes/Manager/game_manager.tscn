@@ -730,6 +730,7 @@ mouse_filter = 2
 
 [node name="ShadowManager" type="CanvasGroup" parent="."]
 self_modulate = Color(1, 1, 1, 0.19607843)
+z_index = -1
 script = ExtResource("44_4xc4d")
 
 [connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]

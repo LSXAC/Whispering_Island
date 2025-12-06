@@ -18,7 +18,7 @@ public abstract partial class Building_Node : Node2D
 
     public SpriteAnimationManager sprite_anim_manager;
 
-    public CollisionShape2D collision_shape;
+    public CollisionPolygon2D collision_polygon;
 
     public bool mouse_inside = false;
 
@@ -29,7 +29,7 @@ public abstract partial class Building_Node : Node2D
         if (ignore_node_structure)
             return;
         sprite_anim_manager = GetNode<SpriteAnimationManager>("SpriteAnimationManager");
-        collision_shape = GetNode<CollisionShape2D>("BuildingCollision");
+        collision_polygon = GetNode<CollisionPolygon2D>("BuildingPolygon");
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -91,7 +91,7 @@ public abstract partial class Building_Node : Node2D
 
     public void DisableCollision()
     {
-        if (Logger.NodeIsNotNull(collision_shape))
-            collision_shape.Disabled = true;
+        if (Logger.NodeIsNotNull(collision_polygon))
+            collision_polygon.Disabled = true;
     }
 }

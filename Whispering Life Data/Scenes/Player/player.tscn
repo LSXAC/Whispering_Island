@@ -1,7 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://njw4so7o83dw"]
+[gd_scene load_steps=38 format=3 uid="uid://njw4so7o83dw"]
 
 [ext_resource type="Script" uid="uid://gvudefjfv4jx" path="res://Scripts/Player Scripts/Player.cs" id="1_2p5ml"]
 [ext_resource type="Texture2D" uid="uid://b4214y7h1nkv7" path="res://Sprites/Char_Animation.png" id="2_c6oqb"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="3_gk6dx"]
 [ext_resource type="Script" uid="uid://bp563ixlsam56" path="res://Scripts/Player Scripts/PlayerStats.cs" id="5_f3lay"]
 [ext_resource type="Script" uid="uid://bphfcvdv87vxh" path="res://Scripts/Player Scripts/PlayerStamina.cs" id="5_l640a"]
 [ext_resource type="Script" uid="uid://bkcah5h7fcbm5" path="res://Scenes/Player/LightBehaviour.cs" id="6_dd0ac"]
@@ -240,6 +241,7 @@ y_sort_enabled = true
 motion_mode = 1
 safe_margin = 3.0
 script = ExtResource("1_2p5ml")
+shadow_texture = ExtResource("6_k5wdo")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -256,8 +258,7 @@ position_smoothing_speed = 6.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_gvbij")
-animation = &"Idle_Up"
-frame_progress = 0.320493
+animation = &"Down"
 speed_scale = 1.35
 offset = Vector2(0, -15)
 
@@ -271,12 +272,6 @@ shape = SubResource("RectangleShape2D_rjp5d")
 
 [node name="PlayerStamina" type="Node2D" parent="."]
 script = ExtResource("5_l640a")
-
-[node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.392157)
-y_sort_enabled = true
-position = Vector2(0, -4)
-texture = ExtResource("6_k5wdo")
 
 [node name="PlayerStats" type="Node2D" parent="."]
 script = ExtResource("5_f3lay")
@@ -293,6 +288,9 @@ script = ExtResource("7_jlvik")
 icon_texture = ExtResource("7_0u5uq")
 parent = NodePath("..")
 scale = Vector2(4, 4)
+
+[node name="ShadowNode" parent="." instance=ExtResource("3_gk6dx")]
+position = Vector2(0, -3)
 
 [connection signal="area_entered" from="Area2D" to="." method="OnAreaEntered"]
 [connection signal="area_exited" from="Area2D" to="." method="OnAreaLeaved"]

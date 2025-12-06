@@ -16,9 +16,6 @@ public partial class MineableObject : placeable_building
     public bool growable = false;
 
     [Export]
-    public RemoteTransform2D remote_transform;
-
-    [Export]
     public PlayerStats.TOOLTYPE tool_type;
 
     [Export]
@@ -51,7 +48,6 @@ public partial class MineableObject : placeable_building
     public GpuParticles2D gpu_particles;
     public int max_durability;
     public int current_durability;
-    public Sprite2D shadow_sprite;
 
     TimerBar timer_bar;
     Area2D interactableArea;
@@ -86,12 +82,6 @@ public partial class MineableObject : placeable_building
 
     public override void _Ready()
     {
-        //Create & Link RemoteTransform2D to Sprite2D for Shadows
-        shadow_sprite = new Sprite2D();
-        shadow_sprite.Centered = true;
-        GameManager.instance.shadow_manager.AddChild(shadow_sprite);
-        remote_transform.RemotePath = shadow_sprite.GetPath();
-
         base._Ready();
         if (rnd_height)
         {
@@ -99,6 +89,7 @@ public partial class MineableObject : placeable_building
             float rnd_y = 0.75f + (float)(random.NextDouble() / 2f);
             Scale = new Vector2(rnd_y, rnd_y);
         }
+
         if (variants_parent == null)
             return;
 
@@ -106,7 +97,12 @@ public partial class MineableObject : placeable_building
         max_durability = mine_textures.textures.Count - 1;
         current_durability = max_durability;
         sprite_anim_manager.SetTexture2D(mine_textures.textures[current_durability]);
-        shadow_sprite.Texture = mine_textures.shadow_textures[current_durability];
+
+        collision_polygon.Polygon = mine_textures.polygon_points;
+        sprite_anim_manager.shadowNode.SetTexture(
+            mine_textures.shadow_textures[current_durability]
+        );
+
         if (Logger.NodeIsNotNull(GetNode<TimerBar>("TimerBar")))
         {
             timer_bar = GetNode<TimerBar>("TimerBar");
@@ -116,15 +112,10 @@ public partial class MineableObject : placeable_building
         SetResourceTexture();
     }
 
-    public void RemoveShadow()
-    {
-        shadow_sprite.QueueFree();
-        remote_transform.RemotePath = null;
-    }
-
     public void SpawnPlant()
     {
         UpdateGrowthTexture();
+        collision_polygon.Polygon = growth_textures.polygon_points;
         StartTimerBar(TimerBar.STATE.SPAWNING, respawn_seconds);
     }
 
@@ -206,7 +197,7 @@ public partial class MineableObject : placeable_building
         if (current_durability <= 0)
         {
             HandleBreak(bonusAmount);
-            RemoveShadow();
+            sprite_anim_manager.shadowNode.RemoveShadow();
             return;
         }
 
@@ -290,8 +281,8 @@ public partial class MineableObject : placeable_building
         in_cooldown = true;
         if (state == TimerBar.STATE.SPAWNING)
         {
-            if (collision_shape != null)
-                collision_shape.Disabled = false;
+            if (collision_polygon != null)
+                collision_polygon.Disabled = false;
             timer_bar.InitTimer(max_seconds: time, new_state: state, UpdateGrowthTexture);
             return;
         }
@@ -310,7 +301,7 @@ public partial class MineableObject : placeable_building
         if (frame_index >= growth_textures.textures.Count)
             frame_index = growth_textures.textures.Count - 1;
         sprite_anim_manager.SetTexture2D(growth_textures.textures[frame_index]);
-        shadow_sprite.Texture = growth_textures.shadow_textures[frame_index];
+        sprite_anim_manager.shadowNode.SetTexture(growth_textures.shadow_textures[frame_index]);
     }
 
     public void Reset(bool from_loading = false)
@@ -372,7 +363,9 @@ public partial class MineableObject : placeable_building
                 if (mine_textures.textures[current_durability] != null)
                 {
                     SetTextureToSpriteManager(mine_textures.textures[current_durability]);
-                    shadow_sprite.Texture = mine_textures.shadow_textures[current_durability];
+                    sprite_anim_manager.shadowNode.SetTexture(
+                        mine_textures.shadow_textures[current_durability]
+                    );
                 }
     }
 }

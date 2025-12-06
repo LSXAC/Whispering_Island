@@ -23,8 +23,13 @@ public partial class SpriteAnimationManager : Node2D
     private AnimationPlayer anim_player;
     private string current_animation = "";
 
+    public ShadowNode shadowNode;
+
     public override void _Ready()
     {
+        if (Logger.NodeIsNotNull(GetNode<ShadowNode>("ShadowNode")))
+            shadowNode = GetNode<ShadowNode>("ShadowNode");
+
         if (use_sprite)
         {
             animated_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
