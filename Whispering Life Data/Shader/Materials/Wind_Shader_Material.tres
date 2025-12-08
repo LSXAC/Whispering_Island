@@ -5,7 +5,7 @@
 [resource]
 shader = ExtResource("1_lr075")
 shader_parameter/wind_start_threshold = 0.10000000475
-shader_parameter/wind_end_threshold = 1.5000000712500001
+shader_parameter/wind_end_threshold = 1.50000007125
 shader_parameter/wind_end_threshold_2 = 1.0000000475
 shader_parameter/wind_strength = 0.050000002375
 shader_parameter/wind_speed = 1.25000005285523

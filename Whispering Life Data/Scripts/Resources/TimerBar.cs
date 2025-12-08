@@ -26,6 +26,8 @@ public partial class TimerBar : ProgressBar
 
     public override void _Ready()
     {
+        Value = 0;
+        MaxValue = 100;
         timer = GetNode<Timer>("Timer");
         label = GetNode<Label>("Label");
         label.Text = "";
