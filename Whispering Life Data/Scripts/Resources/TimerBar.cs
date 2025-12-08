@@ -36,7 +36,8 @@ public partial class TimerBar : ProgressBar
     {
         // Assign action to be called on timer completion
         this.action = action;
-        Visible = true;
+        if (new_state != STATE.COOLDOWN)
+            Visible = true;
         MaxValue = max_seconds;
         Value = 0;
         timer.WaitTime = 1;

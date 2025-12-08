@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://6f3r1pj1aoib"]
 
-[ext_resource type="Shader" uid="uid://cheo1qqdw3v2l" path="res://Tilesets/Clouds.gdshader" id="1_ovql8"]
+[ext_resource type="Shader" uid="uid://cheo1qqdw3v2l" path="res://Shader/Clouds.gdshader" id="1_ovql8"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ovql8"]
 noise_type = 5
