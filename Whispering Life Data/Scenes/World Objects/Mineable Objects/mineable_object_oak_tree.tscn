@@ -45,10 +45,10 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uwm61"]
 shader = ExtResource("6_pyyqx")
 shader_parameter/wind_start_threshold = 0.1
-shader_parameter/wind_end_threshold = 4.094000194465
-shader_parameter/wind_end_threshold_2 = 0.5010000237975
-shader_parameter/wind_strength = 0.10000000475
-shader_parameter/wind_speed = 1.0
+shader_parameter/wind_end_threshold = 2.000000095
+shader_parameter/wind_end_threshold_2 = 0.750000035625
+shader_parameter/wind_strength = 0.050000002375
+shader_parameter/wind_speed = 0.91500003694273
 shader_parameter/scale = 2.0
 
 [sub_resource type="Gradient" id="Gradient_uwm61"]
