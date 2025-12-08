@@ -46,8 +46,8 @@ animations = [{
 shader = ExtResource("6_pyyqx")
 shader_parameter/wind_start_threshold = 0.1
 shader_parameter/wind_end_threshold = 2.000000095
-shader_parameter/wind_end_threshold_2 = 0.750000035625
-shader_parameter/wind_strength = 0.050000002375
+shader_parameter/wind_end_threshold_2 = 0.400000019
+shader_parameter/wind_strength = 0.030000001425
 shader_parameter/wind_speed = 0.91500003694273
 shader_parameter/scale = 2.0
 
