@@ -525,6 +525,7 @@ hbox_category = []
 visible = false
 
 [node name="PlayerUI" parent="." instance=ExtResource("7_5qlke")]
+layer = 2
 
 [node name="GameMenu" parent="." instance=ExtResource("8_gytje")]
 visible = false
