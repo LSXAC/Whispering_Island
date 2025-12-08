@@ -283,11 +283,16 @@ public partial class MineableObject : placeable_building
         {
             if (collision_polygon != null)
                 collision_polygon.Disabled = false;
-            timer_bar.InitTimer(max_seconds: time, new_state: state, UpdateGrowthTexture);
+            timer_bar.InitTimer(
+                max_seconds: time,
+                new_state: state,
+                "Growth: 0%",
+                UpdateGrowthTexture
+            );
             return;
         }
 
-        timer_bar.InitTimer(max_seconds: time, new_state: state);
+        timer_bar.InitTimer(max_seconds: time, new_state: state, "Growth: 0%");
     }
 
     //Check if % of Timer is next current frame

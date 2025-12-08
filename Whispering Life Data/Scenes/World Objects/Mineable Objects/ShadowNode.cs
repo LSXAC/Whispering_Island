@@ -11,9 +11,14 @@ public partial class ShadowNode : Node2D
     [Export]
     public RemoteTransform2D remote_transform;
 
+    [Export]
+    public Texture2D single_shadow_texture;
+
     public override void _Ready()
     {
         shadow_sprite = CreateShadowSprite();
+        if (single_shadow_texture != null)
+            SetTexture(single_shadow_texture);
     }
 
     public Sprite2D CreateShadowSprite()
@@ -23,6 +28,7 @@ public partial class ShadowNode : Node2D
         shadow_sprite.Centered = true;
         GameManager.instance.shadow_manager.AddChild(shadow_sprite);
         remote_transform.RemotePath = shadow_sprite.GetPath();
+        shadow_sprite.GlobalPosition = GlobalPosition;
         return shadow_sprite;
     }
 

@@ -32,15 +32,21 @@ public partial class TimerBar : ProgressBar
         Visible = false;
     }
 
-    public void InitTimer(double max_seconds, STATE new_state, Action action = null)
+    public void InitTimer(
+        double max_seconds,
+        STATE new_state,
+        string start_string,
+        Action action = null
+    )
     {
         // Assign action to be called on timer completion
+        UpdateLabel(start_string);
         this.action = action;
-        if (new_state != STATE.COOLDOWN)
-            Visible = true;
         MaxValue = max_seconds;
         Value = 0;
         timer.WaitTime = 1;
+        if (new_state != STATE.COOLDOWN)
+            Visible = true;
         if (max_seconds < 1)
             timer.WaitTime = max_seconds;
         current_state = new_state;

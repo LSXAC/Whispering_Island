@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://bveoiwi14ha4g"]
+[gd_scene load_steps=44 format=4 uid="uid://bveoiwi14ha4g"]
 
 [ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island.cs" id="1_sbvtb"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="2_naawu"]
@@ -15,7 +15,6 @@
 [ext_resource type="TileSet" uid="uid://cul1wgsnkjbm5" path="res://Sprites/Tileset Sprites/World_map_tileset.tres" id="10_d668a"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="10_k0wjm"]
 [ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Resource Meta/Items/item_info_stone_pickaxe.tres" id="10_rokdp"]
-[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="11_000go"]
 [ext_resource type="Texture2D" uid="uid://125t5f6fiugo" path="res://Sprites/Monster_Island.png" id="11_qd1vh"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="11_ruxm3"]
 [ext_resource type="PackedScene" uid="uid://cxtq18i442ldo" path="res://Scenes/World Objects/Mineable Objects/mineable_object_oak_tree.tscn" id="12_3x7uo"]
@@ -29,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://eshgc8yqihmh" path="res://Scenes/World Objects/Mineable Objects/mineable_object_fibre.tscn" id="16_eltw0"]
 [ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://Scripts/WorldMapIcon.cs" id="17_7wf5s"]
 [ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe.png" id="18_0sl6k"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="23_2vll2"]
 [ext_resource type="Texture2D" uid="uid://ce16w5jut6adl" path="res://Sprites/Icons/world_map_quest_icon.png" id="25_0sl6k"]
 [ext_resource type="PackedScene" uid="uid://coeye4llpicv7" path="res://Scenes/World Objects/Mineable Objects/mineable_object_big_stone.tscn" id="28_2vll2"]
 
@@ -114,9 +114,6 @@ _data = {
 &"RESET": SubResource("Animation_000go")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_au0ls"]
-size = Vector2(32, 18)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oyyds"]
 size = Vector2(168, 152)
 
@@ -158,15 +155,6 @@ y_sort_enabled = true
 
 [node name="Signs" type="Node2D" parent="BridgePoints"]
 y_sort_enabled = true
-
-[node name="UpSign" parent="BridgePoints/Signs" node_paths=PackedStringArray("island") instance=ExtResource("2_wsc2u")]
-visible = false
-position = Vector2(13, -200)
-island = NodePath("../../..")
-dir = 1
-
-[node name="BuildingCollision" parent="BridgePoints/Signs/UpSign" index="1"]
-disabled = true
 
 [node name="RightSign" parent="BridgePoints/Signs" node_paths=PackedStringArray("island") instance=ExtResource("2_wsc2u")]
 position = Vector2(165, 1)
@@ -393,15 +381,6 @@ sprite_frames = SubResource("SpriteFrames_wl4wn")
 animation = &"Normal"
 centered = false
 
-[node name="Shadow" type="Sprite2D" parent="QuestSign/SpriteAnimationManager"]
-visible = false
-modulate = Color(0, 0, 0, 0.196078)
-z_index = -1
-z_as_relative = false
-position = Vector2(-8.5, -9)
-scale = Vector2(1.0625, 1)
-texture = ExtResource("11_000go")
-
 [node name="Sprite2D" type="Sprite2D" parent="QuestSign/SpriteAnimationManager"]
 z_index = -5
 y_sort_enabled = true
@@ -424,9 +403,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_wl4wn")
 }
 
-[node name="BuildingCollision" type="CollisionShape2D" parent="QuestSign"]
-position = Vector2(-32, -31)
-shape = SubResource("RectangleShape2D_au0ls")
+[node name="ShadowNode" parent="QuestSign/SpriteAnimationManager" instance=ExtResource("23_2vll2")]
+position = Vector2(-20, -67)
 
 [node name="MouseArea" type="Area2D" parent="QuestSign"]
 collision_layer = 2
@@ -446,6 +424,9 @@ icon_texture = ExtResource("25_0sl6k")
 icon_type = 3
 parent = NodePath("..")
 scale = Vector2(3, 3)
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="QuestSign"]
+polygon = PackedVector2Array(-29, -111, -54, -106, -76, -85, -73, -59, -67, -35, -46, -23, 16, -23, 27, -49, 30, -88, 10, -113, -13, -113)
 
 [node name="IslandObjectSaveManager" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -473,7 +454,8 @@ position = Vector2(-96, 24)
 position = Vector2(-136, 56)
 
 [node name="Tree7" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
-position = Vector2(176, -64)
+position = Vector2(183, -65)
+rnd_height = true
 
 [node name="Tree8" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(-144, -144)
@@ -529,6 +511,12 @@ position = Vector2(50, -145)
 [node name="Wheat2" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
 position = Vector2(64, -160)
 
+[node name="Wheat8" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
+position = Vector2(79, -145)
+
+[node name="Wheat9" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
+position = Vector2(32, -128)
+
 [node name="Wheat3" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
 position = Vector2(50, -14)
 
@@ -558,5 +546,3 @@ position = Vector2(128, -128)
 
 [connection signal="mouse_entered" from="QuestSign/MouseArea" to="QuestSign/MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="QuestSign/MouseArea" to="QuestSign/MouseArea" method="OnMouseLeaved"]
-
-[editable path="BridgePoints/Signs/UpSign"]
