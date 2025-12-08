@@ -433,7 +433,7 @@ y_sort_enabled = true
 script = ExtResource("13_lo8qh")
 
 [node name="Tree" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
-position = Vector2(80, -192)
+position = Vector2(72, -192)
 
 [node name="Tree2" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(112, -160)
@@ -442,101 +442,101 @@ position = Vector2(112, -160)
 position = Vector2(-96, -88)
 
 [node name="Tree9" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
-position = Vector2(-80, -176)
+position = Vector2(-72, -168)
 
 [node name="Tree4" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
-position = Vector2(94, 124)
+position = Vector2(-24, 112)
 
 [node name="Tree5" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
-position = Vector2(-96, 24)
+position = Vector2(-96, 16)
 
 [node name="Tree6" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
-position = Vector2(-136, 56)
+position = Vector2(-136, 64)
 
 [node name="Tree7" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
-position = Vector2(183, -65)
+position = Vector2(184, -64)
 rnd_height = true
 
 [node name="Tree8" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
-position = Vector2(-144, -144)
+position = Vector2(-136, -144)
 
 [node name="BigStone1" parent="IslandObjectSaveManager" instance=ExtResource("28_2vll2")]
-position = Vector2(-27, 13)
+position = Vector2(-24, 8)
 
 [node name="BigStone2" parent="IslandObjectSaveManager" instance=ExtResource("28_2vll2")]
-position = Vector2(-95, 164)
+position = Vector2(-96, 160)
 variant = 1
 
 [node name="BigStone3" parent="IslandObjectSaveManager" instance=ExtResource("28_2vll2")]
-position = Vector2(164, -133)
+position = Vector2(120, 128)
 
 [node name="BigStone4" parent="IslandObjectSaveManager" instance=ExtResource("28_2vll2")]
-position = Vector2(-13, -180)
+position = Vector2(-8, -176)
 variant = 1
 
 [node name="Stone" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-64, 16)
+position = Vector2(-64, 0)
 
 [node name="Stone2" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-29, -161)
+position = Vector2(-24, -160)
 variant = 1
 
 [node name="Stone3" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-64, -128)
+position = Vector2(-56, -128)
 variant = 1
 
 [node name="Stone9" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
 position = Vector2(-160, -56)
 
 [node name="Stone6" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-119, -143)
+position = Vector2(-120, -136)
 
 [node name="Stone10" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-141, -129)
+position = Vector2(-136, -128)
 variant = 1
 
 [node name="Stone7" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-43, 47)
+position = Vector2(-32, 56)
 
 [node name="Stone8" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(-120, 99)
+position = Vector2(-104, 104)
 
 [node name="Stone4" parent="IslandObjectSaveManager" instance=ExtResource("13_sqojh")]
-position = Vector2(96, 16)
+position = Vector2(104, 16)
 variant = 1
 
 [node name="Wheat" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
-position = Vector2(50, -145)
+position = Vector2(48, -144)
 
 [node name="Wheat2" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
 position = Vector2(64, -160)
 
 [node name="Wheat8" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
-position = Vector2(79, -145)
+position = Vector2(80, -144)
 
 [node name="Wheat9" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
 position = Vector2(32, -128)
 
 [node name="Wheat3" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
-position = Vector2(50, -14)
+position = Vector2(48, -16)
 
 [node name="Wheat4" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
-position = Vector2(-190, 30)
+position = Vector2(-192, 48)
 
 [node name="Wheat5" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
-position = Vector2(65, 17)
+position = Vector2(64, 16)
 
 [node name="Wheat6" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
-position = Vector2(-177, 50)
+position = Vector2(-176, 64)
 
 [node name="Wheat7" parent="IslandObjectSaveManager" instance=ExtResource("14_kjoym")]
-position = Vector2(65, -127)
+position = Vector2(64, -128)
 
 [node name="Fibre" parent="IslandObjectSaveManager" instance=ExtResource("16_eltw0")]
 position = Vector2(208, -8)
 
 [node name="Fibre4" parent="IslandObjectSaveManager" instance=ExtResource("16_eltw0")]
-position = Vector2(120, 40)
+position = Vector2(112, 48)
 
 [node name="Fibre2" parent="IslandObjectSaveManager" instance=ExtResource("16_eltw0")]
 position = Vector2(56, -96)
