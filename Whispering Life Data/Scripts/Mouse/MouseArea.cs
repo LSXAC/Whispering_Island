@@ -10,6 +10,9 @@ public partial class MouseArea : Area2D
     private ShaderMaterial remove_outline_shader = ResourceLoader.Load<ShaderMaterial>(
         "res://Shader/Remove_Outline_Color.tres"
     );
+    private ShaderMaterial wind_shader = ResourceLoader.Load<ShaderMaterial>(
+        "res://Shader/Materials/Wind_Shader_Material.tres"
+    );
 
     private Building_Node building_node;
 
@@ -67,7 +70,11 @@ public partial class MouseArea : Area2D
             return;
         }
 
-        building_node.sprite_anim_manager.GetCanvasItem().Material = null;
+        if (building_node.use_wind)
+            building_node.sprite_anim_manager.GetCanvasItem().Material = wind_shader;
+        else
+            building_node.sprite_anim_manager.GetCanvasItem().Material = null;
+
         if (building_node != null)
         {
             building_node.mouse_inside = false;

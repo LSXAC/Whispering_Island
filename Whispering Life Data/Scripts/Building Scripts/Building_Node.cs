@@ -8,6 +8,9 @@ public abstract partial class Building_Node : Node2D
     public bool ignore_node_structure = false;
 
     [Export]
+    public bool use_wind = false;
+
+    [Export]
     private string title = "";
 
     [Export]
