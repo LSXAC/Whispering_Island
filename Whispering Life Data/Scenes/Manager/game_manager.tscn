@@ -517,6 +517,7 @@ position = Vector2(-6, -32)
 texture = ExtResource("23_gytje")
 
 [node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer", "hbox_category") instance=ExtResource("9_1xtv0")]
+layer = 2
 visible = false
 building_placer = NodePath("../BuildingManager/BuildingPlacer")
 hbox_category = []
@@ -525,7 +526,6 @@ hbox_category = []
 visible = false
 
 [node name="PlayerUI" parent="." instance=ExtResource("7_5qlke")]
-layer = 2
 
 [node name="GameMenu" parent="." instance=ExtResource("8_gytje")]
 visible = false
