@@ -350,6 +350,7 @@ public partial class MineableObject : placeable_building
             current_durability = ros.current_durability;
             in_cooldown = ros.in_cooldown;
             variant = ros.variant;
+            GetTexture2DArray(variant);
             if (ros.last_state != TimerBar.STATE.NONE)
                 if (ros.time_left == 0)
                     Reset(from_loading: true);

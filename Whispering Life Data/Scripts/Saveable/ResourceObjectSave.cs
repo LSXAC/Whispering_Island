@@ -23,7 +23,7 @@ public partial class ResourceObjectSave : Resource
     public Database.BUILDING_ID building_id;
 
     [Export]
-    public int variant;
+    public int variant = 0;
 
     public ResourceObjectSave() { }
 
