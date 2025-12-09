@@ -134,12 +134,10 @@ public partial class GlobalFunctions : Node2D
     public static void OutlineTree()
     {
         Tutorial.instance.Tree.Visible = true;
-        Tutorial.instance.Tree.GetCanvasItem().Material = Tutorial.instance.outline_shader;
     }
 
     public static void RemoveOutlineTree()
     {
-        Tutorial.instance.Tree.GetCanvasItem().Material = null;
         Tutorial.instance.Tree.Visible = false;
     }
 }

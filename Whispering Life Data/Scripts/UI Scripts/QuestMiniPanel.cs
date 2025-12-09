@@ -30,13 +30,21 @@ public partial class QuestMiniPanel : PanelContainer
     {
         Debug.Print(time.ToString());
         int min = time / 60;
-        int sec = (time - min * 60);
+        int sec = time - min * 60;
         time_label.Text =
             TranslationServer.Translate("PLAYERUI_QUEST_TIME_LEFT")
             + ": "
             + min.ToString("D2")
             + ":"
             + sec.ToString("D2");
+    }
+
+    public override void _Process(double delta)
+    {
+        if (!GameManager.instance.tutorial_finished && GetChild<Control>(0).Visible)
+            GetChild<Control>(0).Visible = false;
+        else if (GameManager.instance.tutorial_finished && !GetChild<Control>(0).Visible)
+            GetChild<Control>(0).Visible = true;
     }
 
     public void InitQuestMiniPanel(QuestInfo currentQuest)

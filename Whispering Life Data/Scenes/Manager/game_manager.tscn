@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=56 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" uid="uid://sxd7avtys7n7" path="res://Scripts/Manager Scripts/GameManager.cs" id="1_2n0he"]
 [ext_resource type="Script" uid="uid://cwonaacplejxj" path="res://Scripts/Building Scripts/BuildingPlacer.cs" id="2_h8pdp"]
@@ -11,8 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://44ev1js8tcvp" path="res://Scenes/UI/Build_Menu.tscn" id="9_1xtv0"]
 [ext_resource type="Script" uid="uid://b1ofqxr15cnlw" path="res://Scripts/Global/GlobalFunctions.cs" id="10_1whgu"]
 [ext_resource type="Resource" uid="uid://bixdfcui86uar" path="res://Resource Meta/Quests/quest_info_2.tres" id="10_h8pdp"]
+[ext_resource type="Shader" uid="uid://6h8nokelt8tj" path="res://Shader/Materials/Wind.gdshader" id="10_uv8n6"]
+[ext_resource type="Texture2D" uid="uid://bii6l8tbbd33s" path="res://Sprites/Spritesheets/Plants/Oak_Tree/Oak_Tree_Animation4.png" id="11_4xc4d"]
 [ext_resource type="PackedScene" uid="uid://o62xek3uvpo8" path="res://Scenes/UI/quest_menu.tscn" id="11_5h8gv"]
 [ext_resource type="Resource" uid="uid://cpmdxkr2eawci" path="res://Resource Meta/Quests/quest_info_3.tres" id="11_lj4ef"]
+[ext_resource type="Texture2D" uid="uid://b2ynp5wbg10oe" path="res://Sprites/Spritesheets/Plants/Oak_Tree/Oak_Tree_Animation_Shadow4.png" id="12_veqyt"]
 [ext_resource type="Resource" uid="uid://cim2ng28wf04v" path="res://Resource Meta/Quests/quest_info_4.tres" id="12_wajns"]
 [ext_resource type="Resource" uid="uid://bxwgmp1fse4m" path="res://Resource Meta/Quests/quest_info_5.tres" id="13_f280c"]
 [ext_resource type="Script" uid="uid://diq6llslgpl4r" path="res://Scripts/Manager Scripts/QuestManager.cs" id="13_irdkv"]
@@ -22,14 +25,11 @@
 [ext_resource type="Resource" uid="uid://b4f0pdj2v6jfh" path="res://Resource Meta/Quests/quest_info_8.tres" id="16_gytje"]
 [ext_resource type="Resource" uid="uid://c2p2638k7calp" path="res://Resource Meta/Quests/quest_info_9.tres" id="17_1xtv0"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="19_f280c"]
-[ext_resource type="Texture2D" uid="uid://xph8b14pkbju" path="res://Sprites/Tree/Tree_Leave.png" id="20_p85m3"]
 [ext_resource type="Script" uid="uid://c54qloxkixlh" path="res://Scripts/Manager Scripts/TimeManager.cs" id="21_3gobv"]
 [ext_resource type="Texture2D" uid="uid://bfw0elq5yfvqk" path="res://Sprites/Leave.png" id="21_5qlke"]
 [ext_resource type="Script" uid="uid://blf1q1vqdlpkq" path="res://Scripts/Manager Scripts/DayNightManager.cs" id="22_3jk2j"]
-[ext_resource type="Texture2D" uid="uid://b18t84mi1huam" path="res://Sprites/Spritesheets/Plants/Wood_Stump.png" id="23_gytje"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Resource Meta/daynightcycle-gradient-texture.tres" id="23_rd84m"]
 [ext_resource type="Script" uid="uid://duioi7flou3wn" path="res://Scripts/Tutorial.cs" id="24_f4sbj"]
-[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="26_nq6jg"]
 [ext_resource type="AudioStream" uid="uid://baxwufa73fl35" path="res://Audio/Atmosphere Sounds/441638__naturenotesuk__birds-at-feeder.wav" id="27_73301"]
 [ext_resource type="AudioStream" uid="uid://bwod2wh4o0qwt" path="res://Audio/Background Music/759996__josefpres__piano-loops-167-octave-short-loop-120-bpm.wav" id="28_2plat"]
 [ext_resource type="Script" uid="uid://c3aa8j0h5bxr1" path="res://Scripts/GlobalAnimationTimer.cs" id="29_q20se"]
@@ -44,7 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://wyobtxm8epgl" path="res://Sprites/Icons/world_compass.png" id="41_irdkv"]
 [ext_resource type="Script" uid="uid://bn8il7ud0h80t" path="res://Scenes/Manager/ShadowManager.cs" id="44_4xc4d"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1xtv0"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_us0rr"]
 animations = [{
 "frames": [],
 "loop": true,
@@ -52,190 +52,29 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_l6moi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uwm61"]
+shader = ExtResource("10_uv8n6")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 2.0
+shader_parameter/wind_end_threshold_2 = 0.400000019
+shader_parameter/wind_strength = 0.030000001425
+shader_parameter/wind_speed = 0.9000000362302301
+shader_parameter/scale = 2.0
 
-[sub_resource type="Animation" id="Animation_pnxny"]
-resource_name = "Tree_Idle"
-length = 1.3
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.8, 1.23333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0349066, -0.0261799, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave2:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.966667, 1.23333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0523599, -0.0261799, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave3:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.7, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0349066, -0.0261799, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave4:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.9, 1.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0523599, -0.0261799, 0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave5:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.9, 1.16667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0349066, -0.0261799, 0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave6:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.933333, 1.43333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0349066, -0.0261799, 0.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave7:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.266667, 1.06667, 1.33333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0523599, -0.0261799, 0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave8:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.266667, 1.06667, 1.33333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0349066, -0.0261799, 0.0]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave9:rotation")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.7, 1.16667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0349066, -0.0261799, 0.0]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave10:rotation")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.266667, 1.13333, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0523599, -0.0261799, 0.0]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave11:rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.533333, 1.13333, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0523599, -0.0261799, 0.0]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("SpriteAnimationManager/Animated_Tree/Leaves/Leave12:rotation")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.866667, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0349066, -0.0261799, 0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_14qf6"]
-_data = {
-&"RESET": SubResource("Animation_l6moi"),
-&"Tree_Idle": SubResource("Animation_pnxny")
-}
-
-[sub_resource type="Gradient" id="Gradient_1whgu"]
+[sub_resource type="Gradient" id="Gradient_uwm61"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_uwm61"]
-gradient = SubResource("Gradient_1whgu")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i7g1i"]
+gradient = SubResource("Gradient_uwm61")
 
-[sub_resource type="Curve" id="Curve_5h8gv"]
+[sub_resource type="Curve" id="Curve_fj6mt"]
 _data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_cgqts"]
-curve = SubResource("Curve_5h8gv")
+[sub_resource type="CurveTexture" id="CurveTexture_5dwf0"]
+curve = SubResource("Curve_fj6mt")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t3yax"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pa158"]
 particle_flag_disable_z = true
 emission_shape_scale = Vector3(15, 1, 1)
 emission_shape = 3
@@ -247,8 +86,8 @@ radial_velocity_max = 25.0
 gravity = Vector3(0, 45, 0)
 scale_min = 0.5
 scale_max = 0.7
-scale_curve = SubResource("CurveTexture_cgqts")
-color_ramp = SubResource("GradientTexture1D_uwm61")
+scale_curve = SubResource("CurveTexture_5dwf0")
+color_ramp = SubResource("GradientTexture1D_i7g1i")
 
 [sub_resource type="Shader" id="Shader_wl4wn"]
 code = "shader_type canvas_item;
@@ -345,163 +184,45 @@ position_smoothing_speed = 10.0
 
 [node name="Tutorial" type="Node2D" parent="." node_paths=PackedStringArray("Tree")]
 script = ExtResource("24_f4sbj")
-Tree = NodePath("SpriteAnimationManager")
+Tree = NodePath("Tree/SpriteAnimationManager")
 
-[node name="SpriteAnimationManager" type="Node2D" parent="Tutorial"]
-visible = false
-position = Vector2(47, -179)
+[node name="Tree" type="StaticBody2D" parent="Tutorial"]
+y_sort_enabled = true
+position = Vector2(75, -197)
+collision_layer = 13
+
+[node name="SpriteAnimationManager" type="Node2D" parent="Tutorial/Tree"]
 script = ExtResource("19_f280c")
 anim_name = "Tree_Idle"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tutorial/SpriteAnimationManager"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tutorial/Tree/SpriteAnimationManager"]
 position = Vector2(-32, -48)
-sprite_frames = SubResource("SpriteFrames_1xtv0")
+sprite_frames = SubResource("SpriteFrames_us0rr")
 animation = &"Normal"
 centered = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Tutorial/SpriteAnimationManager"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_14qf6")
-}
-
-[node name="Animated_Tree" type="Node2D" parent="Tutorial/SpriteAnimationManager"]
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial/Tree/SpriteAnimationManager"]
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_uwm61")
+texture = ExtResource("11_4xc4d")
 
-[node name="Leaves" type="Node2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree"]
+[node name="Shadow" type="Sprite2D" parent="Tutorial/Tree/SpriteAnimationManager"]
+modulate = Color(1, 1, 1, 0.39215687)
 y_sort_enabled = true
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("12_veqyt")
 
-[node name="Leave" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
-z_index = 10
+[node name="FallingLeaves" type="GPUParticles2D" parent="Tutorial/Tree/SpriteAnimationManager"]
+z_index = -1
 y_sort_enabled = true
-position = Vector2(-5.70505, -31.8279)
-texture = ExtResource("20_p85m3")
-centered = false
-offset = Vector2(-8, -13)
-
-[node name="Leave2" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(4.29495, -27.8279)
-rotation = -0.0206425
-texture = ExtResource("20_p85m3")
-centered = false
-offset = Vector2(-8, -13)
-
-[node name="Leave3" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(-5.70505, -25.8279)
-rotation = -0.009264
-texture = ExtResource("20_p85m3")
-centered = false
-offset = Vector2(-8, -13)
-
-[node name="Leave4" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(-17.7051, -27.8279)
-rotation = -0.018125
-texture = ExtResource("20_p85m3")
-centered = false
-offset = Vector2(-8, -13)
-
-[node name="Leave5" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(-14.7051, -34.8279)
-rotation = -0.0140975
-texture = ExtResource("20_p85m3")
-centered = false
-offset = Vector2(-8, -13)
-
-[node name="Leave6" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(2.29495, -36.8279)
-rotation = -0.0197727
-texture = ExtResource("20_p85m3")
-centered = false
-offset = Vector2(-8, -13)
-
-[node name="Leave7" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(-5.70505, -39.8279)
-rotation = -0.0218999
-texture = ExtResource("20_p85m3")
-centered = false
-offset = Vector2(-8, -13)
-
-[node name="Leave8" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(-20.7051, -24.8279)
-rotation = -0.022851
-texture = ExtResource("20_p85m3")
-centered = false
-offset = Vector2(-8, -13)
-
-[node name="Leave9" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(-13.7051, -21.8279)
-rotation = -0.00805572
-texture = ExtResource("20_p85m3")
-centered = false
-offset = Vector2(-8, -13)
-
-[node name="Leave10" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(-0.705051, -20.8279)
-rotation = -0.0161876
-texture = ExtResource("20_p85m3")
-centered = false
-offset = Vector2(-8, -13)
-
-[node name="Leave11" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(7.29495, -23.8279)
-rotation = -0.0117466
-texture = ExtResource("20_p85m3")
-centered = false
-offset = Vector2(-8, -13)
-
-[node name="Leave12" type="Sprite2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree/Leaves"]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(10.2949, -29.8279)
-rotation = -0.013896
-texture = ExtResource("20_p85m3")
-centered = false
-offset = Vector2(-8, -13)
-
-[node name="FallingLeaves" type="GPUParticles2D" parent="Tutorial/SpriteAnimationManager/Animated_Tree"]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(-5, -27)
+position = Vector2(-12, -26)
 amount = 7
 texture = ExtResource("21_5qlke")
 lifetime = 0.7
 speed_scale = 0.7
 explosiveness = 0.3
 randomness = 0.5
-process_material = SubResource("ParticleProcessMaterial_t3yax")
-
-[node name="Shadow" type="Sprite2D" parent="Tutorial/SpriteAnimationManager"]
-modulate = Color(0, 0, 0, 0.196078)
-z_index = -1
-z_as_relative = false
-position = Vector2(-5, -12)
-scale = Vector2(2.5, 1.46875)
-texture = ExtResource("26_nq6jg")
-
-[node name="Sprite2D" type="Sprite2D" parent="Tutorial/SpriteAnimationManager"]
-y_sort_enabled = true
-position = Vector2(-6, -32)
-texture = ExtResource("23_gytje")
+process_material = SubResource("ParticleProcessMaterial_pa158")
 
 [node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer", "hbox_category") instance=ExtResource("9_1xtv0")]
 layer = 2
@@ -730,5 +451,4 @@ script = ExtResource("44_4xc4d")
 [connection signal="pressed" from="World/WorldMap/VBoxContainer/Button" to="World/WorldMap" method="OnClearFilters"]
 
 [editable path="IslandManager/MainIsland"]
-[editable path="IslandManager/MainIsland/BridgePoints/Signs/UpSign"]
 [editable path="BuildingMenu"]

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://Scenes/UI/tab_container_panel_style.tres.tres" id="2_odc0r"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
-[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="3_nlsx6"]
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://Fonts/upheavtt.ttf" id="3_nlsx6"]
 [ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://Scenes/UI/slot_focus_style.tres" id="6_1kn55"]
 [ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://Scenes/UI/Button_Disabled_Style.tres.tres" id="7_icj72"]
 [ext_resource type="StyleBox" uid="uid://c0rrcqgclnbps" path="res://Scenes/UI/Button_Hover_Style.tres" id="8_wbrl0"]
@@ -105,32 +105,49 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.501961)
+modulate = Color(0.976471, 0.972549, 0.443137, 1)
+clip_contents = false
 layout_mode = 2
 mouse_filter = 1
 theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("3_nlsx6")
 theme_override_fonts/bold_font = ExtResource("3_nlsx6")
-theme_override_font_sizes/bold_italics_font_size = 12
-theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
 bbcode_enabled = true
 text = "Character"
 fit_content = true
 scroll_active = false
 
+[node name="ColorRect" type="ColorRect" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
 [node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_a8ve6")]
 unique_name_in_owner = true
+clip_contents = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("3_nlsx6")
 theme_override_fonts/bold_font = ExtResource("3_nlsx6")
-theme_override_font_sizes/bold_italics_font_size = 10
-theme_override_font_sizes/normal_font_size = 8
-text = "Dialogue..."
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/bold_italics_font_size = 12
+text = "Dialogue... [b][color=gold]Inventar[/color][/b]Dialogue... [b][color=gold]Inventar[/color][/b]Dialogue... [b][color=gold]Inventar[/color][/b]Dialogue... [b][color=gold]Inventar[/color][/b]"
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
@@ -140,10 +157,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 19.0
-offset_top = 28.0
-offset_right = 290.0
-offset_bottom = 98.0
+offset_left = 14.0
+offset_top = 36.0
+offset_right = 285.0
+offset_bottom = 106.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
@@ -153,15 +170,16 @@ script = ExtResource("3_72ixx")
 response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_nlsx6")
-theme_override_font_sizes/font_size = 10
-theme_override_styles/focus = ExtResource("6_1kn55")
-theme_override_styles/disabled = ExtResource("7_icj72")
-theme_override_styles/hover = ExtResource("8_wbrl0")
-theme_override_styles/pressed = ExtResource("9_83g4i")
+theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = ExtResource("10_exrs5")
+theme_override_styles/pressed = ExtResource("9_83g4i")
+theme_override_styles/hover = ExtResource("8_wbrl0")
+theme_override_styles/disabled = ExtResource("7_icj72")
+theme_override_styles/focus = ExtResource("6_1kn55")
 text = "Response example"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]

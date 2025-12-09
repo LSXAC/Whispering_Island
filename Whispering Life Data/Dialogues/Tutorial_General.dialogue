@@ -24,7 +24,7 @@ Spieler: Wenigstens hast du einen Plan! [ID:t57850056b9]
 => Holz
 
 ~ Holz
-do GlobalFunctions.MoveCameraToPosition(Vector2(32,-160))
+do GlobalFunctions.MoveCameraToPosition(Vector2(32,-208))
 do GlobalFunctions.OutlineTree()
 Boss: Aufpassen! Das ist [b][color=gold]Holz[/color][/b]! [ID:t2ae9b1b6be]
 Boss: Wenn du das abbaust, wird [b][color=gold]automatisch[/color][/b] Holz in dein [b][color=gold]Inventar[/color][/b] gepackt. [ID:t53e0432c4a] 

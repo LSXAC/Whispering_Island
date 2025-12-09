@@ -674,6 +674,7 @@ hbox_items = [NodePath("MarginContainer/VBoxContainer/HBoxItem"), NodePath("Marg
 time_label = NodePath("MarginContainer/VBoxContainer/TimeLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/QuestMiniPanel"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
@@ -805,6 +806,10 @@ layout_mode = 2
 
 [node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SlotBackground0" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
 theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
 
@@ -834,6 +839,10 @@ layout_mode = 2
 
 [node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SlotBackground0" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
 theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
 
@@ -863,6 +872,10 @@ layout_mode = 2
 
 [node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer/SlotBackground0" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
 theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
 
@@ -892,6 +905,10 @@ layout_mode = 2
 
 [node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer/SlotBackground0" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
 theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
 

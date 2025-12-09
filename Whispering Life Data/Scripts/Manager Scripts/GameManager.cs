@@ -102,7 +102,6 @@ public partial class GameManager : Node2D
 
         cutscene_camera = GetNode<Camera2D>("CutsceneCamera");
         island_parent = GetNode<Node2D>("IslandManager");
-        Node2D main_island_scene = island_parent.GetNode<Node2D>("MainIsland");
 
         CreateIslands();
         CheckGameSave();

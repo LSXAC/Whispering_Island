@@ -4,10 +4,6 @@ using Godot;
 
 public partial class Tutorial : Node2D
 {
-    public ShaderMaterial outline_shader = ResourceLoader.Load<ShaderMaterial>(
-        "res://Shader/Outline_Shader.tres"
-    );
-
     [Export]
     public SpriteAnimationManager Tree;
 

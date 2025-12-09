@@ -21,6 +21,14 @@ public partial class ShadowNode : Node2D
             SetTexture(single_shadow_texture);
     }
 
+    public override void _PhysicsProcess(double delta)
+    {
+        if (!GameManager.instance.tutorial_finished && shadow_sprite.Visible)
+            shadow_sprite.Visible = false;
+        else if (GameManager.instance.tutorial_finished && !shadow_sprite.Visible)
+            shadow_sprite.Visible = true;
+    }
+
     public Sprite2D CreateShadowSprite()
     {
         Sprite2D shadow_sprite = new Sprite2D();
