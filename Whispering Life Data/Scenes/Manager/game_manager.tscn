@@ -15,10 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://bii6l8tbbd33s" path="res://Sprites/Spritesheets/Plants/Oak_Tree/Oak_Tree_Animation4.png" id="11_4xc4d"]
 [ext_resource type="PackedScene" uid="uid://o62xek3uvpo8" path="res://Scenes/UI/quest_menu.tscn" id="11_5h8gv"]
 [ext_resource type="Resource" uid="uid://cpmdxkr2eawci" path="res://Resource Meta/Quests/quest_info_3.tres" id="11_lj4ef"]
-[ext_resource type="Texture2D" uid="uid://b2ynp5wbg10oe" path="res://Sprites/Spritesheets/Plants/Oak_Tree/Oak_Tree_Animation_Shadow4.png" id="12_veqyt"]
 [ext_resource type="Resource" uid="uid://cim2ng28wf04v" path="res://Resource Meta/Quests/quest_info_4.tres" id="12_wajns"]
 [ext_resource type="Resource" uid="uid://bxwgmp1fse4m" path="res://Resource Meta/Quests/quest_info_5.tres" id="13_f280c"]
 [ext_resource type="Script" uid="uid://diq6llslgpl4r" path="res://Scripts/Manager Scripts/QuestManager.cs" id="13_irdkv"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="13_uv8n6"]
 [ext_resource type="Resource" uid="uid://bmkxnaw3cirb8" path="res://Resource Meta/Quests/quest_info_6.tres" id="14_p85m3"]
 [ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Resource Meta/Quests/quest_info_1.tres" id="14_sw2xm"]
 [ext_resource type="Resource" uid="uid://bbb0mqt5qpmap" path="res://Resource Meta/Quests/quest_info_7.tres" id="15_5qlke"]
@@ -206,12 +206,6 @@ y_sort_enabled = true
 material = SubResource("ShaderMaterial_uwm61")
 texture = ExtResource("11_4xc4d")
 
-[node name="Shadow" type="Sprite2D" parent="Tutorial/Tree/SpriteAnimationManager"]
-modulate = Color(1, 1, 1, 0.39215687)
-y_sort_enabled = true
-scale = Vector2(0.95, 0.95)
-texture = ExtResource("12_veqyt")
-
 [node name="FallingLeaves" type="GPUParticles2D" parent="Tutorial/Tree/SpriteAnimationManager"]
 z_index = -1
 y_sort_enabled = true
@@ -223,6 +217,8 @@ speed_scale = 0.7
 explosiveness = 0.3
 randomness = 0.5
 process_material = SubResource("ParticleProcessMaterial_pa158")
+
+[node name="ShadowNode" parent="Tutorial/Tree/SpriteAnimationManager" instance=ExtResource("13_uv8n6")]
 
 [node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer", "hbox_category") instance=ExtResource("9_1xtv0")]
 layer = 2

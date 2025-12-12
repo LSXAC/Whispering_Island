@@ -88,11 +88,11 @@ public partial class IslandMenu : ColorRect
         if (current_sign == null)
             return;
         Debug.Print("Selected Island ID: " + id.ToString());
-        IslandManager.instance.island_types_build[id]++;
 
         GameManager.money -= base_cost * (IslandManager.instance.island_types_build[id] + 1);
-        PlayerUI.instance.UpdateMoneyLabel();
+        IslandManager.instance.island_types_build[id]++;
 
+        PlayerUI.instance.UpdateMoneyLabel();
         CreateIsland(id, current_sign.dir, current_sign.island);
 
         GameMenu.instance.OnCloseIslandTab();

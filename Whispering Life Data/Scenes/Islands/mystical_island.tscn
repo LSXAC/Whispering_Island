@@ -225,19 +225,25 @@ position = Vector2(-104, -72)
 position = Vector2(-64, -128)
 
 [node name="MystTree" parent="IslandObjectSaveManager" instance=ExtResource("13_sn8nb")]
-position = Vector2(-136, -104)
+position = Vector2(-136, -102)
+variant = 1
 
 [node name="MystTree2" parent="IslandObjectSaveManager" instance=ExtResource("13_sn8nb")]
 position = Vector2(76, -137)
 
+[node name="MystTree6" parent="IslandObjectSaveManager" instance=ExtResource("13_sn8nb")]
+position = Vector2(16, -96)
+
 [node name="MystTree3" parent="IslandObjectSaveManager" instance=ExtResource("13_sn8nb")]
 position = Vector2(172, -66)
+variant = 1
 
 [node name="MystTree4" parent="IslandObjectSaveManager" instance=ExtResource("13_sn8nb")]
 position = Vector2(-77, 55)
 
 [node name="MystTree5" parent="IslandObjectSaveManager" instance=ExtResource("13_sn8nb")]
 position = Vector2(-104, -144)
+variant = 1
 
 [node name="RemovableObjectsManager" type="Node2D" parent="." node_paths=PackedStringArray("tilemap_parent", "sign_parent")]
 y_sort_enabled = true

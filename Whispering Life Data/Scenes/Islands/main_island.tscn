@@ -437,6 +437,7 @@ position = Vector2(72, -192)
 
 [node name="Tree2" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(112, -160)
+variant = 1
 
 [node name="Tree3" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(-96, -88)
@@ -449,16 +450,17 @@ position = Vector2(-24, 112)
 
 [node name="Tree5" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(-96, 16)
+variant = 1
 
 [node name="Tree6" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(-136, 64)
 
 [node name="Tree7" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(184, -64)
-rnd_height = true
 
 [node name="Tree8" parent="IslandObjectSaveManager" instance=ExtResource("12_3x7uo")]
 position = Vector2(-136, -144)
+variant = 1
 
 [node name="BigStone1" parent="IslandObjectSaveManager" instance=ExtResource("28_2vll2")]
 position = Vector2(-24, 8)

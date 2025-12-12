@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bo12cdaf5qx3i" path="res://Sprites/Sign/Sign_Remove.png" id="4_rcheg"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="4_tfnqu"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_av5ui"]
-[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_tfnqu"]
+[ext_resource type="Texture2D" uid="uid://cmb5apktk7d2i" path="res://Sprites/Sign_Remove_Shadow.png" id="5_tfnqu"]
 [ext_resource type="TileSet" uid="uid://knopq4xq3ef2" path="res://Tilesets/Islands.tres" id="6_tgfct"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0j1xx"]
@@ -38,11 +38,11 @@ centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
 y_sort_enabled = true
+position = Vector2(0, -8)
 texture = ExtResource("4_rcheg")
-centered = false
-offset = Vector2(-8, -14)
 
 [node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("4_tfnqu")]
+position = Vector2(0, -8)
 single_shadow_texture = ExtResource("5_tfnqu")
 
 [node name="MouseArea" type="Area2D" parent="."]
@@ -57,7 +57,7 @@ z_index = -1
 tile_set = ExtResource("6_tgfct")
 
 [node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-6, -1, 6, -1, 6, 1, -6, 1)
+polygon = PackedVector2Array(-6, -3, 6, -3, 6, 1, -6, 1)
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

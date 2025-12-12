@@ -296,8 +296,8 @@ public partial class Island : Node2D
                 bridge_part.Scale = new Vector2(-1f, 1f);
                 bridges_parent.AddChild(bridge_part);
 
-                signs_parent.GetNode<Node2D>("UpSign").QueueFree();
-                ip_t.signs_parent.GetNode<Node2D>("DownSign").QueueFree();
+                signs_parent.GetNode<Sign>("UpSign").RemoveSelf();
+                ip_t.signs_parent.GetNode<Sign>("DownSign").RemoveSelf();
 
                 bridge_collision_parent.GetNode<CollisionShape2D>("Up").Disabled = true;
                 ip_t.bridge_collision_parent.GetNode<CollisionShape2D>("Down").Disabled = true;
@@ -328,8 +328,8 @@ public partial class Island : Node2D
                 bridge_part.Scale = new Vector2(-1f, 1f);
                 bridges_parent.AddChild(bridge_part);
 
-                signs_parent.GetNode<Node2D>("RightSign").QueueFree();
-                ip_t.signs_parent.GetNode<Node2D>("LeftSign").QueueFree();
+                signs_parent.GetNode<Sign>("RightSign").RemoveSelf();
+                ip_t.signs_parent.GetNode<Sign>("LeftSign").RemoveSelf();
                 bridge_collision_parent.GetNode<CollisionShape2D>("Right").Disabled = true;
                 ip_t.bridge_collision_parent.GetNode<CollisionShape2D>("Left").Disabled = true;
                 break;
@@ -356,8 +356,8 @@ public partial class Island : Node2D
                 bridge_part.Position = new Vector2(start.X - bridge_size_width * (x + 1), start.Y);
                 bridges_parent.AddChild(bridge_part);
 
-                signs_parent.GetNode<Node2D>("LeftSign").QueueFree();
-                ip_t.signs_parent.GetNode<Node2D>("RightSign").QueueFree();
+                signs_parent.GetNode<Sign>("LeftSign").RemoveSelf();
+                ip_t.signs_parent.GetNode<Sign>("RightSign").RemoveSelf();
                 bridge_collision_parent.GetNode<CollisionShape2D>("Left").Disabled = true;
                 ip_t.bridge_collision_parent.GetNode<CollisionShape2D>("Right").Disabled = true;
 
@@ -385,8 +385,8 @@ public partial class Island : Node2D
                 bridge_part.Scale = new Vector2(-1f, 1f);
                 bridges_parent.AddChild(bridge_part);
 
-                signs_parent.GetNode<Node2D>("DownSign").QueueFree();
-                ip_t.signs_parent.GetNode<Node2D>("UpSign").QueueFree();
+                signs_parent.GetNode<Sign>("DownSign").RemoveSelf();
+                ip_t.signs_parent.GetNode<Sign>("UpSign").RemoveSelf();
                 bridge_collision_parent.GetNode<CollisionShape2D>("Down").Disabled = true;
                 ip_t.bridge_collision_parent.GetNode<CollisionShape2D>("Up").Disabled = true;
                 break;

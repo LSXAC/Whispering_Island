@@ -20,4 +20,10 @@ public partial class Sign : Building_Node
 
         Debug.Print(GameManager.island_matrix.ToString());
     }
+
+    public void RemoveSelf()
+    {
+        sprite_anim_manager.shadowNode.RemoveShadow();
+        QueueFree();
+    }
 }

@@ -6,6 +6,9 @@ public partial class ShadowNode : Node2D
     [Export]
     public int start_index = -1;
 
+    [Export]
+    public Vector2 offset = Vector2.Zero;
+
     private Sprite2D shadow_sprite;
 
     [Export]
@@ -32,6 +35,7 @@ public partial class ShadowNode : Node2D
     public Sprite2D CreateShadowSprite()
     {
         Sprite2D shadow_sprite = new Sprite2D();
+        shadow_sprite.Offset = offset;
         shadow_sprite.ZIndex = 0;
         shadow_sprite.Centered = true;
         GameManager.instance.shadow_manager.AddChild(shadow_sprite);
