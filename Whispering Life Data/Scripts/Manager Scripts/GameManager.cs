@@ -27,7 +27,7 @@ public partial class GameManager : Node2D
     public static BuildingMode building_mode = BuildingMode.None;
 
     public static bool In_Cutscene = false;
-    public static int money = 10;
+    public static int money = 1000;
     public bool tutorial_finished = false;
     public Node2D island_parent;
     public Camera2D cutscene_camera;
@@ -97,7 +97,7 @@ public partial class GameManager : Node2D
         gameover = false;
         In_Cutscene = false;
         island_matrix = new bool[11, 11];
-        money = 10;
+        money = 1000;
         current_activ_canvaslayer = null;
 
         cutscene_camera = GetNode<Camera2D>("CutsceneCamera");
