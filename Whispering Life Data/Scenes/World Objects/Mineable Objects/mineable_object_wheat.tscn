@@ -129,10 +129,10 @@ position = Vector2(2, -8)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("6_sfdjg")]
-offset_left = -27.0
-offset_top = -36.0
-offset_right = 13.0
-offset_bottom = -35.0
+offset_left = -23.0
+offset_top = -35.0
+offset_right = 9.0
+offset_bottom = -34.0
 
 [node name="WheatParticle" type="GPUParticles2D" parent="."]
 z_index = 1

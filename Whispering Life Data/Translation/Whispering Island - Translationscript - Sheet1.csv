@@ -142,12 +142,12 @@ WORLD_RESOURCE_IRON_ORE,Iron Ore,Eisenerz
 WORLD_RESOURCE_IRON_ORE_DESC,Receive Iron Ore by mining,Erhalte Eisenerz beim abbauen
 WORLD_RESOURCE_COPPER_ORE,Copper Ore,Kupfererz
 WORLD_RESOURCE_COPPER_ORE_DESC,Receive Copper Ore by mining,Erhalte Kupfererz beim abbauen
-WORLD_RESOURCE_POTATO,Potato,Kartoffel
-WORLD_RESOURCE_POTATO_DESC,Harvest to receive potatos,Erhalte Kartoffeln beim ernten
+WORLD_RESOURCE_SUNFLOWER,Sunflower,Sonnenblume
+WORLD_RESOURCE_SUNFLOWER_DESC,Harvest to receive sunflowers,Erhalte Sonnenblumen beim ernten
 WORLD_RESOURCE_CARROT,Carrot,Karotte
 WORLD_RESOURCE_CARROT_DESC,Harvest to receive carrots,Erhalte Karotten beim ernten
-WORLD_RESOURCE_CORN,Corn,Mais
-WORLD_RESOURCE_CORN_DESC,Harvest to receive corns,Erhalte Mais beim ernten
+WORLD_RESOURCE_MUSHROOM,Mushroom,Pilz
+WORLD_RESOURCE_MUSHROOM_DESC,Harvest to receive mushrooms,Erhalte Pilze beim ernten
 WORLD_RESOURCE_SAND,Sand,Sand
 WORLD_RESOURCE_SAND_DESC,Mine to receive sand,Erhalte Sand beim abbauen
 WORLD_RESOURCE_SAND_STONE,Sandstone,Sandstein
@@ -156,6 +156,25 @@ WORLD_RESOURCE_FIBRE,Fibre,Fasern
 WORLD_RESOURCE_FIBRE_DESC,Collect to receive fibre,Erhalte Fasern beim sammeln
 WORLD_RESOURCE_SUGAR_CANE,Sugar Cane,Zuckerrohr
 WORLD_RESOURCE_SUGAR_DESC,Harvest to receive sugar cane,Erhalte Zuckerrohr beim ernten
+WORLD_RESOURCE_MYSTIC_MUSHROOM,Mystical Mushroom,Mystische Pilze
+WORLD_RESOURCE_MYSTIC_MUSHROOM_DESC,Harvest to receive mystical mushrooms,Erhalte mystische Pilze beim ernten
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
 ,,
 SKILLTREE_RESEARCH_POINTS,Research Points,Erforschungspunkte
 SKILLTREE_MOVEMENT,Movement,Beweglichkeit
@@ -233,13 +252,10 @@ ISLAND_MENU_AFTER_ISLANDSBUILD,Islands.,Inseln.
 ,,
 ,,
 ,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
+HOVER_MENU_PROCESS_INPUT,Input,Eingang
+HOVER_MENU_PROCESS_OUTPUT,Output,Ausgang
+HOVER_MENU_PROCESS_NO_ITEM,None,Keins
+HOVER_MENU_CHEST_SLOTS,Free Slots,Freie Plätze
 HOVER_MENU_OBJECT,Object,Objekt
 HOVER_MENU_DESCRIPTION,Description,Beschreibung
 HOVER_MENU_HITPOINTS,Hitpoints,Lebenspunkte

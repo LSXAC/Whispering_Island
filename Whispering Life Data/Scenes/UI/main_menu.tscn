@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=3 uid="uid://d382ft4naeqtp"]
+[gd_scene load_steps=149 format=3 uid="uid://d382ft4naeqtp"]
 
 [ext_resource type="Script" uid="uid://bm5n6v0k8up5x" path="res://Scripts/UI Scripts/MainMenu.cs" id="1_4fgt5"]
 [ext_resource type="Texture2D" uid="uid://8e8352g0ttd6" path="res://Sprites/Menu/Screenshot 2025-07-21 100910.png" id="2_bw5ne"]
@@ -46,7 +46,7 @@
 [ext_resource type="Resource" uid="uid://bdefudjlvvi5c" path="res://Building Menu List Object Infos/Planting/build_menu_list_object_mystic_fibre.tres" id="36_tb28b"]
 [ext_resource type="Resource" uid="uid://4o1h3cmusbib" path="res://Building Menu List Object Infos/Planting/build_menu_list_object_mystic_oak_tree.tres" id="37_2xfbu"]
 [ext_resource type="Resource" uid="uid://0gip04da32ti" path="res://Building Menu List Object Infos/Planting/build_menu_list_object_oak_tree.tres" id="38_n07kk"]
-[ext_resource type="Resource" uid="uid://bqx4ydedgwbwl" path="res://Building Menu List Object Infos/Planting/build_menu_list_object_potato.tres" id="39_hl337"]
+[ext_resource type="Resource" uid="uid://bqx4ydedgwbwl" path="res://Building Menu List Object Infos/Planting/build_menu_list_object_sunflower.tres" id="39_hl337"]
 [ext_resource type="Resource" uid="uid://dmc4108m2vk7m" path="res://Building Menu List Object Infos/Planting/build_menu_list_object_wheat.tres" id="40_20xjl"]
 [ext_resource type="Resource" uid="uid://d2gr3elp450qx" path="res://Building Menu List Object Infos/Buildings/build_menu_list_object_outdoor_lamp.tres" id="41_f4xsv"]
 [ext_resource type="Resource" uid="uid://crmqrimgdf2gl" path="res://Resource Meta/Items/ItemResearchs/item_research_iron_ore.tres" id="41_pjxs1"]
@@ -71,15 +71,17 @@
 [ext_resource type="Resource" uid="uid://c61tkydmwleam" path="res://Resource Meta/Crafting Recipies/Tools/crafting_recipe_stone_knife.tres" id="51_byqsf"]
 [ext_resource type="Resource" uid="uid://bpl186olxonfm" path="res://Building Menu List Object Infos/Buildings/build_menu_list_object_big_stone.tres" id="52_abyj8"]
 [ext_resource type="Resource" uid="uid://d4jfhgrp8h07j" path="res://Resource Meta/Crafting Recipies/Tools/crafting_recipe_stone_pickaxe.tres" id="52_ylju8"]
+[ext_resource type="Resource" uid="uid://ka556ylkcc4o" path="res://Building Menu List Object Infos/Planting/build_menu_list_object_mushroom.tres" id="53_l464e"]
 [ext_resource type="Resource" uid="uid://bp4wq2ypl075m" path="res://Resource Meta/Crafting Recipies/Tools/crafting_recipe_wood_axe.tres" id="53_mi2ay"]
 [ext_resource type="Resource" uid="uid://cxk2altccown" path="res://Resource Meta/Crafting Recipies/Tools/crafting_recipe_wood_hoe.tres" id="54_iwtl8"]
+[ext_resource type="Resource" uid="uid://drxoneq30bgxp" path="res://Building Menu List Object Infos/Planting/build_menu_list_object_mystic_mushroom.tres" id="54_nqf7v"]
 [ext_resource type="Resource" uid="uid://ch1b1ltixbads" path="res://Resource Meta/Items/item_info_carrot.tres" id="55_2h6yx"]
 [ext_resource type="Resource" uid="uid://dcpvayh8hlqbo" path="res://Resource Meta/Items/item_info_carrot_seed.tres" id="56_kwrrk"]
 [ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Resource Meta/Items/item_info_char_coal.tres" id="56_ujkk6"]
 [ext_resource type="Resource" uid="uid://i3ah62dd06gb" path="res://Resource Meta/Items/item_info_copper_ingot.tres" id="57_xu7jt"]
 [ext_resource type="Resource" uid="uid://eo8ax7whu2kb" path="res://Resource Meta/Items/item_info_copper_ore.tres" id="58_hw2lr"]
-[ext_resource type="Resource" uid="uid://bp4gggmthi11e" path="res://Resource Meta/Items/item_info_corn.tres" id="59_q3gfc"]
-[ext_resource type="Resource" uid="uid://cbpupb53ocwp4" path="res://Resource Meta/Items/item_info_corn_seed.tres" id="60_bpmov"]
+[ext_resource type="Resource" uid="uid://bp4gggmthi11e" path="res://Resource Meta/Items/item_info_mushroom.tres" id="59_q3gfc"]
+[ext_resource type="Resource" uid="uid://cbpupb53ocwp4" path="res://Resource Meta/Items/item_info_mushroom_spores.tres" id="60_bpmov"]
 [ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://Resource Meta/Items/item_info_fibre.tres" id="61_abyj8"]
 [ext_resource type="Resource" uid="uid://dt3clhic2nk2g" path="res://Resource Meta/Crafting Recipies/Basics/crafting_recipe_soil.tres" id="61_ttxcc"]
 [ext_resource type="Resource" uid="uid://w5f8nrctnh1j" path="res://Resource Meta/Items/item_info_fibre_seed.tres" id="62_b2ygq"]
@@ -103,8 +105,8 @@
 [ext_resource type="Resource" uid="uid://bj62tvtw6mn4v" path="res://Resource Meta/Items/item_info_mystic_oak_seed.tres" id="73_psvxc"]
 [ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://Resource Meta/Items/item_info_mystic_oak_wood.tres" id="74_mmttm"]
 [ext_resource type="Resource" uid="uid://dnxxeevayo83d" path="res://Resource Meta/Items/item_info_oak_seed.tres" id="75_7jn2h"]
-[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Resource Meta/Items/item_info_potato.tres" id="76_vm5m4"]
-[ext_resource type="Resource" uid="uid://1vfo1rr84pk7" path="res://Resource Meta/Items/item_info_potato_seed.tres" id="77_bxob3"]
+[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Resource Meta/Items/item_info_sunflower.tres" id="76_vm5m4"]
+[ext_resource type="Resource" uid="uid://1vfo1rr84pk7" path="res://Resource Meta/Items/item_info_sunflower_seed.tres" id="77_bxob3"]
 [ext_resource type="Resource" uid="uid://ljb14i8nnpgp" path="res://Resource Meta/Items/item_info_sand.tres" id="78_rqmsr"]
 [ext_resource type="Resource" uid="uid://cij4xtg6ixn5i" path="res://Resource Meta/Items/item_info_sand_stone.tres" id="79_sip4i"]
 [ext_resource type="Resource" uid="uid://dybk77tyk8w7y" path="res://Resource Meta/Crafting Recipies/Basics/crafting_recipe_research_book_level.tres" id="80_q3gfc"]
@@ -144,6 +146,8 @@
 [ext_resource type="Resource" uid="uid://c75vavx28440q" path="res://Resource Meta/Items/item_info_research_book_level.tres" id="136_q3gfc"]
 [ext_resource type="Resource" uid="uid://t5v8qm6eoktq" path="res://Resource Meta/Items/item_info_research_book_sub.tres" id="137_bpmov"]
 [ext_resource type="Resource" uid="uid://2g7pnssy57fa" path="res://Resource Meta/Items/item_info_sugar.tres" id="138_abyj8"]
+[ext_resource type="Resource" uid="uid://dnbpomwm23l8s" path="res://Resource Meta/Items/item_info_mystic_mushroom.tres" id="147_owkwu"]
+[ext_resource type="Resource" uid="uid://wxhydk80jtpn" path="res://Resource Meta/Items/item_info_mystic_mushroom_spores.tres" id="148_hlew3"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("skip_tutorial", "intro_player", "parent", "load_button")]
 layout_mode = 3
@@ -339,10 +343,10 @@ visible = false
 
 [node name="Database" type="Node" parent="."]
 script = ExtResource("9_lrjdf")
-building_menu_list_objects = Array[Object]([ExtResource("10_jwp00"), ExtResource("11_72xhr"), ExtResource("12_kwrrk"), ExtResource("13_ghmun"), ExtResource("14_k1ei0"), ExtResource("15_7c2jn"), ExtResource("16_h6xty"), ExtResource("17_f4xsv"), ExtResource("18_qksji"), ExtResource("19_puyxk"), ExtResource("20_1lq4d"), ExtResource("21_ipigi"), ExtResource("22_rbu7y"), ExtResource("23_5xltb"), ExtResource("24_d6ha0"), ExtResource("25_7fr2h"), ExtResource("26_37sxy"), ExtResource("27_pjd70"), ExtResource("28_brqoj"), ExtResource("29_0rrvn"), ExtResource("30_ttxcc"), ExtResource("31_qgnha"), ExtResource("32_i7cpp"), ExtResource("33_y2mbf"), ExtResource("34_su11i"), ExtResource("35_qisdu"), ExtResource("36_tb28b"), ExtResource("37_2xfbu"), ExtResource("38_n07kk"), ExtResource("39_hl337"), ExtResource("40_20xjl"), ExtResource("41_f4xsv"), ExtResource("42_1lq4d"), ExtResource("50_2h6yx"), ExtResource("52_abyj8")])
+building_menu_list_objects = Array[Object]([ExtResource("10_jwp00"), ExtResource("11_72xhr"), ExtResource("12_kwrrk"), ExtResource("13_ghmun"), ExtResource("14_k1ei0"), ExtResource("15_7c2jn"), ExtResource("16_h6xty"), ExtResource("17_f4xsv"), ExtResource("18_qksji"), ExtResource("19_puyxk"), ExtResource("20_1lq4d"), ExtResource("21_ipigi"), ExtResource("22_rbu7y"), ExtResource("23_5xltb"), ExtResource("24_d6ha0"), ExtResource("25_7fr2h"), ExtResource("26_37sxy"), ExtResource("27_pjd70"), ExtResource("28_brqoj"), ExtResource("29_0rrvn"), ExtResource("30_ttxcc"), ExtResource("31_qgnha"), ExtResource("32_i7cpp"), ExtResource("33_y2mbf"), ExtResource("34_su11i"), ExtResource("35_qisdu"), ExtResource("36_tb28b"), ExtResource("37_2xfbu"), ExtResource("38_n07kk"), ExtResource("39_hl337"), ExtResource("40_20xjl"), ExtResource("41_f4xsv"), ExtResource("42_1lq4d"), ExtResource("50_2h6yx"), ExtResource("52_abyj8"), ExtResource("53_l464e"), ExtResource("54_nqf7v")])
 item_research_list = Array[Object]([ExtResource("41_pjxs1"), ExtResource("42_h6xty"), ExtResource("43_f4xsv"), ExtResource("44_qksji"), ExtResource("45_puyxk")])
 crafting_recipies_list = Array[Object]([ExtResource("48_pjxs1"), ExtResource("42_jutee"), ExtResource("50_jutee"), ExtResource("51_3nnw4"), ExtResource("43_3nnw4"), ExtResource("44_p6xq8"), ExtResource("45_nq3p2"), ExtResource("46_10iqw"), ExtResource("47_bw5ne"), ExtResource("48_idfr6"), ExtResource("49_jyt4h"), ExtResource("50_ngkbr"), ExtResource("51_byqsf"), ExtResource("52_ylju8"), ExtResource("53_mi2ay"), ExtResource("54_iwtl8"), ExtResource("61_ttxcc"), ExtResource("62_qgnha"), ExtResource("63_i7cpp"), ExtResource("64_y2mbf"), ExtResource("65_su11i"), ExtResource("66_qisdu"), ExtResource("67_su11i"), ExtResource("68_qisdu"), ExtResource("80_q3gfc"), ExtResource("81_bpmov"), ExtResource("82_abyj8"), ExtResource("83_b2ygq")])
-item_info_list = Array[Object]([ExtResource("55_2h6yx"), ExtResource("56_kwrrk"), ExtResource("56_ujkk6"), ExtResource("57_xu7jt"), ExtResource("58_hw2lr"), ExtResource("59_q3gfc"), ExtResource("60_bpmov"), ExtResource("61_abyj8"), ExtResource("62_b2ygq"), ExtResource("63_dyabb"), ExtResource("64_cioph"), ExtResource("65_l464e"), ExtResource("66_nqf7v"), ExtResource("67_owkwu"), ExtResource("68_hlew3"), ExtResource("69_mpody"), ExtResource("70_3jp71"), ExtResource("71_5kq1m"), ExtResource("72_csn1j"), ExtResource("73_psvxc"), ExtResource("74_mmttm"), ExtResource("75_7jn2h"), ExtResource("76_vm5m4"), ExtResource("77_bxob3"), ExtResource("78_rqmsr"), ExtResource("79_sip4i"), ExtResource("80_tpbcc"), ExtResource("81_c4pph"), ExtResource("82_g85o2"), ExtResource("83_aqsru"), ExtResource("84_64bwy"), ExtResource("85_f1k14"), ExtResource("86_euauc"), ExtResource("87_7fio7"), ExtResource("88_ikmmo"), ExtResource("89_wefja"), ExtResource("90_kkrb7"), ExtResource("91_743cm"), ExtResource("92_7glmp"), ExtResource("93_u8gx4"), ExtResource("95_ghmun"), ExtResource("102_ipigi"), ExtResource("103_rbu7y"), ExtResource("104_5xltb"), ExtResource("105_d6ha0"), ExtResource("106_7fr2h"), ExtResource("107_d6ha0"), ExtResource("114_qgnha"), ExtResource("117_tb28b"), ExtResource("118_qisdu"), ExtResource("119_tb28b"), ExtResource("120_n07kk"), ExtResource("121_hl337"), ExtResource("133_ujkk6"), ExtResource("134_xu7jt"), ExtResource("135_hw2lr"), ExtResource("136_q3gfc"), ExtResource("137_bpmov"), ExtResource("138_abyj8")])
+item_info_list = Array[Object]([ExtResource("55_2h6yx"), ExtResource("56_kwrrk"), ExtResource("56_ujkk6"), ExtResource("57_xu7jt"), ExtResource("58_hw2lr"), ExtResource("59_q3gfc"), ExtResource("60_bpmov"), ExtResource("61_abyj8"), ExtResource("62_b2ygq"), ExtResource("63_dyabb"), ExtResource("64_cioph"), ExtResource("65_l464e"), ExtResource("66_nqf7v"), ExtResource("67_owkwu"), ExtResource("68_hlew3"), ExtResource("69_mpody"), ExtResource("70_3jp71"), ExtResource("71_5kq1m"), ExtResource("72_csn1j"), ExtResource("73_psvxc"), ExtResource("74_mmttm"), ExtResource("75_7jn2h"), ExtResource("76_vm5m4"), ExtResource("77_bxob3"), ExtResource("78_rqmsr"), ExtResource("79_sip4i"), ExtResource("80_tpbcc"), ExtResource("81_c4pph"), ExtResource("82_g85o2"), ExtResource("83_aqsru"), ExtResource("84_64bwy"), ExtResource("85_f1k14"), ExtResource("86_euauc"), ExtResource("87_7fio7"), ExtResource("88_ikmmo"), ExtResource("89_wefja"), ExtResource("90_kkrb7"), ExtResource("91_743cm"), ExtResource("92_7glmp"), ExtResource("93_u8gx4"), ExtResource("95_ghmun"), ExtResource("102_ipigi"), ExtResource("103_rbu7y"), ExtResource("104_5xltb"), ExtResource("105_d6ha0"), ExtResource("106_7fr2h"), ExtResource("107_d6ha0"), ExtResource("114_qgnha"), ExtResource("117_tb28b"), ExtResource("118_qisdu"), ExtResource("119_tb28b"), ExtResource("120_n07kk"), ExtResource("121_hl337"), ExtResource("133_ujkk6"), ExtResource("134_xu7jt"), ExtResource("135_hw2lr"), ExtResource("136_q3gfc"), ExtResource("137_bpmov"), ExtResource("138_abyj8"), ExtResource("147_owkwu"), ExtResource("148_hlew3")])
 
 [connection signal="visibility_changed" from="." to="." method="OnVisiblityChanged"]
 [connection signal="pressed" from="Menu/Control/VBoxContainer/NewGameButton" to="." method="OnNewGameButtoN"]

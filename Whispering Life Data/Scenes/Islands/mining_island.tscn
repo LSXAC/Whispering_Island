@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://frwl0u2a1cwh"]
+[gd_scene load_steps=30 format=4 uid="uid://frwl0u2a1cwh"]
 
 [ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island.cs" id="1_tvb31"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="2_v84e8"]
@@ -19,8 +19,9 @@
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="16_mygv5"]
 [ext_resource type="Resource" uid="uid://dmrxwabbdyg0d" path="res://Resource Meta/Items/item_info_wood_axe.tres" id="17_8h34p"]
 [ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://Resource Meta/Items/item_info_wheat.tres" id="18_8blsp"]
-[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Resource Meta/Items/item_info_potato.tres" id="19_n7col"]
+[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Resource Meta/Items/item_info_sunflower.tres" id="19_n7col"]
 [ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://Scripts/WorldMapIcon.cs" id="20_cew1n"]
+[ext_resource type="TileSet" uid="uid://e3yw7xs7e1sr" path="res://Scenes/shadow_tileset.tres" id="21_8h34p"]
 [ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe.png" id="21_mygv5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpdmr"]
@@ -315,34 +316,40 @@ sign_parent = NodePath("Signs")
 [node name="Signs" type="Node2D" parent="RemovableObjectsManager"]
 y_sort_enabled = true
 
-[node name="RemoveSign1" parent="RemovableObjectsManager/Signs" node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "island") instance=ExtResource("14_qt6jd")]
+[node name="RemoveSign1" parent="RemovableObjectsManager/Signs" node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "shadow_tilemap", "island") instance=ExtResource("14_qt6jd")]
 position = Vector2(0, -32)
 removable_objects_Manager = NodePath("../..")
 object_connected = NodePath("../../Tilemaps/Object1")
 required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Resource_2vll2"), SubResource("Resource_tdjhn"), SubResource("Resource_uavw5")])
+shadow_tilemap = NodePath("../../Tilemaps/Object1/Shadow")
 id = 1
 island = NodePath("../../..")
 
-[node name="RemoveSign0" parent="RemovableObjectsManager/Signs" node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "island") instance=ExtResource("14_qt6jd")]
+[node name="RemoveSign0" parent="RemovableObjectsManager/Signs" node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "shadow_tilemap", "island") instance=ExtResource("14_qt6jd")]
 position = Vector2(96, 160)
 removable_objects_Manager = NodePath("../..")
 object_connected = NodePath("../../Tilemaps/Object0")
 required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Resource_2vll2"), SubResource("Resource_tdjhn"), SubResource("Resource_uavw5")])
+shadow_tilemap = NodePath("../../Tilemaps/Object0/Shadow")
 island = NodePath("../../..")
 
 [node name="Tilemaps" type="Node2D" parent="RemovableObjectsManager"]
 
 [node name="Object0" type="Node2D" parent="RemovableObjectsManager/Tilemaps"]
 
-[node name="Ground2" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
-z_index = -1
+[node name="Top" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+z_index = -2
 tile_map_data = PackedByteArray("AAADAAQAAAAEAA4AAAACAAQAAAAIAA4AAAABAAMAAAAFAA4AAAAAAAMAAAAEAA4AAAABAAAAAAAEABAAAAACAAAAAAAEABAAAAADAAAAAAAHAA4AAAADAAEAAAADAA8AAAADAAIAAAADABAAAAAEAAMAAAADAA8AAAAEAAQAAAAHAA8AAAAEAAIAAAAHAA4AAAABAAQAAAAGAA8AAAD//wMAAAAGAA8AAAD//wIAAAAFAA8AAAD//wEAAAAGAA4AAAAAAAEAAAAFABAAAAAAAAAAAAAGAA4AAAAAAAIAAAABAA4AAAABAAIAAAAAAAwAAAACAAIAAAABAA4AAAACAAEAAAABAA4AAAABAAEAAAABAA4AAAACAAMAAAABAA4AAAADAAMAAAAAAAwAAAA=")
 tile_set = ExtResource("4_oxa82")
 
 [node name="Ground" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
-z_index = -2
+z_index = -3
 tile_map_data = PackedByteArray("AAACAAQAAAAIAAAAAAA=")
 tile_set = ExtResource("4_oxa82")
+
+[node name="Shadow" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+tile_map_data = PackedByteArray("AAADAAQAAAABAAAAAAAAAAMAAAABAAAAAAD//wMAAAAAAAEAAAABAAQAAAAAAAEAAAAEAAQAAAABAAEAAAACAAQAAAACAAEAAAABAAMAAAACAAAAAAA=")
+tile_set = ExtResource("21_8h34p")
 
 [node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
 z_index = -1
@@ -368,15 +375,19 @@ scale = Vector2(2.5, 2.5)
 
 [node name="Object1" type="Node2D" parent="RemovableObjectsManager/Tilemaps"]
 
-[node name="Ground2" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
-z_index = -1
+[node name="Top" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
+z_index = -2
 tile_map_data = PackedByteArray("AAD///7/AAAIAA4AAAD+//7/AAADAA4AAAD+//3/AAABAA4AAAD9//3/AAABAA4AAAD9//z/AAABAA4AAAD8//z/AAABAA4AAAD8//v/AAAFABAAAAD8//r/AAAGAA4AAAD9//r/AAAEABAAAAD+//r/AAAEABAAAAD///r/AAAHAA4AAAD///v/AAADABAAAAAAAPv/AAAHAA4AAAAAAPz/AAADABAAAAABAPz/AAAEABAAAAACAPz/AAAHAA4AAAACAP3/AAADAA8AAAACAP7/AAAHAA8AAAABAP7/AAAEAA4AAAAAAP7/AAAEAA4AAAABAP3/AAABAA4AAAAAAP3/AAABAA4AAAD///3/AAAAAAwAAAD///z/AAABAA4AAAD+//z/AAABAA4AAAD+//v/AAABAA4AAAD9//v/AAAAAAwAAAD+////AAAHAA8AAAD9////AAAEAA4AAAD8////AAAGAA8AAAD8//7/AAAFAA8AAAD8//3/AAAFAA4AAAD9//7/AAABAA4AAAD7//3/AAAGAA8AAAD7//z/AAAFAA8AAAD7//v/AAAGAA4AAAA=")
 tile_set = ExtResource("4_oxa82")
 
 [node name="Ground" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
-z_index = -2
+z_index = -3
 tile_map_data = PackedByteArray("AAD///7/AAAHAAAAAAD/////AAAIAAAAAAA=")
 tile_set = ExtResource("4_oxa82")
+
+[node name="Shadow" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
+tile_map_data = PackedByteArray("AAD8//3/AAACAAAAAAD+//7/AAAAAAAAAAD8////AAAAAAEAAAD7//3/AAAAAAEAAAD+////AAABAAEAAAACAP7/AAABAAEAAAABAP7/AAABAAAAAAAAAP7/AAABAAAAAAD9////AAABAAAAAAD///7/AAACAAEAAAA=")
+tile_set = ExtResource("21_8h34p")
 
 [node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
 z_index = -1

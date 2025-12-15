@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://b0pmpn0st1gl4"]
+[gd_scene load_steps=21 format=4 uid="uid://b0pmpn0st1gl4"]
 
 [ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island.cs" id="1_yy7cq"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="2_sunwl"]
@@ -15,8 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://cmflp8mvayx8k" path="res://Sprites/Bridge/bridge_side_end.tscn" id="13_yprqj"]
 [ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="14_pr08r"]
 [ext_resource type="PackedScene" uid="uid://cyayxpnsm4v16" path="res://Scenes/World Objects/Mineable Objects/mineable_object_carrot.tscn" id="15_gnsxu"]
-[ext_resource type="PackedScene" uid="uid://dyhqyvmm3pp6m" path="res://Scenes/World Objects/Mineable Objects/mineable_object_corn.tscn" id="16_of1hs"]
-[ext_resource type="PackedScene" uid="uid://bmjn6kocpubo3" path="res://Scenes/World Objects/Mineable Objects/mineable_object_potato.tscn" id="17_wlbus"]
+[ext_resource type="PackedScene" uid="uid://bmjn6kocpubo3" path="res://Scenes/World Objects/Mineable Objects/mineable_object_sunflower.tscn" id="17_wlbus"]
+[ext_resource type="PackedScene" uid="uid://hl3jkk2n0f7x" path="res://Scenes/World Objects/Mineable Objects/mineable_object_wheat.tscn" id="17_yy7cq"]
+[ext_resource type="PackedScene" uid="uid://dyhqyvmm3pp6m" path="res://Scenes/World Objects/Mineable Objects/mineable_object_mushroom.tscn" id="18_sunwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpdmr"]
 size = Vector2(32, 32)
@@ -239,58 +240,157 @@ y_sort_enabled = true
 script = ExtResource("14_pr08r")
 
 [node name="Carrot" parent="IslandObjectSaveManager" instance=ExtResource("15_gnsxu")]
-position = Vector2(-128, -160)
+position = Vector2(-128, -128)
 
 [node name="Carrot2" parent="IslandObjectSaveManager" instance=ExtResource("15_gnsxu")]
-position = Vector2(-144, -144)
+position = Vector2(-144, -128)
 
 [node name="Carrot3" parent="IslandObjectSaveManager" instance=ExtResource("15_gnsxu")]
-position = Vector2(-160, -128)
+position = Vector2(-144, -112)
+
+[node name="Carrot5" parent="IslandObjectSaveManager" instance=ExtResource("15_gnsxu")]
+position = Vector2(-152, -152)
 
 [node name="Carrot4" parent="IslandObjectSaveManager" instance=ExtResource("15_gnsxu")]
 position = Vector2(-128, -96)
 
-[node name="Corn" parent="IslandObjectSaveManager" instance=ExtResource("16_of1hs")]
-position = Vector2(96, -64)
+[node name="Carrot11" parent="IslandObjectSaveManager" instance=ExtResource("15_gnsxu")]
+position = Vector2(96, 32)
 
-[node name="Corn2" parent="IslandObjectSaveManager" instance=ExtResource("16_of1hs")]
-position = Vector2(32, -48)
+[node name="Carrot12" parent="IslandObjectSaveManager" instance=ExtResource("15_gnsxu")]
+position = Vector2(80, -48)
 
-[node name="Corn3" parent="IslandObjectSaveManager" instance=ExtResource("16_of1hs")]
-position = Vector2(0, -112)
+[node name="Carrot6" parent="IslandObjectSaveManager" instance=ExtResource("15_gnsxu")]
+position = Vector2(-176, -80)
 
-[node name="Corn4" parent="IslandObjectSaveManager" instance=ExtResource("16_of1hs")]
-position = Vector2(32, -128)
+[node name="Carrot7" parent="IslandObjectSaveManager" instance=ExtResource("15_gnsxu")]
+position = Vector2(-160, -96)
 
-[node name="Corn5" parent="IslandObjectSaveManager" instance=ExtResource("16_of1hs")]
-position = Vector2(128, 128)
-
-[node name="Corn6" parent="IslandObjectSaveManager" instance=ExtResource("16_of1hs")]
-position = Vector2(-64, 96)
-
-[node name="Potato" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
-position = Vector2(96, 16)
-
-[node name="Potato2" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
-position = Vector2(64, 32)
-
-[node name="Potato3" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
-position = Vector2(-192, -88)
-
-[node name="Potato4" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
-position = Vector2(-160, -48)
-
-[node name="Potato5" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
+[node name="Carrot8" parent="IslandObjectSaveManager" instance=ExtResource("15_gnsxu")]
 position = Vector2(-160, -80)
 
-[node name="Potato6" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
-position = Vector2(-192, 128)
+[node name="Carrot9" parent="IslandObjectSaveManager" instance=ExtResource("15_gnsxu")]
+position = Vector2(-192, 176)
 
-[node name="Potato7" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
+[node name="Carrot10" parent="IslandObjectSaveManager" instance=ExtResource("15_gnsxu")]
+position = Vector2(-208, 144)
+
+[node name="Sunflower" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
+position = Vector2(96, -80)
+
+[node name="Sunflower3" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
+position = Vector2(56, -48)
+
+[node name="Sunflower5" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
+position = Vector2(16, -32)
+
+[node name="Sunflower7" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
+position = Vector2(80, 16)
+
+[node name="Sunflower9" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
+position = Vector2(64, 48)
+
+[node name="Sunflower14" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
+position = Vector2(-176, -112)
+
+[node name="Sunflower15" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
+position = Vector2(-176, -112)
+
+[node name="Sunflower10" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
 position = Vector2(-176, 160)
 
-[node name="Potato8" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
-position = Vector2(144, 144)
+[node name="Sunflower11" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
+position = Vector2(-48, 96)
 
-[node name="Potato9" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
-position = Vector2(104, 160)
+[node name="Sunflower13" parent="IslandObjectSaveManager" instance=ExtResource("17_wlbus")]
+position = Vector2(160, 144)
+
+[node name="Wheat" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(-32, -112)
+
+[node name="Wheat21" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(-160, -128)
+
+[node name="Wheat22" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(-192, -64)
+
+[node name="Wheat2" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(-16, -128)
+
+[node name="Wheat3" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(16, -112)
+
+[node name="Wheat4" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(16, -176)
+
+[node name="Wheat6" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(-16, -96)
+
+[node name="Wheat7" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(16, -144)
+
+[node name="Wheat8" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(32, -128)
+
+[node name="Wheat10" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(-96, 96)
+
+[node name="Wheat11" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(-64, 112)
+
+[node name="Wheat12" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(-160, 128)
+
+[node name="Wheat13" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(112, 112)
+
+[node name="Wheat15" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(128, 128)
+
+[node name="Wheat16" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(112, 144)
+
+[node name="Wheat17" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(96, 160)
+
+[node name="Wheat18" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(144, 176)
+
+[node name="Wheat19" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(16, 160)
+
+[node name="Wheat20" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(0, 176)
+
+[node name="Wheat23" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(64, -64)
+
+[node name="Wheat24" parent="IslandObjectSaveManager" instance=ExtResource("17_yy7cq")]
+position = Vector2(32, -48)
+
+[node name="Mushroom" parent="IslandObjectSaveManager" instance=ExtResource("18_sunwl")]
+position = Vector2(-96, -16)
+
+[node name="Mushroom2" parent="IslandObjectSaveManager" instance=ExtResource("18_sunwl")]
+position = Vector2(-64, -64)
+
+[node name="Mushroom3" parent="IslandObjectSaveManager" instance=ExtResource("18_sunwl")]
+position = Vector2(-192, -96)
+
+[node name="Mushroom4" parent="IslandObjectSaveManager" instance=ExtResource("18_sunwl")]
+position = Vector2(-56, -200)
+
+[node name="Mushroom5" parent="IslandObjectSaveManager" instance=ExtResource("18_sunwl")]
+position = Vector2(-72, -184)
+
+[node name="Mushroom6" parent="IslandObjectSaveManager" instance=ExtResource("18_sunwl")]
+position = Vector2(96, -32)
+
+[node name="Mushroom7" parent="IslandObjectSaveManager" instance=ExtResource("18_sunwl")]
+position = Vector2(-8, 40)
+
+[node name="Mushroom8" parent="IslandObjectSaveManager" instance=ExtResource("18_sunwl")]
+position = Vector2(64, 160)
+
+[node name="Mushroom9" parent="IslandObjectSaveManager" instance=ExtResource("18_sunwl")]
+position = Vector2(-120, 216)

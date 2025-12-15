@@ -216,10 +216,11 @@ position = Vector2(-5.5, -7)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("7_0yyoq")]
-offset_left = -31.0
-offset_top = -52.0
-offset_right = 9.0
-offset_bottom = -51.0
+custom_minimum_size = Vector2(30, 1)
+offset_left = -28.0
+offset_top = -53.0
+offset_right = 2.0
+offset_bottom = -52.0
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
 z_index = -2

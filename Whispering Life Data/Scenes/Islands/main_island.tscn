@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://bveoiwi14ha4g"]
+[gd_scene load_steps=46 format=4 uid="uid://bveoiwi14ha4g"]
 
 [ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island.cs" id="1_sbvtb"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="2_naawu"]
@@ -23,14 +23,16 @@
 [ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://Resource Meta/Items/item_info_wheat.tres" id="13_d668a"]
 [ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="13_lo8qh"]
 [ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Scenes/World Objects/Mineable Objects/mineable_object_stone.tscn" id="13_sqojh"]
-[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Resource Meta/Items/item_info_potato.tres" id="14_7wf5s"]
+[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Resource Meta/Items/item_info_sunflower.tres" id="14_7wf5s"]
 [ext_resource type="PackedScene" uid="uid://hl3jkk2n0f7x" path="res://Scenes/World Objects/Mineable Objects/mineable_object_wheat.tscn" id="14_kjoym"]
 [ext_resource type="PackedScene" uid="uid://eshgc8yqihmh" path="res://Scenes/World Objects/Mineable Objects/mineable_object_fibre.tscn" id="16_eltw0"]
 [ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://Scripts/WorldMapIcon.cs" id="17_7wf5s"]
+[ext_resource type="TileSet" uid="uid://e3yw7xs7e1sr" path="res://Scenes/shadow_tileset.tres" id="17_tdjhn"]
 [ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe.png" id="18_0sl6k"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="23_2vll2"]
 [ext_resource type="Texture2D" uid="uid://ce16w5jut6adl" path="res://Sprites/Icons/world_map_quest_icon.png" id="25_0sl6k"]
 [ext_resource type="PackedScene" uid="uid://coeye4llpicv7" path="res://Scenes/World Objects/Mineable Objects/mineable_object_big_stone.tscn" id="28_2vll2"]
+[ext_resource type="PackedScene" uid="uid://dyhqyvmm3pp6m" path="res://Scenes/World Objects/Mineable Objects/mineable_object_mushroom.tscn" id="33_uavw5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cugrr"]
 size = Vector2(32, 32)
@@ -256,18 +258,20 @@ sign_parent = NodePath("Signs")
 [node name="Signs" type="Node2D" parent="RemovableObjectsManager"]
 y_sort_enabled = true
 
-[node name="RemoveSign1" parent="RemovableObjectsManager/Signs" node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "island") instance=ExtResource("9_wl4wn")]
-position = Vector2(-128, -72)
-removable_objects_Manager = NodePath("../..")
-object_connected = NodePath("../../Tilemaps/Object1")
-required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Resource_2vll2"), SubResource("Resource_tdjhn"), SubResource("Resource_uavw5")])
-island = NodePath("../../..")
-
-[node name="RemoveSign0" parent="RemovableObjectsManager/Signs" node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "island") instance=ExtResource("9_wl4wn")]
+[node name="RemoveSign0" parent="RemovableObjectsManager/Signs" node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "shadow_tilemap", "island") instance=ExtResource("9_wl4wn")]
 position = Vector2(-64, 128)
 removable_objects_Manager = NodePath("../..")
 object_connected = NodePath("../../Tilemaps/Object0")
 required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Resource_2vll2"), SubResource("Resource_tdjhn"), SubResource("Resource_uavw5")])
+shadow_tilemap = NodePath("../../Tilemaps/Object0/Shadow")
+island = NodePath("../../..")
+
+[node name="RemoveSign1" parent="RemovableObjectsManager/Signs" node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "shadow_tilemap", "island") instance=ExtResource("9_wl4wn")]
+position = Vector2(-128, -72)
+removable_objects_Manager = NodePath("../..")
+object_connected = NodePath("../../Tilemaps/Object1")
+required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Resource_2vll2"), SubResource("Resource_tdjhn"), SubResource("Resource_uavw5")])
+shadow_tilemap = NodePath("../../Tilemaps/Object1/Shadow")
 id = 1
 island = NodePath("../../..")
 
@@ -275,15 +279,19 @@ island = NodePath("../../..")
 
 [node name="Object0" type="Node2D" parent="RemovableObjectsManager/Tilemaps"]
 
-[node name="Ground2" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
-z_index = -1
+[node name="Top" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+z_index = -2
 tile_map_data = PackedByteArray("AAD8/wIAAAAFAAIAAAD9/wIAAAABAAIAAAD+/wIAAAADAAIAAAD7/wIAAAAEAAIAAAD6/wIAAAAGAAMAAAD6/wEAAAAFAAMAAAD6/wAAAAAFAAMAAAD6////AAAGAAIAAAD7////AAAFAAQAAAD7//7/AAAGAAIAAAD8//7/AAAEAAQAAAD9//7/AAAEAAQAAAD+//7/AAAHAAIAAAD+////AAADAAMAAAD+/wAAAAADAAQAAAD+/wEAAAABAAIAAAD//wAAAAAHAAIAAAD//wEAAAADAAMAAAD//wIAAAAHAAMAAAD9/wEAAAABAAIAAAD8/wEAAAABAAIAAAD7/wEAAAABAAIAAAD7/wAAAAABAAIAAAD8/wAAAAAAAAAAAAD9/wAAAAABAAIAAAD9////AAABAAIAAAD8////AAABAAIAAAD8/wMAAAAGAAMAAAD+/wMAAAAHAAMAAAD9/wMAAAAIAAIAAAA=")
 tile_set = ExtResource("4_i3iyq")
 
 [node name="Ground" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
-z_index = -2
+z_index = -3
 tile_map_data = PackedByteArray("AAD9/wMAAAAHAAAAAAD9/wQAAAAIAAAAAAA=")
 tile_set = ExtResource("4_i3iyq")
+
+[node name="Shadow" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+tile_map_data = PackedByteArray("AAD8/wMAAAAAAAEAAAD+/wMAAAABAAEAAAD9/wMAAAACAAEAAAD+/wIAAAAAAAAAAAD//wIAAAABAAEAAAD7/wIAAAABAAAAAAD6/wIAAAAAAAEAAAD8/wIAAAACAAAAAAA=")
+tile_set = ExtResource("17_tdjhn")
 
 [node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
 z_index = -1
@@ -309,13 +317,13 @@ scale = Vector2(2.5, 2.5)
 
 [node name="Object1" type="Node2D" parent="RemovableObjectsManager/Tilemaps"]
 
-[node name="Ground2" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
-z_index = -1
+[node name="Top" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
+z_index = -2
 tile_map_data = PackedByteArray("AAD9//z/AAAEAAIAAAD+//z/AAAHAAMAAAD+//v/AAADAAMAAAD+//r/AAADAAMAAAD+//n/AAAHAAIAAAD9//n/AAAEAAQAAAD8//n/AAAGAAIAAAD8//r/AAAFAAQAAAD7//r/AAAEAAQAAAD6//r/AAAGAAIAAAD6//v/AAAFAAMAAAD6//z/AAAFAAMAAAD6//3/AAAGAAMAAAD8//3/AAAHAAMAAAD8//z/AAADAAIAAAD7//3/AAAIAAIAAAD7//z/AAABAAIAAAD7//v/AAABAAIAAAD8//v/AAABAAIAAAD9//v/AAABAAIAAAD9//r/AAABAAIAAAA=")
 tile_set = ExtResource("4_i3iyq")
 
 [node name="Ground" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
-z_index = -2
+z_index = -3
 tile_map_data = PackedByteArray("AAD7//3/AAAIAAAAAAA=")
 tile_set = ExtResource("4_i3iyq")
 
@@ -323,6 +331,10 @@ tile_set = ExtResource("4_i3iyq")
 z_index = -1
 tile_map_data = PackedByteArray("AAD8//v/AAALAAAAAAA=")
 tile_set = ExtResource("4_i3iyq")
+
+[node name="Shadow" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1"]
+tile_map_data = PackedByteArray("AAD6//3/AAAAAAEAAAD+//z/AAABAAEAAAD9//z/AAABAAAAAAD7//3/AAACAAEAAAD8//3/AAABAAEAAAD8//z/AAAAAAAAAAA=")
+tile_set = ExtResource("17_tdjhn")
 
 [node name="Blocking" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1" groups=["BLOCKING"]]
 light_mask = 0
@@ -545,6 +557,24 @@ position = Vector2(56, -96)
 
 [node name="Fibre3" parent="IslandObjectSaveManager" instance=ExtResource("16_eltw0")]
 position = Vector2(128, -128)
+
+[node name="Mushroom" parent="IslandObjectSaveManager" instance=ExtResource("33_uavw5")]
+position = Vector2(-144, -8)
+
+[node name="Mushroom3" parent="IslandObjectSaveManager" instance=ExtResource("33_uavw5")]
+position = Vector2(88, 32)
+
+[node name="Mushroom4" parent="IslandObjectSaveManager" instance=ExtResource("33_uavw5")]
+position = Vector2(216, 40)
+
+[node name="Mushroom5" parent="IslandObjectSaveManager" instance=ExtResource("33_uavw5")]
+position = Vector2(48, -200)
+
+[node name="Mushroom6" parent="IslandObjectSaveManager" instance=ExtResource("33_uavw5")]
+position = Vector2(96, -128)
+
+[node name="Mushroom2" parent="IslandObjectSaveManager" instance=ExtResource("33_uavw5")]
+position = Vector2(-64, -88)
 
 [connection signal="mouse_entered" from="QuestSign/MouseArea" to="QuestSign/MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="QuestSign/MouseArea" to="QuestSign/MouseArea" method="OnMouseLeaved"]

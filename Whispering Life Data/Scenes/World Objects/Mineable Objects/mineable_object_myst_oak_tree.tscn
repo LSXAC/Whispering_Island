@@ -186,10 +186,10 @@ position = Vector2(-2.5, -9)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("6_j0pn3")]
-offset_left = -31.0
-offset_top = -67.0
-offset_right = 9.0
-offset_bottom = -66.0
+offset_left = -26.0
+offset_top = -47.0
+offset_right = 6.0
+offset_bottom = -46.0
 
 [node name="LeavesParticles" type="GPUParticles2D" parent="."]
 position = Vector2(-8, -13)

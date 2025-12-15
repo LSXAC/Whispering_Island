@@ -145,9 +145,9 @@ position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("13_pp0f8")]
-offset_left = -27.0
+offset_left = -25.0
 offset_top = -32.0
-offset_right = 13.0
+offset_right = 7.0
 offset_bottom = -31.0
 
 [node name="StoneParticles" type="GPUParticles2D" parent="."]

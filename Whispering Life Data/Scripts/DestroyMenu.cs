@@ -60,7 +60,9 @@ public partial class DestroyMenu : Control
 
         RemovableObjectsManager manager = current_sign.removable_objects_Manager;
         manager.removed_objects.Add(current_sign.id);
+        current_sign.RemoveShadows();
         current_sign.object_connected.QueueFree();
+        current_sign.sprite_anim_manager.shadowNode.RemoveShadow();
         current_sign.QueueFree();
         OnExitButton();
     }

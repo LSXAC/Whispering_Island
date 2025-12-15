@@ -15,7 +15,16 @@ public partial class RemoveSign : Sign
     public Array<Item> required_items;
 
     [Export]
+    public TileMapLayer shadow_tilemap;
+
+    [Export]
     public int id = 0;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        MoveShadowToManager();
+    }
 
     public override void OnMouseClick()
     {
@@ -30,5 +39,20 @@ public partial class RemoveSign : Sign
 
         DestroyMenu.current_sign = this;
         GameMenu.instance.OnOpenDestroyTab();
+    }
+
+    public void MoveShadowToManager()
+    {
+        Island island = removable_objects_Manager.GetParent<Island>();
+        shadow_tilemap.Reparent(GameManager.instance.shadow_manager);
+        shadow_tilemap.GlobalPosition = new Vector2(
+            island.matrix_x * 16 * 32,
+            island.matrix_y * 16 * 32
+        );
+    }
+
+    public void RemoveShadows()
+    {
+        shadow_tilemap.Free();
     }
 }

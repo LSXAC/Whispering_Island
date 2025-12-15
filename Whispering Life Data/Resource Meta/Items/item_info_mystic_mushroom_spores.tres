@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://wxhydk80jtpn"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_6i6nc"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="2_ywj5r"]
+[ext_resource type="Texture2D" uid="uid://bh7u3xtchj2nl" path="res://Sprites/Items/Plants_Icons/Sunflower_Seed.png" id="3_wg630"]
+
+[sub_resource type="Resource" id="Resource_c2r46"]
+script = ExtResource("1_6i6nc")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("2_ywj5r")
+attributes = Array[Object]([SubResource("Resource_c2r46")])
+max_stackable_size = 250
+name = "MYSTIC_MUSHROOMS_SPORES"
+id = 61
+description = "MYSTIC_MUSHROOMS_SPORES_DESC"
+texture = ExtResource("3_wg630")
+value = 5.0

@@ -174,9 +174,9 @@ public partial class Database : Node
         RESEARCH_TABLE,
         WOOD_BED,
         TRASHCAN,
-        CORN,
+        MUSHROOM,
         WHEAT,
-        POTATO,
+        SUNFLOWER,
         CARROT,
         MYSTIC_OAK_TREE,
         MYSTIC_FIBRE,
@@ -201,5 +201,6 @@ public partial class Database : Node
         COAL_ORE,
         SUGER_CANE,
         BIG_STONE,
+        MYSTIC_MUSHROOM
     }
 }

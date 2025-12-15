@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=7 format=3 uid="uid://ddh60mgjdbfna"]
 
-[ext_resource type="Resource" uid="uid://cbpupb53ocwp4" path="res://Resource Meta/Items/item_info_corn_seed.tres" id="1_co828"]
-[ext_resource type="PackedScene" uid="uid://dyhqyvmm3pp6m" path="res://Scenes/World Objects/Mineable Objects/mineable_object_corn.tscn" id="2_418km"]
+[ext_resource type="Resource" uid="uid://cbpupb53ocwp4" path="res://Resource Meta/Items/item_info_mushroom_spores.tres" id="1_co828"]
+[ext_resource type="PackedScene" uid="uid://dyhqyvmm3pp6m" path="res://Scenes/World Objects/Mineable Objects/mineable_object_mushroom.tscn" id="2_418km"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_wdw51"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_qmo3n"]
 [ext_resource type="Texture2D" uid="uid://dsheiojtc2vgm" path="res://Sprites/Items/Fruits_Icons/Corn.png" id="5_co828"]

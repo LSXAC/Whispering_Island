@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://bi8dopb46mfob"]
+[gd_scene load_steps=29 format=4 uid="uid://bi8dopb46mfob"]
 
 [ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island.cs" id="1_uk6cx"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="2_j0ysi"]
@@ -11,13 +11,15 @@
 [ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="11_u0eh4"]
 [ext_resource type="PackedScene" uid="uid://cjw7mpije2ul4" path="res://Scenes/World Objects/Mineable Objects/mineable_object_myst_fibre.tscn" id="12_8drlg"]
 [ext_resource type="Script" uid="uid://d24qfaj5tmqyv" path="res://Scenes/Islands/RemovableObjectsManager.cs" id="12_hv1cu"]
+[ext_resource type="PackedScene" uid="uid://botgollmorgra" path="res://Scenes/World Objects/Mineable Objects/mineable_object_mystic_mushroom.tscn" id="12_j5dp2"]
 [ext_resource type="PackedScene" uid="uid://gb18hiamdyqj" path="res://Scenes/World Objects/Mineable Objects/mineable_object_myst_oak_tree.tscn" id="13_sn8nb"]
 [ext_resource type="PackedScene" uid="uid://c1d1aayf8y2d0" path="res://Scenes/World Objects/remove_sign.tscn" id="13_ulfit"]
 [ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Resource Meta/Items/item_info_stone_pickaxe.tres" id="14_s8t3c"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="15_nyspn"]
 [ext_resource type="Resource" uid="uid://dmrxwabbdyg0d" path="res://Resource Meta/Items/item_info_wood_axe.tres" id="16_j5dp2"]
 [ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://Resource Meta/Items/item_info_wheat.tres" id="17_q6116"]
-[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Resource Meta/Items/item_info_potato.tres" id="18_lwg4b"]
+[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Resource Meta/Items/item_info_sunflower.tres" id="18_lwg4b"]
+[ext_resource type="TileSet" uid="uid://e3yw7xs7e1sr" path="res://Scenes/shadow_tileset.tres" id="19_nyspn"]
 [ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://Scripts/WorldMapIcon.cs" id="19_s8t3c"]
 [ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe.png" id="20_nyspn"]
 
@@ -245,6 +247,33 @@ position = Vector2(-77, 55)
 position = Vector2(-104, -144)
 variant = 1
 
+[node name="Mystic Mushroom" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+position = Vector2(64, 16)
+
+[node name="Mystic Mushroom2" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+position = Vector2(136, -96)
+
+[node name="Mystic Mushroom3" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+position = Vector2(128, -72)
+
+[node name="Mystic Mushroom4" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+position = Vector2(96, -104)
+
+[node name="Mystic Mushroom5" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+position = Vector2(-72, -80)
+
+[node name="Mystic Mushroom6" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+position = Vector2(-144, -88)
+
+[node name="Mystic Mushroom7" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+position = Vector2(-120, -64)
+
+[node name="Mystic Mushroom8" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+position = Vector2(-56, 48)
+
+[node name="Mystic Mushroom9" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+position = Vector2(-104, 40)
+
 [node name="RemovableObjectsManager" type="Node2D" parent="." node_paths=PackedStringArray("tilemap_parent", "sign_parent")]
 y_sort_enabled = true
 script = ExtResource("12_hv1cu")
@@ -254,26 +283,31 @@ sign_parent = NodePath("Signs")
 [node name="Signs" type="Node2D" parent="RemovableObjectsManager"]
 y_sort_enabled = true
 
-[node name="RemoveSign0" parent="RemovableObjectsManager/Signs" node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "island") instance=ExtResource("13_ulfit")]
+[node name="RemoveSign0" parent="RemovableObjectsManager/Signs" node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "shadow_tilemap", "island") instance=ExtResource("13_ulfit")]
 position = Vector2(-64, -104)
 removable_objects_Manager = NodePath("../..")
 object_connected = NodePath("../../Tilemaps/Object0")
 required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Resource_2vll2"), SubResource("Resource_tdjhn"), SubResource("Resource_uavw5")])
+shadow_tilemap = NodePath("../../Tilemaps/Object0/Shadow")
 island = NodePath("../../..")
 
 [node name="Tilemaps" type="Node2D" parent="RemovableObjectsManager"]
 
 [node name="Object0" type="Node2D" parent="RemovableObjectsManager/Tilemaps"]
 
-[node name="Ground2" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
-z_index = -1
+[node name="Top" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+z_index = -2
 tile_map_data = PackedByteArray("AAD9//7/AAAHAAkAAAD8//7/AAAEAAgAAAD7//7/AAAEAAgAAAD9//3/AAADAAkAAAD9//z/AAADAAgAAAD+//v/AAABAAgAAAD+//r/AAABAAgAAAD9//r/AAAFAAoAAAD8//r/AAAEAAoAAAD7//r/AAAGAAgAAAD6//v/AAAGAAgAAAD7//v/AAAFAAoAAAD6//z/AAAFAAkAAAD6//3/AAAFAAkAAAD6//7/AAAGAAkAAAD7//3/AAABAAgAAAD8//3/AAABAAgAAAD8//z/AAABAAgAAAD7//z/AAABAAgAAAD8//v/AAABAAgAAAD9//v/AAABAAgAAAD+//z/AAAIAAgAAAD///z/AAAHAAkAAAD///v/AAADAAkAAAD///r/AAADAAkAAAD///n/AAAHAAgAAAD+//n/AAAEAAoAAAA=")
 tile_set = ExtResource("4_xws4w")
 
 [node name="Ground" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
-z_index = -2
+z_index = -3
 tile_map_data = PackedByteArray("AAD+//z/AAAIAAAAAAA=")
 tile_set = ExtResource("4_xws4w")
+
+[node name="Shadow" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+tile_map_data = PackedByteArray("AAD+//z/AAACAAEAAAD9//7/AAABAAEAAAD///z/AAABAAEAAAD6//7/AAAAAAEAAAD7//7/AAABAAAAAAD8//7/AAABAAAAAAD9//z/AAAAAAAAAAA=")
+tile_set = ExtResource("19_nyspn")
 
 [node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
 z_index = -1

@@ -42,12 +42,12 @@ public partial class Inventory : SlotUpdater
         WHEAT,
         IRON_BLOCK,
         WHEAT_SEED,
-        POTATO,
-        POTATO_SEED,
+        SUNFLOWER,
+        SUNFLOWER_SEED,
         CARROT,
         CARROT_SEED,
-        CORN,
-        CORN_SEED,
+        MUSHROOM,
+        MUSHROOM_SPORES,
         SAND,
         SAND_STONE,
         MYSTIC_ARMOR_HEAD,
@@ -76,7 +76,9 @@ public partial class Inventory : SlotUpdater
         SUGAR,
         RESEARCH_BOOK_SUB,
         RESEARCH_BOOK_LEVEL,
-        PAPER
+        PAPER,
+        MYSTIC_MUSHROOM,
+        MYSTIC_MUSHROOM_SPORES
     }
 
     public override void _Ready()

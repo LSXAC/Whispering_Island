@@ -11,10 +11,10 @@ bg_color = Color(0.517647, 0.709804, 0.647059, 1)
 
 [node name="TimerBar" type="ProgressBar"]
 z_index = 5
-custom_minimum_size = Vector2(40, 1)
-offset_left = -20.0
+custom_minimum_size = Vector2(32, 1)
+offset_left = -16.0
 offset_top = -2.0
-offset_right = 20.0
+offset_right = 16.0
 offset_bottom = -1.0
 theme_override_font_sizes/font_size = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_bjfdt")
@@ -26,12 +26,13 @@ script = ExtResource("1_60n7p")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -32.0
-offset_top = -7.0
-offset_right = 73.0
+offset_left = -36.0
+offset_top = -4.0
+offset_right = 69.0
+offset_bottom = 3.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_gkuag")
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 4
 text = "60s"
 horizontal_alignment = 1
 

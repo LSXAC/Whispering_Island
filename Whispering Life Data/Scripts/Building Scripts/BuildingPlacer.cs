@@ -55,7 +55,10 @@ public partial class BuildingPlacer : Node2D
         }
 
         if (current_building is MineableObject mineable)
+        {
+            mineable.SetVariation(0, growth: true);
             placeable = mineable;
+        }
 
         if (placeable is MachineBase machine_base)
         {
@@ -177,7 +180,16 @@ public partial class BuildingPlacer : Node2D
         }
 
         if (temp is MineableObject mineable_object)
+        {
+            int var = ((MineableObject)placeable).variant;
+            mineable_object.SetVariation(var, growth: true);
             mineable_object.SpawnPlant();
+
+            ((MineableObject)placeable).SetVariation(
+                mineable_object.GetRandomVariation(),
+                growth: true
+            );
+        }
 
         if (temp is TransportBase transport_base)
         {

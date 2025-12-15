@@ -138,9 +138,9 @@ polygon = PackedVector2Array(-2, -2, -11, -2, -15, 2, -16, 2, -20, -2, -26, -2, 
 
 [node name="TimerBar" parent="." instance=ExtResource("6_nv75e")]
 offset_left = -30.0
-offset_top = -40.0
-offset_right = 10.0
-offset_bottom = -39.0
+offset_top = -41.0
+offset_right = 2.0
+offset_bottom = -40.0
 
 [node name="StoneParticles" type="GPUParticles2D" parent="."]
 z_index = 1

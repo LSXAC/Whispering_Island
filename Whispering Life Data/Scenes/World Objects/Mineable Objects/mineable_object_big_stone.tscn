@@ -165,9 +165,9 @@ position = Vector2(-0.5, -14)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("13_sclm2")]
-offset_left = -34.0
+offset_left = -29.0
 offset_top = -46.0
-offset_right = 6.0
+offset_right = 3.0
 offset_bottom = -45.0
 mouse_filter = 2
 

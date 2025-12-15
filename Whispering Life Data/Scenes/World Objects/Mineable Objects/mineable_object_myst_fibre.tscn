@@ -125,10 +125,10 @@ position = Vector2(5.5, -8)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("6_hn3tl")]
-offset_left = -26.0
-offset_top = -41.0
+offset_left = -18.0
+offset_top = -38.0
 offset_right = 14.0
-offset_bottom = -40.0
+offset_bottom = -37.0
 
 [node name="FibreParticles" type="GPUParticles2D" parent="."]
 z_index = 1

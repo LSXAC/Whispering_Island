@@ -63,18 +63,18 @@ IRON_BLOCK,Iron Block,Eisenblock
 IRON_BLOCK_DESC,Block of Iron,Block aus Eisen
 WHEAT_SEED,Wheat Seeds,Weizensamen
 WHEAT_SEED_DESC,Seeds made from wheat,Samen hergestellt aus Weizen
-POTATO,Potato,Kartoffel
-POTATO_DESC,fresh potato,Frisch ausgebuddelte Kartoffel
-POTATO_SEED,Potato Seeds,Kartoffelsamen
-POTATO_SEED_DESC,Seeds made from potatos,Samen hergestellt aus Kartoffeln
+SUNFLOWER,Sunflower,Sonnenblume
+SUNFLOWER_DESC,fresh Sunflower,Frisch gepflückte Sonnenblumen
+SUNFLOWER_SEED,Sunflower Seeds,Sonnenblumenkerne
+SUNFLOWER_SEED_DESC,Seeds made from Sunflowers,Samen hergestellt aus Sonnenblumen
 CARROT,Carrot,Karotte
 CARROT_DESC,fresh carrot,Frisch gezogene Karotte
 CARROT_SEED,Carrot Seeds,Karottensamen
 CARROT_SEED_DESC,Seeds made from Carrots,Samen hergestellt aus Karotten
-CORN,Corn,Mais
-CORN_DESC,fresh corn,Frisch geflückter Mais
-CORN_SEED,Corn Seeds,Maissamen
-CORN_SEED_DESC,Seeds made from Corn,Samen hergestellt aus Mais
+MUSHROOM,Mushroom,Mais
+MUSHROOM_DESC,Fresh mushroom,Frisch geflückter Pilz
+MUSHROOM_SPORES,Mushroom spores,Pilzsporen
+MUSHROOM_SPORES_DESC,Spores from a mushroom,Sporen eines Pilzes
 SAND,Sand,Sand
 SAND_DESC,A handfull sand,Eine Schaufel Sand
 SAND_STONE,sandstone,Sandstein
@@ -156,3 +156,8 @@ RESEARCH_BOOK_LEVEL,Research Book (Level),Forschungsbuch (Stufe)
 RESEARCH_BOOK_LEVEL_DESC,A book that is used for Level upgrades!,Ein Buch was für Stufenaufstiege benötigt wird!
 PAPER,Paper,Papier
 PAPER_DESC,Material used for crafting,Material für die Herstellung.
+,,
+MYSTIC_MUSHROOM,Mystical Mushroom,Mystischer Pilz
+MYSTIC_MUSHROOM_DESC,Fresh mystical mushroom,Frisch geflückter mystischer Pilz
+MYSTIC_MUSHROOM_SPORES,Mystical Mushroom spores,Mystische Pilzsporen
+MYSTIC_MUSHROOM_SPORES_DESC,Spores from a mystical mushroom,Sporen eines mystischen Pilzes

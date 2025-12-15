@@ -80,6 +80,22 @@ public partial class MineableObject : placeable_building
         growth_textures = growth_t2d_array;
     }
 
+    public int GetRandomVariation()
+    {
+        Random rnd = new Random();
+        variant = rnd.Next(0, variants_parent.GetChildCount());
+        return variant;
+    }
+
+    public void SetVariation(int variant, bool growth = false)
+    {
+        this.variant = variant;
+        Debug.Print("variation: " + variant);
+        GetTexture2DArray(variant);
+        if (growth)
+            UpdateGrowthTexture();
+    }
+
     public override void _Ready()
     {
         base._Ready();
