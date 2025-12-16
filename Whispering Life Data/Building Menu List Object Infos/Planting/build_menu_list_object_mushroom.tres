@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://1vfo1rr84pk7" path="res://Resource Meta/Items/item_info_sunflower_seed.tres" id="1_32mc5"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_eepii"]
-[ext_resource type="PackedScene" uid="uid://bmjn6kocpubo3" path="res://Scenes/World Objects/Mineable Objects/mineable_object_sunflower.tscn" id="3_efcut"]
+[ext_resource type="PackedScene" uid="uid://dyhqyvmm3pp6m" path="res://Scenes/World Objects/Mineable Objects/mineable_object_mushroom.tscn" id="3_32mc5"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="4_q3m4c"]
 [ext_resource type="Texture2D" uid="uid://du3kj8ue15udf" path="res://Sprites/Items/Fruits_Icons/Mushroom.png" id="5_32mc5"]
 
@@ -14,8 +14,8 @@ metadata/_custom_type_script = "uid://cee63igbpybf"
 
 [resource]
 script = ExtResource("4_q3m4c")
-scene = ExtResource("3_efcut")
-scene_building_id = 11
+scene = ExtResource("3_32mc5")
+scene_building_id = 9
 required_items = Array[Object]([SubResource("Resource_yo73i")])
 unlock_requirements = null
 building_menu_category = 2

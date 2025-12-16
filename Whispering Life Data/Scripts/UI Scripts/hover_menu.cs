@@ -116,7 +116,10 @@ public partial class hover_menu : PanelContainer
             instance.Line1.Visible = true;
 
             //Hitpoints if Ressource
-            instance.hitpoint_content.Text = ro.current_durability + "/" + ro.max_durability;
+            if (ro.max_durability == 0)
+                instance.hitpoint_content.Text = "1/1";
+            else
+                instance.hitpoint_content.Text = ro.current_durability + "/" + ro.max_durability;
 
             //Type if Ressource
             instance.resource_type_content.Text = ro.tool_type.ToString();

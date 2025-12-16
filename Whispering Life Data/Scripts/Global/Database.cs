@@ -201,6 +201,7 @@ public partial class Database : Node
         COAL_ORE,
         SUGER_CANE,
         BIG_STONE,
-        MYSTIC_MUSHROOM
+        MYSTIC_MUSHROOM,
+        PALM
     }
 }

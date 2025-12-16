@@ -78,7 +78,9 @@ public partial class Inventory : SlotUpdater
         RESEARCH_BOOK_LEVEL,
         PAPER,
         MYSTIC_MUSHROOM,
-        MYSTIC_MUSHROOM_SPORES
+        MYSTIC_MUSHROOM_SPORES,
+        PALM_WOOD,
+        PALM_SEED
     }
 
     public override void _Ready()
