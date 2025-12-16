@@ -80,7 +80,9 @@ public partial class Inventory : SlotUpdater
         MYSTIC_MUSHROOM,
         MYSTIC_MUSHROOM_SPORES,
         PALM_WOOD,
-        PALM_SEED
+        PALM_SEED,
+        CACTUS,
+        CACTUS_SEED
     }
 
     public override void _Ready()

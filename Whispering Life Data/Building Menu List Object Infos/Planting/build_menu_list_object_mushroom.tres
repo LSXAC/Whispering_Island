@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=7 format=3 uid="uid://ka556ylkcc4o"]
 
-[ext_resource type="Resource" uid="uid://1vfo1rr84pk7" path="res://Resource Meta/Items/item_info_sunflower_seed.tres" id="1_32mc5"]
+[ext_resource type="Resource" uid="uid://cbpupb53ocwp4" path="res://Resource Meta/Items/item_info_mushroom_spores.tres" id="1_32mc5"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_eepii"]
 [ext_resource type="PackedScene" uid="uid://dyhqyvmm3pp6m" path="res://Scenes/World Objects/Mineable Objects/mineable_object_mushroom.tscn" id="3_32mc5"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="4_q3m4c"]

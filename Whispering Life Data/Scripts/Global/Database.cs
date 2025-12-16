@@ -202,6 +202,7 @@ public partial class Database : Node
         SUGER_CANE,
         BIG_STONE,
         MYSTIC_MUSHROOM,
-        PALM
+        PALM,
+        CACTUS
     }
 }

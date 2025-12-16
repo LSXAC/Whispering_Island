@@ -186,7 +186,7 @@ public partial class MineableObject : placeable_building
             miningAmount
             * (int)Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.MINING_AMOUNT);
 
-        if (durabilityAfterHit > 0)
+        if (durabilityAfterHit >= 0)
         {
             if (!CanReceiveItem(item))
                 return;
@@ -210,7 +210,7 @@ public partial class MineableObject : placeable_building
         gpu_particles.Emitting = true;
 
         DiscoverManager.instance.AddDiscovery(resource_item.info);
-        if (current_durability <= 0)
+        if (current_durability < 0)
         {
             HandleBreak(bonusAmount);
             sprite_anim_manager.shadowNode.RemoveShadow();
