@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gvudefjfv4jx" path="res://Scripts/Player Scripts/Player.cs" id="1_2p5ml"]
 [ext_resource type="Texture2D" uid="uid://b4214y7h1nkv7" path="res://Sprites/Char_Animation.png" id="2_c6oqb"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="3_gk6dx"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="3_gk6dx"]
 [ext_resource type="Script" uid="uid://bp563ixlsam56" path="res://Scripts/Player Scripts/PlayerStats.cs" id="5_f3lay"]
 [ext_resource type="Script" uid="uid://bphfcvdv87vxh" path="res://Scripts/Player Scripts/PlayerStamina.cs" id="5_l640a"]
 [ext_resource type="Script" uid="uid://bkcah5h7fcbm5" path="res://Scenes/Player/LightBehaviour.cs" id="6_dd0ac"]

@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://si08p4snhtll" path="res://Sprites/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_6.png" id="26_vigfn"]
 [ext_resource type="Texture2D" uid="uid://coohmx6047muu" path="res://Sprites/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_5.png" id="27_hn5q8"]
 [ext_resource type="Texture2D" uid="uid://fblce611buvt" path="res://Sprites/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_4.png" id="28_guaw4"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="28_i6swg"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="28_i6swg"]
 [ext_resource type="Texture2D" uid="uid://d00t7frxp76pp" path="res://Sprites/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_3.png" id="29_kkifh"]
 [ext_resource type="Texture2D" uid="uid://bjswfriec3a5h" path="res://Sprites/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_2.png" id="30_isiex"]
 [ext_resource type="Texture2D" uid="uid://d18nujrokpm1" path="res://Sprites/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_Shadow6.png" id="31_gcmjv"]

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://btttd0oha3u3i" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Animation3.png" id="6_0aakb"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="6_hn3tl"]
 [ext_resource type="Texture2D" uid="uid://w5h1vxawvg88" path="res://Sprites/Myst_Particle.png" id="7_7jxkm"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="7_gg38c"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="7_gg38c"]
 [ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="8_ugk1g"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="8_vh1ys"]
 [ext_resource type="Texture2D" uid="uid://b0y7en4p6mlai" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Animation_Shadow3.png" id="9_0skkk"]
@@ -90,11 +90,11 @@ animation = &"Normal"
 centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
-position = Vector2(-2, -13)
+position = Vector2(-7, -17)
 texture = ExtResource("6_0aakb")
 
 [node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("7_gg38c")]
-position = Vector2(-2, -13)
+position = Vector2(-7, -17)
 
 [node name="Variations" type="Node2D" parent="SpriteAnimationManager"]
 
@@ -113,6 +113,7 @@ textures = Array[Texture2D]([ExtResource("10_uwjna"), ExtResource("11_erk7e"), E
 shadow_textures = Array[Texture2D]([ExtResource("12_b5kvn"), ExtResource("13_gm3ca"), ExtResource("9_0skkk")])
 
 [node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+position = Vector2(-5, -4)
 polygon = PackedVector2Array(-1, -1, -4, -1, -7, -2, -7, -4, -4, -6, 1, -6, 3, -4, 1, -2)
 
 [node name="MouseArea" type="Area2D" parent="."]
@@ -125,10 +126,10 @@ position = Vector2(5.5, -8)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("6_hn3tl")]
-offset_left = -18.0
-offset_top = -38.0
-offset_right = 14.0
-offset_bottom = -37.0
+offset_left = -14.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = -3.0
 
 [node name="FibreParticles" type="GPUParticles2D" parent="."]
 z_index = 1

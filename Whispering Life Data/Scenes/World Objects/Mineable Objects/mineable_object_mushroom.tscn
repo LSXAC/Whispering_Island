@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://clhiea6invtb0" path="res://Sprites/Spritesheets/Plants/Mushroom/Mushroom3.png" id="6_pgohe"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="7_jntfc"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="7_mdwsr"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="7_ve834"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="7_ve834"]
 [ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Scenes/World Objects/Mineable Objects/Destroy.gdshader" id="8_d6wrp"]
 [ext_resource type="Texture2D" uid="uid://brdyj2udwaxpm" path="res://Sprites/Sand_Particle.png" id="8_p3330"]
 [ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="9_roju1"]
@@ -149,10 +149,10 @@ position = Vector2(-1, -4.5)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("6_i1ulo")]
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 8.0
-offset_bottom = -23.0
+offset_left = -14.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = -3.0
 
 [node name="MushroomParticles" type="GPUParticles2D" parent="."]
 z_index = 1

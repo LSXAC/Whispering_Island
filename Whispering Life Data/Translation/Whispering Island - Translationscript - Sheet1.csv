@@ -156,12 +156,12 @@ WORLD_RESOURCE_FIBRE,Fibre,Fasern
 WORLD_RESOURCE_FIBRE_DESC,Collect to receive fibre,Erhalte Fasern beim sammeln
 WORLD_RESOURCE_SUGAR_CANE,Sugar Cane,Zuckerrohr
 WORLD_RESOURCE_SUGAR_DESC,Harvest to receive sugar cane,Erhalte Zuckerrohr beim ernten
-WORLD_RESOURCE_MYSTIC_MUSHROOM,Mystical Mushroom,Mystische Pilze
+WORLD_RESOURCE_MYSTIC_MUSHROOM,Mystic Mushroom,Mystischer Pilz
 WORLD_RESOURCE_MYSTIC_MUSHROOM_DESC,Harvest to receive mystical mushrooms,Erhalte mystische Pilze beim ernten
-,,
-,,
-,,
-,,
+WORLD_RESOURCE_PALM,Palm,Palme
+WORLD_RESOURCE_PALM_DESC,Harvest to receive palm wood,Erhalte Palmenholz beim abbauen
+WORLD_RESOURCE_CACTUS,Cactus,Kaktus
+WORLD_RESOURCE_CACTUS_DESC,Harvest to receive Cactus,Erhalte Kaktus beim ernten
 ,,
 ,,
 ,,

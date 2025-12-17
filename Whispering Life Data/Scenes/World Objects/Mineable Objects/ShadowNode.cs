@@ -9,7 +9,7 @@ public partial class ShadowNode : Node2D
     [Export]
     public Vector2 offset = Vector2.Zero;
 
-    private Sprite2D shadow_sprite;
+    public Sprite2D shadow_sprite;
 
     [Export]
     public RemoteTransform2D remote_transform;
@@ -17,18 +17,21 @@ public partial class ShadowNode : Node2D
     [Export]
     public Texture2D single_shadow_texture;
 
+    [Export]
+    public bool is_used_in_tutorial = false;
+
     public override void _Ready()
     {
         shadow_sprite = CreateShadowSprite();
         if (single_shadow_texture != null)
             SetTexture(single_shadow_texture);
+
+        shadow_sprite.Visible = false;
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        if (!GameManager.instance.tutorial_finished && shadow_sprite.Visible)
-            shadow_sprite.Visible = false;
-        else if (GameManager.instance.tutorial_finished && !shadow_sprite.Visible)
+        if (GameManager.instance.tutorial_finished && !shadow_sprite.Visible)
             shadow_sprite.Visible = true;
     }
 

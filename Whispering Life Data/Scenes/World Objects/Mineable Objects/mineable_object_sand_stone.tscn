@@ -7,7 +7,7 @@
 [ext_resource type="SpriteFrames" uid="uid://gu83yfhw356p" path="res://ResourceNormal.tres" id="4_qf207"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_2jjpq"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="6_lr8v5"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="6_mvhm6"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="6_mvhm6"]
 [ext_resource type="Texture2D" uid="uid://bt4ttowy3tapp" path="res://Sprites/Spritesheets/Stones/SandStone/SandRock_V1_1.png" id="7_b8q0b"]
 [ext_resource type="Texture2D" uid="uid://dtr81pcrxrk5o" path="res://Sprites/Spritesheets/Stones/SandStone/SandRock_V0_1.png" id="7_iwesk"]
 [ext_resource type="Texture2D" uid="uid://brdyj2udwaxpm" path="res://Sprites/Sand_Particle.png" id="7_rmpsv"]

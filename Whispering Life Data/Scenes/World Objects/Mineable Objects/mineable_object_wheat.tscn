@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://8xd8cthwkhg3" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation3.png" id="9_xl1cx"]
 [ext_resource type="Texture2D" uid="uid://byqyirm258rxa" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation_shadow1.png" id="11_1fk6w"]
 [ext_resource type="Texture2D" uid="uid://dcv6oempy0ls3" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation_shadow2.png" id="12_ode4i"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="13_1fk6w"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="13_1fk6w"]
 
 [sub_resource type="Resource" id="Resource_gq40s"]
 script = ExtResource("3_632dl")
@@ -129,10 +129,10 @@ position = Vector2(2, -8)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("6_sfdjg")]
-offset_left = -23.0
-offset_top = -35.0
-offset_right = 9.0
-offset_bottom = -34.0
+offset_left = -14.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = -3.0
 
 [node name="WheatParticle" type="GPUParticles2D" parent="."]
 z_index = 1

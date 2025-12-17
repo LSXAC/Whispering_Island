@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dwab4v0f5ui7b" path="res://Sprites/Spritesheets/Plants/Carrots/Carrot3.png" id="6_6rfkr"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="7_8i61u"]
 [ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="7_ec4u3"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="7_tp2h2"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="7_tp2h2"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="8_csmfn"]
 [ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Scenes/World Objects/Mineable Objects/Destroy.gdshader" id="8_yeclv"]
 [ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="9_ykxlm"]
@@ -99,11 +99,11 @@ sprite_frames = SubResource("SpriteFrames_asrbt")
 animation = &"Normal"
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
-position = Vector2(-8, -15)
+position = Vector2(-8, -16)
 texture = ExtResource("6_6rfkr")
 
 [node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("7_tp2h2")]
-position = Vector2(-8, -15)
+position = Vector2(-8, -16)
 
 [node name="Variation" type="Node2D" parent="SpriteAnimationManager"]
 
@@ -133,10 +133,10 @@ position = Vector2(-4.5, -9.5)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("6_4rs16")]
-offset_left = -24.0
-offset_top = -34.0
-offset_right = 8.0
-offset_bottom = -33.0
+offset_left = -14.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = -3.0
 
 [node name="CarrotParticles" type="GPUParticles2D" parent="."]
 z_index = 1
@@ -164,7 +164,7 @@ collision_tilemap = NodePath("../CollisionTemplateTilemap")
 position = Vector2(-8, -8)
 
 [node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
-position = Vector2(-3, -4)
+position = Vector2(-3, -5)
 polygon = PackedVector2Array(-1, -3, -3, -1, -6, -1, -8, -3, -8, -9, -6, -10, -3, -10, -1, -9)
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]

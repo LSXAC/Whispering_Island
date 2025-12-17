@@ -40,7 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://d05s7wolq5oeh" path="res://Sprites/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V2_Shadow3.png" id="34_3sykc"]
 [ext_resource type="Texture2D" uid="uid://b7c5jrn8nalpq" path="res://Sprites/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V2_Shadow2.png" id="35_ts1kg"]
 [ext_resource type="Texture2D" uid="uid://ombh5djli7ay" path="res://Sprites/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V2_Shadow1.png" id="36_hl7px"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="37_nsmtc"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="37_nsmtc"]
 
 [sub_resource type="Resource" id="Resource_gbxlv"]
 script = ExtResource("3_ndvxn")

@@ -67,7 +67,7 @@
 [ext_resource type="Texture2D" uid="uid://h4loogu7eu7" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow3.png" id="59_3tbk8"]
 [ext_resource type="Texture2D" uid="uid://cqkg0kirb2wru" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow2.png" id="60_gwmn8"]
 [ext_resource type="Texture2D" uid="uid://b0ulcy60r1efs" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow1.png" id="61_0aqyx"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="62_langh"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="62_langh"]
 
 [sub_resource type="Resource" id="Resource_o5wt5"]
 script = ExtResource("3_edij4")
@@ -165,10 +165,10 @@ position = Vector2(-0.5, -14)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("13_sclm2")]
-offset_left = -29.0
-offset_top = -46.0
-offset_right = 3.0
-offset_bottom = -45.0
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 0.0
+offset_bottom = 0.0
 mouse_filter = 2
 
 [node name="StoneParticles" type="GPUParticles2D" parent="."]

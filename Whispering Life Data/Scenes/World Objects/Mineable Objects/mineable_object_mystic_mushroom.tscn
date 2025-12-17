@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="5_tqnx4"]
 [ext_resource type="SpriteFrames" uid="uid://gu83yfhw356p" path="res://ResourceNormal.tres" id="6_xhhq5"]
 [ext_resource type="Texture2D" uid="uid://8w26mhy7c6ow" path="res://Sprites/Spritesheets/Plants/Mystic_Mushroom/Mystic_Mushroom3.png" id="7_uyotn"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="8_8lh4p"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="8_8lh4p"]
 [ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Scenes/World Objects/Mineable Objects/Destroy.gdshader" id="9_lgkl0"]
 [ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="10_tn18v"]
 [ext_resource type="Texture2D" uid="uid://b2shksmeujlgm" path="res://Sprites/Spritesheets/Plants/Mystic_Mushroom/Mystic_Mushroom_Shadow3.png" id="11_iich6"]
@@ -131,10 +131,10 @@ position = Vector2(0.5, -3)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("17_y26h6")]
-offset_left = -26.0
-offset_top = -41.0
-offset_right = 6.0
-offset_bottom = -40.0
+offset_left = -14.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = -3.0
 
 [node name="PotatoParticle" type="GPUParticles2D" parent="."]
 z_index = 1

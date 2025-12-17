@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="7_vysf8"]
 [ext_resource type="SpriteFrames" uid="uid://gu83yfhw356p" path="res://ResourceNormal.tres" id="8_846al"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="8_b1wo6"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="8_o4swh"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="8_o4swh"]
 [ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Scenes/World Objects/Mineable Objects/Destroy.gdshader" id="9_l3tqc"]
 [ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="10_5iued"]
 [ext_resource type="Texture2D" uid="uid://cwxx0mtc8e7xr" path="res://Sprites/Spritesheets/Plants/Sunflowers/Sunflower_Shadow3.png" id="11_o4swh"]
@@ -131,10 +131,10 @@ position = Vector2(0.5, -3)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("6_4fyyb")]
-offset_left = -26.0
-offset_top = -41.0
-offset_right = 6.0
-offset_bottom = -40.0
+offset_left = -14.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = -3.0
 
 [node name="PotatoParticle" type="GPUParticles2D" parent="."]
 z_index = 1

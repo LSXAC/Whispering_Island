@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_asj4m"]
 [ext_resource type="Texture2D" uid="uid://d01lvb55i32ac" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal1.png" id="5_f3r8u"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="6_3oocu"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="6_57rn6"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="6_57rn6"]
 [ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sprites/Stone_Particle.png" id="7_dwdud"]
 [ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Scenes/World Objects/Mineable Objects/Destroy.gdshader" id="7_hi1lu"]
 [ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="8_04dik"]

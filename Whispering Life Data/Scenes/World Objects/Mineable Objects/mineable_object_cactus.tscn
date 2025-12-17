@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://bsjlladu5ipjv" path="res://Sprites/Spritesheets/Plants/Cactus/Cactus_Harvesting_V0_Shadow1.png" id="20_p1sqe"]
 [ext_resource type="Texture2D" uid="uid://cny86g501qmgn" path="res://Sprites/Spritesheets/Plants/Cactus/Cactus_V0_Shadow2.png" id="21_jkmr8"]
 [ext_resource type="Texture2D" uid="uid://jcow6ditmgp8" path="res://Sprites/Spritesheets/Plants/Cactus/Cactus_V0_Shadow3.png" id="22_xi8xc"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="24_3qlh3"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="24_3qlh3"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="25_47yel"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="26_ifdpd"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="27_8nkyh"]
@@ -123,7 +123,7 @@ script = ExtResource("5_uarw4")
 anim_name = "Tree_Idle"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
-position = Vector2(-32, -48)
+position = Vector2(-30, -51)
 sprite_frames = SubResource("SpriteFrames_us0rr")
 animation = &"Normal"
 centered = false
@@ -131,7 +131,7 @@ centered = false
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_uwm61")
-position = Vector2(-10, -18)
+position = Vector2(-8, -21)
 texture = ExtResource("7_l13po")
 
 [node name="FallingLeaves" type="GPUParticles2D" parent="SpriteAnimationManager"]
@@ -165,9 +165,10 @@ textures = Array[Texture2D]([ExtResource("18_ph4kr"), ExtResource("19_3vihl"), E
 shadow_textures = Array[Texture2D]([ExtResource("20_l13po"), ExtResource("21_jkmr8"), ExtResource("22_xi8xc")])
 
 [node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("24_3qlh3")]
-position = Vector2(-10, -18)
+position = Vector2(-8, -21)
 
 [node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+position = Vector2(2, -3)
 polygon = PackedVector2Array(-12, -2, -20, -4, -22, -10, -18, -16, -9, -19, 5, -18, 4, -11, -2, -5, -7, -2)
 
 [node name="MouseArea" type="Area2D" parent="."]
@@ -180,15 +181,13 @@ position = Vector2(-5.5, -7)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("26_ifdpd")]
-custom_minimum_size = Vector2(30, 1)
-offset_left = -24.0
-offset_top = -48.0
-offset_right = 6.0
-offset_bottom = -47.0
+offset_left = -14.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = -3.0
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
 z_index = -2
-position = Vector2(-2, 5)
 tile_map_data = PackedByteArray("AAD/////AAACAAAAAAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAACAAAAAAAAAP//AAACAAAAAAAAAP7/AAACAAAAAAD///7/AAACAAAAAAD+//7/AAACAAAAAAA=")
 enabled = false
 tile_set = ExtResource("27_8nkyh")

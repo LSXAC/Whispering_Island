@@ -41,7 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://bmd7q0laykfg6" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow3.png" id="27_upn62"]
 [ext_resource type="Texture2D" uid="uid://b51lq6xr2gh55" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow2.png" id="28_a18hy"]
 [ext_resource type="Texture2D" uid="uid://84hn2xmrjl6v" path="res://Sprites/Spritesheets/Stones/Rock_1_shadow1.png" id="29_78vli"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="36_a18hy"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="36_a18hy"]
 
 [sub_resource type="Resource" id="Resource_o5wt5"]
 script = ExtResource("3_qgqm3")

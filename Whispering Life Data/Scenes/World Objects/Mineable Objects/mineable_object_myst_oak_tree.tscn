@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_kigwh"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_ntkvk"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="6_j0pn3"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="6_kigwh"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="6_kigwh"]
 [ext_resource type="Texture2D" uid="uid://bleogitdknxq1" path="res://Sprites/Myst_Leave_Particle.png" id="7_038wo"]
 [ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Scenes/World Objects/Mineable Objects/Destroy.gdshader" id="7_e1g1d"]
 [ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="8_3xnnl"]
@@ -134,11 +134,11 @@ animation = &"Normal"
 centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
-position = Vector2(-10, -21)
+position = Vector2(-9, -23)
 texture = ExtResource("27_adp7y")
 
 [node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("6_kigwh")]
-position = Vector2(-10, -21)
+position = Vector2(-9, -23)
 
 [node name="Variations" type="Node2D" parent="SpriteAnimationManager"]
 
@@ -174,11 +174,12 @@ textures = Array[Texture2D]([ExtResource("35_4fwpk"), ExtResource("36_up0wm"), E
 shadow_textures = Array[Texture2D]([ExtResource("39_4ism6"), ExtResource("40_0b2su"), ExtResource("41_xgdi1"), ExtResource("42_l1m51")])
 
 [node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+position = Vector2(2, -2)
 polygon = PackedVector2Array(-6, -2, -14, -2, -18, -3, -19, -6, -19, -7, -17, -9, -4, -9, -2, -7, -2, -5)
 
 [node name="MouseArea" type="Area2D" parent="."]
 z_index = 1
-position = Vector2(-8, -8)
+position = Vector2(-6, -8)
 script = ExtResource("5_ntkvk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
@@ -186,10 +187,10 @@ position = Vector2(-2.5, -9)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("6_j0pn3")]
-offset_left = -26.0
-offset_top = -47.0
-offset_right = 6.0
-offset_bottom = -46.0
+offset_left = -14.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = -3.0
 
 [node name="LeavesParticles" type="GPUParticles2D" parent="."]
 position = Vector2(-8, -13)

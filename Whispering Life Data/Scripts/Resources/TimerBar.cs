@@ -18,10 +18,10 @@ public partial class TimerBar : ProgressBar
     public STATE current_state = STATE.NONE;
 
     [Export]
-    StyleBoxFlat styleBoxRespawn = new StyleBoxFlat();
+    public StyleBoxFlat StyleBoxRespawn { get; set; }
 
     [Export]
-    StyleBoxFlat styleBoxCooldown = new StyleBoxFlat();
+    public StyleBoxFlat StyleBoxCooldown { get; set; }
     Action action = null;
 
     public override void _Ready()
@@ -29,8 +29,6 @@ public partial class TimerBar : ProgressBar
         Value = 0;
         MaxValue = 100;
         timer = GetNode<Timer>("Timer");
-        label = GetNode<Label>("Label");
-        label.Text = "";
         Visible = false;
     }
 
@@ -42,7 +40,6 @@ public partial class TimerBar : ProgressBar
     )
     {
         // Assign action to be called on timer completion
-        UpdateLabel(start_string);
         this.action = action;
         MaxValue = max_seconds;
         Value = 0;
@@ -52,7 +49,7 @@ public partial class TimerBar : ProgressBar
         if (max_seconds < 1)
             timer.WaitTime = max_seconds;
         current_state = new_state;
-        AddThemeStyleboxOverride("fill", styleBoxRespawn);
+        AddThemeStyleboxOverride("fill", StyleBoxRespawn);
         timer.Start();
         Debug.Print(
             "Timer started with max_seconds: " + max_seconds + " and state: " + new_state.ToString()
@@ -82,10 +79,5 @@ public partial class TimerBar : ProgressBar
     public double GetProgressPercent()
     {
         return Value / MaxValue;
-    }
-
-    public void UpdateLabel(string text)
-    {
-        label.Text = text;
     }
 }

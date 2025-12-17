@@ -29,7 +29,7 @@
 [ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://Scripts/WorldMapIcon.cs" id="17_7wf5s"]
 [ext_resource type="TileSet" uid="uid://e3yw7xs7e1sr" path="res://Scenes/shadow_tileset.tres" id="17_tdjhn"]
 [ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe.png" id="18_0sl6k"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="23_2vll2"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="23_2vll2"]
 [ext_resource type="Texture2D" uid="uid://ce16w5jut6adl" path="res://Sprites/Icons/world_map_quest_icon.png" id="25_0sl6k"]
 [ext_resource type="PackedScene" uid="uid://coeye4llpicv7" path="res://Scenes/World Objects/Mineable Objects/mineable_object_big_stone.tscn" id="28_2vll2"]
 [ext_resource type="PackedScene" uid="uid://dyhqyvmm3pp6m" path="res://Scenes/World Objects/Mineable Objects/mineable_object_mushroom.tscn" id="33_uavw5"]

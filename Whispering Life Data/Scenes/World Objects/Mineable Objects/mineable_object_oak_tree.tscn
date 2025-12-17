@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://daacnenib7hfk" path="res://Sprites/Spritesheets/Plants/Tree_Break_Animation1.png" id="15_pmn76"]
 [ext_resource type="Texture2D" uid="uid://bgbyuyekhce3c" path="res://Sprites/Spritesheets/Plants/Oak_Tree/Oak_Tree_Animation_Shadow2.png" id="15_qnpv4"]
 [ext_resource type="Texture2D" uid="uid://cenbdnwtpaw7a" path="res://Sprites/Spritesheets/Plants/Oak_Tree/Oak_Tree_Animation_Shadow3.png" id="16_t5mf6"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="17_3qntr"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="17_3qntr"]
 [ext_resource type="Texture2D" uid="uid://bwh230ocyebs5" path="res://Sprites/Spritesheets/Plants/Oak_Tree/Tree_Break_Animation_Shadow1.png" id="17_ikk7i"]
 [ext_resource type="Texture2D" uid="uid://sq8ddqrbg6s5" path="res://Sprites/Spritesheets/Plants/Oak_Tree/Tree_Break_Animation_Shadow2.png" id="18_s6uuq"]
 [ext_resource type="Texture2D" uid="uid://kc2mth52dixo" path="res://Sprites/Spritesheets/Plants/Oak_Tree/Tree_Break_Animation_Shadow3.png" id="19_5d4w1"]
@@ -155,7 +155,7 @@ centered = false
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_uwm61")
-position = Vector2(-11, -22)
+position = Vector2(-8, -23)
 texture = ExtResource("6_5dwf0")
 
 [node name="FallingLeaves" type="GPUParticles2D" parent="SpriteAnimationManager"]
@@ -201,9 +201,10 @@ textures = Array[Texture2D]([ExtResource("42_f8pop"), ExtResource("43_4u7se"), E
 shadow_textures = Array[Texture2D]([ExtResource("46_7s6d0"), ExtResource("47_7xtxa"), ExtResource("48_nor5h"), ExtResource("49_jt383")])
 
 [node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("17_3qntr")]
-position = Vector2(-11, -22)
+position = Vector2(-8, -23)
 
 [node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+position = Vector2(3, -1)
 polygon = PackedVector2Array(-6, -4, -7, -3, -15, -3, -19, -4, -20, -7, -18, -10, -13, -11, -5, -10, -3, -8, -3, -6)
 
 [node name="MouseArea" type="Area2D" parent="."]
@@ -216,15 +217,13 @@ position = Vector2(-5.5, -7)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." instance=ExtResource("7_0yyoq")]
-custom_minimum_size = Vector2(30, 1)
-offset_left = -28.0
-offset_top = -53.0
-offset_right = 2.0
-offset_bottom = -52.0
+offset_left = -14.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = -3.0
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
 z_index = -2
-position = Vector2(-2, 5)
 tile_map_data = PackedByteArray("AAD/////AAACAAAAAAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAACAAAAAAAAAP//AAACAAAAAAAAAP7/AAACAAAAAAD///7/AAACAAAAAAD+//7/AAACAAAAAAA=")
 enabled = false
 tile_set = ExtResource("9_htwjv")

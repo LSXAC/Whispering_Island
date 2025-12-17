@@ -329,9 +329,6 @@ position = Vector2(120, -72)
 [node name="Cactus4" parent="IslandObjectSaveManager" instance=ExtResource("14_my1c2")]
 position = Vector2(-96, -160)
 
-[node name="Cactus5" parent="IslandObjectSaveManager" instance=ExtResource("14_my1c2")]
-position = Vector2(-96, -160)
-
 [node name="RemovableObjectsManager" type="Node2D" parent="." node_paths=PackedStringArray("tilemap_parent", "sign_parent")]
 y_sort_enabled = true
 script = ExtResource("11_j5lhj")

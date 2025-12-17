@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://vserd8wdu3iw"]
+[gd_scene load_steps=57 format=3 uid="uid://vserd8wdu3iw"]
 
 [ext_resource type="Script" uid="uid://sxd7avtys7n7" path="res://Scripts/Manager Scripts/GameManager.cs" id="1_2n0he"]
 [ext_resource type="Script" uid="uid://cwonaacplejxj" path="res://Scripts/Building Scripts/BuildingPlacer.cs" id="2_h8pdp"]
@@ -18,7 +18,8 @@
 [ext_resource type="Resource" uid="uid://cim2ng28wf04v" path="res://Resource Meta/Quests/quest_info_4.tres" id="12_wajns"]
 [ext_resource type="Resource" uid="uid://bxwgmp1fse4m" path="res://Resource Meta/Quests/quest_info_5.tres" id="13_f280c"]
 [ext_resource type="Script" uid="uid://diq6llslgpl4r" path="res://Scripts/Manager Scripts/QuestManager.cs" id="13_irdkv"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/World Objects/shadow_node.tscn" id="13_uv8n6"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="13_uv8n6"]
+[ext_resource type="Texture2D" uid="uid://di4f2bpucp4m8" path="res://Sprites/Spritesheets/Plants/Mystic_Oak_Tree/Mystic_Oak_Tree_Animation_Shadow4.png" id="14_4xc4d"]
 [ext_resource type="Resource" uid="uid://bmkxnaw3cirb8" path="res://Resource Meta/Quests/quest_info_6.tres" id="14_p85m3"]
 [ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Resource Meta/Quests/quest_info_1.tres" id="14_sw2xm"]
 [ext_resource type="Resource" uid="uid://bbb0mqt5qpmap" path="res://Resource Meta/Quests/quest_info_7.tres" id="15_5qlke"]
@@ -219,6 +220,8 @@ randomness = 0.5
 process_material = SubResource("ParticleProcessMaterial_pa158")
 
 [node name="ShadowNode" parent="Tutorial/Tree/SpriteAnimationManager" instance=ExtResource("13_uv8n6")]
+single_shadow_texture = ExtResource("14_4xc4d")
+is_used_in_tutorial = true
 
 [node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer", "hbox_category") instance=ExtResource("9_1xtv0")]
 layer = 2

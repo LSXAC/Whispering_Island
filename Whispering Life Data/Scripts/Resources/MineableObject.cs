@@ -316,7 +316,7 @@ public partial class MineableObject : placeable_building
     {
         double progress_percent = timer_bar.GetProgressPercent();
         int frame_index = (int)(progress_percent * (growth_textures.textures.Count - 1));
-        timer_bar.UpdateLabel("Growth: " + (int)(progress_percent * 100) + "%");
+        //timer_bar.UpdateLabel("Growth: " + (int)(progress_percent * 100) + "%");
         if (frame_index < 0)
             frame_index = 0;
         if (frame_index >= growth_textures.textures.Count)
