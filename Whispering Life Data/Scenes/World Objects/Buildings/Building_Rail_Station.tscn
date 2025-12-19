@@ -1,11 +1,11 @@
-[gd_scene load_steps=19 format=4 uid="uid://8ea6alhnkqok"]
+[gd_scene load_steps=18 format=4 uid="uid://8ea6alhnkqok"]
 
 [ext_resource type="Script" uid="uid://o5ts5isb43np" path="res://Scripts/Building Scripts/RailStation.cs" id="1_h1uaa"]
 [ext_resource type="Texture2D" uid="uid://be1t8wuf070gp" path="res://Sprites/Rail_Station_Bottom.png" id="2_17qbx"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_ih5oe"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="3_detd8"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_o2pyy"]
-[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_5h1rb"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="4_rciws"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="6_8y7rk"]
 [ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Taker_Component.tscn" id="7_mdmq6"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Scenes/World Objects/Buildings/Building Components/component_building_item_giver.tscn" id="8_oomir"]
@@ -21,9 +21,6 @@ animations = [{
 "name": &"Normal",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
-size = Vector2(80, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(78, 39)
@@ -56,23 +53,14 @@ sprite_frames = SubResource("SpriteFrames_6iojv")
 animation = &"Normal"
 centered = false
 
-[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
-modulate = Color(0, 0, 0, 0.196078)
-z_index = -1
-z_as_relative = false
-position = Vector2(-8, 15.5)
-scale = Vector2(5, 0.4375)
-texture = ExtResource("5_5h1rb")
-
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
 z_index = -2
 position = Vector2(-48, -32)
 texture = ExtResource("2_17qbx")
 centered = false
 
-[node name="BuildingCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-8, -8)
-shape = SubResource("RectangleShape2D_m0htq")
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("4_rciws")]
+DisableShadow = true
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("3_detd8")
@@ -195,6 +183,9 @@ rail_station_point = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RailstationAREA2"]
 position = Vector2(-1.5, -8.5)
 shape = SubResource("RectangleShape2D_rfmfo")
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-48, 0, 32, 0, 32, -17, -48, -17)
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

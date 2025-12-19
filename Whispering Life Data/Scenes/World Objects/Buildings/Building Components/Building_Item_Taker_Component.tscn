@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Scripts/Building Scripts/PathConnectArea.cs" id="3_38s1m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cxv0"]
-size = Vector2(4, 4)
+size = Vector2(8, 8)
 
 [node name="Taker" type="StaticBody2D" node_paths=PackedStringArray("item_holder_In")]
 collision_layer = 4

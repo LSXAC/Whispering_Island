@@ -140,6 +140,6 @@ public partial class GlobalFunctions : Node2D
     public static void RemoveOutlineTree()
     {
         Tutorial.instance.Tree.Visible = false;
-        Tutorial.instance.Tree.shadowNode.shadow_sprite.Visible = false;
+        Tutorial.instance.Tree.shadowNode.RemoveShadow();
     }
 }

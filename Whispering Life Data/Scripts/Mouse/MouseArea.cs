@@ -27,7 +27,7 @@ public partial class MouseArea : Area2D
 
         if (building_node.disable_collision)
         {
-            CollisionShape2D collision_shape = GetNode<CollisionShape2D>("CollisionShape2D");
+            CollisionPolygon2D collision_shape = GetNode<CollisionPolygon2D>("BuildingPolygon");
             collision_shape.Disabled = true;
         }
     }

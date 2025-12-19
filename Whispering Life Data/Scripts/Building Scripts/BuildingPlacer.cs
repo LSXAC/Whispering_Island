@@ -237,7 +237,8 @@ public partial class BuildingPlacer : Node2D
 
     public void CloseMenuWithBuildingSelected()
     {
-        ((Building_Node)current_building).sprite_anim_manager.shadowNode.RemoveShadow();
+        if (((Building_Node)current_building)?.sprite_anim_manager?.shadowNode != null)
+            ((Building_Node)current_building).sprite_anim_manager.shadowNode.RemoveShadow();
         current_building.QueueFree();
         current_building = null;
         placeable = null;

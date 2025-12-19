@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbe4yue61l823"]
+[gd_scene load_steps=6 format=3 uid="uid://cbe4yue61l823"]
 
 [ext_resource type="Script" uid="uid://c38vuaagecws0" path="res://Scripts/UI Scripts/BuildMenuListObject.cs" id="1_d5smx"]
 [ext_resource type="Texture2D" uid="uid://ckm3phexbj7c4" path="res://Sprites/Belt_Top.png" id="2_1o15g"]
+[ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://Resource Meta/Menus/Theme_Slots.tres" id="2_cxwox"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://Fonts/upheavtt.ttf" id="3_2gr0d"]
 [ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Scripts/Manager Scripts/ItemRowManager.cs" id="4_n07vt"]
 
@@ -56,6 +57,7 @@ offset_right = 25.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_cxwox")
 texture = ExtResource("2_1o15g")
 expand_mode = 4
 stretch_mode = 5

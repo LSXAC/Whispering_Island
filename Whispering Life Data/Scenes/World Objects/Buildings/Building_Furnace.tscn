@@ -1,8 +1,8 @@
-[gd_scene load_steps=20 format=4 uid="uid://cn0rjr3gah4jr"]
+[gd_scene load_steps=19 format=4 uid="uid://cn0rjr3gah4jr"]
 
 [ext_resource type="Script" uid="uid://bb7d4vvk26up8" path="res://Scripts/Building Scripts/ProcessBuilding.cs" id="1_7ow6b"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_2jdlk"]
-[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_63l45"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="4_w5rqh"]
 [ext_resource type="Script" uid="uid://bkcah5h7fcbm5" path="res://Scenes/Player/LightBehaviour.cs" id="11_w5rqh"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="12_pnpvk"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="13_ph182"]
@@ -19,9 +19,6 @@ animations = [{
 "name": &"Normal",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
-size = Vector2(48, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(48, 48)
@@ -82,22 +79,13 @@ sprite_frames = SubResource("SpriteFrames_g1nkg")
 animation = &"Normal"
 centered = false
 
-[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
-modulate = Color(0, 0, 0, 0.196078)
-z_index = -1
-z_as_relative = false
-position = Vector2(-8, 11)
-scale = Vector2(3, 1.125)
-texture = ExtResource("5_63l45")
-
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
 position = Vector2(-32, -48)
 texture = ExtResource("12_pnpvk")
 centered = false
 
-[node name="BuildingCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-8, 0.5)
-shape = SubResource("RectangleShape2D_m0htq")
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("4_w5rqh")]
+DisableShadow = true
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("13_ph182")
@@ -151,6 +139,9 @@ scale = Vector2(0.71875, 0.5)
 blend_mode = 2
 texture = SubResource("GradientTexture2D_k7rv1")
 script = ExtResource("11_w5rqh")
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-27, 15, 11, 15, 11, 5, 16, 5, 16, -11, 11, -11, 11, -18, -27, -18, -27, -15, -27, -11, -32, -11, -32, 5, -27, 5)
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

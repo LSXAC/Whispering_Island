@@ -32,7 +32,6 @@ public partial class SpriteAnimationManager : Node2D
 
         if (use_sprite)
         {
-            animated_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
             sprite = GetNode<Sprite2D>("Sprite2D");
         }
 
@@ -43,7 +42,10 @@ public partial class SpriteAnimationManager : Node2D
         }
 
         if (use_animated_sprite)
-            animated_sprite.SpriteFrames = sprite_frames;
+        {
+            animated_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+            animated_sprite.Play(anim_name);
+        }
     }
 
     public new Vector2 GetGlobalPosition()

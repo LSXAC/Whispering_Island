@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dc4gr4cbv1151"]
+[gd_scene load_steps=13 format=3 uid="uid://dc4gr4cbv1151"]
 
 [ext_resource type="Script" uid="uid://c0bmo8ukxxmd3" path="res://Scenes/World Objects/Buildings/OutdoorLamp.cs" id="1_tlewi"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_tlewi"]
-[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="3_8aqu8"]
 [ext_resource type="Texture2D" uid="uid://chy4hhh20nf32" path="res://Sprites/outdoor_lamp.png" id="4_tlewi"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="5_tlewi"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="5_xnht3"]
 [ext_resource type="Script" uid="uid://bkcah5h7fcbm5" path="res://Scenes/Player/LightBehaviour.cs" id="6_8aqu8"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="6_ja1ul"]
@@ -29,9 +29,6 @@ fill = 1
 fill_from = Vector2(0.492877, 0.501424)
 fill_to = Vector2(0.834758, 0.136752)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
-size = Vector2(16, 12.5)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(16, 15)
 
@@ -55,13 +52,6 @@ sprite_frames = SubResource("SpriteFrames_fa8kn")
 animation = &"Normal"
 centered = false
 
-[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
-modulate = Color(0, 0, 0, 0.196078)
-z_index = -1
-z_as_relative = false
-position = Vector2(-8, -5)
-texture = ExtResource("3_8aqu8")
-
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
 position = Vector2(-16, -16)
 texture = ExtResource("4_tlewi")
@@ -73,9 +63,8 @@ blend_mode = 2
 texture = SubResource("GradientTexture2D_tlewi")
 script = ExtResource("6_8aqu8")
 
-[node name="BuildingCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-8, -6.75)
-shape = SubResource("RectangleShape2D_m0htq")
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("5_tlewi")]
+DisableShadow = true
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("5_xnht3")
@@ -96,6 +85,9 @@ script = ExtResource("7_i8yvs")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_fk0le")
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-1, -1, -15, -1, -15, -13, -1, -13)
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

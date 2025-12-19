@@ -1,11 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdrcel864aa3s"]
+[gd_scene load_steps=11 format=3 uid="uid://bdrcel864aa3s"]
 
 [ext_resource type="Script" uid="uid://djf72te0f06kr" path="res://Scripts/Building Scripts/Trashcan.cs" id="1_2niy2"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_a3o6d"]
 [ext_resource type="Texture2D" uid="uid://cb634fgv247qi" path="res://Sprites/Chest_Building_Sprite.png" id="2_qs1hl"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="3_0n3yx"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="4_4uno7"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_ly2uo"]
-[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="5_5y75v"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="6_ap67j"]
 [ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Taker_Component.tscn" id="9_prqua"]
 
@@ -16,9 +16,6 @@ animations = [{
 "name": &"Normal",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
-size = Vector2(32, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(32, 32)
@@ -43,22 +40,13 @@ sprite_frames = SubResource("SpriteFrames_oqf1q")
 animation = &"Normal"
 centered = false
 
-[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
-modulate = Color(0, 0, 0, 0.196078)
-z_index = -1
-z_as_relative = false
-position = Vector2(-15.5, -9)
-scale = Vector2(1.9375, 1.3125)
-texture = ExtResource("5_5y75v")
-
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
 position = Vector2(-32, -48)
 texture = ExtResource("2_qs1hl")
 centered = false
 
-[node name="BuildingCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-16, -15.5)
-shape = SubResource("RectangleShape2D_m0htq")
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("4_4uno7")]
+DisableShadow = true
 
 [node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("3_0n3yx")
@@ -92,6 +80,9 @@ building = NodePath("..")
 [node name="DeletionTimer" type="Timer" parent="."]
 wait_time = 60.0
 autostart = true
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-5, -3, -27, -3, -27, -11, -32, -11, -32, -26, -27, -26, -27, -31, -5, -31, -5, -26, 0, -26, 0, -11, -5, -11)
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

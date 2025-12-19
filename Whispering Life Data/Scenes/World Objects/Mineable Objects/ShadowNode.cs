@@ -20,6 +20,9 @@ public partial class ShadowNode : Node2D
     [Export]
     public bool is_used_in_tutorial = false;
 
+    [Export]
+    public bool DisableShadow = false;
+
     public override void _Ready()
     {
         shadow_sprite = CreateShadowSprite();
@@ -31,6 +34,9 @@ public partial class ShadowNode : Node2D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (DisableShadow)
+            return;
+
         if (GameManager.instance.tutorial_finished && !shadow_sprite.Visible)
             shadow_sprite.Visible = true;
     }
