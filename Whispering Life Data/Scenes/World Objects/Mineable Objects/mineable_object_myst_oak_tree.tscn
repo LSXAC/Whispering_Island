@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://gb18hiamdyqj"]
+[gd_scene load_steps=63 format=4 uid="uid://gb18hiamdyqj"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_oeonl"]
 [ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://Resource Meta/Items/item_info_mystic_oak_wood.tres" id="2_wvxkc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_ntkvk"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="6_j0pn3"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="6_kigwh"]
+[ext_resource type="Material" uid="uid://8ujwgfeo1fil" path="res://Shader/Materials/Wind_Shader_Material.tres" id="6_up0wm"]
 [ext_resource type="Texture2D" uid="uid://bleogitdknxq1" path="res://Sprites/Myst_Leave_Particle.png" id="7_038wo"]
 [ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Scenes/World Objects/Mineable Objects/Destroy.gdshader" id="7_e1g1d"]
 [ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="8_3xnnl"]
@@ -120,6 +121,7 @@ extra_item = SubResource("Resource_hdk4m")
 gpu_particles = NodePath("LeavesParticles")
 building_id = 13
 tile_types = Array[int]([0])
+use_wind = true
 title = "WORLD_RESOURCE_MYSTIC_TREE"
 description = "WORLD_RESOURCE_MYSTIC_TREE_DESC"
 
@@ -134,6 +136,7 @@ animation = &"Normal"
 centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+material = ExtResource("6_up0wm")
 position = Vector2(-9, -23)
 texture = ExtResource("27_adp7y")
 

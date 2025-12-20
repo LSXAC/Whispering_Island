@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bmjn6kocpubo3"]
+[gd_scene load_steps=29 format=3 uid="uid://bmjn6kocpubo3"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_p10p7"]
 [ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Resource Meta/Items/item_info_sunflower.tres" id="2_yytp3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_c8ur1"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="6_4fyyb"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="7_khusd"]
+[ext_resource type="Material" uid="uid://8ujwgfeo1fil" path="res://Shader/Materials/Wind_Shader_Material.tres" id="7_o4swh"]
 [ext_resource type="Texture2D" uid="uid://ogtmebelulc" path="res://Sprites/Spritesheets/Plants/Sunflowers/Sunflower3.png" id="7_pc2p5"]
 [ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="7_vysf8"]
 [ext_resource type="SpriteFrames" uid="uid://gu83yfhw356p" path="res://ResourceNormal.tres" id="8_846al"]
@@ -81,6 +82,7 @@ extra_item = SubResource("Resource_b02l2")
 gpu_particles = NodePath("PotatoParticle")
 building_id = 11
 tile_types = Array[int]([1])
+use_wind = true
 title = "WORLD_RESOURCE_POTATO"
 description = "WORLD_RESOURCE_POTATO_DESC"
 
@@ -94,6 +96,7 @@ animation = &"Normal"
 centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+material = ExtResource("7_o4swh")
 position = Vector2(-8, -21)
 texture = ExtResource("7_pc2p5")
 

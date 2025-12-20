@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cyayxpnsm4v16"]
+[gd_scene load_steps=29 format=3 uid="uid://cyayxpnsm4v16"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_ywllv"]
 [ext_resource type="Resource" uid="uid://ch1b1ltixbads" path="res://Resource Meta/Items/item_info_carrot.tres" id="2_v7k63"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_va1aa"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://Scenes/UI/timer_bar.tscn" id="6_4rs16"]
 [ext_resource type="Texture2D" uid="uid://dwab4v0f5ui7b" path="res://Sprites/Spritesheets/Plants/Carrots/Carrot3.png" id="6_6rfkr"]
+[ext_resource type="Material" uid="uid://8ujwgfeo1fil" path="res://Shader/Materials/Wind_Shader_Material.tres" id="6_t5c24"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="7_8i61u"]
 [ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="7_ec4u3"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="7_tp2h2"]
@@ -88,6 +89,7 @@ extra_item = SubResource("Resource_orn52")
 gpu_particles = NodePath("CarrotParticles")
 building_id = 12
 tile_types = Array[int]([1])
+use_wind = true
 title = "WORLD_RESOURCE_CARROT"
 description = "WORLD_RESOURCE_CARROT_DESC"
 
@@ -99,6 +101,7 @@ sprite_frames = SubResource("SpriteFrames_asrbt")
 animation = &"Normal"
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+material = ExtResource("6_t5c24")
 position = Vector2(-8, -16)
 texture = ExtResource("6_6rfkr")
 
