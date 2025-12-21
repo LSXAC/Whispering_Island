@@ -145,14 +145,17 @@ public partial class QuestMenu : CanvasLayer
                 items_in_inventory,
                 item
             );
+
+            Item item_ref = item.Clone();
+
             parent.AddChild(c_label);
-            item.amount = item.amount * multi;
-            c_label.InitItemUI(item);
+            item_ref.amount = (int)(item_ref.amount * GameManager.difficulty_multiplier) * multi;
+            c_label.InitItemUI(item_ref);
 
             c_label.Alignment = BoxContainer.AlignmentMode.Center;
             if (iii == null)
             {
-                c_label.item_label.Text = "0x /" + item.amount + "x";
+                c_label.item_label.Text = "0x /" + item_ref.amount + "x";
                 continue;
             }
 
@@ -161,9 +164,9 @@ public partial class QuestMenu : CanvasLayer
                 foreach (Item i_x in iii)
                     amount += i_x.amount;
 
-            c_label.item_label.Text = amount + "x /" + item.amount + "x";
+            c_label.item_label.Text = amount + "x /" + item_ref.amount + "x";
 
-            if (amount >= item.amount)
+            if (amount >= item_ref.amount)
                 c_label.ChangeColor(global::h_box_item.colorType.green);
             else
                 c_label.ChangeColor(global::h_box_item.colorType.white);

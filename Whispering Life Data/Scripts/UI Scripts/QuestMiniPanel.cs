@@ -71,16 +71,21 @@ public partial class QuestMiniPanel : PanelContainer
                 items_in_inventory,
                 item
             );
+
+            // Clone to keep the original unmodified
+            Item item_ref = item.Clone();
+            item_ref.amount = (int)(item_ref.amount * GameManager.difficulty_multiplier);
+
             hbox_items[i].Visible = true;
 
             if (QuestManager.next_quest_is_doubled_items)
             {
                 Item item2 = item.Clone();
-                item2.amount = item.amount * 2;
+                item2.amount = item_ref.amount * 2;
                 hbox_items[i].InitItemUI(item2);
             }
             else
-                hbox_items[i].InitItemUI(item);
+                hbox_items[i].InitItemUI(item_ref);
 
             hbox_items[i].ChangeColor(h_box_item.colorType.white);
 
@@ -88,9 +93,9 @@ public partial class QuestMiniPanel : PanelContainer
             {
                 Debug.Print(item.info.name + "NULL");
                 if (QuestManager.next_quest_is_doubled_items)
-                    hbox_items[i].item_label.Text = "0x / " + (item.amount * 2) + "x";
+                    hbox_items[i].item_label.Text = "0x / " + (item_ref.amount * 2) + "x";
                 else
-                    hbox_items[i].item_label.Text = "0x / " + item.amount + "x";
+                    hbox_items[i].item_label.Text = "0x / " + item_ref.amount + "x";
                 continue;
             }
             int amount = 0;
@@ -101,12 +106,22 @@ public partial class QuestMiniPanel : PanelContainer
             hbox_items[i].item_label.Text = amount + "x /" + hbox_items[i].item_label.Text;
             if (!QuestManager.next_quest_is_doubled_items)
             {
-                if (amount >= currentQuest.required_items[i].amount)
+                if (
+                    amount
+                    >= (int)(
+                        currentQuest.required_items[i].amount * GameManager.difficulty_multiplier
+                    )
+                )
                     hbox_items[i].ChangeColor(h_box_item.colorType.green);
             }
             else
             {
-                if (amount >= currentQuest.required_items[i].amount * 2)
+                if (
+                    amount
+                    >= (int)(
+                        currentQuest.required_items[i].amount * GameManager.difficulty_multiplier
+                    ) * 2
+                )
                     hbox_items[i].ChangeColor(h_box_item.colorType.green);
             }
         }

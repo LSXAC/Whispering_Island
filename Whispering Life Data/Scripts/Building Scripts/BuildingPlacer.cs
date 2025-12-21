@@ -232,7 +232,10 @@ public partial class BuildingPlacer : Node2D
     private void RemoveBuildingResources()
     {
         foreach (Item item in required_items)
-            PlayerInventoryUI.instance.RemoveItem(item, PlayerInventoryUI.instance.inventory_items);
+            PlayerInventoryUI.instance.RemoveItem(
+                new Item(item.info, (int)(item.amount * GameManager.difficulty_multiplier)),
+                PlayerInventoryUI.instance.inventory_items
+            );
     }
 
     public void CloseMenuWithBuildingSelected()

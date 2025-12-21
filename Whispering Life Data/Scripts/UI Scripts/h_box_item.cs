@@ -34,9 +34,12 @@ public partial class h_box_item : BoxContainer
 
         if (with_name)
             item_label.Text =
-                TranslationServer.Translate(item.info.name) + " - " + item.amount + "x";
+                TranslationServer.Translate(item.info.name)
+                + " - "
+                + ((int)(item.amount * GameManager.difficulty_multiplier))
+                + "x";
         else
-            item_label.Text = " " + item.amount + "x";
+            item_label.Text = " " + ((int)(item.amount * GameManager.difficulty_multiplier)) + "x";
         item_texture.Texture = item.info.texture;
         item_texture.TooltipText = Inventory.GetToolTipItem(item);
     }

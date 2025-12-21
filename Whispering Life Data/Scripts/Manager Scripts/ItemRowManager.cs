@@ -25,13 +25,16 @@ public partial class ItemRowManager : HBoxContainer
                 item
             );
 
+            Item item_ref = item.Clone();
+            item_ref.amount = (int)(item_ref.amount * GameManager.difficulty_multiplier);
+
             int amount_of_item = 0;
             if (i_list != null)
             {
                 foreach (Item i in i_list)
                     amount_of_item += i.amount;
 
-                if (amount_of_item >= item.amount && item.amount > 0)
+                if (amount_of_item >= item_ref.amount && item_ref.amount > 0)
                     hbc_c.ChangeColor(global::h_box_item.colorType.white);
             }
             AddChild(hbc_c);

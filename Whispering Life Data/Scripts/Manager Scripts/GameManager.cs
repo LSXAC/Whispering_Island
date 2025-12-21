@@ -11,27 +11,35 @@ public partial class GameManager : Node2D
     [Export]
     public BuildingPlacer building_placer;
 
-    public static CanvasLayer current_activ_canvaslayer = null;
-    public static bool dev_build_mode = false;
-
     [Export]
     public ShadowManager shadow_manager;
 
+    public static CanvasLayer current_activ_canvaslayer = null;
+    public static bool dev_build_mode = false;
     public static GameManager instance = null;
-    public static string player_name = "Player";
     public static bool gameover = false;
-
     public static bool[,] island_matrix;
-    public static int time_multiplier = 5;
-
     public static BuildingMode building_mode = BuildingMode.None;
-
     public static bool In_Cutscene = false;
-    public static int money = 1000;
-    public bool tutorial_finished = false;
     public Node2D island_parent;
     public Camera2D cutscene_camera;
     public bool new_game = false;
+
+    public static float difficulty_multiplier = 1.0f;
+
+    public enum DIFFICULTY
+    {
+        EASY,
+        NORMAL,
+        HARD,
+        EXPERT
+    }
+
+    // Player
+    public static string player_name = "Player";
+    public static int money = 1000;
+    public static int time_multiplier = 5;
+    public bool tutorial_finished = false;
 
     public enum BuildingMode
     {
@@ -111,6 +119,7 @@ public partial class GameManager : Node2D
     {
         save_state.char_save = Player.char_save;
         save_state.money = money;
+        save_state.difficulty_multiplier = difficulty_multiplier;
         save_state.char_save.player_position = Player.instance.Position;
         save_state.char_save.health_value = Player.instance.player_stats.health_value;
         save_state.char_save.fatigue_value = Player.instance.player_stats.fatigue_value;
@@ -164,6 +173,7 @@ public partial class GameManager : Node2D
     {
         Debug.Print("Game_Manager - Loading SaveState");
         save_state = (SaveState)SaveState.LoadSave();
+        difficulty_multiplier = save_state.difficulty_multiplier;
         tutorial_finished = save_state.tutorial_finished;
         if (!tutorial_finished)
         {

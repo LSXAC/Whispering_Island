@@ -106,6 +106,7 @@ public partial class GameMenu : CanvasLayer
         await TransitionManager.IsInTransitionLoop();
 
         MainMenu.instance.parent.Visible = true;
+        MainMenu.instance.OnBackToMainMenu();
         GameManager.instance.QueueFree();
 
         TransitionManager.instance.StopTransition();
@@ -219,6 +220,8 @@ public partial class GameMenu : CanvasLayer
         ChangeSelectedTabColor(Tabs.Crafting);
         CloseAllTabs();
         crafting_tab.Visible = true;
+        Debug.Print("OnTab0");
+        OnCraftingCategoryButton(0);
         crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
     }
 

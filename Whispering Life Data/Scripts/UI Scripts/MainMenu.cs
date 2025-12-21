@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Godot;
 
 public partial class MainMenu : Control
@@ -10,6 +11,13 @@ public partial class MainMenu : Control
 
     [Export]
     public Control parent;
+
+    [Export]
+    public VBoxContainer menu_part_1,
+        menu_part_2;
+
+    [Export]
+    public OptionButton difficulty_select;
 
     [Export]
     public Button load_button;
@@ -62,6 +70,20 @@ public partial class MainMenu : Control
         SaveLauncherConfig();
     }
 
+    public void OpenCreateSettings()
+    {
+        menu_part_1.Visible = false;
+        menu_part_2.Visible = true;
+    }
+
+    public void OnBackToMainMenu()
+    {
+        skip_tutorial.ButtonPressed = false;
+        difficulty_select.Selected = (int)GameManager.DIFFICULTY.NORMAL;
+        menu_part_1.Visible = true;
+        menu_part_2.Visible = false;
+    }
+
     public static void SaveLauncherConfig()
     {
         launcherSave = new LauncherSave();
@@ -86,6 +108,26 @@ public partial class MainMenu : Control
         //background_player.Play();
         intro_player.Stop();
         intro_player.Visible = false;
+    }
+
+    public void OnDifficultSelect(int index)
+    {
+        switch (index)
+        {
+            case (int)GameManager.DIFFICULTY.EASY:
+                GameManager.difficulty_multiplier = 0.5f;
+                break;
+            case (int)GameManager.DIFFICULTY.NORMAL:
+                GameManager.difficulty_multiplier = 1.0f;
+                break;
+            case (int)GameManager.DIFFICULTY.HARD:
+                GameManager.difficulty_multiplier = 1.5f;
+                break;
+            case (int)GameManager.DIFFICULTY.EXPERT:
+                GameManager.difficulty_multiplier = 2.5f;
+                break;
+        }
+        Debug.Print(GameManager.difficulty_multiplier.ToString());
     }
 
     public void OnVisiblityChanged()

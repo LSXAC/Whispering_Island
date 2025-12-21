@@ -35,7 +35,12 @@ public partial class QuestManager : Node
                 current_quest_time = quest_save.quest_time_left;
         }
         else
-            current_quest_time = quests[current_quest_id].quest_time;
+        {
+            current_quest_time =
+                Mathf.RoundToInt(
+                    quests[current_quest_id].quest_time / GameManager.difficulty_multiplier / 5f
+                ) * 5;
+        }
 
         CheckQuestDuplications();
         StartTimer();
@@ -179,7 +184,10 @@ public partial class QuestManager : Node
         {
             foreach (Item quest_item in quests[current_quest_id].required_items)
                 PlayerInventoryUI.instance.RemoveItem(
-                    quest_item,
+                    new Item(
+                        quest_item.info,
+                        (int)(quest_item.amount * (int)GameManager.difficulty_multiplier)
+                    ),
                     PlayerInventoryUI.instance.inventory_items
                 );
         }

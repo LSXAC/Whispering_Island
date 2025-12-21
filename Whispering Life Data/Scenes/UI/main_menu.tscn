@@ -154,7 +154,7 @@
 [ext_resource type="Resource" uid="uid://gestufnjtr7p" path="res://Resource Meta/Items/item_info_cactus_seed.tres" id="152_5kq1m"]
 [ext_resource type="Resource" uid="uid://3uys8bpbmptb" path="res://Resource Meta/Items/item_info_oak_seed.tres" id="153_3jp71"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("skip_tutorial", "intro_player", "parent", "load_button")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("skip_tutorial", "intro_player", "parent", "menu_part_1", "menu_part_2", "difficulty_select", "load_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -163,10 +163,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_4fgt5")
-skip_tutorial = NodePath("Menu/Control/VBoxContainer/CheckBox")
+skip_tutorial = NodePath("Menu/Control/VBox_Menu_Part2/SkipTutorial")
 intro_player = NodePath("Menu/VideoStreamPlayer2")
 parent = NodePath("Menu/Control")
-load_button = NodePath("Menu/Control/VBoxContainer/LoadGameButton")
+menu_part_1 = NodePath("Menu/Control/VBox_Menu_Part1")
+menu_part_2 = NodePath("Menu/Control/VBox_Menu_Part2")
+difficulty_select = NodePath("Menu/Control/VBox_Menu_Part2/DifficultOptionButton")
+load_button = NodePath("Menu/Control/VBox_Menu_Part1/LoadGameButton")
 skip_intro = true
 
 [node name="Menu" type="Control" parent="."]
@@ -236,35 +239,14 @@ offset_bottom = 170.0
 texture = ExtResource("15_b2ygq")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Control"]
+[node name="VBox_Menu_Part1" type="VBoxContainer" parent="Menu/Control"]
 layout_mode = 0
 offset_left = 484.0
 offset_top = 150.0
 offset_right = 615.0
 offset_bottom = 329.0
 
-[node name="CheckBox" type="CheckBox" parent="Menu/Control/VBoxContainer"]
-clip_contents = true
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("4_ftsii")
-theme_override_font_sizes/font_size = 10
-theme_override_styles/normal = ExtResource("9_byqsf")
-theme_override_styles/pressed = ExtResource("8_ngkbr")
-theme_override_styles/hover = ExtResource("7_jyt4h")
-theme_override_styles/hover_pressed = ExtResource("13_bpmov")
-theme_override_styles/disabled = ExtResource("6_idfr6")
-theme_override_styles/focus = ExtResource("5_bw5ne")
-theme_override_constants/check_v_offset = 0
-keep_pressed_outside = true
-text = "Skip Tutorial"
-alignment = 1
-script = ExtResource("6_80s4p")
-label_translation_string = "MAINMENU_SKIP_TUTORIAL"
-
-[node name="NewGameButton" type="Button" parent="Menu/Control/VBoxContainer"]
+[node name="NewGameButton" type="Button" parent="Menu/Control/VBox_Menu_Part1"]
 clip_contents = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -282,7 +264,7 @@ text = "NEW GAME"
 script = ExtResource("5_lg1h6")
 label_translation_string = "MAINMENU_NEW_GAME"
 
-[node name="LoadGameButton" type="Button" parent="Menu/Control/VBoxContainer"]
+[node name="LoadGameButton" type="Button" parent="Menu/Control/VBox_Menu_Part1"]
 clip_contents = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -300,7 +282,7 @@ text = "LOAD GAME"
 script = ExtResource("5_lg1h6")
 label_translation_string = "SAVELOAD_MENU_LOAD_BUTTON"
 
-[node name="ExitButton" type="Button" parent="Menu/Control/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="Menu/Control/VBox_Menu_Part1"]
 clip_contents = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -317,12 +299,156 @@ text = "EXIT GAME"
 script = ExtResource("5_lg1h6")
 label_translation_string = "MAINMENU_EXIT_GAME"
 
-[node name="Fill2" type="ColorRect" parent="Menu/Control/VBoxContainer"]
+[node name="Fill2" type="ColorRect" parent="Menu/Control/VBox_Menu_Part1"]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="Menu/Control/VBoxContainer"]
+[node name="Label" type="Label" parent="Menu/Control/VBox_Menu_Part1"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_ftsii")
+theme_override_font_sizes/font_size = 8
+text = "© 2025 Leon Schröder. V0.2.1"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VBox_Menu_Part2" type="VBoxContainer" parent="Menu/Control"]
+visible = false
+layout_mode = 0
+offset_left = 484.0
+offset_top = 150.0
+offset_right = 615.0
+offset_bottom = 329.0
+
+[node name="Fill3" type="ColorRect" parent="Menu/Control/VBox_Menu_Part2"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DifficultLabel2" type="Label" parent="Menu/Control/VBox_Menu_Part2"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_ftsii")
+theme_override_font_sizes/font_size = 12
+text = "Tutorial:"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SkipTutorial" type="CheckBox" parent="Menu/Control/VBox_Menu_Part2"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_ftsii")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("9_byqsf")
+theme_override_styles/pressed = ExtResource("8_ngkbr")
+theme_override_styles/hover = ExtResource("7_jyt4h")
+theme_override_styles/hover_pressed = ExtResource("13_bpmov")
+theme_override_styles/disabled = ExtResource("6_idfr6")
+theme_override_styles/focus = ExtResource("5_bw5ne")
+theme_override_constants/check_v_offset = 0
+keep_pressed_outside = true
+text = "Skip"
+alignment = 1
+script = ExtResource("6_80s4p")
+label_translation_string = "MAINMENU_SKIP_TUTORIAL"
+
+[node name="EMPTYLABEL3" type="Label" parent="Menu/Control/VBox_Menu_Part2"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_ftsii")
+theme_override_font_sizes/font_size = 6
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DifficultLabel" type="Label" parent="Menu/Control/VBox_Menu_Part2"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_ftsii")
+theme_override_font_sizes/font_size = 12
+text = "Difficult:"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DifficultOptionButton" type="OptionButton" parent="Menu/Control/VBox_Menu_Part2"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("4_ftsii")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("13_bpmov")
+theme_override_styles/pressed = ExtResource("8_ngkbr")
+theme_override_styles/hover = ExtResource("7_jyt4h")
+theme_override_styles/disabled = ExtResource("6_idfr6")
+theme_override_styles/focus = ExtResource("5_bw5ne")
+alignment = 1
+selected = 0
+item_count = 4
+popup/item_0/text = "Easy"
+popup/item_0/id = 0
+popup/item_1/text = "Medium"
+popup/item_1/id = 1
+popup/item_2/text = "Hard"
+popup/item_2/id = 2
+popup/item_3/text = "Expert"
+popup/item_3/id = 3
+
+[node name="EMPTYLABEL2" type="Label" parent="Menu/Control/VBox_Menu_Part2"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_ftsii")
+theme_override_font_sizes/font_size = 6
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="NewGameButton" type="Button" parent="Menu/Control/VBox_Menu_Part2"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_ftsii")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("9_byqsf")
+theme_override_styles/pressed = ExtResource("8_ngkbr")
+theme_override_styles/hover = ExtResource("7_jyt4h")
+theme_override_styles/disabled = ExtResource("6_idfr6")
+theme_override_styles/focus = ExtResource("5_bw5ne")
+keep_pressed_outside = true
+text = "Create new Game"
+script = ExtResource("5_lg1h6")
+label_translation_string = "MAINMENU_NEW_GAME"
+
+[node name="BackToMain" type="Button" parent="Menu/Control/VBox_Menu_Part2"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_ftsii")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("9_byqsf")
+theme_override_styles/pressed = ExtResource("8_ngkbr")
+theme_override_styles/hover = ExtResource("7_jyt4h")
+theme_override_styles/disabled = ExtResource("6_idfr6")
+theme_override_styles/focus = ExtResource("5_bw5ne")
+keep_pressed_outside = true
+text = "Back To Menu"
+script = ExtResource("5_lg1h6")
+label_translation_string = "MAINMENU_BACK"
+
+[node name="Fill2" type="ColorRect" parent="Menu/Control/VBox_Menu_Part2"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Menu/Control/VBox_Menu_Part2"]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_ftsii")
@@ -354,6 +480,9 @@ crafting_recipies_list = Array[Object]([ExtResource("48_pjxs1"), ExtResource("42
 item_info_list = Array[Object]([ExtResource("55_2h6yx"), ExtResource("56_kwrrk"), ExtResource("56_ujkk6"), ExtResource("57_xu7jt"), ExtResource("58_hw2lr"), ExtResource("59_q3gfc"), ExtResource("60_bpmov"), ExtResource("61_abyj8"), ExtResource("62_b2ygq"), ExtResource("63_dyabb"), ExtResource("64_cioph"), ExtResource("65_l464e"), ExtResource("66_nqf7v"), ExtResource("67_owkwu"), ExtResource("68_hlew3"), ExtResource("69_mpody"), ExtResource("70_3jp71"), ExtResource("71_5kq1m"), ExtResource("72_csn1j"), ExtResource("73_psvxc"), ExtResource("74_mmttm"), ExtResource("76_vm5m4"), ExtResource("77_bxob3"), ExtResource("78_rqmsr"), ExtResource("79_sip4i"), ExtResource("80_tpbcc"), ExtResource("81_c4pph"), ExtResource("82_g85o2"), ExtResource("83_aqsru"), ExtResource("84_64bwy"), ExtResource("85_f1k14"), ExtResource("86_euauc"), ExtResource("87_7fio7"), ExtResource("88_ikmmo"), ExtResource("89_wefja"), ExtResource("90_kkrb7"), ExtResource("91_743cm"), ExtResource("92_7glmp"), ExtResource("93_u8gx4"), ExtResource("95_ghmun"), ExtResource("102_ipigi"), ExtResource("103_rbu7y"), ExtResource("104_5xltb"), ExtResource("105_d6ha0"), ExtResource("106_7fr2h"), ExtResource("107_d6ha0"), ExtResource("114_qgnha"), ExtResource("117_tb28b"), ExtResource("118_qisdu"), ExtResource("119_tb28b"), ExtResource("120_n07kk"), ExtResource("121_hl337"), ExtResource("133_ujkk6"), ExtResource("134_xu7jt"), ExtResource("135_hw2lr"), ExtResource("136_q3gfc"), ExtResource("137_bpmov"), ExtResource("138_abyj8"), ExtResource("147_owkwu"), ExtResource("148_hlew3"), ExtResource("149_hlew3"), ExtResource("75_7jn2h"), ExtResource("151_3jp71"), ExtResource("152_5kq1m"), ExtResource("153_3jp71")])
 
 [connection signal="visibility_changed" from="." to="." method="OnVisiblityChanged"]
-[connection signal="pressed" from="Menu/Control/VBoxContainer/NewGameButton" to="." method="OnNewGameButtoN"]
-[connection signal="pressed" from="Menu/Control/VBoxContainer/LoadGameButton" to="." method="OnLoadGameButtoN"]
-[connection signal="pressed" from="Menu/Control/VBoxContainer/ExitButton" to="." method="OnExitGameButtoN"]
+[connection signal="pressed" from="Menu/Control/VBox_Menu_Part1/NewGameButton" to="." method="OpenCreateSettings"]
+[connection signal="pressed" from="Menu/Control/VBox_Menu_Part1/LoadGameButton" to="." method="OnLoadGameButtoN"]
+[connection signal="pressed" from="Menu/Control/VBox_Menu_Part1/ExitButton" to="." method="OnExitGameButtoN"]
+[connection signal="item_selected" from="Menu/Control/VBox_Menu_Part2/DifficultOptionButton" to="." method="OnDifficultSelect"]
+[connection signal="pressed" from="Menu/Control/VBox_Menu_Part2/NewGameButton" to="." method="OnNewGameButtoN"]
+[connection signal="pressed" from="Menu/Control/VBox_Menu_Part2/BackToMain" to="." method="OnBackToMainMenu"]
