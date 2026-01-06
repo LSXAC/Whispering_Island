@@ -471,6 +471,10 @@ layout_mode = 2
 
 [node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/HeadSlotBackground" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
@@ -486,6 +490,10 @@ layout_mode = 2
 
 [node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/ChestSlotBackground" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
@@ -501,6 +509,10 @@ layout_mode = 2
 
 [node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/LegSlotBackground" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
@@ -516,6 +528,10 @@ layout_mode = 2
 
 [node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/ShoesSlotBackground" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
@@ -570,6 +586,10 @@ layout_mode = 2
 
 [node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
 theme_override_font_sizes/font_size = 8
 attribute_to_check = SubResource("Resource_m8k7p")
 check_attributes = true
@@ -579,6 +599,10 @@ layout_mode = 2
 
 [node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground2" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
 theme_override_font_sizes/font_size = 8
 attribute_to_check = SubResource("Resource_6662a")
 check_attributes = true
@@ -588,6 +612,10 @@ layout_mode = 2
 
 [node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground3" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
 theme_override_font_sizes/font_size = 8
 attribute_to_check = SubResource("Resource_gcthi")
 check_attributes = true
@@ -597,6 +625,10 @@ layout_mode = 2
 
 [node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground4" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
 theme_override_font_sizes/font_size = 8
 attribute_to_check = SubResource("Resource_rgd55")
 check_attributes = true
@@ -890,6 +922,10 @@ offset_bottom = -167.0
 
 [node name="Slot0" parent="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundInput" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
 focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
@@ -904,6 +940,10 @@ offset_bottom = -167.0
 
 [node name="Slot0" parent="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundExport" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
 focus_neighbor_left = NodePath("../../SlotBackgroundInput/Slot0")
 focus_neighbor_bottom = NodePath("../../../EnableDisableButton")
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
@@ -920,6 +960,10 @@ offset_bottom = -131.0
 
 [node name="Slot0" parent="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundFuel" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
 focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
 focus_neighbor_bottom = NodePath("../../../EnableDisableButton")
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
@@ -6035,7 +6079,7 @@ theme_override_font_sizes/font_size = 8
 text = "Game savefile from: 16.10.2024 - 12:55:23"
 horizontal_alignment = 1
 
-[node name="SettingsTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("option_button", "window_mode_button")]
+[node name="SettingsTab" type="ColorRect" parent="Background" node_paths=PackedStringArray("option_button", "window_mode_button", "difficulty_option_button")]
 visible = false
 z_index = 6
 layout_mode = 0
@@ -6047,6 +6091,7 @@ color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("16_jv3kw")
 option_button = NodePath("VBoxContainer/Language/PanelContainer/MarginContainerRight/OptionButton")
 window_mode_button = NodePath("VBoxContainer/Window Mode/PanelContainer/MarginContainerRight/WindowOptionButton")
+difficulty_option_button = NodePath("")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/SettingsTab"]
 layout_mode = 0
@@ -6736,6 +6781,8 @@ offset_left = 32.0
 offset_top = 105.0
 offset_right = 276.0
 offset_bottom = 318.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/MinecartTab/PanelContainer"]
 layout_mode = 1

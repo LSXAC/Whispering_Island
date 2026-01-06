@@ -26,6 +26,7 @@ public partial class GameManager : Node2D
     public bool new_game = false;
 
     public static float difficulty_multiplier = 1.0f;
+    public static DIFFICULTY difficulty = DIFFICULTY.NORMAL;
 
     public enum DIFFICULTY
     {
@@ -120,6 +121,7 @@ public partial class GameManager : Node2D
         save_state.char_save = Player.char_save;
         save_state.money = money;
         save_state.difficulty_multiplier = difficulty_multiplier;
+        save_state.difficulty = difficulty;
         save_state.char_save.player_position = Player.instance.Position;
         save_state.char_save.health_value = Player.instance.player_stats.health_value;
         save_state.char_save.fatigue_value = Player.instance.player_stats.fatigue_value;
@@ -174,6 +176,7 @@ public partial class GameManager : Node2D
         Debug.Print("Game_Manager - Loading SaveState");
         save_state = (SaveState)SaveState.LoadSave();
         difficulty_multiplier = save_state.difficulty_multiplier;
+        difficulty = save_state.difficulty;
         tutorial_finished = save_state.tutorial_finished;
         if (!tutorial_finished)
         {

@@ -309,7 +309,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_ftsii")
 theme_override_font_sizes/font_size = 8
-text = "© 2025 Leon Schröder. V0.2.1"
+text = "© 2026 Leon Schröder. V0.2.2"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -392,7 +392,7 @@ selected = 0
 item_count = 4
 popup/item_0/text = "Easy"
 popup/item_0/id = 0
-popup/item_1/text = "Medium"
+popup/item_1/text = "Normal"
 popup/item_1/id = 1
 popup/item_2/text = "Hard"
 popup/item_2/id = 2
@@ -425,7 +425,7 @@ text = "Create new Game"
 script = ExtResource("5_lg1h6")
 label_translation_string = "MAINMENU_NEW_GAME"
 
-[node name="BackToMain" type="Button" parent="Menu/Control/VBox_Menu_Part2"]
+[node name="V" type="Button" parent="Menu/Control/VBox_Menu_Part2"]
 clip_contents = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -439,7 +439,7 @@ theme_override_styles/hover = ExtResource("7_jyt4h")
 theme_override_styles/disabled = ExtResource("6_idfr6")
 theme_override_styles/focus = ExtResource("5_bw5ne")
 keep_pressed_outside = true
-text = "Back To Menu"
+text = "Back to Start"
 script = ExtResource("5_lg1h6")
 label_translation_string = "MAINMENU_BACK"
 
@@ -453,7 +453,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_ftsii")
 theme_override_font_sizes/font_size = 8
-text = "© 2025 Leon Schröder. V0.2.1"
+text = "© 2026 Leon Schröder. V0.2.2"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -485,4 +485,4 @@ item_info_list = Array[Object]([ExtResource("55_2h6yx"), ExtResource("56_kwrrk")
 [connection signal="pressed" from="Menu/Control/VBox_Menu_Part1/ExitButton" to="." method="OnExitGameButtoN"]
 [connection signal="item_selected" from="Menu/Control/VBox_Menu_Part2/DifficultOptionButton" to="." method="OnDifficultSelect"]
 [connection signal="pressed" from="Menu/Control/VBox_Menu_Part2/NewGameButton" to="." method="OnNewGameButtoN"]
-[connection signal="pressed" from="Menu/Control/VBox_Menu_Part2/BackToMain" to="." method="OnBackToMainMenu"]
+[connection signal="pressed" from="Menu/Control/VBox_Menu_Part2/V" to="." method="OnBackToMainMenu"]

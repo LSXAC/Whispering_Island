@@ -127,6 +127,7 @@ public partial class MainMenu : Control
                 GameManager.difficulty_multiplier = 2.5f;
                 break;
         }
+        GameManager.difficulty = (GameManager.DIFFICULTY)index;
         Debug.Print(GameManager.difficulty_multiplier.ToString());
     }
 

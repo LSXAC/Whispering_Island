@@ -13,15 +13,15 @@ SETTINGS_SFX_VOLUME,SFX Volume,SFX Lautstärke
 SETTINGS_MUSIC_VOLUME,Music Volume,Musik Lautstärke
 SETTINGS_HAVE_SAVED,Don't forget to save!,Vergiss nicht zu speichern!
 SETTINGS_WINDOW_LABEL,Window Mode,Fenstermodus
-GAMEMENU_DESTROY_MENU,Destroy Window,Vernichtungsfenster
-GAMEMENU_WORLD_MAP,World Map,Weltkarte
+SETTINGS_WINDOW_DIFFICULTY,Difficulty,Schwierigkeitsgrad
 ,,
 ,,
 DISCOVERY_TITLE,Discovered:,Entdeckt:
 DISCOVERY_DESC,You Found: ,Du hast gefunden: 
 DISCORVERY_SAVE,Archiving data,Daten archivieren
 ,,
-,,
+GAMEMENU_DESTROY_MENU,Destroy Window,Vernichtungsfenster
+GAMEMENU_WORLD_MAP,World Map,Weltkarte
 GAMEMENU_FURNACE,> Furnace,> Ofen
 GAMEMENU_CHEST,> Chest,> Kiste
 GAMEMENU_RESEARCH_TABLE,> Research Table,> Forschungstisch
@@ -186,7 +186,7 @@ MAINMENU_NEW_GAME,Start New Game,Neues Spiel beginnen
 MAINMENU_EXIT_GAME,Exit Game :(,Spiel verlassen :(
 MAINMENU_SKIP_TUTORIAL,Skip Tutorial,Start überspringen
 MAINMENU_BACK_TO_MAINMENU,Main Menu,Hauptmenü
-,,
+MAINMENU_BACK,Back to Start,Zurück zum Start
 ,,
 BUILDING_BELT,Belt,Fließband
 BUILDING_BELT_DESC,Transports resources.,Transportiert Ressourcen.
