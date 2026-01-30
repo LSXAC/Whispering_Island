@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c1p7gva6jex80"
+path="res://.godot/imported/Questing.dialogue-b0de2ee82eade660ded636ed8a682214.tres"
+
+[deps]
+
+source_file="res://UI/Dialogues/Questing.dialogue"
+dest_files=["res://.godot/imported/Questing.dialogue-b0de2ee82eade660ded636ed8a682214.tres"]
+
+[params]
+
+defaults=true

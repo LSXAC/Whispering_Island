@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=11 format=3 uid="uid://bp4wq2ypl075m"]
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://bp4wq2ypl075m"]
 
 [ext_resource type="Resource" uid="uid://dmrxwabbdyg0d" path="res://Resource Meta/Items/item_info_wood_axe.tres" id="1_imqsf"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_n57vd"]

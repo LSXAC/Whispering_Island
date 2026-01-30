@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=9 format=3 uid="uid://dx7gmbpcxo8ux"]
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://dx7gmbpcxo8ux"]
 
 [ext_resource type="Resource" uid="uid://dkmmck8e6wv2v" path="res://Resource Meta/Items/Machine Items/item_info_light_component.tres" id="1_f5a4s"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_6e5da"]

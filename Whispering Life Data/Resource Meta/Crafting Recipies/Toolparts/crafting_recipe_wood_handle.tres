@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=9 format=3 uid="uid://cydbh0i4ql0ev"]
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://cydbh0i4ql0ev"]
 
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="1_6s6qa"]
 [ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Resource Meta/Items/item_info_wood_stick.tres" id="1_64xsq"]

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=7 format=3 uid="uid://bf8iixn70725o"]
+
+[ext_resource type="Script" uid="uid://cmmub3ei8m4o8" path="res://Scripts/Item/ProcessedAttribute.cs" id="1_t6s6d"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="2_04vgy"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="3_uj785"]
+[ext_resource type="Texture2D" uid="uid://cl7w108dg3364" path="res://Sprites/machine_component.png" id="4_t6s6d"]
+
+[sub_resource type="Resource" id="Resource_h2t5y"]
+script = ExtResource("1_t6s6d")
+metadata/_custom_type_script = "uid://cmmub3ei8m4o8"
+
+[sub_resource type="Resource" id="Resource_gjvhw"]
+script = ExtResource("2_04vgy")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("3_uj785")
+attributes = Array[Object]([SubResource("Resource_h2t5y"), SubResource("Resource_gjvhw")])
+max_stackable_size = 250
+name = "MACHINE_COMPONENT"
+id = 43
+description = "MACHINE_COMPONENT_DESC"
+texture = ExtResource("4_t6s6d")
+value = 20.0

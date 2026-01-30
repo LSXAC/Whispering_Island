@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://clbfixrv0y7vr"]
+
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_gjxb7"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_q0cgq"]
+[ext_resource type="Texture2D" uid="uid://cixgxe6yx2sgh" path="res://Sprites/Items/Plants_Icons/Mystic_Fibre.png" id="2_q0cgq"]
+
+[sub_resource type="Resource" id="Resource_aymev"]
+script = ExtResource("1_q0cgq")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("1_gjxb7")
+attributes = Array[Object]([SubResource("Resource_aymev")])
+max_stackable_size = 250
+name = "MYSTIC_FIBRE"
+id = 12
+description = "MYSTIC_FIBRE_DESC"
+texture = ExtResource("2_q0cgq")
+value = 10.0

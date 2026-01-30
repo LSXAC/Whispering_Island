@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://bn0p8b6sengb5"]
+
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_u8cod"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_wwq68"]
+[ext_resource type="Texture2D" uid="uid://dxjvpwnw5yl31" path="res://Sprites/Items/Icons_3rd/Glass.png" id="2_wwq68"]
+
+[sub_resource type="Resource" id="Resource_ectq2"]
+script = ExtResource("1_wwq68")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("1_u8cod")
+attributes = Array[Object]([SubResource("Resource_ectq2")])
+max_stackable_size = 250
+name = "GLASS_CHUNK"
+id = 16
+description = "GLASS_CHUNK_DESC"
+texture = ExtResource("2_wwq68")
+value = 20.0

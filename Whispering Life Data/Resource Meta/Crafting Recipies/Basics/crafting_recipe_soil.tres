@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=7 format=3 uid="uid://dt3clhic2nk2g"]
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://dt3clhic2nk2g"]
 
 [ext_resource type="Resource" uid="uid://12ulsclh6l5e" path="res://Resource Meta/Items/Machine Items/item_info_soil.tres" id="1_750ad"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_bndi6"]

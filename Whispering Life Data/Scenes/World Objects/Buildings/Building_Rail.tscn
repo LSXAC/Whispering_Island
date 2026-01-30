@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dyylrlp6acwxq"]
+[gd_scene format=3 uid="uid://dyylrlp6acwxq"]
 
 [ext_resource type="Script" uid="uid://3acu342n3tvo" path="res://Scripts/Building Scripts/Rail.cs" id="1_gx7ou"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_b3kqb"]
@@ -7,13 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="4_bi8sl"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="4_q8gej"]
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Scenes/World Objects/Buildings/Building Components/Building_Rail_Detector_Component.tscn" id="5_dpbcl"]
-[ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_oxy0y"]
+[ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://Scenes/item_holder.tscn" id="6_oxy0y"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="7_kirla"]
 [ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Scripts/Building Scripts/PathConnectArea.cs" id="8_tg6n5"]
 [ext_resource type="Script" uid="uid://cqukvf8b830bx" path="res://Scripts/Manager Scripts/ConnectedBeltsManager.cs" id="9_opil7"]
 [ext_resource type="Script" uid="uid://b2x3csh1fe7be" path="res://Scripts/Building Scripts/HasConnectedBeltArea.cs" id="10_op4v1"]
 [ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/Manager Scripts/AnimationManager12D.cs" id="11_ib2cd"]
-[ext_resource type="SpriteFrames" uid="uid://bvc8p8j3rn6km" path="res://Animations/Rail_Movement_Animation.tres" id="12_w7dvd"]
+[ext_resource type="SpriteFrames" uid="uid://bvc8p8j3rn6km" path="res://1_Entities/Rail/Animations/Rail_Movement_Animation.tres" id="12_w7dvd"]
 [ext_resource type="Script" uid="uid://8xhe0fsp3tnx" path="res://Scripts/Building Scripts/RailArea.cs" id="14_rcvkn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7wu5"]

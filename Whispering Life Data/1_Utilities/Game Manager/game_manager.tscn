@@ -1,0 +1,453 @@
+[gd_scene format=3 uid="uid://vserd8wdu3iw"]
+
+[ext_resource type="Script" uid="uid://sxd7avtys7n7" path="res://1_Utilities/Game Manager/GameManager.cs" id="1_2n0he"]
+[ext_resource type="Script" uid="uid://cwonaacplejxj" path="res://Scripts/Building Scripts/BuildingPlacer.cs" id="2_h8pdp"]
+[ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Tilesets/BuildingTiles.tres" id="3_lj4ef"]
+[ext_resource type="PackedScene" uid="uid://njw4so7o83dw" path="res://Scenes/Player/player.tscn" id="4_wajns"]
+[ext_resource type="Script" uid="uid://fsantgyda1en" path="res://Scripts/Manager Scripts/IslandManager.cs" id="5_f280c"]
+[ext_resource type="PackedScene" uid="uid://bveoiwi14ha4g" path="res://1_Islands/main_island.tscn" id="6_p85m3"]
+[ext_resource type="PackedScene" uid="uid://j1cdgg7lep78" path="res://UI/Scenes/player_ui.tscn" id="7_5qlke"]
+[ext_resource type="PackedScene" uid="uid://deu0spbxs5bju" path="res://UI/Scenes/game_menu.tscn" id="8_gytje"]
+[ext_resource type="PackedScene" uid="uid://44ev1js8tcvp" path="res://UI/Scenes/Build_Menu.tscn" id="9_1xtv0"]
+[ext_resource type="Script" uid="uid://b1ofqxr15cnlw" path="res://Scripts/Global/GlobalFunctions.cs" id="10_1whgu"]
+[ext_resource type="Resource" uid="uid://bixdfcui86uar" path="res://Resource Meta/Quests/quest_info_2.tres" id="10_h8pdp"]
+[ext_resource type="Shader" uid="uid://6h8nokelt8tj" path="res://Shader/Materials/Wind.gdshader" id="10_uv8n6"]
+[ext_resource type="Texture2D" uid="uid://bii6l8tbbd33s" path="res://Sprites/Spritesheets/Plants/Oak_Tree/Oak_Tree_Animation4.png" id="11_4xc4d"]
+[ext_resource type="PackedScene" uid="uid://o62xek3uvpo8" path="res://UI/Scenes/quest_menu.tscn" id="11_5h8gv"]
+[ext_resource type="Resource" uid="uid://cpmdxkr2eawci" path="res://Resource Meta/Quests/quest_info_3.tres" id="11_lj4ef"]
+[ext_resource type="Resource" uid="uid://cim2ng28wf04v" path="res://Resource Meta/Quests/quest_info_4.tres" id="12_wajns"]
+[ext_resource type="Resource" uid="uid://bxwgmp1fse4m" path="res://Resource Meta/Quests/quest_info_5.tres" id="13_f280c"]
+[ext_resource type="Script" uid="uid://diq6llslgpl4r" path="res://Scripts/Manager Scripts/QuestManager.cs" id="13_irdkv"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="13_uv8n6"]
+[ext_resource type="Texture2D" uid="uid://di4f2bpucp4m8" path="res://Sprites/Spritesheets/Plants/Mystic_Oak_Tree/Mystic_Oak_Tree_Animation_Shadow4.png" id="14_4xc4d"]
+[ext_resource type="Resource" uid="uid://bmkxnaw3cirb8" path="res://Resource Meta/Quests/quest_info_6.tres" id="14_p85m3"]
+[ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Resource Meta/Quests/quest_info_1.tres" id="14_sw2xm"]
+[ext_resource type="Resource" uid="uid://bbb0mqt5qpmap" path="res://Resource Meta/Quests/quest_info_7.tres" id="15_5qlke"]
+[ext_resource type="Resource" uid="uid://b4f0pdj2v6jfh" path="res://Resource Meta/Quests/quest_info_8.tres" id="16_gytje"]
+[ext_resource type="Resource" uid="uid://c2p2638k7calp" path="res://Resource Meta/Quests/quest_info_9.tres" id="17_1xtv0"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="19_f280c"]
+[ext_resource type="Script" uid="uid://c54qloxkixlh" path="res://Scripts/Manager Scripts/TimeManager.cs" id="21_3gobv"]
+[ext_resource type="Texture2D" uid="uid://bfw0elq5yfvqk" path="res://Sprites/Leave.png" id="21_5qlke"]
+[ext_resource type="Script" uid="uid://blf1q1vqdlpkq" path="res://Scripts/Manager Scripts/DayNightManager.cs" id="22_3jk2j"]
+[ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://UI/Resource Meta/daynightcycle-gradient-texture.tres" id="23_rd84m"]
+[ext_resource type="Script" uid="uid://duioi7flou3wn" path="res://Scripts/Tutorial.cs" id="24_f4sbj"]
+[ext_resource type="AudioStream" uid="uid://baxwufa73fl35" path="res://Audio/Atmosphere Sounds/441638__naturenotesuk__birds-at-feeder.wav" id="27_73301"]
+[ext_resource type="AudioStream" uid="uid://bwod2wh4o0qwt" path="res://Audio/Background Music/759996__josefpres__piano-loops-167-octave-short-loop-120-bpm.wav" id="28_2plat"]
+[ext_resource type="Script" uid="uid://c3aa8j0h5bxr1" path="res://Scripts/GlobalAnimationTimer.cs" id="29_q20se"]
+[ext_resource type="Material" uid="uid://6f3r1pj1aoib" path="res://Tilesets/Clouds.tres" id="31_p85m3"]
+[ext_resource type="Script" uid="uid://cmmjy732ib0f2" path="res://Scripts/WorldMap.cs" id="35_gytje"]
+[ext_resource type="Texture2D" uid="uid://clui1muhyuoce" path="res://Sprites/MAP_OVERLAY.png" id="36_1xtv0"]
+[ext_resource type="Texture2D" uid="uid://cqrxk5fhdhnu5" path="res://Sprites/Compass.png" id="37_sw2xm"]
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="38_irdkv"]
+[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="39_sw2xm"]
+[ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/UI Scripts/TranslationButton.cs" id="40_uv8n6"]
+[ext_resource type="Script" uid="uid://dlnqgvorydc7m" path="res://Scripts/UI Scripts/TranslationCheckBox.cs" id="41_4xc4d"]
+[ext_resource type="Texture2D" uid="uid://wyobtxm8epgl" path="res://Sprites/Icons/world_compass.png" id="41_irdkv"]
+[ext_resource type="Script" uid="uid://bn8il7ud0h80t" path="res://Scripts/ShadowManager.cs" id="44_4xc4d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_us0rr"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uwm61"]
+shader = ExtResource("10_uv8n6")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 2.0
+shader_parameter/wind_end_threshold_2 = 0.400000019
+shader_parameter/wind_strength = 0.030000001425
+shader_parameter/wind_speed = 0.9000000362302301
+shader_parameter/scale = 2.0
+
+[sub_resource type="Gradient" id="Gradient_uwm61"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i7g1i"]
+gradient = SubResource("Gradient_uwm61")
+
+[sub_resource type="Curve" id="Curve_fj6mt"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5dwf0"]
+curve = SubResource("Curve_fj6mt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pa158"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 45, 0)
+scale_min = 0.5
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_5dwf0")
+color_ramp = SubResource("GradientTexture1D_i7g1i")
+
+[sub_resource type="Shader" id="Shader_wl4wn"]
+code = "shader_type canvas_item;
+//render_mode unshaded; // optional
+
+// Noise texture
+uniform sampler2D noise_texture: repeat_enable, filter_nearest;
+// Fog density
+uniform float density: hint_range(0.0, 1.0) = 1;
+// Fog speed
+uniform vec2 speed = vec2(0.02, 0.01);
+
+
+// Called for every pixel the material is visible on
+void fragment() {
+	// Make the fog slowly move
+	vec2 uv = UV + speed * TIME;
+	// Sample the noise texture
+	float noise = texture(noise_texture, uv).r;
+	// Convert the noise from the (0.0, 1.0) range to the (-1.0, 1.0) range
+	// and clamp it between 0.0 and 1.0 again
+	float fog = clamp(noise * 2.4 - 1.0, 0, 1);
+	// Apply the fog effect
+	COLOR.a *= fog * density;
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1xtv0"]
+seed = 200
+frequency = 0.007
+fractal_octaves = 6
+fractal_gain = 0.6
+domain_warp_enabled = true
+domain_warp_amplitude = 256.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tjejx"]
+width = 1280
+height = 720
+noise = SubResource("FastNoiseLite_1xtv0")
+seamless = true
+seamless_blend_skirt = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1whgu"]
+shader = SubResource("Shader_wl4wn")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_tjejx")
+shader_parameter/density = 1.0
+shader_parameter/speed = Vector2(0.001, 0.001)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3yax"]
+bg_color = Color(0.184314, 0.184314, 0.184314, 0.196078)
+draw_center = false
+
+[node name="GameManager" type="Node2D" node_paths=PackedStringArray("building_placer", "shadow_manager")]
+process_priority = 1000
+y_sort_enabled = true
+script = ExtResource("1_2n0he")
+building_placer = NodePath("BuildingManager/BuildingPlacer")
+shadow_manager = NodePath("ShadowManager")
+
+[node name="Global" type="Node2D" parent="."]
+script = ExtResource("10_1whgu")
+
+[node name="Player" parent="." instance=ExtResource("4_wajns")]
+position = Vector2(0, -160)
+scale = Vector2(0.75, 0.75)
+
+[node name="BuildingManager" type="Node2D" parent="."]
+
+[node name="BuildingPlacer" type="Node2D" parent="BuildingManager" node_paths=PackedStringArray("island_manager")]
+script = ExtResource("2_h8pdp")
+island_manager = NodePath("../../IslandManager")
+
+[node name="Building_Tilemap_Snapper" type="TileMapLayer" parent="BuildingManager/BuildingPlacer"]
+tile_set = ExtResource("3_lj4ef")
+
+[node name="Buildings" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="IslandManager" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("5_f280c")
+
+[node name="MainIsland" parent="IslandManager" instance=ExtResource("6_p85m3")]
+
+[node name="QuestSign" parent="IslandManager/MainIsland" index="6"]
+title = "Monster"
+description = "...."
+
+[node name="CutsceneCamera" type="Camera2D" parent="."]
+position = Vector2(32, -160)
+enabled = false
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="Tutorial" type="Node2D" parent="." node_paths=PackedStringArray("Tree")]
+script = ExtResource("24_f4sbj")
+Tree = NodePath("Tree/SpriteAnimationManager")
+
+[node name="Tree" type="StaticBody2D" parent="Tutorial"]
+y_sort_enabled = true
+position = Vector2(75, -197)
+collision_layer = 13
+
+[node name="SpriteAnimationManager" type="Node2D" parent="Tutorial/Tree"]
+script = ExtResource("19_f280c")
+anim_name = "Tree_Idle"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tutorial/Tree/SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_us0rr")
+animation = &"Normal"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial/Tree/SpriteAnimationManager"]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_uwm61")
+texture = ExtResource("11_4xc4d")
+
+[node name="FallingLeaves" type="GPUParticles2D" parent="Tutorial/Tree/SpriteAnimationManager"]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(-12, -26)
+amount = 7
+texture = ExtResource("21_5qlke")
+lifetime = 0.7
+speed_scale = 0.7
+explosiveness = 0.3
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_pa158")
+
+[node name="ShadowNode" parent="Tutorial/Tree/SpriteAnimationManager" instance=ExtResource("13_uv8n6")]
+single_shadow_texture = ExtResource("14_4xc4d")
+is_used_in_tutorial = true
+
+[node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer", "hbox_category") instance=ExtResource("9_1xtv0")]
+layer = 2
+visible = false
+building_placer = NodePath("../BuildingManager/BuildingPlacer")
+hbox_category = []
+
+[node name="QuestMenu" parent="." instance=ExtResource("11_5h8gv")]
+visible = false
+
+[node name="PlayerUI" parent="." instance=ExtResource("7_5qlke")]
+
+[node name="GameMenu" parent="." instance=ExtResource("8_gytje")]
+visible = false
+
+[node name="QuestManager" type="Node2D" parent="." node_paths=PackedStringArray("quest_timer")]
+script = ExtResource("13_irdkv")
+quests = Array[Object]([ExtResource("14_sw2xm"), ExtResource("10_h8pdp"), ExtResource("11_lj4ef"), ExtResource("12_wajns"), ExtResource("13_f280c"), ExtResource("14_p85m3"), ExtResource("15_5qlke"), ExtResource("16_gytje"), ExtResource("17_1xtv0")])
+quest_timer = NodePath("QuestTimer")
+
+[node name="QuestTimer" type="Timer" parent="QuestManager"]
+
+[node name="AtmosphereAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_73301")
+autoplay = true
+bus = &"SFX"
+playback_type = 1
+
+[node name="SFXAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_2plat")
+autoplay = true
+bus = &"Music"
+playback_type = 1
+
+[node name="GlobalAnimationTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+script = ExtResource("29_q20se")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -15
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(2560, 1440)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
+z_index = 1
+material = ExtResource("31_p85m3")
+offset_right = 2560.0
+offset_bottom = 1440.0
+mouse_filter = 2
+
+[node name="ParallaxBackground3" type="ParallaxBackground" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground3"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground3"]
+motion_mirroring = Vector2(2560, 1440)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground3/ParallaxLayer"]
+z_index = 1
+material = SubResource("ShaderMaterial_1whgu")
+offset_right = 2560.0
+offset_bottom = 1440.0
+mouse_filter = 2
+
+[node name="TimeManager" type="Node2D" parent="." node_paths=PackedStringArray("game_timer")]
+script = ExtResource("21_3gobv")
+game_timer = NodePath("GameTimer")
+
+[node name="GameTimer" type="Timer" parent="TimeManager"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="TimeManager"]
+
+[node name="DayNightManager" type="Node2D" parent="TimeManager" node_paths=PackedStringArray("canvases")]
+script = ExtResource("22_3jk2j")
+dayNightGradient = ExtResource("23_rd84m")
+canvases = [NodePath("../CanvasModulate"), NodePath("../../ParallaxBackground3/CanvasModulate"), NodePath("../../ParallaxBackground/CanvasModulate")]
+
+[node name="World" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WorldMap" type="CanvasLayer" parent="World" node_paths=PackedStringArray("camera", "icons_parent", "quest_checkbox", "traders_checkbox", "removeable_checkbox")]
+layer = 2
+visible = false
+script = ExtResource("35_gytje")
+camera = NodePath("Camera2D")
+min_camera_zoom = 0.7
+speed = 8.0
+icons_parent = NodePath("../WorldIcons/Icons")
+quest_checkbox = NodePath("VBoxContainer/CheckBox3")
+traders_checkbox = NodePath("VBoxContainer/CheckBox2")
+removeable_checkbox = NodePath("VBoxContainer/CheckBox")
+
+[node name="ColorRect" type="ColorRect" parent="World/WorldMap"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.823529, 0.721569, 0, 0.00392157)
+
+[node name="Camera2D" type="Camera2D" parent="World/WorldMap"]
+enabled = false
+zoom = Vector2(0.3, 0.3)
+
+[node name="TextureRect" type="TextureRect" parent="World/WorldMap"]
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("36_1xtv0")
+
+[node name="PanelContainer" type="PanelContainer" parent="World/WorldMap"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -136.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_t3yax")
+
+[node name="MarginContainer" type="MarginContainer" parent="World/WorldMap/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="LightTextureRect" type="TextureRect" parent="World/WorldMap/PanelContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("37_sw2xm")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="World/WorldMap/PanelContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("41_irdkv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="World/WorldMap"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -63.0
+offset_top = 23.0
+offset_right = -23.0
+offset_bottom = 63.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="World/WorldMap/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("38_irdkv")
+theme_override_font_sizes/font_size = 14
+text = "World Filter"
+script = ExtResource("39_sw2xm")
+label_translation_string = "WORLD_MAP_WORLD_FILTER"
+
+[node name="CheckBox" type="CheckBox" parent="World/WorldMap/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("38_irdkv")
+theme_override_font_sizes/font_size = 12
+button_pressed = true
+text = "Removeable"
+script = ExtResource("41_4xc4d")
+label_translation_string = "WORLD_MAP_REMOVEABLE"
+
+[node name="CheckBox2" type="CheckBox" parent="World/WorldMap/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("38_irdkv")
+theme_override_font_sizes/font_size = 12
+button_pressed = true
+text = "Traders"
+script = ExtResource("41_4xc4d")
+label_translation_string = "WORLD_MAP_TRADER"
+
+[node name="CheckBox3" type="CheckBox" parent="World/WorldMap/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("38_irdkv")
+theme_override_font_sizes/font_size = 12
+button_pressed = true
+text = "Quests"
+script = ExtResource("41_4xc4d")
+label_translation_string = "WORLD_MAP_QUESTS"
+
+[node name="Button" type="Button" parent="World/WorldMap/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("38_irdkv")
+theme_override_font_sizes/font_size = 12
+text = "Clear Filter"
+script = ExtResource("40_uv8n6")
+label_translation_string = "WORLD_MAP_CLEAR_FILTER"
+
+[node name="WorldIcons" type="CanvasLayer" parent="World"]
+follow_viewport_enabled = true
+
+[node name="Icons" type="Control" parent="World/WorldIcons"]
+light_mask = 0
+z_index = 99
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="ShadowManager" type="CanvasGroup" parent="."]
+self_modulate = Color(1, 1, 1, 0.19607843)
+z_index = -1
+script = ExtResource("44_4xc4d")
+
+[connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
+[connection signal="timeout" from="GlobalAnimationTimer" to="GlobalAnimationTimer" method="OnAnimationGlobalTimerTimeout"]
+[connection signal="timeout" from="TimeManager/GameTimer" to="TimeManager" method="OnGameTimerTimeout"]
+[connection signal="toggled" from="World/WorldMap/VBoxContainer/CheckBox" to="World/WorldMap" method="OnCheckBoxRemoveableToggled"]
+[connection signal="toggled" from="World/WorldMap/VBoxContainer/CheckBox2" to="World/WorldMap" method="OnCheckBoxTradersToggled"]
+[connection signal="toggled" from="World/WorldMap/VBoxContainer/CheckBox3" to="World/WorldMap" method="OnCheckBoxQuestToggled"]
+[connection signal="pressed" from="World/WorldMap/VBoxContainer/Button" to="World/WorldMap" method="OnClearFilters"]
+
+[editable path="IslandManager/MainIsland"]
+[editable path="BuildingMenu"]

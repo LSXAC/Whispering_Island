@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="ItemResearch" load_steps=15 format=3 uid="uid://dynupcrbralid"]
+
+[ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Scripts/Research/ItemResearchLevel.cs" id="1_jb6np"]
+[ext_resource type="Resource" uid="uid://dmrxwabbdyg0d" path="res://Resource Meta/Items/item_info_wood_axe.tres" id="2_40dvl"]
+[ext_resource type="Script" uid="uid://bk5jdxlwj4pol" path="res://Scripts/Research/ItemSubResearchLevel.cs" id="2_mtlbl"]
+[ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Resource Meta/Items/item_info_char_coal.tres" id="2_xcyca"]
+[ext_resource type="Resource" uid="uid://65jron2bhtes" path="res://Resource Meta/Items/item_info_wood_axe_head.tres" id="3_tsodp"]
+[ext_resource type="Resource" uid="uid://c10rid084wdox" path="res://Resource Meta/Items/item_info_wood_hoe.tres" id="4_pa0ck"]
+[ext_resource type="Resource" uid="uid://n1o6p57v8r23" path="res://Resource Meta/Items/item_info_wood_hoe_head.tres" id="5_pvapa"]
+[ext_resource type="Script" uid="uid://8idh4gp832ub" path="res://Scripts/Research/ItemResearch.cs" id="6_uwnl3"]
+
+[sub_resource type="Resource" id="Resource_f7drl"]
+script = ExtResource("2_mtlbl")
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_mtlbl"]
+script = ExtResource("2_mtlbl")
+category = 1
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_5g54d"]
+script = ExtResource("2_mtlbl")
+category = 2
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_nlceh"]
+script = ExtResource("2_mtlbl")
+category = 3
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_fuo6j"]
+script = ExtResource("2_mtlbl")
+category = 4
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_pvmdy"]
+script = ExtResource("1_jb6np")
+unlocked_item_infos_after_research = Array[Object]([ExtResource("2_xcyca"), ExtResource("2_40dvl"), ExtResource("4_pa0ck"), ExtResource("3_tsodp"), ExtResource("5_pvapa")])
+sub_levels = Array[Resource]([SubResource("Resource_f7drl"), SubResource("Resource_mtlbl"), SubResource("Resource_5g54d"), SubResource("Resource_nlceh"), SubResource("Resource_fuo6j")])
+metadata/_custom_type_script = "uid://kjnoywvj7caa"
+
+[resource]
+script = ExtResource("6_uwnl3")
+item_research_levels = Array[Object]([SubResource("Resource_pvmdy")])
+id = 41
+translation_string = "RESEARCH_WOOD"

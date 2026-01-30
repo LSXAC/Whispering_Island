@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=7 format=3 uid="uid://0gip04da32ti"]
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://0gip04da32ti"]
 
 [ext_resource type="Resource" uid="uid://dnxxeevayo83d" path="res://Resource Meta/Items/item_info_palm_seed.tres" id="1_4y3ph"]
 [ext_resource type="PackedScene" uid="uid://cxtq18i442ldo" path="res://Scenes/World Objects/Mineable Objects/mineable_object_oak_tree.tscn" id="2_kpsx5"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=9 format=3 uid="uid://g5iegjlxch46"]
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://g5iegjlxch46"]
 
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_h3287"]
 [ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Resource Meta/Items/item_info_stone.tres" id="3_8kgpo"]

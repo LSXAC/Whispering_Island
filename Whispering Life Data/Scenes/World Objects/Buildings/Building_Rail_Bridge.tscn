@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://00w53se8uedv"]
+[gd_scene format=3 uid="uid://00w53se8uedv"]
 
 [ext_resource type="Script" uid="uid://3acu342n3tvo" path="res://Scripts/Building Scripts/Rail.cs" id="1_4dw6y"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_houtf"]
@@ -8,13 +8,13 @@
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="5_xkpqr"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="6_nfu1l"]
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Scenes/World Objects/Buildings/Building Components/Building_Rail_Detector_Component.tscn" id="7_p3tr1"]
-[ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="8_h1v5o"]
+[ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://Scenes/item_holder.tscn" id="8_h1v5o"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="9_wsxcv"]
 [ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Scripts/Building Scripts/PathConnectArea.cs" id="10_t76na"]
 [ext_resource type="Script" uid="uid://cqukvf8b830bx" path="res://Scripts/Manager Scripts/ConnectedBeltsManager.cs" id="11_wv8mi"]
 [ext_resource type="Script" uid="uid://b2x3csh1fe7be" path="res://Scripts/Building Scripts/HasConnectedBeltArea.cs" id="12_xd1p5"]
 [ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/Manager Scripts/AnimationManager12D.cs" id="13_gie8o"]
-[ext_resource type="SpriteFrames" uid="uid://bvc8p8j3rn6km" path="res://Animations/Rail_Movement_Animation.tres" id="14_djcb1"]
+[ext_resource type="SpriteFrames" uid="uid://bvc8p8j3rn6km" path="res://1_Entities/Rail/Animations/Rail_Movement_Animation.tres" id="14_djcb1"]
 [ext_resource type="Script" uid="uid://8xhe0fsp3tnx" path="res://Scripts/Building Scripts/RailArea.cs" id="15_jjr21"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7wu5"]

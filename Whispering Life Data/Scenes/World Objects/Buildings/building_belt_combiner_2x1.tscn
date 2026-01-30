@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bala7h6cfj70f"]
+[gd_scene format=3 uid="uid://bala7h6cfj70f"]
 
 [ext_resource type="Script" uid="uid://b16hq6yipkway" path="res://Scripts/Building Scripts/BeltCombiner.cs" id="1_ri5mj"]
 [ext_resource type="Texture2D" uid="uid://vqnoy2nvry33" path="res://Sprites/Menu_Belt_Combiner_2x1.png" id="2_bxt4y"]
@@ -7,12 +7,12 @@
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_1m3b1"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="4_nbl7m"]
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Scenes/World Objects/Buildings/Building Components/Building_Rail_Detector_Component.tscn" id="5_snf1v"]
-[ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://item_holder.tscn" id="6_l1sf1"]
+[ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://Scenes/item_holder.tscn" id="6_l1sf1"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="7_0gehf"]
 [ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Scripts/Building Scripts/PathConnectArea.cs" id="8_04poo"]
 [ext_resource type="PackedScene" uid="uid://rd7h1v4imvk6" path="res://Scenes/World Objects/Buildings/Building_Belt.tscn" id="10_1kri2"]
 [ext_resource type="Texture2D" uid="uid://c0apie0sdpnk7" path="res://Sprites/Top_Belt_Splitter_1x2.png" id="11_jlkvf"]
-[ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://Animations/Belt_Movement_Animation.tres" id="11_mjj1d"]
+[ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://1_Entities/Belt/Belt Items/Animations/Belt_Movement_Animation.tres" id="11_mjj1d"]
 [ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/Manager Scripts/AnimationManager12D.cs" id="12_8p114"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4tk4h"]

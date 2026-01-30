@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=9 format=3 uid="uid://1ly4bpu26gsu"]
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://1ly4bpu26gsu"]
 
 [ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Resource Meta/Items/item_info_iron_ingot.tres" id="1_mqqa6"]
 [ext_resource type="PackedScene" uid="uid://cvinbig8n3cbp" path="res://Scenes/World Objects/Buildings/building_belt_tunnel.tscn" id="2_ienho"]

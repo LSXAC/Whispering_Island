@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=9 format=3 uid="uid://cfioc6hnfrwbd"]
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://cfioc6hnfrwbd"]
 
 [ext_resource type="Resource" uid="uid://bwoxb4s5viywy" path="res://Resource Meta/Items/item_info_mystic_armor_chestplate.tres" id="1_kryrs"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_6jrsv"]

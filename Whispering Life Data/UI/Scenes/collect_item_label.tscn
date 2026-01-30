@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7o3fi5jyastt"]
+
+[ext_resource type="Script" uid="uid://c1fvino5a4q4f" path="res://Scripts/UI Scripts/collect_item_label.cs" id="1_hsowa"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="1_m6fdd"]
+
+[node name="CollectItemLabel" type="Label"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -28.0
+offset_right = 131.0
+offset_bottom = -5.0
+grow_vertical = 0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_m6fdd")
+theme_override_font_sizes/font_size = 8
+text = "+5 Wood"
+vertical_alignment = 2
+script = ExtResource("1_hsowa")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.01
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerFinished"]

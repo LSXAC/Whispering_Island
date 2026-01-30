@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cshyxrrswskq0"
+path="res://.godot/imported/766634__stavsounds__keyboard_tactile_4.ogg-94ef9637cb2084076625dd69f20e594f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/SFX Sounds/766634__stavsounds__keyboard_tactile_4.ogg"
+dest_files=["res://.godot/imported/766634__stavsounds__keyboard_tactile_4.ogg-94ef9637cb2084076625dd69f20e594f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

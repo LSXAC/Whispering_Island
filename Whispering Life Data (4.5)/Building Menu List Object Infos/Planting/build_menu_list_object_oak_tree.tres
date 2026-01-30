@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=7 format=3 uid="uid://0gip04da32ti"]
+
+[ext_resource type="Resource" uid="uid://dnxxeevayo83d" path="res://Resource Meta/Items/item_info_palm_seed.tres" id="1_4y3ph"]
+[ext_resource type="PackedScene" uid="uid://cxtq18i442ldo" path="res://Scenes/World Objects/Mineable Objects/mineable_object_oak_tree.tscn" id="2_kpsx5"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_wpvqh"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_xs07f"]
+[ext_resource type="Texture2D" uid="uid://d1kytvwxxoans" path="res://Sprites/Tree.png" id="5_4y3ph"]
+
+[sub_resource type="Resource" id="Resource_yo73i"]
+script = ExtResource("2_wpvqh")
+info = ExtResource("1_4y3ph")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("3_xs07f")
+scene = ExtResource("2_kpsx5")
+scene_building_id = 15
+required_items = Array[Object]([SubResource("Resource_yo73i")])
+unlock_requirements = null
+building_menu_category = 2
+texture_in_build_menu = ExtResource("5_4y3ph")

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=9 format=3 uid="uid://cggf7uciyws1"]
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://cggf7uciyws1"]
 
 [ext_resource type="Resource" uid="uid://gjds5x8w8irk" path="res://Resource Meta/Items/item_info_mystic_armor_shoes.tres" id="1_jvxd4"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_n1d2s"]

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=8 format=3 uid="uid://c10rid084wdox"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_eyfqq"]
+[ext_resource type="Script" uid="uid://v7dew0yr5trl" path="res://Scripts/Item/ToolAttribute.cs" id="2_mc3s4"]
+[ext_resource type="Script" uid="uid://bu58bbjdvh5bk" path="res://Scripts/Player Scripts/PlayerStat.cs" id="3_4ys2m"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="3_e328l"]
+[ext_resource type="Texture2D" uid="uid://nay062h3dror" path="res://Sprites/Items/Icons_3rd/Stone_Hoe.png" id="4_vidu2"]
+
+[sub_resource type="Resource" id="Resource_8gsb1"]
+script = ExtResource("1_eyfqq")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[sub_resource type="Resource" id="Resource_ncu3p"]
+script = ExtResource("2_mc3s4")
+type = 4
+mining_level = 1
+slot_type = 5
+durability = 50
+metadata/_custom_type_script = "uid://v7dew0yr5trl"
+
+[resource]
+script = ExtResource("3_e328l")
+attributes = Array[Object]([SubResource("Resource_8gsb1"), SubResource("Resource_ncu3p")])
+max_stackable_size = 1
+name = "WOODEN_HOE"
+id = 20
+description = "WOODEN_HOE_DESC"
+texture = ExtResource("4_vidu2")
+value = 30.0

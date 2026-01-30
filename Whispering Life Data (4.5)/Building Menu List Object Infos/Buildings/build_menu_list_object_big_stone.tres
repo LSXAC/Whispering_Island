@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=9 format=3 uid="uid://bpl186olxonfm"]
+
+[ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Resource Meta/Items/item_info_wood_plank.tres" id="1_ro46s"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_ut7rt"]
+[ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://Resource Meta/Items/item_info_fibre.tres" id="3_xsb4p"]
+[ext_resource type="PackedScene" uid="uid://coeye4llpicv7" path="res://Scenes/World Objects/Mineable Objects/mineable_object_big_stone.tscn" id="4_ro46s"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="5_aavtg"]
+[ext_resource type="Texture2D" uid="uid://b3yfu58wanci2" path="res://Sprites/NotCustomized/Rocks/Objects_separately/Rock1_1.png" id="6_ut7rt"]
+
+[sub_resource type="Resource" id="Resource_yo73i"]
+script = ExtResource("2_ut7rt")
+info = ExtResource("1_ro46s")
+amount = 10
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_25htp"]
+script = ExtResource("2_ut7rt")
+info = ExtResource("3_xsb4p")
+amount = 3
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("5_aavtg")
+scene = ExtResource("4_ro46s")
+scene_building_id = 35
+required_items = Array[Object]([SubResource("Resource_yo73i"), SubResource("Resource_25htp")])
+unlock_requirements = null
+building_menu_category = 1
+texture_in_build_menu = ExtResource("6_ut7rt")

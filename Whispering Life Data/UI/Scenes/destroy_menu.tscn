@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyrtlu0itxrnd"]
+
+[ext_resource type="Script" uid="uid://dmwxrhivem12e" path="res://Scripts/DestroyMenu.cs" id="1_0r8q3"]
+[ext_resource type="FontFile" path="res://Fonts/upheavtt.ttf" id="3_vy614"]
+[ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://UI/Scenes/header_color_rect.tscn" id="7_hovwy"]
+[ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://Scripts/UI Scripts/TranslationButton.cs" id="8_7u17q"]
+
+[node name="DestroyMenu" type="ColorRect" node_paths=PackedStringArray("quest_description_label", "quest_title_label", "parent", "destroy_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 30.0
+offset_right = -64.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.807843, 1, 1)
+script = ExtResource("1_0r8q3")
+translation_string_title = "DESTROY_MENU_TITLE"
+translation_string_description = "DESTROY_MENU_DESCRIPTION"
+quest_description_label = NodePath("MarginContainer/VBoxContainer2/Description")
+quest_title_label = NodePath("MarginContainer/VBoxContainer2/Label")
+parent = NodePath("MarginContainer/VBoxContainer2/VBoxContainer")
+destroy_button = NodePath("MarginContainer/VBoxContainer2/CompleteQuestButton")
+
+[node name="HeaderColorRect" parent="." instance=ExtResource("7_hovwy")]
+layout_mode = 0
+offset_right = 512.0
+translation_string = "GAMEMENU_DESTROY_MENU"
+
+[node name="X" type="Button" parent="HeaderColorRect"]
+layout_mode = 0
+offset_left = 480.0
+offset_right = 512.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("3_vy614")
+theme_override_font_sizes/font_size = 16
+text = "<X>"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.0
+offset_top = -124.0
+offset_right = 251.0
+offset_bottom = 149.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3_vy614")
+theme_override_fonts/bold_font = ExtResource("3_vy614")
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 18
+bbcode_enabled = true
+text = "[center]Die hungrige Insel #1"
+
+[node name="Description" type="RichTextLabel" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("3_vy614")
+theme_override_fonts/bold_font = ExtResource("3_vy614")
+theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/bold_font_size = 16
+bbcode_enabled = true
+text = "Du bist zufällig auf eine hungrige Insel getroffen. Du bist dir nicht Sicher, wie, oder warum es dazu kam. Aber du hast dich dazu verpflichtet eine [b][color=gold]Insel auf ewig[/color][/b] mit Ressourcen [b][color=gold]zu füttern.[/color][/b]
+Naja, das was die Insel grade will, sieht eigentlich noch nicht so schwer aus!"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="CompleteQuestButton" type="Button" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_vy614")
+theme_override_font_sizes/font_size = 16
+text = "Finish Quest"
+script = ExtResource("8_7u17q")
+label_translation_string = "DESTROY_MENU_BUTTON"
+
+[connection signal="visibility_changed" from="." to="." method="OnVisiblityChanged"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/CompleteQuestButton" to="." method="OnDestroyButton"]

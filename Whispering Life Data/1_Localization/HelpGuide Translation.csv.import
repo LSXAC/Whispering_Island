@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b31385y6kfml1"
+
+[deps]
+
+files=["res://1_Localization/HelpGuide Translation.en.translation", "res://1_Localization/HelpGuide Translation.de.translation"]
+
+source_file="res://1_Localization/HelpGuide Translation.csv"
+dest_files=["res://1_Localization/HelpGuide Translation.en.translation", "res://1_Localization/HelpGuide Translation.de.translation"]
+
+[params]
+
+compress=true
+delimiter=0
+unescape_keys=false
+unescape_translations=true

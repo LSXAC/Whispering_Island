@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://dnbpomwm23l8s"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_44rs5"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="2_11g3b"]
+[ext_resource type="Texture2D" uid="uid://cblkqmbo7e2cn" path="res://Sprites/Items/Fruits_Icons/Mystic_Mushroom.png" id="3_77hum"]
+
+[sub_resource type="Resource" id="Resource_7lkp4"]
+script = ExtResource("1_44rs5")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("2_11g3b")
+attributes = Array[Object]([SubResource("Resource_7lkp4")])
+max_stackable_size = 250
+name = "MYSTIC_MUSHROOMS"
+id = 60
+description = "MYSTIC_MUSHROOMS_DESC"
+texture = ExtResource("3_77hum")
+value = 5.0

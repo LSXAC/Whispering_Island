@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=9 format=3 uid="uid://br1o134cy0afx"]
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://br1o134cy0afx"]
 
 [ext_resource type="Resource" uid="uid://n1o6p57v8r23" path="res://Resource Meta/Items/item_info_wood_hoe_head.tres" id="1_6t7f0"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_6jrhk"]

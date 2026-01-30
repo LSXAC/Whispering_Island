@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cmflp8mvayx8k"]
+
+[ext_resource type="Texture2D" uid="uid://4iihhj1w3svf" path="res://1_Islands/Bridges/Bridge Side/Textures/Bridge_Side_Back_End.png" id="1_m07wr"]
+[ext_resource type="Texture2D" uid="uid://bbxgqg4xsogc4" path="res://1_Islands/Bridges/Bridge Side/Textures/Bridge_Side_Front_End.png" id="2_h7lrc"]
+[ext_resource type="Texture2D" uid="uid://c3o0gjv6hd84v" path="res://Sprites/Light_Box.png" id="3_j6dmo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4sqt"]
+size = Vector2(12, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34776"]
+size = Vector2(12, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blq5j"]
+size = Vector2(12, 23)
+
+[sub_resource type="Gradient" id="Gradient_j6dmo"]
+offsets = PackedFloat32Array(0.0114943, 0.231801, 0.768199)
+colors = PackedColorArray(0.951456, 0.951456, 0.951456, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gkgic"]
+gradient = SubResource("Gradient_j6dmo")
+fill = 1
+fill_from = Vector2(0.512821, 0.498576)
+fill_to = Vector2(0.814815, 0.190883)
+
+[node name="BridgeSide" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, -7)
+shape = SubResource("RectangleShape2D_k4sqt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(10, 11)
+shape = SubResource("RectangleShape2D_34776")
+
+[node name="Back" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_m07wr")
+centered = false
+offset = Vector2(-16, -8)
+
+[node name="Front" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 9)
+texture = ExtResource("2_h7lrc")
+centered = false
+offset = Vector2(-16, -26)
+
+[node name="Bridge" type="StaticBody2D" parent="."]
+collision_layer = 12
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bridge"]
+position = Vector2(10, 2.5)
+shape = SubResource("RectangleShape2D_blq5j")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(6, 2)
+texture = ExtResource("3_j6dmo")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D2"]
+color = Color(0.619803, 0.427294, 5.77569e-07, 1)
+texture = SubResource("GradientTexture2D_gkgic")
+texture_scale = 1.5
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(6, -17)
+texture = ExtResource("3_j6dmo")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D3"]
+color = Color(0.619803, 0.427294, 5.77569e-07, 1)
+texture = SubResource("GradientTexture2D_gkgic")
+texture_scale = 1.5

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=7 format=3 uid="uid://4o1h3cmusbib"]
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://4o1h3cmusbib"]
 
 [ext_resource type="PackedScene" uid="uid://gb18hiamdyqj" path="res://Scenes/World Objects/Mineable Objects/mineable_object_myst_oak_tree.tscn" id="1_67enh"]
 [ext_resource type="Resource" uid="uid://bj62tvtw6mn4v" path="res://Resource Meta/Items/item_info_mystic_oak_seed.tres" id="1_okn6p"]

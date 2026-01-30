@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=13 format=3 uid="uid://c61tkydmwleam"]
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://c61tkydmwleam"]
 
 [ext_resource type="Resource" uid="uid://bvplgrho461h0" path="res://Resource Meta/Items/item_info_stone_knife.tres" id="1_4tdyo"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_8uuny"]

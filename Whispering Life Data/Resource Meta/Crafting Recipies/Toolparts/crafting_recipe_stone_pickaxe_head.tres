@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=7 format=3 uid="uid://crbwxmyjqlafm"]
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://crbwxmyjqlafm"]
 
 [ext_resource type="Resource" uid="uid://6wlgn6tdsk7b" path="res://Resource Meta/Items/item_info_stone_pickaxe_head.tres" id="1_2syfq"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_y51lw"]

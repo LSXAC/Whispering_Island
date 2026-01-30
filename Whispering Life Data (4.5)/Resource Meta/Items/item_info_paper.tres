@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=5 format=3 uid="uid://c05grb4hfdt0e"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_ie0fx"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="2_g5jvs"]
+[ext_resource type="Texture2D" uid="uid://bmjksm04vbllq" path="res://Sprites/Items/Plants_Icons/Paper.png" id="3_wfixf"]
+
+[sub_resource type="Resource" id="Resource_fbfdm"]
+script = ExtResource("1_ie0fx")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("2_g5jvs")
+attributes = Array[Object]([SubResource("Resource_fbfdm")])
+max_stackable_size = 250
+name = "PAPER"
+id = 59
+description = "PAPER_DESC"
+texture = ExtResource("3_wfixf")
+value = 25.0

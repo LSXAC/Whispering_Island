@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=9 format=3 uid="uid://c2tfkto5ygm4k"]
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://c2tfkto5ygm4k"]
 
 [ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Resource Meta/Items/item_info_wood_plank.tres" id="1_kyhls"]
 [ext_resource type="PackedScene" uid="uid://dda24vs8c7wm7" path="res://Scenes/World Objects/Buildings/Building_Research_Table.tscn" id="2_m61kj"]

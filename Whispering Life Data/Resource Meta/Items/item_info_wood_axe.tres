@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=8 format=3 uid="uid://dmrxwabbdyg0d"]
+[gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://dmrxwabbdyg0d"]
 
 [ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_7n84d"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_8fx8c"]

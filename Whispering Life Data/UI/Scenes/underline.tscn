@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d3mc4wikodeyj"]
+
+[node name="Underline" type="ColorRect"]
+offset_left = 8.0
+offset_top = -71.0
+offset_right = 293.0
+offset_bottom = -68.0
+color = Color(0, 0, 0, 1)
+
+[node name="Fill" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 284.0
+offset_bottom = 2.0
+color = Color(0.517647, 0.709804, 0.647059, 1)

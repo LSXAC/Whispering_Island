@@ -1,0 +1,31 @@
+,en,de
+QUEST_TITLE_1,The hungry island #1,Die hungrige Insel #1
+QUEST_DESC_1,"You encountered a hungry island. You're not sure why or how but now have to [b][color=gold]feed the island[/color][/b] with recourcess [b][color=gold]for all eternity[/color][/b].
+Well, what the island want doesn't seem so difficult for now!","Du bist zufällig auf eine hungrige Insel getroffen. Du bist dir nicht Sicher, wie, oder warum es dazu kam. Aber du hast dich dazu verpflichtet eine [b][color=gold]Insel auf ewig[/color][/b] mit Ressourcen [b][color=gold]zu füttern.[/color][/b]
+Naja, das was die Insel grade will, sieht eigentlich noch nicht so schwer aus!"
+QUEST_TITLE_2,He wants what now? Mythic? #2,Er will was? Mystisch? #2
+QUEST_DESC_2,"It's probably too boring for this fine gentleman to eat the same thing all the time... and what does he want now? Mystical... What? Never mind, I'll get him whatever he wants.
+([b][color=gold]Hint:[/color][/b] Build a mystical island on a sign) P.S. If you don't have any Resources anymore, please plant some in the Building Menu [b][color=gold][J][/color][/b]!","Dem feinen Herren ist das wohl zu Öde, die ganze Zeit das gleiche zu essen... und was möchte er jetzt? Mystisch... Was? Ach egal, ich bring Ihn, was er möchte.
+([b][color=gold]Tipp:[/color][/b] Baue eine mystische Insel an einem Schild) P.S. Wenn dir irgendwelche Ressourcen fehlen sollten, benutze bitte das Baumenü [b][color=gold][J][/color][/b] zum pflanzen!"
+QUEST_TITLE_3,It wants more! #3,Es will noch mehr! #3
+QUEST_DESC_3,"You've successfully feed the island for the second time but how can that be? That monster wants always something new too eat immedeatly! That's going to be a challenge, if it wants 
+more and more complex resourcess. ([b][color=gold]Hint:[/color][/b] Press [b][color=gold][ESC][/color][/b] and click on crafting.)","Du hast nun erfolgreich die zweite Fütterung durchgeführt, aber wie kann das sein? Dieses Monster will immer wieder was neues zu Essen haben! Das wird echt eine Herausforderung, wenn er immer mehr
+und immer komplexere Ressourcen haben möchte! ([b][color=gold]Tipp:[/color][/b] Drücke [b][color=gold][ESC][/color][/b] und gehe auf den Punkt ""Herstellen"") "
+QUEST_TITLE_4,I'll be an explorer #4,Ich werde Forscherin! #4
+QUEST_DESC_4,"Why can't I craft the resourcess that monster wants? I'm missing the necessary blueprints... ([b][color=gold]Hint:[/color][/b] Craft a researchtable - you can examin the basic resources,
+which unlocks something new with every level.","Wieso kann ich die Ressourcen die dieses Monster will, nicht herstellen? Mir fehlen dafür einfach die Baupläne... ([b][color=gold]Tipp:[/color][/b] Stelle einen Forschungstisch her - In diesem kannst du einige Basis Ressourcen
+erforschen, die jede Stufe etwas neues freischalten.)"
+QUEST_TITLE_5,A new Age #5,Neues Zeitalter #5
+QUEST_DESC_5,Iron! He can't be serious. There is absoulutly no iron anywhere on this island! If only I could get to some of the neighbouring islands,Eisen! Das kann doch jetzt nicht sein ernst sein. Hier auf dieser Insel gibt es doch gar kein Eisen! Wenn ich doch nur die benachbarten Inseln erreichen könnte...
+QUEST_TITLE_6,The monster is the boss #6 (Boss Quest),Das Monster ist der Boss #6 (Kritische Quest)
+QUEST_DESC_6,"I've really had enough of what he's asking for! A block of iron? How am I going to carry this heavy thing!
+([b][colour=gold]Hint:[/colour][/b] Iron ore must be researched at level 2 to produce an iron block)","Also so langsam reicht es mir echt, was er haben möchte! Einen Eisenblock? Wie soll ich das schwere Ding überhaupt transportieren!
+(Tipp: Eisenerz muss auf Stufe 2 erforscht werden um einen Eisenblock herzustellen)"
+QUEST_TITLE_7,The Tailor #7,Der Kleidermacher? #7
+QUEST_DESC_7,"It's slowly getting cold! At least I think so, there is actually no temperature-changing effect (yet).","Langsam wird es kalt! Glaube ich zumindest, es gibt eigentlich (noch) keine Temperaturverändernde Wirkung."
+QUEST_TITLE_8,The Farmer! #8,Der Farmer! #8
+QUEST_DESC_8,"After all that hard work, the monster needs some tasty plants! ([b][color=gold]Hint:[/color][/b] You can turn wheat seeds into any other seed in the crafting menu).","Nach der ganzen harten Arbeit, braucht das Monster auch mal ein paar leckere Pflanzen! ([b][color=gold]Tipp:[/color][/b] Man kann Weizensamen in jegliche Samen im Herstellungsmenü verwandeln.)"
+QUEST_TITLE_9,Desert explorer #9,Wüstenerkunder #9
+QUEST_DESC_9,"Hot sand, hardly any water, bad air. It's time for some hot stuff in the desert. ([b][color=gold]Hint:[/color][/b] Build a desert island on a sign)","Heißer Sand, kaum Wasser, schlechte Luft. Es wird Zeit für ein paar heiße Sachen in der Wüste. ([b][color=gold]Tipp:[/color][/b] Baue eine Wüsten Insel an einem Schild)"
+QUEST_TITLE_10,The (Prototype) End #10,Das (Prototype) Ende #10
+QUEST_DESC_10,The end is in sight and he's still not satisfied? Then I'll probably have to deliver a few of the best (current) items again. Maybe he'll be satisfied.,Das Ende ist in Sicht und er ist immer noch nicht zufrieden? Denn muss ich wohl nochmal ein paar der (aktuell) besten Items liefern. Vielleicht ist er den zufrieden.

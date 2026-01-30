@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResearch" load_steps=18 format=3 uid="uid://crmqrimgdf2gl"]
+[gd_resource type="Resource" script_class="ItemResearch" format=3 uid="uid://crmqrimgdf2gl"]
 
 [ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Scripts/Research/ItemResearchLevel.cs" id="1_lqmlk"]
 [ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Resource Meta/Items/item_info_iron_ingot.tres" id="2_mw4ry"]

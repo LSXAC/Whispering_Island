@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=9 format=3 uid="uid://bpl186olxonfm"]
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://bpl186olxonfm"]
 
 [ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Resource Meta/Items/item_info_wood_plank.tres" id="1_ro46s"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_ut7rt"]

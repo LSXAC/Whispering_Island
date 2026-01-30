@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=8 format=3 uid="uid://bvplgrho461h0"]
+
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_hlfru"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_wjh8c"]
+[ext_resource type="Texture2D" uid="uid://dru5exeq2s371" path="res://Sprites/Items/Icons_3rd/Stone_Knife.png" id="2_1lwkt"]
+[ext_resource type="Script" uid="uid://v7dew0yr5trl" path="res://Scripts/Item/ToolAttribute.cs" id="2_85vdb"]
+[ext_resource type="Script" uid="uid://bu58bbjdvh5bk" path="res://Scripts/Player Scripts/PlayerStat.cs" id="3_qy7ma"]
+
+[sub_resource type="Resource" id="Resource_kcqj4"]
+script = ExtResource("1_wjh8c")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[sub_resource type="Resource" id="Resource_qy7ma"]
+script = ExtResource("2_85vdb")
+tool_type = 4
+mining_level = 2
+slot_type = 5
+metadata/_custom_type_script = "uid://v7dew0yr5trl"
+
+[resource]
+script = ExtResource("1_hlfru")
+attributes = Array[Object]([SubResource("Resource_kcqj4"), SubResource("Resource_qy7ma")])
+max_stackable_size = 1
+name = "STONE_KNIFE"
+id = 11
+description = "STONE_KNIFE_DESC"
+texture = ExtResource("2_1lwkt")
+value = 50.0

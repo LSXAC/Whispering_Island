@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResearch" load_steps=14 format=3 uid="uid://cx06xbdvfg7nw"]
+[gd_resource type="Resource" script_class="ItemResearch" format=3 uid="uid://cx06xbdvfg7nw"]
 
 [ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Scripts/Research/ItemResearchLevel.cs" id="1_fnrid"]
 [ext_resource type="Resource" uid="uid://j02uscprm0pm" path="res://Resource Meta/Items/item_info_mystic_armor_head.tres" id="2_h44xc"]

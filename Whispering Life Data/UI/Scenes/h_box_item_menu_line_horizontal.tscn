@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnf8yngk7oyy0"]
+
+[ext_resource type="Script" uid="uid://c8olhec3yacn5" path="res://Scripts/UI Scripts/h_box_item.cs" id="1_f2hm7"]
+[ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="2_m7p01"]
+[ext_resource type="FontFile" uid="uid://4ephfaekr4h8" path="res://Fonts/upheavtt.ttf" id="3_kc5xb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f2hm7"]
+font = ExtResource("3_kc5xb")
+font_size = 8
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="HBoxItem" type="HBoxContainer"]
+offset_right = 27.0
+offset_bottom = 25.0
+theme_override_constants/separation = 4
+alignment = 1
+script = ExtResource("1_f2hm7")
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("2_m7p01")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="ItemLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_kc5xb")
+theme_override_font_sizes/font_size = 8
+text = "2x"
+label_settings = SubResource("LabelSettings_f2hm7")
+horizontal_alignment = 1
+vertical_alignment = 1

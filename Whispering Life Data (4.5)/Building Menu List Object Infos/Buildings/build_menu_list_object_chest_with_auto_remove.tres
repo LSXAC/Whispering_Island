@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=13 format=3 uid="uid://tbpa4v56negm"]
+
+[ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Resource Meta/Items/item_info_wood_plank.tres" id="1_piaxs"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_5dn6o"]
+[ext_resource type="PackedScene" uid="uid://fnriepfksbws" path="res://Scenes/World Objects/Buildings/building_chest_puffer.tscn" id="2_hidod"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_mnq4p"]
+[ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://Resource Meta/Items/Machine Items/item_info_transport_component.tres" id="3_ogfwe"]
+[ext_resource type="Resource" uid="uid://cwipvir80puex" path="res://Resource Meta/Items/Machine Items/item_info_inventory_component.tres" id="4_mwvqj"]
+[ext_resource type="Texture2D" uid="uid://cn8y6cj766xw0" path="res://Sprites/Items/Icons_3rd/Chest.png" id="5_5dn6o"]
+[ext_resource type="Resource" uid="uid://j7d4ldttvjxk" path="res://Resource Meta/Items/Machine Items/item_info_destroy_component.tres" id="5_lyhgy"]
+
+[sub_resource type="Resource" id="Resource_yo73i"]
+script = ExtResource("2_5dn6o")
+info = ExtResource("1_piaxs")
+amount = 10
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_l5vtr"]
+script = ExtResource("2_5dn6o")
+info = ExtResource("3_ogfwe")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_3dogx"]
+script = ExtResource("2_5dn6o")
+info = ExtResource("4_mwvqj")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_vv8fm"]
+script = ExtResource("2_5dn6o")
+info = ExtResource("5_lyhgy")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("3_mnq4p")
+scene = ExtResource("2_hidod")
+scene_building_id = 25
+required_items = Array[Object]([SubResource("Resource_yo73i"), SubResource("Resource_l5vtr"), SubResource("Resource_3dogx"), SubResource("Resource_vv8fm")])
+unlock_requirements = null
+building_menu_category = 6
+texture_in_build_menu = ExtResource("5_5dn6o")

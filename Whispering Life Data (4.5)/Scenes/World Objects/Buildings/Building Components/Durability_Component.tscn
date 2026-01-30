@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdkme6odd6vky"]
+
+[ext_resource type="Script" uid="uid://dm6cthpkwo5kq" path="res://Scripts/DurabilityComponent.cs" id="1_mejrv"]
+
+[node name="DurabilityComponent" type="Node2D"]
+script = ExtResource("1_mejrv")

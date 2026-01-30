@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=7 format=3 uid="uid://bdefudjlvvi5c"]
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://bdefudjlvvi5c"]
 
 [ext_resource type="Resource" uid="uid://dpfc7scfcvgj6" path="res://Resource Meta/Items/item_info_mystic_fibre_seed.tres" id="1_jcunw"]
 [ext_resource type="PackedScene" uid="uid://cjw7mpije2ul4" path="res://Scenes/World Objects/Mineable Objects/mineable_object_myst_fibre.tscn" id="1_whhqj"]

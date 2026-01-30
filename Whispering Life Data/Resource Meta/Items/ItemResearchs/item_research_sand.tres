@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResearch" load_steps=11 format=3 uid="uid://dfwyt0twaxq6e"]
+[gd_resource type="Resource" script_class="ItemResearch" format=3 uid="uid://dfwyt0twaxq6e"]
 
 [ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Scripts/Research/ItemResearchLevel.cs" id="1_2hiwq"]
 [ext_resource type="Script" uid="uid://bk5jdxlwj4pol" path="res://Scripts/Research/ItemSubResearchLevel.cs" id="2_0ur2p"]

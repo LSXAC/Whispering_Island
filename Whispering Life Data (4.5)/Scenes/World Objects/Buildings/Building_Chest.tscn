@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://dj73tpok8xq6p"]
+
+[ext_resource type="Script" uid="uid://bwyysbkhkliqp" path="res://Scripts/Building Scripts/Chest.cs" id="1_lcmyo"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_h8dxr"]
+[ext_resource type="Texture2D" uid="uid://cb634fgv247qi" path="res://Sprites/Chest_Building_Sprite.png" id="2_nga8c"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="3_vyt0n"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Scenes/shadow_node.tscn" id="4_48vxm"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_u7eqm"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="6_whbdv"]
+[ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Scenes/World Objects/Buildings/Building Components/Building_Item_Taker_Component.tscn" id="9_vos0o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8304o"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
+size = Vector2(32, 32)
+
+[node name="Building" type="StaticBody2D"]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_lcmyo")
+building_id = 2
+tile_types = Array[int]([0])
+title = "BUILDING_CHEST"
+description = "BUILDING_CHEST_DESC"
+
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("2_h8dxr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_8304o")
+animation = &"Normal"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+texture = ExtResource("2_nga8c")
+centered = false
+
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("4_48vxm")]
+DisableShadow = true
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("3_vyt0n")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 254, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("4_u7eqm")
+
+[node name="MouseArea" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-16, -18)
+collision_layer = 2
+script = ExtResource("6_whbdv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+shape = SubResource("RectangleShape2D_fk0le")
+
+[node name="Taker" parent="." node_paths=PackedStringArray("building") instance=ExtResource("9_vos0o")]
+z_index = 2
+position = Vector2(-24, -25)
+building = NodePath("..")
+
+[node name="Taker2" parent="." node_paths=PackedStringArray("building") instance=ExtResource("9_vos0o")]
+z_index = 2
+position = Vector2(-8, -25)
+building = NodePath("..")
+
+[node name="CraftingTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-5, -3, -27, -3, -27, -11, -32, -11, -32, -26, -27, -26, -27, -31, -5, -31, -5, -26, 0, -26, 0, -11, -5, -11)
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
+[connection signal="timeout" from="CraftingTimer" to="." method="OnCraftingTimerTimeout"]
+
+[editable path="Taker"]
+[editable path="Taker2"]
