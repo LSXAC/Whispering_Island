@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://cs84e4qslsgms"]
 
-[ext_resource type="Resource" uid="uid://dwn06prfv5ios" path="res://Resource Meta/Items/Machine Items/item_info_research_component.tres" id="1_t8337"]
+[ext_resource type="Resource" uid="uid://dwn06prfv5ios" path="res://1_Entities/Items/Machine Component/Research/Data/ResearchComponent.tres" id="1_t8337"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_icu8i"]
-[ext_resource type="Resource" uid="uid://bf8iixn70725o" path="res://Resource Meta/Items/Machine Items/item_info_machine_component.tres" id="3_vl74g"]
-[ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://Resource Meta/Items/item_info_mystic_oak_wood.tres" id="4_t8337"]
+[ext_resource type="Resource" uid="uid://bf8iixn70725o" path="res://1_Entities/Items/Machine Component/Machine/Data/MachineComponent.tres" id="3_vl74g"]
+[ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://1_Entities/Items/Vegetation/item_info_mystic_oak_wood.tres" id="4_t8337"]
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="5_ljc46"]
 
 [sub_resource type="Resource" id="Resource_h7nag"]

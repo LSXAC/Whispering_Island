@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=51 format=3 uid="uid://vsj46vpxsnru"]
+[gd_resource type="TileSet" format=3 uid="uid://vsj46vpxsnru"]
 
 [ext_resource type="Texture2D" uid="uid://bi8egnh1b4n83" path="res://Tilesets/MagicWater/Magic_Water_1.png" id="1_rtlvs"]
 [ext_resource type="Texture2D" uid="uid://dooor06ccu87y" path="res://Tilesets/Water/Water_1.png" id="1_u3b80"]

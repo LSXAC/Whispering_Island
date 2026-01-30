@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cul1wgsnkjbm5"]
+[gd_resource type="TileSet" format=3 uid="uid://cul1wgsnkjbm5"]
 
 [ext_resource type="Texture2D" uid="uid://dddls25tkt8sw" path="res://Sprites/Tileset Sprites/WorldMap_Tileset.png" id="1_a35p3"]
 

@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bij4wcpveo44d"]
+[gd_resource type="TileSet" format=3 uid="uid://bij4wcpveo44d"]
 
 [ext_resource type="Texture2D" uid="uid://ccwbvaernxhub" path="res://Tilesets/Farmland.png" id="1_ps7bn"]
 

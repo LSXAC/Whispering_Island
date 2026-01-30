@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="QuestInfo" load_steps=5 format=3 uid="uid://bmkxnaw3cirb8"]
+[gd_resource type="Resource" script_class="QuestInfo" format=3 uid="uid://bmkxnaw3cirb8"]
 
-[ext_resource type="Resource" uid="uid://dqdb68mek201l" path="res://Resource Meta/Items/item_info_iron_block.tres" id="1_x25py"]
+[ext_resource type="Resource" uid="uid://dqdb68mek201l" path="res://1_Entities/Items/Craftable/item_info_iron_block.tres" id="1_x25py"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_78rvs"]
 [ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Scripts/Resources/QuestInfo.cs" id="6_7cq7m"]
 

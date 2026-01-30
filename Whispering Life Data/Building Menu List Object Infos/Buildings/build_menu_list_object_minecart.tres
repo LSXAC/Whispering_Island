@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://5uxklgaie75e"]
 
-[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Resource Meta/Items/item_info_iron_ingot.tres" id="1_qv5p7"]
+[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://1_Entities/Items/Craftable/item_info_iron_ingot.tres" id="1_qv5p7"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_6nvoa"]
 [ext_resource type="PackedScene" uid="uid://cjyetki082f0p" path="res://Scenes/World Objects/Buildings/Building_Minecart.tscn" id="2_spxii"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_4kosm"]
-[ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://Resource Meta/Items/Machine Items/item_info_transport_component.tres" id="3_qv5p7"]
+[ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://1_Entities/Items/Machine Component/Transport/Data/TransportComponent.tres" id="3_qv5p7"]
 [ext_resource type="Texture2D" uid="uid://cujtfa5wi4dgp" path="res://Sprites/Minecart.png" id="5_6nvoa"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]

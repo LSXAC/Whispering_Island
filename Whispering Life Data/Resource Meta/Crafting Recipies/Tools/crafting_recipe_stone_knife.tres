@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://c61tkydmwleam"]
 
-[ext_resource type="Resource" uid="uid://bvplgrho461h0" path="res://Resource Meta/Items/item_info_stone_knife.tres" id="1_4tdyo"]
+[ext_resource type="Resource" uid="uid://bvplgrho461h0" path="res://1_Entities/Items/Craftable/item_info_stone_knife.tres" id="1_4tdyo"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_8uuny"]
-[ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Resource Meta/Items/item_info_wood_stick.tres" id="3_11yan"]
-[ext_resource type="Resource" uid="uid://81xbm48s547g" path="res://Resource Meta/Items/item_info_stone_blade.tres" id="4_qr0io"]
-[ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://Resource Meta/Items/item_info_fibre.tres" id="5_k26uh"]
+[ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://1_Entities/Items/Craftable/item_info_wood_stick.tres" id="3_11yan"]
+[ext_resource type="Resource" uid="uid://81xbm48s547g" path="res://1_Entities/Items/Craftable/item_info_stone_blade.tres" id="4_qr0io"]
+[ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://1_Entities/Items/Vegetation/item_info_fibre.tres" id="5_k26uh"]
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="6_q248l"]
 [ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="7_8uuny"]
 

@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://c3qnrt64xg6eg" path="res://Scenes/World Objects/Buildings/Building_Tree_Growther.tscn" id="2_jgyea"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_levdj"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_ch1pd"]
-[ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://Resource Meta/Items/Machine Items/item_info_transport_component.tres" id="3_k72cv"]
-[ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Resource Meta/Items/item_info_wood_plank.tres" id="3_ur3ij"]
-[ext_resource type="Resource" uid="uid://dbfiycnsog0ql" path="res://Resource Meta/Items/Machine Items/item_info_growth_component.tres" id="4_ur3ij"]
+[ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://1_Entities/Items/Machine Component/Transport/Data/TransportComponent.tres" id="3_k72cv"]
+[ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://1_Entities/Items/Craftable/item_info_wood_plank.tres" id="3_ur3ij"]
+[ext_resource type="Resource" uid="uid://dbfiycnsog0ql" path="res://1_Entities/Items/Machine Component/Growth/Data/GrowthComponent.tres" id="4_ur3ij"]
 [ext_resource type="Texture2D" uid="uid://bm1alvnfn87kq" path="res://Sprites/Buildings/Tree_Growther_Sprite.png" id="5_levdj"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]

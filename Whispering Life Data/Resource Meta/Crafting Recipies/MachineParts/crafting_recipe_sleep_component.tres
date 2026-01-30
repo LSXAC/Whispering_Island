@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=11 format=3 uid="uid://ctiwfa1ehiauq"]
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://ctiwfa1ehiauq"]
 
-[ext_resource type="Resource" uid="uid://cvimpjdxil5uq" path="res://Resource Meta/Items/Machine Items/item_info_sleep_component.tres" id="1_jfhir"]
+[ext_resource type="Resource" uid="uid://cvimpjdxil5uq" path="res://1_Entities/Items/Machine Component/Sleep/Data/SleepComponent.tres" id="1_jfhir"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_4eoly"]
-[ext_resource type="Resource" uid="uid://bf8iixn70725o" path="res://Resource Meta/Items/Machine Items/item_info_machine_component.tres" id="3_pr5sg"]
-[ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://Resource Meta/Items/item_info_wheat.tres" id="4_jfhir"]
-[ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://Resource Meta/Items/item_info_fibre.tres" id="5_4eoly"]
+[ext_resource type="Resource" uid="uid://bf8iixn70725o" path="res://1_Entities/Items/Machine Component/Machine/Data/MachineComponent.tres" id="3_pr5sg"]
+[ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://1_Entities/Items/Vegetation/item_info_wheat.tres" id="4_jfhir"]
+[ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://1_Entities/Items/Vegetation/item_info_fibre.tres" id="5_4eoly"]
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="6_0o3lg"]
 
 [sub_resource type="Resource" id="Resource_h7nag"]

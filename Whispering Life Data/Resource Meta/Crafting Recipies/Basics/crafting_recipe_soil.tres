@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://dt3clhic2nk2g"]
 
-[ext_resource type="Resource" uid="uid://12ulsclh6l5e" path="res://Resource Meta/Items/Machine Items/item_info_soil.tres" id="1_750ad"]
+[ext_resource type="Resource" uid="uid://12ulsclh6l5e" path="res://1_Entities/Items/Craftable/item_info_soil.tres" id="1_750ad"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_bndi6"]
-[ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://Resource Meta/Items/item_info_wheat.tres" id="3_750ad"]
+[ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://1_Entities/Items/Vegetation/item_info_wheat.tres" id="3_750ad"]
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="4_bw3ib"]
 
 [sub_resource type="Resource" id="Resource_1wdfg"]

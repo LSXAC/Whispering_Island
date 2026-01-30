@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://b3bnpcxbnd5i1"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_hrl3a"]
+[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableAttribute.cs" id="2_xc8h7"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="3_jvku2"]
+[ext_resource type="Texture2D" uid="uid://w1k1mv22ckvl" path="res://Sprites/Items/Icons_3rd/Stone.png" id="4_n5xol"]
+
+[sub_resource type="Resource" id="Resource_0g1mt"]
+script = ExtResource("1_hrl3a")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[sub_resource type="Resource" id="Resource_eq45o"]
+script = ExtResource("2_xc8h7")
+metadata/_custom_type_script = "uid://doosgdjr0ddtl"
+
+[resource]
+script = ExtResource("3_jvku2")
+attributes = Array[Object]([SubResource("Resource_0g1mt"), SubResource("Resource_eq45o")])
+max_stackable_size = 250
+name = "STONE"
+id = 1
+description = "STONE_DESC"
+texture = ExtResource("4_n5xol")
+value = 5.0

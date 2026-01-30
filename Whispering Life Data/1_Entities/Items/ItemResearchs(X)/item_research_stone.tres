@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="ItemResearch" format=3 uid="uid://c23raqu11morr"]
+
+[ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Scripts/Research/ItemResearchLevel.cs" id="1_bp6mb"]
+[ext_resource type="Script" uid="uid://bk5jdxlwj4pol" path="res://Scripts/Research/ItemSubResearchLevel.cs" id="2_3kwe6"]
+[ext_resource type="Resource" uid="uid://dc73s801r6m64" path="res://1_Entities/Items/Craftable/item_info_stone_axe_head.tres" id="2_kmc7b"]
+[ext_resource type="Resource" uid="uid://81xbm48s547g" path="res://1_Entities/Items/Craftable/item_info_stone_blade.tres" id="3_ur1tu"]
+[ext_resource type="Resource" uid="uid://bvplgrho461h0" path="res://1_Entities/Items/Craftable/item_info_stone_knife.tres" id="4_ntisa"]
+[ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://1_Entities/Items/Craftable/item_info_stone_pickaxe.tres" id="5_15fb7"]
+[ext_resource type="Resource" uid="uid://6wlgn6tdsk7b" path="res://1_Entities/Items/Craftable/item_info_stone_pickaxe_head.tres" id="6_58dhi"]
+[ext_resource type="Script" uid="uid://8idh4gp832ub" path="res://Scripts/Research/ItemResearch.cs" id="7_kg586"]
+
+[sub_resource type="Resource" id="Resource_evsaf"]
+script = ExtResource("2_3kwe6")
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_dxtok"]
+script = ExtResource("2_3kwe6")
+category = 1
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_26ig3"]
+script = ExtResource("2_3kwe6")
+category = 2
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_0j68u"]
+script = ExtResource("2_3kwe6")
+category = 3
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_2iosk"]
+script = ExtResource("2_3kwe6")
+category = 4
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_mv2xp"]
+script = ExtResource("1_bp6mb")
+unlocked_item_infos_after_research = Array[Object]([ExtResource("3_ur1tu"), ExtResource("2_kmc7b"), ExtResource("6_58dhi")])
+sub_levels = Array[Object]([SubResource("Resource_evsaf"), SubResource("Resource_dxtok"), SubResource("Resource_26ig3"), SubResource("Resource_0j68u"), SubResource("Resource_2iosk")])
+metadata/_custom_type_script = "uid://kjnoywvj7caa"
+
+[sub_resource type="Resource" id="Resource_s8jt0"]
+script = ExtResource("2_3kwe6")
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_ffy6c"]
+script = ExtResource("2_3kwe6")
+category = 1
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_1bcua"]
+script = ExtResource("2_3kwe6")
+category = 2
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_2ia05"]
+script = ExtResource("2_3kwe6")
+category = 3
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_mxxf4"]
+script = ExtResource("2_3kwe6")
+category = 4
+metadata/_custom_type_script = "uid://bk5jdxlwj4pol"
+
+[sub_resource type="Resource" id="Resource_g3fxs"]
+script = ExtResource("1_bp6mb")
+unlocked_item_infos_after_research = Array[Object]([ExtResource("5_15fb7"), ExtResource("4_ntisa")])
+sub_levels = Array[Object]([SubResource("Resource_s8jt0"), SubResource("Resource_ffy6c"), SubResource("Resource_1bcua"), SubResource("Resource_2ia05"), SubResource("Resource_mxxf4")])
+metadata/_custom_type_script = "uid://kjnoywvj7caa"
+
+[resource]
+script = ExtResource("7_kg586")
+item_research_levels = Array[Object]([SubResource("Resource_mv2xp"), SubResource("Resource_g3fxs")])
+id = 1
+translation_string = "RESEARCH_STONE"
