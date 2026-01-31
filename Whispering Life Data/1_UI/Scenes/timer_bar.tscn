@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bmb5mvim8jqcp"]
+
+[ext_resource type="Script" uid="uid://deld2y73dp2fk" path="res://Scripts/Resources/TimerBar.cs" id="1_60n7p"]
+[ext_resource type="StyleBox" uid="uid://b8b42n1ue8xhg" path="res://1_UI/Styles/timer_bar_fill.tres" id="1_wxtdg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjfdt"]
+bg_color = Color(0.278431, 0.270588, 0.329412, 1)
+shadow_color = Color(0, 0, 0, 0.29411766)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v0kv"]
+
+[node name="TimerBar" type="ProgressBar"]
+visible = false
+z_index = 5
+custom_minimum_size = Vector2(12, 1)
+offset_left = -6.0
+offset_top = -2.0
+offset_right = 6.0
+offset_bottom = -1.0
+theme_override_font_sizes/font_size = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_bjfdt")
+theme_override_styles/fill = ExtResource("1_wxtdg")
+max_value = 3.0
+value = 1.0
+show_percentage = false
+script = ExtResource("1_60n7p")
+StyleBoxRespawn = ExtResource("1_wxtdg")
+StyleBoxCooldown = SubResource("StyleBoxFlat_3v0kv")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

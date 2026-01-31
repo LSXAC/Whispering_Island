@@ -3,7 +3,7 @@
 [ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://1_Entities/Items/Craftable/item_info_iron_ingot.tres" id="1_gvhdj"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_s4mu1"]
 [ext_resource type="Resource" uid="uid://dkmmck8e6wv2v" path="res://1_Entities/Items/Machine Component/Light/Data/LightComponent.tres" id="3_s4mu1"]
-[ext_resource type="PackedScene" uid="uid://dc4gr4cbv1151" path="res://Scenes/World Objects/Buildings/building_outdoor_lamp.tscn" id="4_gvhdj"]
+[ext_resource type="PackedScene" uid="uid://dc4gr4cbv1151" path="res://1_Entities/Machine/Lamp/building_outdoor_lamp.tscn" id="4_gvhdj"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="5_k0jlv"]
 [ext_resource type="Texture2D" uid="uid://chy4hhh20nf32" path="res://Sprites/outdoor_lamp.png" id="6_gvhdj"]
 

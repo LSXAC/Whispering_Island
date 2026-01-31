@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://1_Entities/Items/Vegetation/Oak/Oak Wood/Data/OakWood.tres" id="1_7kc02"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_u46uy"]
-[ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Scenes/World Objects/Mineable Objects/mineable_object_stone.tscn" id="3_7kc02"]
+[ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://1_Entities/Environment/Stone/mineable_object_stone.tscn" id="3_7kc02"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="4_stbli"]
 [ext_resource type="Texture2D" uid="uid://cjg5w6c4hj1ch" path="res://Sprites/Spritesheets/Stones/Rock0.png" id="5_0jcnm"]
 

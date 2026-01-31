@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://d2tb18k5hugmy" path="res://1_Entities/Items/Vegetation/Sugar Cane/Sugar Cane Seeds/Data/SugarCaneSeeds.tres" id="1_vs53p"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_offf4"]
-[ext_resource type="PackedScene" uid="uid://fvd3mn66cjpc" path="res://Scenes/World Objects/Mineable Objects/mineable_object_sugar_cane.tscn" id="3_vs53p"]
+[ext_resource type="PackedScene" uid="uid://fvd3mn66cjpc" path="res://1_Entities/Vegetation/Sugar Cane/mineable_object_sugar_cane.tscn" id="3_vs53p"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="4_8gi84"]
 [ext_resource type="Texture2D" uid="uid://kfhicaop6pji" path="res://Sprites/Items/Fruits_Icons/sugar_cane.png" id="5_offf4"]
 

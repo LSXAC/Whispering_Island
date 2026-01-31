@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://cjyetki082f0p"]
+
+[ext_resource type="Script" uid="uid://bfdpgy14queaf" path="res://Scripts/Building Scripts/Minecart.cs" id="1_bxygu"]
+[ext_resource type="Texture2D" uid="uid://da3a85kqd3k00" path="res://Sprites/Minecart_TOP.png" id="2_feya6"]
+[ext_resource type="Texture2D" uid="uid://cujtfa5wi4dgp" path="res://Sprites/Minecart.png" id="3_hfbe5"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_af2dw"]
+[ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Scripts/Building Scripts/ChestBase.cs" id="4_u8gqw"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="5_ciaio"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://1_Entities/Shadow/shadow_node.tscn" id="5_gxjrt"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://1_Islands/Tileset/BlockingTileset.tres" id="6_qnjdn"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="8_fmbrg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hsyjx"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntmmq"]
+size = Vector2(2, 13)
+
+[node name="Building" type="StaticBody2D" node_paths=PackedStringArray("chestBase")]
+y_sort_enabled = true
+collision_layer = 269
+collision_mask = 0
+script = ExtResource("1_bxygu")
+chestBase = NodePath("Chest")
+minecart_top = ExtResource("2_feya6")
+minecart_side = ExtResource("3_hfbe5")
+building_id = 28
+tile_types = Array[int]([])
+title = "BUILDING_MINECART"
+description = "BUILDING_MINECART_DESC"
+
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("4_af2dw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_hsyjx")
+animation = &"Normal"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-16, -16)
+texture = ExtResource("3_hfbe5")
+centered = false
+
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("5_gxjrt")]
+DisableShadow = true
+
+[node name="Chest" type="Node2D" parent="."]
+script = ExtResource("4_u8gqw")
+chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]]
+disable_mouse_interaction = true
+ignore_node_structure = true
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("5_ciaio")
+current_type = 1
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("6_qnjdn")
+
+[node name="MouseArea" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-16, -18)
+collision_layer = 2
+script = ExtResource("8_fmbrg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(8, 7)
+shape = SubResource("RectangleShape2D_fk0le")
+
+[node name="CraftingTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="MinecartAREA" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinecartAREA"]
+position = Vector2(-15, -10)
+shape = SubResource("RectangleShape2D_ntmmq")
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, -16, 0, -16, -11, 0, -11)
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

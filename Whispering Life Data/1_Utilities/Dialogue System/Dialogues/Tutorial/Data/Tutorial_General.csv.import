@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://5spnx7shxgy4"
+
+[deps]
+
+files=["res://1_Localization/Tutorial_General.de.translation", "res://1_Localization/Tutorial_General.en.translation"]
+
+source_file="res://1_Utilities/Dialogue System/Dialogues/Tutorial/Data/Tutorial_General.csv"
+dest_files=["res://1_Localization/Tutorial_General.de.translation", "res://1_Localization/Tutorial_General.en.translation"]
+
+[params]
+
+compress=true
+delimiter=0
+unescape_keys=false
+unescape_translations=true

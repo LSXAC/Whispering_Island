@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://w5f8nrctnh1j" path="res://1_Entities/Items/Vegetation/Fiber/Fiber Seeds/Data/FiberSeed.tres" id="1_g8k67"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_3i2wc"]
-[ext_resource type="PackedScene" uid="uid://eshgc8yqihmh" path="res://Scenes/World Objects/Mineable Objects/mineable_object_fibre.tscn" id="3_5nso2"]
+[ext_resource type="PackedScene" uid="uid://eshgc8yqihmh" path="res://1_Entities/Vegetation/Fiber/mineable_object_fibre.tscn" id="3_5nso2"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="4_2334c"]
 [ext_resource type="Texture2D" uid="uid://c64xvoxldsui6" path="res://Sprites/Items/Plants_Icons/Fibre.png" id="5_g8k67"]
 

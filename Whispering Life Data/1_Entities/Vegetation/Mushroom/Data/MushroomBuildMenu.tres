@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://cbpupb53ocwp4" path="res://1_Entities/Items/Vegetation/Mushroom/Mushroom Spores/Data/MushroomSpores.tres" id="1_xd7j7"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_vo72f"]
-[ext_resource type="PackedScene" uid="uid://dyhqyvmm3pp6m" path="res://Scenes/World Objects/Mineable Objects/mineable_object_mushroom.tscn" id="3_j3tan"]
+[ext_resource type="PackedScene" uid="uid://dyhqyvmm3pp6m" path="res://1_Entities/Vegetation/Mushroom/mineable_object_mushroom.tscn" id="3_j3tan"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="4_mfcrb"]
 [ext_resource type="Texture2D" uid="uid://du3kj8ue15udf" path="res://Sprites/Items/Fruits_Icons/Mushroom.png" id="5_n386l"]
 

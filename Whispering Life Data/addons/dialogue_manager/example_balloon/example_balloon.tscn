@@ -1,15 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" uid="uid://5b3w40kwakl3" path="res://addons/dialogue_manager/example_balloon/ExampleBalloon.cs" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
-[ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://UI/Resource Meta/tab_container_panel_style.tres.tres" id="2_odc0r"]
+[ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://1_UI/Styles/tab_container_panel_style.tres.tres" id="2_odc0r"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
-[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="3_nlsx6"]
-[ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://UI/Resource Meta/slot_focus_style.tres" id="6_1kn55"]
-[ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://UI/Resource Meta/Button_Disabled_Style.tres.tres" id="7_icj72"]
-[ext_resource type="StyleBox" uid="uid://c0rrcqgclnbps" path="res://UI/Resource Meta/Button_Hover_Style.tres" id="8_wbrl0"]
-[ext_resource type="StyleBox" uid="uid://bbbtpagi6kny3" path="res://UI/Resource Meta/Button_Pressed_Style.tres.tres" id="9_83g4i"]
-[ext_resource type="StyleBox" uid="uid://dblsyajhbmtwa" path="res://UI/Resource Meta/Button_Normal_Style.tres" id="10_exrs5"]
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://1_UI/Fonts/upheavtt.ttf" id="3_nlsx6"]
+[ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://1_UI/Styles/slot_focus_style.tres" id="6_1kn55"]
+[ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://1_UI/Styles/Button_Disabled_Style.tres.tres" id="7_icj72"]
+[ext_resource type="StyleBox" uid="uid://c0rrcqgclnbps" path="res://1_UI/Styles/Button_Hover_Style.tres" id="8_wbrl0"]
+[ext_resource type="StyleBox" uid="uid://bbbtpagi6kny3" path="res://1_UI/Styles/Button_Pressed_Style.tres.tres" id="9_83g4i"]
+[ext_resource type="StyleBox" uid="uid://dblsyajhbmtwa" path="res://1_UI/Styles/Button_Normal_Style.tres" id="10_exrs5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)

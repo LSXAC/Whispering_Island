@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://8ujwgfeo1fil"]
+
+[ext_resource type="Shader" uid="uid://6h8nokelt8tj" path="res://1_Utilities/Shader/Wind/Wind.gdshader" id="1_lr075"]
+
+[resource]
+shader = ExtResource("1_lr075")
+shader_parameter/wind_start_threshold = 0.10000000475
+shader_parameter/wind_end_threshold = 1.50000007125
+shader_parameter/wind_end_threshold_2 = 1.0000000475
+shader_parameter/wind_strength = 0.050000002375
+shader_parameter/wind_speed = 1.25000005285523
+shader_parameter/scale = 1.0

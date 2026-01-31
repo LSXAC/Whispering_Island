@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://dxbndpfa2cnsl"]
+
+[ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Scripts/Resources/MineableObject.cs" id="1_csqkk"]
+[ext_resource type="Resource" uid="uid://ljb14i8nnpgp" path="res://1_Entities/Items/Craftable/item_info_sand.tres" id="2_kmxi4"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="3_dgqq1"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="3_wt6w8"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_0gbfr"]
+[ext_resource type="Texture2D" uid="uid://d1ey454gm1nuu" path="res://Sprites/Spritesheets/Sand/Sand_V0_1.png" id="5_lm2kn"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://1_Entities/Shadow/shadow_node.tscn" id="6_5fr2l"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://1_UI/Scenes/timer_bar.tscn" id="6_sb3br"]
+[ext_resource type="Texture2D" uid="uid://brdyj2udwaxpm" path="res://Sprites/Sand_Particle.png" id="7_4gwp8"]
+[ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="7_q1ctu"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://1_Islands/Tileset/BlockingTileset.tres" id="8_rx5eh"]
+[ext_resource type="Texture2D" uid="uid://ivhulkjldf2k" path="res://Sprites/Spritesheets/Sand/Sand_V0_6.png" id="8_vfuj3"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="9_3m7pm"]
+[ext_resource type="Texture2D" uid="uid://c81pavm25gq1j" path="res://Sprites/Spritesheets/Sand/Sand_V0_5.png" id="9_obtis"]
+[ext_resource type="Texture2D" uid="uid://cpvqc1e8ebky8" path="res://Sprites/Spritesheets/Sand/Sand_V0_4.png" id="10_tdk0o"]
+[ext_resource type="Texture2D" uid="uid://bkrfhcmilhqyf" path="res://Sprites/Spritesheets/Sand/Sand_V0_3.png" id="11_xaknx"]
+[ext_resource type="Texture2D" uid="uid://biy3ghlkwjd55" path="res://Sprites/Spritesheets/Sand/Sand_V0_2.png" id="12_4swoa"]
+[ext_resource type="Texture2D" uid="uid://ci6e4fuxolru5" path="res://Sprites/Spritesheets/Sand/Sand_V0_Shadow1.png" id="13_lr0iy"]
+[ext_resource type="Texture2D" uid="uid://b2x888d1watd5" path="res://Sprites/Spritesheets/Sand/Sand_V0_Shadow2.png" id="14_hufok"]
+[ext_resource type="Texture2D" uid="uid://5d5xjynrmm76" path="res://Sprites/Spritesheets/Sand/Sand_V0_Shadow3.png" id="15_2kjpa"]
+[ext_resource type="Texture2D" uid="uid://c0njs3laksas5" path="res://Sprites/Spritesheets/Sand/Sand_V0_Shadow4.png" id="16_pvl45"]
+[ext_resource type="Texture2D" uid="uid://bto7ymu33oshw" path="res://Sprites/Spritesheets/Sand/Sand_V0_Shadow5.png" id="17_jnafo"]
+[ext_resource type="Texture2D" uid="uid://c0qqoenb7fgq6" path="res://Sprites/Spritesheets/Sand/Sand_V0_Shadow6.png" id="18_ug78a"]
+
+[sub_resource type="Resource" id="Resource_s64kp"]
+script = ExtResource("3_wt6w8")
+info = ExtResource("2_kmxi4")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dgqq1"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
+size = Vector2(16, 16)
+
+[sub_resource type="Curve" id="Curve_bk6ie"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4ikef"]
+curve = SubResource("Curve_bk6ie")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7tpe0"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_4ikef")
+
+[node name="Sand" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "variants_parent", "gpu_particles")]
+y_sort_enabled = true
+collision_layer = 13
+script = ExtResource("1_csqkk")
+hit_point = NodePath("HitPoint")
+tool_type = 3
+variants_parent = NodePath("SpriteAnimationManager/Variations")
+resource_item = SubResource("Resource_s64kp")
+gpu_particles = NodePath("SandStoneParticles")
+building_id = 20
+tile_types = Array[int]([0])
+title = "WORLD_RESOURCE_SAND"
+description = "WORLD_RESOURCE_SAND_DESC"
+
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("3_dgqq1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_dgqq1")
+animation = &"Normal"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-8, -10)
+texture = ExtResource("5_lm2kn")
+
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("6_5fr2l")]
+position = Vector2(-8, -10)
+
+[node name="Variations" type="Node2D" parent="SpriteAnimationManager"]
+
+[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/Variations"]
+script = ExtResource("7_q1ctu")
+polygon_points = PackedVector2Array(1, -6, -3, -4, -14, -4, -17, -6, -17, -10, -14, -13, -3, -13, 1, -10)
+textures = Array[Texture2D]([ExtResource("8_vfuj3"), ExtResource("9_obtis"), ExtResource("10_tdk0o"), ExtResource("11_xaknx"), ExtResource("12_4swoa"), ExtResource("5_lm2kn")])
+shadow_textures = Array[Texture2D]([ExtResource("18_ug78a"), ExtResource("17_jnafo"), ExtResource("16_pvl45"), ExtResource("15_2kjpa"), ExtResource("14_hufok"), ExtResource("13_lr0iy")])
+
+[node name="MouseArea" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-9, -9)
+script = ExtResource("5_0gbfr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(1, -3)
+shape = SubResource("RectangleShape2D_a25cn")
+
+[node name="TimerBar" parent="." instance=ExtResource("6_sb3br")]
+offset_left = -25.0
+offset_top = -31.0
+offset_right = 15.0
+offset_bottom = -27.0
+
+[node name="SandStoneParticles" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(-8, -10)
+emitting = false
+amount = 15
+texture = ExtResource("7_4gwp8")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_7tpe0")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("8_rx5eh")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("9_3m7pm")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-8, -11)
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(1, -6, -3, -4, -14, -4, -17, -6, -17, -10, -14, -13, -3, -13, 1, -10)
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

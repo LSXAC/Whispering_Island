@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ceypkxf7dox6w"]
+
+[ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://1_UI/Themes/Theme_Slots.tres" id="1_3e7sv"]
+[ext_resource type="Script" uid="uid://x5sh7dthimfr" path="res://Scripts/Inventory Scripts/Slot.cs" id="2_rimsq"]
+[ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://1_UI/Styles/slot_focus_style.tres" id="2_vxm2r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4utg2"]
+bg_color = Color(0.278431, 0.270588, 0.329412, 1)
+
+[node name="SlotBackground0" type="ColorRect"]
+custom_minimum_size = Vector2(32, 32)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Slot0" type="Button" parent="."]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 31.0
+offset_bottom = 31.0
+theme = ExtResource("1_3e7sv")
+theme_override_styles/focus = ExtResource("2_vxm2r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4utg2")
+button_mask = 3
+script = ExtResource("2_rimsq")
