@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://bf8iixn70725o"]
 
-[ext_resource type="Script" uid="uid://cmmub3ei8m4o8" path="res://Scripts/Item/ProcessedAttribute.cs" id="1_t6s6d"]
-[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="2_04vgy"]
-[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="3_uj785"]
-[ext_resource type="Texture2D" uid="uid://cl7w108dg3364" path="res://Sprites/machine_component.png" id="4_t6s6d"]
+[ext_resource type="Script" uid="uid://cmmub3ei8m4o8" path="res://Entities/Items/Attributes/ProcessedAttribute.cs" id="1_t6s6d"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="2_04vgy"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="3_uj785"]
+[ext_resource type="Texture2D" uid="uid://cl7w108dg3364" path="res://Entities/Items/Machine Component/Machine/Texture/machine_component.png" id="4_t6s6d"]
 
 [sub_resource type="Resource" id="Resource_h2t5y"]
 script = ExtResource("1_t6s6d")

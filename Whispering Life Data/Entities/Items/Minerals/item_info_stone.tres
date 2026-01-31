@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://b3bnpcxbnd5i1"]
 
-[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_hrl3a"]
-[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableAttribute.cs" id="2_xc8h7"]
-[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="3_jvku2"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_hrl3a"]
+[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Entities/Items/Attributes/ResearchableAttribute.cs" id="2_xc8h7"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="3_jvku2"]
 [ext_resource type="Texture2D" uid="uid://w1k1mv22ckvl" path="res://Sprites/Items/Icons_3rd/Stone.png" id="4_n5xol"]
 
 [sub_resource type="Resource" id="Resource_0g1mt"]

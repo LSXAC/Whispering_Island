@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="SkillData" load_steps=3 format=3 uid="uid://fw0fc6jo8rm6"]
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://fw0fc6jo8rm6"]
 
 [ext_resource type="Texture2D" uid="uid://dgdgpeeiw5ea0" path="res://Sprites/Items/Icons_3rd/Copper_Ingot.png" id="1_jr1nj"]
-[ext_resource type="Script" uid="uid://cen3q64nvicau" path="res://Scripts/SkillData.cs" id="2_lkqmo"]
+[ext_resource type="Script" uid="uid://cen3q64nvicau" path="res://UI/Menus/Skill Menu/SkillData.cs" id="2_lkqmo"]
 
 [resource]
 script = ExtResource("2_lkqmo")

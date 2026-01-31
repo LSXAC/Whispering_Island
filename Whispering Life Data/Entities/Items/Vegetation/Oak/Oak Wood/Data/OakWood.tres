@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://dn1orkomhkyrw"]
 
-[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_i3vrx"]
-[ext_resource type="Script" uid="uid://bdbfd68r4ogge" path="res://Scripts/Item/SmeltableAttribute.cs" id="2_vke05"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_i3vrx"]
+[ext_resource type="Script" uid="uid://bdbfd68r4ogge" path="res://Entities/Items/Attributes/SmeltableAttribute.cs" id="2_vke05"]
 [ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Entities/Items/Minerals/item_info_char_coal.tres" id="3_qfwgc"]
-[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="4_cq24b"]
-[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableAttribute.cs" id="5_rvi3f"]
-[ext_resource type="Script" uid="uid://bfnqqg6a2on8k" path="res://Scripts/Item/BurnableAttribute.cs" id="6_i5wgf"]
-[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="7_libhm"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="4_cq24b"]
+[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Entities/Items/Attributes/ResearchableAttribute.cs" id="5_rvi3f"]
+[ext_resource type="Script" uid="uid://bfnqqg6a2on8k" path="res://Entities/Items/Attributes/BurnableAttribute.cs" id="6_i5wgf"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="7_libhm"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="8_uvm2d"]
 
 [sub_resource type="Resource" id="Resource_11wgx"]

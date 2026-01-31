@@ -30,7 +30,7 @@ buses/default_bus_layout="res://Config/default_bus_layout.tres"
 
 [autoload]
 
-GlobalFunctions="*res://Scripts/Global/GlobalFunctions.cs"
+GlobalFunctions="*res://Sub Systems/Global/GlobalFunctions.cs"
 DialogueManager="*uid://c3rodes2l3gxb"
 
 [dialogue_manager]

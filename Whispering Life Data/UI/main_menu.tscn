@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://dlnqgvorydc7m" path="res://Scripts/UI Scripts/TranslationCheckBox.cs" id="14_4h8hm"]
 [ext_resource type="VideoStream" uid="uid://cn5ad33bqf2ra" path="res://UI/Videos/Start_Screen.ogv" id="15_4dv7s"]
 [ext_resource type="PackedScene" uid="uid://mpqbrpcj1slc" path="res://3rd Party Systems/Transition System/transition_manager.tscn" id="16_e75es"]
-[ext_resource type="Script" uid="uid://bhrk2d2mypk8p" path="res://Scripts/Global/Database.cs" id="17_m3uhe"]
+[ext_resource type="Script" uid="uid://bhrk2d2mypk8p" path="res://Sub Systems/Global/Database.cs" id="17_m3uhe"]
 [ext_resource type="Resource" uid="uid://ugx2sc0qbion" path="res://Entities/Infrastructure/Belt/Data/build_menu_list_object_belt.tres" id="18_dgu8l"]
 [ext_resource type="Resource" uid="uid://5or10ocroxhk" path="res://Entities/Infrastructure/Belt/Belt Combiner/Data/BeltCombiner2x1BuildMenu.tres" id="19_t2reh"]
 [ext_resource type="Resource" uid="uid://8b8h6neopltv" path="res://Entities/Infrastructure/Belt/Belt Combiner/Data/BeltCombiner3x1BuildMenu.tres" id="20_642m4"]

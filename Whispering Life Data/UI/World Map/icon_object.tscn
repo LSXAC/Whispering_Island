@@ -1,17 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cca4fqqi7u7tj"]
+[gd_scene format=3 uid="uid://cca4fqqi7u7tj"]
 
-[ext_resource type="Script" uid="uid://ccih2b023ad8i" path="res://Scripts/IconObject.cs" id="1_ynqbm"]
-[ext_resource type="Texture2D" uid="uid://dptiqr3ul1c5u" path="res://Sprites/Icons/world_map_player.png" id="2_ryi6s"]
+[ext_resource type="Script" uid="uid://ccih2b023ad8i" path="res://UI/World Map/IconObject.cs" id="1_2m78b"]
+[ext_resource type="Texture2D" uid="uid://dptiqr3ul1c5u" path="res://Sprites/Icons/world_map_player.png" id="2_rpimo"]
 
-[node name="IconObject" type="Panel" node_paths=PackedStringArray("texture")]
+[node name="IconObject" type="Panel" unique_id=1581286865 node_paths=PackedStringArray("texture")]
 offset_left = 378.0
 offset_top = 54.0
 offset_right = 442.0
 offset_bottom = 118.0
-script = ExtResource("1_ynqbm")
+script = ExtResource("1_2m78b")
 texture = NodePath("MarginContainer/TextureRect")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=820956472]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +23,7 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 8
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer" unique_id=144413390]
 layout_mode = 2
-texture = ExtResource("2_ryi6s")
+texture = ExtResource("2_rpimo")
 stretch_mode = 5

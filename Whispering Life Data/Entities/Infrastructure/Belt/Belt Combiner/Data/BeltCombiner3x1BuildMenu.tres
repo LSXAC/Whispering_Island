@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Entities/Items/Craftable/item_info_iron_ingot.tres" id="1_86rt1"]
 [ext_resource type="PackedScene" uid="uid://dsmt6k3efm7p6" path="res://Entities/Infrastructure/Belt/Belt Combiner/Building_Belt_Combiner_3x1.tscn" id="2_0fnj6"]
-[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_c2fxb"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_c2fxb"]
 [ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://Entities/Items/Machine Component/Transport/Data/TransportComponent.tres" id="3_86rt1"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_n3dby"]
 [ext_resource type="Texture2D" uid="uid://kq8u6dxlwywg" path="res://Sprites/Menu_Belt_Combiner_3x1.png" id="5_c2fxb"]

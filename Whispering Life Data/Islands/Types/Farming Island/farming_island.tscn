@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b0pmpn0st1gl4"]
 
-[ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Scripts/Island Scripts/Island.cs" id="1_yy7cq"]
+[ext_resource type="Script" uid="uid://cfxhvbu5wccw5" path="res://Islands/Island.cs" id="1_yy7cq"]
 [ext_resource type="TileSet" uid="uid://cm68nany3v2m8" path="res://Islands/Tileset/BuildingTiles.tres" id="2_sunwl"]
 [ext_resource type="PackedScene" uid="uid://717sbs8rvfvt" path="res://Entities/Environment/Sign/Sign.tscn" id="3_rlc4a"]
 [ext_resource type="TileSet" uid="uid://knopq4xq3ef2" path="res://Islands/Tileset/Islands.tres" id="4_mrctp"]

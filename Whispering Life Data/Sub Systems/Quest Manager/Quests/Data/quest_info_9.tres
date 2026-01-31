@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="QuestInfo" format=3 uid="uid://c2p2638k7calp"]
 
 [ext_resource type="Resource" uid="uid://ljb14i8nnpgp" path="res://Entities/Items/Craftable/item_info_sand.tres" id="1_kq45h"]
-[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_57gvm"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_57gvm"]
 [ext_resource type="Resource" uid="uid://cij4xtg6ixn5i" path="res://Entities/Items/Minerals/item_info_sand_stone.tres" id="3_00e4e"]
 [ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Entities/Items/Craftable/item_info_glass_chunk.tres" id="4_57gvm"]
-[ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Scripts/Resources/QuestInfo.cs" id="6_2qyb6"]
+[ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Sub Systems/Quest Manager/Quests/QuestInfo.cs" id="6_2qyb6"]
 
 [sub_resource type="Resource" id="Resource_c6knq"]
 script = ExtResource("2_57gvm")

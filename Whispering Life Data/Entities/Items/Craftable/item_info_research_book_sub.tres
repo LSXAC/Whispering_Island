@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://t5v8qm6eoktq"]
 
-[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_a66xi"]
-[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="2_5npqe"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_a66xi"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="2_5npqe"]
 [ext_resource type="Texture2D" uid="uid://cmp1fohwygx15" path="res://Sprites/Items/Plants_Icons/research_book_sub.png" id="3_a66xi"]
 
 [sub_resource type="Resource" id="Resource_cqovr"]

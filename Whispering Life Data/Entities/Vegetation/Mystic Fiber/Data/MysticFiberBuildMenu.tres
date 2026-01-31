@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://dpfc7scfcvgj6" path="res://Entities/Items/Vegetation/Mystic Fiber/Mystic Fiber Seeds/Data/MysticFiberSeed.tres" id="1_jcunw"]
 [ext_resource type="PackedScene" uid="uid://cjw7mpije2ul4" path="res://Entities/Vegetation/Mystic Fiber/mineable_object_myst_fibre.tscn" id="1_whhqj"]
-[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_5aoxd"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_5aoxd"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="2_oy2x5"]
 [ext_resource type="Texture2D" uid="uid://cixgxe6yx2sgh" path="res://Sprites/Items/Plants_Icons/Mystic_Fibre.png" id="5_jcunw"]
 

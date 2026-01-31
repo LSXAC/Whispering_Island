@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_gqi3q"]
 [ext_resource type="Texture2D" uid="uid://c2yvdku225ug1" path="res://Entities/Environment/Decoration/Wood Bed/Texture/Wood_Bed.png" id="2_s6a6o"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="4_aqiu5"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Entities/Shadow/shadow_node.tscn" id="4_gqi3q"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="4_gqi3q"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="5_wwg0f"]
-[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="7_h1m8n"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="7_h1m8n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fa8kn"]
 animations = [{

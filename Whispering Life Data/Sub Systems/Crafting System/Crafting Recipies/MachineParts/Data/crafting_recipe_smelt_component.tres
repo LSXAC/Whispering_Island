@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://b84f5t505lnh0"]
 
 [ext_resource type="Resource" uid="uid://qpxoldygoivu" path="res://Entities/Items/Machine Component/Smelt/Data/SmeltComponent.tres" id="1_1duwh"]
-[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_vhlcs"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_vhlcs"]
 [ext_resource type="Resource" uid="uid://bf8iixn70725o" path="res://Entities/Items/Machine Component/Machine/Data/MachineComponent.tres" id="3_gald3"]
 [ext_resource type="Resource" uid="uid://dgqnscgejksc" path="res://Entities/Items/Minerals/item_info_coal.tres" id="4_1duwh"]
-[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="5_7im2e"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Sub Systems/Crafting System/Crafting Recipies/CraftingRecipe.cs" id="5_7im2e"]
 
 [sub_resource type="Resource" id="Resource_h7nag"]
 script = ExtResource("2_vhlcs")

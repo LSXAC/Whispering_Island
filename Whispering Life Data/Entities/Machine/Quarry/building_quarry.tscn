@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bm1alvnfn87kq" path="res://Sprites/Buildings/Tree_Growther_Sprite.png" id="3_7b4ad"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="4_65eiu"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="5_8y1t1"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Entities/Shadow/shadow_node.tscn" id="5_nowyl"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="5_nowyl"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="6_iudpf"]
-[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="7_sy75k"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="7_sy75k"]
 [ext_resource type="Texture2D" uid="uid://cep6pkf1xs5cc" path="res://Sprites/Spritesheets/Ores/Stone.png" id="8_33cw1"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Sub Systems/Building System/Building Components/component_building_item_giver.tscn" id="9_dvgwj"]
 

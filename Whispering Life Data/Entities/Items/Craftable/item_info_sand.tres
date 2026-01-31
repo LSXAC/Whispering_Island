@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://ljb14i8nnpgp"]
 
-[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_fbvlc"]
-[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_imi7w"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_fbvlc"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="1_imi7w"]
 [ext_resource type="Texture2D" uid="uid://x7jiiuscayra" path="res://Sprites/Items/Icons_3rd/Sand.png" id="2_3m1yh"]
-[ext_resource type="Script" uid="uid://bdbfd68r4ogge" path="res://Scripts/Item/SmeltableAttribute.cs" id="2_f7w2b"]
+[ext_resource type="Script" uid="uid://bdbfd68r4ogge" path="res://Entities/Items/Attributes/SmeltableAttribute.cs" id="2_f7w2b"]
 [ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Entities/Items/Craftable/item_info_glass_chunk.tres" id="3_l6jg2"]
-[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="4_j7yvl"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="4_j7yvl"]
 [ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="5_brp8s"]
-[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableAttribute.cs" id="5_p01gy"]
+[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Entities/Items/Attributes/ResearchableAttribute.cs" id="5_p01gy"]
 
 [sub_resource type="Resource" id="Resource_iym8u"]
 script = ExtResource("1_fbvlc")

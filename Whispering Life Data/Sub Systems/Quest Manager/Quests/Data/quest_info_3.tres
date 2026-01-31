@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="QuestInfo" format=3 uid="uid://cpmdxkr2eawci"]
 
 [ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Entities/Items/Craftable/item_info_wood_plank.tres" id="1_ja724"]
-[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_a6jn5"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_a6jn5"]
 [ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Entities/Items/Craftable/item_info_wood_stick.tres" id="3_a6jn5"]
-[ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Scripts/Resources/QuestInfo.cs" id="4_u21vo"]
+[ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Sub Systems/Quest Manager/Quests/QuestInfo.cs" id="4_u21vo"]
 
 [sub_resource type="Resource" id="Resource_e4ysu"]
 script = ExtResource("2_a6jn5")

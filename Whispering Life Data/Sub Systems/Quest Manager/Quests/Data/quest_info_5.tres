@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="QuestInfo" format=3 uid="uid://bxwgmp1fse4m"]
 
 [ext_resource type="Resource" uid="uid://l7tf257vet4l" path="res://Entities/Items/Minerals/item_info_iron_ore.tres" id="1_pcw8a"]
-[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_v4fxe"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_v4fxe"]
 [ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Entities/Items/Craftable/item_info_iron_ingot.tres" id="3_v4fxe"]
-[ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Scripts/Resources/QuestInfo.cs" id="4_01x7v"]
+[ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Sub Systems/Quest Manager/Quests/QuestInfo.cs" id="4_01x7v"]
 [ext_resource type="Resource" uid="uid://eo8ax7whu2kb" path="res://Entities/Items/Minerals/item_info_copper_ore.tres" id="4_xjhqv"]
 [ext_resource type="Resource" uid="uid://i3ah62dd06gb" path="res://Entities/Items/Minerals/item_info_copper_ingot.tres" id="5_01x7v"]
 

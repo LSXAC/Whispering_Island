@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://6qmxpohi4qkf" path="res://Scripts/Research/ResearchTable.cs" id="1_6uycx"]
 [ext_resource type="Texture2D" uid="uid://caucfvq00j5hu" path="res://Sprites/Research_Table.png" id="2_q5cu6"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_tssht"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Entities/Shadow/shadow_node.tscn" id="4_3f01m"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="4_3f01m"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="4_l1eoh"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="5_plk1p"]
-[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="7_762gh"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="7_762gh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0cyvk"]
 animations = [{

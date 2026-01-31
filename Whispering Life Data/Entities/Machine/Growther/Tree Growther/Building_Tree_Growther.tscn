@@ -8,8 +8,8 @@
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="4_c24j7"]
 [ext_resource type="Texture2D" uid="uid://cn5mlqi00brmm" path="res://Sprites/Spritesheets/Buildings/Tree Growther/Tree_Growther2.png" id="4_l6moi"]
 [ext_resource type="Texture2D" uid="uid://g1do12pokq83" path="res://Sprites/Spritesheets/Buildings/Tree Growther/Tree_Growther1.png" id="6_14qf6"]
-[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="6_r3nyr"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Entities/Shadow/shadow_node.tscn" id="8_l6moi"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="6_r3nyr"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="8_l6moi"]
 [ext_resource type="Texture2D" uid="uid://x3me8mfywto5" path="res://Sprites/Spritesheets/Buildings/Tree Growther/Tree_Growther_Shadow1.png" id="8_yml2p"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Sub Systems/Building System/Building Components/component_building_item_giver.tscn" id="9_kii5u"]
 

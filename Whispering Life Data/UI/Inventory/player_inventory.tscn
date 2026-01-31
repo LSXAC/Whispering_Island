@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://74pm7gmanqf2"]
 
-[ext_resource type="Script" uid="uid://ck16fti57dnx3" path="res://Scripts/Inventory Scripts/PlayerInventoryUI.cs" id="1_4utg2"]
+[ext_resource type="Script" uid="uid://ck16fti57dnx3" path="res://UI/Inventory/PlayerInventoryUI.cs" id="1_4utg2"]
 [ext_resource type="PackedScene" uid="uid://ceypkxf7dox6w" path="res://UI/Inventory/slot_background.tscn" id="2_jii07"]
 
 [node name="Inventory" type="Control"]

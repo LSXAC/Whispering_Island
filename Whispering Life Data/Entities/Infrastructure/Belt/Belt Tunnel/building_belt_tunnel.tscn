@@ -8,7 +8,7 @@
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="4_u84hi"]
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Sub Systems/Building System/Building Components/Building_Rail_Detector_Component.tscn" id="5_cqme2"]
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://Entities/Infrastructure/Belt/item_holder.tscn" id="6_edykq"]
-[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="7_nklsv"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="7_nklsv"]
 [ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Scripts/Building Scripts/PathConnectArea.cs" id="8_keiqc"]
 [ext_resource type="Script" uid="uid://cn875q2aup4yk" path="res://Scripts/Building Scripts/TunnelArea.cs" id="9_a3q3v"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Sub Systems/Shader/Water/Water_Noise_Map.tres" id="10_hvugw"]

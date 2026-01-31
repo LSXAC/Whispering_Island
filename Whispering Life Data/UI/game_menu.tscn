@@ -22,16 +22,15 @@
 [ext_resource type="Texture2D" uid="uid://dvbxwe6an2st" path="res://Sprites/Menu/Menu_Front_Style_1.png" id="11_mmhr0"]
 [ext_resource type="PackedScene" uid="uid://ceypkxf7dox6w" path="res://UI/Inventory/slot_background.tscn" id="13_m8k7p"]
 [ext_resource type="Texture2D" uid="uid://e6d1pgbiv2dn" path="res://Sprites/Items/Armor/Placeholder_Armor_Head.png" id="14_mmhr0"]
-[ext_resource type="Script" uid="uid://c80nhtlc3g8ga" path="res://Scripts/Item/ArmorAttribute.cs" id="15_jkil6"]
+[ext_resource type="Script" uid="uid://c80nhtlc3g8ga" path="res://Entities/Items/Attributes/ArmorAttribute.cs" id="15_jkil6"]
 [ext_resource type="Script" uid="uid://c1q35nbh8sb51" path="res://Scripts/UI Scripts/IslandMenu.cs" id="16_burxg"]
 [ext_resource type="Script" uid="uid://c7qu86gm6haea" path="res://Scripts/UI Scripts/CheatTab.cs" id="16_f2xax"]
 [ext_resource type="Script" uid="uid://btkxakelo3d1y" path="res://Scripts/UI Scripts/SettingsTab.cs" id="16_jv3kw"]
 [ext_resource type="Texture2D" uid="uid://syf34dx878d5" path="res://Sprites/Flaggs/US_FLAG.png" id="16_ldk1u"]
-[ext_resource type="Script" uid="uid://c8gcdq44rac7i" path="res://Scripts/Skilltree.cs" id="16_x6qgy"]
-[ext_resource type="Script" uid="uid://v7dew0yr5trl" path="res://Scripts/Item/ToolAttribute.cs" id="17_7ai0l"]
+[ext_resource type="Script" uid="uid://c8gcdq44rac7i" path="res://UI/Menus/Skill Menu/Skilltree.cs" id="16_x6qgy"]
+[ext_resource type="Script" uid="uid://v7dew0yr5trl" path="res://Entities/Items/Attributes/ToolAttribute.cs" id="17_7ai0l"]
 [ext_resource type="Script" uid="uid://mtwprpv04hll" path="res://Scripts/UI Scripts/ChestTab.cs" id="17_8qgvy"]
 [ext_resource type="Texture2D" uid="uid://bktanws4eilvv" path="res://Sprites/Items/Armor/Placeholder_Armor_Chest.png" id="17_6662a"]
-[ext_resource type="Script" uid="uid://bu58bbjdvh5bk" path="res://Scripts/Player Scripts/PlayerStat.cs" id="17_gcthi"]
 [ext_resource type="Texture2D" uid="uid://y7p1sna6t1lh" path="res://Sprites/Mystic_Island.png" id="17_i4snh"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="17_iq1ex"]
 [ext_resource type="Texture2D" uid="uid://d24spwn8n1w7w" path="res://Sprites/Flaggs/DE_FLAG.png" id="18_1qrrt"]
@@ -42,13 +41,13 @@
 [ext_resource type="Texture2D" uid="uid://g5tq6jiacbx3" path="res://Sprites/Farming_Island.png" id="19_wr86d"]
 [ext_resource type="Texture2D" uid="uid://bjp5wy4new0rg" path="res://Sprites/Island_Dessert.png" id="20_23y7x"]
 [ext_resource type="Texture2D" uid="uid://04ccgfwkqldn" path="res://Sprites/Items/Icons/Fuel.png" id="20_s2f2w"]
-[ext_resource type="Script" uid="uid://bfnqqg6a2on8k" path="res://Scripts/Item/BurnableAttribute.cs" id="26_7icba"]
+[ext_resource type="Script" uid="uid://bfnqqg6a2on8k" path="res://Entities/Items/Attributes/BurnableAttribute.cs" id="26_7icba"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="26_tl5yt"]
 [ext_resource type="Script" uid="uid://bypwrqe8vcas8" path="res://Scripts/UI Scripts/SaveLoadTab.cs" id="27_ku6dj"]
 [ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://UI/Styles/slot_focus_style.tres" id="28_gcthi"]
 [ext_resource type="StyleBox" uid="uid://ulbautjxg081" path="res://UI/Styles/Progress_Bar_Background_Style.tres" id="29_sy5xb"]
 [ext_resource type="StyleBox" uid="uid://cuqs05ejcf73o" path="res://UI/Styles/Progress_Bar_Fill_Style.tres" id="30_fato5"]
-[ext_resource type="Script" uid="uid://dbau0pr5c35mu" path="res://Scripts/SkillSlot.cs" id="31_1f68p"]
+[ext_resource type="Script" uid="uid://dbau0pr5c35mu" path="res://UI/Menus/Skill Menu/SkillSlot.cs" id="31_1f68p"]
 [ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://UI/Styles/Button_Disabled_Style.tres.tres" id="31_j0nuq"]
 [ext_resource type="Texture2D" uid="uid://raaamx5w323j" path="res://Sprites/currency_icon.png" id="31_sy28q"]
 [ext_resource type="Resource" uid="uid://3ogfbqscw3my" path="res://Sub Systems/Skill System/Skills/Data/deep_vein.tres" id="31_w6gy4"]
@@ -84,7 +83,7 @@
 [ext_resource type="Resource" uid="uid://07voex1otlqm" path="res://Sub Systems/Skill System/Skills/Data/research_speed_2.tres" id="47_8a6lo"]
 [ext_resource type="PackedScene" uid="uid://bjpg4c1oc0gf2" path="res://UI/classic_button.tscn" id="47_n542t"]
 [ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Scripts/Manager Scripts/ItemRowManager.cs" id="48_mkmfo"]
-[ext_resource type="Script" uid="uid://bgckysx121ct8" path="res://Scripts/TranslationPanel.cs" id="48_tbpku"]
+[ext_resource type="Script" uid="uid://bgckysx121ct8" path="res://UI/Menus/TranslationPanel.cs" id="48_tbpku"]
 [ext_resource type="Resource" uid="uid://blc4hqmuyk06k" path="res://Sub Systems/Skill System/Skills/Data/research_speed_3.tres" id="48_tmrav"]
 [ext_resource type="Resource" uid="uid://fw0fc6jo8rm6" path="res://Sub Systems/Skill System/Skills/Data/research_xp_1.tres" id="49_mkmfo"]
 [ext_resource type="Resource" uid="uid://cyjlrhsdwqgbe" path="res://Sub Systems/Skill System/Skills/Data/research_xp_2.tres" id="50_n542t"]
@@ -104,7 +103,7 @@
 [ext_resource type="Texture2D" uid="uid://caucfvq00j5hu" path="res://Sprites/Research_Table.png" id="60_cjy3p"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="61_0s004"]
 [ext_resource type="Resource" uid="uid://b5xrr1vil5hj2" path="res://Sub Systems/Skill System/Skills/Data/tool_durability_1.tres" id="61_5o10j"]
-[ext_resource type="Script" uid="uid://dmwxrhivem12e" path="res://Scripts/DestroyMenu.cs" id="62_djfqw"]
+[ext_resource type="Script" uid="uid://dmwxrhivem12e" path="res://UI/Menus/Remove Obstical Menu/DestroyMenu.cs" id="62_djfqw"]
 [ext_resource type="Texture2D" uid="uid://1rxf21hw1xu5" path="res://Sprites/Heart_Icon.png" id="62_g0ojh"]
 [ext_resource type="Resource" uid="uid://b0x6hysultfer" path="res://Sub Systems/Skill System/Skills/Data/tool_durability_2.tres" id="62_qmedj"]
 [ext_resource type="Texture2D" uid="uid://nd03oe33c2v2" path="res://Sprites/Objectiv.png" id="63_38eqn"]
@@ -481,6 +480,11 @@ theme_override_constants/icon_max_width = 24
 theme_override_font_sizes/font_size = 8
 icon = ExtResource("14_mmhr0")
 icon_alignment = 1
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
+theme_override_constants/icon_max_width = 24
+theme_override_font_sizes/font_size = 8
 attribute_to_check = SubResource("Resource_7gwna")
 check_attributes = true
 
@@ -500,6 +504,11 @@ theme_override_constants/icon_max_width = 24
 theme_override_font_sizes/font_size = 8
 icon = ExtResource("17_6662a")
 icon_alignment = 1
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
+theme_override_constants/icon_max_width = 24
+theme_override_font_sizes/font_size = 8
 attribute_to_check = SubResource("Resource_j657e")
 check_attributes = true
 
@@ -519,6 +528,11 @@ theme_override_constants/icon_max_width = 24
 theme_override_font_sizes/font_size = 8
 icon = ExtResource("18_gcthi")
 icon_alignment = 1
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
+theme_override_constants/icon_max_width = 24
+theme_override_font_sizes/font_size = 8
 attribute_to_check = SubResource("Resource_etc0m")
 check_attributes = true
 
@@ -538,6 +552,11 @@ theme_override_constants/icon_max_width = 24
 theme_override_font_sizes/font_size = 8
 icon = ExtResource("19_rgd55")
 icon_alignment = 1
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
+theme_override_constants/icon_max_width = 24
+theme_override_font_sizes/font_size = 8
 attribute_to_check = SubResource("Resource_mmhr0")
 check_attributes = true
 
@@ -590,6 +609,7 @@ offset_top = 0.0
 offset_right = 30.0
 offset_bottom = 30.0
 theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 8
 attribute_to_check = SubResource("Resource_m8k7p")
 check_attributes = true
 
@@ -602,6 +622,7 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
 offset_bottom = 30.0
+theme_override_font_sizes/font_size = 8
 theme_override_font_sizes/font_size = 8
 attribute_to_check = SubResource("Resource_6662a")
 check_attributes = true
@@ -616,6 +637,7 @@ offset_top = 0.0
 offset_right = 30.0
 offset_bottom = 30.0
 theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 8
 attribute_to_check = SubResource("Resource_gcthi")
 check_attributes = true
 
@@ -628,6 +650,7 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
 offset_bottom = 30.0
+theme_override_font_sizes/font_size = 8
 theme_override_font_sizes/font_size = 8
 attribute_to_check = SubResource("Resource_rgd55")
 check_attributes = true
@@ -929,6 +952,9 @@ focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
 
 [node name="SlotBackgroundExport" parent="Background/FurnaceTab/PanelContainer/Slots" unique_id=381098148 instance=ExtResource("13_m8k7p")]
 layout_mode = 0
@@ -945,6 +971,9 @@ offset_right = 30.0
 offset_bottom = 30.0
 focus_neighbor_left = NodePath("../../SlotBackgroundInput/Slot0")
 focus_neighbor_bottom = NodePath("../../../EnableDisableButton")
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
@@ -971,6 +1000,10 @@ theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
 icon = ExtResource("20_s2f2w")
 icon_alignment = 1
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
 attribute_to_check = SubResource("Resource_gqg20")
 
 [node name="WorkingProgressBar" type="ProgressBar" parent="Background/FurnaceTab/PanelContainer" unique_id=1084504294]
@@ -2897,12 +2930,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("16_x6qgy")
+skill_datas = Array[Object]([ExtResource("31_w6gy4"), ExtResource("32_bhpct"), ExtResource("33_m8k7p"), ExtResource("34_7gwna"), ExtResource("35_j657e"), ExtResource("36_etc0m"), ExtResource("37_mmhr0"), ExtResource("38_6662a"), ExtResource("39_gcthi"), ExtResource("40_rgd55"), ExtResource("41_gqg20"), ExtResource("42_j0nuq"), ExtResource("43_w3vm4"), ExtResource("44_sy5xb"), ExtResource("45_fato5"), ExtResource("46_4awxy"), ExtResource("47_8a6lo"), ExtResource("48_tmrav"), ExtResource("49_mkmfo"), ExtResource("50_n542t"), ExtResource("51_wshxr"), ExtResource("52_1y8h4"), ExtResource("53_tbpku"), ExtResource("54_b00gh"), ExtResource("55_gsgii"), ExtResource("56_q1i6k"), ExtResource("57_2n3si"), ExtResource("58_oe67i"), ExtResource("59_vp08v"), ExtResource("60_avet4"), ExtResource("61_5o10j"), ExtResource("62_qmedj"), ExtResource("63_opwmy"), ExtResource("64_nhr3t")])
 research_points_label = NodePath("MarginContainer/VBoxContainer/PointsHeader/PointsHeader/MarginContainer/VBoxContainer/HBoxContainer/Label")
 title = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Label")
 description = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Label2")
 required_skill_points = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Label3")
 unlock_skill_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Button")
-skill_datas = Array[Object]([ExtResource("31_w6gy4"), ExtResource("32_bhpct"), ExtResource("33_m8k7p"), ExtResource("34_7gwna"), ExtResource("35_j657e"), ExtResource("36_etc0m"), ExtResource("37_mmhr0"), ExtResource("38_6662a"), ExtResource("39_gcthi"), ExtResource("40_rgd55"), ExtResource("41_gqg20"), ExtResource("42_j0nuq"), ExtResource("43_w3vm4"), ExtResource("44_sy5xb"), ExtResource("45_fato5"), ExtResource("46_4awxy"), ExtResource("47_8a6lo"), ExtResource("48_tmrav"), ExtResource("49_mkmfo"), ExtResource("50_n542t"), ExtResource("51_wshxr"), ExtResource("52_1y8h4"), ExtResource("53_tbpku"), ExtResource("54_b00gh"), ExtResource("55_gsgii"), ExtResource("56_q1i6k"), ExtResource("57_2n3si"), ExtResource("58_oe67i"), ExtResource("59_vp08v"), ExtResource("60_avet4"), ExtResource("61_5o10j"), ExtResource("62_qmedj"), ExtResource("63_opwmy"), ExtResource("64_nhr3t")])
 slots_parent = NodePath("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect")
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree" unique_id=328095404]

@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="QuestInfo" format=3 uid="uid://bbb0mqt5qpmap"]
 
 [ext_resource type="Resource" uid="uid://j02uscprm0pm" path="res://Entities/Items/Craftable/item_info_mystic_armor_head.tres" id="1_ni2rf"]
-[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_2avnp"]
-[ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Scripts/Resources/QuestInfo.cs" id="3_6ub0n"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_2avnp"]
+[ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Sub Systems/Quest Manager/Quests/QuestInfo.cs" id="3_6ub0n"]
 [ext_resource type="Resource" uid="uid://bwoxb4s5viywy" path="res://Entities/Items/Craftable/item_info_mystic_armor_chestplate.tres" id="3_p71ud"]
 [ext_resource type="Resource" uid="uid://dk6vef80itp5v" path="res://Entities/Items/Craftable/item_info_mystic_armor_leggings.tres" id="4_jone6"]
 [ext_resource type="Resource" uid="uid://gjds5x8w8irk" path="res://Entities/Items/Craftable/item_info_mystic_armor_shoes.tres" id="5_5fbjh"]

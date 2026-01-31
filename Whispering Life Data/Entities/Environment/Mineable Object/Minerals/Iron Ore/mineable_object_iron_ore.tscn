@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Entities/Environment/Mineable Object/MineableObject.cs" id="1_442v2"]
 [ext_resource type="Resource" uid="uid://l7tf257vet4l" path="res://Entities/Items/Minerals/item_info_iron_ore.tres" id="2_j0f22"]
-[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="3_ndvxn"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="3_ndvxn"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="3_ya2d3"]
 [ext_resource type="Texture2D" uid="uid://bri1wj7kllq2m" path="res://Sprites/Spritesheets/Ores/Iron_Crystal/Iron_Crystal1.png" id="5_bskpa"]
-[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_th823"]
-[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://UI/World/timer_bar.tscn" id="6_nv75e"]
-[ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="7_2bw5j"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="5_th823"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://UI/World/Timer Bar/timer_bar.tscn" id="6_nv75e"]
+[ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Sub Systems/Global/Texture2DArray.cs" id="7_2bw5j"]
 [ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sprites/Stone_Particle.png" id="7_6guos"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="8_dq4xu"]
 [ext_resource type="Texture2D" uid="uid://5dwxrr6ig7hj" path="res://Sprites/Spritesheets/Ores/Iron_Crystal/Iron_Crystal9.png" id="8_rhl0a"]
@@ -40,7 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://d05s7wolq5oeh" path="res://Sprites/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V2_Shadow3.png" id="34_3sykc"]
 [ext_resource type="Texture2D" uid="uid://b7c5jrn8nalpq" path="res://Sprites/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V2_Shadow2.png" id="35_ts1kg"]
 [ext_resource type="Texture2D" uid="uid://ombh5djli7ay" path="res://Sprites/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V2_Shadow1.png" id="36_hl7px"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Entities/Shadow/shadow_node.tscn" id="37_nsmtc"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="37_nsmtc"]
 
 [sub_resource type="Resource" id="Resource_gbxlv"]
 script = ExtResource("3_ndvxn")

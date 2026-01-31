@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://dbu0erdxodn6w"]
 
-[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_oog1t"]
-[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="2_hhkrk"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_oog1t"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="2_hhkrk"]
 [ext_resource type="Texture2D" uid="uid://b4jik7634tl63" path="res://Sprites/NotCustomized/Bushes/Assets/Cactus1_1.png" id="3_oog1t"]
 
 [sub_resource type="Resource" id="Resource_2wb6e"]

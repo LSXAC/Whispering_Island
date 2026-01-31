@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="ItemInfo" load_steps=3 format=3 uid="uid://dc73s801r6m64"]
+[gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://dc73s801r6m64"]
 
-[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_dgxxr"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="1_dgxxr"]
 [ext_resource type="Texture2D" uid="uid://od8rrcp37xan" path="res://Sprites/Items/Axe_Head.png" id="2_mjhle"]
 
 [resource]

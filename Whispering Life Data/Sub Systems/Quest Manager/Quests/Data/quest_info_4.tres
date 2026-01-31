@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="QuestInfo" format=3 uid="uid://cim2ng28wf04v"]
 
 [ext_resource type="Resource" uid="uid://dmrxwabbdyg0d" path="res://Entities/Items/Craftable/item_info_wood_axe.tres" id="1_8d0ym"]
-[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_knv03"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_knv03"]
 [ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Entities/Items/Craftable/item_info_stone_pickaxe.tres" id="3_knv03"]
-[ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Scripts/Resources/QuestInfo.cs" id="4_u7hda"]
+[ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Sub Systems/Quest Manager/Quests/QuestInfo.cs" id="4_u7hda"]
 
 [sub_resource type="Resource" id="Resource_e4ysu"]
 script = ExtResource("2_knv03")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://n1o6p57v8r23"]
 
-[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_1yxod"]
-[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="1_6xubx"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_1yxod"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="1_6xubx"]
 [ext_resource type="Texture2D" uid="uid://dssivsn4mo2xw" path="res://Sprites/Items/Icons_3rd/Stone_Hoe_Head.png" id="2_tbw8i"]
 
 [sub_resource type="Resource" id="Resource_w6gyt"]

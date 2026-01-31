@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://d4jfhgrp8h07j"]
 
 [ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Entities/Items/Craftable/item_info_stone_pickaxe.tres" id="1_2t3pp"]
-[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_1jucq"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_1jucq"]
 [ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Entities/Items/Craftable/item_info_wood_stick.tres" id="3_wc4cf"]
 [ext_resource type="Resource" uid="uid://6wlgn6tdsk7b" path="res://Entities/Items/Craftable/item_info_stone_pickaxe_head.tres" id="4_1jucq"]
 [ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://Entities/Items/Vegetation/Fiber/Data/Fiber.tres" id="5_w1pb8"]
-[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="6_fjmp3"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Sub Systems/Crafting System/Crafting Recipies/CraftingRecipe.cs" id="6_fjmp3"]
 
 [sub_resource type="Resource" id="Resource_17v3c"]
 script = ExtResource("2_1jucq")
