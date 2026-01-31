@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c1d1aayf8y2d0"]
 
 [ext_resource type="Script" uid="uid://bstlhd3vgmc6k" path="res://Entities/Environment/Sign/Remove Sign/RemoveSign.cs" id="1_rcheg"]
-[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_tfnqu"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="2_tfnqu"]
 [ext_resource type="Texture2D" uid="uid://bo12cdaf5qx3i" path="res://Entities/Environment/Sign/Remove Sign/Texture/Sign_Remove.png" id="4_rcheg"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="4_tfnqu"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="5_av5ui"]

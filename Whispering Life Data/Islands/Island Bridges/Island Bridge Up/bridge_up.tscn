@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dfsg3iq034qml"]
 
 [ext_resource type="Texture2D" uid="uid://cu5l31mdjxstk" path="res://Islands/Island Bridges/Island Bridge Up/Textures/Bridge_Up.png" id="1_efrma"]
-[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="2_fsio2"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sub Systems/Shadow Manager/Shadow_box.png" id="2_fsio2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4sqt"]
 size = Vector2(3, 32)

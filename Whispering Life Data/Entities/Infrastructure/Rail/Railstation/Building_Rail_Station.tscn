@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://o5ts5isb43np" path="res://Entities/Infrastructure/Rail/Railstation/RailStation.cs" id="1_h1uaa"]
 [ext_resource type="Texture2D" uid="uid://be1t8wuf070gp" path="res://Entities/Infrastructure/Rail/Railstation/Texture/Rail_Station_Bottom.png" id="2_17qbx"]
-[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_ih5oe"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="2_ih5oe"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="3_detd8"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="4_o2pyy"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="4_rciws"]

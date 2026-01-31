@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_dyl2q"]
 [ext_resource type="PackedScene" uid="uid://c88sankxqraki" path="res://Entities/Vegetation/Palm/mineable_object_palm_tree.tscn" id="3_n7pgm"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Building_Menu_List_Object.cs" id="4_cy7qo"]
-[ext_resource type="Texture2D" uid="uid://bake6pstk6chi" path="res://Sprites/Spritesheets/Plants/Palm/Palm_V0_Growth_4.png" id="5_dyl2q"]
+[ext_resource type="Texture2D" uid="uid://bake6pstk6chi" path="res://Entities/Spritesheets/Plants/Palm/Palm_V0_Growth_4.png" id="5_dyl2q"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
 script = ExtResource("2_dyl2q")

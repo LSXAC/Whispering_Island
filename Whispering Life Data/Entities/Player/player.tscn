@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://njw4so7o83dw"]
 
 [ext_resource type="Script" uid="uid://gvudefjfv4jx" path="res://Entities/Player/Player.cs" id="1_2p5ml"]
-[ext_resource type="Texture2D" uid="uid://b4214y7h1nkv7" path="res://Sprites/Char_Animation.png" id="2_c6oqb"]
+[ext_resource type="Texture2D" uid="uid://b4214y7h1nkv7" path="res://Entities/Player/Char_Animation.png" id="2_c6oqb"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="3_gk6dx"]
 [ext_resource type="Script" uid="uid://bp563ixlsam56" path="res://Entities/Player/PlayerStats.cs" id="5_f3lay"]
 [ext_resource type="Script" uid="uid://bphfcvdv87vxh" path="res://Entities/Player/PlayerStamina.cs" id="5_l640a"]
 [ext_resource type="Script" uid="uid://bkcah5h7fcbm5" path="res://Entities/LightBehaviour.cs" id="6_dd0ac"]
-[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="6_k5wdo"]
-[ext_resource type="Texture2D" uid="uid://dptiqr3ul1c5u" path="res://Sprites/Icons/world_map_player.png" id="7_0u5uq"]
+[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sub Systems/Shadow Manager/Shadow.png" id="6_k5wdo"]
+[ext_resource type="Texture2D" uid="uid://dptiqr3ul1c5u" path="res://UI/Icons/world_map_player.png" id="7_0u5uq"]
 [ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://UI/World Map/WorldMapIcon.cs" id="7_jlvik"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wxsri"]

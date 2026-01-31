@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Building_Menu_List_Object.cs" id="3_mnq4p"]
 [ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://Entities/Items/Machine Component/Transport/Data/TransportComponent.tres" id="3_ogfwe"]
 [ext_resource type="Resource" uid="uid://cwipvir80puex" path="res://Entities/Items/Machine Component/Inventory/Data/InventoryComponent.tres" id="4_mwvqj"]
-[ext_resource type="Texture2D" uid="uid://cn8y6cj766xw0" path="res://Sprites/Items/Icons_3rd/Chest.png" id="5_5dn6o"]
+[ext_resource type="Texture2D" uid="uid://cn8y6cj766xw0" path="res://Entities/Items/SpritesForItems/Icons_3rd/Chest.png" id="5_5dn6o"]
 [ext_resource type="Resource" uid="uid://j7d4ldttvjxk" path="res://Entities/Items/Machine Component/Destroy/Data/DestroyComponent.tres" id="5_lyhgy"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]

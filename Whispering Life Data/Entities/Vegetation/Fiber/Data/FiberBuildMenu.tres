@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_3i2wc"]
 [ext_resource type="PackedScene" uid="uid://eshgc8yqihmh" path="res://Entities/Vegetation/Fiber/mineable_object_fibre.tscn" id="3_5nso2"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Building_Menu_List_Object.cs" id="4_2334c"]
-[ext_resource type="Texture2D" uid="uid://c64xvoxldsui6" path="res://Sprites/Items/Plants_Icons/Fibre.png" id="5_g8k67"]
+[ext_resource type="Texture2D" uid="uid://c64xvoxldsui6" path="res://Entities/Items/SpritesForItems/Plants_Icons/Fibre.png" id="5_g8k67"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
 script = ExtResource("2_3i2wc")

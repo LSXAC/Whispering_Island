@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cca4fqqi7u7tj"]
 
 [ext_resource type="Script" uid="uid://ccih2b023ad8i" path="res://UI/World Map/IconObject.cs" id="1_2m78b"]
-[ext_resource type="Texture2D" uid="uid://dptiqr3ul1c5u" path="res://Sprites/Icons/world_map_player.png" id="2_rpimo"]
+[ext_resource type="Texture2D" uid="uid://dptiqr3ul1c5u" path="res://UI/Icons/world_map_player.png" id="2_rpimo"]
 
 [node name="IconObject" type="Panel" unique_id=1581286865 node_paths=PackedStringArray("texture")]
 offset_left = 378.0

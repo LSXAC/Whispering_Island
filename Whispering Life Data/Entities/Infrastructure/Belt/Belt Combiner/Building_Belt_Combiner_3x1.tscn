@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dsmt6k3efm7p6"]
 
 [ext_resource type="Script" uid="uid://b16hq6yipkway" path="res://Entities/Infrastructure/Belt/Belt Combiner/BeltCombiner.cs" id="1_enwf2"]
-[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_alnah"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="2_alnah"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="3_fu8mu"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Machine/Furnace/Furnace_Building_Sprite.png" id="4_cpl54"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="4_gmjjv"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://rd7h1v4imvk6" path="res://Entities/Infrastructure/Belt/Building_Belt.tscn" id="10_8ca66"]
 [ext_resource type="Texture2D" uid="uid://byws8skjjfxmy" path="res://Entities/Infrastructure/Belt/Belt Splitter/Top_Belt_Splitter_3x1.png" id="11_6t3iu"]
 [ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://Entities/Infrastructure/Belt/Belt Item/Animations/Belt_Movement_Animation.tres" id="11_tdqiv"]
-[ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/Manager Scripts/AnimationManager12D.cs" id="12_hsyyt"]
+[ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Sub Systems/AnimationManager12D.cs" id="12_hsyyt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wkfp6"]
 animations = [{

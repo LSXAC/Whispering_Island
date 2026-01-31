@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://c4m7kevrrx6ie"]
 
-[ext_resource type="Texture2D" uid="uid://dgdgpeeiw5ea0" path="res://Sprites/Items/Icons_3rd/Copper_Ingot.png" id="1_lal5h"]
+[ext_resource type="Texture2D" uid="uid://dgdgpeeiw5ea0" path="res://Entities/Items/SpritesForItems/Icons_3rd/Copper_Ingot.png" id="1_lal5h"]
 [ext_resource type="Script" uid="uid://cen3q64nvicau" path="res://UI/Menus/Skill Menu/SkillData.cs" id="2_y7od3"]
 
 [resource]

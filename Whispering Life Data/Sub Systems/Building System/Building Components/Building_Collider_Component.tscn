@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b5u81hi3w1yvx"]
 
 [ext_resource type="Script" uid="uid://d2j1npje87dj8" path="res://Entities/BuildingCollider.cs" id="1_glpi8"]
-[ext_resource type="Texture2D" uid="uid://ds276tqn77ctg" path="res://Sprites/Placeable/Grid_Outline_True.png" id="2_4tvv1"]
-[ext_resource type="Texture2D" uid="uid://c7txhxc7yc661" path="res://Sprites/Placeable/Grid_Outline.png" id="2_dhvna"]
+[ext_resource type="Texture2D" uid="uid://ds276tqn77ctg" path="res://Entities/Placeable/Grid_Outline_True.png" id="2_4tvv1"]
+[ext_resource type="Texture2D" uid="uid://c7txhxc7yc661" path="res://Entities/Placeable/Grid_Outline.png" id="2_dhvna"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ke66e"]
 size = Vector2(10, 10)

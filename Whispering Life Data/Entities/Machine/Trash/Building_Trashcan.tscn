@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bdrcel864aa3s"]
 
 [ext_resource type="Script" uid="uid://djf72te0f06kr" path="res://Entities/Machine/Trash/Trashcan.cs" id="1_2niy2"]
-[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_a3o6d"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="2_a3o6d"]
 [ext_resource type="Texture2D" uid="uid://cb634fgv247qi" path="res://Entities/Machine/Chest/Chest_Building_Sprite.png" id="2_qs1hl"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="3_0n3yx"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="4_4uno7"]

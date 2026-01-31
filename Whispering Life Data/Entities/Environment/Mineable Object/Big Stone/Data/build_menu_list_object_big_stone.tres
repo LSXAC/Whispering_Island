@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://Entities/Items/Vegetation/Fiber/Data/Fiber.tres" id="3_xsb4p"]
 [ext_resource type="PackedScene" uid="uid://coeye4llpicv7" path="res://Entities/Environment/Mineable Object/Big Stone/mineable_object_big_stone.tscn" id="4_ro46s"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Building_Menu_List_Object.cs" id="5_aavtg"]
-[ext_resource type="Texture2D" uid="uid://b3yfu58wanci2" path="res://Sprites/NotCustomized/Rocks/Objects_separately/Rock1_1.png" id="6_ut7rt"]
+[ext_resource type="Texture2D" uid="uid://b3yfu58wanci2" path="res://Entities/Environment/Mineable Object/Big Stone/Rock1_1.png" id="6_ut7rt"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
 script = ExtResource("2_ut7rt")

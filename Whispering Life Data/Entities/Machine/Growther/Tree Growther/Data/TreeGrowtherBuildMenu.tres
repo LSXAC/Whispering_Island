@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://Entities/Items/Machine Component/Transport/Data/TransportComponent.tres" id="3_k72cv"]
 [ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Entities/Items/Craftable/item_info_wood_plank.tres" id="3_ur3ij"]
 [ext_resource type="Resource" uid="uid://dbfiycnsog0ql" path="res://Entities/Items/Machine Component/Growth/Data/GrowthComponent.tres" id="4_ur3ij"]
-[ext_resource type="Texture2D" uid="uid://bm1alvnfn87kq" path="res://Sprites/Buildings/Tree_Growther_Sprite.png" id="5_levdj"]
+[ext_resource type="Texture2D" uid="uid://b8ahy1mkxvvqd" path="res://UNKNOWN.png" id="7_sb05h"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
 script = ExtResource("2_levdj")
@@ -33,4 +33,4 @@ scene_building_id = 5
 required_items = Array[Object]([SubResource("Resource_yo73i"), SubResource("Resource_u7ivw"), SubResource("Resource_5sm6j")])
 unlock_requirements = null
 building_menu_category = 6
-texture_in_build_menu = ExtResource("5_levdj")
+texture_in_build_menu = ExtResource("7_sb05h")

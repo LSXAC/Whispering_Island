@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bl3g1ot6s782m"]
 
 [ext_resource type="Texture2D" uid="uid://dftyiwju14to7" path="res://Islands/Island Bridges/Island Bridge Up/Textures/Bridge_Up_Bottom_End.png" id="1_cgbiv"]
-[ext_resource type="Texture2D" uid="uid://c3o0gjv6hd84v" path="res://Sprites/Light_Box.png" id="2_f6vyd"]
+[ext_resource type="Texture2D" uid="uid://c3o0gjv6hd84v" path="res://Islands/Island Bridges/Light_Box.png" id="2_f6vyd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4sqt"]
 size = Vector2(3, 12)

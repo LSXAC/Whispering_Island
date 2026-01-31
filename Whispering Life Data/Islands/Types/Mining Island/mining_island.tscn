@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Sub Systems/Shader/Water/Water_Noise_Map.tres" id="6_5ph4o"]
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Islands/Tileset/Water_Tileset.tres" id="7_tylo5"]
 [ext_resource type="TileSet" uid="uid://bij4wcpveo44d" path="res://Islands/Tileset/Farming_Tileset.tres" id="8_0fich"]
-[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="9_prv3h"]
+[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Sub Systems/IslandObjectSaveManager.cs" id="9_prv3h"]
 [ext_resource type="PackedScene" uid="uid://c0l4m6jxp7pau" path="res://Entities/Environment/Mineable Object/Minerals/Iron Ore/mineable_object_iron_ore.tscn" id="10_j5waq"]
 [ext_resource type="PackedScene" uid="uid://cnafp0o2cwupt" path="res://Entities/Environment/Mineable Object/Minerals/Copper Ore/mineable_object_copper_ore.tscn" id="11_v8vr1"]
 [ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Entities/Environment/Mineable Object/Stone/mineable_object_stone.tscn" id="12_0bqga"]
@@ -22,7 +22,7 @@
 [ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Entities/Items/Vegetation/Sunflower/Data/Sunflower.tres" id="19_n7col"]
 [ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://UI/World Map/WorldMapIcon.cs" id="20_cew1n"]
 [ext_resource type="TileSet" uid="uid://e3yw7xs7e1sr" path="res://Islands/Tileset/shadow_tileset.tres" id="21_8h34p"]
-[ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe.png" id="21_mygv5"]
+[ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Entities/Items/SpritesForItems/Icons_3rd/Stone_Pickaxe.png" id="21_mygv5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpdmr"]
 size = Vector2(32, 32)

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://v7dew0yr5trl" path="res://Entities/Items/Attributes/ToolAttribute.cs" id="2_mc3s4"]
 [ext_resource type="Script" uid="uid://bu58bbjdvh5bk" path="res://Entities/Player/PlayerStat.cs" id="3_4ys2m"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="3_e328l"]
-[ext_resource type="Texture2D" uid="uid://nay062h3dror" path="res://Sprites/Items/Icons_3rd/Stone_Hoe.png" id="4_vidu2"]
+[ext_resource type="Texture2D" uid="uid://nay062h3dror" path="res://Entities/Items/SpritesForItems/Icons_3rd/Stone_Hoe.png" id="4_vidu2"]
 
 [sub_resource type="Resource" id="Resource_8gsb1"]
 script = ExtResource("1_eyfqq")

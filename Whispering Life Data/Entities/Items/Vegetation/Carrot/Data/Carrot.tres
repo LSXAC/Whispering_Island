@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_mhx07"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="2_ohbge"]
-[ext_resource type="Texture2D" uid="uid://byeg4uf6p2ldq" path="res://Sprites/Items/Fruits_Icons/Carrot.png" id="3_0x0si"]
+[ext_resource type="Texture2D" uid="uid://byeg4uf6p2ldq" path="res://Entities/Items/SpritesForItems/Fruits_Icons/Carrot.png" id="3_0x0si"]
 
 [sub_resource type="Resource" id="Resource_cqovr"]
 script = ExtResource("1_mhx07")

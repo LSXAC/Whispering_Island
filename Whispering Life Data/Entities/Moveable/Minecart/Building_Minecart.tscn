@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cjyetki082f0p"]
 
 [ext_resource type="Script" uid="uid://bfdpgy14queaf" path="res://Entities/Moveable/Minecart/Minecart.cs" id="1_bxygu"]
-[ext_resource type="Texture2D" uid="uid://da3a85kqd3k00" path="res://Sprites/Minecart_TOP.png" id="2_feya6"]
-[ext_resource type="Texture2D" uid="uid://cujtfa5wi4dgp" path="res://Sprites/Minecart.png" id="3_hfbe5"]
-[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_af2dw"]
+[ext_resource type="Texture2D" uid="uid://da3a85kqd3k00" path="res://Entities/Moveable/Minecart/Minecart_TOP.png" id="2_feya6"]
+[ext_resource type="Texture2D" uid="uid://cujtfa5wi4dgp" path="res://Entities/Moveable/Minecart/Minecart.png" id="3_hfbe5"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="4_af2dw"]
 [ext_resource type="Script" uid="uid://dgo2c7qgyx22w" path="res://Entities/Machine/Chest/ChestBase.cs" id="4_u8gqw"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="5_ciaio"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="5_gxjrt"]

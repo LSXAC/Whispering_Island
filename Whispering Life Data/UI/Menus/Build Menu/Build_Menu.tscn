@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://syryag1vxgf7" path="res://UI/UI Scripts/BuildMenu.cs" id="1_6maqu"]
 [ext_resource type="FontFile" path="res://Fonts/upheavtt.ttf" id="2_e7u7j"]
-[ext_resource type="Texture2D" uid="uid://b6kjyf31e4wqm" path="res://Sprites/Items/Icons_3rd/Hammer.png" id="3_0xt1x"]
+[ext_resource type="Texture2D" uid="uid://b6kjyf31e4wqm" path="res://Entities/Items/SpritesForItems/Icons_3rd/Hammer.png" id="3_0xt1x"]
 [ext_resource type="PackedScene" uid="uid://cbe4yue61l823" path="res://UI/Menus/Build Menu/build_menu_child.tscn" id="3_dc85r"]
 [ext_resource type="Script" uid="uid://2t1ns5okffld" path="res://UI/UI Scripts/BuildMenuPageObject.cs" id="4_6buxp"]
 [ext_resource type="Texture2D" uid="uid://c2yvdku225ug1" path="res://Entities/Environment/Decoration/Wood Bed/Texture/Wood_Bed.png" id="4_dc85r"]
-[ext_resource type="Texture2D" uid="uid://b3xd7qx5g1j24" path="res://Sprites/Spritesheets/Plants/Carrots.png" id="5_t5cf7"]
-[ext_resource type="Texture2D" uid="uid://bf5m0183737nx" path="res://Sprites/Items/Plants_Icons/icons_29_07.png" id="6_6q0cw"]
-[ext_resource type="Texture2D" uid="uid://dfa2imjkie3p2" path="res://Sprites/Items/Icons/letter-x.png" id="7_a3rrq"]
+[ext_resource type="Texture2D" uid="uid://b3xd7qx5g1j24" path="res://Entities/Spritesheets/Plants/Carrots.png" id="5_t5cf7"]
+[ext_resource type="Texture2D" uid="uid://bf5m0183737nx" path="res://Entities/Items/SpritesForItems/Plants_Icons/icons_29_07.png" id="6_6q0cw"]
+[ext_resource type="Texture2D" uid="uid://dfa2imjkie3p2" path="res://Entities/Items/SpritesForItems/Icons/letter-x.png" id="7_a3rrq"]
 [ext_resource type="Texture2D" uid="uid://dh7i821w2aucb" path="res://Entities/Infrastructure/Belt/Belt_Side.png" id="8_u0km2"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Machine/Furnace/Furnace_Building_Sprite.png" id="9_6q0cw"]
 

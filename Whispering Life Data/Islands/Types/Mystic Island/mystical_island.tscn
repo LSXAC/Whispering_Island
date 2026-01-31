@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Sub Systems/Shader/Water/Water_Noise_Map.tres" id="6_rms6p"]
 [ext_resource type="TileSet" uid="uid://vsj46vpxsnru" path="res://Islands/Tileset/Water_Tileset.tres" id="7_m436g"]
 [ext_resource type="TileSet" uid="uid://bij4wcpveo44d" path="res://Islands/Tileset/Farming_Tileset.tres" id="8_shm84"]
-[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="11_u0eh4"]
+[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Sub Systems/IslandObjectSaveManager.cs" id="11_u0eh4"]
 [ext_resource type="PackedScene" uid="uid://cjw7mpije2ul4" path="res://Entities/Vegetation/Mystic Fiber/mineable_object_myst_fibre.tscn" id="12_8drlg"]
 [ext_resource type="Script" uid="uid://d24qfaj5tmqyv" path="res://Sub Systems/Removeable Object Manager/RemovableObjectsManager.cs" id="12_hv1cu"]
 [ext_resource type="PackedScene" uid="uid://botgollmorgra" path="res://Entities/Vegetation/Mystic Mushroom/mineable_object_mystic_mushroom.tscn" id="12_j5dp2"]
@@ -21,7 +21,7 @@
 [ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Entities/Items/Vegetation/Sunflower/Data/Sunflower.tres" id="18_lwg4b"]
 [ext_resource type="TileSet" uid="uid://e3yw7xs7e1sr" path="res://Islands/Tileset/shadow_tileset.tres" id="19_nyspn"]
 [ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://UI/World Map/WorldMapIcon.cs" id="19_s8t3c"]
-[ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe.png" id="20_nyspn"]
+[ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Entities/Items/SpritesForItems/Icons_3rd/Stone_Pickaxe.png" id="20_nyspn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud7jl"]
 size = Vector2(32, 32)

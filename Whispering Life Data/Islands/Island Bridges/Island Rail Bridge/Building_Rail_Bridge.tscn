@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://00w53se8uedv"]
 
 [ext_resource type="Script" uid="uid://3acu342n3tvo" path="res://Entities/Infrastructure/Rail/Rail.cs" id="1_4dw6y"]
-[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_houtf"]
-[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sprites/Shadow.png" id="3_0g0a0"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="2_houtf"]
+[ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sub Systems/Shadow Manager/Shadow.png" id="3_0g0a0"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Machine/Furnace/Furnace_Building_Sprite.png" id="4_f2hw5"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="5_houtf"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="5_xkpqr"]
@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Entities/Infrastructure/PathConnectArea.cs" id="10_t76na"]
 [ext_resource type="Script" uid="uid://cqukvf8b830bx" path="res://Entities/Infrastructure/Belt/Connections/ConnectedBeltsManager.cs" id="11_wv8mi"]
 [ext_resource type="Script" uid="uid://b2x3csh1fe7be" path="res://Entities/Infrastructure/Belt/Connections/HasConnectedBeltArea.cs" id="12_xd1p5"]
-[ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/Manager Scripts/AnimationManager12D.cs" id="13_gie8o"]
+[ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Sub Systems/AnimationManager12D.cs" id="13_gie8o"]
 [ext_resource type="SpriteFrames" uid="uid://bvc8p8j3rn6km" path="res://Entities/Infrastructure/Rail/Animations/Rail_Movement_Animation.tres" id="14_djcb1"]
 [ext_resource type="Script" uid="uid://8xhe0fsp3tnx" path="res://Entities/Infrastructure/Rail/RailArea.cs" id="15_jjr21"]
 

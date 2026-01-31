@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dc4gr4cbv1151"]
 
 [ext_resource type="Script" uid="uid://c0bmo8ukxxmd3" path="res://Entities/Machine/Lamp/OutdoorLamp.cs" id="1_tlewi"]
-[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_tlewi"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="2_tlewi"]
 [ext_resource type="Texture2D" uid="uid://chy4hhh20nf32" path="res://Entities/Machine/Lamp/Texture/outdoor_lamp.png" id="4_tlewi"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="5_tlewi"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="5_xnht3"]

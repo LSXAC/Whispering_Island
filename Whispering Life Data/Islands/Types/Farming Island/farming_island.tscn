@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bc2tlg8s8fxwl" path="res://Islands/Island Bridges/Island Bridge Up/bridge_up_end.tscn" id="11_sg057"]
 [ext_resource type="PackedScene" uid="uid://dqpoo3rttvrj7" path="res://Islands/Island Bridges/Island Bridge Side/bridge_side.tscn" id="12_lxqiv"]
 [ext_resource type="PackedScene" uid="uid://cmflp8mvayx8k" path="res://Islands/Island Bridges/Island Bridge Side/bridge_side_end.tscn" id="13_yprqj"]
-[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="14_pr08r"]
+[ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Sub Systems/IslandObjectSaveManager.cs" id="14_pr08r"]
 [ext_resource type="PackedScene" uid="uid://cyayxpnsm4v16" path="res://Entities/Vegetation/Carrot/mineable_object_carrot.tscn" id="15_gnsxu"]
 [ext_resource type="PackedScene" uid="uid://bmjn6kocpubo3" path="res://Entities/Vegetation/Sunflower/mineable_object_sunflower.tscn" id="17_wlbus"]
 [ext_resource type="PackedScene" uid="uid://hl3jkk2n0f7x" path="res://Entities/Vegetation/Wheat/mineable_object_wheat.tscn" id="17_yy7cq"]

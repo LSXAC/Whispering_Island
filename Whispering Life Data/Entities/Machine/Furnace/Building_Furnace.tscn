@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cn0rjr3gah4jr"]
 
 [ext_resource type="Script" uid="uid://bb7d4vvk26up8" path="res://Entities/Machine/ProcessBuilding.cs" id="1_7ow6b"]
-[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_2jdlk"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="4_2jdlk"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="4_w5rqh"]
 [ext_resource type="Script" uid="uid://bkcah5h7fcbm5" path="res://Entities/LightBehaviour.cs" id="11_w5rqh"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Machine/Furnace/Furnace_Building_Sprite.png" id="12_pnpvk"]
@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="16_tjyxe"]
 [ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Sub Systems/Building System/Building Components/Building_Item_Taker_Component.tscn" id="19_3ermy"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Sub Systems/Building System/Building Components/component_building_item_giver.tscn" id="20_ujfx2"]
-[ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sprites/Stone_Particle.png" id="21_l0ybn"]
+[ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sub Systems/Particles/Stone_Particle.png" id="21_l0ybn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g1nkg"]
 animations = [{

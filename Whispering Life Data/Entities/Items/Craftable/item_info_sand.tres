@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_fbvlc"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="1_imi7w"]
-[ext_resource type="Texture2D" uid="uid://x7jiiuscayra" path="res://Sprites/Items/Icons_3rd/Sand.png" id="2_3m1yh"]
+[ext_resource type="Texture2D" uid="uid://x7jiiuscayra" path="res://Entities/Items/SpritesForItems/Icons_3rd/Sand.png" id="2_3m1yh"]
 [ext_resource type="Script" uid="uid://bdbfd68r4ogge" path="res://Entities/Items/Attributes/SmeltableAttribute.cs" id="2_f7w2b"]
 [ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Entities/Items/Craftable/item_info_glass_chunk.tres" id="3_l6jg2"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="4_j7yvl"]

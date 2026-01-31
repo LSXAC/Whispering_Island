@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://peaogmggqlqv" path="res://Entities/Infrastructure/Belt/Belt.cs" id="1_jpb1i"]
 [ext_resource type="Texture2D" uid="uid://dh7i821w2aucb" path="res://Entities/Infrastructure/Belt/Belt_Side.png" id="2_3po6w"]
-[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_ojdq4"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="2_ojdq4"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="3_fouod"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="4_48l5o"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="4_obu7j"]
@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Entities/Infrastructure/PathConnectArea.cs" id="8_wosb3"]
 [ext_resource type="Script" uid="uid://cqukvf8b830bx" path="res://Entities/Infrastructure/Belt/Connections/ConnectedBeltsManager.cs" id="9_dqr7u"]
 [ext_resource type="Script" uid="uid://b2x3csh1fe7be" path="res://Entities/Infrastructure/Belt/Connections/HasConnectedBeltArea.cs" id="10_e0qwf"]
-[ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/Manager Scripts/AnimationManager12D.cs" id="11_m132v"]
+[ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Sub Systems/AnimationManager12D.cs" id="11_m132v"]
 [ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://Entities/Infrastructure/Belt/Belt Item/Animations/Belt_Movement_Animation.tres" id="12_g11o0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f5gq8"]

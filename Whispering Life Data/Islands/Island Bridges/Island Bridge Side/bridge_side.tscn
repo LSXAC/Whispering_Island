@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cvxkxrwvah38i" path="res://Islands/Island Bridges/Island Bridge Side/Textures/Bridge_Side_Back.png" id="1_87fli"]
 [ext_resource type="Texture2D" uid="uid://cojn4bnwy17yn" path="res://Islands/Island Bridges/Island Bridge Side/Textures/Bridge_Side_Front.png" id="2_56uqd"]
-[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sprites/Shadow_box.png" id="3_fh483"]
+[ext_resource type="Texture2D" uid="uid://g2tw1h22shxa" path="res://Sub Systems/Shadow Manager/Shadow_box.png" id="3_fh483"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4sqt"]
 size = Vector2(32, 2)

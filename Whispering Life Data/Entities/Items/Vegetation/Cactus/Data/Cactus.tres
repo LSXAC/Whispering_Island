@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_oog1t"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="2_hhkrk"]
-[ext_resource type="Texture2D" uid="uid://b4jik7634tl63" path="res://Sprites/NotCustomized/Bushes/Assets/Cactus1_1.png" id="3_oog1t"]
 
 [sub_resource type="Resource" id="Resource_2wb6e"]
 script = ExtResource("1_oog1t")
 metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j2woi"]
+load_path = "res://.godot/imported/Cactus2_1.png-28fc0e7a742e6b2fbcc3f1cdda33790e.ctex"
 
 [resource]
 script = ExtResource("2_hhkrk")
@@ -15,5 +17,5 @@ max_stackable_size = 250
 name = "CACTUS"
 id = 64
 description = "CACTUS_DESC"
-texture = ExtResource("3_oog1t")
+texture = SubResource("CompressedTexture2D_j2woi")
 value = 5.0
