@@ -26,12 +26,12 @@ config/icon="res://Sprites/Monster_Island.png"
 
 [audio]
 
-buses/default_bus_layout="res://Audio/default_bus_layout.tres"
+buses/default_bus_layout="res://1_Config/default_bus_layout.tres"
 
 [autoload]
 
 GlobalFunctions="*res://Scripts/Global/GlobalFunctions.cs"
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+DialogueManager="*uid://c3rodes2l3gxb"
 
 [dialogue_manager]
 

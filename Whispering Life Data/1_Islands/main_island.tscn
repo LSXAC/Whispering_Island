@@ -19,7 +19,7 @@
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="11_ruxm3"]
 [ext_resource type="PackedScene" uid="uid://cxtq18i442ldo" path="res://Scenes/World Objects/Mineable Objects/mineable_object_oak_tree.tscn" id="12_3x7uo"]
 [ext_resource type="Resource" uid="uid://dmrxwabbdyg0d" path="res://1_Entities/Items/Craftable/item_info_wood_axe.tres" id="12_tbesv"]
-[ext_resource type="Texture2D" uid="uid://sekifp5ku3iv" path="res://Light2D/Circle_Light.tres" id="13_000go"]
+[ext_resource type="Texture2D" uid="uid://sekifp5ku3iv" path="res://1_Config/Circle_Light.tres" id="13_000go"]
 [ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://1_Entities/Items/Vegetation/Wheat/Data/Wheat.tres" id="13_d668a"]
 [ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Scripts/Manager Scripts/IslandObjectSaveManager.cs" id="13_lo8qh"]
 [ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Scenes/World Objects/Mineable Objects/mineable_object_stone.tscn" id="13_sqojh"]
