@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://b7l06c35ca42f"]
+
+[ext_resource type="Script" uid="uid://ohg3uh7id56e" path="res://Scripts/UI Scripts/itemRecipeUI.cs" id="1_fxdbo"]
+[ext_resource type="PackedScene" uid="uid://bnf8yngk7oyy0" path="res://UI/Menus/h_box_item_menu_line_horizontal.tscn" id="2_f48sm"]
+[ext_resource type="Script" uid="uid://c8olhec3yacn5" path="res://Scripts/UI Scripts/h_box_item.cs" id="2_kx56k"]
+[ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://UI/Themes/Theme_Slots.tres" id="3_ewir5"]
+[ext_resource type="Texture2D" uid="uid://bjana5l7fkd6a" path="res://Sprites/Items/Icons_3rd/Wood_Stick.png" id="3_f48sm"]
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="4_7yc62"]
+[ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Scripts/Manager Scripts/ItemRowManager.cs" id="5_xiqxj"]
+[ext_resource type="Texture2D" uid="uid://wquchq45ve1" path="res://Sprites/Items/Icons/Hammer_Icon.png" id="6_qi7a5"]
+[ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://UI/Styles/slot_focus_style.tres" id="7_10go1"]
+[ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://UI/Styles/Button_Disabled_Style.tres.tres" id="8_ewir5"]
+[ext_resource type="StyleBox" uid="uid://c0rrcqgclnbps" path="res://UI/Styles/Button_Hover_Style.tres" id="9_f7icn"]
+[ext_resource type="StyleBox" uid="uid://bbbtpagi6kny3" path="res://UI/Styles/Button_Pressed_Style.tres.tres" id="10_l8jxo"]
+[ext_resource type="StyleBox" uid="uid://h4o1ussquiqb" path="res://UI/Styles/button_hover_pressed_style.tres" id="11_10go1"]
+
+[node name="ItemRecipe" type="Control" node_paths=PackedStringArray("item_row_manager", "craft_button", "output_item_hbox")]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_fxdbo")
+item_row_manager = NodePath("MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere")
+craft_button = NodePath("MarginContainer/VSplitContainer/HBoxRequiereToCraft/CraftButton")
+output_item_hbox = NodePath("MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 350.0
+offset_bottom = 46.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 7
+
+[node name="VSplitContainer" type="HSplitContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+split_offset = 250
+collapsed = true
+
+[node name="HBoxToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+
+[node name="CC" type="CenterContainer" parent="MarginContainer/VSplitContainer/HBoxToCraft"]
+layout_mode = 2
+
+[node name="HBoxItem" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC" instance=ExtResource("2_f48sm")]
+layout_mode = 2
+
+[node name="ItemTexture" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem" index="0"]
+custom_minimum_size = Vector2(24, 24)
+theme = ExtResource("3_ewir5")
+
+[node name="HBoxRequiereToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="CC_Requiere" type="HBoxContainer" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft"]
+layout_mode = 2
+script = ExtResource("5_xiqxj")
+
+[node name="HBoxItem" type="VBoxContainer" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("2_kx56k")
+
+[node name="ItemTexture" type="TextureRect" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere/HBoxItem"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+theme = ExtResource("3_ewir5")
+texture = ExtResource("3_f48sm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemLabel" type="Label" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere/HBoxItem"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_7yc62")
+theme_override_font_sizes/font_size = 8
+text = "Sticks 4x"
+
+[node name="CraftButton" type="Button" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_constants/icon_max_width = 24
+theme_override_font_sizes/font_size = 13
+theme_override_styles/focus = ExtResource("7_10go1")
+theme_override_styles/disabled = ExtResource("8_ewir5")
+theme_override_styles/hover = ExtResource("9_f7icn")
+theme_override_styles/pressed = ExtResource("10_l8jxo")
+theme_override_styles/normal = ExtResource("11_10go1")
+icon = ExtResource("6_qi7a5")
+icon_alignment = 1
+expand_icon = true
+
+[editable path="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem"]

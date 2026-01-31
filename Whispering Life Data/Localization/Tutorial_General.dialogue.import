@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://byn2daod4sksu"
+path="res://.godot/imported/Tutorial_General.dialogue-655246ce84b938ea31d95c9caf23218f.tres"
+
+[deps]
+
+source_file="res://Localization/Tutorial_General.dialogue"
+dest_files=["res://.godot/imported/Tutorial_General.dialogue-655246ce84b938ea31d95c9caf23218f.tres"]
+
+[params]
+
+defaults=true

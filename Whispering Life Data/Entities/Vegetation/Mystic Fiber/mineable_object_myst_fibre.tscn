@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://cjw7mpije2ul4"]
+
+[ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Entities/Environment/Mineable Object/MineableObject.cs" id="1_g4r0j"]
+[ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Entities/Items/Vegetation/Mystic Fiber/Data/MysticFiber.tres" id="2_8xjas"]
+[ext_resource type="Resource" uid="uid://dpfc7scfcvgj6" path="res://Entities/Items/Vegetation/Mystic Fiber/Mystic Fiber Seeds/Data/MysticFiberSeed.tres" id="3_dw06p"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="3_vwh7s"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_j4q50"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_h2g1a"]
+[ext_resource type="Texture2D" uid="uid://btttd0oha3u3i" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Animation3.png" id="6_0aakb"]
+[ext_resource type="Material" uid="uid://8ujwgfeo1fil" path="res://Sub Systems/Shader/Wind/Wind_Shader_Material.tres" id="6_0skkk"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://UI/World/timer_bar.tscn" id="6_hn3tl"]
+[ext_resource type="Texture2D" uid="uid://w5h1vxawvg88" path="res://Sprites/Myst_Particle.png" id="7_7jxkm"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Entities/Shadow/shadow_node.tscn" id="7_gg38c"]
+[ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="8_ugk1g"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="8_vh1ys"]
+[ext_resource type="Texture2D" uid="uid://b0y7en4p6mlai" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Animation_Shadow3.png" id="9_0skkk"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="9_nobcd"]
+[ext_resource type="Texture2D" uid="uid://ca1uk44i2dtee" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Animation1.png" id="10_uwjna"]
+[ext_resource type="Texture2D" uid="uid://bal3nnanx2mtk" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Animation2.png" id="11_erk7e"]
+[ext_resource type="Texture2D" uid="uid://b1vr630er8gcs" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Animation_Shadow1.png" id="12_b5kvn"]
+[ext_resource type="Texture2D" uid="uid://birq0tn5vquen" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Animation_Shadow2.png" id="13_gm3ca"]
+
+[sub_resource type="Resource" id="Resource_yly7u"]
+script = ExtResource("3_vwh7s")
+info = ExtResource("2_8xjas")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_x0ixx"]
+script = ExtResource("3_vwh7s")
+info = ExtResource("3_dw06p")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j4q50"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
+size = Vector2(19, 28)
+
+[sub_resource type="Curve" id="Curve_bk6ie"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lfoib"]
+curve = SubResource("Curve_bk6ie")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7tpe0"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(5, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_lfoib")
+
+[node name="MystFibre" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "variants_parent", "growth_variants_parent", "gpu_particles")]
+y_sort_enabled = true
+collision_layer = 13
+script = ExtResource("1_g4r0j")
+hit_point = NodePath("HitPoint")
+growable = true
+tool_type = 4
+variants_parent = NodePath("SpriteAnimationManager/Variations")
+growth_variants_parent = NodePath("SpriteAnimationManager/Growth_Variations")
+resource_item = SubResource("Resource_yly7u")
+extra_item = SubResource("Resource_x0ixx")
+gpu_particles = NodePath("FibreParticles")
+building_id = 14
+tile_types = Array[int]([0])
+use_wind = true
+title = "WORLD_RESOURCE_MYSTIC_FIBRE"
+description = "WORLD_RESOURCE_MYSTIC_FIBRE_DESC"
+
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("4_j4q50")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_j4q50")
+animation = &"Normal"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+material = ExtResource("6_0skkk")
+position = Vector2(-7, -17)
+texture = ExtResource("6_0aakb")
+
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("7_gg38c")]
+position = Vector2(-7, -17)
+
+[node name="Variations" type="Node2D" parent="SpriteAnimationManager"]
+
+[node name="Variant_0" type="Node2D" parent="SpriteAnimationManager/Variations"]
+script = ExtResource("8_ugk1g")
+polygon_points = PackedVector2Array(-1, -1, -4, -1, -7, -2, -7, -4, -4, -6, 1, -6, 3, -4, 1, -2)
+textures = Array[Texture2D]([ExtResource("6_0aakb")])
+shadow_textures = Array[Texture2D]([ExtResource("9_0skkk")])
+
+[node name="Growth_Variations" type="Node2D" parent="SpriteAnimationManager"]
+
+[node name="Variant_0" type="Node2D" parent="SpriteAnimationManager/Growth_Variations"]
+script = ExtResource("8_ugk1g")
+polygon_points = PackedVector2Array(-1, -1, -4, -1, -7, -2, -7, -4, -4, -6, 1, -6, 3, -4, 1, -2)
+textures = Array[Texture2D]([ExtResource("10_uwjna"), ExtResource("11_erk7e"), ExtResource("6_0aakb")])
+shadow_textures = Array[Texture2D]([ExtResource("12_b5kvn"), ExtResource("13_gm3ca"), ExtResource("9_0skkk")])
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+position = Vector2(-5, -4)
+polygon = PackedVector2Array(-1, -1, -4, -1, -7, -2, -7, -4, -4, -6, 1, -6, 3, -4, 1, -2)
+
+[node name="MouseArea" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-7, -10)
+script = ExtResource("5_h2g1a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(5.5, -8)
+shape = SubResource("RectangleShape2D_a25cn")
+
+[node name="TimerBar" parent="." instance=ExtResource("6_hn3tl")]
+offset_left = -14.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = -3.0
+
+[node name="FibreParticles" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(-8, -7)
+emitting = false
+amount = 15
+texture = ExtResource("7_7jxkm")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_7tpe0")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("8_vh1ys")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("9_nobcd")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-6, -19)
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

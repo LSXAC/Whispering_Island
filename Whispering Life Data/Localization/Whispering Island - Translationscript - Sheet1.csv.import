@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://wunapohfcm5t"
+
+[deps]
+
+files=["res://Localization/Whispering Island - Translationscript - Sheet1.en.translation", "res://Localization/Whispering Island - Translationscript - Sheet1.de.translation"]
+
+source_file="res://Localization/Whispering Island - Translationscript - Sheet1.csv"
+dest_files=["res://Localization/Whispering Island - Translationscript - Sheet1.en.translation", "res://Localization/Whispering Island - Translationscript - Sheet1.de.translation"]
+
+[params]
+
+compress=true
+delimiter=0
+unescape_keys=false
+unescape_translations=true

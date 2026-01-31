@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://dn1orkomhkyrw"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_i3vrx"]
+[ext_resource type="Script" uid="uid://bdbfd68r4ogge" path="res://Scripts/Item/SmeltableAttribute.cs" id="2_vke05"]
+[ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Entities/Items/Minerals/item_info_char_coal.tres" id="3_qfwgc"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="4_cq24b"]
+[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableAttribute.cs" id="5_rvi3f"]
+[ext_resource type="Script" uid="uid://bfnqqg6a2on8k" path="res://Scripts/Item/BurnableAttribute.cs" id="6_i5wgf"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="7_libhm"]
+[ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="8_uvm2d"]
+
+[sub_resource type="Resource" id="Resource_11wgx"]
+script = ExtResource("1_i3vrx")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[sub_resource type="Resource" id="Resource_36jqo"]
+script = ExtResource("4_cq24b")
+info = ExtResource("3_qfwgc")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_4juym"]
+script = ExtResource("2_vke05")
+smelted_to_item = SubResource("Resource_36jqo")
+amount_to_smelt = 2
+unlock_requirements = null
+metadata/_custom_type_script = "uid://bdbfd68r4ogge"
+
+[sub_resource type="Resource" id="Resource_c6dd4"]
+script = ExtResource("5_rvi3f")
+metadata/_custom_type_script = "uid://doosgdjr0ddtl"
+
+[sub_resource type="Resource" id="Resource_q0dr4"]
+script = ExtResource("6_i5wgf")
+metadata/_custom_type_script = "uid://bfnqqg6a2on8k"
+
+[resource]
+script = ExtResource("7_libhm")
+attributes = Array[Object]([SubResource("Resource_11wgx"), SubResource("Resource_4juym"), SubResource("Resource_c6dd4"), SubResource("Resource_q0dr4")])
+max_stackable_size = 250
+name = "WOOD"
+id = 41
+description = "WOOD_DESC"
+texture = ExtResource("8_uvm2d")
+value = 2.0

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://bp4wq2ypl075m"]
+
+[ext_resource type="Resource" uid="uid://dmrxwabbdyg0d" path="res://Entities/Items/Craftable/item_info_wood_axe.tres" id="1_imqsf"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_n57vd"]
+[ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Entities/Items/Craftable/item_info_wood_stick.tres" id="3_vhd0u"]
+[ext_resource type="Resource" uid="uid://65jron2bhtes" path="res://Entities/Items/Craftable/item_info_wood_axe_head.tres" id="4_61yhd"]
+[ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://Entities/Items/Vegetation/Fiber/Data/Fiber.tres" id="5_ehn0k"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="6_ncdgl"]
+
+[sub_resource type="Resource" id="Resource_h7nag"]
+script = ExtResource("2_n57vd")
+info = ExtResource("1_imqsf")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_so7u2"]
+script = ExtResource("2_n57vd")
+info = ExtResource("3_vhd0u")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_6fadc"]
+script = ExtResource("2_n57vd")
+info = ExtResource("4_61yhd")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_fgffq"]
+script = ExtResource("2_n57vd")
+info = ExtResource("5_ehn0k")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("6_ncdgl")
+required_items = Array[Object]([SubResource("Resource_so7u2"), SubResource("Resource_6fadc"), SubResource("Resource_fgffq")])
+category = 2
+output_item = SubResource("Resource_h7nag")
+unlock_requirements = Array[Object]([])

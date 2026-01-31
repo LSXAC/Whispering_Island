@@ -1,0 +1,202 @@
+[gd_scene format=3 uid="uid://coeye4llpicv7"]
+
+[ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Entities/Environment/Mineable Object/MineableObject.cs" id="1_hrp6s"]
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Entities/Items/Minerals/item_info_stone.tres" id="2_1acc2"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="3_edij4"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_jkisn"]
+[ext_resource type="Texture2D" uid="uid://kl4xqq0ajgop" path="res://Sprites/Spritesheets/Stones/Big_rock_0.png" id="5_ywaa5"]
+[ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="6_fwiew"]
+[ext_resource type="Texture2D" uid="uid://dnyridbqaupwv" path="res://Sprites/Spritesheets/Stones/Big_rock_13.png" id="7_iog0c"]
+[ext_resource type="Texture2D" uid="uid://2awoyhgkxs3i" path="res://Sprites/Spritesheets/Stones/Big_rock_12.png" id="8_iexiy"]
+[ext_resource type="Texture2D" uid="uid://dm0mtlu8rs37m" path="res://Sprites/Spritesheets/Stones/Big_rock_11.png" id="9_itebb"]
+[ext_resource type="Texture2D" uid="uid://cbmhlq3wrjsgo" path="res://Sprites/Spritesheets/Stones/Big_rock_10.png" id="10_sclm2"]
+[ext_resource type="Texture2D" uid="uid://b6vxt5ovnj0qf" path="res://Sprites/Spritesheets/Stones/Big_rock_9.png" id="11_yh5m8"]
+[ext_resource type="Texture2D" uid="uid://dmhkxg6jfwirt" path="res://Sprites/Spritesheets/Stones/Big_rock_8.png" id="12_g1xgs"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="12_itebb"]
+[ext_resource type="Texture2D" uid="uid://0mfggi08rmli" path="res://Sprites/Spritesheets/Stones/Big_rock_7.png" id="13_5inu6"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://UI/World/timer_bar.tscn" id="13_sclm2"]
+[ext_resource type="Texture2D" uid="uid://dq1qba48i06od" path="res://Sprites/Spritesheets/Stones/Big_rock_6.png" id="14_kajek"]
+[ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sprites/Stone_Particle.png" id="14_yh5m8"]
+[ext_resource type="Texture2D" uid="uid://cc6efhi64tkf2" path="res://Sprites/Spritesheets/Stones/Big_rock_5.png" id="15_ev1at"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="15_g1xgs"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="16_5inu6"]
+[ext_resource type="Texture2D" uid="uid://dotpvv4qw5kdu" path="res://Sprites/Spritesheets/Stones/Big_rock_4.png" id="16_doj1m"]
+[ext_resource type="Texture2D" uid="uid://cnajxh6tqfh33" path="res://Sprites/Spritesheets/Stones/Big_rock_3.png" id="17_asayj"]
+[ext_resource type="PackedScene" uid="uid://cdkme6odd6vky" path="res://Sub Systems/Building System/Building Components/Durability_Component.tscn" id="17_kajek"]
+[ext_resource type="Texture2D" uid="uid://d3kct68pa55ud" path="res://Sprites/Spritesheets/Stones/Big_rock_2.png" id="18_1btt7"]
+[ext_resource type="Texture2D" uid="uid://dq6g7dcyae480" path="res://Sprites/Spritesheets/Stones/Big_rock_1.png" id="19_mbbxe"]
+[ext_resource type="Texture2D" uid="uid://dt6aeafue0mst" path="res://Sprites/Spritesheets/Stones/Big_rock_0_shadow14.png" id="20_am85c"]
+[ext_resource type="Texture2D" uid="uid://d0tn7awpunbp8" path="res://Sprites/Spritesheets/Stones/Big_rock_1_14.png" id="20_drcid"]
+[ext_resource type="Texture2D" uid="uid://duqx210xwsc55" path="res://Sprites/Spritesheets/Stones/Big_rock_0_shadow13.png" id="21_1pe8k"]
+[ext_resource type="Texture2D" uid="uid://dumw104pp574x" path="res://Sprites/Spritesheets/Stones/Big_rock_1_13.png" id="21_ke317"]
+[ext_resource type="Texture2D" uid="uid://ds16d7eqin1tg" path="res://Sprites/Spritesheets/Stones/Big_rock_0_shadow12.png" id="22_51qyw"]
+[ext_resource type="Texture2D" uid="uid://do8k466v8cpub" path="res://Sprites/Spritesheets/Stones/Big_rock_1_12.png" id="22_62b4s"]
+[ext_resource type="Texture2D" uid="uid://caigotyx8f47w" path="res://Sprites/Spritesheets/Stones/Big_rock_0_shadow11.png" id="23_ekl3n"]
+[ext_resource type="Texture2D" uid="uid://dvaeo56o8ooim" path="res://Sprites/Spritesheets/Stones/Big_rock_1_11.png" id="23_hcw8a"]
+[ext_resource type="Texture2D" uid="uid://bxbuif545qol" path="res://Sprites/Spritesheets/Stones/Big_rock_1_10.png" id="24_ai8l2"]
+[ext_resource type="Texture2D" uid="uid://m073jm3lpxy5" path="res://Sprites/Spritesheets/Stones/Big_rock_0_shadow10.png" id="24_pcp1y"]
+[ext_resource type="Texture2D" uid="uid://dinffcxwmlj4s" path="res://Sprites/Spritesheets/Stones/Big_rock_0_shadow9.png" id="25_cuywm"]
+[ext_resource type="Texture2D" uid="uid://c6tb4fo7wimsc" path="res://Sprites/Spritesheets/Stones/Big_rock_1_9.png" id="25_tqq1u"]
+[ext_resource type="Texture2D" uid="uid://fjfyvv5ac15x" path="res://Sprites/Spritesheets/Stones/Big_rock_0_shadow8.png" id="26_uuxys"]
+[ext_resource type="Texture2D" uid="uid://bx8d1fcmawpq6" path="res://Sprites/Spritesheets/Stones/Big_rock_1_8.png" id="26_vjnbp"]
+[ext_resource type="Texture2D" uid="uid://m66casxf4iwy" path="res://Sprites/Spritesheets/Stones/Big_rock_1_7.png" id="27_8ulta"]
+[ext_resource type="Texture2D" uid="uid://bhqjlhusf1v55" path="res://Sprites/Spritesheets/Stones/Big_rock_0_shadow7.png" id="27_wtcvf"]
+[ext_resource type="Texture2D" uid="uid://1mng6tqx2gik" path="res://Sprites/Spritesheets/Stones/Big_rock_0_shadow6.png" id="28_81qol"]
+[ext_resource type="Texture2D" uid="uid://bmefqqscoewgo" path="res://Sprites/Spritesheets/Stones/Big_rock_1_6.png" id="28_o3a36"]
+[ext_resource type="Texture2D" uid="uid://dn8rw1jn4mb3f" path="res://Sprites/Spritesheets/Stones/Big_rock_1_5.png" id="29_icsyr"]
+[ext_resource type="Texture2D" uid="uid://dtvqqb3o65r50" path="res://Sprites/Spritesheets/Stones/Big_rock_0_shadow5.png" id="29_py0fi"]
+[ext_resource type="Texture2D" uid="uid://bpqj2vebc3egl" path="res://Sprites/Spritesheets/Stones/Big_rock_1_4.png" id="30_7xtqf"]
+[ext_resource type="Texture2D" uid="uid://ddxe7cd7bc2mm" path="res://Sprites/Spritesheets/Stones/Big_rock_0_shadow4.png" id="30_v4f0r"]
+[ext_resource type="Texture2D" uid="uid://dgeng701gna2o" path="res://Sprites/Spritesheets/Stones/Big_rock_0_shadow3.png" id="31_kxgdx"]
+[ext_resource type="Texture2D" uid="uid://bwtfme0xtjxfy" path="res://Sprites/Spritesheets/Stones/Big_rock_1_3.png" id="31_yjbuy"]
+[ext_resource type="Texture2D" uid="uid://cc5jkh4yq38rv" path="res://Sprites/Spritesheets/Stones/Big_rock_1_2.png" id="32_3iaft"]
+[ext_resource type="Texture2D" uid="uid://jby4pc5o2nk7" path="res://Sprites/Spritesheets/Stones/Big_rock_0_shadow2.png" id="32_l3uuy"]
+[ext_resource type="Texture2D" uid="uid://jbdmrop2tvhs" path="res://Sprites/Spritesheets/Stones/Big_rock_0_shadow1.png" id="33_bqkdw"]
+[ext_resource type="Texture2D" uid="uid://c30f0xddorud2" path="res://Sprites/Spritesheets/Stones/Big_rock_1_1.png" id="33_pnoy2"]
+[ext_resource type="Texture2D" uid="uid://di407ymkqdhly" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow14.png" id="48_cr71w"]
+[ext_resource type="Texture2D" uid="uid://eudm23700atr" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow13.png" id="49_langh"]
+[ext_resource type="Texture2D" uid="uid://ct7c38w48id7r" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow12.png" id="50_dfiw1"]
+[ext_resource type="Texture2D" uid="uid://ddy0la5hqb2t5" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow11.png" id="51_frlgb"]
+[ext_resource type="Texture2D" uid="uid://b4r6pfdryit3k" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow10.png" id="52_wb48n"]
+[ext_resource type="Texture2D" uid="uid://7x6md6x7qk8" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow9.png" id="53_itssa"]
+[ext_resource type="Texture2D" uid="uid://djlloe0hnw0fi" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow8.png" id="54_u3wgy"]
+[ext_resource type="Texture2D" uid="uid://c0r57jfj5p613" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow7.png" id="55_mjvlq"]
+[ext_resource type="Texture2D" uid="uid://bunmy5lgwb8wc" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow6.png" id="56_lbdwy"]
+[ext_resource type="Texture2D" uid="uid://qkeqhcho733l" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow5.png" id="57_i4sg0"]
+[ext_resource type="Texture2D" uid="uid://rb31feism6yk" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow4.png" id="58_6uhkc"]
+[ext_resource type="Texture2D" uid="uid://h4loogu7eu7" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow3.png" id="59_3tbk8"]
+[ext_resource type="Texture2D" uid="uid://cqkg0kirb2wru" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow2.png" id="60_gwmn8"]
+[ext_resource type="Texture2D" uid="uid://b0ulcy60r1efs" path="res://Sprites/Spritesheets/Stones/Big_rock_1_shadow1.png" id="61_0aqyx"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Entities/Shadow/shadow_node.tscn" id="62_langh"]
+
+[sub_resource type="Resource" id="Resource_o5wt5"]
+script = ExtResource("3_edij4")
+info = ExtResource("2_1acc2")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iidu2"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
+size = Vector2(27, 38)
+
+[sub_resource type="Curve" id="Curve_bk6ie"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4ikef"]
+curve = SubResource("Curve_bk6ie")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7tpe0"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_4ikef")
+
+[node name="BigStone" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "variants_parent", "gpu_particles")]
+y_sort_enabled = true
+collision_layer = 13
+script = ExtResource("1_hrp6s")
+hit_point = NodePath("HitPoint")
+tool_type = 3
+variants_parent = NodePath("SpriteAnimationManager/Variants")
+resource_item = SubResource("Resource_o5wt5")
+gpu_particles = NodePath("StoneParticles")
+building_id = 35
+tile_types = Array[int]([0])
+title = "WORLD_RESOURCE_STONE"
+description = "WORLD_RESOURCE_STONE_DESC"
+
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("4_jkisn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_iidu2")
+animation = &"Normal"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-14, -17)
+texture = ExtResource("33_pnoy2")
+
+[node name="Variants" type="Node2D" parent="SpriteAnimationManager"]
+
+[node name="Variant_0" type="Node2D" parent="SpriteAnimationManager/Variants"]
+script = ExtResource("6_fwiew")
+polygon_points = PackedVector2Array(-3, -6, -6, -6, -6, -3, -8, -1, -13, -1, -14, -1, -15, -2, -16, -5, -18, -6, -19, -5, -22, -5, -25, -7, -25, -11, -21, -13, -21, -16, -18, -18, -16, -19, -6, -19, -4, -19, -3, -18, -2, -16, -1, -14, -1, -9)
+textures = Array[Texture2D]([ExtResource("7_iog0c"), ExtResource("8_iexiy"), ExtResource("9_itebb"), ExtResource("10_sclm2"), ExtResource("11_yh5m8"), ExtResource("12_g1xgs"), ExtResource("13_5inu6"), ExtResource("14_kajek"), ExtResource("15_ev1at"), ExtResource("16_doj1m"), ExtResource("17_asayj"), ExtResource("18_1btt7"), ExtResource("19_mbbxe"), ExtResource("5_ywaa5")])
+shadow_textures = Array[Texture2D]([ExtResource("20_am85c"), ExtResource("21_1pe8k"), ExtResource("22_51qyw"), ExtResource("23_ekl3n"), ExtResource("24_pcp1y"), ExtResource("25_cuywm"), ExtResource("26_uuxys"), ExtResource("27_wtcvf"), ExtResource("28_81qol"), ExtResource("29_py0fi"), ExtResource("30_v4f0r"), ExtResource("31_kxgdx"), ExtResource("32_l3uuy"), ExtResource("33_bqkdw")])
+
+[node name="Variant_1" type="Node2D" parent="SpriteAnimationManager/Variants"]
+position = Vector2(-8, 0)
+script = ExtResource("6_fwiew")
+polygon_points = PackedVector2Array(2, -9, 1, -6, -4, -2, -7, -1, -13, -1, -16, -4, -17, -4, -18, -3, -23, -3, -25, -4, -28, -7, -28, -12, -28, -19, -27, -22, -27, -28, -25, -31, -22, -32, -15, -32, -14, -31, -9, -31, -8, -32, -4, -32, -3, -31, -2, -29, -2, -25, -1, -22, 1, -19, 2, -16)
+textures = Array[Texture2D]([ExtResource("20_drcid"), ExtResource("21_ke317"), ExtResource("22_62b4s"), ExtResource("23_hcw8a"), ExtResource("24_ai8l2"), ExtResource("25_tqq1u"), ExtResource("26_vjnbp"), ExtResource("27_8ulta"), ExtResource("28_o3a36"), ExtResource("29_icsyr"), ExtResource("30_7xtqf"), ExtResource("31_yjbuy"), ExtResource("32_3iaft"), ExtResource("33_pnoy2")])
+shadow_textures = Array[Texture2D]([ExtResource("48_cr71w"), ExtResource("49_langh"), ExtResource("50_dfiw1"), ExtResource("51_frlgb"), ExtResource("52_wb48n"), ExtResource("53_itssa"), ExtResource("54_u3wgy"), ExtResource("55_mjvlq"), ExtResource("56_lbdwy"), ExtResource("57_i4sg0"), ExtResource("58_6uhkc"), ExtResource("59_3tbk8"), ExtResource("60_gwmn8"), ExtResource("61_0aqyx")])
+
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("62_langh")]
+position = Vector2(-14, -17)
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(2, -9, 1, -6, -4, -2, -7, -1, -13, -1, -16, -4, -17, -4, -18, -3, -23, -3, -25, -4, -28, -7, -28, -12, -28, -19, -27, -22, -27, -28, -25, -31, -22, -32, -15, -32, -14, -31, -9, -31, -8, -32, -4, -32, -3, -31, -2, -29, -2, -25, -1, -22, 1, -19, 2, -16)
+
+[node name="MouseArea" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-13, -7)
+script = ExtResource("12_itebb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(-0.5, -14)
+shape = SubResource("RectangleShape2D_a25cn")
+
+[node name="TimerBar" parent="." instance=ExtResource("13_sclm2")]
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 0.0
+offset_bottom = 0.0
+mouse_filter = 2
+
+[node name="StoneParticles" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(0, -5)
+emitting = false
+amount = 15
+texture = ExtResource("14_yh5m8")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_7tpe0")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("15_g1xgs")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("16_5inu6")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-8, -9)
+
+[node name="DurabilityComponent" parent="." instance=ExtResource("17_kajek")]
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

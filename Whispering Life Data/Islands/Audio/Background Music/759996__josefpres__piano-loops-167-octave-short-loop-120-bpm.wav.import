@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bwod2wh4o0qwt"
+path="res://.godot/imported/759996__josefpres__piano-loops-167-octave-short-loop-120-bpm.wav-f5300c3b73661c840f1b39cea5867741.sample"
+
+[deps]
+
+source_file="res://Islands/Audio/Background Music/759996__josefpres__piano-loops-167-octave-short-loop-120-bpm.wav"
+dest_files=["res://.godot/imported/759996__josefpres__piano-loops-167-octave-short-loop-120-bpm.wav-f5300c3b73661c840f1b39cea5867741.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://cggf7uciyws1"]
+
+[ext_resource type="Resource" uid="uid://gjds5x8w8irk" path="res://Entities/Items/Craftable/item_info_mystic_armor_shoes.tres" id="1_jvxd4"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_n1d2s"]
+[ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://Entities/Items/Vegetation/Mystic Oak/Mystic Oak Wood/Data/MysticOakWood.tres" id="3_466j5"]
+[ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Entities/Items/Vegetation/Mystic Fiber/Data/MysticFiber.tres" id="4_bfyuc"]
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="5_01ee4"]
+
+[sub_resource type="Resource" id="Resource_ivg8j"]
+script = ExtResource("2_n1d2s")
+info = ExtResource("1_jvxd4")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_eylug"]
+script = ExtResource("2_n1d2s")
+info = ExtResource("3_466j5")
+amount = 5
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_ls1nn"]
+script = ExtResource("2_n1d2s")
+info = ExtResource("4_bfyuc")
+amount = 5
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("5_01ee4")
+required_items = Array[Object]([SubResource("Resource_eylug"), SubResource("Resource_ls1nn")])
+category = 3
+output_item = SubResource("Resource_ivg8j")
+unlock_requirements = null

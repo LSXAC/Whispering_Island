@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bln18s3exspyq"]
+
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="1_quv0j"]
+[ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://UI/Styles/slot_focus_style.tres" id="2_bs71y"]
+[ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://UI/Styles/Button_Disabled_Style.tres.tres" id="3_6l3ch"]
+[ext_resource type="StyleBox" uid="uid://c0rrcqgclnbps" path="res://UI/Styles/Button_Hover_Style.tres" id="4_vfy1i"]
+[ext_resource type="StyleBox" uid="uid://bbbtpagi6kny3" path="res://UI/Styles/Button_Pressed_Style.tres.tres" id="5_4lsq4"]
+[ext_resource type="StyleBox" uid="uid://dblsyajhbmtwa" path="res://UI/Styles/Button_Normal_Style.tres" id="6_dx4qf"]
+[ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="7_5pte3"]
+[ext_resource type="Texture2D" uid="uid://bl2slcpf1wvaf" path="res://Sprites/Icons/UI_Star_Empty.png" id="8_bs71y"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(48, 48)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_quv0j")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = ExtResource("2_bs71y")
+theme_override_styles/disabled = ExtResource("3_6l3ch")
+theme_override_styles/hover = ExtResource("4_vfy1i")
+theme_override_styles/pressed = ExtResource("5_4lsq4")
+theme_override_styles/normal = ExtResource("6_dx4qf")
+icon = ExtResource("7_5pte3")
+icon_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 33.0
+offset_right = 48.0
+offset_bottom = 49.0
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="TextureRectStar" type="TextureRect" parent="HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(7, 7)
+layout_mode = 2
+texture = ExtResource("8_bs71y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRectStar2" type="TextureRect" parent="HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(7, 7)
+layout_mode = 2
+texture = ExtResource("8_bs71y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRectStar3" type="TextureRect" parent="HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(7, 7)
+layout_mode = 2
+texture = ExtResource("8_bs71y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRectStar4" type="TextureRect" parent="HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(7, 7)
+layout_mode = 2
+texture = ExtResource("8_bs71y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRectStar5" type="TextureRect" parent="HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(7, 7)
+layout_mode = 2
+texture = ExtResource("8_bs71y")
+expand_mode = 1
+stretch_mode = 5

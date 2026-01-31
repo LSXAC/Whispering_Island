@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://dyhqyvmm3pp6m"]
+
+[ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Entities/Environment/Mineable Object/MineableObject.cs" id="1_8yybw"]
+[ext_resource type="Resource" uid="uid://bp4gggmthi11e" path="res://Entities/Items/Vegetation/Mushroom/Data/Mushroom.tres" id="2_der1d"]
+[ext_resource type="Resource" uid="uid://cbpupb53ocwp4" path="res://Entities/Items/Vegetation/Mushroom/Mushroom Spores/Data/MushroomSpores.tres" id="3_1qyy3"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="3_3ele3"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_wuk7t"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_nfn24"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://UI/World/timer_bar.tscn" id="6_i1ulo"]
+[ext_resource type="Texture2D" uid="uid://clhiea6invtb0" path="res://Sprites/Spritesheets/Plants/Mushroom/Mushroom3.png" id="6_pgohe"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="7_jntfc"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="7_mdwsr"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Entities/Shadow/shadow_node.tscn" id="7_ve834"]
+[ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Sub Systems/Shader/Building Remove/Destroy.gdshader" id="8_d6wrp"]
+[ext_resource type="Texture2D" uid="uid://brdyj2udwaxpm" path="res://Sprites/Sand_Particle.png" id="8_p3330"]
+[ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="9_roju1"]
+[ext_resource type="Texture2D" uid="uid://me271jtjmugs" path="res://Sprites/Spritesheets/Plants/Mushroom/Mushroom_Shadow3.png" id="10_ve834"]
+[ext_resource type="Texture2D" uid="uid://dqsxrtpp52cuc" path="res://Sprites/Spritesheets/Plants/Mushroom/Mushroom1.png" id="11_d6wrp"]
+[ext_resource type="Texture2D" uid="uid://ypxn50xdniw0" path="res://Sprites/Spritesheets/Plants/Mushroom/Mushroom2.png" id="12_roju1"]
+[ext_resource type="Texture2D" uid="uid://dpu2gkpy7t2s5" path="res://Sprites/Spritesheets/Plants/Mushroom/Mushroom_Shadow1.png" id="13_qlraf"]
+[ext_resource type="Texture2D" uid="uid://ke3ii8b6nka0" path="res://Sprites/Spritesheets/Plants/Mushroom/Mushroom_Shadow2.png" id="14_wppbe"]
+
+[sub_resource type="Resource" id="Resource_mcoev"]
+script = ExtResource("3_3ele3")
+info = ExtResource("2_der1d")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_lqd03"]
+script = ExtResource("3_3ele3")
+info = ExtResource("3_1qyy3")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wuk7t"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fnhiu"]
+shader = ExtResource("8_d6wrp")
+shader_parameter/progress = 0.0
+shader_parameter/width = 0.2
+shader_parameter/timed = true
+shader_parameter/speed = 1.0
+shader_parameter/angle = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
+size = Vector2(14, 19)
+
+[sub_resource type="Curve" id="Curve_uq5h3"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lfoib"]
+curve = SubResource("Curve_uq5h3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n5030"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_lfoib")
+
+[node name="Mushroom" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "variants_parent", "growth_variants_parent", "gpu_particles")]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_8yybw")
+hit_point = NodePath("HitPoint")
+growable = true
+tool_type = 4
+variants_parent = NodePath("SpriteAnimationManager/Variation")
+growth_variants_parent = NodePath("SpriteAnimationManager/Growth_Variation")
+respawn_seconds = 30
+resource_item = SubResource("Resource_mcoev")
+extra_item = SubResource("Resource_lqd03")
+gpu_particles = NodePath("MushroomParticles")
+building_id = 9
+tile_types = Array[int]([0])
+title = "WORLD_RESOURCE_MUSHROOM"
+description = "WORLD_RESOURCE_MUSHROOM_DESC"
+metadata/_edit_horizontal_guides_ = [707.0]
+
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("4_wuk7t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_wuk7t")
+animation = &"Normal"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-8, -8)
+texture = ExtResource("6_pgohe")
+
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("7_ve834")]
+position = Vector2(-8, -8)
+
+[node name="Variation" type="Node2D" parent="SpriteAnimationManager"]
+
+[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/Variation"]
+material = SubResource("ShaderMaterial_fnhiu")
+script = ExtResource("9_roju1")
+polygon_points = PackedVector2Array(-4, -2, -6, -2, -13, -3, -15, -6, -15, -10, -12, -12, -9, -14, -4, -14, -1, -12, -2, -5)
+textures = Array[Texture2D]([ExtResource("6_pgohe")])
+shadow_textures = Array[Texture2D]([ExtResource("10_ve834")])
+
+[node name="Growth_Variation" type="Node2D" parent="SpriteAnimationManager"]
+
+[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/Growth_Variation"]
+material = SubResource("ShaderMaterial_fnhiu")
+script = ExtResource("9_roju1")
+polygon_points = PackedVector2Array(-4, -2, -6, -2, -13, -3, -15, -6, -15, -10, -12, -12, -9, -14, -4, -14, -1, -12, -2, -5)
+textures = Array[Texture2D]([ExtResource("11_d6wrp"), ExtResource("12_roju1"), ExtResource("6_pgohe")])
+shadow_textures = Array[Texture2D]([ExtResource("13_qlraf"), ExtResource("14_wppbe"), ExtResource("10_ve834")])
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("7_mdwsr")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("7_jntfc")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-4, -2, -6, -2, -13, -3, -15, -6, -15, -10, -12, -12, -9, -14, -4, -14, -1, -12, -2, -5)
+
+[node name="MouseArea" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-7, -8)
+script = ExtResource("5_nfn24")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(-1, -4.5)
+shape = SubResource("RectangleShape2D_a25cn")
+
+[node name="TimerBar" parent="." instance=ExtResource("6_i1ulo")]
+offset_left = -14.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = -3.0
+
+[node name="MushroomParticles" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(-8, -5)
+emitting = false
+amount = 15
+texture = ExtResource("8_p3330")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_n5030")
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-8, -12)
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

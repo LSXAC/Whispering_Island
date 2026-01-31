@@ -1,0 +1,472 @@
+[gd_scene format=3 uid="uid://44ev1js8tcvp"]
+
+[ext_resource type="Script" uid="uid://syryag1vxgf7" path="res://Scripts/UI Scripts/BuildMenu.cs" id="1_6maqu"]
+[ext_resource type="FontFile" path="res://Fonts/upheavtt.ttf" id="2_e7u7j"]
+[ext_resource type="Texture2D" uid="uid://b6kjyf31e4wqm" path="res://Sprites/Items/Icons_3rd/Hammer.png" id="3_0xt1x"]
+[ext_resource type="PackedScene" uid="uid://cbe4yue61l823" path="res://UI/Menus/Build Menu/build_menu_child.tscn" id="3_dc85r"]
+[ext_resource type="Script" uid="uid://2t1ns5okffld" path="res://Scripts/UI Scripts/BuildMenuPageObject.cs" id="4_6buxp"]
+[ext_resource type="Texture2D" uid="uid://c2yvdku225ug1" path="res://Entities/Environment/Decoration/Wood Bed/Texture/Wood_Bed.png" id="4_dc85r"]
+[ext_resource type="Texture2D" uid="uid://b3xd7qx5g1j24" path="res://Sprites/Spritesheets/Plants/Carrots.png" id="5_t5cf7"]
+[ext_resource type="Texture2D" uid="uid://bf5m0183737nx" path="res://Sprites/Items/Plants_Icons/icons_29_07.png" id="6_6q0cw"]
+[ext_resource type="Texture2D" uid="uid://dfa2imjkie3p2" path="res://Sprites/Items/Icons/letter-x.png" id="7_a3rrq"]
+[ext_resource type="Texture2D" uid="uid://dh7i821w2aucb" path="res://Sprites/Belt_Side.png" id="8_u0km2"]
+[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Sprites/Furnace_Building_Sprite.png" id="9_6q0cw"]
+
+[node name="BuildMenu" type="CanvasLayer" node_paths=PackedStringArray("hbox_category", "production_page", "decoration_page", "planting_page", "research_page", "transport_page", "machine_page")]
+script = ExtResource("1_6maqu")
+hbox_category = [NodePath("Background2/MarginContainer/HBoxProduction")]
+production_page = NodePath("ProductionTab")
+decoration_page = NodePath("DecorationTab")
+planting_page = NodePath("PlantingTab")
+research_page = NodePath("ResearchTab")
+transport_page = NodePath("TransportTab")
+machine_page = NodePath("MachineTab")
+
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 32)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -193.0
+offset_top = -215.0
+offset_right = -8.0
+offset_bottom = -183.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="ProductionButton" type="Button" parent="Background/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_e7u7j")
+theme_override_font_sizes/font_size = 12
+icon = ExtResource("3_0xt1x")
+icon_alignment = 1
+expand_icon = true
+
+[node name="DecorationButton" type="Button" parent="Background/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_e7u7j")
+theme_override_font_sizes/font_size = 12
+icon = ExtResource("4_dc85r")
+icon_alignment = 1
+expand_icon = true
+
+[node name="PlantingButton" type="Button" parent="Background/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_e7u7j")
+theme_override_font_sizes/font_size = 12
+icon = ExtResource("5_t5cf7")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ResearchButton" type="Button" parent="Background/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_e7u7j")
+theme_override_font_sizes/font_size = 12
+icon = ExtResource("6_6q0cw")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ExitTabButton" type="Button" parent="Background/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_e7u7j")
+theme_override_font_sizes/font_size = 12
+icon = ExtResource("7_a3rrq")
+icon_alignment = 1
+expand_icon = true
+
+[node name="RemoveButton" type="Button" parent="Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_e7u7j")
+theme_override_font_sizes/font_size = 18
+text = "R"
+expand_icon = true
+
+[node name="Background2" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 24)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -193.0
+offset_top = -181.0
+offset_right = -8.0
+offset_bottom = -157.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Background2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="HBoxProduction" type="HBoxContainer" parent="Background2/MarginContainer"]
+layout_mode = 2
+
+[node name="TransportButton" type="Button" parent="Background2/MarginContainer/HBoxProduction"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_e7u7j")
+theme_override_font_sizes/font_size = 12
+icon = ExtResource("8_u0km2")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MachineButton" type="Button" parent="Background2/MarginContainer/HBoxProduction"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_e7u7j")
+theme_override_font_sizes/font_size = 12
+icon = ExtResource("9_6q0cw")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ProductionTab" type="ColorRect" parent="." node_paths=PackedStringArray("parent")]
+z_index = 3
+custom_minimum_size = Vector2(320, 140)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -328.0
+offset_top = -155.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.113725, 0.113725, 0.113725, 1)
+script = ExtResource("4_6buxp")
+parent = NodePath("HScrollBar/MarginContainer/HBoxContainer")
+
+[node name="HScrollBar" type="ScrollContainer" parent="ProductionTab"]
+custom_minimum_size = Vector2(250, 128)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ProductionTab/HScrollBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ProductionTab/HScrollBar/MarginContainer"]
+layout_mode = 2
+
+[node name="BuildingMenuChild" parent="ProductionTab/HScrollBar/MarginContainer/HBoxContainer" instance=ExtResource("3_dc85r")]
+layout_mode = 2
+
+[node name="BuildingMenuChild2" parent="ProductionTab/HScrollBar/MarginContainer/HBoxContainer" instance=ExtResource("3_dc85r")]
+layout_mode = 2
+
+[node name="BuildingMenuChild3" parent="ProductionTab/HScrollBar/MarginContainer/HBoxContainer" instance=ExtResource("3_dc85r")]
+layout_mode = 2
+
+[node name="BuildingMenuChild4" parent="ProductionTab/HScrollBar/MarginContainer/HBoxContainer" instance=ExtResource("3_dc85r")]
+layout_mode = 2
+
+[node name="TransportTab" type="ColorRect" parent="." node_paths=PackedStringArray("parent")]
+z_index = 3
+custom_minimum_size = Vector2(320, 140)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -328.0
+offset_top = -155.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.113725, 0.113725, 0.113725, 1)
+script = ExtResource("4_6buxp")
+parent = NodePath("HScrollBar/MarginContainer/HBoxContainer")
+category = 5
+
+[node name="HScrollBar" type="ScrollContainer" parent="TransportTab"]
+custom_minimum_size = Vector2(250, 128)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TransportTab/HScrollBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TransportTab/HScrollBar/MarginContainer"]
+layout_mode = 2
+
+[node name="BuildingMenuChild" parent="TransportTab/HScrollBar/MarginContainer/HBoxContainer" instance=ExtResource("3_dc85r")]
+layout_mode = 2
+
+[node name="BuildingMenuChild2" parent="TransportTab/HScrollBar/MarginContainer/HBoxContainer" instance=ExtResource("3_dc85r")]
+layout_mode = 2
+
+[node name="BuildingMenuChild3" parent="TransportTab/HScrollBar/MarginContainer/HBoxContainer" instance=ExtResource("3_dc85r")]
+layout_mode = 2
+
+[node name="BuildingMenuChild4" parent="TransportTab/HScrollBar/MarginContainer/HBoxContainer" instance=ExtResource("3_dc85r")]
+layout_mode = 2
+
+[node name="MachineTab" type="ColorRect" parent="." node_paths=PackedStringArray("parent")]
+z_index = 3
+custom_minimum_size = Vector2(320, 140)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -328.0
+offset_top = -155.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.113725, 0.113725, 0.113725, 1)
+script = ExtResource("4_6buxp")
+parent = NodePath("HScrollBar/MarginContainer/HBoxContainer")
+category = 6
+
+[node name="HScrollBar" type="ScrollContainer" parent="MachineTab"]
+custom_minimum_size = Vector2(250, 128)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MachineTab/HScrollBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MachineTab/HScrollBar/MarginContainer"]
+layout_mode = 2
+
+[node name="BuildingMenuChild" parent="MachineTab/HScrollBar/MarginContainer/HBoxContainer" instance=ExtResource("3_dc85r")]
+layout_mode = 2
+
+[node name="BuildingMenuChild2" parent="MachineTab/HScrollBar/MarginContainer/HBoxContainer" instance=ExtResource("3_dc85r")]
+layout_mode = 2
+
+[node name="BuildingMenuChild3" parent="MachineTab/HScrollBar/MarginContainer/HBoxContainer" instance=ExtResource("3_dc85r")]
+layout_mode = 2
+
+[node name="BuildingMenuChild4" parent="MachineTab/HScrollBar/MarginContainer/HBoxContainer" instance=ExtResource("3_dc85r")]
+layout_mode = 2
+
+[node name="DecorationTab" type="ColorRect" parent="." node_paths=PackedStringArray("parent")]
+visible = false
+z_index = 3
+custom_minimum_size = Vector2(320, 140)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -328.0
+offset_top = -155.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.113725, 0.113725, 0.113725, 1)
+script = ExtResource("4_6buxp")
+parent = NodePath("VScrollBar/MarginContainer/HBoxContainer")
+category = 1
+
+[node name="VScrollBar" type="ScrollContainer" parent="DecorationTab"]
+custom_minimum_size = Vector2(250, 128)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DecorationTab/VScrollBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DecorationTab/VScrollBar/MarginContainer"]
+layout_mode = 2
+
+[node name="PlantingTab" type="ColorRect" parent="." node_paths=PackedStringArray("parent")]
+visible = false
+z_index = 3
+custom_minimum_size = Vector2(320, 140)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -328.0
+offset_top = -155.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.113725, 0.113725, 0.113725, 1)
+script = ExtResource("4_6buxp")
+parent = NodePath("VScrollBar/MarginContainer/HBoxContainer")
+category = 2
+
+[node name="VScrollBar" type="ScrollContainer" parent="PlantingTab"]
+custom_minimum_size = Vector2(250, 128)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PlantingTab/VScrollBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlantingTab/VScrollBar/MarginContainer"]
+layout_mode = 2
+
+[node name="ResearchTab" type="ColorRect" parent="." node_paths=PackedStringArray("parent")]
+visible = false
+z_index = 3
+custom_minimum_size = Vector2(320, 140)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -328.0
+offset_top = -155.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.113725, 0.113725, 0.113725, 1)
+script = ExtResource("4_6buxp")
+parent = NodePath("VScrollBar/MarginContainer/HBoxContainer")
+category = 3
+
+[node name="VScrollBar" type="ScrollContainer" parent="ResearchTab"]
+custom_minimum_size = Vector2(250, 128)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ResearchTab/VScrollBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ResearchTab/VScrollBar/MarginContainer"]
+layout_mode = 2
+
+[connection signal="visibility_changed" from="." to="." method="OnVisiblityChange"]
+[connection signal="button_down" from="Background/MarginContainer/HBoxContainer/ProductionButton" to="." method="OnCategoryButton" binds= [0]]
+[connection signal="button_down" from="Background/MarginContainer/HBoxContainer/DecorationButton" to="." method="OnPanelButton" binds= [1]]
+[connection signal="button_down" from="Background/MarginContainer/HBoxContainer/PlantingButton" to="." method="OnPanelButton" binds= [2]]
+[connection signal="button_down" from="Background/MarginContainer/HBoxContainer/ResearchButton" to="." method="OnPanelButton" binds= [3]]
+[connection signal="button_down" from="Background/MarginContainer/HBoxContainer/ExitTabButton" to="." method="CloseWindow"]
+[connection signal="pressed" from="Background/MarginContainer/HBoxContainer/RemoveButton" to="." method="OnRemoveButton"]
+[connection signal="button_down" from="Background2/MarginContainer/HBoxProduction/TransportButton" to="." method="OnPanelButton" binds= [4]]
+[connection signal="button_down" from="Background2/MarginContainer/HBoxProduction/MachineButton" to="." method="OnPanelButton" binds= [5]]
+[connection signal="visibility_changed" from="ProductionTab" to="ProductionTab" method="OnVisiblityChange"]
+[connection signal="visibility_changed" from="TransportTab" to="TransportTab" method="OnVisiblityChange"]
+[connection signal="visibility_changed" from="MachineTab" to="MachineTab" method="OnVisiblityChange"]
+[connection signal="visibility_changed" from="DecorationTab" to="DecorationTab" method="OnVisiblityChange"]
+[connection signal="visibility_changed" from="PlantingTab" to="PlantingTab" method="OnVisiblityChange"]
+[connection signal="visibility_changed" from="ResearchTab" to="ResearchTab" method="OnVisiblityChange"]

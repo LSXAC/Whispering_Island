@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://cnafp0o2cwupt"]
+
+[ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Entities/Environment/Mineable Object/MineableObject.cs" id="1_igor6"]
+[ext_resource type="Resource" uid="uid://eo8ax7whu2kb" path="res://Entities/Items/Minerals/item_info_copper_ore.tres" id="2_yrpvd"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="3_5g1ss"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="3_d4lwc"]
+[ext_resource type="Texture2D" uid="uid://dmliq0u2nf3c2" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_V2_1.png" id="5_5ke2h"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_asj4m"]
+[ext_resource type="Texture2D" uid="uid://d01lvb55i32ac" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal1.png" id="5_f3r8u"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://UI/World/timer_bar.tscn" id="6_3oocu"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Entities/Shadow/shadow_node.tscn" id="6_57rn6"]
+[ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sprites/Stone_Particle.png" id="7_dwdud"]
+[ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Sub Systems/Shader/Building Remove/Destroy.gdshader" id="7_hi1lu"]
+[ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="8_04dik"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="8_wsr34"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="9_duihs"]
+[ext_resource type="Texture2D" uid="uid://cnx1qpux8wtfn" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal10.png" id="9_ivky2"]
+[ext_resource type="Texture2D" uid="uid://b82sbn574gnrv" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal9.png" id="10_bnvqe"]
+[ext_resource type="Texture2D" uid="uid://dikg4ruv2ia6t" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal8.png" id="11_xfdi3"]
+[ext_resource type="Texture2D" uid="uid://b7cept8bd77sw" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal7.png" id="12_r6r3j"]
+[ext_resource type="Texture2D" uid="uid://cd40t2dlcfxrd" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal6.png" id="13_4sv1k"]
+[ext_resource type="Texture2D" uid="uid://crbuy60k441ry" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal5.png" id="14_onxoi"]
+[ext_resource type="Texture2D" uid="uid://t8nhcsu51esy" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal4.png" id="15_ecsck"]
+[ext_resource type="Texture2D" uid="uid://c5hncidx3x726" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal3.png" id="16_cjmp7"]
+[ext_resource type="Texture2D" uid="uid://d3p1kmr1xn4jc" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal2.png" id="17_ktmcv"]
+[ext_resource type="Texture2D" uid="uid://bopwxrvn6o4m1" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_Shadow10.png" id="19_rv6yc"]
+[ext_resource type="Texture2D" uid="uid://br7gwc8bbsm20" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_Shadow9.png" id="20_v8vfc"]
+[ext_resource type="Texture2D" uid="uid://ck1jtugbnwpkj" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_Shadow8.png" id="21_5eenl"]
+[ext_resource type="Texture2D" uid="uid://dw1jinhtkvu7v" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_Shadow7.png" id="22_wp827"]
+[ext_resource type="Texture2D" uid="uid://c44sr4t2d4qb6" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_Shadow6.png" id="23_3cjeo"]
+[ext_resource type="Texture2D" uid="uid://nkmsxygtdgir" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_Shadow5.png" id="24_j5g5p"]
+[ext_resource type="Texture2D" uid="uid://bkqvc802qhlwp" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_Shadow4.png" id="25_6kk8g"]
+[ext_resource type="Texture2D" uid="uid://8uwebhl2nt47" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_Shadow3.png" id="26_s6xvj"]
+[ext_resource type="Texture2D" uid="uid://bvo8rqypbxeex" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_Shadow2.png" id="27_ltdkd"]
+[ext_resource type="Texture2D" uid="uid://b4j75471t7wof" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_Shadow1.png" id="28_bjn2p"]
+[ext_resource type="Texture2D" uid="uid://c7fnccivip5ot" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_V2_6.png" id="29_u763i"]
+[ext_resource type="Texture2D" uid="uid://b3adxay1itvwx" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_V2_5.png" id="30_v3uog"]
+[ext_resource type="Texture2D" uid="uid://bjl5as4wufggb" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_V2_4.png" id="31_lj83m"]
+[ext_resource type="Texture2D" uid="uid://x321lhak8jda" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_V2_3.png" id="32_pvjwo"]
+[ext_resource type="Texture2D" uid="uid://iaagpshkqpwl" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_V2_2.png" id="33_imjuq"]
+[ext_resource type="Texture2D" uid="uid://cm5st76lad1sg" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_V2_Shadow6.png" id="34_uaso7"]
+[ext_resource type="Texture2D" uid="uid://b3slsn6a4rlbh" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_V2_Shadow5.png" id="35_2agqe"]
+[ext_resource type="Texture2D" uid="uid://dbubucseuy61e" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_V2_Shadow4.png" id="36_ug4oi"]
+[ext_resource type="Texture2D" uid="uid://baq8ec2tjjb7m" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_V2_Shadow3.png" id="37_78f26"]
+[ext_resource type="Texture2D" uid="uid://4sxsp1apvbhu" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_V2_Shadow2.png" id="38_pidgh"]
+[ext_resource type="Texture2D" uid="uid://cvt4wabkmokjc" path="res://Sprites/Spritesheets/Ores/Copper_Crystal/Copper_Crystal_V2_Shadow1.png" id="39_01uhp"]
+
+[sub_resource type="Resource" id="Resource_372ng"]
+script = ExtResource("3_d4lwc")
+info = ExtResource("2_yrpvd")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d4lwc"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktmcv"]
+shader = ExtResource("7_hi1lu")
+shader_parameter/progress = 0.0
+shader_parameter/width = 0.2
+shader_parameter/timed = true
+shader_parameter/speed = 1.0
+shader_parameter/angle = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
+size = Vector2(28, 24)
+
+[sub_resource type="Curve" id="Curve_jra3w"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lfoib"]
+curve = SubResource("Curve_jra3w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h3jn0"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_lfoib")
+
+[node name="Copper_Ore" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "variants_parent", "gpu_particles")]
+y_sort_enabled = true
+collision_layer = 13
+script = ExtResource("1_igor6")
+hit_point = NodePath("HitPoint")
+tool_type = 3
+variants_parent = NodePath("SpriteAnimationManager/Variation")
+resource_item = SubResource("Resource_372ng")
+gpu_particles = NodePath("StoneParticles")
+building_id = 18
+tile_types = Array[int]([0])
+title = "WORLD_RESOURCE_COPPER_ORE"
+description = "WORLD_RESOURCE_COPPER_ORE_DESC"
+
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("3_5g1ss")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_d4lwc")
+animation = &"Normal"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-9, -25)
+texture = ExtResource("5_5ke2h")
+
+[node name="Variation" type="Node2D" parent="SpriteAnimationManager"]
+
+[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/Variation"]
+material = SubResource("ShaderMaterial_ktmcv")
+script = ExtResource("8_04dik")
+polygon_points = PackedVector2Array(7, 4, -3, 4, -7, 7, -10, 7, -23, 4, -27, 0, -29, -7, -29, -17, -24, -21, -18, -21, -12, -24, 1, -24, 6, -19, 11, -14, 13, -8, 13, 0)
+textures = Array[Texture2D]([ExtResource("9_ivky2"), ExtResource("10_bnvqe"), ExtResource("11_xfdi3"), ExtResource("12_r6r3j"), ExtResource("13_4sv1k"), ExtResource("14_onxoi"), ExtResource("15_ecsck"), ExtResource("16_cjmp7"), ExtResource("17_ktmcv"), ExtResource("5_f3r8u")])
+shadow_textures = Array[Texture2D]([ExtResource("19_rv6yc"), ExtResource("20_v8vfc"), ExtResource("21_5eenl"), ExtResource("22_wp827"), ExtResource("23_3cjeo"), ExtResource("24_j5g5p"), ExtResource("25_6kk8g"), ExtResource("26_s6xvj"), ExtResource("27_ltdkd"), ExtResource("28_bjn2p")])
+
+[node name="Variation1" type="Node2D" parent="SpriteAnimationManager/Variation"]
+material = SubResource("ShaderMaterial_ktmcv")
+script = ExtResource("8_04dik")
+polygon_points = PackedVector2Array(0, 3, -5, 1, -10, 1, -11, 2, -14, 2, -18, 0, -22, 0, -27, -1, -27, -5, -23, -10, -23, -14, -14, -17, -10, -20, -5, -20, 1, -18, 5, -18, 9, -14, 9, -6, 6, -1)
+textures = Array[Texture2D]([ExtResource("29_u763i"), ExtResource("30_v3uog"), ExtResource("31_lj83m"), ExtResource("32_pvjwo"), ExtResource("33_imjuq"), ExtResource("5_5ke2h")])
+shadow_textures = Array[Texture2D]([ExtResource("34_uaso7"), ExtResource("35_2agqe"), ExtResource("36_ug4oi"), ExtResource("37_78f26"), ExtResource("38_pidgh"), ExtResource("39_01uhp")])
+
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("6_57rn6")]
+position = Vector2(-9, -25)
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 3, -5, 1, -10, 1, -11, 2, -14, 2, -18, 0, -22, 0, -27, -1, -27, -5, -23, -10, -23, -14, -14, -17, -10, -20, -5, -20, 1, -18, 5, -18, 9, -14, 9, -6, 6, -1)
+
+[node name="MouseArea" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-8, -9)
+script = ExtResource("5_asj4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(-1, -3)
+shape = SubResource("RectangleShape2D_a25cn")
+
+[node name="TimerBar" parent="." instance=ExtResource("6_3oocu")]
+offset_left = -23.0
+offset_top = -34.0
+offset_right = 9.0
+offset_bottom = -33.0
+
+[node name="StoneParticles" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(-8, -10)
+emitting = false
+amount = 15
+texture = ExtResource("7_dwdud")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_h3jn0")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("8_wsr34")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("9_duihs")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-7, -10)
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://cydbh0i4ql0ev"]
+
+[ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="1_6s6qa"]
+[ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Entities/Items/Craftable/item_info_wood_stick.tres" id="1_64xsq"]
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Entities/Items/Vegetation/Oak/Oak Wood/Data/OakWood.tres" id="1_mi4l3"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_64xsq"]
+[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="5_tyltn"]
+
+[sub_resource type="Resource" id="Resource_ijiwn"]
+script = ExtResource("2_64xsq")
+info = ExtResource("1_64xsq")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_tyltn"]
+script = ExtResource("2_64xsq")
+info = ExtResource("1_mi4l3")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_qsxjp"]
+script = ExtResource("5_tyltn")
+item_id = 41
+metadata/_custom_type_script = "uid://blxths6rov8b8"
+
+[resource]
+script = ExtResource("1_6s6qa")
+required_items = Array[Object]([SubResource("Resource_tyltn")])
+category = 1
+output_item = SubResource("Resource_ijiwn")
+unlock_requirements = Array[Object]([SubResource("Resource_qsxjp")])

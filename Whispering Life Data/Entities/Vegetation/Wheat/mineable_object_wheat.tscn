@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://hl3jkk2n0f7x"]
+
+[ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Entities/Environment/Mineable Object/MineableObject.cs" id="1_hu0bp"]
+[ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://Entities/Items/Vegetation/Wheat/Data/Wheat.tres" id="2_02xrx"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="3_632dl"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_632dl"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Scripts/Mouse/MouseArea.cs" id="5_whvyy"]
+[ext_resource type="Material" uid="uid://8ujwgfeo1fil" path="res://Sub Systems/Shader/Wind/Wind_Shader_Material.tres" id="6_ode4i"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://UI/World/timer_bar.tscn" id="6_sfdjg"]
+[ext_resource type="Resource" uid="uid://ckgu5x7reokuj" path="res://Entities/Items/Vegetation/Wheat/Wheat Seeds/Data/WheatSeeds.tres" id="6_xl1cx"]
+[ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sprites/Stone_Particle.png" id="7_mcr0j"]
+[ext_resource type="Texture2D" uid="uid://cpchlo6v4pow6" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation_shadow3.png" id="8_2thpl"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="8_3rn1o"]
+[ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Scripts/Global/Texture2DArray.cs" id="8_7blpy"]
+[ext_resource type="Texture2D" uid="uid://bcn4jjamqsulm" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation1.png" id="8_xl1cx"]
+[ext_resource type="Texture2D" uid="uid://bswhcu1ergego" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation2.png" id="9_j5s5c"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="9_vc3u4"]
+[ext_resource type="Texture2D" uid="uid://8xd8cthwkhg3" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation3.png" id="9_xl1cx"]
+[ext_resource type="Texture2D" uid="uid://byqyirm258rxa" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation_shadow1.png" id="11_1fk6w"]
+[ext_resource type="Texture2D" uid="uid://dcv6oempy0ls3" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation_shadow2.png" id="12_ode4i"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Entities/Shadow/shadow_node.tscn" id="13_1fk6w"]
+
+[sub_resource type="Resource" id="Resource_gq40s"]
+script = ExtResource("3_632dl")
+info = ExtResource("2_02xrx")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_5qgh8"]
+script = ExtResource("3_632dl")
+info = ExtResource("6_xl1cx")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_632dl"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
+size = Vector2(18, 24)
+
+[sub_resource type="Curve" id="Curve_bk6ie"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rvv5o"]
+curve = SubResource("Curve_bk6ie")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7tpe0"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_rvv5o")
+
+[node name="Wheat" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "variants_parent", "growth_variants_parent", "gpu_particles")]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_hu0bp")
+hit_point = NodePath("HitPoint")
+growable = true
+tool_type = 4
+variants_parent = NodePath("SpriteAnimationManager/Variations")
+growth_variants_parent = NodePath("SpriteAnimationManager/GrowingVariations")
+resource_item = SubResource("Resource_gq40s")
+extra_item = SubResource("Resource_5qgh8")
+gpu_particles = NodePath("WheatParticle")
+building_id = 10
+tile_types = Array[int]([1])
+use_wind = true
+title = "WORLD_RESOURCE_WHEAT"
+description = "WORLD_RESOURCE_WHEAT_DESC"
+
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("4_632dl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_632dl")
+animation = &"Normal"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+material = ExtResource("6_ode4i")
+position = Vector2(-7, -18)
+texture = ExtResource("9_xl1cx")
+
+[node name="Variations" type="Node2D" parent="SpriteAnimationManager"]
+
+[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/Variations"]
+script = ExtResource("8_7blpy")
+polygon_points = PackedVector2Array(-4, -7, -6, -5, -9, -5, -11, -7, -11, -8, -9, -10, -6, -10, -4, -8)
+textures = Array[Texture2D]([ExtResource("9_xl1cx")])
+shadow_textures = Array[Texture2D]([ExtResource("8_2thpl")])
+
+[node name="GrowingVariations" type="Node2D" parent="SpriteAnimationManager"]
+
+[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/GrowingVariations"]
+script = ExtResource("8_7blpy")
+polygon_points = PackedVector2Array(-4, -7, -6, -5, -9, -5, -11, -7, -11, -8, -9, -10, -6, -10, -4, -8)
+textures = Array[Texture2D]([ExtResource("8_xl1cx"), ExtResource("9_j5s5c"), ExtResource("9_xl1cx")])
+shadow_textures = Array[Texture2D]([ExtResource("11_1fk6w"), ExtResource("12_ode4i"), ExtResource("8_2thpl")])
+
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("13_1fk6w")]
+position = Vector2(-7, -18)
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-4, -7, -6, -5, -9, -5, -11, -7, -11, -8, -9, -10, -6, -10, -4, -8)
+
+[node name="MouseArea" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-9, -10)
+script = ExtResource("5_whvyy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(2, -8)
+shape = SubResource("RectangleShape2D_a25cn")
+
+[node name="TimerBar" parent="." instance=ExtResource("6_sfdjg")]
+offset_left = -14.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = -3.0
+
+[node name="WheatParticle" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(-8, -9)
+emitting = false
+amount = 15
+texture = ExtResource("7_mcr0j")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_7tpe0")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("8_3rn1o")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("9_vc3u4")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-8, -11)
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
