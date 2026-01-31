@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Scripts/Building Scripts/PathConnectArea.cs" id="8_1yewo"]
 [ext_resource type="PackedScene" uid="uid://rd7h1v4imvk6" path="res://Scenes/World Objects/Buildings/Building_Belt.tscn" id="10_8ca66"]
 [ext_resource type="Texture2D" uid="uid://byws8skjjfxmy" path="res://Sprites/Top_Belt_Splitter_3x1.png" id="11_6t3iu"]
-[ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://1_Entities/Belt/Belt Items/Animations/Belt_Movement_Animation.tres" id="11_tdqiv"]
+[ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://1_Entities/Infrastructure/Belt/Belt Items/Animations/Belt_Movement_Animation.tres" id="11_tdqiv"]
 [ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/Manager Scripts/AnimationManager12D.cs" id="12_hsyyt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wkfp6"]

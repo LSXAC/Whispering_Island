@@ -3,7 +3,7 @@
 [ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://1_Entities/Items/Craftable/item_info_wood_stick.tres" id="1_058jc"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_g2n0u"]
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="3_5g03u"]
-[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://1_Entities/Items/Vegetation/item_info_wood.tres" id="3_g2n0u"]
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://1_Entities/Items/Vegetation/Oak/Oak Wood/Data/OakWood.tres" id="3_g2n0u"]
 
 [sub_resource type="Resource" id="Resource_1wdfg"]
 script = ExtResource("2_g2n0u")

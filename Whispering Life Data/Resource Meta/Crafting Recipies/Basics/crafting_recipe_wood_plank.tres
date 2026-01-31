@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://1_Entities/Items/Craftable/item_info_wood_plank.tres" id="1_eh1ex"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_48r5c"]
-[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://1_Entities/Items/Vegetation/item_info_wood.tres" id="3_60dea"]
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://1_Entities/Items/Vegetation/Oak/Oak Wood/Data/OakWood.tres" id="3_60dea"]
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Scripts/Resources/CraftingRecipe.cs" id="6_0ioip"]
 
 [sub_resource type="Resource" id="Resource_l1vdi"]

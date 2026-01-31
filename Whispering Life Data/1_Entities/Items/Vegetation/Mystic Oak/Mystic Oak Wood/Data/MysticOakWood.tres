@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://c6cvl30smgqs7"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Scripts/Item/ResourceAttribute.cs" id="1_dky65"]
+[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Scripts/Item/ResearchableAttribute.cs" id="2_xg78v"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Scripts/Inventory Scripts/ItemInfo.cs" id="3_lwexo"]
+[ext_resource type="Texture2D" uid="uid://b7u3al567dfdb" path="res://Sprites/Items/Plants_Icons/Mystic_Wood.png" id="4_wsjs5"]
+
+[sub_resource type="Resource" id="Resource_eslbv"]
+script = ExtResource("1_dky65")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[sub_resource type="Resource" id="Resource_uydh8"]
+script = ExtResource("2_xg78v")
+metadata/_custom_type_script = "uid://doosgdjr0ddtl"
+
+[resource]
+script = ExtResource("3_lwexo")
+attributes = Array[Object]([SubResource("Resource_eslbv"), SubResource("Resource_uydh8")])
+max_stackable_size = 250
+name = "MYSTIC_WOOD"
+id = 13
+description = "MYSTIC_WOOD_DESC"
+texture = ExtResource("4_wsjs5")
+value = 10.0

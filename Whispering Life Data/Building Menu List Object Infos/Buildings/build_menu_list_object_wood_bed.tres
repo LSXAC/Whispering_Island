@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://1kc5qr5s7veo" path="res://Scenes/World Objects/Buildings/building_wood_bed.tscn" id="2_ex62h"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="2_uonec"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_isx3e"]
-[ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://1_Entities/Items/Vegetation/item_info_fibre.tres" id="3_uuaap"]
+[ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://1_Entities/Items/Vegetation/Fiber/Data/Fiber.tres" id="3_uuaap"]
 [ext_resource type="Texture2D" uid="uid://c2yvdku225ug1" path="res://Sprites/Wood_Bed.png" id="5_uonec"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]

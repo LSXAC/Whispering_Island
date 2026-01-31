@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bf4jfxorbdivo" path="res://Scripts/Building Scripts/ProductionMachine.cs" id="1_01v3s"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_01v3s"]
-[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://1_Entities/Items/Vegetation/item_info_wood.tres" id="2_fs0bn"]
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://1_Entities/Items/Vegetation/Oak/Oak Wood/Data/OakWood.tres" id="2_fs0bn"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="3_fs0bn"]
 [ext_resource type="Texture2D" uid="uid://ccqtxoc2bgt00" path="res://Sprites/Spritesheets/Buildings/Tree Growther/Tree_Growther3.png" id="4_42o0e"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Tilesets/BlockingTileset.tres" id="4_c24j7"]

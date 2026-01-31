@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://cqukvf8b830bx" path="res://Scripts/Manager Scripts/ConnectedBeltsManager.cs" id="11_wv8mi"]
 [ext_resource type="Script" uid="uid://b2x3csh1fe7be" path="res://Scripts/Building Scripts/HasConnectedBeltArea.cs" id="12_xd1p5"]
 [ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/Manager Scripts/AnimationManager12D.cs" id="13_gie8o"]
-[ext_resource type="SpriteFrames" uid="uid://bvc8p8j3rn6km" path="res://1_Entities/Rail/Animations/Rail_Movement_Animation.tres" id="14_djcb1"]
+[ext_resource type="SpriteFrames" uid="uid://bvc8p8j3rn6km" path="res://1_Entities/Infrastructure/Rail/Animations/Rail_Movement_Animation.tres" id="14_djcb1"]
 [ext_resource type="Script" uid="uid://8xhe0fsp3tnx" path="res://Scripts/Building Scripts/RailArea.cs" id="15_jjr21"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7wu5"]

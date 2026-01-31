@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://cn875q2aup4yk" path="res://Scripts/Building Scripts/TunnelArea.cs" id="9_a3q3v"]
 [ext_resource type="Texture2D" uid="uid://dbd4l7c7xady1" path="res://Shader/Water_Noise_Map.tres" id="10_hvugw"]
 [ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/Manager Scripts/AnimationManager12D.cs" id="12_onis0"]
-[ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://1_Entities/Belt/Belt Items/Animations/Belt_Movement_Animation.tres" id="13_k3yff"]
+[ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://1_Entities/Infrastructure/Belt/Belt Items/Animations/Belt_Movement_Animation.tres" id="13_k3yff"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cevvj"]
 animations = [{

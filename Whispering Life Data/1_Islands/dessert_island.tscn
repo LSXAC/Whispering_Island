@@ -19,8 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://bsc2v1gpmwcw7" path="res://Scenes/World Objects/Mineable Objects/mineable_object_cactus.tscn" id="14_my1c2"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Scripts/Inventory Scripts/Item.cs" id="14_ub2wh"]
 [ext_resource type="Resource" uid="uid://dmrxwabbdyg0d" path="res://1_Entities/Items/Craftable/item_info_wood_axe.tres" id="15_xlt7o"]
-[ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://1_Entities/Items/Vegetation/item_info_wheat.tres" id="16_kv2ay"]
-[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://1_Entities/Items/Vegetation/item_info_sunflower.tres" id="17_my1c2"]
+[ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://1_Entities/Items/Vegetation/Wheat/Data/Wheat.tres" id="16_kv2ay"]
+[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://1_Entities/Items/Vegetation/Sunflower/Data/Sunflower.tres" id="17_my1c2"]
 [ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://Scripts/WorldMapIcon.cs" id="18_bgudc"]
 [ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Sprites/Items/Icons_3rd/Stone_Pickaxe.png" id="19_ub2wh"]
 

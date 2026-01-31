@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://cqukvf8b830bx" path="res://Scripts/Manager Scripts/ConnectedBeltsManager.cs" id="9_dqr7u"]
 [ext_resource type="Script" uid="uid://b2x3csh1fe7be" path="res://Scripts/Building Scripts/HasConnectedBeltArea.cs" id="10_e0qwf"]
 [ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Scripts/Manager Scripts/AnimationManager12D.cs" id="11_m132v"]
-[ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://1_Entities/Belt/Belt Items/Animations/Belt_Movement_Animation.tres" id="12_g11o0"]
+[ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://1_Entities/Infrastructure/Belt/Belt Items/Animations/Belt_Movement_Animation.tres" id="12_g11o0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f5gq8"]
 animations = [{
