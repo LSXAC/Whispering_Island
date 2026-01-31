@@ -12,7 +12,7 @@
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="7_8i61u"]
 [ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="7_ec4u3"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="7_tp2h2"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="8_csmfn"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="8_csmfn"]
 [ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Sub Systems/Shader/Building Remove/Destroy.gdshader" id="8_yeclv"]
 [ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Sub Systems/Global/Texture2DArray.cs" id="9_ykxlm"]
 [ext_resource type="Texture2D" uid="uid://dhi4y0dnm38a6" path="res://Sprites/Spritesheets/Plants/Carrots/Carrot_Shadow3.png" id="10_250qm"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://coeye4llpicv7"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Entities/Environment/Mineable Object/MineableObject.cs" id="1_hrp6s"]
-[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Entities/Items/Minerals/item_info_stone.tres" id="2_1acc2"]
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Entities/Items/Minerals/Stone/Data/item_info_stone.tres" id="2_1acc2"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="3_edij4"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="4_jkisn"]
 [ext_resource type="Texture2D" uid="uid://kl4xqq0ajgop" path="res://Sprites/Spritesheets/Stones/Big_rock_0.png" id="5_ywaa5"]
@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sprites/Stone_Particle.png" id="14_yh5m8"]
 [ext_resource type="Texture2D" uid="uid://cc6efhi64tkf2" path="res://Sprites/Spritesheets/Stones/Big_rock_5.png" id="15_ev1at"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="15_g1xgs"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="16_5inu6"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="16_5inu6"]
 [ext_resource type="Texture2D" uid="uid://dotpvv4qw5kdu" path="res://Sprites/Spritesheets/Stones/Big_rock_4.png" id="16_doj1m"]
 [ext_resource type="Texture2D" uid="uid://cnajxh6tqfh33" path="res://Sprites/Spritesheets/Stones/Big_rock_3.png" id="17_asayj"]
 [ext_resource type="PackedScene" uid="uid://cdkme6odd6vky" path="res://Sub Systems/Building System/Building Components/Durability_Component.tscn" id="17_kajek"]

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Building_Menu_List_Object" load_steps=2 format=3 uid="uid://ff6xtojeeokj"]
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://ff6xtojeeokj"]
 
-[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="2_lgngu"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Building_Menu_List_Object.cs" id="2_lgngu"]
 
 [resource]
 script = ExtResource("2_lgngu")

@@ -3,7 +3,7 @@
 [ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Entities/Items/Craftable/item_info_wood_plank.tres" id="1_x65kk"]
 [ext_resource type="PackedScene" uid="uid://1kc5qr5s7veo" path="res://Entities/Environment/Decoration/Wood Bed/building_wood_bed.tscn" id="2_ex62h"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_uonec"]
-[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_isx3e"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Building_Menu_List_Object.cs" id="3_isx3e"]
 [ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://Entities/Items/Vegetation/Fiber/Data/Fiber.tres" id="3_uuaap"]
 [ext_resource type="Texture2D" uid="uid://c2yvdku225ug1" path="res://Entities/Environment/Decoration/Wood Bed/Texture/Wood_Bed.png" id="5_uonec"]
 

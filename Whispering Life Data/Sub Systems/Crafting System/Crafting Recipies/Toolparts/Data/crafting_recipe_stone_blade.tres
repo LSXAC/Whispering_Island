@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://g5iegjlxch46"]
 
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_h3287"]
-[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Entities/Items/Minerals/item_info_stone.tres" id="3_8kgpo"]
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Entities/Items/Minerals/Stone/Data/item_info_stone.tres" id="3_8kgpo"]
 [ext_resource type="Resource" uid="uid://81xbm48s547g" path="res://Entities/Items/Craftable/item_info_stone_blade.tres" id="3_in1eo"]
-[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="5_4u5am"]
+[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Sub Systems/Crafting System/Crafting Recipies/UnlockRequirement.cs" id="5_4u5am"]
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Sub Systems/Crafting System/Crafting Recipies/CraftingRecipe.cs" id="5_srcqr"]
 
 [sub_resource type="Resource" id="Resource_15xv7"]

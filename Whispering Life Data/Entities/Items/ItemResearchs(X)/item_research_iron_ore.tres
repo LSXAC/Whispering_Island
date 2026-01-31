@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="ItemResearch" format=3 uid="uid://crmqrimgdf2gl"]
 
-[ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Scripts/Research/ItemResearchLevel.cs" id="1_lqmlk"]
+[ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Entities/Items/ItemResearchLevel.cs" id="1_lqmlk"]
 [ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Entities/Items/Craftable/item_info_iron_ingot.tres" id="2_mw4ry"]
-[ext_resource type="Script" uid="uid://bk5jdxlwj4pol" path="res://Scripts/Research/ItemSubResearchLevel.cs" id="2_n5h0i"]
+[ext_resource type="Script" uid="uid://bk5jdxlwj4pol" path="res://Entities/Items/ItemSubResearchLevel.cs" id="2_n5h0i"]
 [ext_resource type="Resource" uid="uid://dqdb68mek201l" path="res://Entities/Items/Craftable/item_info_iron_block.tres" id="3_n5h0i"]
-[ext_resource type="Script" uid="uid://8idh4gp832ub" path="res://Scripts/Research/ItemResearch.cs" id="4_lqmlk"]
+[ext_resource type="Script" uid="uid://8idh4gp832ub" path="res://Entities/Items/ItemResearch.cs" id="4_lqmlk"]
 
 [sub_resource type="Resource" id="Resource_phnjd"]
 script = ExtResource("2_n5h0i")

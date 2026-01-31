@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b2ynp5wbg10oe" path="res://Sprites/Spritesheets/Plants/Oak_Tree/Oak_Tree_Animation_Shadow4.png" id="9_pyyqx"]
 [ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Sub Systems/Shader/Building Remove/Destroy.gdshader" id="9_wmdvn"]
 [ext_resource type="Texture2D" uid="uid://ooatp8hasia0" path="res://Sprites/Spritesheets/Plants/Tree_Break_Animation6.png" id="10_4bi8x"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="10_xqfnt"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="10_xqfnt"]
 [ext_resource type="Texture2D" uid="uid://djkrvdq1vpv50" path="res://Sprites/Spritesheets/Plants/Oak_Tree/Oak_Tree_Animation1.png" id="11_pyyqx"]
 [ext_resource type="Texture2D" uid="uid://cgkc1580xg0ry" path="res://Sprites/Spritesheets/Plants/Tree_Break_Animation5.png" id="11_wmdvn"]
 [ext_resource type="Texture2D" uid="uid://biki5bt3rjvfi" path="res://Sprites/Spritesheets/Plants/Oak_Tree/Oak_Tree_Animation2.png" id="12_3qntr"]

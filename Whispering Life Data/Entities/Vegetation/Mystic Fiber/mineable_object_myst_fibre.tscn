@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Sub Systems/Global/Texture2DArray.cs" id="8_ugk1g"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="8_vh1ys"]
 [ext_resource type="Texture2D" uid="uid://b0y7en4p6mlai" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Animation_Shadow3.png" id="9_0skkk"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="9_nobcd"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="9_nobcd"]
 [ext_resource type="Texture2D" uid="uid://ca1uk44i2dtee" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Animation1.png" id="10_uwjna"]
 [ext_resource type="Texture2D" uid="uid://bal3nnanx2mtk" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Animation2.png" id="11_erk7e"]
 [ext_resource type="Texture2D" uid="uid://b1vr630er8gcs" path="res://Sprites/Spritesheets/Plants/Mystic_Fibre_Animation_Shadow1.png" id="12_b5kvn"]

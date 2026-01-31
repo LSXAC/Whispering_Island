@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b8w6lt0clyjfx" path="res://Sprites/Spritesheets/Plants/Fibre_Animation_shadow3.png" id="8_4hweu"]
 [ext_resource type="Texture2D" uid="uid://cwabng6uvwumg" path="res://Sprites/Spritesheets/Plants/Fibre_Animation1.png" id="9_jkn40"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="9_t60v3"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="10_4hweu"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="10_4hweu"]
 [ext_resource type="Texture2D" uid="uid://b6mbnbffd521i" path="res://Sprites/Spritesheets/Plants/Fibre_Animation2.png" id="10_fd8qq"]
 [ext_resource type="Texture2D" uid="uid://b7hkbrvttrh1q" path="res://Sprites/Spritesheets/Plants/Fibre_Animation_shadow1.png" id="11_q6b2v"]
 [ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="11_ro5yu"]

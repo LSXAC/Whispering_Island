@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://n1o6p57v8r23" path="res://Entities/Items/Craftable/item_info_wood_hoe_head.tres" id="4_3ixwu"]
 [ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://Entities/Items/Vegetation/Fiber/Data/Fiber.tres" id="5_7qitk"]
 [ext_resource type="Script" uid="uid://bu5pgtvy43bnf" path="res://Sub Systems/Crafting System/Crafting Recipies/CraftingRecipe.cs" id="6_pcp43"]
-[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Scripts/Building Scripts/UnlockRequirement.cs" id="7_3ixwu"]
+[ext_resource type="Script" uid="uid://blxths6rov8b8" path="res://Sub Systems/Crafting System/Crafting Recipies/UnlockRequirement.cs" id="7_3ixwu"]
 
 [sub_resource type="Resource" id="Resource_h7nag"]
 script = ExtResource("2_3ixwu")

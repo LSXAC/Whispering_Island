@@ -27,7 +27,7 @@
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="51_aojqe"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://UI/World/Timer Bar/timer_bar.tscn" id="52_2t0vm"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="53_txeob"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="54_khi3s"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="54_khi3s"]
 
 [sub_resource type="Resource" id="Resource_uwm61"]
 script = ExtResource("3_uqxw6")

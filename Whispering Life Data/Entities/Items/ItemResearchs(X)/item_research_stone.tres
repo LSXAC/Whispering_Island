@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="ItemResearch" format=3 uid="uid://c23raqu11morr"]
 
-[ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Scripts/Research/ItemResearchLevel.cs" id="1_bp6mb"]
-[ext_resource type="Script" uid="uid://bk5jdxlwj4pol" path="res://Scripts/Research/ItemSubResearchLevel.cs" id="2_3kwe6"]
+[ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Entities/Items/ItemResearchLevel.cs" id="1_bp6mb"]
+[ext_resource type="Script" uid="uid://bk5jdxlwj4pol" path="res://Entities/Items/ItemSubResearchLevel.cs" id="2_3kwe6"]
 [ext_resource type="Resource" uid="uid://dc73s801r6m64" path="res://Entities/Items/Craftable/item_info_stone_axe_head.tres" id="2_kmc7b"]
 [ext_resource type="Resource" uid="uid://81xbm48s547g" path="res://Entities/Items/Craftable/item_info_stone_blade.tres" id="3_ur1tu"]
 [ext_resource type="Resource" uid="uid://bvplgrho461h0" path="res://Entities/Items/Craftable/item_info_stone_knife.tres" id="4_ntisa"]
 [ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Entities/Items/Craftable/item_info_stone_pickaxe.tres" id="5_15fb7"]
 [ext_resource type="Resource" uid="uid://6wlgn6tdsk7b" path="res://Entities/Items/Craftable/item_info_stone_pickaxe_head.tres" id="6_58dhi"]
-[ext_resource type="Script" uid="uid://8idh4gp832ub" path="res://Scripts/Research/ItemResearch.cs" id="7_kg586"]
+[ext_resource type="Script" uid="uid://8idh4gp832ub" path="res://Entities/Items/ItemResearch.cs" id="7_kg586"]
 
 [sub_resource type="Resource" id="Resource_evsaf"]
 script = ExtResource("2_3kwe6")

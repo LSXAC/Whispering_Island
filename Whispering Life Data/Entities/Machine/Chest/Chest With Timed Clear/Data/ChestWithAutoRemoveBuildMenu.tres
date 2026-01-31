@@ -3,7 +3,7 @@
 [ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Entities/Items/Craftable/item_info_wood_plank.tres" id="1_piaxs"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_5dn6o"]
 [ext_resource type="PackedScene" uid="uid://fnriepfksbws" path="res://Entities/Machine/Chest/Chest With Timed Clear/building_chest_puffer.tscn" id="2_hidod"]
-[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_mnq4p"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Building_Menu_List_Object.cs" id="3_mnq4p"]
 [ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://Entities/Items/Machine Component/Transport/Data/TransportComponent.tres" id="3_ogfwe"]
 [ext_resource type="Resource" uid="uid://cwipvir80puex" path="res://Entities/Items/Machine Component/Inventory/Data/InventoryComponent.tres" id="4_mwvqj"]
 [ext_resource type="Texture2D" uid="uid://cn8y6cj766xw0" path="res://Sprites/Items/Icons_3rd/Chest.png" id="5_5dn6o"]

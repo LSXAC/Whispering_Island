@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Sub Systems/Global/Texture2DArray.cs" id="7_q1ctu"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="8_rx5eh"]
 [ext_resource type="Texture2D" uid="uid://ivhulkjldf2k" path="res://Sprites/Spritesheets/Sand/Sand_V0_6.png" id="8_vfuj3"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="9_3m7pm"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="9_3m7pm"]
 [ext_resource type="Texture2D" uid="uid://c81pavm25gq1j" path="res://Sprites/Spritesheets/Sand/Sand_V0_5.png" id="9_obtis"]
 [ext_resource type="Texture2D" uid="uid://cpvqc1e8ebky8" path="res://Sprites/Spritesheets/Sand/Sand_V0_4.png" id="10_tdk0o"]
 [ext_resource type="Texture2D" uid="uid://bkrfhcmilhqyf" path="res://Sprites/Spritesheets/Sand/Sand_V0_3.png" id="11_xaknx"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_i3vrx"]
 [ext_resource type="Script" uid="uid://bdbfd68r4ogge" path="res://Entities/Items/Attributes/SmeltableAttribute.cs" id="2_vke05"]
-[ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Entities/Items/Minerals/item_info_char_coal.tres" id="3_qfwgc"]
+[ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Entities/Items/Minerals/Char Coal/Data/item_info_char_coal.tres" id="3_qfwgc"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="4_cq24b"]
 [ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Entities/Items/Attributes/ResearchableAttribute.cs" id="5_rvi3f"]
 [ext_resource type="Script" uid="uid://bfnqqg6a2on8k" path="res://Entities/Items/Attributes/BurnableAttribute.cs" id="6_i5wgf"]

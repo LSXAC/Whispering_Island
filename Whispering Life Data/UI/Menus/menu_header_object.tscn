@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://dq2ti6q4f3wjo"]
 
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="1_msnuq"]
-[ext_resource type="Script" uid="uid://c3p7qr2jca8hs" path="res://Scripts/UI Scripts/HeaderColorRect.cs" id="1_wq3hn"]
-[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="3_kh3u6"]
+[ext_resource type="Script" uid="uid://c3p7qr2jca8hs" path="res://UI/UI Scripts/HeaderColorRect.cs" id="1_wq3hn"]
+[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/UI Scripts/TranslationLabel.cs" id="3_kh3u6"]
 
-[node name="HeaderColorRect" type="ColorRect"]
+[node name="HeaderColorRect" type="ColorRect" unique_id=767268895]
 offset_right = 529.0
 offset_bottom = 24.0
 color = Color(0.278431, 0.270588, 0.329412, 1)
 script = ExtResource("1_wq3hn")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1783313192]
 layout_mode = 0
 offset_right = 327.0
 offset_bottom = 24.0
@@ -18,7 +18,7 @@ theme_override_constants/margin_left = 15
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 1
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1362782372]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_msnuq")

@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://UI/World/Timer Bar/timer_bar.tscn" id="17_y26h6"]
 [ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="18_t4e7i"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="19_fbphc"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="20_oab77"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="20_oab77"]
 
 [sub_resource type="Resource" id="Resource_pony2"]
 script = ExtResource("3_m8a4e")

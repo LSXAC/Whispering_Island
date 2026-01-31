@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ogtmebelulc" path="res://Sprites/Spritesheets/Plants/Sunflowers/Sunflower3.png" id="7_pc2p5"]
 [ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="7_vysf8"]
 [ext_resource type="SpriteFrames" uid="uid://gu83yfhw356p" path="res://UI/Styles/ResourceNormal.tres" id="8_846al"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="8_b1wo6"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="8_b1wo6"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="8_o4swh"]
 [ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Sub Systems/Shader/Building Remove/Destroy.gdshader" id="9_l3tqc"]
 [ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Sub Systems/Global/Texture2DArray.cs" id="10_5iued"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bnf8yngk7oyy0"]
 
-[ext_resource type="Script" uid="uid://c8olhec3yacn5" path="res://Scripts/UI Scripts/h_box_item.cs" id="1_f2hm7"]
+[ext_resource type="Script" uid="uid://c8olhec3yacn5" path="res://UI/UI Scripts/h_box_item.cs" id="1_f2hm7"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Sprites/Items/Icons_3rd/Wood_Icon.png" id="2_m7p01"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="3_kc5xb"]
 
@@ -10,21 +10,21 @@ font_size = 8
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
-[node name="HBoxItem" type="HBoxContainer"]
+[node name="HBoxItem" type="HBoxContainer" unique_id=289183216]
 offset_right = 27.0
 offset_bottom = 25.0
 theme_override_constants/separation = 4
 alignment = 1
 script = ExtResource("1_f2hm7")
 
-[node name="ItemTexture" type="TextureRect" parent="."]
+[node name="ItemTexture" type="TextureRect" parent="." unique_id=1871821504]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 texture = ExtResource("2_m7p01")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="ItemLabel" type="Label" parent="."]
+[node name="ItemLabel" type="Label" parent="." unique_id=796178816]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_kc5xb")

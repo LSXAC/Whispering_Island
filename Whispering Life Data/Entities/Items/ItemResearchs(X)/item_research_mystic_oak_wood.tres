@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="ItemResearch" format=3 uid="uid://cx06xbdvfg7nw"]
 
-[ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Scripts/Research/ItemResearchLevel.cs" id="1_fnrid"]
+[ext_resource type="Script" uid="uid://kjnoywvj7caa" path="res://Entities/Items/ItemResearchLevel.cs" id="1_fnrid"]
 [ext_resource type="Resource" uid="uid://j02uscprm0pm" path="res://Entities/Items/Craftable/item_info_mystic_armor_head.tres" id="2_h44xc"]
-[ext_resource type="Script" uid="uid://bk5jdxlwj4pol" path="res://Scripts/Research/ItemSubResearchLevel.cs" id="2_pweey"]
+[ext_resource type="Script" uid="uid://bk5jdxlwj4pol" path="res://Entities/Items/ItemSubResearchLevel.cs" id="2_pweey"]
 [ext_resource type="Resource" uid="uid://bwoxb4s5viywy" path="res://Entities/Items/Craftable/item_info_mystic_armor_chestplate.tres" id="3_51x35"]
 [ext_resource type="Resource" uid="uid://dk6vef80itp5v" path="res://Entities/Items/Craftable/item_info_mystic_armor_leggings.tres" id="4_67wp5"]
 [ext_resource type="Resource" uid="uid://gjds5x8w8irk" path="res://Entities/Items/Craftable/item_info_mystic_armor_shoes.tres" id="5_u224a"]
-[ext_resource type="Script" uid="uid://8idh4gp832ub" path="res://Scripts/Research/ItemResearch.cs" id="6_cb20l"]
+[ext_resource type="Script" uid="uid://8idh4gp832ub" path="res://Entities/Items/ItemResearch.cs" id="6_cb20l"]
 
 [sub_resource type="Resource" id="Resource_8rn7e"]
 script = ExtResource("2_pweey")

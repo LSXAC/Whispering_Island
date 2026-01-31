@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Sub Systems/Global/Texture2DArray.cs" id="8_7blpy"]
 [ext_resource type="Texture2D" uid="uid://bcn4jjamqsulm" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation1.png" id="8_xl1cx"]
 [ext_resource type="Texture2D" uid="uid://bswhcu1ergego" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation2.png" id="9_j5s5c"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="9_vc3u4"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="9_vc3u4"]
 [ext_resource type="Texture2D" uid="uid://8xd8cthwkhg3" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation3.png" id="9_xl1cx"]
 [ext_resource type="Texture2D" uid="uid://byqyirm258rxa" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation_shadow1.png" id="11_1fk6w"]
 [ext_resource type="Texture2D" uid="uid://dcv6oempy0ls3" path="res://Sprites/Spritesheets/Plants/Wheat/Wheat_Animation_shadow2.png" id="12_ode4i"]

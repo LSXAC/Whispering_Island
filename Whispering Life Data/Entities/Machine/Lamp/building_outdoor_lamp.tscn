@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Scripts/Manager Scripts/SpriteAnimationManager.cs" id="2_tlewi"]
 [ext_resource type="Texture2D" uid="uid://chy4hhh20nf32" path="res://Entities/Machine/Lamp/Texture/outdoor_lamp.png" id="4_tlewi"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="5_tlewi"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="5_xnht3"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="5_xnht3"]
 [ext_resource type="Script" uid="uid://bkcah5h7fcbm5" path="res://Entities/LightBehaviour.cs" id="6_8aqu8"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="6_ja1ul"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="7_i8yvs"]

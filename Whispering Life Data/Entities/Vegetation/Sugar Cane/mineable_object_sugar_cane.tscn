@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sprites/Gras_Particle.png" id="15_cgsj8"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="16_8lg23"]
 [ext_resource type="Texture2D" uid="uid://c7tmvxifacoc3" path="res://Sprites/Spritesheets/Plants/Sugar_Cane/SugarCane_V0_Shadow3.png" id="16_fvltf"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="17_6rmvf"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="17_6rmvf"]
 [ext_resource type="Texture2D" uid="uid://c6aeuyn51qka4" path="res://Sprites/Spritesheets/Plants/Sugar_Cane/SugarCane_V0_Shadow4.png" id="17_cgsj8"]
 [ext_resource type="Texture2D" uid="uid://drfwtajj5mttb" path="res://Sprites/Spritesheets/Plants/Sugar_Cane/SugarCane_V0_Shadow5.png" id="18_8lg23"]
 

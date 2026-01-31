@@ -1,25 +1,25 @@
 [gd_scene format=3 uid="uid://d1l2gqiubblcd"]
 
-[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="1_e2k3u"]
-[ext_resource type="Script" uid="uid://b3felu4fawx3c" path="res://Scripts/UI Scripts/HitLabel.cs" id="2_vtkfl"]
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="1_tocg7"]
+[ext_resource type="Script" uid="uid://b3felu4fawx3c" path="res://UI/UI Scripts/HitLabel.cs" id="2_5nwpq"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1705157521]
 collision_layer = 0
 collision_mask = 0
 
-[node name="HitLabel" type="Label" parent="." node_paths=PackedStringArray("timer")]
+[node name="HitLabel" type="Label" parent="." unique_id=70457889 node_paths=PackedStringArray("timer")]
 z_index = 10
 y_sort_enabled = true
 offset_right = 22.0
 offset_bottom = 10.0
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("1_e2k3u")
+theme_override_fonts/font = ExtResource("1_tocg7")
 theme_override_font_sizes/font_size = 8
 text = "-2"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("2_vtkfl")
+script = ExtResource("2_5nwpq")
 timer = NodePath("Timer")
 
-[node name="Timer" type="Timer" parent="HitLabel"]
+[node name="Timer" type="Timer" parent="HitLabel" unique_id=118022178]
 autostart = true

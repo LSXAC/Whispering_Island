@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_i5muw"]
 [ext_resource type="Texture2D" uid="uid://c5qiaugbvr50i" path="res://Sprites/Items/Armor/Mystic_Armor_Leggings.png" id="2_841uy"]
 [ext_resource type="Script" uid="uid://c80nhtlc3g8ga" path="res://Entities/Items/Attributes/ArmorAttribute.cs" id="2_i5muw"]
-[ext_resource type="Script" uid="uid://bu58bbjdvh5bk" path="res://Scripts/Player Scripts/PlayerStat.cs" id="3_i5muw"]
+[ext_resource type="Script" uid="uid://bu58bbjdvh5bk" path="res://Entities/Player/PlayerStat.cs" id="3_i5muw"]
 
 [sub_resource type="Resource" id="Resource_jypdy"]
 script = ExtResource("1_i5muw")

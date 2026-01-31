@@ -3,7 +3,7 @@
 [ext_resource type="Resource" uid="uid://1vfo1rr84pk7" path="res://Entities/Items/Vegetation/Sunflower/Sunflower Seeds/Data/SunflowerSeeds.tres" id="1_7lpos"]
 [ext_resource type="PackedScene" uid="uid://bmjn6kocpubo3" path="res://Entities/Vegetation/Sunflower/mineable_object_sunflower.tscn" id="2_tm2uq"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_y4gq1"]
-[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_kuw48"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Building_Menu_List_Object.cs" id="3_kuw48"]
 [ext_resource type="Texture2D" uid="uid://ogtmebelulc" path="res://Sprites/Spritesheets/Plants/Sunflowers/Sunflower3.png" id="5_unjk6"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://UI/Styles/tab_container_panel_style.tres.tres" id="1_7hdo0"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="1_byhje"]
-[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://Scripts/UI Scripts/TranslationLabel.cs" id="2_7hdo0"]
+[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/UI Scripts/TranslationLabel.cs" id="2_7hdo0"]
 
 [node name="Panel" type="Panel"]
 self_modulate = Color(1, 1, 1, 0.490196)

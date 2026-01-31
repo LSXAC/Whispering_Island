@@ -13,7 +13,7 @@
 [ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Sub Systems/Shader/Building Remove/Destroy.gdshader" id="7_e1g1d"]
 [ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Sub Systems/Global/Texture2DArray.cs" id="8_3xnnl"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="8_4renc"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Scripts/Building Scripts/BuildingColliderManager.cs" id="9_0gvrl"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/BuildingColliderManager.cs" id="9_0gvrl"]
 [ext_resource type="Texture2D" uid="uid://dndic8dy65rc6" path="res://Sprites/Spritesheets/Plants/Mystic_Oak_Tree/Mystic_Oak_Tree_Animation1.png" id="9_mg47l"]
 [ext_resource type="Texture2D" uid="uid://dfsrlgse4pfec" path="res://Sprites/Spritesheets/Plants/Mystic_Oak_Tree/Mystic_Tree_Break_Animation1.png" id="10_gnobh"]
 [ext_resource type="Texture2D" uid="uid://15tb7r1x51f5" path="res://Sprites/Spritesheets/Plants/Mystic_Oak_Tree/Mystic_Oak_Tree_Animation2.png" id="10_rdmv8"]

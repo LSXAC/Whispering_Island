@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Entities/Items/Vegetation/Oak/Oak Wood/Data/OakWood.tres" id="1_ni5fj"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_n51br"]
-[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Entities/Items/Minerals/item_info_stone.tres" id="3_ml3wl"]
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Entities/Items/Minerals/Stone/Data/item_info_stone.tres" id="3_ml3wl"]
 [ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://Entities/Items/Vegetation/Wheat/Data/Wheat.tres" id="4_sa3aa"]
 [ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Sub Systems/Quest Manager/Quests/QuestInfo.cs" id="5_b2p3l"]
 

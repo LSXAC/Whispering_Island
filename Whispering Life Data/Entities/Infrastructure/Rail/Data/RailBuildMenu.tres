@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_2r0ja"]
 [ext_resource type="PackedScene" uid="uid://dyylrlp6acwxq" path="res://Entities/Infrastructure/Rail/Building_Rail.tscn" id="2_e1dqm"]
 [ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://Entities/Items/Machine Component/Transport/Data/TransportComponent.tres" id="3_6cmws"]
-[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://Scripts/Building Scripts/Building_Menu_List_Object.cs" id="3_cilbi"]
-[ext_resource type="Texture2D" uid="uid://c3w7sol4rqgfm" path="res://Sprites/Rail.png" id="5_2r0ja"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Building_Menu_List_Object.cs" id="3_cilbi"]
+[ext_resource type="Texture2D" uid="uid://c3w7sol4rqgfm" path="res://Entities/Infrastructure/Rail/Texture/Rail.png" id="5_2r0ja"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
 script = ExtResource("2_2r0ja")
