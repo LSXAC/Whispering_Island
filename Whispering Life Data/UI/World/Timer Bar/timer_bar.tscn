@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bmb5mvim8jqcp"]
 
-[ext_resource type="StyleBox" uid="uid://b8b42n1ue8xhg" path="res://UI/Styles/timer_bar_fill.tres" id="1_ehqie"]
+[ext_resource type="StyleBox" uid="uid://b8b42n1ue8xhg" path="res://UI/World/Timer Bar/Style/timer_bar_fill.tres" id="1_ehqie"]
 [ext_resource type="Script" uid="uid://deld2y73dp2fk" path="res://UI/World/Timer Bar/TimerBar.cs" id="2_lncgq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjfdt"]

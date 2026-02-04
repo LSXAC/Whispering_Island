@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="3_gk6dx"]
 [ext_resource type="Script" uid="uid://bp563ixlsam56" path="res://Entities/Player/PlayerStats.cs" id="5_f3lay"]
 [ext_resource type="Script" uid="uid://bphfcvdv87vxh" path="res://Entities/Player/PlayerStamina.cs" id="5_l640a"]
-[ext_resource type="Script" uid="uid://bkcah5h7fcbm5" path="res://Entities/LightBehaviour.cs" id="6_dd0ac"]
+[ext_resource type="Script" uid="uid://bkcah5h7fcbm5" path="res://Entities/Light Behaviour/LightBehaviour.cs" id="6_dd0ac"]
 [ext_resource type="Texture2D" uid="uid://b60mdqvc7vpsh" path="res://Sub Systems/Shadow Manager/Shadow.png" id="6_k5wdo"]
 [ext_resource type="Texture2D" uid="uid://dptiqr3ul1c5u" path="res://UI/Icons/world_map_player.png" id="7_0u5uq"]
 [ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://UI/World Map/WorldMapIcon.cs" id="7_jlvik"]

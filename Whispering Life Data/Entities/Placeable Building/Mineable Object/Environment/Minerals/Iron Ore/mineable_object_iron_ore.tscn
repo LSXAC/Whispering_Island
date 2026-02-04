@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://c0l4m6jxp7pau"]
+
+[ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Entities/Placeable Building/Mineable Object/MineableObject.cs" id="1_442v2"]
+[ext_resource type="Resource" uid="uid://l7tf257vet4l" path="res://Entities/Items/Minerals/Iron/Iron Ore/Data/item_info_iron_ore.tres" id="2_j0f22"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="3_ndvxn"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="3_ya2d3"]
+[ext_resource type="Texture2D" uid="uid://bri1wj7kllq2m" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal1.png" id="5_bskpa"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="5_th823"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://UI/World/Timer Bar/timer_bar.tscn" id="6_nv75e"]
+[ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Sub Systems/Global/Texture2DArray.cs" id="7_2bw5j"]
+[ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sub Systems/Particles/Stone_Particle.png" id="7_6guos"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="8_dq4xu"]
+[ext_resource type="Texture2D" uid="uid://5dwxrr6ig7hj" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal9.png" id="8_rhl0a"]
+[ext_resource type="Texture2D" uid="uid://b65urayvryanm" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal8.png" id="9_diky1"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/Placeable Building/BuildingColliderManager.cs" id="9_dojv3"]
+[ext_resource type="Texture2D" uid="uid://cqgd3edmxjpfb" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal7.png" id="10_jc0kk"]
+[ext_resource type="Texture2D" uid="uid://mmvh7eaimrgd" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal6.png" id="11_nkqh8"]
+[ext_resource type="Texture2D" uid="uid://dhxxs5esbikle" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal5.png" id="12_27g7q"]
+[ext_resource type="Texture2D" uid="uid://b2gmh1iakimla" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal4.png" id="13_515u4"]
+[ext_resource type="Texture2D" uid="uid://dk0m67csbx2wm" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal3.png" id="14_xlcwy"]
+[ext_resource type="Texture2D" uid="uid://dbjq3pqy6knxl" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal2.png" id="15_5l8d2"]
+[ext_resource type="Texture2D" uid="uid://dtqaifqp1yv54" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_Shadow9.png" id="16_g5kg3"]
+[ext_resource type="Texture2D" uid="uid://b1gvo3lg7istl" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_Shadow8.png" id="17_723os"]
+[ext_resource type="Texture2D" uid="uid://cvfh1kum0504p" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_Shadow7.png" id="18_cbap5"]
+[ext_resource type="Texture2D" uid="uid://qhkawmr54dhq" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_Shadow6.png" id="19_cftpy"]
+[ext_resource type="Texture2D" uid="uid://b8hcfp3ydg3hd" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_Shadow5.png" id="20_oy2qc"]
+[ext_resource type="Texture2D" uid="uid://3bggykexs6jd" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_Shadow4.png" id="21_04xuk"]
+[ext_resource type="Texture2D" uid="uid://ddemyubmo7pw2" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_Shadow3.png" id="22_iu00w"]
+[ext_resource type="Texture2D" uid="uid://blfmc57p7235g" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_Shadow2.png" id="23_gwvgt"]
+[ext_resource type="Texture2D" uid="uid://ddv2efy62q7d6" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_Shadow1.png" id="24_5f8ac"]
+[ext_resource type="Texture2D" uid="uid://w58yru6w5jau" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V7.png" id="25_ffavt"]
+[ext_resource type="Texture2D" uid="uid://bov2syukrjaht" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V6.png" id="26_kostx"]
+[ext_resource type="Texture2D" uid="uid://bd137fiprgra6" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V5.png" id="27_60aox"]
+[ext_resource type="Texture2D" uid="uid://cib7dkndq3bab" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V4.png" id="28_oggso"]
+[ext_resource type="Texture2D" uid="uid://bmfrc18ueqpng" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V3.png" id="29_tl8kj"]
+[ext_resource type="Texture2D" uid="uid://djilac0s0numf" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V2.png" id="30_6diw1"]
+[ext_resource type="Texture2D" uid="uid://pfblije7m242" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V2_Shadow6.png" id="31_3g41l"]
+[ext_resource type="Texture2D" uid="uid://bkrmqueynl76m" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V2_Shadow5.png" id="32_fracs"]
+[ext_resource type="Texture2D" uid="uid://bb2auipr06afq" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V2_Shadow4.png" id="33_xlg42"]
+[ext_resource type="Texture2D" uid="uid://d05s7wolq5oeh" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V2_Shadow3.png" id="34_3sykc"]
+[ext_resource type="Texture2D" uid="uid://b7c5jrn8nalpq" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V2_Shadow2.png" id="35_ts1kg"]
+[ext_resource type="Texture2D" uid="uid://ombh5djli7ay" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V2_Shadow1.png" id="36_hl7px"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="37_nsmtc"]
+
+[sub_resource type="Resource" id="Resource_gbxlv"]
+script = ExtResource("3_ndvxn")
+info = ExtResource("2_j0f22")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndvxn"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
+size = Vector2(28, 21)
+
+[sub_resource type="Curve" id="Curve_jra3w"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lfoib"]
+curve = SubResource("Curve_jra3w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h3jn0"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_lfoib")
+
+[node name="Iron_Ore" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "variants_parent", "gpu_particles")]
+y_sort_enabled = true
+collision_layer = 13
+script = ExtResource("1_442v2")
+hit_point = NodePath("HitPoint")
+tool_type = 3
+variants_parent = NodePath("SpriteAnimationManager/Variations")
+resource_item = SubResource("Resource_gbxlv")
+gpu_particles = NodePath("StoneParticles")
+building_id = 17
+tile_types = Array[int]([0])
+title = "WORLD_RESOURCE_IRON_ORE"
+description = "WORLD_RESOURCE_IRON_ORE_DESC"
+
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("3_ya2d3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_ndvxn")
+animation = &"Normal"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-13, -30)
+texture = ExtResource("5_bskpa")
+
+[node name="Variations" type="Node2D" parent="SpriteAnimationManager"]
+
+[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/Variations"]
+script = ExtResource("7_2bw5j")
+polygon_points = PackedVector2Array(2, 8, -2, 8, -8, 7, -11, 2, -14, 1, -18, 3, -23, 5, -29, 5, -29, 0, -33, -5, -38, -11, -36, -20, -30, -23, -21, -28, -10, -32, -1, -32, 3, -27, 6, -16, 9, -12, 14, -6, 7, 0)
+textures = Array[Texture2D]([ExtResource("8_rhl0a"), ExtResource("9_diky1"), ExtResource("10_jc0kk"), ExtResource("11_nkqh8"), ExtResource("12_27g7q"), ExtResource("13_515u4"), ExtResource("14_xlcwy"), ExtResource("15_5l8d2"), ExtResource("5_bskpa")])
+shadow_textures = Array[Texture2D]([ExtResource("16_g5kg3"), ExtResource("17_723os"), ExtResource("18_cbap5"), ExtResource("19_cftpy"), ExtResource("20_oy2qc"), ExtResource("21_04xuk"), ExtResource("22_iu00w"), ExtResource("23_gwvgt"), ExtResource("24_5f8ac")])
+
+[node name="Variation1" type="Node2D" parent="SpriteAnimationManager/Variations"]
+script = ExtResource("7_2bw5j")
+polygon_points = PackedVector2Array(-2, -2, -11, -2, -15, 2, -16, 2, -20, -2, -26, -2, -32, -4, -32, -8, -26, -13, -25, -19, -24, -24, -21, -26, -15, -24, -14, -20, -12, -20, -8, -22, -4, -22, -2, -20, 3, -19, 6, -17, 6, -11, 2, -8)
+textures = Array[Texture2D]([ExtResource("25_ffavt"), ExtResource("26_kostx"), ExtResource("27_60aox"), ExtResource("28_oggso"), ExtResource("29_tl8kj"), ExtResource("30_6diw1")])
+shadow_textures = Array[Texture2D]([ExtResource("31_3g41l"), ExtResource("32_fracs"), ExtResource("33_xlg42"), ExtResource("34_3sykc"), ExtResource("35_ts1kg"), ExtResource("36_hl7px")])
+
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("37_nsmtc")]
+position = Vector2(-13, -30)
+
+[node name="MouseArea" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-9, -9)
+script = ExtResource("5_th823")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(-4, -3.5)
+shape = SubResource("RectangleShape2D_a25cn")
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-2, -2, -11, -2, -15, 2, -16, 2, -20, -2, -26, -2, -32, -4, -32, -8, -26, -13, -25, -19, -24, -24, -21, -26, -15, -24, -14, -20, -12, -20, -8, -22, -4, -22, -2, -20, 3, -19, 6, -17, 6, -11, 2, -8)
+
+[node name="TimerBar" parent="." instance=ExtResource("6_nv75e")]
+offset_left = -30.0
+offset_top = -41.0
+offset_right = 2.0
+offset_bottom = -40.0
+
+[node name="StoneParticles" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(-9, -11)
+emitting = false
+amount = 15
+texture = ExtResource("7_6guos")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_h3jn0")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("8_dq4xu")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("9_dojv3")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-8, -10)
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

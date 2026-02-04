@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://bmjn6kocpubo3"]
+
+[ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Entities/Placeable Building/Mineable Object/MineableObject.cs" id="1_p10p7"]
+[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Entities/Items/Vegetation/Sunflower/Data/Sunflower.tres" id="2_yytp3"]
+[ext_resource type="Resource" uid="uid://1vfo1rr84pk7" path="res://Entities/Items/Vegetation/Sunflower/Sunflower Seeds/Data/SunflowerSeeds.tres" id="3_42a5b"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="3_tcsi8"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="4_ib3ix"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="5_c8ur1"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://UI/World/Timer Bar/timer_bar.tscn" id="6_4fyyb"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="7_khusd"]
+[ext_resource type="Material" uid="uid://8ujwgfeo1fil" path="res://Sub Systems/Shader/Wind/Wind_Shader_Material.tres" id="7_o4swh"]
+[ext_resource type="Texture2D" uid="uid://ogtmebelulc" path="res://Entities/Placeable Building/Spritesheets/Plants/Sunflowers/Sunflower3.png" id="7_pc2p5"]
+[ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sub Systems/Particles/Gras_Particle.png" id="7_vysf8"]
+[ext_resource type="SpriteFrames" uid="uid://gu83yfhw356p" path="res://UI/Styles/ResourceNormal.tres" id="8_846al"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/Placeable Building/BuildingColliderManager.cs" id="8_b1wo6"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="8_o4swh"]
+[ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Sub Systems/Shader/Building Remove/Destroy.gdshader" id="9_l3tqc"]
+[ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Sub Systems/Global/Texture2DArray.cs" id="10_5iued"]
+[ext_resource type="Texture2D" uid="uid://cwxx0mtc8e7xr" path="res://Entities/Placeable Building/Spritesheets/Plants/Sunflowers/Sunflower_Shadow3.png" id="11_o4swh"]
+[ext_resource type="Texture2D" uid="uid://snhebrborfhs" path="res://Entities/Placeable Building/Spritesheets/Plants/Sunflowers/Sunflower1.png" id="12_l3tqc"]
+[ext_resource type="Texture2D" uid="uid://cho5clcly0kjf" path="res://Entities/Placeable Building/Spritesheets/Plants/Sunflowers/Sunflower2.png" id="13_5iued"]
+[ext_resource type="Texture2D" uid="uid://b4kxiycnv63ks" path="res://Entities/Placeable Building/Spritesheets/Plants/Sunflowers/Sunflower_Shadow1.png" id="14_djv3t"]
+[ext_resource type="Texture2D" uid="uid://cpjbnkx7cxa7r" path="res://Entities/Placeable Building/Spritesheets/Plants/Sunflowers/Sunflower_Shadow2.png" id="15_a2j6h"]
+
+[sub_resource type="Resource" id="Resource_pony2"]
+script = ExtResource("3_tcsi8")
+info = ExtResource("2_yytp3")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_b02l2"]
+script = ExtResource("3_tcsi8")
+info = ExtResource("3_42a5b")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q5ypi"]
+shader = ExtResource("9_l3tqc")
+shader_parameter/progress = 0.0
+shader_parameter/width = 0.2
+shader_parameter/timed = true
+shader_parameter/speed = 1.0
+shader_parameter/angle = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
+size = Vector2(13, 16)
+
+[sub_resource type="Curve" id="Curve_uq5h3"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lfoib"]
+curve = SubResource("Curve_uq5h3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n5030"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_lfoib")
+
+[node name="Sunflower" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "variants_parent", "growth_variants_parent", "gpu_particles")]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_p10p7")
+hit_point = NodePath("HitPoint")
+growable = true
+tool_type = 4
+variants_parent = NodePath("SpriteAnimationManager/Variation")
+growth_variants_parent = NodePath("SpriteAnimationManager/Growth_Variation")
+respawn_seconds = 30
+resource_item = SubResource("Resource_pony2")
+extra_item = SubResource("Resource_b02l2")
+gpu_particles = NodePath("PotatoParticle")
+building_id = 11
+tile_types = Array[int]([1])
+use_wind = true
+title = "WORLD_RESOURCE_POTATO"
+description = "WORLD_RESOURCE_POTATO_DESC"
+
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("4_ib3ix")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = ExtResource("8_846al")
+animation = &"Normal"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+material = ExtResource("7_o4swh")
+position = Vector2(-8, -21)
+texture = ExtResource("7_pc2p5")
+
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("8_o4swh")]
+position = Vector2(-8, -21)
+
+[node name="Variation" type="Node2D" parent="SpriteAnimationManager"]
+
+[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/Variation"]
+material = SubResource("ShaderMaterial_q5ypi")
+script = ExtResource("10_5iued")
+polygon_points = PackedVector2Array(3, -7, -1, -4, -14, -4, -18, -7, -18, -17, -14, -20, -1, -20, 3, -18)
+textures = Array[Texture2D]([ExtResource("7_pc2p5")])
+shadow_textures = Array[Texture2D]([ExtResource("11_o4swh")])
+
+[node name="Growth_Variation" type="Node2D" parent="SpriteAnimationManager"]
+
+[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/Growth_Variation"]
+material = SubResource("ShaderMaterial_q5ypi")
+script = ExtResource("10_5iued")
+polygon_points = PackedVector2Array(3, -7, -1, -4, -14, -4, -18, -7, -18, -17, -14, -20, -1, -20, 3, -18)
+textures = Array[Texture2D]([ExtResource("12_l3tqc"), ExtResource("13_5iued"), ExtResource("7_pc2p5")])
+shadow_textures = Array[Texture2D]([ExtResource("14_djv3t"), ExtResource("15_a2j6h"), ExtResource("11_o4swh")])
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(3, -7, -1, -4, -14, -4, -18, -7, -18, -17, -14, -20, -1, -20, 3, -18)
+
+[node name="MouseArea" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-8, -8)
+script = ExtResource("5_c8ur1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(0.5, -3)
+shape = SubResource("RectangleShape2D_a25cn")
+
+[node name="TimerBar" parent="." instance=ExtResource("6_4fyyb")]
+offset_left = -14.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = -3.0
+
+[node name="PotatoParticle" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(-8, -8)
+emitting = false
+amount = 15
+texture = ExtResource("7_vysf8")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_n5030")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("7_khusd")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("8_b1wo6")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-8, -11)
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

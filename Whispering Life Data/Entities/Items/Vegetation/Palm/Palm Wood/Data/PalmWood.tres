@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_yho7t"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="2_mtsi4"]
-[ext_resource type="Texture2D" uid="uid://b18t84mi1huam" path="res://Entities/Spritesheets/Plants/Wood_Stump.png" id="3_yho7t"]
+[ext_resource type="Texture2D" uid="uid://b18t84mi1huam" path="res://Entities/Placeable Building/Spritesheets/Plants/Wood_Stump.png" id="3_4sr6d"]
 
 [sub_resource type="Resource" id="Resource_2wb6e"]
 script = ExtResource("1_yho7t")
@@ -15,5 +15,5 @@ max_stackable_size = 250
 name = "PALM_WOOD"
 id = 62
 description = "PALM_WOOD_DESC"
-texture = ExtResource("3_yho7t")
+texture = ExtResource("3_4sr6d")
 value = 5.0

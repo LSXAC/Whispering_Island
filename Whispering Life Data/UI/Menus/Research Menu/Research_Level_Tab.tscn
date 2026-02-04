@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cd8pn6e2fwrpm"]
 
 [ext_resource type="Script" uid="uid://cfrxp1xma3cki" path="res://UI/UI Scripts/LevelTab.cs" id="1_kne63"]
-[ext_resource type="FontFile" path="res://Fonts/upheavtt.ttf" id="2_66jv3"]
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="2_66jv3"]
 
 [node name="Level 1" type="PanelContainer"]
 script = ExtResource("1_kne63")

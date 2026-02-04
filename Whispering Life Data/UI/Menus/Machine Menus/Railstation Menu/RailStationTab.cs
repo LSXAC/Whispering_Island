@@ -5,8 +5,8 @@ using Godot;
 public partial class RailStationTab : ColorRect
 {
     [Export]
-    public ChestInventoryUI chest_inventory_ui_input,
-        chest_inventory_ui_output;
+    public ChestInventory chest_inventory_input,
+        chest_inventory_output;
 
     [Export]
     public TabContainer container;
@@ -56,18 +56,18 @@ public partial class RailStationTab : ColorRect
 
         if (tab == 0)
         {
-            ChestInventoryUI.current_chest = last_rail_station.chest_in;
-            ChestInventoryUI.instance = (
+            ChestInventory.current_chest = last_rail_station.chest_in;
+            ChestInventory.instance = (
                 (RailStationTab)GameMenu.instance.rail_station_tab
-            ).chest_inventory_ui_input;
+            ).chest_inventory_input;
         }
         else
         {
-            ChestInventoryUI.current_chest = last_rail_station.chest_out;
-            ChestInventoryUI.instance = (
+            ChestInventory.current_chest = last_rail_station.chest_out;
+            ChestInventory.instance = (
                 (RailStationTab)GameMenu.instance.rail_station_tab
-            ).chest_inventory_ui_output;
+            ).chest_inventory_output;
         }
-        ChestInventoryUI.instance.OpenChest();
+        ChestInventory.instance.OpenChest();
     }
 }

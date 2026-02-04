@@ -394,7 +394,7 @@ public partial class GameMenu : CanvasLayer
     {
         CloseAllTabs();
         inventory_tab.Visible = true;
-        ChestInventoryUI.current_chest = null;
+        ChestInventory.current_chest = null;
         CloseLastWindow();
     }
 

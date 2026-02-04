@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://bfiwauabllyho"]
+
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Entities/Items/Vegetation/Oak/Oak Wood/Data/OakWood.tres" id="1_2ajue"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_hybc6"]
+[ext_resource type="PackedScene" uid="uid://c0l4m6jxp7pau" path="res://Entities/Placeable Building/Mineable Object/Environment/Minerals/Iron Ore/mineable_object_iron_ore.tscn" id="3_f0uq8"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Build Menu Line/Building_Menu_List_Object.cs" id="4_jplgj"]
+
+[sub_resource type="Resource" id="Resource_yo73i"]
+script = ExtResource("2_hybc6")
+info = ExtResource("1_2ajue")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("4_jplgj")
+scene = ExtResource("3_f0uq8")
+scene_building_id = 17
+required_items = Array[Object]([SubResource("Resource_yo73i")])
+unlock_requirements = Array[Object]([])
+building_menu_category = 4

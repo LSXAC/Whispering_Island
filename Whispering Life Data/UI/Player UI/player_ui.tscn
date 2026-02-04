@@ -12,7 +12,6 @@
 [ext_resource type="StyleBox" uid="uid://cfrmx1sogqkln" path="res://UI/Styles/Slider_Style.tres" id="8_f1ae0"]
 [ext_resource type="StyleBox" uid="uid://b2c5h8k14gscx" path="res://UI/Styles/Slider_Grabber_Style.tres" id="9_7vqgd"]
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://UI/Menus/Translation/TranslationButton.cs" id="9_erkjv"]
-[ext_resource type="Script" uid="uid://c872ycivw0d7a" path="res://UI/UI Scripts/EffectPanel.cs" id="11_r7w4g"]
 [ext_resource type="Script" uid="uid://bang68hyrryto" path="res://UI/Menus/Translation/TranslationRichTextLabel.cs" id="12_fbb8a"]
 [ext_resource type="Texture2D" uid="uid://1rxf21hw1xu5" path="res://UI/Player UI/Textures/Heart_Icon.png" id="12_rpytx"]
 [ext_resource type="Script" uid="uid://b5gbju1jehjfy" path="res://Sub Systems/Heart System/HeartManager.cs" id="12_twnk5"]
@@ -399,40 +398,6 @@ text = "Confirm"
 
 [node name="Timer" type="Timer" parent="QuestAcceptPanel" unique_id=182308412]
 wait_time = 2.0
-
-[node name="EffectPanel" type="Panel" parent="." unique_id=303720205]
-visible = false
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -128.0
-offset_bottom = 59.0
-grow_horizontal = 0
-script = ExtResource("11_r7w4g")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="EffectPanel" unique_id=22821158]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -95.0
-offset_bottom = 40.0
-grow_horizontal = 0
-
-[node name="FatigueLabel" type="Label" parent="EffectPanel/VBoxContainer" unique_id=1888854724]
-layout_mode = 2
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 16
-text = "Fatigue: 2%"
-horizontal_alignment = 2
-
-[node name="FatigueEffects" type="Label" parent="EffectPanel/VBoxContainer" unique_id=1831053851]
-layout_mode = 2
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("3_0pxjf")
-theme_override_font_sizes/font_size = 16
-horizontal_alignment = 2
 
 [node name="GameOverPanel" type="Panel" parent="." unique_id=1336766684]
 visible = false

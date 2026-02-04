@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://8b8h6neopltv"]
+
+[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Entities/Items/Craftable/item_info_iron_ingot.tres" id="1_86rt1"]
+[ext_resource type="PackedScene" uid="uid://dsmt6k3efm7p6" path="res://Entities/Placeable Building/Transport Base/Belt/Belt Combiner/Building_Belt_Combiner_3x1.tscn" id="2_0fnj6"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_c2fxb"]
+[ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://Entities/Items/Machine Component/Transport/Data/TransportComponent.tres" id="3_86rt1"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Build Menu Line/Building_Menu_List_Object.cs" id="5_boarh"]
+[ext_resource type="Texture2D" uid="uid://kq8u6dxlwywg" path="res://Entities/Placeable Building/Transport Base/Belt/Belt Combiner/Menu_Belt_Combiner_3x1.png" id="5_c2fxb"]
+
+[sub_resource type="Resource" id="Resource_yo73i"]
+script = ExtResource("2_c2fxb")
+info = ExtResource("1_86rt1")
+amount = 3
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_ij0n1"]
+script = ExtResource("2_c2fxb")
+info = ExtResource("3_86rt1")
+amount = 4
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("5_boarh")
+scene = ExtResource("2_0fnj6")
+scene_building_id = 24
+required_items = Array[Object]([SubResource("Resource_yo73i"), SubResource("Resource_ij0n1")])
+unlock_requirements = null
+building_menu_category = 5
+texture_in_build_menu = ExtResource("5_c2fxb")

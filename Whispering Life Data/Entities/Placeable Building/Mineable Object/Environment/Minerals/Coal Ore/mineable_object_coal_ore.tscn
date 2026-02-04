@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://cu7twrrsfeup4"]
+
+[ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Entities/Placeable Building/Mineable Object/MineableObject.cs" id="1_43lli"]
+[ext_resource type="Texture2D" uid="uid://sla4rk4186w2" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_1.png" id="5_dxotc"]
+[ext_resource type="Texture2D" uid="uid://crrv8nyeo2px7" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal1.png" id="5_v6l68"]
+[ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Sub Systems/Shader/Building Remove/Destroy.gdshader" id="6_v6l68"]
+[ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Sub Systems/Global/Texture2DArray.cs" id="7_i6swg"]
+[ext_resource type="Resource" uid="uid://dgqnscgejksc" path="res://Entities/Items/Minerals/Coal/Data/item_info_coal.tres" id="7_pmx4x"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="8_m4oc5"]
+[ext_resource type="Texture2D" uid="uid://dbv0gu3k001vd" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal9.png" id="8_yq2h5"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="9_14wsq"]
+[ext_resource type="Texture2D" uid="uid://b4y48pa0aqjk7" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal8.png" id="9_g3wi0"]
+[ext_resource type="Texture2D" uid="uid://cfbff473vjrfa" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal7.png" id="10_iucj7"]
+[ext_resource type="Texture2D" uid="uid://clpsj76pt5xip" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal6.png" id="11_v6l68"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="12_5f0mf"]
+[ext_resource type="Texture2D" uid="uid://dcylruhvp24rq" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal5.png" id="12_i6swg"]
+[ext_resource type="Texture2D" uid="uid://b4lkslduip85k" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal4.png" id="13_3vx5d"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://UI/World/Timer Bar/timer_bar.tscn" id="13_pp0f8"]
+[ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sub Systems/Particles/Stone_Particle.png" id="14_28ymo"]
+[ext_resource type="Texture2D" uid="uid://dorwjr4ggxkc6" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal3.png" id="14_eqr8f"]
+[ext_resource type="Texture2D" uid="uid://4c68e31ntaqk" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal2.png" id="15_xqrvh"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="15_yq2h5"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/Placeable Building/BuildingColliderManager.cs" id="16_g3wi0"]
+[ext_resource type="Texture2D" uid="uid://dkncp1yd5mjo8" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_Shadow9.png" id="16_tpbhq"]
+[ext_resource type="Texture2D" uid="uid://bd17c722oxfch" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_Shadow8.png" id="17_ymqqo"]
+[ext_resource type="Texture2D" uid="uid://bse0kis0ni3t4" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_Shadow7.png" id="18_leuc5"]
+[ext_resource type="Texture2D" uid="uid://xba2t7kidvtc" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_Shadow6.png" id="19_qpec1"]
+[ext_resource type="Texture2D" uid="uid://cy0gr81egsibb" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_Shadow5.png" id="20_dxotc"]
+[ext_resource type="Texture2D" uid="uid://cmle1d3cub2rl" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_Shadow4.png" id="21_vigfn"]
+[ext_resource type="Texture2D" uid="uid://cmhei2pp75o75" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_Shadow3.png" id="22_hn5q8"]
+[ext_resource type="Texture2D" uid="uid://c6ativ1uimvnb" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_Shadow2.png" id="23_guaw4"]
+[ext_resource type="Texture2D" uid="uid://8t08f14q6cu0" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_Shadow1.png" id="24_kkifh"]
+[ext_resource type="Texture2D" uid="uid://si08p4snhtll" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_6.png" id="26_vigfn"]
+[ext_resource type="Texture2D" uid="uid://coohmx6047muu" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_5.png" id="27_hn5q8"]
+[ext_resource type="Texture2D" uid="uid://fblce611buvt" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_4.png" id="28_guaw4"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="28_i6swg"]
+[ext_resource type="Texture2D" uid="uid://d00t7frxp76pp" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_3.png" id="29_kkifh"]
+[ext_resource type="Texture2D" uid="uid://bjswfriec3a5h" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_2.png" id="30_isiex"]
+[ext_resource type="Texture2D" uid="uid://d18nujrokpm1" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_Shadow6.png" id="31_gcmjv"]
+[ext_resource type="Texture2D" uid="uid://uogh34nd8jt7" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_Shadow5.png" id="32_1rsu8"]
+[ext_resource type="Texture2D" uid="uid://clfnt7etnexem" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_Shadow4.png" id="33_3sab4"]
+[ext_resource type="Texture2D" uid="uid://cn55pvsnua883" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_Shadow3.png" id="34_0igmb"]
+[ext_resource type="Texture2D" uid="uid://tnmvlpf5iwb4" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_Shadow2.png" id="35_hodds"]
+[ext_resource type="Texture2D" uid="uid://behvya06y8wj1" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_Shadow1.png" id="36_cmf21"]
+
+[sub_resource type="Resource" id="Resource_gbxlv"]
+script = ExtResource("8_m4oc5")
+info = ExtResource("7_pmx4x")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndvxn"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_40loe"]
+shader = ExtResource("6_v6l68")
+shader_parameter/progress = 0.0
+shader_parameter/width = 0.2
+shader_parameter/timed = true
+shader_parameter/speed = 1.0
+shader_parameter/angle = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
+size = Vector2(30, 33)
+
+[sub_resource type="Curve" id="Curve_jra3w"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lfoib"]
+curve = SubResource("Curve_jra3w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h3jn0"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_lfoib")
+
+[node name="Coal_Ore" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "variants_parent", "gpu_particles")]
+y_sort_enabled = true
+collision_layer = 13
+script = ExtResource("1_43lli")
+hit_point = NodePath("HitPoint")
+tool_type = 3
+variants_parent = NodePath("SpriteAnimationManager/Variation")
+resource_item = SubResource("Resource_gbxlv")
+gpu_particles = NodePath("StoneParticles")
+building_id = 33
+tile_types = Array[int]([0])
+title = "WORLD_RESOURCE_IRON_ORE"
+description = "WORLD_RESOURCE_IRON_ORE_DESC"
+
+[node name="SpriteAnimationManager" type="Node2D" parent="."]
+script = ExtResource("9_14wsq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_ndvxn")
+animation = &"Normal"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+position = Vector2(-9, -23)
+texture = ExtResource("5_dxotc")
+
+[node name="Variation" type="Node2D" parent="SpriteAnimationManager"]
+
+[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/Variation"]
+material = SubResource("ShaderMaterial_40loe")
+script = ExtResource("7_i6swg")
+polygon_points = PackedVector2Array(4, 8, 0, 12, -2, 12, -6, 8, -12, 7, -15, 5, -21, 7, -22, 8, -24, 8, -27, 4, -27, -11, -28, -16, -28, -24, -22, -27, -13, -24, -6, -26, 3, -27, 9, -24, 9, -10, 6, -6, 4, -2)
+textures = Array[Texture2D]([ExtResource("8_yq2h5"), ExtResource("9_g3wi0"), ExtResource("10_iucj7"), ExtResource("11_v6l68"), ExtResource("12_i6swg"), ExtResource("13_3vx5d"), ExtResource("14_eqr8f"), ExtResource("15_xqrvh"), ExtResource("5_v6l68")])
+shadow_textures = Array[Texture2D]([ExtResource("16_tpbhq"), ExtResource("17_ymqqo"), ExtResource("18_leuc5"), ExtResource("19_qpec1"), ExtResource("20_dxotc"), ExtResource("21_vigfn"), ExtResource("22_hn5q8"), ExtResource("23_guaw4"), ExtResource("24_kkifh")])
+
+[node name="Variation1" type="Node2D" parent="SpriteAnimationManager/Variation"]
+material = SubResource("ShaderMaterial_40loe")
+script = ExtResource("7_i6swg")
+polygon_points = PackedVector2Array(-10, 6, -14, 10, -16, 10, -21, 5, -21, -2, -22, -6, -23, -7, -23, -17, -16, -20, -9, -18, 1, -17, 6, -13, 6, -7, 4, -5, 1, -3, 1, -1, -3, 3, -6, 5)
+textures = Array[Texture2D]([ExtResource("26_vigfn"), ExtResource("27_hn5q8"), ExtResource("28_guaw4"), ExtResource("29_kkifh"), ExtResource("30_isiex"), ExtResource("5_dxotc")])
+shadow_textures = Array[Texture2D]([ExtResource("31_gcmjv"), ExtResource("32_1rsu8"), ExtResource("33_3sab4"), ExtResource("34_0igmb"), ExtResource("35_hodds"), ExtResource("36_cmf21")])
+
+[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("28_i6swg")]
+position = Vector2(-9, -23)
+
+[node name="MouseArea" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-9, -9)
+script = ExtResource("12_5f0mf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_a25cn")
+
+[node name="TimerBar" parent="." instance=ExtResource("13_pp0f8")]
+offset_left = -25.0
+offset_top = -32.0
+offset_right = 7.0
+offset_bottom = -31.0
+
+[node name="StoneParticles" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(-9, -11)
+emitting = false
+amount = 15
+texture = ExtResource("14_28ymo")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_h3jn0")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("15_yq2h5")
+
+[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("16_g3wi0")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="HitPoint" type="Node2D" parent="."]
+position = Vector2(-8, -10)
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-10, 6, -14, 10, -16, 10, -21, 5, -21, -2, -22, -6, -23, -7, -23, -17, -16, -20, -9, -18, 1, -17, 6, -13, 6, -7, 4, -5, 1, -3, 1, -1, -3, 3, -6, 5)
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

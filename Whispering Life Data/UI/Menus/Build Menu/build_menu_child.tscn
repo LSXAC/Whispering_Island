@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cbe4yue61l823"]
 
 [ext_resource type="Script" uid="uid://c38vuaagecws0" path="res://UI/Menus/Build Menu/BuildMenuListObject.cs" id="1_d5smx"]
-[ext_resource type="Texture2D" uid="uid://ckm3phexbj7c4" path="res://Entities/Infrastructure/Belt/Belt_Top.png" id="2_1o15g"]
+[ext_resource type="Texture2D" uid="uid://ckm3phexbj7c4" path="res://Entities/Placeable Building/Transport Base/Belt/Belt_Top.png" id="2_1o15g"]
 [ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://UI/Themes/Theme_Slots.tres" id="2_cxwox"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="3_2gr0d"]
 [ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Sub Systems/ItemRowManager.cs" id="4_n07vt"]

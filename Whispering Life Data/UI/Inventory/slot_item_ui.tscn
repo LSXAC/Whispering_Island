@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://xjy2l41obahq"]
 
 [ext_resource type="Script" uid="uid://y865cl3n6n6u" path="res://UI/Inventory/SlotItemUI.cs" id="1_ckowm"]
-[ext_resource type="FontFile" path="res://Fonts/upheavtt.ttf" id="2_567ka"]
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="2_567ka"]
 
 [node name="SlotItemUI" type="TextureRect"]
 custom_minimum_size = Vector2(20, 20)

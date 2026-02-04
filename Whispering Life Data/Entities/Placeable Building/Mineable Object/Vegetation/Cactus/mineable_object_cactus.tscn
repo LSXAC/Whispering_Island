@@ -1,0 +1,203 @@
+[gd_scene format=4 uid="uid://bsc2v1gpmwcw7"]
+
+[ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Entities/Placeable Building/Mineable Object/MineableObject.cs" id="1_3vihl"]
+[ext_resource type="Resource" uid="uid://dbu0erdxodn6w" path="res://Entities/Items/Vegetation/Cactus/Data/Cactus.tres" id="2_jkmr8"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="3_jkmr8"]
+[ext_resource type="Resource" uid="uid://gestufnjtr7p" path="res://Entities/Items/Vegetation/Cactus/Cactus Seeds/Data/CactusSeed.tres" id="4_xi8xc"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="5_uarw4"]
+[ext_resource type="Shader" uid="uid://6h8nokelt8tj" path="res://Sub Systems/Shader/Wind/Wind.gdshader" id="6_kha2c"]
+[ext_resource type="Texture2D" uid="uid://6bfeksi6mcl4" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Growing/Cactus_V0_3.png" id="7_l13po"]
+[ext_resource type="Texture2D" uid="uid://bfw0elq5yfvqk" path="res://Entities/Placeable Building/Mineable Object/Vegetation/Oak/Leave.png" id="8_c0tf8"]
+[ext_resource type="Shader" uid="uid://280p7bspd700" path="res://Sub Systems/Shader/Building Remove/Destroy.gdshader" id="9_dnx4s"]
+[ext_resource type="Script" uid="uid://62u0xbil34tj" path="res://Sub Systems/Global/Texture2DArray.cs" id="10_mx7lk"]
+[ext_resource type="Texture2D" uid="uid://ce5ahw1oy8k2t" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Harvesting/Cactus_Harvesting_V0_5.png" id="11_jkmr8"]
+[ext_resource type="Texture2D" uid="uid://dfqpjem7mktjo" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Harvesting/Cactus_Harvesting_V0_4.png" id="12_xi8xc"]
+[ext_resource type="Texture2D" uid="uid://xmt03qiaax26" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Harvesting/Cactus_Harvesting_V0_3.png" id="13_uarw4"]
+[ext_resource type="Texture2D" uid="uid://c1wl0mkcuu5sl" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Harvesting/Cactus_Harvesting_V0_2.png" id="14_kha2c"]
+[ext_resource type="Texture2D" uid="uid://vh1rc87qnut0" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Harvesting/Cactus_Harvesting_V0_1.png" id="15_ditec"]
+[ext_resource type="Texture2D" uid="uid://cup7bfpxku0km" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Harvesting/Cactus_Harvesting_V0_Shadow5.png" id="16_c0tf8"]
+[ext_resource type="Texture2D" uid="uid://csuw3jwpgkmi0" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Harvesting/Cactus_Harvesting_V0_Shadow4.png" id="17_dnx4s"]
+[ext_resource type="Texture2D" uid="uid://dh5wygvmntjl5" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Harvesting/Cactus_Harvesting_V0_Shadow3.png" id="18_mx7lk"]
+[ext_resource type="Texture2D" uid="uid://dj53o15l62rr0" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Growing/Cactus_V0_1.png" id="18_ph4kr"]
+[ext_resource type="Texture2D" uid="uid://6xcj2yukkha" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Growing/Cactus_V0_2.png" id="19_3vihl"]
+[ext_resource type="Texture2D" uid="uid://dmfs84ohgph40" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Harvesting/Cactus_Harvesting_V0_Shadow2.png" id="19_ctbs8"]
+[ext_resource type="Texture2D" uid="uid://bm5lxkrm5j6ck" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Growing/Cactus_V0_Shadow1.png" id="20_l13po"]
+[ext_resource type="Texture2D" uid="uid://bsjlladu5ipjv" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Harvesting/Cactus_Harvesting_V0_Shadow1.png" id="20_p1sqe"]
+[ext_resource type="Texture2D" uid="uid://cny86g501qmgn" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Growing/Cactus_V0_Shadow2.png" id="21_jkmr8"]
+[ext_resource type="Texture2D" uid="uid://jcow6ditmgp8" path="res://Entities/Items/Vegetation/Cactus/Textures/Spritesheet/Growing/Cactus_V0_Shadow3.png" id="22_xi8xc"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="24_3qlh3"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="25_47yel"]
+[ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://UI/World/Timer Bar/timer_bar.tscn" id="26_ifdpd"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="27_8nkyh"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/Placeable Building/BuildingColliderManager.cs" id="28_c257x"]
+
+[sub_resource type="Resource" id="Resource_uwm61"]
+script = ExtResource("3_jkmr8")
+info = ExtResource("2_jkmr8")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_cgqts"]
+script = ExtResource("3_jkmr8")
+info = ExtResource("4_xi8xc")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_us0rr"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uwm61"]
+shader = ExtResource("6_kha2c")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 2.0
+shader_parameter/wind_end_threshold_2 = 0.400000019
+shader_parameter/wind_strength = 0.030000001425
+shader_parameter/wind_speed = 0.9000000362302301
+shader_parameter/scale = 2.0
+
+[sub_resource type="Gradient" id="Gradient_uwm61"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i7g1i"]
+gradient = SubResource("Gradient_uwm61")
+
+[sub_resource type="Curve" id="Curve_fj6mt"]
+_data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5dwf0"]
+curve = SubResource("Curve_fj6mt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pa158"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 25.0
+angle_max = 180.0
+radial_velocity_min = 15.0
+radial_velocity_max = 25.0
+gravity = Vector3(0, 45, 0)
+scale_min = 0.5
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_5dwf0")
+color_ramp = SubResource("GradientTexture1D_i7g1i")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_heku1"]
+shader = ExtResource("9_dnx4s")
+shader_parameter/progress = 0.0
+shader_parameter/width = 0.2
+shader_parameter/timed = true
+shader_parameter/speed = 1.0
+shader_parameter/angle = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
+size = Vector2(15, 26)
+
+[node name="Cactus" type="StaticBody2D" unique_id=677092106 node_paths=PackedStringArray("hit_point", "variants_parent", "growth_variants_parent", "gpu_particles")]
+y_sort_enabled = true
+collision_layer = 13
+script = ExtResource("1_3vihl")
+growable = true
+tool_type = 2
+respawn_seconds = 120
+resource_item = SubResource("Resource_uwm61")
+extra_item = SubResource("Resource_cgqts")
+building_id = 38
+tile_types = Array[int]([0])
+use_wind = true
+title = "WORLD_RESOURCE_CACTUS"
+description = "WORLD_RESOURCE_CACTUS_DESC"
+hit_point = NodePath("HitPoint")
+variants_parent = NodePath("SpriteAnimationManager/Variations")
+growth_variants_parent = NodePath("SpriteAnimationManager/GrowingVariations")
+gpu_particles = NodePath("SpriteAnimationManager/FallingLeaves")
+
+[node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=1199422297]
+script = ExtResource("5_uarw4")
+anim_name = "Tree_Idle"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager" unique_id=1969674497]
+position = Vector2(-30, -51)
+sprite_frames = SubResource("SpriteFrames_us0rr")
+animation = &"Normal"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager" unique_id=1141788647]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_uwm61")
+position = Vector2(-8, -21)
+texture = ExtResource("7_l13po")
+
+[node name="FallingLeaves" type="GPUParticles2D" parent="SpriteAnimationManager" unique_id=211786013]
+visible = false
+z_index = -1
+y_sort_enabled = true
+position = Vector2(-12, -26)
+amount = 7
+texture = ExtResource("8_c0tf8")
+lifetime = 0.7
+speed_scale = 0.7
+explosiveness = 0.3
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_pa158")
+
+[node name="Variations" type="Node2D" parent="SpriteAnimationManager" unique_id=998495745]
+
+[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/Variations" unique_id=1650409565]
+material = SubResource("ShaderMaterial_heku1")
+script = ExtResource("10_mx7lk")
+polygon_points = PackedVector2Array(-12, -2, -20, -4, -22, -10, -18, -16, -9, -19, 5, -18, 4, -11, -2, -5, -7, -2)
+textures = Array[Texture2D]([ExtResource("11_jkmr8"), ExtResource("12_xi8xc"), ExtResource("13_uarw4"), ExtResource("14_kha2c"), ExtResource("15_ditec")])
+shadow_textures = Array[Texture2D]([ExtResource("16_c0tf8"), ExtResource("17_dnx4s"), ExtResource("18_mx7lk"), ExtResource("19_ctbs8"), ExtResource("20_p1sqe")])
+
+[node name="GrowingVariations" type="Node2D" parent="SpriteAnimationManager" unique_id=1515316384]
+
+[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/GrowingVariations" unique_id=2101761139]
+script = ExtResource("10_mx7lk")
+polygon_points = PackedVector2Array(-12, -2, -20, -4, -22, -10, -18, -16, -9, -19, 5, -18, 4, -11, -2, -5, -7, -2)
+textures = Array[Texture2D]([ExtResource("18_ph4kr"), ExtResource("19_3vihl"), ExtResource("7_l13po")])
+shadow_textures = Array[Texture2D]([ExtResource("20_l13po"), ExtResource("21_jkmr8"), ExtResource("22_xi8xc")])
+
+[node name="ShadowNode" parent="SpriteAnimationManager" unique_id=1642699918 instance=ExtResource("24_3qlh3")]
+position = Vector2(-8, -21)
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=87703450]
+position = Vector2(2, -3)
+polygon = PackedVector2Array(-12, -2, -20, -4, -22, -10, -18, -16, -9, -19, 5, -18, 4, -11, -2, -5, -7, -2)
+
+[node name="MouseArea" type="Area2D" parent="." unique_id=1675759718]
+z_index = 1
+position = Vector2(-6, -10)
+script = ExtResource("25_47yel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=455531436]
+position = Vector2(-5.5, -7)
+shape = SubResource("RectangleShape2D_a25cn")
+
+[node name="TimerBar" parent="." unique_id=1360975182 instance=ExtResource("26_ifdpd")]
+offset_left = -14.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = -3.0
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." unique_id=1092427836]
+z_index = -2
+tile_map_data = PackedByteArray("AAD/////AAACAAAAAAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAACAAAAAAAAAP//AAACAAAAAAAAAP7/AAACAAAAAAD///7/AAACAAAAAAD+//7/AAACAAAAAAA=")
+enabled = false
+tile_set = ExtResource("27_8nkyh")
+
+[node name="BuildingAreas" type="Node2D" parent="." unique_id=2137264853 node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("28_c257x")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="HitPoint" type="Node2D" parent="." unique_id=1191017136]
+position = Vector2(-7, -33)
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

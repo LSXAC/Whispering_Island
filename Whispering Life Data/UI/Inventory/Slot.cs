@@ -57,11 +57,11 @@ public partial class Slot : Button
                     OnSlotButton(btn);
             }
 
-            if (GetParent().GetParent().GetParent() is ChestInventoryUI)
+            if (GetParent().GetParent().GetParent() is ChestInventory)
             {
                 item_array = ((Inventory)GetParent().GetParent().GetParent()).inventory_items;
                 slotUpdater = (Inventory)GetParent().GetParent().GetParent();
-                chest = ChestInventoryUI.current_chest;
+                chest = ChestInventory.current_chest;
                 OnSlotButton(btn);
             }
 
