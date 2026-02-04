@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://c2tfkto5ygm4k"]
+[gd_resource type="Resource" format=3 uid="uid://c2tfkto5ygm4k"]
 
 [ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Entities/Items/Craftable/item_info_wood_plank.tres" id="1_kyhls"]
 [ext_resource type="PackedScene" uid="uid://dda24vs8c7wm7" path="res://Entities/Research/Research Table/Building_Research_Table.tscn" id="2_m61kj"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_ptsht"]
-[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Building_Menu_List_Object.cs" id="3_7jee8"]
 [ext_resource type="Resource" uid="uid://dwn06prfv5ios" path="res://Entities/Items/Machine Component/Research/Data/ResearchComponent.tres" id="3_kyhls"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Build Menu Line/Building_Menu_List_Object.cs" id="5_05eud"]
 [ext_resource type="Texture2D" uid="uid://caucfvq00j5hu" path="res://Entities/Research/Research Table/Research_Table.png" id="5_ptsht"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
@@ -20,7 +20,7 @@ amount = 1
 metadata/_custom_type_script = "uid://cee63igbpybf"
 
 [resource]
-script = ExtResource("3_7jee8")
+script = ExtResource("5_05eud")
 scene = ExtResource("2_m61kj")
 scene_building_id = 6
 required_items = Array[Object]([SubResource("Resource_yo73i"), SubResource("Resource_lojte")])

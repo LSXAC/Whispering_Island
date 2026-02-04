@@ -8,7 +8,6 @@ script = ExtResource("1_oog1t")
 metadata/_custom_type_script = "uid://b40cejs4t88i5"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j2woi"]
-load_path = "res://.godot/imported/Cactus2_1.png-28fc0e7a742e6b2fbcc3f1cdda33790e.ctex"
 
 [resource]
 script = ExtResource("2_hhkrk")

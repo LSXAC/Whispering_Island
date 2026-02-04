@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://bpl186olxonfm"]
+[gd_resource type="Resource" format=3 uid="uid://bpl186olxonfm"]
 
 [ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Entities/Items/Craftable/item_info_wood_plank.tres" id="1_ro46s"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_ut7rt"]
 [ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://Entities/Items/Vegetation/Fiber/Data/Fiber.tres" id="3_xsb4p"]
 [ext_resource type="PackedScene" uid="uid://coeye4llpicv7" path="res://Entities/Environment/Mineable Object/Big Stone/mineable_object_big_stone.tscn" id="4_ro46s"]
-[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Building_Menu_List_Object.cs" id="5_aavtg"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Build Menu Line/Building_Menu_List_Object.cs" id="5_uvh7c"]
 [ext_resource type="Texture2D" uid="uid://b3yfu58wanci2" path="res://Entities/Environment/Mineable Object/Big Stone/Rock1_1.png" id="6_ut7rt"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
@@ -20,7 +20,7 @@ amount = 3
 metadata/_custom_type_script = "uid://cee63igbpybf"
 
 [resource]
-script = ExtResource("5_aavtg")
+script = ExtResource("5_uvh7c")
 scene = ExtResource("4_ro46s")
 scene_building_id = 35
 required_items = Array[Object]([SubResource("Resource_yo73i"), SubResource("Resource_25htp")])

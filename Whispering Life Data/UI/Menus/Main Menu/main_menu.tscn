@@ -1,0 +1,488 @@
+[gd_scene format=3 uid="uid://d382ft4naeqtp"]
+
+[ext_resource type="Script" uid="uid://bm5n6v0k8up5x" path="res://UI/Menus/Main Menu/MainMenu.cs" id="1_yqeex"]
+[ext_resource type="Texture2D" uid="uid://8e8352g0ttd6" path="res://UI/Menus/Main Menu/Textures/Screenshot 2025-07-21 100910.png" id="2_4mpl3"]
+[ext_resource type="Texture2D" uid="uid://dieu75n53gdpm" path="res://UI/Menus/Main Menu/Textures/main_menu_fade_out.png" id="3_3w0ny"]
+[ext_resource type="Texture2D" uid="uid://ohliqjn77b03" path="res://UI/Menus/Main Menu/Textures/Island_Thumbnail.png" id="4_8ge3d"]
+[ext_resource type="Texture2D" uid="uid://bwgbp0d15ql58" path="res://UI/Menus/Main Menu/Textures/WI_Logo.png" id="5_sicj5"]
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="6_5j77y"]
+[ext_resource type="StyleBox" uid="uid://dblsyajhbmtwa" path="res://UI/Styles/Button_Normal_Style.tres" id="7_5ir77"]
+[ext_resource type="StyleBox" uid="uid://bbbtpagi6kny3" path="res://UI/Styles/Button_Pressed_Style.tres.tres" id="8_jnprb"]
+[ext_resource type="StyleBox" uid="uid://c0rrcqgclnbps" path="res://UI/Styles/Button_Hover_Style.tres" id="9_ogxk2"]
+[ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://UI/Styles/Button_Disabled_Style.tres.tres" id="10_u2kkx"]
+[ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://UI/Styles/slot_focus_style.tres" id="11_6tlws"]
+[ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://UI/Menus/Translation/TranslationButton.cs" id="12_jqrcp"]
+[ext_resource type="StyleBox" uid="uid://h4o1ussquiqb" path="res://UI/Styles/button_hover_pressed_style.tres" id="13_dd1k4"]
+[ext_resource type="Script" uid="uid://dlnqgvorydc7m" path="res://UI/Menus/Translation/TranslationCheckBox.cs" id="14_cc178"]
+[ext_resource type="VideoStream" uid="uid://cn5ad33bqf2ra" path="res://UI/Videos/Start_Screen.ogv" id="15_jwfcp"]
+[ext_resource type="PackedScene" uid="uid://mpqbrpcj1slc" path="res://3rd Party Systems/Transition System/transition_manager.tscn" id="16_il1im"]
+[ext_resource type="Script" uid="uid://bhrk2d2mypk8p" path="res://Sub Systems/Global/Database.cs" id="17_2xiho"]
+[ext_resource type="Resource" uid="uid://ugx2sc0qbion" path="res://Entities/Infrastructure/Belt/Data/build_menu_list_object_belt.tres" id="18_0iy3j"]
+[ext_resource type="Resource" uid="uid://5or10ocroxhk" path="res://Entities/Infrastructure/Belt/Belt Combiner/Data/BeltCombiner2x1BuildMenu.tres" id="19_ahlfb"]
+[ext_resource type="Resource" uid="uid://8b8h6neopltv" path="res://Entities/Infrastructure/Belt/Belt Combiner/Data/BeltCombiner3x1BuildMenu.tres" id="20_wevbg"]
+[ext_resource type="Resource" uid="uid://1ejkff4privx" path="res://Entities/Infrastructure/Belt/Belt Splitter/Data/BeltSplitter1x2BuildMenu.tres" id="21_5ngv7"]
+[ext_resource type="Resource" uid="uid://dquqoenmraf8c" path="res://Entities/Infrastructure/Belt/Belt Splitter/Data/BeltSplitter1x3BuildMenu.tres" id="22_sr8d7"]
+[ext_resource type="Resource" uid="uid://1ly4bpu26gsu" path="res://Entities/Infrastructure/Belt/Belt Tunnel/Data/BeltTunnelBuildMenu.tres" id="23_c7pgb"]
+[ext_resource type="Resource" uid="uid://cxyl31duovsut" path="res://Entities/Machine/Chest/Data/ChestBuildMenu.tres" id="24_q02jy"]
+[ext_resource type="Resource" uid="uid://tbpa4v56negm" path="res://Entities/Machine/Chest/Chest With Timed Clear/Data/ChestWithAutoRemoveBuildMenu.tres" id="25_1qo6e"]
+[ext_resource type="Resource" uid="uid://ff6xtojeeokj" path="res://Entities/build_menu_list_object_dummy.tres" id="26_p251o"]
+[ext_resource type="Resource" uid="uid://cbq4h0xdafbrv" path="res://Entities/Machine/Furnace/Data/FurnaceBuildMenu.tres" id="27_k6cvp"]
+[ext_resource type="Resource" uid="uid://5uxklgaie75e" path="res://Entities/Moveable/Minecart/Data/build_menu_list_object_minecart.tres" id="28_qqiq8"]
+[ext_resource type="Resource" uid="uid://n4sd031omdv4" path="res://Entities/Machine/Quarry/Data/QuarryBuildMenu.tres" id="29_nvrgy"]
+[ext_resource type="Resource" uid="uid://b6m2k6awxcpck" path="res://Entities/Infrastructure/Rail/Data/RailBuildMenu.tres" id="30_14hcn"]
+[ext_resource type="Resource" uid="uid://btttc2idbh83q" path="res://Entities/Infrastructure/Rail/Railstation/Data/RailStationBuildMenu.tres" id="31_5oqoe"]
+[ext_resource type="Resource" uid="uid://c2tfkto5ygm4k" path="res://Entities/Research/Research Table/Data/ResearchTableBuildMenu.tres" id="32_5ejo1"]
+[ext_resource type="Resource" uid="uid://c8cgmkv8acr6f" path="res://Entities/Machine/Trash/Data/TrashcanBuildMenu.tres" id="33_1ee3u"]
+[ext_resource type="Resource" uid="uid://cqdeu12oy7xw5" path="res://Entities/Machine/Growther/Tree Growther/Data/TreeGrowtherBuildMenu.tres" id="34_qe4eq"]
+[ext_resource type="Resource" uid="uid://dvamcu1lg3joc" path="res://Entities/Environment/Decoration/Wood Bed/Data/WoodBedBuildMenu.tres" id="35_tl2s0"]
+[ext_resource type="Resource" uid="uid://bync2eye0mvrw" path="res://Entities/Environment/Mineable Object/Minerals/Copper Ore/Data/build_menu_list_object_copper_ore.tres" id="36_2os3q"]
+[ext_resource type="Resource" uid="uid://bhobhelygjw88" path="res://Entities/Vegetation/Fiber/Data/FiberBuildMenu.tres" id="37_5tne7"]
+[ext_resource type="Resource" uid="uid://bfiwauabllyho" path="res://Entities/Environment/Mineable Object/Minerals/Iron Ore/Data/build_menu_list_object_iron_ore.tres" id="38_102xl"]
+[ext_resource type="Resource" uid="uid://uhtevcrasnki" path="res://Entities/Environment/Mineable Object/Sand/Data/SandBuildMenu.tres" id="39_4slrk"]
+[ext_resource type="Resource" uid="uid://b7sugcd7q4cqm" path="res://Entities/Environment/Mineable Object/Sand Stone/Data/SandStoneBuildMenu.tres" id="40_6qvsk"]
+[ext_resource type="Resource" uid="uid://5py0ata6wvnx" path="res://Entities/Environment/Mineable Object/Stone/Data/build_menu_list_object_stone.tres" id="41_8j5fa"]
+[ext_resource type="Resource" uid="uid://cdqch07cuu7in" path="res://Entities/Vegetation/Carrot/Data/CarrotBuildMenu.tres" id="42_ulpy6"]
+[ext_resource type="Resource" uid="uid://bdefudjlvvi5c" path="res://Entities/Vegetation/Mystic Fiber/Data/MysticFiberBuildMenu.tres" id="43_o04hm"]
+[ext_resource type="Resource" uid="uid://4o1h3cmusbib" path="res://Entities/Vegetation/Mystic Oak/Mystic Oak Tree/Data/MysticOakTreeBuildMenu.tres" id="44_8ftcc"]
+[ext_resource type="Resource" uid="uid://0gip04da32ti" path="res://Entities/Vegetation/Oak/Oak Tree/Data/OakTreeBuildMenu.tres" id="45_uslci"]
+[ext_resource type="Resource" uid="uid://bqx4ydedgwbwl" path="res://Entities/Vegetation/Sunflower/Data/SunflowerBuildMenu.tres" id="46_eb1q4"]
+[ext_resource type="Resource" uid="uid://dmc4108m2vk7m" path="res://Entities/Vegetation/Wheat/Data/WheatBuildMenu.tres" id="47_3e4cm"]
+[ext_resource type="Resource" uid="uid://d2gr3elp450qx" path="res://Entities/Machine/Lamp/Data/OutdoorLampBuildMenu.tres" id="48_kun22"]
+[ext_resource type="Resource" uid="uid://c4oxpiqhxty5y" path="res://Entities/Environment/Mineable Object/Minerals/Coal Ore/Data/build_menu_list_object_coal_ore.tres" id="49_bp6bb"]
+[ext_resource type="Resource" uid="uid://db22y0et0hp3i" path="res://Entities/Vegetation/Sugar Cane/Data/SugarCaneBuildMenu.tres" id="50_aqhke"]
+[ext_resource type="Resource" uid="uid://bpl186olxonfm" path="res://Entities/Environment/Mineable Object/Big Stone/Data/build_menu_list_object_big_stone.tres" id="51_isupv"]
+[ext_resource type="Resource" uid="uid://ka556ylkcc4o" path="res://Entities/Vegetation/Mushroom/Data/MushroomBuildMenu.tres" id="52_43waw"]
+[ext_resource type="Resource" uid="uid://drxoneq30bgxp" path="res://Entities/Vegetation/Mystic Mushroom/Data/MysticMushroomBuildMenu.tres" id="53_653hc"]
+[ext_resource type="Resource" uid="uid://c24jmxvo6j62x" path="res://Entities/Vegetation/Palm/Data/PalmBuildMenu.tres" id="54_80xy1"]
+[ext_resource type="Resource" uid="uid://dcwpmejaby7l7" path="res://Entities/Vegetation/Cactus/Data/CactusBuildMenu.tres" id="55_iw1l5"]
+[ext_resource type="Resource" uid="uid://crmqrimgdf2gl" path="res://Entities/Items/ItemResearchs(X)/item_research_iron_ore.tres" id="56_l43bq"]
+[ext_resource type="Resource" uid="uid://cx06xbdvfg7nw" path="res://Entities/Items/ItemResearchs(X)/item_research_mystic_oak_wood.tres" id="57_v6ycb"]
+[ext_resource type="Resource" uid="uid://dynupcrbralid" path="res://Entities/Items/ItemResearchs(X)/item_research_oak_wood.tres" id="58_cnql1"]
+[ext_resource type="Resource" uid="uid://dfwyt0twaxq6e" path="res://Entities/Items/ItemResearchs(X)/item_research_sand.tres" id="59_opovq"]
+[ext_resource type="Resource" uid="uid://c23raqu11morr" path="res://Entities/Items/ItemResearchs(X)/item_research_stone.tres" id="60_iqtc6"]
+[ext_resource type="Resource" uid="uid://1g4h4yonp7qa" path="res://Sub Systems/Crafting System/Crafting Recipies/Armor/Data/crafting_recipe_mystic_armor_head.tres" id="61_ayhw5"]
+[ext_resource type="Resource" uid="uid://cfioc6hnfrwbd" path="res://Sub Systems/Crafting System/Crafting Recipies/Armor/Data/crafting_recipe_mystic_armor_chestplate.tres" id="62_oym2v"]
+[ext_resource type="Resource" uid="uid://7jxhn0rpjspo" path="res://Sub Systems/Crafting System/Crafting Recipies/Armor/Data/crafting_recipe_mystic_armor_leggings.tres" id="63_vn1rt"]
+[ext_resource type="Resource" uid="uid://cggf7uciyws1" path="res://Sub Systems/Crafting System/Crafting Recipies/Armor/Data/crafting_recipe_mystic_armor_shoes.tres" id="64_v3plx"]
+[ext_resource type="Resource" uid="uid://cdmu1tdyjj3rf" path="res://Sub Systems/Crafting System/Crafting Recipies/Basics/Data/crafting_recipe_iron_block.tres" id="65_fo3hv"]
+[ext_resource type="Resource" uid="uid://dr5yac7cj8scc" path="res://Sub Systems/Crafting System/Crafting Recipies/Basics/Data/crafting_recipe_wood_plank.tres" id="66_qwd5t"]
+[ext_resource type="Resource" uid="uid://bedyblbr23cwl" path="res://Sub Systems/Crafting System/Crafting Recipies/Basics/Data/crafting_recipe_wood_stick.tres" id="67_ntm2f"]
+[ext_resource type="Resource" uid="uid://g5iegjlxch46" path="res://Sub Systems/Crafting System/Crafting Recipies/Toolparts/Data/crafting_recipe_stone_blade.tres" id="68_j1a4d"]
+[ext_resource type="Resource" uid="uid://crbwxmyjqlafm" path="res://Sub Systems/Crafting System/Crafting Recipies/Toolparts/Data/crafting_recipe_stone_pickaxe_head.tres" id="69_8bai6"]
+[ext_resource type="Resource" uid="uid://u2pfsg8ffel3" path="res://Sub Systems/Crafting System/Crafting Recipies/Toolparts/Data/crafting_recipe_wood_axe_head.tres" id="70_hbqhj"]
+[ext_resource type="Resource" uid="uid://cydbh0i4ql0ev" path="res://Sub Systems/Crafting System/Crafting Recipies/Toolparts/Data/crafting_recipe_wood_handle.tres" id="71_a3ni4"]
+[ext_resource type="Resource" uid="uid://br1o134cy0afx" path="res://Sub Systems/Crafting System/Crafting Recipies/Toolparts/Data/crafting_recipe_wood_hoe_head.tres" id="72_uilr1"]
+[ext_resource type="Resource" uid="uid://c61tkydmwleam" path="res://Sub Systems/Crafting System/Crafting Recipies/Tools/Data/crafting_recipe_stone_knife.tres" id="73_msqky"]
+[ext_resource type="Resource" uid="uid://d4jfhgrp8h07j" path="res://Sub Systems/Crafting System/Crafting Recipies/Tools/Data/crafting_recipe_stone_pickaxe.tres" id="74_qin7u"]
+[ext_resource type="Resource" uid="uid://bp4wq2ypl075m" path="res://Sub Systems/Crafting System/Crafting Recipies/Tools/Data/crafting_recipe_wood_axe.tres" id="75_7swlr"]
+[ext_resource type="Resource" uid="uid://cxk2altccown" path="res://Sub Systems/Crafting System/Crafting Recipies/Tools/Data/crafting_recipe_wood_hoe.tres" id="76_8paip"]
+[ext_resource type="Resource" uid="uid://dt3clhic2nk2g" path="res://Sub Systems/Crafting System/Crafting Recipies/Basics/Data/crafting_recipe_soil.tres" id="77_534ny"]
+[ext_resource type="Resource" uid="uid://be1nc8l8gn6il" path="res://Sub Systems/Crafting System/Crafting Recipies/MachineParts/Data/crafting_recipe_gear.tres" id="78_0xd4i"]
+[ext_resource type="Resource" uid="uid://dor1rnydcbw5j" path="res://Sub Systems/Crafting System/Crafting Recipies/MachineParts/Data/crafting_recipe_growth_component.tres" id="79_b1uc7"]
+[ext_resource type="Resource" uid="uid://dmmwbncjghwvl" path="res://Sub Systems/Crafting System/Crafting Recipies/MachineParts/Data/crafting_recipe_machine_component.tres" id="80_vwfet"]
+[ext_resource type="Resource" uid="uid://b84f5t505lnh0" path="res://Sub Systems/Crafting System/Crafting Recipies/MachineParts/Data/crafting_recipe_smelt_component.tres" id="81_wewb2"]
+[ext_resource type="Resource" uid="uid://bqygf50fmjl1y" path="res://Sub Systems/Crafting System/Crafting Recipies/MachineParts/Data/crafting_recipe_transport_component.tres" id="82_3e3yn"]
+[ext_resource type="Resource" uid="uid://cs84e4qslsgms" path="res://Sub Systems/Crafting System/Crafting Recipies/MachineParts/Data/crafting_recipe_research_component.tres" id="83_we6f7"]
+[ext_resource type="Resource" uid="uid://dx7gmbpcxo8ux" path="res://Sub Systems/Crafting System/Crafting Recipies/MachineParts/Data/crafting_recipe_light_component.tres" id="84_stcjh"]
+[ext_resource type="Resource" uid="uid://dybk77tyk8w7y" path="res://Sub Systems/Crafting System/Crafting Recipies/Basics/Data/crafting_recipe_research_book_level.tres" id="85_oqsb6"]
+[ext_resource type="Resource" uid="uid://dfuxfpnb6rb8q" path="res://Sub Systems/Crafting System/Crafting Recipies/Basics/Data/crafting_recipe_research_book_sub.tres" id="86_ik4ub"]
+[ext_resource type="Resource" uid="uid://dvrprc84vffl8" path="res://Sub Systems/Crafting System/Crafting Recipies/Basics/Data/crafting_recipe_sugar.tres" id="87_f83y6"]
+[ext_resource type="Resource" uid="uid://bdnwgt02qfrlf" path="res://Sub Systems/Crafting System/Crafting Recipies/Basics/Data/crafting_recipe_paper.tres" id="88_nnj2c"]
+[ext_resource type="Resource" uid="uid://ch1b1ltixbads" path="res://Entities/Items/Vegetation/Carrot/Data/Carrot.tres" id="89_2fes1"]
+[ext_resource type="Resource" uid="uid://dcpvayh8hlqbo" path="res://Entities/Items/Vegetation/Carrot/Carrot Seeds/Data/CarrotSeeds.tres" id="90_oh47l"]
+[ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Entities/Items/Minerals/Char Coal/Data/item_info_char_coal.tres" id="91_cv6yx"]
+[ext_resource type="Resource" uid="uid://i3ah62dd06gb" path="res://Entities/Items/Minerals/Copper/Copper Ingot/Data/item_info_copper_ingot.tres" id="92_t4he0"]
+[ext_resource type="Resource" uid="uid://eo8ax7whu2kb" path="res://Entities/Items/Minerals/Copper/Copper Ore/Data/item_info_copper_ore.tres" id="93_8w0mg"]
+[ext_resource type="Resource" uid="uid://bp4gggmthi11e" path="res://Entities/Items/Vegetation/Mushroom/Data/Mushroom.tres" id="94_di7id"]
+[ext_resource type="Resource" uid="uid://cbpupb53ocwp4" path="res://Entities/Items/Vegetation/Mushroom/Mushroom Spores/Data/MushroomSpores.tres" id="95_ciuyg"]
+[ext_resource type="Resource" uid="uid://cnhxvkn1vnyic" path="res://Entities/Items/Vegetation/Fiber/Data/Fiber.tres" id="96_nsj56"]
+[ext_resource type="Resource" uid="uid://w5f8nrctnh1j" path="res://Entities/Items/Vegetation/Fiber/Fiber Seeds/Data/FiberSeed.tres" id="97_ppdsq"]
+[ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Entities/Items/Craftable/item_info_glass_chunk.tres" id="98_7pc50"]
+[ext_resource type="Resource" uid="uid://dqdb68mek201l" path="res://Entities/Items/Craftable/item_info_iron_block.tres" id="99_5oqp0"]
+[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Entities/Items/Craftable/item_info_iron_ingot.tres" id="100_sn514"]
+[ext_resource type="Resource" uid="uid://l7tf257vet4l" path="res://Entities/Items/Minerals/Iron/Iron Ore/Data/item_info_iron_ore.tres" id="101_6pocp"]
+[ext_resource type="Resource" uid="uid://bwoxb4s5viywy" path="res://Entities/Items/Craftable/item_info_mystic_armor_chestplate.tres" id="102_ic5yf"]
+[ext_resource type="Resource" uid="uid://j02uscprm0pm" path="res://Entities/Items/Craftable/item_info_mystic_armor_head.tres" id="103_d6isu"]
+[ext_resource type="Resource" uid="uid://dk6vef80itp5v" path="res://Entities/Items/Craftable/item_info_mystic_armor_leggings.tres" id="104_dxjk3"]
+[ext_resource type="Resource" uid="uid://gjds5x8w8irk" path="res://Entities/Items/Craftable/item_info_mystic_armor_shoes.tres" id="105_bq3pj"]
+[ext_resource type="Resource" uid="uid://clbfixrv0y7vr" path="res://Entities/Items/Vegetation/Mystic Fiber/Data/MysticFiber.tres" id="106_l855g"]
+[ext_resource type="Resource" uid="uid://dpfc7scfcvgj6" path="res://Entities/Items/Vegetation/Mystic Fiber/Mystic Fiber Seeds/Data/MysticFiberSeed.tres" id="107_s1w37"]
+[ext_resource type="Resource" uid="uid://bj62tvtw6mn4v" path="res://Entities/Items/Vegetation/Mystic Oak/Mystic Oak Seeds/Data/MysticOakSeeds.tres" id="108_whkyq"]
+[ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://Entities/Items/Vegetation/Mystic Oak/Mystic Oak Wood/Data/MysticOakWood.tres" id="109_rg7fx"]
+[ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Entities/Items/Vegetation/Sunflower/Data/Sunflower.tres" id="110_340ia"]
+[ext_resource type="Resource" uid="uid://1vfo1rr84pk7" path="res://Entities/Items/Vegetation/Sunflower/Sunflower Seeds/Data/SunflowerSeeds.tres" id="111_116tv"]
+[ext_resource type="Resource" uid="uid://ljb14i8nnpgp" path="res://Entities/Items/Craftable/item_info_sand.tres" id="112_me3ow"]
+[ext_resource type="Resource" uid="uid://cij4xtg6ixn5i" path="res://Entities/Items/Minerals/Sand Stone/Data/item_info_sand_stone.tres" id="113_aq8qd"]
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Entities/Items/Minerals/Stone/Data/item_info_stone.tres" id="114_km3di"]
+[ext_resource type="Resource" uid="uid://dc73s801r6m64" path="res://Entities/Items/Craftable/item_info_stone_axe_head.tres" id="115_ipi17"]
+[ext_resource type="Resource" uid="uid://81xbm48s547g" path="res://Entities/Items/Craftable/item_info_stone_blade.tres" id="116_0hdmy"]
+[ext_resource type="Resource" uid="uid://bvplgrho461h0" path="res://Entities/Items/Craftable/item_info_stone_knife.tres" id="117_2sgbn"]
+[ext_resource type="Resource" uid="uid://dvojtgqho3ajj" path="res://Entities/Items/Craftable/item_info_stone_pickaxe.tres" id="118_a2nif"]
+[ext_resource type="Resource" uid="uid://6wlgn6tdsk7b" path="res://Entities/Items/Craftable/item_info_stone_pickaxe_head.tres" id="119_v0sm1"]
+[ext_resource type="Resource" uid="uid://ctutjhkm2sj52" path="res://Entities/Items/Vegetation/Wheat/Data/Wheat.tres" id="120_l5p4o"]
+[ext_resource type="Resource" uid="uid://ckgu5x7reokuj" path="res://Entities/Items/Vegetation/Wheat/Wheat Seeds/Data/WheatSeeds.tres" id="121_57oxd"]
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Entities/Items/Vegetation/Oak/Oak Wood/Data/OakWood.tres" id="122_vpn2c"]
+[ext_resource type="Resource" uid="uid://dmrxwabbdyg0d" path="res://Entities/Items/Craftable/item_info_wood_axe.tres" id="123_ief2s"]
+[ext_resource type="Resource" uid="uid://65jron2bhtes" path="res://Entities/Items/Craftable/item_info_wood_axe_head.tres" id="124_gaid2"]
+[ext_resource type="Resource" uid="uid://c10rid084wdox" path="res://Entities/Items/Craftable/item_info_wood_hoe.tres" id="125_ymr4b"]
+[ext_resource type="Resource" uid="uid://n1o6p57v8r23" path="res://Entities/Items/Craftable/item_info_wood_hoe_head.tres" id="126_2l5m7"]
+[ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Entities/Items/Craftable/item_info_wood_plank.tres" id="127_atkxa"]
+[ext_resource type="Resource" uid="uid://bvax767e5vss4" path="res://Entities/Items/Craftable/item_info_wood_stick.tres" id="128_ghwor"]
+[ext_resource type="Resource" uid="uid://dwkycg546ofn2" path="res://Entities/Items/Craftable/item_info_gear.tres" id="129_1qu5q"]
+[ext_resource type="Resource" uid="uid://bf8iixn70725o" path="res://Entities/Items/Machine Component/Machine/Data/MachineComponent.tres" id="130_vjobf"]
+[ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://Entities/Items/Machine Component/Transport/Data/TransportComponent.tres" id="131_xsynr"]
+[ext_resource type="Resource" uid="uid://dbfiycnsog0ql" path="res://Entities/Items/Machine Component/Growth/Data/GrowthComponent.tres" id="132_n0rwy"]
+[ext_resource type="Resource" uid="uid://qpxoldygoivu" path="res://Entities/Items/Machine Component/Smelt/Data/SmeltComponent.tres" id="133_h0pwl"]
+[ext_resource type="Resource" uid="uid://12ulsclh6l5e" path="res://Entities/Items/Craftable/item_info_soil.tres" id="134_0nb1o"]
+[ext_resource type="Resource" uid="uid://dwn06prfv5ios" path="res://Entities/Items/Machine Component/Research/Data/ResearchComponent.tres" id="135_gc6a6"]
+[ext_resource type="Resource" uid="uid://dkmmck8e6wv2v" path="res://Entities/Items/Machine Component/Light/Data/LightComponent.tres" id="136_2p35n"]
+[ext_resource type="Resource" uid="uid://dgqnscgejksc" path="res://Entities/Items/Minerals/Coal/Data/item_info_coal.tres" id="137_xdlmx"]
+[ext_resource type="Resource" uid="uid://cwipvir80puex" path="res://Entities/Items/Machine Component/Inventory/Data/InventoryComponent.tres" id="138_phhkr"]
+[ext_resource type="Resource" uid="uid://cvimpjdxil5uq" path="res://Entities/Items/Machine Component/Sleep/Data/SleepComponent.tres" id="139_00dn7"]
+[ext_resource type="Resource" uid="uid://j7d4ldttvjxk" path="res://Entities/Items/Machine Component/Destroy/Data/DestroyComponent.tres" id="140_3r3vq"]
+[ext_resource type="Resource" uid="uid://cw6dwcb62nh4b" path="res://Entities/Items/Vegetation/Sugar Cane/Data/SugarCane.tres" id="141_r63d6"]
+[ext_resource type="Resource" uid="uid://d2tb18k5hugmy" path="res://Entities/Items/Vegetation/Sugar Cane/Sugar Cane Seeds/Data/SugarCaneSeeds.tres" id="142_i2uwl"]
+[ext_resource type="Resource" uid="uid://c05grb4hfdt0e" path="res://Entities/Items/Craftable/item_info_paper.tres" id="143_2wxv2"]
+[ext_resource type="Resource" uid="uid://c75vavx28440q" path="res://Entities/Items/Craftable/item_info_research_book_level.tres" id="144_omqac"]
+[ext_resource type="Resource" uid="uid://t5v8qm6eoktq" path="res://Entities/Items/Craftable/item_info_research_book_sub.tres" id="145_4tpqb"]
+[ext_resource type="Resource" uid="uid://2g7pnssy57fa" path="res://Entities/Items/Craftable/item_info_sugar.tres" id="146_ebpo7"]
+[ext_resource type="Resource" uid="uid://dnbpomwm23l8s" path="res://Entities/Items/Vegetation/Mystic Mushroom/Data/MysticMushroom.tres" id="147_wqlrk"]
+[ext_resource type="Resource" uid="uid://wxhydk80jtpn" path="res://Entities/Items/Vegetation/Mystic Mushroom/Mystic Mushroom Spores/MysticMushroomSpores.tres" id="148_lq40w"]
+[ext_resource type="Resource" uid="uid://dnw1xuhrw2jlh" path="res://Entities/Items/Vegetation/Palm/Palm Wood/Data/PalmWood.tres" id="149_oxw4l"]
+[ext_resource type="Resource" uid="uid://dnxxeevayo83d" path="res://Entities/Items/Vegetation/Palm/Palm Seeds/Data/PalmSeeds.tres" id="150_qoh50"]
+[ext_resource type="Resource" uid="uid://dbu0erdxodn6w" path="res://Entities/Items/Vegetation/Cactus/Data/Cactus.tres" id="151_5mkim"]
+[ext_resource type="Resource" uid="uid://gestufnjtr7p" path="res://Entities/Items/Vegetation/Cactus/Cactus Seeds/Data/CactusSeed.tres" id="152_es80p"]
+[ext_resource type="Resource" uid="uid://3uys8bpbmptb" path="res://Entities/Items/Vegetation/Oak/Oak Seeds/Data/OakSeeds.tres" id="153_pah5c"]
+
+[node name="MainMenu" type="Control" unique_id=1921051255 node_paths=PackedStringArray("skip_tutorial", "intro_player", "parent", "menu_part_1", "menu_part_2", "difficulty_select", "load_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_yqeex")
+skip_intro = true
+skip_tutorial = NodePath("Menu/Control/VBox_Menu_Part2/SkipTutorial")
+intro_player = NodePath("Menu/VideoStreamPlayer2")
+parent = NodePath("Menu/Control")
+menu_part_1 = NodePath("Menu/Control/VBox_Menu_Part1")
+menu_part_2 = NodePath("Menu/Control/VBox_Menu_Part2")
+difficulty_select = NodePath("Menu/Control/VBox_Menu_Part2/DifficultOptionButton")
+load_button = NodePath("Menu/Control/VBox_Menu_Part1/LoadGameButton")
+
+[node name="Menu" type="Control" parent="." unique_id=1914198663]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="Menu" unique_id=531123815]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Menu/Control" unique_id=262700296]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4mpl3")
+expand_mode = 1
+
+[node name="Fade_Out_Overlay" type="TextureRect" parent="Menu/Control" unique_id=853489400]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3w0ny")
+expand_mode = 1
+
+[node name="LogoParent" type="Control" parent="Menu/Control" unique_id=1743275020]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -45.0
+offset_right = -5.0
+offset_bottom = 40.0
+grow_horizontal = 0
+scale = Vector2(1.2, 1.2)
+
+[node name="Island" type="TextureRect" parent="Menu/Control/LogoParent" unique_id=1194561448]
+layout_mode = 0
+offset_left = -94.16668
+offset_top = -3.3333335
+offset_right = 161.83331
+offset_bottom = 252.66667
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_8ge3d")
+
+[node name="WI_Logo" type="TextureRect" parent="Menu/Control/LogoParent" unique_id=1548271578]
+layout_mode = 0
+offset_left = -158.0
+offset_top = 9.0
+offset_right = 62.117188
+offset_bottom = 170.0
+texture = ExtResource("5_sicj5")
+expand_mode = 1
+
+[node name="VBox_Menu_Part1" type="VBoxContainer" parent="Menu/Control" unique_id=1934819766]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 150.0
+offset_right = 615.0
+offset_bottom = 329.0
+
+[node name="NewGameButton" type="Button" parent="Menu/Control/VBox_Menu_Part1" unique_id=1928961024]
+clip_contents = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_5j77y")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("7_5ir77")
+theme_override_styles/pressed = ExtResource("8_jnprb")
+theme_override_styles/hover = ExtResource("9_ogxk2")
+theme_override_styles/disabled = ExtResource("10_u2kkx")
+theme_override_styles/focus = ExtResource("11_6tlws")
+keep_pressed_outside = true
+text = "NEW GAME"
+script = ExtResource("12_jqrcp")
+label_translation_string = "MAINMENU_NEW_GAME"
+
+[node name="LoadGameButton" type="Button" parent="Menu/Control/VBox_Menu_Part1" unique_id=752909834]
+clip_contents = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/h_separation = 0
+theme_override_fonts/font = ExtResource("6_5j77y")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("7_5ir77")
+theme_override_styles/pressed = ExtResource("8_jnprb")
+theme_override_styles/hover = ExtResource("9_ogxk2")
+theme_override_styles/disabled = ExtResource("10_u2kkx")
+theme_override_styles/focus = ExtResource("11_6tlws")
+keep_pressed_outside = true
+text = "LOAD GAME"
+script = ExtResource("12_jqrcp")
+label_translation_string = "SAVELOAD_MENU_LOAD_BUTTON"
+
+[node name="ExitButton" type="Button" parent="Menu/Control/VBox_Menu_Part1" unique_id=905517288]
+clip_contents = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_5j77y")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("7_5ir77")
+theme_override_styles/pressed = ExtResource("8_jnprb")
+theme_override_styles/hover = ExtResource("9_ogxk2")
+theme_override_styles/disabled = ExtResource("10_u2kkx")
+theme_override_styles/focus = ExtResource("11_6tlws")
+keep_pressed_outside = true
+text = "EXIT GAME"
+script = ExtResource("12_jqrcp")
+label_translation_string = "MAINMENU_EXIT_GAME"
+
+[node name="Fill2" type="ColorRect" parent="Menu/Control/VBox_Menu_Part1" unique_id=555129292]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Menu/Control/VBox_Menu_Part1" unique_id=1454729225]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_5j77y")
+theme_override_font_sizes/font_size = 8
+text = "© 2026 Leon Schröder. V0.2.2"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VBox_Menu_Part2" type="VBoxContainer" parent="Menu/Control" unique_id=1935479514]
+visible = false
+layout_mode = 0
+offset_left = 484.0
+offset_top = 150.0
+offset_right = 615.0
+offset_bottom = 329.0
+
+[node name="Fill3" type="ColorRect" parent="Menu/Control/VBox_Menu_Part2" unique_id=106748959]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DifficultLabel2" type="Label" parent="Menu/Control/VBox_Menu_Part2" unique_id=2024097126]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_5j77y")
+theme_override_font_sizes/font_size = 12
+text = "Tutorial:"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SkipTutorial" type="CheckBox" parent="Menu/Control/VBox_Menu_Part2" unique_id=629686743]
+clip_contents = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_5j77y")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("7_5ir77")
+theme_override_styles/pressed = ExtResource("8_jnprb")
+theme_override_styles/hover = ExtResource("9_ogxk2")
+theme_override_styles/hover_pressed = ExtResource("13_dd1k4")
+theme_override_styles/disabled = ExtResource("10_u2kkx")
+theme_override_styles/focus = ExtResource("11_6tlws")
+theme_override_constants/check_v_offset = 0
+keep_pressed_outside = true
+text = "Skip"
+alignment = 1
+script = ExtResource("14_cc178")
+label_translation_string = "MAINMENU_SKIP_TUTORIAL"
+
+[node name="EMPTYLABEL3" type="Label" parent="Menu/Control/VBox_Menu_Part2" unique_id=1645507543]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_5j77y")
+theme_override_font_sizes/font_size = 6
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DifficultLabel" type="Label" parent="Menu/Control/VBox_Menu_Part2" unique_id=1008573285]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_5j77y")
+theme_override_font_sizes/font_size = 12
+text = "Difficult:"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DifficultOptionButton" type="OptionButton" parent="Menu/Control/VBox_Menu_Part2" unique_id=829627047]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("6_5j77y")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("13_dd1k4")
+theme_override_styles/pressed = ExtResource("8_jnprb")
+theme_override_styles/hover = ExtResource("9_ogxk2")
+theme_override_styles/disabled = ExtResource("10_u2kkx")
+theme_override_styles/focus = ExtResource("11_6tlws")
+alignment = 1
+selected = 0
+item_count = 4
+popup/item_0/text = "Easy"
+popup/item_0/id = 0
+popup/item_1/text = "Normal"
+popup/item_1/id = 1
+popup/item_2/text = "Hard"
+popup/item_2/id = 2
+popup/item_3/text = "Expert"
+popup/item_3/id = 3
+
+[node name="EMPTYLABEL2" type="Label" parent="Menu/Control/VBox_Menu_Part2" unique_id=1840322438]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_5j77y")
+theme_override_font_sizes/font_size = 6
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="NewGameButton" type="Button" parent="Menu/Control/VBox_Menu_Part2" unique_id=131153718]
+clip_contents = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_5j77y")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("7_5ir77")
+theme_override_styles/pressed = ExtResource("8_jnprb")
+theme_override_styles/hover = ExtResource("9_ogxk2")
+theme_override_styles/disabled = ExtResource("10_u2kkx")
+theme_override_styles/focus = ExtResource("11_6tlws")
+keep_pressed_outside = true
+text = "Create new Game"
+script = ExtResource("12_jqrcp")
+label_translation_string = "MAINMENU_NEW_GAME"
+
+[node name="V" type="Button" parent="Menu/Control/VBox_Menu_Part2" unique_id=2026709884]
+clip_contents = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_5j77y")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("7_5ir77")
+theme_override_styles/pressed = ExtResource("8_jnprb")
+theme_override_styles/hover = ExtResource("9_ogxk2")
+theme_override_styles/disabled = ExtResource("10_u2kkx")
+theme_override_styles/focus = ExtResource("11_6tlws")
+keep_pressed_outside = true
+text = "Back to Start"
+script = ExtResource("12_jqrcp")
+label_translation_string = "MAINMENU_BACK"
+
+[node name="Fill2" type="ColorRect" parent="Menu/Control/VBox_Menu_Part2" unique_id=1970123364]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Menu/Control/VBox_Menu_Part2" unique_id=1595888258]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_5j77y")
+theme_override_font_sizes/font_size = 8
+text = "© 2026 Leon Schröder. V0.2.2"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="Menu" unique_id=1814333455]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("15_jwfcp")
+autoplay = true
+expand = true
+
+[node name="TransitionManager" parent="." unique_id=1594512916 instance=ExtResource("16_il1im")]
+layer = 10
+visible = false
+
+[node name="Database" type="Node" parent="." unique_id=2013621725]
+script = ExtResource("17_2xiho")
+building_menu_list_objects = Array[Object]([ExtResource("18_0iy3j"), ExtResource("19_ahlfb"), ExtResource("20_wevbg"), ExtResource("21_5ngv7"), ExtResource("22_sr8d7"), ExtResource("23_c7pgb"), ExtResource("24_q02jy"), ExtResource("25_1qo6e"), ExtResource("26_p251o"), ExtResource("27_k6cvp"), ExtResource("28_qqiq8"), ExtResource("29_nvrgy"), ExtResource("30_14hcn"), ExtResource("31_5oqoe"), ExtResource("32_5ejo1"), ExtResource("33_1ee3u"), ExtResource("34_qe4eq"), ExtResource("35_tl2s0"), ExtResource("36_2os3q"), ExtResource("37_5tne7"), ExtResource("38_102xl"), ExtResource("39_4slrk"), ExtResource("40_6qvsk"), ExtResource("41_8j5fa"), ExtResource("42_ulpy6"), ExtResource("43_o04hm"), ExtResource("44_8ftcc"), ExtResource("45_uslci"), ExtResource("46_eb1q4"), ExtResource("47_3e4cm"), ExtResource("48_kun22"), ExtResource("49_bp6bb"), ExtResource("50_aqhke"), ExtResource("51_isupv"), ExtResource("52_43waw"), ExtResource("53_653hc"), ExtResource("54_80xy1"), ExtResource("55_iw1l5")])
+item_research_list = Array[Object]([ExtResource("56_l43bq"), ExtResource("57_v6ycb"), ExtResource("58_cnql1"), ExtResource("59_opovq"), ExtResource("60_iqtc6")])
+crafting_recipies_list = Array[Object]([ExtResource("61_ayhw5"), ExtResource("62_oym2v"), ExtResource("63_vn1rt"), ExtResource("64_v3plx"), ExtResource("65_fo3hv"), ExtResource("66_qwd5t"), ExtResource("67_ntm2f"), ExtResource("68_j1a4d"), ExtResource("69_8bai6"), ExtResource("70_hbqhj"), ExtResource("71_a3ni4"), ExtResource("72_uilr1"), ExtResource("73_msqky"), ExtResource("74_qin7u"), ExtResource("75_7swlr"), ExtResource("76_8paip"), ExtResource("77_534ny"), ExtResource("78_0xd4i"), ExtResource("79_b1uc7"), ExtResource("80_vwfet"), ExtResource("81_wewb2"), ExtResource("82_3e3yn"), ExtResource("83_we6f7"), ExtResource("84_stcjh"), ExtResource("85_oqsb6"), ExtResource("86_ik4ub"), ExtResource("87_f83y6"), ExtResource("88_nnj2c")])
+item_info_list = Array[Object]([ExtResource("89_2fes1"), ExtResource("90_oh47l"), ExtResource("91_cv6yx"), ExtResource("92_t4he0"), ExtResource("93_8w0mg"), ExtResource("94_di7id"), ExtResource("95_ciuyg"), ExtResource("96_nsj56"), ExtResource("97_ppdsq"), ExtResource("98_7pc50"), ExtResource("99_5oqp0"), ExtResource("100_sn514"), ExtResource("101_6pocp"), ExtResource("102_ic5yf"), ExtResource("103_d6isu"), ExtResource("104_dxjk3"), ExtResource("105_bq3pj"), ExtResource("106_l855g"), ExtResource("107_s1w37"), ExtResource("108_whkyq"), ExtResource("109_rg7fx"), ExtResource("110_340ia"), ExtResource("111_116tv"), ExtResource("112_me3ow"), ExtResource("113_aq8qd"), ExtResource("114_km3di"), ExtResource("115_ipi17"), ExtResource("116_0hdmy"), ExtResource("117_2sgbn"), ExtResource("118_a2nif"), ExtResource("119_v0sm1"), ExtResource("120_l5p4o"), ExtResource("121_57oxd"), ExtResource("122_vpn2c"), ExtResource("123_ief2s"), ExtResource("124_gaid2"), ExtResource("125_ymr4b"), ExtResource("126_2l5m7"), ExtResource("127_atkxa"), ExtResource("128_ghwor"), ExtResource("129_1qu5q"), ExtResource("130_vjobf"), ExtResource("131_xsynr"), ExtResource("132_n0rwy"), ExtResource("133_h0pwl"), ExtResource("134_0nb1o"), ExtResource("135_gc6a6"), ExtResource("136_2p35n"), ExtResource("137_xdlmx"), ExtResource("138_phhkr"), ExtResource("139_00dn7"), ExtResource("140_3r3vq"), ExtResource("141_r63d6"), ExtResource("142_i2uwl"), ExtResource("143_2wxv2"), ExtResource("144_omqac"), ExtResource("145_4tpqb"), ExtResource("146_ebpo7"), ExtResource("147_wqlrk"), ExtResource("148_lq40w"), ExtResource("149_oxw4l"), ExtResource("150_qoh50"), ExtResource("151_5mkim"), ExtResource("152_es80p"), ExtResource("153_pah5c")])
+
+[connection signal="visibility_changed" from="." to="." method="OnVisiblityChanged"]
+[connection signal="pressed" from="Menu/Control/VBox_Menu_Part1/NewGameButton" to="." method="OpenCreateSettings"]
+[connection signal="pressed" from="Menu/Control/VBox_Menu_Part1/LoadGameButton" to="." method="OnLoadGameButtoN"]
+[connection signal="pressed" from="Menu/Control/VBox_Menu_Part1/ExitButton" to="." method="OnExitGameButtoN"]
+[connection signal="item_selected" from="Menu/Control/VBox_Menu_Part2/DifficultOptionButton" to="." method="OnDifficultSelect"]
+[connection signal="pressed" from="Menu/Control/VBox_Menu_Part2/NewGameButton" to="." method="OnNewGameButtoN"]
+[connection signal="pressed" from="Menu/Control/VBox_Menu_Part2/V" to="." method="OnBackToMainMenu"]

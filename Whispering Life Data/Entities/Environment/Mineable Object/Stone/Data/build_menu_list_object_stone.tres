@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://5py0ata6wvnx"]
+[gd_resource type="Resource" format=3 uid="uid://5py0ata6wvnx"]
 
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Entities/Items/Vegetation/Oak/Oak Wood/Data/OakWood.tres" id="1_7kc02"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_u46uy"]
 [ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Entities/Environment/Mineable Object/Stone/mineable_object_stone.tscn" id="3_7kc02"]
-[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Building_Menu_List_Object.cs" id="4_stbli"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Build Menu Line/Building_Menu_List_Object.cs" id="4_x7k8g"]
 [ext_resource type="Texture2D" uid="uid://cjg5w6c4hj1ch" path="res://Entities/Spritesheets/Stones/Rock0.png" id="5_0jcnm"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
@@ -13,7 +13,7 @@ amount = 1
 metadata/_custom_type_script = "uid://cee63igbpybf"
 
 [resource]
-script = ExtResource("4_stbli")
+script = ExtResource("4_x7k8g")
 scene = ExtResource("3_7kc02")
 scene_building_id = 16
 required_items = Array[Object]([SubResource("Resource_yo73i")])

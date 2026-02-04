@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dmwxrhivem12e" path="res://UI/Menus/Remove Obstical Menu/DestroyMenu.cs" id="1_lp1pc"]
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://UI/Menus/menu_header_object.tscn" id="2_5ndnv"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="3_dechd"]
-[ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://UI/UI Scripts/TranslationButton.cs" id="4_g0jn4"]
+[ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://UI/Menus/Translation/TranslationButton.cs" id="4_g0jn4"]
 
 [node name="DestroyMenu" type="ColorRect" unique_id=1475926801 node_paths=PackedStringArray("quest_description_label", "quest_title_label", "parent", "destroy_button")]
 anchors_preset = 15

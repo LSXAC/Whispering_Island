@@ -3,6 +3,6 @@ using Godot;
 
 public partial class PlayerStatsUI : ColorRect
 {
-    [Export]
-    public VBoxContainer stats_container;
+	[Export]
+	public VBoxContainer stats_container;
 }

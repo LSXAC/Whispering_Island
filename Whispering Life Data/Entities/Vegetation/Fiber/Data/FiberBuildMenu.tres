@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://bhobhelygjw88"]
+[gd_resource type="Resource" format=3 uid="uid://bhobhelygjw88"]
 
 [ext_resource type="Resource" uid="uid://w5f8nrctnh1j" path="res://Entities/Items/Vegetation/Fiber/Fiber Seeds/Data/FiberSeed.tres" id="1_g8k67"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_3i2wc"]
 [ext_resource type="PackedScene" uid="uid://eshgc8yqihmh" path="res://Entities/Vegetation/Fiber/mineable_object_fibre.tscn" id="3_5nso2"]
-[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Building_Menu_List_Object.cs" id="4_2334c"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Build Menu Line/Building_Menu_List_Object.cs" id="4_onnho"]
 [ext_resource type="Texture2D" uid="uid://c64xvoxldsui6" path="res://Entities/Items/SpritesForItems/Plants_Icons/Fibre.png" id="5_g8k67"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
@@ -13,7 +13,7 @@ amount = 1
 metadata/_custom_type_script = "uid://cee63igbpybf"
 
 [resource]
-script = ExtResource("4_2334c")
+script = ExtResource("4_onnho")
 scene = ExtResource("3_5nso2")
 scene_building_id = 29
 required_items = Array[Object]([SubResource("Resource_yo73i")])

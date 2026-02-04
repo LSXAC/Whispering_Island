@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="1_msnuq"]
 [ext_resource type="Script" uid="uid://c3p7qr2jca8hs" path="res://UI/UI Scripts/HeaderColorRect.cs" id="1_wq3hn"]
-[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/UI Scripts/TranslationLabel.cs" id="3_kh3u6"]
+[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/Menus/Translation/TranslationLabel.cs" id="3_kh3u6"]
 
 [node name="HeaderColorRect" type="ColorRect" unique_id=767268895]
 offset_right = 529.0

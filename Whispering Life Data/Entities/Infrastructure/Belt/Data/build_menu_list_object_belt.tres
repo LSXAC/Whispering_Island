@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://ugx2sc0qbion"]
+[gd_resource type="Resource" format=3 uid="uid://ugx2sc0qbion"]
 
 [ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Entities/Items/Craftable/item_info_iron_ingot.tres" id="1_n16if"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_n16if"]
 [ext_resource type="PackedScene" uid="uid://rd7h1v4imvk6" path="res://Entities/Infrastructure/Belt/Building_Belt.tscn" id="3_1b27n"]
 [ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://Entities/Items/Machine Component/Transport/Data/TransportComponent.tres" id="3_n16if"]
-[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Building_Menu_List_Object.cs" id="4_a6w12"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Build Menu Line/Building_Menu_List_Object.cs" id="5_1s3i0"]
 [ext_resource type="Texture2D" uid="uid://dh7i821w2aucb" path="res://Entities/Infrastructure/Belt/Belt_Side.png" id="5_8b7q1"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
@@ -20,7 +20,7 @@ amount = 1
 metadata/_custom_type_script = "uid://cee63igbpybf"
 
 [resource]
-script = ExtResource("4_a6w12")
+script = ExtResource("5_1s3i0")
 scene = ExtResource("3_1b27n")
 scene_building_id = 30
 required_items = Array[Object]([SubResource("Resource_yo73i"), SubResource("Resource_8b7q1")])

@@ -1,31 +1,31 @@
 [gd_scene format=3 uid="uid://j1cdgg7lep78"]
 
 [ext_resource type="Script" uid="uid://6j5ep62led2i" path="res://UI/Player UI/PlayerUI.cs" id="1_m5svq"]
-[ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://UI/Slider_Line.png" id="2_jybl7"]
-[ext_resource type="Texture2D" uid="uid://ddo0v2qenmv6h" path="res://UI/Building_Frame.png" id="2_ktroc"]
+[ext_resource type="Texture2D" uid="uid://d1r1nniiejrjq" path="res://UI/Player UI/Stamina Bar/Textures/Slider_Line.png" id="2_jybl7"]
+[ext_resource type="Texture2D" uid="uid://ddo0v2qenmv6h" path="res://UI/Player UI/Overlay/Building_Frame.png" id="2_ktroc"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="3_0pxjf"]
-[ext_resource type="Texture2D" uid="uid://dfp34ytxtppg8" path="res://UI/Removing_Frame.png" id="3_7rm5b"]
+[ext_resource type="Texture2D" uid="uid://dfp34ytxtppg8" path="res://UI/Player UI/Overlay/Removing_Frame.png" id="3_7rm5b"]
 [ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Sub Systems/ItemRowManager.cs" id="4_28ccb"]
 [ext_resource type="Script" uid="uid://b4njwqy0g4kis" path="res://UI/UI Scripts/QuestMiniPanel.cs" id="4_khv1d"]
-[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/UI Scripts/TranslationLabel.cs" id="7_vya4o"]
+[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/Menus/Translation/TranslationLabel.cs" id="7_vya4o"]
 [ext_resource type="Script" uid="uid://byutu1d7d16k7" path="res://UI/UI Scripts/QuestAcceptPanel.cs" id="8_3uym3"]
 [ext_resource type="StyleBox" uid="uid://cfrmx1sogqkln" path="res://UI/Styles/Slider_Style.tres" id="8_f1ae0"]
 [ext_resource type="StyleBox" uid="uid://b2c5h8k14gscx" path="res://UI/Styles/Slider_Grabber_Style.tres" id="9_7vqgd"]
-[ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://UI/UI Scripts/TranslationButton.cs" id="9_erkjv"]
+[ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://UI/Menus/Translation/TranslationButton.cs" id="9_erkjv"]
 [ext_resource type="Script" uid="uid://c872ycivw0d7a" path="res://UI/UI Scripts/EffectPanel.cs" id="11_r7w4g"]
-[ext_resource type="Script" uid="uid://bang68hyrryto" path="res://UI/UI Scripts/TranslationRichTextLabel.cs" id="12_fbb8a"]
-[ext_resource type="Texture2D" uid="uid://1rxf21hw1xu5" path="res://UI/Heart_Icon.png" id="12_rpytx"]
-[ext_resource type="Script" uid="uid://b5gbju1jehjfy" path="res://Sub Systems/HeartManager.cs" id="12_twnk5"]
-[ext_resource type="Script" uid="uid://chwavdauv6ifd" path="res://UI/Player UI/TimeStripe.cs" id="13_kaodh"]
+[ext_resource type="Script" uid="uid://bang68hyrryto" path="res://UI/Menus/Translation/TranslationRichTextLabel.cs" id="12_fbb8a"]
+[ext_resource type="Texture2D" uid="uid://1rxf21hw1xu5" path="res://UI/Player UI/Textures/Heart_Icon.png" id="12_rpytx"]
+[ext_resource type="Script" uid="uid://b5gbju1jehjfy" path="res://Sub Systems/Heart System/HeartManager.cs" id="12_twnk5"]
+[ext_resource type="Script" uid="uid://chwavdauv6ifd" path="res://UI/Player UI/Time Stripe/TimeStripe.cs" id="13_kaodh"]
 [ext_resource type="Theme" uid="uid://pft8ltrg588m" path="res://UI/Themes/Main_Theme.tres" id="13_uwodk"]
-[ext_resource type="Texture2D" uid="uid://raaamx5w323j" path="res://UI/currency_icon.png" id="14_uwodk"]
-[ext_resource type="Script" uid="uid://cowg1oi4t5ap8" path="res://UI/Player UI/EquipmentSelectBar.cs" id="17_450ol"]
+[ext_resource type="Texture2D" uid="uid://raaamx5w323j" path="res://UI/Player UI/Textures/currency_icon.png" id="14_uwodk"]
+[ext_resource type="Script" uid="uid://cowg1oi4t5ap8" path="res://UI/Player UI/Equipment Bar/EquipmentSelectBar.cs" id="17_450ol"]
 [ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://UI/Styles/tab_container_panel_style.tres.tres" id="17_rkorj"]
 [ext_resource type="PackedScene" uid="uid://bnf8yngk7oyy0" path="res://UI/Menus/h_box_item_menu_line_horizontal.tscn" id="18_uwodk"]
 [ext_resource type="PackedScene" uid="uid://bovrg0u6tuo04" path="res://UI/Menus/Hover Menu/hover_menu.tscn" id="20_fdkbp"]
 [ext_resource type="StyleBox" uid="uid://bfrdtjfua8vts" path="res://UI/Styles/Panel_Transparent.tres" id="20_kobl8"]
 [ext_resource type="PackedScene" uid="uid://ceypkxf7dox6w" path="res://UI/Inventory/slot_background.tscn" id="21_uwodk"]
-[ext_resource type="Script" uid="uid://beq75bhjwesgy" path="res://Sub Systems/DiscoverManager.cs" id="25_7vqgd"]
+[ext_resource type="Script" uid="uid://beq75bhjwesgy" path="res://Sub Systems/Discover System/DiscoverManager.cs" id="25_7vqgd"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Entities/Items/SpritesForItems/Icons_3rd/Wood_Icon.png" id="26_d27p6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4utg2"]
@@ -152,7 +152,7 @@ _data = {
 &"Start_Discovery": SubResource("Animation_d27p6")
 }
 
-[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("equipmentSelectBar", "time_stripe", "game_time_label", "qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "money_label", "info_vBox", "mainmenu_button", "item_label_timer")]
+[node name="PlayerUI" type="CanvasLayer" unique_id=258463009 node_paths=PackedStringArray("equipmentSelectBar", "time_stripe", "game_time_label", "qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "money_label", "info_vBox", "mainmenu_button", "item_label_timer")]
 script = ExtResource("1_m5svq")
 equipmentSelectBar = NodePath("EquipmentSelectBar")
 time_stripe = NodePath("VBoxContainer/TimeStripe")
@@ -170,7 +170,7 @@ info_vBox = NodePath("WindowFrame/VBoxContainer")
 mainmenu_button = NodePath("GameOverPanel/VBoxContainer/MainmenuButton")
 item_label_timer = NodePath("Item_Label_Timer")
 
-[node name="WindowFrame" type="TextureRect" parent="."]
+[node name="WindowFrame" type="TextureRect" parent="." unique_id=1305326509]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -179,7 +179,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_7rm5b")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="WindowFrame"]
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowFrame" unique_id=365590875]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -193,7 +193,7 @@ offset_bottom = -104.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Label2" type="Label" parent="WindowFrame/VBoxContainer"]
+[node name="Label2" type="Label" parent="WindowFrame/VBoxContainer" unique_id=688442048]
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
@@ -204,7 +204,7 @@ vertical_alignment = 1
 script = ExtResource("7_vya4o")
 label_translation_string = "PLAYERUI_ROTATE_FLIP_TIP"
 
-[node name="Label" type="Label" parent="WindowFrame/VBoxContainer"]
+[node name="Label" type="Label" parent="WindowFrame/VBoxContainer" unique_id=2114710105]
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
@@ -214,12 +214,12 @@ horizontal_alignment = 2
 script = ExtResource("7_vya4o")
 label_translation_string = "PLAYERUI_RESOURCES_NEEDED"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="WindowFrame/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowFrame/VBoxContainer" unique_id=1161669435]
 layout_mode = 2
 alignment = 2
 script = ExtResource("4_28ccb")
 
-[node name="TimesLeftLabel" type="Label" parent="WindowFrame/VBoxContainer"]
+[node name="TimesLeftLabel" type="Label" parent="WindowFrame/VBoxContainer" unique_id=895588258]
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
@@ -227,7 +227,7 @@ theme_override_font_sizes/font_size = 8
 text = "> 2x can be build"
 horizontal_alignment = 2
 
-[node name="HSlider" type="HSlider" parent="."]
+[node name="HSlider" type="HSlider" parent="." unique_id=546475761]
 custom_minimum_size = Vector2(150, 0)
 anchors_preset = 7
 anchor_left = 0.5
@@ -251,7 +251,7 @@ value = 25.0
 editable = false
 scrollable = false
 
-[node name="Label" type="Label" parent="HSlider"]
+[node name="Label" type="Label" parent="HSlider" unique_id=569638629]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -272,7 +272,7 @@ theme_override_font_sizes/font_size = 10
 text = "Stamina"
 horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=909046358]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -280,7 +280,7 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+[node name="VBoxContainer3" type="VBoxContainer" parent="." unique_id=276144171]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -290,10 +290,10 @@ offset_right = 128.0
 offset_bottom = -8.0
 grow_vertical = 0
 
-[node name="ReceivedItems" type="Control" parent="VBoxContainer3"]
+[node name="ReceivedItems" type="Control" parent="VBoxContainer3" unique_id=440053527]
 layout_mode = 2
 
-[node name="QuestCompletePanel" type="Panel" parent="."]
+[node name="QuestCompletePanel" type="Panel" parent="." unique_id=182703468]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -309,7 +309,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="CenterContainer" type="CenterContainer" parent="QuestCompletePanel"]
+[node name="CenterContainer" type="CenterContainer" parent="QuestCompletePanel" unique_id=1017782097]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -317,10 +317,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="QuestCompletePanel/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestCompletePanel/CenterContainer" unique_id=223110980]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="QuestCompletePanel/CenterContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="QuestCompletePanel/CenterContainer/VBoxContainer" unique_id=977124723]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Quest Complete!"
@@ -328,17 +328,17 @@ horizontal_alignment = 1
 script = ExtResource("7_vya4o")
 label_translation_string = "PLAYERUI_COMPLETE_QUEST"
 
-[node name="Label2" type="Label" parent="QuestCompletePanel/CenterContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="QuestCompletePanel/CenterContainer/VBoxContainer" unique_id=1970918217]
 layout_mode = 2
 text = "The required Items got removed from your inventory."
 horizontal_alignment = 1
 script = ExtResource("7_vya4o")
 label_translation_string = "PLAYERUI_COMPLETE_QUEST_REQU_ITEMS"
 
-[node name="Timer" type="Timer" parent="QuestCompletePanel"]
+[node name="Timer" type="Timer" parent="QuestCompletePanel" unique_id=303096538]
 wait_time = 2.0
 
-[node name="QuestAcceptPanel" type="Panel" parent="." node_paths=PackedStringArray("title_label", "description_label", "confirm_button")]
+[node name="QuestAcceptPanel" type="Panel" parent="." unique_id=1904933021 node_paths=PackedStringArray("title_label", "description_label", "confirm_button")]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -358,7 +358,7 @@ title_label = NodePath("CenterContainer/VBoxContainer/Title")
 description_label = NodePath("CenterContainer/VBoxContainer/Description")
 confirm_button = NodePath("CenterContainer/VBoxContainer/ConfirmButton")
 
-[node name="CenterContainer" type="CenterContainer" parent="QuestAcceptPanel"]
+[node name="CenterContainer" type="CenterContainer" parent="QuestAcceptPanel" unique_id=1731437004]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -366,10 +366,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="QuestAcceptPanel/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestAcceptPanel/CenterContainer" unique_id=844761473]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="QuestAcceptPanel/CenterContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="QuestAcceptPanel/CenterContainer/VBoxContainer" unique_id=1641566018]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "You received a Debuff!"
@@ -377,7 +377,7 @@ horizontal_alignment = 1
 script = ExtResource("7_vya4o")
 label_translation_string = "PLAYERUI_COMPLETE_QUEST"
 
-[node name="Description" type="Label" parent="QuestAcceptPanel/CenterContainer/VBoxContainer"]
+[node name="Description" type="Label" parent="QuestAcceptPanel/CenterContainer/VBoxContainer" unique_id=1343086025]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "The Next Quest will only have half of the Time to complete"
@@ -386,21 +386,21 @@ autowrap_mode = 3
 script = ExtResource("7_vya4o")
 label_translation_string = "PLAYERUI_COMPLETE_QUEST_REQU_ITEMS"
 
-[node name="SPACELABEL" type="Label" parent="QuestAcceptPanel/CenterContainer/VBoxContainer"]
+[node name="SPACELABEL" type="Label" parent="QuestAcceptPanel/CenterContainer/VBoxContainer" unique_id=1561205968]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="ConfirmButton" type="Button" parent="QuestAcceptPanel/CenterContainer/VBoxContainer"]
+[node name="ConfirmButton" type="Button" parent="QuestAcceptPanel/CenterContainer/VBoxContainer" unique_id=1194795991]
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
 theme_override_font_sizes/font_size = 14
 text = "Confirm"
 
-[node name="Timer" type="Timer" parent="QuestAcceptPanel"]
+[node name="Timer" type="Timer" parent="QuestAcceptPanel" unique_id=182308412]
 wait_time = 2.0
 
-[node name="EffectPanel" type="Panel" parent="."]
+[node name="EffectPanel" type="Panel" parent="." unique_id=303720205]
 visible = false
 anchors_preset = 1
 anchor_left = 1.0
@@ -410,7 +410,7 @@ offset_bottom = 59.0
 grow_horizontal = 0
 script = ExtResource("11_r7w4g")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="EffectPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="EffectPanel" unique_id=22821158]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -419,7 +419,7 @@ offset_left = -95.0
 offset_bottom = 40.0
 grow_horizontal = 0
 
-[node name="FatigueLabel" type="Label" parent="EffectPanel/VBoxContainer"]
+[node name="FatigueLabel" type="Label" parent="EffectPanel/VBoxContainer" unique_id=1888854724]
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
@@ -427,14 +427,14 @@ theme_override_font_sizes/font_size = 16
 text = "Fatigue: 2%"
 horizontal_alignment = 2
 
-[node name="FatigueEffects" type="Label" parent="EffectPanel/VBoxContainer"]
+[node name="FatigueEffects" type="Label" parent="EffectPanel/VBoxContainer" unique_id=1831053851]
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 2
 
-[node name="GameOverPanel" type="Panel" parent="."]
+[node name="GameOverPanel" type="Panel" parent="." unique_id=1336766684]
 visible = false
 z_index = 10
 anchors_preset = 15
@@ -443,7 +443,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPanel" unique_id=563790558]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -458,7 +458,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GameOverPanel/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GameOverPanel/VBoxContainer" unique_id=426003203]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 theme_override_constants/outline_size = 5
@@ -468,10 +468,10 @@ text = "[center][wave][font_size=25px]>[color=red]You got eaten[color=white]<"
 script = ExtResource("12_fbb8a")
 label_translation_string = "PLAYERUI_GAME_OVER"
 
-[node name="SPACELABEL" type="Label" parent="GameOverPanel/VBoxContainer"]
+[node name="SPACELABEL" type="Label" parent="GameOverPanel/VBoxContainer" unique_id=1518476760]
 layout_mode = 2
 
-[node name="Description" type="Label" parent="GameOverPanel/VBoxContainer"]
+[node name="Description" type="Label" parent="GameOverPanel/VBoxContainer" unique_id=584244051]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_0pxjf")
@@ -481,10 +481,10 @@ autowrap_mode = 3
 script = ExtResource("7_vya4o")
 label_translation_string = "PLAYERUI_GAME_OVER_DESC"
 
-[node name="SPACELABEL2" type="Label" parent="GameOverPanel/VBoxContainer"]
+[node name="SPACELABEL2" type="Label" parent="GameOverPanel/VBoxContainer" unique_id=1649301600]
 layout_mode = 2
 
-[node name="LoadGameButton" type="Button" parent="GameOverPanel/VBoxContainer"]
+[node name="LoadGameButton" type="Button" parent="GameOverPanel/VBoxContainer" unique_id=1569273944]
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
@@ -492,7 +492,7 @@ text = "Load Game"
 script = ExtResource("9_erkjv")
 label_translation_string = "SAVELOAD_MENU_LOAD_BUTTON"
 
-[node name="MainmenuButton" type="Button" parent="GameOverPanel/VBoxContainer"]
+[node name="MainmenuButton" type="Button" parent="GameOverPanel/VBoxContainer" unique_id=974622491]
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
@@ -500,7 +500,7 @@ text = "Main Menu"
 script = ExtResource("9_erkjv")
 label_translation_string = "MAINMENU_BACK_TO_MAINMENU"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1753667032]
 custom_minimum_size = Vector2(100, 0)
 offset_left = 5.0
 offset_top = 5.0
@@ -508,7 +508,7 @@ offset_right = 95.0
 offset_bottom = 201.0
 theme_override_constants/separation = 5
 
-[node name="TimeStripe" type="Panel" parent="VBoxContainer" node_paths=PackedStringArray("left", "right", "pointer")]
+[node name="TimeStripe" type="Panel" parent="VBoxContainer" unique_id=1914833690 node_paths=PackedStringArray("left", "right", "pointer")]
 custom_minimum_size = Vector2(20, 40)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("17_rkorj")
@@ -517,7 +517,7 @@ left = NodePath("HBoxContainer/TextureRect")
 right = NodePath("HBoxContainer/TextureRect2")
 pointer = NodePath("Pointer")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimeStripe"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimeStripe" unique_id=852312055]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -529,38 +529,38 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TimeStripe/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TimeStripe/HBoxContainer" unique_id=334785195]
 layout_mode = 2
 size_flags_horizontal = 3
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/TimeStripe/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/TimeStripe/HBoxContainer" unique_id=419906688]
 layout_mode = 2
 size_flags_horizontal = 3
 expand_mode = 1
 
-[node name="Pointer" type="ColorRect" parent="VBoxContainer/TimeStripe"]
+[node name="Pointer" type="ColorRect" parent="VBoxContainer/TimeStripe" unique_id=1492501273]
 custom_minimum_size = Vector2(2, 14)
 layout_mode = 0
 offset_right = 2.0
 offset_bottom = 19.0
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/TimeStripe"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/TimeStripe" unique_id=1853217621]
 layout_mode = 0
 offset_top = 18.0
 offset_right = 100.0
 offset_bottom = 19.0
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/TimeStripe"]
+[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/TimeStripe" unique_id=1034896456]
 layout_mode = 0
 offset_top = 29.0
 offset_right = 100.0
 offset_bottom = 30.0
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/TimeStripe"]
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/TimeStripe" unique_id=2058025959]
 custom_minimum_size = Vector2(26, 10)
 layout_mode = 1
 anchors_preset = 2
@@ -574,7 +574,7 @@ grow_vertical = 0
 theme = ExtResource("13_uwodk")
 color = Color(1, 1, 1, 0)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimeStripe/ColorRect3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimeStripe/ColorRect3" unique_id=765175062]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -585,14 +585,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TimeStripe/ColorRect3/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TimeStripe/ColorRect3/HBoxContainer" unique_id=806289984]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 texture = ExtResource("14_uwodk")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MoneyLabel" type="Label" parent="VBoxContainer/TimeStripe/ColorRect3/HBoxContainer"]
+[node name="MoneyLabel" type="Label" parent="VBoxContainer/TimeStripe/ColorRect3/HBoxContainer" unique_id=100418115]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
@@ -601,7 +601,7 @@ theme_override_font_sizes/font_size = 8
 text = "2883"
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/TimeStripe/ColorRect3"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/TimeStripe/ColorRect3" unique_id=30958037]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -611,7 +611,7 @@ offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameTimeLabel" type="Label" parent="VBoxContainer/TimeStripe/ColorRect3/HBoxContainer2"]
+[node name="GameTimeLabel" type="Label" parent="VBoxContainer/TimeStripe/ColorRect3/HBoxContainer2" unique_id=280121285]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -621,7 +621,7 @@ text = "23:33"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="HeartPanel" type="ColorRect" parent="VBoxContainer/TimeStripe" node_paths=PackedStringArray("parent")]
+[node name="HeartPanel" type="ColorRect" parent="VBoxContainer/TimeStripe" unique_id=519907772 node_paths=PackedStringArray("parent")]
 custom_minimum_size = Vector2(50, 10)
 layout_mode = 0
 offset_top = 30.0
@@ -631,7 +631,7 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("12_twnk5")
 parent = NodePath("MarginContainer/VBoxContainer/HBoxContainer")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TimeStripe/HeartPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TimeStripe/HeartPanel" unique_id=654042043]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -640,40 +640,40 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TimeStripe/HeartPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TimeStripe/HeartPanel/MarginContainer" unique_id=1524519611]
 layout_mode = 2
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer" unique_id=2072851529]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1050765058]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 texture = ExtResource("12_rpytx")
 expand_mode = 4
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1038597898]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 texture = ExtResource("12_rpytx")
 expand_mode = 4
 
-[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1622806370]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 texture = ExtResource("12_rpytx")
 expand_mode = 4
 
-[node name="QuestMiniPanel" type="PanelContainer" parent="VBoxContainer" node_paths=PackedStringArray("hbox_items", "time_label")]
+[node name="QuestMiniPanel" type="PanelContainer" parent="VBoxContainer" unique_id=401929319 node_paths=PackedStringArray("hbox_items", "time_label")]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("20_kobl8")
 script = ExtResource("4_khv1d")
 hbox_items = [NodePath("MarginContainer/VBoxContainer/HBoxItem"), NodePath("MarginContainer/VBoxContainer/HBoxItem2"), NodePath("MarginContainer/VBoxContainer/HBoxItem3"), NodePath("MarginContainer/VBoxContainer/HBoxItem4")]
 time_label = NodePath("MarginContainer/VBoxContainer/TimeLabel")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/QuestMiniPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/QuestMiniPanel" unique_id=110381040]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 5
@@ -681,10 +681,10 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/QuestMiniPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/QuestMiniPanel/MarginContainer" unique_id=536849536]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=533268980]
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
@@ -694,7 +694,7 @@ horizontal_alignment = 1
 script = ExtResource("7_vya4o")
 label_translation_string = "PLAYERUI_QUEST_OBJECTIV"
 
-[node name="TimeLabel" type="Label" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer"]
+[node name="TimeLabel" type="Label" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=1758027162]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_constants/outline_size = 3
@@ -703,19 +703,19 @@ theme_override_font_sizes/font_size = 8
 text = "Time Left: Unknown"
 horizontal_alignment = 1
 
-[node name="HBoxItem" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("18_uwodk")]
+[node name="HBoxItem" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=183839239 instance=ExtResource("18_uwodk")]
 layout_mode = 2
 
-[node name="HBoxItem2" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("18_uwodk")]
+[node name="HBoxItem2" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=624156855 instance=ExtResource("18_uwodk")]
 layout_mode = 2
 
-[node name="HBoxItem3" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("18_uwodk")]
+[node name="HBoxItem3" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=1019605724 instance=ExtResource("18_uwodk")]
 layout_mode = 2
 
-[node name="HBoxItem4" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" instance=ExtResource("18_uwodk")]
+[node name="HBoxItem4" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=473504988 instance=ExtResource("18_uwodk")]
 layout_mode = 2
 
-[node name="EquipmentSelectBar" type="Container" parent="." node_paths=PackedStringArray("select_slots")]
+[node name="EquipmentSelectBar" type="Container" parent="." unique_id=622824036]
 custom_minimum_size = Vector2(220, 65)
 anchors_preset = 2
 anchor_top = 1.0
@@ -728,18 +728,17 @@ grow_vertical = 0
 script = ExtResource("17_450ol")
 normal_color = Color(1, 1, 1, 0)
 selected_color = Color(1, 0.839216, 0.0941176, 1)
-select_slots = [NodePath("VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SlotBackground0/Slot0"), NodePath("VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SlotBackground0/Slot0"), NodePath("VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer/SlotBackground0/Slot0"), NodePath("VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer/SlotBackground0/Slot0")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="EquipmentSelectBar"]
+[node name="VBoxContainer" type="VBoxContainer" parent="EquipmentSelectBar" unique_id=118125673]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="EquipmentSelectBar/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="EquipmentSelectBar/VBoxContainer" unique_id=2010158448]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer" unique_id=791471692]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -748,7 +747,7 @@ theme_override_font_sizes/font_size = 10
 text = "[1]"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer" unique_id=2014089212]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -757,7 +756,7 @@ theme_override_font_sizes/font_size = 10
 text = "[2]"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer"]
+[node name="Label3" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer" unique_id=1743189586]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -766,7 +765,7 @@ theme_override_font_sizes/font_size = 10
 text = "[3]"
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer"]
+[node name="Label4" type="Label" parent="EquipmentSelectBar/VBoxContainer/HBoxContainer" unique_id=880287498]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -775,18 +774,18 @@ theme_override_font_sizes/font_size = 10
 text = "[4]"
 horizontal_alignment = 1
 
-[node name="EquipmentHBox" type="HBoxContainer" parent="EquipmentSelectBar/VBoxContainer"]
+[node name="EquipmentHBox" type="HBoxContainer" parent="EquipmentSelectBar/VBoxContainer" unique_id=1328128859]
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="ColorRect4" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
+[node name="ColorRect4" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox" unique_id=1875311922]
 clip_contents = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4"]
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4" unique_id=1707708032]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -801,7 +800,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer" instance=ExtResource("21_uwodk")]
+[node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer" unique_id=1259345799 instance=ExtResource("21_uwodk")]
 layout_mode = 2
 
 [node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SlotBackground0" index="0"]
@@ -813,13 +812,13 @@ offset_bottom = 30.0
 theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
 
-[node name="ColorRect5" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
+[node name="ColorRect5" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox" unique_id=1833929168]
 clip_contents = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5"]
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5" unique_id=266790479]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -834,7 +833,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer" instance=ExtResource("21_uwodk")]
+[node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer" unique_id=1476471130 instance=ExtResource("21_uwodk")]
 layout_mode = 2
 
 [node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SlotBackground0" index="0"]
@@ -846,13 +845,13 @@ offset_bottom = 30.0
 theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
 
-[node name="ColorRect6" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
+[node name="ColorRect6" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox" unique_id=1956064683]
 clip_contents = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6"]
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6" unique_id=2084932068]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -867,7 +866,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer" instance=ExtResource("21_uwodk")]
+[node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer" unique_id=886872060 instance=ExtResource("21_uwodk")]
 layout_mode = 2
 
 [node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer/SlotBackground0" index="0"]
@@ -879,13 +878,13 @@ offset_bottom = 30.0
 theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
 
-[node name="ColorRect7" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox"]
+[node name="ColorRect7" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox" unique_id=1760193542]
 clip_contents = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7"]
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7" unique_id=1324378182]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -900,7 +899,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer" instance=ExtResource("21_uwodk")]
+[node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer" unique_id=1281343460 instance=ExtResource("21_uwodk")]
 layout_mode = 2
 
 [node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer/SlotBackground0" index="0"]
@@ -912,10 +911,10 @@ offset_bottom = 30.0
 theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
 
-[node name="Item_Label_Timer" type="Timer" parent="."]
+[node name="Item_Label_Timer" type="Timer" parent="." unique_id=1849860662]
 wait_time = 0.2
 
-[node name="HoverMenu" parent="." instance=ExtResource("20_fdkbp")]
+[node name="HoverMenu" parent="." unique_id=863212880 instance=ExtResource("20_fdkbp")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -929,7 +928,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = ExtResource("20_kobl8")
 
-[node name="Control" type="Control" parent="." node_paths=PackedStringArray("anim", "discovery_panel", "title", "type", "timer", "item_icon")]
+[node name="Control" type="Control" parent="." unique_id=1888566865 node_paths=PackedStringArray("anim", "discovery_panel", "title", "type", "timer", "item_icon")]
 z_index = 5
 layout_mode = 3
 anchors_preset = 1
@@ -949,17 +948,15 @@ type = NodePath("DiscoverManager/MarginContainer/HBoxContainer/Panel/VBoxContain
 timer = NodePath("DiscoverManager/Timer")
 item_icon = NodePath("DiscoverManager/MarginContainer/HBoxContainer/Panel/VBoxContainer/TextureRect")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control" unique_id=1344482246]
 root_node = NodePath("../DiscoverManager")
-libraries = {
-&"": SubResource("AnimationLibrary_14rcw")
-}
+libraries/ = SubResource("AnimationLibrary_14rcw")
 
-[node name="CheckTimer" type="Timer" parent="Control"]
+[node name="CheckTimer" type="Timer" parent="Control" unique_id=80483283]
 wait_time = 0.2
 autostart = true
 
-[node name="DiscoverManager" type="PanelContainer" parent="Control"]
+[node name="DiscoverManager" type="PanelContainer" parent="Control" unique_id=1736862075]
 custom_minimum_size = Vector2(140, 40)
 layout_mode = 1
 anchors_preset = 8
@@ -975,7 +972,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("20_kobl8")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/DiscoverManager"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/DiscoverManager" unique_id=927697823]
 y_sort_enabled = true
 layout_mode = 2
 theme_override_constants/margin_left = 5
@@ -983,12 +980,12 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/DiscoverManager/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/DiscoverManager/MarginContainer" unique_id=503559873]
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Title" type="Label" parent="Control/DiscoverManager/MarginContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="Control/DiscoverManager/MarginContainer/HBoxContainer" unique_id=1113269090]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_constants/outline_size = 3
@@ -999,12 +996,12 @@ horizontal_alignment = 1
 script = ExtResource("7_vya4o")
 label_translation_string = "DISCOVERY_TITLE"
 
-[node name="Panel" type="Panel" parent="Control/DiscoverManager/MarginContainer/HBoxContainer"]
+[node name="Panel" type="Panel" parent="Control/DiscoverManager/MarginContainer/HBoxContainer" unique_id=1978415740]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("20_kobl8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/DiscoverManager/MarginContainer/HBoxContainer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/DiscoverManager/MarginContainer/HBoxContainer/Panel" unique_id=1480284712]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1019,14 +1016,14 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/DiscoverManager/MarginContainer/HBoxContainer/Panel/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/DiscoverManager/MarginContainer/HBoxContainer/Panel/VBoxContainer" unique_id=944824165]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture = ExtResource("26_d27p6")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Item" type="Label" parent="Control/DiscoverManager/MarginContainer/HBoxContainer/Panel/VBoxContainer"]
+[node name="Item" type="Label" parent="Control/DiscoverManager/MarginContainer/HBoxContainer/Panel/VBoxContainer" unique_id=1506699590]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/outline_size = 3
@@ -1037,7 +1034,7 @@ horizontal_alignment = 1
 script = ExtResource("7_vya4o")
 label_translation_string = "DISCOVERY_DESC"
 
-[node name="Timer" type="Timer" parent="Control/DiscoverManager"]
+[node name="Timer" type="Timer" parent="Control/DiscoverManager" unique_id=953488551]
 wait_time = 4.0
 
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
