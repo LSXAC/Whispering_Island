@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://daiymos1mp4si" path="res://UI/UI Scripts/hover_menu.cs" id="1_ywqhi"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/Menus/Translation/TranslationLabel.cs" id="3_u1ani"]
 
-[node name="HoverMenu" type="PanelContainer" node_paths=PackedStringArray("title_container", "descriptiion_container", "object_type_container", "hitpoint_container", "resource_type_container", "resource_type_level_container", "process_bar_container", "process_fuel_container", "process_input_container", "process_output_container", "chest_slots_container", "title_content", "description_content", "object_type_content", "hitpoint_content", "resource_type_content", "resource_type_level_content", "process_bar_content", "process_fuel_content", "process_input_content", "process_output_content", "chest_slots_content", "Line1", "Line2")]
+[node name="HoverMenu" type="PanelContainer" unique_id=1919267257 node_paths=PackedStringArray("title_container", "descriptiion_container", "object_type_container", "hitpoint_container", "resource_type_container", "resource_type_level_container", "process_bar_container", "process_fuel_container", "process_input_container", "process_output_container", "chest_slots_container", "title_content", "description_content", "object_type_content", "hitpoint_content", "resource_type_content", "resource_type_level_content", "process_bar_content", "process_fuel_content", "process_input_content", "process_output_content", "chest_slots_content", "Line1", "Line2")]
 z_index = 5
 z_as_relative = false
 offset_right = 164.0
@@ -35,26 +35,26 @@ chest_slots_content = NodePath("MarginContainer/VBoxContainer/HBoxSlots/SlotsCon
 Line1 = NodePath("MarginContainer/VBoxContainer/Line")
 Line2 = NodePath("MarginContainer/VBoxContainer/Line2")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=678130639]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=492867236]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 5
 
-[node name="StartLine" type="ColorRect" parent="MarginContainer/VBoxContainer"]
+[node name="StartLine" type="ColorRect" parent="MarginContainer/VBoxContainer" unique_id=1030981899]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 
-[node name="HBoxTitle" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxTitle" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=477605516]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxTitle"]
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxTitle" unique_id=1340429645]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_vertical = 1
@@ -68,7 +68,7 @@ autowrap_mode = 3
 script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_OBJECT"
 
-[node name="TitleContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxTitle"]
+[node name="TitleContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxTitle" unique_id=167362499]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -81,10 +81,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="HBoxDescription" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxDescription" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1745934020]
 layout_mode = 2
 
-[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxDescription"]
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxDescription" unique_id=1258396462]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -99,7 +99,7 @@ autowrap_mode = 3
 script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_DESCRIPTION"
 
-[node name="DescriptionContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxDescription"]
+[node name="DescriptionContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxDescription" unique_id=872696631]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -113,10 +113,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="HBoxObjectType" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxObjectType" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=370931581]
 layout_mode = 2
 
-[node name="ObjectTypeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxObjectType"]
+[node name="ObjectTypeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxObjectType" unique_id=803463253]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -131,7 +131,7 @@ autowrap_mode = 3
 script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_OBJECT_TYPE"
 
-[node name="ObjectTypeContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxObjectType"]
+[node name="ObjectTypeContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxObjectType" unique_id=1168988751]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -144,14 +144,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Line" type="ColorRect" parent="MarginContainer/VBoxContainer"]
+[node name="Line" type="ColorRect" parent="MarginContainer/VBoxContainer" unique_id=1375022078]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 
-[node name="HBoxHitPoint" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxHitPoint" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1869769085]
 layout_mode = 2
 
-[node name="HealthLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxHitPoint"]
+[node name="HealthLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxHitPoint" unique_id=1242477474]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -166,7 +166,7 @@ autowrap_mode = 3
 script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_HITPOINTS"
 
-[node name="HealthContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxHitPoint"]
+[node name="HealthContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxHitPoint" unique_id=162990959]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -179,10 +179,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="HBoxType" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxType" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=83724887]
 layout_mode = 2
 
-[node name="TypeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxType"]
+[node name="TypeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxType" unique_id=202988149]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -197,7 +197,7 @@ autowrap_mode = 3
 script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_OBJECT_TYPE"
 
-[node name="TypeContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxType"]
+[node name="TypeContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxType" unique_id=1934096850]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -210,10 +210,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="HBoxCollectLevel" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxCollectLevel" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1720254882]
 layout_mode = 2
 
-[node name="CollectLevelLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxCollectLevel"]
+[node name="CollectLevelLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxCollectLevel" unique_id=867060305]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -228,7 +228,7 @@ autowrap_mode = 3
 script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_RESOURCE_TYPE"
 
-[node name="CollectLevelContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxCollectLevel"]
+[node name="CollectLevelContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxCollectLevel" unique_id=1590617158]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -241,14 +241,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Line2" type="ColorRect" parent="MarginContainer/VBoxContainer"]
+[node name="Line2" type="ColorRect" parent="MarginContainer/VBoxContainer" unique_id=541611813]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 
-[node name="HBoxProgress" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxProgress" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1160873568]
 layout_mode = 2
 
-[node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxProgress"]
+[node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxProgress" unique_id=1576126915]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -263,7 +263,7 @@ autowrap_mode = 3
 script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_PROCESS_PROGRESS"
 
-[node name="ProgressContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxProgress"]
+[node name="ProgressContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxProgress" unique_id=1479916413]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -276,10 +276,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="HBoxFuel" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxFuel" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=864913008]
 layout_mode = 2
 
-[node name="FuelLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxFuel"]
+[node name="FuelLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxFuel" unique_id=573660644]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -294,7 +294,7 @@ autowrap_mode = 3
 script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_PROCESS_FUEL"
 
-[node name="FuelContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxFuel"]
+[node name="FuelContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxFuel" unique_id=499389327]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -307,10 +307,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="HBoxInput" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxInput" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1442345970]
 layout_mode = 2
 
-[node name="InputLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxInput"]
+[node name="InputLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxInput" unique_id=1265691333]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -325,7 +325,7 @@ autowrap_mode = 3
 script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_PROCESS_INPUT"
 
-[node name="InputContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxInput"]
+[node name="InputContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxInput" unique_id=547669818]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -338,10 +338,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="HBoxOutput" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxOutput" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1857472096]
 layout_mode = 2
 
-[node name="OutputLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxOutput"]
+[node name="OutputLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxOutput" unique_id=1805243055]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -356,7 +356,7 @@ autowrap_mode = 3
 script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_PROCESS_OUTPUT"
 
-[node name="OutputContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxOutput"]
+[node name="OutputContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxOutput" unique_id=1775390681]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -369,10 +369,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="HBoxSlots" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxSlots" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1574603691]
 layout_mode = 2
 
-[node name="SlotsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxSlots"]
+[node name="SlotsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxSlots" unique_id=1495461343]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -387,7 +387,7 @@ autowrap_mode = 3
 script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_CHEST_SLOTS"
 
-[node name="SlotsContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxSlots"]
+[node name="SlotsContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxSlots" unique_id=231069012]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -400,6 +400,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="EndLine" type="ColorRect" parent="MarginContainer/VBoxContainer"]
+[node name="EndLine" type="ColorRect" parent="MarginContainer/VBoxContainer" unique_id=640710428]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2

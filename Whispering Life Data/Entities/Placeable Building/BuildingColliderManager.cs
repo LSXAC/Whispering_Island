@@ -6,10 +6,8 @@ using Godot.Collections;
 public partial class BuildingColliderManager : Node2D
 {
 	[Export]
-	private PackedScene building_collider = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/World Objects/Buildings/Building Components/Building_Collider_Component.tscn"
+	private PackedScene building_collider = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://b5u81hi3w1yvx")
 	);
-
 	[Export]
 	public PLACE_TYPE current_type = PLACE_TYPE.BUILDING;
 

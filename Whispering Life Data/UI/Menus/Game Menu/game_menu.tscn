@@ -466,8 +466,7 @@ offset_bottom = 71.0
 [node name="HeadSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer" unique_id=1069188508 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/HeadSlotBackground" index="0"]
-layout_mode = 0
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/HeadSlotBackground" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -485,8 +484,7 @@ check_attributes = true
 [node name="ChestSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer" unique_id=211163979 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/ChestSlotBackground" index="0"]
-layout_mode = 0
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/ChestSlotBackground" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -504,8 +502,7 @@ check_attributes = true
 [node name="LegSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer" unique_id=8146912 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/LegSlotBackground" index="0"]
-layout_mode = 0
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/LegSlotBackground" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -523,8 +520,7 @@ check_attributes = true
 [node name="ShoesSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer" unique_id=1665791741 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/ShoesSlotBackground" index="0"]
-layout_mode = 0
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/ShoesSlotBackground" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -581,8 +577,7 @@ theme_override_constants/separation = 4
 [node name="HeadSlotBackground" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox" unique_id=1479310948 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground" index="0"]
-layout_mode = 0
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -594,8 +589,7 @@ check_attributes = true
 [node name="HeadSlotBackground2" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox" unique_id=946457171 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground2" index="0"]
-layout_mode = 0
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground2" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -607,8 +601,7 @@ check_attributes = true
 [node name="HeadSlotBackground3" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox" unique_id=584374835 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground3" index="0"]
-layout_mode = 0
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground3" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -620,8 +613,7 @@ check_attributes = true
 [node name="HeadSlotBackground4" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox" unique_id=1321452175 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground4" index="0"]
-layout_mode = 0
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground4" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -822,7 +814,7 @@ theme_override_font_sizes/font_size = 8
 text = "25"
 horizontal_alignment = 1
 
-[node name="ChestTab" type="ColorRect" parent="Background" unique_id=822606059 node_paths=PackedStringArray("chest_inventory_ui")]
+[node name="ChestTab" type="ColorRect" parent="Background" unique_id=822606059]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -837,7 +829,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("17_8qgvy")
-chest_inventory_ui = NodePath("ChestInventory")
 
 [node name="ChestInventory" parent="Background/ChestTab" unique_id=555372861 instance=ExtResource("4_eoykc")]
 layout_mode = 1
@@ -917,8 +908,7 @@ offset_top = -199.0
 offset_right = 38.0
 offset_bottom = -167.0
 
-[node name="Slot0" parent="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundInput" index="0"]
-layout_mode = 0
+[node name="Slot0" parent="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundInput" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -935,8 +925,7 @@ offset_top = -199.0
 offset_right = 292.0
 offset_bottom = -167.0
 
-[node name="Slot0" parent="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundExport" index="0"]
-layout_mode = 0
+[node name="Slot0" parent="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundExport" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -955,8 +944,7 @@ offset_top = -163.0
 offset_right = 38.0
 offset_bottom = -131.0
 
-[node name="Slot0" parent="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundFuel" index="0"]
-layout_mode = 0
+[node name="Slot0" parent="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundFuel" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -2895,12 +2883,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("16_x6qgy")
-skill_datas = Array[Object]([ExtResource("31_w6gy4"), ExtResource("32_bhpct"), ExtResource("33_m8k7p"), ExtResource("34_7gwna"), ExtResource("35_j657e"), ExtResource("36_etc0m"), ExtResource("37_mmhr0"), ExtResource("38_6662a"), ExtResource("39_gcthi"), ExtResource("40_rgd55"), ExtResource("41_gqg20"), ExtResource("42_j0nuq"), ExtResource("43_w3vm4"), ExtResource("44_sy5xb"), ExtResource("45_fato5"), ExtResource("46_4awxy"), ExtResource("47_8a6lo"), ExtResource("48_tmrav"), ExtResource("49_mkmfo"), ExtResource("50_n542t"), ExtResource("51_wshxr"), ExtResource("52_1y8h4"), ExtResource("53_tbpku"), ExtResource("54_b00gh"), ExtResource("55_gsgii"), ExtResource("56_q1i6k"), ExtResource("57_2n3si"), ExtResource("58_oe67i"), ExtResource("59_vp08v"), ExtResource("60_avet4"), ExtResource("61_5o10j"), ExtResource("62_qmedj"), ExtResource("63_opwmy"), ExtResource("64_nhr3t")])
 research_points_label = NodePath("MarginContainer/VBoxContainer/PointsHeader/PointsHeader/MarginContainer/VBoxContainer/HBoxContainer/Label")
 title = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Label")
 description = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Label2")
 required_skill_points = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Label3")
 unlock_skill_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Button")
+skill_datas = Array[Object]([ExtResource("31_w6gy4"), ExtResource("32_bhpct"), ExtResource("33_m8k7p"), ExtResource("34_7gwna"), ExtResource("35_j657e"), ExtResource("36_etc0m"), ExtResource("37_mmhr0"), ExtResource("38_6662a"), ExtResource("39_gcthi"), ExtResource("40_rgd55"), ExtResource("41_gqg20"), ExtResource("42_j0nuq"), ExtResource("43_w3vm4"), ExtResource("44_sy5xb"), ExtResource("45_fato5"), ExtResource("46_4awxy"), ExtResource("47_8a6lo"), ExtResource("48_tmrav"), ExtResource("49_mkmfo"), ExtResource("50_n542t"), ExtResource("51_wshxr"), ExtResource("52_1y8h4"), ExtResource("53_tbpku"), ExtResource("54_b00gh"), ExtResource("55_gsgii"), ExtResource("56_q1i6k"), ExtResource("57_2n3si"), ExtResource("58_oe67i"), ExtResource("59_vp08v"), ExtResource("60_avet4"), ExtResource("61_5o10j"), ExtResource("62_qmedj"), ExtResource("63_opwmy"), ExtResource("64_nhr3t")])
 slots_parent = NodePath("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MiningColorRect")
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/Skilltree" unique_id=328095404]
@@ -4285,7 +4273,7 @@ theme_override_styles/disabled = ExtResource("31_j0nuq")
 theme_override_styles/focus = ExtResource("28_gcthi")
 text = "Unlock Skill"
 
-[node name="IslandTab" type="ColorRect" parent="Background" unique_id=34133489 node_paths=PackedStringArray("island_to_build_left_label")]
+[node name="IslandTab" type="ColorRect" parent="Background" unique_id=34133489 node_paths=PackedStringArray("buttons", "island_cost", "island_to_build_left_label")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -4300,6 +4288,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("16_burxg")
+buttons = []
+island_cost = []
 island_to_build_left_label = NodePath("IslandsToBuildLabel")
 
 [node name="HeaderColorRect" parent="Background/IslandTab" unique_id=2012173188 instance=ExtResource("11_45saq")]
@@ -4982,8 +4972,8 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
-category = 2
 parent = NodePath("ScrollContainer/VBoxContainer")
+category = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuTools" unique_id=689552867]
 custom_minimum_size = Vector2(320, 220)
@@ -4998,8 +4988,8 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
-category = 1
 parent = NodePath("ScrollContainer/VBoxContainer")
+category = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuToolparts" unique_id=1911085154]
 custom_minimum_size = Vector2(320, 220)
@@ -5014,8 +5004,8 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
-category = 3
 parent = NodePath("ScrollContainer/VBoxContainer")
+category = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuArmor" unique_id=583467715]
 custom_minimum_size = Vector2(320, 220)
@@ -5030,8 +5020,8 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
-category = 4
 parent = NodePath("ScrollContainer/VBoxContainer")
+category = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuAgriculture" unique_id=1837002392]
 custom_minimum_size = Vector2(320, 220)
@@ -5046,8 +5036,8 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 script = ExtResource("4_3cwxu")
-category = 5
 parent = NodePath("ScrollContainer/VBoxContainer")
+category = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuMachineParts" unique_id=427359709]
 custom_minimum_size = Vector2(320, 220)
@@ -5268,7 +5258,7 @@ theme_override_font_sizes/font_size = 8
 text = "© 2024 Leon Schröder Asset Creations"
 horizontal_alignment = 1
 
-[node name="HelpTab" type="ColorRect" parent="Background" unique_id=909825829]
+[node name="HelpTab" type="ColorRect" parent="Background" unique_id=909825829 node_paths=PackedStringArray("pages")]
 visible = false
 z_index = 4
 layout_mode = 1
@@ -5283,6 +5273,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("56_74gou")
+pages = []
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab" unique_id=1855136661]
 layout_mode = 0
@@ -6551,7 +6542,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.529412, 0.509804, 0.647059, 1)
 
-[node name="RailStationTab" type="ColorRect" parent="Background" unique_id=1344078163 node_paths=PackedStringArray("chest_inventory_ui_input", "chest_inventory_ui_output", "container", "import_box", "export_box", "is_connected_label")]
+[node name="RailStationTab" type="ColorRect" parent="Background" unique_id=1344078163 node_paths=PackedStringArray("container", "import_box", "export_box", "is_connected_label")]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -6566,8 +6557,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("76_6ikjc")
-chest_inventory_ui_input = NodePath("TabContainer/Storage In/ChestInventoryIn")
-chest_inventory_ui_output = NodePath("TabContainer/Storage Out/ChestInventoryOut")
 container = NodePath("TabContainer")
 import_box = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/ImportBox")
 export_box = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/ExportBox")
@@ -6732,7 +6721,7 @@ offset_bottom = 213.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="MinecartTab" type="ColorRect" parent="Background" unique_id=759668667 node_paths=PackedStringArray("engine_status_label", "chest_inventory_ui")]
+[node name="MinecartTab" type="ColorRect" parent="Background" unique_id=759668667 node_paths=PackedStringArray("engine_status_label")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -6748,7 +6737,6 @@ grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("74_5ehlf")
 engine_status_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Engine_Status")
-chest_inventory_ui = NodePath("PanelContainer/ChestInventory")
 
 [node name="PanelContainer" type="Control" parent="Background/MinecartTab" unique_id=1897594291]
 layout_mode = 1

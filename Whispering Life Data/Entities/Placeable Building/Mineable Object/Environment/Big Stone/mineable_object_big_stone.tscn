@@ -107,7 +107,7 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_4ikef")
 
-[node name="BigStone" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "variants_parent", "gpu_particles")]
+[node name="BigStone" type="StaticBody2D" unique_id=2104619315 node_paths=PackedStringArray("hit_point", "variants_parent", "gpu_particles")]
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_hrp6s")
@@ -121,57 +121,57 @@ tile_types = Array[int]([0])
 title = "WORLD_RESOURCE_STONE"
 description = "WORLD_RESOURCE_STONE_DESC"
 
-[node name="SpriteAnimationManager" type="Node2D" parent="."]
+[node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=51297281]
 script = ExtResource("4_jkisn")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager" unique_id=181284446]
 position = Vector2(-32, -48)
 sprite_frames = SubResource("SpriteFrames_iidu2")
 animation = &"Normal"
 centered = false
 
-[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager" unique_id=2039779620]
 position = Vector2(-14, -17)
 texture = ExtResource("33_pnoy2")
 
-[node name="Variants" type="Node2D" parent="SpriteAnimationManager"]
+[node name="Variants" type="Node2D" parent="SpriteAnimationManager" unique_id=500732025]
 
-[node name="Variant_0" type="Node2D" parent="SpriteAnimationManager/Variants"]
+[node name="Variant_0" type="Node2D" parent="SpriteAnimationManager/Variants" unique_id=455245704]
 script = ExtResource("6_fwiew")
 polygon_points = PackedVector2Array(-3, -6, -6, -6, -6, -3, -8, -1, -13, -1, -14, -1, -15, -2, -16, -5, -18, -6, -19, -5, -22, -5, -25, -7, -25, -11, -21, -13, -21, -16, -18, -18, -16, -19, -6, -19, -4, -19, -3, -18, -2, -16, -1, -14, -1, -9)
 textures = Array[Texture2D]([ExtResource("7_iog0c"), ExtResource("8_iexiy"), ExtResource("9_itebb"), ExtResource("10_sclm2"), ExtResource("11_yh5m8"), ExtResource("12_g1xgs"), ExtResource("13_5inu6"), ExtResource("14_kajek"), ExtResource("15_ev1at"), ExtResource("16_doj1m"), ExtResource("17_asayj"), ExtResource("18_1btt7"), ExtResource("19_mbbxe"), ExtResource("5_ywaa5")])
 shadow_textures = Array[Texture2D]([ExtResource("20_am85c"), ExtResource("21_1pe8k"), ExtResource("22_51qyw"), ExtResource("23_ekl3n"), ExtResource("24_pcp1y"), ExtResource("25_cuywm"), ExtResource("26_uuxys"), ExtResource("27_wtcvf"), ExtResource("28_81qol"), ExtResource("29_py0fi"), ExtResource("30_v4f0r"), ExtResource("31_kxgdx"), ExtResource("32_l3uuy"), ExtResource("33_bqkdw")])
 
-[node name="Variant_1" type="Node2D" parent="SpriteAnimationManager/Variants"]
+[node name="Variant_1" type="Node2D" parent="SpriteAnimationManager/Variants" unique_id=1851189830]
 position = Vector2(-8, 0)
 script = ExtResource("6_fwiew")
 polygon_points = PackedVector2Array(2, -9, 1, -6, -4, -2, -7, -1, -13, -1, -16, -4, -17, -4, -18, -3, -23, -3, -25, -4, -28, -7, -28, -12, -28, -19, -27, -22, -27, -28, -25, -31, -22, -32, -15, -32, -14, -31, -9, -31, -8, -32, -4, -32, -3, -31, -2, -29, -2, -25, -1, -22, 1, -19, 2, -16)
 textures = Array[Texture2D]([ExtResource("20_drcid"), ExtResource("21_ke317"), ExtResource("22_62b4s"), ExtResource("23_hcw8a"), ExtResource("24_ai8l2"), ExtResource("25_tqq1u"), ExtResource("26_vjnbp"), ExtResource("27_8ulta"), ExtResource("28_o3a36"), ExtResource("29_icsyr"), ExtResource("30_7xtqf"), ExtResource("31_yjbuy"), ExtResource("32_3iaft"), ExtResource("33_pnoy2")])
 shadow_textures = Array[Texture2D]([ExtResource("48_cr71w"), ExtResource("49_langh"), ExtResource("50_dfiw1"), ExtResource("51_frlgb"), ExtResource("52_wb48n"), ExtResource("53_itssa"), ExtResource("54_u3wgy"), ExtResource("55_mjvlq"), ExtResource("56_lbdwy"), ExtResource("57_i4sg0"), ExtResource("58_6uhkc"), ExtResource("59_3tbk8"), ExtResource("60_gwmn8"), ExtResource("61_0aqyx")])
 
-[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("62_langh")]
+[node name="ShadowNode" parent="SpriteAnimationManager" unique_id=941745881 instance=ExtResource("62_langh")]
 position = Vector2(-14, -17)
 
-[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=275810235]
 polygon = PackedVector2Array(2, -9, 1, -6, -4, -2, -7, -1, -13, -1, -16, -4, -17, -4, -18, -3, -23, -3, -25, -4, -28, -7, -28, -12, -28, -19, -27, -22, -27, -28, -25, -31, -22, -32, -15, -32, -14, -31, -9, -31, -8, -32, -4, -32, -3, -31, -2, -29, -2, -25, -1, -22, 1, -19, 2, -16)
 
-[node name="MouseArea" type="Area2D" parent="."]
+[node name="MouseArea" type="Area2D" parent="." unique_id=1553765610]
 z_index = 1
 position = Vector2(-13, -7)
 script = ExtResource("12_itebb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=30732308]
 position = Vector2(-0.5, -14)
 shape = SubResource("RectangleShape2D_a25cn")
 
-[node name="TimerBar" parent="." instance=ExtResource("13_sclm2")]
+[node name="TimerBar" parent="." unique_id=1225777311 instance=ExtResource("13_sclm2")]
 offset_left = -12.0
 offset_top = -1.0
 offset_right = 0.0
 offset_bottom = 0.0
 mouse_filter = 2
 
-[node name="StoneParticles" type="GPUParticles2D" parent="."]
+[node name="StoneParticles" type="GPUParticles2D" parent="." unique_id=513507741]
 z_index = 1
 position = Vector2(0, -5)
 emitting = false
@@ -183,20 +183,20 @@ explosiveness = 0.7
 randomness = 0.5
 process_material = SubResource("ParticleProcessMaterial_7tpe0")
 
-[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." unique_id=1008245733]
 z_index = -2
 tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
 enabled = false
 tile_set = ExtResource("15_g1xgs")
 
-[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+[node name="BuildingAreas" type="Node2D" parent="." unique_id=1081092112 node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("16_5inu6")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="HitPoint" type="Node2D" parent="."]
+[node name="HitPoint" type="Node2D" parent="." unique_id=756107944]
 position = Vector2(-8, -9)
 
-[node name="DurabilityComponent" parent="." instance=ExtResource("17_kajek")]
+[node name="DurabilityComponent" parent="." unique_id=745968624 instance=ExtResource("17_kajek")]
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

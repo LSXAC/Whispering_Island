@@ -29,7 +29,7 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77bd0"]
 size = Vector2(14, 14)
 
-[node name="BeltCombiner2x1" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1")]
+[node name="BeltCombiner2x1" type="StaticBody2D" unique_id=1580341090 node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -42,88 +42,88 @@ tile_types = Array[int]([0])
 title = "BUILDING_BELT_COMBINER_2x1"
 description = "BUILDING_BELT_COMBINER_2x1_DESC"
 
-[node name="SpriteAnimationManager" type="Node2D" parent="."]
+[node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=2073504682]
 script = ExtResource("2_nbl7m")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager" unique_id=1112544536]
 position = Vector2(-32, -48)
 sprite_frames = SubResource("SpriteFrames_4tk4h")
 animation = &"Normal"
 centered = false
 
-[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager" unique_id=1411512404]
 visible = false
 position = Vector2(-32, -48)
 texture = ExtResource("2_bxt4y")
 centered = false
 
-[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("4_nbl7m")]
+[node name="ShadowNode" parent="SpriteAnimationManager" unique_id=111027237 instance=ExtResource("4_nbl7m")]
 DisableShadow = true
 
-[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=757772748]
 polygon = PackedVector2Array(-14, -1, 16, -1, 16, -32, -14, -32)
 
-[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+[node name="BuildingAreas" type="Node2D" parent="." unique_id=1346942003 node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("3_o1cmi")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." groups=["Blocker"]]
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." unique_id=1688824784 groups=["Blocker"]]
 z_index = -2
 tile_map_data = PackedByteArray(0, 0, 255, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0)
 enabled = false
 tile_set = ExtResource("4_1m3b1")
 
-[node name="Detector" parent="." instance=ExtResource("5_snf1v")]
+[node name="Detector" parent="." unique_id=1650727523 instance=ExtResource("5_snf1v")]
 position = Vector2(-24, -8)
 
-[node name="ItemHolder" parent="." instance=ExtResource("6_l1sf1")]
+[node name="ItemHolder" parent="." unique_id=1568360708 instance=ExtResource("6_l1sf1")]
 y_sort_enabled = true
 position = Vector2(-8, -10)
 
-[node name="MouseArea" type="Area2D" parent="."]
+[node name="MouseArea" type="Area2D" parent="." unique_id=462928772]
 z_index = 1
 collision_layer = 2
 script = ExtResource("7_0gehf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=297387343]
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_3k8pj")
 
-[node name="PathConnectArea" type="Area2D" parent="."]
+[node name="PathConnectArea" type="Area2D" parent="." unique_id=2016558778]
 collision_layer = 516
 collision_mask = 0
 monitoring = false
 script = ExtResource("8_04poo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea" unique_id=1650650313]
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_77bd0")
 
-[node name="CheckAreaTimer" type="Timer" parent="."]
+[node name="CheckAreaTimer" type="Timer" parent="." unique_id=1644922781]
 wait_time = 0.1
 autostart = true
 
-[node name="Belt" parent="." instance=ExtResource("10_1kri2")]
+[node name="Belt" parent="." unique_id=1522833678 instance=ExtResource("10_1kri2")]
 position = Vector2(16, 0)
 ignore_self_detector = true
 disable_collision = true
 
-[node name="Belt2" parent="." instance=ExtResource("10_1kri2")]
+[node name="Belt2" parent="." unique_id=55587586 instance=ExtResource("10_1kri2")]
 position = Vector2(16, -16)
 ignore_self_detector = true
 disable_collision = true
 
-[node name="Top" type="Sprite2D" parent="."]
+[node name="Top" type="Sprite2D" parent="." unique_id=605124984]
 y_sort_enabled = true
 position = Vector2(0, -1)
 texture = ExtResource("11_jlkvf")
 offset = Vector2(0, -19)
 
-[node name="12DAnimationManager" type="Node2D" parent="." node_paths=PackedStringArray("anim_sprite")]
+[node name="12DAnimationManager" type="Node2D" parent="." unique_id=132422620 node_paths=PackedStringArray("anim_sprite")]
 script = ExtResource("12_8p114")
 anim_sprite = NodePath("AnimatedSprite2D")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="12DAnimationManager"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="12DAnimationManager" unique_id=1108811976]
 z_index = -1
 y_sort_enabled = true
 position = Vector2(-8, -8)

@@ -56,234 +56,234 @@ info = ExtResource("18_lwg4b")
 amount = 10
 metadata/_custom_type_script = "uid://cee63igbpybf"
 
-[node name="Island_1" type="Node2D" groups=["Island_Properties"]]
+[node name="Island_1" type="Node2D" unique_id=1087816169 groups=["Island_Properties"]]
 y_sort_enabled = true
 script = ExtResource("1_uk6cx")
 unique_island_id = 0
 
-[node name="BuildingArea" type="TileMapLayer" parent="." groups=["BUILDINGCOLLISION"]]
+[node name="BuildingArea" type="TileMapLayer" parent="." unique_id=512331278 groups=["BUILDINGCOLLISION"]]
 z_index = -21
 tile_map_data = PackedByteArray("AAAEAPn/AQACAAAAAAAFAPr/AQACAAAAAAAFAPv/AQACAAAAAAAEAPr/AQACAAAAAAAEAPv/AQACAAAAAAAEAPz/AQACAAAAAAAEAP3/AQACAAAAAAAFAP3/AQACAAAAAAAFAPz/AQACAAAAAAAGAPr/AQACAAAAAAAGAPn/AQACAAAAAAAGAPj/AQACAAAAAAAFAPn/AQACAAAAAAAGAPv/AQACAAAAAAAFAPj/AQACAAAAAAAGAPf/AQACAAAAAAAFAPf/AQACAAAAAAAEAPf/AQACAAAAAAAEAPj/AQACAAAAAAADAPn/AQACAAAAAAAEAPb/AQACAAAAAAAFAPb/AQACAAAAAAAGAPb/AQACAAAAAAAHAPb/AQACAAAAAAAHAPf/AQACAAAAAAAIAPf/AQACAAAAAAAIAPj/AQACAAAAAAAHAPj/AQACAAAAAAAJAPj/AQACAAAAAAAIAPn/AQACAAAAAAAJAPn/AQACAAAAAAAKAPn/AQACAAAAAAAKAPr/AQACAAAAAAALAPr/AQACAAAAAAALAPv/AQACAAAAAAAKAPv/AQACAAAAAAAJAPv/AQACAAAAAAAIAPv/AQACAAAAAAAJAPr/AQACAAAAAAAIAPr/AQACAAAAAAAHAPr/AQACAAAAAAAHAPv/AQACAAAAAAAHAPn/AQACAAAAAAAGAPz/AQACAAAAAAAGAP3/AQACAAAAAAAHAPz/AQACAAAAAAAHAP3/AQACAAAAAAAIAPz/AQACAAAAAAAJAPz/AQACAAAAAAAJAP3/AQACAAAAAAAKAPz/AQACAAAAAAAGAP7/AQACAAAAAAAGAP//AQACAAAAAAAGAAAAAQACAAAAAAAFAP7/AQACAAAAAAAFAP//AQACAAAAAAAFAAAAAQACAAAAAAAEAP//AQACAAAAAAAEAP7/AQACAAAAAAADAP7/AQACAAAAAAADAP//AQACAAAAAAACAP7/AQACAAAAAAACAP//AQACAAAAAAACAAAAAQACAAAAAAADAAAAAQACAAAAAAAEAAAAAQACAAAAAAACAAEAAQACAAAAAAADAAEAAQACAAAAAAADAAIAAQACAAAAAAAEAAIAAQACAAAAAAAEAAEAAQACAAAAAAAFAAEAAQACAAAAAAAFAAIAAQACAAAAAAACAAIAAQACAAAAAAAEAAMAAQACAAAAAAAFAAMAAQACAAAAAAAGAAIAAQACAAAAAAAGAAMAAQACAAAAAAAHAAIAAQACAAAAAAAHAAEAAQACAAAAAAAGAAEAAQACAAAAAAAHAAAAAQACAAAAAAAIAAAAAQACAAAAAAAHAP//AQACAAAAAAAJAAEAAQACAAAAAAAIAAEAAQACAAAAAAAIAAIAAQACAAAAAAAHAAMAAQACAAAAAAADAAMAAQACAAAAAAACAAMAAQACAAAAAAACAAQAAQACAAAAAAABAAQAAQACAAAAAAABAAUAAQACAAAAAAABAAMAAQACAAAAAAABAAIAAQACAAAAAAABAAEAAQACAAAAAAABAAAAAQACAAAAAAAAAAAAAQACAAAAAAD//wAAAQACAAAAAAD+/wAAAQACAAAAAAD9/wAAAQACAAAAAAAAAAEAAQACAAAAAAAAAAIAAQACAAAAAAAAAAMAAQACAAAAAAAAAAQAAQACAAAAAAD//wEAAQACAAAAAAD//wIAAQACAAAAAAD+/wEAAQACAAAAAAD9/wEAAQACAAAAAAD9/wIAAQACAAAAAAD+/wIAAQACAAAAAAD9/wMAAQACAAAAAAD9/wQAAQACAAAAAAD8/wMAAQACAAAAAAD8/wIAAQACAAAAAAD7/wIAAQACAAAAAAD7/wMAAQACAAAAAAD6/wMAAQACAAAAAAD6/wIAAQACAAAAAAD5/wIAAQACAAAAAAD5/wEAAQACAAAAAAD4/wEAAQACAAAAAAD4/wAAAQACAAAAAAD5/wAAAQACAAAAAAD6/wAAAQACAAAAAAD7/wAAAQACAAAAAAD7/wEAAQACAAAAAAD8/wAAAQACAAAAAAD6/wEAAQACAAAAAAD8/wEAAQACAAAAAAD8////AQACAAAAAAD7////AQACAAAAAAD9//7/AQACAAAAAAD8//7/AQACAAAAAAD9////AQACAAAAAAD7//7/AQACAAAAAAD6//7/AQACAAAAAAD6////AQACAAAAAAD5////AQACAAAAAAD4////AQACAAAAAAD7//3/AQACAAAAAAD7//z/AQACAAAAAAD7//v/AQACAAAAAAD6//v/AQACAAAAAAD6//z/AQACAAAAAAD6//3/AQACAAAAAAD6//r/AQACAAAAAAD7//r/AQACAAAAAAD7//n/AQACAAAAAAD6//n/AQACAAAAAAD5//n/AQACAAAAAAD5//r/AQACAAAAAAD5//v/AQACAAAAAAD5//z/AQACAAAAAAD4//z/AQACAAAAAAD3//z/AQACAAAAAAD3//3/AQACAAAAAAD2//z/AQACAAAAAAD2//3/AQACAAAAAAD1//z/AQACAAAAAAD0//v/AQACAAAAAAD1//v/AQACAAAAAAD2//v/AQACAAAAAAD3//v/AQACAAAAAAD4//v/AQACAAAAAAD0//r/AQACAAAAAAD7//j/AQACAAAAAAD7//f/AQACAAAAAAD7//b/AQACAAAAAAD7//X/AQACAAAAAAD8//X/AQACAAAAAAD8//T/AQACAAAAAAD9//T/AQACAAAAAAD9//X/AQACAAAAAAD9//b/AQACAAAAAAD+//X/AQACAAAAAAD+//T/AQACAAAAAAD+//b/AQACAAAAAAD+//f/AQACAAAAAAD8//b/AQACAAAAAAD8//f/AQACAAAAAAD9//f/AQACAAAAAAD8//j/AQACAAAAAAD9//j/AQACAAAAAAD8//n/AQACAAAAAAD9//n/AQACAAAAAAD+//j/AQACAAAAAAD+//n/AQACAAAAAAD///n/AQACAAAAAAD///j/AQACAAAAAAAAAPn/AQACAAAAAAABAPn/AQACAAAAAAACAPn/AQACAAAAAAACAPj/AQACAAAAAAABAPj/AQACAAAAAAAAAPj/AQACAAAAAAADAPj/AQACAAAAAAADAPf/AQACAAAAAAACAPf/AQACAAAAAAABAPf/AQACAAAAAAAAAPf/AQACAAAAAAD///f/AQACAAAAAAABAPb/AQACAAAAAAAAAPb/AQACAAAAAAD///b/AQACAAAAAAD///X/AQACAAAAAAD///T/AQACAAAAAAACAPb/AQACAAAAAAADAPb/AQACAAAAAAADAPX/AQACAAAAAAADAPT/AQACAAAAAAACAPX/AQACAAAAAAACAPT/AQACAAAAAAAAAPX/AQACAAAAAAAAAPT/AQACAAAAAAAEAPX/AQACAAAAAAAJAAAAAQACAAAAAAAJAP//AQACAAAAAAAIAP//AQACAAAAAAAHAP7/AQACAAAAAAAJAP7/AQACAAAAAAAAAAUAAQACAAAAAAD//wUAAQACAAAAAAD+/wUAAQACAAAAAAD5//3/AQACAAAAAAD5//7/AQACAAAAAAD4//3/AQACAAAAAAD4//7/AQACAAAAAAABAPX/AQACAAAAAAABAPT/AQACAAAAAAAIAP3/AQACAAAAAAAIAP7/AQACAAAAAAD//wMAAQACAAAAAAD+/wMAAQACAAAAAAD+/wQAAQACAAAAAAD//wQAAQACAAAAAAD4//r/AQACAAAAAAD3//r/AQACAAAAAAD2//r/AQACAAAAAAD1//r/AQACAAAAAAD1//n/AQACAAAAAAD2//n/AQACAAAAAAD3//n/AQACAAAAAAD4//n/AQACAAAAAAD3//j/AQACAAAAAAD2//j/AQACAAAAAAD4//j/AQACAAAAAAD5//j/AQACAAAAAAD6//j/AQACAAAAAAD6//f/AQACAAAAAAD6//b/AQACAAAAAAD5//b/AQACAAAAAAD5//f/AQACAAAAAAD4//b/AQACAAAAAAD3//f/AQACAAAAAAD4//f/AQACAAAAAAA=")
 tile_set = ExtResource("2_j0ysi")
 
-[node name="BridgePoints" type="Node2D" parent="."]
+[node name="BridgePoints" type="Node2D" parent="." unique_id=1348544346]
 y_sort_enabled = true
 
-[node name="StartPoints" type="Node2D" parent="BridgePoints"]
+[node name="StartPoints" type="Node2D" parent="BridgePoints" unique_id=284459063]
 y_sort_enabled = true
 
-[node name="Up" type="Node2D" parent="BridgePoints/StartPoints"]
+[node name="Up" type="Node2D" parent="BridgePoints/StartPoints" unique_id=147090050]
 y_sort_enabled = true
 position = Vector2(0, -192)
 
-[node name="Down" type="Node2D" parent="BridgePoints/StartPoints"]
+[node name="Down" type="Node2D" parent="BridgePoints/StartPoints" unique_id=255494471]
 y_sort_enabled = true
 position = Vector2(0, 96)
 
-[node name="Left" type="Node2D" parent="BridgePoints/StartPoints"]
+[node name="Left" type="Node2D" parent="BridgePoints/StartPoints" unique_id=657655950]
 y_sort_enabled = true
 position = Vector2(-128, 0)
 
-[node name="Right" type="Node2D" parent="BridgePoints/StartPoints"]
+[node name="Right" type="Node2D" parent="BridgePoints/StartPoints" unique_id=160199029]
 y_sort_enabled = true
 position = Vector2(160, 0)
 
-[node name="Bridges" type="Node2D" parent="BridgePoints"]
+[node name="Bridges" type="Node2D" parent="BridgePoints" unique_id=950374477]
 y_sort_enabled = true
 
-[node name="Signs" type="Node2D" parent="BridgePoints"]
+[node name="Signs" type="Node2D" parent="BridgePoints" unique_id=964323283]
 y_sort_enabled = true
 
-[node name="UpSign" parent="BridgePoints/Signs" node_paths=PackedStringArray("island") instance=ExtResource("3_hqq47")]
+[node name="UpSign" parent="BridgePoints/Signs" unique_id=1995356589 node_paths=PackedStringArray("island") instance=ExtResource("3_hqq47")]
 position = Vector2(24, -168)
 island = NodePath("../../..")
 dir = 1
 
-[node name="RightSign" parent="BridgePoints/Signs" node_paths=PackedStringArray("island") instance=ExtResource("3_hqq47")]
+[node name="RightSign" parent="BridgePoints/Signs" unique_id=837499450 node_paths=PackedStringArray("island") instance=ExtResource("3_hqq47")]
 position = Vector2(136, -24)
 island = NodePath("../../..")
 dir = 2
 
-[node name="LeftSign" parent="BridgePoints/Signs" node_paths=PackedStringArray("island") instance=ExtResource("3_hqq47")]
+[node name="LeftSign" parent="BridgePoints/Signs" unique_id=51296896 node_paths=PackedStringArray("island") instance=ExtResource("3_hqq47")]
 position = Vector2(-112, -24)
 island = NodePath("../../..")
 dir = 3
 
-[node name="DownSign" parent="BridgePoints/Signs" node_paths=PackedStringArray("island") instance=ExtResource("3_hqq47")]
+[node name="DownSign" parent="BridgePoints/Signs" unique_id=1279309439 node_paths=PackedStringArray("island") instance=ExtResource("3_hqq47")]
 position = Vector2(-16, 64)
 island = NodePath("../../..")
 dir = 4
 
-[node name="BridgeCollisions" type="StaticBody2D" parent="BridgePoints"]
+[node name="BridgeCollisions" type="StaticBody2D" parent="BridgePoints" unique_id=1403870674]
 y_sort_enabled = true
 
-[node name="Up" type="CollisionShape2D" parent="BridgePoints/BridgeCollisions"]
+[node name="Up" type="CollisionShape2D" parent="BridgePoints/BridgeCollisions" unique_id=1546846028]
 y_sort_enabled = true
 position = Vector2(0, -208)
 shape = SubResource("RectangleShape2D_ud7jl")
 
-[node name="Right" type="CollisionShape2D" parent="BridgePoints/BridgeCollisions"]
+[node name="Right" type="CollisionShape2D" parent="BridgePoints/BridgeCollisions" unique_id=1317433324]
 y_sort_enabled = true
 position = Vector2(176, 0)
 shape = SubResource("RectangleShape2D_ud7jl")
 
-[node name="Left" type="CollisionShape2D" parent="BridgePoints/BridgeCollisions"]
+[node name="Left" type="CollisionShape2D" parent="BridgePoints/BridgeCollisions" unique_id=1213452552]
 y_sort_enabled = true
 position = Vector2(-144, 0)
 shape = SubResource("RectangleShape2D_ud7jl")
 
-[node name="Down" type="CollisionShape2D" parent="BridgePoints/BridgeCollisions"]
+[node name="Down" type="CollisionShape2D" parent="BridgePoints/BridgeCollisions" unique_id=269129293]
 y_sort_enabled = true
 position = Vector2(0, 112)
 shape = SubResource("RectangleShape2D_ud7jl")
 
-[node name="Tilemaps" type="Node2D" parent="."]
+[node name="Tilemaps" type="Node2D" parent="." unique_id=793828055]
 
-[node name="Sand" type="TileMapLayer" parent="Tilemaps"]
+[node name="Sand" type="TileMapLayer" parent="Tilemaps" unique_id=246234241]
 z_index = -10
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD/////AAAAABgAAAAAAP//AAAAABgAAAAAAP7/AAAAABgAAAABAP7/AAAAABgAAAABAP3/AAAAABgAAAAAAP3/AAAAABgAAAD///3/AAAAABgAAAD+//3/AAAAABgAAAD+//7/AAAAABgAAAD///7/AAAAABgAAAA=")
 tile_set = ExtResource("4_xws4w")
 y_sort_origin = -4
 
-[node name="Ground" type="TileMapLayer" parent="Tilemaps"]
+[node name="Ground" type="TileMapLayer" parent="Tilemaps" unique_id=1135443609]
 z_index = -5
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD+//3/AAADAAgAAAD+//7/AAADAAoAAAD+////AAABAAgAAAD/////AAADAAoAAAAAAP//AAAFAAoAAAAAAP3/AAAEAAgAAAD///3/AAAEAAgAAAD///7/AAAHAAgAAAABAP7/AAAFAAoAAAABAAAAAAABAAgAAAD+/wAAAAABAAgAAAD9//7/AAABAAgAAAD9////AAABAAgAAAD9/wAAAAAAAAYAAAD//wEAAAABAAgAAAAAAAEAAAABAAgAAAABAAEAAAABAAgAAAACAAAAAAAAAAYAAAAAAAIAAAABAAkAAAACAAEAAAABAAkAAAABAAIAAAABAAsAAAD//wIAAAABAAkAAAD9/wEAAAABAAkAAAABAP3/AAAFAAgAAAADAP7/AAABAAgAAAADAAAAAAABAAgAAAADAAEAAAABAAkAAAD9//3/AAAAAAYAAAD+//z/AAABAAgAAAD///z/AAABAAgAAAAAAPz/AAABAAgAAAABAPz/AAABAAgAAAACAP3/AAABAAgAAAADAP3/AAAAAAYAAAACAAIAAAABAAoAAAACAPz/AAAAAAYAAAD8//3/AAABAAgAAAD8/wEAAAAAAAkAAAD9/wIAAAABAAoAAAABAAMAAAACAAoAAAAAAAMAAAABAAoAAAD//wMAAAABAAoAAAD8/wIAAAAAAAoAAAADAAIAAAABAAoAAAD+/wIAAAAAAAsAAAD8/wAAAAAAAAgAAAD8////AAAAAAgAAAD8//7/AAABAAgAAAD+/wEAAAABAAgAAAD7////AAABAAoAAAD7//7/AAABAAkAAAD7//3/AAABAAgAAAD7//z/AAABAAgAAAD8//z/AAABAAgAAAD9//z/AAABAAgAAAD9//v/AAABAAgAAAD+//v/AAAAAAYAAAD///v/AAAAAAYAAAAAAPv/AAABAAgAAAABAPv/AAABAAgAAAACAPv/AAABAAgAAAADAPz/AAABAAgAAAAEAP3/AAABAAgAAAAEAP7/AAABAAgAAAAEAP//AAACAAgAAAAEAAAAAAACAAgAAAD6//7/AAAAAAkAAAD6//3/AAAAAAgAAAD6//z/AAAAAAcAAAD7//v/AAAAAAcAAAD8//v/AAABAAcAAAD9//r/AAAAAAcAAAD+//r/AAABAAcAAAD///r/AAABAAcAAAAAAPr/AAABAAcAAAABAPr/AAABAAcAAAACAPr/AAACAAcAAAAEAPv/AAACAAcAAAADAPv/AAABAAcAAAAFAPz/AAACAAcAAAAEAPz/AAABAAgAAAAFAP3/AAACAAgAAAAFAP7/AAACAAkAAAAFAP//AAACAAoAAAAEAAEAAAACAAkAAAAEAAIAAAACAAoAAAD+/wMAAAAAAAoAAAD6////AAAAAAoAAAD7/wMAAAABAAgAAAD7/wQAAAABAAkAAAD6/wMAAAABAAgAAAD6/wQAAAAAAAsAAAD7/wUAAAABAAoAAAD8/wQAAAABAAkAAAD8/wUAAAABAAoAAAD6/wUAAAAAAAoAAAD5/wMAAAAAAAkAAAD5/wQAAAAAAAoAAAD7/wIAAAACAAcAAAD6/wIAAAABAAcAAAD5/wIAAAAAAAcAAAAEAAMAAAABAAcAAAADAAMAAAAAAAcAAAAFAAMAAAACAAcAAAADAAQAAAAAAAkAAAAEAAQAAAABAAkAAAAFAAQAAAACAAkAAAAFAAUAAAACAAoAAAADAAUAAAAAAAoAAAAEAAUAAAABAAoAAAD//wAAAAABAAgAAAAAAAAAAAABAAgAAAD8/wMAAAABAAcAAAD9/wMAAAACAAcAAAD9/wQAAAACAAkAAAD9/wUAAAACAAoAAAAAAP7/AAAGAAgAAAADAP//AAABAAgAAAACAP7/AAABAAgAAAACAP//AAABAAgAAAABAP//AAABAAgAAAA=")
 tile_set = ExtResource("4_xws4w")
 
-[node name="Decoration" type="TileMapLayer" parent="Tilemaps"]
+[node name="Decoration" type="TileMapLayer" parent="Tilemaps" unique_id=1440427190]
 z_index = -4
 tile_map_data = PackedByteArray("AAD6/wIAAAAQAAQAAAAEAAQAAAAGAAAAAAABAPr/AAAGAAAAAAD7//z/AAATAAcAAAACAAEAAAAJAAAAAAD8/wQAAAAJAAAAAAD+/wAAAAAKAAAAAAABAPv/AAALAAAAAAD7//7/AAAQAAYAAAD8//z/AAAQAAUAAAAAAPz/AAARAAYAAAD///z/AAAQAAYAAAD+//z/AAAQAAYAAAD9//z/AAASAAYAAAD9//3/AAARAAUAAAD9//7/AAARAAYAAAD8//7/AAAQAAYAAAD6//7/AAAPAAYAAAD6//3/AAAPAAUAAAD6//z/AAAPAAQAAAD7//v/AAAPAAQAAAD8//v/AAAQAAQAAAD9//v/AAATAAcAAAD+//v/AAAQAAUAAAD9//r/AAAPAAQAAAD+//r/AAAQAAQAAAD///r/AAARAAQAAAD///v/AAASAAcAAAAAAPv/AAARAAQAAAD8//3/AAAQAAUAAAD7//3/AAAQAAUAAAD8/wMAAAAQAAQAAAD7/wMAAAASAAcAAAD7/wIAAAARAAQAAAD5/wIAAAAPAAQAAAD5/wMAAAAPAAYAAAA=")
 tile_set = ExtResource("4_xws4w")
 
-[node name="Water" type="TileMapLayer" parent="Tilemaps"]
+[node name="Water" type="TileMapLayer" parent="Tilemaps" unique_id=29605493]
 z_index = -2
 material = SubResource("ShaderMaterial_6rqyo")
 tile_map_data = PackedByteArray("AAD+//3/AAAAAAAAAAD///3/AQAAAAAAAAAAAP3/AQAAAAAAAAABAP3/AgAAAAAAAAAAAP7/CQAAAAAAAAD+//7/BgAAAAAAAAD/////BgAAAAAAAAAAAP//CAAAAAAAAAD///7/CgAAAAAAAAABAP7/CAAAAAAAAAA=")
 tile_set = ExtResource("7_m436g")
 
-[node name="Underwater" type="TileMapLayer" parent="Tilemaps"]
+[node name="Underwater" type="TileMapLayer" parent="Tilemaps" unique_id=1155133233]
 z_index = -3
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD///7/AAAEAAAAAAAAAP//AAAFAAAAAAABAP7/AAAFAAAAAAA=")
 tile_set = ExtResource("4_xws4w")
 
-[node name="Top" type="TileMapLayer" parent="Tilemaps"]
+[node name="Top" type="TileMapLayer" parent="Tilemaps" unique_id=1061153436]
 z_index = -1
 use_parent_material = true
 tile_set = ExtResource("4_xws4w")
 
-[node name="FarmingLayer" type="TileMapLayer" parent="Tilemaps" groups=["FARMINGGROUND"]]
+[node name="FarmingLayer" type="TileMapLayer" parent="Tilemaps" unique_id=2039870711 groups=["FARMINGGROUND"]]
 z_index = -2
 tile_map_data = PackedByteArray("AAAGAPf/AQAFAAQAAAAFAPf/AQADAAUAAAAGAPj/AQAEAAUAAAACAP7/AQACAAQAAAACAP//AQACAAIAAAADAP7/AQAEAAIAAAADAP//AQAEAAMAAAAEAP7/AQACAAMAAAAEAP3/AQACAAUAAAACAAAAAQAHAAQAAAAAAAAAAQACAAQAAAABAAEAAQABAAMAAAAEAP//AQAGAAQAAAADAAEAAQAGAAUAAAACAAIAAQAFAAUAAAABAAIAAQABAAUAAAAAAAEAAQAAAAUAAAABAAAAAQAFAAIAAAA=")
 tile_set = ExtResource("8_shm84")
 
-[node name="IslandMaxBorder" type="Node2D" parent="."]
+[node name="IslandMaxBorder" type="Node2D" parent="." unique_id=1328533246]
 visible = false
 
-[node name="TileMap" type="TileMapLayer" parent="IslandMaxBorder"]
+[node name="TileMap" type="TileMapLayer" parent="IslandMaxBorder" unique_id=1345918179]
 tile_set = ExtResource("4_xws4w")
 
-[node name="EdgeCollisions" type="StaticBody2D" parent="."]
+[node name="EdgeCollisions" type="StaticBody2D" parent="." unique_id=1030322119]
 visible = false
 
-[node name="TopLeft" type="CollisionPolygon2D" parent="EdgeCollisions"]
+[node name="TopLeft" type="CollisionPolygon2D" parent="EdgeCollisions" unique_id=212896649]
 position = Vector2(-16, 16)
 polygon = PackedVector2Array(-176, -112, -176, -80, -136, -48, -112, -48, -112, -32, -144, -32, -208, -88, -144, -176, -80, -216, 0, -240, 0, -208, -48, -208, -80, -176, -112, -176)
 
-[node name="TopRight" type="CollisionPolygon2D" parent="EdgeCollisions"]
+[node name="TopRight" type="CollisionPolygon2D" parent="EdgeCollisions" unique_id=1852464442]
 position = Vector2(-32, 32)
 polygon = PackedVector2Array(96, -224, 48, -224, 48, -256, 96, -248, 144, -224, 192, -192, 232, -136, 224, -48, 192, -48, 192, -64, 224, -96, 224, -128, 160, -192, 128, -192)
 
-[node name="BottomLeft" type="CollisionPolygon2D" parent="EdgeCollisions"]
+[node name="BottomLeft" type="CollisionPolygon2D" parent="EdgeCollisions" unique_id=271576992]
 position = Vector2(-48, 48)
 polygon = PackedVector2Array(-16, 16, -48, 16, -80, -16, -80, -32, -112, -32, -88, 16, -40, 40, 0, 64, 32, 80, 32, 48, 16, 48)
 
-[node name="BottomRight" type="CollisionPolygon2D" parent="EdgeCollisions"]
+[node name="BottomRight" type="CollisionPolygon2D" parent="EdgeCollisions" unique_id=1997558405]
 position = Vector2(-64, 64)
 polygon = PackedVector2Array(192, 0, 224, -32, 224, -48, 256, -48, 224, 16, 104, 56, 80, 64, 80, 32, 96, 32, 128, 0)
 
-[node name="IslandObjectSaveManager" type="Node2D" parent="."]
+[node name="IslandObjectSaveManager" type="Node2D" parent="." unique_id=354352021]
 y_sort_enabled = true
 script = ExtResource("11_u0eh4")
 
-[node name="MystFibre" parent="IslandObjectSaveManager" instance=ExtResource("12_8drlg")]
+[node name="MystFibre" parent="IslandObjectSaveManager" unique_id=1002526775 instance=ExtResource("12_8drlg")]
 position = Vector2(-48, -176)
 
-[node name="MystFibre2" parent="IslandObjectSaveManager" instance=ExtResource("12_8drlg")]
+[node name="MystFibre2" parent="IslandObjectSaveManager" unique_id=323217540 instance=ExtResource("12_8drlg")]
 position = Vector2(127, -119)
 
-[node name="MystFibre3" parent="IslandObjectSaveManager" instance=ExtResource("12_8drlg")]
+[node name="MystFibre3" parent="IslandObjectSaveManager" unique_id=2122685880 instance=ExtResource("12_8drlg")]
 position = Vector2(119, 51)
 
-[node name="MystFibre4" parent="IslandObjectSaveManager" instance=ExtResource("12_8drlg")]
+[node name="MystFibre4" parent="IslandObjectSaveManager" unique_id=1132826531 instance=ExtResource("12_8drlg")]
 position = Vector2(-39, -13)
 
-[node name="MystFibre5" parent="IslandObjectSaveManager" instance=ExtResource("12_8drlg")]
+[node name="MystFibre5" parent="IslandObjectSaveManager" unique_id=1759245505 instance=ExtResource("12_8drlg")]
 position = Vector2(-104, -72)
 
-[node name="MystFibre6" parent="IslandObjectSaveManager" instance=ExtResource("12_8drlg")]
+[node name="MystFibre6" parent="IslandObjectSaveManager" unique_id=603358141 instance=ExtResource("12_8drlg")]
 position = Vector2(-64, -128)
 
-[node name="MystTree" parent="IslandObjectSaveManager" instance=ExtResource("13_sn8nb")]
+[node name="MystTree" parent="IslandObjectSaveManager" unique_id=2105728425 instance=ExtResource("13_sn8nb")]
 position = Vector2(-136, -102)
 variant = 1
 
-[node name="MystTree2" parent="IslandObjectSaveManager" instance=ExtResource("13_sn8nb")]
+[node name="MystTree2" parent="IslandObjectSaveManager" unique_id=1117858036 instance=ExtResource("13_sn8nb")]
 position = Vector2(76, -137)
 
-[node name="MystTree6" parent="IslandObjectSaveManager" instance=ExtResource("13_sn8nb")]
+[node name="MystTree6" parent="IslandObjectSaveManager" unique_id=1618719059 instance=ExtResource("13_sn8nb")]
 position = Vector2(16, -96)
 
-[node name="MystTree3" parent="IslandObjectSaveManager" instance=ExtResource("13_sn8nb")]
+[node name="MystTree3" parent="IslandObjectSaveManager" unique_id=546226822 instance=ExtResource("13_sn8nb")]
 position = Vector2(172, -66)
 variant = 1
 
-[node name="MystTree4" parent="IslandObjectSaveManager" instance=ExtResource("13_sn8nb")]
+[node name="MystTree4" parent="IslandObjectSaveManager" unique_id=986637494 instance=ExtResource("13_sn8nb")]
 position = Vector2(-77, 55)
 
-[node name="MystTree5" parent="IslandObjectSaveManager" instance=ExtResource("13_sn8nb")]
+[node name="MystTree5" parent="IslandObjectSaveManager" unique_id=1558446015 instance=ExtResource("13_sn8nb")]
 position = Vector2(-104, -144)
 variant = 1
 
-[node name="Mystic Mushroom" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+[node name="Mystic Mushroom" parent="IslandObjectSaveManager" unique_id=945179992 instance=ExtResource("12_j5dp2")]
 position = Vector2(64, 16)
 
-[node name="Mystic Mushroom2" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+[node name="Mystic Mushroom2" parent="IslandObjectSaveManager" unique_id=1080422029 instance=ExtResource("12_j5dp2")]
 position = Vector2(136, -96)
 
-[node name="Mystic Mushroom3" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+[node name="Mystic Mushroom3" parent="IslandObjectSaveManager" unique_id=1427731981 instance=ExtResource("12_j5dp2")]
 position = Vector2(128, -72)
 
-[node name="Mystic Mushroom4" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+[node name="Mystic Mushroom4" parent="IslandObjectSaveManager" unique_id=323119557 instance=ExtResource("12_j5dp2")]
 position = Vector2(96, -104)
 
-[node name="Mystic Mushroom5" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+[node name="Mystic Mushroom5" parent="IslandObjectSaveManager" unique_id=1794040124 instance=ExtResource("12_j5dp2")]
 position = Vector2(-72, -80)
 
-[node name="Mystic Mushroom6" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+[node name="Mystic Mushroom6" parent="IslandObjectSaveManager" unique_id=210056188 instance=ExtResource("12_j5dp2")]
 position = Vector2(-144, -88)
 
-[node name="Mystic Mushroom7" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+[node name="Mystic Mushroom7" parent="IslandObjectSaveManager" unique_id=991458137 instance=ExtResource("12_j5dp2")]
 position = Vector2(-120, -64)
 
-[node name="Mystic Mushroom8" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+[node name="Mystic Mushroom8" parent="IslandObjectSaveManager" unique_id=730075414 instance=ExtResource("12_j5dp2")]
 position = Vector2(-56, 48)
 
-[node name="Mystic Mushroom9" parent="IslandObjectSaveManager" instance=ExtResource("12_j5dp2")]
+[node name="Mystic Mushroom9" parent="IslandObjectSaveManager" unique_id=1765300730 instance=ExtResource("12_j5dp2")]
 position = Vector2(-104, 40)
 
-[node name="RemovableObjectsManager" type="Node2D" parent="." node_paths=PackedStringArray("tilemap_parent", "sign_parent")]
+[node name="RemovableObjectsManager" type="Node2D" parent="." unique_id=730333185 node_paths=PackedStringArray("tilemap_parent", "sign_parent")]
 y_sort_enabled = true
 script = ExtResource("12_hv1cu")
 tilemap_parent = NodePath("Tilemaps")
 sign_parent = NodePath("Signs")
 
-[node name="Signs" type="Node2D" parent="RemovableObjectsManager"]
+[node name="Signs" type="Node2D" parent="RemovableObjectsManager" unique_id=455138803]
 y_sort_enabled = true
 
-[node name="RemoveSign0" parent="RemovableObjectsManager/Signs" node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "shadow_tilemap", "island") instance=ExtResource("13_ulfit")]
+[node name="RemoveSign0" parent="RemovableObjectsManager/Signs" unique_id=1251760924 node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "shadow_tilemap", "island") instance=ExtResource("13_ulfit")]
 position = Vector2(-64, -104)
 removable_objects_Manager = NodePath("../..")
 object_connected = NodePath("../../Tilemaps/Object0")
@@ -291,40 +291,40 @@ required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Reso
 shadow_tilemap = NodePath("../../Tilemaps/Object0/Shadow")
 island = NodePath("../../..")
 
-[node name="Tilemaps" type="Node2D" parent="RemovableObjectsManager"]
+[node name="Tilemaps" type="Node2D" parent="RemovableObjectsManager" unique_id=1213037207]
 
-[node name="Object0" type="Node2D" parent="RemovableObjectsManager/Tilemaps"]
+[node name="Object0" type="Node2D" parent="RemovableObjectsManager/Tilemaps" unique_id=1675756826]
 
-[node name="Top" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+[node name="Top" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0" unique_id=828401233]
 z_index = -2
 tile_map_data = PackedByteArray("AAD9//7/AAAHAAkAAAD8//7/AAAEAAgAAAD7//7/AAAEAAgAAAD9//3/AAADAAkAAAD9//z/AAADAAgAAAD+//v/AAABAAgAAAD+//r/AAABAAgAAAD9//r/AAAFAAoAAAD8//r/AAAEAAoAAAD7//r/AAAGAAgAAAD6//v/AAAGAAgAAAD7//v/AAAFAAoAAAD6//z/AAAFAAkAAAD6//3/AAAFAAkAAAD6//7/AAAGAAkAAAD7//3/AAABAAgAAAD8//3/AAABAAgAAAD8//z/AAABAAgAAAD7//z/AAABAAgAAAD8//v/AAABAAgAAAD9//v/AAABAAgAAAD+//z/AAAIAAgAAAD///z/AAAHAAkAAAD///v/AAADAAkAAAD///r/AAADAAkAAAD///n/AAAHAAgAAAD+//n/AAAEAAoAAAA=")
 tile_set = ExtResource("4_xws4w")
 
-[node name="Ground" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+[node name="Ground" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0" unique_id=987026381]
 z_index = -3
 tile_map_data = PackedByteArray("AAD+//z/AAAIAAAAAAA=")
 tile_set = ExtResource("4_xws4w")
 
-[node name="Shadow" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+[node name="Shadow" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0" unique_id=598718910]
 tile_map_data = PackedByteArray("AAD+//z/AAACAAEAAAD9//7/AAABAAEAAAD///z/AAABAAEAAAD6//7/AAAAAAEAAAD7//7/AAABAAAAAAD8//7/AAABAAAAAAD9//z/AAAAAAAAAAA=")
 tile_set = ExtResource("19_nyspn")
 
-[node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0"]
+[node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0" unique_id=2122618247]
 z_index = -1
 tile_map_data = PackedByteArray("AAD7//3/AAAGAAAAAAD+//v/AAAKAAAAAAA=")
 tile_set = ExtResource("4_xws4w")
 
-[node name="Blocking" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0" groups=["BLOCKING"]]
+[node name="Blocking" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0" unique_id=1433598003 groups=["BLOCKING"]]
 light_mask = 0
 visibility_layer = 0
 z_index = 5
 tile_map_data = PackedByteArray("AAD1//z/AQACAAEAAAD2//z/AQACAAEAAAD3//z/AQACAAEAAAD4//z/AQACAAEAAAD5//z/AQACAAEAAAD6//z/AQACAAEAAAD6//v/AQACAAEAAAD6//r/AQACAAEAAAD6//n/AQACAAEAAAD6//j/AQACAAEAAAD7//j/AQACAAEAAAD8//j/AQACAAEAAAD9//j/AQACAAEAAAD+//j/AQACAAEAAAD+//f/AQACAAEAAAD+//b/AQACAAEAAAD+//X/AQACAAEAAAD+//T/AQACAAEAAAD9//T/AQACAAEAAAD8//T/AQACAAEAAAD8//X/AQACAAEAAAD9//X/AQACAAEAAAD9//b/AQACAAEAAAD8//b/AQACAAEAAAD8//f/AQACAAEAAAD9//f/AQACAAEAAAD7//T/AQACAAEAAAD7//X/AQACAAEAAAD7//b/AQACAAEAAAD7//f/AQACAAEAAAD6//f/AQACAAEAAAD6//b/AQACAAEAAAD5//b/AQACAAEAAAD5//f/AQACAAEAAAD4//f/AQACAAEAAAD4//b/AQACAAEAAAD3//f/AQACAAEAAAD3//b/AQACAAEAAAD3//j/AQACAAEAAAD2//j/AQACAAEAAAD1//j/AQACAAEAAAD1//n/AQACAAEAAAD1//r/AQACAAEAAAD2//r/AQACAAEAAAD2//n/AQACAAEAAAD3//n/AQACAAEAAAD2//v/AQACAAEAAAD1//v/AQACAAEAAAD3//r/AQACAAEAAAD3//v/AQACAAEAAAD4//v/AQACAAEAAAD4//r/AQACAAEAAAD4//n/AQACAAEAAAD4//j/AQACAAEAAAD5//r/AQACAAEAAAD5//n/AQACAAEAAAD5//j/AQACAAEAAAD5//v/AQACAAEAAAD6//X/AQACAAEAAAA=")
 tile_set = ExtResource("2_j0ysi")
 
-[node name="Point" type="Node2D" parent="RemovableObjectsManager/Tilemaps/Object0"]
+[node name="Point" type="Node2D" parent="RemovableObjectsManager/Tilemaps/Object0" unique_id=549843372]
 position = Vector2(-112, -136)
 
-[node name="WorldMapIcon" type="Node2D" parent="RemovableObjectsManager/Tilemaps/Object0/Point" node_paths=PackedStringArray("parent")]
+[node name="WorldMapIcon" type="Node2D" parent="RemovableObjectsManager/Tilemaps/Object0/Point" unique_id=507413010 node_paths=PackedStringArray("parent")]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("19_s8t3c")
 icon_texture = ExtResource("20_nyspn")

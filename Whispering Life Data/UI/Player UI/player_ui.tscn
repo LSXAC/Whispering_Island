@@ -768,8 +768,7 @@ grow_vertical = 2
 [node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer" unique_id=1259345799 instance=ExtResource("21_uwodk")]
 layout_mode = 2
 
-[node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SlotBackground0" index="0"]
-layout_mode = 0
+[node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SlotBackground0" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -801,8 +800,7 @@ grow_vertical = 2
 [node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer" unique_id=1476471130 instance=ExtResource("21_uwodk")]
 layout_mode = 2
 
-[node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SlotBackground0" index="0"]
-layout_mode = 0
+[node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SlotBackground0" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -834,8 +832,7 @@ grow_vertical = 2
 [node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer" unique_id=886872060 instance=ExtResource("21_uwodk")]
 layout_mode = 2
 
-[node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer/SlotBackground0" index="0"]
-layout_mode = 0
+[node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer/SlotBackground0" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -867,8 +864,7 @@ grow_vertical = 2
 [node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer" unique_id=1281343460 instance=ExtResource("21_uwodk")]
 layout_mode = 2
 
-[node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer/SlotBackground0" index="0"]
-layout_mode = 0
+[node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer/SlotBackground0" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0

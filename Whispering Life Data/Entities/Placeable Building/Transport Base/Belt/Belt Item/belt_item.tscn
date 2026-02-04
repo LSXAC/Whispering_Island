@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://cuv3l6bihmy11" path="res://Entities/Placeable Building/Transport Base/Belt/Belt Item/BeltItem.cs" id="1_vsyuc"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Entities/Items/SpritesForItems/Icons_3rd/Wood_Icon.png" id="2_b616p"]
 
-[node name="BellItem" type="CharacterBody2D"]
+[node name="BellItem" type="CharacterBody2D" unique_id=271674154]
 y_sort_enabled = true
 script = ExtResource("1_vsyuc")
 
-[node name="BellItemSprite" type="Sprite2D" parent="."]
+[node name="BellItemSprite" type="Sprite2D" parent="." unique_id=148522563]
 y_sort_enabled = true
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_b616p")

@@ -5,11 +5,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0htq"]
 size = Vector2(6, 6)
 
-[node name="2" type="Area2D"]
+[node name="2" type="Area2D" unique_id=771879239]
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 script = ExtResource("1_uc8h7")
 
-[node name="BeltCollision" type="CollisionShape2D" parent="."]
+[node name="BeltCollision" type="CollisionShape2D" parent="." unique_id=1336645670]
 shape = SubResource("RectangleShape2D_m0htq")

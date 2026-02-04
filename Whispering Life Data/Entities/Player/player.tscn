@@ -236,26 +236,26 @@ fill = 1
 fill_from = Vector2(0.512821, 0.498576)
 fill_to = Vector2(0.94302, 0.0740741)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=811201268]
 y_sort_enabled = true
 motion_mode = 1
 safe_margin = 3.0
 script = ExtResource("1_2p5ml")
 shadow_texture = ExtResource("6_k5wdo")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=2091731606]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_wxsri")
 one_way_collision_margin = 2.0
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=957474805]
 zoom = Vector2(1.5, 1.5)
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1105752474]
 y_sort_enabled = true
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_gvbij")
@@ -263,34 +263,34 @@ animation = &"Down"
 speed_scale = 1.35
 offset = Vector2(0, -15)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=698791524]
 collision_mask = 2
 input_pickable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=969216080]
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_rjp5d")
 
-[node name="PlayerStamina" type="Node2D" parent="."]
+[node name="PlayerStamina" type="Node2D" parent="." unique_id=1778241510]
 script = ExtResource("5_l640a")
 
-[node name="PlayerStats" type="Node2D" parent="."]
+[node name="PlayerStats" type="Node2D" parent="." unique_id=1471562781]
 script = ExtResource("5_f3lay")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1244340876]
 blend_mode = 2
 texture = SubResource("GradientTexture2D_htcer")
 offset = Vector2(-3, -3)
 script = ExtResource("6_dd0ac")
 
-[node name="WorldMapIcon" type="Node2D" parent="." node_paths=PackedStringArray("parent")]
+[node name="WorldMapIcon" type="Node2D" parent="." unique_id=532068849 node_paths=PackedStringArray("parent")]
 scale = Vector2(4, 4)
 script = ExtResource("7_jlvik")
 icon_texture = ExtResource("7_0u5uq")
 parent = NodePath("..")
 scale = Vector2(4, 4)
 
-[node name="ShadowNode" parent="." instance=ExtResource("3_gk6dx")]
+[node name="ShadowNode" parent="." unique_id=1020290806 instance=ExtResource("3_gk6dx")]
 position = Vector2(0, -3)
 
 [connection signal="area_entered" from="Area2D" to="." method="OnAreaEntered"]

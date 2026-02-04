@@ -140,74 +140,74 @@ shader_parameter/speed = Vector2(0.001, 0.001)
 bg_color = Color(0.184314, 0.184314, 0.184314, 0.196078)
 draw_center = false
 
-[node name="GameManager" type="Node2D" node_paths=PackedStringArray("building_placer", "shadow_manager")]
+[node name="GameManager" type="Node2D" unique_id=1069163588 node_paths=PackedStringArray("building_placer", "shadow_manager")]
 process_priority = 1000
 y_sort_enabled = true
 script = ExtResource("1_2n0he")
 building_placer = NodePath("BuildingManager/BuildingPlacer")
 shadow_manager = NodePath("ShadowManager")
 
-[node name="Global" type="Node2D" parent="."]
+[node name="Global" type="Node2D" parent="." unique_id=5628700]
 script = ExtResource("10_1whgu")
 
-[node name="Player" parent="." instance=ExtResource("4_wajns")]
+[node name="Player" parent="." unique_id=960590614 instance=ExtResource("4_wajns")]
 position = Vector2(0, -160)
 scale = Vector2(0.75, 0.75)
 
-[node name="BuildingManager" type="Node2D" parent="."]
+[node name="BuildingManager" type="Node2D" parent="." unique_id=2075938287]
 
-[node name="BuildingPlacer" type="Node2D" parent="BuildingManager" node_paths=PackedStringArray("island_manager")]
+[node name="BuildingPlacer" type="Node2D" parent="BuildingManager" unique_id=74495671 node_paths=PackedStringArray("island_manager")]
 script = ExtResource("2_h8pdp")
 island_manager = NodePath("../../IslandManager")
 
-[node name="Building_Tilemap_Snapper" type="TileMapLayer" parent="BuildingManager/BuildingPlacer"]
+[node name="Building_Tilemap_Snapper" type="TileMapLayer" parent="BuildingManager/BuildingPlacer" unique_id=1851332033]
 tile_set = ExtResource("3_lj4ef")
 
-[node name="Buildings" type="Node2D" parent="."]
+[node name="Buildings" type="Node2D" parent="." unique_id=1900834718]
 y_sort_enabled = true
 
-[node name="IslandManager" type="Node2D" parent="."]
+[node name="IslandManager" type="Node2D" parent="." unique_id=1542550144]
 y_sort_enabled = true
 script = ExtResource("5_f280c")
 
-[node name="MainIsland" parent="IslandManager" instance=ExtResource("6_p85m3")]
+[node name="MainIsland" parent="IslandManager" unique_id=61435208 instance=ExtResource("6_p85m3")]
 
-[node name="QuestSign" parent="IslandManager/MainIsland" index="6"]
+[node name="QuestSign" parent="IslandManager/MainIsland" index="6" unique_id=3979293]
 title = "Monster"
 description = "...."
 
-[node name="CutsceneCamera" type="Camera2D" parent="."]
+[node name="CutsceneCamera" type="Camera2D" parent="." unique_id=1089011335]
 position = Vector2(32, -160)
 enabled = false
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="Tutorial" type="Node2D" parent="." node_paths=PackedStringArray("Tree")]
+[node name="Tutorial" type="Node2D" parent="." unique_id=1196495097 node_paths=PackedStringArray("Tree")]
 script = ExtResource("24_f4sbj")
 Tree = NodePath("Tree/SpriteAnimationManager")
 
-[node name="Tree" type="StaticBody2D" parent="Tutorial"]
+[node name="Tree" type="StaticBody2D" parent="Tutorial" unique_id=1969315156]
 y_sort_enabled = true
 position = Vector2(75, -197)
 collision_layer = 13
 
-[node name="SpriteAnimationManager" type="Node2D" parent="Tutorial/Tree"]
+[node name="SpriteAnimationManager" type="Node2D" parent="Tutorial/Tree" unique_id=1568886385]
 script = ExtResource("19_f280c")
 anim_name = "Tree_Idle"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tutorial/Tree/SpriteAnimationManager"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tutorial/Tree/SpriteAnimationManager" unique_id=949191935]
 position = Vector2(-32, -48)
 sprite_frames = SubResource("SpriteFrames_us0rr")
 animation = &"Normal"
 centered = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Tutorial/Tree/SpriteAnimationManager"]
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial/Tree/SpriteAnimationManager" unique_id=6489743]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_uwm61")
 texture = ExtResource("11_4xc4d")
 
-[node name="FallingLeaves" type="GPUParticles2D" parent="Tutorial/Tree/SpriteAnimationManager"]
+[node name="FallingLeaves" type="GPUParticles2D" parent="Tutorial/Tree/SpriteAnimationManager" unique_id=1213439567]
 z_index = -1
 y_sort_enabled = true
 position = Vector2(-12, -26)
@@ -219,97 +219,97 @@ explosiveness = 0.3
 randomness = 0.5
 process_material = SubResource("ParticleProcessMaterial_pa158")
 
-[node name="ShadowNode" parent="Tutorial/Tree/SpriteAnimationManager" instance=ExtResource("13_uv8n6")]
+[node name="ShadowNode" parent="Tutorial/Tree/SpriteAnimationManager" unique_id=1064349038 instance=ExtResource("13_uv8n6")]
 single_shadow_texture = ExtResource("14_4xc4d")
 is_used_in_tutorial = true
 
-[node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer", "hbox_category") instance=ExtResource("9_1xtv0")]
+[node name="BuildingMenu" parent="." unique_id=1100311995 node_paths=PackedStringArray("building_placer", "hbox_category") instance=ExtResource("9_1xtv0")]
 layer = 2
 visible = false
 building_placer = NodePath("../BuildingManager/BuildingPlacer")
 hbox_category = []
 
-[node name="QuestMenu" parent="." instance=ExtResource("11_5h8gv")]
+[node name="QuestMenu" parent="." unique_id=707355972 instance=ExtResource("11_5h8gv")]
 visible = false
 
-[node name="PlayerUI" parent="." instance=ExtResource("7_5qlke")]
+[node name="PlayerUI" parent="." unique_id=1804924413 instance=ExtResource("7_5qlke")]
 
-[node name="GameMenu" parent="." instance=ExtResource("8_gytje")]
+[node name="GameMenu" parent="." unique_id=1935128749 instance=ExtResource("8_gytje")]
 visible = false
 
-[node name="QuestManager" type="Node2D" parent="." node_paths=PackedStringArray("quest_timer")]
+[node name="QuestManager" type="Node2D" parent="." unique_id=1673432054 node_paths=PackedStringArray("quest_timer")]
 script = ExtResource("13_irdkv")
 quests = Array[Object]([ExtResource("14_sw2xm"), ExtResource("10_h8pdp"), ExtResource("11_lj4ef"), ExtResource("12_wajns"), ExtResource("13_f280c"), ExtResource("14_p85m3"), ExtResource("15_5qlke"), ExtResource("16_gytje"), ExtResource("17_1xtv0")])
 quest_timer = NodePath("QuestTimer")
 
-[node name="QuestTimer" type="Timer" parent="QuestManager"]
+[node name="QuestTimer" type="Timer" parent="QuestManager" unique_id=1871866256]
 
-[node name="AtmosphereAudioPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AtmosphereAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1533182204]
 stream = ExtResource("27_73301")
 autoplay = true
 bus = &"SFX"
 playback_type = 1
 
-[node name="SFXAudioPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SFXAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=485336003]
 stream = ExtResource("28_2plat")
 autoplay = true
 bus = &"Music"
 playback_type = 1
 
-[node name="GlobalAnimationTimer" type="Timer" parent="."]
+[node name="GlobalAnimationTimer" type="Timer" parent="." unique_id=1878239014]
 wait_time = 0.2
 autostart = true
 script = ExtResource("29_q20se")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=444767178]
 layer = -15
 
-[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground" unique_id=1812215010]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1999354151]
 motion_mirroring = Vector2(2560, 1440)
 
-[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer" unique_id=618867547]
 z_index = 1
 material = ExtResource("31_p85m3")
 offset_right = 2560.0
 offset_bottom = 1440.0
 mouse_filter = 2
 
-[node name="ParallaxBackground3" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground3" type="ParallaxBackground" parent="." unique_id=148293388]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground3"]
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground3" unique_id=1386501226]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground3"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground3" unique_id=427979635]
 motion_mirroring = Vector2(2560, 1440)
 
-[node name="ColorRect" type="ColorRect" parent="ParallaxBackground3/ParallaxLayer"]
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground3/ParallaxLayer" unique_id=713746215]
 z_index = 1
 material = SubResource("ShaderMaterial_1whgu")
 offset_right = 2560.0
 offset_bottom = 1440.0
 mouse_filter = 2
 
-[node name="TimeManager" type="Node2D" parent="." node_paths=PackedStringArray("game_timer")]
+[node name="TimeManager" type="Node2D" parent="." unique_id=452405459 node_paths=PackedStringArray("game_timer")]
 script = ExtResource("21_3gobv")
 game_timer = NodePath("GameTimer")
 
-[node name="GameTimer" type="Timer" parent="TimeManager"]
+[node name="GameTimer" type="Timer" parent="TimeManager" unique_id=1266991679]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="TimeManager"]
+[node name="CanvasModulate" type="CanvasModulate" parent="TimeManager" unique_id=427571687]
 
-[node name="DayNightManager" type="Node2D" parent="TimeManager" node_paths=PackedStringArray("canvases")]
+[node name="DayNightManager" type="Node2D" parent="TimeManager" unique_id=1999013336 node_paths=PackedStringArray("canvases")]
 script = ExtResource("22_3jk2j")
 dayNightGradient = ExtResource("23_rd84m")
 canvases = [NodePath("../CanvasModulate"), NodePath("../../ParallaxBackground3/CanvasModulate"), NodePath("../../ParallaxBackground/CanvasModulate")]
 
-[node name="World" type="Control" parent="."]
+[node name="World" type="Control" parent="." unique_id=1545821122]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="WorldMap" type="CanvasLayer" parent="World" node_paths=PackedStringArray("camera", "icons_parent", "quest_checkbox", "traders_checkbox", "removeable_checkbox")]
+[node name="WorldMap" type="CanvasLayer" parent="World" unique_id=1659729370 node_paths=PackedStringArray("camera", "icons_parent", "quest_checkbox", "traders_checkbox", "removeable_checkbox")]
 layer = 2
 visible = false
 script = ExtResource("35_gytje")
@@ -321,7 +321,7 @@ quest_checkbox = NodePath("VBoxContainer/CheckBox3")
 traders_checkbox = NodePath("VBoxContainer/CheckBox2")
 removeable_checkbox = NodePath("VBoxContainer/CheckBox")
 
-[node name="ColorRect" type="ColorRect" parent="World/WorldMap"]
+[node name="ColorRect" type="ColorRect" parent="World/WorldMap" unique_id=133155805]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -329,16 +329,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.823529, 0.721569, 0, 0.00392157)
 
-[node name="Camera2D" type="Camera2D" parent="World/WorldMap"]
+[node name="Camera2D" type="Camera2D" parent="World/WorldMap" unique_id=734256249]
 enabled = false
 zoom = Vector2(0.3, 0.3)
 
-[node name="TextureRect" type="TextureRect" parent="World/WorldMap"]
+[node name="TextureRect" type="TextureRect" parent="World/WorldMap" unique_id=1439232534]
 offset_right = 640.0
 offset_bottom = 360.0
 texture = ExtResource("36_1xtv0")
 
-[node name="PanelContainer" type="PanelContainer" parent="World/WorldMap"]
+[node name="PanelContainer" type="PanelContainer" parent="World/WorldMap" unique_id=1370894467]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -350,23 +350,23 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t3yax")
 
-[node name="MarginContainer" type="MarginContainer" parent="World/WorldMap/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="World/WorldMap/PanelContainer" unique_id=1040914196]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="LightTextureRect" type="TextureRect" parent="World/WorldMap/PanelContainer/MarginContainer"]
+[node name="LightTextureRect" type="TextureRect" parent="World/WorldMap/PanelContainer/MarginContainer" unique_id=1519694039]
 layout_mode = 2
 texture = ExtResource("37_sw2xm")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="World/WorldMap/PanelContainer/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="World/WorldMap/PanelContainer/MarginContainer" unique_id=1840775987]
 layout_mode = 2
 texture = ExtResource("41_irdkv")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="World/WorldMap"]
+[node name="VBoxContainer" type="VBoxContainer" parent="World/WorldMap" unique_id=74182344]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -376,7 +376,7 @@ offset_right = -23.0
 offset_bottom = 63.0
 grow_horizontal = 0
 
-[node name="Label" type="Label" parent="World/WorldMap/VBoxContainer"]
+[node name="Label" type="Label" parent="World/WorldMap/VBoxContainer" unique_id=1853476814]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("38_irdkv")
@@ -385,7 +385,7 @@ text = "World Filter"
 script = ExtResource("39_sw2xm")
 label_translation_string = "WORLD_MAP_WORLD_FILTER"
 
-[node name="CheckBox" type="CheckBox" parent="World/WorldMap/VBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="World/WorldMap/VBoxContainer" unique_id=1198921957]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("38_irdkv")
@@ -395,7 +395,7 @@ text = "Removeable"
 script = ExtResource("41_4xc4d")
 label_translation_string = "WORLD_MAP_REMOVEABLE"
 
-[node name="CheckBox2" type="CheckBox" parent="World/WorldMap/VBoxContainer"]
+[node name="CheckBox2" type="CheckBox" parent="World/WorldMap/VBoxContainer" unique_id=2018186694]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("38_irdkv")
@@ -405,7 +405,7 @@ text = "Traders"
 script = ExtResource("41_4xc4d")
 label_translation_string = "WORLD_MAP_TRADER"
 
-[node name="CheckBox3" type="CheckBox" parent="World/WorldMap/VBoxContainer"]
+[node name="CheckBox3" type="CheckBox" parent="World/WorldMap/VBoxContainer" unique_id=484134636]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("38_irdkv")
@@ -415,7 +415,7 @@ text = "Quests"
 script = ExtResource("41_4xc4d")
 label_translation_string = "WORLD_MAP_QUESTS"
 
-[node name="Button" type="Button" parent="World/WorldMap/VBoxContainer"]
+[node name="Button" type="Button" parent="World/WorldMap/VBoxContainer" unique_id=1138254459]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("38_irdkv")
@@ -424,10 +424,10 @@ text = "Clear Filter"
 script = ExtResource("40_uv8n6")
 label_translation_string = "WORLD_MAP_CLEAR_FILTER"
 
-[node name="WorldIcons" type="CanvasLayer" parent="World"]
+[node name="WorldIcons" type="CanvasLayer" parent="World" unique_id=1865212714]
 follow_viewport_enabled = true
 
-[node name="Icons" type="Control" parent="World/WorldIcons"]
+[node name="Icons" type="Control" parent="World/WorldIcons" unique_id=428509837]
 light_mask = 0
 z_index = 99
 layout_mode = 3
@@ -436,7 +436,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="ShadowManager" type="CanvasGroup" parent="."]
+[node name="ShadowManager" type="CanvasGroup" parent="." unique_id=255337878]
 self_modulate = Color(1, 1, 1, 0.19607843)
 z_index = -1
 script = ExtResource("44_4xc4d")

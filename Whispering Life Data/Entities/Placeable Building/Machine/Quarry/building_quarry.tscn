@@ -96,7 +96,7 @@ position = Vector2(23, -9)
 direction_not_giving = 3
 building = NodePath("..")
 
-[node name="Holder" parent="Giver2" index="0"]
+[node name="Holder" parent="Giver2" index="0" unique_id=1704036799]
 position = Vector2(-16, 1)
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=232812811]

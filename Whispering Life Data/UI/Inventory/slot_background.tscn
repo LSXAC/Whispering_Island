@@ -7,20 +7,20 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4utg2"]
 bg_color = Color(0.278431, 0.270588, 0.329412, 1)
 
-[node name="SlotBackground0" type="ColorRect"]
+[node name="SlotBackground0" type="ColorRect" unique_id=1156444948]
 custom_minimum_size = Vector2(32, 32)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Slot0" type="Button" parent="."]
+[node name="Slot0" type="Button" parent="." unique_id=1848838759]
 custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
+layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 31.0
 offset_bottom = 31.0
 theme = ExtResource("1_3e7sv")
-theme_override_styles/focus = ExtResource("2_vxm2r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_4utg2")
+theme_override_styles/focus = ExtResource("2_vxm2r")
 button_mask = 3
 script = ExtResource("2_rimsq")

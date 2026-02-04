@@ -5,10 +5,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(14, 14)
 
-[node name="MouseArea" type="Area2D"]
+[node name="MouseArea" type="Area2D" unique_id=1487247098]
 script = ExtResource("1_7etl3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1212293417]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_fk0le")
 

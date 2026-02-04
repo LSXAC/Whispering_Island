@@ -12,30 +12,30 @@ size = Vector2(3, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3v7m"]
 size = Vector2(28, 32)
 
-[node name="BridgeUp" type="StaticBody2D"]
+[node name="BridgeUp" type="StaticBody2D" unique_id=362147867]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1279619827]
 position = Vector2(12.5, 0)
 shape = SubResource("RectangleShape2D_k4sqt")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=69441470]
 position = Vector2(-12.5, 0)
 shape = SubResource("RectangleShape2D_34776")
 
-[node name="Back" type="Sprite2D" parent="."]
+[node name="Back" type="Sprite2D" parent="." unique_id=987937928]
 z_index = -1
 texture = ExtResource("1_efrma")
 
-[node name="Shadow" type="Sprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="." unique_id=404854897]
 modulate = Color(1, 1, 1, 0.392157)
 z_index = -10
 position = Vector2(5.36442e-07, 9.53674e-07)
 scale = Vector2(1.75, 2)
 texture = ExtResource("2_fsio2")
 
-[node name="Bridge" type="StaticBody2D" parent="."]
+[node name="Bridge" type="StaticBody2D" parent="." unique_id=696415074]
 collision_layer = 12
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bridge"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bridge" unique_id=904354346]
 shape = SubResource("RectangleShape2D_a3v7m")

@@ -7,10 +7,8 @@
 script = ExtResource("2_1vlms")
 id = 24
 type_category = 9
-is_big_skill = false
 DisplayName = "Island Cap 3"
 Description = "Mega krass"
 Icon = ExtResource("1_bdpxr")
 skill_amount = 2.0
-required_skill_points = 1
 metadata/_custom_type_script = "uid://cen3q64nvicau"

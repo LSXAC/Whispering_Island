@@ -31,20 +31,15 @@ public partial class Island : Node2D
     private bool left_closed = false;
 
     private Node2D bridge_start_points;
-    private PackedScene BRIDGE_SIDE = ResourceLoader.Load<PackedScene>(
-        "res://Sprites/Bridge/bridge_side.tscn"
+    private PackedScene BRIDGE_SIDE = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://dqpoo3rttvrj7")
     );
-    private PackedScene BRIDGE_SIDE_END = ResourceLoader.Load<PackedScene>(
-        "res://Sprites/Bridge/bridge_side_end.tscn"
+    private PackedScene BRIDGE_SIDE_END = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://cmflp8mvayx8k")
     );
-    private PackedScene BRIDGE_UP = ResourceLoader.Load<PackedScene>(
-        "res://Sprites/Bridge/bridge_up.tscn"
+    private PackedScene BRIDGE_UP = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://dfsg3iq034qml")
     );
-    private PackedScene BRIDGE_UP_END = ResourceLoader.Load<PackedScene>(
-        "res://Sprites/Bridge/bridge_up_end.tscn"
+    private PackedScene BRIDGE_UP_END = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://bc2tlg8s8fxwl")
     );
-    private PackedScene BRIDGE_BOTTOM_END = ResourceLoader.Load<PackedScene>(
-        "res://Sprites/Bridge/bridge_bottom_end.tscn"
+    private PackedScene BRIDGE_BOTTOM_END = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://bl3g1ot6s782m")
     );
     public TileMapLayer building_area;
     private Node2D bridges_parent;

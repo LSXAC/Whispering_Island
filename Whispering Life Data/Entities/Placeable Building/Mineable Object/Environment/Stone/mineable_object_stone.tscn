@@ -87,15 +87,15 @@ scale_curve = SubResource("CurveTexture_4ikef")
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_u2kx6")
+hit_point = NodePath("HitPoint")
 tool_type = 3
+variants_parent = NodePath("SpriteAnimationManager/Variants")
 resource_item = SubResource("Resource_o5wt5")
+gpu_particles = NodePath("StoneParticles")
 building_id = 16
 tile_types = Array[int]([0])
 title = "WORLD_RESOURCE_STONE"
 description = "WORLD_RESOURCE_STONE_DESC"
-hit_point = NodePath("HitPoint")
-variants_parent = NodePath("SpriteAnimationManager/Variants")
-gpu_particles = NodePath("StoneParticles")
 
 [node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=1561313942]
 script = ExtResource("3_iidu2")

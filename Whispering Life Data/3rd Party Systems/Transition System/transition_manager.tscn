@@ -120,16 +120,14 @@ _data = {
 &"Transition_Loop": SubResource("Animation_yu4ax")
 }
 
-[node name="TransitionManager" type="CanvasLayer" node_paths=PackedStringArray("anim_player")]
+[node name="TransitionManager" type="CanvasLayer" unique_id=843736047 node_paths=PackedStringArray("anim_player")]
 script = ExtResource("1_wprju")
 anim_player = NodePath("AnimationPlayer")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_nfebf")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=995774672]
+libraries/ = SubResource("AnimationLibrary_nfebf")
 
-[node name="Background" type="ColorRect" parent="AnimationPlayer"]
+[node name="Background" type="ColorRect" parent="AnimationPlayer" unique_id=452607916]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0

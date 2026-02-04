@@ -76,7 +76,7 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_lbp57")
 
-[node name="SugerCane" type="StaticBody2D" node_paths=PackedStringArray("hit_point", "variants_parent", "growth_variants_parent", "gpu_particles")]
+[node name="SugerCane" type="StaticBody2D" unique_id=1365562074 node_paths=PackedStringArray("hit_point", "variants_parent", "growth_variants_parent", "gpu_particles")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -94,53 +94,53 @@ tile_types = Array[int]([1])
 title = "WORLD_RESOURCE_SUGAR_CANE"
 description = "WORLD_RESOURCE_SUGAR_CANE_DESC"
 
-[node name="SpriteAnimationManager" type="Node2D" parent="."]
+[node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=442500523]
 script = ExtResource("10_6uhby")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager" unique_id=1404730912]
 sprite_frames = SubResource("SpriteFrames_asrbt")
 animation = &"Normal"
 
-[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager" unique_id=1046791543]
 position = Vector2(-8, -17)
 texture = ExtResource("6_w2v2y")
 
-[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("7_1r02e")]
+[node name="ShadowNode" parent="SpriteAnimationManager" unique_id=175048327 instance=ExtResource("7_1r02e")]
 position = Vector2(-8, -17)
 
-[node name="Variation" type="Node2D" parent="SpriteAnimationManager"]
+[node name="Variation" type="Node2D" parent="SpriteAnimationManager" unique_id=1822577599]
 
-[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/Variation"]
+[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/Variation" unique_id=2119516227]
 material = SubResource("ShaderMaterial_nuyfg")
 script = ExtResource("9_f08f5")
 polygon_points = PackedVector2Array(0, -4, -2, -2, -15, -2, -17, -5, -17, -10, -12, -14, -3, -14, 0, -11)
 textures = Array[Texture2D]([ExtResource("10_gybnv"), ExtResource("11_o1qa0"), ExtResource("12_6uhby"), ExtResource("13_67xvt"), ExtResource("6_w2v2y")])
 shadow_textures = Array[Texture2D]([ExtResource("14_6iwk0"), ExtResource("15_0rpei"), ExtResource("16_fvltf"), ExtResource("17_cgsj8"), ExtResource("18_8lg23")])
 
-[node name="Growth_Variation" type="Node2D" parent="SpriteAnimationManager"]
+[node name="Growth_Variation" type="Node2D" parent="SpriteAnimationManager" unique_id=2120028406]
 
-[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/Growth_Variation"]
+[node name="Variation0" type="Node2D" parent="SpriteAnimationManager/Growth_Variation" unique_id=1999359825]
 material = SubResource("ShaderMaterial_nuyfg")
 script = ExtResource("9_f08f5")
 polygon_points = PackedVector2Array(0, -4, -2, -2, -15, -2, -17, -5, -17, -10, -12, -14, -3, -14, 0, -11)
 textures = Array[Texture2D]([ExtResource("10_gybnv"), ExtResource("11_o1qa0"), ExtResource("12_6uhby"), ExtResource("13_67xvt"), ExtResource("6_w2v2y")])
 shadow_textures = Array[Texture2D]([ExtResource("14_6iwk0"), ExtResource("15_0rpei"), ExtResource("16_fvltf"), ExtResource("17_cgsj8"), ExtResource("18_8lg23")])
 
-[node name="MouseArea" type="Area2D" parent="."]
+[node name="MouseArea" type="Area2D" parent="." unique_id=938070429]
 z_index = 1
 script = ExtResource("13_0rpei")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=759896611]
 position = Vector2(-8, -22)
 shape = SubResource("RectangleShape2D_a25cn")
 
-[node name="TimerBar" parent="." instance=ExtResource("14_fvltf")]
+[node name="TimerBar" parent="." unique_id=264494619 instance=ExtResource("14_fvltf")]
 offset_left = -14.0
 offset_top = -4.0
 offset_right = -2.0
 offset_bottom = -3.0
 
-[node name="CarrotParticles" type="GPUParticles2D" parent="."]
+[node name="CarrotParticles" type="GPUParticles2D" parent="." unique_id=372765553]
 z_index = 1
 position = Vector2(-8, -8)
 emitting = false
@@ -152,20 +152,20 @@ explosiveness = 0.7
 randomness = 0.5
 process_material = SubResource("ParticleProcessMaterial_n5030")
 
-[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." unique_id=493271259]
 z_index = -2
 tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
 enabled = false
 tile_set = ExtResource("16_8lg23")
 
-[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+[node name="BuildingAreas" type="Node2D" parent="." unique_id=1351776531 node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("17_6rmvf")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="HitPoint" type="Node2D" parent="."]
+[node name="HitPoint" type="Node2D" parent="." unique_id=821389870]
 position = Vector2(-8, -8)
 
-[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=993253579]
 position = Vector2(0, -1)
 polygon = PackedVector2Array(0, -4, -2, -2, -15, -2, -17, -5, -17, -10, -12, -14, -3, -14, 0, -11)
 

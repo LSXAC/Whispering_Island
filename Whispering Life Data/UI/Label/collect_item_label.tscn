@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b7o3fi5jyastt"]
 
 [ext_resource type="Script" uid="uid://c1fvino5a4q4f" path="res://UI/UI Scripts/collect_item_label.cs" id="1_hsowa"]
-[ext_resource type="FontFile" path="res://Fonts/upheavtt.ttf" id="1_m6fdd"]
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="1_m6fdd"]
 
 [node name="CollectItemLabel" type="Label"]
 anchors_preset = 2

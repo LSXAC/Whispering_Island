@@ -8,15 +8,15 @@
 [ext_resource type="StyleBox" uid="uid://dblsyajhbmtwa" path="res://UI/Styles/Button_Normal_Style.tres" id="5_vqarw"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Entities/Items/SpritesForItems/Icons_3rd/Wood_Icon.png" id="6_w8mu1"]
 
-[node name="Button" type="Button"]
+[node name="Button" type="Button" unique_id=1090153899]
 custom_minimum_size = Vector2(48, 48)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_jj77a")
 theme_override_font_sizes/font_size = 8
-theme_override_styles/focus = ExtResource("1_bnvca")
-theme_override_styles/disabled = ExtResource("2_jj77a")
-theme_override_styles/hover = ExtResource("3_chenc")
-theme_override_styles/pressed = ExtResource("4_t1v33")
 theme_override_styles/normal = ExtResource("5_vqarw")
+theme_override_styles/pressed = ExtResource("4_t1v33")
+theme_override_styles/hover = ExtResource("3_chenc")
+theme_override_styles/disabled = ExtResource("2_jj77a")
+theme_override_styles/focus = ExtResource("1_bnvca")
 icon = ExtResource("6_w8mu1")
 icon_alignment = 1

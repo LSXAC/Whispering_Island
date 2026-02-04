@@ -22,47 +22,47 @@ fill = 1
 fill_from = Vector2(0.512821, 0.498576)
 fill_to = Vector2(0.814815, 0.190883)
 
-[node name="BridgeUpBottomEnd" type="StaticBody2D"]
+[node name="BridgeUpBottomEnd" type="StaticBody2D" unique_id=342789950]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=176712036]
 y_sort_enabled = true
 position = Vector2(12, -10)
 shape = SubResource("RectangleShape2D_k4sqt")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1505358881]
 position = Vector2(-12, -10)
 shape = SubResource("RectangleShape2D_34776")
 
-[node name="Back" type="Sprite2D" parent="."]
+[node name="Back" type="Sprite2D" parent="." unique_id=682824332]
 z_index = -1
 position = Vector2(0, -6)
 texture = ExtResource("1_cgbiv")
 offset = Vector2(0, 6)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2135888837]
 collision_layer = 12
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=513076532]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_jgxty")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1194843667]
 visible = false
 position = Vector2(12, -16)
 texture = ExtResource("2_f6vyd")
 
-[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=429265317]
 color = Color(0.619803, 0.427294, 5.77569e-07, 1)
 energy = 1.5
 texture = SubResource("GradientTexture2D_ajyh0")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1964800981]
 visible = false
 position = Vector2(-12, -16)
 texture = ExtResource("2_f6vyd")
 
-[node name="PointLight2D" type="PointLight2D" parent="Sprite2D2"]
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D2" unique_id=2004935650]
 color = Color(0.619803, 0.427294, 5.77569e-07, 1)
 energy = 1.5
 texture = SubResource("GradientTexture2D_ajyh0")

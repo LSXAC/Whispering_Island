@@ -6,8 +6,7 @@ using Godot.Collections;
 
 public partial class ItemRowManager : HBoxContainer
 {
-    private PackedScene h_box_item = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/UI/h_box_item_menu_line.tscn"
+    private PackedScene h_box_item = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://bnf8yngk7oyy0")
     );
 
     public void SetResourcesOnUI(Array<Item> items)

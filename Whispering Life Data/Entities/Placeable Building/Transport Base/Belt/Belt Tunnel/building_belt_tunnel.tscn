@@ -32,7 +32,7 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77bd0"]
 size = Vector2(14, 14)
 
-[node name="BeltTunnel" type="StaticBody2D" node_paths=PackedStringArray("checkAreaTimer")]
+[node name="BeltTunnel" type="StaticBody2D" unique_id=823165643 node_paths=PackedStringArray("checkAreaTimer")]
 z_index = -1
 y_sort_enabled = true
 collision_layer = 13
@@ -44,97 +44,97 @@ tile_types = Array[int]([0])
 title = "BUILDING_BELT_TUNNEL"
 description = "BUILDING_BELT_TUNNEL_DESC"
 
-[node name="SpriteAnimationManager" type="Node2D" parent="."]
+[node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=1536642306]
 script = ExtResource("2_k3yff")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager" unique_id=1856580620]
 position = Vector2(-32, -48)
 sprite_frames = SubResource("SpriteFrames_cevvj")
 animation = &"Normal"
 centered = false
 
-[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
+[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager" unique_id=179419402]
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
 z_as_relative = false
 position = Vector2(-8, -9)
 texture = ExtResource("3_m7vy1")
 
-[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager" unique_id=1790822166]
 visible = false
 position = Vector2(-32, -48)
 texture = ExtResource("4_sblps")
 centered = false
 
-[node name="BuildingCollision" type="CollisionShape2D" parent="."]
+[node name="BuildingCollision" type="CollisionShape2D" parent="." unique_id=1534012992]
 y_sort_enabled = true
 position = Vector2(-8, -7)
 shape = SubResource("RectangleShape2D_xfl3k")
 
-[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+[node name="BuildingAreas" type="Node2D" parent="." unique_id=808050740 node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("3_03v8s")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." groups=["Blocker"]]
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." unique_id=509308952 groups=["Blocker"]]
 z_index = -2
 tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
 enabled = false
 tile_set = ExtResource("4_u84hi")
 
-[node name="Detector" parent="." instance=ExtResource("5_cqme2")]
+[node name="Detector" parent="." unique_id=374356463 instance=ExtResource("5_cqme2")]
 position = Vector2(-24, -8)
 
-[node name="ItemHolder" parent="." instance=ExtResource("6_edykq")]
+[node name="ItemHolder" parent="." unique_id=1194670809 instance=ExtResource("6_edykq")]
 y_sort_enabled = true
 position = Vector2(-8, -10)
 
-[node name="MouseArea" type="Area2D" parent="."]
+[node name="MouseArea" type="Area2D" parent="." unique_id=1100795396]
 z_index = 1
 collision_layer = 2
 script = ExtResource("7_nklsv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=1572068880]
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_3k8pj")
 
-[node name="PathConnectArea" type="Area2D" parent="."]
+[node name="PathConnectArea" type="Area2D" parent="." unique_id=1803935482]
 collision_layer = 516
 collision_mask = 0
 monitoring = false
 script = ExtResource("8_keiqc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea" unique_id=1168871039]
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_77bd0")
 
-[node name="TunnelArea" type="Area2D" parent="."]
+[node name="TunnelArea" type="Area2D" parent="." unique_id=758876384]
 collision_layer = 512
 collision_mask = 512
 collision_priority = 2.0
 monitorable = false
 script = ExtResource("9_a3q3v")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TunnelArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TunnelArea" unique_id=904046844]
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_77bd0")
 
-[node name="Sprite2D" type="Sprite2D" parent="TunnelArea"]
+[node name="Sprite2D" type="Sprite2D" parent="TunnelArea" unique_id=517434908]
 position = Vector2(-8, -8)
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("10_hvugw")
 
-[node name="CheckAreaTimer" type="Timer" parent="."]
+[node name="CheckAreaTimer" type="Timer" parent="." unique_id=2030144301]
 wait_time = 0.1
 
-[node name="CheckTimer" type="Timer" parent="."]
+[node name="CheckTimer" type="Timer" parent="." unique_id=1417416145]
 wait_time = 0.25
 
-[node name="12DAnimationManager" type="Node2D" parent="." node_paths=PackedStringArray("anim_sprite")]
+[node name="12DAnimationManager" type="Node2D" parent="." unique_id=1711886990 node_paths=PackedStringArray("anim_sprite")]
 y_sort_enabled = true
 script = ExtResource("12_onis0")
 anim_sprite = NodePath("AnimatedSprite2D")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="12DAnimationManager"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="12DAnimationManager" unique_id=421624317]
 z_index = -1
 y_sort_enabled = true
 position = Vector2(-8, -8)

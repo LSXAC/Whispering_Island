@@ -103,20 +103,20 @@ size = Vector2(15, 26)
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_3vihl")
+hit_point = NodePath("HitPoint")
 growable = true
 tool_type = 2
+variants_parent = NodePath("SpriteAnimationManager/Variations")
+growth_variants_parent = NodePath("SpriteAnimationManager/GrowingVariations")
 respawn_seconds = 120
 resource_item = SubResource("Resource_uwm61")
 extra_item = SubResource("Resource_cgqts")
+gpu_particles = NodePath("SpriteAnimationManager/FallingLeaves")
 building_id = 38
 tile_types = Array[int]([0])
 use_wind = true
 title = "WORLD_RESOURCE_CACTUS"
 description = "WORLD_RESOURCE_CACTUS_DESC"
-hit_point = NodePath("HitPoint")
-variants_parent = NodePath("SpriteAnimationManager/Variations")
-growth_variants_parent = NodePath("SpriteAnimationManager/GrowingVariations")
-gpu_particles = NodePath("SpriteAnimationManager/FallingLeaves")
 
 [node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=1199422297]
 script = ExtResource("5_uarw4")

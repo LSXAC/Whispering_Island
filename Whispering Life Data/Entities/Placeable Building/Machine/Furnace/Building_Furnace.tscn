@@ -63,12 +63,12 @@ y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_7ow6b")
+crafting_timer = NodePath("CraftingTimer")
+state_timer = NodePath("MachineUITimer")
 building_id = 3
 tile_types = Array[int]([0])
 title = "BUILDING_FURNACE"
 description = "BUILDING_FURNACE_DESC"
-crafting_timer = NodePath("CraftingTimer")
-state_timer = NodePath("MachineUITimer")
 
 [node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=336840390]
 script = ExtResource("4_2jdlk")

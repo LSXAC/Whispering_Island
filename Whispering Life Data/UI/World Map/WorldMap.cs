@@ -34,8 +34,7 @@ public partial class WorldMap : CanvasLayer
     }
 
     public static Array<WorldMapIcon> connected_icons = new Array<WorldMapIcon>();
-    public PackedScene icon_object = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/UI/icon_object.tscn"
+    public PackedScene icon_object = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://cca4fqqi7u7tj")
     );
 
     public override void _PhysicsProcess(double delta)

@@ -14,7 +14,7 @@
 [ext_resource type="StyleBox" uid="uid://bbbtpagi6kny3" path="res://UI/Styles/Button_Pressed_Style.tres.tres" id="10_jc1py"]
 [ext_resource type="StyleBox" uid="uid://dblsyajhbmtwa" path="res://UI/Styles/Button_Normal_Style.tres" id="11_rjicv"]
 
-[node name="QuestMenu" type="CanvasLayer" node_paths=PackedStringArray("quest_label_parent", "quest_name_label", "complete_button", "quest_description_label", "reward_label")]
+[node name="QuestMenu" type="CanvasLayer" unique_id=875842839 node_paths=PackedStringArray("quest_label_parent", "quest_name_label", "complete_button", "quest_description_label", "reward_label")]
 script = ExtResource("1_rjdwy")
 quest_label_parent = NodePath("Background/MarginContainer/VBoxContainer2/VBoxContainer")
 quest_name_label = NodePath("Background/MarginContainer/VBoxContainer2/Label")
@@ -23,7 +23,7 @@ quest_description_label = NodePath("Background/MarginContainer/VBoxContainer2/De
 dialogue_timeline = ExtResource("2_jlx1a")
 reward_label = NodePath("Background/MarginContainer/VBoxContainer2/HBoxContainer/MoneyLabel")
 
-[node name="TransBackground" type="ColorRect" parent="."]
+[node name="TransBackground" type="ColorRect" parent="." unique_id=173263995]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,7 +34,7 @@ grow_vertical = 2
 focus_mode = 2
 color = Color(0.172549, 0.172549, 0.172549, 0.294118)
 
-[node name="TransBackground" type="ColorRect" parent="TransBackground"]
+[node name="TransBackground" type="ColorRect" parent="TransBackground" unique_id=830709795]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,7 +48,7 @@ grow_vertical = 2
 focus_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=595894556]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -60,7 +60,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 
-[node name="TransBackground" type="ColorRect" parent="Background"]
+[node name="TransBackground" type="ColorRect" parent="Background" unique_id=813281470]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,12 +72,12 @@ grow_vertical = 2
 focus_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="HeaderColorRect" parent="Background" instance=ExtResource("2_vqvtn")]
+[node name="HeaderColorRect" parent="Background" unique_id=1223450069 instance=ExtResource("2_vqvtn")]
 layout_mode = 0
 offset_right = 512.0
 translation_string = "GAMEMENU_QUEST_MENU"
 
-[node name="X" type="Button" parent="Background/HeaderColorRect"]
+[node name="X" type="Button" parent="Background/HeaderColorRect" unique_id=2016908477]
 layout_mode = 0
 offset_left = 488.0
 offset_right = 512.0
@@ -89,7 +89,7 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Background"]
+[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=1864392233]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -107,10 +107,10 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Background/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background/MarginContainer" unique_id=1022126220]
 layout_mode = 2
 
-[node name="Label" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer2"]
+[node name="Label" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer2" unique_id=1554277119]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 theme_override_constants/outline_size = 5
@@ -121,7 +121,7 @@ theme_override_font_sizes/bold_font_size = 12
 bbcode_enabled = true
 text = "[center]Die hungrige Insel #1"
 
-[node name="Description" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer2"]
+[node name="Description" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer2" unique_id=692353360]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/outline_size = 3
@@ -134,30 +134,30 @@ text = "Du bist zufällig auf eine hungrige Insel getroffen. Du bist dir nicht S
 Naja, das was die Insel grade will, sieht eigentlich noch nicht so schwer aus!"
 fit_content = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer2" unique_id=732880479]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 alignment = 1
 
-[node name="HBoxItem" parent="Background/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("5_ao47r")]
+[node name="HBoxItem" parent="Background/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1968778800 instance=ExtResource("5_ao47r")]
 layout_mode = 2
 
-[node name="HBoxItem2" parent="Background/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("5_ao47r")]
+[node name="HBoxItem2" parent="Background/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=399891455 instance=ExtResource("5_ao47r")]
 layout_mode = 2
 
-[node name="HBoxItem3" parent="Background/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("5_ao47r")]
+[node name="HBoxItem3" parent="Background/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=2095112461 instance=ExtResource("5_ao47r")]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="Background/MarginContainer/VBoxContainer2"]
+[node name="Label3" type="Label" parent="Background/MarginContainer/VBoxContainer2" unique_id=434403346]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer2" unique_id=92559614]
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1155901333]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_8enkj")
@@ -167,14 +167,14 @@ horizontal_alignment = 1
 script = ExtResource("7_vqd04")
 label_translation_string = "QUEST_MENU_REWARD"
 
-[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1405490876]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 texture = ExtResource("7_s53b1")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MoneyLabel" type="Label" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="MoneyLabel" type="Label" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1354127160]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
@@ -183,21 +183,21 @@ theme_override_font_sizes/font_size = 10
 text = "2883"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Background/MarginContainer/VBoxContainer2"]
+[node name="Label2" type="Label" parent="Background/MarginContainer/VBoxContainer2" unique_id=1267617056]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 
-[node name="CompleteQuestButton" type="Button" parent="Background/MarginContainer/VBoxContainer2"]
+[node name="CompleteQuestButton" type="Button" parent="Background/MarginContainer/VBoxContainer2" unique_id=1670277675]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_8enkj")
 theme_override_font_sizes/font_size = 10
-theme_override_styles/focus = ExtResource("7_nkwgi")
-theme_override_styles/disabled = ExtResource("8_s53b1")
-theme_override_styles/hover = ExtResource("9_vqd04")
-theme_override_styles/pressed = ExtResource("10_jc1py")
 theme_override_styles/normal = ExtResource("11_rjicv")
+theme_override_styles/pressed = ExtResource("10_jc1py")
+theme_override_styles/hover = ExtResource("9_vqd04")
+theme_override_styles/disabled = ExtResource("8_s53b1")
+theme_override_styles/focus = ExtResource("7_nkwgi")
 text = "Finish Quest"
 
 [connection signal="visibility_changed" from="." to="." method="OnVisiblityChanged"]

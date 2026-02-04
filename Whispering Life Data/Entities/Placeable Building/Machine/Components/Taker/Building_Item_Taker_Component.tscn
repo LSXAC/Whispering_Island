@@ -7,21 +7,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cxv0"]
 size = Vector2(8, 8)
 
-[node name="Taker" type="StaticBody2D" node_paths=PackedStringArray("item_holder_In")]
+[node name="Taker" type="StaticBody2D" unique_id=608106782 node_paths=PackedStringArray("item_holder_In")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_fqdb7")
 item_holder_In = NodePath("ItemHolder")
 
-[node name="ItemHolder" parent="." instance=ExtResource("2_nkdn0")]
+[node name="ItemHolder" parent="." unique_id=1381598284 instance=ExtResource("2_nkdn0")]
 
-[node name="PathConnectArea" type="Area2D" parent="."]
+[node name="PathConnectArea" type="Area2D" parent="." unique_id=465848866]
 collision_layer = 4
 collision_mask = 0
 monitoring = false
 script = ExtResource("3_38s1m")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea" unique_id=1183794263]
 shape = SubResource("RectangleShape2D_2cxv0")
 
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]

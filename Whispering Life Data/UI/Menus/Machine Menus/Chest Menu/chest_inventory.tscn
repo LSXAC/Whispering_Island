@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ck6hcox7174uj" path="res://Sub Systems/Inventory/Chest/ChestInventory.cs" id="1_r1544"]
 [ext_resource type="PackedScene" uid="uid://ceypkxf7dox6w" path="res://UI/Inventory/slot_background.tscn" id="2_s2rt7"]
 
-[node name="ChestInventory" type="Control"]
+[node name="ChestInventory" type="Control" unique_id=686449062]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ grow_vertical = 2
 script = ExtResource("1_r1544")
 inventory_items = []
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="." unique_id=734503638]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -21,74 +21,74 @@ theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 columns = 6
 
-[node name="SlotBackground0" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground0" parent="GridContainer" unique_id=1405380423 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground1" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground1" parent="GridContainer" unique_id=486456129 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground2" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground2" parent="GridContainer" unique_id=1474547462 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground3" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground3" parent="GridContainer" unique_id=238179537 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground4" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground4" parent="GridContainer" unique_id=1844663038 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground5" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground5" parent="GridContainer" unique_id=1184000313 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground6" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground6" parent="GridContainer" unique_id=743639419 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground7" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground7" parent="GridContainer" unique_id=2068321819 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground8" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground8" parent="GridContainer" unique_id=1267610108 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground9" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground9" parent="GridContainer" unique_id=1509563175 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground10" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground10" parent="GridContainer" unique_id=127314060 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground11" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground11" parent="GridContainer" unique_id=871063163 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground12" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground12" parent="GridContainer" unique_id=2010350765 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground13" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground13" parent="GridContainer" unique_id=1905148521 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground14" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground14" parent="GridContainer" unique_id=1173639867 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground15" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground15" parent="GridContainer" unique_id=1606486068 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground16" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground16" parent="GridContainer" unique_id=1459641608 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground17" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground17" parent="GridContainer" unique_id=617532382 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground18" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground18" parent="GridContainer" unique_id=6981268 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground19" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground19" parent="GridContainer" unique_id=1546921729 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground20" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground20" parent="GridContainer" unique_id=1816937177 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground21" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground21" parent="GridContainer" unique_id=1776968535 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground22" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground22" parent="GridContainer" unique_id=1133377819 instance=ExtResource("2_s2rt7")]
 layout_mode = 2
 
-[node name="SlotBackground23" parent="GridContainer" instance=ExtResource("2_s2rt7")]
+[node name="SlotBackground23" parent="GridContainer" unique_id=597427460 instance=ExtResource("2_s2rt7")]
 layout_mode = 2

@@ -63,8 +63,7 @@ public partial class MineableObject : placeable_building
         MYSTIC,
     }
 
-    private PackedScene hit_label = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/UI/hit_label.tscn"
+    private PackedScene hit_label = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://d1l2gqiubblcd")
     );
 
     [Signal]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://y865cl3n6n6u" path="res://UI/Inventory/SlotItemUI.cs" id="1_ckowm"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="2_567ka"]
 
-[node name="SlotItemUI" type="TextureRect"]
+[node name="SlotItemUI" type="TextureRect" unique_id=976705510]
 custom_minimum_size = Vector2(20, 20)
 offset_left = 6.0
 offset_top = 6.0
@@ -12,7 +12,7 @@ offset_bottom = 26.0
 expand_mode = 1
 script = ExtResource("1_ckowm")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=77248286]
 visible = false
 layout_mode = 0
 offset_left = -6.0
@@ -25,7 +25,7 @@ text = "20x"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=948852369]
 custom_minimum_size = Vector2(24, 22)
 layout_mode = 0
 offset_left = -4.0
@@ -35,7 +35,7 @@ offset_bottom = 24.0
 mouse_filter = 2
 alignment = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer" unique_id=1594264714]
 custom_minimum_size = Vector2(28, 2)
 layout_mode = 2
 mouse_filter = 2

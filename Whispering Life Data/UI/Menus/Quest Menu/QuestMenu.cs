@@ -23,8 +23,7 @@ public partial class QuestMenu : CanvasLayer
 
     [Export]
     public Label reward_label;
-    public PackedScene h_box_item = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/UI/h_box_item_menu_line_horizontal.tscn"
+    public PackedScene h_box_item = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://bnf8yngk7oyy0")
     );
     public static QuestMenu instance = null;
     public static QuestInfo currentQuest = null;

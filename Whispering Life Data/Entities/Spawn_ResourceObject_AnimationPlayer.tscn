@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://badiq5h8rhrc"]
+[gd_scene format=3 uid="uid://badiq5h8rhrc"]
 
 [sub_resource type="Animation" id="Animation_2ey6b"]
 resource_name = "Break"
@@ -71,7 +71,5 @@ _data = {
 &"Respawning": SubResource("Animation_c5l8r")
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer"]
-libraries = {
-&"": SubResource("AnimationLibrary_v2ngb")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" unique_id=106709076]
+libraries/ = SubResource("AnimationLibrary_v2ngb")

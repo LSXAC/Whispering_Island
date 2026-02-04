@@ -20,7 +20,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(32, 32)
 
-[node name="Building" type="StaticBody2D"]
+[node name="Building" type="StaticBody2D" unique_id=2056058265]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -30,56 +30,56 @@ tile_types = Array[int]([0])
 title = "BUILDING_CHEST"
 description = "BUILDING_CHEST_DESC"
 
-[node name="SpriteAnimationManager" type="Node2D" parent="."]
+[node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=1496337106]
 script = ExtResource("2_h8dxr")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager" unique_id=1444296901]
 position = Vector2(-32, -48)
 sprite_frames = SubResource("SpriteFrames_8304o")
 animation = &"Normal"
 centered = false
 
-[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager" unique_id=1989433989]
 position = Vector2(-32, -48)
 texture = ExtResource("2_nga8c")
 centered = false
 
-[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("4_48vxm")]
+[node name="ShadowNode" parent="SpriteAnimationManager" unique_id=744939485 instance=ExtResource("4_48vxm")]
 DisableShadow = true
 
-[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+[node name="BuildingAreas" type="Node2D" parent="." unique_id=1779602056 node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("3_vyt0n")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="."]
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." unique_id=540275090]
 z_index = -2
 tile_map_data = PackedByteArray(0, 0, 254, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0)
 enabled = false
 tile_set = ExtResource("4_u7eqm")
 
-[node name="MouseArea" type="Area2D" parent="."]
+[node name="MouseArea" type="Area2D" parent="." unique_id=2029404495]
 z_index = 1
 position = Vector2(-16, -18)
 collision_layer = 2
 script = ExtResource("6_whbdv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=752003074]
 shape = SubResource("RectangleShape2D_fk0le")
 
-[node name="Taker" parent="." node_paths=PackedStringArray("building") instance=ExtResource("9_vos0o")]
+[node name="Taker" parent="." unique_id=877127740 node_paths=PackedStringArray("building") instance=ExtResource("9_vos0o")]
 z_index = 2
 position = Vector2(-24, -25)
 building = NodePath("..")
 
-[node name="Taker2" parent="." node_paths=PackedStringArray("building") instance=ExtResource("9_vos0o")]
+[node name="Taker2" parent="." unique_id=1593345413 node_paths=PackedStringArray("building") instance=ExtResource("9_vos0o")]
 z_index = 2
 position = Vector2(-8, -25)
 building = NodePath("..")
 
-[node name="CraftingTimer" type="Timer" parent="."]
+[node name="CraftingTimer" type="Timer" parent="." unique_id=2113475157]
 wait_time = 2.0
 
-[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=1471130115]
 polygon = PackedVector2Array(-5, -3, -27, -3, -27, -11, -32, -11, -32, -26, -27, -26, -27, -31, -5, -31, -5, -26, 0, -26, 0, -11, -5, -11)
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]

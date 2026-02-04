@@ -19,44 +19,44 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(12, 14)
 
-[node name="RemoveSign" type="StaticBody2D"]
+[node name="RemoveSign" type="StaticBody2D" unique_id=1303399034]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_rcheg")
 
-[node name="SpriteAnimationManager" type="Node2D" parent="."]
+[node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=1648671734]
 y_sort_enabled = true
 script = ExtResource("2_tfnqu")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager" unique_id=487718013]
 y_sort_enabled = true
 position = Vector2(-32, -48)
 sprite_frames = SubResource("SpriteFrames_0j1xx")
 animation = &"Normal"
 centered = false
 
-[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager" unique_id=1207564336]
 y_sort_enabled = true
 position = Vector2(0, -8)
 texture = ExtResource("4_rcheg")
 
-[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("4_tfnqu")]
+[node name="ShadowNode" parent="SpriteAnimationManager" unique_id=1306122370 instance=ExtResource("4_tfnqu")]
 position = Vector2(0, -8)
 single_shadow_texture = ExtResource("5_tfnqu")
 
-[node name="MouseArea" type="Area2D" parent="."]
+[node name="MouseArea" type="Area2D" parent="." unique_id=593647944]
 script = ExtResource("5_av5ui")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=1180858009]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_fk0le")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=639101240]
 z_index = -1
 tile_set = ExtResource("6_tgfct")
 
-[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=666793093]
 polygon = PackedVector2Array(-6, -3, 6, -3, 6, 1, -6, 1)
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]

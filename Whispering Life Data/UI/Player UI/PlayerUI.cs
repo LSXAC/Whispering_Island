@@ -39,8 +39,7 @@ public partial class PlayerUI : CanvasLayer
     public Texture2D removing_frame;
 
     [Export]
-    public PackedScene collected_item_label = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/UI/collect_item_label.tscn"
+    public PackedScene collected_item_label = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://b7o3fi5jyastt")
     );
 
     [Export]

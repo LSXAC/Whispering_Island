@@ -4,14 +4,11 @@ using Godot;
 
 public partial class MouseArea : Area2D
 {
-    private ShaderMaterial outline_shader = ResourceLoader.Load<ShaderMaterial>(
-        "res://Shader/Outline_Shader.tres"
+    private ShaderMaterial outline_shader = ResourceLoader.Load<ShaderMaterial>(ResourceUid.UidToPath("uid://cxcu1ol3mxbdf")
     );
-    private ShaderMaterial remove_outline_shader = ResourceLoader.Load<ShaderMaterial>(
-        "res://Shader/Remove_Outline_Color.tres"
+    private ShaderMaterial remove_outline_shader = ResourceLoader.Load<ShaderMaterial>(ResourceUid.UidToPath("uid://gk1o8yjs6f6y")
     );
-    private ShaderMaterial wind_shader = ResourceLoader.Load<ShaderMaterial>(
-        "res://Shader/Materials/Wind_Shader_Material.tres"
+    private ShaderMaterial wind_shader = ResourceLoader.Load<ShaderMaterial>(ResourceUid.UidToPath("uid://8ujwgfeo1fil")
     );
 
     private Building_Node building_node;

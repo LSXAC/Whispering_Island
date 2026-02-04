@@ -7,10 +7,8 @@
 script = ExtResource("2_0spw2")
 id = 8
 type_category = 3
-is_big_skill = false
 DisplayName = "Tool Durability 3"
 Description = "Mega krass"
 Icon = ExtResource("1_ficno")
 skill_amount = 0.4
-required_skill_points = 1
 metadata/_custom_type_script = "uid://cen3q64nvicau"

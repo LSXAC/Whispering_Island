@@ -70,11 +70,11 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
 
-[node name="ExampleBalloon" type="CanvasLayer"]
+[node name="ExampleBalloon" type="CanvasLayer" unique_id=1132718297]
 layer = 100
 script = ExtResource("1_36de5")
 
-[node name="Balloon" type="Control" parent="."]
+[node name="Balloon" type="Control" parent="." unique_id=2122341430]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
@@ -84,7 +84,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_qq3yp")
 
-[node name="MarginContainer" type="MarginContainer" parent="Balloon"]
+[node name="MarginContainer" type="MarginContainer" parent="Balloon" unique_id=1110487048]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -94,20 +94,20 @@ offset_top = -95.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer" unique_id=191126581]
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("2_odc0r")
 
-[node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer" unique_id=1700582329]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer" unique_id=140349910]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=630602479]
 unique_name_in_owner = true
 modulate = Color(0.976471, 0.972549, 0.443137, 1)
 clip_contents = false
@@ -124,19 +124,19 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="ColorRect" type="ColorRect" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2011845876]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ColorRect2" type="ColorRect" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=310832010]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
-[node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_a8ve6")]
+[node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1087105233 instance=ExtResource("2_a8ve6")]
 unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2
@@ -149,7 +149,7 @@ theme_override_font_sizes/bold_font_size = 12
 theme_override_font_sizes/bold_italics_font_size = 12
 text = "Dialogue... [b][color=gold]Inventar[/color][/b]Dialogue... [b][color=gold]Inventar[/color][/b]Dialogue... [b][color=gold]Inventar[/color][/b]Dialogue... [b][color=gold]Inventar[/color][/b]"
 
-[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" unique_id=268439318 node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -169,7 +169,7 @@ alignment = 2
 script = ExtResource("3_72ixx")
 response_template = NodePath("ResponseExample")
 
-[node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu"]
+[node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu" unique_id=2116251385]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_constants/outline_size = 3

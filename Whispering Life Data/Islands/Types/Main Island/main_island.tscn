@@ -160,18 +160,18 @@ y_sort_enabled = true
 
 [node name="RightSign" parent="BridgePoints/Signs" unique_id=1024475381 node_paths=PackedStringArray("island") instance=ExtResource("3_gfesj")]
 position = Vector2(165, 1)
-dir = 2
 island = NodePath("../../..")
+dir = 2
 
 [node name="LeftSign" parent="BridgePoints/Signs" unique_id=1323549389 node_paths=PackedStringArray("island") instance=ExtResource("3_gfesj")]
 position = Vector2(-203, -30)
-dir = 3
 island = NodePath("../../..")
+dir = 3
 
 [node name="DownSign" parent="BridgePoints/Signs" unique_id=167888251 node_paths=PackedStringArray("island") instance=ExtResource("3_gfesj")]
 position = Vector2(32, 159)
-dir = 4
 island = NodePath("../../..")
+dir = 4
 
 [node name="BridgeCollisions" type="StaticBody2D" parent="BridgePoints" unique_id=544660564]
 y_sort_enabled = true
@@ -260,19 +260,19 @@ y_sort_enabled = true
 
 [node name="RemoveSign0" parent="RemovableObjectsManager/Signs" unique_id=1258937796 node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "shadow_tilemap", "island") instance=ExtResource("11_3lslb")]
 position = Vector2(-64, 128)
-required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Resource_2vll2"), SubResource("Resource_tdjhn"), SubResource("Resource_uavw5")])
 removable_objects_Manager = NodePath("../..")
 object_connected = NodePath("../../Tilemaps/Object0")
+required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Resource_2vll2"), SubResource("Resource_tdjhn"), SubResource("Resource_uavw5")])
 shadow_tilemap = NodePath("../../Tilemaps/Object0/Shadow")
 island = NodePath("../../..")
 
 [node name="RemoveSign1" parent="RemovableObjectsManager/Signs" unique_id=481401421 node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "shadow_tilemap", "island") instance=ExtResource("11_3lslb")]
 position = Vector2(-128, -72)
-required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Resource_2vll2"), SubResource("Resource_tdjhn"), SubResource("Resource_uavw5")])
-id = 1
 removable_objects_Manager = NodePath("../..")
 object_connected = NodePath("../../Tilemaps/Object1")
+required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Resource_2vll2"), SubResource("Resource_tdjhn"), SubResource("Resource_uavw5")])
 shadow_tilemap = NodePath("../../Tilemaps/Object1/Shadow")
+id = 1
 island = NodePath("../../..")
 
 [node name="Tilemaps" type="Node2D" parent="RemovableObjectsManager" unique_id=952017477]

@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://dm6cthpkwo5kq" path="res://Sub Systems/Building System/Building Components/DurabilityComponent.cs" id="1_mejrv"]
 
-[node name="DurabilityComponent" type="Node2D"]
+[node name="DurabilityComponent" type="Node2D" unique_id=1743544152]
 script = ExtResource("1_mejrv")

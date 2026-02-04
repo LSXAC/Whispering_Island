@@ -235,8 +235,7 @@ public partial class TransportBase : placeable_building
 
     public void InitBeltItem(BeltSave belt_save)
     {
-        PackedScene belt_item_scene = ResourceLoader.Load<PackedScene>(
-            "res://Scenes/Items/belt_item.tscn"
+        PackedScene belt_item_scene = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://dkue7sa7xyeyr")
         );
         if (Logger.NodeIsNull(belt_item_scene))
             return;

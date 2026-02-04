@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="1_byhje"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/Menus/Translation/TranslationLabel.cs" id="2_7hdo0"]
 
-[node name="Panel" type="Panel"]
+[node name="Panel" type="Panel" unique_id=1641724494]
 self_modulate = Color(1, 1, 1, 0.490196)
 show_behind_parent = true
 custom_minimum_size = Vector2(349, 25)
@@ -13,7 +13,7 @@ offset_bottom = 25.0
 size_flags_horizontal = 3
 theme_override_styles/panel = ExtResource("1_7hdo0")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=2063509696]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -7,10 +7,8 @@
 script = ExtResource("2_qbb0k")
 id = 14
 type_category = 6
-is_big_skill = false
 DisplayName = "Research XP 2"
 Description = "Mega krass"
 Icon = ExtResource("1_s33of")
 skill_amount = 0.1
-required_skill_points = 1
 metadata/_custom_type_script = "uid://cen3q64nvicau"

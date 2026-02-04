@@ -37,7 +37,7 @@ size = Vector2(10, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7dvd"]
 size = Vector2(12, 12)
 
-[node name="Rail" type="StaticBody2D" groups=["Belt"]]
+[node name="Rail" type="StaticBody2D" unique_id=278334324 groups=["Belt"]]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -47,16 +47,16 @@ tile_types = Array[int]([0])
 title = "BUILDING_RAIL"
 description = "BUILDING_RAIL_DESC"
 
-[node name="SpriteAnimationManager" type="Node2D" parent="."]
+[node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=1445598401]
 script = ExtResource("2_houtf")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager" unique_id=1528653054]
 position = Vector2(-32, -48)
 sprite_frames = SubResource("SpriteFrames_e7wu5")
 animation = &"Normal"
 centered = false
 
-[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager"]
+[node name="Shadow" type="Sprite2D" parent="SpriteAnimationManager" unique_id=970462944]
 visible = false
 modulate = Color(0, 0, 0, 0.196078)
 z_index = -1
@@ -64,64 +64,64 @@ z_as_relative = false
 position = Vector2(-8, -9)
 texture = ExtResource("3_0g0a0")
 
-[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager"]
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager" unique_id=750420518]
 visible = false
 position = Vector2(-32, -48)
 texture = ExtResource("4_f2hw5")
 centered = false
 
-[node name="ShadowNode" parent="SpriteAnimationManager" instance=ExtResource("5_houtf")]
+[node name="ShadowNode" parent="SpriteAnimationManager" unique_id=2115146254 instance=ExtResource("5_houtf")]
 DisableShadow = true
 
-[node name="BuildingAreas" type="Node2D" parent="." node_paths=PackedStringArray("collision_tilemap")]
+[node name="BuildingAreas" type="Node2D" parent="." unique_id=267800503 node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("5_xkpqr")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." groups=["Blocker"]]
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." unique_id=57862741 groups=["Blocker"]]
 z_index = -2
 tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
 enabled = false
 tile_set = ExtResource("6_nfu1l")
 
-[node name="Detector" parent="." instance=ExtResource("7_p3tr1")]
+[node name="Detector" parent="." unique_id=1507117806 instance=ExtResource("7_p3tr1")]
 position = Vector2(-8, -8)
 
-[node name="ItemHolder" parent="." instance=ExtResource("8_h1v5o")]
+[node name="ItemHolder" parent="." unique_id=1118513115 instance=ExtResource("8_h1v5o")]
 y_sort_enabled = true
 
-[node name="MouseArea" type="Area2D" parent="."]
+[node name="MouseArea" type="Area2D" parent="." unique_id=472357884]
 z_index = 1
 collision_layer = 2
 script = ExtResource("9_wsxcv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=1388957427]
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_3k8pj")
 
-[node name="PathConnectArea" type="Area2D" parent="."]
+[node name="PathConnectArea" type="Area2D" parent="." unique_id=2051218559]
 collision_layer = 4
 collision_mask = 0
 monitoring = false
 script = ExtResource("10_t76na")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea" unique_id=1341591685]
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_77bd0")
 
-[node name="ConnectedBeltsManager" type="Node2D" parent="."]
+[node name="ConnectedBeltsManager" type="Node2D" parent="." unique_id=1587473574]
 script = ExtResource("11_wv8mi")
 
-[node name="HasConnectedBeltArea" type="Area2D" parent="ConnectedBeltsManager"]
+[node name="HasConnectedBeltArea" type="Area2D" parent="ConnectedBeltsManager" unique_id=1542552720]
 position = Vector2(-8, -23)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 script = ExtResource("12_xd1p5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea" unique_id=34213417]
 shape = SubResource("RectangleShape2D_hlqqa")
 
-[node name="HasConnectedBeltArea2" type="Area2D" parent="ConnectedBeltsManager"]
+[node name="HasConnectedBeltArea2" type="Area2D" parent="ConnectedBeltsManager" unique_id=1147376754]
 position = Vector2(7, -8)
 collision_layer = 0
 collision_mask = 4
@@ -129,10 +129,10 @@ monitorable = false
 script = ExtResource("12_xd1p5")
 dir = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea2" unique_id=666693168]
 shape = SubResource("RectangleShape2D_hlqqa")
 
-[node name="HasConnectedBeltArea3" type="Area2D" parent="ConnectedBeltsManager"]
+[node name="HasConnectedBeltArea3" type="Area2D" parent="ConnectedBeltsManager" unique_id=1683394349]
 position = Vector2(-8, 7)
 collision_layer = 0
 collision_mask = 4
@@ -140,10 +140,10 @@ monitorable = false
 script = ExtResource("12_xd1p5")
 dir = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea3" unique_id=1477135526]
 shape = SubResource("RectangleShape2D_hlqqa")
 
-[node name="HasConnectedBeltArea4" type="Area2D" parent="ConnectedBeltsManager"]
+[node name="HasConnectedBeltArea4" type="Area2D" parent="ConnectedBeltsManager" unique_id=1531405164]
 position = Vector2(-23, -8)
 collision_layer = 0
 collision_mask = 4
@@ -151,31 +151,31 @@ monitorable = false
 script = ExtResource("12_xd1p5")
 dir = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea4" unique_id=41676072]
 shape = SubResource("RectangleShape2D_hlqqa")
 
-[node name="12DAnimationManager" type="Node2D" parent="." node_paths=PackedStringArray("anim_sprite")]
+[node name="12DAnimationManager" type="Node2D" parent="." unique_id=876165522 node_paths=PackedStringArray("anim_sprite")]
 y_sort_enabled = true
 script = ExtResource("13_gie8o")
 anim_sprite = NodePath("AnimatedSprite2D")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="12DAnimationManager"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="12DAnimationManager" unique_id=1506816644]
 z_index = -1
 y_sort_enabled = true
 position = Vector2(-8, -8)
 sprite_frames = ExtResource("14_djcb1")
 animation = &"CORNER_RIGHT_UP"
 
-[node name="RailArea" type="StaticBody2D" parent="."]
+[node name="RailArea" type="StaticBody2D" parent="." unique_id=1569168121]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("15_jjr21")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RailArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RailArea" unique_id=1658567736]
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_w7dvd")
 
-[node name="BuildingPolygon" type="CollisionPolygon2D" parent="."]
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=1345224418]
 polygon = PackedVector2Array(-14, -2, -2, -2, -2, -14, -14, -14)
 
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorRailDetected"]

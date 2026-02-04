@@ -5,17 +5,13 @@ using Godot;
 
 public partial class IslandMenu : ColorRect
 {
-    private PackedScene mystic_island = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/Islands/mystical_island.tscn"
+    private PackedScene mystic_island = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://bi8dopb46mfob")
     );
-    private PackedScene mining_island = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/Islands/mining_island.tscn"
+    private PackedScene mining_island = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://frwl0u2a1cwh")
     );
-    private PackedScene farming_island = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/Islands/farming_island.tscn"
+    private PackedScene farming_island = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://b0pmpn0st1gl4")
     );
-    private PackedScene dessert_island = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/Islands/dessert_island.tscn"
+    private PackedScene dessert_island = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://d0trh47s348ub")
     );
 
     [Export]

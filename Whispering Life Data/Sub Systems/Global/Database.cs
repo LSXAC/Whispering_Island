@@ -22,6 +22,9 @@ public partial class Database : Node
     public override void _Ready()
     {
         instance = this;
+        // Populate lists by scanning the project resources and classifying by type
+        PopulateListsFromResources("res://");
+
         researchs = GetResearchList(item_research_list);
         buildings = GetBuildingsList(building_menu_list_objects);
         Inventory.ITEM_TYPES = GetItemInfoList(item_info_list);
@@ -29,6 +32,108 @@ public partial class Database : Node
         DebugListValues();
         CheckForDuplicates();
         Debug.Print("Loaded all Resources!");
+    }
+
+    // Recursively scan `basePath` for resources, load them and classify by type.
+    public void PopulateListsFromResources(string basePath)
+    {
+        var itemInfos = new System.Collections.Generic.List<ItemInfo>();
+        var itemResearches = new System.Collections.Generic.List<ItemResearch>();
+        var buildingsTmp = new System.Collections.Generic.List<Building_Menu_List_Object>();
+        var craftingTmp = new System.Collections.Generic.List<CraftingRecipe>();
+
+        ScanDirectoryAndClassify(basePath, itemInfos, itemResearches, buildingsTmp, craftingTmp);
+
+        // Sort lists by their enum id order
+        itemInfos.Sort((a, b) => ((int)a.id).CompareTo((int)b.id));
+        itemResearches.Sort((a, b) => ((int)a.id).CompareTo((int)b.id));
+        buildingsTmp.Sort((a, b) => ((int)a.scene_building_id).CompareTo((int)b.scene_building_id));
+
+        // Fill the exported Godot Arrays in the sorted order
+        item_info_list = new Array<ItemInfo>();
+        foreach (var i in itemInfos)
+            item_info_list.Add(i);
+
+        item_research_list = new Array<ItemResearch>();
+        foreach (var r in itemResearches)
+            item_research_list.Add(r);
+
+        building_menu_list_objects = new Array<Building_Menu_List_Object>();
+        foreach (var b in buildingsTmp)
+            building_menu_list_objects.Add(b);
+
+        crafting_recipies_list = new Array<CraftingRecipe>();
+        foreach (var c in craftingTmp)
+            crafting_recipies_list.Add(c);
+    }
+
+    private void ScanDirectoryAndClassify(
+        string path,
+        System.Collections.Generic.List<ItemInfo> itemInfos,
+        System.Collections.Generic.List<ItemResearch> itemResearches,
+        System.Collections.Generic.List<Building_Menu_List_Object> buildingsTmp,
+        System.Collections.Generic.List<CraftingRecipe> craftingTmp
+    )
+    {
+        DirAccess dir = null;
+        try
+        {
+            dir = DirAccess.Open(path);
+        }
+        catch (Exception)
+        {
+            return;
+        }
+
+        if (dir == null)
+            return;
+
+        dir.ListDirBegin();
+        string file = dir.GetNext();
+        while (!string.IsNullOrEmpty(file))
+        {
+            if (dir.CurrentIsDir())
+            {
+                if (file != "." && file != "..")
+                {
+                    string sub = path.EndsWith("/") ? path + file : path + "/" + file;
+                    ScanDirectoryAndClassify(sub, itemInfos, itemResearches, buildingsTmp, craftingTmp);
+                }
+            }
+            else
+            {
+                string full = path.EndsWith("/") ? path + file : path + "/" + file;
+                // Try to load the resource; ignore failures
+                var res = ResourceLoader.Load(full);
+                if (res == null)
+                {
+                    // skip non-resource files
+                }
+                else if (res is ItemInfo ii)
+                {
+                    if (ii.id != Inventory.ITEM_ID.NULL)
+                        itemInfos.Add(ii);
+                }
+                else if (res is ItemResearch ir)
+                {
+                    if (ir.id != Inventory.ITEM_ID.NULL)
+                        itemResearches.Add(ir);
+                }
+                else if (res is Building_Menu_List_Object bmlo)
+                {
+                    if (bmlo.scene_building_id != BUILDING_ID.NULL)
+                        buildingsTmp.Add(bmlo);
+                }
+                else if (res is CraftingRecipe cr)
+                {
+                    craftingTmp.Add(cr);
+                }
+            }
+
+            file = dir.GetNext();
+        }
+
+        dir.ListDirEnd();
     }
 
     public void CheckLoadedResources()

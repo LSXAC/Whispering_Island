@@ -6,11 +6,8 @@
 [resource]
 script = ExtResource("2_pndjb")
 id = 1
-type_category = 0
-is_big_skill = false
 DisplayName = "Mining Amount 2"
 Description = "Mega krass"
 Icon = ExtResource("1_82qks")
 skill_amount = 1.0
-required_skill_points = 1
 metadata/_custom_type_script = "uid://cen3q64nvicau"

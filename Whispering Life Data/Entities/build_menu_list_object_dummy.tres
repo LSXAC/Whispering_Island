@@ -6,5 +6,4 @@
 script = ExtResource("2_lgngu")
 required_items = null
 unlock_requirements = null
-building_menu_category = 0
 show_object_in_building_menu_list = false

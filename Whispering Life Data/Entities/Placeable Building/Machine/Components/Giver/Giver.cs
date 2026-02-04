@@ -14,8 +14,7 @@ public partial class Giver : Area2D
 
     [Export]
     public Node2D Holder;
-    public PackedScene beltItem = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/Items/belt_item.tscn"
+    public PackedScene beltItem = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://dkue7sa7xyeyr")
     );
 
     public void OnProductionTimerTimeout()

@@ -53,11 +53,9 @@ public partial class ResearchTab : ColorRect
     public Color select_color,
         unselect_color,
         complete_color;
-    public PackedScene research_level_tab = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/UI/Research_Level_Tab.tscn"
+    public PackedScene research_level_tab = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://cd8pn6e2fwrpm")
     );
-    public PackedScene classic_button = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/UI/research_select_tab_button.tscn"
+    public PackedScene classic_button = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://bln18s3exspyq")
     );
 
     public Array<ResearchSave> research_states = new Array<ResearchSave>();

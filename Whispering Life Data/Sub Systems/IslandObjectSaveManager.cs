@@ -14,8 +14,7 @@ public partial class IslandObjectSaveManager : Node2D
     public Array<BeltMachineSave> belt_machine_saves = new Array<BeltMachineSave>();
     public Array<RailSave> rail_saves = new Array<RailSave>();
 
-    private PackedScene belt_item_scene = ResourceLoader.Load<PackedScene>(
-        "res://Scenes/Items/belt_item.tscn"
+    private PackedScene belt_item_scene = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://dkue7sa7xyeyr")
     );
 
     public void LoadPlacedObjects()
