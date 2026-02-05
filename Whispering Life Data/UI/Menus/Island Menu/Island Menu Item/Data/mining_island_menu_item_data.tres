@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemMenuItemData" format=3 uid="uid://dr8lawuplvvrd"]
+
+[ext_resource type="Texture2D" uid="uid://b52ffyqisk5i1" path="res://UI/Menus/Island Menu/Textures/Mining_Island.png" id="1_wqd7t"]
+[ext_resource type="Script" uid="uid://cx65jsnrsyj4y" path="res://UI/Menus/Island Menu/Island Menu Item/Data/ItemMenuItemData.cs" id="2_gocqp"]
+
+[resource]
+script = ExtResource("2_gocqp")
+island_texture = ExtResource("1_wqd7t")
+menu_item_title = "MINING_ISLAND"
+metadata/_custom_type_script = "uid://cx65jsnrsyj4y"

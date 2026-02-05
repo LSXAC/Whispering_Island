@@ -32,15 +32,11 @@
 [ext_resource type="Script" uid="uid://v7dew0yr5trl" path="res://Entities/Items/Attributes/ToolAttribute.cs" id="17_7ai0l"]
 [ext_resource type="Script" uid="uid://mtwprpv04hll" path="res://UI/Menus/Machine Menus/Chest Menu/ChestTab.cs" id="17_8qgvy"]
 [ext_resource type="Texture2D" uid="uid://bktanws4eilvv" path="res://Entities/Items/SpritesForItems/Armor/Placeholder_Armor_Chest.png" id="17_6662a"]
-[ext_resource type="Texture2D" uid="uid://y7p1sna6t1lh" path="res://UI/Menus/Island Menu/Textures/Mystic_Island.png" id="17_i4snh"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Entities/Items/SpritesForItems/Icons_3rd/Wood_Icon.png" id="17_iq1ex"]
 [ext_resource type="Texture2D" uid="uid://d24spwn8n1w7w" path="res://UI/Flaggs/DE_FLAG.png" id="18_1qrrt"]
 [ext_resource type="Texture2D" uid="uid://ih5t52rdyjcs" path="res://Entities/Items/SpritesForItems/Armor/Placeholder_Armor_Legs.png" id="18_gcthi"]
-[ext_resource type="Texture2D" uid="uid://b52ffyqisk5i1" path="res://UI/Menus/Island Menu/Textures/Mining_Island.png" id="18_k8cqj"]
 [ext_resource type="Texture2D" uid="uid://w1k1mv22ckvl" path="res://Entities/Items/SpritesForItems/Icons_3rd/Stone.png" id="18_ou1xm"]
 [ext_resource type="Texture2D" uid="uid://dpkjoc1lf1fa5" path="res://Entities/Items/SpritesForItems/Armor/Placeholder_Armor_Shoes.png" id="19_rgd55"]
-[ext_resource type="Texture2D" uid="uid://g5tq6jiacbx3" path="res://UI/Menus/Island Menu/Textures/Farming_Island.png" id="19_wr86d"]
-[ext_resource type="Texture2D" uid="uid://bjp5wy4new0rg" path="res://UI/Menus/Island Menu/Textures/Island_Dessert.png" id="20_23y7x"]
 [ext_resource type="Texture2D" uid="uid://04ccgfwkqldn" path="res://Entities/Items/SpritesForItems/Icons/Fuel.png" id="20_s2f2w"]
 [ext_resource type="Script" uid="uid://bfnqqg6a2on8k" path="res://Entities/Items/Attributes/BurnableAttribute.cs" id="26_7icba"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/Menus/Translation/TranslationLabel.cs" id="26_tl5yt"]
@@ -115,7 +111,11 @@
 [ext_resource type="Texture2D" uid="uid://dfa2imjkie3p2" path="res://Entities/Items/SpritesForItems/Icons/letter-x.png" id="66_17ja5"]
 [ext_resource type="Script" uid="uid://cuumqpn4sqi6h" path="res://UI/Menus/Machine Menus/Minecart Menu/MinecartTab.cs" id="74_5ehlf"]
 [ext_resource type="Script" uid="uid://djyj8ngmhjavn" path="res://UI/Menus/Machine Menus/Railstation Menu/RailStationTab.cs" id="76_6ikjc"]
-[ext_resource type="StyleBox" uid="uid://bfrdtjfua8vts" path="res://UI/Styles/Panel_Transparent.tres" id="92_b00gh"]
+[ext_resource type="PackedScene" uid="uid://cgl6boogeq2mv" path="res://UI/Menus/Island Menu/Island Menu Item/Island_Menu_Item.tscn" id="90_l3sn2"]
+[ext_resource type="Resource" uid="uid://dr8lawuplvvrd" path="res://UI/Menus/Island Menu/Island Menu Item/Data/mining_island_menu_item_data.tres" id="91_l3sn2"]
+[ext_resource type="Resource" uid="uid://dmqrajecslxbo" path="res://UI/Menus/Island Menu/Island Menu Item/Data/mystical_island_menu_item_data.tres" id="92_2jtc7"]
+[ext_resource type="Resource" uid="uid://ccs5nn02ivgu7" path="res://UI/Menus/Island Menu/Island Menu Item/Data/dessert_island_menu_item_data.tres" id="93_kqkeb"]
+[ext_resource type="Resource" uid="uid://dyy2lfagaxj8n" path="res://UI/Menus/Island Menu/Island Menu Item/Data/farming_island_menu_item_data.tres" id="94_k61vr"]
 [ext_resource type="StyleBox" uid="uid://cfrmx1sogqkln" path="res://UI/Styles/Slider_Style.tres" id="103_sy5xb"]
 [ext_resource type="StyleBox" uid="uid://b2c5h8k14gscx" path="res://UI/Styles/Slider_Grabber_Style.tres" id="104_fato5"]
 [ext_resource type="Texture2D" uid="uid://deai4c50jpvjn" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_11.png" id="109_4awxy"]
@@ -436,18 +436,16 @@ offset_right = -280.0
 offset_bottom = 22.0
 inventory_items = Array[Resource]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 
-[node name="EquipmentPanel" type="Control" parent="Background/InventoryTab" unique_id=1820287311 node_paths=PackedStringArray("player_stats_ui", "health_bar_label", "fatigue_bar_label", "health_bar", "fatigue_bar")]
+[node name="EquipmentPanel" type="Control" parent="Background/InventoryTab" unique_id=1820287311 node_paths=PackedStringArray("slots_armor", "slots_tool", "player_stats_ui")]
 anchors_preset = 0
 offset_left = 381.0
 offset_top = 49.0
 offset_right = 717.0
 offset_bottom = 306.0
 script = ExtResource("4_e3tur")
+slots_armor = [NodePath("Character/ArmorGridContainer/HeadSlotBackground/Slot0"), NodePath("Character/ArmorGridContainer/ChestSlotBackground/Slot0"), NodePath("Character/ArmorGridContainer/LegSlotBackground/Slot0"), NodePath("Character/ArmorGridContainer/ShoesSlotBackground/Slot0")]
+slots_tool = [NodePath("Character/ToolsHBox/HeadSlotBackground/Slot0"), NodePath("Character/ToolsHBox/HeadSlotBackground2/Slot0"), NodePath("Character/ToolsHBox/HeadSlotBackground3/Slot0"), NodePath("Character/ToolsHBox/HeadSlotBackground4/Slot0")]
 player_stats_ui = NodePath("PlayerStatsUI")
-health_bar_label = NodePath("GridContainer/HealthHBox/Label")
-fatigue_bar_label = NodePath("GridContainer/FatigueBox/Label")
-health_bar = NodePath("GridContainer/HealthHBox/HealthProgressbar")
-fatigue_bar = NodePath("GridContainer/FatigueBox/FatigueProgressbar")
 
 [node name="Character" type="Control" parent="Background/InventoryTab/EquipmentPanel" unique_id=583756182]
 anchors_preset = 0
@@ -456,17 +454,17 @@ offset_top = -15.0
 offset_right = 27.0
 offset_bottom = 225.0
 
-[node name="GridContainer" type="GridContainer" parent="Background/InventoryTab/EquipmentPanel/Character" unique_id=1987800771]
+[node name="ArmorGridContainer" type="GridContainer" parent="Background/InventoryTab/EquipmentPanel/Character" unique_id=1987800771]
 layout_mode = 0
 offset_left = -10.0
 offset_top = 3.0
 offset_right = 58.0
 offset_bottom = 71.0
 
-[node name="HeadSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer" unique_id=1069188508 instance=ExtResource("13_m8k7p")]
+[node name="HeadSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer" unique_id=1069188508 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/HeadSlotBackground" index="0" unique_id=1848838759]
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer/HeadSlotBackground" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -481,10 +479,10 @@ icon_alignment = 1
 attribute_to_check = SubResource("Resource_7gwna")
 check_attributes = true
 
-[node name="ChestSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer" unique_id=211163979 instance=ExtResource("13_m8k7p")]
+[node name="ChestSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer" unique_id=211163979 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/ChestSlotBackground" index="0" unique_id=1848838759]
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer/ChestSlotBackground" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -499,10 +497,10 @@ icon_alignment = 1
 attribute_to_check = SubResource("Resource_j657e")
 check_attributes = true
 
-[node name="LegSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer" unique_id=8146912 instance=ExtResource("13_m8k7p")]
+[node name="LegSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer" unique_id=8146912 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/LegSlotBackground" index="0" unique_id=1848838759]
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer/LegSlotBackground" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -517,10 +515,10 @@ icon_alignment = 1
 attribute_to_check = SubResource("Resource_etc0m")
 check_attributes = true
 
-[node name="ShoesSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer" unique_id=1665791741 instance=ExtResource("13_m8k7p")]
+[node name="ShoesSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer" unique_id=1665791741 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/GridContainer/ShoesSlotBackground" index="0" unique_id=1848838759]
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer/ShoesSlotBackground" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -535,15 +533,71 @@ icon_alignment = 1
 attribute_to_check = SubResource("Resource_mmhr0")
 check_attributes = true
 
-[node name="ColorRectProfilBackground" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel" unique_id=1806458205]
+[node name="ToolsHBox" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/Character" unique_id=1104132103]
 layout_mode = 0
-offset_left = 8.0
-offset_top = -12.0
-offset_right = 76.0
-offset_bottom = 128.0
+offset_left = 27.0
+offset_top = 148.0
+offset_right = 170.0
+offset_bottom = 180.0
+theme_override_constants/separation = 4
+
+[node name="HeadSlotBackground" parent="Background/InventoryTab/EquipmentPanel/Character/ToolsHBox" unique_id=1479310948 instance=ExtResource("13_m8k7p")]
+layout_mode = 2
+
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/ToolsHBox/HeadSlotBackground" index="0" unique_id=1848838759]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 8
+attribute_to_check = SubResource("Resource_m8k7p")
+check_attributes = true
+
+[node name="HeadSlotBackground2" parent="Background/InventoryTab/EquipmentPanel/Character/ToolsHBox" unique_id=946457171 instance=ExtResource("13_m8k7p")]
+layout_mode = 2
+
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/ToolsHBox/HeadSlotBackground2" index="0" unique_id=1848838759]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 8
+attribute_to_check = SubResource("Resource_6662a")
+check_attributes = true
+
+[node name="HeadSlotBackground3" parent="Background/InventoryTab/EquipmentPanel/Character/ToolsHBox" unique_id=584374835 instance=ExtResource("13_m8k7p")]
+layout_mode = 2
+
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/ToolsHBox/HeadSlotBackground3" index="0" unique_id=1848838759]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 8
+attribute_to_check = SubResource("Resource_gcthi")
+check_attributes = true
+
+[node name="HeadSlotBackground4" parent="Background/InventoryTab/EquipmentPanel/Character/ToolsHBox" unique_id=1321452175 instance=ExtResource("13_m8k7p")]
+layout_mode = 2
+
+[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/Character/ToolsHBox/HeadSlotBackground4" index="0" unique_id=1848838759]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 8
+attribute_to_check = SubResource("Resource_rgd55")
+check_attributes = true
+
+[node name="ColorRectProfilBackground" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel/Character" unique_id=1806458205]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 3.0
+offset_right = 95.0
+offset_bottom = 143.0
 color = Color(0, 0, 0, 1)
 
-[node name="Forground" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel/ColorRectProfilBackground" unique_id=1861504857]
+[node name="Forground" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel/Character/ColorRectProfilBackground" unique_id=1861504857]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
@@ -551,7 +605,7 @@ offset_right = 67.0
 offset_bottom = 139.0
 color = Color(0.278431, 0.270588, 0.329412, 1)
 
-[node name="TextureRect" type="TextureRect" parent="Background/InventoryTab/EquipmentPanel/ColorRectProfilBackground" unique_id=697152842]
+[node name="TextureRect" type="TextureRect" parent="Background/InventoryTab/EquipmentPanel/Character/ColorRectProfilBackground" unique_id=697152842]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -565,131 +619,6 @@ offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_6jpat")
-
-[node name="EquipmentHBox" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel" unique_id=1104132103]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 133.0
-offset_right = 151.0
-offset_bottom = 165.0
-theme_override_constants/separation = 4
-
-[node name="HeadSlotBackground" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox" unique_id=1479310948 instance=ExtResource("13_m8k7p")]
-layout_mode = 2
-
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
-theme_override_font_sizes/font_size = 8
-attribute_to_check = SubResource("Resource_m8k7p")
-check_attributes = true
-
-[node name="HeadSlotBackground2" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox" unique_id=946457171 instance=ExtResource("13_m8k7p")]
-layout_mode = 2
-
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground2" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
-theme_override_font_sizes/font_size = 8
-attribute_to_check = SubResource("Resource_6662a")
-check_attributes = true
-
-[node name="HeadSlotBackground3" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox" unique_id=584374835 instance=ExtResource("13_m8k7p")]
-layout_mode = 2
-
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground3" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
-theme_override_font_sizes/font_size = 8
-attribute_to_check = SubResource("Resource_gcthi")
-check_attributes = true
-
-[node name="HeadSlotBackground4" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox" unique_id=1321452175 instance=ExtResource("13_m8k7p")]
-layout_mode = 2
-
-[node name="Slot0" parent="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground4" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
-theme_override_font_sizes/font_size = 8
-attribute_to_check = SubResource("Resource_rgd55")
-check_attributes = true
-
-[node name="GridContainer" type="GridContainer" parent="Background/InventoryTab/EquipmentPanel" unique_id=1049913836]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 171.0
-offset_right = 185.0
-offset_bottom = 221.0
-
-[node name="HealthHBox" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/GridContainer" unique_id=25337877]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 2
-
-[node name="Label" type="Label" parent="Background/InventoryTab/EquipmentPanel/GridContainer/HealthHBox" unique_id=1675943295]
-layout_mode = 2
-size_flags_horizontal = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-text = "Health:"
-
-[node name="HealthProgressbar" type="ProgressBar" parent="Background/InventoryTab/EquipmentPanel/GridContainer/HealthHBox" unique_id=1387410114]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-value = 15.0
-
-[node name="FatigueBox" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/GridContainer" unique_id=820350473]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 2
-
-[node name="Label" type="Label" parent="Background/InventoryTab/EquipmentPanel/GridContainer/FatigueBox" unique_id=1323467811]
-layout_mode = 2
-size_flags_horizontal = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-text = "Fatigue:"
-
-[node name="FatigueProgressbar" type="ProgressBar" parent="Background/InventoryTab/EquipmentPanel/GridContainer/FatigueBox" unique_id=1180213773]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-value = 15.0
-
-[node name="KnowledgeHBox" type="HBoxContainer" parent="Background/InventoryTab/EquipmentPanel/GridContainer" unique_id=885858051]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 2
-
-[node name="Label" type="Label" parent="Background/InventoryTab/EquipmentPanel/GridContainer/KnowledgeHBox" unique_id=326345183]
-layout_mode = 2
-size_flags_horizontal = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-text = "Unknown:"
-
-[node name="ProgressBar" type="ProgressBar" parent="Background/InventoryTab/EquipmentPanel/GridContainer/KnowledgeHBox" unique_id=854362619]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
 
 [node name="PlayerStatsUI" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel" unique_id=1093591239 node_paths=PackedStringArray("stats_container")]
 layout_mode = 0
@@ -4273,8 +4202,7 @@ theme_override_styles/disabled = ExtResource("31_j0nuq")
 theme_override_styles/focus = ExtResource("28_gcthi")
 text = "Unlock Skill"
 
-[node name="IslandTab" type="ColorRect" parent="Background" unique_id=34133489 node_paths=PackedStringArray("buttons", "island_cost", "island_to_build_left_label")]
-visible = false
+[node name="IslandTab" type="ColorRect" parent="Background" unique_id=34133489 node_paths=PackedStringArray("island_parent", "island_to_build_left_label")]
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -4288,8 +4216,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("16_burxg")
-buttons = []
-island_cost = []
+island_parent = NodePath("MarginContainer/ScrollContainer/GridContainer")
 island_to_build_left_label = NodePath("IslandsToBuildLabel")
 
 [node name="HeaderColorRect" parent="Background/IslandTab" unique_id=2012173188 instance=ExtResource("11_45saq")]
@@ -4332,389 +4259,21 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 3
 
-[node name="ColorRect" type="ColorRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer" unique_id=292942358]
-custom_minimum_size = Vector2(150, 150)
+[node name="MiningIsland" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer" unique_id=836738354 instance=ExtResource("90_l3sn2")]
 layout_mode = 2
-color = Color(0, 0, 0, 1)
+item_menu_item_data = ExtResource("91_l3sn2")
 
-[node name="ColorRect" type="ColorRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect" unique_id=1138345790]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 149.0
-offset_bottom = 149.0
-color = Color(0.529412, 0.509804, 0.647059, 1)
-
-[node name="TextureRect" type="TextureRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect" unique_id=1548715187]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -54.0
-offset_right = 50.0
-offset_bottom = 46.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("17_i4snh")
-expand_mode = 3
-
-[node name="Panel" type="Panel" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect" unique_id=553478312]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 124.0
-offset_right = 148.0
-offset_bottom = 148.0
-size_flags_horizontal = 3
-theme_override_styles/panel = ExtResource("92_b00gh")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect/Panel" unique_id=174587199]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 144.0
-offset_bottom = 22.0
-
-[node name="MarginContainer" type="MarginContainer" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect/Panel/HBoxContainer" unique_id=1802464505]
+[node name="MysticIsland" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer" unique_id=509412811 instance=ExtResource("90_l3sn2")]
 layout_mode = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
+item_menu_item_data = ExtResource("92_2jtc7")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect/Panel/HBoxContainer/MarginContainer" unique_id=1485901687]
+[node name="DessertIsland" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer" unique_id=138237581 instance=ExtResource("90_l3sn2")]
 layout_mode = 2
-theme_override_constants/separation = 2
+item_menu_item_data = ExtResource("93_kqkeb")
 
-[node name="TextureRect" type="TextureRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect/Panel/HBoxContainer/MarginContainer/HBoxContainer" unique_id=417551177]
-custom_minimum_size = Vector2(16, 16)
+[node name="FarmingIsland" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer" unique_id=1681499778 instance=ExtResource("90_l3sn2")]
 layout_mode = 2
-texture = ExtResource("31_sy28q")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="MoneyLabel" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect/Panel/HBoxContainer/MarginContainer/HBoxContainer" unique_id=561406149]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-text = "28"
-horizontal_alignment = 1
-
-[node name="Button" type="Button" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect/Panel/HBoxContainer" unique_id=486994117]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = ExtResource("34_sy5xb")
-theme_override_styles/pressed = ExtResource("33_sy5xb")
-theme_override_styles/hover = ExtResource("32_w3vm4")
-theme_override_styles/disabled = ExtResource("31_j0nuq")
-theme_override_styles/focus = ExtResource("28_gcthi")
-disabled = true
-text = "BUY"
-
-[node name="Label" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect" unique_id=216003609]
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 23.0
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-text = "Mystic Island"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ColorRect7" type="ColorRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer" unique_id=840018615]
-custom_minimum_size = Vector2(150, 150)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="ColorRect" type="ColorRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect7" unique_id=1781576515]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 149.0
-offset_bottom = 149.0
-color = Color(0.529412, 0.509804, 0.647059, 1)
-
-[node name="TextureRect" type="TextureRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect7" unique_id=2134588867]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -54.0
-offset_right = 50.0
-offset_bottom = 46.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("18_k8cqj")
-expand_mode = 3
-
-[node name="Label" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect7" unique_id=998152052]
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 23.0
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-text = "Mystic Island"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Panel" type="Panel" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect7" unique_id=1069621632]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 124.0
-offset_right = 148.0
-offset_bottom = 148.0
-size_flags_horizontal = 3
-theme_override_styles/panel = ExtResource("92_b00gh")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect7/Panel" unique_id=1934542660]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 144.0
-offset_bottom = 22.0
-
-[node name="MarginContainer" type="MarginContainer" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect7/Panel/HBoxContainer" unique_id=49006085]
-layout_mode = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect7/Panel/HBoxContainer/MarginContainer" unique_id=1936890945]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="TextureRect" type="TextureRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect7/Panel/HBoxContainer/MarginContainer/HBoxContainer" unique_id=374926421]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-texture = ExtResource("31_sy28q")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="MoneyLabel" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect7/Panel/HBoxContainer/MarginContainer/HBoxContainer" unique_id=2014974791]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-text = "28"
-horizontal_alignment = 1
-
-[node name="Button" type="Button" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect7/Panel/HBoxContainer" unique_id=1096166550]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = ExtResource("34_sy5xb")
-theme_override_styles/pressed = ExtResource("33_sy5xb")
-theme_override_styles/hover = ExtResource("32_w3vm4")
-theme_override_styles/disabled = ExtResource("31_j0nuq")
-theme_override_styles/focus = ExtResource("28_gcthi")
-disabled = true
-text = "BUY"
-
-[node name="ColorRect8" type="ColorRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer" unique_id=1092372595]
-custom_minimum_size = Vector2(150, 150)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="ColorRect" type="ColorRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect8" unique_id=1194817011]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 149.0
-offset_bottom = 149.0
-color = Color(0.529412, 0.509804, 0.647059, 1)
-
-[node name="TextureRect" type="TextureRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect8" unique_id=1001425356]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -54.0
-offset_right = 50.0
-offset_bottom = 46.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("19_wr86d")
-expand_mode = 3
-
-[node name="Label" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect8" unique_id=1008399386]
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 23.0
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-text = "Mystic Island"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Panel" type="Panel" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect8" unique_id=1929815603]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 124.0
-offset_right = 148.0
-offset_bottom = 148.0
-size_flags_horizontal = 3
-theme_override_styles/panel = ExtResource("92_b00gh")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect8/Panel" unique_id=644869571]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 144.0
-offset_bottom = 22.0
-
-[node name="MarginContainer" type="MarginContainer" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect8/Panel/HBoxContainer" unique_id=781592607]
-layout_mode = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect8/Panel/HBoxContainer/MarginContainer" unique_id=1925384823]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="TextureRect" type="TextureRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect8/Panel/HBoxContainer/MarginContainer/HBoxContainer" unique_id=340926849]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-texture = ExtResource("31_sy28q")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="MoneyLabel" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect8/Panel/HBoxContainer/MarginContainer/HBoxContainer" unique_id=1826843719]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-text = "28"
-horizontal_alignment = 1
-
-[node name="Button" type="Button" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect8/Panel/HBoxContainer" unique_id=2032651327]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = ExtResource("34_sy5xb")
-theme_override_styles/pressed = ExtResource("33_sy5xb")
-theme_override_styles/hover = ExtResource("32_w3vm4")
-theme_override_styles/disabled = ExtResource("31_j0nuq")
-theme_override_styles/focus = ExtResource("28_gcthi")
-disabled = true
-text = "BUY"
-
-[node name="ColorRect9" type="ColorRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer" unique_id=1658928364]
-custom_minimum_size = Vector2(150, 150)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="ColorRect" type="ColorRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect9" unique_id=772591312]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 149.0
-offset_bottom = 149.0
-color = Color(0.529412, 0.509804, 0.647059, 1)
-
-[node name="TextureRect" type="TextureRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect9" unique_id=360634266]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -54.0
-offset_right = 50.0
-offset_bottom = 46.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("20_23y7x")
-expand_mode = 3
-
-[node name="Label" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect9" unique_id=1397383555]
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 23.0
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-text = "Mystic Island"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Panel" type="Panel" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect9" unique_id=1134673214]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 124.0
-offset_right = 148.0
-offset_bottom = 148.0
-size_flags_horizontal = 3
-theme_override_styles/panel = ExtResource("92_b00gh")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect9/Panel" unique_id=864553148]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 144.0
-offset_bottom = 22.0
-
-[node name="MarginContainer" type="MarginContainer" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect9/Panel/HBoxContainer" unique_id=2005356898]
-layout_mode = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect9/Panel/HBoxContainer/MarginContainer" unique_id=440848069]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="TextureRect" type="TextureRect" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect9/Panel/HBoxContainer/MarginContainer/HBoxContainer" unique_id=1863415804]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-texture = ExtResource("31_sy28q")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="MoneyLabel" type="Label" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect9/Panel/HBoxContainer/MarginContainer/HBoxContainer" unique_id=1593450726]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-text = "28"
-horizontal_alignment = 1
-
-[node name="Button" type="Button" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer/ColorRect9/Panel/HBoxContainer" unique_id=1481115252]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = ExtResource("34_sy5xb")
-theme_override_styles/pressed = ExtResource("33_sy5xb")
-theme_override_styles/hover = ExtResource("32_w3vm4")
-theme_override_styles/disabled = ExtResource("31_j0nuq")
-theme_override_styles/focus = ExtResource("28_gcthi")
-disabled = true
-text = "BUY"
+item_menu_item_data = ExtResource("94_k61vr")
 
 [node name="AdminTab" type="ColorRect" parent="Background" unique_id=292820670 node_paths=PackedStringArray("item_list", "timeStateLabel")]
 visible = false
@@ -7052,14 +6611,14 @@ alignment = 1
 [connection signal="visibility_changed" from="Background/DestroyMenu" to="Background/DestroyMenu" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/DestroyMenu/MarginContainer/VBoxContainer2/CompleteQuestButton" to="Background/DestroyMenu" method="OnDestroyButton"]
 
-[editable path="Background/InventoryTab/EquipmentPanel/Character/GridContainer/HeadSlotBackground"]
-[editable path="Background/InventoryTab/EquipmentPanel/Character/GridContainer/ChestSlotBackground"]
-[editable path="Background/InventoryTab/EquipmentPanel/Character/GridContainer/LegSlotBackground"]
-[editable path="Background/InventoryTab/EquipmentPanel/Character/GridContainer/ShoesSlotBackground"]
-[editable path="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground"]
-[editable path="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground2"]
-[editable path="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground3"]
-[editable path="Background/InventoryTab/EquipmentPanel/EquipmentHBox/HeadSlotBackground4"]
+[editable path="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer/HeadSlotBackground"]
+[editable path="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer/ChestSlotBackground"]
+[editable path="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer/LegSlotBackground"]
+[editable path="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer/ShoesSlotBackground"]
+[editable path="Background/InventoryTab/EquipmentPanel/Character/ToolsHBox/HeadSlotBackground"]
+[editable path="Background/InventoryTab/EquipmentPanel/Character/ToolsHBox/HeadSlotBackground2"]
+[editable path="Background/InventoryTab/EquipmentPanel/Character/ToolsHBox/HeadSlotBackground3"]
+[editable path="Background/InventoryTab/EquipmentPanel/Character/ToolsHBox/HeadSlotBackground4"]
 [editable path="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundInput"]
 [editable path="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundExport"]
 [editable path="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundFuel"]

@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using Godot;
+using Godot.Collections;
 
 public partial class EquipmentSelectBar : Container
 {
@@ -9,7 +10,7 @@ public partial class EquipmentSelectBar : Container
         selected_color;
 
     [Export]
-    public Slot[] select_slots = new Slot[4];
+    public Array<Slot> select_slots = new Array<Slot>();
 
     public SlotItemUI current_selected_slot_item_ui = null;
 

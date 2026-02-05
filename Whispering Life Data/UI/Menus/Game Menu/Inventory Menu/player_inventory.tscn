@@ -11,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4utg2")
+inventory_items = Array[Resource]([])
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=820086927]
 layout_mode = 0

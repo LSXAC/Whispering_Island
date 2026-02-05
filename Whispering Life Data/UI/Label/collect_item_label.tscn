@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c1fvino5a4q4f" path="res://UI/UI Scripts/collect_item_label.cs" id="1_hsowa"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="1_m6fdd"]
 
-[node name="CollectItemLabel" type="Label"]
+[node name="CollectItemLabel" type="Label" unique_id=1165099699]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -19,7 +19,7 @@ text = "+5 Wood"
 vertical_alignment = 2
 script = ExtResource("1_hsowa")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1168871493]
 wait_time = 0.01
 autostart = true
 

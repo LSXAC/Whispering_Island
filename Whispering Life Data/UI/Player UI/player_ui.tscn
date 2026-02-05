@@ -680,7 +680,7 @@ layout_mode = 2
 [node name="HBoxItem4" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=473504988 instance=ExtResource("18_uwodk")]
 layout_mode = 2
 
-[node name="EquipmentSelectBar" type="Container" parent="." unique_id=622824036]
+[node name="EquipmentSelectBar" type="Container" parent="." unique_id=622824036 node_paths=PackedStringArray("select_slots")]
 custom_minimum_size = Vector2(220, 65)
 anchors_preset = 2
 anchor_top = 1.0
@@ -693,6 +693,7 @@ grow_vertical = 0
 script = ExtResource("17_450ol")
 normal_color = Color(1, 1, 1, 0)
 selected_color = Color(1, 0.839216, 0.0941176, 1)
+select_slots = [NodePath("VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SlotBackground0/Slot0"), NodePath("VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SlotBackground0/Slot0"), NodePath("VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer/SlotBackground0/Slot0"), NodePath("VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer/SlotBackground0/Slot0")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EquipmentSelectBar" unique_id=118125673]
 layout_mode = 2

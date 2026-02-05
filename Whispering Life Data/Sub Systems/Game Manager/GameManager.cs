@@ -269,7 +269,6 @@ public partial class GameManager : Node2D
         else
         {
             GlobalFunctions.StartAfterTutorial();
-            SaveGame();
             MainMenu.SaveLauncherConfig();
         }
     }
@@ -288,7 +287,7 @@ public partial class GameManager : Node2D
     private void StartTutorial()
     {
         Debug.Print("Start Tutorial");
-        var dialogue = GD.Load<Resource>("res://Dialogues/Tutorial_General.dialogue");
+        var dialogue = GD.Load<Resource>(ResourceUid.UidToPath("uid://byn2daod4sksu"));
         GlobalFunctions.MoveCameraToPosition(new Vector2(0, -256));
         GlobalFunctions.InDialogue();
         DialogueManager.TranslationSource = TranslationSource.CSV;

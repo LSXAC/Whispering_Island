@@ -1,3 +1,5 @@
 {
-    "recommendations": []
+    "recommendations": [
+        "csharpier.csharpier-vscode"
+    ]
 }

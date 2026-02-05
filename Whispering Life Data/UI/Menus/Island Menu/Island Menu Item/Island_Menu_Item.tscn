@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://cgl6boogeq2mv"]
+
+[ext_resource type="Script" uid="uid://den77abmc6f5j" path="res://UI/Menus/Island Menu/Island Menu Item/IslandMenuItem.cs" id="1_ys5gd"]
+[ext_resource type="Texture2D" uid="uid://y7p1sna6t1lh" path="res://UI/Menus/Island Menu/Textures/Mystic_Island.png" id="2_profu"]
+[ext_resource type="StyleBox" uid="uid://bfrdtjfua8vts" path="res://UI/Styles/Panel_Transparent.tres" id="3_hbqw7"]
+[ext_resource type="Texture2D" uid="uid://raaamx5w323j" path="res://UI/Player UI/Textures/currency_icon.png" id="4_l7cj6"]
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="5_f0pgp"]
+[ext_resource type="StyleBox" uid="uid://h4o1ussquiqb" path="res://UI/Styles/button_hover_pressed_style.tres" id="6_lvhpq"]
+[ext_resource type="StyleBox" uid="uid://bbbtpagi6kny3" path="res://UI/Styles/Button_Pressed_Style.tres.tres" id="7_jipj3"]
+[ext_resource type="StyleBox" uid="uid://c0rrcqgclnbps" path="res://UI/Styles/Button_Hover_Style.tres" id="8_vvkco"]
+[ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://UI/Styles/Button_Disabled_Style.tres.tres" id="9_4fjdw"]
+[ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://UI/Styles/slot_focus_style.tres" id="10_vr1uj"]
+
+[node name="Island" type="ColorRect" unique_id=836738354 node_paths=PackedStringArray("image", "buy_btn", "money_label")]
+custom_minimum_size = Vector2(150, 150)
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_ys5gd")
+image = NodePath("TextureRect")
+buy_btn = NodePath("Panel/HBoxContainer/Button")
+money_label = NodePath("Panel/HBoxContainer/MarginContainer/HBoxContainer/MoneyLabel")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=784488166]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 149.0
+offset_bottom = 149.0
+color = Color(0.529412, 0.509804, 0.647059, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=739477607]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -54.0
+offset_right = 50.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_profu")
+expand_mode = 3
+
+[node name="Panel" type="Panel" parent="." unique_id=219939130]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 124.0
+offset_right = 148.0
+offset_bottom = 148.0
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("3_hbqw7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1832595500]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 144.0
+offset_bottom = 22.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer" unique_id=368169107]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/MarginContainer" unique_id=382871993]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/MarginContainer/HBoxContainer" unique_id=921815453]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("4_l7cj6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoneyLabel" type="Label" parent="Panel/HBoxContainer/MarginContainer/HBoxContainer" unique_id=482252313]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_f0pgp")
+theme_override_font_sizes/font_size = 10
+text = "28"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer" unique_id=1771718288]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_f0pgp")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = ExtResource("6_lvhpq")
+theme_override_styles/pressed = ExtResource("7_jipj3")
+theme_override_styles/hover = ExtResource("8_vvkco")
+theme_override_styles/disabled = ExtResource("9_4fjdw")
+theme_override_styles/focus = ExtResource("10_vr1uj")
+disabled = true
+text = "BUY"
+
+[node name="Label" type="Label" parent="." unique_id=995741716]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 23.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_f0pgp")
+theme_override_font_sizes/font_size = 10
+text = "Mystic Island"
+horizontal_alignment = 1
+vertical_alignment = 1

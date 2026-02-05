@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Godot;
+using Godot.Collections;
 
 public partial class EquipmentPanel : Control
 {
@@ -14,21 +15,13 @@ public partial class EquipmentPanel : Control
     public ItemSave[] equipped_tools = new ItemSave[4];
 
     [Export]
-    public Slot[] slots_armor = new Slot[4];
+    public Array<Slot> slots_armor = new Array<Slot>();
 
     [Export]
-    public Slot[] slots_tool = new Slot[4];
+    public Array<Slot> slots_tool = new Array<Slot>();
 
     [Export]
     public PlayerStatsUI player_stats_ui;
-
-    [Export]
-    public Label health_bar_label,
-        fatigue_bar_label;
-
-    [Export]
-    public ProgressBar health_bar,
-        fatigue_bar;
 
     public override void _Ready()
     {
@@ -43,11 +36,6 @@ public partial class EquipmentPanel : Control
 
     private void UpdateProgressbars()
     {
-        health_bar.Value = Player.instance.player_stats.health_value;
-        health_bar_label.Text = TranslationServer.Translate("EQUIPMENT_PANEL_HEALTH_BAR") + ":";
-        fatigue_bar.Value = Player.instance.player_stats.fatigue_value;
-        fatigue_bar_label.Text = TranslationServer.Translate("EQUIPMENT_PANEL_FATIGUE_BAR") + ":";
-
         for (int i = 0; i < Enum.GetNames(typeof(PlayerStats.TOOLTYPE)).Length; i++)
         {
             player_stats_ui.stats_container.GetChild(i).GetNode<Label>("Type").Text =
@@ -178,12 +166,12 @@ public partial class EquipmentPanel : Control
 
     public void LoadArmorFromSave(ItemSave[] item_save)
     {
-        for (int i = 0; i < slots_armor.Length; i++)
+        for (int i = 0; i < slots_armor.Count; i++)
             slots_armor[i].ClearSlotItem();
 
         equipped_armor = item_save;
 
-        for (int i = 0; i < slots_armor.Length; i++)
+        for (int i = 0; i < slots_armor.Count; i++)
             if (item_save[i] != null)
                 slots_armor[i]
                     .SetItem(
@@ -196,12 +184,12 @@ public partial class EquipmentPanel : Control
 
     public void LoadToolFromSave(ItemSave[] item_save)
     {
-        for (int i = 0; i < slots_armor.Length; i++)
+        for (int i = 0; i < slots_armor.Count; i++)
             slots_tool[i].ClearSlotItem();
 
         equipped_tools = item_save;
 
-        for (int i = 0; i < slots_tool.Length; i++)
+        for (int i = 0; i < slots_tool.Count; i++)
             if (item_save[i] != null)
             {
                 slots_tool[i]

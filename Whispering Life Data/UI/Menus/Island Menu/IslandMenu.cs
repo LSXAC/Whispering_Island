@@ -2,23 +2,27 @@ using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Godot;
+using Godot.Collections;
 
 public partial class IslandMenu : ColorRect
 {
-    private PackedScene mystic_island = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://bi8dopb46mfob")
+    private PackedScene mystic_island = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://bi8dopb46mfob")
     );
-    private PackedScene mining_island = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://frwl0u2a1cwh")
+    private PackedScene mining_island = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://frwl0u2a1cwh")
     );
-    private PackedScene farming_island = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://b0pmpn0st1gl4")
+    private PackedScene farming_island = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://b0pmpn0st1gl4")
     );
-    private PackedScene dessert_island = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://d0trh47s348ub")
+    private PackedScene dessert_island = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://d0trh47s348ub")
     );
 
     [Export]
-    private Button[] buttons;
+    private Control island_parent;
 
-    [Export]
-    public Label[] island_cost;
+    private Array<IslandMenuItem> island_menu_items = new Array<IslandMenuItem>();
 
     [Export]
     public Label island_to_build_left_label;
@@ -40,10 +44,15 @@ public partial class IslandMenu : ColorRect
     public override void _Ready()
     {
         instance = this;
-        buttons[0].Pressed += () => SelectIsland(0);
-        buttons[1].Pressed += () => SelectIsland(1);
-        buttons[2].Pressed += () => SelectIsland(2);
-        buttons[3].Pressed += () => SelectIsland(3);
+
+        foreach (Control c in island_parent.GetChildren())
+            if (c is IslandMenuItem menu_item)
+                island_menu_items.Add(menu_item);
+
+        island_menu_items[0].buy_btn.Pressed += () => SelectIsland(0);
+        island_menu_items[1].buy_btn.Pressed += () => SelectIsland(1);
+        island_menu_items[2].buy_btn.Pressed += () => SelectIsland(2);
+        island_menu_items[3].buy_btn.Pressed += () => SelectIsland(3);
     }
 
     public void OnVisiblityChanged()
@@ -61,21 +70,22 @@ public partial class IslandMenu : ColorRect
 
     public void SetButtons()
     {
-        for (int i = 0; i < buttons.Length; i++)
+        for (int i = 0; i < island_menu_items.Count; i++)
         {
-            island_cost[i].Text = (
-                base_cost * (IslandManager.instance.island_types_build[i] + 1)
-            ).ToString();
+            island_menu_items[i]
+                .UpdateMoneyLabel(
+                    (base_cost * (IslandManager.instance.island_types_build[i] + 1)).ToString()
+                );
             if (GameManager.money >= base_cost * (IslandManager.instance.island_types_build[i] + 1))
-                buttons[i].Disabled = false;
+                island_menu_items[i].buy_btn.Disabled = false;
         }
     }
 
     public void DisableButtons()
     {
-        for (int i = 0; i < buttons.Length; i++)
+        for (int i = 0; i < island_menu_items.Count; i++)
         {
-            buttons[i].Disabled = true;
+            island_menu_items[i].buy_btn.Disabled = true;
         }
     }
 

@@ -102,6 +102,14 @@ public partial class Database : Node
             }
             else
             {
+                // Only load Godot resource files we care about: .tres
+                // Skip all other files (including .uid, .import, .tscn, etc.)
+                if (!file.EndsWith(".tres", StringComparison.OrdinalIgnoreCase))
+                {
+                    file = dir.GetNext();
+                    continue;
+                }
+
                 string full = path.EndsWith("/") ? path + file : path + "/" + file;
                 // Try to load the resource; ignore failures
                 var res = ResourceLoader.Load(full);
@@ -194,14 +202,6 @@ public partial class Database : Node
         Level5
     }
 
-    public string recipe_path = "res://Resource Meta/Crafting Recipies/";
-    public string research_path = "res://Resource Meta/Items/ItemResearchs/";
-    public static string building_path =
-        "res://Resource Meta/Building Menu List Object Infos/Buildings/";
-    public static string objects_path =
-        "res://Resource Meta/Building Menu List Object Infos/Objects/";
-    public static string building_plants_path =
-        "res://Resource Meta/Building Menu List Object Infos/Planting/";
     public static Dictionary<Inventory.ITEM_ID, ItemResearch> researchs =
         new Dictionary<Inventory.ITEM_ID, ItemResearch>();
     public static Dictionary<BUILDING_ID, Building_Menu_List_Object> buildings =

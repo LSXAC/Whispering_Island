@@ -6,8 +6,7 @@ public partial class SettingsTab : ColorRect
 {
     [Export]
     public OptionButton option_button,
-        window_mode_button,
-        difficulty_option_button;
+        window_mode_button;
 
     // Called when the node enters the scene tree for the first time.
 

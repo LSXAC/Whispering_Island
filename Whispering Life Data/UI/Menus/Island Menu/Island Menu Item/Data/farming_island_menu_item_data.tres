@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemMenuItemData" format=3 uid="uid://dyy2lfagaxj8n"]
+
+[ext_resource type="Texture2D" uid="uid://g5tq6jiacbx3" path="res://UI/Menus/Island Menu/Textures/Farming_Island.png" id="1_qvcwb"]
+[ext_resource type="Script" uid="uid://cx65jsnrsyj4y" path="res://UI/Menus/Island Menu/Island Menu Item/Data/ItemMenuItemData.cs" id="2_r5dxt"]
+
+[resource]
+script = ExtResource("2_r5dxt")
+island_texture = ExtResource("1_qvcwb")
+menu_item_title = "FARMING_ISLAND"
+metadata/_custom_type_script = "uid://cx65jsnrsyj4y"

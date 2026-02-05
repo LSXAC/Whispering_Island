@@ -23,7 +23,7 @@ public partial class Slot : Button
     ItemSave[] item_array = null;
     SlotUpdater slotUpdater;
     ChestBase chest = null;
-    PackedScene slot_item_ui_scene = GD.Load<PackedScene>("res://Scenes/UI/slot_item_ui.tscn");
+    PackedScene slot_item_ui_scene = GD.Load<PackedScene>(ResourceUid.UidToPath("uid://xjy2l41obahq"));
 
     public override void _Ready()
     {
