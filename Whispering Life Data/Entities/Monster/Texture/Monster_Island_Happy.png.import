@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu01dy01ry77j"
-path="res://.godot/imported/Sign_Front.png-a037ab63e1647910f879abda67f70f2d.ctex"
+uid="uid://bsnuk3r3bow3e"
+path="res://.godot/imported/Monster_Island_Happy.png-1cd3cf1eb17b5a48c755ac86da60a3cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Placeable Building/Environment/Sign/Quest Sign/Texture/Sign_Front.png"
-dest_files=["res://.godot/imported/Sign_Front.png-a037ab63e1647910f879abda67f70f2d.ctex"]
+source_file="res://Entities/Monster/Texture/Monster_Island_Happy.png"
+dest_files=["res://.godot/imported/Monster_Island_Happy.png-1cd3cf1eb17b5a48c755ac86da60a3cf.ctex"]
 
 [params]
 

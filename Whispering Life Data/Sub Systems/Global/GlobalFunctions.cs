@@ -65,8 +65,8 @@ public partial class GlobalFunctions : Node2D
 
     public static void OpenAcceptPanel()
     {
-        GameManager.instance.cutscene_camera.Enabled = false;
-        Player.camera.Position = GameManager.instance.cutscene_camera.Position;
+        CutsceneManager.instance.cutscene_camera.Enabled = false;
+        Player.camera.Position = CutsceneManager.instance.cutscene_camera.Position;
         Player.camera.Enabled = true;
         Player.camera.Position = Vector2.Zero;
         PlayerUI.instance.quest_accept_panel.Visible = true;
@@ -91,6 +91,33 @@ public partial class GlobalFunctions : Node2D
         return true;
     }
 
+    public static bool HasItemsInInventory(Array<Item> required_items)
+    {
+        foreach (Item quest_item in required_items)
+        {
+            Array<Item> iii = PlayerInventoryUI.instance.GetItemFromListOrNull(
+                PlayerInventoryUI.instance.GetListOfItemsInInventory(),
+                quest_item
+            );
+
+            if (iii == null)
+                return false;
+
+            int amount = 0;
+            foreach (Item i_x in iii)
+                amount += i_x.amount;
+
+            if (QuestManager.next_quest_is_doubled_items)
+            {
+                if (amount < quest_item.amount * 2)
+                    return false;
+            }
+            else if (amount < quest_item.amount)
+                return false;
+        }
+        return true;
+    }
+
     public static float GetDistanceToPlayer(Vector2 nodePosition)
     {
         return Player.instance.GlobalPosition.DistanceTo(nodePosition);
@@ -99,9 +126,9 @@ public partial class GlobalFunctions : Node2D
     public static void MoveCameraToPosition(Vector2 pos)
     {
         Player.camera.Enabled = false;
-        GameManager.instance.cutscene_camera.GlobalPosition = Player.camera.GlobalPosition;
-        GameManager.instance.cutscene_camera.Enabled = true;
-        GameManager.instance.cutscene_camera.Position = pos;
+        CutsceneManager.instance.cutscene_camera.GlobalPosition = Player.camera.GlobalPosition;
+        CutsceneManager.instance.cutscene_camera.Enabled = true;
+        CutsceneManager.instance.cutscene_camera.Position = pos;
     }
 
     public static void StartAfterTutorial()
@@ -113,7 +140,7 @@ public partial class GlobalFunctions : Node2D
 
     public static void InDialogue()
     {
-        GameManager.In_Cutscene = true;
+        CutsceneManager.In_Cutscene = true;
     }
 
     public static void QueueFreeTree()
@@ -123,11 +150,11 @@ public partial class GlobalFunctions : Node2D
 
     public static void LeaveDialogue()
     {
-        GameManager.instance.cutscene_camera.Enabled = false;
-        Player.camera.Position = GameManager.instance.cutscene_camera.Position;
+        CutsceneManager.instance.cutscene_camera.Enabled = false;
+        Player.camera.Position = CutsceneManager.instance.cutscene_camera.Position;
         Player.camera.Enabled = true;
         Player.camera.Position = Vector2.Zero;
-        GameManager.In_Cutscene = false;
+        CutsceneManager.In_Cutscene = false;
         GameManager.instance.SaveGame();
     }
 

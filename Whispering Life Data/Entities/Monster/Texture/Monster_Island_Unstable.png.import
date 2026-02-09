@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://125t5f6fiugo"
-path="res://.godot/imported/Monster_Island.png-a964d6c2efd23b22f82b0b6b279cc601.ctex"
+uid="uid://bhagrhn2oxevr"
+path="res://.godot/imported/Monster_Island_Unstable.png-4b487e9213e20ab9cd3bd9f8bed75b9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Placeable Building/Environment/Sign/Quest Sign/Monster_Island.png"
-dest_files=["res://.godot/imported/Monster_Island.png-a964d6c2efd23b22f82b0b6b279cc601.ctex"]
+source_file="res://Entities/Monster/Texture/Monster_Island_Unstable.png"
+dest_files=["res://.godot/imported/Monster_Island_Unstable.png-4b487e9213e20ab9cd3bd9f8bed75b9f.ctex"]
 
 [params]
 

@@ -55,7 +55,7 @@ public partial class MouseArea : Area2D
 
     public void OnMouseEntered()
     {
-        if (building_node == null || GameManager.In_Cutscene)
+        if (building_node == null || CutsceneManager.In_Cutscene)
         {
             return;
         }

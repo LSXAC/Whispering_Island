@@ -105,7 +105,7 @@
 [ext_resource type="Resource" uid="uid://b0x6hysultfer" path="res://Sub Systems/Skill System/Skills/Data/tool_durability_2.tres" id="62_qmedj"]
 [ext_resource type="Texture2D" uid="uid://nd03oe33c2v2" path="res://UI/Menus/Game Menu/Help Menu/Textures/Objectiv.png" id="63_38eqn"]
 [ext_resource type="Resource" uid="uid://11ss8d11sxoe" path="res://Sub Systems/Skill System/Skills/Data/tool_durability_3.tres" id="63_opwmy"]
-[ext_resource type="Texture2D" uid="uid://125t5f6fiugo" path="res://Entities/Placeable Building/Environment/Sign/Quest Sign/Monster_Island.png" id="64_jkgj7"]
+[ext_resource type="Texture2D" uid="uid://125t5f6fiugo" path="res://Entities/Monster/Texture/Monster_Island.png" id="64_jkgj7"]
 [ext_resource type="Resource" uid="uid://5seoa7j2xqog" path="res://Sub Systems/Skill System/Skills/Data/tool_regeneration.tres" id="64_nhr3t"]
 [ext_resource type="Texture2D" uid="uid://dlln1ly5u41as" path="res://UI/Menus/Island Menu/Textures/Island_1.png" id="65_shum4"]
 [ext_resource type="Texture2D" uid="uid://dfa2imjkie3p2" path="res://Entities/Items/SpritesForItems/Icons/letter-x.png" id="66_17ja5"]

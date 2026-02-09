@@ -14,15 +14,17 @@ public partial class GameManager : Node2D
     [Export]
     public ShadowManager shadow_manager;
 
+    private Resource tutorial_dialogue = ResourceLoader.Load<Resource>(
+        ResourceUid.UidToPath("uid://byn2daod4sksu")
+    );
+
     public static CanvasLayer current_activ_canvaslayer = null;
     public static bool dev_build_mode = false;
     public static GameManager instance = null;
     public static bool gameover = false;
     public static bool[,] island_matrix;
     public static BuildingMode building_mode = BuildingMode.None;
-    public static bool In_Cutscene = false;
     public Node2D island_parent;
-    public Camera2D cutscene_camera;
     public bool new_game = false;
 
     public static float difficulty_multiplier = 1.0f;
@@ -104,12 +106,10 @@ public partial class GameManager : Node2D
     {
         Input.UseAccumulatedInput = false;
         gameover = false;
-        In_Cutscene = false;
+        CutsceneManager.In_Cutscene = false;
         island_matrix = new bool[11, 11];
         money = 1000;
         current_activ_canvaslayer = null;
-
-        cutscene_camera = GetNode<Camera2D>("CutsceneCamera");
         island_parent = GetNode<Node2D>("IslandManager");
 
         CreateIslands();
@@ -288,11 +288,7 @@ public partial class GameManager : Node2D
     private void StartTutorial()
     {
         Debug.Print("Start Tutorial");
-        var dialogue = GD.Load<Resource>(ResourceUid.UidToPath("uid://byn2daod4sksu"));
-        GlobalFunctions.MoveCameraToPosition(new Vector2(0, -256));
-        GlobalFunctions.InDialogue();
-        DialogueManager.TranslationSource = TranslationSource.CSV;
-        DialogueManager.ShowExampleDialogueBalloon(dialogue, "Tutorial");
+        CutsceneManager.instance.QueueCutscene(tutorial_dialogue, "Tutorial");
         return;
     }
 

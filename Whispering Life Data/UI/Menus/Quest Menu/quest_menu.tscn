@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dmteju1kppf72" path="res://UI/Menus/Quest Menu/QuestMenu.cs" id="1_rjdwy"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="2_8enkj"]
-[ext_resource type="Resource" uid="uid://c1p7gva6jex80" path="res://Sub Systems/Dialogue System/Dialogues/Tutorial/Data/Questing.dialogue" id="2_jlx1a"]
+[ext_resource type="Resource" uid="uid://c1p7gva6jex80" path="res://Sub Systems/Dialogue System/Dialogues/Quests/Questing.dialogue" id="2_jlx1a"]
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://UI/Menus/menu_header_object.tscn" id="2_vqvtn"]
 [ext_resource type="PackedScene" uid="uid://bnf8yngk7oyy0" path="res://UI/Menus/h_box_item_menu_line_horizontal.tscn" id="5_ao47r"]
 [ext_resource type="Texture2D" uid="uid://be2xmt8674o1k" path="res://Entities/Items/SpritesForItems/Icons/rejected.png" id="5_ge13q"]

@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://kiivxt5vcjbt"]
+
+[ext_resource type="Script" uid="uid://cqvshjr3dd25t" path="res://Entities/Monster/MonsterIsland.cs" id="1_lb656"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="2_d56rd"]
+[ext_resource type="Texture2D" uid="uid://c1mn23i7jo0cx" path="res://Entities/Monster/Texture/Monster_Island_Irretated.png" id="3_dg4eq"]
+[ext_resource type="Texture2D" uid="uid://125t5f6fiugo" path="res://Entities/Monster/Texture/Monster_Island.png" id="3_e3y4i"]
+[ext_resource type="Texture2D" uid="uid://sekifp5ku3iv" path="res://Config/Circle_Light.tres" id="4_kkbx2"]
+[ext_resource type="Texture2D" uid="uid://fe4eqekcgalm" path="res://Entities/Monster/Texture/Monster_Island_Angry.png" id="4_yw1sc"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="5_0j0gb"]
+[ext_resource type="Texture2D" uid="uid://bhagrhn2oxevr" path="res://Entities/Monster/Texture/Monster_Island_Unstable.png" id="5_60i32"]
+[ext_resource type="Texture2D" uid="uid://d327yx5qg4y04" path="res://Entities/Monster/Texture/Monster_Island_Collapse.png" id="6_3wn7n"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="6_dg4eq"]
+[ext_resource type="Texture2D" uid="uid://bsnuk3r3bow3e" path="res://Entities/Monster/Texture/Monster_Island_Happy.png" id="7_4jsx1"]
+[ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://UI/World Map/WorldMapIcon.cs" id="7_yw1sc"]
+[ext_resource type="Texture2D" uid="uid://ce16w5jut6adl" path="res://UI/Icons/world_map_quest_icon.png" id="8_60i32"]
+[ext_resource type="Script" uid="uid://dpb6dauwcbggx" path="res://Entities/Monster/MonsterIslandStateManager.cs" id="14_yw1sc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wl4wn"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_k0wjm"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-84, -123), Vector2(-84, -130), Vector2(-84, -123)]
+}
+
+[sub_resource type="Animation" id="Animation_000go"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-84, -123)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wl4wn"]
+_data = {
+&"Idle": SubResource("Animation_k0wjm"),
+&"RESET": SubResource("Animation_000go")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oyyds"]
+size = Vector2(168, 152)
+
+[node name="MonsterIsland" type="StaticBody2D" unique_id=283287715]
+y_sort_enabled = true
+script = ExtResource("1_lb656")
+state_textures = Array[Texture2D]([ExtResource("3_e3y4i"), ExtResource("3_dg4eq"), ExtResource("4_yw1sc"), ExtResource("5_60i32"), ExtResource("6_3wn7n"), ExtResource("7_4jsx1")])
+title = "Quest Sign"
+description = "123414"
+
+[node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=887630517]
+script = ExtResource("2_d56rd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager" unique_id=1089625225]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_wl4wn")
+animation = &"Normal"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager" unique_id=1425124570]
+z_index = -5
+y_sort_enabled = true
+position = Vector2(-84, -123)
+texture = ExtResource("3_e3y4i")
+centered = false
+
+[node name="PointLight2D" type="PointLight2D" parent="SpriteAnimationManager/Sprite2D" unique_id=464106199]
+position = Vector2(52, 79)
+color = Color(0.670214, 0, 0.0804419, 1)
+texture = ExtResource("4_kkbx2")
+
+[node name="PointLight2D2" type="PointLight2D" parent="SpriteAnimationManager/Sprite2D" unique_id=109803990]
+position = Vector2(76, 79)
+color = Color(0.670214, 0, 0.0804419, 1)
+texture = ExtResource("4_kkbx2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteAnimationManager" unique_id=1908663853]
+libraries/ = SubResource("AnimationLibrary_wl4wn")
+
+[node name="ShadowNode" parent="SpriteAnimationManager" unique_id=1832359834 instance=ExtResource("5_0j0gb")]
+position = Vector2(-20, -67)
+
+[node name="MouseArea" type="Area2D" parent="." unique_id=199312072]
+collision_layer = 2
+script = ExtResource("6_dg4eq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=1272464486]
+position = Vector2(-20, -100)
+shape = SubResource("RectangleShape2D_oyyds")
+
+[node name="Point" type="Node2D" parent="." unique_id=1647296860]
+position = Vector2(-20, -60)
+
+[node name="WorldMapIcon" type="Node2D" parent="Point" unique_id=1665650563 node_paths=PackedStringArray("parent")]
+scale = Vector2(3, 3)
+script = ExtResource("7_yw1sc")
+icon_texture = ExtResource("8_60i32")
+icon_type = 3
+parent = NodePath("..")
+scale = Vector2(3, 3)
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=274358441]
+polygon = PackedVector2Array(-29, -111, -54, -106, -76, -85, -73, -59, -67, -35, -46, -23, 16, -23, 27, -49, 30, -88, 10, -113, -13, -113)
+
+[node name="StateManager" type="Node2D" parent="." unique_id=1340542737]
+script = ExtResource("14_yw1sc")
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

@@ -70,7 +70,7 @@ public partial class GameMenu : CanvasLayer
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _PhysicsProcess(double delta)
     {
-        if (GameManager.gameover || GameManager.In_Cutscene)
+        if (GameManager.gameover || CutsceneManager.In_Cutscene)
             return;
 
         if (Input.IsActionJustPressed("Inventory"))

@@ -89,7 +89,7 @@ public partial class BuildMenu : CanvasLayer
         if (
             GameManager.building_mode != GameManager.BuildingMode.None
             || GameManager.gameover
-            || GameManager.In_Cutscene
+            || CutsceneManager.In_Cutscene
         )
             return;
 

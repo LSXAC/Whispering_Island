@@ -34,14 +34,15 @@ public partial class WorldMap : CanvasLayer
     }
 
     public static Array<WorldMapIcon> connected_icons = new Array<WorldMapIcon>();
-    public PackedScene icon_object = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://cca4fqqi7u7tj")
+    public PackedScene icon_object = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://cca4fqqi7u7tj")
     );
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
 
-        if (GameManager.gameover || GameManager.In_Cutscene)
+        if (GameManager.gameover || CutsceneManager.In_Cutscene)
             return;
 
         if (Input.IsActionJustPressed("Map"))

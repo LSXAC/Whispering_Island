@@ -23,7 +23,8 @@ public partial class QuestMenu : CanvasLayer
 
     [Export]
     public Label reward_label;
-    public PackedScene h_box_item = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://bnf8yngk7oyy0")
+    public PackedScene h_box_item = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://bnf8yngk7oyy0")
     );
     public static QuestMenu instance = null;
     public static QuestInfo currentQuest = null;
@@ -75,7 +76,7 @@ public partial class QuestMenu : CanvasLayer
 
     public void OnCloseButton()
     {
-        GameManager.In_Cutscene = true;
+        CutsceneManager.In_Cutscene = true;
         GlobalFunctions.MoveCameraToPosition(new Vector2(13, -256));
         if (TranslationServer.GetLocale() == "de")
             DialogueManager.ShowExampleDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_DE");
@@ -122,7 +123,11 @@ public partial class QuestMenu : CanvasLayer
             multi
         );
 
-        if (QuestManager.instance.CheckQuestComplete())
+        if (
+            GlobalFunctions.HasItemsInInventory(
+                QuestManager.instance.quests[QuestManager.current_quest_id].required_items
+            )
+        )
             complete_button.Disabled = false;
         else
             complete_button.Disabled = true;

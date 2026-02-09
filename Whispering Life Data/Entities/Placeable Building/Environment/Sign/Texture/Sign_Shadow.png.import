@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bkjwemrhvt7y3"
-path="res://.godot/imported/Sign_Shadow.png-e2775116656a02f19901a6fa80bc9a98.ctex"
+path="res://.godot/imported/Sign_Shadow.png-d874d0ffca2695588c0163e3aa1c247e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Placeable Building/Environment/Sign/Quest Sign/Texture/Sign_Shadow.png"
-dest_files=["res://.godot/imported/Sign_Shadow.png-e2775116656a02f19901a6fa80bc9a98.ctex"]
+source_file="res://Entities/Placeable Building/Environment/Sign/Texture/Sign_Shadow.png"
+dest_files=["res://.godot/imported/Sign_Shadow.png-d874d0ffca2695588c0163e3aa1c247e.ctex"]
 
 [params]
 

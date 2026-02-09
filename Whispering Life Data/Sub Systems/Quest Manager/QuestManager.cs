@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics;
-using DialogueManagerRuntime;
 using Godot;
 using Godot.Collections;
 
@@ -8,6 +7,9 @@ public partial class QuestManager : Node
 {
     [Export]
     public Array<QuestInfo> quests;
+    private Resource quest_dialogue = ResourceLoader.Load<Resource>(
+        ResourceUid.UidToPath("uid://c1p7gva6jex80")
+    );
     public static int current_quest_id = 0;
     public static QuestManager instance = null;
     public static int current_quest_time = 0;
@@ -15,12 +17,21 @@ public partial class QuestManager : Node
     public static bool next_quest_half_time = false;
     public static bool next_quest_is_doubled_items = false;
 
-    [Export]
-    public Timer quest_timer;
+    public QuestTimer quest_timer;
+
+    // Monster Island State References
+    private MonsterIsland monster_island;
+    private MonsterIslandStateManager island_state_manager;
 
     public override void _Ready()
     {
         instance = this;
+        monster_island = MonsterIsland.instance;
+        quest_timer = GetNode<QuestTimer>("QuestTimer");
+        if (monster_island != null)
+            island_state_manager = monster_island.GetNode<MonsterIslandStateManager>(
+                "StateManager"
+            );
     }
 
     public void StartQuest(QuestSave quest_save = null)
@@ -43,28 +54,17 @@ public partial class QuestManager : Node
         }
 
         CheckQuestDuplications();
-        StartTimer();
+        quest_timer.StartTimer();
         QuestMenu.instance.InitQuest(quests[current_quest_id]);
         QuestMiniPanel.instance.UpdateTimeLabel(current_quest_time);
         QuestMiniPanel.instance.InitQuestMiniPanel(quests[current_quest_id]);
-    }
-
-    public void PauseTimer()
-    {
-        quest_timer.Stop();
-    }
-
-    public void StartTimer()
-    {
-        quest_timer.Start();
-        quest_timer.WaitTime = 1;
     }
 
     public async void OnQuestTimerTimeout()
     {
         if (current_quest_time <= 0)
         {
-            //Cutscene // UH; WIEK ANNST DEN DU DID WARGEN; GÄ?
+            //Cutscene
             GameMenu.CloseLastWindow();
             instance.quest_timer.Stop();
             QuestMenu.instance.CloseQuestMenu();
@@ -85,40 +85,42 @@ public partial class QuestManager : Node
                 penealty = 0;
             }
 
-            var dialogue = GD.Load<Resource>(ResourceUid.UidToPath("uid://c1p7gva6jex80"));
-            GlobalFunctions.MoveCameraToPosition(new Vector2(0, -256));
-            GlobalFunctions.InDialogue();
-
             if (penealty == 0)
             {
                 if (TranslationServer.GetLocale() == "de")
-                    DialogueManager.ShowExampleDialogueBalloon(dialogue, "Quest_Not_Completed_DE");
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
+                        "Quest_Not_Completed_DE"
+                    );
                 else
-                    DialogueManager.ShowExampleDialogueBalloon(dialogue, "Quest_Not_Completed_ENG");
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
+                        "Quest_Not_Completed_ENG"
+                    );
             }
             if (penealty == 1)
             {
                 if (TranslationServer.GetLocale() == "de")
-                    DialogueManager.ShowExampleDialogueBalloon(
-                        dialogue,
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
                         "Quest_Not_Completed_1_DE"
                     );
                 else
-                    DialogueManager.ShowExampleDialogueBalloon(
-                        dialogue,
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
                         "Quest_Not_Completed_1_ENG"
                     );
             }
             if (penealty == 2)
             {
                 if (TranslationServer.GetLocale() == "de")
-                    DialogueManager.ShowExampleDialogueBalloon(
-                        dialogue,
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
                         "Quest_Not_Completed_2_DE"
                     );
                 else
-                    DialogueManager.ShowExampleDialogueBalloon(
-                        dialogue,
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
                         "Quest_Not_Completed_2_ENG"
                     );
             }
@@ -149,33 +151,6 @@ public partial class QuestManager : Node
                 )
                     GD.PrintErr("ITEMS IN QUEST " + x + " are in duplicated use");
         }
-    }
-
-    public bool CheckQuestComplete()
-    {
-        foreach (Item quest_item in quests[current_quest_id].required_items)
-        {
-            Array<Item> iii = PlayerInventoryUI.instance.GetItemFromListOrNull(
-                PlayerInventoryUI.instance.GetListOfItemsInInventory(),
-                quest_item
-            );
-
-            if (iii == null)
-                return false;
-
-            int amount = 0;
-            foreach (Item i_x in iii)
-                amount += i_x.amount;
-
-            if (next_quest_is_doubled_items)
-            {
-                if (amount < quest_item.amount * 2)
-                    return false;
-            }
-            else if (amount < quest_item.amount)
-                return false;
-        }
-        return true;
     }
 
     public void RemoveQuestItems()
@@ -209,7 +184,11 @@ public partial class QuestManager : Node
             RemoveQuestItems();
             GameManager.money += quests[current_quest_id].reward_money;
             PlayerUI.instance.UpdateMoneyLabel();
+
+            monster_island.ApplyQuestCompleted();
         }
+        else
+            monster_island.ApplyQuestFailed();
 
         next_quest_is_doubled_items = false;
 
@@ -224,6 +203,7 @@ public partial class QuestManager : Node
             PlayerUI.instance.quest_complete_panel.Visible = false;
             current_quest_id = -1;
         }
+
         current_quest_id++;
         StartQuest();
 
@@ -236,16 +216,16 @@ public partial class QuestManager : Node
         if (finished_correctly)
         {
             PlayerUI.CompleteQuestPanelShow();
-            GameManager.In_Cutscene = true;
-            PauseTimer();
+            CutsceneManager.In_Cutscene = true;
+            quest_timer.PauseTimer();
             await ToSignal(PlayerUI.instance.qcp_timer, "timeout");
-            StartTimer();
+            quest_timer.StartTimer();
             QuestMenu.instance.OnOpenQuestMenu();
         }
 
         if (penealty == 2)
             IslandManager.instance.RemoveIslandsThroughQuest();
 
-        GameManager.In_Cutscene = false;
+        CutsceneManager.In_Cutscene = false;
     }
 }

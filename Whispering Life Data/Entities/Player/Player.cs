@@ -50,7 +50,7 @@ public partial class Player : CharacterBody2D
         player_stamina.RegenerateStamina(this.velo);
 
         // Disable Player Events
-        if (GameManager.In_Cutscene)
+        if (CutsceneManager.In_Cutscene)
         {
             Velocity = Vector2.Zero;
             return;
