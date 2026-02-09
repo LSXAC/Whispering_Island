@@ -85,7 +85,7 @@ public partial class QuestManager : Node
                 penealty = 0;
             }
 
-            var dialogue = GD.Load<Resource>("res://Dialogues/Questing.dialogue");
+            var dialogue = GD.Load<Resource>(ResourceUid.UidToPath("uid://c1p7gva6jex80"));
             GlobalFunctions.MoveCameraToPosition(new Vector2(0, -256));
             GlobalFunctions.InDialogue();
 

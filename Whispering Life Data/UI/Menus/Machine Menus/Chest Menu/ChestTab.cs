@@ -3,6 +3,11 @@ using Godot;
 
 public partial class ChestTab : ColorRect
 {
-	[Export]
-	public ChestInventory chest_inventory;
+    [Export]
+    public ChestInventory chest_inventory;
+
+    public override void _Ready()
+    {
+        chest_inventory = GetNode<ChestInventory>("ChestInventory");
+    }
 }

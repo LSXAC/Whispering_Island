@@ -60,6 +60,9 @@ centered = false
 [node name="ShadowNode" parent="SpriteAnimationManager" unique_id=995744298 instance=ExtResource("4_48l5o")]
 DisableShadow = true
 
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=1575225606]
+polygon = PackedVector2Array(-1, -1, -1, -15, -15, -15, -15, -1)
+
 [node name="BuildingAreas" type="Node2D" parent="." unique_id=884825207 node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("3_fouod")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
@@ -153,9 +156,6 @@ y_sort_enabled = true
 position = Vector2(-8, -8)
 sprite_frames = ExtResource("12_g11o0")
 animation = &"CORNER_LEFT_DOWN"
-
-[node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=1575225606]
-polygon = PackedVector2Array(-1, -1, -1, -15, -15, -15, -15, -1)
 
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]

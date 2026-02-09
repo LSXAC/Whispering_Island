@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b16hq6yipkway" path="res://Entities/Placeable Building/Transport Base/Belt/Belt Combiner/BeltCombiner.cs" id="1_enwf2"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="2_alnah"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/Placeable Building/BuildingColliderManager.cs" id="3_fu8mu"]
-[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Placeable Building/Machine/Furnace/Furnace_Building_Sprite.png" id="4_cpl54"]
+[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Placeable Building/Machine/Furnace/Texture/Furnace_Building_Sprite.png" id="4_cpl54"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="4_gmjjv"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="4_i77uy"]
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Entities/Placeable Building/Transport Base/Component/Building_Rail_Detector_Component.tscn" id="5_fsbsv"]

@@ -10,9 +10,11 @@ public partial class CraftingMenu : PanelContainer
     public CATEGORY category;
 
     [Export]
-    public PackedScene recipe_slot = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://b7l06c35ca42f")
+    public PackedScene recipe_slot = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://b7l06c35ca42f")
     );
-    public PackedScene no_recipies = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://cdpgxwdw76lk3")
+    public PackedScene no_recipies = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://cdpgxwdw76lk3")
     );
 
     public enum CATEGORY
@@ -24,9 +26,6 @@ public partial class CraftingMenu : PanelContainer
         AGRICULTURE,
         MACHINEPARTS
     }
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta) { }
 
     public void ReloadUIRecipes()
     {

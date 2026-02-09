@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnx2s3aaea0b2"
-path="res://.godot/imported/Furnace_Building_Sprite.png-f7b7e76d3751ac54e5999357f82a3403.ctex"
+path="res://.godot/imported/Furnace_Building_Sprite.png-ce7e02b8b36b62bf0a29f16a28e8d475.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Placeable Building/Machine/Furnace/Furnace_Building_Sprite.png"
-dest_files=["res://.godot/imported/Furnace_Building_Sprite.png-f7b7e76d3751ac54e5999357f82a3403.ctex"]
+source_file="res://Entities/Placeable Building/Machine/Furnace/Texture/Furnace_Building_Sprite.png"
+dest_files=["res://.godot/imported/Furnace_Building_Sprite.png-ce7e02b8b36b62bf0a29f16a28e8d475.ctex"]
 
 [params]
 

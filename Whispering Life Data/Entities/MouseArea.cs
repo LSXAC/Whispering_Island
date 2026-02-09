@@ -4,11 +4,14 @@ using Godot;
 
 public partial class MouseArea : Area2D
 {
-    private ShaderMaterial outline_shader = ResourceLoader.Load<ShaderMaterial>(ResourceUid.UidToPath("uid://cxcu1ol3mxbdf")
+    private ShaderMaterial outline_shader = ResourceLoader.Load<ShaderMaterial>(
+        ResourceUid.UidToPath("uid://cxcu1ol3mxbdf")
     );
-    private ShaderMaterial remove_outline_shader = ResourceLoader.Load<ShaderMaterial>(ResourceUid.UidToPath("uid://gk1o8yjs6f6y")
+    private ShaderMaterial remove_outline_shader = ResourceLoader.Load<ShaderMaterial>(
+        ResourceUid.UidToPath("uid://gk1o8yjs6f6y")
     );
-    private ShaderMaterial wind_shader = ResourceLoader.Load<ShaderMaterial>(ResourceUid.UidToPath("uid://8ujwgfeo1fil")
+    private ShaderMaterial wind_shader = ResourceLoader.Load<ShaderMaterial>(
+        ResourceUid.UidToPath("uid://8ujwgfeo1fil")
     );
 
     private Building_Node building_node;
@@ -24,7 +27,7 @@ public partial class MouseArea : Area2D
 
         if (building_node.disable_collision)
         {
-            CollisionPolygon2D collision_shape = GetNode<CollisionPolygon2D>("BuildingPolygon");
+            CollisionShape2D collision_shape = GetNode<CollisionShape2D>("CollisionShape2D");
             collision_shape.Disabled = true;
         }
     }

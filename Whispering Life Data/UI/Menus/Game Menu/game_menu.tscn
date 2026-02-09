@@ -98,7 +98,7 @@
 [ext_resource type="Resource" uid="uid://bp57tmf0gbptu" path="res://Sub Systems/Skill System/Skills/Data/stamina_reduction_2.tres" id="59_vp08v"]
 [ext_resource type="Resource" uid="uid://dsj1hesihjsre" path="res://Sub Systems/Skill System/Skills/Data/stamina_reduction_3.tres" id="60_avet4"]
 [ext_resource type="Texture2D" uid="uid://caucfvq00j5hu" path="res://Entities/Placeable Building/Research/Research Table/Research_Table.png" id="60_cjy3p"]
-[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Placeable Building/Machine/Furnace/Furnace_Building_Sprite.png" id="61_0s004"]
+[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Placeable Building/Machine/Furnace/Texture/Furnace_Building_Sprite.png" id="61_0s004"]
 [ext_resource type="Resource" uid="uid://b5xrr1vil5hj2" path="res://Sub Systems/Skill System/Skills/Data/tool_durability_1.tres" id="61_5o10j"]
 [ext_resource type="Script" uid="uid://dmwxrhivem12e" path="res://UI/Menus/Remove Obstical Menu/DestroyMenu.cs" id="62_djfqw"]
 [ext_resource type="Texture2D" uid="uid://1rxf21hw1xu5" path="res://UI/Player UI/Textures/Heart_Icon.png" id="62_g0ojh"]
@@ -1035,7 +1035,7 @@ view_icon = NodePath("PanelContainer/Container/ViewBox/TextureRect")
 sub_all_research_panel = NodePath("AllSubs")
 no_items_discovered_panel = NodePath("NoItemsDiscovered")
 full_researched_panel = NodePath("FullyResearched")
-sub_research_panel_types = []
+sub_research_panel_types = [NodePath("PanelContainer/Container/Type1"), NodePath("PanelContainer/Container/Type2"), NodePath("PanelContainer/Container/Type3")]
 research_current_title = NodePath("BLACK/Research_Game_Panel/MarginContainer/VBoxContainer/activ_Title_Label")
 research_current_time_left = NodePath("BLACK/Research_Game_Panel/MarginContainer/VBoxContainer/activ_time_label")
 research_current_progress = NodePath("BLACK/Research_Game_Panel/MarginContainer/VBoxContainer/activ_ProgressBar")
@@ -4203,6 +4203,7 @@ theme_override_styles/focus = ExtResource("28_gcthi")
 text = "Unlock Skill"
 
 [node name="IslandTab" type="ColorRect" parent="Background" unique_id=34133489 node_paths=PackedStringArray("island_parent", "island_to_build_left_label")]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -4832,7 +4833,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("56_74gou")
-pages = []
+pages = [NodePath("VBoxContainer/HP_Resources"), NodePath("VBoxContainer/HP_Machine"), NodePath("VBoxContainer/HP_Quests"), NodePath("VBoxContainer/HP_Islands")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab" unique_id=1855136661]
 layout_mode = 0
@@ -6101,7 +6102,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.529412, 0.509804, 0.647059, 1)
 
-[node name="RailStationTab" type="ColorRect" parent="Background" unique_id=1344078163 node_paths=PackedStringArray("container", "import_box", "export_box", "is_connected_label")]
+[node name="RailStationTab" type="ColorRect" parent="Background" unique_id=1344078163 node_paths=PackedStringArray("chest_inventory_input", "chest_inventory_output", "container", "import_box", "export_box", "is_connected_label")]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -6116,6 +6117,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("76_6ikjc")
+chest_inventory_input = NodePath("TabContainer/Storage In/ChestInventoryIn")
+chest_inventory_output = NodePath("TabContainer/Storage Out/ChestInventoryOut")
 container = NodePath("TabContainer")
 import_box = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/ImportBox")
 export_box = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/ExportBox")
@@ -6280,7 +6283,7 @@ offset_bottom = 213.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="MinecartTab" type="ColorRect" parent="Background" unique_id=759668667 node_paths=PackedStringArray("engine_status_label")]
+[node name="MinecartTab" type="ColorRect" parent="Background" unique_id=759668667 node_paths=PackedStringArray("engine_status_label", "chest_inventory")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -6296,6 +6299,7 @@ grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("74_5ehlf")
 engine_status_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Engine_Status")
+chest_inventory = NodePath("PanelContainer/ChestInventory")
 
 [node name="PanelContainer" type="Control" parent="Background/MinecartTab" unique_id=1897594291]
 layout_mode = 1
@@ -6586,6 +6590,12 @@ alignment = 1
 [connection signal="toggled" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Build Menu/CheckBox" to="Background/AdminTab" method="OnCheckBoxToggled"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/PauseTimeButton" to="Background/AdminTab" method="OnPauseTimeButton"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/ResumTimeButton" to="Background/AdminTab" method="OnResumeTimeButton"]
+[connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/GeneralButton" to="." method="OnCraftingCategoryButton" binds= [0]]
+[connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/ToolsButton" to="." method="OnCraftingCategoryButton" binds= [1]]
+[connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/ToolspartsButton" to="." method="OnCraftingCategoryButton" binds= [2]]
+[connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/ArmorButton" to="." method="OnCraftingCategoryButton" binds= [3]]
+[connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/AgricultureButton" to="." method="OnCraftingCategoryButton" binds= [4]]
+[connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/MachineButton" to="." method="OnCraftingCategoryButton" binds= [5]]
 [connection signal="pressed" from="Background/StatsTab/HBoxContainer/SaveGameButton" to="." method="OnSaveButton"]
 [connection signal="pressed" from="Background/StatsTab/HBoxContainer/LoadGameButton" to="." method="OnLoadButton"]
 [connection signal="visibility_changed" from="Background/HelpTab" to="Background/HelpTab" method="OnVisiblityChange"]
