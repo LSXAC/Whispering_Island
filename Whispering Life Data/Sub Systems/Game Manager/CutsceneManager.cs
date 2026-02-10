@@ -50,7 +50,6 @@ public partial class CutsceneManager : Node2D
 
         // Warte bis die Cutscene zu Ende ist
         await ToSignal(balloon, "tree_exited");
-        Debug.Print("Cutscene ended: " + cutscene_name);
 
         // Spiele die nächste Cutscene ab
         PlayNextCutscene();

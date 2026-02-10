@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
 
@@ -19,6 +20,31 @@ public partial class GlobalFunctions : Node2D
     public static float GetTransportMovingSpeed()
     {
         return transport_moving_speed;
+    }
+
+    public static async Task IncreaseVisibilityOnMonsterIsland()
+    {
+        var animationPlayer = MonsterIsland.instance.sprite_animation_manager.GetAnimationPlayer();
+        MonsterIsland.instance.IncreaseVisibility();
+        await MonsterIsland.instance.ToSignal(
+            animationPlayer,
+            AnimationPlayer.SignalName.AnimationFinished
+        );
+    }
+
+    public static void PlayIdleOnMonsterIsland()
+    {
+        MonsterIsland.instance.PlayIdle();
+    }
+
+    public static async Task DecreaseVisibilityOnMonsterIsland()
+    {
+        var animationPlayer = MonsterIsland.instance.sprite_animation_manager.GetAnimationPlayer();
+        MonsterIsland.instance.DecreaseVisibility();
+        await MonsterIsland.instance.ToSignal(
+            animationPlayer,
+            AnimationPlayer.SignalName.AnimationFinished
+        );
     }
 
     public static Array<Item> GetNormalListOrDevList(Array<Item> items)

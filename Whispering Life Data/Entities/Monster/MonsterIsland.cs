@@ -10,7 +10,13 @@ public partial class MonsterIsland : Building_Node
     public Array<Texture2D> state_textures = new Array<Texture2D>();
 
     private MonsterIslandStateManager island_state;
-    private SpriteAnimationManager sprite_animation_manager;
+    public SpriteAnimationManager sprite_animation_manager;
+    private Resource cutscene_item = ResourceLoader.Load<Resource>(
+        ResourceUid.UidToPath("uid://bcvaepfvv50ax")
+    );
+
+    [Signal]
+    public delegate void VisibilityIncreasedEventHandler();
 
     public override void _EnterTree()
     {
@@ -26,6 +32,21 @@ public partial class MonsterIsland : Building_Node
         UpdateStateVisuals(island_state.GetCurrentState());
     }
 
+    public void IncreaseVisibility()
+    {
+        sprite_animation_manager.PlayAnimation("Increase");
+    }
+
+    public void DecreaseVisibility()
+    {
+        sprite_animation_manager.PlayAnimation("Decrease");
+    }
+
+    public void PlayIdle()
+    {
+        sprite_animation_manager.PlayAnimation("Idle");
+    }
+
     public override void _Process(double delta)
     {
         if (Input.IsKeyPressed(Key.F1))
@@ -39,6 +60,9 @@ public partial class MonsterIsland : Building_Node
 
         if (Input.IsKeyPressed(Key.F4))
             island_state.ApplyEscalation();
+
+        if (Input.IsKeyPressed(Key.F5))
+            CutsceneManager.instance.QueueCutscene(cutscene_item, "Monster_Disappear");
     }
 
     public override void OnMouseClick()

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bcvaepfvv50ax"
+path="res://.godot/imported/MonsterIsland.dialogue-e58e55221bf5438bd9772f4ea026e89b.tres"
+
+[deps]
+
+source_file="res://Sub Systems/Dialogue System/Dialogues/Monster/MonsterIsland.dialogue"
+dest_files=["res://.godot/imported/MonsterIsland.dialogue-e58e55221bf5438bd9772f4ea026e89b.tres"]
+
+[params]
+
+defaults=true

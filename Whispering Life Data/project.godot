@@ -218,7 +218,7 @@ locale/translation_remaps={
 "res://Localization/HelpGuide Translation.csv": PackedStringArray()
 }
 locale/translations=PackedStringArray("res://Localization/HelpGuide Translation.de.translation", "res://Localization/HelpGuide Translation.en.translation", "res://Localization/HelpGuide Translation.Resources.translation", "res://Localization/HelpGuide Translation.Ressourcen.translation", "res://Localization/Item Translationscript.de.translation", "res://Localization/Item Translationscript.en.translation", "res://Localization/Quest Translationscript.de.translation", "res://Localization/Quest Translationscript.en.translation", "res://Localization/Research_Translationscript.de.translation", "res://Localization/Research_Translationscript.en.translation", "res://Localization/Tutorial_General.de.translation", "res://Localization/Tutorial_General.en.translation", "res://Localization/Whispering Island - Translationscript - Sheet1.de.translation", "res://Localization/Whispering Island - Translationscript - Sheet1.en.translation")
-locale/translations_pot_files=PackedStringArray("res://Sub Systems/Dialogue System/Dialogues/Tutorial/Tutorial_General.dialogue", "res://Sub Systems/Dialogue System/Dialogues/Quests/Questing.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Sub Systems/Dialogue System/Dialogues/Tutorial/Tutorial_General.dialogue", "res://Sub Systems/Dialogue System/Dialogues/Quests/Questing.dialogue", "res://Sub Systems/Dialogue System/Dialogues/Monster/MonsterIsland.dialogue")
 
 [physics]
 

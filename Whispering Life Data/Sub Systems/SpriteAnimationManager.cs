@@ -30,10 +30,7 @@ public partial class SpriteAnimationManager : Node2D
         if (Logger.NodeIsNotNull(GetNode<ShadowNode>("ShadowNode")))
             shadowNode = GetNode<ShadowNode>("ShadowNode");
 
-        if (use_sprite)
-        {
-            sprite = GetNode<Sprite2D>("Sprite2D");
-        }
+        sprite = GetNode<Sprite2D>("Sprite2D");
 
         if (use_animation_player)
         {
@@ -46,6 +43,23 @@ public partial class SpriteAnimationManager : Node2D
             animated_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
             animated_sprite.Play(anim_name);
         }
+    }
+
+    public AnimationPlayer GetAnimationPlayer()
+    {
+        if (Logger.NodeIsNull(anim_player))
+            return null;
+
+        return anim_player;
+    }
+
+    public void PlayAnimation(string animation_name)
+    {
+        if (current_animation == animation_name)
+            return;
+
+        anim_player.Play(animation_name);
+        current_animation = animation_name;
     }
 
     public new Vector2 GetGlobalPosition()
@@ -90,6 +104,6 @@ public partial class SpriteAnimationManager : Node2D
 
     private bool IsAnimated()
     {
-        return use_animated_sprite || use_animation_player;
+        return use_animated_sprite;
     }
 }

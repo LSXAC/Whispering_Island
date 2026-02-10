@@ -1,0 +1,22 @@
+~ Monster_Disappear
+
+%2 Boss: Lass mich nicht so lange warten!
+do GlobalFunctions.DecreaseVisibilityOnMonsterIsland()
+% Boss: HAHAHA!
+do GlobalFunctions.IncreaseVisibilityOnMonsterIsland()
+% Boss: HAHAHA!
+do GlobalFunctions.PlayIdleOnMonsterIsland()
+% Boss: Ich warte!
+do GlobalFunctions.LeaveDialogue()
+
+=> END
+
+~ Monster_Appear
+
+% Boss: The time is running!
+% Boss: I'AM HUNGRY!
+%2 Boss: Don't let me wait so long!
+Boss: ROAW!
+do GlobalFunctions.LeaveDialogue()
+
+=> END
