@@ -23,6 +23,6 @@ public partial class TimeStripe : Panel
 
     public void SetPointer(float value)
     {
-        pointer.Position = new Vector2(value * 118, 0);
+        pointer.Position = new Vector2(value * 98, 0);
     }
 }
