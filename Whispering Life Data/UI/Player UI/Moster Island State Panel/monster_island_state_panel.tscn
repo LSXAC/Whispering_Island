@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://deoswx8kisspv"]
+
+[ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://UI/Styles/tab_container_panel_style.tres.tres" id="1_d8wp4"]
+[ext_resource type="Script" uid="uid://4juc7g1wvgyq" path="res://UI/Player UI/Moster Island State Panel/MonsterIslandStatePanel.cs" id="2_6bffg"]
+[ext_resource type="Texture2D" uid="uid://raaamx5w323j" path="res://UI/Player UI/Textures/currency_icon.png" id="3_bftm4"]
+[ext_resource type="Texture2D" uid="uid://bnsjowqeoo2d0" path="res://UI/Player UI/Moster Island State Panel/Texture/State/calm.png" id="3_qh6lc"]
+[ext_resource type="Texture2D" uid="uid://bkw0ssfaghpdk" path="res://UI/Player UI/Moster Island State Panel/Texture/State/irritated.png" id="4_ltb6u"]
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="4_tlbpx"]
+[ext_resource type="Texture2D" uid="uid://w4nlnks3kwj8" path="res://UI/Player UI/Moster Island State Panel/Texture/State/angry.png" id="5_tvxmi"]
+[ext_resource type="Texture2D" uid="uid://dqyny0ml851e4" path="res://UI/Player UI/Moster Island State Panel/Texture/State/unstable.png" id="6_ain27"]
+[ext_resource type="Texture2D" uid="uid://dpj0bbhwl0wfc" path="res://UI/Player UI/Moster Island State Panel/Texture/State/collapse.png" id="7_ta471"]
+[ext_resource type="Texture2D" uid="uid://cgksh0ul564fu" path="res://UI/Player UI/Moster Island State Panel/Texture/State/happy.png" id="8_43l8y"]
+[ext_resource type="Texture2D" uid="uid://bp7nbxqf8l5v2" path="res://UI/Player UI/Moster Island State Panel/Texture/Stability/25-0.png" id="9_1cayj"]
+[ext_resource type="Texture2D" uid="uid://ce0pimgy6gujh" path="res://UI/Player UI/Moster Island State Panel/Texture/Stability/50-25.png" id="10_dgkyc"]
+[ext_resource type="Texture2D" uid="uid://b4fbkb1hu3mwp" path="res://UI/Player UI/Moster Island State Panel/Texture/Stability/75-50.png" id="11_oflct"]
+[ext_resource type="Texture2D" uid="uid://c4r3ev5xt2iap" path="res://UI/Player UI/Moster Island State Panel/Texture/Stability/100-75.png" id="12_4nw3l"]
+
+[node name="MonsterIslandStatePanel" type="Panel" unique_id=650407552 node_paths=PackedStringArray("state_label", "stability_label", "stability_icon", "state_icon")]
+custom_minimum_size = Vector2(100, 12)
+theme_override_styles/panel = ExtResource("1_d8wp4")
+script = ExtResource("2_6bffg")
+state_label = NodePath("MarginContainer/HBoxContainer/HBoxContainerMood/MoodLabel")
+stability_label = NodePath("MarginContainer/HBoxContainer/HBoxContainerStability/StabilityLabel")
+stability_icon = NodePath("MarginContainer/HBoxContainer/HBoxContainerStability/StabilityIcon")
+state_icon = NodePath("MarginContainer/HBoxContainer/HBoxContainerMood/MoodIcon")
+state_icons = Array[Texture2D]([ExtResource("3_qh6lc"), ExtResource("4_ltb6u"), ExtResource("5_tvxmi"), ExtResource("6_ain27"), ExtResource("7_ta471"), ExtResource("8_43l8y")])
+stability_icons = Array[Texture2D]([ExtResource("9_1cayj"), ExtResource("10_dgkyc"), ExtResource("11_oflct"), ExtResource("12_4nw3l")])
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=201782824]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1018181136]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainerMood" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=2069957924]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="MoodIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainerMood" unique_id=1238805930]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+texture = ExtResource("3_bftm4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoodLabel" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainerMood" unique_id=1399548074]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_tlbpx")
+theme_override_font_sizes/font_size = 6
+text = "MOOD"
+horizontal_alignment = 1
+
+[node name="HBoxContainerStability" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1209095863]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+alignment = 2
+
+[node name="StabilityIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainerStability" unique_id=290582070]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+texture = ExtResource("3_bftm4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StabilityLabel" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainerStability" unique_id=392490872]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_tlbpx")
+theme_override_font_sizes/font_size = 6
+text = "STABILITY"
+horizontal_alignment = 1

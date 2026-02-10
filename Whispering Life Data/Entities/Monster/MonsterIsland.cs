@@ -12,10 +12,14 @@ public partial class MonsterIsland : Building_Node
     private MonsterIslandStateManager island_state;
     private SpriteAnimationManager sprite_animation_manager;
 
+    public override void _EnterTree()
+    {
+        instance = this;
+    }
+
     public override void _Ready()
     {
         base._Ready();
-        instance = this;
         sprite_animation_manager = GetNode<SpriteAnimationManager>("SpriteAnimationManager");
         island_state = GetNode<MonsterIslandStateManager>("StateManager");
         island_state.StateChanged += OnStateChanged;
@@ -25,22 +29,16 @@ public partial class MonsterIsland : Building_Node
     public override void _Process(double delta)
     {
         if (Input.IsKeyPressed(Key.F1))
-            OnStateChanged(MonsterIslandStateManager.STATE.ANGRY);
+            island_state.ApplyQuestCompleted();
 
         if (Input.IsKeyPressed(Key.F2))
-            OnStateChanged(MonsterIslandStateManager.STATE.CALM);
+            island_state.ApplyQuestFailed();
 
         if (Input.IsKeyPressed(Key.F3))
-            OnStateChanged(MonsterIslandStateManager.STATE.IRRITATED);
+            island_state.ApplyManipulation();
 
         if (Input.IsKeyPressed(Key.F4))
-            OnStateChanged(MonsterIslandStateManager.STATE.UNSTABLE);
-
-        if (Input.IsKeyPressed(Key.F5))
-            OnStateChanged(MonsterIslandStateManager.STATE.COLLAPSE);
-
-        if (Input.IsKeyPressed(Key.F6))
-            OnStateChanged(MonsterIslandStateManager.STATE.HAPPY);
+            island_state.ApplyEscalation();
     }
 
     public override void OnMouseClick()
@@ -54,25 +52,6 @@ public partial class MonsterIsland : Building_Node
     private void OnStateChanged(MonsterIslandStateManager.STATE new_state)
     {
         UpdateStateVisuals(new_state);
-
-        switch (new_state)
-        {
-            case MonsterIslandStateManager.STATE.CALM:
-                GD.Print("Island is Calm - Few quests, long timers, low penalties");
-                break;
-            case MonsterIslandStateManager.STATE.IRRITATED:
-                GD.Print("Island is Irritated - Normal quests, escalation active");
-                break;
-            case MonsterIslandStateManager.STATE.ANGRY:
-                GD.Print("Island is Angry - Short timers, high amounts, island destruction");
-                break;
-            case MonsterIslandStateManager.STATE.UNSTABLE:
-                GD.Print("Island is Unstable - Multiple quests, contradictions possible");
-                break;
-            case MonsterIslandStateManager.STATE.COLLAPSE:
-                GD.Print("Island is Collapsing - Permanent manifestation, every action damages");
-                break;
-        }
     }
 
     private void UpdateStateVisuals(MonsterIslandStateManager.STATE state)

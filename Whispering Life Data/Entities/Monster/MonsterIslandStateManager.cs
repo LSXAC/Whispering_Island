@@ -17,7 +17,7 @@ public partial class MonsterIslandStateManager : Node
     public float escalation_stability_penalty = -0.10f;
 
     [Export]
-    public float manipulation_stability_penalty = -0.1f;
+    public float manipulation_stability_penalty = 0.1f;
 
     public enum STATE
     {
@@ -38,6 +38,13 @@ public partial class MonsterIslandStateManager : Node
     public override string ToString()
     {
         return $"State: {current_state}, Mood: {mood:P0}, Stability: {stability:P0}";
+    }
+
+    public override async void _Ready()
+    {
+        await PlayerUI.instance.ToSignal(PlayerUI.instance, PlayerUI.SignalName.Loaded);
+        PlayerUI.instance.monster_island_state_panel.UpdateMoodItem(current_state);
+        PlayerUI.instance.monster_island_state_panel.UpdateStabiltyItem(stability);
     }
 
     public void ApplyQuestCompleted()
@@ -114,6 +121,8 @@ public partial class MonsterIslandStateManager : Node
         {
             current_state = new_state;
             StateChanged?.Invoke(current_state);
+            PlayerUI.instance.monster_island_state_panel.UpdateMoodItem(current_state);
+            PlayerUI.instance.monster_island_state_panel.UpdateStabiltyItem(stability);
         }
     }
 

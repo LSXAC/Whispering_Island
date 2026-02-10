@@ -39,7 +39,8 @@ public partial class PlayerUI : CanvasLayer
     public Texture2D removing_frame;
 
     [Export]
-    public PackedScene collected_item_label = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://b7o3fi5jyastt")
+    public PackedScene collected_item_label = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://b7o3fi5jyastt")
     );
 
     [Export]
@@ -61,6 +62,12 @@ public partial class PlayerUI : CanvasLayer
     [Export]
     public Timer item_label_timer;
 
+    [Export]
+    public MonsterIslandStatePanel monster_island_state_panel;
+
+    [Signal]
+    public delegate void LoadedEventHandler();
+
     private Array<string> item_label_queue = new Array<string>();
     private bool queue_working = false;
 
@@ -72,9 +79,13 @@ public partial class PlayerUI : CanvasLayer
         UpdateGameTimeLabel();
     }
 
-    public override void _Ready()
+    public override void _EnterTree()
     {
         instance = this;
+    }
+
+    public override void _Ready()
+    {
         gameover_panel.Visible = false;
         quest_complete_panel = GetNode<Panel>("QuestCompletePanel");
         quest_accept_panel = GetNode<QuestAcceptPanel>("QuestAcceptPanel");
@@ -97,6 +108,7 @@ public partial class PlayerUI : CanvasLayer
         mainmenu_button.Pressed += () => ToMainMenu();
         item_label_timer.Timeout += () => SpawnItemLabelUI();
         UpdateMoneyLabel();
+        EmitSignal(SignalName.Loaded);
     }
 
     public override void _PhysicsProcess(double delta)

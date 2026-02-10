@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bovrg0u6tuo04" path="res://UI/Menus/Hover Menu/hover_menu.tscn" id="20_fdkbp"]
 [ext_resource type="StyleBox" uid="uid://bfrdtjfua8vts" path="res://UI/Styles/Panel_Transparent.tres" id="20_kobl8"]
 [ext_resource type="PackedScene" uid="uid://ceypkxf7dox6w" path="res://UI/Inventory/slot_background.tscn" id="21_uwodk"]
+[ext_resource type="PackedScene" uid="uid://deoswx8kisspv" path="res://UI/Player UI/Moster Island State Panel/monster_island_state_panel.tscn" id="22_vocqp"]
 [ext_resource type="Script" uid="uid://beq75bhjwesgy" path="res://Sub Systems/Discover System/DiscoverManager.cs" id="25_7vqgd"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Entities/Items/SpritesForItems/Icons_3rd/Wood_Icon.png" id="26_d27p6"]
 
@@ -151,7 +152,7 @@ _data = {
 &"Start_Discovery": SubResource("Animation_d27p6")
 }
 
-[node name="PlayerUI" type="CanvasLayer" unique_id=258463009 node_paths=PackedStringArray("equipmentSelectBar", "time_stripe", "game_time_label", "qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "money_label", "info_vBox", "mainmenu_button", "item_label_timer")]
+[node name="PlayerUI" type="CanvasLayer" unique_id=258463009 node_paths=PackedStringArray("equipmentSelectBar", "time_stripe", "game_time_label", "qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "money_label", "info_vBox", "mainmenu_button", "item_label_timer", "monster_island_state_panel")]
 script = ExtResource("1_m5svq")
 equipmentSelectBar = NodePath("EquipmentSelectBar")
 time_stripe = NodePath("VBoxContainer/TimeStripe")
@@ -168,6 +169,7 @@ money_label = NodePath("VBoxContainer/TimeStripe/ColorRect3/HBoxContainer/MoneyL
 info_vBox = NodePath("WindowFrame/VBoxContainer")
 mainmenu_button = NodePath("GameOverPanel/VBoxContainer/MainmenuButton")
 item_label_timer = NodePath("Item_Label_Timer")
+monster_island_state_panel = NodePath("VBoxContainer/MonsterIslandStatePanel")
 
 [node name="WindowFrame" type="TextureRect" parent="." unique_id=1305326509]
 visible = false
@@ -632,6 +634,7 @@ texture = ExtResource("12_rpytx")
 expand_mode = 4
 
 [node name="QuestMiniPanel" type="PanelContainer" parent="VBoxContainer" unique_id=401929319 node_paths=PackedStringArray("hbox_items", "time_label")]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("20_kobl8")
 script = ExtResource("4_khv1d")
@@ -639,7 +642,6 @@ hbox_items = [NodePath("MarginContainer/VBoxContainer/HBoxItem"), NodePath("Marg
 time_label = NodePath("MarginContainer/VBoxContainer/TimeLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/QuestMiniPanel" unique_id=110381040]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
@@ -678,6 +680,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="HBoxItem4" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=473504988 instance=ExtResource("18_uwodk")]
+layout_mode = 2
+
+[node name="MonsterIslandStatePanel" parent="VBoxContainer" unique_id=650407552 instance=ExtResource("22_vocqp")]
 layout_mode = 2
 
 [node name="EquipmentSelectBar" type="Container" parent="." unique_id=622824036 node_paths=PackedStringArray("select_slots")]
