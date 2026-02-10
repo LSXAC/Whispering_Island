@@ -35,6 +35,7 @@
 [ext_resource type="AudioStream" uid="uid://baxwufa73fl35" path="res://Islands/Audio/Atmosphere Sounds/441638__naturenotesuk__birds-at-feeder.wav" id="27_73301"]
 [ext_resource type="Script" uid="uid://c3ij6hhmi6rn8" path="res://Sub Systems/Game Manager/QuestTimer.cs" id="27_rrlqx"]
 [ext_resource type="AudioStream" uid="uid://bwod2wh4o0qwt" path="res://Islands/Audio/Background Music/759996__josefpres__piano-loops-167-octave-short-loop-120-bpm.wav" id="28_2plat"]
+[ext_resource type="Script" uid="uid://bqtctn4uko8p6" path="res://Sub Systems/Quest Manager/Penality/QuestPenality.cs" id="29_p35kq"]
 [ext_resource type="Script" uid="uid://c3aa8j0h5bxr1" path="res://3rd Party Systems/GlobalAnimationTimer.cs" id="29_q20se"]
 [ext_resource type="Material" uid="uid://6f3r1pj1aoib" path="res://Sub Systems/Shader/Cloud/CloudShader.tres" id="31_p85m3"]
 [ext_resource type="Script" uid="uid://cmmjy732ib0f2" path="res://UI/World Map/WorldMap.cs" id="35_gytje"]
@@ -241,6 +242,9 @@ quests = Array[Object]([ExtResource("14_sw2xm"), ExtResource("10_h8pdp"), ExtRes
 script = ExtResource("27_rrlqx")
 
 [node name="Dialogue" type="Node2D" parent="QuestManager" unique_id=1408580208]
+
+[node name="QuestPenality" type="Node2D" parent="QuestManager" unique_id=193841155]
+script = ExtResource("29_p35kq")
 
 [node name="PlayerUI" parent="." unique_id=1804924413 instance=ExtResource("7_5qlke")]
 

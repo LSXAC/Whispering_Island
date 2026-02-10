@@ -18,6 +18,7 @@ public partial class QuestManager : Node
     public static bool next_quest_is_doubled_items = false;
 
     public QuestTimer quest_timer;
+    public QuestPenality quest_penality;
 
     // Monster Island State References
     private MonsterIsland monster_island;
@@ -28,6 +29,7 @@ public partial class QuestManager : Node
         instance = this;
         monster_island = MonsterIsland.instance;
         quest_timer = GetNode<QuestTimer>("QuestTimer");
+        quest_penality = GetNode<QuestPenality>("QuestPenality");
         if (monster_island != null)
             island_state_manager = monster_island.GetNode<MonsterIslandStateManager>(
                 "StateManager"
@@ -72,62 +74,12 @@ public partial class QuestManager : Node
             if (GameManager.gameover)
                 return;
 
-            int penealty = -1;
-            Random rnd = new Random();
-            if (HeartManager.instance.current_hearts == 2)
-                penealty = (int)rnd.NextInt64(0, 2);
-            else if (HeartManager.instance.current_hearts == 1)
-                penealty = 2;
-
-            if (penealty == 1 && next_quest_is_doubled_items)
-            {
-                next_quest_is_doubled_items = false;
-                penealty = 0;
-            }
-
-            if (penealty == 0)
-            {
-                if (TranslationServer.GetLocale() == "de")
-                    CutsceneManager.instance.QueueCutscene(
-                        quest_dialogue,
-                        "Quest_Not_Completed_DE"
-                    );
-                else
-                    CutsceneManager.instance.QueueCutscene(
-                        quest_dialogue,
-                        "Quest_Not_Completed_ENG"
-                    );
-            }
-            if (penealty == 1)
-            {
-                if (TranslationServer.GetLocale() == "de")
-                    CutsceneManager.instance.QueueCutscene(
-                        quest_dialogue,
-                        "Quest_Not_Completed_1_DE"
-                    );
-                else
-                    CutsceneManager.instance.QueueCutscene(
-                        quest_dialogue,
-                        "Quest_Not_Completed_1_ENG"
-                    );
-            }
-            if (penealty == 2)
-            {
-                if (TranslationServer.GetLocale() == "de")
-                    CutsceneManager.instance.QueueCutscene(
-                        quest_dialogue,
-                        "Quest_Not_Completed_2_DE"
-                    );
-                else
-                    CutsceneManager.instance.QueueCutscene(
-                        quest_dialogue,
-                        "Quest_Not_Completed_2_ENG"
-                    );
-            }
-
+            int penalty = quest_penality.DeterminePenalty();
+            quest_penality.PlayPenaltyCutscene(penalty);
             await ToSignal(PlayerUI.instance.quest_accept_panel.confirm_button, "pressed");
             GlobalFunctions.LeaveDialogue();
-            NextQuest(finished_correctly: false, penealty);
+
+            NextQuest(finished_correctly: false, penalty);
         }
 
         current_quest_time -= GameManager.time_multiplier;
@@ -176,7 +128,7 @@ public partial class QuestManager : Node
         }
     }
 
-    public async void NextQuest(bool finished_correctly = true, int penealty = -1)
+    public async void NextQuest(bool finished_correctly = true, int penalty = -1)
     {
         if (finished_correctly)
         {
@@ -192,8 +144,7 @@ public partial class QuestManager : Node
 
         next_quest_is_doubled_items = false;
 
-        if (penealty == (int)QuestAcceptPanel.PENEALTY.DOUBLE_AMOUNT)
-            next_quest_is_doubled_items = true;
+        quest_penality.ApplyPenalty(penalty);
 
         if (current_quest_id == quests.Count - 1)
         {
@@ -222,9 +173,6 @@ public partial class QuestManager : Node
             quest_timer.StartTimer();
             QuestMenu.instance.OnOpenQuestMenu();
         }
-
-        if (penealty == 2)
-            IslandManager.instance.RemoveIslandsThroughQuest();
 
         CutsceneManager.In_Cutscene = false;
     }
