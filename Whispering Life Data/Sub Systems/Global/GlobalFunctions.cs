@@ -181,6 +181,7 @@ public partial class GlobalFunctions : Node2D
         Player.camera.Enabled = true;
         Player.camera.Position = Vector2.Zero;
         CutsceneManager.In_Cutscene = false;
+        CutsceneManager.instance.EmitSignal(CutsceneManager.SignalName.CutsceneFinished);
         GameManager.instance.SaveGame();
     }
 

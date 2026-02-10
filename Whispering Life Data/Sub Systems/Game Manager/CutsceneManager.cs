@@ -9,10 +9,19 @@ public partial class CutsceneManager : Node2D
     private Queue<(Resource resource, string cutscene_name)> cutscene_queue =
         new Queue<(Resource, string)>();
 
+    private Resource current_cutscene_resource;
+    private string current_cutscene_name;
+
     public Camera2D cutscene_camera;
 
     public static CutsceneManager instance;
     public static bool In_Cutscene = false;
+    public PackedScene balloon_scene = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://73jm5qjy52vq")
+    );
+
+    [Signal]
+    public delegate void CutsceneFinishedEventHandler();
 
     public override void _Ready()
     {
@@ -25,6 +34,27 @@ public partial class CutsceneManager : Node2D
 
     public void QueueCutscene(Resource res, string cutscene_name)
     {
+        // Prüfe ob die gleiche Cutscene gerade abgespielt wird
+        if (current_cutscene_resource == res && current_cutscene_name == cutscene_name)
+        {
+            GD.PrintErr(
+                $"Cutscene '{cutscene_name}' wird gerade abgespielt und wird nicht erneut hinzugefügt."
+            );
+            return;
+        }
+
+        // Prüfe ob die gleiche Cutscene bereits in der Queue ist
+        foreach (var (queuedResource, queuedName) in cutscene_queue)
+        {
+            if (queuedResource == res && queuedName == cutscene_name)
+            {
+                GD.PrintErr(
+                    $"Cutscene '{cutscene_name}' ist bereits in der Queue und wird nicht erneut hinzugefügt."
+                );
+                return;
+            }
+        }
+
         cutscene_queue.Enqueue((res, cutscene_name));
 
         if (!In_Cutscene)
@@ -43,14 +73,23 @@ public partial class CutsceneManager : Node2D
         In_Cutscene = true;
         var (resource, cutscene_name) = cutscene_queue.Dequeue();
 
+        // Speichere die aktuelle Cutscene
+        current_cutscene_resource = resource;
+        current_cutscene_name = cutscene_name;
+
         GlobalFunctions.MoveCameraToPosition(new Vector2(0, -256));
         GlobalFunctions.InDialogue();
 
-        var balloon = DialogueManager.ShowExampleDialogueBalloon(resource, cutscene_name);
+        var balloon = DialogueManager.ShowDialogueBalloonScene(
+            balloon_scene,
+            resource,
+            cutscene_name
+        );
 
         // Warte bis die Cutscene zu Ende ist
-        await ToSignal(balloon, "tree_exited");
-
+        await ToSignal(this, SignalName.CutsceneFinished);
+        current_cutscene_resource = null;
+        current_cutscene_name = "";
         // Spiele die nächste Cutscene ab
         PlayNextCutscene();
     }

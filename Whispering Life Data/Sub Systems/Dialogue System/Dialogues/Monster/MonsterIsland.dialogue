@@ -1,5 +1,6 @@
 ~ Monster_Disappear
 
+do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))
 %2 Boss: Lass mich nicht so lange warten!
 do GlobalFunctions.DecreaseVisibilityOnMonsterIsland()
 % Boss: HAHAHA!
