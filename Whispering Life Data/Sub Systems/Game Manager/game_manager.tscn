@@ -241,8 +241,6 @@ quests = Array[Object]([ExtResource("14_sw2xm"), ExtResource("10_h8pdp"), ExtRes
 [node name="QuestTimer" type="Timer" parent="QuestManager" unique_id=1871866256]
 script = ExtResource("27_rrlqx")
 
-[node name="Dialogue" type="Node2D" parent="QuestManager" unique_id=1408580208]
-
 [node name="QuestPenality" type="Node2D" parent="QuestManager" unique_id=193841155]
 script = ExtResource("29_p35kq")
 
