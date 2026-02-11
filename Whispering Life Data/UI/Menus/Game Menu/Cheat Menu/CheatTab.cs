@@ -11,6 +11,8 @@ public partial class CheatTab : ColorRect
     [Export]
     public Label timeStateLabel;
 
+    public Label cutscene_skip_label;
+
     public void OnVisiblityChange()
     {
         SetItemsInList();
@@ -79,5 +81,14 @@ public partial class CheatTab : ColorRect
             }
         }
         OnDeselectAll();
+    }
+
+    public void OnToggleCutsceneSkip(bool skip_cutscenes)
+    {
+        CutsceneManager.skip_cutscenes = skip_cutscenes;
+        if (cutscene_skip_label != null)
+        {
+            cutscene_skip_label.Text = skip_cutscenes ? "Cutscenes: SKIPPED" : "Cutscenes: PLAYING";
+        }
     }
 }

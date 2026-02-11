@@ -75,6 +75,12 @@ public partial class QuestManager : Node
             if (GameManager.gameover)
                 return;
 
+            if (CutsceneManager.skip_cutscenes)
+            {
+                NextQuest(finished_correctly: false, penalty: -1);
+                return;
+            }
+
             int penalty = quest_penality.DeterminePenalty();
             quest_penality.PlayPenaltyCutscene(penalty);
             await ToSignal(PlayerUI.instance.quest_accept_panel.confirm_button, "pressed");

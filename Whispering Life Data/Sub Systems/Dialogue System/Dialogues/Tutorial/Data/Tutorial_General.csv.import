@@ -6,10 +6,10 @@ uid="uid://d216ma6gtkihg"
 
 [deps]
 
-files=["res://Sub Systems/Dialogue System/Dialogues/Tutorial/Data/Tutorial_General.de.translation"]
+files=["res://Sub Systems/Dialogue System/Dialogues/Tutorial/Data/Tutorial_General.de.translation", "res://Sub Systems/Dialogue System/Dialogues/Tutorial/Data/Tutorial_General.en.translation"]
 
 source_file="res://Sub Systems/Dialogue System/Dialogues/Tutorial/Data/Tutorial_General.csv"
-dest_files=["res://Sub Systems/Dialogue System/Dialogues/Tutorial/Data/Tutorial_General.de.translation"]
+dest_files=["res://Sub Systems/Dialogue System/Dialogues/Tutorial/Data/Tutorial_General.de.translation", "res://Sub Systems/Dialogue System/Dialogues/Tutorial/Data/Tutorial_General.en.translation"]
 
 [params]
 

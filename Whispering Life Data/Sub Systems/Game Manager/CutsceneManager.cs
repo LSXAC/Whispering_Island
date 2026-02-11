@@ -16,6 +16,7 @@ public partial class CutsceneManager : Node2D
 
     public static CutsceneManager instance;
     public static bool In_Cutscene = false;
+    public static bool skip_cutscenes = false;
     public PackedScene balloon_scene = ResourceLoader.Load<PackedScene>(
         ResourceUid.UidToPath("uid://73jm5qjy52vq")
     );
@@ -34,6 +35,10 @@ public partial class CutsceneManager : Node2D
 
     public void QueueCutscene(Resource res, string cutscene_name)
     {
+        // Wenn Cutscenes übersprungen werden sollen, nicht in Queue einreihen
+        if (skip_cutscenes)
+            return;
+
         // Prüfe ob die gleiche Cutscene gerade abgespielt wird
         if (current_cutscene_resource == res && current_cutscene_name == cutscene_name)
         {
