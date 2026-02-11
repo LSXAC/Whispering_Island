@@ -145,7 +145,9 @@ public partial class QuestManager : Node
 
         next_quest_is_doubled_items = false;
 
-        quest_penality.ApplyPenalty(penalty);
+        // Nur Penalty anwenden wenn das Monster nicht bereits GameOver ausgelöst hat (mood > 0)
+        if (monster_island.GetMood() > 0f)
+            quest_penality.ApplyPenalty(penalty);
 
         if (current_quest_id == quests.Count - 1)
         {
