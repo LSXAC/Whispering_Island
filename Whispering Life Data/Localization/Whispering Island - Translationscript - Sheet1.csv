@@ -165,9 +165,14 @@ WORLD_RESOURCE_CACTUS_DESC,Harvest to receive Cactus,Erhalte Kaktus beim ernten
 ,,
 ,,
 ,,
+MOOD_CALM,Calm,Ruhig
+MOOD_IRRITATED,Irritated,Verwirrt
+MOOD_ANGRY,Angry,Sauer
+MOOD_UNSTABLE,Unstable,Instabil
+MOOD_COLLAPSE,Collapse,Kollabierent
+MOOD_HAPPY,Happy,Glücklich
 ,,
-,,
-,,
+STABILITY,Stab., Stab.
 ,,
 ,,
 ,,
