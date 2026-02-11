@@ -165,6 +165,8 @@ public partial class GameManager : Node2D
 
         save_state.current_hearts = HeartManager.instance.current_hearts;
         save_state.is_doubled_quest = QuestManager.next_quest_is_doubled_items;
+        save_state.mood = MonsterIsland.instance.GetMood();
+        save_state.stability = MonsterIsland.instance.GetStability();
 
         save_state.WriteSave();
         MainMenu.SaveLauncherConfig();
@@ -235,6 +237,10 @@ public partial class GameManager : Node2D
 
         HeartManager.instance.current_hearts = save_state.current_hearts;
         HeartManager.instance.UpdateHeartUI();
+
+        MonsterIsland.instance.SetMood(save_state.mood);
+        MonsterIsland.instance.SetStability(save_state.mood);
+        save_state.stability = MonsterIsland.instance.GetStability();
 
         // Start Quest
         QuestManager.next_quest_is_doubled_items = save_state.is_doubled_quest;

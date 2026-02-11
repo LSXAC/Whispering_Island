@@ -131,6 +131,16 @@ public partial class MonsterIsland : Building_Node
         return island_state.GetStability();
     }
 
+    public void SetMood(float value)
+    {
+        island_state.SetMood(value);
+    }
+
+    public void SetStability(float value)
+    {
+        island_state.SetStability(value);
+    }
+
     public void ApplyQuestCompleted()
     {
         island_state.ApplyQuestCompleted();

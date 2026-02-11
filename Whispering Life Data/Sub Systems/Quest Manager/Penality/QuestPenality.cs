@@ -8,17 +8,30 @@ public partial class QuestPenality : Node2D
     );
 
     /// <summary>
-    /// Determines the penalty type based on current game state
+    /// Determines the penalty type based on Monster Island mood
+    /// Penalty 0 und 1 nur wenn Mood >= 50%, darunter immer Penalty 2
     /// </summary>
     public int DeterminePenalty()
     {
         int penalty = -1;
-        Random rnd = new Random();
+        float current_mood = MonsterIsland.instance.GetMood();
 
-        if (HeartManager.instance.current_hearts == 2)
-            penalty = (int)rnd.NextInt64(0, 2);
-        else if (HeartManager.instance.current_hearts == 1)
+        // Penalty basierend auf Mood:
+        // Mood < 0.5 = unter 50% -> Penalty 2 (schlimme Strafe)
+        // Mood >= 0.5 und Mood < 0.75 -> Penalty 1 (mittlere Strafe)
+        // Mood >= 0.75 -> Penalty 0 (milde Strafe)
+        if (current_mood < 0.5f)
+        {
             penalty = 2;
+        }
+        else if (current_mood < 0.75f)
+        {
+            penalty = 1;
+        }
+        else
+        {
+            penalty = 0;
+        }
 
         // Check if next quest is doubled items - avoid double amount penalty
         if (penalty == 1 && QuestManager.next_quest_is_doubled_items)

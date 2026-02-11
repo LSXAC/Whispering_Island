@@ -5,7 +5,7 @@ using Godot.Collections;
 public partial class MonsterIslandStateManager : Node
 {
     [Export]
-    public float quest_completed_mood_bonus = 0.15f;
+    public float quest_completed_mood_bonus = 0.10f;
 
     [Export]
     public float quest_failed_mood_penalty = -0.20f;
@@ -30,7 +30,7 @@ public partial class MonsterIslandStateManager : Node
     }
 
     private STATE current_state = STATE.CALM;
-    private float mood = 1.0f;
+    private float mood = 0.8f;
     private float stability = 1.0f;
 
     public event Action<STATE> StateChanged;
@@ -43,6 +43,7 @@ public partial class MonsterIslandStateManager : Node
     public override async void _Ready()
     {
         await PlayerUI.instance.ToSignal(PlayerUI.instance, PlayerUI.SignalName.Loaded);
+        UpdateState();
         PlayerUI.instance.monster_island_state_panel.UpdateMoodItem(current_state);
         PlayerUI.instance.monster_island_state_panel.UpdateStabiltyItem(stability);
     }
@@ -86,35 +87,38 @@ public partial class MonsterIslandStateManager : Node
     {
         STATE new_state = current_state;
 
-        // Collapse takes priority
-        if (stability < 0.1f)
+        // Check if mood reached 0 - trigger game over
+        if (mood <= 0f)
+        {
+            GameManager.instance.GameOver();
+            return;
+        }
+
+        // States based on mood in 0.2 steps:
+        // 0.0 - 0.2: COLLAPSE
+        // 0.2 - 0.4: ANGRY
+        // 0.4 - 0.6: IRRITATED
+        // 0.6 - 0.8: CALM
+        // 0.8 - 1.0: HAPPY
+        if (mood < 0.2f)
         {
             new_state = STATE.COLLAPSE;
         }
-        // Unstable state
-        else if (stability < 0.4f)
-        {
-            new_state = STATE.UNSTABLE;
-        }
-        // Angry state
-        else if (mood < 0.15f)
+        else if (mood < 0.4f)
         {
             new_state = STATE.ANGRY;
         }
-        // Irritated state
-        else if (mood < 0.4f)
+        else if (mood < 0.6f)
         {
             new_state = STATE.IRRITATED;
         }
-        // Calm state
-        else if (mood >= 0.7f && stability >= 0.7f)
+        else if (mood < 0.8f)
         {
             new_state = STATE.CALM;
         }
-        // Default to current state if no conditions met
-        else if (mood >= 0.4f)
+        else
         {
-            new_state = STATE.IRRITATED;
+            new_state = STATE.HAPPY;
         }
 
         if (new_state != current_state)
@@ -139,5 +143,15 @@ public partial class MonsterIslandStateManager : Node
     public float GetStability()
     {
         return stability;
+    }
+
+    public void SetMood(float value)
+    {
+        mood = value;
+    }
+
+    public void SetStability(float value)
+    {
+        stability = value;
     }
 }

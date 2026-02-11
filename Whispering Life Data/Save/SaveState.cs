@@ -73,6 +73,12 @@ public partial class SaveState : Resource
     [Export]
     public GameManager.DIFFICULTY difficulty = GameManager.DIFFICULTY.NORMAL;
 
+    [Export]
+    public float mood = 0.8f;
+
+    [Export]
+    public float stability = 1.0f;
+
     private static string save_path = "user://save.tres";
     public static string game_version = "a.0.1";
 

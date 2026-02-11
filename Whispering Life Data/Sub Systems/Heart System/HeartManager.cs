@@ -25,6 +25,15 @@ public partial class HeartManager : ColorRect
             GameManager.instance.GameOver();
     }
 
+    public void AddHeart()
+    {
+        current_hearts += 1;
+        if (current_hearts > max_hearts)
+            current_hearts = max_hearts;
+
+        UpdateHeartUI();
+    }
+
     public void UpdateHeartUI()
     {
         if (current_hearts <= 0)
@@ -35,10 +44,5 @@ public partial class HeartManager : ColorRect
 
         for (int i = Math.Abs(current_hearts - 3); i > 0; i--)
             ((TextureRect)parent.GetChild(i)).Visible = false;
-    }
-
-    public void AddHeart()
-    {
-        throw new NotImplementedException();
     }
 }

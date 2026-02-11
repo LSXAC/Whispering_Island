@@ -71,7 +71,7 @@ public partial class QuestManager : Node
             GameMenu.CloseLastWindow();
             instance.quest_timer.Stop();
             QuestMenu.instance.CloseQuestMenu();
-            HeartManager.instance.RemoveHeart();
+            //HeartManager.instance.RemoveHeart();
             if (GameManager.gameover)
                 return;
 
