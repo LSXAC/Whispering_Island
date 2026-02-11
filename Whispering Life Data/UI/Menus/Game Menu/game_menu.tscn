@@ -4202,8 +4202,7 @@ theme_override_styles/disabled = ExtResource("31_j0nuq")
 theme_override_styles/focus = ExtResource("28_gcthi")
 text = "Unlock Skill"
 
-[node name="IslandTab" type="ColorRect" parent="Background" unique_id=34133489 node_paths=PackedStringArray("island_parent", "island_to_build_left_label")]
-visible = false
+[node name="IslandTab" type="ColorRect" parent="Background" unique_id=34133489 node_paths=PackedStringArray("islands", "island_parent", "island_to_build_left_label")]
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -4217,6 +4216,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("16_burxg")
+islands = [NodePath("MarginContainer/ScrollContainer/GridContainer/MiningIsland"), NodePath("MarginContainer/ScrollContainer/GridContainer/MysticIsland"), NodePath("MarginContainer/ScrollContainer/GridContainer/DessertIsland"), NodePath("MarginContainer/ScrollContainer/GridContainer/FarmingIsland")]
 island_parent = NodePath("MarginContainer/ScrollContainer/GridContainer")
 island_to_build_left_label = NodePath("IslandsToBuildLabel")
 
@@ -4337,10 +4337,9 @@ size_flags_vertical = 3
 theme_override_constants/side_margin = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
-current_tab = 1
+current_tab = 0
 
 [node name="Items" type="VBoxContainer" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=258736374]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -4374,6 +4373,7 @@ theme_override_font_sizes/font_size = 14
 text = "Unselect All"
 
 [node name="Build Menu" type="VBoxContainer" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=476183822]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -4438,21 +4438,21 @@ alignment = 1
 layout_mode = 2
 text = "Normal"
 
-[node name="Button2" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer" unique_id=908361081]
+[node name="Button2" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer" unique_id=1462525736]
 layout_mode = 2
 text = "2x"
 
-[node name="Button3" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer" unique_id=695442726]
+[node name="Button3" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer" unique_id=538182960]
 layout_mode = 2
 text = "4x"
 
-[node name="Button4" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer" unique_id=1260697241]
+[node name="Button4" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer" unique_id=1932096806]
 layout_mode = 2
-text = "12x"
+text = "8x"
 
-[node name="Button5" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer" unique_id=463749531]
+[node name="Button5" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer" unique_id=1118251252]
 layout_mode = 2
-text = "24x"
+text = "16x"
 
 [node name="CraftingTab" type="ColorRect" parent="Background" unique_id=151587630]
 visible = false
@@ -6588,8 +6588,14 @@ alignment = 1
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/CreateButton" to="Background/AdminTab" method="OnCreateItems"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/DeselectButton" to="Background/AdminTab" method="OnDeselectAll"]
 [connection signal="toggled" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Build Menu/CheckBox" to="Background/AdminTab" method="OnCheckBoxToggled"]
+[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/QuestTimeSkipButton" to="Background/AdminTab" method="SetQuestTimeTo" binds= [10]]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/PauseTimeButton" to="Background/AdminTab" method="OnPauseTimeButton"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/ResumTimeButton" to="Background/AdminTab" method="OnResumeTimeButton"]
+[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer/Button" to="Background/AdminTab" method="OnTimeMultiplier" binds= [5]]
+[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer/Button2" to="Background/AdminTab" method="OnTimeMultiplier" binds= [10]]
+[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer/Button3" to="Background/AdminTab" method="OnTimeMultiplier" binds= [20]]
+[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer/Button4" to="Background/AdminTab" method="OnTimeMultiplier" binds= [40]]
+[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer/Button5" to="Background/AdminTab" method="OnTimeMultiplier" binds= [80]]
 [connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/GeneralButton" to="." method="OnCraftingCategoryButton" binds= [0]]
 [connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/ToolsButton" to="." method="OnCraftingCategoryButton" binds= [1]]
 [connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/ToolspartsButton" to="." method="OnCraftingCategoryButton" binds= [2]]

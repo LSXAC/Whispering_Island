@@ -15,6 +15,8 @@ public partial class MonsterIsland : Building_Node
         ResourceUid.UidToPath("uid://bcvaepfvv50ax")
     );
 
+    private int quest_duration = 0;
+
     [Signal]
     public delegate void VisibilityIncreasedEventHandler();
 
@@ -32,14 +34,22 @@ public partial class MonsterIsland : Building_Node
         UpdateStateVisuals(island_state.GetCurrentState());
     }
 
+    public void InitializeQuestTimers()
+    {
+        quest_duration = QuestManager.instance.quests[QuestManager.current_quest_id].quest_time;
+        is_visible = true;
+    }
+
     public void IncreaseVisibility()
     {
         sprite_animation_manager.PlayAnimation("Increase");
+        is_visible = true;
     }
 
     public void DecreaseVisibility()
     {
         sprite_animation_manager.PlayAnimation("Decrease");
+        is_visible = false;
     }
 
     public void PlayIdle()
@@ -49,6 +59,9 @@ public partial class MonsterIsland : Building_Node
 
     public override void _Process(double delta)
     {
+        // Cutscene-Trigger für Quest-Zeitpunkte
+        CheckQuestTimeTriggers();
+
         if (Input.IsKeyPressed(Key.F1))
             island_state.ApplyQuestCompleted();
 
@@ -60,9 +73,25 @@ public partial class MonsterIsland : Building_Node
 
         if (Input.IsKeyPressed(Key.F4))
             island_state.ApplyEscalation();
+    }
 
-        if (Input.IsKeyPressed(Key.F5))
+    private void CheckQuestTimeTriggers()
+    {
+        int quest_time_left = QuestManager.current_quest_time;
+
+        // Monster verschwindet: wenn verbrauchte Zeit >= 3h
+        if (is_visible && quest_time_left <= (quest_duration - 180))
+        {
+            is_visible = false;
             CutsceneManager.instance.QueueCutscene(cutscene_item, "Monster_Disappear");
+        }
+
+        // Monster kommt zurück: wenn noch 3h verbleiben
+        if (!is_visible && quest_time_left <= 180)
+        {
+            is_visible = true;
+            CutsceneManager.instance.QueueCutscene(cutscene_item, "Monster_Appear");
+        }
     }
 
     public override void OnMouseClick()

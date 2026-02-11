@@ -24,6 +24,7 @@ public abstract partial class Building_Node : Node2D
     public CollisionPolygon2D collision_polygon;
 
     public bool mouse_inside = false;
+    public bool is_visible = true;
 
     public abstract void OnMouseClick();
 

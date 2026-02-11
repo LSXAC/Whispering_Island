@@ -252,10 +252,11 @@ RESEARCH_TAB_MACHINES,Machines,Maschinen
 ,,
 ISLAND_MENU_PRE_ISLANDSBUILD,You build,Du hast
 ISLAND_MENU_AFTER_ISLANDSBUILD,Islands.,Inseln.
-,,
-,,
-,,
-,,
+ISLAND_MENU_MYSTIC_ISLAND,Mystical Island,Mystische Insel
+ISLAND_MENU_MINING_ISLAND,Mining Island,Bergbau Insel
+ISLAND_MENU_FARMING_ISLAND,Farming Island,Ernte Insel
+ISLAND_MENU_DESSERT_ISLAND,Dessert Island, Wüsten Insel
+ISLAND_MENU_BUY,Buy,Kaufen
 ,,
 HOVER_MENU_PROCESS_INPUT,Input,Eingang
 HOVER_MENU_PROCESS_OUTPUT,Output,Ausgang

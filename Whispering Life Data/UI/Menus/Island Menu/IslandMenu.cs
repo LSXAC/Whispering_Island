@@ -6,18 +6,8 @@ using Godot.Collections;
 
 public partial class IslandMenu : ColorRect
 {
-    private PackedScene mystic_island = ResourceLoader.Load<PackedScene>(
-        ResourceUid.UidToPath("uid://bi8dopb46mfob")
-    );
-    private PackedScene mining_island = ResourceLoader.Load<PackedScene>(
-        ResourceUid.UidToPath("uid://frwl0u2a1cwh")
-    );
-    private PackedScene farming_island = ResourceLoader.Load<PackedScene>(
-        ResourceUid.UidToPath("uid://b0pmpn0st1gl4")
-    );
-    private PackedScene dessert_island = ResourceLoader.Load<PackedScene>(
-        ResourceUid.UidToPath("uid://d0trh47s348ub")
-    );
+    [Export]
+    public IslandMenuItem[] islands;
 
     [Export]
     private Control island_parent;
@@ -63,6 +53,7 @@ public partial class IslandMenu : ColorRect
             + (GameManager.GetIslandCountOnMatrix() - 1)
             + " / "
             + (GameManager.island_matrix.Length - 1)
+            + " "
             + TranslationServer.Translate("ISLAND_MENU_AFTER_ISLANDSBUILD");
         DisableButtons();
         GetTree().CreateTimer(0.2f).Timeout += () => SetButtons();
@@ -75,6 +66,12 @@ public partial class IslandMenu : ColorRect
             island_menu_items[i]
                 .UpdateMoneyLabel(
                     (base_cost * (IslandManager.instance.island_types_build[i] + 1)).ToString()
+                );
+            island_menu_items[i]
+                .UpdateTitle(
+                    TranslationServer.Translate(
+                        "ISLAND_MENU_" + island_menu_items[i].item_menu_item_data.menu_item_title
+                    )
                 );
             if (GameManager.money >= base_cost * (IslandManager.instance.island_types_build[i] + 1))
                 island_menu_items[i].buy_btn.Disabled = false;
@@ -127,27 +124,10 @@ public partial class IslandMenu : ColorRect
                 return;
 
         Debug.Print("Found Dir.");
-        switch (unique_id)
-        {
-            case 0:
-                Debug.Print("Island 0.");
-                current_ip.CreateAnotherIsland(mystic_island, dir, is_loading);
-                break;
-            case 1:
-                Debug.Print("Island 1.");
-                current_ip.CreateAnotherIsland(mining_island, dir, is_loading);
-                break;
-            case 2:
-                Debug.Print("Island 2.");
-                current_ip.CreateAnotherIsland(farming_island, dir, is_loading);
-                break;
-            case 3:
-                Debug.Print("Island 3.");
-                current_ip.CreateAnotherIsland(dessert_island, dir, is_loading);
-                break;
-            default:
-                Debug.Print("No matching Island ID found");
-                break;
-        }
+        current_ip.CreateAnotherIsland(
+            islands[unique_id].item_menu_item_data.island_scene,
+            dir,
+            is_loading
+        );
     }
 }

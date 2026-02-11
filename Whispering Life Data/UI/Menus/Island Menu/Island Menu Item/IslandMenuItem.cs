@@ -13,16 +13,24 @@ public partial class IslandMenuItem : ColorRect
     public Button buy_btn;
 
     [Export]
+    public Label title_label;
+
+    [Export]
     public Label money_label;
 
     public override void _Ready()
     {
         image.Texture = item_menu_item_data.island_texture;
-        buy_btn.Text = TranslationServer.Translate(item_menu_item_data.menu_item_title);
+        buy_btn.Text = TranslationServer.Translate("ISLAND_MENU_BUY");
     }
 
     public void UpdateMoneyLabel(string text)
     {
         money_label.Text = text;
+    }
+
+    public void UpdateTitle(string text)
+    {
+        title_label.Text = text;
     }
 }

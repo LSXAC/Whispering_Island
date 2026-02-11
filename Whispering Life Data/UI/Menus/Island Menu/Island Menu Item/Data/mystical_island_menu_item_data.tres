@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemMenuItemData" format=3 uid="uid://dmqrajecslxbo"]
 
+[ext_resource type="PackedScene" uid="uid://bi8dopb46mfob" path="res://Islands/Types/Mystic Island/mystical_island.tscn" id="1_0chdc"]
 [ext_resource type="Script" uid="uid://cx65jsnrsyj4y" path="res://UI/Menus/Island Menu/Island Menu Item/Data/ItemMenuItemData.cs" id="1_6x0f7"]
 [ext_resource type="Texture2D" uid="uid://y7p1sna6t1lh" path="res://UI/Menus/Island Menu/Textures/Mystic_Island.png" id="1_p3scn"]
 
@@ -7,4 +8,5 @@
 script = ExtResource("1_6x0f7")
 island_texture = ExtResource("1_p3scn")
 menu_item_title = "MYSTIC_ISLAND"
+island_scene = ExtResource("1_0chdc")
 metadata/_custom_type_script = "uid://cx65jsnrsyj4y"

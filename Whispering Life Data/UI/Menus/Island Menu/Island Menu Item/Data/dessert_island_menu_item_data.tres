@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemMenuItemData" format=3 uid="uid://ccs5nn02ivgu7"]
 
+[ext_resource type="PackedScene" uid="uid://d0trh47s348ub" path="res://Islands/Types/Dessert Island/dessert_island.tscn" id="1_3ta0r"]
 [ext_resource type="Texture2D" uid="uid://bjp5wy4new0rg" path="res://UI/Menus/Island Menu/Textures/Island_Dessert.png" id="1_tp4ek"]
 [ext_resource type="Script" uid="uid://cx65jsnrsyj4y" path="res://UI/Menus/Island Menu/Island Menu Item/Data/ItemMenuItemData.cs" id="2_3ta0r"]
 
@@ -7,4 +8,5 @@
 script = ExtResource("2_3ta0r")
 island_texture = ExtResource("1_tp4ek")
 menu_item_title = "DESSERT_ISLAND"
+island_scene = ExtResource("1_3ta0r")
 metadata/_custom_type_script = "uid://cx65jsnrsyj4y"

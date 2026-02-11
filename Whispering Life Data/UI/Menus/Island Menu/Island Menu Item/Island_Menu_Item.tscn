@@ -11,12 +11,13 @@
 [ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://UI/Styles/Button_Disabled_Style.tres.tres" id="9_4fjdw"]
 [ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://UI/Styles/slot_focus_style.tres" id="10_vr1uj"]
 
-[node name="Island" type="ColorRect" unique_id=836738354 node_paths=PackedStringArray("image", "buy_btn", "money_label")]
+[node name="Island" type="ColorRect" unique_id=836738354 node_paths=PackedStringArray("image", "buy_btn", "title_label", "money_label")]
 custom_minimum_size = Vector2(150, 150)
 color = Color(0, 0, 0, 1)
 script = ExtResource("1_ys5gd")
 image = NodePath("TextureRect")
 buy_btn = NodePath("Panel/HBoxContainer/Button")
+title_label = NodePath("Label")
 money_label = NodePath("Panel/HBoxContainer/MarginContainer/HBoxContainer/MoneyLabel")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=784488166]

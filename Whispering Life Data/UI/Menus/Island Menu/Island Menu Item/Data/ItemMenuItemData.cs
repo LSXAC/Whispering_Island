@@ -9,4 +9,7 @@ public partial class ItemMenuItemData : Resource
 
     [Export]
     public string menu_item_title;
+
+    [Export]
+    public PackedScene island_scene;
 }

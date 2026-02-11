@@ -1,23 +1,22 @@
 ~ Monster_Disappear
 
 do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))
-%2 Boss: Lass mich nicht so lange warten!
+Boss: Ugh…
+Boss: Ich habe nicht den ganzen Tag Zeit!
 do GlobalFunctions.DecreaseVisibilityOnMonsterIsland()
-% Boss: HAHAHA!
-do GlobalFunctions.IncreaseVisibilityOnMonsterIsland()
-% Boss: HAHAHA!
-do GlobalFunctions.PlayIdleOnMonsterIsland()
-% Boss: Ich warte!
+Boss: Ich komm später wieder.
+Boss: HAHAHA!
 do GlobalFunctions.LeaveDialogue()
 
 => END
 
 ~ Monster_Appear
 
-% Boss: The time is running!
-% Boss: I'AM HUNGRY!
-%2 Boss: Don't let me wait so long!
+Boss: Hahaha! Da bin ich wieder!
+do GlobalFunctions.IncreaseVisibilityOnMonsterIsland()
+Boss: Ich hoffe für dich, dass du hast was ich will!
 Boss: ROAW!
+do GlobalFunctions.PlayIdleOnMonsterIsland()
 do GlobalFunctions.LeaveDialogue()
 
 => END
