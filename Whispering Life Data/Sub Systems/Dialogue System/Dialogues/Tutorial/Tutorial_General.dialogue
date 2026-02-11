@@ -3,7 +3,6 @@
 ~ Tutorial
 
 Boss: So du hast dich entschieden, mich auf [b][color=gold]ewig[/color][/b] zu füttern? [ID:t8c9b048d2f]
-Boss: HAHAHA!
 do GlobalFunctions.MoveCameraToPosition(Vector2(0,-208))
 Spieler: Aber sowas von! [ID:t93ce6f08c4]
 do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))

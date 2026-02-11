@@ -2,18 +2,18 @@
 
 importer="csv_translation"
 type="Translation"
-uid="uid://5spnx7shxgy4"
+uid="uid://d216ma6gtkihg"
 
 [deps]
 
-files=["res://Localization/Tutorial_General.de.translation", "res://Localization/Tutorial_General.en.translation"]
+files=["res://Sub Systems/Dialogue System/Dialogues/Tutorial/Data/Tutorial_General.de.translation"]
 
 source_file="res://Sub Systems/Dialogue System/Dialogues/Tutorial/Data/Tutorial_General.csv"
-dest_files=["res://Localization/Tutorial_General.de.translation", "res://Localization/Tutorial_General.en.translation"]
+dest_files=["res://Sub Systems/Dialogue System/Dialogues/Tutorial/Data/Tutorial_General.de.translation"]
 
 [params]
 
-compress=true
+compress=1
 delimiter=0
 unescape_keys=false
 unescape_translations=true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://tj3yfyq4qp0h"
+
+[deps]
+
+files=["res://Sub Systems/Dialogue System/Dialogues/Monster/MonsterIsland.de.translation", "res://Sub Systems/Dialogue System/Dialogues/Monster/MonsterIsland.en.translation"]
+
+source_file="res://Sub Systems/Dialogue System/Dialogues/Monster/MonsterIsland.csv"
+dest_files=["res://Sub Systems/Dialogue System/Dialogues/Monster/MonsterIsland.de.translation", "res://Sub Systems/Dialogue System/Dialogues/Monster/MonsterIsland.en.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

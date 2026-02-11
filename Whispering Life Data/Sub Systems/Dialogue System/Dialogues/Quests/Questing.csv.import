@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://d1tp7jykxrvyk"
+
+[deps]
+
+files=["res://Sub Systems/Dialogue System/Dialogues/Quests/Questing.de.translation", "res://Sub Systems/Dialogue System/Dialogues/Quests/Questing.en.translation"]
+
+source_file="res://Sub Systems/Dialogue System/Dialogues/Quests/Questing.csv"
+dest_files=["res://Sub Systems/Dialogue System/Dialogues/Quests/Questing.de.translation", "res://Sub Systems/Dialogue System/Dialogues/Quests/Questing.en.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
