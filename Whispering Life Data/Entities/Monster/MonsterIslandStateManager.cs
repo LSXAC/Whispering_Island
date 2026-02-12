@@ -48,6 +48,13 @@ public partial class MonsterIslandStateManager : Node
         PlayerUI.instance.monster_island_state_panel.UpdateStabiltyItem(stability);
     }
 
+    public void UpdateOverFunction()
+    {
+        UpdateState();
+        PlayerUI.instance.monster_island_state_panel.UpdateMoodItem(current_state);
+        PlayerUI.instance.monster_island_state_panel.UpdateStabiltyItem(stability);
+    }
+
     public void ApplyQuestCompleted()
     {
         mood += quest_completed_mood_bonus;
@@ -148,6 +155,7 @@ public partial class MonsterIslandStateManager : Node
     public void SetMood(float value)
     {
         mood = value;
+        UpdateOverFunction();
     }
 
     public void SetStability(float value)

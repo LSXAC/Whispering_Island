@@ -98,7 +98,6 @@ public partial class GameManager : Node2D
 
     public override void _EnterTree()
     {
-        GD.Print("Node entered the tree!");
         instance = this;
     }
 

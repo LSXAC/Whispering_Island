@@ -156,7 +156,7 @@ func _build() -> bool:
 
 	DMCache.reimport_files()
 
-	var files_with_errors: Array[Dictionary] = DMCache.get_files_with_errors()
+	var files_with_errors: Array = DMCache.get_files_with_errors()
 	if files_with_errors.size() > 0:
 		for dialogue_file: Dictionary in files_with_errors:
 			push_error("You have %d error(s) in %s" % [dialogue_file.errors.size(), dialogue_file.path])

@@ -57,13 +57,4 @@ public partial class ItemInfo : Resource
         }
         return false;
     }
-
-    public void PrintAllAttributes()
-    {
-        GD.Print("ItemInfo: " + name);
-        foreach (ItemAttributeBase attribute in attributes)
-        {
-            GD.Print(" - " + attribute.GetType().Name);
-        }
-    }
 }

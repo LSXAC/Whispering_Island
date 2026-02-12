@@ -79,15 +79,15 @@ public partial class MonsterIsland : Building_Node
     {
         int quest_time_left = QuestManager.current_quest_time;
 
-        // Monster verschwindet: wenn verbrauchte Zeit >= 3h
-        if (is_visible && quest_time_left <= (quest_duration - 180))
+        // Monster verschwindet: wenn verbrauchte Zeit >= 4h
+        if (is_visible && quest_time_left <= (quest_duration - 240))
         {
             is_visible = false;
             CutsceneManager.instance.QueueCutscene(cutscene_item, "Monster_Disappear");
         }
 
-        // Monster kommt zurück: wenn noch 3h verbleiben
-        if (!is_visible && quest_time_left <= 180)
+        // Monster kommt zurück: wenn noch 4h verbleiben
+        if (!is_visible && quest_time_left <= 240)
         {
             is_visible = true;
             CutsceneManager.instance.QueueCutscene(cutscene_item, "Monster_Appear");

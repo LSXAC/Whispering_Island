@@ -5,4 +5,5 @@
     "[xml]": {
         "editor.defaultFormatter": "csharpier.csharpier-vscode"
     },
+    "godotTools.editorPath.godot4": "/usr/bin/godot-mono",
 }

@@ -23,6 +23,11 @@ public partial class CheatTab : ColorRect
         QuestManager.current_quest_time = time;
     }
 
+    public void AddMood(float amount)
+    {
+        MonsterIsland.instance.SetMood(MonsterIsland.instance.GetMood() + amount);
+    }
+
     public void OnCheckBoxToggled(bool check_box)
     {
         GameManager.dev_build_mode = check_box;

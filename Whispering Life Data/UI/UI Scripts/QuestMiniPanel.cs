@@ -28,7 +28,6 @@ public partial class QuestMiniPanel : PanelContainer
 
     public void UpdateTimeLabel(int time)
     {
-        Debug.Print(time.ToString());
         int min = time / 60;
         int sec = time - min * 60;
         time_label.Text =

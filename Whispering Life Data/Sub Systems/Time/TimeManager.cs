@@ -48,10 +48,13 @@ public partial class TimeManager : Node2D
         {
             current_game_time = 0;
             current_day++;
-            // Handle new day logic here, e.g., reset daily quests, update UI, etc.
-            GD.Print("New day started! Current day: " + current_day);
         }
         UpdatePlayerUITime();
+
+        var path = ResourceUid.UidToPath("uid://byn2daod4sksu");
+        GD.Print($"UID path: '{path}'");
+        GD.Print($"Exists: {ResourceLoader.Exists(path)}");
+
         // GameManager.game_time_since_start = current_game_time;
         // QuestManager.current_quest_time = current_game_time;
     }

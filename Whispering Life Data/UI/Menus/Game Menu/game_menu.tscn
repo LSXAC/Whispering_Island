@@ -4338,12 +4338,34 @@ size_flags_vertical = 3
 theme_override_constants/side_margin = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
-current_tab = 1
+current_tab = 0
+
+[node name="General" type="VBoxContainer" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=476183822]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="CheckBox" type="CheckBox" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/General" unique_id=98789922]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Activate Build Mode"
+
+[node name="CheckBox2" type="CheckBox" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/General" unique_id=99659326]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 14
+text = "Deactivate Cutscenes"
+
+[node name="Button" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/General" unique_id=1564524341]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Add: -0.2f mood"
 
 [node name="Items" type="VBoxContainer" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=258736374]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 0
+metadata/_tab_index = 1
 
 [node name="ItemList" type="ItemList" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items" unique_id=2146039675]
 layout_mode = 2
@@ -4373,22 +4395,6 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
 text = "Unselect All"
-
-[node name="Build Menu" type="VBoxContainer" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=476183822]
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="CheckBox" type="CheckBox" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Build Menu" unique_id=98789922]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
-text = "Activate Build Mode"
-
-[node name="CheckBox2" type="CheckBox" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Build Menu" unique_id=99659326]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 14
-text = "Deactivate Cutscenes"
 
 [node name="Time Manager" type="VBoxContainer" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=2123074762]
 visible = false
@@ -6592,10 +6598,11 @@ alignment = 1
 [connection signal="pressed" from="Background/Skilltree/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="Background/Skilltree" method="OnUnlockSkillButton"]
 [connection signal="visibility_changed" from="Background/IslandTab" to="Background/IslandTab" method="OnVisiblityChanged"]
 [connection signal="visibility_changed" from="Background/AdminTab" to="Background/AdminTab" method="OnVisiblityChange"]
+[connection signal="toggled" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/General/CheckBox" to="Background/AdminTab" method="OnCheckBoxToggled"]
+[connection signal="toggled" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/General/CheckBox2" to="Background/AdminTab" method="OnToggleCutsceneSkip"]
+[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/General/Button" to="Background/AdminTab" method="AddMood" binds= [-0.2]]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/CreateButton" to="Background/AdminTab" method="OnCreateItems"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/DeselectButton" to="Background/AdminTab" method="OnDeselectAll"]
-[connection signal="toggled" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Build Menu/CheckBox" to="Background/AdminTab" method="OnCheckBoxToggled"]
-[connection signal="toggled" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Build Menu/CheckBox2" to="Background/AdminTab" method="OnToggleCutsceneSkip"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/QuestTimeSkipButton" to="Background/AdminTab" method="SetQuestTimeTo" binds= [10]]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/PauseTimeButton" to="Background/AdminTab" method="OnPauseTimeButton"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/ResumTimeButton" to="Background/AdminTab" method="OnResumeTimeButton"]

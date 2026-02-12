@@ -225,6 +225,8 @@ process_material = SubResource("ParticleProcessMaterial_pa158")
 single_shadow_texture = ExtResource("14_4xc4d")
 is_used_in_tutorial = true
 
+[node name="PlayerUI" parent="." unique_id=1804924413 instance=ExtResource("7_5qlke")]
+
 [node name="BuildingMenu" parent="." unique_id=1100311995 node_paths=PackedStringArray("building_placer", "hbox_category") instance=ExtResource("9_1xtv0")]
 layer = 2
 visible = false
@@ -243,8 +245,6 @@ script = ExtResource("27_rrlqx")
 
 [node name="QuestPenality" type="Node2D" parent="QuestManager" unique_id=193841155]
 script = ExtResource("29_p35kq")
-
-[node name="PlayerUI" parent="." unique_id=1804924413 instance=ExtResource("7_5qlke")]
 
 [node name="GameMenu" parent="." unique_id=1935128749 instance=ExtResource("8_gytje")]
 visible = false

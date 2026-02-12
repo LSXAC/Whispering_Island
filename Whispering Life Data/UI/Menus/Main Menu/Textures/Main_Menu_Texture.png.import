@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhagrhn2oxevr"
-path="res://.godot/imported/Monster_Island_Unstable.png-4b487e9213e20ab9cd3bd9f8bed75b9f.ctex"
+uid="uid://dxem6evtninst"
+path="res://.godot/imported/Main_Menu_Texture.png-ec165105ab752bc3e551c7c2b4f95a87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Monster/Texture/Monster_Island_Unstable.png"
-dest_files=["res://.godot/imported/Monster_Island_Unstable.png-4b487e9213e20ab9cd3bd9f8bed75b9f.ctex"]
+source_file="res://UI/Menus/Main Menu/Textures/Main_Menu_Texture.png"
+dest_files=["res://.godot/imported/Main_Menu_Texture.png-ec165105ab752bc3e551c7c2b4f95a87.ctex"]
 
 [params]
 

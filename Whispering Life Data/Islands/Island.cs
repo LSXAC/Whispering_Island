@@ -31,15 +31,20 @@ public partial class Island : Node2D
     private bool left_closed = false;
 
     private Node2D bridge_start_points;
-    private PackedScene BRIDGE_SIDE = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://dqpoo3rttvrj7")
+    private PackedScene BRIDGE_SIDE = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://dqpoo3rttvrj7")
     );
-    private PackedScene BRIDGE_SIDE_END = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://cmflp8mvayx8k")
+    private PackedScene BRIDGE_SIDE_END = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://cmflp8mvayx8k")
     );
-    private PackedScene BRIDGE_UP = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://dfsg3iq034qml")
+    private PackedScene BRIDGE_UP = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://dfsg3iq034qml")
     );
-    private PackedScene BRIDGE_UP_END = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://bc2tlg8s8fxwl")
+    private PackedScene BRIDGE_UP_END = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://bc2tlg8s8fxwl")
     );
-    private PackedScene BRIDGE_BOTTOM_END = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://bl3g1ot6s782m")
+    private PackedScene BRIDGE_BOTTOM_END = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://bl3g1ot6s782m")
     );
     public TileMapLayer building_area;
     private Node2D bridges_parent;
@@ -162,13 +167,10 @@ public partial class Island : Node2D
         bool is_loading = false
     )
     {
-        GD.Print("Step 1: Initialize");
         Vector2 new_pos = Vector2.Zero;
 
         Node2D island_scene = (Node2D)island_prefab.Instantiate();
         Island new_island = island_scene as Island;
-
-        GD.Print("Step 2: Select Direction");
         switch (dir)
         {
             case DIRECTION.UP:
@@ -185,8 +187,6 @@ public partial class Island : Node2D
                     DIRECTION.UP,
                     new_island
                 );
-
-                GD.Print("Step 2.1: Up");
                 break;
             case DIRECTION.RIGHT:
                 new_island.matrix_x = matrix_x + 1;
@@ -203,7 +203,6 @@ public partial class Island : Node2D
                     new_island
                 );
 
-                GD.Print("Step 2.1: Right");
                 break;
             case DIRECTION.LEFT:
                 new_island.matrix_x = matrix_x - 1;
@@ -219,8 +218,6 @@ public partial class Island : Node2D
                     DIRECTION.LEFT,
                     new_island
                 );
-
-                GD.Print("Step 2.1: Left");
                 break;
             case DIRECTION.DOWN:
                 new_island.matrix_y = matrix_y + 1;
@@ -236,8 +233,6 @@ public partial class Island : Node2D
                 );
                 down_closed = true;
                 new_island.up_closed = true;
-
-                GD.Print("Step 2.1: Down");
                 break;
 
             default:
@@ -273,7 +268,6 @@ public partial class Island : Node2D
                     ip_t.bridge_start_points.GetNode<Node2D>("Down").GlobalPosition
                     - bridge_start_points.GetNode<Node2D>("Up").GlobalPosition;
                 x = Math.Abs(temp.Y / 32);
-                GD.Print(x);
                 for (int i = 0; i <= x; i++)
                 {
                     bridge_part = (Node2D)BRIDGE_UP.Instantiate();
@@ -303,9 +297,6 @@ public partial class Island : Node2D
                     ip_t.bridge_start_points.GetNode<Node2D>("Left").GlobalPosition
                     - bridge_start_points.GetNode<Node2D>("Right").GlobalPosition;
                 x = Math.Abs(temp.X / 32);
-                GD.Print(ip_t.bridge_start_points.GetNode<Node2D>("Right").Position.X);
-                GD.Print(bridge_start_points.GetNode<Node2D>("Left").Position.X);
-                GD.Print(x);
 
                 for (int i = 0; i <= x; i++)
                 {
@@ -333,7 +324,7 @@ public partial class Island : Node2D
                     ip_t.bridge_start_points.GetNode<Node2D>("Right").GlobalPosition
                     - bridge_start_points.GetNode<Node2D>("Left").GlobalPosition;
                 x = Math.Abs(temp.X / 32);
-                GD.Print(x);
+
                 for (int i = 0; i <= x; i++)
                 {
                     bridge_part = (Node2D)BRIDGE_SIDE.Instantiate();
@@ -362,7 +353,7 @@ public partial class Island : Node2D
                     ip_t.bridge_start_points.GetNode<Node2D>("Up").GlobalPosition
                     - bridge_start_points.GetNode<Node2D>("Down").GlobalPosition;
                 x = Math.Abs(temp.Y / 32);
-                GD.Print(x);
+
                 for (int i = 0; i <= x; i++)
                 {
                     bridge_part = (Node2D)BRIDGE_UP.Instantiate();

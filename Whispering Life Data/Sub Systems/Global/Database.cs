@@ -3,6 +3,7 @@ using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
+[GlobalClass]
 public partial class Database : Node
 {
     [Export]
@@ -22,126 +23,138 @@ public partial class Database : Node
     public override void _Ready()
     {
         instance = this;
-        // Populate lists by scanning the project resources and classifying by type
-        PopulateListsFromResources("res://");
 
+        // Build dictionaries from the exported arrays
         researchs = GetResearchList(item_research_list);
         buildings = GetBuildingsList(building_menu_list_objects);
         Inventory.ITEM_TYPES = GetItemInfoList(item_info_list);
+
         CheckLoadedResources();
         DebugListValues();
         CheckForDuplicates();
         Debug.Print("Loaded all Resources!");
     }
 
-    // Recursively scan `basePath` for resources, load them and classify by type.
-    public void PopulateListsFromResources(string basePath)
+    /// <summary>
+    /// Scans res:// for .tres resources and populates the arrays.
+    /// Call this from the Editor to fill the arrays before export.
+    /// </summary>
+    public void PopulateDatabase()
     {
+        if (!Engine.IsEditorHint())
+        {
+            GD.PrintErr("PopulateDatabase: Only available in editor!");
+            return;
+        }
+
+        GD.Print("Database: Scanning res:// for resources...");
+
         var itemInfos = new System.Collections.Generic.List<ItemInfo>();
         var itemResearches = new System.Collections.Generic.List<ItemResearch>();
-        var buildingsTmp = new System.Collections.Generic.List<Building_Menu_List_Object>();
-        var craftingTmp = new System.Collections.Generic.List<CraftingRecipe>();
+        var buildings = new System.Collections.Generic.List<Building_Menu_List_Object>();
+        var recipes = new System.Collections.Generic.List<CraftingRecipe>();
 
-        ScanDirectoryAndClassify(basePath, itemInfos, itemResearches, buildingsTmp, craftingTmp);
+        ScanAndLoadResources("res://", itemInfos, itemResearches, buildings, recipes);
 
-        // Sort lists by their enum id order
+        // Sort by ID
         itemInfos.Sort((a, b) => ((int)a.id).CompareTo((int)b.id));
         itemResearches.Sort((a, b) => ((int)a.id).CompareTo((int)b.id));
-        buildingsTmp.Sort((a, b) => ((int)a.scene_building_id).CompareTo((int)b.scene_building_id));
+        buildings.Sort((a, b) => ((int)a.scene_building_id).CompareTo((int)b.scene_building_id));
 
-        // Fill the exported Godot Arrays in the sorted order
-        item_info_list = new Array<ItemInfo>();
-        foreach (var i in itemInfos)
-            item_info_list.Add(i);
+        // Assign to arrays
+        item_info_list = new Array<ItemInfo>(itemInfos);
+        item_research_list = new Array<ItemResearch>(itemResearches);
+        building_menu_list_objects = new Array<Building_Menu_List_Object>(buildings);
+        crafting_recipies_list = new Array<CraftingRecipe>(recipes);
 
-        item_research_list = new Array<ItemResearch>();
-        foreach (var r in itemResearches)
-            item_research_list.Add(r);
-
-        building_menu_list_objects = new Array<Building_Menu_List_Object>();
-        foreach (var b in buildingsTmp)
-            building_menu_list_objects.Add(b);
-
-        crafting_recipies_list = new Array<CraftingRecipe>();
-        foreach (var c in craftingTmp)
-            crafting_recipies_list.Add(c);
+        GD.Print(
+            $"Database: Loaded {itemInfos.Count} items, {itemResearches.Count} researches, {buildings.Count} buildings, {recipes.Count} recipes"
+        );
+        GD.Print("Database: Save the scene to persist these changes!");
     }
 
-    private void ScanDirectoryAndClassify(
+    private void ScanAndLoadResources(
         string path,
         System.Collections.Generic.List<ItemInfo> itemInfos,
         System.Collections.Generic.List<ItemResearch> itemResearches,
-        System.Collections.Generic.List<Building_Menu_List_Object> buildingsTmp,
-        System.Collections.Generic.List<CraftingRecipe> craftingTmp
+        System.Collections.Generic.List<Building_Menu_List_Object> buildings,
+        System.Collections.Generic.List<CraftingRecipe> recipes
     )
     {
-        DirAccess dir = null;
         try
         {
-            dir = DirAccess.Open(path);
-        }
-        catch (Exception)
-        {
-            return;
-        }
+            var dir = DirAccess.Open(path);
+            if (dir == null)
+                return;
 
-        if (dir == null)
-            return;
+            dir.ListDirBegin();
+            string file = dir.GetNext();
 
-        dir.ListDirBegin();
-        string file = dir.GetNext();
-        while (!string.IsNullOrEmpty(file))
-        {
-            if (dir.CurrentIsDir())
+            while (!string.IsNullOrEmpty(file))
             {
-                if (file != "." && file != "..")
-                {
-                    string sub = path.EndsWith("/") ? path + file : path + "/" + file;
-                    ScanDirectoryAndClassify(sub, itemInfos, itemResearches, buildingsTmp, craftingTmp);
-                }
-            }
-            else
-            {
-                // Only load Godot resource files we care about: .tres
-                // Skip all other files (including .uid, .import, .tscn, etc.)
-                if (!file.EndsWith(".tres", StringComparison.OrdinalIgnoreCase))
+                if (file.StartsWith("."))
                 {
                     file = dir.GetNext();
                     continue;
                 }
 
-                string full = path.EndsWith("/") ? path + file : path + "/" + file;
-                // Try to load the resource; ignore failures
-                var res = ResourceLoader.Load(full);
-                if (res == null)
+                if (dir.CurrentIsDir())
                 {
-                    // skip non-resource files
+                    if (file != "." && file != "..")
+                    {
+                        string subPath = path.EndsWith("/") ? path + file : path + "/" + file;
+                        if (!file.StartsWith("."))
+                        {
+                            ScanAndLoadResources(
+                                subPath,
+                                itemInfos,
+                                itemResearches,
+                                buildings,
+                                recipes
+                            );
+                        }
+                    }
                 }
-                else if (res is ItemInfo ii)
+                else if (file.EndsWith(".tres", StringComparison.OrdinalIgnoreCase))
                 {
-                    if (ii.id != Inventory.ITEM_ID.NULL)
-                        itemInfos.Add(ii);
+                    string fullPath = path.EndsWith("/") ? path + file : path + "/" + file;
+
+                    try
+                    {
+                        var resource = ResourceLoader.Load(fullPath);
+                        if (resource == null)
+                        {
+                            file = dir.GetNext();
+                            continue;
+                        }
+
+                        if (resource is ItemInfo ii && ii.id != Inventory.ITEM_ID.NULL)
+                            itemInfos.Add(ii);
+                        else if (resource is ItemResearch ir && ir.id != Inventory.ITEM_ID.NULL)
+                            itemResearches.Add(ir);
+                        else if (
+                            resource is Building_Menu_List_Object bmlo
+                            && bmlo.scene_building_id != BUILDING_ID.NULL
+                        )
+                            buildings.Add(bmlo);
+                        else if (resource is CraftingRecipe cr)
+                            recipes.Add(cr);
+                    }
+                    catch (Exception ex)
+                    {
+                        GD.PrintErr($"Error loading {fullPath}: {ex.Message}");
+                    }
                 }
-                else if (res is ItemResearch ir)
-                {
-                    if (ir.id != Inventory.ITEM_ID.NULL)
-                        itemResearches.Add(ir);
-                }
-                else if (res is Building_Menu_List_Object bmlo)
-                {
-                    if (bmlo.scene_building_id != BUILDING_ID.NULL)
-                        buildingsTmp.Add(bmlo);
-                }
-                else if (res is CraftingRecipe cr)
-                {
-                    craftingTmp.Add(cr);
-                }
+
+                file = dir.GetNext();
             }
 
-            file = dir.GetNext();
+            dir.ListDirEnd();
         }
-
-        dir.ListDirEnd();
+        catch (Exception ex)
+        {
+            GD.PrintErr($"Error scanning directory {path}: {ex.Message}");
+        }
     }
 
     public void CheckLoadedResources()

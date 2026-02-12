@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsnuk3r3bow3e"
-path="res://.godot/imported/Monster_Island_Happy.png-1cd3cf1eb17b5a48c755ac86da60a3cf.ctex"
+uid="uid://d1ksn6aiuu4bb"
+path="res://.godot/imported/Monster_Island_confused.png-4526e3ba9e0566d353565ec9793c4f95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Monster/Texture/Monster_Island_Happy.png"
-dest_files=["res://.godot/imported/Monster_Island_Happy.png-1cd3cf1eb17b5a48c755ac86da60a3cf.ctex"]
+source_file="res://Entities/Monster/Texture/Monster_Island_confused.png"
+dest_files=["res://.godot/imported/Monster_Island_confused.png-4526e3ba9e0566d353565ec9793c4f95.ctex"]
 
 [params]
 

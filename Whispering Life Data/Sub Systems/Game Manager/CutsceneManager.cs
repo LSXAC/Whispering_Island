@@ -18,7 +18,7 @@ public partial class CutsceneManager : Node2D
     public static bool In_Cutscene = false;
     public static bool skip_cutscenes = false;
     public PackedScene balloon_scene = ResourceLoader.Load<PackedScene>(
-        ResourceUid.UidToPath("uid://73jm5qjy52vq")
+        ResourceUid.UidToPath("uid://cowvna244n74k")
     );
 
     [Signal]
@@ -74,6 +74,8 @@ public partial class CutsceneManager : Node2D
             GlobalFunctions.LeaveDialogue();
             return;
         }
+
+        GameMenu.CloseLastWindow();
 
         In_Cutscene = true;
         var (resource, cutscene_name) = cutscene_queue.Dequeue();
