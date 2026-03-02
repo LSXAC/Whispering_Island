@@ -155,7 +155,7 @@ WORLD_RESOURCE_SAND_STONE_DESC,Mine to receive sandstone,Erhalte Sandstein beim 
 WORLD_RESOURCE_FIBRE,Fibre,Fasern
 WORLD_RESOURCE_FIBRE_DESC,Collect to receive fibre,Erhalte Fasern beim sammeln
 WORLD_RESOURCE_SUGAR_CANE,Sugar Cane,Zuckerrohr
-WORLD_RESOURCE_SUGAR_DESC,Harvest to receive sugar cane,Erhalte Zuckerrohr beim ernten
+WORLD_RESOURCE_SUGAR_CANE_DESC,Harvest to receive sugar cane,Erhalte Zuckerrohr beim ernten
 WORLD_RESOURCE_MYSTIC_MUSHROOM,Mystic Mushroom,Mystischer Pilz
 WORLD_RESOURCE_MYSTIC_MUSHROOM_DESC,Harvest to receive mystical mushrooms,Erhalte mystische Pilze beim ernten
 WORLD_RESOURCE_PALM,Palm,Palme
@@ -165,6 +165,11 @@ WORLD_RESOURCE_CACTUS_DESC,Harvest to receive Cactus,Erhalte Kaktus beim ernten
 WORLD_RESOURCE_POTATO,Potato,Kartoffel
 WORLD_RESOURCE_POTATO_DESC,Harvest to receive Potatos,Erhalte Kartoffeln beim ernten
 ,,
+,,
+,,
+,,
+,,
+,,
 MOOD_CALM,Calm,Ruhig
 MOOD_IRRITATED,Irritated,Verwirrt
 MOOD_ANGRY,Angry,Sauer
@@ -173,11 +178,6 @@ MOOD_COLLAPSE,Collapse,Kollabierent
 MOOD_HAPPY,Happy,Glücklich
 ,,
 STABILITY,Stab., Stab.
-,,
-,,
-,,
-,,
-,,
 ,,
 ,,
 ,,
