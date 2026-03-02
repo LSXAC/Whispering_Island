@@ -162,8 +162,8 @@ WORLD_RESOURCE_PALM,Palm,Palme
 WORLD_RESOURCE_PALM_DESC,Harvest to receive palm wood,Erhalte Palmenholz beim abbauen
 WORLD_RESOURCE_CACTUS,Cactus,Kaktus
 WORLD_RESOURCE_CACTUS_DESC,Harvest to receive Cactus,Erhalte Kaktus beim ernten
-,,
-,,
+WORLD_RESOURCE_POTATO,Potato,Kartoffel
+WORLD_RESOURCE_POTATO_DESC,Harvest to receive Potatos,Erhalte Kartoffeln beim ernten
 ,,
 MOOD_CALM,Calm,Ruhig
 MOOD_IRRITATED,Irritated,Verwirrt

@@ -83,8 +83,8 @@ gpu_particles = NodePath("PotatoParticle")
 building_id = 11
 tile_types = Array[int]([1])
 use_wind = true
-title = "WORLD_RESOURCE_POTATO"
-description = "WORLD_RESOURCE_POTATO_DESC"
+title = "WORLD_RESOURCE_SUNFLOWER"
+description = "WORLD_RESOURCE_SUNFLOWER_DESC"
 
 [node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=1991963296]
 script = ExtResource("4_ib3ix")
