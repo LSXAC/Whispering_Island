@@ -77,6 +77,11 @@ public partial class hover_menu : PanelContainer
             instance.Line1.Visible = false;
             instance.Line2.Visible = false;
 
+            if (building_node.show_hover_menu == false)
+            {
+                return;
+            }
+
             instance.title_container.Visible = true;
             instance.descriptiion_container.Visible = true;
             instance.object_type_container.Visible = true;

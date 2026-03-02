@@ -205,8 +205,8 @@ size = Vector2(168, 152)
 y_sort_enabled = true
 script = ExtResource("1_lb656")
 state_textures = Array[Texture2D]([ExtResource("3_e3y4i"), ExtResource("3_yw1sc"), ExtResource("4_yw1sc"), ExtResource("3_e3y4i"), ExtResource("4_yw1sc"), ExtResource("3_e3y4i")])
-title = "Quest Sign"
-description = "123414"
+title = "Monster"
+show_hover_menu = false
 
 [node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=887630517]
 script = ExtResource("2_d56rd")

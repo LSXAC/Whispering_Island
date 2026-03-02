@@ -14,6 +14,8 @@ public partial class MonsterIsland : Building_Node
     private Resource cutscene_item = ResourceLoader.Load<Resource>(
         ResourceUid.UidToPath("uid://bcvaepfvv50ax")
     );
+    private bool monsterDisappearTriggered = false;
+    private bool monsterAppearTriggered = false;
 
     private int quest_duration = 0;
 
@@ -37,6 +39,8 @@ public partial class MonsterIsland : Building_Node
     public void InitializeQuestTimers()
     {
         quest_duration = QuestManager.instance.quests[QuestManager.current_quest_id].quest_time;
+        monsterDisappearTriggered = false;
+        monsterAppearTriggered = false;
         is_visible = true;
     }
 
@@ -79,16 +83,18 @@ public partial class MonsterIsland : Building_Node
     {
         int quest_time_left = QuestManager.current_quest_time;
 
-        // Monster verschwindet: wenn verbrauchte Zeit >= 4h
-        if (is_visible && quest_time_left <= (quest_duration - 240))
+        // Monster verschwindet
+        if (!monsterDisappearTriggered && quest_time_left <= (quest_duration - 240))
         {
+            monsterDisappearTriggered = true;
             is_visible = false;
             CutsceneManager.instance.QueueCutscene(cutscene_item, "Monster_Disappear");
         }
 
-        // Monster kommt zurück: wenn noch 4h verbleiben
-        if (!is_visible && quest_time_left <= 240)
+        // Monster erscheint
+        if (!monsterAppearTriggered && quest_time_left <= 240)
         {
+            monsterAppearTriggered = true;
             is_visible = true;
             CutsceneManager.instance.QueueCutscene(cutscene_item, "Monster_Appear");
         }

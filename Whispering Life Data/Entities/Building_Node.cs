@@ -19,6 +19,9 @@ public abstract partial class Building_Node : Node2D
     [Export]
     public bool disable_collision = false;
 
+    [Export]
+    public bool show_hover_menu = true;
+
     public SpriteAnimationManager sprite_anim_manager;
 
     public CollisionPolygon2D collision_polygon;
