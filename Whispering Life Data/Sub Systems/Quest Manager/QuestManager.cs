@@ -27,6 +27,11 @@ public partial class QuestManager : Node
     public override void _Ready()
     {
         instance = this;
+        current_quest_time = 0;
+        current_quest_id = 0;
+        next_quest_half_time = false;
+        next_quest_is_doubled_items = false;
+
         monster_island = MonsterIsland.instance;
         quest_timer = GetNode<QuestTimer>("QuestTimer");
         quest_penality = GetNode<QuestPenality>("QuestPenality");

@@ -108,6 +108,9 @@ public partial class GameManager : Node2D
         CutsceneManager.In_Cutscene = false;
         island_matrix = new bool[11, 11];
         money = 1000;
+        difficulty_multiplier = 1.0f;
+        time_multiplier = 5;
+
         current_activ_canvaslayer = null;
         island_parent = GetNode<Node2D>("IslandManager");
 
