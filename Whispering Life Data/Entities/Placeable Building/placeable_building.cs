@@ -70,7 +70,10 @@ public abstract partial class placeable_building : Building_Node
     public override void OnMouseClick()
     {
         if (GameManager.building_mode == GameManager.BuildingMode.Removing)
+        {
+            sprite_anim_manager.shadowNode.RemoveShadow();
             QueueFree();
+        }
     }
 
     public static bool CheckClickDependencies(Building_Node node)
