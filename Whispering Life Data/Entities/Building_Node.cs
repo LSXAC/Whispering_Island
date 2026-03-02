@@ -29,6 +29,10 @@ public abstract partial class Building_Node : Node2D
     public bool mouse_inside = false;
     public bool is_visible = true;
 
+    private bool _isHolding = false;
+    private double _holdTimer = 0.0;
+    private const double HOLD_INTERVAL = 0.2;
+
     public abstract void OnMouseClick();
 
     public override void _Ready()
@@ -42,15 +46,39 @@ public abstract partial class Building_Node : Node2D
     public override void _UnhandledInput(InputEvent @event)
     {
         base._UnhandledInput(@event);
-        if (@event is InputEventMouseButton buttonevent)
-            if (buttonevent.ButtonIndex == MouseButton.Left && buttonevent.Pressed && mouse_inside)
+
+        if (
+            @event is InputEventMouseButton buttonEvent
+            && buttonEvent.ButtonIndex == MouseButton.Left
+        )
+        {
+            if (buttonEvent.Pressed && mouse_inside)
             {
-                if (mouse_inside)
-                {
-                    GetViewport().SetInputAsHandled();
-                    OnMouseClick();
-                }
+                GetViewport().SetInputAsHandled();
+                _isHolding = true;
+
+                OnMouseClick();
             }
+            else if (!buttonEvent.Pressed)
+            {
+                _isHolding = false;
+                _holdTimer = 0;
+            }
+        }
+    }
+
+    public override void _Process(double delta)
+    {
+        if (!_isHolding || !mouse_inside)
+            return;
+
+        _holdTimer -= delta;
+
+        if (_holdTimer <= 0)
+        {
+            OnMouseClick();
+            _holdTimer = HOLD_INTERVAL;
+        }
     }
 
     public Texture2D GetTextureFromSpriteManager()
