@@ -57,13 +57,16 @@ public partial class Player : CharacterBody2D
         }
 
         if (GameMenu.IsWindowActiv())
+        {
             if (
-                GameManager.building_mode == GameManager.BuildingMode.None
-                && !GameMenu.IsThisWindow(BuildMenu.instance)
+                GameMenu.IsThisWindow(BuildMenu.instance)
+                && GameManager.building_mode == GameManager.BuildingMode.Placing
             )
-                return;
+                ZoomCamera();
+        }
+        else
+            ZoomCamera();
 
-        ZoomCamera();
         this.velo = Vector2.Zero;
 
         if (Input.IsActionPressed("Up"))
