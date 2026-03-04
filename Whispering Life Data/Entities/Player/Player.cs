@@ -39,32 +39,31 @@ public partial class Player : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        //Disable all Events
         ChoosePlayerAnimation();
+
         if (GameManager.gameover)
         {
             Velocity = Vector2.Zero;
             return;
         }
-        // Regenerate indepentend from Player Events
+
         player_stamina.RegenerateStamina(this.velo);
 
-        // Disable Player Events
         if (CutsceneManager.In_Cutscene)
         {
             Velocity = Vector2.Zero;
             return;
         }
 
-        if (GameMenu.IsWindowActiv())
-        {
-            if (
+        if (GameMenu.IsWindowActiv() && !GameMenu.IsThisWindow(BuildMenu.instance))
+            return;
+
+        if (
+            (
                 GameMenu.IsThisWindow(BuildMenu.instance)
                 && GameManager.building_mode == GameManager.BuildingMode.Placing
-            )
-                ZoomCamera();
-        }
-        else
+            ) || !GameMenu.IsWindowActiv()
+        )
             ZoomCamera();
 
         this.velo = Vector2.Zero;
