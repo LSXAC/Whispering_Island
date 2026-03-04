@@ -4,11 +4,12 @@
 [ext_resource type="Script" uid="uid://b3felu4fawx3c" path="res://UI/UI Scripts/HitLabel.cs" id="2_5nwpq"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1705157521]
+z_index = 10
+y_sort_enabled = true
 collision_layer = 0
 collision_mask = 0
 
 [node name="HitLabel" type="Label" parent="." unique_id=70457889 node_paths=PackedStringArray("timer")]
-z_index = 10
 y_sort_enabled = true
 offset_right = 22.0
 offset_bottom = 10.0

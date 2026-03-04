@@ -246,9 +246,7 @@ public partial class MineableObject : placeable_building
 
         CharacterBody2D hit_lab = hit_label.Instantiate() as CharacterBody2D;
         hit_lab.GetChild<HitLabel>(0).Init(miningAmount, hit_point);
-        IslandManager
-            .instance.GetNearestIsland(GetGlobalMousePosition())
-            .island_object_save_manager.AddChild(hit_lab);
+        IslandManager.instance.AddChild(hit_lab);
         Debug.Print(hit_lab.Position.ToString());
     }
 
