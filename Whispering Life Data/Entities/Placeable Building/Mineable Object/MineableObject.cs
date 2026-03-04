@@ -63,6 +63,11 @@ public partial class MineableObject : placeable_building
         MYSTIC,
     }
 
+    /// <summary>
+    /// Override to enable hold/repeat clicking for mineable objects.
+    /// </summary>
+    protected override bool SupportsHoldAction => true;
+
     private PackedScene hit_label = ResourceLoader.Load<PackedScene>(
         ResourceUid.UidToPath("uid://d1l2gqiubblcd")
     );

@@ -29,9 +29,15 @@ public abstract partial class Building_Node : Node2D
     public bool mouse_inside = false;
     public bool is_visible = true;
 
-    private bool _isHolding = false;
+    public static bool _isHolding = false;
     private double _holdTimer = 0.0;
     private const double HOLD_INTERVAL = 0.2;
+
+    /// <summary>
+    /// Virtual property that determines if this building supports hold/repeat clicking.
+    /// Override to enable hold functionality for specific building types.
+    /// </summary>
+    protected virtual bool SupportsHoldAction => false;
 
     public abstract void OnMouseClick();
 
@@ -55,7 +61,7 @@ public abstract partial class Building_Node : Node2D
             if (buttonEvent.Pressed && mouse_inside)
             {
                 GetViewport().SetInputAsHandled();
-                _isHolding = true;
+                _isHolding = SupportsHoldAction;
 
                 OnMouseClick();
             }
@@ -69,7 +75,7 @@ public abstract partial class Building_Node : Node2D
 
     public override void _Process(double delta)
     {
-        if (!_isHolding || !mouse_inside)
+        if (!_isHolding || !mouse_inside || !SupportsHoldAction)
             return;
 
         _holdTimer -= delta;
