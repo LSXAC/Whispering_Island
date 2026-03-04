@@ -9,6 +9,7 @@
 [ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://UI/Styles/slot_focus_style.tres" id="7_nkwgi"]
 [ext_resource type="Texture2D" uid="uid://raaamx5w323j" path="res://UI/Player UI/Textures/currency_icon.png" id="7_s53b1"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/Menus/Translation/TranslationLabel.cs" id="7_vqd04"]
+[ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://UI/Themes/Theme_Slots.tres" id="8_afqmc"]
 [ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://UI/Styles/Button_Disabled_Style.tres.tres" id="8_s53b1"]
 [ext_resource type="StyleBox" uid="uid://c0rrcqgclnbps" path="res://UI/Styles/Button_Hover_Style.tres" id="9_vqd04"]
 [ext_resource type="StyleBox" uid="uid://bbbtpagi6kny3" path="res://UI/Styles/Button_Pressed_Style.tres.tres" id="10_jc1py"]
@@ -170,6 +171,7 @@ label_translation_string = "QUEST_MENU_REWARD"
 [node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1405490876]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+theme = ExtResource("8_afqmc")
 texture = ExtResource("7_s53b1")
 expand_mode = 1
 stretch_mode = 5
