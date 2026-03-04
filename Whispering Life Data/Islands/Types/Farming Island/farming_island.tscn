@@ -31,7 +31,7 @@ shader_parameter/distortion = 0.005
 [node name="Island_2" type="Node2D" unique_id=707686678 groups=["Island_Properties"]]
 y_sort_enabled = true
 script = ExtResource("1_yy7cq")
-unique_island_id = 2
+unique_island_id = 3
 
 [node name="BuildingArea" type="TileMapLayer" parent="." unique_id=656633387 groups=["BUILDINGCOLLISION"]]
 z_index = -21

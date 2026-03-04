@@ -63,7 +63,8 @@ public partial class MineableObject : placeable_building
         MYSTIC,
     }
 
-    private PackedScene hit_label = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://d1l2gqiubblcd")
+    private PackedScene hit_label = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://d1l2gqiubblcd")
     );
 
     [Signal]
@@ -248,6 +249,7 @@ public partial class MineableObject : placeable_building
         IslandManager
             .instance.GetNearestIsland(GetGlobalMousePosition())
             .island_object_save_manager.AddChild(hit_lab);
+        Debug.Print(hit_lab.Position.ToString());
     }
 
     private void UpdateToolDurability(int miningAmount)

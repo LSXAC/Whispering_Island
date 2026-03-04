@@ -63,7 +63,7 @@ metadata/_custom_type_script = "uid://cee63igbpybf"
 [node name="Island_2" type="Node2D" unique_id=1463403983 groups=["Island_Properties"]]
 y_sort_enabled = true
 script = ExtResource("1_dab55")
-unique_island_id = 3
+unique_island_id = 2
 
 [node name="BuildingArea" type="TileMapLayer" parent="." unique_id=760159518 groups=["BUILDINGCOLLISION"]]
 z_index = -21
