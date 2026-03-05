@@ -54,7 +54,7 @@ public partial class itemRecipeUI : Control
                 new Item(item.info, item.amount),
                 PlayerInventoryUI.instance.inventory_items
             );
-            Debug.Print(item.info.name);
+            Debug.Print("Item Name for Crafting: " + item.info.name);
         }
 
         PlayerInventoryUI.instance.AddItem(

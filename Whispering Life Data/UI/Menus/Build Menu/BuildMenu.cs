@@ -78,8 +78,6 @@ public partial class BuildMenu : CanvasLayer
 
     public void OnCategoryButton(int id)
     {
-        Debug.Print("ID: " + id);
-        //hbox_category[id].Visible = true;
         if (id == 0)
             OnPanelButton(4);
     }

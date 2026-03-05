@@ -109,7 +109,7 @@ public partial class IslandMenu : ColorRect
         bool is_loading = false
     )
     {
-        Debug.Print("Get Dir.");
+        Debug.Print("Get Island Dir.");
         if (dir == Island.DIRECTION.UP)
             if (GameManager.IsIslandOnMatrix(current_ip.matrix_x, current_ip.matrix_y - 1))
                 return;
@@ -123,7 +123,7 @@ public partial class IslandMenu : ColorRect
             if (GameManager.IsIslandOnMatrix(current_ip.matrix_x + 1, current_ip.matrix_y))
                 return;
 
-        Debug.Print("Found Dir.");
+        Debug.Print("Found Island Dir.");
         current_ip.CreateAnotherIsland(
             islands[unique_id].item_menu_item_data.island_scene,
             dir,

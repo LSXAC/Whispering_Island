@@ -27,7 +27,9 @@ public partial class MainMenu : Control
 
     public static MainMenu instance = null;
     public static LauncherSave launcherSave;
-    PackedScene game = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://vserd8wdu3iw"));
+    PackedScene game = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://vserd8wdu3iw")
+    );
 
     public override void _Ready()
     {
@@ -128,7 +130,7 @@ public partial class MainMenu : Control
                 break;
         }
         GameManager.difficulty = (GameManager.DIFFICULTY)index;
-        Debug.Print(GameManager.difficulty_multiplier.ToString());
+        Debug.Print("Difficult Multiplier: " + GameManager.difficulty_multiplier.ToString());
     }
 
     public void OnVisiblityChanged()

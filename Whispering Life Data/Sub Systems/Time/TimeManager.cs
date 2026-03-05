@@ -33,27 +33,24 @@ public partial class TimeManager : Node2D
                 PlayerInventoryUI.instance.AddDurabilityToItemsThroughAutoRepair();
 
         day_night_manager.UpdateColor();
-        current_game_time += GameManager.time_multiplier; // Increment game time by 5 minutes
-        // 3 - 5
+        current_game_time += GameManager.time_multiplier;
+
         if (current_game_time >= 1140 && current_game_time <= 1260)
-            light_factor = (current_game_time - 1140) / 120f; // Normalize light factor between 0 and 1
+            light_factor = (current_game_time - 1140) / 120f;
         else if (current_game_time > 1260 || current_game_time < 180)
             light_factor = 1f;
         else if (current_game_time >= 180 && current_game_time <= 300)
-            light_factor = 1 - (current_game_time - 180) / 120f; // Normalize light factor between 0 and 1
+            light_factor = 1 - (current_game_time - 180) / 120f;
         else
-            light_factor = 0f; // Default light factor for other times
+            light_factor = 0f;
 
         if (CheckIfNewDay())
         {
             current_game_time = 0;
             current_day++;
         }
-        UpdatePlayerUITime();
 
-        var path = ResourceUid.UidToPath("uid://byn2daod4sksu");
-        GD.Print($"UID path: '{path}'");
-        GD.Print($"Exists: {ResourceLoader.Exists(path)}");
+        UpdatePlayerUITime();
 
         // GameManager.game_time_since_start = current_game_time;
         // QuestManager.current_quest_time = current_game_time;

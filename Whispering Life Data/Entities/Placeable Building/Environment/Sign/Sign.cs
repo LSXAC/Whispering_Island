@@ -18,7 +18,7 @@ public partial class Sign : Building_Node
         GameMenu.instance.OnOpenIslandTab();
         IslandMenu.instance.current_sign = this;
 
-        Debug.Print(GameManager.island_matrix.ToString());
+        Debug.Print("Sign: " + GameManager.island_matrix.ToString() + " was clicked!");
     }
 
     public void RemoveSelf()

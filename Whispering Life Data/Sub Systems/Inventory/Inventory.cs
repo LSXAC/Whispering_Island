@@ -434,7 +434,7 @@ public partial class Inventory : SlotUpdater
 
             if (item == null)
             {
-                Debug.Print("BI IS NULL");
+                Debug.Print("ITEM IS NULL");
                 return false;
             }
             if (array[i].item_id == (int)item.info.id)
@@ -471,7 +471,6 @@ public partial class Inventory : SlotUpdater
             ClearSlot(index);
             return;
         }
-        Debug.Print("index: " + index);
         GetNode<Slot>($"GridContainer/SlotBackground{index}/Slot0")
             .UpdateItem(
                 new Item(GetItemInfo(index), inventory_items[index].amount),

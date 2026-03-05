@@ -127,7 +127,6 @@ public partial class Island : Node2D
         if (from_direction != DIRECTION.LEFT)
             if (GameManager.IsIslandOnMatrix(matrix_x + 1, matrix_y))
             {
-                Debug.Print("Island is right!");
                 node = signs_parent.GetNode<Node2D>("RightSign");
                 bridge_collision_parent.GetNode<CollisionShape2D>("Right").Disabled = true;
                 if (node != null)

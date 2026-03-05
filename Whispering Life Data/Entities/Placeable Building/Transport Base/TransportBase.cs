@@ -136,7 +136,7 @@ public partial class TransportBase : placeable_building
                     )
                         from_direction = Direction.Right;
                 }
-                Debug.Print(from_direction.ToString());
+                Debug.Print("From Direction: " + from_direction.ToString());
                 anim_manager12D.SetAnimation(from_direction, to_direction, can_be_build_on_air);
                 break;
             case Direction.Right:
@@ -235,7 +235,8 @@ public partial class TransportBase : placeable_building
 
     public void InitBeltItem(BeltSave belt_save)
     {
-        PackedScene belt_item_scene = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://dkue7sa7xyeyr")
+        PackedScene belt_item_scene = ResourceLoader.Load<PackedScene>(
+            ResourceUid.UidToPath("uid://dkue7sa7xyeyr")
         );
         if (Logger.NodeIsNull(belt_item_scene))
             return;

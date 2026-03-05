@@ -14,7 +14,8 @@ public partial class Giver : Area2D
 
     [Export]
     public Node2D Holder;
-    public PackedScene beltItem = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://dkue7sa7xyeyr")
+    public PackedScene beltItem = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://dkue7sa7xyeyr")
     );
 
     public void OnProductionTimerTimeout()
@@ -36,7 +37,13 @@ public partial class Giver : Area2D
     {
         if (destination.GetParent() is Belt belt)
         {
-            Debug.Print(belt.to_direction.ToString() + " | " + direction_not_giving.ToString());
+            Debug.Print(
+                "Belt to Direction: "
+                    + belt.to_direction.ToString()
+                    + " | "
+                    + " Direction Not Giving: "
+                    + direction_not_giving.ToString()
+            );
             if (belt.to_direction == direction_not_giving)
                 return;
 

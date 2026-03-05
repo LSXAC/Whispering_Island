@@ -135,7 +135,7 @@ public partial class hover_menu : PanelContainer
         {
             if (pb == null)
             {
-                Debug.Print("PB NULL");
+                Debug.Print("ProcessBuilding is NULL");
                 return;
             }
             instance.process_bar_container.Visible = true;
@@ -186,7 +186,7 @@ public partial class hover_menu : PanelContainer
         {
             if (production_machine == null)
             {
-                Debug.Print("PM NULL");
+                Debug.Print("ProductionMachine is NULL");
                 return;
             }
             instance.process_bar_container.Visible = true;
@@ -204,7 +204,7 @@ public partial class hover_menu : PanelContainer
         {
             if (chest == null)
             {
-                Debug.Print("chest NULL");
+                Debug.Print("Chest is NULL");
                 return;
             }
             instance.chest_slots_container.Visible = true;
