@@ -33,10 +33,6 @@ public abstract partial class Building_Node : Node2D
     private double _holdTimer = 0.0;
     private const double HOLD_INTERVAL = 0.2;
 
-    /// <summary>
-    /// Virtual property that determines if this building supports hold/repeat clicking.
-    /// Override to enable hold functionality for specific building types.
-    /// </summary>
     protected virtual bool SupportsHoldAction => false;
 
     public abstract void OnMouseClick();
@@ -52,6 +48,12 @@ public abstract partial class Building_Node : Node2D
     public override void _UnhandledInput(InputEvent @event)
     {
         base._UnhandledInput(@event);
+
+        if (is_visible == false)
+            return;
+
+        if (CutsceneManager.In_Cutscene)
+            return;
 
         if (
             @event is InputEventMouseButton buttonEvent

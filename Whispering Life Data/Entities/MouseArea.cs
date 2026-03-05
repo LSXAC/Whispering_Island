@@ -73,8 +73,6 @@ public partial class MouseArea : Area2D
             Debug.Print("No sprite referenced! Position for hover menu not recognized", this);
             return;
         }
-        if (!building_node.is_visible)
-            return;
 
         if (building_node.use_wind)
             building_node.sprite_anim_manager.GetCanvasItem().Material = wind_shader;
