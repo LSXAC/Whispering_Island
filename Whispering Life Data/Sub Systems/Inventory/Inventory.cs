@@ -489,7 +489,7 @@ public partial class Inventory : SlotUpdater
 
     public override void ClearSlot(int index)
     {
-        Debug.Print("index clear: " + index);
+        Debug.Print("Inventory: Slot with index " + index + " cleared");
         GetNode<Slot>($"GridContainer/SlotBackground{index}/Slot0").ClearSlotItem();
     }
 

@@ -38,9 +38,6 @@ public partial class EquipmentSelectBar : Container
 
     public SlotItemUI GetSelectedSlotItemUI()
     {
-        if (current_selected_slot_item_ui == null)
-            Debug.Print("No Item selected in Selectbar");
-
         return current_selected_slot_item_ui;
     }
 

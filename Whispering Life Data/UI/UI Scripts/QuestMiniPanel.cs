@@ -90,7 +90,7 @@ public partial class QuestMiniPanel : PanelContainer
 
             if (iii == null)
             {
-                Debug.Print(item.info.name + "NULL");
+                Debug.Print("Quest mini Panel: Item not in Inventory: " + item.info.name);
                 if (QuestManager.next_quest_is_doubled_items)
                     hbox_items[i].item_label.Text = "0x / " + (item_ref.amount * 2) + "x";
                 else
