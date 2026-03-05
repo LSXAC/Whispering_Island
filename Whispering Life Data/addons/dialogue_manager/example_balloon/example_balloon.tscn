@@ -182,6 +182,7 @@ scroll_active = false
 
 [node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1755736065 instance=ExtResource("4_83g4i")]
 unique_name_in_owner = true
+clip_contents = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(1, 1, 1, 1)
