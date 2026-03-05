@@ -51,7 +51,7 @@ public partial class MineableObject : placeable_building
 
     TimerBar timer_bar;
     Area2D interactableArea;
-    public bool in_cooldown = false;
+    public static bool in_cooldown = false;
 
     public enum MINING_LEVEL
     {
@@ -181,6 +181,10 @@ public partial class MineableObject : placeable_building
             return;
         }
 
+        PlayerUI.instance.harvest_timer.WaitTime = click_cooldown_time;
+        in_cooldown = true;
+        PlayerUI.instance.harvest_timer.Start();
+
         Item item = resource_item.Clone();
         // 2. Inventar-Prüfung für normalen und letzten Schlag
         int miningAmount = CalculateMiningAmountInt();
@@ -222,7 +226,6 @@ public partial class MineableObject : placeable_building
             return;
         }
 
-        StartTimerBar(TimerBar.STATE.COOLDOWN, click_cooldown_time);
         PlayerUI.AddItemLabelMineableUI(item);
         PlayerInventoryUI.instance.AddItem(item, PlayerInventoryUI.instance.inventory_items);
 
@@ -297,7 +300,6 @@ public partial class MineableObject : placeable_building
     private void StartTimerBar(TimerBar.STATE state, double time, bool from_loading = false)
     {
         Debug.Print("Starting TimerBar with state: " + state.ToString() + " for time: " + time);
-        in_cooldown = true;
         if (state == TimerBar.STATE.SPAWNING)
         {
             if (collision_polygon != null)
@@ -331,7 +333,6 @@ public partial class MineableObject : placeable_building
         if (timer_bar.current_state == TimerBar.STATE.SPAWNING || from_loading)
             current_durability = max_durability;
 
-        in_cooldown = false;
         interactableArea.Monitoring = true;
         timer_bar.current_state = TimerBar.STATE.NONE;
     }

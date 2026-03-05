@@ -152,9 +152,10 @@ _data = {
 &"Start_Discovery": SubResource("Animation_d27p6")
 }
 
-[node name="PlayerUI" type="CanvasLayer" unique_id=258463009 node_paths=PackedStringArray("equipmentSelectBar", "time_stripe", "game_time_label", "qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "money_label", "info_vBox", "mainmenu_button", "item_label_timer", "monster_island_state_panel")]
+[node name="PlayerUI" type="CanvasLayer" unique_id=258463009 node_paths=PackedStringArray("equipmentSelectBar", "harvest_timer", "time_stripe", "game_time_label", "qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "money_label", "info_vBox", "mainmenu_button", "item_label_timer", "monster_island_state_panel")]
 script = ExtResource("1_m5svq")
 equipmentSelectBar = NodePath("EquipmentSelectBar")
+harvest_timer = NodePath("HarvestTimer")
 time_stripe = NodePath("VBoxContainer/TimeStripe")
 game_time_label = NodePath("VBoxContainer/TimeStripe/ColorRect3/HBoxContainer2/GameTimeLabel")
 qcp_timer = NodePath("QuestCompletePanel/Timer")
@@ -1004,6 +1005,9 @@ label_translation_string = "DISCOVERY_DESC"
 [node name="Timer" type="Timer" parent="Control/DiscoverManager" unique_id=953488551]
 wait_time = 4.0
 
+[node name="HarvestTimer" type="Timer" parent="." unique_id=725452897]
+one_shot = true
+
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="pressed" from="QuestAcceptPanel/CenterContainer/VBoxContainer/ConfirmButton" to="QuestAcceptPanel" method="OnButton"]
 [connection signal="timeout" from="QuestAcceptPanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
@@ -1011,6 +1015,7 @@ wait_time = 4.0
 [connection signal="animation_finished" from="Control/AnimationPlayer" to="Control" method="OnAnimationFinished"]
 [connection signal="timeout" from="Control/CheckTimer" to="Control" method="OnCheckTimerTimeout"]
 [connection signal="timeout" from="Control/DiscoverManager/Timer" to="Control" method="OnTimerTimeout"]
+[connection signal="timeout" from="HarvestTimer" to="." method="OnHarvestTimerTimeout"]
 
 [editable path="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SlotBackground0"]
 [editable path="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SlotBackground0"]

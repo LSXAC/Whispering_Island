@@ -15,6 +15,9 @@ public partial class PlayerUI : CanvasLayer
     public EquipmentSelectBar equipmentSelectBar;
 
     [Export]
+    public Timer harvest_timer;
+
+    [Export]
     public TimeStripe time_stripe;
 
     [Export]
@@ -121,6 +124,11 @@ public partial class PlayerUI : CanvasLayer
             queue_working = true;
             item_label_timer.Start();
         }
+    }
+
+    public void OnHarvestTimerTimeout()
+    {
+        MineableObject.in_cooldown = false;
     }
 
     public void SetBuildingUI(Array<Item> required_items)
