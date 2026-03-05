@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://y865cl3n6n6u" path="res://UI/Inventory/SlotItemUI.cs" id="1_ckowm"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="2_567ka"]
+[ext_resource type="LabelSettings" uid="uid://dq0dwmb4gc45u" path="res://UI/Styles/Label_Settings_Normal_Text.tres" id="3_k5yiy"]
 
 [node name="SlotItemUI" type="TextureRect" unique_id=976705510]
 custom_minimum_size = Vector2(20, 20)
@@ -13,7 +14,6 @@ expand_mode = 1
 script = ExtResource("1_ckowm")
 
 [node name="Label" type="Label" parent="." unique_id=77248286]
-visible = false
 layout_mode = 0
 offset_left = -6.0
 offset_top = 16.0
@@ -22,6 +22,7 @@ offset_bottom = 26.0
 theme_override_fonts/font = ExtResource("2_567ka")
 theme_override_font_sizes/font_size = 10
 text = "20x"
+label_settings = ExtResource("3_k5yiy")
 horizontal_alignment = 2
 vertical_alignment = 2
 
