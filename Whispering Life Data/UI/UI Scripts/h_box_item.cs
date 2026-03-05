@@ -39,7 +39,11 @@ public partial class h_box_item : VBoxContainer
         if (with_name)
         {
             title_label.Visible = true;
-            item_label.Text = ((int)(item.amount * GameManager.difficulty_multiplier)) + "x";
+            item_label.Text =
+                TranslationServer.Translate("CRAFTING_MENU_AMOUNT")
+                + ": "
+                + ((int)(item.amount * GameManager.difficulty_multiplier))
+                + "x";
             title_label.Text = TranslationServer.Translate(item.info.name);
         }
         else

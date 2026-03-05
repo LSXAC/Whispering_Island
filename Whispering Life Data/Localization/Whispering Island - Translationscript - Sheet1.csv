@@ -1,4 +1,4 @@
-,en,de
+*,en,de
 LANGUAGE,English,Deutsch
 STAMINA_LEFT,Stamina,Ausdauer
 STAMINA_OUT,Stamina,Atemlos
@@ -70,7 +70,7 @@ EQUIPMENT_PANEL_FARMING,Farming,Landwirt
 EQUIPMENT_PANEL_HEALTH_BAR,Health,Gesundheit
 EQUIPMENT_PANEL_FATIGUE_BAR,Fatigue,Erschöpfung
 ,,
-,,
+CRAFTING_MENU_AMOUNT,Get,Erhalte 
 CRAFTING_MENU_GENERAL,General,Allgemein
 CRAFTING_MENU_TOOLPARTS,Toolparts,Werkzeugteile
 CRAFTING_MENU_TOOLS,Tools,Werkzeuge

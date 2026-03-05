@@ -56,7 +56,7 @@ custom_minimum_size = Vector2(20, 20)
 size_flags_horizontal = 0
 
 [node name="ItemLabel" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem" index="2" unique_id=796178816]
-horizontal_alignment = 1
+horizontal_alignment = 0
 
 [node name="HBoxRequiereToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer" unique_id=11124704]
 custom_minimum_size = Vector2(75, 0)
