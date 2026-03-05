@@ -15,13 +15,15 @@ public partial class h_box_item : VBoxContainer
     Color white = new Color(1, 1, 1, 1);
     Color green = new Color(0, 1, 0, 1);
 
-    public Label item_label;
+    public Label item_label,
+        title_label;
 
     public TextureRect item_texture;
 
     public override void _Ready()
     {
         item_label = GetNode<Label>("ItemLabel");
+        title_label = GetNode<Label>("ItemLabelTitle");
         item_texture = GetNode<TextureRect>("ItemTexture");
     }
 
@@ -31,13 +33,15 @@ public partial class h_box_item : VBoxContainer
             item_label = GetNode<Label>("ItemLabel");
         if (item_texture == null)
             item_texture = GetNode<TextureRect>("ItemTexture");
+        if (title_label == null)
+            title_label = GetNode<Label>("ItemLabelTitle");
 
         if (with_name)
-            item_label.Text =
-                TranslationServer.Translate(item.info.name)
-                + " - "
-                + ((int)(item.amount * GameManager.difficulty_multiplier))
-                + "x";
+        {
+            title_label.Visible = true;
+            item_label.Text = ((int)(item.amount * GameManager.difficulty_multiplier)) + "x";
+            title_label.Text = TranslationServer.Translate(item.info.name);
+        }
         else
             item_label.Text = " " + ((int)(item.amount * GameManager.difficulty_multiplier)) + "x";
         item_texture.Texture = item.info.texture;

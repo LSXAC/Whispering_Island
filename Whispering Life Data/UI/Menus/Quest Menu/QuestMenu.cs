@@ -157,6 +157,7 @@ public partial class QuestMenu : CanvasLayer
             c_label.InitItemUI(item_ref);
 
             c_label.SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter;
+            c_label.AddThemeConstantOverride("separation", 2);
             if (iii == null)
             {
                 c_label.item_label.Text = "0x /" + item_ref.amount + "x";

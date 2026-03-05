@@ -2,10 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ohg3uh7id56e" path="res://UI/UI Scripts/itemRecipeUI.cs" id="1_fxdbo"]
 [ext_resource type="PackedScene" uid="uid://bnf8yngk7oyy0" path="res://UI/Menus/h_box_item_menu_line_horizontal.tscn" id="2_f48sm"]
-[ext_resource type="Script" uid="uid://c8olhec3yacn5" path="res://UI/UI Scripts/h_box_item.cs" id="2_kx56k"]
-[ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://UI/Themes/Theme_Slots.tres" id="3_ewir5"]
-[ext_resource type="Texture2D" uid="uid://bjana5l7fkd6a" path="res://Entities/Items/SpritesForItems/Icons_3rd/Wood_Stick.png" id="3_f48sm"]
-[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="4_7yc62"]
 [ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Sub Systems/ItemRowManager.cs" id="5_xiqxj"]
 [ext_resource type="Texture2D" uid="uid://wquchq45ve1" path="res://Entities/Items/SpritesForItems/Icons/Hammer_Icon.png" id="6_qi7a5"]
 [ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://UI/Styles/slot_focus_style.tres" id="7_10go1"]
@@ -46,12 +42,21 @@ layout_mode = 2
 [node name="CC" type="CenterContainer" parent="MarginContainer/VSplitContainer/HBoxToCraft" unique_id=934246422]
 layout_mode = 2
 
-[node name="HBoxItem" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC" unique_id=1568914804 instance=ExtResource("2_f48sm")]
+[node name="HBoxItem" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC" unique_id=993415093 instance=ExtResource("2_f48sm")]
 layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 0
 
-[node name="ItemTexture" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem" index="0" unique_id=1871821504]
-custom_minimum_size = Vector2(24, 24)
-theme = ExtResource("3_ewir5")
+[node name="ItemLabelTitle" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem" index="0" unique_id=1565653983]
+text = "2x434343434343434"
+horizontal_alignment = 0
+
+[node name="ItemTexture" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem" index="1" unique_id=1871821504]
+custom_minimum_size = Vector2(20, 20)
+size_flags_horizontal = 0
+
+[node name="ItemLabel" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem" index="2" unique_id=796178816]
+horizontal_alignment = 1
 
 [node name="HBoxRequiereToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer" unique_id=11124704]
 custom_minimum_size = Vector2(75, 0)
@@ -62,26 +67,8 @@ alignment = 2
 layout_mode = 2
 script = ExtResource("5_xiqxj")
 
-[node name="HBoxItem" type="VBoxContainer" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere" unique_id=1080355274]
+[node name="HBoxItem" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere" unique_id=926058299 instance=ExtResource("2_f48sm")]
 layout_mode = 2
-alignment = 1
-script = ExtResource("2_kx56k")
-
-[node name="ItemTexture" type="TextureRect" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere/HBoxItem" unique_id=1171292647]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-theme = ExtResource("3_ewir5")
-texture = ExtResource("3_f48sm")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="ItemLabel" type="Label" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere/HBoxItem" unique_id=251097409]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("4_7yc62")
-theme_override_font_sizes/font_size = 8
-text = "Sticks 4x"
 
 [node name="CraftButton" type="Button" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft" unique_id=467042745]
 custom_minimum_size = Vector2(32, 32)
