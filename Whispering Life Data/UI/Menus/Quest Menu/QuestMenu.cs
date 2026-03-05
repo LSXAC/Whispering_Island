@@ -156,7 +156,7 @@ public partial class QuestMenu : CanvasLayer
             item_ref.amount = (int)(item_ref.amount * GameManager.difficulty_multiplier) * multi;
             c_label.InitItemUI(item_ref);
 
-            c_label.Alignment = BoxContainer.AlignmentMode.Center;
+            c_label.SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter;
             if (iii == null)
             {
                 c_label.item_label.Text = "0x /" + item_ref.amount + "x";

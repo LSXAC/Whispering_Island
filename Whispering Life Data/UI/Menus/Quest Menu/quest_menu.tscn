@@ -17,7 +17,7 @@
 
 [node name="QuestMenu" type="CanvasLayer" unique_id=875842839 node_paths=PackedStringArray("quest_label_parent", "quest_name_label", "complete_button", "quest_description_label", "reward_label")]
 script = ExtResource("1_rjdwy")
-quest_label_parent = NodePath("Background/MarginContainer/VBoxContainer2/VBoxContainer")
+quest_label_parent = NodePath("Background/MarginContainer/VBoxContainer2/HBoxContainer2/VBoxContainer")
 quest_name_label = NodePath("Background/MarginContainer/VBoxContainer2/Label")
 complete_button = NodePath("Background/MarginContainer/VBoxContainer2/CompleteQuestButton")
 quest_description_label = NodePath("Background/MarginContainer/VBoxContainer2/Description")
@@ -135,19 +135,29 @@ text = "Du bist zufällig auf eine hungrige Insel getroffen. Du bist dir nicht S
 Naja, das was die Insel grade will, sieht eigentlich noch nicht so schwer aus!"
 fit_content = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer2" unique_id=732880479]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer2" unique_id=1000180586]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer2" unique_id=732880479]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 alignment = 1
 
-[node name="HBoxItem" parent="Background/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1968778800 instance=ExtResource("5_ao47r")]
+[node name="HBoxItem" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer2/VBoxContainer" unique_id=1968778800 instance=ExtResource("5_ao47r")]
 layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
 
-[node name="HBoxItem2" parent="Background/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=399891455 instance=ExtResource("5_ao47r")]
+[node name="HBoxItem2" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer2/VBoxContainer" unique_id=399891455 instance=ExtResource("5_ao47r")]
 layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
 
-[node name="HBoxItem3" parent="Background/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=2095112461 instance=ExtResource("5_ao47r")]
+[node name="HBoxItem3" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer2/VBoxContainer" unique_id=2095112461 instance=ExtResource("5_ao47r")]
 layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
 
 [node name="Label3" type="Label" parent="Background/MarginContainer/VBoxContainer2" unique_id=434403346]
 layout_mode = 2

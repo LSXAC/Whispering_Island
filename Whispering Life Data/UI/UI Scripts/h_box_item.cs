@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using Godot;
 
-public partial class h_box_item : BoxContainer
+public partial class h_box_item : VBoxContainer
 {
     public enum colorType
     {

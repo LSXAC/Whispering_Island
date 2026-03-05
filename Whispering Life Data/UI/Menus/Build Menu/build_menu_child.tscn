@@ -5,16 +5,18 @@
 [ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://UI/Themes/Theme_Slots.tres" id="2_cxwox"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="3_2gr0d"]
 [ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Sub Systems/ItemRowManager.cs" id="4_n07vt"]
+[ext_resource type="PackedScene" uid="uid://bnf8yngk7oyy0" path="res://UI/Menus/h_box_item_menu_line_horizontal.tscn" id="5_nu802"]
 
 [node name="BuildingMenuChild" type="Control" unique_id=437297028 node_paths=PackedStringArray("build_button", "texture", "item_row_manager")]
+clip_contents = true
 custom_minimum_size = Vector2(96, 128)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 96.0
 offset_bottom = 128.0
 script = ExtResource("1_d5smx")
-build_button = NodePath("ColorRect/VBoxContainer/Button")
-texture = NodePath("ColorRect/VBoxContainer/ColorRect/TextureButton")
+build_button = NodePath("ColorRect/Button")
+texture = NodePath("ColorRect/ColorRect/TextureButton")
 item_row_manager = NodePath("ColorRect/VBoxContainer/HBoxContainer")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=232359517]
@@ -25,26 +27,16 @@ offset_bottom = 128.0
 size_flags_vertical = 3
 color = Color(0.176419, 0.176419, 0.176419, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1973066059]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -48.0
-offset_right = 32.0
-offset_bottom = 48.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="ColorRect/VBoxContainer" unique_id=1211830074]
+[node name="ColorRect" type="ColorRect" parent="ColorRect" unique_id=1211830074]
 custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 76.0
 color = Color(0, 0, 0, 1)
 
-[node name="TextureButton" type="TextureRect" parent="ColorRect/VBoxContainer/ColorRect" unique_id=1041176124]
+[node name="TextureButton" type="TextureRect" parent="ColorRect/ColorRect" unique_id=1041176124]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -62,14 +54,44 @@ texture = ExtResource("2_1o15g")
 expand_mode = 4
 stretch_mode = 5
 
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1973066059]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 15.0
+offset_right = 32.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer" unique_id=919673583]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 alignment = 1
 script = ExtResource("4_n07vt")
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer" unique_id=1897113942]
+[node name="HBoxItem" parent="ColorRect/VBoxContainer/HBoxContainer" unique_id=289183216 instance=ExtResource("5_nu802")]
 layout_mode = 2
+
+[node name="HBoxItem2" parent="ColorRect/VBoxContainer/HBoxContainer" unique_id=1451622250 instance=ExtResource("5_nu802")]
+layout_mode = 2
+
+[node name="HBoxItem3" parent="ColorRect/VBoxContainer/HBoxContainer" unique_id=2015064678 instance=ExtResource("5_nu802")]
+layout_mode = 2
+
+[node name="HBoxItem4" parent="ColorRect/VBoxContainer/HBoxContainer" unique_id=296243761 instance=ExtResource("5_nu802")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ColorRect" unique_id=1897113942]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 97.0
+offset_right = 80.0
+offset_bottom = 115.0
 theme_override_fonts/font = ExtResource("3_2gr0d")
 theme_override_font_sizes/font_size = 10
 text = "Build"

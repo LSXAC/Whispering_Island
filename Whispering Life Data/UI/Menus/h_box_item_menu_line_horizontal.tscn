@@ -4,18 +4,14 @@
 [ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://UI/Themes/Theme_Slots.tres" id="2_1vuqy"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Entities/Items/SpritesForItems/Icons_3rd/Wood_Icon.png" id="2_m7p01"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="3_kc5xb"]
+[ext_resource type="LabelSettings" uid="uid://c6bwhfsvb7lhy" path="res://UI/Styles/Label_Settings_Item_Text.tres" id="5_0q48q"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_f2hm7"]
-font = ExtResource("3_kc5xb")
-font_size = 8
-outline_size = 3
-outline_color = Color(0, 0, 0, 1)
-
-[node name="HBoxItem" type="HBoxContainer" unique_id=289183216]
-offset_right = 27.0
-offset_bottom = 25.0
-theme_override_constants/separation = 4
-alignment = 1
+[node name="HBoxItem" type="VBoxContainer" unique_id=993415093]
+custom_minimum_size = Vector2(16, 16)
+layout_direction = 4
+offset_right = 16.0
+offset_bottom = 17.0
+theme_override_constants/separation = -3
 script = ExtResource("1_f2hm7")
 
 [node name="ItemTexture" type="TextureRect" parent="." unique_id=1871821504]
@@ -23,15 +19,15 @@ custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme = ExtResource("2_1vuqy")
 texture = ExtResource("2_m7p01")
-expand_mode = 4
+expand_mode = 1
 stretch_mode = 5
 
 [node name="ItemLabel" type="Label" parent="." unique_id=796178816]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_kc5xb")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "2x"
-label_settings = SubResource("LabelSettings_f2hm7")
-horizontal_alignment = 1
-vertical_alignment = 1
+label_settings = ExtResource("5_0q48q")
+horizontal_alignment = 2
+vertical_alignment = 2

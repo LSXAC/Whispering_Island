@@ -24,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://bovrg0u6tuo04" path="res://UI/Menus/Hover Menu/hover_menu.tscn" id="20_fdkbp"]
 [ext_resource type="StyleBox" uid="uid://bfrdtjfua8vts" path="res://UI/Styles/Panel_Transparent.tres" id="20_kobl8"]
 [ext_resource type="PackedScene" uid="uid://ceypkxf7dox6w" path="res://UI/Inventory/slot_background.tscn" id="21_uwodk"]
+[ext_resource type="LabelSettings" uid="uid://dq0dwmb4gc45u" path="res://UI/Styles/Label_Settings_Normal_Text.tres" id="22_0o76g"]
+[ext_resource type="LabelSettings" uid="uid://bfyhqbjhexoyv" path="res://UI/Styles/Label_Settings_Title_Text.tres" id="22_2d87j"]
 [ext_resource type="PackedScene" uid="uid://deoswx8kisspv" path="res://UI/Player UI/Moster Island State Panel/monster_island_state_panel.tscn" id="22_vocqp"]
 [ext_resource type="Script" uid="uid://beq75bhjwesgy" path="res://Sub Systems/Discover System/DiscoverManager.cs" id="25_7vqgd"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Entities/Items/SpritesForItems/Icons_3rd/Wood_Icon.png" id="26_d27p6"]
@@ -472,7 +474,7 @@ label_translation_string = "MAINMENU_BACK_TO_MAINMENU"
 custom_minimum_size = Vector2(100, 0)
 offset_left = 5.0
 offset_top = 5.0
-offset_right = 95.0
+offset_right = 105.0
 offset_bottom = 201.0
 theme_override_constants/separation = 5
 
@@ -642,7 +644,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_styles/panel = ExtResource("20_kobl8")
 script = ExtResource("4_khv1d")
-hbox_items = [NodePath("MarginContainer/VBoxContainer/HBoxItem"), NodePath("MarginContainer/VBoxContainer/HBoxItem2"), NodePath("MarginContainer/VBoxContainer/HBoxItem3"), NodePath("MarginContainer/VBoxContainer/HBoxItem4")]
+hbox_items = [NodePath("MarginContainer/VBoxContainer/HBoxContainer/HBoxItem"), NodePath("MarginContainer/VBoxContainer/HBoxContainer/HBoxItem2"), NodePath("MarginContainer/VBoxContainer/HBoxContainer2/HBoxItem"), NodePath("MarginContainer/VBoxContainer/HBoxContainer2/HBoxItem2")]
 time_label = NodePath("MarginContainer/VBoxContainer/TimeLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/QuestMiniPanel" unique_id=110381040]
@@ -654,6 +656,7 @@ theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/QuestMiniPanel/MarginContainer" unique_id=536849536]
 layout_mode = 2
+alignment = 1
 
 [node name="TitleLabel" type="Label" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=533268980]
 layout_mode = 2
@@ -661,6 +664,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
 theme_override_font_sizes/font_size = 10
 text = "Objectiv"
+label_settings = ExtResource("22_2d87j")
 horizontal_alignment = 1
 script = ExtResource("7_vya4o")
 label_translation_string = "PLAYERUI_QUEST_OBJECTIV"
@@ -672,19 +676,36 @@ theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_0pxjf")
 theme_override_font_sizes/font_size = 8
 text = "Time Left: Unknown"
+label_settings = ExtResource("22_0o76g")
 horizontal_alignment = 1
 
-[node name="HBoxItem" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=183839239 instance=ExtResource("18_uwodk")]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=380440171]
 layout_mode = 2
+alignment = 1
 
-[node name="HBoxItem2" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=624156855 instance=ExtResource("18_uwodk")]
+[node name="HBoxItem" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=183839239 instance=ExtResource("18_uwodk")]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 2
 
-[node name="HBoxItem3" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=1019605724 instance=ExtResource("18_uwodk")]
+[node name="HBoxItem2" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=624156855 instance=ExtResource("18_uwodk")]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 2
 
-[node name="HBoxItem4" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=473504988 instance=ExtResource("18_uwodk")]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=1032208705]
 layout_mode = 2
+alignment = 1
+
+[node name="HBoxItem" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2015064678 instance=ExtResource("18_uwodk")]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 2
+
+[node name="HBoxItem2" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=329750905 instance=ExtResource("18_uwodk")]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 2
 
 [node name="EquipmentSelectBar" type="Container" parent="." unique_id=622824036 node_paths=PackedStringArray("select_slots")]
 custom_minimum_size = Vector2(220, 65)
