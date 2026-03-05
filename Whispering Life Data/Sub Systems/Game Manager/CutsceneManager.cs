@@ -43,7 +43,7 @@ public partial class CutsceneManager : Node2D
         if (current_cutscene_resource == res && current_cutscene_name == cutscene_name)
         {
             GD.PrintErr(
-                $"Cutscene '{cutscene_name}' wird gerade abgespielt und wird nicht erneut hinzugefügt."
+                $"Cutscene '{cutscene_name}' is currently playing is not added to the queue again."
             );
             return;
         }
@@ -54,7 +54,7 @@ public partial class CutsceneManager : Node2D
             if (queuedResource == res && queuedName == cutscene_name)
             {
                 GD.PrintErr(
-                    $"Cutscene '{cutscene_name}' ist bereits in der Queue und wird nicht erneut hinzugefügt."
+                    $"Cutscene '{cutscene_name}' is already in the queue and will not be added again."
                 );
                 return;
             }
@@ -80,7 +80,6 @@ public partial class CutsceneManager : Node2D
         In_Cutscene = true;
         var (resource, cutscene_name) = cutscene_queue.Dequeue();
 
-        // Speichere die aktuelle Cutscene
         current_cutscene_resource = resource;
         current_cutscene_name = cutscene_name;
 
@@ -93,11 +92,10 @@ public partial class CutsceneManager : Node2D
             cutscene_name
         );
 
-        // Warte bis die Cutscene zu Ende ist
         await ToSignal(this, SignalName.CutsceneFinished);
+
         current_cutscene_resource = null;
         current_cutscene_name = "";
-        // Spiele die nächste Cutscene ab
         PlayNextCutscene();
     }
 

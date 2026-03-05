@@ -95,7 +95,7 @@ public partial class MineableObject : placeable_building
     public void SetVariation(int variant, bool growth = false)
     {
         this.variant = variant;
-        Debug.Print("variation: " + variant);
+        Debug.Print("Mineable Object variation: " + variant);
         GetTexture2DArray(variant);
         if (growth)
             UpdateGrowthTexture();
@@ -252,7 +252,6 @@ public partial class MineableObject : placeable_building
         CharacterBody2D hit_lab = hit_label.Instantiate() as CharacterBody2D;
         hit_lab.GetChild<HitLabel>(0).Init(miningAmount, hit_point);
         IslandManager.instance.AddChild(hit_lab);
-        Debug.Print(hit_lab.Position.ToString());
     }
 
     private void UpdateToolDurability(int miningAmount)
@@ -315,12 +314,10 @@ public partial class MineableObject : placeable_building
         timer_bar.InitTimer(max_seconds: time, new_state: state, "Growth: 0%");
     }
 
-    //Check if % of Timer is next current frame
     public void UpdateGrowthTexture()
     {
         double progress_percent = timer_bar.GetProgressPercent();
         int frame_index = (int)(progress_percent * (growth_textures.textures.Count - 1));
-        //timer_bar.UpdateLabel("Growth: " + (int)(progress_percent * 100) + "%");
         if (frame_index < 0)
             frame_index = 0;
         if (frame_index >= growth_textures.textures.Count)
