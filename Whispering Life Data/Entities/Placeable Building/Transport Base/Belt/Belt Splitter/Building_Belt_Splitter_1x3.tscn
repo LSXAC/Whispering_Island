@@ -14,6 +14,8 @@
 [ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://Entities/Placeable Building/Transport Base/Belt/Belt Item/Animations/Belt_Movement_Animation.tres" id="11_c3h42"]
 [ext_resource type="Texture2D" uid="uid://byws8skjjfxmy" path="res://Entities/Placeable Building/Transport Base/Belt/Belt Splitter/Top_Belt_Splitter_3x1.png" id="11_fetye"]
 [ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Sub Systems/AnimationManager12D.cs" id="12_4wndj"]
+[ext_resource type="Script" uid="uid://cqukvf8b830bx" path="res://Entities/Placeable Building/Transport Base/Belt/Connections/ConnectedBeltsManager.cs" id="12_f7b18"]
+[ext_resource type="Script" uid="uid://b2x3csh1fe7be" path="res://Entities/Placeable Building/Transport Base/Belt/Connections/HasConnectedBeltArea.cs" id="13_8wg2b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uwmjt"]
 animations = [{
@@ -28,6 +30,9 @@ size = Vector2(14, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77bd0"]
 size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dylck"]
+size = Vector2(10, 10)
 
 [node name="BeltSplitter1x3" type="StaticBody2D" unique_id=805100728 node_paths=PackedStringArray("checkAreaTimer", "belt_0", "belt_1", "belt_2")]
 y_sort_enabled = true
@@ -129,16 +134,71 @@ anim_sprite = NodePath("AnimatedSprite2D")
 z_index = -1
 position = Vector2(-8, -8)
 sprite_frames = ExtResource("11_c3h42")
-animation = &"UP"
+animation = &"LEFT"
+frame_progress = 0.041236795
 
 [node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=600758044]
 polygon = PackedVector2Array(-31, 15, -8, 15, -8, 0, -2, 0, -2, -16, -8, -16, -8, -32, -31, -32)
+
+[node name="ConnectedBeltsManager" type="Node2D" parent="." unique_id=865810093]
+script = ExtResource("12_f7b18")
+
+[node name="HasConnectedBeltArea" type="Area2D" parent="ConnectedBeltsManager" unique_id=2126815802]
+position = Vector2(-8, -23)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("13_8wg2b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea" unique_id=857642576]
+shape = SubResource("RectangleShape2D_dylck")
+
+[node name="HasConnectedBeltArea2" type="Area2D" parent="ConnectedBeltsManager" unique_id=1203760961]
+position = Vector2(7, -8)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("13_8wg2b")
+dir = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea2" unique_id=207280483]
+shape = SubResource("RectangleShape2D_dylck")
+
+[node name="HasConnectedBeltArea3" type="Area2D" parent="ConnectedBeltsManager" unique_id=48665578]
+position = Vector2(-8, 7)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("13_8wg2b")
+dir = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea3" unique_id=854671030]
+shape = SubResource("RectangleShape2D_dylck")
+
+[node name="HasConnectedBeltArea4" type="Area2D" parent="ConnectedBeltsManager" unique_id=650338080]
+position = Vector2(-23, -8)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("13_8wg2b")
+dir = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea4" unique_id=747435347]
+shape = SubResource("RectangleShape2D_dylck")
 
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
 [connection signal="timeout" from="CheckAreaTimer" to="." method="CheckTimerTimeout"]
+[connection signal="area_entered" from="ConnectedBeltsManager/HasConnectedBeltArea" to="ConnectedBeltsManager/HasConnectedBeltArea" method="OnAreaEntered"]
+[connection signal="area_exited" from="ConnectedBeltsManager/HasConnectedBeltArea" to="ConnectedBeltsManager/HasConnectedBeltArea" method="OnAreaExited"]
+[connection signal="area_entered" from="ConnectedBeltsManager/HasConnectedBeltArea2" to="ConnectedBeltsManager/HasConnectedBeltArea2" method="OnAreaEntered"]
+[connection signal="area_exited" from="ConnectedBeltsManager/HasConnectedBeltArea2" to="ConnectedBeltsManager/HasConnectedBeltArea2" method="OnAreaExited"]
+[connection signal="area_entered" from="ConnectedBeltsManager/HasConnectedBeltArea3" to="ConnectedBeltsManager/HasConnectedBeltArea3" method="OnAreaEntered"]
+[connection signal="area_exited" from="ConnectedBeltsManager/HasConnectedBeltArea3" to="ConnectedBeltsManager/HasConnectedBeltArea3" method="OnAreaExited"]
+[connection signal="area_entered" from="ConnectedBeltsManager/HasConnectedBeltArea4" to="ConnectedBeltsManager/HasConnectedBeltArea4" method="OnAreaEntered"]
+[connection signal="area_exited" from="ConnectedBeltsManager/HasConnectedBeltArea4" to="ConnectedBeltsManager/HasConnectedBeltArea4" method="OnAreaExited"]
 
 [editable path="Belt"]
 [editable path="Belt2"]

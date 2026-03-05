@@ -13,6 +13,11 @@ public partial class BeltSplitter : Belt
 
     int row = 0;
 
+    public override void _Ready()
+    {
+        base._Ready();
+    }
+
     public new bool can_receive_item()
     {
         if (item_holder == null)
