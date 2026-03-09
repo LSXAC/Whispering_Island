@@ -2,20 +2,23 @@
 
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://UI/Menus/Game Menu/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="2_6nb4j"]
-[ext_resource type="Texture2D" uid="uid://dt57iw0qu33ut" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_36.png" id="3_m27n3"]
+[ext_resource type="LabelSettings" uid="uid://bxjlynolh43sw" path="res://UI/Styles/Label_Settings_Title_Text_Selected.tres" id="2_k61vr"]
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://UI/Menus/Translation/TranslationButton.cs" id="3_pwamf"]
 [ext_resource type="PackedScene" uid="uid://74pm7gmanqf2" path="res://UI/Menus/Game Menu/Inventory Menu/player_inventory.tscn" id="3_ub0ut"]
+[ext_resource type="Texture2D" uid="uid://du1pviqlflmsq" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_25.png" id="4_2jtc7"]
 [ext_resource type="Script" uid="uid://bpr1ymr8thsmp" path="res://UI/Menus/Game Menu/Crafting Menu/CraftingMenu.cs" id="4_3cwxu"]
 [ext_resource type="Script" uid="uid://cfwlly4mpd05v" path="res://UI/Menus/Game Menu/Inventory Menu/Equipment Panel/EquipmentPanel.cs" id="4_e3tur"]
 [ext_resource type="PackedScene" uid="uid://bj72iumyf7nxx" path="res://UI/Menus/Machine Menus/Chest Menu/chest_inventory.tscn" id="4_eoykc"]
 [ext_resource type="Script" uid="uid://omdw880ahi7w" path="res://UI/Menus/Machine Menus/Furnace Menu/FurnaceTab.cs" id="4_kmuua"]
 [ext_resource type="Texture2D" uid="uid://ne3oahdi530f" path="res://UI/Menus/Game Menu/Inventory Menu/Texture/Char_Profil.png" id="5_6jpat"]
 [ext_resource type="Texture2D" uid="uid://b8klnfsxws1y4" path="res://Entities/Items/SpritesForItems/Icons_3rd/Icons_27_10.png" id="5_bku2s"]
-[ext_resource type="Texture2D" uid="uid://wm8u7fh52l6x" path="res://Entities/Items/SpritesForItems/Icons_3rd/Icons_27_28.png" id="6_wyyvd"]
+[ext_resource type="Texture2D" uid="uid://bjo17nkno7g5g" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_90.png" id="6_2jtc7"]
 [ext_resource type="Script" uid="uid://bwddpawbd6vna" path="res://UI/Menus/Game Menu/Inventory Menu/Player Stats/PlayerStatsUI.cs" id="7_hhlnf"]
-[ext_resource type="Texture2D" uid="uid://dogc25lho5gel" path="res://Entities/Items/SpritesForItems/Plants_Icons/icons_29_06.png" id="7_lai0m"]
+[ext_resource type="LabelSettings" uid="uid://bfyhqbjhexoyv" path="res://UI/Styles/Label_Settings_Title_Text.tres" id="7_kqkeb"]
 [ext_resource type="Texture2D" uid="uid://bpn4kdrr5ejdr" path="res://Entities/Items/SpritesForItems/Icons_3rd/Icons_27_73.png" id="7_wk80g"]
+[ext_resource type="Texture2D" uid="uid://cq8pk1q4c8ud0" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_60.png" id="9_2jtc7"]
 [ext_resource type="Texture2D" uid="uid://soncujix6fa3" path="res://Entities/Items/SpritesForItems/Icons/setting.png" id="9_4wwa8"]
+[ext_resource type="Texture2D" uid="uid://hwm8o43058yi" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_03.png" id="10_kqkeb"]
 [ext_resource type="Texture2D" uid="uid://be2xmt8674o1k" path="res://Entities/Items/SpritesForItems/Icons/rejected.png" id="10_yfud7"]
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://UI/Menus/menu_header_object.tscn" id="11_45saq"]
 [ext_resource type="Script" uid="uid://dmhek11432ok0" path="res://UI/Menus/Research Menu/ResearchTab.cs" id="11_hr8uu"]
@@ -116,6 +119,7 @@
 [ext_resource type="Resource" uid="uid://dmqrajecslxbo" path="res://UI/Menus/Island Menu/Island Menu Item/Data/mystical_island_menu_item_data.tres" id="92_2jtc7"]
 [ext_resource type="Resource" uid="uid://ccs5nn02ivgu7" path="res://UI/Menus/Island Menu/Island Menu Item/Data/dessert_island_menu_item_data.tres" id="93_kqkeb"]
 [ext_resource type="Resource" uid="uid://dyy2lfagaxj8n" path="res://UI/Menus/Island Menu/Island Menu Item/Data/farming_island_menu_item_data.tres" id="94_k61vr"]
+[ext_resource type="Script" uid="uid://wilafu3hoei3" path="res://UI/Menus/Game Menu/Crafting Menu/CraftingCategoryPanel.cs" id="102_x76ca"]
 [ext_resource type="StyleBox" uid="uid://cfrmx1sogqkln" path="res://UI/Styles/Slider_Style.tres" id="103_sy5xb"]
 [ext_resource type="StyleBox" uid="uid://b2c5h8k14gscx" path="res://UI/Styles/Slider_Grabber_Style.tres" id="104_fato5"]
 [ext_resource type="Texture2D" uid="uid://deai4c50jpvjn" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_11.png" id="109_4awxy"]
@@ -211,7 +215,7 @@ border_width_top = 2
 border_color = Color(0, 0, 0, 1)
 border_blend = true
 
-[node name="GameMenu" type="CanvasLayer" unique_id=1705449440 node_paths=PackedStringArray("load_button", "destroy_menu", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "rail_station_tab", "minecart_tab", "header_container")]
+[node name="GameMenu" type="CanvasLayer" unique_id=1705449440 node_paths=PackedStringArray("load_button", "destroy_menu", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "rail_station_tab", "minecart_tab", "header_container", "crafting_category_panel")]
 process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/SaveLoadTab/HBoxContainer/LoadGameButton")
@@ -232,6 +236,9 @@ help_tab = NodePath("Background/HelpTab")
 rail_station_tab = NodePath("Background/RailStationTab")
 minecart_tab = NodePath("Background/MinecartTab")
 header_container = NodePath("Background/ColorRect/ColorRect/HBoxHeader")
+title_selected = ExtResource("2_k61vr")
+title_normal = ExtResource("7_kqkeb")
+crafting_category_panel = NodePath("Background/CraftingTab/CraftingCategoryPanel")
 
 [node name="TransBackground" type="ColorRect" parent="." unique_id=558874050]
 anchors_preset = 15
@@ -284,14 +291,42 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
+theme_override_constants/outline_size = 4
 theme_override_constants/icon_max_width = 12
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
-text = "Inventory"
-icon = ExtResource("3_m27n3")
 flat = true
-script = ExtResource("3_pwamf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ColorRect/ColorRect/HBoxHeader/InvTabButton" unique_id=1495464881]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background/ColorRect/ColorRect/HBoxHeader/InvTabButton/HBoxContainer" unique_id=783767033]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+texture = ExtResource("4_2jtc7")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/ColorRect/ColorRect/HBoxHeader/InvTabButton/HBoxContainer" unique_id=1243858477]
+layout_mode = 2
+text = "Inventory"
+label_settings = ExtResource("2_k61vr")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("26_tl5yt")
 label_translation_string = "GAMEMENU_INVENTORY_BUTTON"
 
 [node name="CraftingTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=2034542310]
@@ -303,25 +338,80 @@ theme_override_constants/outline_size = 3
 theme_override_constants/icon_max_width = 12
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
-text = "Crafting"
-icon = ExtResource("5_bku2s")
 flat = true
-script = ExtResource("3_pwamf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ColorRect/ColorRect/HBoxHeader/CraftingTabButton" unique_id=545823502]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background/ColorRect/ColorRect/HBoxHeader/CraftingTabButton/HBoxContainer" unique_id=1680005756]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+texture = ExtResource("5_bku2s")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/ColorRect/ColorRect/HBoxHeader/CraftingTabButton/HBoxContainer" unique_id=1024398699]
+layout_mode = 2
+text = "CRAFTING"
+label_settings = ExtResource("7_kqkeb")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("26_tl5yt")
 label_translation_string = "GAMEMENU_CRAFTING_BUTTON"
 
 [node name="SaveTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=942135890]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_constants/icon_max_width = 12
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
-text = "Save/Load"
-icon = ExtResource("6_wyyvd")
 flat = true
-script = ExtResource("3_pwamf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ColorRect/ColorRect/HBoxHeader/SaveTabButton" unique_id=434318562]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background/ColorRect/ColorRect/HBoxHeader/SaveTabButton/HBoxContainer" unique_id=638696663]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture = ExtResource("6_2jtc7")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/ColorRect/ColorRect/HBoxHeader/SaveTabButton/HBoxContainer" unique_id=1037652847]
+layout_mode = 2
+text = "SAVE"
+label_settings = ExtResource("7_kqkeb")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("26_tl5yt")
 label_translation_string = "GAMEMENU_SAVELOAD_BUTTON"
 
 [node name="StatsTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=1996054672]
@@ -347,10 +437,39 @@ theme_override_constants/outline_size = 3
 theme_override_constants/icon_max_width = 12
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
-text = "SkillTREE"
-icon = ExtResource("7_lai0m")
 flat = true
-script = ExtResource("3_pwamf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ColorRect/ColorRect/HBoxHeader/SkillTreeTabButton" unique_id=1784743392]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background/ColorRect/ColorRect/HBoxHeader/SkillTreeTabButton/HBoxContainer" unique_id=839786465]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+texture = ExtResource("9_2jtc7")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/ColorRect/ColorRect/HBoxHeader/SkillTreeTabButton/HBoxContainer" unique_id=36817969]
+layout_mode = 2
+text = "Skilltree"
+label_settings = ExtResource("7_kqkeb")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("26_tl5yt")
+label_translation_string = "GAMEMENU_SKILLTREE"
 
 [node name="AdminButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=504328986]
 layout_mode = 2
@@ -361,22 +480,80 @@ theme_override_constants/outline_size = 3
 theme_override_constants/icon_max_width = 12
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
-text = "ADMIN"
 flat = true
-script = ExtResource("3_pwamf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ColorRect/ColorRect/HBoxHeader/AdminButton" unique_id=2082115427]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background/ColorRect/ColorRect/HBoxHeader/AdminButton/HBoxContainer" unique_id=2010326051]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture = ExtResource("10_kqkeb")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/ColorRect/ColorRect/HBoxHeader/AdminButton/HBoxContainer" unique_id=2087263551]
+layout_mode = 2
+text = "ADMIN"
+label_settings = ExtResource("7_kqkeb")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HelpButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=607044454]
+visible = false
 layout_mode = 2
+size_flags_horizontal = 3
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_constants/icon_max_width = 12
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
-text = "Help"
-icon = ExtResource("7_wk80g")
 flat = true
-script = ExtResource("3_pwamf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ColorRect/ColorRect/HBoxHeader/HelpButton" unique_id=1950922695]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background/ColorRect/ColorRect/HBoxHeader/HelpButton/HBoxContainer" unique_id=2111220395]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture = ExtResource("7_wk80g")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/ColorRect/ColorRect/HBoxHeader/HelpButton/HBoxContainer" unique_id=368344664]
+layout_mode = 2
+text = "HELP CENTER"
+label_settings = ExtResource("7_kqkeb")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("26_tl5yt")
 label_translation_string = "GAMEMENU_HELP_BUTTON"
 
 [node name="SettingsTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=2075880969]
@@ -4621,18 +4798,21 @@ horizontal_scroll_mode = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/CraftingTab/VBoxContainer/CraftingMenuMachineParts/ScrollContainer" unique_id=1160925372]
 layout_mode = 2
 
-[node name="CategoryPanel" type="PanelContainer" parent="Background/CraftingTab" unique_id=450447450]
+[node name="CraftingCategoryPanel" type="PanelContainer" parent="Background/CraftingTab" unique_id=450447450]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 18.0
 offset_right = 180.0
 offset_bottom = 260.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tibut")
+script = ExtResource("102_x76ca")
+title_normal = ExtResource("7_kqkeb")
+title_selected = ExtResource("2_k61vr")
 
-[node name="HSplitContainer" type="VBoxContainer" parent="Background/CraftingTab/CategoryPanel" unique_id=2100462201]
+[node name="HSplitContainer" type="VBoxContainer" parent="Background/CraftingTab/CraftingCategoryPanel" unique_id=2100462201]
 layout_mode = 2
 
-[node name="GeneralButton" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer" unique_id=91350630]
+[node name="GeneralButton" type="Button" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer" unique_id=91350630]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4644,11 +4824,41 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/hover = ExtResource("32_w3vm4")
 theme_override_styles/disabled = ExtResource("31_j0nuq")
 theme_override_styles/focus = ExtResource("28_gcthi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/GeneralButton" unique_id=1509380086]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/GeneralButton/HBoxContainer" unique_id=417220917]
+visible = false
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+texture = ExtResource("4_2jtc7")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/GeneralButton/HBoxContainer" unique_id=1126922022]
+layout_mode = 2
 text = "Basic"
-script = ExtResource("3_pwamf")
+label_settings = ExtResource("7_kqkeb")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("26_tl5yt")
 label_translation_string = "CRAFTING_MENU_GENERAL"
 
-[node name="ToolsButton" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer" unique_id=1878469399]
+[node name="ToolsButton" type="Button" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer" unique_id=1878469399]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4660,11 +4870,41 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/hover = ExtResource("32_w3vm4")
 theme_override_styles/disabled = ExtResource("31_j0nuq")
 theme_override_styles/focus = ExtResource("28_gcthi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/ToolsButton" unique_id=1389930238]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/ToolsButton/HBoxContainer" unique_id=234931378]
+visible = false
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+texture = ExtResource("4_2jtc7")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/ToolsButton/HBoxContainer" unique_id=404162642]
+layout_mode = 2
 text = "Tools"
-script = ExtResource("3_pwamf")
+label_settings = ExtResource("7_kqkeb")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("26_tl5yt")
 label_translation_string = "CRAFTING_MENU_TOOLS"
 
-[node name="ToolspartsButton" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer" unique_id=45980773]
+[node name="ToolspartsButton" type="Button" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer" unique_id=45980773]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4676,11 +4916,41 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/hover = ExtResource("32_w3vm4")
 theme_override_styles/disabled = ExtResource("31_j0nuq")
 theme_override_styles/focus = ExtResource("28_gcthi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/ToolspartsButton" unique_id=319431288]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/ToolspartsButton/HBoxContainer" unique_id=137053421]
+visible = false
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+texture = ExtResource("4_2jtc7")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/ToolspartsButton/HBoxContainer" unique_id=2125067019]
+layout_mode = 2
 text = "Toolparts"
-script = ExtResource("3_pwamf")
+label_settings = ExtResource("7_kqkeb")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("26_tl5yt")
 label_translation_string = "CRAFTING_MENU_TOOLPARTS"
 
-[node name="ArmorButton" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer" unique_id=83876518]
+[node name="ArmorButton" type="Button" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer" unique_id=83876518]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4692,11 +4962,41 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/hover = ExtResource("32_w3vm4")
 theme_override_styles/disabled = ExtResource("31_j0nuq")
 theme_override_styles/focus = ExtResource("28_gcthi")
-text = "CRAFTING_MENU_ARMOR"
-script = ExtResource("3_pwamf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/ArmorButton" unique_id=1719926828]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/ArmorButton/HBoxContainer" unique_id=2028723172]
+visible = false
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+texture = ExtResource("4_2jtc7")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/ArmorButton/HBoxContainer" unique_id=2128239026]
+layout_mode = 2
+text = "Armor"
+label_settings = ExtResource("7_kqkeb")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("26_tl5yt")
 label_translation_string = "CRAFTING_MENU_ARMOR"
 
-[node name="AgricultureButton" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer" unique_id=441962471]
+[node name="AgricultureButton" type="Button" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer" unique_id=441962471]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4708,11 +5008,41 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/hover = ExtResource("32_w3vm4")
 theme_override_styles/disabled = ExtResource("31_j0nuq")
 theme_override_styles/focus = ExtResource("28_gcthi")
-text = "CRAFTING_MENU_ARMOR"
-script = ExtResource("3_pwamf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/AgricultureButton" unique_id=223364638]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/AgricultureButton/HBoxContainer" unique_id=307657465]
+visible = false
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+texture = ExtResource("4_2jtc7")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/AgricultureButton/HBoxContainer" unique_id=396275419]
+layout_mode = 2
+text = "Agrictulture"
+label_settings = ExtResource("7_kqkeb")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("26_tl5yt")
 label_translation_string = "CRAFTING_MENU_AGRICULTURE"
 
-[node name="MachineButton" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer" unique_id=41061868]
+[node name="MachineButton" type="Button" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer" unique_id=41061868]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4724,11 +5054,41 @@ theme_override_styles/pressed = ExtResource("33_sy5xb")
 theme_override_styles/hover = ExtResource("32_w3vm4")
 theme_override_styles/disabled = ExtResource("31_j0nuq")
 theme_override_styles/focus = ExtResource("28_gcthi")
-text = "Machine Parts"
-script = ExtResource("3_pwamf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/MachineButton" unique_id=7276041]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -16.0
+offset_right = 30.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/MachineButton/HBoxContainer" unique_id=720863926]
+visible = false
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+texture = ExtResource("4_2jtc7")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/MachineButton/HBoxContainer" unique_id=1073546056]
+layout_mode = 2
+text = "Machine parts"
+label_settings = ExtResource("7_kqkeb")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("26_tl5yt")
 label_translation_string = "CRAFTING_MENU_MACHINE_PARTS"
 
-[node name="Button7" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer" unique_id=905234710]
+[node name="Button7" type="Button" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer" unique_id=905234710]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4744,7 +5104,7 @@ disabled = true
 text = "---"
 script = ExtResource("3_pwamf")
 
-[node name="Button8" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer" unique_id=256148870]
+[node name="Button8" type="Button" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer" unique_id=256148870]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -4760,7 +5120,7 @@ disabled = true
 text = "---"
 script = ExtResource("3_pwamf")
 
-[node name="Button9" type="Button" parent="Background/CraftingTab/CategoryPanel/HSplitContainer" unique_id=2136334404]
+[node name="Button9" type="Button" parent="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer" unique_id=2136334404]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -6611,12 +6971,12 @@ alignment = 1
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer/Button3" to="Background/AdminTab" method="OnTimeMultiplier" binds= [20]]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer/Button4" to="Background/AdminTab" method="OnTimeMultiplier" binds= [40]]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer/Button5" to="Background/AdminTab" method="OnTimeMultiplier" binds= [80]]
-[connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/GeneralButton" to="." method="OnCraftingCategoryButton" binds= [0]]
-[connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/ToolsButton" to="." method="OnCraftingCategoryButton" binds= [1]]
-[connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/ToolspartsButton" to="." method="OnCraftingCategoryButton" binds= [2]]
-[connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/ArmorButton" to="." method="OnCraftingCategoryButton" binds= [3]]
-[connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/AgricultureButton" to="." method="OnCraftingCategoryButton" binds= [4]]
-[connection signal="pressed" from="Background/CraftingTab/CategoryPanel/HSplitContainer/MachineButton" to="." method="OnCraftingCategoryButton" binds= [5]]
+[connection signal="pressed" from="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/GeneralButton" to="." method="OnCraftingCategoryButton" binds= [0]]
+[connection signal="pressed" from="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/ToolsButton" to="." method="OnCraftingCategoryButton" binds= [1]]
+[connection signal="pressed" from="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/ToolspartsButton" to="." method="OnCraftingCategoryButton" binds= [2]]
+[connection signal="pressed" from="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/ArmorButton" to="." method="OnCraftingCategoryButton" binds= [3]]
+[connection signal="pressed" from="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/AgricultureButton" to="." method="OnCraftingCategoryButton" binds= [4]]
+[connection signal="pressed" from="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/MachineButton" to="." method="OnCraftingCategoryButton" binds= [5]]
 [connection signal="pressed" from="Background/StatsTab/HBoxContainer/SaveGameButton" to="." method="OnSaveButton"]
 [connection signal="pressed" from="Background/StatsTab/HBoxContainer/LoadGameButton" to="." method="OnLoadButton"]
 [connection signal="visibility_changed" from="Background/HelpTab" to="Background/HelpTab" method="OnVisiblityChange"]

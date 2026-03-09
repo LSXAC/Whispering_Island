@@ -16,9 +16,9 @@ script = ExtResource("1_ckowm")
 [node name="Label" type="Label" parent="." unique_id=77248286]
 layout_mode = 0
 offset_left = -6.0
-offset_top = 16.0
-offset_right = 24.0
-offset_bottom = 26.0
+offset_top = 14.0
+offset_right = 23.0
+offset_bottom = 24.0
 theme_override_fonts/font = ExtResource("2_567ka")
 theme_override_font_sizes/font_size = 10
 text = "20x"
@@ -27,17 +27,17 @@ horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=948852369]
-custom_minimum_size = Vector2(24, 22)
+custom_minimum_size = Vector2(22, 22)
 layout_mode = 0
 offset_left = -4.0
-offset_top = 2.0
-offset_right = 24.0
-offset_bottom = 24.0
+offset_top = 1.0
+offset_right = 22.0
+offset_bottom = 23.0
 mouse_filter = 2
 alignment = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer" unique_id=1594264714]
-custom_minimum_size = Vector2(28, 2)
+custom_minimum_size = Vector2(26, 2)
 layout_mode = 2
 mouse_filter = 2
 step = 1.0

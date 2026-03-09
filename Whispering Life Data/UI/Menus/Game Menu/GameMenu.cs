@@ -59,8 +59,12 @@ public partial class GameMenu : CanvasLayer
     [Export]
     public HBoxContainer header_container;
 
-    public Color font_color_selected = new Color(0.969f, 0.78f, 0.4f);
-    public Color font_color_standard = new Color(1f, 1f, 1);
+    [Export]
+    public LabelSettings title_selected,
+        title_normal;
+
+    [Export]
+    public CraftingCategoryPanel crafting_category_panel;
 
     public override void _Ready()
     {
@@ -163,17 +167,13 @@ public partial class GameMenu : CanvasLayer
     {
         foreach (Button btn in header_container.GetChildren())
         {
-            btn.RemoveThemeColorOverride("font_color");
-            btn.RemoveThemeColorOverride("font_hover_color");
+            if (btn.HasNode("HBoxContainer"))
+                btn.GetChild(0).GetNode<Label>("Label").LabelSettings = title_normal;
         }
-        ((Button)header_container.GetChild((int)tab)).AddThemeColorOverride(
-            "font_color",
-            font_color_selected
-        );
-        ((Button)header_container.GetChild((int)tab)).AddThemeColorOverride(
-            "font_hover_color",
-            font_color_selected
-        );
+        ((Button)header_container.GetChild((int)tab))
+            .GetChild(0)
+            .GetNode<Label>("Label")
+            .LabelSettings = title_selected;
     }
 
     public void OnVisiblityChange()
@@ -210,7 +210,7 @@ public partial class GameMenu : CanvasLayer
     {
         SetWindow(this);
         CloseAllTabs();
-        ChangeSelectedTabColor(Tabs.Settings);
+        //ChangeSelectedTabColor(Tabs.Settings);
         settings_tab.Visible = true;
     }
 
@@ -223,6 +223,7 @@ public partial class GameMenu : CanvasLayer
         Debug.Print("OnTab0");
         OnCraftingCategoryButton(0);
         crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuBasic").ReloadUIRecipes();
+        crafting_category_panel.SetButton((CraftingCategoryPanel.CATEGORIES)0);
     }
 
     public void OnCraftingCategoryButton(int id)
@@ -233,6 +234,7 @@ public partial class GameMenu : CanvasLayer
         crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuArmor").Visible = false;
         crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuAgriculture").Visible = false;
         crafting_tab.GetChild(0).GetNode<CraftingMenu>("CraftingMenuMachineParts").Visible = false;
+        crafting_category_panel.SetButton((CraftingCategoryPanel.CATEGORIES)id);
 
         switch (id)
         {

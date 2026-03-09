@@ -14,7 +14,7 @@ SETTINGS_MUSIC_VOLUME,Music Volume,Musik Lautstärke
 SETTINGS_HAVE_SAVED,Don't forget to save!,Vergiss nicht zu speichern!
 SETTINGS_WINDOW_LABEL,Window Mode,Fenstermodus
 SETTINGS_WINDOW_DIFFICULTY,Difficulty,Schwierigkeitsgrad
-,,
+GAMEMENU_SKILLTREE,Skilltree,Fähigkeiten
 ,,
 DISCOVERY_TITLE,Discovered:,Entdeckt:
 DISCOVERY_DESC,You Found: ,Du hast gefunden: 
