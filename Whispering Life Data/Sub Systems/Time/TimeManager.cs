@@ -76,4 +76,16 @@ public partial class TimeManager : Node2D
     {
         PlayerUI.instance.UpdateGameTimeLabel();
     }
+
+    public static void PauseTime()
+    {
+        instance.game_timer.Stop();
+        QuestManager.instance.quest_timer.PauseTimer();
+    }
+
+    public static void ResumeTime()
+    {
+        instance.game_timer.Start();
+        QuestManager.instance.quest_timer.StartTimer();
+    }
 }

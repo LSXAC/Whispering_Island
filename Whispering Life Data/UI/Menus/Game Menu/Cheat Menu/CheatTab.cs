@@ -35,15 +35,13 @@ public partial class CheatTab : ColorRect
 
     public void OnResumeTimeButton()
     {
-        TimeManager.instance.game_timer.Start();
-        QuestManager.instance.quest_timer.StartTimer();
+        TimeManager.ResumeTime();
         timeStateLabel.Text = "Time is running! HELP!";
     }
 
     public void OnPauseTimeButton()
     {
-        TimeManager.instance.game_timer.Stop();
-        QuestManager.instance.quest_timer.PauseTimer();
+        TimeManager.PauseTime();
         timeStateLabel.Text = "Time is stopped! Relief!";
     }
 

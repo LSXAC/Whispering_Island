@@ -74,7 +74,7 @@ public partial class CutsceneManager : Node2D
             GlobalFunctions.LeaveDialogue();
             return;
         }
-
+        TimeManager.PauseTime();
         GameMenu.CloseLastWindow();
 
         In_Cutscene = true;
@@ -93,7 +93,7 @@ public partial class CutsceneManager : Node2D
         );
 
         await ToSignal(this, SignalName.CutsceneFinished);
-
+        TimeManager.ResumeTime();
         current_cutscene_resource = null;
         current_cutscene_name = "";
         PlayNextCutscene();
