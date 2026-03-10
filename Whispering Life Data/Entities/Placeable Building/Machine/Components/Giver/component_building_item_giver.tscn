@@ -2,14 +2,17 @@
 
 [ext_resource type="Script" uid="uid://b26xeo4l8kneo" path="res://Entities/Placeable Building/Machine/Components/Giver/Giver.cs" id="1_rc5cs"]
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Entities/Placeable Building/Transport Base/Component/Building_Rail_Detector_Component.tscn" id="2_3u57x"]
+[ext_resource type="PackedScene" uid="uid://dn2qqaykuedsc" path="res://Entities/Placeable Building/Transport Base/path_connect_area.tscn" id="3_awbay"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_diue1"]
 size = Vector2(8, 8)
 
-[node name="Giver" type="Area2D" unique_id=365945892 node_paths=PackedStringArray("detector", "Holder")]
-position = Vector2(-39, -9)
+[node name="Giver" type="Area2D" unique_id=365945892 node_paths=PackedStringArray("detector", "path_connect_area", "Holder")]
+position = Vector2(-6, -6)
 script = ExtResource("1_rc5cs")
 detector = NodePath("Detector")
+to_direction = 3
+path_connect_area = NodePath("PathConnectArea")
 Holder = NodePath("Holder")
 
 [node name="Holder" type="Node2D" parent="." unique_id=1704036799]
@@ -23,6 +26,8 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=127948001]
 shape = SubResource("RectangleShape2D_diue1")
+
+[node name="PathConnectArea" parent="." unique_id=272432976 instance=ExtResource("3_awbay")]
 
 [connection signal="timeout" from="ProductionTimer" to="." method="OnProductionTimerTimeout"]
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dn2qqaykuedsc"]
+
+[ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Entities/Placeable Building/Transport Base/PathConnectArea.cs" id="1_ndmvt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77bd0"]
+size = Vector2(10, 10)
+
+[node name="PathConnectArea" type="Area2D" unique_id=272432976]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_ndmvt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=177206382]
+shape = SubResource("RectangleShape2D_77bd0")

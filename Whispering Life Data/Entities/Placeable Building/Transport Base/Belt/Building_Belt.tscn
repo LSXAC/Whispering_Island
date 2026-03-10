@@ -9,9 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://d363j7whchy1g" path="res://Entities/Placeable Building/Transport Base/Component/Building_Rail_Detector_Component.tscn" id="5_l48sb"]
 [ext_resource type="PackedScene" uid="uid://cd7dleft2h5rl" path="res://Entities/Placeable Building/Transport Base/Belt/Item Holder/item_holder.tscn" id="6_thcg6"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="7_jpwuk"]
-[ext_resource type="Script" uid="uid://cn5q054x0xle3" path="res://Entities/Placeable Building/Transport Base/PathConnectArea.cs" id="8_wosb3"]
-[ext_resource type="Script" uid="uid://cqukvf8b830bx" path="res://Entities/Placeable Building/Transport Base/Belt/Connections/ConnectedBeltsManager.cs" id="9_dqr7u"]
-[ext_resource type="Script" uid="uid://b2x3csh1fe7be" path="res://Entities/Placeable Building/Transport Base/Belt/Connections/HasConnectedBeltArea.cs" id="10_e0qwf"]
+[ext_resource type="PackedScene" uid="uid://dn2qqaykuedsc" path="res://Entities/Placeable Building/Transport Base/path_connect_area.tscn" id="10_vkfis"]
+[ext_resource type="PackedScene" uid="uid://dijp08yc44cjn" path="res://Entities/Placeable Building/Transport Base/connected_belts_manager.tscn" id="11_eiumo"]
 [ext_resource type="Script" uid="uid://bh3tsp5n66jlv" path="res://Sub Systems/AnimationManager12D.cs" id="11_m132v"]
 [ext_resource type="SpriteFrames" uid="uid://bid3gbrrdsxer" path="res://Entities/Placeable Building/Transport Base/Belt/Belt Item/Animations/Belt_Movement_Animation.tres" id="12_g11o0"]
 
@@ -25,12 +24,6 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8pj"]
 size = Vector2(14, 14)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_77bd0"]
-size = Vector2(10, 10)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlqqa"]
-size = Vector2(10, 10)
 
 [node name="Belt" type="StaticBody2D" unique_id=5772240 groups=["Belt"]]
 y_sort_enabled = true
@@ -89,61 +82,10 @@ script = ExtResource("7_jpwuk")
 position = Vector2(-8, -8)
 shape = SubResource("RectangleShape2D_3k8pj")
 
-[node name="PathConnectArea" type="Area2D" parent="." unique_id=1437402332]
-collision_layer = 4
-collision_mask = 0
-monitoring = false
-script = ExtResource("8_wosb3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PathConnectArea" unique_id=1061095840]
+[node name="PathConnectArea" parent="." unique_id=272432976 instance=ExtResource("10_vkfis")]
 position = Vector2(-8, -8)
-shape = SubResource("RectangleShape2D_77bd0")
 
-[node name="ConnectedBeltsManager" type="Node2D" parent="." unique_id=1736926742]
-script = ExtResource("9_dqr7u")
-
-[node name="HasConnectedBeltArea" type="Area2D" parent="ConnectedBeltsManager" unique_id=191571125]
-position = Vector2(-8, -23)
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-script = ExtResource("10_e0qwf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea" unique_id=1641968716]
-shape = SubResource("RectangleShape2D_hlqqa")
-
-[node name="HasConnectedBeltArea2" type="Area2D" parent="ConnectedBeltsManager" unique_id=1367529578]
-position = Vector2(7, -8)
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-script = ExtResource("10_e0qwf")
-dir = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea2" unique_id=43333052]
-shape = SubResource("RectangleShape2D_hlqqa")
-
-[node name="HasConnectedBeltArea3" type="Area2D" parent="ConnectedBeltsManager" unique_id=475160339]
-position = Vector2(-8, 7)
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-script = ExtResource("10_e0qwf")
-dir = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea3" unique_id=1595433140]
-shape = SubResource("RectangleShape2D_hlqqa")
-
-[node name="HasConnectedBeltArea4" type="Area2D" parent="ConnectedBeltsManager" unique_id=961086617]
-position = Vector2(-23, -8)
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-script = ExtResource("10_e0qwf")
-dir = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectedBeltsManager/HasConnectedBeltArea4" unique_id=499865963]
-shape = SubResource("RectangleShape2D_hlqqa")
+[node name="ConnectedBeltsManager" parent="." unique_id=1002670090 instance=ExtResource("11_eiumo")]
 
 [node name="12DAnimationManager" type="Node2D" parent="." unique_id=1458821141 node_paths=PackedStringArray("anim_sprite")]
 y_sort_enabled = true
@@ -161,11 +103,3 @@ animation = &"CORNER_LEFT_DOWN"
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
-[connection signal="area_entered" from="ConnectedBeltsManager/HasConnectedBeltArea" to="ConnectedBeltsManager/HasConnectedBeltArea" method="OnAreaEntered"]
-[connection signal="area_exited" from="ConnectedBeltsManager/HasConnectedBeltArea" to="ConnectedBeltsManager/HasConnectedBeltArea" method="OnAreaExited"]
-[connection signal="area_entered" from="ConnectedBeltsManager/HasConnectedBeltArea2" to="ConnectedBeltsManager/HasConnectedBeltArea2" method="OnAreaEntered"]
-[connection signal="area_exited" from="ConnectedBeltsManager/HasConnectedBeltArea2" to="ConnectedBeltsManager/HasConnectedBeltArea2" method="OnAreaExited"]
-[connection signal="area_entered" from="ConnectedBeltsManager/HasConnectedBeltArea3" to="ConnectedBeltsManager/HasConnectedBeltArea3" method="OnAreaEntered"]
-[connection signal="area_exited" from="ConnectedBeltsManager/HasConnectedBeltArea3" to="ConnectedBeltsManager/HasConnectedBeltArea3" method="OnAreaExited"]
-[connection signal="area_entered" from="ConnectedBeltsManager/HasConnectedBeltArea4" to="ConnectedBeltsManager/HasConnectedBeltArea4" method="OnAreaEntered"]
-[connection signal="area_exited" from="ConnectedBeltsManager/HasConnectedBeltArea4" to="ConnectedBeltsManager/HasConnectedBeltArea4" method="OnAreaExited"]

@@ -27,6 +27,13 @@ public partial class HasConnectedBeltArea : Area2D
                     ba.GetParent<TransportBase>().to_direction;
                 cbm.GetParent<TransportBase>().set_direction();
             }
+            if (ba.GetParent() is Giver)
+            {
+                Debug.Print("Connected: " + Name + " | Dir: " + ba.GetParent<Giver>().to_direction);
+                cbm.connected_belts[(int)dir].connected = true;
+                cbm.connected_belts[(int)dir].to_direction = ba.GetParent<Giver>().to_direction;
+                cbm.GetParent<TransportBase>().set_direction();
+            }
         }
     }
 

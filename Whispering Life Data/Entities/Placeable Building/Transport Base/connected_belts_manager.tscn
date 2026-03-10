@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dijp08yc44cjn"]
+
+[ext_resource type="Script" uid="uid://cqukvf8b830bx" path="res://Entities/Placeable Building/Transport Base/Belt/Connections/ConnectedBeltsManager.cs" id="1_yqixr"]
+[ext_resource type="Script" uid="uid://b2x3csh1fe7be" path="res://Entities/Placeable Building/Transport Base/Belt/Connections/HasConnectedBeltArea.cs" id="2_q8cen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlqqa"]
+size = Vector2(10, 10)
+
+[node name="ConnectedBeltsManager" type="Node2D" unique_id=1002670090]
+script = ExtResource("1_yqixr")
+
+[node name="HasConnectedBeltArea" type="Area2D" parent="." unique_id=1191906056]
+position = Vector2(-8, -23)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("2_q8cen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HasConnectedBeltArea" unique_id=344846308]
+shape = SubResource("RectangleShape2D_hlqqa")
+
+[node name="HasConnectedBeltArea2" type="Area2D" parent="." unique_id=1628237793]
+position = Vector2(7, -8)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("2_q8cen")
+dir = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HasConnectedBeltArea2" unique_id=206868937]
+shape = SubResource("RectangleShape2D_hlqqa")
+
+[node name="HasConnectedBeltArea3" type="Area2D" parent="." unique_id=1170474644]
+position = Vector2(-8, 7)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("2_q8cen")
+dir = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HasConnectedBeltArea3" unique_id=1036041755]
+shape = SubResource("RectangleShape2D_hlqqa")
+
+[node name="HasConnectedBeltArea4" type="Area2D" parent="." unique_id=665709343]
+position = Vector2(-23, -8)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("2_q8cen")
+dir = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HasConnectedBeltArea4" unique_id=823870459]
+shape = SubResource("RectangleShape2D_hlqqa")
+
+[connection signal="area_entered" from="HasConnectedBeltArea" to="HasConnectedBeltArea" method="OnAreaEntered"]
+[connection signal="area_exited" from="HasConnectedBeltArea" to="HasConnectedBeltArea" method="OnAreaExited"]
+[connection signal="area_entered" from="HasConnectedBeltArea2" to="HasConnectedBeltArea2" method="OnAreaEntered"]
+[connection signal="area_exited" from="HasConnectedBeltArea2" to="HasConnectedBeltArea2" method="OnAreaExited"]
+[connection signal="area_entered" from="HasConnectedBeltArea3" to="HasConnectedBeltArea3" method="OnAreaEntered"]
+[connection signal="area_exited" from="HasConnectedBeltArea3" to="HasConnectedBeltArea3" method="OnAreaExited"]
+[connection signal="area_entered" from="HasConnectedBeltArea4" to="HasConnectedBeltArea4" method="OnAreaEntered"]
+[connection signal="area_exited" from="HasConnectedBeltArea4" to="HasConnectedBeltArea4" method="OnAreaExited"]

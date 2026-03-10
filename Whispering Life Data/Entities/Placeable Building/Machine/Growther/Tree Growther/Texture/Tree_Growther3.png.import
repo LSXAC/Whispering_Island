@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccqtxoc2bgt00"
-path="res://.godot/imported/Tree_Growther3.png-4de00f63a5b69fed797955389dff6087.ctex"
+path="res://.godot/imported/Tree_Growther3.png-fa545a4b14e6af20cc241f7526aad405.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Placeable Building/Spritesheets/Buildings/Tree Growther/Tree_Growther3.png"
-dest_files=["res://.godot/imported/Tree_Growther3.png-4de00f63a5b69fed797955389dff6087.ctex"]
+source_file="res://Entities/Placeable Building/Machine/Growther/Tree Growther/Texture/Tree_Growther3.png"
+dest_files=["res://.godot/imported/Tree_Growther3.png-fa545a4b14e6af20cc241f7526aad405.ctex"]
 
 [params]
 

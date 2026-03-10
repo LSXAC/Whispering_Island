@@ -10,13 +10,50 @@ public partial class Giver : Area2D
     public TransportBase.Direction direction_not_giving;
 
     [Export]
+    public TransportBase.Direction to_direction;
+
+    [Export]
     public MachineBase building;
+
+    [Export]
+    public PathConnectArea path_connect_area;
 
     [Export]
     public Node2D Holder;
     public PackedScene beltItem = ResourceLoader.Load<PackedScene>(
         ResourceUid.UidToPath("uid://dkue7sa7xyeyr")
     );
+
+    public override void _Ready()
+    {
+        switch (to_direction)
+        {
+            case TransportBase.Direction.Top:
+                path_connect_area.Position = new Vector2(
+                    path_connect_area.Position.X,
+                    path_connect_area.Position.Y + 12
+                );
+                break;
+            case TransportBase.Direction.Right:
+                path_connect_area.Position = new Vector2(
+                    path_connect_area.Position.X - 12,
+                    path_connect_area.Position.Y
+                );
+                break;
+            case TransportBase.Direction.Down:
+                path_connect_area.Position = new Vector2(
+                    path_connect_area.Position.X,
+                    path_connect_area.Position.Y - 12
+                );
+                break;
+            case TransportBase.Direction.Left:
+                path_connect_area.Position = new Vector2(
+                    path_connect_area.Position.X + 12,
+                    path_connect_area.Position.Y
+                );
+                break;
+        }
+    }
 
     public void OnProductionTimerTimeout()
     {

@@ -112,6 +112,7 @@ position = Vector2(8, -8)
 building = NodePath("..")
 
 [node name="Giver" parent="." unique_id=683998713 node_paths=PackedStringArray("building") instance=ExtResource("20_ujfx2")]
+position = Vector2(-38, -6)
 direction_not_giving = 1
 building = NodePath("..")
 

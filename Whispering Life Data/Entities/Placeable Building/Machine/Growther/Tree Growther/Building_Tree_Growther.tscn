@@ -4,14 +4,15 @@
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="2_01v3s"]
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Entities/Items/Vegetation/Oak/Oak Wood/Data/OakWood.tres" id="2_fs0bn"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/Placeable Building/BuildingColliderManager.cs" id="3_fs0bn"]
-[ext_resource type="Texture2D" uid="uid://ccqtxoc2bgt00" path="res://Entities/Placeable Building/Spritesheets/Buildings/Tree Growther/Tree_Growther3.png" id="4_42o0e"]
+[ext_resource type="Texture2D" uid="uid://ccqtxoc2bgt00" path="res://Entities/Placeable Building/Machine/Growther/Tree Growther/Texture/Tree_Growther3.png" id="4_42o0e"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="4_c24j7"]
-[ext_resource type="Texture2D" uid="uid://cn5mlqi00brmm" path="res://Entities/Placeable Building/Spritesheets/Buildings/Tree Growther/Tree_Growther2.png" id="4_l6moi"]
-[ext_resource type="Texture2D" uid="uid://g1do12pokq83" path="res://Entities/Placeable Building/Spritesheets/Buildings/Tree Growther/Tree_Growther1.png" id="6_14qf6"]
+[ext_resource type="Texture2D" uid="uid://cn5mlqi00brmm" path="res://Entities/Placeable Building/Machine/Growther/Tree Growther/Texture/Tree_Growther2.png" id="4_l6moi"]
+[ext_resource type="Texture2D" uid="uid://g1do12pokq83" path="res://Entities/Placeable Building/Machine/Growther/Tree Growther/Texture/Tree_Growther1.png" id="6_14qf6"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="6_r3nyr"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="8_l6moi"]
-[ext_resource type="Texture2D" uid="uid://x3me8mfywto5" path="res://Entities/Placeable Building/Spritesheets/Buildings/Tree Growther/Tree_Growther_Shadow1.png" id="8_yml2p"]
+[ext_resource type="Texture2D" uid="uid://x3me8mfywto5" path="res://Entities/Placeable Building/Machine/Growther/Tree Growther/Texture/Tree_Growther_Shadow1.png" id="8_yml2p"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Entities/Placeable Building/Machine/Components/Giver/component_building_item_giver.tscn" id="9_kii5u"]
+[ext_resource type="PackedScene" uid="uid://dn2qqaykuedsc" path="res://Entities/Placeable Building/Transport Base/path_connect_area.tscn" id="13_mvyf1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fs0bn"]
 animations = [{
@@ -100,24 +101,17 @@ position = Vector2(8.5, 12)
 shape = SubResource("RectangleShape2D_fk0le")
 
 [node name="Giver" parent="." unique_id=1986682076 node_paths=PackedStringArray("building") instance=ExtResource("9_kii5u")]
-position = Vector2(-37, 5)
+position = Vector2(-37, 4)
 direction_not_giving = 1
 building = NodePath("..")
 
 [node name="Giver2" parent="." unique_id=190335220 node_paths=PackedStringArray("building") instance=ExtResource("9_kii5u")]
 position = Vector2(37, 4)
 direction_not_giving = 3
+to_direction = 1
 building = NodePath("..")
 
 [node name="Holder" parent="Giver2" index="0" unique_id=1704036799]
-position = Vector2(-16, 1)
-
-[node name="Giver3" parent="." unique_id=875073330 node_paths=PackedStringArray("building") instance=ExtResource("9_kii5u")]
-position = Vector2(0, 42)
-direction_not_giving = 3
-building = NodePath("..")
-
-[node name="Holder" parent="Giver3" index="0" unique_id=1704036799]
 position = Vector2(-16, 1)
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1097977986]
@@ -126,11 +120,16 @@ autostart = true
 
 [node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=1695153310]
 position = Vector2(7, 12)
-polygon = PackedVector2Array(24, 4, 21, 4, 20, 7, 18, 10, 15, 13, 12, 15, 9, 17, 6, 18, 3, 19, 0, 19, 0, 25, -14, 25, -14, 19, -17, 19, -20, 18, -23, 17, -26, 15, -29, 13, -31, 11, -33, 8, -35, 5, -35, 4, -38, 4, -38, -10, -34, -10, -34, -11, -32, -13, -30, -15, -28, -17, -25, -19, -21, -21, -16, -22, -13, -23, -13, -24, -1, -24, -1, -23, 3, -22, 5, -21, 10, -19, 16, -14, 19, -11, 19, -10, 24, -10)
+polygon = PackedVector2Array(24, 4, 21, 4, 20, 7, 18, 10, 15, 13, 12, 15, 9, 17, 6, 18, 3, 19, 0, 19, 0, 21, -14, 21, -14, 19, -17, 19, -20, 18, -23, 17, -26, 15, -29, 13, -31, 11, -33, 8, -35, 5, -35, 4, -38, 4, -38, -10, -34, -10, -34, -11, -32, -13, -30, -15, -28, -17, -25, -19, -21, -21, -16, -22, -13, -23, -13, -24, -1, -24, -1, -23, 3, -22, 5, -21, 10, -19, 16, -14, 19, -11, 19, -10, 24, -10)
+
+[node name="PathConnectArea2" parent="." unique_id=272432976 instance=ExtResource("13_mvyf1")]
+position = Vector2(33, 12)
+
+[node name="PathConnectArea" parent="." unique_id=388957470 instance=ExtResource("13_mvyf1")]
+position = Vector2(-18, 13)
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
 [connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimeout"]
 
 [editable path="Giver2"]
-[editable path="Giver3"]
