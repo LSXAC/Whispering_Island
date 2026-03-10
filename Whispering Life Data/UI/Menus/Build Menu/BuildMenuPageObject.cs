@@ -12,7 +12,8 @@ public partial class BuildMenuPageObject : ColorRect
     [Export]
     public BuildMenu.CATEGORY category;
 
-    private PackedScene buildingMenuChild = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://cbe4yue61l823")
+    private PackedScene buildingMenuChild = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://cbe4yue61l823")
     );
 
     public void SetBuildings()

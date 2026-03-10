@@ -9,7 +9,7 @@ public partial class BeltItem : CharacterBody2D
     public Sprite2D sprite;
     public bool moving = false;
 
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
         if (!moving)
             if (Position != Vector2.Zero)

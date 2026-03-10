@@ -159,6 +159,7 @@ public partial class GlobalFunctions : Node2D
 
     public static void StartAfterTutorial()
     {
+        CutsceneManager.instance.ClearCutsceneQueue();
         GameManager.instance.tutorial_finished = true;
         TimeManager.instance.game_timer.Start();
         QuestManager.instance.StartQuest();

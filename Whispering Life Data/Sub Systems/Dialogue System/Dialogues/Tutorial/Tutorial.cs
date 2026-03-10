@@ -13,5 +13,8 @@ public partial class Tutorial : Node2D
     {
         instance = this;
         Tree.Visible = false;
+
+        if (GameManager.instance.tutorial_finished)
+            Tree.shadowNode.RemoveShadow();
     }
 }

@@ -36,16 +36,17 @@ public partial class EquipmentPanel : Control
 
     private void UpdateProgressbars()
     {
-        for (int i = 0; i < Enum.GetNames(typeof(PlayerStats.TOOLTYPE)).Length; i++)
-        {
-            player_stats_ui.stats_container.GetChild(i).GetNode<Label>("Type").Text =
-                TranslationServer.Translate(
-                    "EQUIPMENT_PANEL_" + ((PlayerStats.TOOLTYPE)i).ToString()
-                ) + ":";
-            player_stats_ui.stats_container.GetChild(i).GetNode<Label>("Number").Text = Player
-                .instance.player_stats.GetStatAmount((PlayerStats.TOOLTYPE)i)
-                .ToString("N1");
-        }
+        if (IsInstanceValid(player_stats_ui.stats_container))
+            for (int i = 0; i < Enum.GetNames(typeof(PlayerStats.TOOLTYPE)).Length; i++)
+            {
+                player_stats_ui.stats_container.GetChild(i).GetNode<Label>("Type").Text =
+                    TranslationServer.Translate(
+                        "EQUIPMENT_PANEL_" + ((PlayerStats.TOOLTYPE)i).ToString()
+                    ) + ":";
+                player_stats_ui.stats_container.GetChild(i).GetNode<Label>("Number").Text = Player
+                    .instance.player_stats.GetStatAmount((PlayerStats.TOOLTYPE)i)
+                    .ToString("N1");
+            }
     }
 
     public static void UpdateSlots()

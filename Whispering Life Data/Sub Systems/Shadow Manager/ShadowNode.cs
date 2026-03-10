@@ -37,8 +37,9 @@ public partial class ShadowNode : Node2D
         if (DisableShadow)
             return;
 
-        if (GameManager.instance.tutorial_finished && !shadow_sprite.Visible)
-            shadow_sprite.Visible = true;
+        if (IsInstanceValid(shadow_sprite))
+            if (GameManager.instance.tutorial_finished && !shadow_sprite.Visible)
+                shadow_sprite.Visible = true;
     }
 
     public Sprite2D CreateShadowSprite()

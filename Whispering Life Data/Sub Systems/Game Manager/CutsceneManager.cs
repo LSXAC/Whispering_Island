@@ -33,6 +33,11 @@ public partial class CutsceneManager : Node2D
         DialogueManager.TranslationSource = TranslationSource.CSV;
     }
 
+    public void ClearCutsceneQueue()
+    {
+        cutscene_queue.Clear();
+    }
+
     public void QueueCutscene(Resource res, string cutscene_name)
     {
         // Wenn Cutscenes übersprungen werden sollen, nicht in Queue einreihen

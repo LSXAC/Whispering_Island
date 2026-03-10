@@ -6,7 +6,8 @@ using Godot.Collections;
 
 public partial class ItemRowManager : HBoxContainer
 {
-    private PackedScene h_box_item = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://bnf8yngk7oyy0")
+    private PackedScene h_box_item = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://bnf8yngk7oyy0")
     );
 
     public void SetResourcesOnUI(Array<Item> items)
@@ -85,16 +86,17 @@ public partial class ItemRowManager : HBoxContainer
 
     private void SetTimesToBuildLabel(int times)
     {
-        PlayerUI.instance?.times_to_build_left_label?.Set(
-            "text",
-            $"> {times}x {TranslationServer.Translate("PLAYERUI_TIMES_LEFT_TO_BUILD")}"
-        );
+        if (IsInstanceValid(PlayerUI.instance?.times_to_build_left_label))
+            PlayerUI.instance?.times_to_build_left_label?.Set(
+                "text",
+                $"> {times}x {TranslationServer.Translate("PLAYERUI_TIMES_LEFT_TO_BUILD")}"
+            );
     }
 
     private void ClearChildren()
     {
         foreach (Control c in GetChildren())
-            c.QueueFree();
+            c.Free();
     }
 
     private h_box_item CreateHBoxItem(Item item)
