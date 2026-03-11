@@ -24,7 +24,7 @@ public partial class MachineBase : placeable_building
     public override void _Ready()
     {
         base._Ready();
-
+        UpdateActivColorRect();
         takers.Clear();
         givers.Clear();
 
