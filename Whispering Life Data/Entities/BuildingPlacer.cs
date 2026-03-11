@@ -46,12 +46,12 @@ public partial class BuildingPlacer : Node2D
         {
             placeable = transport_base;
             transport_base.SetRotationAndDisableMonitoring(rotation: 3);
-            if (transport_base is BeltTunnel tunnel)
+            /*if (transport_base is BeltTunnel tunnel)
             {
                 TunnelArea belt_tunnel = GetNode<TunnelArea>("TunnelArea");
                 if (Logger.NodeIsNotNull(belt_tunnel))
                     belt_tunnel.Monitoring = false;
-            }
+            }*/
         }
 
         if (current_building is MineableObject mineable)
@@ -61,10 +61,7 @@ public partial class BuildingPlacer : Node2D
         }
 
         if (placeable is MachineBase machine_base)
-        {
-            machine_base.DisableTakers();
-            machine_base.DisableParticles();
-        }
+            machine_base.DisableAreas();
     }
 
     private void InitPlacingParameter(Building_Menu_List_Object scene_info)
@@ -198,8 +195,8 @@ public partial class BuildingPlacer : Node2D
                 belt_tunnel.CheckIfTunnelInDir();
         }
 
-        if (temp is MachineBase)
-            SetBuildingWithMachineBase(temp);
+        if (temp is MachineBase mb)
+            mb.EnableAreas();
     }
 
     public void SetBuildingWithMoveableBase(Node2D node)
@@ -207,13 +204,6 @@ public partial class BuildingPlacer : Node2D
         node.Position = Vector2.Zero;
         moveable_selected_parent.AddChild(node);
         moveable_selected_parent = null;
-    }
-
-    public void SetBuildingWithMachineBase(Node2D node)
-    {
-        MachineBase pb = node as MachineBase;
-        pb.EnableGivers();
-        pb.EnableTakers();
     }
 
     public Vector2 GetBuildingPositionVec2(Island island)

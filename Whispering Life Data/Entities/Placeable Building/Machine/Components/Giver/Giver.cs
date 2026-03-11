@@ -63,11 +63,29 @@ public partial class Giver : Area2D
     public void DisableMonitoring()
     {
         detector.Monitoring = false;
+        if (path_connect_area == null)
+        {
+            Debug.Print(
+                "No PathConnectArea referenced! Belt connections will not be disabled",
+                this
+            );
+            return;
+        }
+        path_connect_area.DisableArea();
     }
 
     public void EnableMonitoring()
     {
         detector.Monitoring = true;
+        if (path_connect_area == null)
+        {
+            Debug.Print(
+                "No PathConnectArea referenced! Belt connections will not be enabled",
+                this
+            );
+            return;
+        }
+        path_connect_area.EnableArea();
     }
 
     public void OnDetectorBeltDetected(Area2D destination)

@@ -210,6 +210,7 @@ public partial class FurnaceTab : SlotUpdater
             ChangeEndStateLabel(false);
             ChangeTranstionStateLabel(false);
         }
+        process_building.UpdateActivColorRect();
         process_building.state_timer.Start();
         switch_button.Disabled = true;
     }

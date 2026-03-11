@@ -17,7 +17,7 @@ public partial class Detector : Area2D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (!detecting)
+        if (!detecting || !Monitoring)
             return;
 
         foreach (Area2D area in GetOverlappingAreas())
