@@ -47,6 +47,7 @@
 [ext_resource type="Script" uid="uid://dlnqgvorydc7m" path="res://UI/Menus/Translation/TranslationCheckBox.cs" id="41_4xc4d"]
 [ext_resource type="Texture2D" uid="uid://wyobtxm8epgl" path="res://UI/Icons/world_compass.png" id="41_irdkv"]
 [ext_resource type="Script" uid="uid://bn8il7ud0h80t" path="res://Sub Systems/Shadow Manager/ShadowManager.cs" id="44_4xc4d"]
+[ext_resource type="Script" uid="uid://bjh45vu7gbkh7" path="res://Sub Systems/Magic Power Manager/MagicPowerManager.cs" id="48_yiylw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_us0rr"]
 animations = [{
@@ -166,9 +167,6 @@ island_manager = NodePath("../../IslandManager")
 [node name="Building_Tilemap_Snapper" type="TileMapLayer" parent="BuildingManager/BuildingPlacer" unique_id=1851332033]
 tile_set = ExtResource("3_lj4ef")
 
-[node name="Buildings" type="Node2D" parent="." unique_id=1900834718]
-y_sort_enabled = true
-
 [node name="IslandManager" type="Node2D" parent="." unique_id=1542550144]
 y_sort_enabled = true
 script = ExtResource("5_f280c")
@@ -248,18 +246,6 @@ script = ExtResource("29_p35kq")
 
 [node name="GameMenu" parent="." unique_id=1935128749 instance=ExtResource("8_gytje")]
 visible = false
-
-[node name="AtmosphereAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1533182204]
-stream = ExtResource("27_73301")
-autoplay = true
-bus = &"SFX"
-playback_type = 1
-
-[node name="SFXAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=485336003]
-stream = ExtResource("28_2plat")
-autoplay = true
-bus = &"Music"
-playback_type = 1
 
 [node name="GlobalAnimationTimer" type="Timer" parent="." unique_id=1878239014]
 wait_time = 0.2
@@ -445,6 +431,24 @@ mouse_filter = 2
 self_modulate = Color(1, 1, 1, 0.19607843)
 z_index = -1
 script = ExtResource("44_4xc4d")
+
+[node name="Audios" type="Node2D" parent="." unique_id=1994429673]
+
+[node name="AtmosphereAudioPlayer" type="AudioStreamPlayer" parent="Audios" unique_id=1533182204]
+stream = ExtResource("27_73301")
+autoplay = true
+bus = &"SFX"
+playback_type = 1
+
+[node name="SFXAudioPlayer" type="AudioStreamPlayer" parent="Audios" unique_id=485336003]
+stream = ExtResource("28_2plat")
+autoplay = true
+bus = &"Music"
+playback_type = 1
+
+[node name="MagicPowerManager" type="Node2D" parent="." unique_id=1406332650]
+script = ExtResource("48_yiylw")
+natural_regeneration = 10.0
 
 [connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
 [connection signal="timeout" from="GlobalAnimationTimer" to="GlobalAnimationTimer" method="OnAnimationGlobalTimerTimeout"]

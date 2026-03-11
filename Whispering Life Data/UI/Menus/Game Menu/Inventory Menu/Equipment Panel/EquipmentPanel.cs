@@ -66,6 +66,9 @@ public partial class EquipmentPanel : Control
 
                 Debug.Print("Durability: " + instance.equipped_tools[i].current_durability);
 
+                if (instance?.slots_tool[i]?.GetSlotItemUI() == null)
+                    continue;
+
                 instance.slots_tool[i].GetSlotItemUI().current_durability = instance
                     .equipped_tools[i]
                     .current_durability;

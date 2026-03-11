@@ -9,6 +9,17 @@ public abstract partial class placeable_building : Building_Node
     public Database.BUILDING_ID building_id;
 
     [Export]
+    public bool uses_magic_power = false;
+
+    [Export]
+    public float magic_power_consumption = 0f;
+    public bool has_enough_magic_power = true;
+    private PackedScene mp_missing_panel = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://cuyqy07pn2y0u")
+    );
+    public MpMissingPanel mp_missing_panel_instance;
+
+    [Export]
     public bool disable_mouse_interaction = false;
 
     [Export]
@@ -27,10 +38,21 @@ public abstract partial class placeable_building : Building_Node
         FARMINGGROUND
     }
 
+    public abstract Resource Save();
+
+    public abstract void Load(Resource save);
+
     public override void _Ready()
     {
         if (ignore_node_structure)
             return;
+        if (uses_magic_power)
+        {
+            mp_missing_panel_instance = mp_missing_panel.Instantiate<MpMissingPanel>();
+            mp_missing_panel_instance.Visible = false;
+            mp_missing_panel_instance.Position = new Vector2(-6f, -6f);
+            AddChild(mp_missing_panel_instance);
+        }
         base._Ready();
         mouse_area = GetNode<MouseArea>("MouseArea");
         building_collider_manager = GetNode<Node2D>("BuildingAreas") as BuildingColliderManager;
@@ -40,9 +62,32 @@ public abstract partial class placeable_building : Building_Node
                 mouse_area.Monitorable = false;
     }
 
-    public abstract Resource Save();
+    public override void OnMouseClick()
+    {
+        if (GameManager.building_mode == GameManager.BuildingMode.Removing)
+        {
+            sprite_anim_manager.shadowNode.RemoveShadow();
+            QueueFree();
+        }
+    }
 
-    public abstract void Load(Resource save);
+    public void RemoveMagicPowerConsumtionFromManager(float amount)
+    {
+        if (uses_magic_power)
+            if (MagicPowerManager.instance.HasEnoughMagicPower(amount))
+            {
+                MagicPowerManager.instance.RemoveMagicPower(amount);
+                if (mp_missing_panel_instance != null)
+                    mp_missing_panel_instance.Visible = false;
+                has_enough_magic_power = true;
+            }
+            else
+            {
+                if (mp_missing_panel_instance != null)
+                    mp_missing_panel_instance.Visible = true;
+                has_enough_magic_power = false;
+            }
+    }
 
     public bool CheckBuildingColliders()
     {
@@ -65,15 +110,6 @@ public abstract partial class placeable_building : Building_Node
         ZIndex = 10;
         MakeSpriteTransparent();
         DisableCollision();
-    }
-
-    public override void OnMouseClick()
-    {
-        if (GameManager.building_mode == GameManager.BuildingMode.Removing)
-        {
-            sprite_anim_manager.shadowNode.RemoveShadow();
-            QueueFree();
-        }
     }
 
     public static bool CheckClickDependencies(Building_Node node)

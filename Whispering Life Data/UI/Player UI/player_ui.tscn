@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://deoswx8kisspv" path="res://UI/Player UI/Moster Island State Panel/monster_island_state_panel.tscn" id="22_vocqp"]
 [ext_resource type="Script" uid="uid://beq75bhjwesgy" path="res://Sub Systems/Discover System/DiscoverManager.cs" id="25_7vqgd"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Entities/Items/SpritesForItems/Icons_3rd/Wood_Icon.png" id="26_d27p6"]
+[ext_resource type="Script" uid="uid://c466hvc6i213d" path="res://UI/Player UI/Magic Power Panel/MagicPowerPanel.cs" id="30_nvb1m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4utg2"]
 bg_color = Color(0.278431, 0.270588, 0.329412, 1)
@@ -154,7 +155,7 @@ _data = {
 &"Start_Discovery": SubResource("Animation_d27p6")
 }
 
-[node name="PlayerUI" type="CanvasLayer" unique_id=258463009 node_paths=PackedStringArray("equipmentSelectBar", "harvest_timer", "time_stripe", "game_time_label", "qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "money_label", "info_vBox", "mainmenu_button", "item_label_timer", "monster_island_state_panel")]
+[node name="PlayerUI" type="CanvasLayer" unique_id=258463009 node_paths=PackedStringArray("equipmentSelectBar", "harvest_timer", "time_stripe", "game_time_label", "qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "magic_power_panel", "money_label", "info_vBox", "mainmenu_button", "item_label_timer", "monster_island_state_panel")]
 script = ExtResource("1_m5svq")
 equipmentSelectBar = NodePath("EquipmentSelectBar")
 harvest_timer = NodePath("HarvestTimer")
@@ -168,6 +169,7 @@ building_frame = ExtResource("2_ktroc")
 removing_frame = ExtResource("3_7rm5b")
 collected_item_parent = NodePath("VBoxContainer3/ReceivedItems")
 gameover_panel = NodePath("GameOverPanel")
+magic_power_panel = NodePath("MagicPowerPanel")
 money_label = NodePath("VBoxContainer/TimeStripe/ColorRect3/HBoxContainer/MoneyLabel")
 info_vBox = NodePath("WindowFrame/VBoxContainer")
 mainmenu_button = NodePath("GameOverPanel/VBoxContainer/MainmenuButton")
@@ -1028,6 +1030,42 @@ wait_time = 4.0
 
 [node name="HarvestTimer" type="Timer" parent="." unique_id=725452897]
 one_shot = true
+
+[node name="MagicPowerPanel" type="Panel" parent="." unique_id=193682183 node_paths=PackedStringArray("current_magic_power_label", "latest_magic_power_label")]
+offset_left = 108.0
+offset_top = 5.0
+offset_right = 233.0
+offset_bottom = 33.0
+theme = ExtResource("13_uwodk")
+theme_override_styles/panel = ExtResource("20_kobl8")
+script = ExtResource("30_nvb1m")
+current_magic_power_label = NodePath("HBoxContainer/Current")
+latest_magic_power_label = NodePath("HBoxContainer/Latest")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MagicPowerPanel" unique_id=516101563]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Current" type="Label" parent="MagicPowerPanel/HBoxContainer" unique_id=129129011]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Magic Power: 100/100"
+label_settings = ExtResource("22_0o76g")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Latest" type="Label" parent="MagicPowerPanel/HBoxContainer" unique_id=790319771]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Magic Power: 100/100"
+label_settings = ExtResource("22_0o76g")
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="pressed" from="QuestAcceptPanel/CenterContainer/VBoxContainer/ConfirmButton" to="QuestAcceptPanel" method="OnButton"]

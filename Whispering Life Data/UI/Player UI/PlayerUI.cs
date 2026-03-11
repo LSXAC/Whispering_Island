@@ -4,6 +4,8 @@ using Godot.Collections;
 
 public partial class PlayerUI : CanvasLayer
 {
+    public static PlayerUI instance;
+
     private HSlider hslider;
     private StyleBoxFlat before_reg = new StyleBoxFlat();
     private StyleBoxFlat when_reg = new StyleBoxFlat();
@@ -51,7 +53,9 @@ public partial class PlayerUI : CanvasLayer
 
     [Export]
     public Panel gameover_panel;
-    public static PlayerUI instance;
+
+    [Export]
+    public MagicPowerPanel magic_power_panel;
 
     [Export]
     public Label money_label;

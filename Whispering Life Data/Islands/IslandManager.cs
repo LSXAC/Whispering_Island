@@ -12,6 +12,8 @@ public partial class IslandManager : Node2D
     public Array<ResourceObjectManagerSave> roms = new Array<ResourceObjectManagerSave>();
 
     public Array<IslandBuildSave> build_saves = new Array<IslandBuildSave>();
+
+    public Array<Island> islands = new Array<Island>();
     public int last_island_id;
 
     public int[] island_types_build = [0, 0, 0, 0];
@@ -88,11 +90,20 @@ public partial class IslandManager : Node2D
                 break;
             }
         island_saves.RemoveAt(island_saves.Count - 1);
-
+        islands.RemoveAt(islands.Count - 1);
         GameManager.instance.SaveGame();
         GlobalFunctions.SetPlayerPositionToStart();
         GameManager.instance.save_state.WriteSave();
         GameMenu.instance.OnLoadButton();
+    }
+
+    public Array<Island> GetIslands()
+    {
+        Array<Island> managers = new Array<Island>();
+        foreach (Node node in GetChildren())
+            if (node is Island island)
+                managers.Add(island);
+        return managers;
     }
 
     public void SaveResourceObjects()

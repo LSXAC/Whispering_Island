@@ -50,6 +50,9 @@ public partial class TimeManager : Node2D
             current_day++;
         }
 
+        //natural Regeneration for Magic Power
+        MagicPowerManager.instance.AddMagicPower(MagicPowerManager.instance.natural_regeneration);
+        MagicPowerManager.instance.ConsumeMagicPowerByPlaceableBuildings();
         UpdatePlayerUITime();
 
         // GameManager.game_time_since_start = current_game_time;

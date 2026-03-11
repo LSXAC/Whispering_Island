@@ -39,10 +39,26 @@ public partial class MachineBase : placeable_building
             if (node is GpuParticles2D gp2d)
                 particles.Add(gp2d);
         }
+    }
 
-        //can cause extrem lags, when multiple machines placed! - Only use, when few Machines
-        /*if (givers.Count == 0 || takers.Count == 0)
-            Logger.PrintEmptyList(); */
+    public override void _Process(double delta)
+    {
+        if (machine_enabled && !has_enough_magic_power)
+            DisableMachine();
+        else if (!machine_enabled && has_enough_magic_power)
+            EnableMachine();
+    }
+
+    public void EnableMachine()
+    {
+        machine_enabled = true;
+        UpdateActivColorRect();
+    }
+
+    public void DisableMachine()
+    {
+        machine_enabled = false;
+        UpdateActivColorRect();
     }
 
     public void UpdateActivColorRect()

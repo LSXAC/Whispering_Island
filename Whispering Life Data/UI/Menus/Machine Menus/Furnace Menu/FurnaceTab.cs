@@ -198,19 +198,18 @@ public partial class FurnaceTab : SlotUpdater
             safty_panel.Visible = true;
             ChangeEndStateLabel(true);
             ChangeTranstionStateLabel(true);
-            process_building.machine_enabled = false;
+            process_building.DisableMachine();
             process_building.inStartTransition = true;
         }
         else
         {
             OvertakeItems();
             safty_panel.Visible = true;
-            process_building.machine_enabled = true;
+            process_building.EnableMachine();
             process_building.inEndTransition = true;
             ChangeEndStateLabel(false);
             ChangeTranstionStateLabel(false);
         }
-        process_building.UpdateActivColorRect();
         process_building.state_timer.Start();
         switch_button.Disabled = true;
     }

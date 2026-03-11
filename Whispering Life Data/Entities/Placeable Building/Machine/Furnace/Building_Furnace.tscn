@@ -67,6 +67,8 @@ crafting_timer = NodePath("CraftingTimer")
 state_timer = NodePath("MachineUITimer")
 machine_activ_color_rect = NodePath("MachineActivColorRect")
 building_id = 3
+uses_magic_power = true
+magic_power_consumption = 5.0
 tile_types = Array[int]([0])
 title = "BUILDING_FURNACE"
 description = "BUILDING_FURNACE_DESC"
@@ -123,7 +125,7 @@ wait_time = 0.1
 [node name="MachineUITimer" type="Timer" parent="." unique_id=502923141]
 wait_time = 0.05
 
-[node name="Smoke" type="GPUParticles2D" parent="." unique_id=368139703]
+[node name="SmokeParticle" type="GPUParticles2D" parent="." unique_id=368139703]
 z_index = 1
 position = Vector2(-8, -41)
 amount = 100

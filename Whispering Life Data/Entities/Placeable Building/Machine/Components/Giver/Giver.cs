@@ -102,6 +102,9 @@ public partial class Giver : Area2D
             if (belt.to_direction == direction_not_giving)
                 return;
 
+            if (!building.machine_enabled)
+                return;
+
             if (building is ProcessBuilding)
                 IsProcessingBuilding(belt);
             else if (building is ProductionMachine && building is not ChestBase)

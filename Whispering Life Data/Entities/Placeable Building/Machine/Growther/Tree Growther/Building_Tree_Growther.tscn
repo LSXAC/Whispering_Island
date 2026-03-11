@@ -47,15 +47,18 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(51, 44)
 
-[node name="Building" type="StaticBody2D" unique_id=1101112268 node_paths=PackedStringArray("machine_activ_color_rect")]
+[node name="Building" type="StaticBody2D" unique_id=1101112268 node_paths=PackedStringArray("spawn_timer", "machine_activ_color_rect")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_01v3s")
 output_item_resource = ExtResource("2_fs0bn")
+spawn_timer = NodePath("SpawnTimer")
 machine_enabled = true
 machine_activ_color_rect = NodePath("MachineActivColorRect")
 building_id = 5
+uses_magic_power = true
+magic_power_consumption = 5.0
 tile_types = Array[int]([0])
 title = "BUILDING_WOOD_GROWTHER"
 description = "BUILDING_WOOD_GROWTHER"

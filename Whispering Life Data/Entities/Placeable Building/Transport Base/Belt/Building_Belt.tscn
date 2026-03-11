@@ -31,6 +31,8 @@ collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_jpb1i")
 building_id = 30
+uses_magic_power = true
+magic_power_consumption = 0.1
 tile_types = Array[int]([0])
 title = "BUILDING_BELT"
 description = "BUILDING_BELT_DESC"
@@ -98,6 +100,8 @@ y_sort_enabled = true
 position = Vector2(-8, -8)
 sprite_frames = ExtResource("12_g11o0")
 animation = &"CORNER_LEFT_DOWN"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1885584946]
 
 [connection signal="belt_detected" from="Detector" to="." method="OnDetectorBeltDetected"]
 [connection signal="item_held" from="ItemHolder" to="." method="OnItemHolderItemHeld"]

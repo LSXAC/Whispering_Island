@@ -93,6 +93,17 @@ public partial class ProcessBuilding : MachineBase
 
     public override void _PhysicsProcess(double delta)
     {
+        if (machine_enabled && !has_enough_magic_power)
+        {
+            DisableMachine();
+            state_timer.Paused = true;
+        }
+        else if (!machine_enabled && has_enough_magic_power)
+        {
+            EnableMachine();
+            state_timer.Paused = false;
+        }
+
         if (is_crafting)
             return;
 
