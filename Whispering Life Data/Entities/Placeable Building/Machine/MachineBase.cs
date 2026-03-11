@@ -53,9 +53,15 @@ public partial class MachineBase : placeable_building
             return;
         }
         if (machine_enabled)
+        {
+            EnableParticles();
             machine_activ_color_rect.Color = machine_active_color;
+        }
         else
+        {
+            DisableParticles();
             machine_activ_color_rect.Color = machine_inactive_color;
+        }
     }
 
     public void DisableAreas()
