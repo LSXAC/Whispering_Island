@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://ds87kapskynfh"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_w55v0"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="2_kbm4l"]
+[ext_resource type="Texture2D" uid="uid://bpn4kdrr5ejdr" path="res://Entities/Items/Minerals/Magic Dust/Texture/Magic_Dust.png" id="3_1jqyg"]
+
+[sub_resource type="Resource" id="Resource_3ryys"]
+script = ExtResource("1_w55v0")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("2_kbm4l")
+attributes = Array[Object]([SubResource("Resource_3ryys")])
+max_stackable_size = 250
+name = "MAGIC_DUST"
+id = 32
+description = "MAGIC_DUST_DESC"
+texture = ExtResource("3_1jqyg")
+value = 50.0

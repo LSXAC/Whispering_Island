@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpn4kdrr5ejdr"
-path="res://.godot/imported/Icons_27_73.png-e9708ff76deaf207f8b8ca79c3f5063b.ctex"
+path="res://.godot/imported/Magic_Dust.png-68c1666315cf7e54963ac2c72085ee2a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Items/SpritesForItems/Icons_3rd/Icons_27_73.png"
-dest_files=["res://.godot/imported/Icons_27_73.png-e9708ff76deaf207f8b8ca79c3f5063b.ctex"]
+source_file="res://Entities/Items/Minerals/Magic Dust/Texture/Magic_Dust.png"
+dest_files=["res://.godot/imported/Magic_Dust.png-68c1666315cf7e54963ac2c72085ee2a.ctex"]
 
 [params]
 

@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bjo17nkno7g5g" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_90.png" id="6_2jtc7"]
 [ext_resource type="Script" uid="uid://bwddpawbd6vna" path="res://UI/Menus/Game Menu/Inventory Menu/Player Stats/PlayerStatsUI.cs" id="7_hhlnf"]
 [ext_resource type="LabelSettings" uid="uid://bfyhqbjhexoyv" path="res://UI/Styles/Label_Settings_Title_Text.tres" id="7_kqkeb"]
-[ext_resource type="Texture2D" uid="uid://bpn4kdrr5ejdr" path="res://Entities/Items/SpritesForItems/Icons_3rd/Icons_27_73.png" id="7_wk80g"]
+[ext_resource type="Texture2D" uid="uid://bpn4kdrr5ejdr" path="res://Entities/Items/Minerals/Magic Dust/Texture/Magic_Dust.png" id="7_wk80g"]
 [ext_resource type="Texture2D" uid="uid://cq8pk1q4c8ud0" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_60.png" id="9_2jtc7"]
 [ext_resource type="Texture2D" uid="uid://soncujix6fa3" path="res://Entities/Items/SpritesForItems/Icons/setting.png" id="9_4wwa8"]
 [ext_resource type="Texture2D" uid="uid://hwm8o43058yi" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_03.png" id="10_kqkeb"]
