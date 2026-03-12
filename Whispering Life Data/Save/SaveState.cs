@@ -79,6 +79,9 @@ public partial class SaveState : Resource
     [Export]
     public float stability = 1.0f;
 
+    [Export]
+    public float current_magic_power = 0.0f;
+
     private static string save_path = "user://save.tres";
     public static string game_version = "a.0.1";
 

@@ -448,7 +448,6 @@ playback_type = 1
 
 [node name="MagicPowerManager" type="Node2D" parent="." unique_id=1406332650]
 script = ExtResource("48_yiylw")
-natural_regeneration = 10.0
 
 [connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
 [connection signal="timeout" from="GlobalAnimationTimer" to="GlobalAnimationTimer" method="OnAnimationGlobalTimerTimeout"]

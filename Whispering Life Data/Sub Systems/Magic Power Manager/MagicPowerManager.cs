@@ -20,6 +20,12 @@ public partial class MagicPowerManager : Node2D
         return current_magical_power;
     }
 
+    public void SetCurrentMagicPower(float amount)
+    {
+        current_magical_power = amount;
+        PlayerUI.instance.magic_power_panel.UpdateMagicPowerUI();
+    }
+
     public void AddMagicPower(float amount)
     {
         current_magical_power += amount;
