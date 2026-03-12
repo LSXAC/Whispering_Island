@@ -27,3 +27,4 @@ required_items = Array[Object]([SubResource("Resource_yo73i"), SubResource("Reso
 unlock_requirements = null
 building_menu_category = 5
 texture_in_build_menu = ExtResource("5_c2fxb")
+show_magic_power_use = true

@@ -11,6 +11,9 @@ public partial class BuildMenuListObject : Control
     public TextureRect texture;
 
     [Export]
+    public TextureRect magic_power_icon;
+
+    [Export]
     public ItemRowManager item_row_manager;
 
     private Building_Menu_List_Object building_type;
@@ -31,6 +34,8 @@ public partial class BuildMenuListObject : Control
             texture.Texture = building_type.texture_in_build_menu;
             texture.TooltipText += TranslationServer.Translate(building_node.GetDescription());
         }
+        if (building_type.show_magic_power_use)
+            magic_power_icon.Visible = true;
 
         if (Logger.NodeIsNotNull(item_row_manager) && Logger.NodeIsNotNull(build_button))
         {

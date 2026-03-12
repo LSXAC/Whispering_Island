@@ -24,5 +24,8 @@ public partial class Building_Menu_List_Object : Resource
     public Texture2D texture_in_build_menu;
 
     [Export]
+    public bool show_magic_power_use = false;
+
+    [Export]
     public bool show_object_in_building_menu_list = true;
 }
