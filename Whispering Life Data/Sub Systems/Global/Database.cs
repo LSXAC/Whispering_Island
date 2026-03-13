@@ -321,6 +321,7 @@ public partial class Database : Node
         BIG_STONE,
         MYSTIC_MUSHROOM,
         PALM,
-        CACTUS
+        CACTUS,
+        MAGIC_GENERATOR
     }
 }

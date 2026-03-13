@@ -52,7 +52,8 @@ public partial class TimeManager : Node2D
 
         //natural Regeneration for Magic Power
         MagicPowerManager.instance.AddMagicPower(MagicPowerManager.instance.natural_regeneration);
-        MagicPowerManager.instance.ConsumeMagicPowerByPlaceableBuildings();
+        MagicPowerManager.instance.ApplyMagicPowerByPlaceableBuildings();
+
         UpdatePlayerUITime();
 
         // GameManager.game_time_since_start = current_game_time;

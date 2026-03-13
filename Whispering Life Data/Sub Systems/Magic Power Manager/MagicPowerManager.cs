@@ -44,7 +44,7 @@ public partial class MagicPowerManager : Node2D
             return false;
     }
 
-    public void ConsumeMagicPowerByPlaceableBuildings()
+    public void ApplyMagicPowerByPlaceableBuildings()
     {
         Array<Island> islands = IslandManager.instance.GetIslands();
         foreach (Island island in islands)
