@@ -169,7 +169,6 @@ public partial class GameManager : Node2D
         save_state.is_doubled_quest = QuestManager.next_quest_is_doubled_items;
         save_state.mood = MonsterIsland.instance.GetMood();
         save_state.stability = MonsterIsland.instance.GetStability();
-        save_state.current_magic_power = MagicPowerManager.instance.GetCurrentMagicPower();
 
         save_state.WriteSave();
         MainMenu.SaveLauncherConfig();
@@ -253,8 +252,6 @@ public partial class GameManager : Node2D
         TimeManager.instance.current_game_time = save_state.current_game_time;
         TimeManager.instance.game_timer.Start();
         TimeManager.instance.day_night_manager.UpdateColor();
-
-        MagicPowerManager.instance.SetCurrentMagicPower(save_state.current_magic_power);
 
         TimeManager.instance.UpdatePlayerUITime();
     }

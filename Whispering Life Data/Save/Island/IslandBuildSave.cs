@@ -32,5 +32,8 @@ public partial class IslandBuildSave : Resource
     [Export]
     public Array<int> removed_objects = new Array<int>();
 
+    [Export]
+    public float current_magic_power = 1000f;
+
     public IslandBuildSave() { }
 }

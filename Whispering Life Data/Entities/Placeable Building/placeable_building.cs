@@ -9,10 +9,11 @@ public abstract partial class placeable_building : Building_Node
     public Database.BUILDING_ID building_id;
 
     [Export]
-    public bool uses_magic_power = false;
+    public bool consums_magic_power = false;
 
     [Export]
     public float magic_power_consumption = 0f;
+
     public bool has_enough_magic_power = true;
     private PackedScene mp_missing_panel = ResourceLoader.Load<PackedScene>(
         ResourceUid.UidToPath("uid://cuyqy07pn2y0u")
@@ -46,13 +47,7 @@ public abstract partial class placeable_building : Building_Node
     {
         if (ignore_node_structure)
             return;
-        if (uses_magic_power)
-        {
-            mp_missing_panel_instance = mp_missing_panel.Instantiate<MpMissingPanel>();
-            mp_missing_panel_instance.Visible = false;
-            mp_missing_panel_instance.Position = new Vector2(-6f, -6f);
-            AddChild(mp_missing_panel_instance);
-        }
+
         base._Ready();
         mouse_area = GetNode<MouseArea>("MouseArea");
         building_collider_manager = GetNode<Node2D>("BuildingAreas") as BuildingColliderManager;
@@ -60,6 +55,17 @@ public abstract partial class placeable_building : Building_Node
         if (disable_mouse_interaction)
             if (Logger.NodeIsNotNull(mouse_area))
                 mouse_area.Monitorable = false;
+    }
+
+    public void InitMagicPower()
+    {
+        if (consums_magic_power)
+        {
+            mp_missing_panel_instance = mp_missing_panel.Instantiate<MpMissingPanel>();
+            mp_missing_panel_instance.Visible = false;
+            mp_missing_panel_instance.Position = new Vector2(-6f, -6f);
+            AddChild(mp_missing_panel_instance);
+        }
     }
 
     public override void OnMouseClick()
@@ -71,22 +77,25 @@ public abstract partial class placeable_building : Building_Node
         }
     }
 
-    public void RemoveMagicPowerConsumtionFromManager(float amount)
+    public void ApplyMagicPowerConsumtionFromManager(MagicPowerListener listener)
     {
-        if (uses_magic_power)
-            if (MagicPowerManager.instance.HasEnoughMagicPower(amount))
-            {
-                MagicPowerManager.instance.RemoveMagicPower(amount);
-                if (mp_missing_panel_instance != null)
-                    mp_missing_panel_instance.Visible = false;
-                has_enough_magic_power = true;
-            }
-            else
-            {
-                if (mp_missing_panel_instance != null)
-                    mp_missing_panel_instance.Visible = true;
-                has_enough_magic_power = false;
-            }
+        if (consums_magic_power)
+            listener.AddPowerConsumtion(magic_power_consumption);
+    }
+
+    public void UpdateMagicPowerBuilding(bool enough_power)
+    {
+        if (enough_power)
+        {
+            if (mp_missing_panel_instance != null)
+                mp_missing_panel_instance.Visible = false;
+            has_enough_magic_power = true;
+        }
+        else if (mp_missing_panel_instance != null)
+        {
+            mp_missing_panel_instance.Visible = true;
+            has_enough_magic_power = false;
+        }
     }
 
     public bool CheckBuildingColliders()

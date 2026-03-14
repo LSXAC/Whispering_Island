@@ -11,4 +11,14 @@ public partial class MagicGenerator : MachineBase
 
     [Export]
     public int time_left = 0;
+
+    public override void _Ready()
+    {
+        base._Ready();
+    }
+
+    public void GeneratePower(MagicPowerListener listener)
+    {
+        listener.AddPowerGeneration(generation_rate);
+    }
 }

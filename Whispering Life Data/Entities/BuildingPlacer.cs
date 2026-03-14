@@ -144,10 +144,11 @@ public partial class BuildingPlacer : Node2D
         if (!can_create)
             return;
 
-        Node2D temp = (Node2D)selected_building.Instantiate();
+        placeable_building temp = (placeable_building)selected_building.Instantiate();
         // Gebäude als Child der Insel platzieren und lokale Position setzen
         if (temp is not Minecart)
             current_island.island_object_save_manager.AddChild(temp);
+        temp.InitMagicPower();
         // Lokale Tile-Position bestimmen
         Vector2 globalMouse = GetGlobalMousePosition();
         Vector2I localTile = current_island.building_area.LocalToMap(

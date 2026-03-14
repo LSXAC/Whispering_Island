@@ -51,8 +51,8 @@ public partial class TimeManager : Node2D
         }
 
         //natural Regeneration for Magic Power
-        MagicPowerManager.instance.AddMagicPower(MagicPowerManager.instance.natural_regeneration);
-        MagicPowerManager.instance.ApplyMagicPowerByPlaceableBuildings();
+        foreach (Island island in IslandManager.instance.GetIslands())
+            island.magic_power_listener.ApplyPowerByPlaceableBuildings();
 
         UpdatePlayerUITime();
 

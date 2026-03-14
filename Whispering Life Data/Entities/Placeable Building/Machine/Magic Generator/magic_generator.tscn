@@ -68,6 +68,7 @@ y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_ob3r5")
+generation_rate = 30.0
 machine_enabled = true
 machine_activ_color_rect = NodePath("MachineActivColorRect")
 building_id = 39

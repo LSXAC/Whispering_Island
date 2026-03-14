@@ -67,6 +67,7 @@ crafting_timer = NodePath("CraftingTimer")
 state_timer = NodePath("MachineUITimer")
 machine_activ_color_rect = NodePath("MachineActivColorRect")
 building_id = 3
+uses_magic_power = null
 tile_types = Array[int]([0])
 title = "BUILDING_FURNACE"
 description = "BUILDING_FURNACE_DESC"

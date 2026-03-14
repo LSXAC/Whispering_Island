@@ -18,7 +18,8 @@ public partial class hover_menu : PanelContainer
         process_fuel_container,
         process_input_container,
         process_output_container,
-        chest_slots_container;
+        chest_slots_container,
+        magic_power_container;
 
     [Export]
     public Label title_content,
@@ -73,6 +74,7 @@ public partial class hover_menu : PanelContainer
             instance.process_output_container.Visible = false;
 
             instance.chest_slots_container.Visible = false;
+            instance.magic_power_container.Visible = false;
 
             instance.Line1.Visible = false;
             instance.Line2.Visible = false;
@@ -211,6 +213,14 @@ public partial class hover_menu : PanelContainer
             instance.Line2.Visible = true;
 
             instance.chest_slots_content.Text = chest.GetAmountOfFreeSlots() + "/" + 20;
+        }
+
+        if (node is MagicGenerator magic_generator)
+        {
+            instance.magic_power_container.Visible = true;
+            instance.Line2.Visible = true;
+
+            instance.process_bar_content.Text = magic_generator.generation_rate + "/s";
         }
 
         EnableHoverMenu();

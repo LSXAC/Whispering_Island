@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://fpm5unt0tjo3"]
+
+[ext_resource type="Script" uid="uid://cw28saqe0xf7m" path="res://Sub Systems/Magic Power Listener/MagicPowerListener.cs" id="1_plvkd"]
+
+[node name="MagicPowerListener" type="Node2D" unique_id=1986599109]
+script = ExtResource("1_plvkd")

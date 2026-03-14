@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://daiymos1mp4si" path="res://UI/UI Scripts/hover_menu.cs" id="1_ywqhi"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/Menus/Translation/TranslationLabel.cs" id="3_u1ani"]
 
-[node name="HoverMenu" type="PanelContainer" unique_id=1919267257 node_paths=PackedStringArray("title_container", "descriptiion_container", "object_type_container", "hitpoint_container", "resource_type_container", "resource_type_level_container", "process_bar_container", "process_fuel_container", "process_input_container", "process_output_container", "chest_slots_container", "title_content", "description_content", "object_type_content", "hitpoint_content", "resource_type_content", "resource_type_level_content", "process_bar_content", "process_fuel_content", "process_input_content", "process_output_content", "chest_slots_content", "Line1", "Line2")]
+[node name="HoverMenu" type="PanelContainer" unique_id=1919267257 node_paths=PackedStringArray("title_container", "descriptiion_container", "object_type_container", "hitpoint_container", "resource_type_container", "resource_type_level_container", "process_bar_container", "process_fuel_container", "process_input_container", "process_output_container", "chest_slots_container", "magic_power_container", "title_content", "description_content", "object_type_content", "hitpoint_content", "resource_type_content", "resource_type_level_content", "process_bar_content", "process_fuel_content", "process_input_content", "process_output_content", "chest_slots_content", "Line1", "Line2")]
 z_index = 5
 z_as_relative = false
 offset_right = 164.0
@@ -21,6 +21,7 @@ process_fuel_container = NodePath("MarginContainer/VBoxContainer/HBoxFuel")
 process_input_container = NodePath("MarginContainer/VBoxContainer/HBoxInput")
 process_output_container = NodePath("MarginContainer/VBoxContainer/HBoxOutput")
 chest_slots_container = NodePath("MarginContainer/VBoxContainer/HBoxSlots")
+magic_power_container = NodePath("MarginContainer/VBoxContainer/HBoxGeneration")
 title_content = NodePath("MarginContainer/VBoxContainer/HBoxTitle/TitleContent")
 description_content = NodePath("MarginContainer/VBoxContainer/HBoxDescription/DescriptionContent")
 object_type_content = NodePath("MarginContainer/VBoxContainer/HBoxObjectType/ObjectTypeContent")
@@ -396,6 +397,41 @@ theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_mkuyp")
 theme_override_font_sizes/font_size = 8
 text = "x/20"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Line3" type="ColorRect" parent="MarginContainer/VBoxContainer" unique_id=1077013606]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+
+[node name="HBoxGeneration" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1530815103]
+layout_mode = 2
+
+[node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxGeneration" unique_id=205740687]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_mkuyp")
+theme_override_font_sizes/font_size = 8
+text = "Power"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("3_u1ani")
+label_translation_string = "HOVER_MENU_POWER"
+
+[node name="ProgressContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxGeneration" unique_id=1074468747]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_mkuyp")
+theme_override_font_sizes/font_size = 8
+text = "100/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

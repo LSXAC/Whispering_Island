@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bmjn6kocpubo3" path="res://Entities/Placeable Building/Mineable Object/Vegetation/Sunflower/mineable_object_sunflower.tscn" id="17_wlbus"]
 [ext_resource type="PackedScene" uid="uid://hl3jkk2n0f7x" path="res://Entities/Placeable Building/Mineable Object/Vegetation/Wheat/mineable_object_wheat.tscn" id="17_yy7cq"]
 [ext_resource type="PackedScene" uid="uid://dyhqyvmm3pp6m" path="res://Entities/Placeable Building/Mineable Object/Vegetation/Mushroom/mineable_object_mushroom.tscn" id="18_sunwl"]
+[ext_resource type="PackedScene" uid="uid://fpm5unt0tjo3" path="res://Sub Systems/Magic Power Listener/magic_power_listener.tscn" id="19_v1m1i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpdmr"]
 size = Vector2(32, 32)
@@ -394,3 +395,5 @@ position = Vector2(64, 160)
 
 [node name="Mushroom9" parent="IslandObjectSaveManager" unique_id=436773916 instance=ExtResource("18_sunwl")]
 position = Vector2(-120, 216)
+
+[node name="MagicPowerListener" parent="." unique_id=1986599109 instance=ExtResource("19_v1m1i")]

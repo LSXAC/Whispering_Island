@@ -254,7 +254,7 @@ public partial class MineableObject : placeable_building
 
         CharacterBody2D hit_lab = hit_label.Instantiate() as CharacterBody2D;
         hit_lab.GetChild<HitLabel>(0).Init(miningAmount, hit_point);
-        IslandManager.instance.AddChild(hit_lab);
+        GameManager.instance.AddChild(hit_lab);
     }
 
     private void UpdateToolDurability(int miningAmount)

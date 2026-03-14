@@ -7,21 +7,18 @@ public partial class MagicPowerPanel : Panel
     public Label current_magic_power_label,
         latest_magic_power_label;
 
+    public static MagicPowerPanel instance;
+
     public override void _Ready()
     {
-        UpdateMagicPowerUI();
+        instance = this;
+        current_magic_power_label.Text = "Magic Power: N/A";
         latest_magic_power_label.Text = "/";
     }
 
-    public void UpdateMagicPowerUI()
+    public void UpdateMagicPowerUI(float current, float max)
     {
-        if (MagicPowerManager.instance == null)
-        {
-            current_magic_power_label.Text = "Magic Power: N/A";
-            return;
-        }
-        current_magic_power_label.Text =
-            $"Magic Power: {MagicPowerManager.instance.GetCurrentMagicPower():0.##}/{MagicPowerManager.instance.max_magical_power}";
+        current_magic_power_label.Text = $"Magic Power: {current:0.##} of {max}";
     }
 
     public void UpdateLatestMagicPowerUI(float amount)

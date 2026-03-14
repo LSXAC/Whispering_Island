@@ -30,6 +30,8 @@ public partial class Island : Node2D
     [Export]
     private bool left_closed = false;
 
+    public MagicPowerListener magic_power_listener;
+
     private Node2D bridge_start_points;
     private PackedScene BRIDGE_SIDE = ResourceLoader.Load<PackedScene>(
         ResourceUid.UidToPath("uid://dqpoo3rttvrj7")
@@ -72,6 +74,7 @@ public partial class Island : Node2D
 
     public override void _Ready()
     {
+        magic_power_listener = GetNode<MagicPowerListener>("MagicPowerListener");
         ground_tilemap = GetNode("Tilemaps").GetNode<TileMapLayer>("Ground");
         building_area = GetNode<TileMapLayer>("BuildingArea");
         bridge_start_points = GetNode<Node2D>("BridgePoints/StartPoints");

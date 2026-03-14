@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Entities/Items/SpritesForItems/Icons_3rd/Stone_Pickaxe.png" id="19_skvpu"]
 [ext_resource type="PackedScene" uid="uid://kiivxt5vcjbt" path="res://Entities/Monster/monster_island.tscn" id="20_pvo2k"]
 [ext_resource type="Script" uid="uid://1aerdmmq1fkp" path="res://Sub Systems/IslandObjectSaveManager.cs" id="27_ylwpm"]
+[ext_resource type="PackedScene" uid="uid://fpm5unt0tjo3" path="res://Sub Systems/Magic Power Listener/magic_power_listener.tscn" id="28_d0llm"]
 [ext_resource type="PackedScene" uid="uid://cxtq18i442ldo" path="res://Entities/Placeable Building/Mineable Object/Vegetation/Oak/Oak Tree/mineable_object_oak_tree.tscn" id="28_s7sig"]
 [ext_resource type="PackedScene" uid="uid://coeye4llpicv7" path="res://Entities/Placeable Building/Mineable Object/Environment/Big Stone/mineable_object_big_stone.tscn" id="29_7pmys"]
 [ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Entities/Placeable Building/Mineable Object/Environment/Stone/mineable_object_stone.tscn" id="30_av3ku"]
@@ -331,144 +332,191 @@ script = ExtResource("27_ylwpm")
 
 [node name="Tree" parent="IslandObjectSaveManager" unique_id=1180372620 instance=ExtResource("28_s7sig")]
 position = Vector2(72, -192)
+uses_magic_power = null
 
 [node name="Tree2" parent="IslandObjectSaveManager" unique_id=1622302820 instance=ExtResource("28_s7sig")]
 position = Vector2(112, -160)
 variant = 1
+uses_magic_power = null
 
 [node name="Tree3" parent="IslandObjectSaveManager" unique_id=1166662787 instance=ExtResource("28_s7sig")]
 position = Vector2(-96, -88)
+uses_magic_power = null
 
 [node name="Tree9" parent="IslandObjectSaveManager" unique_id=1569342802 instance=ExtResource("28_s7sig")]
 position = Vector2(-72, -168)
+uses_magic_power = null
 
 [node name="Tree4" parent="IslandObjectSaveManager" unique_id=1502719267 instance=ExtResource("28_s7sig")]
 position = Vector2(-24, 112)
+uses_magic_power = null
 
 [node name="Tree5" parent="IslandObjectSaveManager" unique_id=1626426851 instance=ExtResource("28_s7sig")]
 position = Vector2(-96, 16)
 variant = 1
+uses_magic_power = null
 
 [node name="Tree6" parent="IslandObjectSaveManager" unique_id=1454181280 instance=ExtResource("28_s7sig")]
 position = Vector2(-136, 64)
+uses_magic_power = null
 
 [node name="Tree7" parent="IslandObjectSaveManager" unique_id=614691068 instance=ExtResource("28_s7sig")]
 position = Vector2(184, -64)
+uses_magic_power = null
 
 [node name="Tree8" parent="IslandObjectSaveManager" unique_id=717924266 instance=ExtResource("28_s7sig")]
 position = Vector2(-136, -144)
 variant = 1
+uses_magic_power = null
 
 [node name="BigStone1" parent="IslandObjectSaveManager" unique_id=420431808 instance=ExtResource("29_7pmys")]
 position = Vector2(-24, 8)
+uses_magic_power = null
 
 [node name="BigStone2" parent="IslandObjectSaveManager" unique_id=1163535264 instance=ExtResource("29_7pmys")]
 position = Vector2(-96, 160)
 variant = 1
+uses_magic_power = null
 
 [node name="BigStone3" parent="IslandObjectSaveManager" unique_id=1516926624 instance=ExtResource("29_7pmys")]
 position = Vector2(120, 128)
+uses_magic_power = null
 
 [node name="BigStone4" parent="IslandObjectSaveManager" unique_id=163462160 instance=ExtResource("29_7pmys")]
 position = Vector2(-8, -176)
 variant = 1
+uses_magic_power = null
 
 [node name="Stone" parent="IslandObjectSaveManager" unique_id=935964283 instance=ExtResource("30_av3ku")]
 position = Vector2(-64, 0)
+uses_magic_power = null
 
 [node name="Stone2" parent="IslandObjectSaveManager" unique_id=2131713075 instance=ExtResource("30_av3ku")]
 position = Vector2(-24, -160)
 variant = 1
+uses_magic_power = null
 
 [node name="Stone3" parent="IslandObjectSaveManager" unique_id=1949002723 instance=ExtResource("30_av3ku")]
 position = Vector2(-56, -128)
 variant = 1
+uses_magic_power = null
 
 [node name="Stone9" parent="IslandObjectSaveManager" unique_id=1797111399 instance=ExtResource("30_av3ku")]
 position = Vector2(-160, -56)
+uses_magic_power = null
 
 [node name="Stone6" parent="IslandObjectSaveManager" unique_id=1055806023 instance=ExtResource("30_av3ku")]
 position = Vector2(-120, -136)
+uses_magic_power = null
 
 [node name="Stone10" parent="IslandObjectSaveManager" unique_id=913864796 instance=ExtResource("30_av3ku")]
 position = Vector2(-136, -128)
 variant = 1
+uses_magic_power = null
 
 [node name="Stone7" parent="IslandObjectSaveManager" unique_id=499329665 instance=ExtResource("30_av3ku")]
 position = Vector2(-32, 56)
+uses_magic_power = null
 
 [node name="Stone8" parent="IslandObjectSaveManager" unique_id=1603847071 instance=ExtResource("30_av3ku")]
 position = Vector2(-104, 104)
+uses_magic_power = null
 
 [node name="Stone4" parent="IslandObjectSaveManager" unique_id=334526298 instance=ExtResource("30_av3ku")]
 position = Vector2(104, 16)
 variant = 1
+uses_magic_power = null
 
 [node name="Wheat" parent="IslandObjectSaveManager" unique_id=24467086 instance=ExtResource("31_jn67o")]
 position = Vector2(48, -144)
+uses_magic_power = null
 
 [node name="Wheat2" parent="IslandObjectSaveManager" unique_id=1341807490 instance=ExtResource("31_jn67o")]
 position = Vector2(64, -160)
+uses_magic_power = null
 
 [node name="Wheat8" parent="IslandObjectSaveManager" unique_id=106534627 instance=ExtResource("31_jn67o")]
 position = Vector2(80, -144)
+uses_magic_power = null
 
 [node name="Wheat9" parent="IslandObjectSaveManager" unique_id=1071057545 instance=ExtResource("31_jn67o")]
 position = Vector2(32, -128)
+uses_magic_power = null
 
 [node name="Wheat3" parent="IslandObjectSaveManager" unique_id=1074413615 instance=ExtResource("31_jn67o")]
 position = Vector2(48, -16)
+uses_magic_power = null
 
 [node name="Wheat4" parent="IslandObjectSaveManager" unique_id=547155009 instance=ExtResource("31_jn67o")]
 position = Vector2(-192, 48)
+uses_magic_power = null
 
 [node name="Wheat10" parent="IslandObjectSaveManager" unique_id=1919216548 instance=ExtResource("31_jn67o")]
 position = Vector2(-176, 16)
+uses_magic_power = null
 
 [node name="Wheat11" parent="IslandObjectSaveManager" unique_id=1982659336 instance=ExtResource("31_jn67o")]
 position = Vector2(-176, 80)
+uses_magic_power = null
 
 [node name="Wheat5" parent="IslandObjectSaveManager" unique_id=775225404 instance=ExtResource("31_jn67o")]
 position = Vector2(64, 16)
+uses_magic_power = null
 
 [node name="Wheat12" parent="IslandObjectSaveManager" unique_id=1226026531 instance=ExtResource("31_jn67o")]
 position = Vector2(48, 16)
+uses_magic_power = null
 
 [node name="Wheat13" parent="IslandObjectSaveManager" unique_id=126623703 instance=ExtResource("31_jn67o")]
 position = Vector2(64, 0)
+uses_magic_power = null
 
 [node name="Wheat6" parent="IslandObjectSaveManager" unique_id=1387506956 instance=ExtResource("31_jn67o")]
 position = Vector2(-176, 64)
+uses_magic_power = null
 
 [node name="Wheat7" parent="IslandObjectSaveManager" unique_id=1406769344 instance=ExtResource("31_jn67o")]
 position = Vector2(64, -128)
+uses_magic_power = null
 
 [node name="Fibre" parent="IslandObjectSaveManager" unique_id=1440901132 instance=ExtResource("32_pc5mx")]
 position = Vector2(208, -8)
+uses_magic_power = null
 
 [node name="Fibre4" parent="IslandObjectSaveManager" unique_id=383466689 instance=ExtResource("32_pc5mx")]
 position = Vector2(112, 48)
+uses_magic_power = null
 
 [node name="Fibre2" parent="IslandObjectSaveManager" unique_id=319855235 instance=ExtResource("32_pc5mx")]
 position = Vector2(56, -96)
+uses_magic_power = null
 
 [node name="Fibre3" parent="IslandObjectSaveManager" unique_id=826920535 instance=ExtResource("32_pc5mx")]
 position = Vector2(128, -128)
+uses_magic_power = null
 
 [node name="Mushroom" parent="IslandObjectSaveManager" unique_id=2089919811 instance=ExtResource("33_2wmxg")]
 position = Vector2(-144, -8)
+uses_magic_power = null
 
 [node name="Mushroom3" parent="IslandObjectSaveManager" unique_id=1596414700 instance=ExtResource("33_2wmxg")]
 position = Vector2(88, 32)
+uses_magic_power = null
 
 [node name="Mushroom4" parent="IslandObjectSaveManager" unique_id=905876327 instance=ExtResource("33_2wmxg")]
 position = Vector2(216, 40)
+uses_magic_power = null
 
 [node name="Mushroom5" parent="IslandObjectSaveManager" unique_id=896480080 instance=ExtResource("33_2wmxg")]
 position = Vector2(48, -200)
+uses_magic_power = null
 
 [node name="Mushroom6" parent="IslandObjectSaveManager" unique_id=970679726 instance=ExtResource("33_2wmxg")]
 position = Vector2(96, -128)
+uses_magic_power = null
 
 [node name="Mushroom2" parent="IslandObjectSaveManager" unique_id=466349558 instance=ExtResource("33_2wmxg")]
 position = Vector2(-64, -88)
+uses_magic_power = null
+
+[node name="MagicPowerListener" parent="." unique_id=1986599109 instance=ExtResource("28_d0llm")]
