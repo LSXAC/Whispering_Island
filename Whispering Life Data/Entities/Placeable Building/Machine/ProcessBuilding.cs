@@ -164,9 +164,7 @@ public partial class ProcessBuilding : MachineBase
             return;
         }
         else
-        {
             description.Text = TranslationServer.Translate("FURNACE_MENU_DESC");
-        }
 
         is_crafting = true;
         item_array[(int)FurnaceTab.SlotType.IMPORT].amount -= smeltable.amount_to_smelt;
