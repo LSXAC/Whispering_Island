@@ -13,7 +13,6 @@ public partial class IslandManager : Node2D
 
     public Array<IslandBuildSave> build_saves = new Array<IslandBuildSave>();
 
-    public Array<Island> islands = new Array<Island>();
     public int last_island_id;
 
     public int[] island_types_build = [0, 0, 0, 0];
@@ -71,7 +70,7 @@ public partial class IslandManager : Node2D
 
     public void RemoveIslandsThroughQuest()
     {
-        if (island_saves.Count == 0)
+        if (island_saves.Count == 0 || GetChildCount() <= 1)
             return;
 
         IslandSave i_s = island_saves[island_saves.Count - 1];
@@ -90,7 +89,6 @@ public partial class IslandManager : Node2D
                 break;
             }
         island_saves.RemoveAt(island_saves.Count - 1);
-        islands.RemoveAt(islands.Count - 1);
         GameManager.instance.SaveGame();
         GlobalFunctions.SetPlayerPositionToStart();
         GameManager.instance.save_state.WriteSave();
