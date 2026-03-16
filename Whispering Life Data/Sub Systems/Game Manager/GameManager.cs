@@ -306,7 +306,6 @@ public partial class GameManager : Node2D
         PlayerUI.instance.gameover_panel.Visible = true;
         GameMenu.instance.Visible = false;
         BuildMenu.instance.Visible = false;
-        QuestMenu.instance.Visible = false;
         TimeManager.instance.game_timer.Stop();
         gameover = true;
     }

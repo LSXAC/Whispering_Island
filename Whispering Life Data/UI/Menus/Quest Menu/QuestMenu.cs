@@ -4,7 +4,7 @@ using DialogueManagerRuntime;
 using Godot;
 using Godot.Collections;
 
-public partial class QuestMenu : CanvasLayer
+public partial class QuestMenu : ColorRect
 {
     [Export]
     public Control quest_label_parent;
@@ -22,20 +22,16 @@ public partial class QuestMenu : CanvasLayer
     public Resource dialogue_timeline;
 
     [Export]
+    public ChestInventory quest_inventory;
+
+    [Export]
     public Label reward_label;
     public PackedScene h_box_item = ResourceLoader.Load<PackedScene>(
         ResourceUid.UidToPath("uid://bnf8yngk7oyy0")
     );
-    public static QuestMenu instance = null;
     public static QuestInfo currentQuest = null;
 
     private Array<Label> item_labels = new Array<Label>();
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
-        instance = this;
-    }
 
     public void InitQuest(QuestInfo quest)
     {
@@ -63,26 +59,12 @@ public partial class QuestMenu : CanvasLayer
     public override void _PhysicsProcess(double delta)
     {
         if (Input.IsActionJustPressed("Escape"))
-        {
-            if (GameMenu.IsThisWindow(this))
-                OnCloseButton();
-        }
+            GameMenu.instance.OnExitButton();
     }
 
     public void OnOpenQuestMenu()
     {
-        GameMenu.SetWindow(this);
-    }
-
-    public void OnCloseButton()
-    {
-        CutsceneManager.In_Cutscene = true;
-        GlobalFunctions.MoveCameraToPosition(new Vector2(13, -256));
-        if (TranslationServer.GetLocale() == "de")
-            DialogueManager.ShowExampleDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_DE");
-        else
-            DialogueManager.ShowExampleDialogueBalloon(dialogue_timeline, "Quest_Menu_Closed_ENG");
-        CloseQuestMenu();
+        GameMenu.instance.OnOpenQuestTab();
     }
 
     public void CloseQuestMenu()
@@ -144,7 +126,7 @@ public partial class QuestMenu : CanvasLayer
 
         foreach (Item item in items)
         {
-            h_box_item c_label = (h_box_item)instance.h_box_item.Instantiate();
+            h_box_item c_label = (h_box_item)GameMenu.questMenu.h_box_item.Instantiate();
             Array<Item> iii = PlayerInventoryUI.instance.GetItemFromListOrNull(
                 items_in_inventory,
                 item

@@ -43,7 +43,6 @@ checkAreaTimer = NodePath("CheckAreaTimer")
 belt_0 = NodePath("Belt")
 belt_1 = NodePath("Belt2")
 building_id = 23
-uses_magic_power = true
 magic_power_consumption = 0.5
 tile_types = Array[int]([0])
 title = "BUILDING_BELT_COMBINER_2x1"

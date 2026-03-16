@@ -164,3 +164,6 @@ MYSTIC_MUSHROOM_SPORES_DESC,Spores from a mystical mushroom,Sporen eines mystisc
 ,,
 MAGIC_DUST,Magic Dust,Magischer Staub
 MAGIC_DUST_DESC,Magic Dust is used to power up specific machines.,Magischer Staub wird benötigt um einige Maschinen zu laden
+,,
+MAGIC_CORE_COMPONENT,Magic Core Component,Magiecore Komponente
+MAGIC_CORE_COMPONENT_DESC,Used for machines that use magic power,Wird für Maschinen mit magischer Kraft benötigt

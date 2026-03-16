@@ -105,7 +105,7 @@ public partial class MonsterIsland : Building_Node
         if (GlobalFunctions.GetDistanceToPlayer(this.GlobalPosition) >= 45)
             return;
 
-        QuestMenu.instance.OnOpenQuestMenu();
+        GameMenu.questMenu.OnOpenQuestMenu();
     }
 
     private void OnStateChanged(MonsterIslandStateManager.STATE new_state)

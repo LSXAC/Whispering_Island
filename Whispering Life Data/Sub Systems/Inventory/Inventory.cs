@@ -83,7 +83,8 @@ public partial class Inventory : SlotUpdater
         PALM_SEED,
         CACTUS,
         CACTUS_SEED,
-        MAGIC_DUST
+        MAGIC_DUST,
+        MAGIC_CORE_COMPONENT
     }
 
     public override void _Ready()

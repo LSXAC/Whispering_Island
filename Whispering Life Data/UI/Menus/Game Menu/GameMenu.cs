@@ -50,6 +50,9 @@ public partial class GameMenu : CanvasLayer
     public ColorRect help_tab;
 
     [Export]
+    public ColorRect quest_tab;
+
+    [Export]
     public ColorRect rail_station_tab;
 
     [Export]
@@ -66,8 +69,11 @@ public partial class GameMenu : CanvasLayer
     [Export]
     public CraftingCategoryPanel crafting_category_panel;
 
+    public static QuestMenu questMenu;
+
     public override void _Ready()
     {
+        questMenu = (QuestMenu)quest_tab;
         instance = this;
     }
 
@@ -361,6 +367,7 @@ public partial class GameMenu : CanvasLayer
         rail_station_tab.Visible = false;
         minecart_tab.Visible = false;
         destroy_menu.Visible = false;
+        quest_tab.Visible = false;
     }
 
     public void OnCloseResearchTab()
@@ -412,6 +419,14 @@ public partial class GameMenu : CanvasLayer
         SetWindow(this);
         CloseAllTabs();
         island_tab.Visible = true;
+    }
+
+    public void OnOpenQuestTab()
+    {
+        SetWindow(this);
+        CloseAllTabs();
+        quest_tab.Visible = true;
+        inventory_tab.Visible = true;
     }
 
     public void OnOpenDestroyTab()

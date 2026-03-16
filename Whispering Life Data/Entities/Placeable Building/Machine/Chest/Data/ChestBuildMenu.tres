@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://cxyl31duovsut"]
 
-[ext_resource type="Resource" uid="uid://bl35uo51q2mwf" path="res://Entities/Items/Craftable/item_info_wood_plank.tres" id="1_d7tg0"]
+[ext_resource type="Resource" uid="uid://dtn8ti2o5hiwj" path="res://Entities/Items/Machine Component/Magic Core Component/Data/MagicCoreComponent.tres" id="1_2o3am"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_euvdd"]
 [ext_resource type="PackedScene" uid="uid://dj73tpok8xq6p" path="res://Entities/Placeable Building/Machine/Chest/Building_Chest.tscn" id="2_wjc7p"]
 [ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://Entities/Items/Machine Component/Transport/Data/TransportComponent.tres" id="3_l5vtr"]
@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://cb634fgv247qi" path="res://Entities/Placeable Building/Machine/Chest/Chest_Building_Sprite.png" id="5_euvdd"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Build Menu Line/Building_Menu_List_Object.cs" id="6_ukw2e"]
 
-[sub_resource type="Resource" id="Resource_yo73i"]
+[sub_resource type="Resource" id="Resource_0qwgu"]
 script = ExtResource("2_euvdd")
-info = ExtResource("1_d7tg0")
-amount = 10
+info = ExtResource("1_2o3am")
+amount = 1
 metadata/_custom_type_script = "uid://cee63igbpybf"
 
 [sub_resource type="Resource" id="Resource_l5vtr"]
@@ -30,7 +30,7 @@ metadata/_custom_type_script = "uid://cee63igbpybf"
 script = ExtResource("6_ukw2e")
 scene = ExtResource("2_wjc7p")
 scene_building_id = 2
-required_items = Array[Object]([SubResource("Resource_yo73i"), SubResource("Resource_l5vtr"), SubResource("Resource_3dogx")])
+required_items = Array[Object]([SubResource("Resource_0qwgu"), SubResource("Resource_l5vtr"), SubResource("Resource_3dogx")])
 unlock_requirements = null
 building_menu_category = 6
 texture_in_build_menu = ExtResource("5_euvdd")

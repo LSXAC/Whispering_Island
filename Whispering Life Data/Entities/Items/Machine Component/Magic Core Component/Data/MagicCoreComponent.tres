@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://dtn8ti2o5hiwj"]
+
+[ext_resource type="Script" uid="uid://cmmub3ei8m4o8" path="res://Entities/Items/Attributes/ProcessedAttribute.cs" id="1_pteqs"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="2_y8hkg"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="3_toyiu"]
+[ext_resource type="Texture2D" uid="uid://bdrd2bbx6r3ow" path="res://Entities/Items/Machine Component/Magic Core Component/Texture/magic_core_texture.png" id="4_4t7wb"]
+
+[sub_resource type="Resource" id="Resource_h2t5y"]
+script = ExtResource("1_pteqs")
+metadata/_custom_type_script = "uid://cmmub3ei8m4o8"
+
+[sub_resource type="Resource" id="Resource_gjvhw"]
+script = ExtResource("2_y8hkg")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[resource]
+script = ExtResource("3_toyiu")
+attributes = Array[Object]([SubResource("Resource_h2t5y"), SubResource("Resource_gjvhw")])
+max_stackable_size = 250
+name = "MAGIC_CORE_COMPONENT"
+id = 67
+description = "MAGIC_CORE_COMPONENT_DESC"
+texture = ExtResource("4_4t7wb")
+value = 25.0

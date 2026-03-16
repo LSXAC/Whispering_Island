@@ -62,7 +62,7 @@ public partial class QuestManager : Node
 
         CheckQuestDuplications();
         quest_timer.StartTimer();
-        QuestMenu.instance.InitQuest(quests[current_quest_id]);
+        GameMenu.questMenu.InitQuest(quests[current_quest_id]);
         QuestMiniPanel.instance.UpdateTimeLabel(current_quest_time);
         QuestMiniPanel.instance.InitQuestMiniPanel(quests[current_quest_id]);
         MonsterIsland.instance.InitializeQuestTimers();
@@ -75,7 +75,7 @@ public partial class QuestManager : Node
             //Cutscene
             GameMenu.CloseLastWindow();
             instance.quest_timer.Stop();
-            QuestMenu.instance.CloseQuestMenu();
+            GameMenu.questMenu.CloseQuestMenu();
             //HeartManager.instance.RemoveHeart();
             if (GameManager.gameover)
                 return;
@@ -144,7 +144,7 @@ public partial class QuestManager : Node
     {
         if (finished_correctly)
         {
-            QuestMenu.instance.CloseQuestMenu();
+            GameMenu.questMenu.CloseQuestMenu();
             RemoveQuestItems();
             GameManager.money += quests[current_quest_id].reward_money;
             PlayerUI.instance.UpdateMoneyLabel();
@@ -185,7 +185,7 @@ public partial class QuestManager : Node
             quest_timer.PauseTimer();
             await ToSignal(PlayerUI.instance.qcp_timer, "timeout");
             quest_timer.StartTimer();
-            QuestMenu.instance.OnOpenQuestMenu();
+            GameMenu.questMenu.OnOpenQuestMenu();
         }
 
         CutsceneManager.In_Cutscene = false;

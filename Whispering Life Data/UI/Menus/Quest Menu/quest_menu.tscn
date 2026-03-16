@@ -147,17 +147,14 @@ alignment = 1
 [node name="HBoxItem" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer2/VBoxContainer" unique_id=1968778800 instance=ExtResource("5_ao47r")]
 layout_mode = 2
 theme_override_constants/separation = 2
-alignment = 1
 
 [node name="HBoxItem2" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer2/VBoxContainer" unique_id=399891455 instance=ExtResource("5_ao47r")]
 layout_mode = 2
 theme_override_constants/separation = 2
-alignment = 1
 
 [node name="HBoxItem3" parent="Background/MarginContainer/VBoxContainer2/HBoxContainer2/VBoxContainer" unique_id=2095112461 instance=ExtResource("5_ao47r")]
 layout_mode = 2
 theme_override_constants/separation = 2
-alignment = 1
 
 [node name="Label3" type="Label" parent="Background/MarginContainer/VBoxContainer2" unique_id=434403346]
 layout_mode = 2
