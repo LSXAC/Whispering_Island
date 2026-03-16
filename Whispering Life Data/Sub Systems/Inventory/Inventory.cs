@@ -87,6 +87,8 @@ public partial class Inventory : SlotUpdater
         MAGIC_CORE_COMPONENT
     }
 
+    public Action OnItemChanged;
+
     public override void _Ready()
     {
         inventory_items = new ItemSave[slot_amount];

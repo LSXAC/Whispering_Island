@@ -33,6 +33,11 @@ public partial class QuestMenu : ColorRect
 
     private Array<Label> item_labels = new Array<Label>();
 
+    public override void _Ready()
+    {
+        quest_inventory.OnItemChanged += CheckQuest;
+    }
+
     public void InitQuest(QuestInfo quest)
     {
         ResetParent();
@@ -65,6 +70,7 @@ public partial class QuestMenu : ColorRect
     public void OnOpenQuestMenu()
     {
         GameMenu.instance.OnOpenQuestTab();
+        OnVisiblityChanged();
     }
 
     public void CloseQuestMenu()
@@ -96,18 +102,27 @@ public partial class QuestMenu : ColorRect
         reward_label.Text = QuestManager
             .instance.quests[QuestManager.current_quest_id]
             .reward_money.ToString();
+
+        CheckQuest();
+    }
+
+    public void CheckQuest()
+    {
+        ResetParent();
         int multi = 1;
         if (QuestManager.next_quest_is_doubled_items)
             multi = 2;
+
         CreateLabels(
             QuestManager.instance.quests[QuestManager.current_quest_id].required_items,
             quest_label_parent,
             multi
         );
-
         if (
-            GlobalFunctions.HasItemsInInventory(
-                QuestManager.instance.quests[QuestManager.current_quest_id].required_items
+            InventoryContainsQuestItems(
+                quest_inventory.inventory_items,
+                QuestManager.instance.quests[QuestManager.current_quest_id].required_items,
+                multi
             )
         )
             complete_button.Disabled = false;
@@ -115,48 +130,64 @@ public partial class QuestMenu : ColorRect
             complete_button.Disabled = true;
     }
 
-    public static void CreateLabels(Array<Item> items, Control parent, int multi = 1)
+    public static bool InventoryContainsQuestItems(
+        ItemSave[] inventory,
+        Array<Item> questItems,
+        int multi = 1
+    )
     {
-        if (PlayerInventoryUI.instance == null)
+        foreach (Item questItem in questItems)
         {
-            GD.PrintErr("PlayerInventoryUI.instance is null in QuestMenu.CreateLabels");
-            return;
-        }
-        Array<Item> items_in_inventory = PlayerInventoryUI.instance.GetListOfItemsInInventory();
+            int amount = 0;
 
-        foreach (Item item in items)
-        {
-            h_box_item c_label = (h_box_item)GameMenu.questMenu.h_box_item.Instantiate();
-            Array<Item> iii = PlayerInventoryUI.instance.GetItemFromListOrNull(
-                items_in_inventory,
-                item
-            );
-
-            Item item_ref = item.Clone();
-
-            parent.AddChild(c_label);
-            item_ref.amount = (int)(item_ref.amount * GameManager.difficulty_multiplier) * multi;
-            c_label.InitItemUI(item_ref);
-
-            c_label.SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter;
-            c_label.AddThemeConstantOverride("separation", 2);
-            if (iii == null)
+            foreach (ItemSave invItem in inventory)
             {
-                c_label.item_label.Text = "0x /" + item_ref.amount + "x";
-                continue;
+                if (invItem == null)
+                    continue;
+
+                if (invItem.item_id == (int)questItem.info.id)
+                    amount += invItem.amount;
             }
 
+            if (amount < questItem.amount * multi)
+                return false;
+        }
+
+        return true;
+    }
+
+    public static void CreateLabels(Array<Item> questItems, Control parent, int multi = 1)
+    {
+        foreach (Item item in questItems)
+        {
+            h_box_item label = (h_box_item)GameMenu.questMenu.h_box_item.Instantiate();
+            parent.AddChild(label);
+
+            Item item_ref = item.Clone();
+            item_ref.amount = (int)(item_ref.amount * GameManager.difficulty_multiplier) * multi;
+
+            label.InitItemUI(item_ref);
+            label.SizeFlagsHorizontal = SizeFlags.ShrinkCenter;
+            label.AddThemeConstantOverride("separation", 2);
+
             int amount = 0;
-            if (iii != null)
-                foreach (Item i_x in iii)
-                    amount += i_x.amount;
 
-            c_label.item_label.Text = amount + "x /" + item_ref.amount + "x";
+            foreach (ItemSave invItem in GameMenu.questMenu.quest_inventory.inventory_items)
+            {
+                if (invItem == null)
+                    continue;
 
-            if (amount >= item_ref.amount)
-                c_label.ChangeColor(global::h_box_item.colorType.green);
-            else
-                c_label.ChangeColor(global::h_box_item.colorType.white);
+                if (invItem.item_id == (int)item_ref.info.id)
+                    amount += invItem.amount;
+            }
+
+            label.item_label.Text = amount + "x / " + item_ref.amount + "x";
+
+            label.ChangeColor(
+                amount >= item_ref.amount
+                    ? global::h_box_item.colorType.green
+                    : global::h_box_item.colorType.white
+            );
         }
     }
 }

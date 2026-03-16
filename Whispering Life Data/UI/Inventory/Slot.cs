@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using Godot;
 using Godot.Collections;
@@ -23,13 +24,17 @@ public partial class Slot : Button
     ItemSave[] item_array = null;
     SlotUpdater slotUpdater;
     ChestBase chest = null;
-    PackedScene slot_item_ui_scene = GD.Load<PackedScene>(ResourceUid.UidToPath("uid://xjy2l41obahq"));
+    PackedScene slot_item_ui_scene = GD.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://xjy2l41obahq")
+    );
 
     public override void _Ready()
     {
         if (slot_item_ui_scene == null)
             GD.PrintErr("Slot: slot_item_ui_scene is null, please check if the path is correct.");
     }
+
+    public Action OnSlotChanged;
 
     public override void _GuiInput(InputEvent @event)
     {
@@ -45,6 +50,7 @@ public partial class Slot : Button
                 item_array = ((Inventory)GetParent().GetParent().GetParent()).inventory_items;
                 slotUpdater = (Inventory)GetParent().GetParent().GetParent();
                 OnSlotButton(btn);
+                ((Inventory)GetParent().GetParent().GetParent()).OnItemChanged?.Invoke();
             }
 
             if (GetParent().GetParent().GetParent().GetParent() is FurnaceTab)
@@ -63,6 +69,7 @@ public partial class Slot : Button
                 slotUpdater = (Inventory)GetParent().GetParent().GetParent();
                 chest = ChestInventory.current_chest;
                 OnSlotButton(btn);
+                ((Inventory)GetParent().GetParent().GetParent()).OnItemChanged?.Invoke();
             }
 
             if (attribute_to_check is WearableAttribute)

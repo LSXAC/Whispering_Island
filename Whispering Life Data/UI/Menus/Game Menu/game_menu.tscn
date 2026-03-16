@@ -6899,7 +6899,8 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 alignment = 1
 
-[node name="QuestMenu" type="ColorRect" parent="Background" unique_id=183995902 node_paths=PackedStringArray("quest_label_parent", "quest_name_label", "complete_button", "quest_description_label", "reward_label")]
+[node name="QuestMenu" type="ColorRect" parent="Background" unique_id=183995902 node_paths=PackedStringArray("quest_label_parent", "quest_name_label", "complete_button", "quest_description_label", "quest_inventory", "reward_label")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6914,9 +6915,10 @@ color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("124_miyc7")
 quest_label_parent = NodePath("MarginContainer/VBoxContainer2/HBoxContainer2/VBoxContainer")
 quest_name_label = NodePath("MarginContainer/VBoxContainer2/Label")
-complete_button = NodePath("MarginContainer/VBoxContainer2/CompleteQuestButton")
+complete_button = NodePath("MarginContainer/VBoxContainer2/HBoxContainer3/CompleteQuestButton")
 quest_description_label = NodePath("MarginContainer/VBoxContainer2/Description")
 dialogue_timeline = ExtResource("125_m1qfe")
+quest_inventory = NodePath("MarginContainer/VBoxContainer2/ChestInventoryIn")
 reward_label = NodePath("MarginContainer/VBoxContainer2/HBoxContainer/MoneyLabel")
 
 [node name="HeaderColorRect" parent="Background/QuestMenu" unique_id=767268895 instance=ExtResource("11_45saq")]
@@ -7085,7 +7087,24 @@ theme_override_font_sizes/font_size = 10
 text = "2883"
 horizontal_alignment = 1
 
-[node name="CompleteQuestButton" type="Button" parent="Background/QuestMenu/MarginContainer/VBoxContainer2" unique_id=38851256]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/VBoxContainer2" unique_id=1522287511]
+layout_mode = 2
+alignment = 1
+
+[node name="ReloadButton" type="Button" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer3" unique_id=38851256]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("46_tmrav")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/focus = ExtResource("28_gcthi")
+text = "(RELOAD)"
+
+[node name="CompleteQuestButton" type="Button" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer3" unique_id=69728070]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_constants/outline_size = 5
@@ -7214,6 +7233,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="pressed" from="Background/MinecartTab/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StopEngineBtn" to="Background/MinecartTab" method="StopEngine"]
 [connection signal="visibility_changed" from="Background/DestroyMenu" to="Background/DestroyMenu" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/DestroyMenu/MarginContainer/VBoxContainer2/CompleteQuestButton" to="Background/DestroyMenu" method="OnDestroyButton"]
+[connection signal="pressed" from="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer3/ReloadButton" to="Background/QuestMenu" method="CheckQuest"]
 
 [editable path="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer/HeadSlotBackground"]
 [editable path="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer/ChestSlotBackground"]
