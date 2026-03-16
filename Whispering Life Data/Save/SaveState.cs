@@ -80,7 +80,7 @@ public partial class SaveState : Resource
     public float stability = 1.0f;
 
     private static string save_path = "user://save.tres";
-    public static string game_version = "a.0.1";
+    public static string game_version = "a.0.2.3";
 
     public void WriteSave()
     {

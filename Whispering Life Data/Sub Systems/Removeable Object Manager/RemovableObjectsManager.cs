@@ -21,6 +21,7 @@ public partial class RemovableObjectsManager : Node2D
                     continue;
                 r_sign.object_connected.QueueFree();
                 r_sign.QueueFree();
+                r_sign.RemoveShadows();
             }
         }
     }
