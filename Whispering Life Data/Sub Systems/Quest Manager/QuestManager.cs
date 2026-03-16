@@ -122,20 +122,20 @@ public partial class QuestManager : Node
         if (!next_quest_is_doubled_items)
         {
             foreach (Item quest_item in quests[current_quest_id].required_items)
-                PlayerInventoryUI.instance.RemoveItem(
+                GameMenu.questMenu.quest_inventory.RemoveItem(
                     new Item(
                         quest_item.info,
                         (int)(quest_item.amount * (int)GameManager.difficulty_multiplier)
                     ),
-                    PlayerInventoryUI.instance.inventory_items
+                    GameMenu.questMenu.quest_inventory.inventory_items
                 );
         }
         else
         {
             foreach (Item quest_item in quests[current_quest_id].required_items)
-                PlayerInventoryUI.instance.RemoveItem(
+                GameMenu.questMenu.quest_inventory.RemoveItem(
                     new Item(quest_item.info, quest_item.amount * 2),
-                    PlayerInventoryUI.instance.inventory_items
+                    GameMenu.questMenu.quest_inventory.inventory_items
                 );
         }
     }

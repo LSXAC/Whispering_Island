@@ -7234,6 +7234,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="visibility_changed" from="Background/DestroyMenu" to="Background/DestroyMenu" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/DestroyMenu/MarginContainer/VBoxContainer2/CompleteQuestButton" to="Background/DestroyMenu" method="OnDestroyButton"]
 [connection signal="pressed" from="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer3/ReloadButton" to="Background/QuestMenu" method="CheckQuest"]
+[connection signal="pressed" from="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer3/CompleteQuestButton" to="Background/QuestMenu" method="OnCompleteButton"]
 
 [editable path="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer/HeadSlotBackground"]
 [editable path="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer/ChestSlotBackground"]
