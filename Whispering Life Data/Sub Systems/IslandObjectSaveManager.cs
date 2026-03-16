@@ -14,7 +14,8 @@ public partial class IslandObjectSaveManager : Node2D
     public Array<BeltMachineSave> belt_machine_saves = new Array<BeltMachineSave>();
     public Array<RailSave> rail_saves = new Array<RailSave>();
 
-    private PackedScene belt_item_scene = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://dkue7sa7xyeyr")
+    private PackedScene belt_item_scene = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://dkue7sa7xyeyr")
     );
 
     public void LoadPlacedObjects()
@@ -120,6 +121,9 @@ public partial class IslandObjectSaveManager : Node2D
 
                 if (node is Trashcan trash_can)
                     machine_saves.Add((MachineSave)trash_can.Save());
+
+                if (node is MagicGenerator magic_generator)
+                    placeable_saves.Add((PlaceableSave)magic_generator.Save());
                 continue;
             }
 

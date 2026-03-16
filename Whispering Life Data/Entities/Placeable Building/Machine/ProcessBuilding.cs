@@ -16,9 +16,6 @@ public partial class ProcessBuilding : MachineBase
     public int fuel_left = 0;
 
     [Export]
-    public Timer crafting_timer;
-
-    [Export]
     public Timer state_timer;
 
     public bool is_crafting = false;
@@ -75,7 +72,7 @@ public partial class ProcessBuilding : MachineBase
                 );
 
             is_crafting = false;
-            crafting_timer.Stop();
+            process_timer.Stop();
             progress = 0;
             if (FurnaceTab.instance.process_building == this)
                 FurnaceTab.instance.UpdateProgressbar(progress);
@@ -170,7 +167,7 @@ public partial class ProcessBuilding : MachineBase
         item_array[(int)FurnaceTab.SlotType.IMPORT].amount -= smeltable.amount_to_smelt;
         if (FurnaceTab.instance.process_building == this)
             FurnaceTab.instance.UpdateFurnaceUI();
-        crafting_timer.Start();
+        process_timer.Start();
     }
 
     private bool SelectAndCheckCanCraft()

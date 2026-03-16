@@ -47,15 +47,15 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(51, 44)
 
-[node name="Building" type="StaticBody2D" unique_id=1101112268 node_paths=PackedStringArray("spawn_timer", "machine_activ_color_rect")]
+[node name="Building" type="StaticBody2D" unique_id=1101112268 node_paths=PackedStringArray("machine_activ_color_rect", "process_timer")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_01v3s")
 output_item_resource = ExtResource("2_fs0bn")
-spawn_timer = NodePath("SpawnTimer")
 machine_enabled = true
 machine_activ_color_rect = NodePath("MachineActivColorRect")
+process_timer = NodePath("ProcessTimer")
 building_id = 5
 consums_magic_power = true
 magic_power_consumption = 5.0
@@ -118,7 +118,7 @@ building = NodePath("..")
 [node name="Holder" parent="Giver2" index="0" unique_id=1704036799]
 position = Vector2(-16, 1)
 
-[node name="SpawnTimer" type="Timer" parent="." unique_id=1097977986]
+[node name="ProcessTimer" type="Timer" parent="." unique_id=1097977986]
 wait_time = 0.1
 autostart = true
 
@@ -135,6 +135,6 @@ offset_bottom = 25.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
-[connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimeout"]
+[connection signal="timeout" from="ProcessTimer" to="." method="OnSpawnTimeout"]
 
 [editable path="Giver2"]

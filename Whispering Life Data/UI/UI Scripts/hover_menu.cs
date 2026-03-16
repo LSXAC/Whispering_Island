@@ -19,7 +19,8 @@ public partial class hover_menu : PanelContainer
         process_input_container,
         process_output_container,
         chest_slots_container,
-        magic_power_container;
+        magic_power_container,
+        magic_power_efficiency_container;
 
     [Export]
     public Label title_content,
@@ -41,7 +42,9 @@ public partial class hover_menu : PanelContainer
     public Label process_bar_content,
         process_fuel_content,
         process_input_content,
-        process_output_content;
+        process_output_content,
+        power_content,
+        power_efficiency_content;
 
     [Export]
     public Label chest_slots_content;
@@ -75,6 +78,7 @@ public partial class hover_menu : PanelContainer
 
             instance.chest_slots_container.Visible = false;
             instance.magic_power_container.Visible = false;
+            instance.magic_power_efficiency_container.Visible = false;
 
             instance.Line1.Visible = false;
             instance.Line2.Visible = false;
@@ -131,6 +135,13 @@ public partial class hover_menu : PanelContainer
 
             //Collect Level if Ressource
             instance.resource_type_level_content.Text = ro.mining_level.ToString();
+        }
+
+        if (node is MachineBase machine)
+        {
+            instance.magic_power_efficiency_container.Visible = true;
+            instance.power_efficiency_content.Text =
+                (machine.GetEfficiencyFactor() * 100f).ToString("0") + "%";
         }
 
         if (node is ProcessBuilding pb)
@@ -217,10 +228,11 @@ public partial class hover_menu : PanelContainer
 
         if (node is MagicGenerator magic_generator)
         {
+            instance.magic_power_efficiency_container.Visible = false;
             instance.magic_power_container.Visible = true;
             instance.Line2.Visible = true;
 
-            instance.process_bar_content.Text = magic_generator.generation_rate + "/s";
+            instance.power_content.Text = magic_generator.generation_rate + "/s";
         }
 
         EnableHoverMenu();

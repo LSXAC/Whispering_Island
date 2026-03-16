@@ -21,4 +21,15 @@ public partial class MagicGenerator : MachineBase
     {
         listener.AddPowerGeneration(generation_rate);
     }
+
+    public override void Load(Resource save)
+    {
+        base.Load(save);
+    }
+
+    public override Resource Save()
+    {
+        PlaceableSave save = (PlaceableSave)base.Save();
+        return save;
+    }
 }

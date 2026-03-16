@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class ProductionMachine : MachineBase
@@ -12,29 +13,21 @@ public partial class ProductionMachine : MachineBase
     [Export]
     public int count = 0;
 
-    [Export]
-    public Timer spawn_timer;
-
     public int progress = 0;
-
-    public override void _Ready()
-    {
-        base._Ready();
-        Timer spawn_timer = GetNode<Timer>("SpawnTimer");
-    }
 
     public override void _Process(double delta)
     {
         if (machine_enabled && !has_enough_magic_power)
         {
             DisableMachine();
-            spawn_timer.Paused = true;
+            process_timer.Paused = true;
         }
         else if (!machine_enabled && has_enough_magic_power)
         {
             EnableMachine();
-            spawn_timer.Paused = false;
+            process_timer.Paused = false;
         }
+        Debug.Print("Current WaitTime: " + process_timer.WaitTime);
     }
 
     public void OnSpawnTimeout()

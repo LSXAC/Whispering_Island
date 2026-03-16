@@ -21,6 +21,14 @@ public partial class MachineBase : placeable_building
 
     public Array<GpuParticles2D> particles = new Array<GpuParticles2D>();
 
+    [Export]
+    public Timer process_timer;
+
+    [Export]
+    public float process_wait_time = .1f;
+
+    private float efficency_factor = 0f;
+
     public override void _Ready()
     {
         base._Ready();
@@ -59,6 +67,25 @@ public partial class MachineBase : placeable_building
     {
         machine_enabled = false;
         UpdateActivColorRect();
+    }
+
+    public void UpdateBuildingsTimerEfficiencyFactor(float efficency_factor)
+    {
+        this.efficency_factor = efficency_factor;
+        if (efficency_factor < 0.5f)
+        {
+            this.efficency_factor = 0;
+            process_timer.Paused = true;
+        }
+        else if (process_timer.Paused && efficency_factor >= 0.5f)
+            process_timer.Paused = false;
+
+        process_timer.WaitTime = process_wait_time / efficency_factor;
+    }
+
+    public float GetEfficiencyFactor()
+    {
+        return this.efficency_factor;
     }
 
     public void UpdateActivColorRect()

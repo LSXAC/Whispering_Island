@@ -83,7 +83,7 @@ public abstract partial class placeable_building : Building_Node
             listener.AddPowerConsumtion(magic_power_consumption);
     }
 
-    public void UpdateMagicPowerBuilding(bool enough_power)
+    public void UpdateMagicPowerBuilding(MagicPowerListener listener, bool enough_power)
     {
         if (enough_power)
         {

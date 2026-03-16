@@ -58,16 +58,15 @@ gradient = SubResource("Gradient_k0wjm")
 fill = 1
 fill_from = Vector2(0.512821, 0.498576)
 
-[node name="Building" type="StaticBody2D" unique_id=737887353 node_paths=PackedStringArray("crafting_timer", "state_timer", "machine_activ_color_rect")]
+[node name="Building" type="StaticBody2D" unique_id=737887353 node_paths=PackedStringArray("state_timer", "machine_activ_color_rect", "process_timer")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_7ow6b")
-crafting_timer = NodePath("CraftingTimer")
 state_timer = NodePath("MachineUITimer")
 machine_activ_color_rect = NodePath("MachineActivColorRect")
+process_timer = NodePath("ProcessTimer")
 building_id = 3
-uses_magic_power = null
 tile_types = Array[int]([0])
 title = "BUILDING_FURNACE"
 description = "BUILDING_FURNACE_DESC"
@@ -118,7 +117,7 @@ position = Vector2(-38, -6)
 direction_not_giving = 1
 building = NodePath("..")
 
-[node name="CraftingTimer" type="Timer" parent="." unique_id=2079656188]
+[node name="ProcessTimer" type="Timer" parent="." unique_id=2079656188]
 wait_time = 0.1
 
 [node name="MachineUITimer" type="Timer" parent="." unique_id=502923141]
@@ -155,5 +154,5 @@ offset_bottom = -4.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
-[connection signal="timeout" from="CraftingTimer" to="." method="OnCraftingTimerTimeout"]
+[connection signal="timeout" from="ProcessTimer" to="." method="OnCraftingTimerTimeout"]
 [connection signal="timeout" from="MachineUITimer" to="." method="OnMachineTimeOut"]

@@ -1,11 +1,12 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class MagicPowerListener : Node2D
 {
     public float magical_power_generation = 0f;
     public float magical_power_consumtion = 0f;
-    public float efficiency_factor = 1f;
+    public float efficiency_factor = 0.1f;
 
     private Island island;
 
@@ -49,12 +50,17 @@ public partial class MagicPowerListener : Node2D
 
     private void CalculateEfficiencyFactor()
     {
-        efficiency_factor = Math.Clamp(magical_power_generation / magical_power_consumtion, 0f, 1f);
-    }
-
-    public float GetEfficiencyFactor()
-    {
-        return efficiency_factor;
+        if (magical_power_consumtion == 0)
+        {
+            efficiency_factor = 0.1f;
+            return;
+        }
+        efficiency_factor = Math.Clamp(
+            magical_power_generation / magical_power_consumtion,
+            0.1f,
+            1f
+        );
+        Debug.Print("current Efficiency Factor: " + efficiency_factor);
     }
 
     private void UpdateBuildingsPower()
@@ -63,9 +69,12 @@ public partial class MagicPowerListener : Node2D
         foreach (placeable_building building in island.island_object_save_manager.GetChildren())
         {
             if (building.consums_magic_power)
-                building.UpdateMagicPowerBuilding(
-                    magical_power_consumtion <= magical_power_generation
-                );
+            {
+                if (building is MachineBase machineBase)
+                    machineBase.UpdateBuildingsTimerEfficiencyFactor(efficiency_factor);
+
+                building.UpdateMagicPowerBuilding(this, efficiency_factor >= 0.5f);
+            }
         }
     }
 
