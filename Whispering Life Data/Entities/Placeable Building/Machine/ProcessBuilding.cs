@@ -68,7 +68,9 @@ public partial class ProcessBuilding : MachineBase
             else
                 item_array[(int)FurnaceTab.SlotType.EXPORT] = new ItemSave(
                     (int)smeltable.smelted_to_item.info.id,
-                    smeltable.smelted_to_item.amount
+                    smeltable.smelted_to_item.amount,
+                    -1,
+                    (int)smeltable.smelted_to_item.state
                 );
 
             is_crafting = false;

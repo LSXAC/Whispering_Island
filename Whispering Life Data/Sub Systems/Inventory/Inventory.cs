@@ -257,7 +257,7 @@ public partial class Inventory : SlotUpdater
             if (inventory[i] == null)
                 continue;
 
-            if (inventory[i].item_id == (int)item_info.id)
+            if (inventory[i].item_id == (int)item_info.id && inventory[i].state == (int)item.state)
             {
                 // 20 + 70
                 if (remaining > 0)
@@ -303,10 +303,16 @@ public partial class Inventory : SlotUpdater
                                 * Skilltree.instance.GetBonusOfCategory(
                                     SkillData.TYPE_CATEGORY.TOOL_DURABILITY
                                 )
-                            )
+                            ),
+                            (int)item.state
                         );
                     else
-                        inventory[i] = new ItemSave((int)item_info.id, remaining);
+                        inventory[i] = new ItemSave(
+                            (int)item_info.id,
+                            remaining,
+                            -1,
+                            (int)item.state
+                        );
 
                     QuestMiniPanel.instance.UpdateQuestMiniPanel(
                         QuestManager.instance.quests[QuestManager.current_quest_id]
@@ -325,12 +331,14 @@ public partial class Inventory : SlotUpdater
                                 * Skilltree.instance.GetBonusOfCategory(
                                     SkillData.TYPE_CATEGORY.TOOL_DURABILITY
                                 )
-                            )
+                            ),
+                            (int)item.state
                         );
                     else
                         inventory[i] = new ItemSave(
                             (int)item_info.id,
-                            item_info.max_stackable_size
+                            item_info.max_stackable_size,
+                            (int)item.state
                         );
                     QuestMiniPanel.instance.UpdateQuestMiniPanel(
                         QuestManager.instance.quests[QuestManager.current_quest_id]
@@ -475,9 +483,14 @@ public partial class Inventory : SlotUpdater
             ClearSlot(index);
             return;
         }
+        Debug.Print("State in Slot: " + inventory_items[index].state);
         GetNode<Slot>($"GridContainer/SlotBackground{index}/Slot0")
             .UpdateItem(
-                new Item(GetItemInfo(index), inventory_items[index].amount),
+                new Item(
+                    GetItemInfo(index),
+                    inventory_items[index].amount,
+                    (Item.STATE)inventory_items[index].state
+                ),
                 GetDurability(index)
             );
 

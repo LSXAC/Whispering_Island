@@ -108,7 +108,8 @@ public partial class EquipmentPanel : Control
         equipped_armor[index] = new ItemSave(
             (int)slot_item_ui.item.info.id,
             slot_item_ui.item.amount,
-            slot_item_ui.current_durability
+            slot_item_ui.current_durability,
+            (int)slot_item_ui.item.state
         );
         slots_armor[index].SetItem(slot_item_ui.item, slot_item_ui.current_durability);
     }
@@ -118,7 +119,8 @@ public partial class EquipmentPanel : Control
         equipped_tools[index] = new ItemSave(
             (int)slot_item_ui.item.info.id,
             slot_item_ui.item.amount,
-            slot_item_ui.current_durability
+            slot_item_ui.current_durability,
+            (int)slot_item_ui.item.state
         );
         slots_tool[index].SetItem(slot_item_ui.item, slot_item_ui.current_durability);
     }

@@ -161,7 +161,8 @@ public partial class FurnaceTab : SlotUpdater
                 export_slot.SetItem(
                     new Item(
                         GetItemInfo((int)SlotType.EXPORT),
-                        process_building.item_array[(int)SlotType.EXPORT].amount
+                        process_building.item_array[(int)SlotType.EXPORT].amount,
+                        state: (Item.STATE)process_building.item_array[(int)SlotType.EXPORT].state
                     )
                 );
 
@@ -170,7 +171,8 @@ public partial class FurnaceTab : SlotUpdater
                 import_slot.SetItem(
                     new Item(
                         GetItemInfo((int)SlotType.IMPORT),
-                        process_building.item_array[(int)SlotType.IMPORT].amount
+                        process_building.item_array[(int)SlotType.IMPORT].amount,
+                        state: (Item.STATE)process_building.item_array[(int)SlotType.IMPORT].state
                     )
                 );
 
@@ -179,7 +181,8 @@ public partial class FurnaceTab : SlotUpdater
                 fuel_slot.SetItem(
                     new Item(
                         GetItemInfo((int)SlotType.FUEL),
-                        process_building.item_array[(int)SlotType.FUEL].amount
+                        process_building.item_array[(int)SlotType.FUEL].amount,
+                        state: (Item.STATE)process_building.item_array[(int)SlotType.FUEL].state
                     )
                 );
     }
@@ -250,7 +253,9 @@ public partial class FurnaceTab : SlotUpdater
         {
             process_building.item_array[(int)SlotType.EXPORT] = new ItemSave(
                 (int)export_slot.GetSlotItemUI().item.info.id,
-                export_slot.GetSlotItemUI().item.amount
+                export_slot.GetSlotItemUI().item.amount,
+                -1,
+                (int)export_slot.GetSlotItemUI().item.state
             );
         }
 
@@ -262,7 +267,9 @@ public partial class FurnaceTab : SlotUpdater
         {
             process_building.item_array[(int)SlotType.IMPORT] = new ItemSave(
                 (int)import_slot.GetSlotItemUI().item.info.id,
-                import_slot.GetSlotItemUI().item.amount
+                import_slot.GetSlotItemUI().item.amount,
+                -1,
+                (int)export_slot.GetSlotItemUI().item.state
             );
         }
 
@@ -274,7 +281,9 @@ public partial class FurnaceTab : SlotUpdater
         {
             process_building.item_array[(int)SlotType.FUEL] = new ItemSave(
                 (int)fuel_slot.GetSlotItemUI().item.info.id,
-                fuel_slot.GetSlotItemUI().item.amount
+                fuel_slot.GetSlotItemUI().item.amount,
+                -1,
+                (int)export_slot.GetSlotItemUI().item.state
             );
         }
     }

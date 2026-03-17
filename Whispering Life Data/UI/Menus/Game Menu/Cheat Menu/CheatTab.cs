@@ -74,7 +74,11 @@ public partial class CheatTab : ColorRect
             try
             {
                 PlayerInventoryUI.instance.AddItem(
-                    new Item(item_infos[i], item_infos[i].max_stackable_size),
+                    new Item(
+                        item_infos[i],
+                        item_infos[i].max_stackable_size,
+                        state: Item.STATE.POISONED
+                    ),
                     PlayerInventoryUI.instance.inventory_items
                 );
             }

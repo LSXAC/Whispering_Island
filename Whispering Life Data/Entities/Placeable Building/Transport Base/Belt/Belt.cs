@@ -37,10 +37,11 @@ public partial class Belt : TransportBase
                 {
                     if (item_holder.hasBeltItem())
                     {
-                        ItemInfo info = item_holder.GetBeltItem().GetItemInfo();
+                        BeltItem belt_item = item_holder.GetBeltItem();
                         if (process_building.GetItemResource(FurnaceTab.SlotType.IMPORT) != null)
                             if (
-                                info != process_building.GetItemResource(FurnaceTab.SlotType.IMPORT)
+                                belt_item.GetItemInfo()
+                                != process_building.GetItemResource(FurnaceTab.SlotType.IMPORT)
                             )
                                 return;
                             else
@@ -53,8 +54,10 @@ public partial class Belt : TransportBase
                                 return;
                             }
                         process_building.item_array[(int)FurnaceTab.SlotType.IMPORT] = new ItemSave(
-                            (int)info.id,
-                            1
+                            (int)belt_item.GetItemInfo().id,
+                            1,
+                            -1,
+                            (int)belt_item.item.state
                         );
                         taker.receive_item(item);
                     }

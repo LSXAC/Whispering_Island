@@ -9,6 +9,8 @@ public partial class SlotItemUI : TextureRect
     public ProgressBar progress_bar;
     public int max_durability = 0;
     public int current_durability = -1;
+
+    [Export]
     public Item item;
 
     public override void _Notification(int what)
@@ -26,6 +28,7 @@ public partial class SlotItemUI : TextureRect
         Texture = item.info.texture;
         amount_label.Text = item.amount + "x";
         UpdateToolTip();
+        Debug.Print("Update ToolTip!");
 
         WearableAttribute attribute = item.info.GetAttributeOrNull<WearableAttribute>();
         //57cb00
@@ -85,6 +88,8 @@ public partial class SlotItemUI : TextureRect
 
             TooltipText += item_attribute.GetNameOfAttribute();
         }
+        TooltipText += "\n";
+        TooltipText += "State: " + item.state.ToString();
     }
 
     public void UpdateAmountLabel()
