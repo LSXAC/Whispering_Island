@@ -68,6 +68,7 @@
 [ext_resource type="Texture2D" uid="uid://cqkg0kirb2wru" path="res://Entities/Placeable Building/Spritesheets/Stones/Big_rock_1_shadow2.png" id="60_gwmn8"]
 [ext_resource type="Texture2D" uid="uid://b0ulcy60r1efs" path="res://Entities/Placeable Building/Spritesheets/Stones/Big_rock_1_shadow1.png" id="61_0aqyx"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="62_langh"]
+[ext_resource type="PackedScene" uid="uid://dnp8any8xrsj6" path="res://Sub Systems/Hit Label Manager/hit_label_manager.tscn" id="69_xtq70"]
 
 [sub_resource type="Resource" id="Resource_o5wt5"]
 script = ExtResource("3_edij4")
@@ -111,7 +112,7 @@ scale_curve = SubResource("CurveTexture_4ikef")
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_hrp6s")
-hit_point = NodePath("HitPoint")
+hit_point = NodePath("")
 tool_type = 3
 variants_parent = NodePath("SpriteAnimationManager/Variants")
 resource_item = SubResource("Resource_o5wt5")
@@ -193,10 +194,13 @@ tile_set = ExtResource("15_g1xgs")
 script = ExtResource("16_5inu6")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="HitPoint" type="Node2D" parent="." unique_id=756107944]
-position = Vector2(-8, -9)
-
 [node name="DurabilityComponent" parent="." unique_id=745968624 instance=ExtResource("17_kajek")]
+
+[node name="HitLabelManager" parent="." unique_id=1293240716 instance=ExtResource("69_xtq70")]
+offset_left = -14.0
+offset_top = -17.0
+offset_right = 26.0
+offset_bottom = 23.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

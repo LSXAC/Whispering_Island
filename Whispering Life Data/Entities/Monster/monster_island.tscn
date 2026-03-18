@@ -10,6 +10,9 @@
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="6_dg4eq"]
 [ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://UI/World Map/WorldMapIcon.cs" id="7_yw1sc"]
 [ext_resource type="Texture2D" uid="uid://ce16w5jut6adl" path="res://UI/Icons/world_map_quest_icon.png" id="8_60i32"]
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="12_0j0gb"]
+[ext_resource type="Script" uid="uid://g5hyr7r61kg4" path="res://Sub Systems/Health Bar/HealthBar.cs" id="12_yw1sc"]
+[ext_resource type="PackedScene" uid="uid://dnp8any8xrsj6" path="res://Sub Systems/Hit Label Manager/hit_label_manager.tscn" id="14_60i32"]
 [ext_resource type="Script" uid="uid://dpb6dauwcbggx" path="res://Entities/Monster/MonsterIslandStateManager.cs" id="14_yw1sc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wl4wn"]
@@ -268,6 +271,31 @@ polygon = PackedVector2Array(-29, -111, -54, -106, -76, -85, -73, -59, -67, -35,
 
 [node name="StateManager" type="Node2D" parent="." unique_id=1340542737]
 script = ExtResource("14_yw1sc")
+
+[node name="HealthBar" type="Control" parent="." unique_id=1373283497 node_paths=PackedStringArray("progressBar")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_yw1sc")
+progressBar = NodePath("ProgressBar")
+
+[node name="ProgressBar" type="ProgressBar" parent="HealthBar" unique_id=884192003]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = -69.0
+offset_top = -126.0
+offset_right = 31.0
+offset_bottom = -111.0
+theme_override_fonts/font = ExtResource("12_0j0gb")
+theme_override_font_sizes/font_size = 12
+step = 1.0
+
+[node name="HitLabelManager" parent="." unique_id=1293240716 instance=ExtResource("14_60i32")]
+offset_left = -20.0
+offset_top = -92.0
+offset_right = 20.0
+offset_bottom = -52.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

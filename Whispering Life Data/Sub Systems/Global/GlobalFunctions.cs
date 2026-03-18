@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
@@ -196,5 +197,11 @@ public partial class GlobalFunctions : Node2D
     {
         Tutorial.instance.Tree.Visible = false;
         Tutorial.instance.Tree.shadowNode.RemoveShadow();
+    }
+
+    public static async Task DealQuestDamage()
+    {
+        Debug.Print(QuestMenu.ItemsWithDamage + " Items found to damage");
+        await MonsterIsland.instance.HitIsland(1, QuestMenu.ItemsWithDamage);
     }
 }

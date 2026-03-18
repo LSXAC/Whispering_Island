@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dgsg4yrg53rgi" path="res://Sub Systems/Particles/Gras_Particle.png" id="18_t4e7i"]
 [ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="19_fbphc"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/Placeable Building/BuildingColliderManager.cs" id="20_oab77"]
+[ext_resource type="PackedScene" uid="uid://dnp8any8xrsj6" path="res://Sub Systems/Hit Label Manager/hit_label_manager.tscn" id="21_cb45y"]
 
 [sub_resource type="Resource" id="Resource_pony2"]
 script = ExtResource("3_m8a4e")
@@ -70,7 +71,7 @@ y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_uyotn")
-hit_point = NodePath("HitPoint")
+hit_point = NodePath("")
 growable = true
 tool_type = 4
 variants_parent = NodePath("SpriteAnimationManager/Variation")
@@ -158,8 +159,11 @@ tile_set = ExtResource("19_fbphc")
 script = ExtResource("20_oab77")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="HitPoint" type="Node2D" parent="." unique_id=302534923]
-position = Vector2(-8, -11)
+[node name="HitLabelManager" parent="." unique_id=1293240716 instance=ExtResource("21_cb45y")]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 32.0
+offset_bottom = 32.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

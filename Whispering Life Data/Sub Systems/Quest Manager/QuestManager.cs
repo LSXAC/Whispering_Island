@@ -148,8 +148,8 @@ public partial class QuestManager : Node
             RemoveQuestItems();
             GameManager.money += quests[current_quest_id].reward_money;
             PlayerUI.instance.UpdateMoneyLabel();
-
             monster_island.ApplyQuestCompleted();
+            MonsterIsland.instance.StartHittingCutscene();
         }
         else
             monster_island.ApplyQuestFailed();
@@ -180,7 +180,7 @@ public partial class QuestManager : Node
 
         if (finished_correctly)
         {
-            PlayerUI.CompleteQuestPanelShow();
+            //PlayerUI.CompleteQuestPanelShow();
             CutsceneManager.In_Cutscene = true;
             quest_timer.PauseTimer();
             await ToSignal(PlayerUI.instance.qcp_timer, "timeout");

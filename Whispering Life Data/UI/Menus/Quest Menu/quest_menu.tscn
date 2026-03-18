@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://o62xek3uvpo8"]
+[gd_scene format=3 uid="uid://rn7k3vloev4b"]
 
 [ext_resource type="Script" uid="uid://dmteju1kppf72" path="res://UI/Menus/Quest Menu/QuestMenu.cs" id="1_rjdwy"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="2_8enkj"]

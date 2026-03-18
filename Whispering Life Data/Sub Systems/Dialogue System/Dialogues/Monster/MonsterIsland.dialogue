@@ -12,6 +12,7 @@ do GlobalFunctions.LeaveDialogue()
 
 ~ Monster_Appear
 
+do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))
 Boss: Hahaha! Da bin ich wieder! [ID:36CAB5_E78556]
 do GlobalFunctions.IncreaseVisibilityOnMonsterIsland()
 Boss: Ich hoffe für dich, dass du hast was ich will! [ID:36CAB5_45EBBB]
@@ -19,4 +20,11 @@ Boss: ROAW! [ID:36CAB5_C9D25A]
 do GlobalFunctions.PlayIdleOnMonsterIsland()
 do GlobalFunctions.LeaveDialogue()
 
+~ Monster_Hitting
+
+do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))
+Boss: Ha! Those Resources were delicous!
+do GlobalFunctions.DealQuestDamage()
+Boss: Mhh... aua..
+do GlobalFunctions.LeaveDialogue()
 => END

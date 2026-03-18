@@ -54,6 +54,7 @@
 [ext_resource type="Texture2D" uid="uid://c85idw376ixt2" path="res://Entities/Placeable Building/Spritesheets/Plants/Oak_Tree/Tree_2_Animation_Shadow2.png" id="47_7xtxa"]
 [ext_resource type="Texture2D" uid="uid://7oqby4ibx0to" path="res://Entities/Placeable Building/Spritesheets/Plants/Oak_Tree/Tree_2_Animation_Shadow3.png" id="48_nor5h"]
 [ext_resource type="Texture2D" uid="uid://bshn1x3gcfg7c" path="res://Entities/Placeable Building/Spritesheets/Plants/Oak_Tree/Tree_2_Animation_Shadow4.png" id="49_jt383"]
+[ext_resource type="PackedScene" uid="uid://dnp8any8xrsj6" path="res://Sub Systems/Hit Label Manager/hit_label_manager.tscn" id="55_sx45p"]
 
 [sub_resource type="Resource" id="Resource_uwm61"]
 script = ExtResource("3_4qkka")
@@ -127,7 +128,7 @@ size = Vector2(15, 26)
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_cj282")
-hit_point = NodePath("HitPoint")
+hit_point = NodePath("")
 growable = true
 tool_type = 2
 variants_parent = NodePath("SpriteAnimationManager/Variations")
@@ -232,8 +233,11 @@ tile_set = ExtResource("9_htwjv")
 script = ExtResource("10_xqfnt")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="HitPoint" type="Node2D" parent="." unique_id=285089182]
-position = Vector2(-7, -33)
+[node name="HitLabelManager" parent="." unique_id=1293240716 instance=ExtResource("55_sx45p")]
+offset_left = -10.0
+offset_top = -40.0
+offset_right = 30.0
+offset_bottom = 0.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

@@ -33,6 +33,8 @@ public partial class QuestMenu : ColorRect
 
     private Array<Label> item_labels = new Array<Label>();
 
+    public static int ItemsWithDamage = 0;
+
     public override void _Ready()
     {
         quest_inventory.OnItemChanged += CheckQuest;
@@ -128,6 +130,50 @@ public partial class QuestMenu : ColorRect
             complete_button.Disabled = false;
         else
             complete_button.Disabled = true;
+
+        ItemsWithDamage = CalculateDamagedQuestItems(
+            quest_inventory.inventory_items,
+            QuestManager.instance.quests[QuestManager.current_quest_id].required_items,
+            multi
+        );
+        Debug.Print("Items damaged found: " + ItemsWithDamage);
+    }
+
+    public static int CalculateDamagedQuestItems(
+        ItemSave[] inventory,
+        Array<Item> questItems,
+        int multi = 1
+    )
+    {
+        int itemsWithDamage = 0;
+
+        foreach (Item questItem in questItems)
+        {
+            int needed = questItem.amount * multi;
+            int countedDamaged = 0;
+
+            foreach (ItemSave invItem in inventory)
+            {
+                if (invItem == null)
+                    continue;
+
+                if (invItem.item_id == (int)questItem.info.id && invItem.state == 1)
+                {
+                    int toAdd = Math.Min(invItem.amount, needed - countedDamaged);
+
+                    if (toAdd > 0)
+                        countedDamaged += toAdd;
+
+                    // optional: früh abbrechen
+                    if (countedDamaged >= needed)
+                        break;
+                }
+            }
+
+            itemsWithDamage += countedDamaged;
+        }
+
+        return itemsWithDamage;
     }
 
     public static bool InventoryContainsQuestItems(
@@ -139,6 +185,7 @@ public partial class QuestMenu : ColorRect
         foreach (Item questItem in questItems)
         {
             int amount = 0;
+            int needed = questItem.amount * multi;
 
             foreach (ItemSave invItem in inventory)
             {
@@ -146,10 +193,16 @@ public partial class QuestMenu : ColorRect
                     continue;
 
                 if (invItem.item_id == (int)questItem.info.id)
+                {
                     amount += invItem.amount;
+
+                    // optional: früh abbrechen
+                    if (amount >= needed)
+                        break;
+                }
             }
 
-            if (amount < questItem.amount * multi)
+            if (amount < needed)
                 return false;
         }
 

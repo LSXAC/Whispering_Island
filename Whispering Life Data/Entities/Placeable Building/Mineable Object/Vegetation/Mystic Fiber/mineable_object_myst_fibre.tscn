@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bal3nnanx2mtk" path="res://Entities/Placeable Building/Spritesheets/Plants/Mystic_Fibre_Animation2.png" id="11_erk7e"]
 [ext_resource type="Texture2D" uid="uid://b1vr630er8gcs" path="res://Entities/Placeable Building/Spritesheets/Plants/Mystic_Fibre_Animation_Shadow1.png" id="12_b5kvn"]
 [ext_resource type="Texture2D" uid="uid://birq0tn5vquen" path="res://Entities/Placeable Building/Spritesheets/Plants/Mystic_Fibre_Animation_Shadow2.png" id="13_gm3ca"]
+[ext_resource type="PackedScene" uid="uid://dnp8any8xrsj6" path="res://Sub Systems/Hit Label Manager/hit_label_manager.tscn" id="20_xtxln"]
 
 [sub_resource type="Resource" id="Resource_yly7u"]
 script = ExtResource("3_vwh7s")
@@ -68,7 +69,7 @@ scale_curve = SubResource("CurveTexture_lfoib")
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_g4r0j")
-hit_point = NodePath("HitPoint")
+hit_point = NodePath("")
 growable = true
 tool_type = 4
 variants_parent = NodePath("SpriteAnimationManager/Variations")
@@ -156,8 +157,11 @@ tile_set = ExtResource("8_vh1ys")
 script = ExtResource("9_nobcd")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="HitPoint" type="Node2D" parent="." unique_id=940092023]
-position = Vector2(-6, -19)
+[node name="HitLabelManager" parent="." unique_id=1293240716 instance=ExtResource("20_xtxln")]
+offset_left = -7.0
+offset_top = -17.0
+offset_right = 33.0
+offset_bottom = 23.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

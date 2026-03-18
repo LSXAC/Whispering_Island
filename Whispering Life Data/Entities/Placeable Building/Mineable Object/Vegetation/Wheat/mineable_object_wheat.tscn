@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://byqyirm258rxa" path="res://Entities/Placeable Building/Spritesheets/Plants/Wheat/Wheat_Animation_shadow1.png" id="11_1fk6w"]
 [ext_resource type="Texture2D" uid="uid://dcv6oempy0ls3" path="res://Entities/Placeable Building/Spritesheets/Plants/Wheat/Wheat_Animation_shadow2.png" id="12_ode4i"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="13_1fk6w"]
+[ext_resource type="PackedScene" uid="uid://dnp8any8xrsj6" path="res://Sub Systems/Hit Label Manager/hit_label_manager.tscn" id="20_jkshe"]
 
 [sub_resource type="Resource" id="Resource_gq40s"]
 script = ExtResource("3_632dl")
@@ -69,7 +70,7 @@ y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_hu0bp")
-hit_point = NodePath("HitPoint")
+hit_point = NodePath("")
 growable = true
 tool_type = 4
 variants_parent = NodePath("SpriteAnimationManager/Variations")
@@ -156,8 +157,11 @@ tile_set = ExtResource("8_3rn1o")
 script = ExtResource("9_vc3u4")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="HitPoint" type="Node2D" parent="." unique_id=655571182]
-position = Vector2(-8, -11)
+[node name="HitLabelManager" parent="." unique_id=1293240716 instance=ExtResource("20_jkshe")]
+offset_left = -7.0
+offset_top = -14.0
+offset_right = 33.0
+offset_bottom = 26.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

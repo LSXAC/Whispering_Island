@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/Placeable Building/BuildingColliderManager.cs" id="17_6rmvf"]
 [ext_resource type="Texture2D" uid="uid://c6aeuyn51qka4" path="res://Entities/Placeable Building/Spritesheets/Plants/Sugar_Cane/SugarCane_V0_Shadow4.png" id="17_cgsj8"]
 [ext_resource type="Texture2D" uid="uid://drfwtajj5mttb" path="res://Entities/Placeable Building/Spritesheets/Plants/Sugar_Cane/SugarCane_V0_Shadow5.png" id="18_8lg23"]
+[ext_resource type="PackedScene" uid="uid://dnp8any8xrsj6" path="res://Sub Systems/Hit Label Manager/hit_label_manager.tscn" id="24_u52hk"]
 
 [sub_resource type="Resource" id="Resource_pnqwy"]
 script = ExtResource("8_gybnv")
@@ -81,7 +82,7 @@ y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_r62pw")
-hit_point = NodePath("HitPoint")
+hit_point = NodePath("")
 growable = true
 tool_type = 4
 variants_parent = NodePath("SpriteAnimationManager/Variation")
@@ -162,12 +163,15 @@ tile_set = ExtResource("16_8lg23")
 script = ExtResource("17_6rmvf")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="HitPoint" type="Node2D" parent="." unique_id=821389870]
-position = Vector2(-8, -8)
-
 [node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=993253579]
 position = Vector2(0, -1)
 polygon = PackedVector2Array(0, -4, -2, -2, -15, -2, -17, -5, -17, -10, -12, -14, -3, -14, 0, -11)
+
+[node name="HitLabelManager" parent="." unique_id=1293240716 instance=ExtResource("24_u52hk")]
+offset_left = -8.0
+offset_top = -17.0
+offset_right = 32.0
+offset_bottom = 23.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

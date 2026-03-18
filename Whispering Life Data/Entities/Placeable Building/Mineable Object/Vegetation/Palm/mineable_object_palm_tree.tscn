@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bdr6arudi5ek0" path="res://Entities/Placeable Building/Spritesheets/Plants/Palm/Palm_V0_Growth_Shadow2.png" id="25_qagi5"]
 [ext_resource type="Texture2D" uid="uid://5goy3h3us4b6" path="res://Entities/Placeable Building/Spritesheets/Plants/Palm/Palm_V0_Growth_Shadow3.png" id="26_h315d"]
 [ext_resource type="Texture2D" uid="uid://bug1ijlyacx71" path="res://Entities/Placeable Building/Spritesheets/Plants/Palm/Palm_V0_Growth_Shadow4.png" id="27_asqcr"]
+[ext_resource type="PackedScene" uid="uid://dnp8any8xrsj6" path="res://Sub Systems/Hit Label Manager/hit_label_manager.tscn" id="29_qjp08"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="50_0du1q"]
 [ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="51_aojqe"]
 [ext_resource type="PackedScene" uid="uid://bmb5mvim8jqcp" path="res://UI/World/Timer Bar/timer_bar.tscn" id="52_2t0vm"]
@@ -101,7 +102,7 @@ size = Vector2(15, 26)
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_3jtho")
-hit_point = NodePath("HitPoint")
+hit_point = NodePath("")
 growable = true
 tool_type = 2
 variants_parent = NodePath("SpriteAnimationManager/Variations")
@@ -193,8 +194,11 @@ tile_set = ExtResource("53_txeob")
 script = ExtResource("54_khi3s")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="HitPoint" type="Node2D" parent="." unique_id=272856302]
-position = Vector2(-7, -33)
+[node name="HitLabelManager" parent="." unique_id=1293240716 instance=ExtResource("29_qjp08")]
+offset_left = -8.0
+offset_top = -42.0
+offset_right = 32.0
+offset_bottom = -2.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

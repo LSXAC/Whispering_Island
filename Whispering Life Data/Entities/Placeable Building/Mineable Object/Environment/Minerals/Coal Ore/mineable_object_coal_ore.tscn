@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://cn55pvsnua883" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_Shadow3.png" id="34_0igmb"]
 [ext_resource type="Texture2D" uid="uid://tnmvlpf5iwb4" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_Shadow2.png" id="35_hodds"]
 [ext_resource type="Texture2D" uid="uid://behvya06y8wj1" path="res://Entities/Placeable Building/Spritesheets/Ores/Coal_Crystal/Coal_Crystal_V2_Shadow1.png" id="36_cmf21"]
+[ext_resource type="PackedScene" uid="uid://dnp8any8xrsj6" path="res://Sub Systems/Hit Label Manager/hit_label_manager.tscn" id="43_6pygb"]
 
 [sub_resource type="Resource" id="Resource_gbxlv"]
 script = ExtResource("8_m4oc5")
@@ -93,7 +94,7 @@ scale_curve = SubResource("CurveTexture_lfoib")
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_43lli")
-hit_point = NodePath("HitPoint")
+hit_point = NodePath("")
 tool_type = 3
 variants_parent = NodePath("SpriteAnimationManager/Variation")
 resource_item = SubResource("Resource_gbxlv")
@@ -172,11 +173,14 @@ tile_set = ExtResource("15_yq2h5")
 script = ExtResource("16_g3wi0")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="HitPoint" type="Node2D" parent="." unique_id=1023827026]
-position = Vector2(-8, -10)
-
 [node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=1894586536]
 polygon = PackedVector2Array(-10, 6, -14, 10, -16, 10, -21, 5, -21, -2, -22, -6, -23, -7, -23, -17, -16, -20, -9, -18, 1, -17, 6, -13, 6, -7, 4, -5, 1, -3, 1, -1, -3, 3, -6, 5)
+
+[node name="HitLabelManager" parent="." unique_id=1293240716 instance=ExtResource("43_6pygb")]
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 31.0
+offset_bottom = 31.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

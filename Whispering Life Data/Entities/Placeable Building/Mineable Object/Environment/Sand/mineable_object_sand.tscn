@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://c0njs3laksas5" path="res://Entities/Placeable Building/Spritesheets/Sand/Sand_V0_Shadow4.png" id="16_pvl45"]
 [ext_resource type="Texture2D" uid="uid://bto7ymu33oshw" path="res://Entities/Placeable Building/Spritesheets/Sand/Sand_V0_Shadow5.png" id="17_jnafo"]
 [ext_resource type="Texture2D" uid="uid://c0qqoenb7fgq6" path="res://Entities/Placeable Building/Spritesheets/Sand/Sand_V0_Shadow6.png" id="18_ug78a"]
+[ext_resource type="PackedScene" uid="uid://dnp8any8xrsj6" path="res://Sub Systems/Hit Label Manager/hit_label_manager.tscn" id="24_x3bgd"]
 
 [sub_resource type="Resource" id="Resource_s64kp"]
 script = ExtResource("3_wt6w8")
@@ -66,7 +67,7 @@ scale_curve = SubResource("CurveTexture_4ikef")
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_csqkk")
-hit_point = NodePath("HitPoint")
+hit_point = NodePath("")
 tool_type = 3
 variants_parent = NodePath("SpriteAnimationManager/Variations")
 resource_item = SubResource("Resource_s64kp")
@@ -137,11 +138,14 @@ tile_set = ExtResource("8_rx5eh")
 script = ExtResource("9_3m7pm")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="HitPoint" type="Node2D" parent="." unique_id=1833119531]
-position = Vector2(-8, -11)
-
 [node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=1163486631]
 polygon = PackedVector2Array(1, -6, -3, -4, -14, -4, -17, -6, -17, -10, -14, -13, -3, -13, 1, -10)
+
+[node name="HitLabelManager" parent="." unique_id=1293240716 instance=ExtResource("24_x3bgd")]
+offset_left = -8.0
+offset_top = -10.0
+offset_right = 32.0
+offset_bottom = 30.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

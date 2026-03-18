@@ -52,6 +52,7 @@ public partial class MineableObject : placeable_building
     TimerBar timer_bar;
     Area2D interactableArea;
     public static bool in_cooldown = false;
+    HitLabelManager hitLabelManager;
 
     public enum MINING_LEVEL
     {
@@ -67,10 +68,6 @@ public partial class MineableObject : placeable_building
     /// Override to enable hold/repeat clicking for mineable objects.
     /// </summary>
     protected override bool SupportsHoldAction => true;
-
-    private PackedScene hit_label = ResourceLoader.Load<PackedScene>(
-        ResourceUid.UidToPath("uid://d1l2gqiubblcd")
-    );
 
     [Signal]
     public delegate void ReadyFinishedEventHandler();
@@ -129,6 +126,10 @@ public partial class MineableObject : placeable_building
             timer_bar = GetNode<TimerBar>("TimerBar");
             timer_bar.parent = this;
         }
+
+        if (Logger.NodeIsNotNull(GetNode<HitLabelManager>("HitLabelManager")))
+            hitLabelManager = GetNode<HitLabelManager>("HitLabelManager");
+
         interactableArea = GetNode<Area2D>("MouseArea");
         SetResourceTexture();
     }
@@ -213,7 +214,7 @@ public partial class MineableObject : placeable_building
         current_durability -= miningAmount;
 
         SetResourceTexture();
-        ShowHitLabel(miningAmount);
+        hitLabelManager.ShowHitLabel(miningAmount);
         UpdateToolDurability(miningAmount);
 
         gpu_particles.Emitting = true;
@@ -245,16 +246,6 @@ public partial class MineableObject : placeable_building
             return false;
         }
         return true;
-    }
-
-    private void ShowHitLabel(int miningAmount)
-    {
-        if (hit_point == null)
-            return;
-
-        CharacterBody2D hit_lab = hit_label.Instantiate() as CharacterBody2D;
-        hit_lab.GetChild<HitLabel>(0).Init(miningAmount, hit_point);
-        GameManager.instance.AddChild(hit_lab);
     }
 
     private void UpdateToolDurability(int miningAmount)

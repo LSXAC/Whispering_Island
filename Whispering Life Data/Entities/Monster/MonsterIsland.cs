@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
 
@@ -18,9 +19,14 @@ public partial class MonsterIsland : Building_Node
     private bool monsterAppearTriggered = false;
 
     private int quest_duration = 0;
+    private HealthBar health_bar;
+    private HitLabelManager hit_label_manager;
 
     [Signal]
     public delegate void VisibilityIncreasedEventHandler();
+
+    [Signal]
+    public delegate void HitLabelManagerFinishedEventHandler();
 
     public override void _EnterTree()
     {
@@ -32,6 +38,8 @@ public partial class MonsterIsland : Building_Node
         base._Ready();
         sprite_animation_manager = GetNode<SpriteAnimationManager>("SpriteAnimationManager");
         island_state = GetNode<MonsterIslandStateManager>("StateManager");
+        health_bar = GetNode<HealthBar>("HealthBar");
+        hit_label_manager = GetNode<HitLabelManager>("HitLabelManager");
         island_state.StateChanged += OnStateChanged;
         UpdateStateVisuals(island_state.GetCurrentState());
     }
@@ -67,7 +75,7 @@ public partial class MonsterIsland : Building_Node
         CheckQuestTimeTriggers();
 
         if (Input.IsKeyPressed(Key.F1))
-            island_state.ApplyQuestCompleted();
+            StartHittingCutscene();
 
         if (Input.IsKeyPressed(Key.F2))
             island_state.ApplyQuestFailed();
@@ -97,6 +105,21 @@ public partial class MonsterIsland : Building_Node
             monsterAppearTriggered = true;
             is_visible = true;
             CutsceneManager.instance.QueueCutscene(cutscene_item, "Monster_Appear");
+        }
+    }
+
+    public void StartHittingCutscene()
+    {
+        CutsceneManager.instance.QueueCutscene(cutscene_item, "Monster_Hitting");
+    }
+
+    public async Task HitIsland(int amount, int hits)
+    {
+        for (int x = 0; x < hits; x++)
+        {
+            hit_label_manager.ShowHitLabel(amount);
+            health_bar.RemoveHealth(amount);
+            await ToSignal(GetTree().CreateTimer(0.2f), "timeout");
         }
     }
 

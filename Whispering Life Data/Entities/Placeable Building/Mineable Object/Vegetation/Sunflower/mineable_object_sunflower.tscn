@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cho5clcly0kjf" path="res://Entities/Placeable Building/Spritesheets/Plants/Sunflowers/Sunflower2.png" id="13_5iued"]
 [ext_resource type="Texture2D" uid="uid://b4kxiycnv63ks" path="res://Entities/Placeable Building/Spritesheets/Plants/Sunflowers/Sunflower_Shadow1.png" id="14_djv3t"]
 [ext_resource type="Texture2D" uid="uid://cpjbnkx7cxa7r" path="res://Entities/Placeable Building/Spritesheets/Plants/Sunflowers/Sunflower_Shadow2.png" id="15_a2j6h"]
+[ext_resource type="PackedScene" uid="uid://dnp8any8xrsj6" path="res://Sub Systems/Hit Label Manager/hit_label_manager.tscn" id="22_nj11s"]
 
 [sub_resource type="Resource" id="Resource_pony2"]
 script = ExtResource("3_tcsi8")
@@ -71,7 +72,7 @@ y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_p10p7")
-hit_point = NodePath("HitPoint")
+hit_point = NodePath("")
 growable = true
 tool_type = 4
 variants_parent = NodePath("SpriteAnimationManager/Variation")
@@ -161,8 +162,11 @@ tile_set = ExtResource("7_khusd")
 script = ExtResource("8_b1wo6")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="HitPoint" type="Node2D" parent="." unique_id=1783995438]
-position = Vector2(-8, -11)
+[node name="HitLabelManager" parent="." unique_id=1293240716 instance=ExtResource("22_nj11s")]
+offset_left = -8.0
+offset_top = -14.0
+offset_right = 32.0
+offset_bottom = 26.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

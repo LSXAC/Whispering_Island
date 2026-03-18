@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://b7c5jrn8nalpq" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V2_Shadow2.png" id="35_ts1kg"]
 [ext_resource type="Texture2D" uid="uid://ombh5djli7ay" path="res://Entities/Placeable Building/Spritesheets/Ores/Iron_Crystal/Iron_Crystal_V2_Shadow1.png" id="36_hl7px"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="37_nsmtc"]
+[ext_resource type="PackedScene" uid="uid://dnp8any8xrsj6" path="res://Sub Systems/Hit Label Manager/hit_label_manager.tscn" id="42_71ms5"]
 
 [sub_resource type="Resource" id="Resource_gbxlv"]
 script = ExtResource("3_ndvxn")
@@ -84,7 +85,7 @@ scale_curve = SubResource("CurveTexture_lfoib")
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_442v2")
-hit_point = NodePath("HitPoint")
+hit_point = NodePath("")
 tool_type = 3
 variants_parent = NodePath("SpriteAnimationManager/Variations")
 resource_item = SubResource("Resource_gbxlv")
@@ -164,8 +165,11 @@ tile_set = ExtResource("8_dq4xu")
 script = ExtResource("9_dojv3")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
-[node name="HitPoint" type="Node2D" parent="." unique_id=608248035]
-position = Vector2(-8, -10)
+[node name="HitLabelManager" parent="." unique_id=1293240716 instance=ExtResource("42_71ms5")]
+offset_left = -13.0
+offset_top = -13.0
+offset_right = 27.0
+offset_bottom = 27.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
