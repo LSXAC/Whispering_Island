@@ -322,6 +322,7 @@ public partial class Database : Node
         MYSTIC_MUSHROOM,
         PALM,
         CACTUS,
-        MAGIC_GENERATOR
+        MAGIC_GENERATOR,
+        NERVE_TRANSDUCER
     }
 }

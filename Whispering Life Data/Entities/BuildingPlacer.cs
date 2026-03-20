@@ -197,7 +197,11 @@ public partial class BuildingPlacer : Node2D
         }
 
         if (temp is MachineBase mb)
+        {
             mb.EnableAreas();
+            if (mb is NerveTransducer transducer)
+                NervTransducterManager.instance.AddNervTransducer(transducer);
+        }
     }
 
     public void SetBuildingWithMoveableBase(Node2D node)

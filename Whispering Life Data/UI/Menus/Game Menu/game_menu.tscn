@@ -66,6 +66,7 @@
 [ext_resource type="Texture2D" uid="uid://fjxfspyktgmd" path="res://UI/Icons/UI_Star.png" id="40_1y8h4"]
 [ext_resource type="Resource" uid="uid://b8kpuf47jao76" path="res://Sub Systems/Skill System/Skills/Data/mining_bonus_1.tres" id="40_rgd55"]
 [ext_resource type="StyleBox" uid="uid://dk5rjv85ef65x" path="res://UI/Styles/tab_container_selected_style.tres" id="40_sy5xb"]
+[ext_resource type="Script" uid="uid://dhc64tsxxyqti" path="res://UI/Menus/Game Menu/NerveTransducerTab.cs" id="41_61i7k"]
 [ext_resource type="StyleBox" uid="uid://b6stjn6fub30f" path="res://UI/Styles/tab_container_unselected_style.tres.tres" id="41_fato5"]
 [ext_resource type="Resource" uid="uid://drpg8ggybgde0" path="res://Sub Systems/Skill System/Skills/Data/mining_bonus_2.tres" id="41_gqg20"]
 [ext_resource type="Texture2D" uid="uid://bl2slcpf1wvaf" path="res://UI/Icons/UI_Star_Empty.png" id="41_tbpku"]
@@ -221,7 +222,7 @@ border_width_top = 2
 border_color = Color(0, 0, 0, 1)
 border_blend = true
 
-[node name="GameMenu" type="CanvasLayer" unique_id=1705449440 node_paths=PackedStringArray("load_button", "destroy_menu", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "quest_tab", "rail_station_tab", "minecart_tab", "header_container", "crafting_category_panel")]
+[node name="GameMenu" type="CanvasLayer" unique_id=1705449440 node_paths=PackedStringArray("load_button", "destroy_menu", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "furnace_tab", "research_tab", "nerve_transducer_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "quest_tab", "rail_station_tab", "minecart_tab", "header_container", "crafting_category_panel")]
 process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/SaveLoadTab/HBoxContainer/LoadGameButton")
@@ -232,6 +233,7 @@ inventory_tab = NodePath("Background/InventoryTab")
 crafting_tab = NodePath("Background/CraftingTab")
 furnace_tab = NodePath("Background/FurnaceTab")
 research_tab = NodePath("Background/ResearchTab")
+nerve_transducer_tab = NodePath("Background/NerveTransducerTab")
 chest_tab = NodePath("Background/ChestTab")
 settings_tab = NodePath("Background/SettingsTab")
 saveload_tab = NodePath("Background/SaveLoadTab")
@@ -1193,6 +1195,64 @@ offset_bottom = -3.0
 translation_string = "GAMEMENU_FURNACE"
 
 [node name="Border" type="ColorRect" parent="Background/FurnaceTab" unique_id=1723869510]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 3.0
+offset_bottom = 278.0
+color = Color(0, 0, 0, 1)
+
+[node name="NerveTransducerTab" type="Control" parent="Background" unique_id=1304219599]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 250.0
+offset_top = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("41_61i7k")
+
+[node name="ColorRect" type="ColorRect" parent="Background/NerveTransducerTab" unique_id=1858957258]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.67451, 0.654902, 0.796078, 1)
+
+[node name="Label" type="Label" parent="Background/NerveTransducerTab/ColorRect" unique_id=1743862786]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Hier könnten Sachen stehen für
+Nerven Umwandlung!
+
+
+
+
+
+
+
+
+Ich bin gar nicht da!"
+
+[node name="HeaderColorRect" parent="Background/NerveTransducerTab" unique_id=767268895 instance=ExtResource("11_45saq")]
+layout_mode = 1
+offset_left = -249.0
+offset_top = -25.0
+offset_right = 289.0
+offset_bottom = -3.0
+translation_string = "GAMEMENU_FURNACE"
+
+[node name="Border" type="ColorRect" parent="Background/NerveTransducerTab" unique_id=61839686]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -2.0
@@ -6921,7 +6981,7 @@ dialogue_timeline = ExtResource("125_m1qfe")
 quest_inventory = NodePath("MarginContainer/VBoxContainer2/ChestInventoryIn")
 reward_label = NodePath("MarginContainer/VBoxContainer2/HBoxContainer/MoneyLabel")
 
-[node name="HeaderColorRect" parent="Background/QuestMenu" unique_id=767268895 instance=ExtResource("11_45saq")]
+[node name="HeaderColorRect" parent="Background/QuestMenu" unique_id=220148782 instance=ExtResource("11_45saq")]
 layout_mode = 0
 offset_left = -250.0
 offset_top = -23.0
@@ -7052,7 +7112,7 @@ layout_mode = 2
 [node name="SlotBackground8" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn/GridContainer" unique_id=1267610108 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="SlotBackground9" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn/GridContainer" unique_id=1156444948 instance=ExtResource("13_m8k7p")]
+[node name="SlotBackground9" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn/GridContainer" unique_id=1638855279 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/VBoxContainer2" unique_id=297121596]

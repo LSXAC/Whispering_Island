@@ -29,6 +29,9 @@ public partial class GameMenu : CanvasLayer
     public ResearchTab research_tab;
 
     [Export]
+    public NerveTransducerTab nerve_transducer_tab;
+
+    [Export]
     public ColorRect chest_tab;
 
     [Export]
@@ -57,6 +60,7 @@ public partial class GameMenu : CanvasLayer
 
     [Export]
     public ColorRect minecart_tab;
+
     public static GameMenu instance = null;
 
     [Export]
@@ -311,6 +315,14 @@ public partial class GameMenu : CanvasLayer
         );
     }
 
+    public void OnOpenNerveTranducerTab()
+    {
+        SetWindow(this);
+        CloseAllTabs();
+        inventory_tab.Visible = true;
+        nerve_transducer_tab.Visible = true;
+    }
+
     public void OnOpenChestTab()
     {
         SetWindow(this);
@@ -357,6 +369,7 @@ public partial class GameMenu : CanvasLayer
         research_tab.Visible = false;
         crafting_tab.Visible = false;
         furnace_tab.Visible = false;
+        nerve_transducer_tab.Visible = false;
         admin_tab.Visible = false;
         skilltree_tab.Visible = false;
         settings_tab.Visible = false;

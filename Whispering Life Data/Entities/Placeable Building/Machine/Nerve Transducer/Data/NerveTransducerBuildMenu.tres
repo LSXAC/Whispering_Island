@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://d0886s00hv4gr"]
+
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Entities/Items/Minerals/Stone/Data/item_info_stone.tres" id="1_2iaps"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_vm22k"]
+[ext_resource type="Resource" uid="uid://dtn8ti2o5hiwj" path="res://Entities/Items/Machine Component/Magic Core Component/Data/MagicCoreComponent.tres" id="3_erkhf"]
+[ext_resource type="Resource" uid="uid://cvimpjdxil5uq" path="res://Entities/Items/Machine Component/Sleep/Data/SleepComponent.tres" id="4_6dfqr"]
+[ext_resource type="PackedScene" uid="uid://cslw78o20npsn" path="res://Entities/Placeable Building/Machine/Nerve Transducer/Building_Nerve_Transducer.tscn" id="5_l2qvm"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Build Menu Line/Building_Menu_List_Object.cs" id="6_ljnhb"]
+[ext_resource type="Texture2D" uid="uid://b8ahy1mkxvvqd" path="res://UNKNOWN.png" id="7_6dfqr"]
+
+[sub_resource type="Resource" id="Resource_yo73i"]
+script = ExtResource("2_vm22k")
+info = ExtResource("1_2iaps")
+amount = 10
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_vc20u"]
+script = ExtResource("2_vm22k")
+info = ExtResource("3_erkhf")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_auv25"]
+script = ExtResource("2_vm22k")
+info = ExtResource("4_6dfqr")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("6_ljnhb")
+scene = ExtResource("5_l2qvm")
+scene_building_id = 40
+required_items = Array[Object]([SubResource("Resource_yo73i"), SubResource("Resource_vc20u"), SubResource("Resource_auv25")])
+unlock_requirements = Array[Object]([])
+building_menu_category = 6
+texture_in_build_menu = ExtResource("7_6dfqr")
+show_magic_power_use = true
