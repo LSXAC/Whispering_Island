@@ -6959,7 +6959,7 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 alignment = 1
 
-[node name="QuestMenu" type="ColorRect" parent="Background" unique_id=183995902 node_paths=PackedStringArray("quest_label_parent", "quest_name_label", "complete_button", "quest_description_label", "quest_inventory", "reward_label")]
+[node name="QuestMenu" type="ColorRect" parent="Background" unique_id=183995902 node_paths=PackedStringArray("quest_label_parent", "success_label", "quest_name_label", "complete_button", "quest_description_label", "quest_inventory", "reward_label")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -6974,6 +6974,7 @@ grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("124_miyc7")
 quest_label_parent = NodePath("MarginContainer/VBoxContainer2/HBoxContainer2/VBoxContainer")
+success_label = NodePath("MarginContainer/VBoxContainer2/HBoxContainer/ChangeNotToPenality")
 quest_name_label = NodePath("MarginContainer/VBoxContainer2/Label")
 complete_button = NodePath("MarginContainer/VBoxContainer2/HBoxContainer3/CompleteQuestButton")
 quest_description_label = NodePath("MarginContainer/VBoxContainer2/Description")
@@ -7119,6 +7120,14 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
+
+[node name="ChangeNotToPenality" type="Label" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1176591193]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "95% Success Rate"
+horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1691200343]
 layout_mode = 2

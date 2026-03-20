@@ -68,7 +68,7 @@ public partial class QuestManager : Node
         MonsterIsland.instance.InitializeQuestTimers();
     }
 
-    public async void OnQuestTimerTimeout()
+    public void OnQuestTimerTimeout()
     {
         if (current_quest_time <= 0)
         {
@@ -86,16 +86,21 @@ public partial class QuestManager : Node
                 return;
             }
 
-            int penalty = quest_penality.DeterminePenalty();
-            quest_penality.PlayPenaltyCutscene(penalty);
-            await ToSignal(PlayerUI.instance.quest_accept_panel.confirm_button, "pressed");
-            GlobalFunctions.LeaveDialogue();
-
-            NextQuest(finished_correctly: false, penalty);
+            ApplyPenality();
         }
 
         current_quest_time -= GameManager.time_multiplier;
         QuestMiniPanel.instance.UpdateTimeLabel(current_quest_time);
+    }
+
+    public async void ApplyPenality()
+    {
+        int penalty = quest_penality.DeterminePenalty();
+        quest_penality.PlayPenaltyCutscene(penalty);
+        await ToSignal(PlayerUI.instance.quest_accept_panel.confirm_button, "pressed");
+        GlobalFunctions.LeaveDialogue();
+
+        NextQuest(finished_correctly: false, penalty);
     }
 
     /// Check if duplicated ItemType exists inside one Quest.
@@ -142,9 +147,9 @@ public partial class QuestManager : Node
 
     public async void NextQuest(bool finished_correctly = true, int penalty = -1)
     {
+        GameMenu.instance.OnExitButton();
         if (finished_correctly)
         {
-            GameMenu.questMenu.CloseQuestMenu();
             RemoveQuestItems();
             GameManager.money += quests[current_quest_id].reward_money;
             PlayerUI.instance.UpdateMoneyLabel();

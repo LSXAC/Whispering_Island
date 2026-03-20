@@ -10,6 +10,9 @@ public partial class QuestMenu : ColorRect
     public Control quest_label_parent;
 
     [Export]
+    public Label success_label;
+
+    [Export]
     public RichTextLabel quest_name_label;
 
     [Export]
@@ -34,6 +37,8 @@ public partial class QuestMenu : ColorRect
     private Array<Label> item_labels = new Array<Label>();
 
     public static int ItemsWithDamage = 0;
+    public static float nerv_normal = 1f;
+    public static float nerv_abuse = 0f;
 
     public override void _Ready()
     {
@@ -60,7 +65,15 @@ public partial class QuestMenu : ColorRect
 
     public void OnCompleteButton()
     {
-        QuestManager.instance.NextQuest();
+        float chance = (
+            nerv_normal + NervTransducterManager.instance.GetNervReduction() - nerv_abuse
+        );
+        Random rnd = new Random();
+        int step = rnd.Next(0, 100);
+        if (step <= chance * 100)
+            QuestManager.instance.NextQuest();
+        else
+            QuestManager.instance.ApplyPenality();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -136,6 +149,10 @@ public partial class QuestMenu : ColorRect
             QuestManager.instance.quests[QuestManager.current_quest_id].required_items,
             multi
         );
+        success_label.Text =
+            (
+                nerv_normal + NervTransducterManager.instance.GetNervReduction() - nerv_abuse
+            ).ToString("P0") + "Sucess Rate.";
         Debug.Print("Items damaged found: " + ItemsWithDamage);
     }
 
@@ -146,11 +163,13 @@ public partial class QuestMenu : ColorRect
     )
     {
         int itemsWithDamage = 0;
+        nerv_abuse = 0;
 
         foreach (Item questItem in questItems)
         {
             int needed = questItem.amount * multi;
             int countedDamaged = 0;
+            float abuse = 0;
 
             foreach (ItemSave invItem in inventory)
             {
@@ -162,7 +181,10 @@ public partial class QuestMenu : ColorRect
                     int toAdd = Math.Min(invItem.amount, needed - countedDamaged);
 
                     if (toAdd > 0)
+                    {
+                        abuse += toAdd * 0.05f;
                         countedDamaged += toAdd;
+                    }
 
                     // optional: früh abbrechen
                     if (countedDamaged >= needed)
@@ -171,6 +193,9 @@ public partial class QuestMenu : ColorRect
             }
 
             itemsWithDamage += countedDamaged;
+            nerv_abuse += abuse;
+            if (nerv_abuse < 0)
+                nerv_abuse = 0f;
         }
 
         return itemsWithDamage;
