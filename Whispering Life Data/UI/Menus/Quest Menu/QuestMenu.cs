@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Linq;
 using DialogueManagerRuntime;
 using Godot;
 using Godot.Collections;
@@ -70,7 +71,10 @@ public partial class QuestMenu : ColorRect
         if (step <= GetNervRate() * 100)
             QuestManager.instance.NextQuest();
         else
+        {
+            quest_inventory.ClearInventory();
             QuestManager.instance.ApplyPenality(with_poisoning: true);
+        }
     }
 
     public void OnOpenQuestMenu()

@@ -359,6 +359,20 @@ public partial class Inventory : SlotUpdater
         return null;
     }
 
+    public void ClearInventory()
+    {
+        //Check if Item already exists
+        for (int i = 0; i < inventory_items.Length; i++)
+        {
+            if (inventory_items[i] == null)
+                continue;
+
+            // 4 - 6 = -2
+            inventory_items[i] = null;
+            UpdateSlot(i);
+        }
+    }
+
     public void RemoveItem(Item item, ItemSave[] array)
     {
         //Check if Item already exists
