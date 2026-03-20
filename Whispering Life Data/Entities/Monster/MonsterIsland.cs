@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
@@ -19,7 +20,7 @@ public partial class MonsterIsland : Building_Node
     private bool monsterAppearTriggered = false;
 
     private int quest_duration = 0;
-    private HealthBar health_bar;
+    public HealthBar health_bar;
     private HitLabelManager hit_label_manager;
 
     [Signal]

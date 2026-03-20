@@ -33,7 +33,8 @@ public partial class HealthBar : Control
 
     public void RemoveHealth(int amount)
     {
-        current_health -= amount;
+        if (current_health - amount >= 0)
+            current_health -= amount;
         UpdateBar();
     }
 }

@@ -204,4 +204,9 @@ public partial class GlobalFunctions : Node2D
         Debug.Print(QuestMenu.ItemsWithDamage + " Items found to damage");
         await MonsterIsland.instance.HitIsland(1, QuestMenu.ItemsWithDamage);
     }
+
+    public static void FinishGame()
+    {
+        QuestManager.instance.EmitSignal(QuestManager.SignalName.FinishedGame);
+    }
 }

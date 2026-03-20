@@ -7,6 +7,11 @@ public partial class HitLabelManager : Control
         ResourceUid.UidToPath("uid://d1l2gqiubblcd")
     );
 
+    public override void _Ready()
+    {
+        Size = Vector2.Zero;
+    }
+
     public void ShowHitLabel(int miningAmount)
     {
         CharacterBody2D hit_lab = hit_label.Instantiate() as CharacterBody2D;

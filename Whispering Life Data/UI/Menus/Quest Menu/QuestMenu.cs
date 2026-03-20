@@ -70,7 +70,7 @@ public partial class QuestMenu : ColorRect
         if (step <= GetNervRate() * 100)
             QuestManager.instance.NextQuest();
         else
-            QuestManager.instance.ApplyPenality();
+            QuestManager.instance.ApplyPenality(with_poisoning: true);
     }
 
     public void OnOpenQuestMenu()

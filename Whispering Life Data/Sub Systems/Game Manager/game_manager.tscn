@@ -444,6 +444,7 @@ bus = &"Music"
 playback_type = 1
 
 [node name="MagicPowerManager" type="Node2D" parent="." unique_id=1406332650]
+position = Vector2(0, -1)
 script = ExtResource("48_yiylw")
 
 [node name="NervTransducterManager" type="Node2D" parent="." unique_id=2112165860]

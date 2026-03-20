@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class QuestPenality : Node2D
@@ -46,28 +47,92 @@ public partial class QuestPenality : Node2D
     /// <summary>
     /// Queues the appropriate cutscene based on penalty type
     /// </summary>
-    public void PlayPenaltyCutscene(int penalty)
+    public void PlayPenaltyCutscene(int penalty, bool with_poisoning = false)
     {
-        if (penalty == 0)
+        Debug.Print("Penality: " + penalty + " | " + with_poisoning);
+        if (!with_poisoning)
         {
-            if (TranslationServer.GetLocale() == "de")
-                CutsceneManager.instance.QueueCutscene(quest_dialogue, "Quest_Not_Completed_DE");
-            else
-                CutsceneManager.instance.QueueCutscene(quest_dialogue, "Quest_Not_Completed_ENG");
+            if (penalty == 0)
+            {
+                if (TranslationServer.GetLocale() == "de")
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
+                        "Quest_Not_Completed_DE"
+                    );
+                else
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
+                        "Quest_Not_Completed_ENG"
+                    );
+            }
+            else if (penalty == 1)
+            {
+                if (TranslationServer.GetLocale() == "de")
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
+                        "Quest_Not_Completed_1_DE"
+                    );
+                else
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
+                        "Quest_Not_Completed_1_ENG"
+                    );
+            }
+            else if (penalty == 2)
+            {
+                if (TranslationServer.GetLocale() == "de")
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
+                        "Quest_Not_Completed_2_DE"
+                    );
+                else
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
+                        "Quest_Not_Completed_2_ENG"
+                    );
+            }
         }
-        else if (penalty == 1)
+        else
         {
-            if (TranslationServer.GetLocale() == "de")
-                CutsceneManager.instance.QueueCutscene(quest_dialogue, "Quest_Not_Completed_1_DE");
-            else
-                CutsceneManager.instance.QueueCutscene(quest_dialogue, "Quest_Not_Completed_1_ENG");
-        }
-        else if (penalty == 2)
-        {
-            if (TranslationServer.GetLocale() == "de")
-                CutsceneManager.instance.QueueCutscene(quest_dialogue, "Quest_Not_Completed_2_DE");
-            else
-                CutsceneManager.instance.QueueCutscene(quest_dialogue, "Quest_Not_Completed_2_ENG");
+            if (penalty == 0)
+            {
+                if (TranslationServer.GetLocale() == "de")
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
+                        "Quest_Not_Completed_Poisoning_DE"
+                    );
+                else
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
+                        "Quest_Not_Completed_Poisoning_ENG"
+                    );
+            }
+            else if (penalty == 1)
+            {
+                if (TranslationServer.GetLocale() == "de")
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
+                        "Quest_Not_Completed_Poisoning_1_DE"
+                    );
+                else
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
+                        "Quest_Not_Completed_Poisoning_1_ENG"
+                    );
+            }
+            else if (penalty == 2)
+            {
+                if (TranslationServer.GetLocale() == "de")
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
+                        "Quest_Not_Completed_Poisoning_2_DE"
+                    );
+                else
+                    CutsceneManager.instance.QueueCutscene(
+                        quest_dialogue,
+                        "Quest_Not_Completed_Poisoning_2_ENG"
+                    );
+            }
         }
     }
 

@@ -20,11 +20,14 @@ Boss: ROAW! [ID:36CAB5_C9D25A]
 do GlobalFunctions.PlayIdleOnMonsterIsland()
 do GlobalFunctions.LeaveDialogue()
 
+=> END
+
 ~ Monster_Hitting
 
 do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))
 Boss: Ha! Those Resources were delicous!
 do GlobalFunctions.DealQuestDamage()
 Boss: Mhh... aua..
+do GlobalFunctions.FinishGame()
 do GlobalFunctions.LeaveDialogue()
 => END

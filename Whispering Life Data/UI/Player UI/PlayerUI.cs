@@ -158,10 +158,10 @@ public partial class PlayerUI : CanvasLayer
     {
         instance.quest_complete_panel.Visible = true;
         instance.quest_complete_panel.GetChild(0).GetChild(0).GetNode<Label>("Label").Text =
-            "Last Quest Complete!";
+            "Complete!";
         instance.quest_complete_panel.GetChild(0).GetChild(0).GetNode<Label>("Label2").Text =
             "Thanks for Playing!";
-        instance.qcp_timer.Start();
+        //instance.qcp_timer.Start();
     }
 
     public void OnCompleteQuestCompletepanel()

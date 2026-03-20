@@ -24,6 +24,9 @@ public partial class QuestManager : Node
     private MonsterIsland monster_island;
     private MonsterIslandStateManager island_state_manager;
 
+    [Signal]
+    public delegate void FinishedGameEventHandler();
+
     public override void _Ready()
     {
         instance = this;
@@ -93,11 +96,11 @@ public partial class QuestManager : Node
         QuestMiniPanel.instance.UpdateTimeLabel(current_quest_time);
     }
 
-    public async void ApplyPenality()
+    public async void ApplyPenality(bool with_poisoning = false)
     {
         Debug.Print("Apply Penality!");
         int penalty = quest_penality.DeterminePenalty();
-        quest_penality.PlayPenaltyCutscene(penalty);
+        quest_penality.PlayPenaltyCutscene(penalty, with_poisoning);
         await ToSignal(PlayerUI.instance.quest_accept_panel.confirm_button, "pressed");
         GlobalFunctions.LeaveDialogue();
         Debug.Print("End Apply Penality");
@@ -146,6 +149,15 @@ public partial class QuestManager : Node
         }
     }
 
+    public async void FinishGame()
+    {
+        Debug.Print("Last Quest achieved");
+        PlayerUI.LastQuestPanelShow();
+        await ToSignal(PlayerUI.instance.qcp_timer, "timeout");
+        PlayerUI.instance.quest_complete_panel.Visible = false;
+        current_quest_id = -1;
+    }
+
     public async void NextQuest(bool finished_correctly = true, int penalty = -1)
     {
         GameMenu.instance.OnExitButton();
@@ -156,6 +168,9 @@ public partial class QuestManager : Node
             PlayerUI.instance.UpdateMoneyLabel();
             monster_island.ApplyQuestCompleted();
             MonsterIsland.instance.StartHittingCutscene();
+            await ToSignal(this, SignalName.FinishedGame);
+            if (MonsterIsland.instance.health_bar.current_health <= 0)
+                FinishGame();
         }
         else
             monster_island.ApplyQuestFailed();
@@ -169,10 +184,7 @@ public partial class QuestManager : Node
         if (current_quest_id == quests.Count - 1)
         {
             Debug.Print("Last Quest achieved");
-            PlayerUI.LastQuestPanelShow();
-            await ToSignal(PlayerUI.instance.qcp_timer, "timeout");
-            PlayerUI.instance.quest_complete_panel.Visible = false;
-            current_quest_id = -1;
+            FinishGame();
         }
 
         current_quest_id++;

@@ -86,3 +86,73 @@ do GlobalFunctions.NextQuestIslandsRemoved()
 do GlobalFunctions.OpenAcceptPanel()
 
 => END
+
+~ Quest_Not_Completed_Poisoning_DE
+
+% Boss: ROAW! Du willst mich also vergiften!?
+% Boss: Ich glaube nicht, dass du mich vergiften willst!
+% Boss: Vergiftung? Du willst es wirklich drauf anlegen oder?
+Boss: [b][color=gold]Du musst bestraft werden![/color][/b]
+do GlobalFunctions.NextQuestHalfTime()
+do GlobalFunctions.OpenAcceptPanel()
+
+=> END
+
+~ Quest_Not_Completed_Poisoning_ENG
+
+% Boss: ROAW! So you're trying to poison me!?
+% Boss: I don't think you're trying to poison me!
+% Boss: Poisoning? You're really looking for a fight, aren't you?
+Boss: [b][color=gold]You must be punished![/color][/b]
+
+do GlobalFunctions.NextQuestHalfTime()
+do GlobalFunctions.OpenAcceptPanel()
+
+=> END
+
+
+~ Quest_Not_Completed_Poisoning_1_DE
+
+% Boss: ROAW! Du willst mich also vergiften!?
+% Boss: Ich glaube nicht, dass du mich vergiften willst!
+% Boss: Vergiftung? Du willst es wirklich drauf anlegen oder?
+Boss: [b][color=gold]Du musst bestraft werden![/color][/b]
+do GlobalFunctions.NextQuestDoubledItems()
+do GlobalFunctions.OpenAcceptPanel()
+
+=> END
+
+~ Quest_Not_Completed_Poisoning_1_ENG
+
+% Boss: ROAW! So you're trying to poison me!?
+% Boss: I don't think you're trying to poison me!
+% Boss: Poisoning? You're really looking for a fight, aren't you?
+Boss: [b][color=gold]You must be punished![/color][/b]
+
+do GlobalFunctions.NextQuestDoubledItems()
+do GlobalFunctions.OpenAcceptPanel()
+
+=> END
+
+~ Quest_Not_Completed_Poisoning_2_DE
+
+% Boss: ROAW! Du willst mich also vergiften!?
+% Boss: Ich glaube nicht, dass du mich vergiften willst!
+% Boss: Vergiftung? Du willst es wirklich drauf anlegen oder?
+Boss: [b][color=gold]Du musst bestraft werden![/color][/b]
+do GlobalFunctions.NextQuestIslandsRemoved()
+do GlobalFunctions.OpenAcceptPanel()
+
+=> END
+
+~ Quest_Not_Completed_Poisoning_2_ENG
+
+% Boss: ROAW! So you're trying to poison me!?
+% Boss: I don't think you're trying to poison me!
+% Boss: Poisoning? You're really looking for a fight, aren't you?
+Boss: [b][color=gold]You must be punished![/color][/b]
+
+do GlobalFunctions.NextQuestIslandsRemoved()
+do GlobalFunctions.OpenAcceptPanel()
+
+=> END
