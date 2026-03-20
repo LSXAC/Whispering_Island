@@ -43,6 +43,7 @@ public partial class QuestManager : Node
 
     public void StartQuest(QuestSave quest_save = null)
     {
+        Debug.Print("Start new Quest!");
         if (quest_save != null)
         {
             current_quest_id = quest_save.current_quest_id;
@@ -75,7 +76,6 @@ public partial class QuestManager : Node
             //Cutscene
             GameMenu.CloseLastWindow();
             instance.quest_timer.Stop();
-            GameMenu.questMenu.CloseQuestMenu();
             //HeartManager.instance.RemoveHeart();
             if (GameManager.gameover)
                 return;
@@ -95,11 +95,12 @@ public partial class QuestManager : Node
 
     public async void ApplyPenality()
     {
+        Debug.Print("Apply Penality!");
         int penalty = quest_penality.DeterminePenalty();
         quest_penality.PlayPenaltyCutscene(penalty);
         await ToSignal(PlayerUI.instance.quest_accept_panel.confirm_button, "pressed");
         GlobalFunctions.LeaveDialogue();
-
+        Debug.Print("End Apply Penality");
         NextQuest(finished_correctly: false, penalty);
     }
 
@@ -183,6 +184,7 @@ public partial class QuestManager : Node
             next_quest_half_time = false;
         }
 
+        QuestMiniPanel.instance.UpdateTimeLabel(current_quest_time);
         if (finished_correctly)
         {
             //PlayerUI.CompleteQuestPanelShow();

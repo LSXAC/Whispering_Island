@@ -65,32 +65,18 @@ public partial class QuestMenu : ColorRect
 
     public void OnCompleteButton()
     {
-        float chance = (
-            nerv_normal + NervTransducterManager.instance.GetNervReduction() - nerv_abuse
-        );
         Random rnd = new Random();
         int step = rnd.Next(0, 100);
-        if (step <= chance * 100)
+        if (step <= GetNervRate() * 100)
             QuestManager.instance.NextQuest();
         else
             QuestManager.instance.ApplyPenality();
-    }
-
-    public override void _PhysicsProcess(double delta)
-    {
-        if (Input.IsActionJustPressed("Escape"))
-            GameMenu.instance.OnExitButton();
     }
 
     public void OnOpenQuestMenu()
     {
         GameMenu.instance.OnOpenQuestTab();
         OnVisiblityChanged();
-    }
-
-    public void CloseQuestMenu()
-    {
-        GameMenu.CloseLastWindow();
     }
 
     public void OnVisiblityChanged()
@@ -149,11 +135,20 @@ public partial class QuestMenu : ColorRect
             QuestManager.instance.quests[QuestManager.current_quest_id].required_items,
             multi
         );
-        success_label.Text =
-            (
-                nerv_normal + NervTransducterManager.instance.GetNervReduction() - nerv_abuse
-            ).ToString("P0") + "Sucess Rate.";
+
+        success_label.Text = GetNervRate().ToString("P0") + "Sucess Rate.";
         Debug.Print("Items damaged found: " + ItemsWithDamage);
+    }
+
+    private float GetNervRate()
+    {
+        float rate = nerv_normal + NervTransducterManager.instance.GetNervReduction() - nerv_abuse;
+        if (rate > 1f)
+            rate = 1f;
+        else if (rate < 0f)
+            rate = 0f;
+
+        return rate;
     }
 
     public static int CalculateDamagedQuestItems(
@@ -194,8 +189,6 @@ public partial class QuestMenu : ColorRect
 
             itemsWithDamage += countedDamaged;
             nerv_abuse += abuse;
-            if (nerv_abuse < 0)
-                nerv_abuse = 0f;
         }
 
         return itemsWithDamage;
