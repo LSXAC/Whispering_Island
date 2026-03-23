@@ -120,6 +120,7 @@
 [ext_resource type="Resource" uid="uid://dmqrajecslxbo" path="res://UI/Menus/Island Menu/Island Menu Item/Data/mystical_island_menu_item_data.tres" id="92_2jtc7"]
 [ext_resource type="Resource" uid="uid://ccs5nn02ivgu7" path="res://UI/Menus/Island Menu/Island Menu Item/Data/dessert_island_menu_item_data.tres" id="93_kqkeb"]
 [ext_resource type="Resource" uid="uid://dyy2lfagaxj8n" path="res://UI/Menus/Island Menu/Island Menu Item/Data/farming_island_menu_item_data.tres" id="94_k61vr"]
+[ext_resource type="Resource" uid="uid://jyqrsrjct6yc" path="res://UI/Menus/Island Menu/Island Menu Item/Data/vulcano_island_menu_item_data.tres" id="99_3f3i7"]
 [ext_resource type="Script" uid="uid://wilafu3hoei3" path="res://UI/Menus/Game Menu/Crafting Menu/CraftingCategoryPanel.cs" id="102_x76ca"]
 [ext_resource type="StyleBox" uid="uid://cfrmx1sogqkln" path="res://UI/Styles/Slider_Style.tres" id="103_sy5xb"]
 [ext_resource type="StyleBox" uid="uid://b2c5h8k14gscx" path="res://UI/Styles/Slider_Grabber_Style.tres" id="104_fato5"]
@@ -4461,7 +4462,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("16_burxg")
-islands = [NodePath("MarginContainer/ScrollContainer/GridContainer/MiningIsland"), NodePath("MarginContainer/ScrollContainer/GridContainer/MysticIsland"), NodePath("MarginContainer/ScrollContainer/GridContainer/DessertIsland"), NodePath("MarginContainer/ScrollContainer/GridContainer/FarmingIsland")]
+islands = [NodePath("MarginContainer/ScrollContainer/GridContainer/MiningIsland"), NodePath("MarginContainer/ScrollContainer/GridContainer/MysticIsland"), NodePath("MarginContainer/ScrollContainer/GridContainer/DessertIsland"), NodePath("MarginContainer/ScrollContainer/GridContainer/FarmingIsland"), NodePath("MarginContainer/ScrollContainer/GridContainer/VulcanoIsland")]
 island_parent = NodePath("MarginContainer/ScrollContainer/GridContainer")
 island_to_build_left_label = NodePath("IslandsToBuildLabel")
 
@@ -4521,7 +4522,11 @@ item_menu_item_data = ExtResource("93_kqkeb")
 layout_mode = 2
 item_menu_item_data = ExtResource("94_k61vr")
 
-[node name="AdminTab" type="ColorRect" parent="Background" unique_id=292820670 node_paths=PackedStringArray("item_list", "timeStateLabel")]
+[node name="VulcanoIsland" parent="Background/IslandTab/MarginContainer/ScrollContainer/GridContainer" unique_id=1520879555 instance=ExtResource("90_l3sn2")]
+layout_mode = 2
+item_menu_item_data = ExtResource("99_3f3i7")
+
+[node name="AdminTab" type="ColorRect" parent="Background" unique_id=292820670 node_paths=PackedStringArray("item_list", "is_poisoned_box", "timeStateLabel")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -4537,6 +4542,7 @@ grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("16_f2xax")
 item_list = NodePath("PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/ItemList")
+is_poisoned_box = NodePath("PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/IsPoisonedCheckBox")
 timeStateLabel = NodePath("PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/StateLabel")
 
 [node name="PanelContainer" type="Control" parent="Background/AdminTab" unique_id=2001645865]
@@ -4582,9 +4588,10 @@ size_flags_vertical = 3
 theme_override_constants/side_margin = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
-current_tab = 0
+current_tab = 1
 
 [node name="General" type="VBoxContainer" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=476183822]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -4607,7 +4614,6 @@ theme_override_font_sizes/font_size = 12
 text = "Add: -0.2f mood"
 
 [node name="Items" type="VBoxContainer" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=258736374]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -4625,6 +4631,12 @@ item_0/icon = ExtResource("17_iq1ex")
 item_1/text = "Stone"
 item_1/icon = ExtResource("18_ou1xm")
 item_2/text = "Nichts"
+
+[node name="IsPoisonedCheckBox" type="CheckBox" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items" unique_id=655856511]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Is Poisoned?"
 
 [node name="CreateButton" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items" unique_id=188707285]
 layout_mode = 2

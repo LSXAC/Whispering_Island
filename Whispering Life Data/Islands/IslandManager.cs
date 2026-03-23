@@ -15,12 +15,12 @@ public partial class IslandManager : Node2D
 
     public int last_island_id;
 
-    public int[] island_types_build = [0, 0, 0, 0];
+    public int[] island_types_build = [0, 0, 0, 0, 0];
 
     public override void _Ready()
     {
         instance = this;
-        island_types_build = [0, 0, 0, 0];
+        island_types_build = [0, 0, 0, 0, 0];
         last_island_id = 0;
     }
 

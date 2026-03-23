@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemMenuItemData" format=3 uid="uid://jyqrsrjct6yc"]
+
+[ext_resource type="PackedScene" uid="uid://lb5m1plq3nuf" path="res://Islands/Types/Vulcano Island/vulcano_island.tscn" id="1_lhoni"]
+[ext_resource type="Texture2D" uid="uid://b8ahy1mkxvvqd" path="res://UNKNOWN.png" id="2_txnkl"]
+[ext_resource type="Script" uid="uid://cx65jsnrsyj4y" path="res://UI/Menus/Island Menu/Island Menu Item/Data/ItemMenuItemData.cs" id="3_m5ryk"]
+
+[resource]
+script = ExtResource("3_m5ryk")
+island_texture = ExtResource("2_txnkl")
+menu_item_title = "VULCANO_ISLAND"
+island_scene = ExtResource("1_lhoni")
+metadata/_custom_type_script = "uid://cx65jsnrsyj4y"

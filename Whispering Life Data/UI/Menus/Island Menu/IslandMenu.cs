@@ -20,14 +20,6 @@ public partial class IslandMenu : ColorRect
     [Export]
     public int base_cost = 10;
 
-    public enum ISLANDS
-    {
-        ISLAND_0,
-        ISLAND_1,
-        ISLAND_2,
-        ISLAND_3
-    };
-
     public Sign current_sign = null;
     public static IslandMenu instance;
 
@@ -43,6 +35,7 @@ public partial class IslandMenu : ColorRect
         island_menu_items[1].buy_btn.Pressed += () => SelectIsland(1);
         island_menu_items[2].buy_btn.Pressed += () => SelectIsland(2);
         island_menu_items[3].buy_btn.Pressed += () => SelectIsland(3);
+        island_menu_items[4].buy_btn.Pressed += () => SelectIsland(4);
     }
 
     public void OnVisiblityChanged()

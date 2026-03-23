@@ -6,6 +6,9 @@ public partial class CheatTab : ColorRect
 {
     [Export]
     public ItemList item_list;
+
+    [Export]
+    public CheckBox is_poisoned_box;
     private Array<ItemInfo> item_infos = new Array<ItemInfo>();
 
     [Export]
@@ -73,14 +76,24 @@ public partial class CheatTab : ColorRect
         {
             try
             {
-                PlayerInventoryUI.instance.AddItem(
-                    new Item(
-                        item_infos[i],
-                        item_infos[i].max_stackable_size,
-                        state: Item.STATE.POISONED
-                    ),
-                    PlayerInventoryUI.instance.inventory_items
-                );
+                if (is_poisoned_box.ButtonPressed)
+                    PlayerInventoryUI.instance.AddItem(
+                        new Item(
+                            item_infos[i],
+                            item_infos[i].max_stackable_size,
+                            state: Item.STATE.POISONED
+                        ),
+                        PlayerInventoryUI.instance.inventory_items
+                    );
+                else
+                    PlayerInventoryUI.instance.AddItem(
+                        new Item(
+                            item_infos[i],
+                            item_infos[i].max_stackable_size,
+                            state: Item.STATE.NORMAL
+                        ),
+                        PlayerInventoryUI.instance.inventory_items
+                    );
             }
             catch (Exception e)
             {
