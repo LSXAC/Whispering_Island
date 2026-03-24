@@ -10,6 +10,8 @@ public partial class MonsterIsland : Building_Node
 
     [Export]
     public Array<Texture2D> state_textures = new Array<Texture2D>();
+    public static float nerv_normal = 1f;
+    public static float nerv_abuse = 0f;
 
     private MonsterIslandStateManager island_state;
     public SpriteAnimationManager sprite_animation_manager;
@@ -43,6 +45,17 @@ public partial class MonsterIsland : Building_Node
         hit_label_manager = GetNode<HitLabelManager>("HitLabelManager");
         island_state.StateChanged += OnStateChanged;
         UpdateStateVisuals(island_state.GetCurrentState());
+    }
+
+    public float GetNervRate()
+    {
+        float rate = nerv_normal + NervTransducterManager.instance.GetNervReduction() - nerv_abuse;
+        if (rate > 1f)
+            rate = 1f;
+        else if (rate < 0f)
+            rate = 0f;
+
+        return rate;
     }
 
     public void InitializeQuestTimers()

@@ -37,10 +37,6 @@ public partial class QuestMenu : ColorRect
 
     private Array<Label> item_labels = new Array<Label>();
 
-    public static int ItemsWithDamage = 0;
-    public static float nerv_normal = 1f;
-    public static float nerv_abuse = 0f;
-
     public override void _Ready()
     {
         quest_inventory.OnItemChanged += CheckQuest;
@@ -68,7 +64,7 @@ public partial class QuestMenu : ColorRect
     {
         Random rnd = new Random();
         int step = rnd.Next(0, 100);
-        if (step <= GetNervRate() * 100)
+        if (step <= MonsterIsland.instance.GetNervRate() * 100)
             QuestManager.instance.NextQuest();
         else
         {
@@ -134,25 +130,14 @@ public partial class QuestMenu : ColorRect
         else
             complete_button.Disabled = true;
 
-        ItemsWithDamage = CalculateDamagedQuestItems(
+        GlobalFunctions.ItemsWithDamage = CalculateDamagedQuestItems(
             quest_inventory.inventory_items,
             QuestManager.instance.quests[QuestManager.current_quest_id].required_items,
             multi
         );
 
-        success_label.Text = GetNervRate().ToString("P0") + "Sucess Rate.";
-        Debug.Print("Items damaged found: " + ItemsWithDamage);
-    }
-
-    private float GetNervRate()
-    {
-        float rate = nerv_normal + NervTransducterManager.instance.GetNervReduction() - nerv_abuse;
-        if (rate > 1f)
-            rate = 1f;
-        else if (rate < 0f)
-            rate = 0f;
-
-        return rate;
+        success_label.Text = MonsterIsland.instance.GetNervRate().ToString("P0") + "Sucess Rate.";
+        Debug.Print("Items damaged found: " + GlobalFunctions.ItemsWithDamage);
     }
 
     public static int CalculateDamagedQuestItems(
@@ -162,7 +147,7 @@ public partial class QuestMenu : ColorRect
     )
     {
         int itemsWithDamage = 0;
-        nerv_abuse = 0;
+        MonsterIsland.nerv_abuse = 0;
 
         foreach (Item questItem in questItems)
         {
@@ -192,7 +177,7 @@ public partial class QuestMenu : ColorRect
             }
 
             itemsWithDamage += countedDamaged;
-            nerv_abuse += abuse;
+            MonsterIsland.nerv_abuse += abuse;
         }
 
         return itemsWithDamage;

@@ -26,8 +26,11 @@ do GlobalFunctions.LeaveDialogue()
 
 do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))
 Boss: Ha! Those Resources were delicous!
-do GlobalFunctions.DealQuestDamage()
-Boss: Mhh... aua..
+if GlobalFunctions.ItemsWithDamage != 0:
+	do GlobalFunctions.DealQuestDamage()
+	Boss: Mhh... aua..
+else:
+	Boss: Next time, give me even faster and even more! Haha!
 do GlobalFunctions.FinishGame()
 do GlobalFunctions.LeaveDialogue()
 => END

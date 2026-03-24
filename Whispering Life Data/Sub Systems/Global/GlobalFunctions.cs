@@ -8,6 +8,8 @@ public partial class GlobalFunctions : Node2D
     public static GlobalFunctions instance;
     public static float transport_moving_speed = 10f;
 
+    public static int ItemsWithDamage = 0;
+
     public override void _Ready()
     {
         instance = this;
@@ -201,8 +203,8 @@ public partial class GlobalFunctions : Node2D
 
     public static async Task DealQuestDamage()
     {
-        Debug.Print(QuestMenu.ItemsWithDamage + " Items found to damage");
-        await MonsterIsland.instance.HitIsland(1, QuestMenu.ItemsWithDamage);
+        Debug.Print(ItemsWithDamage + " Items found to damage");
+        await MonsterIsland.instance.HitIsland(1, ItemsWithDamage);
     }
 
     public static void FinishGame()
