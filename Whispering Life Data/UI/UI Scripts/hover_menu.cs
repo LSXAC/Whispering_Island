@@ -160,15 +160,15 @@ public partial class hover_menu : PanelContainer
             instance.process_bar_content.Text = pb.progress + "/" + 100;
             instance.process_fuel_content.Text = pb.fuel_left + "x";
 
-            if (pb.item_array[(int)FurnaceTab.SlotType.EXPORT] != null)
+            if (pb.item_array[(int)ProcessingTab.SlotType.EXPORT] != null)
                 instance.process_output_content.Text =
-                    pb.item_array[(int)FurnaceTab.SlotType.EXPORT].amount
+                    pb.item_array[(int)ProcessingTab.SlotType.EXPORT].amount
                     + "x "
                     + TranslationServer.Translate(
                         Inventory
                             .ITEM_TYPES[
                                 (Inventory.ITEM_ID)
-                                    pb.item_array[(int)FurnaceTab.SlotType.EXPORT].item_id
+                                    pb.item_array[(int)ProcessingTab.SlotType.EXPORT].item_id
                             ]
                             .name
                     );
@@ -177,15 +177,15 @@ public partial class hover_menu : PanelContainer
                     "HOVER_MENU_PROCESS_NO_ITEM"
                 );
 
-            if (pb.item_array[(int)FurnaceTab.SlotType.IMPORT] != null)
+            if (pb.item_array[(int)ProcessingTab.SlotType.IMPORT] != null)
                 instance.process_input_content.Text =
-                    pb.item_array[(int)FurnaceTab.SlotType.IMPORT].amount
+                    pb.item_array[(int)ProcessingTab.SlotType.IMPORT].amount
                     + "x "
                     + TranslationServer.Translate(
                         Inventory
                             .ITEM_TYPES[
                                 (Inventory.ITEM_ID)
-                                    pb.item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
+                                    pb.item_array[(int)ProcessingTab.SlotType.IMPORT].item_id
                             ]
                             .name
                     );

@@ -23,7 +23,7 @@ public partial class GameMenu : CanvasLayer
     public ColorRect crafting_tab;
 
     [Export]
-    public FurnaceTab furnace_tab;
+    public ProcessingTab processing_tab;
 
     [Export]
     public ResearchTab research_tab;
@@ -304,12 +304,12 @@ public partial class GameMenu : CanvasLayer
         saveload_tab.Visible = true;
     }
 
-    public void OnOpenFurnaceTab()
+    public void OnOpenProcessingTab()
     {
         SetWindow(this);
         CloseAllTabs();
         inventory_tab.Visible = true;
-        furnace_tab.Visible = true;
+        processing_tab.Visible = true;
         PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes(
             new Type[] { typeof(BurnableAttribute), typeof(SmeltableAttribute) }
         );
@@ -368,7 +368,7 @@ public partial class GameMenu : CanvasLayer
         inventory_tab.Visible = false;
         research_tab.Visible = false;
         crafting_tab.Visible = false;
-        furnace_tab.Visible = false;
+        processing_tab.Visible = false;
         nerve_transducer_tab.Visible = false;
         admin_tab.Visible = false;
         skilltree_tab.Visible = false;
