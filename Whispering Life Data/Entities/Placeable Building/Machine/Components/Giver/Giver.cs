@@ -117,16 +117,16 @@ public partial class Giver : Area2D
     private void IsProcessingBuilding(Belt belt)
     {
         ProcessBuilding process_building = (ProcessBuilding)building;
-        if (process_building.item_array[(int)FurnaceTab.SlotType.EXPORT] != null)
-            if (process_building.item_array[(int)FurnaceTab.SlotType.EXPORT].amount > 0)
+        if (process_building.item_array[(int)ProcessingTab.SlotType.EXPORT] != null)
+            if (process_building.item_array[(int)ProcessingTab.SlotType.EXPORT].amount > 0)
             {
-                process_building.item_array[(int)FurnaceTab.SlotType.EXPORT].amount--;
+                process_building.item_array[(int)ProcessingTab.SlotType.EXPORT].amount--;
                 AddBeltItemToBelt(
                     belt,
-                    new Item(process_building.GetItemResource(FurnaceTab.SlotType.EXPORT), 1)
+                    new Item(process_building.GetItemResource(ProcessingTab.SlotType.EXPORT), 1)
                 );
 
-                if (process_building.item_array[(int)FurnaceTab.SlotType.EXPORT].amount == 0)
+                if (process_building.item_array[(int)ProcessingTab.SlotType.EXPORT].amount == 0)
                     process_building.ResetExportSlot();
 
                 if (belt is BeltTunnel belt_tunnel)
@@ -186,7 +186,7 @@ public partial class Giver : Area2D
                 belt,
                 new Item(((ProductionMachine)building).output_item_resource, 1)
             );
-            FurnaceTab.instance.UpdateFurnaceUI();
+            ProcessingTab.instance.UpdateUI();
         }
     }
 

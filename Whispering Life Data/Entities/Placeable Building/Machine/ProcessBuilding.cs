@@ -25,7 +25,7 @@ public partial class ProcessBuilding : MachineBase
     public bool inStartTransition = false;
     public bool inEndTransition = false;
 
-    public ItemInfo GetItemResource(FurnaceTab.SlotType slotType)
+    public ItemInfo GetItemResource(ProcessingTab.SlotType slotType)
     {
         if (item_array[(int)slotType] == null)
             return null;
@@ -40,33 +40,33 @@ public partial class ProcessBuilding : MachineBase
         if (!CheckClickDependencies(this))
             return;
 
-        FurnaceTab.instance.SetProcessBuilding(this);
-        GameMenu.instance.OnOpenFurnaceTab();
+        ProcessingTab.instance.SetProcessBuilding(this);
+        GameMenu.instance.OnOpenProcessingTab();
     }
 
     public void OnCraftingTimerTimeout()
     {
-        if (FurnaceTab.instance.process_building == this)
-            FurnaceTab.instance.UpdateProgressbar(progress);
+        if (ProcessingTab.instance.process_building == this)
+            ProcessingTab.instance.SetMachineProgressbar(progress);
 
-        if (FurnaceTab.instance.process_building == this)
-            FurnaceTab.instance.UpdateFuelProgressbar(
+        if (ProcessingTab.instance.process_building == this)
+            ProcessingTab.instance.UpdateFuelProgressbar(
                 (int)((double)fuel_left / max_fuel_count * 100)
             );
 
         ItemInfo import_item_info = Inventory.ITEM_TYPES[
-            (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
+            (Inventory.ITEM_ID)item_array[(int)ProcessingTab.SlotType.IMPORT].item_id
         ];
         SmeltableAttribute smeltable = import_item_info.GetAttributeOrNull<SmeltableAttribute>();
 
         if (progress >= 100)
         {
-            if (item_array[(int)FurnaceTab.SlotType.EXPORT] != null)
-                item_array[(int)FurnaceTab.SlotType.EXPORT].amount += smeltable
+            if (item_array[(int)ProcessingTab.SlotType.EXPORT] != null)
+                item_array[(int)ProcessingTab.SlotType.EXPORT].amount += smeltable
                     .smelted_to_item
                     .amount;
             else
-                item_array[(int)FurnaceTab.SlotType.EXPORT] = new ItemSave(
+                item_array[(int)ProcessingTab.SlotType.EXPORT] = new ItemSave(
                     (int)smeltable.smelted_to_item.info.id,
                     smeltable.smelted_to_item.amount,
                     -1,
@@ -76,10 +76,10 @@ public partial class ProcessBuilding : MachineBase
             is_crafting = false;
             process_timer.Stop();
             progress = 0;
-            if (FurnaceTab.instance.process_building == this)
-                FurnaceTab.instance.UpdateProgressbar(progress);
-            if (FurnaceTab.instance.process_building == this)
-                FurnaceTab.instance.UpdateFurnaceUI();
+            if (ProcessingTab.instance.process_building == this)
+                ProcessingTab.instance.SetMachineProgressbar(progress);
+            if (ProcessingTab.instance.process_building == this)
+                ProcessingTab.instance.UpdateUI();
             return;
         }
 
@@ -106,9 +106,9 @@ public partial class ProcessBuilding : MachineBase
         if (is_crafting)
             return;
 
-        Label description = FurnaceTab.instance.description_Label;
+        Label description = ProcessingTab.instance.description_label;
 
-        if (item_array[(int)FurnaceTab.SlotType.IMPORT] == null)
+        if (item_array[(int)ProcessingTab.SlotType.IMPORT] == null)
         {
             description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_RESOURCE");
             return;
@@ -121,23 +121,23 @@ public partial class ProcessBuilding : MachineBase
         }
 
         ItemInfo import_item_info = Inventory.ITEM_TYPES[
-            (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
+            (Inventory.ITEM_ID)item_array[(int)ProcessingTab.SlotType.IMPORT].item_id
         ];
         SmeltableAttribute smeltable = import_item_info.GetAttributeOrNull<SmeltableAttribute>();
 
         if (fuel_left < 20)
-            if (item_array[(int)FurnaceTab.SlotType.FUEL] != null)
+            if (item_array[(int)ProcessingTab.SlotType.FUEL] != null)
             {
-                if (item_array[(int)FurnaceTab.SlotType.FUEL].amount > 0)
+                if (item_array[(int)ProcessingTab.SlotType.FUEL].amount > 0)
                 {
                     ItemInfo info = Inventory.ITEM_TYPES[
-                        (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.FUEL].item_id
+                        (Inventory.ITEM_ID)item_array[(int)ProcessingTab.SlotType.FUEL].item_id
                     ];
                     BurnableAttribute attribute = info.GetAttributeOrNull<BurnableAttribute>();
                     if (attribute != null)
                     {
                         fuel_left += attribute.burntime;
-                        item_array[(int)FurnaceTab.SlotType.FUEL].amount--;
+                        item_array[(int)ProcessingTab.SlotType.FUEL].amount--;
                     }
                     else
                     {
@@ -166,19 +166,19 @@ public partial class ProcessBuilding : MachineBase
             description.Text = TranslationServer.Translate("FURNACE_MENU_DESC");
 
         is_crafting = true;
-        item_array[(int)FurnaceTab.SlotType.IMPORT].amount -= smeltable.amount_to_smelt;
-        if (FurnaceTab.instance.process_building == this)
-            FurnaceTab.instance.UpdateFurnaceUI();
+        item_array[(int)ProcessingTab.SlotType.IMPORT].amount -= smeltable.amount_to_smelt;
+        if (ProcessingTab.instance.process_building == this)
+            ProcessingTab.instance.UpdateUI();
         process_timer.Start();
     }
 
     private bool SelectAndCheckCanCraft()
     {
-        if (item_array[(int)FurnaceTab.SlotType.IMPORT] == null)
+        if (item_array[(int)ProcessingTab.SlotType.IMPORT] == null)
             return false;
 
         ItemInfo import_item_info = Inventory.ITEM_TYPES[
-            (Inventory.ITEM_ID)item_array[(int)FurnaceTab.SlotType.IMPORT].item_id
+            (Inventory.ITEM_ID)item_array[(int)ProcessingTab.SlotType.IMPORT].item_id
         ];
         SmeltableAttribute smeltable = import_item_info.GetAttributeOrNull<SmeltableAttribute>();
 
@@ -189,13 +189,13 @@ public partial class ProcessBuilding : MachineBase
             if (!GlobalFunctions.CheckResearchRequirements(smeltable.unlock_requirements))
                 return false;
 
-        if (item_array[(int)FurnaceTab.SlotType.IMPORT].amount < smeltable.amount_to_smelt)
+        if (item_array[(int)ProcessingTab.SlotType.IMPORT].amount < smeltable.amount_to_smelt)
             return false;
 
-        if (item_array[(int)FurnaceTab.SlotType.EXPORT] == null)
+        if (item_array[(int)ProcessingTab.SlotType.EXPORT] == null)
             return true;
         else if (
-            item_array[(int)FurnaceTab.SlotType.EXPORT].item_id
+            item_array[(int)ProcessingTab.SlotType.EXPORT].item_id
             != (int)smeltable.smelted_to_item.info.id
         )
             return false;
@@ -205,13 +205,13 @@ public partial class ProcessBuilding : MachineBase
 
     public void ResetExportSlot()
     {
-        item_array[(int)FurnaceTab.SlotType.EXPORT] = null;
+        item_array[(int)ProcessingTab.SlotType.EXPORT] = null;
     }
 
     public void OnMachineTimeOut()
     {
-        Button switch_button = FurnaceTab.instance.switch_button;
-        ProcessBuilding process_building = FurnaceTab.instance.process_building;
+        Button switch_button = ProcessingTab.instance.switch_button;
+        ProcessBuilding process_building = ProcessingTab.instance.process_building;
 
         if (!inEndTransition)
         {
@@ -225,13 +225,12 @@ public partial class ProcessBuilding : MachineBase
                 if (process_building == this)
                     switch_button.Disabled = false;
 
-                FurnaceTab.instance.safty_panel.Visible = false;
-                FurnaceTab.instance.ChangeEndStateLabel(true);
+                ProcessingTab.instance.ChangeEndStateLabel(true);
                 state_timer.Stop();
                 inStartTransition = false;
             }
             if (process_building == this)
-                FurnaceTab.instance.SetMachineProgressbar(ui_progress);
+                ProcessingTab.instance.SetMachineProgressbar(ui_progress);
             return;
         }
 
@@ -244,14 +243,14 @@ public partial class ProcessBuilding : MachineBase
             if (ui_progress >= 100)
             {
                 ui_progress = 100;
-                FurnaceTab.instance.ChangeEndStateLabel(false);
+                ProcessingTab.instance.ChangeEndStateLabel(false);
                 if (process_building == this)
                     switch_button.Disabled = false;
                 state_timer.Stop();
                 inEndTransition = false;
             }
             if (process_building == this)
-                FurnaceTab.instance.SetMachineProgressbar(ui_progress);
+                ProcessingTab.instance.SetMachineProgressbar(ui_progress);
         }
     }
 

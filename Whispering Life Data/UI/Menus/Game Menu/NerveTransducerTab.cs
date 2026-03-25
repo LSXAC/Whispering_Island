@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class NerveTransducerTab : Control
+public partial class NerveTransducerTab : MachinePanel
 {
     public static NerveTransducerTab instance;
     public NerveTransducer nerve_transducer;
@@ -11,11 +11,11 @@ public partial class NerveTransducerTab : Control
         instance = this;
     }
 
-    public void SetNerveTransducer(NerveTransducer nerveTransducer)
+    public void UpdateUI() { }
+
+    public override void SetReference(Node2D nerveTransducer)
     {
-        this.nerve_transducer = nerveTransducer;
+        this.nerve_transducer = (NerveTransducer)nerveTransducer;
         UpdateUI();
     }
-
-    public void UpdateUI() { }
 }

@@ -56,7 +56,7 @@ public partial class Taker : StaticBody2D
             ChestInventory.instance.AddItem(belt_item.item, chest_base.chest_items);
             ChestInventory.instance.UpdateInventoryUI();
         }
-        FurnaceTab.instance.UpdateFurnaceUI();
+        ProcessingTab.instance.UpdateUI();
         belt_item.QueueFree();
     }
 }

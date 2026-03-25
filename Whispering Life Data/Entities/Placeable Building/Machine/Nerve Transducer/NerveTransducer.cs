@@ -15,7 +15,7 @@ public partial class NerveTransducer : MachineBase
         if (!CheckClickDependencies(this))
             return;
 
-        NerveTransducerTab.instance.SetNerveTransducer(this);
+        NerveTransducerTab.instance.SetReference(this);
         GameMenu.instance.OnOpenNerveTranducerTab();
     }
 

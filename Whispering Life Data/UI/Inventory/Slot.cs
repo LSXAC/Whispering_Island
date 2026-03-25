@@ -53,12 +53,12 @@ public partial class Slot : Button
                 ((Inventory)GetParent().GetParent().GetParent()).OnItemChanged?.Invoke();
             }
 
-            if (GetParent().GetParent().GetParent().GetParent() is FurnaceTab)
+            if (GetParent().GetParent().GetParent().GetParent() is ProcessingTab)
             {
-                item_array = ((FurnaceTab)GetParent().GetParent().GetParent().GetParent())
+                item_array = ((ProcessingTab)GetParent().GetParent().GetParent().GetParent())
                     .process_building
                     .item_array;
-                slotUpdater = (FurnaceTab)GetParent().GetParent().GetParent().GetParent();
+                slotUpdater = (ProcessingTab)GetParent().GetParent().GetParent().GetParent();
                 if (item_array != null)
                     OnSlotButton(btn);
             }
