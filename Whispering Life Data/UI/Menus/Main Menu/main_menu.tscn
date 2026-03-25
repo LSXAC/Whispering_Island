@@ -452,20 +452,6 @@ text = "Back to Start"
 script = ExtResource("12_jqrcp")
 label_translation_string = "MAINMENU_BACK"
 
-[node name="Fill2" type="ColorRect" parent="Menu/Control/VBox_Menu_Part2" unique_id=1970123364]
-custom_minimum_size = Vector2(0, 1)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="Menu/Control/VBox_Menu_Part2" unique_id=1595888258]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_5j77y")
-theme_override_font_sizes/font_size = 8
-text = "© 2026 Leon Schröder. V0.2.2"
-horizontal_alignment = 1
-autowrap_mode = 3
-
 [node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="Menu" unique_id=1814333455]
 layout_mode = 1
 anchors_preset = 15

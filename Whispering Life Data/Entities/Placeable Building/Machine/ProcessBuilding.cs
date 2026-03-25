@@ -22,9 +22,6 @@ public partial class ProcessBuilding : MachineBase
     public int ui_progress = 0;
     public int progress = 0;
 
-    public bool inStartTransition = false;
-    public bool inEndTransition = false;
-
     public ItemInfo GetItemResource(ProcessingTab.SlotType slotType)
     {
         if (item_array[(int)slotType] == null)
@@ -53,11 +50,24 @@ public partial class ProcessBuilding : MachineBase
             ProcessingTab.instance.UpdateFuelProgressbar(
                 (int)((double)fuel_left / max_fuel_count * 100)
             );
+        //Check if not null:
+
+        if (item_array[(int)ProcessingTab.SlotType.IMPORT] == null)
+        {
+            StopCrafting();
+            return;
+        }
 
         ItemInfo import_item_info = Inventory.ITEM_TYPES[
             (Inventory.ITEM_ID)item_array[(int)ProcessingTab.SlotType.IMPORT].item_id
         ];
         SmeltableAttribute smeltable = import_item_info.GetAttributeOrNull<SmeltableAttribute>();
+
+        if (item_array[(int)ProcessingTab.SlotType.IMPORT].amount < smeltable.amount_to_smelt)
+        {
+            StopCrafting();
+            return;
+        }
 
         if (progress >= 100)
         {
@@ -73,13 +83,15 @@ public partial class ProcessBuilding : MachineBase
                     (int)smeltable.smelted_to_item.state
                 );
 
+            item_array[(int)ProcessingTab.SlotType.IMPORT].amount -= smeltable.amount_to_smelt;
             is_crafting = false;
             process_timer.Stop();
             progress = 0;
             if (ProcessingTab.instance.process_building == this)
+            {
                 ProcessingTab.instance.SetMachineProgressbar(progress);
-            if (ProcessingTab.instance.process_building == this)
                 ProcessingTab.instance.UpdateUI();
+            }
             return;
         }
 
@@ -88,6 +100,15 @@ public partial class ProcessBuilding : MachineBase
 
         if (hover_menu.instance.current_object == this)
             hover_menu.InitHoverMenu(this);
+    }
+
+    public void StopCrafting()
+    {
+        is_crafting = false;
+        process_timer.Stop();
+        progress = 0;
+        if (ProcessingTab.instance.process_building == this)
+            ProcessingTab.instance.SetMachineProgressbar(progress);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -106,7 +127,7 @@ public partial class ProcessBuilding : MachineBase
         if (is_crafting)
             return;
 
-        Label description = ProcessingTab.instance.description_label;
+        Label description = ProcessingTab.instance.description_Label;
 
         if (item_array[(int)ProcessingTab.SlotType.IMPORT] == null)
         {
@@ -166,7 +187,6 @@ public partial class ProcessBuilding : MachineBase
             description.Text = TranslationServer.Translate("FURNACE_MENU_DESC");
 
         is_crafting = true;
-        item_array[(int)ProcessingTab.SlotType.IMPORT].amount -= smeltable.amount_to_smelt;
         if (ProcessingTab.instance.process_building == this)
             ProcessingTab.instance.UpdateUI();
         process_timer.Start();
@@ -206,52 +226,6 @@ public partial class ProcessBuilding : MachineBase
     public void ResetExportSlot()
     {
         item_array[(int)ProcessingTab.SlotType.EXPORT] = null;
-    }
-
-    public void OnMachineTimeOut()
-    {
-        Button switch_button = ProcessingTab.instance.switch_button;
-        ProcessBuilding process_building = ProcessingTab.instance.process_building;
-
-        if (!inEndTransition)
-        {
-            switch_button.Disabled = true;
-            if (ui_progress > 0)
-                ui_progress -= 2;
-
-            if (ui_progress <= 0)
-            {
-                ui_progress = 0;
-                if (process_building == this)
-                    switch_button.Disabled = false;
-
-                ProcessingTab.instance.ChangeEndStateLabel(true);
-                state_timer.Stop();
-                inStartTransition = false;
-            }
-            if (process_building == this)
-                ProcessingTab.instance.SetMachineProgressbar(ui_progress);
-            return;
-        }
-
-        if (!inStartTransition)
-        {
-            switch_button.Disabled = true;
-            if (ui_progress < 100)
-                ui_progress += 2;
-
-            if (ui_progress >= 100)
-            {
-                ui_progress = 100;
-                ProcessingTab.instance.ChangeEndStateLabel(false);
-                if (process_building == this)
-                    switch_button.Disabled = false;
-                state_timer.Stop();
-                inEndTransition = false;
-            }
-            if (process_building == this)
-                ProcessingTab.instance.SetMachineProgressbar(ui_progress);
-        }
     }
 
     public override void Load(Resource save)

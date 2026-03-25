@@ -195,7 +195,6 @@ public partial class Slot : Button
                 {
                     Debug.Print("Switch Slot");
 
-                    // 🔥 Beide Items klonen
                     var clickedItemClone = clicked_slot_item_ui.item.Clone();
                     var slotItemClone = slot_item_ui.item.Clone();
 
@@ -262,10 +261,25 @@ public partial class Slot : Button
             if (@btn.ButtonMask == MouseButtonMask.Right)
             {
                 int first = slot_item_ui.item.amount;
-                int half = GetHalfOfAmount(first);
-                UpdateSlot(item_array, half);
-                CreateClickedItem(slot_item_ui.item, first - half);
+                int half;
 
+                // 5 -> 2 - 3
+                // 6 -> 3 - 3
+
+                if (first % 2 == 0)
+                {
+                    half = HalfAmount(first);
+                    UpdateSlot(item_array, half);
+                    slot_item_ui.item.amount = half;
+                }
+                else
+                {
+                    half = HalfAmountNextInt(first);
+                    UpdateSlot(item_array, first - half);
+                    slot_item_ui.item.amount = half;
+                }
+
+                CreateClickedItem(slot_item_ui.item);
                 Debug.Print("Take Item Rightclick Slot");
                 return;
             }
@@ -283,22 +297,6 @@ public partial class Slot : Button
             CreateClickedItem(slot_item_ui.item, slot_item_ui.item.amount);
 
         ClearSlot(item_array);
-    }
-
-    private bool CheckSlotRequirements()
-    {
-        if (is_export_slot)
-            return false;
-
-        if (check_attributes)
-            if (
-                !PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttributByType(
-                    attribute_to_check.GetType()
-                )
-            )
-                return false;
-
-        return true;
     }
 
     public void SetItem(Item item, int durability = -1)
@@ -354,7 +352,7 @@ public partial class Slot : Button
     {
         if (GetSlotItemUI() == null)
             return;
-        GetSlotItemUI().QueueFree();
+        GetSlotItemUI().Free();
     }
 
     private void UpdateSlot(ItemSave[] i_save, int amount)
@@ -431,7 +429,6 @@ public partial class Slot : Button
             {
                 CreateClickedItem(GetSlotItemUI().item, slot_item_ui.item.amount);
                 ResearchTab.research_slot_item = null;
-                //ResearchTab.instance.UpdateLevelTabs();
             }
         }
         else
@@ -461,15 +458,6 @@ public partial class Slot : Button
         slot_item_ui.MouseFilter = MouseFilterEnum.Ignore;
         slot_item_ui.ZIndex = 10;
 
-        Debug.Print(
-            "Create Clicked Item: "
-                + item.info.name
-                + " | Durability: "
-                + durability
-                + " | State: "
-                + item.state
-        );
-
         if (durability != -1)
             slot_item_ui.SetDurability(durability);
         slot_item_ui.SelfModulate = GetSlotItemUI().SelfModulate;
@@ -482,5 +470,21 @@ public partial class Slot : Button
         if (((int)(slot_item_ui.item.amount / 2.0)) > 0)
             return true;
         return false;
+    }
+
+    private bool CheckSlotRequirements()
+    {
+        if (is_export_slot)
+            return false;
+
+        if (check_attributes)
+            if (
+                !PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttributByType(
+                    attribute_to_check.GetType()
+                )
+            )
+                return false;
+
+        return true;
     }
 }
