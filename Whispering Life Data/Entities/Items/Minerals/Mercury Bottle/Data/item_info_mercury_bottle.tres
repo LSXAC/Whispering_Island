@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://ckdd1is025mhk"]
+
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_e5k6k"]
+[ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Entities/Items/Attributes/ResearchableAttribute.cs" id="2_x5dfk"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="3_xgu05"]
+[ext_resource type="Texture2D" uid="uid://bguqn2xuu380w" path="res://Entities/Items/Minerals/Mercury Bottle/Texture/mercury_bottle.png" id="4_e5k6k"]
+
+[sub_resource type="Resource" id="Resource_0g1mt"]
+script = ExtResource("1_e5k6k")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[sub_resource type="Resource" id="Resource_eq45o"]
+script = ExtResource("2_x5dfk")
+metadata/_custom_type_script = "uid://doosgdjr0ddtl"
+
+[resource]
+script = ExtResource("3_xgu05")
+attributes = Array[Object]([SubResource("Resource_0g1mt"), SubResource("Resource_eq45o")])
+max_stackable_size = 250
+name = "MERCURY_BOTTLE"
+id = 68
+description = "MERCURY_BOTTLE_DESC"
+texture = ExtResource("4_e5k6k")
+value = 50.0

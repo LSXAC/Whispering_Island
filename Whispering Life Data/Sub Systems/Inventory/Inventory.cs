@@ -84,7 +84,8 @@ public partial class Inventory : SlotUpdater
         CACTUS,
         CACTUS_SEED,
         MAGIC_DUST,
-        MAGIC_CORE_COMPONENT
+        MAGIC_CORE_COMPONENT,
+        MERCURY_BOTTLE
     }
 
     public Action OnItemChanged;
