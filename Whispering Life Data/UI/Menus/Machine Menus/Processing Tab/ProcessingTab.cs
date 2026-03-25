@@ -80,6 +80,9 @@ public partial class ProcessingTab : SlotUpdater
 
     public void UpdateInfoHalf(SlotType type)
     {
+        if (process_building?.item_array[(int)type] == null)
+            return;
+
         process_building.item_array[(int)type].amount = (int)(
             process_building.item_array[(int)type].amount / 2.0
         );
