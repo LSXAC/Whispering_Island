@@ -56,7 +56,7 @@ DisableShadow = true
 
 [node name="Chest" type="Node2D" parent="." unique_id=2104426124]
 script = ExtResource("4_u8gqw")
-chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]]
+chest_items = [[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
 disable_mouse_interaction = true
 ignore_node_structure = true
 

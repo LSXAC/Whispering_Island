@@ -20,11 +20,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(32, 32)
 
-[node name="Building" type="StaticBody2D" unique_id=2056058265]
+[node name="Building" type="StaticBody2D" unique_id=2056058265 node_paths=PackedStringArray("machine_activ_color_rect", "process_timer")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_lcmyo")
+machine_activ_color_rect = NodePath("MachineActivColorRect")
+process_timer = NodePath("ProcessTimer")
 building_id = 2
 magic_power_consumption = 1.0
 tile_types = Array[int]([0])
@@ -77,15 +79,22 @@ z_index = 2
 position = Vector2(-8, -25)
 building = NodePath("..")
 
-[node name="CraftingTimer" type="Timer" parent="." unique_id=2113475157]
+[node name="ProcessTimer" type="Timer" parent="." unique_id=2113475157]
 wait_time = 2.0
 
 [node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=1471130115]
 polygon = PackedVector2Array(-5, -3, -27, -3, -27, -11, -32, -11, -32, -26, -27, -26, -27, -31, -5, -31, -5, -26, 0, -26, 0, -11, -5, -11)
 
+[node name="MachineActivColorRect" type="ColorRect" parent="." unique_id=378705560]
+z_index = 2
+offset_left = -12.0
+offset_top = 12.0
+offset_right = -10.0
+offset_bottom = 14.0
+
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
-[connection signal="timeout" from="CraftingTimer" to="." method="OnCraftingTimerTimeout"]
+[connection signal="timeout" from="ProcessTimer" to="." method="OnCraftingTimerTimeout"]
 
 [editable path="Taker"]
 [editable path="Taker2"]

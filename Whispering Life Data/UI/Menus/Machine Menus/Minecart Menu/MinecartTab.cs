@@ -9,6 +9,12 @@ public partial class MinecartTab : ColorRect
     [Export]
     public ChestInventory chest_inventory;
     public static Minecart current_minecart = null;
+    public static MinecartTab instance = null;
+
+    public override void _Ready()
+    {
+        instance = this;
+    }
 
     public void OnVisiblityChange()
     {

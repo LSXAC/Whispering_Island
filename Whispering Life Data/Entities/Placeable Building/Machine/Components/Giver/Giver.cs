@@ -116,18 +116,24 @@ public partial class Giver : Area2D
 
     private void IsProcessingBuilding(Belt belt)
     {
+        if (!belt.can_receive_item())
+            return;
+
         ProcessBuilding process_building = (ProcessBuilding)building;
-        if (process_building.item_array[(int)ProcessingTab.SlotType.EXPORT] != null)
-            if (process_building.item_array[(int)ProcessingTab.SlotType.EXPORT].amount > 0)
+        if (process_building.item_array[(int)FurnaceTab.SlotType.EXPORT] != null)
+            if (process_building.item_array[(int)FurnaceTab.SlotType.EXPORT].amount > 0)
             {
-                process_building.item_array[(int)ProcessingTab.SlotType.EXPORT].amount--;
+                process_building.item_array[(int)FurnaceTab.SlotType.EXPORT].amount--;
                 AddBeltItemToBelt(
                     belt,
-                    new Item(process_building.GetItemResource(ProcessingTab.SlotType.EXPORT), 1)
+                    new Item(process_building.GetItemResource((int)FurnaceTab.SlotType.EXPORT), 1)
                 );
 
-                if (process_building.item_array[(int)ProcessingTab.SlotType.EXPORT].amount == 0)
+                if (process_building.item_array[(int)FurnaceTab.SlotType.EXPORT].amount == 0)
                     process_building.ResetExportSlot();
+
+                // Benachrichtige das UI dass Items sich geändert haben
+                process_building.NotifyItemsChanged();
 
                 if (belt is BeltTunnel belt_tunnel)
                 {
@@ -157,13 +163,13 @@ public partial class Giver : Area2D
                 continue;
 
             Item item = new Item(Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i_s.item_id], 1);
-            ChestInventory.instance.RemoveItem(item, ((ChestBase)building).chest_items);
+            ChestTab.instance.chest_inventory.RemoveItem(item, ((ChestBase)building).chest_items);
 
             AddBeltItemToBelt(
                 belt,
                 new Item(Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i_s.item_id], 1)
             );
-            ChestInventory.instance.UpdateInventoryUI();
+            ChestTab.instance.chest_inventory.UpdateInventoryUI();
             break;
         }
     }
@@ -186,7 +192,10 @@ public partial class Giver : Area2D
                 belt,
                 new Item(((ProductionMachine)building).output_item_resource, 1)
             );
-            ProcessingTab.instance.UpdateUI();
+
+            // Benachrichtige ProcessBuilding wenn es um eine solche Maschine handelt
+            if (building is ProcessBuilding pb)
+                pb.NotifyItemsChanged();
         }
     }
 

@@ -38,28 +38,30 @@ public partial class Belt : TransportBase
                     if (item_holder.hasBeltItem())
                     {
                         BeltItem belt_item = item_holder.GetBeltItem();
-                        if (process_building.GetItemResource(ProcessingTab.SlotType.IMPORT) != null)
+                        if (
+                            process_building.GetItemResource((int)FurnaceTab.SlotType.IMPORT)
+                            != null
+                        )
                             if (
                                 belt_item.GetItemInfo()
-                                != process_building.GetItemResource(ProcessingTab.SlotType.IMPORT)
+                                != process_building.GetItemResource((int)FurnaceTab.SlotType.IMPORT)
                             )
                                 return;
                             else
                             {
                                 var item2 = item_holder.offload_item();
                                 process_building
-                                    .item_array[(int)ProcessingTab.SlotType.IMPORT]
+                                    .item_array[(int)FurnaceTab.SlotType.IMPORT]
                                     .amount += 1;
                                 taker.receive_item(item2);
                                 return;
                             }
-                        process_building.item_array[(int)ProcessingTab.SlotType.IMPORT] =
-                            new ItemSave(
-                                (int)belt_item.GetItemInfo().id,
-                                1,
-                                -1,
-                                (int)belt_item.item.state
-                            );
+                        process_building.item_array[(int)FurnaceTab.SlotType.IMPORT] = new ItemSave(
+                            (int)belt_item.GetItemInfo().id,
+                            1,
+                            -1,
+                            (int)belt_item.item.state
+                        );
                         taker.receive_item(item);
                     }
                 }

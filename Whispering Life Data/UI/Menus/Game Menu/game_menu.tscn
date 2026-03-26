@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://bpr1ymr8thsmp" path="res://UI/Menus/Game Menu/Crafting Menu/CraftingMenu.cs" id="4_3cwxu"]
 [ext_resource type="Script" uid="uid://cfwlly4mpd05v" path="res://UI/Menus/Game Menu/Inventory Menu/Equipment Panel/EquipmentPanel.cs" id="4_e3tur"]
 [ext_resource type="PackedScene" uid="uid://bj72iumyf7nxx" path="res://UI/Menus/Machine Menus/Chest Menu/chest_inventory.tscn" id="4_eoykc"]
-[ext_resource type="Script" uid="uid://omdw880ahi7w" path="res://UI/Menus/Machine Menus/Processing Tab/ProcessingTab.cs" id="4_kmuua"]
 [ext_resource type="Texture2D" uid="uid://ne3oahdi530f" path="res://UI/Menus/Game Menu/Inventory Menu/Texture/Char_Profil.png" id="5_6jpat"]
 [ext_resource type="Texture2D" uid="uid://b8klnfsxws1y4" path="res://Entities/Items/SpritesForItems/Icons_3rd/Icons_27_10.png" id="5_bku2s"]
 [ext_resource type="Texture2D" uid="uid://bjo17nkno7g5g" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_90.png" id="6_2jtc7"]
@@ -49,6 +48,7 @@
 [ext_resource type="StyleBox" uid="uid://cuqs05ejcf73o" path="res://UI/Styles/Progress_Bar_Fill_Style.tres" id="30_fato5"]
 [ext_resource type="Script" uid="uid://dbau0pr5c35mu" path="res://UI/Menus/Game Menu/Skill Menu/SkillSlot.cs" id="31_1f68p"]
 [ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://UI/Styles/Button_Disabled_Style.tres.tres" id="31_j0nuq"]
+[ext_resource type="Script" uid="uid://r3qcc3sn8e5q" path="res://UI/Menus/Machine Menus/Processing Tab/FurnaceTab.cs" id="31_kv5uf"]
 [ext_resource type="Texture2D" uid="uid://raaamx5w323j" path="res://UI/Player UI/Textures/currency_icon.png" id="31_sy28q"]
 [ext_resource type="Resource" uid="uid://3ogfbqscw3my" path="res://Sub Systems/Skill System/Skills/Data/deep_vein.tres" id="31_w6gy4"]
 [ext_resource type="Resource" uid="uid://mac0ixoaehnt" path="res://Sub Systems/Skill System/Skills/Data/instant_theorie.tres" id="32_bhpct"]
@@ -131,7 +131,6 @@
 [ext_resource type="Resource" uid="uid://c1p7gva6jex80" path="res://Sub Systems/Dialogue System/Dialogues/Quests/Questing.dialogue" id="125_m1qfe"]
 [ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://UI/Themes/Theme_Slots.tres" id="125_uspna"]
 [ext_resource type="Script" uid="uid://ck6hcox7174uj" path="res://Sub Systems/Inventory/Chest/ChestInventory.cs" id="127_4fnoa"]
-[ext_resource type="LabelSettings" uid="uid://dq0dwmb4gc45u" path="res://UI/Styles/Label_Settings_Normal_Text.tres" id="128_61i7k"]
 
 [sub_resource type="Resource" id="Resource_7gwna"]
 script = ExtResource("15_jkil6")
@@ -218,7 +217,7 @@ inventory_tab_button = NodePath("Background/ColorRect/ColorRect/HBoxHeader/InvTa
 crafting_tab_button = NodePath("Background/ColorRect/ColorRect/HBoxHeader/CraftingTabButton")
 inventory_tab = NodePath("Background/InventoryTab")
 crafting_tab = NodePath("Background/CraftingTab")
-processing_tab = NodePath("Background/ProcessingTab")
+processing_tab = NodePath("Background/FurnaceTab")
 research_tab = NodePath("Background/ResearchTab")
 nerve_transducer_tab = NodePath("Background/NerveTransducerTab")
 chest_tab = NodePath("Background/ChestTab")
@@ -916,7 +915,7 @@ theme_override_font_sizes/font_size = 8
 text = "25"
 horizontal_alignment = 1
 
-[node name="ChestTab" type="ColorRect" parent="Background" unique_id=822606059]
+[node name="ChestTab" type="ColorRect" parent="Background" unique_id=822606059 node_paths=PackedStringArray("chest_inventory")]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -931,6 +930,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("17_8qgvy")
+chest_inventory = NodePath("ChestInventory")
 
 [node name="ChestInventory" parent="Background/ChestTab" unique_id=555372861 instance=ExtResource("4_eoykc")]
 layout_mode = 1
@@ -954,7 +954,7 @@ offset_right = 288.0
 offset_bottom = -1.0
 translation_string = "GAMEMENU_CHEST"
 
-[node name="ProcessingTab" type="Control" parent="Background" unique_id=194307420 node_paths=PackedStringArray("export_slot", "import_slot", "fuel_slot", "fuel_label", "machineProgressbar", "fuelProgressbar", "switch_button", "description_Label")]
+[node name="FurnaceTab" type="Control" parent="Background" unique_id=194307420 node_paths=PackedStringArray("export_slot", "import_slot", "fuel_slot", "fuel_label", "machineProgressbar", "fuelProgressbar", "description_Label")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -965,17 +965,16 @@ offset_left = 250.0
 offset_top = 26.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_kmuua")
+script = ExtResource("31_kv5uf")
 export_slot = NodePath("PanelContainer/Slots/SlotBackgroundExport/Slot0")
 import_slot = NodePath("PanelContainer/Slots/SlotBackgroundInput/Slot0")
 fuel_slot = NodePath("PanelContainer/Slots/SlotBackgroundFuel/Slot0")
 fuel_label = NodePath("PanelContainer/FuelLabel")
 machineProgressbar = NodePath("PanelContainer/ProgressBar")
 fuelProgressbar = NodePath("PanelContainer/FuelProgressBar")
-switch_button = NodePath("PanelContainer/EnableDisableButton")
 description_Label = NodePath("PanelContainer/DescriptionLabel")
 
-[node name="ColorRect" type="ColorRect" parent="Background/ProcessingTab" unique_id=65885653]
+[node name="ColorRect" type="ColorRect" parent="Background/FurnaceTab" unique_id=65885653]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -988,26 +987,26 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 
-[node name="PanelContainer" type="Control" parent="Background/ProcessingTab" unique_id=1715591223]
+[node name="PanelContainer" type="Control" parent="Background/FurnaceTab" unique_id=1715591223]
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 214.0
 offset_right = 320.0
 offset_bottom = 262.0
 
-[node name="Slots" type="Control" parent="Background/ProcessingTab/PanelContainer" unique_id=1246573734]
+[node name="Slots" type="Control" parent="Background/FurnaceTab/PanelContainer" unique_id=1246573734]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="SlotBackgroundInput" parent="Background/ProcessingTab/PanelContainer/Slots" unique_id=1218153995 instance=ExtResource("13_m8k7p")]
+[node name="SlotBackgroundInput" parent="Background/FurnaceTab/PanelContainer/Slots" unique_id=1218153995 instance=ExtResource("13_m8k7p")]
 layout_mode = 0
 offset_left = 6.0
 offset_top = -199.0
 offset_right = 38.0
 offset_bottom = -167.0
 
-[node name="Slot0" parent="Background/ProcessingTab/PanelContainer/Slots/SlotBackgroundInput" index="0" unique_id=1848838759]
+[node name="Slot0" parent="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundInput" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -1017,14 +1016,14 @@ theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
 
-[node name="SlotBackgroundExport" parent="Background/ProcessingTab/PanelContainer/Slots" unique_id=381098148 instance=ExtResource("13_m8k7p")]
+[node name="SlotBackgroundExport" parent="Background/FurnaceTab/PanelContainer/Slots" unique_id=381098148 instance=ExtResource("13_m8k7p")]
 layout_mode = 0
 offset_left = 260.0
 offset_top = -199.0
 offset_right = 292.0
 offset_bottom = -167.0
 
-[node name="Slot0" parent="Background/ProcessingTab/PanelContainer/Slots/SlotBackgroundExport" index="0" unique_id=1848838759]
+[node name="Slot0" parent="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundExport" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -1036,14 +1035,14 @@ theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
 is_export_slot = true
 
-[node name="SlotBackgroundFuel" parent="Background/ProcessingTab/PanelContainer/Slots" unique_id=420234902 instance=ExtResource("13_m8k7p")]
+[node name="SlotBackgroundFuel" parent="Background/FurnaceTab/PanelContainer/Slots" unique_id=420234902 instance=ExtResource("13_m8k7p")]
 layout_mode = 0
 offset_left = 6.0
 offset_top = -163.0
 offset_right = 38.0
 offset_bottom = -131.0
 
-[node name="Slot0" parent="Background/ProcessingTab/PanelContainer/Slots/SlotBackgroundFuel" index="0" unique_id=1848838759]
+[node name="Slot0" parent="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundFuel" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -1058,7 +1057,7 @@ icon = ExtResource("20_s2f2w")
 icon_alignment = 1
 attribute_to_check = SubResource("Resource_gqg20")
 
-[node name="ProgressBar" type="ProgressBar" parent="Background/ProcessingTab/PanelContainer" unique_id=2016857264]
+[node name="ProgressBar" type="ProgressBar" parent="Background/FurnaceTab/PanelContainer" unique_id=2016857264]
 layout_mode = 0
 offset_left = 44.0
 offset_top = -199.0
@@ -1071,7 +1070,7 @@ theme_override_styles/background = ExtResource("29_sy5xb")
 theme_override_styles/fill = ExtResource("30_fato5")
 value = 25.0
 
-[node name="FuelProgressBar" type="ProgressBar" parent="Background/ProcessingTab/PanelContainer" unique_id=373080364]
+[node name="FuelProgressBar" type="ProgressBar" parent="Background/FurnaceTab/PanelContainer" unique_id=373080364]
 layout_mode = 0
 offset_left = 44.0
 offset_top = -174.0
@@ -1086,7 +1085,7 @@ step = 1.0
 value = 25.0
 show_percentage = false
 
-[node name="FuelLabel" type="Label" parent="Background/ProcessingTab/PanelContainer" unique_id=1807149460]
+[node name="FuelLabel" type="Label" parent="Background/FurnaceTab/PanelContainer" unique_id=1807149460]
 layout_mode = 0
 offset_left = -33.0
 offset_top = -164.0
@@ -1100,7 +1099,7 @@ text = "FUEL: 100/100"
 horizontal_alignment = 2
 autowrap_mode = 2
 
-[node name="EnableDisableButton" type="Button" parent="Background/ProcessingTab/PanelContainer" unique_id=1545253667]
+[node name="EnableDisableButton" type="Button" parent="Background/FurnaceTab/PanelContainer" unique_id=1545253667]
 visible = false
 layout_mode = 0
 offset_left = 6.0
@@ -1118,7 +1117,7 @@ theme_override_styles/disabled = ExtResource("31_j0nuq")
 theme_override_styles/focus = ExtResource("28_gcthi")
 text = "Disable Machine"
 
-[node name="DescriptionLabel" type="Label" parent="Background/ProcessingTab/PanelContainer" unique_id=1537971797]
+[node name="DescriptionLabel" type="Label" parent="Background/FurnaceTab/PanelContainer" unique_id=1537971797]
 layout_mode = 0
 offset_left = 7.0
 offset_top = -111.0
@@ -1134,7 +1133,7 @@ autowrap_mode = 2
 script = ExtResource("26_tl5yt")
 label_translation_string = "FURNACE_MENU_DESC"
 
-[node name="HeaderColorRect" parent="Background/ProcessingTab" unique_id=42788911 instance=ExtResource("11_45saq")]
+[node name="HeaderColorRect" parent="Background/FurnaceTab" unique_id=42788911 instance=ExtResource("11_45saq")]
 layout_mode = 1
 offset_left = -249.0
 offset_top = -25.0
@@ -1142,7 +1141,7 @@ offset_right = 289.0
 offset_bottom = -3.0
 translation_string = "GAMEMENU_FURNACE"
 
-[node name="Border" type="ColorRect" parent="Background/ProcessingTab" unique_id=1723869510]
+[node name="Border" type="ColorRect" parent="Background/FurnaceTab" unique_id=1723869510]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -2.0
@@ -7204,18 +7203,6 @@ layout_mode = 2
 script = ExtResource("127_4fnoa")
 inventory_items = []
 
-[node name="Label" type="Label" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn" unique_id=1937063126]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -81.0
-offset_right = 81.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "Put Items here to complete the quest! (NOT SAVED!)"
-label_settings = ExtResource("128_61i7k")
-
 [node name="GridContainer" type="GridContainer" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn" unique_id=734503638]
 layout_mode = 1
 anchors_preset = 8
@@ -7350,7 +7337,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/ExitTabButton" to="." method="OnExitButton"]
 [connection signal="visibility_changed" from="Background/InventoryTab" to="Background/InventoryTab/Inventory" method="OnVisiblityChange"]
 [connection signal="visibility_changed" from="Background/InventoryTab/EquipmentPanel" to="Background/InventoryTab/EquipmentPanel" method="OnVisiblityChanged"]
-[connection signal="pressed" from="Background/ProcessingTab/PanelContainer/EnableDisableButton" to="Background/ProcessingTab" method="OnMachineStateButton"]
+[connection signal="pressed" from="Background/FurnaceTab/PanelContainer/EnableDisableButton" to="Background/FurnaceTab" method="OnMachineStateButton"]
 [connection signal="pressed" from="Background/CombinerTab/PanelContainer/EnableDisableButton" to="Background/CombinerTab" method="OnMachineStateButton"]
 [connection signal="visibility_changed" from="Background/ResearchTab" to="Background/ResearchTab" method="OnVisiblityChanged"]
 [connection signal="timeout" from="Background/ResearchTab/PanelContainer/Timer" to="Background/ResearchTab" method="OnTimerTimeout"]
@@ -7442,6 +7429,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="item_selected" from="Background/SettingsTab/VBoxContainer/Language/PanelContainer/MarginContainerRight/OptionButton" to="Background/SettingsTab" method="OnItemSelected"]
 [connection signal="item_selected" from="Background/SettingsTab/VBoxContainer/Window Mode/PanelContainer/MarginContainerRight/WindowOptionButton" to="Background/SettingsTab" method="ToggleMaximizedWindow"]
 [connection signal="pressed" from="Background/SettingsTab/VBoxContainer/ExitGame/PanelContainer/MarginContainerRight/Button" to="." method="OnBackToMainMenu"]
+[connection signal="visibility_changed" from="Background/RailStationTab" to="Background/RailStationTab" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/RailStationTab/VBoxContainer/HBoxContainer/VBoxContainer2/ExportBox" to="Background/RailStationTab" method="OnClickCheckExport"]
 [connection signal="pressed" from="Background/RailStationTab/VBoxContainer/HBoxContainer/VBoxContainer2/ImportBox" to="Background/RailStationTab" method="OnClickCheckImport"]
 [connection signal="tab_clicked" from="Background/RailStationTab/TabContainer" to="Background/RailStationTab" method="OnTabSelected"]
@@ -7461,9 +7449,9 @@ color = Color(0, 0, 0, 1)
 [editable path="Background/InventoryTab/EquipmentPanel/Character/ToolsHBox/HeadSlotBackground2"]
 [editable path="Background/InventoryTab/EquipmentPanel/Character/ToolsHBox/HeadSlotBackground3"]
 [editable path="Background/InventoryTab/EquipmentPanel/Character/ToolsHBox/HeadSlotBackground4"]
-[editable path="Background/ProcessingTab/PanelContainer/Slots/SlotBackgroundInput"]
-[editable path="Background/ProcessingTab/PanelContainer/Slots/SlotBackgroundExport"]
-[editable path="Background/ProcessingTab/PanelContainer/Slots/SlotBackgroundFuel"]
+[editable path="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundInput"]
+[editable path="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundExport"]
+[editable path="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundFuel"]
 [editable path="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundInput"]
 [editable path="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundExport"]
 [editable path="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundFuel"]

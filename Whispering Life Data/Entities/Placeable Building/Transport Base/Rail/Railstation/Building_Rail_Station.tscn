@@ -31,7 +31,7 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfmfo"]
 size = Vector2(3, 15)
 
-[node name="RailStation" type="StaticBody2D" unique_id=792455595 node_paths=PackedStringArray("chest_in", "chest_out", "transfer_timer")]
+[node name="RailStation" type="StaticBody2D" unique_id=792455595 node_paths=PackedStringArray("chest_in", "chest_out", "transfer_timer", "machine_activ_color_rect", "process_timer")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
@@ -39,6 +39,8 @@ script = ExtResource("1_h1uaa")
 chest_in = NodePath("Chest_In")
 chest_out = NodePath("Chest_Out")
 transfer_timer = NodePath("TransferTimer")
+machine_activ_color_rect = NodePath("MachineActivColorRect")
+process_timer = NodePath("ProcessTimer")
 building_id = 27
 tile_types = Array[int]([0])
 title = "BUILDING_RAIL_STATION"
@@ -148,6 +150,8 @@ position = Vector2(0, 14)
 
 [node name="TransferTimer" type="Timer" parent="." unique_id=872551069]
 
+[node name="ProcessTimer" type="Timer" parent="." unique_id=109868625]
+
 [node name="PathConnectArea" type="Area2D" parent="." unique_id=135687573]
 position = Vector2(32, 0)
 collision_layer = 516
@@ -187,9 +191,17 @@ shape = SubResource("RectangleShape2D_rfmfo")
 [node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=17812766]
 polygon = PackedVector2Array(-48, 0, 32, 0, 32, -17, -48, -17)
 
+[node name="MachineActivColorRect" type="ColorRect" parent="." unique_id=117330272]
+z_index = 2
+offset_left = -25.0
+offset_top = -6.0
+offset_right = -23.0
+offset_bottom = -4.0
+
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
 [connection signal="timeout" from="TransferTimer" to="." method="OnTransferTimerTimeout"]
+[connection signal="timeout" from="ProcessTimer" to="." method="OnTransferTimerTimeout"]
 [connection signal="area_entered" from="RailstationAREA" to="RailstationAREA" method="OnAreaEntered"]
 [connection signal="area_entered" from="RailstationAREA2" to="RailstationAREA2" method="OnAreaEntered"]
 

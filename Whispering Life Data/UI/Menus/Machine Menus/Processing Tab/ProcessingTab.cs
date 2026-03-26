@@ -1,18 +1,14 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Godot;
 
-public partial class ProcessingTab : SlotUpdater
+/// <summary>
+/// Generische Basis-Klasse für alle Verarbeitungs-UI-Fenster (Furnace, Combiner, etc.)
+/// Ermöglicht dynamische Slot-Konfiguration und generische Rezept-Verarbeitung
+/// </summary>
+public abstract partial class ProcessingTab : SlotUpdater
 {
-    [Export]
-    public Slot export_slot;
-
-    [Export]
-    public Slot import_slot;
-
-    [Export]
-    public Slot fuel_slot;
-
     [Export]
     public Label fuel_label;
 
@@ -23,24 +19,30 @@ public partial class ProcessingTab : SlotUpdater
     public ProgressBar fuelProgressbar;
 
     [Export]
-    public Button switch_button;
-
-    [Export]
     public Label description_Label;
-    public static ProcessingTab instance = null;
 
-    public enum SlotType
-    {
-        IMPORT,
-        EXPORT,
-        FUEL
-    };
+    protected ProcessingSlotConfig[] slot_configs = Array.Empty<ProcessingSlotConfig>();
 
+    protected Dictionary<int, Slot> slot_by_index = new Dictionary<int, Slot>();
     public ProcessBuilding process_building;
 
     public override void _Ready()
     {
-        instance = this;
+        // Subklassen müssen dies überschreiben und InitializeSlots() aufrufen
+    }
+
+    protected void InitializeSlots(ProcessingSlotConfig[] configs)
+    {
+        slot_configs = configs;
+        slot_by_index.Clear();
+
+        for (int i = 0; i < slot_configs.Length; i++)
+        {
+            if (slot_configs[i].ui_reference != null)
+            {
+                slot_by_index[i] = slot_configs[i].ui_reference;
+            }
+        }
     }
 
     public override void UpdateSlot(int index, SlotItemUI slot_item_ui)
@@ -51,17 +53,9 @@ public partial class ProcessingTab : SlotUpdater
 
     public override void ClearSlot(int index)
     {
-        switch (index)
+        if (index >= 0 && index < slot_by_index.Count)
         {
-            case 0:
-                import_slot.ClearSlotItem();
-                break;
-            case 1:
-                export_slot.ClearSlotItem();
-                break;
-            case 2:
-                fuel_slot.ClearSlotItem();
-                break;
+            slot_by_index[index].ClearSlotItem();
         }
     }
 
@@ -73,18 +67,21 @@ public partial class ProcessingTab : SlotUpdater
         return Inventory.ITEM_TYPES[(Inventory.ITEM_ID)process_building.item_array[index].item_id];
     }
 
-    public void ClearInfo(SlotType type)
+    public void ClearInfo(int slotIndex)
     {
-        process_building.item_array[(int)type] = null;
+        if (slotIndex >= 0 && slotIndex < process_building.item_array.Length)
+        {
+            process_building.item_array[slotIndex] = null;
+        }
     }
 
-    public void UpdateInfoHalf(SlotType type)
+    public void UpdateInfoHalf(int slotIndex)
     {
-        if (process_building?.item_array[(int)type] == null)
+        if (process_building?.item_array[slotIndex] == null)
             return;
 
-        process_building.item_array[(int)type].amount = (int)(
-            process_building.item_array[(int)type].amount / 2.0
+        process_building.item_array[slotIndex].amount = (int)(
+            process_building.item_array[slotIndex].amount / 2.0
         );
         UpdateUI();
     }
@@ -106,87 +103,93 @@ public partial class ProcessingTab : SlotUpdater
         UpdateUI();
     }
 
-    public void UpdateUI()
+    public virtual void UpdateUI()
     {
         if (process_building == null)
             return;
 
-        export_slot.ClearSlotItem();
-        import_slot.ClearSlotItem();
-        fuel_slot.ClearSlotItem();
-
-        if (process_building.ui_progress == 0 || process_building.ui_progress == 100)
-            switch_button.Disabled = false;
+        // Alle UI-Slots clearen
+        foreach (var slot in slot_by_index.Values)
+        {
+            slot.ClearSlotItem();
+        }
 
         SetMachineProgressbar(process_building.ui_progress);
         UpdateFuelProgressbar(
             (int)((double)process_building.fuel_left / process_building.max_fuel_count * 100)
         );
 
-        if (process_building.item_array[(int)SlotType.EXPORT] != null)
-            if (process_building.item_array[(int)SlotType.EXPORT].amount > 0)
-                export_slot.SetItem(
-                    new Item(
-                        GetItemInfo((int)SlotType.EXPORT),
-                        process_building.item_array[(int)SlotType.EXPORT].amount,
-                        state: (Item.STATE)process_building.item_array[(int)SlotType.EXPORT].state
-                    )
-                );
-
-        if (process_building.item_array[(int)SlotType.IMPORT] != null)
-            if (process_building.item_array[(int)SlotType.IMPORT].amount > 0)
-                import_slot.SetItem(
-                    new Item(
-                        GetItemInfo((int)SlotType.IMPORT),
-                        process_building.item_array[(int)SlotType.IMPORT].amount,
-                        state: (Item.STATE)process_building.item_array[(int)SlotType.IMPORT].state
-                    )
-                );
-
-        if (process_building.item_array[(int)SlotType.FUEL] != null)
-            if (process_building.item_array[(int)SlotType.FUEL].amount > 0)
-                fuel_slot.SetItem(
-                    new Item(
-                        GetItemInfo((int)SlotType.FUEL),
-                        process_building.item_array[(int)SlotType.FUEL].amount,
-                        state: (Item.STATE)process_building.item_array[(int)SlotType.FUEL].state
-                    )
-                );
-    }
-
-    public void OnMachineStateButton()
-    {
-        if (process_building.machine_enabled)
-            process_building.DisableMachine();
-        else
+        // Update alle Items in Slots basierend auf Slot-Konfiguration
+        for (int i = 0; i < slot_configs.Length; i++)
         {
-            OvertakeItems();
-            process_building.EnableMachine();
+            if (process_building.item_array[i] != null && process_building.item_array[i].amount > 0)
+            {
+                if (slot_by_index.TryGetValue(i, out var slot))
+                {
+                    slot.SetItem(
+                        new Item(
+                            GetItemInfo(i),
+                            process_building.item_array[i].amount,
+                            state: (Item.STATE)process_building.item_array[i].state
+                        )
+                    );
+                }
+            }
         }
-
-        process_building.state_timer.Start();
-        switch_button.Disabled = true;
     }
 
-    private void OvertakeItems()
+    protected void OvertakeItems()
     {
-        SetOrClearSlotItem(SlotType.EXPORT, export_slot);
-        SetOrClearSlotItem(SlotType.IMPORT, import_slot);
-        SetOrClearSlotItem(SlotType.FUEL, fuel_slot);
+        for (int i = 0; i < slot_configs.Length; i++)
+        {
+            SetOrClearSlotItem(i);
+        }
     }
 
-    private void SetOrClearSlotItem(SlotType type, Slot slot)
+    protected void SetOrClearSlotItem(int slotIndex)
     {
+        if (!slot_by_index.TryGetValue(slotIndex, out var slot))
+            return;
+
         if (slot.GetSlotItemUI() == null)
-            ClearInfo(type);
+        {
+            ClearInfo(slotIndex);
+        }
         else
         {
-            process_building.item_array[(int)type] = new ItemSave(
+            process_building.item_array[slotIndex] = new ItemSave(
                 (int)slot.GetSlotItemUI().item.info.id,
                 slot.GetSlotItemUI().item.amount,
                 -1,
                 (int)slot.GetSlotItemUI().item.state
             );
         }
+    }
+
+    /// <summary>
+    /// Findet den Slot-Index basierend auf dem Slot-Zweck
+    /// </summary>
+    protected int GetSlotIndexByPurpose(SlotPurpose purpose)
+    {
+        for (int i = 0; i < slot_configs.Length; i++)
+        {
+            if (slot_configs[i].purpose == purpose)
+                return i;
+        }
+        return -1;
+    }
+
+    /// <summary>
+    /// Findet alle Slot-Indizes eines bestimmten Zwecks
+    /// </summary>
+    protected int[] GetSlotIndicesByPurpose(SlotPurpose purpose)
+    {
+        var indices = new System.Collections.Generic.List<int>();
+        for (int i = 0; i < slot_configs.Length; i++)
+        {
+            if (slot_configs[i].purpose == purpose)
+                indices.Add(i);
+        }
+        return indices.ToArray();
     }
 }

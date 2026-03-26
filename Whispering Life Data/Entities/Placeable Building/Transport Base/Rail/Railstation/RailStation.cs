@@ -26,34 +26,41 @@ public partial class RailStation : MachineBase
         if (!CheckClickDependencies(this))
             return;
 
-        GameMenu.instance.OnOpenRailStationTab();
         RailStationTab.last_rail_station = this;
-
-        ChestInventory.instance = (
-            (RailStationTab)GameMenu.instance.rail_station_tab
-        ).chest_inventory_input;
-        ChestInventory.current_chest = chest_in;
-        ChestInventory.instance.OpenChest();
+        RailStationTab.instance.chest_inventory_input.OpenChest(chest_in.chest_items);
+        GameMenu.instance.OnOpenRailStationTab();
     }
 
     public void OnTransferTimerTimeout()
     {
         if (current_station == RailstationArea.STATION.IMPORT)
         {
-            Item item = ChestInventory.instance.GetLastItemFromInventoryOrNull(
-                minecart.chestBase.chest_items
-            );
+            Item item =
+                RailStationTab.instance.chest_inventory_input.GetLastItemFromInventoryOrNull(
+                    minecart.chestBase.chest_items
+                );
 
             if (item != null)
             {
                 if (
-                    ChestInventory.instance.HasItemInInventory(chest_in.chest_items, item)
-                    || ChestInventory.instance.HasEmptySlotInInventory(chest_in.chest_items)
+                    RailStationTab.instance.chest_inventory_input.HasItemInInventory(
+                        chest_in.chest_items,
+                        item
+                    )
+                    || RailStationTab.instance.chest_inventory_input.HasEmptySlotInInventory(
+                        chest_in.chest_items
+                    )
                 )
                 {
-                    ChestInventory.instance.AddItem(item, chest_in.chest_items);
-                    ChestInventory.instance.RemoveItem(item, minecart.chestBase.chest_items);
-                    ChestInventory.instance.UpdateInventoryUI();
+                    RailStationTab.instance.chest_inventory_input.AddItem(
+                        item,
+                        chest_in.chest_items
+                    );
+                    RailStationTab.instance.chest_inventory_input.RemoveItem(
+                        item,
+                        minecart.chestBase.chest_items
+                    );
+                    RailStationTab.instance.chest_inventory_input.UpdateInventoryUI();
                     return;
                 }
             }
@@ -61,25 +68,32 @@ public partial class RailStation : MachineBase
 
         if (current_station == RailstationArea.STATION.EXPORT)
         {
-            Item item = ChestInventory.instance.GetLastItemFromInventoryOrNull(
-                chest_out.chest_items
-            );
+            Item item =
+                RailStationTab.instance.chest_inventory_output.GetLastItemFromInventoryOrNull(
+                    chest_out.chest_items
+                );
 
             if (item != null)
             {
                 if (
-                    ChestInventory.instance.HasItemInInventory(
+                    RailStationTab.instance.chest_inventory_output.HasItemInInventory(
                         minecart.chestBase.chest_items,
                         item
                     )
-                    || ChestInventory.instance.HasEmptySlotInInventory(
+                    || RailStationTab.instance.chest_inventory_output.HasEmptySlotInInventory(
                         minecart.chestBase.chest_items
                     )
                 )
                 {
-                    ChestInventory.instance.AddItem(item, minecart.chestBase.chest_items);
-                    ChestInventory.instance.RemoveItem(item, chest_out.chest_items);
-                    ChestInventory.instance.UpdateInventoryUI();
+                    RailStationTab.instance.chest_inventory_output.AddItem(
+                        item,
+                        minecart.chestBase.chest_items
+                    );
+                    RailStationTab.instance.chest_inventory_output.RemoveItem(
+                        item,
+                        chest_out.chest_items
+                    );
+                    RailStationTab.instance.chest_inventory_output.UpdateInventoryUI();
                     return;
                 }
             }

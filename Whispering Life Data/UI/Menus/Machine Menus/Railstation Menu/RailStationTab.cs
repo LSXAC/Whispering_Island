@@ -25,6 +25,11 @@ public partial class RailStationTab : ColorRect
         instance = this;
     }
 
+    public void OnVisiblityChanged()
+    {
+        OnTabSelected(0);
+    }
+
     public void OnClickCheckImport()
     {
         export_box.ButtonPressed = false;
@@ -55,19 +60,8 @@ public partial class RailStationTab : ColorRect
             return;
 
         if (tab == 0)
-        {
-            ChestInventory.current_chest = last_rail_station.chest_in;
-            ChestInventory.instance = (
-                (RailStationTab)GameMenu.instance.rail_station_tab
-            ).chest_inventory_input;
-        }
+            chest_inventory_input.OpenChest(last_rail_station.chest_in.chest_items);
         else
-        {
-            ChestInventory.current_chest = last_rail_station.chest_out;
-            ChestInventory.instance = (
-                (RailStationTab)GameMenu.instance.rail_station_tab
-            ).chest_inventory_output;
-        }
-        ChestInventory.instance.OpenChest();
+            chest_inventory_output.OpenChest(last_rail_station.chest_out.chest_items);
     }
 }

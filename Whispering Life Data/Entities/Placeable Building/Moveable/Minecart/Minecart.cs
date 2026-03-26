@@ -25,12 +25,8 @@ public partial class Minecart : MoveableBase
 
         MinecartTab.current_minecart = this;
 
-        ChestInventory.instance = (
-            (MinecartTab)GameMenu.instance.minecart_tab
-        ).chest_inventory;
+        MinecartTab.instance.chest_inventory.OpenChest(chestBase.chest_items);
         GameMenu.instance.OnOpenMinecartTab();
-        ChestInventory.current_chest = chestBase;
-        ChestInventory.instance.OpenChest();
     }
 
     //TODO: Animation by moving
@@ -40,10 +36,6 @@ public partial class Minecart : MoveableBase
         {
             if (moving_vector.X == 0 && moving_vector.Y == 0)
                 return;
-            //if (moving_vector.Y == 0)
-            //    GetSprite().Texture = minecart_side;
-            //if (moving_vector.X == 0)
-            //    GetSprite().Texture = minecart_top;
         }
     }
 }

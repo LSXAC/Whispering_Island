@@ -34,8 +34,13 @@ public partial class Taker : StaticBody2D
         {
             return item_holder_In.GetChildCount() == 0
                 && (
-                    ChestInventory.instance.HasItemInInventory(chest_base.chest_items, ii.item)
-                    || ChestInventory.instance.HasEmptySlotInInventory(chest_base.chest_items)
+                    ChestTab.instance.chest_inventory.HasItemInInventory(
+                        chest_base.chest_items,
+                        ii.item
+                    )
+                    || ChestTab.instance.chest_inventory.HasEmptySlotInInventory(
+                        chest_base.chest_items
+                    )
                 );
         }
 
@@ -53,10 +58,13 @@ public partial class Taker : StaticBody2D
 
         if (building is ChestBase chest_base)
         {
-            ChestInventory.instance.AddItem(belt_item.item, chest_base.chest_items);
-            ChestInventory.instance.UpdateInventoryUI();
+            ChestTab.instance.chest_inventory.AddItem(belt_item.item, chest_base.chest_items);
+            ChestTab.instance.chest_inventory.UpdateInventoryUI();
         }
-        ProcessingTab.instance.UpdateUI();
+
+        if (building is ProcessBuilding pb)
+            pb.NotifyItemsChanged();
+
         belt_item.QueueFree();
     }
 }

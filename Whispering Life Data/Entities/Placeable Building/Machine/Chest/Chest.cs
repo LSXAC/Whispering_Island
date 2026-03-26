@@ -11,8 +11,6 @@ public partial class Chest : ChestBase
             return;
 
         GameMenu.instance.OnOpenChestTab();
-        ChestInventory.instance = ((ChestTab)GameMenu.instance.chest_tab).chest_inventory;
-        ChestInventory.current_chest = this;
-        ChestInventory.instance.OpenChest();
+        ChestTab.instance.chest_inventory.OpenChest(chest_items);
     }
 }

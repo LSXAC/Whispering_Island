@@ -23,7 +23,6 @@ public partial class Slot : Button
 
     ItemSave[] item_array = null;
     SlotUpdater slotUpdater;
-    ChestBase chest = null;
     PackedScene slot_item_ui_scene = GD.Load<PackedScene>(
         ResourceUid.UidToPath("uid://xjy2l41obahq")
     );
@@ -67,7 +66,6 @@ public partial class Slot : Button
             {
                 item_array = ((Inventory)GetParent().GetParent().GetParent()).inventory_items;
                 slotUpdater = (Inventory)GetParent().GetParent().GetParent();
-                chest = ChestInventory.current_chest;
                 OnSlotButton(btn);
                 ((Inventory)GetParent().GetParent().GetParent()).OnItemChanged?.Invoke();
             }

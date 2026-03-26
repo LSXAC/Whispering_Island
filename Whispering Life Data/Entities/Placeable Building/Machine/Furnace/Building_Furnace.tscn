@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://cn0rjr3gah4jr"]
 
-[ext_resource type="Script" uid="uid://bb7d4vvk26up8" path="res://Entities/Placeable Building/Machine/ProcessBuilding.cs" id="1_7ow6b"]
+[ext_resource type="Script" uid="uid://cl3ufhueu0dqg" path="res://Entities/Placeable Building/Machine/FurnaceBuilding.cs" id="1_jdu6x"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="4_2jdlk"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="4_w5rqh"]
 [ext_resource type="Script" uid="uid://bkcah5h7fcbm5" path="res://Entities/Light Behaviour/LightBehaviour.cs" id="11_w5rqh"]
@@ -62,7 +62,7 @@ fill_from = Vector2(0.512821, 0.498576)
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
-script = ExtResource("1_7ow6b")
+script = ExtResource("1_jdu6x")
 state_timer = NodePath("MachineUITimer")
 machine_activ_color_rect = NodePath("MachineActivColorRect")
 process_timer = NodePath("ProcessTimer")

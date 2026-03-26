@@ -1,10 +1,9 @@
 using System;
 using System.Diagnostics;
-using System.Linq;
 using Godot;
 using Godot.Collections;
 
-public partial class ProcessBuilding : MachineBase
+public abstract partial class ProcessBuilding : MachineBase
 {
     [Export]
     public ItemSave[] item_array = [null, null, null];
@@ -21,13 +20,30 @@ public partial class ProcessBuilding : MachineBase
     public bool is_crafting = false;
     public int ui_progress = 0;
     public int progress = 0;
+    protected abstract IProcessingRecipe GetRecipeFromInputSlot();
 
-    public ItemInfo GetItemResource(ProcessingTab.SlotType slotType)
+    protected abstract bool SelectAndCheckCanCraft();
+
+    protected virtual void OnProcessingComplete(IProcessingRecipe recipe)
     {
-        if (item_array[(int)slotType] == null)
+        // Zu überschreiben durch Subklassen
+    }
+
+    protected virtual void OnProcessingTick(IProcessingRecipe recipe)
+    {
+        // Zu überschreiben durch Subklassen
+    }
+
+    protected abstract ProcessingTab GetUIUpdater();
+
+    protected abstract int GetSlotIndexByPurpose(SlotPurpose purpose);
+
+    public ItemInfo GetItemResource(int slotIndex)
+    {
+        if (item_array[slotIndex] == null)
             return null;
 
-        return Inventory.ITEM_TYPES[(Inventory.ITEM_ID)item_array[(int)slotType].item_id];
+        return Inventory.ITEM_TYPES[(Inventory.ITEM_ID)item_array[slotIndex].item_id];
     }
 
     public override void OnMouseClick()
@@ -37,33 +53,35 @@ public partial class ProcessBuilding : MachineBase
         if (!CheckClickDependencies(this))
             return;
 
-        ProcessingTab.instance.SetReferenceBuilding(this);
+        GetUIUpdater().SetReferenceBuilding(this);
         GameMenu.instance.OnOpenProcessingTab();
     }
 
     public void OnCraftingTimerTimeout()
     {
-        if (ProcessingTab.instance.process_building == this)
-            ProcessingTab.instance.SetMachineProgressbar(progress);
+        var ui_updater = GetUIUpdater();
+        if (ui_updater == null || ui_updater.process_building != this)
+            return;
 
-        if (ProcessingTab.instance.process_building == this)
-            ProcessingTab.instance.UpdateFuelProgressbar(
-                (int)((double)fuel_left / max_fuel_count * 100)
-            );
-        //Check if not null:
+        ui_updater.SetMachineProgressbar(progress);
+        ui_updater.UpdateFuelProgressbar((int)((double)fuel_left / max_fuel_count * 100));
 
-        if (item_array[(int)ProcessingTab.SlotType.IMPORT] == null)
+        // Check if input slot is empty
+        int input_idx = GetSlotIndexByPurpose(SlotPurpose.INPUT);
+        if (item_array[input_idx] == null)
         {
             StopCrafting();
             return;
         }
 
-        ItemInfo import_item_info = Inventory.ITEM_TYPES[
-            (Inventory.ITEM_ID)item_array[(int)ProcessingTab.SlotType.IMPORT].item_id
-        ];
-        SmeltableAttribute smeltable = import_item_info.GetAttributeOrNull<SmeltableAttribute>();
+        IProcessingRecipe recipe = GetRecipeFromInputSlot();
+        if (recipe == null)
+        {
+            StopCrafting();
+            return;
+        }
 
-        if (item_array[(int)ProcessingTab.SlotType.IMPORT].amount < smeltable.amount_to_smelt)
+        if (item_array[input_idx].amount < recipe.GetAmountToProcess())
         {
             StopCrafting();
             return;
@@ -71,35 +89,54 @@ public partial class ProcessBuilding : MachineBase
 
         if (progress >= 100)
         {
-            if (item_array[(int)ProcessingTab.SlotType.EXPORT] != null)
-                item_array[(int)ProcessingTab.SlotType.EXPORT].amount += smeltable
-                    .smelted_to_item
-                    .amount;
-            else
-                item_array[(int)ProcessingTab.SlotType.EXPORT] = new ItemSave(
-                    (int)smeltable.smelted_to_item.info.id,
-                    smeltable.smelted_to_item.amount,
-                    -1,
-                    (int)smeltable.smelted_to_item.state
-                );
-
-            item_array[(int)ProcessingTab.SlotType.IMPORT].amount -= smeltable.amount_to_smelt;
-            is_crafting = false;
-            process_timer.Stop();
-            progress = 0;
-            if (ProcessingTab.instance.process_building == this)
-            {
-                ProcessingTab.instance.SetMachineProgressbar(progress);
-                ProcessingTab.instance.UpdateUI();
-            }
+            ExecuteRecipe(recipe);
             return;
         }
 
         progress += 5;
         fuel_left -= 1;
 
+        OnProcessingTick(recipe);
+
         if (hover_menu.instance.current_object == this)
             hover_menu.InitHoverMenu(this);
+    }
+
+    protected virtual void ExecuteRecipe(IProcessingRecipe recipe)
+    {
+        int output_idx = GetSlotIndexByPurpose(SlotPurpose.OUTPUT);
+        int input_idx = GetSlotIndexByPurpose(SlotPurpose.INPUT);
+
+        // Add output oder create new
+        ItemInfo output_info = recipe.GetOutputItem();
+        if (output_info != null)
+        {
+            if (item_array[output_idx] != null)
+                item_array[output_idx].amount += recipe.GetAmountToProcess();
+            else
+                item_array[output_idx] = new ItemSave(
+                    (int)output_info.id,
+                    recipe.GetAmountToProcess(),
+                    -1,
+                    0
+                );
+        }
+
+        // Consume input
+        item_array[input_idx].amount -= recipe.GetAmountToProcess();
+
+        is_crafting = false;
+        process_timer.Stop();
+        progress = 0;
+
+        var ui_updater = GetUIUpdater();
+        if (ui_updater != null && ui_updater.process_building == this)
+        {
+            ui_updater.SetMachineProgressbar(progress);
+            ui_updater.UpdateUI();
+        }
+
+        OnProcessingComplete(recipe);
     }
 
     public void StopCrafting()
@@ -107,8 +144,10 @@ public partial class ProcessBuilding : MachineBase
         is_crafting = false;
         process_timer.Stop();
         progress = 0;
-        if (ProcessingTab.instance.process_building == this)
-            ProcessingTab.instance.SetMachineProgressbar(progress);
+
+        var ui_updater = GetUIUpdater();
+        if (ui_updater != null && ui_updater.process_building == this)
+            ui_updater.SetMachineProgressbar(progress);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -127,9 +166,17 @@ public partial class ProcessBuilding : MachineBase
         if (is_crafting)
             return;
 
-        Label description = ProcessingTab.instance.description_Label;
+        var ui_updater = GetUIUpdater();
+        if (ui_updater == null)
+            return;
 
-        if (item_array[(int)ProcessingTab.SlotType.IMPORT] == null)
+        Label description = ui_updater.description_Label;
+        if (description == null)
+            return;
+
+        int input_idx = GetSlotIndexByPurpose(SlotPurpose.INPUT);
+
+        if (item_array[input_idx] == null)
         {
             description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_RESOURCE");
             return;
@@ -141,42 +188,11 @@ public partial class ProcessBuilding : MachineBase
             return;
         }
 
-        ItemInfo import_item_info = Inventory.ITEM_TYPES[
-            (Inventory.ITEM_ID)item_array[(int)ProcessingTab.SlotType.IMPORT].item_id
-        ];
-        SmeltableAttribute smeltable = import_item_info.GetAttributeOrNull<SmeltableAttribute>();
-
-        if (fuel_left < 20)
-            if (item_array[(int)ProcessingTab.SlotType.FUEL] != null)
-            {
-                if (item_array[(int)ProcessingTab.SlotType.FUEL].amount > 0)
-                {
-                    ItemInfo info = Inventory.ITEM_TYPES[
-                        (Inventory.ITEM_ID)item_array[(int)ProcessingTab.SlotType.FUEL].item_id
-                    ];
-                    BurnableAttribute attribute = info.GetAttributeOrNull<BurnableAttribute>();
-                    if (attribute != null)
-                    {
-                        fuel_left += attribute.burntime;
-                        item_array[(int)ProcessingTab.SlotType.FUEL].amount--;
-                    }
-                    else
-                    {
-                        description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_FUEL");
-                        return;
-                    }
-                }
-                else
-                {
-                    description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_FUEL");
-                    return;
-                }
-            }
-            else
-            {
-                description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_FUEL");
-                return;
-            }
+        if (!RefuelIfNeeded())
+        {
+            description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_FUEL");
+            return;
+        }
 
         if (!machine_enabled)
         {
@@ -187,45 +203,39 @@ public partial class ProcessBuilding : MachineBase
             description.Text = TranslationServer.Translate("FURNACE_MENU_DESC");
 
         is_crafting = true;
-        if (ProcessingTab.instance.process_building == this)
-            ProcessingTab.instance.UpdateUI();
+        if (ui_updater.process_building == this)
+            ui_updater.UpdateUI();
         process_timer.Start();
     }
 
-    private bool SelectAndCheckCanCraft()
+    protected virtual bool RefuelIfNeeded()
     {
-        if (item_array[(int)ProcessingTab.SlotType.IMPORT] == null)
-            return false;
+        int fuel_idx = GetSlotIndexByPurpose(SlotPurpose.FUEL);
 
-        ItemInfo import_item_info = Inventory.ITEM_TYPES[
-            (Inventory.ITEM_ID)item_array[(int)ProcessingTab.SlotType.IMPORT].item_id
-        ];
-        SmeltableAttribute smeltable = import_item_info.GetAttributeOrNull<SmeltableAttribute>();
-
-        if (smeltable == null)
-            return false;
-
-        if (smeltable.unlock_requirements != null || smeltable.unlock_requirements.Count > 0)
-            if (!GlobalFunctions.CheckResearchRequirements(smeltable.unlock_requirements))
-                return false;
-
-        if (item_array[(int)ProcessingTab.SlotType.IMPORT].amount < smeltable.amount_to_smelt)
-            return false;
-
-        if (item_array[(int)ProcessingTab.SlotType.EXPORT] == null)
+        if (fuel_left >= 20)
             return true;
-        else if (
-            item_array[(int)ProcessingTab.SlotType.EXPORT].item_id
-            != (int)smeltable.smelted_to_item.info.id
-        )
+
+        if (item_array[fuel_idx] == null)
             return false;
 
+        if (item_array[fuel_idx].amount <= 0)
+            return false;
+
+        ItemInfo fuel_info = GetItemResource(fuel_idx);
+        BurnableAttribute burnable = fuel_info?.GetAttributeOrNull<BurnableAttribute>();
+
+        if (burnable == null)
+            return false;
+
+        fuel_left += burnable.burntime;
+        item_array[fuel_idx].amount--;
         return true;
     }
 
     public void ResetExportSlot()
     {
-        item_array[(int)ProcessingTab.SlotType.EXPORT] = null;
+        int output_idx = GetSlotIndexByPurpose(SlotPurpose.OUTPUT);
+        item_array[output_idx] = null;
     }
 
     public override void Load(Resource save)
@@ -249,5 +259,21 @@ public partial class ProcessBuilding : MachineBase
             machine_save.furnace_slots[i] = item_array[i];
         machine_save.fuel_left = fuel_left;
         return machine_save;
+    }
+
+    public void NotifyItemsChanged()
+    {
+        try
+        {
+            var ui_updater = GetUIUpdater();
+            if (ui_updater != null && ui_updater.process_building == this)
+            {
+                ui_updater.UpdateUI();
+            }
+        }
+        catch
+        {
+            // Ignoriere Fehler falls UI noch nicht initialisiert ist
+        }
     }
 }
