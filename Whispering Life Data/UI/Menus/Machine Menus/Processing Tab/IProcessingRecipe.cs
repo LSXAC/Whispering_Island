@@ -10,6 +10,8 @@ public interface IProcessingRecipe
 
     int GetProcessingTime();
 
+    int GetItemState();
+
     Array<UnlockRequirement> GetUnlockRequirements();
 
     bool IsUnlocked();

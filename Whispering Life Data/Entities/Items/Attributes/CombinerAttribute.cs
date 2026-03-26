@@ -3,26 +3,26 @@ using Godot;
 using Godot.Collections;
 
 [GlobalClass]
-public partial class SmeltableAttribute : ItemAttributeBase, IProcessingRecipe
+public partial class CombinerAttribute : ItemAttributeBase, IProcessingRecipe
 {
     [Export]
-    public Item smelted_to_item;
+    public Item output_item;
 
     [Export]
-    public int amount_to_smelt = 1;
-
-    [Export]
-    public int export_amount = 1;
+    public int amount_to_produce = 1;
 
     [Export]
     public int processing_time_ms = 2000; // Standard: 2 Sekunden
+
+    [Export]
+    public Array<Item> compatible_items; // Items, mit denen dieses Item kombiniert werden kann
 
     [Export]
     public Array<UnlockRequirement> unlock_requirements;
 
     public override string GetNameOfAttribute()
     {
-        return TranslationServer.Translate("SMELTABLE") + "\n";
+        return TranslationServer.Translate("COMBINABLE") + "\n";
     }
 
     // IProcessingRecipe Implementation
@@ -33,12 +33,12 @@ public partial class SmeltableAttribute : ItemAttributeBase, IProcessingRecipe
 
     public int GetAmountToProcess()
     {
-        return export_amount;
+        return amount_to_produce;
     }
 
     public ItemInfo GetOutputItem()
     {
-        return smelted_to_item?.info ?? null;
+        return output_item?.info ?? null;
     }
 
     public int GetProcessingTime()
@@ -61,6 +61,6 @@ public partial class SmeltableAttribute : ItemAttributeBase, IProcessingRecipe
 
     public int GetItemState()
     {
-        return (int)smelted_to_item.state;
+        return (int)output_item.state;
     }
 }

@@ -61,6 +61,9 @@ public partial class GameMenu : CanvasLayer
     [Export]
     public ColorRect minecart_tab;
 
+    [Export]
+    public CombinerTab poison_combiner_tab;
+
     public static GameMenu instance = null;
 
     [Export]
@@ -304,12 +307,23 @@ public partial class GameMenu : CanvasLayer
         saveload_tab.Visible = true;
     }
 
-    public void OnOpenProcessingTab()
+    public void OnOpenFurnaceTab()
     {
         SetWindow(this);
         CloseAllTabs();
         inventory_tab.Visible = true;
         processing_tab.Visible = true;
+        PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes(
+            new Type[] { typeof(BurnableAttribute), typeof(SmeltableAttribute) }
+        );
+    }
+
+    public void OnOpenPoisonCombinerTab()
+    {
+        SetWindow(this);
+        CloseAllTabs();
+        inventory_tab.Visible = true;
+        poison_combiner_tab.Visible = true;
         PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes(
             new Type[] { typeof(BurnableAttribute), typeof(SmeltableAttribute) }
         );
@@ -365,6 +379,7 @@ public partial class GameMenu : CanvasLayer
 
     private void CloseAllTabs()
     {
+        poison_combiner_tab.Visible = false;
         inventory_tab.Visible = false;
         research_tab.Visible = false;
         crafting_tab.Visible = false;

@@ -64,6 +64,11 @@ public abstract partial class ProcessingTab : SlotUpdater
         if (process_building == null)
             throw new Exception("No Process Building set");
 
+        if (index < 0 || index >= process_building.item_array.Length)
+            throw new Exception(
+                $"Slot index {index} out of bounds. Array length: {process_building.item_array.Length}"
+            );
+
         return Inventory.ITEM_TYPES[(Inventory.ITEM_ID)process_building.item_array[index].item_id];
     }
 
@@ -77,7 +82,13 @@ public abstract partial class ProcessingTab : SlotUpdater
 
     public void UpdateInfoHalf(int slotIndex)
     {
-        if (process_building?.item_array[slotIndex] == null)
+        if (process_building?.item_array == null)
+            return;
+
+        if (slotIndex < 0 || slotIndex >= process_building.item_array.Length)
+            return;
+
+        if (process_building.item_array[slotIndex] == null)
             return;
 
         process_building.item_array[slotIndex].amount = (int)(
@@ -122,6 +133,10 @@ public abstract partial class ProcessingTab : SlotUpdater
         // Update alle Items in Slots basierend auf Slot-Konfiguration
         for (int i = 0; i < slot_configs.Length; i++)
         {
+            // Prüfe ob Index im item_array existiert
+            if (i >= process_building.item_array.Length)
+                break;
+
             if (process_building.item_array[i] != null && process_building.item_array[i].amount > 0)
             {
                 if (slot_by_index.TryGetValue(i, out var slot))
@@ -142,6 +157,10 @@ public abstract partial class ProcessingTab : SlotUpdater
     {
         for (int i = 0; i < slot_configs.Length; i++)
         {
+            // Prüfe ob Index im item_array existiert
+            if (i >= process_building.item_array.Length)
+                break;
+
             SetOrClearSlotItem(i);
         }
     }
@@ -149,6 +168,10 @@ public abstract partial class ProcessingTab : SlotUpdater
     protected void SetOrClearSlotItem(int slotIndex)
     {
         if (!slot_by_index.TryGetValue(slotIndex, out var slot))
+            return;
+
+        // Grenzen-Check
+        if (slotIndex < 0 || slotIndex >= process_building.item_array.Length)
             return;
 
         if (slot.GetSlotItemUI() == null)

@@ -148,4 +148,9 @@ public partial class TemplateProcessBuilding : ProcessBuilding
         // if (item_array[fuel_idx] == null) return false;
         // ... custom fuel logic ...
     }
+
+    protected override void OpenGameMenuTab()
+    {
+        GameMenu.instance.OnOpenPoisonCombinerTab();
+    }
 }

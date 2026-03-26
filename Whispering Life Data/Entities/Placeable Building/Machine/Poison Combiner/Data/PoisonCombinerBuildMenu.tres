@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="Building_Menu_List_Object" format=3 uid="uid://b024ee2762wjh"]
+
+[ext_resource type="Resource" uid="uid://b3bnpcxbnd5i1" path="res://Entities/Items/Minerals/Stone/Data/item_info_stone.tres" id="1_r4gpv"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_hyfhx"]
+[ext_resource type="Resource" uid="uid://qpxoldygoivu" path="res://Entities/Items/Machine Component/Smelt/Data/SmeltComponent.tres" id="3_gjfor"]
+[ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://Entities/Items/Machine Component/Transport/Data/TransportComponent.tres" id="4_ugiv7"]
+[ext_resource type="PackedScene" uid="uid://6ivrk0htm5tf" path="res://Entities/Placeable Building/Machine/Poison Combiner/Building_Poisoncombiner.tscn" id="5_c032i"]
+[ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Build Menu Line/Building_Menu_List_Object.cs" id="6_7uryx"]
+[ext_resource type="Texture2D" uid="uid://ccbyeutydxucw" path="res://Entities/Placeable Building/Machine/Poison Combiner/Texture/PoisonCombiner_Building_Sprite.png" id="7_ad3a5"]
+
+[sub_resource type="Resource" id="Resource_yo73i"]
+script = ExtResource("2_hyfhx")
+info = ExtResource("1_r4gpv")
+amount = 10
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_m7iag"]
+script = ExtResource("2_hyfhx")
+info = ExtResource("3_gjfor")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_g54yy"]
+script = ExtResource("2_hyfhx")
+info = ExtResource("4_ugiv7")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("6_7uryx")
+scene = ExtResource("5_c032i")
+scene_building_id = 41
+required_items = Array[Object]([SubResource("Resource_yo73i"), SubResource("Resource_m7iag"), SubResource("Resource_g54yy")])
+unlock_requirements = null
+building_menu_category = 6
+texture_in_build_menu = ExtResource("7_ad3a5")
+show_magic_power_use = true

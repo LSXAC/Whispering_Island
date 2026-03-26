@@ -13,7 +13,7 @@ public partial class MachineSave : PlaceableSave
     }
 
     [Export]
-    public ItemSave[] furnace_slots = new ItemSave[3] { null, null, null };
+    public ItemSave[] furnace_slots = new ItemSave[4] { null, null, null, null };
 
     [Export]
     public int fuel_left = 0;

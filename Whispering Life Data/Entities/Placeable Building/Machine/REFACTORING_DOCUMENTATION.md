@@ -14,14 +14,14 @@ ProcessBuilding wurde nach demselben Muster wie ProcessingTab extrahiert und gen
 
 ```
 MachineBase (abstract base)
-    ↑
-    │
+	↑
+	│
 ProcessBuildingBase (abstract, generisch)
-    ↑
-    │
+	↑
+	│
 FurnaceBuilding (concrete, Furnace-spezifisch)
-    ↑
-    │
+	↑
+	│
 ProcessBuilding (Compatibility-Wrapper, für alte Referenzen)
 ```
 
@@ -31,21 +31,21 @@ ProcessBuilding (Compatibility-Wrapper, für alte Referenzen)
    - Verwaltet Item-Array, Progress, Fuel
    - Generische Verarbeitungslogik in `OnCraftingTimerTimeout()`
    - Abstrakte Methoden für Subklassen:
-     - `GetRecipeFromInputSlot()` - Liest Rezept aus Input-Slot
-     - `SelectAndCheckCanCraft()` - Validierung
-     - `GetUIUpdater()` - Gibt UI-Updater zurück (FurnaceTab, etc.)
-     - `GetSlotIndexByPurpose()` - Maps SlotPurpose zu Array-Index
+	 - `GetRecipeFromInputSlot()` - Liest Rezept aus Input-Slot
+	 - `SelectAndCheckCanCraft()` - Validierung
+	 - `GetUIUpdater()` - Gibt UI-Updater zurück (FurnaceTab, etc.)
+	 - `GetSlotIndexByPurpose()` - Maps SlotPurpose zu Array-Index
    - Hook-Methoden für Speziallogik:
-     - `OnProcessingComplete()` - Nach Verarbeitung
-     - `OnProcessingTick()` - Während Verarbeitung
-     - `RefuelIfNeeded()` - Brennstoff-Logik (überschreibbar)
+	 - `OnProcessingComplete()` - Nach Verarbeitung
+	 - `OnProcessingTick()` - Während Verarbeitung
+	 - `RefuelIfNeeded()` - Brennstoff-Logik (überschreibbar)
 
 2. **FurnaceBuilding.cs** - Spezialisiert für Furnace
    - Erbt von `ProcessBuildingBase`
    - Implementiert abstrakte Methoden für Furnace:
-     - `GetRecipeFromInputSlot()` liest SmeltableAttribute
-     - `SelectAndCheckCanCraft()` Furnace-Validierung
-     - `GetSlotIndexByPurpose()` maps IMPORT→0, EXPORT→1, FUEL→2
+	 - `GetRecipeFromInputSlot()` liest SmeltableAttribute
+	 - `SelectAndCheckCanCraft()` Furnace-Validierung
+	 - `GetSlotIndexByPurpose()` maps IMPORT→0, EXPORT→1, FUEL→2
    - Behält alte `SlotType` enum für Kompatibilität
 
 3. **ProcessBuilding.cs** - Compatibility-Wrapper
@@ -59,13 +59,13 @@ ProcessBuilding (Compatibility-Wrapper, für alte Referenzen)
 
 ```
 ProcessBuildingBase.OnCraftingTimerTimeout()
-    ↓
+	↓
 GetRecipeFromInputSlot() [abstrakt, von FurnaceBuilding implementiert]
-    ↓
+	↓
 IProcessingRecipe (SmeltableAttribute)
-    ↓
+	↓
 ExecuteRecipe() → Output hinzufügen, Input reduzieren
-    ↓
+	↓
 OnProcessingComplete() [Hook für Speziallogik]
 ```
 
@@ -73,11 +73,11 @@ OnProcessingComplete() [Hook für Speziallogik]
 
 ```
 ProcessBuildingBase.RefuelIfNeeded()
-    ↓
+	↓
 item_array[FUEL_SLOT] lesen
-    ↓
+	↓
 BurnableAttribute.burntime extrahieren
-    ↓
+	↓
 fuel_left erhöhen, Item-Menge reduzieren
 ```
 
@@ -90,56 +90,56 @@ Diese Methode kann auch von Subklassen überschrieben werden für Custom-Fuel-Lo
 ```csharp
 public partial class CombinerBuilding : ProcessBuildingBase
 {
-    public enum SlotType
-    {
-        INPUT_1 = 0,
-        INPUT_2 = 1,
-        OUTPUT = 2
-    };
+	public enum SlotType
+	{
+		INPUT_1 = 0,
+		INPUT_2 = 1,
+		OUTPUT = 2
+	};
 
-    protected override IProcessingRecipe GetRecipeFromInputSlot()
-    {
-        // Lese CombinerAttribute aus INPUT_1
-        ItemInfo info1 = Inventory.ITEM_TYPES[
-            (Inventory.ITEM_ID)item_array[(int)SlotType.INPUT_1].item_id
-        ];
-        CombinerAttribute recipe = info1?.GetAttributeOrNull<CombinerAttribute>();
-        
-        // Validiere dass INPUT_2 das erforderliche Item hat
-        if (recipe != null && item_array[(int)SlotType.INPUT_2] != null)
-        {
-            ItemInfo info2 = Inventory.ITEM_TYPES[
-                (Inventory.ITEM_ID)item_array[(int)SlotType.INPUT_2].item_id
-            ];
-            if (info2.id == recipe.required_item.info.id)
-                return recipe;
-        }
-        return null;
-    }
+	protected override IProcessingRecipe GetRecipeFromInputSlot()
+	{
+		// Lese CombinerAttribute aus INPUT_1
+		ItemInfo info1 = Inventory.ITEM_TYPES[
+			(Inventory.ITEM_ID)item_array[(int)SlotType.INPUT_1].item_id
+		];
+		CombinerAttribute recipe = info1?.GetAttributeOrNull<CombinerAttribute>();
+		
+		// Validiere dass INPUT_2 das erforderliche Item hat
+		if (recipe != null && item_array[(int)SlotType.INPUT_2] != null)
+		{
+			ItemInfo info2 = Inventory.ITEM_TYPES[
+				(Inventory.ITEM_ID)item_array[(int)SlotType.INPUT_2].item_id
+			];
+			if (info2.id == recipe.required_item.info.id)
+				return recipe;
+		}
+		return null;
+	}
 
-    protected override bool SelectAndCheckCanCraft()
-    {
-        // Custom Validierung für 2 Inputs
-        // Prüfe beide Input-Slots
-        return item_array[(int)SlotType.INPUT_1] != null 
-            && item_array[(int)SlotType.INPUT_2] != null;
-    }
+	protected override bool SelectAndCheckCanCraft()
+	{
+		// Custom Validierung für 2 Inputs
+		// Prüfe beide Input-Slots
+		return item_array[(int)SlotType.INPUT_1] != null 
+			&& item_array[(int)SlotType.INPUT_2] != null;
+	}
 
-    protected override CombinerTab GetUIUpdater()
-    {
-        return CombinerTab.instance;
-    }
+	protected override CombinerTab GetUIUpdater()
+	{
+		return CombinerTab.instance;
+	}
 
-    protected override int GetSlotIndexByPurpose(SlotPurpose purpose)
-    {
-        return purpose switch
-        {
-            SlotPurpose.INPUT => (int)SlotType.INPUT_1, // Primärer Input
-            SlotPurpose.OUTPUT => (int)SlotType.OUTPUT,
-            SlotPurpose.FUEL => -1, // Kein Fuel für Combiner
-            _ => -1
-        };
-    }
+	protected override int GetSlotIndexByPurpose(SlotPurpose purpose)
+	{
+		return purpose switch
+		{
+			SlotPurpose.INPUT => (int)SlotType.INPUT_1, // Primärer Input
+			SlotPurpose.OUTPUT => (int)SlotType.OUTPUT,
+			SlotPurpose.FUEL => -1, // Kein Fuel für Combiner
+			_ => -1
+		};
+	}
 }
 ```
 
@@ -148,26 +148,26 @@ public partial class CombinerBuilding : ProcessBuildingBase
 ```csharp
 public partial class BreweryBuilding : ProcessBuildingBase
 {
-    public enum SlotType { INPUT = 0, OUTPUT = 1, CATALYST = 2 };
+	public enum SlotType { INPUT = 0, OUTPUT = 1, CATALYST = 2 };
 
-    protected override bool RefuelIfNeeded()
-    {
-        // Catalyst wird als "Fuel" genutzt, aber mit anderen Rules
-        int catalyst_idx = (int)SlotType.CATALYST;
-        
-        if (fuel_left >= CATALYST_THRESHOLD)
-            return true;
-        
-        if (item_array[catalyst_idx] == null || item_array[catalyst_idx].amount <= 0)
-            return false;
+	protected override bool RefuelIfNeeded()
+	{
+		// Catalyst wird als "Fuel" genutzt, aber mit anderen Rules
+		int catalyst_idx = (int)SlotType.CATALYST;
+		
+		if (fuel_left >= CATALYST_THRESHOLD)
+			return true;
+		
+		if (item_array[catalyst_idx] == null || item_array[catalyst_idx].amount <= 0)
+			return false;
 
-        // Catalyst gibt feste Brennwert, nicht von BurnableAttribute
-        fuel_left += CATALYST_BURN_VALUE;
-        item_array[catalyst_idx].amount--;
-        return true;
-    }
-    
-    // ... andere Methoden
+		// Catalyst gibt feste Brennwert, nicht von BurnableAttribute
+		fuel_left += CATALYST_BURN_VALUE;
+		item_array[catalyst_idx].amount--;
+		return true;
+	}
+	
+	// ... andere Methoden
 }
 ```
 
@@ -194,10 +194,10 @@ ui.SetReferenceBuilding(furnace);
 ```csharp
 public enum SlotPurpose
 {
-    INPUT,      // Input-Material
-    OUTPUT,     // Output-Material
-    FUEL,       // Brennstoff
-    AUXILIARY   // Für zukünftige Slots
+	INPUT,      // Input-Material
+	OUTPUT,     // Output-Material
+	FUEL,       // Brennstoff
+	AUXILIARY   // Für zukünftige Slots
 }
 ```
 
@@ -207,20 +207,20 @@ public enum SlotPurpose
 
 ```
 while (machine_enabled)
-    ↓
+	↓
 _PhysicsProcess() prüft SelectAndCheckCanCraft()
-    ↓
+	↓
 RefuelIfNeeded() wenn fuel_left < threshold
-    ↓
+	↓
 is_crafting = true
 process_timer.Start()
-    ↓
+	↓
 OnCraftingTimerTimeout() wiederholt sich:
-    - progress += 5
-    - OnProcessingTick(recipe) [Hook]
-    - if progress >= 100:
-        ExecuteRecipe(recipe)
-        OnProcessingComplete(recipe) [Hook]
+	- progress += 5
+	- OnProcessingTick(recipe) [Hook]
+	- if progress >= 100:
+		ExecuteRecipe(recipe)
+		OnProcessingComplete(recipe) [Hook]
 ```
 
 ## Save/Load System
@@ -239,20 +239,20 @@ Subklassen können `Load()` / `Save()` überschreiben um Custom-Attribute zu spe
 [Test]
 public void TestFurnaceBuildingSmeltingLogic()
 {
-    var furnace = new FurnaceBuilding();
-    // Furnace mit SmeltableAttribute setzen
-    // Progress erhöhen bis 100
-    // ExecuteRecipe() sollte aufgerufen werden
-    Assert.AreEqual(expected_output, furnace.item_array[1]);
+	var furnace = new FurnaceBuilding();
+	// Furnace mit SmeltableAttribute setzen
+	// Progress erhöhen bis 100
+	// ExecuteRecipe() sollte aufgerufen werden
+	Assert.AreEqual(expected_output, furnace.item_array[1]);
 }
 
 [Test]
 public void TestCombinerBuildingWith2Inputs()
 {
-    var combiner = new CombinerBuilding();
-    // Setze INPUT_1 und INPUT_2
-    // Validierung sollte erfolgreich sein
-    Assert.IsTrue(combiner.SelectAndCheckCanCraft());
+	var combiner = new CombinerBuilding();
+	// Setze INPUT_1 und INPUT_2
+	// Validierung sollte erfolgreich sein
+	Assert.IsTrue(combiner.SelectAndCheckCanCraft());
 }
 ```
 
@@ -287,4 +287,3 @@ A: Verwende `GetSlotIndexByPurpose()` um nur den Primären-Input zu prüfen, ode
 - [ ] Tests für ProcessBuildingBase generische Logik
 - [ ] Tests für FurnaceBuilding spezifische Konfiguration
 - [ ] Integration-Test mit Furnace im Spiel
-

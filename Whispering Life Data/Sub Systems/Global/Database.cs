@@ -323,6 +323,7 @@ public partial class Database : Node
         PALM,
         CACTUS,
         MAGIC_GENERATOR,
-        NERVE_TRANSDUCER
+        NERVE_TRANSDUCER,
+        POISON_COMBINER
     }
 }

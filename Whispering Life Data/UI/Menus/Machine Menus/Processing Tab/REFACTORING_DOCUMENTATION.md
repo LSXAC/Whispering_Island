@@ -13,14 +13,14 @@ ProcessingTab wurde nach dem CraftingMenu-Muster extrahiert und generalisiert, u
 
 ```
 SlotUpdater (abstract base)
-    ↑
-    │
+	↑
+	│
 BaseProcessingTab (abstract, generisch)
-    ↑
-    │
+	↑
+	│
 FurnaceTab (concrete, Furnace-spezifisch)
-    ↑
-    │
+	↑
+	│
 ProcessingTab (Compatibility-Wrapper, für alte Referenzen)
 ```
 
@@ -59,27 +59,27 @@ ProcessingTab (Compatibility-Wrapper, für alte Referenzen)
 ```csharp
 public partial class CombinerTab : BaseProcessingTab
 {
-    [Export]
-    public Slot left_slot;
-    
-    [Export]
-    public Slot right_slot;
-    
-    [Export]
-    public Slot output_slot;
+	[Export]
+	public Slot left_slot;
+	
+	[Export]
+	public Slot right_slot;
+	
+	[Export]
+	public Slot output_slot;
 
-    public override void _Ready()
-    {
-        instance = this;
-        
-        // Initialisiere mit 3 Slots statt 2
-        InitializeSlots(new ProcessingSlotConfig[]
-        {
-            new ProcessingSlotConfig("left_input", SlotPurpose.INPUT, left_slot, "Linker Rohstoff"),
-            new ProcessingSlotConfig("right_input", SlotPurpose.INPUT, right_slot, "Rechter Rohstoff"),
-            new ProcessingSlotConfig("output", SlotPurpose.OUTPUT, output_slot, "Kombiert Ergebnis")
-        });
-    }
+	public override void _Ready()
+	{
+		instance = this;
+		
+		// Initialisiere mit 3 Slots statt 2
+		InitializeSlots(new ProcessingSlotConfig[]
+		{
+			new ProcessingSlotConfig("left_input", SlotPurpose.INPUT, left_slot, "Linker Rohstoff"),
+			new ProcessingSlotConfig("right_input", SlotPurpose.INPUT, right_slot, "Rechter Rohstoff"),
+			new ProcessingSlotConfig("output", SlotPurpose.OUTPUT, output_slot, "Kombiert Ergebnis")
+		});
+	}
 }
 ```
 
@@ -88,17 +88,17 @@ public partial class CombinerTab : BaseProcessingTab
 ```csharp
 public partial class CombinerAttribute : ItemAttributeBase, IProcessingRecipe
 {
-    [Export]
-    public Item required_item;
-    
-    [Export]
-    public Item combined_result;
+	[Export]
+	public Item required_item;
+	
+	[Export]
+	public Item combined_result;
 
-    public int GetAmountToProcess() => 1;
-    public ItemInfo GetOutputItem() => combined_result?.info;
-    public int GetProcessingTime() => 1500;
-    public bool IsUnlocked() => true;
-    // ... weitere IProcessingRecipe-Methoden
+	public int GetAmountToProcess() => 1;
+	public ItemInfo GetOutputItem() => combined_result?.info;
+	public int GetProcessingTime() => 1500;
+	public bool IsUnlocked() => true;
+	// ... weitere IProcessingRecipe-Methoden
 }
 ```
 
@@ -110,7 +110,7 @@ public partial class CombinerAttribute : ItemAttributeBase, IProcessingRecipe
 // In einer Subklasse von BaseProcessingTab:
 protected void InitializeSlots(ProcessingSlotConfig[] configs)
 {
-    // Diese Klasse handhabt den Rest!
+	// Diese Klasse handhabt den Rest!
 }
 
 // Slots nach Zweck abrufen:
@@ -144,13 +144,13 @@ int[] all_inputs = GetSlotIndicesByPurpose(SlotPurpose.INPUT); // mehrere Inputs
 
 ```
 Item im Slot hat SmeltableAttribute
-    ↓
+	↓
 ProcessBuilding.SelectAndCheckCanCraft()
-    ↓ (liest SmeltableAttribute)
+	↓ (liest SmeltableAttribute)
 SmeltableAttribute implementiert IProcessingRecipe
-    ↓ (GetAmountToProcess, GetOutputItem, GetUnlockRequirements)
+	↓ (GetAmountToProcess, GetOutputItem, GetUnlockRequirements)
 Furnace verarbeitet nach diesen Specs
-    ↓
+	↓
 UpdateUI() lädt Items basierend auf Slot-Index (nicht Slot-Namen!)
 ```
 
@@ -189,15 +189,15 @@ item_array[import_index] = ...;
 [Test]
 public void TestFurnaceTabWithThreeSlots()
 {
-    var furnace = new FurnaceTab();
-    furnace._Ready();
-    
-    // Prüfe, dass 3 Slots konfiguriert wurden
-    Assert.AreEqual(3, furnace.slot_configs.Length);
-    
-    // Prüfe Slot-Zwecke
-    var import_idx = furnace.GetSlotIndexByPurpose(SlotPurpose.INPUT);
-    Assert.AreEqual(0, import_idx);
+	var furnace = new FurnaceTab();
+	furnace._Ready();
+	
+	// Prüfe, dass 3 Slots konfiguriert wurden
+	Assert.AreEqual(3, furnace.slot_configs.Length);
+	
+	// Prüfe Slot-Zwecke
+	var import_idx = furnace.GetSlotIndexByPurpose(SlotPurpose.INPUT);
+	Assert.AreEqual(0, import_idx);
 }
 ```
 
@@ -225,4 +225,3 @@ A: Erbe von `ItemAttributeBase` und implementiere `IProcessingRecipe`. Das war's
 - [ ] Tests für BaseProcessingTab generische Logik
 - [ ] Tests für FurnaceTab spezifische Konfiguration
 - [ ] Integration-Test mit ProcessBuilding
-

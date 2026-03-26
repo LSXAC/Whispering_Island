@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
@@ -14,6 +15,15 @@ public partial class FurnaceBuilding : ProcessBuilding
         EXPORT = 1,
         FUEL = 2
     };
+
+    public override void _Ready()
+    {
+        base._Ready();
+        if (item_array.Length < 4)
+        {
+            System.Array.Resize(ref item_array, 4);
+        }
+    }
 
     protected override IProcessingRecipe GetRecipeFromInputSlot()
     {
@@ -71,5 +81,11 @@ public partial class FurnaceBuilding : ProcessBuilding
             SlotPurpose.FUEL => (int)SlotType.FUEL,
             _ => -1
         };
+    }
+
+    protected override void OpenGameMenuTab()
+    {
+        Debug.Print("Open Furnace Tab");
+        GameMenu.instance.OnOpenFurnaceTab();
     }
 }

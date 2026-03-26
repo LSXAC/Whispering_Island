@@ -35,6 +35,7 @@ public abstract partial class ProcessBuilding : MachineBase
     }
 
     protected abstract ProcessingTab GetUIUpdater();
+    protected abstract void OpenGameMenuTab();
 
     protected abstract int GetSlotIndexByPurpose(SlotPurpose purpose);
 
@@ -54,7 +55,7 @@ public abstract partial class ProcessBuilding : MachineBase
             return;
 
         GetUIUpdater().SetReferenceBuilding(this);
-        GameMenu.instance.OnOpenProcessingTab();
+        OpenGameMenuTab();
     }
 
     public void OnCraftingTimerTimeout()
@@ -118,7 +119,7 @@ public abstract partial class ProcessBuilding : MachineBase
                     (int)output_info.id,
                     recipe.GetAmountToProcess(),
                     -1,
-                    0
+                    recipe.GetItemState()
                 );
         }
 
@@ -255,7 +256,7 @@ public abstract partial class ProcessBuilding : MachineBase
     public override Resource Save()
     {
         MachineSave machine_save = (MachineSave)base.Save();
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
             machine_save.furnace_slots[i] = item_array[i];
         machine_save.fuel_left = fuel_left;
         return machine_save;

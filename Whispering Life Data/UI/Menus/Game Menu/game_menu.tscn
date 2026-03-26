@@ -208,7 +208,7 @@ border_width_top = 2
 border_color = Color(0, 0, 0, 1)
 border_blend = true
 
-[node name="GameMenu" type="CanvasLayer" unique_id=1705449440 node_paths=PackedStringArray("load_button", "destroy_menu", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "processing_tab", "research_tab", "nerve_transducer_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "quest_tab", "rail_station_tab", "minecart_tab", "header_container", "crafting_category_panel")]
+[node name="GameMenu" type="CanvasLayer" unique_id=1705449440 node_paths=PackedStringArray("load_button", "destroy_menu", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "processing_tab", "research_tab", "nerve_transducer_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "quest_tab", "rail_station_tab", "minecart_tab", "poison_combiner_tab", "header_container", "crafting_category_panel")]
 process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/SaveLoadTab/HBoxContainer/LoadGameButton")
@@ -230,6 +230,7 @@ help_tab = NodePath("Background/HelpTab")
 quest_tab = NodePath("Background/QuestMenu")
 rail_station_tab = NodePath("Background/RailStationTab")
 minecart_tab = NodePath("Background/MinecartTab")
+poison_combiner_tab = NodePath("Background/CombinerTab")
 header_container = NodePath("Background/ColorRect/ColorRect/HBoxHeader")
 title_selected = ExtResource("2_k61vr")
 title_normal = ExtResource("7_kqkeb")
@@ -1149,7 +1150,7 @@ offset_right = 3.0
 offset_bottom = 278.0
 color = Color(0, 0, 0, 1)
 
-[node name="CombinerTab" type="Control" parent="Background" unique_id=158413284]
+[node name="CombinerTab" type="Control" parent="Background" unique_id=158413284 node_paths=PackedStringArray("left_slot", "right_slot", "output_slot", "fuel_slot", "fuel_label", "machineProgressbar", "fuelProgressbar", "description_Label")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -1161,6 +1162,14 @@ offset_top = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("41_kv5uf")
+left_slot = NodePath("PanelContainer/Slots/SlotBackgroundInput/Slot0")
+right_slot = NodePath("PanelContainer/Slots/SlotBackgroundInput2/Slot0")
+output_slot = NodePath("PanelContainer/Slots/SlotBackgroundExport/Slot0")
+fuel_slot = NodePath("PanelContainer/Slots/SlotBackgroundFuel/Slot0")
+fuel_label = NodePath("PanelContainer/FuelLabel")
+machineProgressbar = NodePath("PanelContainer/ProgressBar")
+fuelProgressbar = NodePath("PanelContainer/FuelProgressBar")
+description_Label = NodePath("PanelContainer/DescriptionLabel")
 
 [node name="ColorRect" type="ColorRect" parent="Background/CombinerTab" unique_id=925714746]
 layout_mode = 1
@@ -1195,6 +1204,23 @@ offset_right = 38.0
 offset_bottom = -167.0
 
 [node name="Slot0" parent="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundInput" index="0" unique_id=1848838759]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
+focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
+
+[node name="SlotBackgroundInput2" parent="Background/CombinerTab/PanelContainer/Slots" unique_id=1316857195 instance=ExtResource("13_m8k7p")]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -199.0
+offset_right = 74.0
+offset_bottom = -167.0
+
+[node name="Slot0" parent="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundInput2" index="0" unique_id=1848838759]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
@@ -1247,7 +1273,7 @@ attribute_to_check = SubResource("Resource_gqg20")
 
 [node name="ProgressBar" type="ProgressBar" parent="Background/CombinerTab/PanelContainer" unique_id=699378750]
 layout_mode = 0
-offset_left = 44.0
+offset_left = 81.0
 offset_top = -199.0
 offset_right = 252.0
 offset_bottom = -179.0
@@ -1260,7 +1286,7 @@ value = 25.0
 
 [node name="FuelProgressBar" type="ProgressBar" parent="Background/CombinerTab/PanelContainer" unique_id=1641783006]
 layout_mode = 0
-offset_left = 44.0
+offset_left = 80.0
 offset_top = -174.0
 offset_right = 252.0
 offset_bottom = -167.0
@@ -7453,5 +7479,6 @@ color = Color(0, 0, 0, 1)
 [editable path="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundExport"]
 [editable path="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundFuel"]
 [editable path="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundInput"]
+[editable path="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundInput2"]
 [editable path="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundExport"]
 [editable path="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundFuel"]
