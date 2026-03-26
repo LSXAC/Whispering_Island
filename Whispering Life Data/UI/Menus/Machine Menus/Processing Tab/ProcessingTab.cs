@@ -100,7 +100,7 @@ public partial class ProcessingTab : SlotUpdater
         fuel_label.Text = process_building.fuel_left + "/" + process_building.max_fuel_count;
     }
 
-    public void SetProcessBuilding(ProcessBuilding process_building)
+    public void SetReferenceBuilding(ProcessBuilding process_building)
     {
         this.process_building = process_building;
         UpdateUI();
@@ -154,13 +154,6 @@ public partial class ProcessingTab : SlotUpdater
                 );
     }
 
-    public void ClearProcessBuilding()
-    {
-        OvertakeItems();
-        process_building = null;
-        GameMenu.instance.OnCloseFurnaceTab();
-    }
-
     public void OnMachineStateButton()
     {
         if (process_building.machine_enabled)
@@ -177,45 +170,22 @@ public partial class ProcessingTab : SlotUpdater
 
     private void OvertakeItems()
     {
-        if (export_slot.GetSlotItemUI() == null)
-        {
-            ClearInfo(SlotType.EXPORT);
-        }
-        else
-        {
-            process_building.item_array[(int)SlotType.EXPORT] = new ItemSave(
-                (int)export_slot.GetSlotItemUI().item.info.id,
-                export_slot.GetSlotItemUI().item.amount,
-                -1,
-                (int)export_slot.GetSlotItemUI().item.state
-            );
-        }
+        SetOrClearSlotItem(SlotType.EXPORT, export_slot);
+        SetOrClearSlotItem(SlotType.IMPORT, import_slot);
+        SetOrClearSlotItem(SlotType.FUEL, fuel_slot);
+    }
 
-        if (import_slot.GetSlotItemUI() == null)
-        {
-            ClearInfo(SlotType.IMPORT);
-        }
+    private void SetOrClearSlotItem(SlotType type, Slot slot)
+    {
+        if (slot.GetSlotItemUI() == null)
+            ClearInfo(type);
         else
         {
-            process_building.item_array[(int)SlotType.IMPORT] = new ItemSave(
-                (int)import_slot.GetSlotItemUI().item.info.id,
-                import_slot.GetSlotItemUI().item.amount,
+            process_building.item_array[(int)type] = new ItemSave(
+                (int)slot.GetSlotItemUI().item.info.id,
+                slot.GetSlotItemUI().item.amount,
                 -1,
-                (int)export_slot.GetSlotItemUI().item.state
-            );
-        }
-
-        if (fuel_slot.GetSlotItemUI() == null)
-        {
-            ClearInfo(SlotType.FUEL);
-        }
-        else
-        {
-            process_building.item_array[(int)SlotType.FUEL] = new ItemSave(
-                (int)fuel_slot.GetSlotItemUI().item.info.id,
-                fuel_slot.GetSlotItemUI().item.amount,
-                -1,
-                (int)export_slot.GetSlotItemUI().item.state
+                (int)slot.GetSlotItemUI().item.state
             );
         }
     }

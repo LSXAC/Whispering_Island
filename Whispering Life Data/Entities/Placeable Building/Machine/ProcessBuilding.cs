@@ -37,7 +37,7 @@ public partial class ProcessBuilding : MachineBase
         if (!CheckClickDependencies(this))
             return;
 
-        ProcessingTab.instance.SetProcessBuilding(this);
+        ProcessingTab.instance.SetReferenceBuilding(this);
         GameMenu.instance.OnOpenProcessingTab();
     }
 

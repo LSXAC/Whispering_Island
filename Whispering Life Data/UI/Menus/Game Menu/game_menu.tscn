@@ -69,6 +69,7 @@
 [ext_resource type="Script" uid="uid://dhc64tsxxyqti" path="res://UI/Menus/Game Menu/NerveTransducerTab.cs" id="41_61i7k"]
 [ext_resource type="StyleBox" uid="uid://b6stjn6fub30f" path="res://UI/Styles/tab_container_unselected_style.tres.tres" id="41_fato5"]
 [ext_resource type="Resource" uid="uid://drpg8ggybgde0" path="res://Sub Systems/Skill System/Skills/Data/mining_bonus_2.tres" id="41_gqg20"]
+[ext_resource type="Script" uid="uid://cloxr8qxkstkv" path="res://UI/Menus/Game Menu/CombinerTab.cs" id="41_kv5uf"]
 [ext_resource type="Texture2D" uid="uid://bl2slcpf1wvaf" path="res://UI/Icons/UI_Star_Empty.png" id="41_tbpku"]
 [ext_resource type="StyleBox" uid="uid://5gmmubnpn3xd" path="res://UI/Styles/Panel_Brighter_Style.tres" id="42_8a6lo"]
 [ext_resource type="Resource" uid="uid://cwsmufe0vpjku" path="res://Sub Systems/Skill System/Skills/Data/recycle_unused_data.tres" id="42_j0nuq"]
@@ -1100,6 +1101,7 @@ horizontal_alignment = 2
 autowrap_mode = 2
 
 [node name="EnableDisableButton" type="Button" parent="Background/ProcessingTab/PanelContainer" unique_id=1545253667]
+visible = false
 layout_mode = 0
 offset_left = 6.0
 offset_top = 22.0
@@ -1141,6 +1143,194 @@ offset_bottom = -3.0
 translation_string = "GAMEMENU_FURNACE"
 
 [node name="Border" type="ColorRect" parent="Background/ProcessingTab" unique_id=1723869510]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 3.0
+offset_bottom = 278.0
+color = Color(0, 0, 0, 1)
+
+[node name="CombinerTab" type="Control" parent="Background" unique_id=158413284]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 250.0
+offset_top = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("41_kv5uf")
+
+[node name="ColorRect" type="ColorRect" parent="Background/CombinerTab" unique_id=925714746]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.67451, 0.654902, 0.796078, 1)
+
+[node name="PanelContainer" type="Control" parent="Background/CombinerTab" unique_id=427276787]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 214.0
+offset_right = 320.0
+offset_bottom = 262.0
+
+[node name="Slots" type="Control" parent="Background/CombinerTab/PanelContainer" unique_id=978798623]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SlotBackgroundInput" parent="Background/CombinerTab/PanelContainer/Slots" unique_id=1156444948 instance=ExtResource("13_m8k7p")]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -199.0
+offset_right = 38.0
+offset_bottom = -167.0
+
+[node name="Slot0" parent="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundInput" index="0" unique_id=1848838759]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
+focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
+
+[node name="SlotBackgroundExport" parent="Background/CombinerTab/PanelContainer/Slots" unique_id=1647123327 instance=ExtResource("13_m8k7p")]
+layout_mode = 0
+offset_left = 260.0
+offset_top = -199.0
+offset_right = 292.0
+offset_bottom = -167.0
+
+[node name="Slot0" parent="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundExport" index="0" unique_id=1848838759]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
+focus_neighbor_left = NodePath("../../SlotBackgroundInput/Slot0")
+focus_neighbor_bottom = NodePath("../../../EnableDisableButton")
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
+is_export_slot = true
+
+[node name="SlotBackgroundFuel" parent="Background/CombinerTab/PanelContainer/Slots" unique_id=1974045082 instance=ExtResource("13_m8k7p")]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -163.0
+offset_right = 38.0
+offset_bottom = -131.0
+
+[node name="Slot0" parent="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundFuel" index="0" unique_id=1848838759]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
+focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
+focus_neighbor_bottom = NodePath("../../../EnableDisableButton")
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
+icon = ExtResource("20_s2f2w")
+icon_alignment = 1
+attribute_to_check = SubResource("Resource_gqg20")
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/CombinerTab/PanelContainer" unique_id=699378750]
+layout_mode = 0
+offset_left = 44.0
+offset_top = -199.0
+offset_right = 252.0
+offset_bottom = -179.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/background = ExtResource("29_sy5xb")
+theme_override_styles/fill = ExtResource("30_fato5")
+value = 25.0
+
+[node name="FuelProgressBar" type="ProgressBar" parent="Background/CombinerTab/PanelContainer" unique_id=1641783006]
+layout_mode = 0
+offset_left = 44.0
+offset_top = -174.0
+offset_right = 252.0
+offset_bottom = -167.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/background = SubResource("StyleBoxFlat_6662a")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gcthi")
+step = 1.0
+value = 25.0
+show_percentage = false
+
+[node name="FuelLabel" type="Label" parent="Background/CombinerTab/PanelContainer" unique_id=582778053]
+layout_mode = 0
+offset_left = -33.0
+offset_top = -164.0
+offset_right = 251.0
+offset_bottom = -152.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "FUEL: 100/100"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="EnableDisableButton" type="Button" parent="Background/CombinerTab/PanelContainer" unique_id=307254466]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 22.0
+offset_right = 291.0
+offset_bottom = 54.0
+focus_neighbor_top = NodePath("../Slots/SlotBackgroundFuel/Slot0")
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("34_sy5xb")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/focus = ExtResource("28_gcthi")
+text = "Disable Machine"
+
+[node name="DescriptionLabel" type="Label" parent="Background/CombinerTab/PanelContainer" unique_id=368461713]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -111.0
+offset_right = 291.0
+offset_bottom = -82.0
+theme_override_colors/font_color = Color(1, 0.831373, 0.486275, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "There is currently no available recipe for this resource. Do you miss a research level?"
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("26_tl5yt")
+label_translation_string = "FURNACE_MENU_DESC"
+
+[node name="HeaderColorRect" parent="Background/CombinerTab" unique_id=767268895 instance=ExtResource("11_45saq")]
+layout_mode = 1
+offset_left = -249.0
+offset_top = -25.0
+offset_right = 289.0
+offset_bottom = -3.0
+translation_string = "GAMEMENU_FURNACE"
+
+[node name="Border" type="ColorRect" parent="Background/CombinerTab" unique_id=720169276]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -2.0
@@ -1190,7 +1380,7 @@ Nerven Umwandlung!
 
 Ich bin gar nicht da!"
 
-[node name="HeaderColorRect" parent="Background/NerveTransducerTab" unique_id=767268895 instance=ExtResource("11_45saq")]
+[node name="HeaderColorRect" parent="Background/NerveTransducerTab" unique_id=632199186 instance=ExtResource("11_45saq")]
 layout_mode = 1
 offset_left = -249.0
 offset_top = -25.0
@@ -7161,6 +7351,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="visibility_changed" from="Background/InventoryTab" to="Background/InventoryTab/Inventory" method="OnVisiblityChange"]
 [connection signal="visibility_changed" from="Background/InventoryTab/EquipmentPanel" to="Background/InventoryTab/EquipmentPanel" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/ProcessingTab/PanelContainer/EnableDisableButton" to="Background/ProcessingTab" method="OnMachineStateButton"]
+[connection signal="pressed" from="Background/CombinerTab/PanelContainer/EnableDisableButton" to="Background/CombinerTab" method="OnMachineStateButton"]
 [connection signal="visibility_changed" from="Background/ResearchTab" to="Background/ResearchTab" method="OnVisiblityChanged"]
 [connection signal="timeout" from="Background/ResearchTab/PanelContainer/Timer" to="Background/ResearchTab" method="OnTimerTimeout"]
 [connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
@@ -7273,3 +7464,6 @@ color = Color(0, 0, 0, 1)
 [editable path="Background/ProcessingTab/PanelContainer/Slots/SlotBackgroundInput"]
 [editable path="Background/ProcessingTab/PanelContainer/Slots/SlotBackgroundExport"]
 [editable path="Background/ProcessingTab/PanelContainer/Slots/SlotBackgroundFuel"]
+[editable path="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundInput"]
+[editable path="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundExport"]
+[editable path="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundFuel"]
