@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SmeltableRecipe" format=3 uid="uid://x4qey7qylef8"]
+
+[ext_resource type="Resource" uid="uid://ljb14i8nnpgp" path="res://Entities/Items/Craftable/item_info_sand.tres" id="1_o3p27"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_6npv6"]
+[ext_resource type="Resource" uid="uid://bn0p8b6sengb5" path="res://Entities/Items/Craftable/item_info_glass_chunk.tres" id="3_o3p27"]
+[ext_resource type="Script" uid="uid://4qwoe43ist35" path="res://Entities/Placeable Building/Machine/Recipes/SmeltableRecipe.cs" id="4_bdjt1"]
+
+[sub_resource type="Resource" id="Resource_56c1d"]
+script = ExtResource("2_6npv6")
+info = ExtResource("1_o3p27")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_bu8cb"]
+script = ExtResource("2_6npv6")
+info = ExtResource("3_o3p27")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("4_bdjt1")
+input_item = SubResource("Resource_56c1d")
+output_item = SubResource("Resource_bu8cb")
+unlock_requirements = null
+metadata/_custom_type_script = "uid://4qwoe43ist35"

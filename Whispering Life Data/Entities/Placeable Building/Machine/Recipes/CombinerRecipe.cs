@@ -87,16 +87,12 @@ public partial class CombinerRecipe : ProcessingRecipe
             return false;
 
         if (primary_input_item.info.id == first_item.id)
-        {
             if (IsItemCompatible(second_item))
                 return true;
-        }
 
         if (primary_input_item.info.id == second_item.id)
-        {
             if (IsItemCompatible(first_item))
                 return true;
-        }
 
         return false;
     }

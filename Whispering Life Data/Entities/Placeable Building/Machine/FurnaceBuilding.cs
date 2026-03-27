@@ -127,6 +127,8 @@ public partial class FurnaceBuilding : ProcessBuilding
             return true;
         else if (item_array[(int)SlotType.EXPORT].item_id != (int)recipe.GetOutputItem().id)
             return false;
+        else if (item_array[(int)SlotType.EXPORT].state != recipe.GetItemState())
+            return false;
 
         return true;
     }

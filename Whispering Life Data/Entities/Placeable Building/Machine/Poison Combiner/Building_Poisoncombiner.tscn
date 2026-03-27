@@ -63,17 +63,37 @@ y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_acp8y")
+combiner_recipes = Array[Object]([null])
+enable_state_changing_mode = null
+state_changing_variable_items = null
+state_changing_output_state = null
 item_array = [null, null, null, null]
+max_fuel_count = null
+fuel_left = null
 state_timer = NodePath("MachineUITimer")
+machine_enabled = null
 machine_activ_color_rect = NodePath("MachineActivColorRect")
 process_timer = NodePath("ProcessTimer")
+process_wait_time = null
 building_id = 41
 consums_magic_power = true
 magic_power_consumption = 5.0
+disable_mouse_interaction = null
 tile_types = Array[int]([0])
+can_be_build_on_air = null
+ignore_node_structure = null
+use_wind = null
+title = null
+description = null
+disable_collision = null
+show_hover_menu = null
 
 [node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=336840390]
 script = ExtResource("2_sgyv2")
+use_sprite = null
+use_animation_player = null
+use_animated_sprite = null
+anim_name = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager" unique_id=46796496]
 position = Vector2(-32, -48)
@@ -87,10 +107,15 @@ texture = ExtResource("3_qxfgd")
 centered = false
 
 [node name="ShadowNode" parent="SpriteAnimationManager" unique_id=341328918 instance=ExtResource("4_6n01l")]
+start_index = null
+offset = null
+is_used_in_tutorial = null
 DisableShadow = true
 
 [node name="BuildingAreas" type="Node2D" parent="." unique_id=1990587576 node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("5_r107m")
+building_collider = null
+current_type = null
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." unique_id=255052058]

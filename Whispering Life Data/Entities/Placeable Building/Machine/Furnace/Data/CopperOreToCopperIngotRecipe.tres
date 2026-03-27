@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SmeltableRecipe" format=3 uid="uid://b31wvqbvp8pmq"]
+
+[ext_resource type="Resource" uid="uid://eo8ax7whu2kb" path="res://Entities/Items/Minerals/Copper/Copper Ore/Data/item_info_copper_ore.tres" id="1_hoqbu"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_e8mxq"]
+[ext_resource type="Resource" uid="uid://i3ah62dd06gb" path="res://Entities/Items/Minerals/Copper/Copper Ingot/Data/item_info_copper_ingot.tres" id="3_e8mxq"]
+[ext_resource type="Script" uid="uid://4qwoe43ist35" path="res://Entities/Placeable Building/Machine/Recipes/SmeltableRecipe.cs" id="4_4hd3w"]
+
+[sub_resource type="Resource" id="Resource_56c1d"]
+script = ExtResource("2_e8mxq")
+info = ExtResource("1_hoqbu")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_bu8cb"]
+script = ExtResource("2_e8mxq")
+info = ExtResource("3_e8mxq")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("4_4hd3w")
+input_item = SubResource("Resource_56c1d")
+output_item = SubResource("Resource_bu8cb")
+unlock_requirements = null
+metadata/_custom_type_script = "uid://4qwoe43ist35"

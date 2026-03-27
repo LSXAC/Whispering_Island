@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CombinerRecipe" format=3 uid="uid://bk3y1yivf3r2v"]
+
+[ext_resource type="Script" uid="uid://bwrtrbgelx14l" path="res://Entities/Placeable Building/Machine/Recipes/CombinerRecipe.cs" id="1_liwj1"]
+
+[resource]
+script = ExtResource("1_liwj1")
+compatible_items = null
+unlock_requirements = null
+metadata/_custom_type_script = "uid://bwrtrbgelx14l"

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SmeltableRecipe" format=3 uid="uid://wvwefhlrowqe"]
+
+[ext_resource type="Resource" uid="uid://l7tf257vet4l" path="res://Entities/Items/Minerals/Iron/Iron Ore/Data/item_info_iron_ore.tres" id="1_xjgbp"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_xjhue"]
+[ext_resource type="Resource" uid="uid://d2e6om0f0jfhd" path="res://Entities/Items/Craftable/item_info_iron_ingot.tres" id="3_xjhue"]
+[ext_resource type="Script" uid="uid://4qwoe43ist35" path="res://Entities/Placeable Building/Machine/Recipes/SmeltableRecipe.cs" id="4_m78mo"]
+
+[sub_resource type="Resource" id="Resource_56c1d"]
+script = ExtResource("2_xjhue")
+info = ExtResource("1_xjgbp")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_bu8cb"]
+script = ExtResource("2_xjhue")
+info = ExtResource("3_xjhue")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[resource]
+script = ExtResource("4_m78mo")
+input_item = SubResource("Resource_56c1d")
+output_item = SubResource("Resource_bu8cb")
+unlock_requirements = null
+metadata/_custom_type_script = "uid://4qwoe43ist35"
