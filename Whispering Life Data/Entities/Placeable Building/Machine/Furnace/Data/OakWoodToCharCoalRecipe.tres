@@ -1,4 +1,4 @@
-[gd_resource type="Resource" format=3 uid="uid://c8k818x7b80f4"]
+[gd_resource type="Resource" script_class="SmeltableRecipe" format=3 uid="uid://c8k818x7b80f4"]
 
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Entities/Items/Vegetation/Oak/Oak Wood/Data/OakWood.tres" id="1_6ts1i"]
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_v8oo2"]

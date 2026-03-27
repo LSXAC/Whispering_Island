@@ -124,6 +124,12 @@ public partial class IslandObjectSaveManager : Node2D
 
                 if (node is MagicGenerator magic_generator)
                     placeable_saves.Add((PlaceableSave)magic_generator.Save());
+
+                if (node is CombinerBuilding combiner_building)
+                    placeable_saves.Add((PlaceableSave)combiner_building.Save());
+
+                if (node is AlchemyLabBuilding alchemy_lab)
+                    placeable_saves.Add((PlaceableSave)alchemy_lab.Save());
                 continue;
             }
 

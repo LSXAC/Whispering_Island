@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccbyeutydxucw"
-path="res://.godot/imported/PoisonCombiner_Building_Sprite.png-4101e8e14d2b2e135abf0f560b2c0c8a.ctex"
+path="res://.godot/imported/Combiner_Building_Sprite.png-784431abbb7ab74b559bb9d965c050e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Placeable Building/Machine/Poison Combiner/Texture/PoisonCombiner_Building_Sprite.png"
-dest_files=["res://.godot/imported/PoisonCombiner_Building_Sprite.png-4101e8e14d2b2e135abf0f560b2c0c8a.ctex"]
+source_file="res://Entities/Placeable Building/Machine/Combiner/Texture/Combiner_Building_Sprite.png"
+dest_files=["res://.godot/imported/Combiner_Building_Sprite.png-784431abbb7ab74b559bb9d965c050e2.ctex"]
 
 [params]
 

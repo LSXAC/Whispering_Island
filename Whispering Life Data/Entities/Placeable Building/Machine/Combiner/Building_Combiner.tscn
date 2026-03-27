@@ -1,16 +1,17 @@
 [gd_scene format=4 uid="uid://6ivrk0htm5tf"]
 
-[ext_resource type="Script" uid="uid://bnpx6n5k7i641" path="res://Entities/Placeable Building/Machine/PoisonCombinerBuilding.cs" id="1_acp8y"]
-[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="2_sgyv2"]
-[ext_resource type="Texture2D" uid="uid://ccbyeutydxucw" path="res://Entities/Placeable Building/Machine/Poison Combiner/Texture/PoisonCombiner_Building_Sprite.png" id="3_qxfgd"]
-[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="4_6n01l"]
-[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/Placeable Building/BuildingColliderManager.cs" id="5_r107m"]
-[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="6_2ifuq"]
-[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="7_utv8e"]
-[ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Entities/Placeable Building/Machine/Components/Taker/Building_Item_Taker_Component.tscn" id="8_m7uvv"]
-[ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Entities/Placeable Building/Machine/Components/Giver/component_building_item_giver.tscn" id="9_5ikj3"]
-[ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sub Systems/Particles/Stone_Particle.png" id="10_o1100"]
-[ext_resource type="Script" uid="uid://bkcah5h7fcbm5" path="res://Entities/Light Behaviour/LightBehaviour.cs" id="11_7io0g"]
+[ext_resource type="Script" uid="uid://bnpx6n5k7i641" path="res://Entities/Placeable Building/Machine/CombinerBuilding.cs" id="1_ipd8r"]
+[ext_resource type="Script" uid="uid://bwrtrbgelx14l" path="res://Entities/Placeable Building/Machine/Recipes/CombinerRecipe.cs" id="2_oq4dm"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="3_jv5li"]
+[ext_resource type="Texture2D" uid="uid://ccbyeutydxucw" path="res://Entities/Placeable Building/Machine/Combiner/Texture/Combiner_Building_Sprite.png" id="4_7fwm8"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="5_kjvax"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/Placeable Building/BuildingColliderManager.cs" id="6_r8edt"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="7_s5fud"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="8_fyx6i"]
+[ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Entities/Placeable Building/Machine/Components/Taker/Building_Item_Taker_Component.tscn" id="9_ysfdy"]
+[ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Entities/Placeable Building/Machine/Components/Giver/component_building_item_giver.tscn" id="10_k7vfg"]
+[ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sub Systems/Particles/Stone_Particle.png" id="11_rqt3g"]
+[ext_resource type="Script" uid="uid://bkcah5h7fcbm5" path="res://Entities/Light Behaviour/LightBehaviour.cs" id="12_6y2xf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g1nkg"]
 animations = [{
@@ -62,38 +63,19 @@ fill_from = Vector2(0.512821, 0.498576)
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
-script = ExtResource("1_acp8y")
-combiner_recipes = Array[Object]([null])
-enable_state_changing_mode = null
-state_changing_variable_items = null
-state_changing_output_state = null
+script = ExtResource("1_ipd8r")
+combiner_recipes = Array[ExtResource("2_oq4dm")]([null])
 item_array = [null, null, null, null]
-max_fuel_count = null
-fuel_left = null
 state_timer = NodePath("MachineUITimer")
-machine_enabled = null
 machine_activ_color_rect = NodePath("MachineActivColorRect")
 process_timer = NodePath("ProcessTimer")
-process_wait_time = null
 building_id = 41
 consums_magic_power = true
 magic_power_consumption = 5.0
-disable_mouse_interaction = null
 tile_types = Array[int]([0])
-can_be_build_on_air = null
-ignore_node_structure = null
-use_wind = null
-title = null
-description = null
-disable_collision = null
-show_hover_menu = null
 
 [node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=336840390]
-script = ExtResource("2_sgyv2")
-use_sprite = null
-use_animation_player = null
-use_animated_sprite = null
-anim_name = null
+script = ExtResource("3_jv5li")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager" unique_id=46796496]
 position = Vector2(-32, -48)
@@ -103,42 +85,37 @@ centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager" unique_id=85301783]
 position = Vector2(-32, -48)
-texture = ExtResource("3_qxfgd")
+texture = ExtResource("4_7fwm8")
 centered = false
 
-[node name="ShadowNode" parent="SpriteAnimationManager" unique_id=341328918 instance=ExtResource("4_6n01l")]
-start_index = null
-offset = null
-is_used_in_tutorial = null
+[node name="ShadowNode" parent="SpriteAnimationManager" unique_id=341328918 instance=ExtResource("5_kjvax")]
 DisableShadow = true
 
 [node name="BuildingAreas" type="Node2D" parent="." unique_id=1990587576 node_paths=PackedStringArray("collision_tilemap")]
-script = ExtResource("5_r107m")
-building_collider = null
-current_type = null
+script = ExtResource("6_r8edt")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." unique_id=255052058]
 z_index = -2
 tile_map_data = PackedByteArray("AAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAACAAAAAAAAAP//AAACAAAAAAD/////AAACAAAAAAA=")
 enabled = false
-tile_set = ExtResource("6_2ifuq")
+tile_set = ExtResource("7_s5fud")
 
 [node name="MouseArea" type="Area2D" parent="." unique_id=1733562446]
 z_index = 1
 position = Vector2(-8, -8)
 collision_layer = 2
-script = ExtResource("7_utv8e")
+script = ExtResource("8_fyx6i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=1462666312]
 shape = SubResource("RectangleShape2D_fk0le")
 
-[node name="Taker" parent="." unique_id=2075607872 node_paths=PackedStringArray("building") instance=ExtResource("8_m7uvv")]
+[node name="Taker" parent="." unique_id=2075607872 node_paths=PackedStringArray("building") instance=ExtResource("9_ysfdy")]
 z_index = 2
 position = Vector2(8, -8)
 building = NodePath("..")
 
-[node name="Giver" parent="." unique_id=683998713 node_paths=PackedStringArray("building") instance=ExtResource("9_5ikj3")]
+[node name="Giver" parent="." unique_id=683998713 node_paths=PackedStringArray("building") instance=ExtResource("10_k7vfg")]
 position = Vector2(-38, -6)
 direction_not_giving = 1
 building = NodePath("..")
@@ -153,7 +130,7 @@ wait_time = 0.05
 z_index = 1
 position = Vector2(-8, -41)
 amount = 100
-texture = ExtResource("10_o1100")
+texture = ExtResource("11_rqt3g")
 lifetime = 2.5
 preprocess = 1.0
 explosiveness = 1.0
@@ -166,7 +143,7 @@ position = Vector2(-8, 4)
 scale = Vector2(0.71875, 0.5)
 blend_mode = 2
 texture = SubResource("GradientTexture2D_k7rv1")
-script = ExtResource("11_7io0g")
+script = ExtResource("12_6y2xf")
 
 [node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=1394360319]
 polygon = PackedVector2Array(-27, 15, 11, 15, 11, 5, 16, 5, 16, -11, 11, -11, 11, -18, -27, -18, -27, -15, -27, -11, -32, -11, -32, 5, -27, 5)

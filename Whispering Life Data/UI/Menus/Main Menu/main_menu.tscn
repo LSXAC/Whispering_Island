@@ -59,7 +59,7 @@
 [ext_resource type="Resource" uid="uid://b8pmck134qffu" path="res://Entities/Items/Vegetation/Cactus/Data/Research/CactusResearch.tres" id="55_ulpy6"]
 [ext_resource type="Resource" uid="uid://crmqrimgdf2gl" path="res://Sub Systems/Research System/Items/Data/item_research_iron_ore.tres" id="56_o04hm"]
 [ext_resource type="Resource" uid="uid://d0886s00hv4gr" path="res://Entities/Placeable Building/Machine/Nerve Transducer/Data/NerveTransducerBuildMenu.tres" id="56_ogxk2"]
-[ext_resource type="Resource" uid="uid://b024ee2762wjh" path="res://Entities/Placeable Building/Machine/Poison Combiner/Data/PoisonCombinerBuildMenu.tres" id="57_6tlws"]
+[ext_resource type="Resource" uid="uid://b024ee2762wjh" path="res://Entities/Placeable Building/Machine/Combiner/Data/CombinerBuildMenu.tres" id="57_6tlws"]
 [ext_resource type="Resource" uid="uid://cx06xbdvfg7nw" path="res://Sub Systems/Research System/Items/Data/item_research_mystic_oak_wood.tres" id="57_8ftcc"]
 [ext_resource type="Resource" uid="uid://dynupcrbralid" path="res://Sub Systems/Research System/Items/Data/item_research_oak_wood.tres" id="58_uslci"]
 [ext_resource type="Resource" uid="uid://dfwyt0twaxq6e" path="res://Sub Systems/Research System/Items/Data/item_research_sand.tres" id="59_eb1q4"]

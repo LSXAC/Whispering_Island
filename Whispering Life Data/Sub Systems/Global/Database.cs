@@ -324,6 +324,7 @@ public partial class Database : Node
         CACTUS,
         MAGIC_GENERATOR,
         NERVE_TRANSDUCER,
-        POISON_COMBINER
+        COMBINER,
+        ALCHEMY_LAB
     }
 }

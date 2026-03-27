@@ -1,0 +1,159 @@
+[gd_scene format=4 uid="uid://bq2lmgvygbt6t"]
+
+[ext_resource type="Script" uid="uid://bnmymp7cxek1a" path="res://Entities/Placeable Building/Machine/AlchemyLabBuilding.cs" id="1_jcedd"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="3_5qi3t"]
+[ext_resource type="Texture2D" uid="uid://c4k1e43v3so2p" path="res://Entities/Placeable Building/Machine/Alchemy Lab Building/Texture/AlchemyLab_Building_Sprite.png" id="4_h1b2d"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="5_5h07p"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/Placeable Building/BuildingColliderManager.cs" id="6_xdq3i"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="7_o7l23"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="8_b4doa"]
+[ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Entities/Placeable Building/Machine/Components/Taker/Building_Item_Taker_Component.tscn" id="9_8vlhm"]
+[ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Entities/Placeable Building/Machine/Components/Giver/component_building_item_giver.tscn" id="10_otbdb"]
+[ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sub Systems/Particles/Stone_Particle.png" id="11_57j27"]
+[ext_resource type="Script" uid="uid://bkcah5h7fcbm5" path="res://Entities/Light Behaviour/LightBehaviour.cs" id="12_2vjq3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g1nkg"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
+size = Vector2(48, 48)
+
+[sub_resource type="Gradient" id="Gradient_l0ybn"]
+offsets = PackedFloat32Array(0, 0.412791, 0.854651, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0.627006, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cvuei"]
+gradient = SubResource("Gradient_l0ybn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cvuei"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1.2, 1.2, 1)
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector3(0.2, 0, 0)
+spread = 0.5
+angular_velocity_min = 0.999984
+angular_velocity_max = 2.49998
+gravity = Vector3(5, -20, 0)
+radial_accel_min = 5.0
+radial_accel_max = 14.95
+scale_min = 0.2
+scale_over_velocity_max = 1.0
+color_ramp = SubResource("GradientTexture1D_cvuei")
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+
+[sub_resource type="Gradient" id="Gradient_k0wjm"]
+offsets = PackedFloat32Array(0, 0.162835, 0.630268)
+colors = PackedColorArray(1, 1, 1, 1, 0.961538, 0.961538, 0.961538, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k7rv1"]
+gradient = SubResource("Gradient_k0wjm")
+fill = 1
+fill_from = Vector2(0.512821, 0.498576)
+
+[node name="Building" type="StaticBody2D" unique_id=737887353 node_paths=PackedStringArray("state_timer", "machine_activ_color_rect", "process_timer")]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_jcedd")
+item_array = [null, null, null, null]
+state_timer = NodePath("MachineUITimer")
+machine_activ_color_rect = NodePath("MachineActivColorRect")
+process_timer = NodePath("ProcessTimer")
+building_id = 42
+consums_magic_power = true
+magic_power_consumption = 5.0
+tile_types = Array[int]([0])
+
+[node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=336840390]
+script = ExtResource("3_5qi3t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager" unique_id=46796496]
+position = Vector2(-32, -48)
+sprite_frames = SubResource("SpriteFrames_g1nkg")
+animation = &"Normal"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager" unique_id=85301783]
+position = Vector2(-32, -48)
+texture = ExtResource("4_h1b2d")
+centered = false
+
+[node name="ShadowNode" parent="SpriteAnimationManager" unique_id=341328918 instance=ExtResource("5_5h07p")]
+DisableShadow = true
+
+[node name="BuildingAreas" type="Node2D" parent="." unique_id=1990587576 node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("6_xdq3i")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." unique_id=255052058]
+z_index = -2
+tile_map_data = PackedByteArray("AAD+////AAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAACAAAAAAAAAP//AAACAAAAAAD/////AAACAAAAAAA=")
+enabled = false
+tile_set = ExtResource("7_o7l23")
+
+[node name="MouseArea" type="Area2D" parent="." unique_id=1733562446]
+z_index = 1
+position = Vector2(-8, -8)
+collision_layer = 2
+script = ExtResource("8_b4doa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=1462666312]
+shape = SubResource("RectangleShape2D_fk0le")
+
+[node name="Taker" parent="." unique_id=2075607872 node_paths=PackedStringArray("building") instance=ExtResource("9_8vlhm")]
+z_index = 2
+position = Vector2(8, -8)
+building = NodePath("..")
+
+[node name="Giver" parent="." unique_id=683998713 node_paths=PackedStringArray("building") instance=ExtResource("10_otbdb")]
+position = Vector2(-38, -6)
+direction_not_giving = 1
+building = NodePath("..")
+
+[node name="ProcessTimer" type="Timer" parent="." unique_id=2079656188]
+wait_time = 0.1
+
+[node name="MachineUITimer" type="Timer" parent="." unique_id=502923141]
+wait_time = 0.05
+
+[node name="SmokeParticle" type="GPUParticles2D" parent="." unique_id=368139703]
+z_index = 1
+position = Vector2(-8, -41)
+amount = 100
+texture = ExtResource("11_57j27")
+lifetime = 2.5
+preprocess = 1.0
+explosiveness = 1.0
+randomness = 0.8
+trail_lifetime = 1.0
+process_material = SubResource("ParticleProcessMaterial_cvuei")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1981917886]
+position = Vector2(-8, 4)
+scale = Vector2(0.71875, 0.5)
+blend_mode = 2
+texture = SubResource("GradientTexture2D_k7rv1")
+script = ExtResource("12_2vjq3")
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=1394360319]
+polygon = PackedVector2Array(-27, 15, 11, 15, 11, 5, 16, 5, 16, -11, 11, -11, 11, -18, -27, -18, -27, -15, -27, -11, -32, -11, -32, 5, -27, 5)
+
+[node name="MachineActivColorRect" type="ColorRect" parent="." unique_id=944067068]
+z_index = 2
+offset_left = -25.0
+offset_top = -6.0
+offset_right = -23.0
+offset_bottom = -4.0
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
+[connection signal="timeout" from="ProcessTimer" to="." method="OnCraftingTimerTimeout"]
+[connection signal="timeout" from="MachineUITimer" to="." method="OnMachineTimeOut"]

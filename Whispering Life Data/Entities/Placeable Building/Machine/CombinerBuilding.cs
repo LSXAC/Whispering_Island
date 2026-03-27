@@ -4,7 +4,7 @@ using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
-public partial class PoisonCombinerBuilding : ProcessBuilding
+public partial class CombinerBuilding : ProcessBuilding
 {
     public enum SlotType
     {

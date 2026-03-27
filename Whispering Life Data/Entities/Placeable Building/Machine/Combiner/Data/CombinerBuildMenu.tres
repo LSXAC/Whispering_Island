@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="2_hyfhx"]
 [ext_resource type="Resource" uid="uid://qpxoldygoivu" path="res://Entities/Items/Machine Component/Smelt/Data/SmeltComponent.tres" id="3_gjfor"]
 [ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://Entities/Items/Machine Component/Transport/Data/TransportComponent.tres" id="4_ugiv7"]
-[ext_resource type="PackedScene" uid="uid://6ivrk0htm5tf" path="res://Entities/Placeable Building/Machine/Poison Combiner/Building_Poisoncombiner.tscn" id="5_c032i"]
+[ext_resource type="PackedScene" uid="uid://6ivrk0htm5tf" path="res://Entities/Placeable Building/Machine/Combiner/Building_Combiner.tscn" id="5_c032i"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Build Menu Line/Building_Menu_List_Object.cs" id="6_7uryx"]
-[ext_resource type="Texture2D" uid="uid://ccbyeutydxucw" path="res://Entities/Placeable Building/Machine/Poison Combiner/Texture/PoisonCombiner_Building_Sprite.png" id="7_ad3a5"]
+[ext_resource type="Texture2D" uid="uid://ccbyeutydxucw" path="res://Entities/Placeable Building/Machine/Combiner/Texture/Combiner_Building_Sprite.png" id="7_ad3a5"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
 script = ExtResource("2_hyfhx")
