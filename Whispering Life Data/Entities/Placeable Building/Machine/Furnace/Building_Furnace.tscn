@@ -1,8 +1,12 @@
 [gd_scene format=4 uid="uid://cn0rjr3gah4jr"]
 
 [ext_resource type="Script" uid="uid://cl3ufhueu0dqg" path="res://Entities/Placeable Building/Machine/FurnaceBuilding.cs" id="1_jdu6x"]
+[ext_resource type="Script" uid="uid://4qwoe43ist35" path="res://Entities/Placeable Building/Machine/Recipes/SmeltableRecipe.cs" id="2_qxuaa"]
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Entities/Items/Vegetation/Oak/Oak Wood/Data/OakWood.tres" id="3_sq0or"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="4_2jdlk"]
+[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="4_mlrka"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="4_w5rqh"]
+[ext_resource type="Resource" uid="uid://cfqb2p8ati1jo" path="res://Entities/Items/Minerals/Char Coal/Data/item_info_char_coal.tres" id="5_41v6s"]
 [ext_resource type="Script" uid="uid://bkcah5h7fcbm5" path="res://Entities/Light Behaviour/LightBehaviour.cs" id="11_w5rqh"]
 [ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Placeable Building/Machine/Furnace/Texture/Furnace_Building_Sprite.png" id="12_pnpvk"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/Placeable Building/BuildingColliderManager.cs" id="13_ph182"]
@@ -11,6 +15,25 @@
 [ext_resource type="PackedScene" uid="uid://dhfg3bvoui3da" path="res://Entities/Placeable Building/Machine/Components/Taker/Building_Item_Taker_Component.tscn" id="19_3ermy"]
 [ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Entities/Placeable Building/Machine/Components/Giver/component_building_item_giver.tscn" id="20_ujfx2"]
 [ext_resource type="Texture2D" uid="uid://cvl8av8qxo0hb" path="res://Sub Systems/Particles/Stone_Particle.png" id="21_l0ybn"]
+
+[sub_resource type="Resource" id="Resource_56c1d"]
+script = ExtResource("4_mlrka")
+info = ExtResource("3_sq0or")
+amount = 2
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_bu8cb"]
+script = ExtResource("4_mlrka")
+info = ExtResource("5_41v6s")
+amount = 1
+metadata/_custom_type_script = "uid://cee63igbpybf"
+
+[sub_resource type="Resource" id="Resource_ytb46"]
+script = ExtResource("2_qxuaa")
+input_item = SubResource("Resource_56c1d")
+output_item = SubResource("Resource_bu8cb")
+unlock_requirements = null
+metadata/_custom_type_script = "uid://4qwoe43ist35"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g1nkg"]
 animations = [{
@@ -63,6 +86,7 @@ y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_jdu6x")
+smeltable_recipes = Array[ExtResource("2_qxuaa")]([SubResource("Resource_ytb46")])
 state_timer = NodePath("MachineUITimer")
 machine_activ_color_rect = NodePath("MachineActivColorRect")
 process_timer = NodePath("ProcessTimer")

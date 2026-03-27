@@ -1,14 +1,14 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Godot;
 using Godot.Collections;
 
-/// <summary>
-/// Spezialisierte Implementierung von ProcessBuilding für Schmelzöfen (Furnace)
-/// Verarbeitet SmeltableAttribute Rezepte und BurnableAttribute Brennstoff
-/// </summary>
 public partial class FurnaceBuilding : ProcessBuilding
 {
+    [Export]
+    public Array<SmeltableRecipe> smeltable_recipes = new Array<SmeltableRecipe>();
+
     public enum SlotType
     {
         IMPORT = 0,
@@ -20,22 +20,55 @@ public partial class FurnaceBuilding : ProcessBuilding
     {
         base._Ready();
         if (item_array.Length < 4)
-        {
             System.Array.Resize(ref item_array, 4);
-        }
     }
 
-    protected override IProcessingRecipe GetRecipeFromInputSlot()
+    protected override ProcessingRecipe GetRecipeFromInputSlot()
     {
+        if (selected_recipe != null)
+        {
+            if (item_array[(int)SlotType.IMPORT] != null)
+            {
+                SmeltableRecipe recipe = selected_recipe as SmeltableRecipe;
+                if (recipe != null)
+                {
+                    ItemInfo import_info = Inventory.ITEM_TYPES[
+                        (Inventory.ITEM_ID)item_array[(int)SlotType.IMPORT].item_id
+                    ];
+
+                    if (
+                        recipe.GetInputRequirement() != null
+                        && recipe.GetInputRequirement().id == import_info.id
+                        && item_array[(int)SlotType.IMPORT].amount >= recipe.GetAmountToProcess()
+                    )
+                        return recipe;
+                }
+            }
+            return null;
+        }
+
         if (item_array[(int)SlotType.IMPORT] == null)
             return null;
 
-        ItemInfo import_info = Inventory.ITEM_TYPES[
+        ItemInfo import_info_default = Inventory.ITEM_TYPES[
             (Inventory.ITEM_ID)item_array[(int)SlotType.IMPORT].item_id
         ];
 
-        SmeltableAttribute smeltable = import_info?.GetAttributeOrNull<SmeltableAttribute>();
-        return smeltable;
+        foreach (SmeltableRecipe smeltable_recipe in smeltable_recipes)
+        {
+            if (
+                smeltable_recipe != null
+                && smeltable_recipe.GetInputRequirement() != null
+                && smeltable_recipe.GetInputRequirement().id == import_info_default.id
+                && smeltable_recipe.IsUnlocked()
+                && item_array[(int)SlotType.IMPORT].amount >= smeltable_recipe.GetAmountToProcess()
+            )
+            {
+                return smeltable_recipe;
+            }
+        }
+
+        return null;
     }
 
     protected override bool SelectAndCheckCanCraft()
@@ -46,22 +79,53 @@ public partial class FurnaceBuilding : ProcessBuilding
         ItemInfo import_item_info = Inventory.ITEM_TYPES[
             (Inventory.ITEM_ID)item_array[(int)SlotType.IMPORT].item_id
         ];
-        SmeltableAttribute smeltable = import_item_info.GetAttributeOrNull<SmeltableAttribute>();
 
-        if (smeltable == null)
-            return false;
+        SmeltableRecipe recipe = null;
 
-        if (smeltable.unlock_requirements != null && smeltable.unlock_requirements.Count > 0)
-            if (!GlobalFunctions.CheckResearchRequirements(smeltable.unlock_requirements))
+        if (selected_recipe != null)
+        {
+            recipe = selected_recipe as SmeltableRecipe;
+            if (recipe == null)
                 return false;
 
-        if (item_array[(int)SlotType.IMPORT].amount < smeltable.amount_to_smelt)
+            if (
+                recipe.GetInputRequirement() == null
+                || recipe.GetInputRequirement().id != import_item_info.id
+            )
+                return false;
+        }
+        else
+        {
+            foreach (SmeltableRecipe smelting_recipe in smeltable_recipes)
+            {
+                if (
+                    smelting_recipe != null
+                    && smelting_recipe.GetInputRequirement() != null
+                    && smelting_recipe.GetInputRequirement().id == import_item_info.id
+                    && smelting_recipe.IsUnlocked()
+                )
+                {
+                    recipe = smelting_recipe;
+                    break;
+                }
+            }
+        }
+
+        if (recipe == null)
             return false;
 
-        // Check if output slot is compatible
+        if (!recipe.IsUnlocked())
+            return false;
+
+        if (item_array[(int)SlotType.FUEL] == null || fuel_left <= 0)
+            return false;
+
+        if (item_array[(int)SlotType.IMPORT].amount < recipe.GetAmountToProcess())
+            return false;
+
         if (item_array[(int)SlotType.EXPORT] == null)
             return true;
-        else if (item_array[(int)SlotType.EXPORT].item_id != (int)smeltable.smelted_to_item.info.id)
+        else if (item_array[(int)SlotType.EXPORT].item_id != (int)recipe.GetOutputItem().id)
             return false;
 
         return true;
@@ -83,9 +147,27 @@ public partial class FurnaceBuilding : ProcessBuilding
         };
     }
 
+    protected override bool CanItemFitInInputSlot(Inventory.ITEM_ID item_id)
+    {
+        if (selected_recipe == null)
+            return true;
+
+        SmeltableRecipe recipe = selected_recipe as SmeltableRecipe;
+        if (recipe == null)
+            return false;
+
+        ItemInfo item_info = Inventory.ITEM_TYPES[item_id];
+        if (item_info == null)
+            return false;
+
+        if (recipe.GetInputRequirement() == null)
+            return false;
+
+        return recipe.GetInputRequirement().id == item_info.id;
+    }
+
     protected override void OpenGameMenuTab()
     {
-        Debug.Print("Open Furnace Tab");
         GameMenu.instance.OnOpenFurnaceTab();
     }
 }

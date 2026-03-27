@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Godot;
 using Godot.Collections;
@@ -16,23 +17,21 @@ public abstract partial class ProcessBuilding : MachineBase
 
     [Export]
     public Timer state_timer;
+    public Godot.Collections.Array recipes = new Godot.Collections.Array();
 
     public bool is_crafting = false;
     public int ui_progress = 0;
     public int progress = 0;
-    protected abstract IProcessingRecipe GetRecipeFromInputSlot();
+
+    // Recipe Selection
+    public ProcessingRecipe selected_recipe = null;
+    protected abstract ProcessingRecipe GetRecipeFromInputSlot();
 
     protected abstract bool SelectAndCheckCanCraft();
 
-    protected virtual void OnProcessingComplete(IProcessingRecipe recipe)
-    {
-        // Zu überschreiben durch Subklassen
-    }
+    protected virtual void OnProcessingComplete(ProcessingRecipe recipe) { }
 
-    protected virtual void OnProcessingTick(IProcessingRecipe recipe)
-    {
-        // Zu überschreiben durch Subklassen
-    }
+    protected virtual void OnProcessingTick(ProcessingRecipe recipe) { }
 
     protected abstract ProcessingTab GetUIUpdater();
     protected abstract void OpenGameMenuTab();
@@ -75,7 +74,7 @@ public abstract partial class ProcessBuilding : MachineBase
             return;
         }
 
-        IProcessingRecipe recipe = GetRecipeFromInputSlot();
+        ProcessingRecipe recipe = GetRecipeFromInputSlot();
         if (recipe == null)
         {
             StopCrafting();
@@ -103,27 +102,25 @@ public abstract partial class ProcessBuilding : MachineBase
             hover_menu.InitHoverMenu(this);
     }
 
-    protected virtual void ExecuteRecipe(IProcessingRecipe recipe)
+    protected virtual void ExecuteRecipe(ProcessingRecipe recipe)
     {
         int output_idx = GetSlotIndexByPurpose(SlotPurpose.OUTPUT);
         int input_idx = GetSlotIndexByPurpose(SlotPurpose.INPUT);
 
-        // Add output oder create new
         ItemInfo output_info = recipe.GetOutputItem();
         if (output_info != null)
         {
             if (item_array[output_idx] != null)
-                item_array[output_idx].amount += recipe.GetAmountToProcess();
+                item_array[output_idx].amount += recipe.GetAmountToProduce();
             else
                 item_array[output_idx] = new ItemSave(
                     (int)output_info.id,
-                    recipe.GetAmountToProcess(),
+                    recipe.GetAmountToProduce(),
                     -1,
                     recipe.GetItemState()
                 );
         }
 
-        // Consume input
         item_array[input_idx].amount -= recipe.GetAmountToProcess();
 
         is_crafting = false;
@@ -272,9 +269,89 @@ public abstract partial class ProcessBuilding : MachineBase
                 ui_updater.UpdateUI();
             }
         }
-        catch
+        catch { }
+    }
+
+    protected virtual void CollectAvailableRecipes() { }
+
+    public Godot.Collections.Array GetAvailableRecipes()
+    {
+        return recipes;
+    }
+
+    public void SelectRecipe(ProcessingRecipe recipe)
+    {
+        selected_recipe = recipe;
+        NotifyItemsChanged();
+    }
+
+    public bool CanItemFitInSlot(Inventory.ITEM_ID item_id, int slot_index)
+    {
+        if (selected_recipe == null)
+            return true;
+
+        ItemInfo item_info = Inventory.ITEM_TYPES[item_id];
+        if (item_info == null)
+            return false;
+
+        int input_idx = GetSlotIndexByPurpose(SlotPurpose.INPUT);
+        int aux_idx = GetSlotIndexByPurpose(SlotPurpose.AUXILIARY);
+
+        if (slot_index == input_idx)
         {
-            // Ignoriere Fehler falls UI noch nicht initialisiert ist
+            return CanItemFitInInputSlot(item_id);
         }
+
+        if (slot_index == aux_idx && aux_idx != -1)
+            return CanItemFitInAuxiliarySlot(item_id);
+
+        return true;
+    }
+
+    protected virtual bool CanItemFitInInputSlot(Inventory.ITEM_ID item_id)
+    {
+        return true;
+    }
+
+    protected virtual bool CanItemFitInAuxiliarySlot(Inventory.ITEM_ID item_id)
+    {
+        return true;
+    }
+
+    public bool TryAddItemToSlot(ItemSave item_save, int slot_index)
+    {
+        if (item_save == null)
+            return false;
+
+        if (!CanItemFitInSlot((Inventory.ITEM_ID)item_save.item_id, slot_index))
+            return false;
+
+        if (item_array[slot_index] == null)
+        {
+            item_array[slot_index] = item_save;
+        }
+        else if (item_array[slot_index].item_id == item_save.item_id)
+        {
+            item_array[slot_index].amount += item_save.amount;
+        }
+        else
+        {
+            return false; // Unterschiedliche Items können nicht kombiniert werden
+        }
+
+        NotifyItemsChanged();
+        return true;
+    }
+
+    public bool CanBeltItemFitInSlots(ItemInfo item_info)
+    {
+        if (item_info == null)
+            return false;
+
+        if (selected_recipe == null)
+            return true;
+
+        int input_idx = GetSlotIndexByPurpose(SlotPurpose.INPUT);
+        return CanItemFitInInputSlot((Inventory.ITEM_ID)item_info.id);
     }
 }

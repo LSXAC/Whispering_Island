@@ -1,18 +1,21 @@
+using Godot;
 using Godot.Collections;
 
-public interface IProcessingRecipe
+public abstract partial class ProcessingRecipe : Resource
 {
-    ItemInfo GetInputRequirement();
+    public abstract ItemInfo GetInputRequirement();
 
-    int GetAmountToProcess();
+    public abstract int GetAmountToProcess(); // Benötigte INPUT-Menge
 
-    ItemInfo GetOutputItem();
+    public abstract int GetAmountToProduce(); // Produzierte OUTPUT-Menge
 
-    int GetProcessingTime();
+    public abstract ItemInfo GetOutputItem();
 
-    int GetItemState();
+    public abstract int GetProcessingTime();
 
-    Array<UnlockRequirement> GetUnlockRequirements();
+    public abstract int GetItemState();
 
-    bool IsUnlocked();
+    public abstract Array<UnlockRequirement> GetUnlockRequirements();
+
+    public abstract bool IsUnlocked();
 }

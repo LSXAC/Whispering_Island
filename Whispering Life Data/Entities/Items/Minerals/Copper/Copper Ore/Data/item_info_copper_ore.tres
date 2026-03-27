@@ -2,28 +2,12 @@
 
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="1_5d0qr"]
 [ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_6h3x7"]
-[ext_resource type="Script" uid="uid://bdbfd68r4ogge" path="res://Entities/Items/Attributes/SmeltableAttribute.cs" id="2_1onh1"]
 [ext_resource type="Texture2D" uid="uid://wgni2ah8cili" path="res://Entities/Items/SpritesForItems/Icons_3rd/Copper_Ore.png" id="2_yec6h"]
-[ext_resource type="Resource" uid="uid://i3ah62dd06gb" path="res://Entities/Items/Minerals/Copper/Copper Ingot/Data/item_info_copper_ingot.tres" id="3_5llr6"]
-[ext_resource type="Script" uid="uid://cee63igbpybf" path="res://Entities/Items/Item.cs" id="3_ulseh"]
 [ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Entities/Items/Attributes/ResearchableAttribute.cs" id="5_bedt5"]
 
 [sub_resource type="Resource" id="Resource_1onh1"]
 script = ExtResource("1_6h3x7")
 metadata/_custom_type_script = "uid://b40cejs4t88i5"
-
-[sub_resource type="Resource" id="Resource_5llr6"]
-script = ExtResource("3_ulseh")
-info = ExtResource("3_5llr6")
-amount = 1
-metadata/_custom_type_script = "uid://cee63igbpybf"
-
-[sub_resource type="Resource" id="Resource_ulseh"]
-script = ExtResource("2_1onh1")
-smelted_to_item = SubResource("Resource_5llr6")
-amount_to_smelt = 2
-unlock_requirements = null
-metadata/_custom_type_script = "uid://bdbfd68r4ogge"
 
 [sub_resource type="Resource" id="Resource_djce8"]
 script = ExtResource("5_bedt5")
@@ -31,7 +15,7 @@ metadata/_custom_type_script = "uid://doosgdjr0ddtl"
 
 [resource]
 script = ExtResource("1_5d0qr")
-attributes = Array[Object]([SubResource("Resource_1onh1"), SubResource("Resource_ulseh"), SubResource("Resource_djce8")])
+attributes = Array[Object]([SubResource("Resource_1onh1"), SubResource("Resource_djce8")])
 max_stackable_size = 250
 name = "COPPER_ORE"
 id = 9

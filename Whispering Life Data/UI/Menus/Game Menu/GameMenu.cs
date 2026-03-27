@@ -313,9 +313,9 @@ public partial class GameMenu : CanvasLayer
         CloseAllTabs();
         inventory_tab.Visible = true;
         processing_tab.Visible = true;
-        PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes(
-            new Type[] { typeof(BurnableAttribute), typeof(SmeltableAttribute) }
-        );
+        /*PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes(
+            new Type[] { typeof(BurnableAttribute), typeof(Sme) }
+        );*/
     }
 
     public void OnOpenPoisonCombinerTab()
@@ -324,9 +324,9 @@ public partial class GameMenu : CanvasLayer
         CloseAllTabs();
         inventory_tab.Visible = true;
         poison_combiner_tab.Visible = true;
-        PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes(
+        /*PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes(
             new Type[] { typeof(BurnableAttribute), typeof(SmeltableAttribute) }
-        );
+        );*/
     }
 
     public void OnOpenNerveTranducerTab()
