@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://beq75bhjwesgy" path="res://Sub Systems/Discover System/DiscoverManager.cs" id="25_7vqgd"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Entities/Items/SpritesForItems/Icons_3rd/Wood_Icon.png" id="26_d27p6"]
 [ext_resource type="Script" uid="uid://c466hvc6i213d" path="res://UI/Player UI/Magic Power Panel/MagicPowerPanel.cs" id="30_nvb1m"]
+[ext_resource type="Texture2D" uid="uid://c6j2ync3r0vqv" path="res://UI/Menus/Build Menu/Magic_Power_Icon.png" id="31_pai3s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4utg2"]
 bg_color = Color(0.278431, 0.270588, 0.329412, 1)
@@ -1035,23 +1036,35 @@ one_shot = true
 offset_left = 108.0
 offset_top = 5.0
 offset_right = 233.0
-offset_bottom = 33.0
+offset_bottom = 29.0
 theme = ExtResource("13_uwodk")
 theme_override_styles/panel = ExtResource("20_kobl8")
 script = ExtResource("30_nvb1m")
-current_magic_power_label = NodePath("HBoxContainer/Current")
-latest_magic_power_label = NodePath("HBoxContainer/Latest")
+current_magic_power_label = NodePath("HBoxContainer2/HBoxContainer/Current")
+latest_magic_power_label = NodePath("HBoxContainer2/HBoxContainer/Latest")
 
-[node name="HBoxContainer" type="VBoxContainer" parent="MagicPowerPanel" unique_id=516101563]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MagicPowerPanel" unique_id=1607727689]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Current" type="Label" parent="MagicPowerPanel/HBoxContainer" unique_id=129129011]
+[node name="MagicPowerIcon" type="TextureRect" parent="MagicPowerPanel/HBoxContainer2" unique_id=654655735]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("31_pai3s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MagicPowerPanel/HBoxContainer2" unique_id=516101563]
+layout_mode = 2
+alignment = 1
+
+[node name="Current" type="Label" parent="MagicPowerPanel/HBoxContainer2/HBoxContainer" unique_id=129129011]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Magic Power: 100/100"
@@ -1059,7 +1072,7 @@ label_settings = ExtResource("22_0o76g")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Latest" type="Label" parent="MagicPowerPanel/HBoxContainer" unique_id=790319771]
+[node name="Latest" type="Label" parent="MagicPowerPanel/HBoxContainer2/HBoxContainer" unique_id=790319771]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Magic Power: 100/100"

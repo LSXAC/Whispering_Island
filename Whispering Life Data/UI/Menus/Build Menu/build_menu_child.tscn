@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://UI/Themes/Theme_Slots.tres" id="2_cxwox"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="3_2gr0d"]
 [ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Sub Systems/ItemRowManager.cs" id="4_n07vt"]
-[ext_resource type="Texture2D" uid="uid://w4nlnks3kwj8" path="res://UI/Player UI/Moster Island State Panel/Texture/State/angry.png" id="4_nyuf3"]
+[ext_resource type="Texture2D" uid="uid://c6j2ync3r0vqv" path="res://UI/Menus/Build Menu/Magic_Power_Icon.png" id="4_xkpdk"]
 [ext_resource type="PackedScene" uid="uid://bnf8yngk7oyy0" path="res://UI/Menus/h_box_item_menu_line_horizontal.tscn" id="5_nu802"]
 [ext_resource type="LabelSettings" uid="uid://bfyhqbjhexoyv" path="res://UI/Styles/Label_Settings_Title_Text.tres" id="8_xkpdk"]
 
@@ -62,20 +62,19 @@ expand_mode = 4
 stretch_mode = 5
 
 [node name="MagicPowerIcon" type="TextureRect" parent="ColorRect/ColorRect" unique_id=1886786864]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 34.0
-offset_top = -44.0
-offset_right = 46.0
-offset_bottom = -32.0
+offset_left = 27.0
+offset_top = 60.0
+offset_right = 43.0
+offset_bottom = 76.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_nyuf3")
+texture = ExtResource("4_xkpdk")
 expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1973066059]
@@ -113,9 +112,9 @@ layout_mode = 2
 [node name="Button" type="Button" parent="ColorRect" unique_id=1897113942]
 layout_mode = 0
 offset_left = 15.0
-offset_top = 120.0
-offset_right = 79.0
-offset_bottom = 138.0
+offset_top = 122.0
+offset_right = 69.0
+offset_bottom = 140.0
 theme_override_fonts/font = ExtResource("3_2gr0d")
 theme_override_font_sizes/font_size = 10
 text = "Build"

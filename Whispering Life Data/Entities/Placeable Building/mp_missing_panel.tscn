@@ -1,31 +1,32 @@
 [gd_scene format=3 uid="uid://cuyqy07pn2y0u"]
 
 [ext_resource type="Script" uid="uid://du0t2110san6a" path="res://Entities/Placeable Building/MpMissingPanel.cs" id="1_6rlql"]
-[ext_resource type="LabelSettings" uid="uid://dq0dwmb4gc45u" path="res://UI/Styles/Label_Settings_Normal_Text.tres" id="2_3xvjx"]
+[ext_resource type="Texture2D" uid="uid://c6j2ync3r0vqv" path="res://UI/Menus/Build Menu/Magic_Power_Icon.png" id="2_6rlql"]
+[ext_resource type="Texture2D" uid="uid://wvpbk4oqakih" path="res://UI/Menus/Build Menu/Cross_Icon.png" id="3_3xvjx"]
 
 [node name="MPMissingPanel" type="ColorRect" unique_id=404440308]
 z_index = 1
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-color = Color(0.6155507, 0.33715135, 0.71796554, 0.5)
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0, 0, 0, 0.5019608)
 script = ExtResource("1_6rlql")
 
-[node name="Label" type="Label" parent="." unique_id=65265925]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -3.6666667
-offset_right = 8.0
-offset_bottom = 3.6666667
-grow_horizontal = 2
-grow_vertical = 2
-text = "MP?"
-label_settings = ExtResource("2_3xvjx")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1312846230]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 15.0
+offset_bottom = 15.0
+texture = ExtResource("2_6rlql")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=885196110]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 15.0
+offset_bottom = 15.0
+texture = ExtResource("3_3xvjx")
+expand_mode = 1
