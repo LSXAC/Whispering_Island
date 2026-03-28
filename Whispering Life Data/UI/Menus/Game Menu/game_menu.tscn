@@ -30,7 +30,6 @@
 [ext_resource type="Script" uid="uid://btkxakelo3d1y" path="res://UI/Menus/Game Menu/Settings Menu/SettingsTab.cs" id="16_jv3kw"]
 [ext_resource type="Texture2D" uid="uid://syf34dx878d5" path="res://UI/Flaggs/US_FLAG.png" id="16_ldk1u"]
 [ext_resource type="Script" uid="uid://c8gcdq44rac7i" path="res://UI/Menus/Game Menu/Skill Menu/Skilltree.cs" id="16_x6qgy"]
-[ext_resource type="Script" uid="uid://bu58bbjdvh5bk" path="res://Entities/Player/PlayerStat.cs" id="17_4yuyy"]
 [ext_resource type="Script" uid="uid://v7dew0yr5trl" path="res://Entities/Items/Attributes/ToolAttribute.cs" id="17_7ai0l"]
 [ext_resource type="Script" uid="uid://mtwprpv04hll" path="res://UI/Menus/Machine Menus/Chest Menu/ChestTab.cs" id="17_8qgvy"]
 [ext_resource type="Texture2D" uid="uid://bktanws4eilvv" path="res://Entities/Items/SpritesForItems/Armor/Placeholder_Armor_Chest.png" id="17_6662a"]
@@ -40,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://w1k1mv22ckvl" path="res://Entities/Items/SpritesForItems/Icons_3rd/Stone.png" id="18_ou1xm"]
 [ext_resource type="Texture2D" uid="uid://dpkjoc1lf1fa5" path="res://Entities/Items/SpritesForItems/Armor/Placeholder_Armor_Shoes.png" id="19_rgd55"]
 [ext_resource type="Texture2D" uid="uid://04ccgfwkqldn" path="res://Entities/Items/SpritesForItems/Icons/Fuel.png" id="20_s2f2w"]
+[ext_resource type="Script" uid="uid://bu58bbjdvh5bk" path="res://Entities/Player/PlayerStat.cs" id="21_kv5uf"]
 [ext_resource type="Script" uid="uid://bfnqqg6a2on8k" path="res://Entities/Items/Attributes/BurnableAttribute.cs" id="26_7icba"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/Menus/Translation/TranslationLabel.cs" id="26_tl5yt"]
 [ext_resource type="Script" uid="uid://bypwrqe8vcas8" path="res://UI/Menus/Game Menu/Save Menu/SaveLoadTab.cs" id="27_ku6dj"]
@@ -66,6 +66,7 @@
 [ext_resource type="Texture2D" uid="uid://fjxfspyktgmd" path="res://UI/Icons/UI_Star.png" id="40_1y8h4"]
 [ext_resource type="Resource" uid="uid://b8kpuf47jao76" path="res://Sub Systems/Skill System/Skills/Data/mining_bonus_1.tres" id="40_rgd55"]
 [ext_resource type="StyleBox" uid="uid://dk5rjv85ef65x" path="res://UI/Styles/tab_container_selected_style.tres" id="40_sy5xb"]
+[ext_resource type="Script" uid="uid://dtnpj4yx2h7u6" path="res://UI/Menus/Game Menu/AlchemyLabTab.cs" id="41_3f3i7"]
 [ext_resource type="Script" uid="uid://dhc64tsxxyqti" path="res://UI/Menus/Game Menu/NerveTransducerTab.cs" id="41_61i7k"]
 [ext_resource type="StyleBox" uid="uid://b6stjn6fub30f" path="res://UI/Styles/tab_container_unselected_style.tres.tres" id="41_fato5"]
 [ext_resource type="Resource" uid="uid://drpg8ggybgde0" path="res://Sub Systems/Skill System/Skills/Data/mining_bonus_2.tres" id="41_gqg20"]
@@ -208,7 +209,7 @@ border_width_top = 2
 border_color = Color(0, 0, 0, 1)
 border_blend = true
 
-[node name="GameMenu" type="CanvasLayer" unique_id=1705449440 node_paths=PackedStringArray("load_button", "destroy_menu", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "processing_tab", "research_tab", "nerve_transducer_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "quest_tab", "rail_station_tab", "minecart_tab", "poison_combiner_tab", "header_container", "crafting_category_panel")]
+[node name="GameMenu" type="CanvasLayer" unique_id=1705449440 node_paths=PackedStringArray("load_button", "destroy_menu", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "processing_tab", "research_tab", "nerve_transducer_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "quest_tab", "rail_station_tab", "minecart_tab", "poison_combiner_tab", "alchemy_lab_tab", "header_container", "crafting_category_panel")]
 process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/SaveLoadTab/HBoxContainer/LoadGameButton")
@@ -231,6 +232,7 @@ quest_tab = NodePath("Background/QuestMenu")
 rail_station_tab = NodePath("Background/RailStationTab")
 minecart_tab = NodePath("Background/MinecartTab")
 poison_combiner_tab = NodePath("Background/CombinerTab")
+alchemy_lab_tab = NodePath("Background/AlchemyLabTab")
 header_container = NodePath("Background/ColorRect/ColorRect/HBoxHeader")
 title_selected = ExtResource("2_k61vr")
 title_normal = ExtResource("7_kqkeb")
@@ -609,15 +611,13 @@ offset_right = -280.0
 offset_bottom = 22.0
 inventory_items = Array[Resource]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 
-[node name="EquipmentPanel" type="Control" parent="Background/InventoryTab" unique_id=1820287311 node_paths=PackedStringArray("slots_armor", "slots_tool", "player_stats_ui")]
+[node name="EquipmentPanel" type="Control" parent="Background/InventoryTab" unique_id=1820287311 node_paths=PackedStringArray("player_stats_ui")]
 anchors_preset = 0
 offset_left = 381.0
 offset_top = 49.0
 offset_right = 717.0
 offset_bottom = 306.0
 script = ExtResource("4_e3tur")
-slots_armor = [NodePath("Character/ArmorGridContainer/HeadSlotBackground/Slot0"), NodePath("Character/ArmorGridContainer/ChestSlotBackground/Slot0"), NodePath("Character/ArmorGridContainer/LegSlotBackground/Slot0"), NodePath("Character/ArmorGridContainer/ShoesSlotBackground/Slot0")]
-slots_tool = [NodePath("Character/ToolsHBox/HeadSlotBackground/Slot0"), NodePath("Character/ToolsHBox/HeadSlotBackground2/Slot0"), NodePath("Character/ToolsHBox/HeadSlotBackground3/Slot0"), NodePath("Character/ToolsHBox/HeadSlotBackground4/Slot0")]
 player_stats_ui = NodePath("PlayerStatsUI")
 
 [node name="Character" type="Control" parent="Background/InventoryTab/EquipmentPanel" unique_id=583756182]
@@ -1363,6 +1363,219 @@ offset_right = 3.0
 offset_bottom = 278.0
 color = Color(0, 0, 0, 1)
 
+[node name="AlchemyLabTab" type="Control" parent="Background" unique_id=1332350870 node_paths=PackedStringArray("left_slot", "right_slot", "output_slot", "fuel_slot", "fuel_label", "machineProgressbar", "fuelProgressbar", "description_Label")]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 250.0
+offset_top = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("41_3f3i7")
+left_slot = NodePath("PanelContainer/Slots/SlotBackgroundInput/Slot0")
+right_slot = NodePath("PanelContainer/Slots/SlotBackgroundInput2/Slot0")
+output_slot = NodePath("PanelContainer/Slots/SlotBackgroundExport/Slot0")
+fuel_slot = NodePath("PanelContainer/Slots/SlotBackgroundFuel/Slot0")
+fuel_label = NodePath("PanelContainer/FuelLabel")
+machineProgressbar = NodePath("PanelContainer/ProgressBar")
+fuelProgressbar = NodePath("PanelContainer/FuelProgressBar")
+description_Label = NodePath("PanelContainer/DescriptionLabel")
+
+[node name="ColorRect" type="ColorRect" parent="Background/AlchemyLabTab" unique_id=1912903006]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.67451, 0.654902, 0.796078, 1)
+
+[node name="PanelContainer" type="Control" parent="Background/AlchemyLabTab" unique_id=865718993]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 214.0
+offset_right = 320.0
+offset_bottom = 262.0
+
+[node name="Slots" type="Control" parent="Background/AlchemyLabTab/PanelContainer" unique_id=2078294221]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SlotBackgroundInput" parent="Background/AlchemyLabTab/PanelContainer/Slots" unique_id=1798200674 instance=ExtResource("13_m8k7p")]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -199.0
+offset_right = 38.0
+offset_bottom = -167.0
+
+[node name="Slot0" parent="Background/AlchemyLabTab/PanelContainer/Slots/SlotBackgroundInput" index="0" unique_id=1848838759]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
+focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
+
+[node name="SlotBackgroundInput2" parent="Background/AlchemyLabTab/PanelContainer/Slots" unique_id=1916930101 instance=ExtResource("13_m8k7p")]
+layout_mode = 0
+offset_left = 42.0
+offset_top = -199.0
+offset_right = 74.0
+offset_bottom = -167.0
+
+[node name="Slot0" parent="Background/AlchemyLabTab/PanelContainer/Slots/SlotBackgroundInput2" index="0" unique_id=1848838759]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
+focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
+
+[node name="SlotBackgroundExport" parent="Background/AlchemyLabTab/PanelContainer/Slots" unique_id=184932861 instance=ExtResource("13_m8k7p")]
+layout_mode = 0
+offset_left = 260.0
+offset_top = -199.0
+offset_right = 292.0
+offset_bottom = -167.0
+
+[node name="Slot0" parent="Background/AlchemyLabTab/PanelContainer/Slots/SlotBackgroundExport" index="0" unique_id=1848838759]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
+focus_neighbor_left = NodePath("../../SlotBackgroundInput/Slot0")
+focus_neighbor_bottom = NodePath("../../../EnableDisableButton")
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
+is_export_slot = true
+
+[node name="SlotBackgroundFuel" parent="Background/AlchemyLabTab/PanelContainer/Slots" unique_id=784141567 instance=ExtResource("13_m8k7p")]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -163.0
+offset_right = 38.0
+offset_bottom = -131.0
+
+[node name="Slot0" parent="Background/AlchemyLabTab/PanelContainer/Slots/SlotBackgroundFuel" index="0" unique_id=1848838759]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
+focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
+focus_neighbor_bottom = NodePath("../../../EnableDisableButton")
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
+icon = ExtResource("20_s2f2w")
+icon_alignment = 1
+attribute_to_check = SubResource("Resource_gqg20")
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/AlchemyLabTab/PanelContainer" unique_id=534742652]
+layout_mode = 0
+offset_left = 81.0
+offset_top = -199.0
+offset_right = 252.0
+offset_bottom = -179.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/background = ExtResource("29_sy5xb")
+theme_override_styles/fill = ExtResource("30_fato5")
+value = 25.0
+
+[node name="FuelProgressBar" type="ProgressBar" parent="Background/AlchemyLabTab/PanelContainer" unique_id=1175663950]
+layout_mode = 0
+offset_left = 80.0
+offset_top = -174.0
+offset_right = 252.0
+offset_bottom = -167.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/background = SubResource("StyleBoxFlat_6662a")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gcthi")
+step = 1.0
+value = 25.0
+show_percentage = false
+
+[node name="FuelLabel" type="Label" parent="Background/AlchemyLabTab/PanelContainer" unique_id=290592930]
+layout_mode = 0
+offset_left = -33.0
+offset_top = -164.0
+offset_right = 251.0
+offset_bottom = -152.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "FUEL: 100/100"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="EnableDisableButton" type="Button" parent="Background/AlchemyLabTab/PanelContainer" unique_id=252164209]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 22.0
+offset_right = 291.0
+offset_bottom = 54.0
+focus_neighbor_top = NodePath("../Slots/SlotBackgroundFuel/Slot0")
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("34_sy5xb")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/focus = ExtResource("28_gcthi")
+text = "Disable Machine"
+
+[node name="DescriptionLabel" type="Label" parent="Background/AlchemyLabTab/PanelContainer" unique_id=1894219088]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -111.0
+offset_right = 291.0
+offset_bottom = -82.0
+theme_override_colors/font_color = Color(1, 0.831373, 0.486275, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "There is currently no available recipe for this resource. Do you miss a research level?"
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("26_tl5yt")
+label_translation_string = "FURNACE_MENU_DESC"
+
+[node name="HeaderColorRect" parent="Background/AlchemyLabTab" unique_id=835802388 instance=ExtResource("11_45saq")]
+layout_mode = 1
+offset_left = -249.0
+offset_top = -25.0
+offset_right = 289.0
+offset_bottom = -3.0
+translation_string = "GAMEMENU_FURNACE"
+
+[node name="Border" type="ColorRect" parent="Background/AlchemyLabTab" unique_id=834811886]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 3.0
+offset_bottom = 278.0
+color = Color(0, 0, 0, 1)
+
 [node name="NerveTransducerTab" type="Control" parent="Background" unique_id=1304219599]
 visible = false
 z_index = 2
@@ -1440,7 +1653,7 @@ view_icon = NodePath("PanelContainer/Container/ViewBox/TextureRect")
 sub_all_research_panel = NodePath("AllSubs")
 no_items_discovered_panel = NodePath("NoItemsDiscovered")
 full_researched_panel = NodePath("FullyResearched")
-sub_research_panel_types = [NodePath("PanelContainer/Container/Type1"), NodePath("PanelContainer/Container/Type2"), NodePath("PanelContainer/Container/Type3")]
+sub_research_panel_types = []
 research_current_title = NodePath("BLACK/Research_Game_Panel/MarginContainer/VBoxContainer/activ_Title_Label")
 research_current_time_left = NodePath("BLACK/Research_Game_Panel/MarginContainer/VBoxContainer/activ_time_label")
 research_current_progress = NodePath("BLACK/Research_Game_Panel/MarginContainer/VBoxContainer/activ_ProgressBar")
@@ -4622,7 +4835,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("16_burxg")
-islands = [NodePath("MarginContainer/ScrollContainer/GridContainer/MiningIsland"), NodePath("MarginContainer/ScrollContainer/GridContainer/MysticIsland"), NodePath("MarginContainer/ScrollContainer/GridContainer/DessertIsland"), NodePath("MarginContainer/ScrollContainer/GridContainer/FarmingIsland"), NodePath("MarginContainer/ScrollContainer/GridContainer/VulcanoIsland")]
+islands = []
 island_parent = NodePath("MarginContainer/ScrollContainer/GridContainer")
 island_to_build_left_label = NodePath("IslandsToBuildLabel")
 
@@ -5445,7 +5658,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("56_74gou")
-pages = [NodePath("VBoxContainer/HP_Resources"), NodePath("VBoxContainer/HP_Machine"), NodePath("VBoxContainer/HP_Quests"), NodePath("VBoxContainer/HP_Islands")]
+pages = []
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/HelpTab" unique_id=1855136661]
 layout_mode = 0
@@ -7365,6 +7578,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="visibility_changed" from="Background/InventoryTab/EquipmentPanel" to="Background/InventoryTab/EquipmentPanel" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/EnableDisableButton" to="Background/FurnaceTab" method="OnMachineStateButton"]
 [connection signal="pressed" from="Background/CombinerTab/PanelContainer/EnableDisableButton" to="Background/CombinerTab" method="OnMachineStateButton"]
+[connection signal="pressed" from="Background/AlchemyLabTab/PanelContainer/EnableDisableButton" to="Background/AlchemyLabTab" method="OnMachineStateButton"]
 [connection signal="visibility_changed" from="Background/ResearchTab" to="Background/ResearchTab" method="OnVisiblityChanged"]
 [connection signal="timeout" from="Background/ResearchTab/PanelContainer/Timer" to="Background/ResearchTab" method="OnTimerTimeout"]
 [connection signal="pressed" from="Background/ResearchTab/PanelContainer/Container/Type1/SubResearchPanel/Button" to="Background/ResearchTab" method="OnSubResearchSelectButton"]
@@ -7422,23 +7636,10 @@ color = Color(0, 0, 0, 1)
 [connection signal="visibility_changed" from="Background/AdminTab" to="Background/AdminTab" method="OnVisiblityChange"]
 [connection signal="toggled" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/General/CheckBox" to="Background/AdminTab" method="OnCheckBoxToggled"]
 [connection signal="toggled" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/General/CheckBox2" to="Background/AdminTab" method="OnToggleCutsceneSkip"]
-[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/General/Button" to="Background/AdminTab" method="AddMood" binds= [-0.2]]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/CreateButton" to="Background/AdminTab" method="OnCreateItems"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/DeselectButton" to="Background/AdminTab" method="OnDeselectAll"]
-[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/QuestTimeSkipButton" to="Background/AdminTab" method="SetQuestTimeTo" binds= [10]]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/PauseTimeButton" to="Background/AdminTab" method="OnPauseTimeButton"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/ResumTimeButton" to="Background/AdminTab" method="OnResumeTimeButton"]
-[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer/Button" to="Background/AdminTab" method="OnTimeMultiplier" binds= [5]]
-[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer/Button2" to="Background/AdminTab" method="OnTimeMultiplier" binds= [10]]
-[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer/Button3" to="Background/AdminTab" method="OnTimeMultiplier" binds= [20]]
-[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer/Button4" to="Background/AdminTab" method="OnTimeMultiplier" binds= [40]]
-[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/HBoxContainer/Button5" to="Background/AdminTab" method="OnTimeMultiplier" binds= [80]]
-[connection signal="pressed" from="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/GeneralButton" to="." method="OnCraftingCategoryButton" binds= [0]]
-[connection signal="pressed" from="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/ToolsButton" to="." method="OnCraftingCategoryButton" binds= [1]]
-[connection signal="pressed" from="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/ToolspartsButton" to="." method="OnCraftingCategoryButton" binds= [2]]
-[connection signal="pressed" from="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/ArmorButton" to="." method="OnCraftingCategoryButton" binds= [3]]
-[connection signal="pressed" from="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/AgricultureButton" to="." method="OnCraftingCategoryButton" binds= [4]]
-[connection signal="pressed" from="Background/CraftingTab/CraftingCategoryPanel/HSplitContainer/MachineButton" to="." method="OnCraftingCategoryButton" binds= [5]]
 [connection signal="pressed" from="Background/StatsTab/HBoxContainer/SaveGameButton" to="." method="OnSaveButton"]
 [connection signal="pressed" from="Background/StatsTab/HBoxContainer/LoadGameButton" to="." method="OnLoadButton"]
 [connection signal="visibility_changed" from="Background/HelpTab" to="Background/HelpTab" method="OnVisiblityChange"]
@@ -7482,3 +7683,7 @@ color = Color(0, 0, 0, 1)
 [editable path="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundInput2"]
 [editable path="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundExport"]
 [editable path="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundFuel"]
+[editable path="Background/AlchemyLabTab/PanelContainer/Slots/SlotBackgroundInput"]
+[editable path="Background/AlchemyLabTab/PanelContainer/Slots/SlotBackgroundInput2"]
+[editable path="Background/AlchemyLabTab/PanelContainer/Slots/SlotBackgroundExport"]
+[editable path="Background/AlchemyLabTab/PanelContainer/Slots/SlotBackgroundFuel"]

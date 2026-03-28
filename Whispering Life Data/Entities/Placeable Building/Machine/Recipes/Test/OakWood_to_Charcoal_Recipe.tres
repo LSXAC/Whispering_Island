@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="SmeltableRecipe" format=3 uid="uid://k4xsdm1dq7xat"]
+
+[ext_resource type="Script" uid="uid://bd8ntvbx5lj3" path="res://Entities/Placeable Building/Machine/Recipes/SmeltableRecipe.cs" id="1_3hbjy"]
+[ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Entities/Items/Vegetation/Oak/Oak Wood/Data/OakWood.tres" id="2_oy6pq"]
+[ext_resource type="Resource" uid="uid://dkue7p8tg1dmy" path="res://Entities/Items/Minerals/Char Coal/Data/item_info_char_coal.tres" id="3_4q5bp"]
+
+[sub_resource type="Resource" id="Resource_input"]
+script_class = "Item"
+info = ExtResource("2_oy6pq")
+amount = 2
+state = 0
+
+[sub_resource type="Resource" id="Resource_output"]
+script_class = "Item"
+info = ExtResource("3_4q5bp")
+amount = 1
+state = 0
+
+[resource]
+script = ExtResource("1_3hbjy")
+input_item = SubResource("Resource_input")
+output_item = SubResource("Resource_output")
+processing_time_ms = 5000
+unlock_requirements = Array[UnlockRequirement]([])

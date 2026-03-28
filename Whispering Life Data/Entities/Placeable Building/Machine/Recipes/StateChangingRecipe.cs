@@ -10,10 +10,10 @@ public partial class StateChangingRecipe : ProcessingRecipe
     public Array<Item> variable_input_items;
 
     [Export]
-    public Item fixed_input_item;
+    public bool accept_any_variable_item = false;
 
     [Export]
-    public Item output_item;
+    public Item fixed_input_item;
 
     [Export]
     public int output_state = (int)Item.STATE.NORMAL;
@@ -31,17 +31,27 @@ public partial class StateChangingRecipe : ProcessingRecipe
 
     public override int GetAmountToProcess()
     {
-        return fixed_input_item?.amount ?? 1;
+        return fixed_input_item != null && fixed_input_item.amount > 0
+            ? fixed_input_item.amount
+            : 1;
     }
 
     public override int GetAmountToProduce()
     {
-        return output_item?.amount ?? 1;
+        // Das Variable Item ist das Output Item
+        if (variable_input_items != null && variable_input_items.Count > 0)
+            return variable_input_items[0] != null && variable_input_items[0].amount > 0
+                ? variable_input_items[0].amount
+                : 1;
+        return 1;
     }
 
     public override ItemInfo GetOutputItem()
     {
-        return output_item?.info ?? null;
+        // Das Variable Item ist das Output Item
+        if (variable_input_items != null && variable_input_items.Count > 0)
+            return variable_input_items[0]?.info ?? null;
+        return null;
     }
 
     public override int GetProcessingTime()
@@ -69,6 +79,10 @@ public partial class StateChangingRecipe : ProcessingRecipe
 
     public bool IsVariableItemCompatible(ItemInfo item_info)
     {
+        // Wenn akzeptiere alle Variable Items aktiviert ist
+        if (accept_any_variable_item)
+            return true;
+
         if (variable_input_items == null || variable_input_items.Count == 0)
             return false;
 

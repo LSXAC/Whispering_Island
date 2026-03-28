@@ -19,7 +19,7 @@ public partial class GameManager : Node2D
     );
 
     public static CanvasLayer current_activ_canvaslayer = null;
-    public static bool dev_build_mode = false;
+    public static bool dev_build_mode = true;
     public static GameManager instance = null;
     public static bool gameover = false;
     public static bool[,] island_matrix;

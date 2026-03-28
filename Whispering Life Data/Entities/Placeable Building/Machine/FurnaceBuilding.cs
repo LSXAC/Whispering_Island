@@ -27,6 +27,7 @@ public partial class FurnaceBuilding : ProcessBuilding
     {
         if (selected_recipe != null)
         {
+            GD.PrintErr($"[FURNACE] Using selected recipe");
             if (item_array[(int)SlotType.IMPORT] != null)
             {
                 SmeltableRecipe recipe = selected_recipe as SmeltableRecipe;
@@ -41,18 +42,33 @@ public partial class FurnaceBuilding : ProcessBuilding
                         && recipe.GetInputRequirement().id == import_info.id
                         && item_array[(int)SlotType.IMPORT].amount >= recipe.GetAmountToProcess()
                     )
+                    {
+                        GD.PrintErr($"[FURNACE] ✅ Selected recipe matches!");
                         return recipe;
+                    }
+                    else
+                    {
+                        GD.PrintErr(
+                            $"[FURNACE] Selected recipe mismatch: InputReq={recipe.GetInputRequirement()?.name}, ImportInfo={import_info.name}, Amount={item_array[(int)SlotType.IMPORT].amount}/{recipe.GetAmountToProcess()}"
+                        );
+                    }
                 }
             }
             return null;
         }
 
         if (item_array[(int)SlotType.IMPORT] == null)
+        {
+            GD.PrintErr($"[FURNACE] Import slot empty");
             return null;
+        }
 
         ItemInfo import_info_default = Inventory.ITEM_TYPES[
             (Inventory.ITEM_ID)item_array[(int)SlotType.IMPORT].item_id
         ];
+        GD.PrintErr(
+            $"[FURNACE] Searching {smeltable_recipes.Count} recipes for {import_info_default.name}..."
+        );
 
         foreach (SmeltableRecipe smeltable_recipe in smeltable_recipes)
         {
@@ -64,21 +80,29 @@ public partial class FurnaceBuilding : ProcessBuilding
                 && item_array[(int)SlotType.IMPORT].amount >= smeltable_recipe.GetAmountToProcess()
             )
             {
+                GD.PrintErr(
+                    $"[FURNACE] ✅ Recipe found: {smeltable_recipe.GetInputRequirement().name} -> {smeltable_recipe.GetOutputItem().name}"
+                );
                 return smeltable_recipe;
             }
         }
 
+        GD.PrintErr($"[FURNACE] ❌ No recipe found for {import_info_default.name}");
         return null;
     }
 
     protected override bool SelectAndCheckCanCraft()
     {
         if (item_array[(int)SlotType.IMPORT] == null)
+        {
+            GD.PrintErr($"[SELECT] Import slot empty");
             return false;
+        }
 
         ItemInfo import_item_info = Inventory.ITEM_TYPES[
             (Inventory.ITEM_ID)item_array[(int)SlotType.IMPORT].item_id
         ];
+        GD.PrintErr($"[SELECT] Checking for {import_item_info.name}...");
 
         SmeltableRecipe recipe = null;
 
@@ -86,13 +110,20 @@ public partial class FurnaceBuilding : ProcessBuilding
         {
             recipe = selected_recipe as SmeltableRecipe;
             if (recipe == null)
+            {
+                GD.PrintErr($"[SELECT] Selected recipe is not SmeltableRecipe!");
                 return false;
+            }
 
             if (
                 recipe.GetInputRequirement() == null
                 || recipe.GetInputRequirement().id != import_item_info.id
             )
+            {
+                GD.PrintErr($"[SELECT] Selected recipe input mismatch!");
                 return false;
+            }
+            GD.PrintErr($"[SELECT] Using selected recipe");
         }
         else
         {
@@ -103,33 +134,68 @@ public partial class FurnaceBuilding : ProcessBuilding
                     && smelting_recipe.GetInputRequirement() != null
                     && smelting_recipe.GetInputRequirement().id == import_item_info.id
                     && smelting_recipe.IsUnlocked()
+                    && item_array[(int)SlotType.IMPORT].amount
+                        >= smelting_recipe.GetAmountToProcess()
                 )
                 {
                     recipe = smelting_recipe;
+                    GD.PrintErr(
+                        $"[SELECT] Found recipe: {smelting_recipe.GetInputRequirement().name}"
+                    );
                     break;
                 }
             }
         }
 
         if (recipe == null)
+        {
+            GD.PrintErr($"[SELECT] ❌ No recipe found!");
             return false;
+        }
 
-        if (!recipe.IsUnlocked())
+        if (item_array[(int)SlotType.FUEL] == null && fuel_left <= 0)
+        {
+            GD.PrintErr($"[SELECT] No fuel! Fuel: {fuel_left}");
             return false;
-
-        if (item_array[(int)SlotType.FUEL] == null || fuel_left <= 0)
-            return false;
+        }
 
         if (item_array[(int)SlotType.IMPORT].amount < recipe.GetAmountToProcess())
+        {
+            GD.PrintErr(
+                $"[SELECT] Not enough input: {item_array[(int)SlotType.IMPORT].amount}/{recipe.GetAmountToProcess()}"
+            );
             return false;
+        }
 
         if (item_array[(int)SlotType.EXPORT] == null)
+        {
+            GD.PrintErr($"[SELECT] ✅ All checks passed! Ready to craft.");
             return true;
-        else if (item_array[(int)SlotType.EXPORT].item_id != (int)recipe.GetOutputItem().id)
-            return false;
-        else if (item_array[(int)SlotType.EXPORT].state != recipe.GetItemState())
-            return false;
+        }
 
+        ItemInfo expected_output = recipe.GetOutputItem();
+        if (expected_output == null)
+        {
+            GD.PrintErr($"[SELECT] Output item is null!");
+            return false;
+        }
+
+        if (item_array[(int)SlotType.EXPORT].item_id != (int)expected_output.id)
+        {
+            GD.PrintErr(
+                $"[SELECT] Output mismatch: have {item_array[(int)SlotType.EXPORT].item_id}, need {(int)expected_output.id}"
+            );
+            return false;
+        }
+        else if (item_array[(int)SlotType.EXPORT].state != recipe.GetItemState())
+        {
+            GD.PrintErr(
+                $"[SELECT] State mismatch: have {item_array[(int)SlotType.EXPORT].state}, need {recipe.GetItemState()}"
+            );
+            return false;
+        }
+
+        GD.PrintErr($"[SELECT] ✅ All checks passed with existing output!");
         return true;
     }
 

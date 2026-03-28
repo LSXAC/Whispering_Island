@@ -64,6 +64,9 @@ public partial class GameMenu : CanvasLayer
     [Export]
     public CombinerTab poison_combiner_tab;
 
+    [Export]
+    public AlchemyLabTab alchemy_lab_tab;
+
     public static GameMenu instance = null;
 
     [Export]
@@ -329,6 +332,17 @@ public partial class GameMenu : CanvasLayer
         );*/
     }
 
+    public void OnOpenAlchemyLabTab()
+    {
+        SetWindow(this);
+        CloseAllTabs();
+        inventory_tab.Visible = true;
+        alchemy_lab_tab.Visible = true;
+        /*PlayerInventoryUI.instance.MarkSlotsWithAttributeTypes(
+            new Type[] { typeof(BurnableAttribute), typeof(SmeltableAttribute) }
+        );*/
+    }
+
     public void OnOpenNerveTranducerTab()
     {
         SetWindow(this);
@@ -382,6 +396,7 @@ public partial class GameMenu : CanvasLayer
         poison_combiner_tab.Visible = false;
         inventory_tab.Visible = false;
         research_tab.Visible = false;
+        alchemy_lab_tab.Visible = false;
         crafting_tab.Visible = false;
         processing_tab.Visible = false;
         nerve_transducer_tab.Visible = false;

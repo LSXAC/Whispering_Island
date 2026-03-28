@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class CombinerTab : ProcessingTab
+public partial class AlchemyLabTab : ProcessingTab
 {
     [Export]
     public Slot left_slot;
@@ -15,7 +15,7 @@ public partial class CombinerTab : ProcessingTab
     [Export]
     public Slot fuel_slot;
 
-    public static CombinerTab instance = null;
+    public static AlchemyLabTab instance = null;
 
     public override void _Ready()
     {
@@ -28,15 +28,15 @@ public partial class CombinerTab : ProcessingTab
                     "left_input",
                     SlotPurpose.INPUT,
                     left_slot,
-                    "Primärer Rohstoff"
+                    "Variable Zutat"
                 ),
                 new ProcessingSlotConfig(
                     "right_input",
                     SlotPurpose.AUXILIARY,
                     right_slot,
-                    "Sekundärer Rohstoff"
+                    "Katalysator (fest)"
                 ),
-                new ProcessingSlotConfig("output", SlotPurpose.OUTPUT, output_slot, "Kombiniertes Ergebnis"),
+                new ProcessingSlotConfig("output", SlotPurpose.OUTPUT, output_slot, "Transformiertes Ergebnis"),
                 new ProcessingSlotConfig("fuel", SlotPurpose.FUEL, fuel_slot, "Brennstoff")
             ]
         );

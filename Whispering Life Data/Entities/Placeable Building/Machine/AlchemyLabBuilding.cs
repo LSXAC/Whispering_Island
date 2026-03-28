@@ -75,27 +75,49 @@ public partial class AlchemyLabBuilding : ProcessBuilding
 
         foreach (StateChangingRecipe state_recipe in state_changing_recipes)
         {
-            if (state_recipe != null && state_recipe.IsUnlocked())
+            if (
+                state_recipe != null
+                && state_recipe.IsUnlocked()
+                && state_recipe.CanCombine(input1_info, input2_info)
+                && item_array[(int)SlotType.PRIMARY_INPUT].amount
+                    >= state_recipe.GetAmountToProcess()
+            )
             {
-                if (state_recipe.CanCombine(input1_info, input2_info))
-                {
-                    recipe = state_recipe;
-                    break;
-                }
+                recipe = state_recipe;
+                break;
             }
         }
 
         if (recipe == null)
             return false;
 
-        if (!recipe.IsUnlocked())
+        if (item_array[(int)SlotType.FUEL] == null && fuel_left <= 0)
             return false;
 
         if (item_array[(int)SlotType.PRIMARY_INPUT].amount < recipe.GetAmountToProcess())
             return false;
 
-        if (item_array[(int)SlotType.FUEL] == null || fuel_left <= 0)
-            return false;
+        // Für StateChangingRecipe: Output Item ist vom Primary Input abhängig
+        if (recipe is StateChangingRecipe)
+        {
+            // Prüfe ob Output Slot leer ist oder das gleiche Item mit gleichem State enthält
+            if (item_array[(int)SlotType.OUTPUT] != null)
+            {
+                int primary_item_id = item_array[(int)SlotType.PRIMARY_INPUT].item_id;
+                int output_state = recipe.GetItemState();
+
+                if (
+                    item_array[(int)SlotType.OUTPUT].item_id != primary_item_id
+                    || item_array[(int)SlotType.OUTPUT].state != output_state
+                )
+                {
+                    // Output Slot hat anderes Item - Craft nicht möglich
+                    return false;
+                }
+            }
+            // StateChangingRecipe kann crafted werden, wenn Output Slot passt
+            return true;
+        }
 
         ItemInfo expected_output = recipe.GetOutputItem();
 
@@ -114,8 +136,7 @@ public partial class AlchemyLabBuilding : ProcessBuilding
 
     protected override ProcessingTab GetUIUpdater()
     {
-        // TODO: Erstelle eine AlchemyLabTab UI-Klasse oder verwende eine bestehende
-        return null;
+        return AlchemyLabTab.instance;
     }
 
     protected override int GetSlotIndexByPurpose(SlotPurpose purpose)
@@ -178,6 +199,92 @@ public partial class AlchemyLabBuilding : ProcessBuilding
 
     protected override void OpenGameMenuTab()
     {
-        // TODO: Implementiere GameMenu.instance.OnOpenAlchemyLabTab();
+        GameMenu.instance.OnOpenAlchemyLabTab();
+    }
+
+    protected override void ExecuteRecipe(ProcessingRecipe recipe)
+    {
+        // Für StateChangingRecipe: Primary Input Item mit neuem State als Output
+        if (recipe is StateChangingRecipe state_recipe)
+        {
+            int output_idx = (int)SlotType.OUTPUT;
+            int primary_idx = (int)SlotType.PRIMARY_INPUT;
+            int secondary_idx = (int)SlotType.SECONDARY_INPUT;
+
+            // Output Item vom Primary Input (Slot 1) nehmen - das ist das variable Item
+            if (item_array[primary_idx] != null)
+            {
+                int output_item_id = item_array[primary_idx].item_id;
+                int output_amount = recipe.GetAmountToProduce();
+                int output_state = recipe.GetItemState();
+
+                GD.PrintErr(
+                    $"[EXECUTE] Creating StateChanging output: Item {output_item_id} x{output_amount} with state {output_state}"
+                );
+
+                if (item_array[output_idx] == null)
+                {
+                    // Output Slot ist leer - neues Item erstellen
+                    item_array[output_idx] = new ItemSave(
+                        output_item_id,
+                        output_amount,
+                        -1,
+                        output_state
+                    );
+                }
+                else if (
+                    item_array[output_idx].item_id == output_item_id
+                    && item_array[output_idx].state == output_state
+                )
+                {
+                    // Output existiert bereits mit gleichem Item und State - addieren
+                    item_array[output_idx].amount += output_amount;
+                }
+                else
+                {
+                    // Output Slot hat ein anderes Item - nicht überschreiben
+                    GD.PrintErr(
+                        $"[EXECUTE] ❌ Output slot bereits belegt mit anderem Item! Craft abgebrochen."
+                    );
+                    return;
+                }
+            }
+
+            // Slot 1 um 1 reduzieren
+            if (item_array[primary_idx] != null)
+            {
+                item_array[primary_idx].amount -= 1;
+                GD.PrintErr(
+                    $"[EXECUTE] Reduced Primary Input (Slot 1) to {item_array[primary_idx].amount}"
+                );
+            }
+
+            // Slot 2 um 1 reduzieren
+            if (item_array[secondary_idx] != null)
+            {
+                item_array[secondary_idx].amount -= 1;
+                GD.PrintErr(
+                    $"[EXECUTE] Reduced Secondary Input (Slot 2) to {item_array[secondary_idx].amount}"
+                );
+            }
+
+            is_crafting = false;
+            process_timer.Stop();
+            progress = 0;
+
+            var ui_updater = GetUIUpdater();
+            if (ui_updater != null && ui_updater.process_building == this)
+            {
+                ui_updater.SetMachineProgressbar(progress);
+                ui_updater.UpdateUI();
+            }
+
+            OnProcessingComplete(recipe);
+        }
+        else
+        {
+            // Für normale Rezepte: base-Methode verwenden
+            base.ExecuteRecipe(recipe);
+        }
     }
 }

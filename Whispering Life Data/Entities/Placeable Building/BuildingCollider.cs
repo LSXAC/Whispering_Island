@@ -64,14 +64,12 @@ public partial class BuildingCollider : Area2D
 
             if (node is Building_Node building_node && !building_node.disable_collision)
             {
-                Debug.Print("Building Node in the way!");
                 found = false;
                 break;
             }
 
             if (node is StaticBody2D && node.Name.ToString().Contains("Bridge"))
             {
-                Debug.Print("Static Body is in the way!");
                 found = false;
                 break;
             }
@@ -83,7 +81,6 @@ public partial class BuildingCollider : Area2D
             }
             if (node.IsInGroup("BLOCKING"))
             {
-                Debug.Print("Blocking Node is in the way!");
                 found = false;
                 break;
             }
@@ -94,7 +91,6 @@ public partial class BuildingCollider : Area2D
                 {
                     if (node.IsInGroup(t.ToString()))
                     {
-                        Debug.Print("Right Layer!");
                         found = true;
                     }
                 }

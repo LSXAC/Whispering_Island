@@ -107,29 +107,23 @@ public partial class IslandObjectSaveManager : Node2D
 
             if (node is MachineBase)
             {
-                if (node is ProcessBuilding process_building)
-                    machine_saves.Add((MachineSave)process_building.Save());
-
-                if (node is ProductionMachine production_machine)
-                    machine_saves.Add((MachineSave)production_machine.Save());
-
-                if (node is RailStation rail_station)
-                    machine_saves.Add((MachineSave)rail_station.Save());
-
-                if (node is ChestBase chest_base)
-                    machine_saves.Add((MachineSave)chest_base.Save());
-
-                if (node is Trashcan trash_can)
-                    machine_saves.Add((MachineSave)trash_can.Save());
-
-                if (node is MagicGenerator magic_generator)
-                    placeable_saves.Add((PlaceableSave)magic_generator.Save());
-
+                // Prüfe spezialisierte Typen ZUERST, bevor generische Typen
                 if (node is CombinerBuilding combiner_building)
-                    placeable_saves.Add((PlaceableSave)combiner_building.Save());
-
-                if (node is AlchemyLabBuilding alchemy_lab)
-                    placeable_saves.Add((PlaceableSave)alchemy_lab.Save());
+                    machine_saves.Add((MachineSave)combiner_building.Save());
+                else if (node is AlchemyLabBuilding alchemy_lab)
+                    machine_saves.Add((MachineSave)alchemy_lab.Save());
+                else if (node is ProcessBuilding process_building)
+                    machine_saves.Add((MachineSave)process_building.Save());
+                else if (node is ProductionMachine production_machine)
+                    machine_saves.Add((MachineSave)production_machine.Save());
+                else if (node is RailStation rail_station)
+                    machine_saves.Add((MachineSave)rail_station.Save());
+                else if (node is ChestBase chest_base)
+                    machine_saves.Add((MachineSave)chest_base.Save());
+                else if (node is Trashcan trash_can)
+                    machine_saves.Add((MachineSave)trash_can.Save());
+                else if (node is MagicGenerator magic_generator)
+                    placeable_saves.Add((PlaceableSave)magic_generator.Save());
                 continue;
             }
 

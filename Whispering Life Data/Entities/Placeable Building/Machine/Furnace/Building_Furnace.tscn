@@ -127,6 +127,7 @@ building = NodePath("..")
 
 [node name="ProcessTimer" type="Timer" parent="." unique_id=2079656188]
 wait_time = 0.1
+autostart = true
 
 [node name="MachineUITimer" type="Timer" parent="." unique_id=502923141]
 wait_time = 0.05

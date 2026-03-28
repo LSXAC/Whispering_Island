@@ -95,25 +95,33 @@ public partial class CombinerBuilding : ProcessBuilding
 
         if (selected_recipe != null)
         {
-            recipe = selected_recipe;
-            if (recipe == null)
+            CombinerRecipe combiner_recipe = selected_recipe as CombinerRecipe;
+            if (combiner_recipe == null)
                 return false;
 
-            CombinerRecipe combiner_recipe = recipe as CombinerRecipe;
-            if (combiner_recipe == null || !combiner_recipe.CanCombine(input1_info, input2_info))
+            if (
+                !combiner_recipe.IsUnlocked()
+                || !combiner_recipe.CanCombine(input1_info, input2_info)
+                || item_array[(int)SlotType.INPUT_1].amount < combiner_recipe.GetAmountToProcess()
+            )
                 return false;
+
+            recipe = combiner_recipe;
         }
         else
         {
             foreach (CombinerRecipe combiner_recipe in combiner_recipes)
             {
-                if (combiner_recipe != null && combiner_recipe.IsUnlocked())
+                if (
+                    combiner_recipe != null
+                    && combiner_recipe.IsUnlocked()
+                    && combiner_recipe.CanCombine(input1_info, input2_info)
+                    && item_array[(int)SlotType.INPUT_1].amount
+                        >= combiner_recipe.GetAmountToProcess()
+                )
                 {
-                    if (combiner_recipe.CanCombine(input1_info, input2_info))
-                    {
-                        recipe = combiner_recipe;
-                        break;
-                    }
+                    recipe = combiner_recipe;
+                    break;
                 }
             }
         }
@@ -121,7 +129,7 @@ public partial class CombinerBuilding : ProcessBuilding
         if (recipe == null)
             return false;
 
-        if (!recipe.IsUnlocked())
+        if (item_array[(int)SlotType.FUEL] == null && fuel_left <= 0)
             return false;
 
         if (item_array[(int)SlotType.INPUT_1].amount < recipe.GetAmountToProcess())

@@ -28,12 +28,14 @@ public partial class CombinerRecipe : ProcessingRecipe
 
     public override int GetAmountToProcess()
     {
-        return primary_input_item?.amount ?? 1;
+        return primary_input_item != null && primary_input_item.amount > 0
+            ? primary_input_item.amount
+            : 1;
     }
 
     public override int GetAmountToProduce()
     {
-        return output_item?.amount ?? 1;
+        return output_item != null && output_item.amount > 0 ? output_item.amount : 1;
     }
 
     public override ItemInfo GetOutputItem()

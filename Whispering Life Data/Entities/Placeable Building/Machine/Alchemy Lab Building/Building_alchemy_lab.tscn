@@ -1,7 +1,9 @@
 [gd_scene format=4 uid="uid://bq2lmgvygbt6t"]
 
 [ext_resource type="Script" uid="uid://bnmymp7cxek1a" path="res://Entities/Placeable Building/Machine/AlchemyLabBuilding.cs" id="1_jcedd"]
+[ext_resource type="Script" uid="uid://uhno0nw27plu" path="res://Entities/Placeable Building/Machine/Recipes/StateChangingRecipe.cs" id="2_etlj7"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="3_5qi3t"]
+[ext_resource type="Resource" uid="uid://dyg2mex78qrdj" path="res://Entities/Placeable Building/Machine/Alchemy Lab Building/Data/XItemToMercuryBottleRecipe.tres" id="3_q77qs"]
 [ext_resource type="Texture2D" uid="uid://c4k1e43v3so2p" path="res://Entities/Placeable Building/Machine/Alchemy Lab Building/Texture/AlchemyLab_Building_Sprite.png" id="4_h1b2d"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="5_5h07p"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/Placeable Building/BuildingColliderManager.cs" id="6_xdq3i"]
@@ -63,6 +65,7 @@ y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_jcedd")
+state_changing_recipes = Array[ExtResource("2_etlj7")]([ExtResource("3_q77qs")])
 item_array = [null, null, null, null]
 state_timer = NodePath("MachineUITimer")
 machine_activ_color_rect = NodePath("MachineActivColorRect")
@@ -89,7 +92,7 @@ centered = false
 [node name="ShadowNode" parent="SpriteAnimationManager" unique_id=341328918 instance=ExtResource("5_5h07p")]
 DisableShadow = true
 
-[node name="BuildingAreas" type="Node2D" parent="." unique_id=1990587576 node_paths=PackedStringArray("collision_tilemap")]
+[node name="BuildingAreas" type="Node2D" parent="." unique_id=1260814276 node_paths=PackedStringArray("collision_tilemap")]
 script = ExtResource("6_xdq3i")
 collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
@@ -120,6 +123,7 @@ building = NodePath("..")
 
 [node name="ProcessTimer" type="Timer" parent="." unique_id=2079656188]
 wait_time = 0.1
+autostart = true
 
 [node name="MachineUITimer" type="Timer" parent="." unique_id=502923141]
 wait_time = 0.05
