@@ -71,6 +71,8 @@ building_id = 41
 consums_magic_power = true
 magic_power_consumption = 5.0
 tile_types = Array[int]([0])
+title = "BUILDING_COMBINER"
+description = "BUILDING_COMBINER_DESC"
 
 [node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=336840390]
 script = ExtResource("3_jv5li")

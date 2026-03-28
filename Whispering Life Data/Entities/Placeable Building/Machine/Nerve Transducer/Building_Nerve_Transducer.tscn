@@ -68,6 +68,8 @@ building_id = 40
 consums_magic_power = true
 magic_power_consumption = 10.0
 tile_types = Array[int]([0])
+title = "BUILDING_NERV_TRANSDUCER"
+description = "BUILDING_NERV_TRANSDUCER_DESC"
 
 [node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=336840390]
 script = ExtResource("2_fmhne")

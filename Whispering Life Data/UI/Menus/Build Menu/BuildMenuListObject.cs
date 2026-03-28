@@ -14,6 +14,9 @@ public partial class BuildMenuListObject : Control
     public TextureRect magic_power_icon;
 
     [Export]
+    public Label title;
+
+    [Export]
     public ItemRowManager item_row_manager;
 
     private Building_Menu_List_Object building_type;
@@ -27,6 +30,9 @@ public partial class BuildMenuListObject : Control
     {
         this.building_type = building_type;
         Building_Node building_node = building_type.scene.Instantiate() as Building_Node;
+
+        if (Logger.NodeIsNotNull(title))
+            title.Text = TranslationServer.Translate(building_node.GetTitle());
 
         if (Logger.NodeIsNotNull(texture))
         {

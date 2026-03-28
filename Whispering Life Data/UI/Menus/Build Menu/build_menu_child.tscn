@@ -7,10 +7,11 @@
 [ext_resource type="Script" uid="uid://bvkvri5jci1xh" path="res://Sub Systems/ItemRowManager.cs" id="4_n07vt"]
 [ext_resource type="Texture2D" uid="uid://w4nlnks3kwj8" path="res://UI/Player UI/Moster Island State Panel/Texture/State/angry.png" id="4_nyuf3"]
 [ext_resource type="PackedScene" uid="uid://bnf8yngk7oyy0" path="res://UI/Menus/h_box_item_menu_line_horizontal.tscn" id="5_nu802"]
+[ext_resource type="LabelSettings" uid="uid://bfyhqbjhexoyv" path="res://UI/Styles/Label_Settings_Title_Text.tres" id="8_xkpdk"]
 
-[node name="BuildingMenuChild" type="Control" unique_id=437297028 node_paths=PackedStringArray("build_button", "texture", "magic_power_icon", "item_row_manager")]
+[node name="BuildingMenuChild" type="Control" unique_id=437297028 node_paths=PackedStringArray("build_button", "texture", "magic_power_icon", "title", "item_row_manager")]
 clip_contents = true
-custom_minimum_size = Vector2(96, 128)
+custom_minimum_size = Vector2(96, 148)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 96.0
@@ -19,13 +20,17 @@ script = ExtResource("1_d5smx")
 build_button = NodePath("ColorRect/Button")
 texture = NodePath("ColorRect/ColorRect/TextureButton")
 magic_power_icon = NodePath("ColorRect/ColorRect/MagicPowerIcon")
+title = NodePath("ColorRect/Label")
 item_row_manager = NodePath("ColorRect/VBoxContainer/HBoxContainer")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=232359517]
 custom_minimum_size = Vector2(96, 128)
 layout_mode = 1
-offset_right = 96.0
-offset_bottom = 128.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 color = Color(0.176419, 0.176419, 0.176419, 1)
 
@@ -33,9 +38,9 @@ color = Color(0.176419, 0.176419, 0.176419, 1)
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
 offset_left = 16.0
-offset_top = 16.0
+offset_top = 33.0
 offset_right = 80.0
-offset_bottom = 76.0
+offset_bottom = 93.0
 color = Color(0, 0, 0, 1)
 
 [node name="TextureButton" type="TextureRect" parent="ColorRect/ColorRect" unique_id=1041176124]
@@ -80,10 +85,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = 15.0
-offset_right = 32.0
-offset_bottom = 31.0
+offset_left = -38.0
+offset_top = 25.0
+offset_right = 38.0
+offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -107,10 +112,22 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="ColorRect" unique_id=1897113942]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 97.0
-offset_right = 80.0
-offset_bottom = 115.0
+offset_left = 15.0
+offset_top = 120.0
+offset_right = 79.0
+offset_bottom = 138.0
 theme_override_fonts/font = ExtResource("3_2gr0d")
 theme_override_font_sizes/font_size = 10
 text = "Build"
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=1467815386]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 92.0
+offset_bottom = 30.0
+text = "Furnace Building"
+label_settings = ExtResource("8_xkpdk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
