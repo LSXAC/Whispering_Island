@@ -1,11 +1,11 @@
 ~ Monster_Disappear
 
 do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))
-Boss: Ugh… [ID:36CAB5_A4C8D2]
-Boss: Ich habe nicht den ganzen Tag Zeit! [ID:36CAB5_C2C94F]
+Monster: Ugh… [ID:36CAB5_A4C8D2]
+Monster: Ich habe nicht den ganzen Tag Zeit! [ID:36CAB5_C2C94F]
 do GlobalFunctions.DecreaseVisibilityOnMonsterIsland()
-Boss: Ich komm später wieder. [ID:36CAB5_1E8182]
-Boss: HAHAHA! [ID:36CAB5_C9C0D8]
+Monster: Ich komm später wieder. [ID:36CAB5_1E8182]
+Monster: HAHAHA! [ID:36CAB5_C9C0D8]
 do GlobalFunctions.LeaveDialogue()
 
 => END
@@ -13,10 +13,10 @@ do GlobalFunctions.LeaveDialogue()
 ~ Monster_Appear
 
 do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))
-Boss: Hahaha! Da bin ich wieder! [ID:36CAB5_E78556]
+Monster: Hahaha! Da bin ich wieder! [ID:36CAB5_E78556]
 do GlobalFunctions.IncreaseVisibilityOnMonsterIsland()
-Boss: Ich hoffe für dich, dass du hast was ich will! [ID:36CAB5_45EBBB]
-Boss: ROAW! [ID:36CAB5_C9D25A]
+Monster: Ich hoffe für dich, dass du hast was ich will! [ID:36CAB5_45EBBB]
+Monster: ROAW! [ID:36CAB5_C9D25A]
 do GlobalFunctions.PlayIdleOnMonsterIsland()
 do GlobalFunctions.LeaveDialogue()
 
@@ -25,12 +25,12 @@ do GlobalFunctions.LeaveDialogue()
 ~ Monster_Hitting
 
 do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))
-Boss: Ha! Those Resources were delicous!
+Monster: Ha! Those Resources were delicous!
 if GlobalFunctions.ItemsWithDamage != 0:
 	do GlobalFunctions.DealQuestDamage()
-	Boss: Mhh... aua..
+	Monster: Mhh... aua..
 else:
-	Boss: Next time, give me even faster and even more! Haha!
+	Monster: Next time, give me even faster and even more! Haha!
 do GlobalFunctions.FinishGame()
 do GlobalFunctions.LeaveDialogue()
 => END

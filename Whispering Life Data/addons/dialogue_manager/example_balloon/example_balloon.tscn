@@ -123,7 +123,7 @@ _data = {
 layer = 100
 script = ExtResource("1_1kn55")
 TypeSoundPlayer = NodePath("AudioStreamPlayer")
-TypeSpeed = 0.025
+TypeSpeed = 0.03
 
 [node name="Balloon" type="Control" parent="." unique_id=1014066503]
 unique_name_in_owner = true
@@ -246,6 +246,8 @@ text = "Response Example"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1640827784]
 unique_name_in_owner = true
 stream = ExtResource("12_icj72")
+volume_db = -5.0
+pitch_scale = 0.75
 bus = &"SFX"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]

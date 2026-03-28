@@ -31,9 +31,7 @@
 [ext_resource type="Script" uid="uid://blf1q1vqdlpkq" path="res://Sub Systems/Time/DayNightManager.cs" id="22_3jk2j"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://UI/Styles/daynightcycle-gradient-texture.tres" id="23_rd84m"]
 [ext_resource type="Script" uid="uid://duioi7flou3wn" path="res://Sub Systems/Dialogue System/Dialogues/Tutorial/Tutorial.cs" id="24_f4sbj"]
-[ext_resource type="AudioStream" uid="uid://baxwufa73fl35" path="res://Islands/Audio/Atmosphere Sounds/441638__naturenotesuk__birds-at-feeder.wav" id="27_73301"]
 [ext_resource type="Script" uid="uid://c3ij6hhmi6rn8" path="res://Sub Systems/Game Manager/QuestTimer.cs" id="27_rrlqx"]
-[ext_resource type="AudioStream" uid="uid://bwod2wh4o0qwt" path="res://Islands/Audio/Background Music/759996__josefpres__piano-loops-167-octave-short-loop-120-bpm.wav" id="28_2plat"]
 [ext_resource type="Script" uid="uid://bqtctn4uko8p6" path="res://Sub Systems/Quest Manager/Penality/QuestPenality.cs" id="29_p35kq"]
 [ext_resource type="Script" uid="uid://c3aa8j0h5bxr1" path="res://3rd Party Systems/GlobalAnimationTimer.cs" id="29_q20se"]
 [ext_resource type="Material" uid="uid://6f3r1pj1aoib" path="res://Sub Systems/Shader/Cloud/CloudShader.tres" id="31_p85m3"]
@@ -428,20 +426,6 @@ mouse_filter = 2
 self_modulate = Color(1, 1, 1, 0.19607843)
 z_index = -1
 script = ExtResource("44_4xc4d")
-
-[node name="Audios" type="Node2D" parent="." unique_id=1994429673]
-
-[node name="AtmosphereAudioPlayer" type="AudioStreamPlayer" parent="Audios" unique_id=1533182204]
-stream = ExtResource("27_73301")
-autoplay = true
-bus = &"SFX"
-playback_type = 1
-
-[node name="SFXAudioPlayer" type="AudioStreamPlayer" parent="Audios" unique_id=485336003]
-stream = ExtResource("28_2plat")
-autoplay = true
-bus = &"Music"
-playback_type = 1
 
 [node name="MagicPowerManager" type="Node2D" parent="." unique_id=1406332650]
 position = Vector2(0, -1)

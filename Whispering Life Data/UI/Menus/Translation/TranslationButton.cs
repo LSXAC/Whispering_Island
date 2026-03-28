@@ -6,6 +6,12 @@ public partial class TranslationButton : Button
     [Export]
     public string label_translation_string;
 
+    [Export]
+    public bool has_different_label = false;
+
+    [Export]
+    public Label label;
+
     public override void _Notification(int what)
     {
         if (what != NotificationTranslationChanged)
@@ -15,8 +21,19 @@ public partial class TranslationButton : Button
         UpdateText();
     }
 
+    public override void _Pressed()
+    {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayButtonSound();
+
+        base._Pressed();
+    }
+
     private void UpdateText()
     {
-        Text = TranslationServer.Translate(label_translation_string);
+        if (!has_different_label)
+            Text = TranslationServer.Translate(label_translation_string);
+        else if (label != null)
+            label.Text = TranslationServer.Translate(label_translation_string);
     }
 }

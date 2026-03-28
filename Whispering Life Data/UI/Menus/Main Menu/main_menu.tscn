@@ -164,6 +164,10 @@
 [ext_resource type="Resource" uid="uid://ds87kapskynfh" path="res://Entities/Items/Minerals/Magic Dust/Data/MagicDust.tres" id="157_5j77y"]
 [ext_resource type="Resource" uid="uid://dtn8ti2o5hiwj" path="res://Entities/Items/Machine Component/Magic Core Component/Data/MagicCoreComponent.tres" id="159_jnprb"]
 [ext_resource type="Resource" uid="uid://ckdd1is025mhk" path="res://Entities/Items/Minerals/Mercury Bottle/Data/item_info_mercury_bottle.tres" id="161_u2kkx"]
+[ext_resource type="Script" uid="uid://bam1cqblqsds8" path="res://Sub Systems/Audio Manager/AudioManager.cs" id="165_il1im"]
+[ext_resource type="AudioStream" uid="uid://baxwufa73fl35" path="res://Islands/Audio/Atmosphere Sounds/441638__naturenotesuk__birds-at-feeder.wav" id="166_2xiho"]
+[ext_resource type="AudioStream" uid="uid://bwod2wh4o0qwt" path="res://Islands/Audio/Background Music/759996__josefpres__piano-loops-167-octave-short-loop-120-bpm.wav" id="167_0iy3j"]
+[ext_resource type="AudioStream" uid="uid://dghm7erto75a0" path="res://UI/Button_Click_Sound.wav" id="168_il1im"]
 
 [node name="MainMenu" type="Control" unique_id=1921051255 node_paths=PackedStringArray("skip_tutorial", "intro_player", "parent", "menu_part_1", "menu_part_2", "difficulty_select", "load_button")]
 layout_mode = 3
@@ -479,6 +483,30 @@ item_info_list = [ExtResource("92_b1uc7"), ExtResource("93_vwfet"), ExtResource(
 [node name="DatabasePopulator" type="Node" parent="Database" unique_id=1257109130]
 script = ExtResource("18_pq0dg")
 metadata/_custom_type_script = "uid://d0ne5pdty3svn"
+
+[node name="AudioManager" type="Node2D" parent="." unique_id=399866809 node_paths=PackedStringArray("SFXPlayer", "MusicPlayer", "ButtonSoundPlayer")]
+script = ExtResource("165_il1im")
+SFXPlayer = NodePath("SFXAudioPlayer")
+MusicPlayer = NodePath("AtmosphereAudioPlayer")
+ButtonSoundPlayer = NodePath("ButtonAudioPlayer")
+
+[node name="AtmosphereAudioPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1566797400]
+stream = ExtResource("166_2xiho")
+autoplay = true
+bus = &"SFX"
+playback_type = 1
+
+[node name="SFXAudioPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=80064183]
+stream = ExtResource("167_0iy3j")
+autoplay = true
+bus = &"Music"
+playback_type = 1
+
+[node name="ButtonAudioPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=2119153207]
+stream = ExtResource("168_il1im")
+autoplay = true
+bus = &"Music"
+playback_type = 1
 
 [connection signal="visibility_changed" from="." to="." method="OnVisiblityChanged"]
 [connection signal="pressed" from="Menu/Control/VBox_Menu_Part1/NewGameButton" to="." method="OpenCreateSettings"]
