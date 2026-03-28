@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using Godot;
 
-public partial class SlotItemUI : TextureRect
+public partial class SlotItemUI : Control
 {
     public Label amount_label;
 
@@ -12,6 +12,12 @@ public partial class SlotItemUI : TextureRect
 
     [Export]
     public Item item;
+
+    [Export]
+    public TextureRect item_texture_rect;
+
+    [Export]
+    public Control poison_icon;
 
     public override void _Notification(int what)
     {
@@ -25,9 +31,10 @@ public partial class SlotItemUI : TextureRect
     public void init(Item item, int current_durability = -1)
     {
         this.item = item.Clone();
-        Texture = item.info.texture;
+        item_texture_rect.Texture = item.info.texture;
         amount_label.Text = item.amount + "x";
         UpdateToolTip();
+        UpdatePoisonIcon();
         Debug.Print("Update ToolTip!");
 
         WearableAttribute attribute = item.info.GetAttributeOrNull<WearableAttribute>();
@@ -96,6 +103,15 @@ public partial class SlotItemUI : TextureRect
     {
         if (amount_label != null)
             amount_label.Text = item.amount + "x";
+        UpdatePoisonIcon();
+    }
+
+    private void UpdatePoisonIcon()
+    {
+        if (poison_icon != null && item != null)
+        {
+            poison_icon.Visible = item.state == Item.STATE.POISONED;
+        }
     }
 
     public void SetDurability(int durability)
@@ -108,5 +124,8 @@ public partial class SlotItemUI : TextureRect
         amount_label = GetNode<Label>("Label");
         progress_bar = GetNode<VBoxContainer>("VBoxContainer").GetNode<ProgressBar>("ProgressBar");
         amount_label.Visible = false;
+
+        if (poison_icon != null)
+            poison_icon.Visible = false;
     }
 }

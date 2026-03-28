@@ -74,6 +74,7 @@
 [ext_resource type="Texture2D" uid="uid://bl2slcpf1wvaf" path="res://UI/Icons/UI_Star_Empty.png" id="41_tbpku"]
 [ext_resource type="StyleBox" uid="uid://5gmmubnpn3xd" path="res://UI/Styles/Panel_Brighter_Style.tres" id="42_8a6lo"]
 [ext_resource type="Resource" uid="uid://cwsmufe0vpjku" path="res://Sub Systems/Skill System/Skills/Data/recycle_unused_data.tres" id="42_j0nuq"]
+[ext_resource type="Texture2D" uid="uid://dgraghks7cgou" path="res://UI/alchemy_lab_bottle_placeholder.png" id="43_aa4tk"]
 [ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://UI/Styles/tab_container_panel_style.tres.tres" id="43_fato5"]
 [ext_resource type="Script" uid="uid://ef1nl1hlprq7" path="res://UI/Menus/Research Menu/SubResearchPanel.cs" id="43_mkmfo"]
 [ext_resource type="PackedScene" uid="uid://b7l06c35ca42f" path="res://UI/Menus/Game Menu/Crafting Menu/crafting_menu_crafting_line.tscn" id="43_sy28q"]
@@ -1008,10 +1009,18 @@ offset_right = 38.0
 offset_bottom = -167.0
 
 [node name="Slot0" parent="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundInput" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
@@ -1025,10 +1034,18 @@ offset_right = 292.0
 offset_bottom = -167.0
 
 [node name="Slot0" parent="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundExport" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_neighbor_left = NodePath("../../SlotBackgroundInput/Slot0")
 focus_neighbor_bottom = NodePath("../../../EnableDisableButton")
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
@@ -1044,10 +1061,18 @@ offset_right = 38.0
 offset_bottom = -131.0
 
 [node name="Slot0" parent="Background/FurnaceTab/PanelContainer/Slots/SlotBackgroundFuel" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
 focus_neighbor_bottom = NodePath("../../../EnableDisableButton")
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
@@ -1204,10 +1229,18 @@ offset_right = 38.0
 offset_bottom = -167.0
 
 [node name="Slot0" parent="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundInput" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
@@ -1221,10 +1254,18 @@ offset_right = 74.0
 offset_bottom = -167.0
 
 [node name="Slot0" parent="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundInput2" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
@@ -1238,10 +1279,18 @@ offset_right = 292.0
 offset_bottom = -167.0
 
 [node name="Slot0" parent="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundExport" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_neighbor_left = NodePath("../../SlotBackgroundInput/Slot0")
 focus_neighbor_bottom = NodePath("../../../EnableDisableButton")
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
@@ -1257,10 +1306,18 @@ offset_right = 38.0
 offset_bottom = -131.0
 
 [node name="Slot0" parent="Background/CombinerTab/PanelContainer/Slots/SlotBackgroundFuel" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
 focus_neighbor_bottom = NodePath("../../../EnableDisableButton")
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
@@ -1353,7 +1410,7 @@ offset_left = -249.0
 offset_top = -25.0
 offset_right = 289.0
 offset_bottom = -3.0
-translation_string = "GAMEMENU_FURNACE"
+translation_string = "GAMEMENU_COMBINER"
 
 [node name="Border" type="ColorRect" parent="Background/CombinerTab" unique_id=720169276]
 layout_mode = 0
@@ -1417,10 +1474,18 @@ offset_right = 38.0
 offset_bottom = -167.0
 
 [node name="Slot0" parent="Background/AlchemyLabTab/PanelContainer/Slots/SlotBackgroundInput" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
@@ -1434,14 +1499,25 @@ offset_right = 74.0
 offset_bottom = -167.0
 
 [node name="Slot0" parent="Background/AlchemyLabTab/PanelContainer/Slots/SlotBackgroundInput2" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
+theme_override_constants/icon_max_width = 24
+icon = ExtResource("43_aa4tk")
+icon_alignment = 1
 
 [node name="SlotBackgroundExport" parent="Background/AlchemyLabTab/PanelContainer/Slots" unique_id=184932861 instance=ExtResource("13_m8k7p")]
 layout_mode = 0
@@ -1451,10 +1527,18 @@ offset_right = 292.0
 offset_bottom = -167.0
 
 [node name="Slot0" parent="Background/AlchemyLabTab/PanelContainer/Slots/SlotBackgroundExport" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_neighbor_left = NodePath("../../SlotBackgroundInput/Slot0")
 focus_neighbor_bottom = NodePath("../../../EnableDisableButton")
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
@@ -1470,16 +1554,25 @@ offset_right = 38.0
 offset_bottom = -131.0
 
 [node name="Slot0" parent="Background/AlchemyLabTab/PanelContainer/Slots/SlotBackgroundFuel" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
 focus_neighbor_bottom = NodePath("../../../EnableDisableButton")
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
+theme_override_constants/icon_max_width = 24
 icon = ExtResource("20_s2f2w")
 icon_alignment = 1
 attribute_to_check = SubResource("Resource_gqg20")
@@ -1566,7 +1659,7 @@ offset_left = -249.0
 offset_top = -25.0
 offset_right = 289.0
 offset_bottom = -3.0
-translation_string = "GAMEMENU_FURNACE"
+translation_string = "GAMEMENU_ALCHEMYLAB"
 
 [node name="Border" type="ColorRect" parent="Background/AlchemyLabTab" unique_id=834811886]
 layout_mode = 0
