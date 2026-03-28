@@ -218,10 +218,6 @@ public partial class AlchemyLabBuilding : ProcessBuilding
                 int output_amount = recipe.GetAmountToProduce();
                 int output_state = recipe.GetItemState();
 
-                GD.PrintErr(
-                    $"[EXECUTE] Creating StateChanging output: Item {output_item_id} x{output_amount} with state {output_state}"
-                );
-
                 if (item_array[output_idx] == null)
                 {
                     // Output Slot ist leer - neues Item erstellen
@@ -243,9 +239,6 @@ public partial class AlchemyLabBuilding : ProcessBuilding
                 else
                 {
                     // Output Slot hat ein anderes Item - nicht überschreiben
-                    GD.PrintErr(
-                        $"[EXECUTE] ❌ Output slot bereits belegt mit anderem Item! Craft abgebrochen."
-                    );
                     return;
                 }
             }
@@ -254,18 +247,12 @@ public partial class AlchemyLabBuilding : ProcessBuilding
             if (item_array[primary_idx] != null)
             {
                 item_array[primary_idx].amount -= 1;
-                GD.PrintErr(
-                    $"[EXECUTE] Reduced Primary Input (Slot 1) to {item_array[primary_idx].amount}"
-                );
             }
 
             // Slot 2 um 1 reduzieren
             if (item_array[secondary_idx] != null)
             {
                 item_array[secondary_idx].amount -= 1;
-                GD.PrintErr(
-                    $"[EXECUTE] Reduced Secondary Input (Slot 2) to {item_array[secondary_idx].amount}"
-                );
             }
 
             is_crafting = false;

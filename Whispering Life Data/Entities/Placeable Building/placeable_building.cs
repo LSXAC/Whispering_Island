@@ -55,6 +55,9 @@ public abstract partial class placeable_building : Building_Node
         if (disable_mouse_interaction)
             if (Logger.NodeIsNotNull(mouse_area))
                 mouse_area.Monitorable = false;
+
+        // Initialisiere Magic Power Panel wenn nötig
+        InitMagicPower();
     }
 
     public void InitMagicPower()
@@ -91,9 +94,10 @@ public abstract partial class placeable_building : Building_Node
                 mp_missing_panel_instance.Visible = false;
             has_enough_magic_power = true;
         }
-        else if (mp_missing_panel_instance != null)
+        else
         {
-            mp_missing_panel_instance.Visible = true;
+            if (mp_missing_panel_instance != null)
+                mp_missing_panel_instance.Visible = true;
             has_enough_magic_power = false;
         }
     }

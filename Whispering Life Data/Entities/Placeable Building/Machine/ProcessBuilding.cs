@@ -68,7 +68,6 @@ public abstract partial class ProcessBuilding : MachineBase
         int input_idx = GetSlotIndexByPurpose(SlotPurpose.INPUT);
         if (item_array[input_idx] == null)
         {
-            GD.PrintErr($"[CRAFTING] Input slot is empty!");
             StopCrafting();
             return;
         }
@@ -76,30 +75,24 @@ public abstract partial class ProcessBuilding : MachineBase
         ProcessingRecipe recipe = GetRecipeFromInputSlot();
         if (recipe == null)
         {
-            GD.PrintErr($"[CRAFTING] Recipe not found for {item_array[input_idx].item_id}");
             StopCrafting();
             return;
         }
 
         if (item_array[input_idx].amount < recipe.GetAmountToProcess())
         {
-            GD.PrintErr(
-                $"[CRAFTING] Not enough items! Have: {item_array[input_idx].amount}, Need: {recipe.GetAmountToProcess()}"
-            );
             StopCrafting();
             return;
         }
 
         if (progress >= 100)
         {
-            GD.PrintErr($"[CRAFTING] ✅ Recipe complete! Executing...");
             ExecuteRecipe(recipe);
             return;
         }
 
         progress += 5;
         fuel_left -= 1;
-        GD.PrintErr($"[CRAFTING] Progress: {progress}/100, Fuel: {fuel_left}");
 
         OnProcessingTick(recipe);
 
@@ -125,17 +118,11 @@ public abstract partial class ProcessBuilding : MachineBase
         {
             if (item_array[output_idx] != null)
             {
-                GD.PrintErr(
-                    $"[EXECUTE] Adding to existing output: {output_info.name} x{recipe.GetAmountToProduce()}"
-                );
                 item_array[output_idx].amount += recipe.GetAmountToProduce();
                 item_array[output_idx].state = recipe.GetItemState();
             }
             else
             {
-                GD.PrintErr(
-                    $"[EXECUTE] Creating new output: {output_info.name} x{recipe.GetAmountToProduce()}"
-                );
                 item_array[output_idx] = new ItemSave(
                     (int)output_info.id,
                     recipe.GetAmountToProduce(),
@@ -144,12 +131,7 @@ public abstract partial class ProcessBuilding : MachineBase
                 );
             }
         }
-        else
-        {
-            GD.PrintErr($"[EXECUTE] ❌ Output item is null!");
-        }
 
-        GD.PrintErr($"[EXECUTE] Consuming input: {recipe.GetAmountToProcess()} items");
         item_array[input_idx].amount -= recipe.GetAmountToProcess();
 
         is_crafting = false;
@@ -230,7 +212,6 @@ public abstract partial class ProcessBuilding : MachineBase
             description.Text = TranslationServer.Translate("FURNACE_MENU_DESC");
 
         is_crafting = true;
-        GD.PrintErr($"[{this.Name}] CRAFTING STARTED!");
         if (ui_updater != null && ui_updater.process_building == this)
             ui_updater.UpdateUI();
         process_timer.Start();
