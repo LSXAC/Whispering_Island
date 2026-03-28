@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://co7hlkouwi7sd"
+path="res://.godot/imported/Tipping_Sound.wav-d2e72fed24e4ea8e82a21fd998598efd.sample"
+
+[deps]
+
+source_file="res://Sub Systems/Dialogue System/Audios/Tipping_Sound.wav"
+dest_files=["res://.godot/imported/Tipping_Sound.wav-d2e72fed24e4ea8e82a21fd998598efd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

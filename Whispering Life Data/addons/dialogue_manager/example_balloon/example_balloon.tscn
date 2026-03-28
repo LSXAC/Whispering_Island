@@ -11,6 +11,7 @@
 [ext_resource type="StyleBox" uid="uid://c0rrcqgclnbps" path="res://UI/Styles/Button_Hover_Style.tres" id="9_8fyy4"]
 [ext_resource type="StyleBox" uid="uid://h4o1ussquiqb" path="res://UI/Styles/button_hover_pressed_style.tres" id="10_28mx0"]
 [ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://UI/Styles/Button_Disabled_Style.tres.tres" id="11_kg7lv"]
+[ext_resource type="AudioStream" uid="uid://co7hlkouwi7sd" path="res://Sub Systems/Dialogue System/Audios/Tipping_Sound.wav" id="12_icj72"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_235ry"]
 content_margin_left = 6.0
@@ -118,9 +119,11 @@ _data = {
 &"progress": SubResource("Animation_i6nbm")
 }
 
-[node name="ExampleBalloon" type="CanvasLayer" unique_id=292641775]
+[node name="ExampleBalloon" type="CanvasLayer" unique_id=292641775 node_paths=PackedStringArray("TypeSoundPlayer")]
 layer = 100
 script = ExtResource("1_1kn55")
+TypeSoundPlayer = NodePath("AudioStreamPlayer")
+TypeSpeed = 0.025
 
 [node name="Balloon" type="Control" parent="." unique_id=1014066503]
 unique_name_in_owner = true
@@ -242,6 +245,8 @@ text = "Response Example"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1640827784]
 unique_name_in_owner = true
+stream = ExtResource("12_icj72")
+bus = &"SFX"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
