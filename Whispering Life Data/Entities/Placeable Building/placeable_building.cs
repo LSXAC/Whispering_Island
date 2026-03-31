@@ -18,7 +18,7 @@ public abstract partial class placeable_building : Building_Node
     private PackedScene mp_missing_panel = ResourceLoader.Load<PackedScene>(
         ResourceUid.UidToPath("uid://cuyqy07pn2y0u")
     );
-    public MpMissingPanel mp_missing_panel_instance;
+    public BuildingInformationPanel building_information_panel_instance;
 
     [Export]
     public bool disable_mouse_interaction = false;
@@ -45,6 +45,10 @@ public abstract partial class placeable_building : Building_Node
 
     public override void _Ready()
     {
+        building_information_panel_instance =
+            mp_missing_panel.Instantiate<BuildingInformationPanel>();
+        AddChild(building_information_panel_instance);
+
         if (ignore_node_structure)
             return;
 
@@ -55,20 +59,6 @@ public abstract partial class placeable_building : Building_Node
         if (disable_mouse_interaction)
             if (Logger.NodeIsNotNull(mouse_area))
                 mouse_area.Monitorable = false;
-
-        // Initialisiere Magic Power Panel wenn nötig
-        InitMagicPower();
-    }
-
-    public void InitMagicPower()
-    {
-        if (consums_magic_power)
-        {
-            mp_missing_panel_instance = mp_missing_panel.Instantiate<MpMissingPanel>();
-            mp_missing_panel_instance.Visible = false;
-            mp_missing_panel_instance.Position = new Vector2(-6f, -6f);
-            AddChild(mp_missing_panel_instance);
-        }
     }
 
     public override void OnMouseClick()
@@ -90,14 +80,20 @@ public abstract partial class placeable_building : Building_Node
     {
         if (enough_power)
         {
-            if (mp_missing_panel_instance != null)
-                mp_missing_panel_instance.Visible = false;
+            if (building_information_panel_instance != null)
+                building_information_panel_instance.DeactivatePanel(
+                    BuildingInformationPanel.PanelType.NO_ENERGY
+                );
             has_enough_magic_power = true;
+            Debug.Print("Has Power");
         }
         else
         {
-            if (mp_missing_panel_instance != null)
-                mp_missing_panel_instance.Visible = true;
+            if (building_information_panel_instance != null)
+                building_information_panel_instance.ActivatePanel(
+                    BuildingInformationPanel.PanelType.NO_ENERGY
+                );
+            Debug.Print("Has No Power");
             has_enough_magic_power = false;
         }
     }

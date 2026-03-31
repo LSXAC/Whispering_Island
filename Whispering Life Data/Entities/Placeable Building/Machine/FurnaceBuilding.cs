@@ -148,54 +148,26 @@ public partial class FurnaceBuilding : ProcessBuilding
         }
 
         if (recipe == null)
-        {
-            GD.PrintErr($"[SELECT] ❌ No recipe found!");
             return false;
-        }
 
         if (item_array[(int)SlotType.FUEL] == null && fuel_left <= 0)
-        {
-            GD.PrintErr($"[SELECT] No fuel! Fuel: {fuel_left}");
             return false;
-        }
 
         if (item_array[(int)SlotType.IMPORT].amount < recipe.GetAmountToProcess())
-        {
-            GD.PrintErr(
-                $"[SELECT] Not enough input: {item_array[(int)SlotType.IMPORT].amount}/{recipe.GetAmountToProcess()}"
-            );
             return false;
-        }
 
         if (item_array[(int)SlotType.EXPORT] == null)
-        {
-            GD.PrintErr($"[SELECT] ✅ All checks passed! Ready to craft.");
             return true;
-        }
 
         ItemInfo expected_output = recipe.GetOutputItem();
         if (expected_output == null)
-        {
-            GD.PrintErr($"[SELECT] Output item is null!");
             return false;
-        }
 
         if (item_array[(int)SlotType.EXPORT].item_id != (int)expected_output.id)
-        {
-            GD.PrintErr(
-                $"[SELECT] Output mismatch: have {item_array[(int)SlotType.EXPORT].item_id}, need {(int)expected_output.id}"
-            );
             return false;
-        }
         else if (item_array[(int)SlotType.EXPORT].state != recipe.GetItemState())
-        {
-            GD.PrintErr(
-                $"[SELECT] State mismatch: have {item_array[(int)SlotType.EXPORT].state}, need {recipe.GetItemState()}"
-            );
             return false;
-        }
 
-        GD.PrintErr($"[SELECT] ✅ All checks passed with existing output!");
         return true;
     }
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wvpbk4oqakih"
-path="res://.godot/imported/Cross_Icon.png-907db3897606d22071f916b7d91e0bd8.ctex"
+path="res://.godot/imported/Cross_Icon.png-860ab20223cd692b3c5335539a2af798.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Menus/Build Menu/Cross_Icon.png"
-dest_files=["res://.godot/imported/Cross_Icon.png-907db3897606d22071f916b7d91e0bd8.ctex"]
+source_file="res://UI/Building Information Panel/Textures/Cross_Icon.png"
+dest_files=["res://.godot/imported/Cross_Icon.png-860ab20223cd692b3c5335539a2af798.ctex"]
 
 [params]
 

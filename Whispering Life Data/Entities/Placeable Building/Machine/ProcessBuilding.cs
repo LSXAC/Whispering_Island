@@ -16,6 +16,9 @@ public abstract partial class ProcessBuilding : MachineBase
     public int fuel_left = 0;
 
     [Export]
+    public bool requires_recipe = true;
+
+    [Export]
     public Timer state_timer;
     public Godot.Collections.Array recipes = new Godot.Collections.Array();
 
@@ -60,6 +63,31 @@ public abstract partial class ProcessBuilding : MachineBase
 
         GetUIUpdater().SetReferenceBuilding(this);
         OpenGameMenuTab();
+    }
+
+    private void UpdateRecipeAndMaterialPanels(bool has_no_materials, bool has_no_recipe)
+    {
+        if (!Logger.NodeIsNotNull(building_information_panel_instance))
+            return;
+
+        // Deactivate processing panels initially (NO_ENERGY is managed separately by UpdateMagicPowerBuilding)
+        building_information_panel_instance.DeactivatePanel(
+            BuildingInformationPanel.PanelType.NO_INPUT
+        );
+        building_information_panel_instance.DeactivatePanel(
+            BuildingInformationPanel.PanelType.NO_RECIPE
+        );
+
+        // Activate panels based on conditions
+        if (has_no_materials)
+            building_information_panel_instance.ActivatePanel(
+                BuildingInformationPanel.PanelType.NO_INPUT
+            );
+
+        if (has_no_recipe && requires_recipe)
+            building_information_panel_instance.ActivatePanel(
+                BuildingInformationPanel.PanelType.NO_RECIPE
+            );
     }
 
     public void OnCraftingTimerTimeout()
@@ -172,6 +200,16 @@ public abstract partial class ProcessBuilding : MachineBase
             state_timer.Paused = false;
         }
 
+        int input_idx = GetSlotIndexByPurpose(SlotPurpose.INPUT);
+
+        // Check all conditions independently - panels can be active simultaneously
+        bool has_no_materials = item_array[input_idx] == null;
+        bool has_no_recipe = !SelectAndCheckCanCraft();
+        bool has_no_fuel = !RefuelIfNeeded();
+
+        // Update process panels
+        UpdateRecipeAndMaterialPanels(has_no_materials, has_no_recipe);
+
         if (is_crafting)
             return;
 
@@ -183,27 +221,17 @@ public abstract partial class ProcessBuilding : MachineBase
         if (description == null)
             return;
 
-        int input_idx = GetSlotIndexByPurpose(SlotPurpose.INPUT);
-
-        if (item_array[input_idx] == null)
-        {
+        // Determine description text based on priority
+        if (has_no_materials)
             description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_RESOURCE");
-            return;
-        }
-
-        if (!SelectAndCheckCanCraft())
-        {
+        else if (has_no_recipe && requires_recipe)
             description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_RECIPE");
-            return;
-        }
-
-        if (!RefuelIfNeeded())
+        else if (has_no_fuel)
         {
             description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_FUEL");
             return;
         }
-
-        if (!machine_enabled)
+        else if (!machine_enabled)
         {
             description.Text = "";
             return;
@@ -211,10 +239,18 @@ public abstract partial class ProcessBuilding : MachineBase
         else
             description.Text = TranslationServer.Translate("FURNACE_MENU_DESC");
 
-        is_crafting = true;
-        if (ui_updater != null && ui_updater.process_building == this)
-            ui_updater.UpdateUI();
-        process_timer.Start();
+        if (
+            !has_no_materials
+            && (!has_no_recipe || !requires_recipe)
+            && !has_no_fuel
+            && machine_enabled
+        )
+        {
+            is_crafting = true;
+            if (ui_updater != null && ui_updater.process_building == this)
+                ui_updater.UpdateUI();
+            process_timer.Start();
+        }
     }
 
     protected virtual bool RefuelIfNeeded()

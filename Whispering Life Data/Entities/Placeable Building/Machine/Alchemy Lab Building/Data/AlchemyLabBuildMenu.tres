@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://cn2x03b5gy3qq" path="res://Entities/Items/Machine Component/Transport/Data/TransportComponent.tres" id="4_4qmtf"]
 [ext_resource type="PackedScene" uid="uid://bq2lmgvygbt6t" path="res://Entities/Placeable Building/Machine/Alchemy Lab Building/Building_alchemy_lab.tscn" id="5_sabkb"]
 [ext_resource type="Script" uid="uid://cx6a8bo5f50qs" path="res://UI/Menus/Build Menu/Build Menu Line/Building_Menu_List_Object.cs" id="6_im4ii"]
-[ext_resource type="Texture2D" uid="uid://c4k1e43v3so2p" path="res://Entities/Placeable Building/Machine/Alchemy Lab Building/Texture/AlchemyLab_Building_Sprite.png" id="7_xseim"]
+[ext_resource type="Texture2D" uid="uid://dwvpobx5hdkjo" path="res://Entities/Placeable Building/Machine/Alchemy Lab Building/Texture/Alchemy_Lab1.png" id="7_fdqoq"]
 
 [sub_resource type="Resource" id="Resource_yo73i"]
 script = ExtResource("2_6c3wf")
@@ -33,5 +33,5 @@ scene_building_id = 42
 required_items = Array[Object]([SubResource("Resource_yo73i"), SubResource("Resource_m7iag"), SubResource("Resource_g54yy")])
 unlock_requirements = null
 building_menu_category = 6
-texture_in_build_menu = ExtResource("7_xseim")
+texture_in_build_menu = ExtResource("7_fdqoq")
 show_magic_power_use = true

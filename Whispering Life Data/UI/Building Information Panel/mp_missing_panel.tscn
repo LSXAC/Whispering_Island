@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://cuyqy07pn2y0u"]
+
+[ext_resource type="Script" uid="uid://du0t2110san6a" path="res://Entities/Placeable Building/BuildingInformationPanel.cs" id="1_68x0j"]
+[ext_resource type="Texture2D" uid="uid://c6j2ync3r0vqv" path="res://UI/Menus/Build Menu/Magic_Power_Icon.png" id="2_jbxb2"]
+[ext_resource type="Texture2D" uid="uid://wvpbk4oqakih" path="res://UI/Building Information Panel/Textures/Cross_Icon.png" id="3_u4cq8"]
+[ext_resource type="Texture2D" uid="uid://curt66yojsxad" path="res://UI/Building Information Panel/Textures/Gear.png" id="4_jbxb2"]
+[ext_resource type="Texture2D" uid="uid://d1wddls2semmy" path="res://Entities/Items/SpritesForItems/Icons_3rd/Iron_Ingot.png" id="5_u4cq8"]
+
+[node name="BuildingInformationPanel" type="Control" unique_id=1319776930 node_paths=PackedStringArray("no_energy_panel", "no_recipe_panel", "no_input_panel")]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -14.0
+offset_top = -16.0
+offset_right = 2.0
+script = ExtResource("1_68x0j")
+no_energy_panel = NodePath("HBoxContainer/NoEnergy")
+no_recipe_panel = NodePath("HBoxContainer/NoRecipe")
+no_input_panel = NodePath("HBoxContainer/NoMaterials")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2073822773]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -12.0
+offset_right = 18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="NoEnergy" type="Control" parent="HBoxContainer" unique_id=1234674364]
+visible = false
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+
+[node name="Background" type="PanelContainer" parent="HBoxContainer/NoEnergy" unique_id=2116381462]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="TextureRect" parent="HBoxContainer/NoEnergy" unique_id=1312846230]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jbxb2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cross" type="TextureRect" parent="HBoxContainer/NoEnergy" unique_id=885196110]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_u4cq8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NoRecipe" type="Control" parent="HBoxContainer" unique_id=1690749012]
+visible = false
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+
+[node name="Background" type="PanelContainer" parent="HBoxContainer/NoRecipe" unique_id=2104746792]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="TextureRect" parent="HBoxContainer/NoRecipe" unique_id=2112288928]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_jbxb2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cross" type="TextureRect" parent="HBoxContainer/NoRecipe" unique_id=158738082]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_u4cq8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NoMaterials" type="Control" parent="HBoxContainer" unique_id=352728432]
+visible = false
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+
+[node name="Background" type="PanelContainer" parent="HBoxContainer/NoMaterials" unique_id=1448365985]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="TextureRect" parent="HBoxContainer/NoMaterials" unique_id=122194413]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_u4cq8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cross" type="TextureRect" parent="HBoxContainer/NoMaterials" unique_id=1227368481]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_u4cq8")
+expand_mode = 1
+stretch_mode = 5
