@@ -107,7 +107,10 @@ public partial class ProcessingRecipeSlot : Control
                 if (secondary_input != null)
                 {
                     required_items.Add(
-                        new Item(secondary_input, state_changing_recipe.GetSecondaryAmountToProcess())
+                        new Item(
+                            secondary_input,
+                            state_changing_recipe.GetSecondaryAmountToProcess()
+                        )
                     );
                     GD.PrintErr(
                         $"[ProcessingRecipeSlot.InitRecipe]   ✓ Added secondary input: {secondary_input.name}"
