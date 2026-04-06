@@ -119,7 +119,6 @@ public abstract partial class ProcessingTab : SlotUpdater
 
         this.process_building = process_building;
 
-        // Setze auch das RecipeOverviewPanel, wenn vorhanden
         GD.PrintErr(
             $"[ProcessingTab.SetReferenceBuilding] recipe_overview_panel: {(recipe_overview_panel != null ? "✓ FOUND" : "❌ NULL")}"
         );
@@ -141,27 +140,19 @@ public abstract partial class ProcessingTab : SlotUpdater
         if (process_building == null)
             return;
 
-        // Aktualisiere RecipeOverviewPanel wenn vorhanden
         if (recipe_overview_panel != null)
-        {
             recipe_overview_panel.ReloadRecipes();
-        }
 
-        // Alle UI-Slots clearen
         foreach (var slot in slot_by_index.Values)
-        {
             slot.ClearSlotItem();
-        }
 
         SetMachineProgressbar(process_building.ui_progress);
         UpdateFuelProgressbar(
             (int)((double)process_building.fuel_left / process_building.max_fuel_count * 100)
         );
 
-        // Update alle Items in Slots basierend auf Slot-Konfiguration
         for (int i = 0; i < slot_configs.Length; i++)
         {
-            // Prüfe ob Index im item_array existiert
             if (i >= process_building.item_array.Length)
                 break;
 
@@ -179,13 +170,15 @@ public abstract partial class ProcessingTab : SlotUpdater
                 }
             }
         }
+
+        if (process_building.selected_recipe != null)
+            UpdateRecipeSlotIcons(process_building.selected_recipe);
     }
 
     protected void OvertakeItems()
     {
         for (int i = 0; i < slot_configs.Length; i++)
         {
-            // Prüfe ob Index im item_array existiert
             if (i >= process_building.item_array.Length)
                 break;
 
@@ -242,5 +235,43 @@ public abstract partial class ProcessingTab : SlotUpdater
                 indices.Add(i);
         }
         return indices.ToArray();
+    }
+
+    /// <summary>
+    /// Updates slot button icons to show recipe requirements as placeholders
+    /// </summary>
+    public void UpdateRecipeSlotIcons(ProcessingRecipe recipe)
+    {
+        if (recipe == null || process_building == null)
+            return;
+
+        // Clear all slot icons first
+        foreach (var slot in slot_by_index.Values)
+        {
+            if (slot != null)
+                slot.Icon = null;
+        }
+
+        // Set Input slot icon
+        int input_idx = GetSlotIndexByPurpose(SlotPurpose.INPUT);
+        if (input_idx >= 0 && slot_by_index.TryGetValue(input_idx, out var input_slot))
+        {
+            ItemInfo input_requirement = recipe.GetInputRequirement();
+            if (input_requirement != null && input_requirement.texture != null)
+            {
+                input_slot.Icon = input_requirement.texture;
+            }
+        }
+
+        // Set Output slot icon
+        int output_idx = GetSlotIndexByPurpose(SlotPurpose.OUTPUT);
+        if (output_idx >= 0 && slot_by_index.TryGetValue(output_idx, out var output_slot))
+        {
+            ItemInfo output_requirement = recipe.GetOutputItem();
+            if (output_requirement != null && output_requirement.texture != null)
+            {
+                output_slot.Icon = output_requirement.texture;
+            }
+        }
     }
 }

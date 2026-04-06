@@ -88,16 +88,16 @@ public partial class MonsterIsland : Building_Node
         // Cutscene-Trigger für Quest-Zeitpunkte
         CheckQuestTimeTriggers();
 
-        if (Input.IsActionJustPressed("EVENTF1"))
+        if (Input.IsActionJustPressed("EventF1"))
             StartHittingCutscene();
 
-        if (Input.IsActionJustPressed("EVENTF2"))
+        if (Input.IsActionJustPressed("EventF2"))
             island_state.ApplyQuestFailed();
 
-        if (Input.IsActionJustPressed("EVENTF3"))
+        if (Input.IsActionJustPressed("EventF3"))
             island_state.ApplyManipulation();
 
-        if (Input.IsActionJustPressed("EVENTF4"))
+        if (Input.IsActionJustPressed("EventF4"))
             island_state.ApplyEscalation();
     }
 

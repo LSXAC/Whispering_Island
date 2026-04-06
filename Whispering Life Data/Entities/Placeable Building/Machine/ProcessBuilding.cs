@@ -26,7 +26,6 @@ public abstract partial class ProcessBuilding : MachineBase
     public int ui_progress = 0;
     public int progress = 0;
 
-    // Recipe Selection
     public ProcessingRecipe selected_recipe = null;
     protected abstract ProcessingRecipe GetRecipeFromInputSlot();
 
@@ -70,7 +69,6 @@ public abstract partial class ProcessBuilding : MachineBase
         if (!Logger.NodeIsNotNull(building_information_panel_instance))
             return;
 
-        // Deactivate processing panels initially (NO_ENERGY is managed separately by UpdateMagicPowerBuilding)
         building_information_panel_instance.DeactivatePanel(
             BuildingInformationPanel.PanelType.NO_INPUT
         );
@@ -78,7 +76,6 @@ public abstract partial class ProcessBuilding : MachineBase
             BuildingInformationPanel.PanelType.NO_RECIPE
         );
 
-        // Activate panels based on conditions
         if (has_no_materials)
             building_information_panel_instance.ActivatePanel(
                 BuildingInformationPanel.PanelType.NO_INPUT
@@ -92,7 +89,6 @@ public abstract partial class ProcessBuilding : MachineBase
 
     public void OnCraftingTimerTimeout()
     {
-        // Check if input slot is empty
         int input_idx = GetSlotIndexByPurpose(SlotPurpose.INPUT);
         if (item_array[input_idx] == null)
         {
@@ -124,7 +120,6 @@ public abstract partial class ProcessBuilding : MachineBase
 
         OnProcessingTick(recipe);
 
-        // Update UI wenn dieser building gerade angezeigt wird
         var ui_updater = GetUIUpdater();
         if (ui_updater != null && ui_updater.process_building == this)
         {
@@ -207,7 +202,6 @@ public abstract partial class ProcessBuilding : MachineBase
         bool has_no_recipe = !SelectAndCheckCanCraft();
         bool has_no_fuel = !RefuelIfNeeded();
 
-        // Update process panels
         UpdateRecipeAndMaterialPanels(has_no_materials, has_no_recipe);
 
         if (is_crafting)
@@ -221,7 +215,6 @@ public abstract partial class ProcessBuilding : MachineBase
         if (description == null)
             return;
 
-        // Determine description text based on priority
         if (has_no_materials)
             description.Text = TranslationServer.Translate("FURNACE_MENU_DESC_NO_RESOURCE");
         else if (has_no_recipe && requires_recipe)
@@ -292,6 +285,21 @@ public abstract partial class ProcessBuilding : MachineBase
                 item_array[i] = machine_save.furnace_slots[i];
 
             fuel_left = machine_save.fuel_left;
+
+            if (
+                machine_save.selected_recipe_index >= 0
+                && machine_save.selected_recipe_index < recipes.Count
+            )
+            {
+                selected_recipe = (ProcessingRecipe)recipes[machine_save.selected_recipe_index];
+
+                // Update slot icons after loading recipe
+                ProcessingTab ui_updater = GetUIUpdater() as ProcessingTab;
+                if (ui_updater != null)
+                {
+                    ui_updater.UpdateRecipeSlotIcons(selected_recipe);
+                }
+            }
         }
         else
             Logger.PrintWrongSaveType();
@@ -303,6 +311,28 @@ public abstract partial class ProcessBuilding : MachineBase
         for (int i = 0; i < 4; i++)
             machine_save.furnace_slots[i] = item_array[i];
         machine_save.fuel_left = fuel_left;
+
+        machine_save.selected_recipe_index = -1;
+
+        if (selected_recipe != null)
+        {
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                try
+                {
+                    Variant recipeVariant = recipes[i];
+                    ProcessingRecipe recipe = recipeVariant.As<ProcessingRecipe>();
+
+                    if (recipe != null && ReferenceEquals(recipe, selected_recipe))
+                    {
+                        machine_save.selected_recipe_index = i;
+                        break;
+                    }
+                }
+                catch { }
+            }
+        }
+
         return machine_save;
     }
 
@@ -329,7 +359,72 @@ public abstract partial class ProcessBuilding : MachineBase
     public void SelectRecipe(ProcessingRecipe recipe)
     {
         selected_recipe = recipe;
+
+        if (recipe != null)
+        {
+            int input_idx = GetSlotIndexByPurpose(SlotPurpose.INPUT);
+            int output_idx = GetSlotIndexByPurpose(SlotPurpose.OUTPUT);
+
+            if (item_array[input_idx] != null)
+            {
+                ItemInfo required_input = recipe.GetInputRequirement();
+                ItemInfo current_input = GetItemResource(input_idx);
+
+                if (required_input != null && current_input != null)
+                {
+                    if (current_input.id != required_input.id)
+                    {
+                        Item item_to_transfer = new Item(
+                            current_input,
+                            item_array[input_idx].amount,
+                            (Item.STATE)item_array[input_idx].state
+                        );
+
+                        if (PlayerInventoryUI.instance != null)
+                            PlayerInventoryUI.instance.AddItem(
+                                item_to_transfer,
+                                PlayerInventoryUI.instance.inventory_items
+                            );
+
+                        item_array[input_idx] = null;
+                    }
+                }
+            }
+
+            if (item_array[output_idx] != null)
+            {
+                ItemInfo required_output = recipe.GetOutputItem();
+                ItemInfo current_output = GetItemResource(output_idx);
+
+                if (required_output != null && current_output != null)
+                {
+                    if (current_output.id != required_output.id)
+                    {
+                        Item item_to_transfer = new Item(
+                            current_output,
+                            item_array[output_idx].amount,
+                            (Item.STATE)item_array[output_idx].state
+                        );
+
+                        if (PlayerInventoryUI.instance != null)
+                            PlayerInventoryUI.instance.AddItem(
+                                item_to_transfer,
+                                PlayerInventoryUI.instance.inventory_items
+                            );
+
+                        item_array[output_idx] = null;
+                    }
+                }
+            }
+        }
+
         NotifyItemsChanged();
+
+        ProcessingTab ui_updater = GetUIUpdater() as ProcessingTab;
+        if (ui_updater != null)
+        {
+            ui_updater.UpdateRecipeSlotIcons(recipe);
+        }
     }
 
     public bool CanItemFitInSlot(Inventory.ITEM_ID item_id, int slot_index)
@@ -374,17 +469,11 @@ public abstract partial class ProcessBuilding : MachineBase
             return false;
 
         if (item_array[slot_index] == null)
-        {
             item_array[slot_index] = item_save;
-        }
         else if (item_array[slot_index].item_id == item_save.item_id)
-        {
             item_array[slot_index].amount += item_save.amount;
-        }
         else
-        {
             return false; // Unterschiedliche Items können nicht kombiniert werden
-        }
 
         NotifyItemsChanged();
         return true;

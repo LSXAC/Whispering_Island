@@ -28,6 +28,9 @@ public partial class MachineSave : PlaceableSave
     public int current_recipe = 0;
 
     [Export]
+    public int selected_recipe_index = -1;
+
+    [Export]
     public int count = 0;
 
     [Export]

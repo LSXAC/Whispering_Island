@@ -242,7 +242,7 @@ public partial class Inventory : SlotUpdater
         {
             if (s != null)
             {
-                Item item = new Item { info = ITEM_TYPES[(ITEM_ID)s.item_id], amount = s.amount };
+                Item item = new Item(ITEM_TYPES[(ITEM_ID)s.item_id], s.amount);
                 items.Add(item);
             }
         }
