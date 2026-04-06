@@ -10,6 +10,9 @@ public partial class StateChangingRecipe : ProcessingRecipe
     public Array<Item> variable_input_items;
 
     [Export]
+    public Item universal_variable_item;
+
+    [Export]
     public bool accept_any_variable_item = false;
 
     [Export]
@@ -110,5 +113,39 @@ public partial class StateChangingRecipe : ProcessingRecipe
             return true;
 
         return false;
+    }
+
+    /// <summary>
+    /// Gibt das zweite Input-Item zurück (erstes variables Item oder universelles Item)
+    /// </summary>
+    public ItemInfo GetSecondaryInputRequirement()
+    {
+        if (
+            variable_input_items != null
+            && variable_input_items.Count > 0
+            && variable_input_items[0] != null
+        )
+            return variable_input_items[0].info;
+
+        // Fallback auf universelles Item, wenn keine spezifischen variablen Items definiert sind
+        return universal_variable_item?.info ?? null;
+    }
+
+    /// <summary>
+    /// Gibt den Betrag für das zweite Input-Item zurück
+    /// </summary>
+    public int GetSecondaryAmountToProcess()
+    {
+        if (
+            variable_input_items != null
+            && variable_input_items.Count > 0
+            && variable_input_items[0] != null
+        )
+            return variable_input_items[0].amount > 0 ? variable_input_items[0].amount : 1;
+
+        if (universal_variable_item != null && universal_variable_item.amount > 0)
+            return universal_variable_item.amount;
+
+        return 1;
     }
 }

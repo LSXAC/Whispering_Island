@@ -21,6 +21,9 @@ public abstract partial class ProcessingTab : SlotUpdater
     [Export]
     public Label description_Label;
 
+    [Export]
+    public RecipeOverviewPanel recipe_overview_panel;
+
     protected ProcessingSlotConfig[] slot_configs = Array.Empty<ProcessingSlotConfig>();
 
     protected Dictionary<int, Slot> slot_by_index = new Dictionary<int, Slot>();
@@ -110,14 +113,39 @@ public abstract partial class ProcessingTab : SlotUpdater
 
     public void SetReferenceBuilding(ProcessBuilding process_building)
     {
+        GD.PrintErr(
+            $"[ProcessingTab.SetReferenceBuilding] START - building: {(process_building != null ? process_building.GetType().Name : "NULL")}"
+        );
+
         this.process_building = process_building;
+
+        // Setze auch das RecipeOverviewPanel, wenn vorhanden
+        GD.PrintErr(
+            $"[ProcessingTab.SetReferenceBuilding] recipe_overview_panel: {(recipe_overview_panel != null ? "✓ FOUND" : "❌ NULL")}"
+        );
+
+        if (recipe_overview_panel != null)
+        {
+            GD.PrintErr(
+                "[ProcessingTab.SetReferenceBuilding] Calling SetReferenceBuilding on RecipeOverviewPanel"
+            );
+            recipe_overview_panel.SetReferenceBuilding(process_building);
+        }
+
         UpdateUI();
+        GD.PrintErr("[ProcessingTab.SetReferenceBuilding] END");
     }
 
     public virtual void UpdateUI()
     {
         if (process_building == null)
             return;
+
+        // Aktualisiere RecipeOverviewPanel wenn vorhanden
+        if (recipe_overview_panel != null)
+        {
+            recipe_overview_panel.ReloadRecipes();
+        }
 
         // Alle UI-Slots clearen
         foreach (var slot in slot_by_index.Values)

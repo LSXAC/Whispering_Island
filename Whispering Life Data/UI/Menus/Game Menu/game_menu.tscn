@@ -71,6 +71,7 @@
 [ext_resource type="StyleBox" uid="uid://b6stjn6fub30f" path="res://UI/Styles/tab_container_unselected_style.tres.tres" id="41_fato5"]
 [ext_resource type="Resource" uid="uid://drpg8ggybgde0" path="res://Sub Systems/Skill System/Skills/Data/mining_bonus_2.tres" id="41_gqg20"]
 [ext_resource type="Script" uid="uid://cloxr8qxkstkv" path="res://UI/Menus/Game Menu/CombinerTab.cs" id="41_kv5uf"]
+[ext_resource type="Script" uid="uid://qiddo74q3ygb" path="res://UI/Menus/Game Menu/RecipeOverviewPanel.cs" id="41_mf3kg"]
 [ext_resource type="Texture2D" uid="uid://bl2slcpf1wvaf" path="res://UI/Icons/UI_Star_Empty.png" id="41_tbpku"]
 [ext_resource type="StyleBox" uid="uid://5gmmubnpn3xd" path="res://UI/Styles/Panel_Brighter_Style.tres" id="42_8a6lo"]
 [ext_resource type="Resource" uid="uid://cwsmufe0vpjku" path="res://Sub Systems/Skill System/Skills/Data/recycle_unused_data.tres" id="42_j0nuq"]
@@ -969,7 +970,7 @@ offset_right = 288.0
 offset_bottom = -1.0
 translation_string = "GAMEMENU_CHEST"
 
-[node name="FurnaceTab" type="Control" parent="Background" unique_id=194307420 node_paths=PackedStringArray("export_slot", "import_slot", "fuel_slot", "fuel_label", "machineProgressbar", "fuelProgressbar", "description_Label")]
+[node name="FurnaceTab" type="Control" parent="Background" unique_id=194307420 node_paths=PackedStringArray("export_slot", "import_slot", "fuel_slot", "fuel_label", "machineProgressbar", "fuelProgressbar", "description_Label", "recipe_overview_panel")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -988,6 +989,7 @@ fuel_label = NodePath("PanelContainer/FuelLabel")
 machineProgressbar = NodePath("PanelContainer/ProgressBar")
 fuelProgressbar = NodePath("PanelContainer/FuelProgressBar")
 description_Label = NodePath("PanelContainer/DescriptionLabel")
+recipe_overview_panel = NodePath("RecipeOverviewPanel")
 
 [node name="ColorRect" type="ColorRect" parent="Background/FurnaceTab" unique_id=65885653]
 layout_mode = 1
@@ -1188,7 +1190,33 @@ offset_right = 3.0
 offset_bottom = 278.0
 color = Color(0, 0, 0, 1)
 
-[node name="CombinerTab" type="Control" parent="Background" unique_id=158413284 node_paths=PackedStringArray("left_slot", "right_slot", "output_slot", "fuel_slot", "fuel_label", "machineProgressbar", "fuelProgressbar", "description_Label")]
+[node name="RecipeOverviewPanel" type="PanelContainer" parent="Background/FurnaceTab" unique_id=1010060302 node_paths=PackedStringArray("recipe_container")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -135.0
+offset_right = 140.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("41_mf3kg")
+recipe_container = NodePath("MarginContainer/VBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/FurnaceTab/RecipeOverviewPanel" unique_id=276547983]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/FurnaceTab/RecipeOverviewPanel/MarginContainer" unique_id=761327570]
+layout_mode = 2
+
+[node name="CombinerTab" type="Control" parent="Background" unique_id=158413284 node_paths=PackedStringArray("left_slot", "right_slot", "output_slot", "fuel_slot", "fuel_label", "machineProgressbar", "fuelProgressbar", "description_Label", "recipe_overview_panel")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -1208,6 +1236,7 @@ fuel_label = NodePath("PanelContainer/FuelLabel")
 machineProgressbar = NodePath("PanelContainer/ProgressBar")
 fuelProgressbar = NodePath("PanelContainer/FuelProgressBar")
 description_Label = NodePath("PanelContainer/DescriptionLabel")
+recipe_overview_panel = NodePath("RecipeOverviewPanel")
 
 [node name="ColorRect" type="ColorRect" parent="Background/CombinerTab" unique_id=925714746]
 layout_mode = 1
@@ -1433,7 +1462,33 @@ offset_right = 3.0
 offset_bottom = 278.0
 color = Color(0, 0, 0, 1)
 
-[node name="AlchemyLabTab" type="Control" parent="Background" unique_id=1332350870 node_paths=PackedStringArray("left_slot", "right_slot", "output_slot", "fuel_slot", "fuel_label", "machineProgressbar", "fuelProgressbar", "description_Label")]
+[node name="RecipeOverviewPanel" type="PanelContainer" parent="Background/CombinerTab" unique_id=1294163770 node_paths=PackedStringArray("recipe_container")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -135.0
+offset_right = 140.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("41_mf3kg")
+recipe_container = NodePath("MarginContainer/VBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/CombinerTab/RecipeOverviewPanel" unique_id=1251820091]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/CombinerTab/RecipeOverviewPanel/MarginContainer" unique_id=1880933093]
+layout_mode = 2
+
+[node name="AlchemyLabTab" type="Control" parent="Background" unique_id=1332350870 node_paths=PackedStringArray("left_slot", "right_slot", "output_slot", "fuel_slot", "fuel_label", "machineProgressbar", "fuelProgressbar", "description_Label", "recipe_overview_panel")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -1453,6 +1508,7 @@ fuel_label = NodePath("PanelContainer/FuelLabel")
 machineProgressbar = NodePath("PanelContainer/ProgressBar")
 fuelProgressbar = NodePath("PanelContainer/FuelProgressBar")
 description_Label = NodePath("PanelContainer/DescriptionLabel")
+recipe_overview_panel = NodePath("RecipeOverviewPanel")
 
 [node name="ColorRect" type="ColorRect" parent="Background/AlchemyLabTab" unique_id=1912903006]
 layout_mode = 1
@@ -1681,6 +1737,32 @@ offset_top = -2.0
 offset_right = 3.0
 offset_bottom = 278.0
 color = Color(0, 0, 0, 1)
+
+[node name="RecipeOverviewPanel" type="PanelContainer" parent="Background/AlchemyLabTab" unique_id=1268987506 node_paths=PackedStringArray("recipe_container")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -135.0
+offset_right = 140.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("41_mf3kg")
+recipe_container = NodePath("MarginContainer/VBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/AlchemyLabTab/RecipeOverviewPanel" unique_id=1737733799]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/AlchemyLabTab/RecipeOverviewPanel/MarginContainer" unique_id=91271029]
+layout_mode = 2
 
 [node name="NerveTransducerTab" type="Control" parent="Background" unique_id=1304219599]
 visible = false
@@ -7543,7 +7625,7 @@ layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="HBoxItem" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer2/VBoxContainer" unique_id=993415093 instance=ExtResource("124_lxbwb")]
+[node name="HBoxItem" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer2/VBoxContainer" unique_id=1556551577 instance=ExtResource("124_lxbwb")]
 layout_mode = 2
 theme_override_constants/separation = 2
 

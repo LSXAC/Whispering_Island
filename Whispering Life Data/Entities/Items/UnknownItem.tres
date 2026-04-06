@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://d2tnurb0knrj3"]
+
+[ext_resource type="Texture2D" uid="uid://b8ahy1mkxvvqd" path="res://UNKNOWN.png" id="2_q7b7u"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="4_8kg3d"]
+
+[resource]
+script = ExtResource("4_8kg3d")
+attributes = null
+max_stackable_size = 0
+name = "UNKNOWN"
+id = 69
+description = "UNKNOWN_DESC"
+texture = ExtResource("2_q7b7u")
+value = 2.0

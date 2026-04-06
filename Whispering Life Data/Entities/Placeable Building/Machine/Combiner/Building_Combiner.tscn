@@ -1,7 +1,9 @@
 [gd_scene format=4 uid="uid://6ivrk0htm5tf"]
 
 [ext_resource type="Script" uid="uid://bnpx6n5k7i641" path="res://Entities/Placeable Building/Machine/CombinerBuilding.cs" id="1_ipd8r"]
+[ext_resource type="Script" uid="uid://bwrtrbgelx14l" path="res://Entities/Placeable Building/Machine/Recipes/CombinerRecipe.cs" id="2_ipd8r"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="3_jv5li"]
+[ext_resource type="Resource" uid="uid://b108dd3yj1hqw" path="res://Entities/Placeable Building/Machine/Combiner/Data/IronIngotAndIronStencilToPressedIngot.tres" id="3_oq4dm"]
 [ext_resource type="Texture2D" uid="uid://ccbyeutydxucw" path="res://Entities/Placeable Building/Machine/Combiner/Texture/Combiner_Building_Sprite.png" id="4_7fwm8"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="5_kjvax"]
 [ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/Placeable Building/BuildingColliderManager.cs" id="6_r8edt"]
@@ -63,6 +65,7 @@ y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_ipd8r")
+combiner_recipes = Array[ExtResource("2_ipd8r")]([ExtResource("3_oq4dm")])
 item_array = [null, null, null, null]
 state_timer = NodePath("MachineUITimer")
 machine_activ_color_rect = NodePath("MachineActivColorRect")

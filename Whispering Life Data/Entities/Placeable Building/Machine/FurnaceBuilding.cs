@@ -21,13 +21,24 @@ public partial class FurnaceBuilding : ProcessBuilding
         base._Ready();
         if (item_array.Length < 4)
             System.Array.Resize(ref item_array, 4);
+
+        // Kopiere smeltable_recipes in die generische recipes Array
+        CollectAvailableRecipes();
+    }
+
+    protected override void CollectAvailableRecipes()
+    {
+        recipes.Clear();
+        foreach (SmeltableRecipe recipe in smeltable_recipes)
+        {
+            recipes.Add(recipe);
+        }
     }
 
     protected override ProcessingRecipe GetRecipeFromInputSlot()
     {
         if (selected_recipe != null)
         {
-            GD.PrintErr($"[FURNACE] Using selected recipe");
             if (item_array[(int)SlotType.IMPORT] != null)
             {
                 SmeltableRecipe recipe = selected_recipe as SmeltableRecipe;
@@ -43,14 +54,7 @@ public partial class FurnaceBuilding : ProcessBuilding
                         && item_array[(int)SlotType.IMPORT].amount >= recipe.GetAmountToProcess()
                     )
                     {
-                        GD.PrintErr($"[FURNACE] ✅ Selected recipe matches!");
                         return recipe;
-                    }
-                    else
-                    {
-                        GD.PrintErr(
-                            $"[FURNACE] Selected recipe mismatch: InputReq={recipe.GetInputRequirement()?.name}, ImportInfo={import_info.name}, Amount={item_array[(int)SlotType.IMPORT].amount}/{recipe.GetAmountToProcess()}"
-                        );
                     }
                 }
             }
@@ -59,16 +63,12 @@ public partial class FurnaceBuilding : ProcessBuilding
 
         if (item_array[(int)SlotType.IMPORT] == null)
         {
-            GD.PrintErr($"[FURNACE] Import slot empty");
             return null;
         }
 
         ItemInfo import_info_default = Inventory.ITEM_TYPES[
             (Inventory.ITEM_ID)item_array[(int)SlotType.IMPORT].item_id
         ];
-        GD.PrintErr(
-            $"[FURNACE] Searching {smeltable_recipes.Count} recipes for {import_info_default.name}..."
-        );
 
         foreach (SmeltableRecipe smeltable_recipe in smeltable_recipes)
         {
@@ -80,14 +80,10 @@ public partial class FurnaceBuilding : ProcessBuilding
                 && item_array[(int)SlotType.IMPORT].amount >= smeltable_recipe.GetAmountToProcess()
             )
             {
-                GD.PrintErr(
-                    $"[FURNACE] ✅ Recipe found: {smeltable_recipe.GetInputRequirement().name} -> {smeltable_recipe.GetOutputItem().name}"
-                );
                 return smeltable_recipe;
             }
         }
 
-        GD.PrintErr($"[FURNACE] ❌ No recipe found for {import_info_default.name}");
         return null;
     }
 
@@ -95,14 +91,12 @@ public partial class FurnaceBuilding : ProcessBuilding
     {
         if (item_array[(int)SlotType.IMPORT] == null)
         {
-            GD.PrintErr($"[SELECT] Import slot empty");
             return false;
         }
 
         ItemInfo import_item_info = Inventory.ITEM_TYPES[
             (Inventory.ITEM_ID)item_array[(int)SlotType.IMPORT].item_id
         ];
-        GD.PrintErr($"[SELECT] Checking for {import_item_info.name}...");
 
         SmeltableRecipe recipe = null;
 
@@ -111,7 +105,6 @@ public partial class FurnaceBuilding : ProcessBuilding
             recipe = selected_recipe as SmeltableRecipe;
             if (recipe == null)
             {
-                GD.PrintErr($"[SELECT] Selected recipe is not SmeltableRecipe!");
                 return false;
             }
 
@@ -120,10 +113,8 @@ public partial class FurnaceBuilding : ProcessBuilding
                 || recipe.GetInputRequirement().id != import_item_info.id
             )
             {
-                GD.PrintErr($"[SELECT] Selected recipe input mismatch!");
                 return false;
             }
-            GD.PrintErr($"[SELECT] Using selected recipe");
         }
         else
         {
@@ -139,9 +130,6 @@ public partial class FurnaceBuilding : ProcessBuilding
                 )
                 {
                     recipe = smelting_recipe;
-                    GD.PrintErr(
-                        $"[SELECT] Found recipe: {smelting_recipe.GetInputRequirement().name}"
-                    );
                     break;
                 }
             }

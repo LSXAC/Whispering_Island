@@ -23,6 +23,18 @@ public partial class AlchemyLabBuilding : ProcessBuilding
 
         if (item_array.Length < 4)
             System.Array.Resize(ref item_array, 4);
+
+        // Kopiere state_changing_recipes in die generische recipes Array
+        CollectAvailableRecipes();
+    }
+
+    protected override void CollectAvailableRecipes()
+    {
+        recipes.Clear();
+        foreach (StateChangingRecipe recipe in state_changing_recipes)
+        {
+            recipes.Add(recipe);
+        }
     }
 
     protected override ProcessingRecipe GetRecipeFromInputSlot()

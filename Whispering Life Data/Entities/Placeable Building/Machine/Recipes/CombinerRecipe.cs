@@ -13,6 +13,9 @@ public partial class CombinerRecipe : ProcessingRecipe
     public Array<Item> compatible_items;
 
     [Export]
+    public Item universal_compatible_item;
+
+    [Export]
     public Item output_item;
 
     [Export]
@@ -97,5 +100,21 @@ public partial class CombinerRecipe : ProcessingRecipe
                 return true;
 
         return false;
+    }
+
+    public ItemInfo GetSecondaryInputRequirement()
+    {
+        if (compatible_items != null && compatible_items.Count > 0 && compatible_items[0] != null)
+            return compatible_items[0].info;
+
+        // Fallback auf universelles Item, wenn keine spezifischen kompatiblen Items definiert sind
+        return universal_compatible_item?.info ?? null;
+    }
+
+    public int GetSecondaryAmountToProcess()
+    {
+        if (compatible_items != null && compatible_items.Count > 0 && compatible_items[0] != null)
+            return compatible_items[0].amount > 0 ? compatible_items[0].amount : 1;
+        return 1;
     }
 }

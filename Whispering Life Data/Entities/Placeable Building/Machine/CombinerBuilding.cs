@@ -23,6 +23,18 @@ public partial class CombinerBuilding : ProcessBuilding
 
         if (item_array.Length < 4)
             System.Array.Resize(ref item_array, 4);
+
+        // Kopiere combiner_recipes in die generische recipes Array
+        CollectAvailableRecipes();
+    }
+
+    protected override void CollectAvailableRecipes()
+    {
+        recipes.Clear();
+        foreach (CombinerRecipe recipe in combiner_recipes)
+        {
+            recipes.Add(recipe);
+        }
     }
 
     protected override ProcessingRecipe GetRecipeFromInputSlot()

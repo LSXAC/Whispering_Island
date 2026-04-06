@@ -156,12 +156,12 @@ _data = {
 &"Start_Discovery": SubResource("Animation_d27p6")
 }
 
-[node name="PlayerUI" type="CanvasLayer" unique_id=258463009 node_paths=PackedStringArray("equipmentSelectBar", "harvest_timer", "time_stripe", "game_time_label", "qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "magic_power_panel", "money_label", "info_vBox", "mainmenu_button", "item_label_timer", "monster_island_state_panel")]
+[node name="PlayerUI" type="CanvasLayer" unique_id=258463009 node_paths=PackedStringArray("equipmentSelectBar", "harvest_timer", "time_stripe", "game_time_label", "qcp_timer", "times_to_build_left_label", "window_frame_rect", "item_row_manager", "collected_item_parent", "gameover_panel", "magic_power_panel", "money_label", "info_vBox", "mainmenu_button", "item_label_timer", "screenshot_frame", "screenshot_timer", "monster_island_state_panel", "quest_info_panel")]
 script = ExtResource("1_m5svq")
 equipmentSelectBar = NodePath("EquipmentSelectBar")
 harvest_timer = NodePath("HarvestTimer")
-time_stripe = NodePath("VBoxContainer/TimeStripe")
-game_time_label = NodePath("VBoxContainer/TimeStripe/ColorRect3/HBoxContainer2/GameTimeLabel")
+time_stripe = NodePath("QuestAndInfoVBoxContainer/TimeStripe")
+game_time_label = NodePath("QuestAndInfoVBoxContainer/TimeStripe/ColorRect3/HBoxContainer2/GameTimeLabel")
 qcp_timer = NodePath("QuestCompletePanel/Timer")
 times_to_build_left_label = NodePath("WindowFrame/VBoxContainer/TimesLeftLabel")
 window_frame_rect = NodePath("WindowFrame")
@@ -171,11 +171,14 @@ removing_frame = ExtResource("3_7rm5b")
 collected_item_parent = NodePath("VBoxContainer3/ReceivedItems")
 gameover_panel = NodePath("GameOverPanel")
 magic_power_panel = NodePath("MagicPowerPanel")
-money_label = NodePath("VBoxContainer/TimeStripe/ColorRect3/HBoxContainer/MoneyLabel")
+money_label = NodePath("QuestAndInfoVBoxContainer/TimeStripe/ColorRect3/HBoxContainer/MoneyLabel")
 info_vBox = NodePath("WindowFrame/VBoxContainer")
 mainmenu_button = NodePath("GameOverPanel/VBoxContainer/MainmenuButton")
 item_label_timer = NodePath("Item_Label_Timer")
-monster_island_state_panel = NodePath("VBoxContainer/MonsterIslandStatePanel")
+screenshot_frame = NodePath("Screenshot_Frame")
+screenshot_timer = NodePath("Screenshot_Timer")
+monster_island_state_panel = NodePath("QuestAndInfoVBoxContainer/MonsterIslandStatePanel")
+quest_info_panel = NodePath("QuestAndInfoVBoxContainer")
 
 [node name="WindowFrame" type="TextureRect" parent="." unique_id=1305326509]
 visible = false
@@ -473,7 +476,7 @@ text = "Main Menu"
 script = ExtResource("9_erkjv")
 label_translation_string = "MAINMENU_BACK_TO_MAINMENU"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1753667032]
+[node name="QuestAndInfoVBoxContainer" type="VBoxContainer" parent="." unique_id=1753667032]
 custom_minimum_size = Vector2(100, 0)
 offset_left = 5.0
 offset_top = 5.0
@@ -481,7 +484,7 @@ offset_right = 105.0
 offset_bottom = 201.0
 theme_override_constants/separation = 5
 
-[node name="TimeStripe" type="Panel" parent="VBoxContainer" unique_id=1914833690 node_paths=PackedStringArray("left", "right", "pointer")]
+[node name="TimeStripe" type="Panel" parent="QuestAndInfoVBoxContainer" unique_id=1914833690 node_paths=PackedStringArray("left", "right", "pointer")]
 custom_minimum_size = Vector2(20, 40)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("17_rkorj")
@@ -490,7 +493,7 @@ left = NodePath("HBoxContainer/TextureRect")
 right = NodePath("HBoxContainer/TextureRect2")
 pointer = NodePath("Pointer")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimeStripe" unique_id=852312055]
+[node name="HBoxContainer" type="HBoxContainer" parent="QuestAndInfoVBoxContainer/TimeStripe" unique_id=852312055]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -502,38 +505,38 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TimeStripe/HBoxContainer" unique_id=334785195]
+[node name="TextureRect" type="TextureRect" parent="QuestAndInfoVBoxContainer/TimeStripe/HBoxContainer" unique_id=334785195]
 layout_mode = 2
 size_flags_horizontal = 3
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/TimeStripe/HBoxContainer" unique_id=419906688]
+[node name="TextureRect2" type="TextureRect" parent="QuestAndInfoVBoxContainer/TimeStripe/HBoxContainer" unique_id=419906688]
 layout_mode = 2
 size_flags_horizontal = 3
 expand_mode = 1
 
-[node name="Pointer" type="ColorRect" parent="VBoxContainer/TimeStripe" unique_id=1492501273]
+[node name="Pointer" type="ColorRect" parent="QuestAndInfoVBoxContainer/TimeStripe" unique_id=1492501273]
 custom_minimum_size = Vector2(2, 14)
 layout_mode = 0
 offset_right = 2.0
 offset_bottom = 19.0
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/TimeStripe" unique_id=1853217621]
+[node name="ColorRect2" type="ColorRect" parent="QuestAndInfoVBoxContainer/TimeStripe" unique_id=1853217621]
 layout_mode = 0
 offset_top = 18.0
 offset_right = 100.0
 offset_bottom = 19.0
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/TimeStripe" unique_id=1034896456]
+[node name="ColorRect4" type="ColorRect" parent="QuestAndInfoVBoxContainer/TimeStripe" unique_id=1034896456]
 layout_mode = 0
 offset_top = 29.0
 offset_right = 100.0
 offset_bottom = 30.0
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/TimeStripe" unique_id=2058025959]
+[node name="ColorRect3" type="ColorRect" parent="QuestAndInfoVBoxContainer/TimeStripe" unique_id=2058025959]
 custom_minimum_size = Vector2(26, 10)
 layout_mode = 1
 anchors_preset = 2
@@ -547,7 +550,7 @@ grow_vertical = 0
 theme = ExtResource("13_uwodk")
 color = Color(1, 1, 1, 0)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimeStripe/ColorRect3" unique_id=765175062]
+[node name="HBoxContainer" type="HBoxContainer" parent="QuestAndInfoVBoxContainer/TimeStripe/ColorRect3" unique_id=765175062]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -558,14 +561,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TimeStripe/ColorRect3/HBoxContainer" unique_id=806289984]
+[node name="TextureRect" type="TextureRect" parent="QuestAndInfoVBoxContainer/TimeStripe/ColorRect3/HBoxContainer" unique_id=806289984]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 texture = ExtResource("14_uwodk")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MoneyLabel" type="Label" parent="VBoxContainer/TimeStripe/ColorRect3/HBoxContainer" unique_id=100418115]
+[node name="MoneyLabel" type="Label" parent="QuestAndInfoVBoxContainer/TimeStripe/ColorRect3/HBoxContainer" unique_id=100418115]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
@@ -574,7 +577,7 @@ theme_override_font_sizes/font_size = 8
 text = "2883"
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/TimeStripe/ColorRect3" unique_id=30958037]
+[node name="HBoxContainer2" type="HBoxContainer" parent="QuestAndInfoVBoxContainer/TimeStripe/ColorRect3" unique_id=30958037]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -584,7 +587,7 @@ offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameTimeLabel" type="Label" parent="VBoxContainer/TimeStripe/ColorRect3/HBoxContainer2" unique_id=280121285]
+[node name="GameTimeLabel" type="Label" parent="QuestAndInfoVBoxContainer/TimeStripe/ColorRect3/HBoxContainer2" unique_id=280121285]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
@@ -594,7 +597,7 @@ text = "23:33"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="HeartPanel" type="ColorRect" parent="VBoxContainer/TimeStripe" unique_id=519907772 node_paths=PackedStringArray("parent")]
+[node name="HeartPanel" type="ColorRect" parent="QuestAndInfoVBoxContainer/TimeStripe" unique_id=519907772 node_paths=PackedStringArray("parent")]
 visible = false
 custom_minimum_size = Vector2(50, 10)
 layout_mode = 0
@@ -605,7 +608,7 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("12_twnk5")
 parent = NodePath("MarginContainer/VBoxContainer/HBoxContainer")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TimeStripe/HeartPanel" unique_id=654042043]
+[node name="MarginContainer" type="MarginContainer" parent="QuestAndInfoVBoxContainer/TimeStripe/HeartPanel" unique_id=654042043]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -614,54 +617,54 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TimeStripe/HeartPanel/MarginContainer" unique_id=1524519611]
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestAndInfoVBoxContainer/TimeStripe/HeartPanel/MarginContainer" unique_id=1524519611]
 layout_mode = 2
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer" unique_id=2072851529]
+[node name="HBoxContainer" type="HBoxContainer" parent="QuestAndInfoVBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer" unique_id=2072851529]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1050765058]
+[node name="TextureRect" type="TextureRect" parent="QuestAndInfoVBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1050765058]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 texture = ExtResource("12_rpytx")
 expand_mode = 4
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1038597898]
+[node name="TextureRect2" type="TextureRect" parent="QuestAndInfoVBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1038597898]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 texture = ExtResource("12_rpytx")
 expand_mode = 4
 
-[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1622806370]
+[node name="TextureRect3" type="TextureRect" parent="QuestAndInfoVBoxContainer/TimeStripe/HeartPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1622806370]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 texture = ExtResource("12_rpytx")
 expand_mode = 4
 
-[node name="MonsterIslandStatePanel" parent="VBoxContainer" unique_id=650407552 instance=ExtResource("22_vocqp")]
+[node name="MonsterIslandStatePanel" parent="QuestAndInfoVBoxContainer" unique_id=650407552 instance=ExtResource("22_vocqp")]
 layout_mode = 2
 
-[node name="QuestMiniPanel" type="PanelContainer" parent="VBoxContainer" unique_id=401929319 node_paths=PackedStringArray("hbox_items", "time_label")]
+[node name="QuestMiniPanel" type="PanelContainer" parent="QuestAndInfoVBoxContainer" unique_id=401929319 node_paths=PackedStringArray("hbox_items", "time_label")]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("20_kobl8")
 script = ExtResource("4_khv1d")
 hbox_items = [NodePath("MarginContainer/VBoxContainer/HBoxContainer/HBoxItem"), NodePath("MarginContainer/VBoxContainer/HBoxContainer/HBoxItem2"), NodePath("MarginContainer/VBoxContainer/HBoxContainer2/HBoxItem"), NodePath("MarginContainer/VBoxContainer/HBoxContainer2/HBoxItem2")]
 time_label = NodePath("MarginContainer/VBoxContainer/TimeLabel")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/QuestMiniPanel" unique_id=110381040]
+[node name="MarginContainer" type="MarginContainer" parent="QuestAndInfoVBoxContainer/QuestMiniPanel" unique_id=110381040]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/QuestMiniPanel/MarginContainer" unique_id=536849536]
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestAndInfoVBoxContainer/QuestMiniPanel/MarginContainer" unique_id=536849536]
 layout_mode = 2
 alignment = 1
 
-[node name="TitleLabel" type="Label" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=533268980]
+[node name="TitleLabel" type="Label" parent="QuestAndInfoVBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=533268980]
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_0pxjf")
@@ -672,7 +675,7 @@ horizontal_alignment = 1
 script = ExtResource("7_vya4o")
 label_translation_string = "PLAYERUI_QUEST_OBJECTIV"
 
-[node name="TimeLabel" type="Label" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=1758027162]
+[node name="TimeLabel" type="Label" parent="QuestAndInfoVBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=1758027162]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_constants/outline_size = 3
@@ -682,30 +685,30 @@ text = "Time Left: Unknown"
 label_settings = ExtResource("22_0o76g")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=380440171]
+[node name="HBoxContainer" type="HBoxContainer" parent="QuestAndInfoVBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=380440171]
 layout_mode = 2
 alignment = 1
 
-[node name="HBoxItem" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=183839239 instance=ExtResource("18_uwodk")]
+[node name="HBoxItem" parent="QuestAndInfoVBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=183839239 instance=ExtResource("18_uwodk")]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 2
 
-[node name="HBoxItem2" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=624156855 instance=ExtResource("18_uwodk")]
+[node name="HBoxItem2" parent="QuestAndInfoVBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=624156855 instance=ExtResource("18_uwodk")]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=1032208705]
+[node name="HBoxContainer2" type="HBoxContainer" parent="QuestAndInfoVBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer" unique_id=1032208705]
 layout_mode = 2
 alignment = 1
 
-[node name="HBoxItem" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2015064678 instance=ExtResource("18_uwodk")]
+[node name="HBoxItem" parent="QuestAndInfoVBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2015064678 instance=ExtResource("18_uwodk")]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 2
 
-[node name="HBoxItem2" parent="VBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=329750905 instance=ExtResource("18_uwodk")]
+[node name="HBoxItem2" parent="QuestAndInfoVBoxContainer/QuestMiniPanel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=329750905 instance=ExtResource("18_uwodk")]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 2
@@ -1079,6 +1082,17 @@ text = "Magic Power: 100/100"
 label_settings = ExtResource("22_0o76g")
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="Screenshot_Frame" type="ColorRect" parent="." unique_id=1285686994]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.2)
+
+[node name="Screenshot_Timer" type="Timer" parent="." unique_id=653795909]
 
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="pressed" from="QuestAcceptPanel/CenterContainer/VBoxContainer/ConfirmButton" to="QuestAcceptPanel" method="OnButton"]

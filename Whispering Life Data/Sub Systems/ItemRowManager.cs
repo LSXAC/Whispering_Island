@@ -10,10 +10,16 @@ public partial class ItemRowManager : HBoxContainer
         ResourceUid.UidToPath("uid://bnf8yngk7oyy0")
     );
 
-    public void SetResourcesOnUI(Array<Item> items)
+    public void SetResourcesOnUI(Array<Item> items, bool no_dev_list = false)
     {
+        Debug.Print($"[ItemRowManager.SetResourcesOnUI] START with {items.Count} items");
         ClearChildren();
-        Array<Item> items_to_use = GlobalFunctions.GetNormalListOrDevList(items);
+        Array<Item> items_to_use = null;
+        if (!no_dev_list)
+            items_to_use = GlobalFunctions.GetNormalListOrDevList(items);
+        else
+            items_to_use = items;
+
         if (Logger.NodeIsNull(items_to_use) || Logger.ListHasZeroItems(items_to_use))
             return;
 

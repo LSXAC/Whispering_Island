@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using Godot;
 using Godot.Collections;
 
@@ -70,7 +71,16 @@ public partial class PlayerUI : CanvasLayer
     public Timer item_label_timer;
 
     [Export]
+    public ColorRect screenshot_frame;
+
+    [Export]
+    public Timer screenshot_timer;
+
+    [Export]
     public MonsterIslandStatePanel monster_island_state_panel;
+
+    [Export]
+    public VBoxContainer quest_info_panel;
 
     [Signal]
     public delegate void LoadedEventHandler();
@@ -114,6 +124,7 @@ public partial class PlayerUI : CanvasLayer
         hslider.AddThemeStyleboxOverride("grabber_area", before_reg);
         mainmenu_button.Pressed += () => ToMainMenu();
         item_label_timer.Timeout += () => SpawnItemLabelUI();
+        screenshot_timer.Timeout += () => OnScreenshotTimerTimeout();
         UpdateMoneyLabel();
         EmitSignal(SignalName.Loaded);
     }
@@ -254,8 +265,43 @@ public partial class PlayerUI : CanvasLayer
         }
     }
 
+    private void TakeScreenshot()
+    {
+        string screenshotDir = "user://Screenshots";
+        DirAccess dir = DirAccess.Open(screenshotDir);
+        if (dir == null)
+            DirAccess.MakeDirRecursiveAbsolute(screenshotDir);
+
+        string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss-fff");
+        string filePath = screenshotDir + "/screenshot_" + timestamp + ".png";
+
+        Image img = GetViewport().GetTexture().GetImage();
+        img.SavePng(filePath);
+        GD.Print("Screenshot saved: " + filePath);
+
+        screenshot_frame.Visible = true;
+        screenshot_timer.WaitTime = 0.25;
+        screenshot_timer.Start();
+    }
+
+    private void OnScreenshotTimerTimeout()
+    {
+        screenshot_frame.Visible = false;
+        screenshot_timer.Stop();
+    }
+
     public override void _Process(double delta)
     {
+        if (Input.IsActionJustPressed("screenshot"))
+            TakeScreenshot();
+
+        if (Input.IsActionJustPressed("ui_toggle_quest_info"))
+        {
+            magic_power_panel.Visible = !magic_power_panel.Visible;
+            equipmentSelectBar.Visible = !equipmentSelectBar.Visible;
+            quest_info_panel.Visible = !quest_info_panel.Visible;
+        }
+
         if (GameManager.gameover && !gameover_panel.Visible)
             gameover_panel.Visible = true;
 
