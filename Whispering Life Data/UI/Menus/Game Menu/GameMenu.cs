@@ -95,7 +95,14 @@ public partial class GameMenu : CanvasLayer
 
         if (Input.IsActionJustPressed("Inventory"))
         {
-            OpenGameMenu();
+            if (IsThisWindow(this))
+            {
+                PlayerInventoryUI.instance?.MarkSlotsWithAttributeTypes(null);
+                CloseLastWindow();
+                OnExitButton();
+            }
+            else
+                OpenGameMenu();
         }
         if (Input.IsActionJustPressed("Escape"))
         {

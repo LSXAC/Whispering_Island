@@ -1,4 +1,4 @@
-~ Louhi_Disappear
+~ Monster_Disappear
 
 do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))
 Louhi: Ugh… [ID:36CAB5_A4C8D2]
