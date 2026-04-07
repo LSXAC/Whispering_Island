@@ -718,9 +718,9 @@ custom_minimum_size = Vector2(220, 65)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
+offset_left = 10.0
 offset_top = -53.0
-offset_right = 223.0
+offset_right = 230.0
 offset_bottom = 12.0
 grow_vertical = 0
 script = ExtResource("17_450ol")
@@ -780,7 +780,7 @@ alignment = 1
 
 [node name="ColorRect4" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox" unique_id=1875311922]
 clip_contents = true
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
@@ -801,18 +801,15 @@ grow_vertical = 2
 
 [node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer" unique_id=1259345799 instance=ExtResource("21_uwodk")]
 layout_mode = 2
+color = Color(1, 1, 1, 1)
 
 [node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect4/MarginContainer/SlotBackground0" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
 theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
 
 [node name="ColorRect5" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox" unique_id=1833929168]
 clip_contents = true
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
@@ -833,18 +830,15 @@ grow_vertical = 2
 
 [node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer" unique_id=1476471130 instance=ExtResource("21_uwodk")]
 layout_mode = 2
+color = Color(1, 1, 1, 1)
 
 [node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect5/MarginContainer/SlotBackground0" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
 theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
 
 [node name="ColorRect6" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox" unique_id=1956064683]
 clip_contents = true
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
@@ -865,18 +859,15 @@ grow_vertical = 2
 
 [node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer" unique_id=886872060 instance=ExtResource("21_uwodk")]
 layout_mode = 2
+color = Color(1, 1, 1, 1)
 
 [node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect6/MarginContainer/SlotBackground0" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
 theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
 
 [node name="ColorRect7" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox" unique_id=1760193542]
 clip_contents = true
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
@@ -897,12 +888,9 @@ grow_vertical = 2
 
 [node name="SlotBackground0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer" unique_id=1281343460 instance=ExtResource("21_uwodk")]
 layout_mode = 2
+color = Color(1, 1, 1, 1)
 
 [node name="Slot0" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox/ColorRect7/MarginContainer/SlotBackground0" index="0" unique_id=1848838759]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 30.0
-offset_bottom = 30.0
 theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
 
