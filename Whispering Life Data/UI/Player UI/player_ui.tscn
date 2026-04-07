@@ -718,10 +718,10 @@ custom_minimum_size = Vector2(220, 65)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -53.0
-offset_right = 230.0
-offset_bottom = 12.0
+offset_left = 4.0
+offset_top = -47.0
+offset_right = 224.0
+offset_bottom = 18.0
 grow_vertical = 0
 script = ExtResource("17_450ol")
 normal_color = Color(1, 1, 1, 0)
@@ -903,8 +903,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -172.0
-offset_top = -167.0
+offset_left = -174.0
+offset_top = -178.0
 offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 0
@@ -940,17 +940,17 @@ wait_time = 0.2
 autostart = true
 
 [node name="DiscoverManager" type="PanelContainer" parent="Control" unique_id=1736862075]
-custom_minimum_size = Vector2(140, 40)
+custom_minimum_size = Vector2(50, 40)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -127.0
-offset_top = -15.0
-offset_right = 16.0
-offset_bottom = 47.0
+offset_left = -57.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("20_kobl8")
@@ -963,7 +963,7 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/DiscoverManager/MarginContainer" unique_id=503559873]
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/DiscoverManager/MarginContainer" unique_id=45977886]
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
@@ -980,7 +980,7 @@ script = ExtResource("7_vya4o")
 label_translation_string = "DISCOVERY_TITLE"
 
 [node name="Panel" type="Panel" parent="Control/DiscoverManager/MarginContainer/HBoxContainer" unique_id=1978415740]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(32, 50)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("20_kobl8")
 

@@ -660,10 +660,8 @@ offset_bottom = 30.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
-theme_override_constants/icon_max_width = 24
 theme_override_font_sizes/font_size = 8
 icon = ExtResource("14_mmhr0")
-icon_alignment = 1
 attribute_to_check = SubResource("Resource_7gwna")
 check_attributes = true
 
@@ -678,10 +676,8 @@ offset_bottom = 30.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
-theme_override_constants/icon_max_width = 24
 theme_override_font_sizes/font_size = 8
 icon = ExtResource("17_6662a")
-icon_alignment = 1
 attribute_to_check = SubResource("Resource_j657e")
 check_attributes = true
 
@@ -696,10 +692,8 @@ offset_bottom = 30.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
-theme_override_constants/icon_max_width = 24
 theme_override_font_sizes/font_size = 8
 icon = ExtResource("18_gcthi")
-icon_alignment = 1
 attribute_to_check = SubResource("Resource_etc0m")
 check_attributes = true
 
@@ -714,10 +708,8 @@ offset_bottom = 30.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
-theme_override_constants/icon_max_width = 24
 theme_override_font_sizes/font_size = 8
 icon = ExtResource("19_rgd55")
-icon_alignment = 1
 attribute_to_check = SubResource("Resource_mmhr0")
 check_attributes = true
 
@@ -1095,7 +1087,6 @@ theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
 icon = ExtResource("20_s2f2w")
-icon_alignment = 1
 attribute_to_check = SubResource("Resource_gqg20")
 
 [node name="ProgressBar" type="ProgressBar" parent="Background/FurnaceTab/PanelContainer" unique_id=2016857264]
@@ -1367,7 +1358,6 @@ theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
 icon = ExtResource("20_s2f2w")
-icon_alignment = 1
 attribute_to_check = SubResource("Resource_gqg20")
 
 [node name="ProgressBar" type="ProgressBar" parent="Background/CombinerTab/PanelContainer" unique_id=699378750]
@@ -1584,9 +1574,7 @@ focus_neighbor_right = NodePath("../../SlotBackgroundExport/Slot0")
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
-theme_override_constants/icon_max_width = 24
 icon = ExtResource("43_aa4tk")
-icon_alignment = 1
 
 [node name="SlotBackgroundExport" parent="Background/AlchemyLabTab/PanelContainer/Slots" unique_id=184932861 instance=ExtResource("13_m8k7p")]
 layout_mode = 0
@@ -1641,9 +1629,7 @@ theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.392157)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.392157)
-theme_override_constants/icon_max_width = 24
 icon = ExtResource("20_s2f2w")
-icon_alignment = 1
 attribute_to_check = SubResource("Resource_gqg20")
 
 [node name="ProgressBar" type="ProgressBar" parent="Background/AlchemyLabTab/PanelContainer" unique_id=534742652]
