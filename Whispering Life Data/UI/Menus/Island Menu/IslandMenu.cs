@@ -7,9 +7,6 @@ using Godot.Collections;
 public partial class IslandMenu : ColorRect
 {
     [Export]
-    public IslandMenuItem[] islands;
-
-    [Export]
     private Control island_parent;
 
     private Array<IslandMenuItem> island_menu_items = new Array<IslandMenuItem>();
@@ -26,6 +23,7 @@ public partial class IslandMenu : ColorRect
     public override void _Ready()
     {
         instance = this;
+        island_menu_items = new Array<IslandMenuItem>();
 
         foreach (Control c in island_parent.GetChildren())
             if (c is IslandMenuItem menu_item)
@@ -83,6 +81,15 @@ public partial class IslandMenu : ColorRect
     {
         if (current_sign == null)
             return;
+
+        if (id < 0 || id >= island_menu_items.Count)
+        {
+            Debug.Print(
+                "Island ID " + id + " is out of range. Menu items count: " + island_menu_items.Count
+            );
+            return;
+        }
+
         Debug.Print("Selected Island ID: " + id.ToString());
 
         GameManager.money -= base_cost * (IslandManager.instance.island_types_build[id] + 1);
@@ -118,7 +125,7 @@ public partial class IslandMenu : ColorRect
 
         Debug.Print("Found Island Dir.");
         current_ip.CreateAnotherIsland(
-            islands[unique_id].item_menu_item_data.island_scene,
+            island_menu_items[unique_id].item_menu_item_data.island_scene,
             dir,
             is_loading
         );

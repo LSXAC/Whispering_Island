@@ -108,11 +108,10 @@ scale_min = 0.5
 scale_max = 0.7
 scale_curve = SubResource("CurveTexture_osh17")
 
-[node name="MystTree" type="StaticBody2D" unique_id=1572218311 node_paths=PackedStringArray("hit_point", "variants_parent", "growth_variants_parent", "gpu_particles")]
+[node name="MystTree" type="StaticBody2D" unique_id=1572218311 node_paths=PackedStringArray("variants_parent", "growth_variants_parent", "gpu_particles")]
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_oeonl")
-hit_point = NodePath("")
 growable = true
 tool_type = 2
 variants_parent = NodePath("SpriteAnimationManager/Variations")
@@ -219,9 +218,9 @@ collision_tilemap = NodePath("../CollisionTemplateTilemap")
 
 [node name="HitLabelManager" parent="." unique_id=1293240716 instance=ExtResource("55_h50b6")]
 offset_left = -9.0
-offset_top = -34.0
-offset_right = 31.0
-offset_bottom = 6.0
+offset_top = 1.0
+offset_right = -9.0
+offset_bottom = 1.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

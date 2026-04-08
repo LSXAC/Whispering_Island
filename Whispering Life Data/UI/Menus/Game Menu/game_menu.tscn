@@ -4994,7 +4994,7 @@ theme_override_styles/disabled = ExtResource("31_j0nuq")
 theme_override_styles/focus = ExtResource("28_gcthi")
 text = "Unlock Skill"
 
-[node name="IslandTab" type="ColorRect" parent="Background" unique_id=34133489 node_paths=PackedStringArray("islands", "island_parent", "island_to_build_left_label")]
+[node name="IslandTab" type="ColorRect" parent="Background" unique_id=34133489 node_paths=PackedStringArray("island_parent", "island_to_build_left_label")]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -5009,7 +5009,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("16_burxg")
-islands = []
 island_parent = NodePath("MarginContainer/ScrollContainer/GridContainer")
 island_to_build_left_label = NodePath("IslandsToBuildLabel")
 
