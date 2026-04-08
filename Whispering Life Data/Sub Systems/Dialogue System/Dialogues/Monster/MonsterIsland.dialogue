@@ -1,11 +1,11 @@
 ~ Monster_Disappear
 
 do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))
-Louhi: Ugh… [ID:36CAB5_A4C8D2]
-Louhi: Ich habe nicht den ganzen Tag Zeit! [ID:36CAB5_C2C94F]
+Tuoni: Ugh… [ID:36CAB5_A4C8D2]
+Tuoni: Ich habe nicht den ganzen Tag Zeit! [ID:36CAB5_C2C94F]
 do GlobalFunctions.DecreaseVisibilityOnMonsterIsland()
-Louhi: Ich komm später wieder. [ID:36CAB5_1E8182]
-Louhi: HAHAHA! [ID:36CAB5_C9C0D8]
+Tuoni: Ich komm später wieder. [ID:36CAB5_1E8182]
+Tuoni: HAHAHA! [ID:36CAB5_C9C0D8]
 do GlobalFunctions.LeaveDialogue()
 
 => END
@@ -13,10 +13,10 @@ do GlobalFunctions.LeaveDialogue()
 ~ Monster_Appear
 
 do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))
-Louhi: Hahaha! Da bin ich wieder! [ID:36CAB5_E78556]
+Tuoni: Hahaha! Da bin ich wieder! [ID:36CAB5_E78556]
 do GlobalFunctions.IncreaseVisibilityOnMonsterIsland()
-Louhi: Ich hoffe für dich, dass du hast was ich will! [ID:36CAB5_45EBBB]
-Louhi: ROAW! [ID:36CAB5_C9D25A]
+Tuoni: Ich hoffe für dich, dass du hast was ich will! [ID:36CAB5_45EBBB]
+Tuoni: ROAW! [ID:36CAB5_C9D25A]
 do GlobalFunctions.PlayIdleOnMonsterIsland()
 do GlobalFunctions.LeaveDialogue()
 
@@ -25,12 +25,12 @@ do GlobalFunctions.LeaveDialogue()
 ~ Monster_Hitting
 
 do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))
-Louhi: Ha! Those Resources were delicous!
+Tuoni: Ha! Those Resources were delicous!
 if GlobalFunctions.ItemsWithDamage != 0:
 	do GlobalFunctions.DealQuestDamage()
-	Louhi: Mhh... aua..
+	Tuoni: Mhh... aua..
 else:
-	Louhi: Next time, give me even faster and even more! Haha!
+	Tuoni: Next time, give me even faster and even more! Haha!
 do GlobalFunctions.FinishGame()
 do GlobalFunctions.LeaveDialogue()
 => END

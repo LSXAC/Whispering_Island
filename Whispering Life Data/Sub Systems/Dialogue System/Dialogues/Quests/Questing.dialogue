@@ -1,28 +1,28 @@
 ~ Quest_Menu_Closed_DE
 
-% Louhi: Denk dran, die Zeit läuft! [ID:01009D_78BE3E]
-% Louhi: ICH HAB HUNGER! [ID:01009D_DD9B12]
-%2 Louhi: Lass mich nicht so lange warten! [ID:01009D_10DD4E]
+% Tuoni: Du wagst es mich so lange warten zu lassen? [ID:01009D_78BE3E]
+% Tuoni: Ich warte… aber nicht mehr lange!! [ID:01009D_DD9B12]
+%2 Tuoni: Gib mir endlich was zu essen oder willst du etwa meine nächste Mahlzeit sein? [ID:01009D_10DD4E]
 do GlobalFunctions.LeaveDialogue()
 
 => END
 
 ~ Quest_Menu_Closed_ENG
 
-% Louhi: The time is running! [ID:01009D_FE98E3]
-% Louhi: I'AM HUNGRY! [ID:01009D_C9DB04]
-%2 Louhi: Don't let me wait so long! [ID:01009D_EF4FEF]
-Louhi: ROAW! [ID:01009D_11C046]
+% Tuoni: The time is running! [ID:01009D_FE98E3]
+% Tuoni: I'AM HUNGRY! [ID:01009D_C9DB04]
+%2 Tuoni: Don't let me wait so long! [ID:01009D_EF4FEF]
+Tuoni: ROAW! [ID:01009D_11C046]
 do GlobalFunctions.LeaveDialogue()
 
 => END
 
 ~ Quest_Not_Completed_DE
 
-% Louhi: ROAW! Wie kannst du mich nur warten lassen! [ID:01009D_878EEF]
-% Louhi: Ich glaube ich seh nicht richtig! Kein Essen! [ID:01009D_B335BE]
-% Louhi: Willst du so dringend, dass ich dich fresse!? [ID:01009D_3E1C01]
-Louhi: [b][color=gold]Du musst bestraft werden![/color][/b] [ID:01009D_EE3F16]
+% Tuoni: ROAW! Wie kannst du mich nur warten lassen! [ID:01009D_878EEF]
+% Tuoni: Ich glaube ich seh nicht richtig! Kein Essen! [ID:01009D_B335BE]
+% Tuoni: Willst du so dringend, dass ich dich fresse!? [ID:01009D_3E1C01]
+Tuoni: [b][color=gold]Du musst bestraft werden![/color][/b] [ID:01009D_EE3F16]
 do GlobalFunctions.NextQuestHalfTime()
 do GlobalFunctions.OpenAcceptPanel()
 
@@ -30,10 +30,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_ENG
 
-% Louhi: ROAW! Do you really want to let me wait? [ID:01009D_52F7EA]
-% Louhi: I think I have seeing issues! There is no Food! [ID:01009D_72F5B1]
-% Louhi: Do you really want that badly, that I eat you? [ID:01009D_34246E]
-Louhi: [b][color=gold]You will be punished![/color][/b] [ID:01009D_CE8DE4]
+% Tuoni: ROAW! Do you really want to let me wait? [ID:01009D_52F7EA]
+% Tuoni: I think I have seeing issues! There is no Food! [ID:01009D_72F5B1]
+% Tuoni: Do you really want that badly, that I eat you? [ID:01009D_34246E]
+Tuoni: [b][color=gold]You will be punished![/color][/b] [ID:01009D_CE8DE4]
 
 do GlobalFunctions.NextQuestHalfTime()
 do GlobalFunctions.OpenAcceptPanel()
@@ -43,10 +43,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_1_DE
 
-% Louhi: ROAW! Wie kannst du mich nur warten lassen! [ID:01009D_31DEF4]
-% Louhi: Ich glaube ich seh nicht richtig! Kein Essen! [ID:01009D_614FAF]
-% Louhi: Willst du so dringend, dass ich dich fresse!? [ID:01009D_078380]
-Louhi: [b][color=gold]Du musst bestraft werden![/color][/b] [ID:01009D_08996B]
+% Tuoni: ROAW! Wie kannst du mich nur warten lassen! [ID:01009D_31DEF4]
+% Tuoni: Ich glaube ich seh nicht richtig! Kein Essen! [ID:01009D_614FAF]
+% Tuoni: Willst du so dringend, dass ich dich fresse!? [ID:01009D_078380]
+Tuoni: [b][color=gold]Du musst bestraft werden![/color][/b] [ID:01009D_08996B]
 do GlobalFunctions.NextQuestDoubledItems()
 do GlobalFunctions.OpenAcceptPanel()
 
@@ -54,10 +54,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_1_ENG
 
-% Louhi: ROAW! Do you really want to let me wait? [ID:01009D_3B5A56]
-% Louhi: I think I have seeing issues! There is no Food! [ID:01009D_B88289]
-% Louhi: Do you really want that badly, that I eat you? [ID:01009D_484954]
-Louhi: [b][color=gold]You will be punished![/color][/b] [ID:01009D_D914CC]
+% Tuoni: ROAW! Do you really want to let me wait? [ID:01009D_3B5A56]
+% Tuoni: I think I have seeing issues! There is no Food! [ID:01009D_B88289]
+% Tuoni: Do you really want that badly, that I eat you? [ID:01009D_484954]
+Tuoni: [b][color=gold]You will be punished![/color][/b] [ID:01009D_D914CC]
 
 do GlobalFunctions.NextQuestDoubledItems()
 do GlobalFunctions.OpenAcceptPanel()
@@ -66,10 +66,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_2_DE
 
-% Louhi: ROAW! Wie kannst du mich nur warten lassen! [ID:01009D_FCC642]
-% Louhi: Ich glaube ich seh nicht richtig! Kein Essen! [ID:01009D_9F60D1]
-% Louhi: Willst du so dringend, dass ich dich fresse!? [ID:01009D_9717E1]
-Louhi: [b][color=gold]Du musst bestraft werden![/color][/b] [ID:01009D_A937CD]
+% Tuoni: ROAW! Wie kannst du mich nur warten lassen! [ID:01009D_FCC642]
+% Tuoni: Ich glaube ich seh nicht richtig! Kein Essen! [ID:01009D_9F60D1]
+% Tuoni: Willst du so dringend, dass ich dich fresse!? [ID:01009D_9717E1]
+Tuoni: [b][color=gold]Du musst bestraft werden![/color][/b] [ID:01009D_A937CD]
 do GlobalFunctions.NextQuestIslandsRemoved()
 do GlobalFunctions.OpenAcceptPanel()
 
@@ -77,10 +77,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_2_ENG
 
-% Louhi: ROAW! Do you really want to let me wait? [ID:01009D_112F35]
-% Louhi: I think I have seeing issues! There is no Food! [ID:01009D_8463F5]
-% Louhi: Do you really want that badly, that I eat you? [ID:01009D_FA1AAD]
-Louhi: [b][color=gold]You will be punished![/color][/b] [ID:01009D_CF8B94]
+% Tuoni: ROAW! Do you really want to let me wait? [ID:01009D_112F35]
+% Tuoni: I think I have seeing issues! There is no Food! [ID:01009D_8463F5]
+% Tuoni: Do you really want that badly, that I eat you? [ID:01009D_FA1AAD]
+Tuoni: [b][color=gold]You will be punished![/color][/b] [ID:01009D_CF8B94]
 
 do GlobalFunctions.NextQuestIslandsRemoved()
 do GlobalFunctions.OpenAcceptPanel()
@@ -89,10 +89,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_Poisoning_DE
 
-% Louhi: ROAW! Du willst mich also vergiften!?
-% Louhi: Ich glaube nicht, dass du mich vergiften willst!
-% Louhi: Vergiftung? Du willst es wirklich drauf anlegen oder?
-Louhi: [b][color=gold]Du musst bestraft werden![/color][/b]
+% Tuoni: ROAW! Du willst mich also vergiften!?
+% Tuoni: Ich glaube nicht, dass du mich vergiften willst!
+% Tuoni: Vergiftung? Du willst es wirklich drauf anlegen oder?
+Tuoni: [b][color=gold]Du musst bestraft werden![/color][/b]
 do GlobalFunctions.NextQuestHalfTime()
 do GlobalFunctions.OpenAcceptPanel()
 
@@ -100,10 +100,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_Poisoning_ENG
 
-% Louhi: ROAW! So you're trying to poison me!?
-% Louhi: I don't think you're trying to poison me!
-% Louhi: Poisoning? You're really looking for a fight, aren't you?
-Louhi: [b][color=gold]You must be punished![/color][/b]
+% Tuoni: ROAW! So you're trying to poison me!?
+% Tuoni: I don't think you're trying to poison me!
+% Tuoni: Poisoning? You're really looking for a fight, aren't you?
+Tuoni: [b][color=gold]You must be punished![/color][/b]
 
 do GlobalFunctions.NextQuestHalfTime()
 do GlobalFunctions.OpenAcceptPanel()
@@ -113,10 +113,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_Poisoning_1_DE
 
-% Louhi: ROAW! Du willst mich also vergiften!?
-% Louhi: Ich glaube nicht, dass du mich vergiften willst!
-% Louhi: Vergiftung? Du willst es wirklich drauf anlegen oder?
-Louhi: [b][color=gold]Du musst bestraft werden![/color][/b]
+% Tuoni: ROAW! Du willst mich also vergiften!?
+% Tuoni: Ich glaube nicht, dass du mich vergiften willst!
+% Tuoni: Vergiftung? Du willst es wirklich drauf anlegen oder?
+Tuoni: [b][color=gold]Du musst bestraft werden![/color][/b]
 do GlobalFunctions.NextQuestDoubledItems()
 do GlobalFunctions.OpenAcceptPanel()
 
@@ -124,10 +124,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_Poisoning_1_ENG
 
-% Louhi: ROAW! So you're trying to poison me!?
-% Louhi: I don't think you're trying to poison me!
-% Louhi: Poisoning? You're really looking for a fight, aren't you?
-Louhi: [b][color=gold]You must be punished![/color][/b]
+% Tuoni: ROAW! So you're trying to poison me!?
+% Tuoni: I don't think you're trying to poison me!
+% Tuoni: Poisoning? You're really looking for a fight, aren't you?
+Tuoni: [b][color=gold]You must be punished![/color][/b]
 
 do GlobalFunctions.NextQuestDoubledItems()
 do GlobalFunctions.OpenAcceptPanel()
@@ -136,10 +136,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_Poisoning_2_DE
 
-% Louhi: ROAW! Du willst mich also vergiften!?
-% Louhi: Ich glaube nicht, dass du mich vergiften willst!
-% Louhi: Vergiftung? Du willst es wirklich drauf anlegen oder?
-Louhi: [b][color=gold]Du musst bestraft werden![/color][/b]
+% Tuoni: ROAW! Du willst mich also vergiften!?
+% Tuoni: Ich glaube nicht, dass du mich vergiften willst!
+% Tuoni: Vergiftung? Du willst es wirklich drauf anlegen oder?
+Tuoni: [b][color=gold]Du musst bestraft werden![/color][/b]
 do GlobalFunctions.NextQuestIslandsRemoved()
 do GlobalFunctions.OpenAcceptPanel()
 
@@ -147,10 +147,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_Poisoning_2_ENG
 
-% Louhi: ROAW! So you're trying to poison me!?
-% Louhi: I don't think you're trying to poison me!
-% Louhi: Poisoning? You're really looking for a fight, aren't you?
-Louhi: [b][color=gold]You must be punished![/color][/b]
+% Tuoni: ROAW! So you're trying to poison me!?
+% Tuoni: I don't think you're trying to poison me!
+% Tuoni: Poisoning? You're really looking for a fight, aren't you?
+Tuoni: [b][color=gold]You must be punished![/color][/b]
 
 do GlobalFunctions.NextQuestIslandsRemoved()
 do GlobalFunctions.OpenAcceptPanel()
