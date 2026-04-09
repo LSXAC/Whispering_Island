@@ -45,6 +45,9 @@ public partial class MineableObject : placeable_building
     public Item extra_item;
 
     [Export]
+    public float item_amount_multiplicator = 2.0f;
+
+    [Export]
     public GpuParticles2D gpu_particles;
     public int max_durability;
     public int current_durability;
@@ -196,9 +199,11 @@ public partial class MineableObject : placeable_building
         int durabilityAfterHit = current_durability - miningAmount;
         int bonusAmount = (int)(resource_item.amount * miningAmount);
 
-        item.amount =
+        item.amount = (int)(
             miningAmount
-            * (int)Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.MINING_AMOUNT);
+            * item_amount_multiplicator
+            * (int)Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.MINING_AMOUNT)
+        );
 
         if (durabilityAfterHit >= 0)
         {
@@ -267,11 +272,10 @@ public partial class MineableObject : placeable_building
 
     private void HandleBreak(int bonusAmount)
     {
-        PlayerUI.AddItemLabelMineableBonusItemUI(resource_item);
-        PlayerInventoryUI.instance.AddItem(
-            resource_item,
-            PlayerInventoryUI.instance.inventory_items
-        );
+        Item item = resource_item.Clone();
+        item.amount = (int)(item.amount * item_amount_multiplicator);
+        PlayerUI.AddItemLabelMineableBonusItemUI(item);
+        PlayerInventoryUI.instance.AddItem(item, PlayerInventoryUI.instance.inventory_items);
 
         if (extra_item != null)
         {
