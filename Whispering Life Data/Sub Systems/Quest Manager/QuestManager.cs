@@ -69,17 +69,14 @@ public partial class QuestManager : Node
         GameMenu.questMenu.InitQuest(quests[current_quest_id]);
         QuestMiniPanel.instance.UpdateTimeLabel(current_quest_time);
         QuestMiniPanel.instance.InitQuestMiniPanel(quests[current_quest_id]);
-        MonsterIsland.instance.InitializeQuestTimers();
     }
 
     public void OnQuestTimerTimeout()
     {
         if (current_quest_time <= 0)
         {
-            //Cutscene
             GameMenu.CloseLastWindow();
             instance.quest_timer.Stop();
-            //HeartManager.instance.RemoveHeart();
             if (GameManager.gameover)
                 return;
 
@@ -107,7 +104,6 @@ public partial class QuestManager : Node
         NextQuest(finished_correctly: false, penalty);
     }
 
-    /// Check if duplicated ItemType exists inside one Quest.
     private void CheckQuestDuplications()
     {
         for (int x = 0; x < quests.Count; x++)
@@ -177,7 +173,6 @@ public partial class QuestManager : Node
 
         next_quest_is_doubled_items = false;
 
-        // Nur Penalty anwenden wenn das Monster nicht bereits GameOver ausgelöst hat (mood > 0)
         if (monster_island.GetMood() > 0f)
             quest_penality.ApplyPenalty(penalty);
 
@@ -193,13 +188,13 @@ public partial class QuestManager : Node
         if (next_quest_half_time)
         {
             current_quest_time = (int)(current_quest_time / 2.0);
+            MonsterIsland.instance.InitializeQuestTimers(current_quest_time);
             next_quest_half_time = false;
         }
 
         QuestMiniPanel.instance.UpdateTimeLabel(current_quest_time);
         if (finished_correctly)
         {
-            //PlayerUI.CompleteQuestPanelShow();
             CutsceneManager.In_Cutscene = true;
             quest_timer.PauseTimer();
             await ToSignal(PlayerUI.instance.qcp_timer, "timeout");

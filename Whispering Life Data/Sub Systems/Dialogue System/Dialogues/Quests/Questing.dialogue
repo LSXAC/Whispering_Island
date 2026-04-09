@@ -19,10 +19,10 @@ do GlobalFunctions.LeaveDialogue()
 
 ~ Quest_Not_Completed_DE
 
-% Tuoni: ROAW! Wie kannst du mich nur warten lassen! [ID:01009D_878EEF]
-% Tuoni: Ich glaube ich seh nicht richtig! Kein Essen! [ID:01009D_B335BE]
-% Tuoni: Willst du so dringend, dass ich dich fresse!? [ID:01009D_3E1C01]
-Tuoni: [b][color=gold]Du musst bestraft werden![/color][/b] [ID:01009D_EE3F16]
+% Tuoni: RROAW, Fräulein! Glaub ja nicht das du mir so davon kommst! [ID:01009D_878EEF]
+% Tuoni: IIch glaube ich seh nicht richtig?! Du bringst mir kein Essen?! [ID:01009D_B335BE]
+% Tuoni: Willst du so dringend, dass du gefressen wirst!? [ID:01009D_3E1C01]
+Tuoni: [b][color=gold]Das musst bestraft werden![/color][/b] [ID:01009D_EE3F16]
 do GlobalFunctions.NextQuestHalfTime()
 do GlobalFunctions.OpenAcceptPanel()
 
@@ -30,10 +30,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_ENG
 
-% Tuoni: ROAW! Do you really want to let me wait? [ID:01009D_52F7EA]
-% Tuoni: I think I have seeing issues! There is no Food! [ID:01009D_72F5B1]
-% Tuoni: Do you really want that badly, that I eat you? [ID:01009D_34246E]
-Tuoni: [b][color=gold]You will be punished![/color][/b] [ID:01009D_CE8DE4]
+% Tuoni: ROAW! Do RUN AWAY, MISS! Don’t think you can just get away from me like that! [ID:01009D_52F7EA]
+% Tuoni: Am I seeing things right?! You’re not bringing me any food?! [ID:01009D_72F5B1]
+% Tuoni: Do you really want to be eaten that badly!? [ID:01009D_34246E]
+Tuoni: [b][color=gold]This must be punished.[/color][/b] [ID:01009D_CE8DE4]
 
 do GlobalFunctions.NextQuestHalfTime()
 do GlobalFunctions.OpenAcceptPanel()
@@ -43,10 +43,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_1_DE
 
-% Tuoni: ROAW! Wie kannst du mich nur warten lassen! [ID:01009D_31DEF4]
-% Tuoni: Ich glaube ich seh nicht richtig! Kein Essen! [ID:01009D_614FAF]
-% Tuoni: Willst du so dringend, dass ich dich fresse!? [ID:01009D_078380]
-Tuoni: [b][color=gold]Du musst bestraft werden![/color][/b] [ID:01009D_08996B]
+% Tuoni: ROAW, Fräulein! Glaub ja nicht das du mir so davon kommst! [ID:01009D_31DEF4]
+% Tuoni: Ich glaube ich seh nicht richtig?! Du bringst mir kein Essen?! [ID:01009D_614FAF]
+% Tuoni: Willst du so dringend, dass du gefressen wirst!? [ID:01009D_078380]
+Tuoni: [b][color=gold]Das muss bestraft werden.[/color][/b] [ID:01009D_08996B]
 do GlobalFunctions.NextQuestDoubledItems()
 do GlobalFunctions.OpenAcceptPanel()
 
@@ -54,10 +54,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_1_ENG
 
-% Tuoni: ROAW! Do you really want to let me wait? [ID:01009D_3B5A56]
-% Tuoni: I think I have seeing issues! There is no Food! [ID:01009D_B88289]
-% Tuoni: Do you really want that badly, that I eat you? [ID:01009D_484954]
-Tuoni: [b][color=gold]You will be punished![/color][/b] [ID:01009D_D914CC]
+% Tuoni: RUN AWAY, MISS! Don’t think you can just get away from me like that! [ID:01009D_3B5A56]
+% Tuoni: Am I seeing things right?! You’re not bringing me any food?! [ID:01009D_B88289]
+% Tuoni: Do you really want to be eaten that badly!?[ID:01009D_484954]
+Tuoni: [b][color=gold]This must be punished.[/color][/b] [ID:01009D_D914CC]
 
 do GlobalFunctions.NextQuestDoubledItems()
 do GlobalFunctions.OpenAcceptPanel()
@@ -66,10 +66,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_2_DE
 
-% Tuoni: ROAW! Wie kannst du mich nur warten lassen! [ID:01009D_FCC642]
-% Tuoni: Ich glaube ich seh nicht richtig! Kein Essen! [ID:01009D_9F60D1]
-% Tuoni: Willst du so dringend, dass ich dich fresse!? [ID:01009D_9717E1]
-Tuoni: [b][color=gold]Du musst bestraft werden![/color][/b] [ID:01009D_A937CD]
+% Tuoni: ROAW, Fräulein! Glaub ja nicht das du mir so davon kommst! [ID:01009D_FCC642]
+% Tuoni: Ich glaube ich seh nicht richtig?! Du bringst mir kein Essen?! [ID:01009D_9F60D1]
+% Tuoni: Willst du so dringend, dass du gefressen wirst!? [ID:01009D_9717E1]
+Tuoni: [b][color=gold]Das muss bestraft werden.[/color][/b] [ID:01009D_A937CD]
 do GlobalFunctions.NextQuestIslandsRemoved()
 do GlobalFunctions.OpenAcceptPanel()
 
@@ -77,10 +77,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_2_ENG
 
-% Tuoni: ROAW! Do you really want to let me wait? [ID:01009D_112F35]
-% Tuoni: I think I have seeing issues! There is no Food! [ID:01009D_8463F5]
-% Tuoni: Do you really want that badly, that I eat you? [ID:01009D_FA1AAD]
-Tuoni: [b][color=gold]You will be punished![/color][/b] [ID:01009D_CF8B94]
+% Tuoni: RUN AWAY, MISS! Don’t think you can just get away from me like that! [ID:01009D_112F35]
+% Tuoni: Am I seeing things right?! You’re not bringing me any food?! [ID:01009D_8463F5]
+% Tuoni: Do you really want to be eaten that badly!? [ID:01009D_FA1AAD]
+Tuoni: [b][color=gold]This must be punished.[/color][/b] [ID:01009D_CF8B94]
 
 do GlobalFunctions.NextQuestIslandsRemoved()
 do GlobalFunctions.OpenAcceptPanel()

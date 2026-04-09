@@ -71,7 +71,6 @@ public partial class QuestMiniPanel : PanelContainer
                 item
             );
 
-            // Clone to keep the original unmodified
             Item item_ref = item.Clone();
             item_ref.amount = (int)(item_ref.amount * GameManager.difficulty_multiplier);
 

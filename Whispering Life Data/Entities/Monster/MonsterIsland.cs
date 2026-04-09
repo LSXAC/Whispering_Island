@@ -58,9 +58,9 @@ public partial class MonsterIsland : Building_Node
         return rate;
     }
 
-    public void InitializeQuestTimers()
+    public void InitializeQuestTimers(int time)
     {
-        quest_duration = QuestManager.instance.quests[QuestManager.current_quest_id].quest_time;
+        quest_duration = time;
         monsterDisappearTriggered = false;
         monsterAppearTriggered = false;
         is_visible = true;

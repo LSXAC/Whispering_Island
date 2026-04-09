@@ -111,4 +111,16 @@ public partial class CheatTab : ColorRect
             cutscene_skip_label.Text = skip_cutscenes ? "Cutscenes: SKIPPED" : "Cutscenes: PLAYING";
         }
     }
+
+    public void OnApplyQuestPenalty()
+    {
+        if (QuestManager.instance != null)
+        {
+            QuestManager.instance.ApplyPenality();
+        }
+        else
+        {
+            GD.PrintErr("QuestManager instance not found!");
+        }
+    }
 }

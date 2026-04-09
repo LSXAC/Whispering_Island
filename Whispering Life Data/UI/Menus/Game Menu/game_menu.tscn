@@ -5134,10 +5134,9 @@ size_flags_vertical = 3
 theme_override_constants/side_margin = 0
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
-current_tab = 1
+current_tab = 0
 
 [node name="General" type="VBoxContainer" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=476183822]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -5153,13 +5152,20 @@ theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 14
 text = "Deactivate Cutscenes"
 
-[node name="Button" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/General" unique_id=1564524341]
+[node name="AddMoodButton" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/General" unique_id=1564524341]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 12
 text = "Add: -0.2f mood"
 
+[node name="PenalityButton" type="Button" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/General" unique_id=788362665]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 12
+text = "Apply penality (RND)"
+
 [node name="Items" type="VBoxContainer" parent="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=258736374]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -7822,6 +7828,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="visibility_changed" from="Background/AdminTab" to="Background/AdminTab" method="OnVisiblityChange"]
 [connection signal="toggled" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/General/CheckBox" to="Background/AdminTab" method="OnCheckBoxToggled"]
 [connection signal="toggled" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/General/CheckBox2" to="Background/AdminTab" method="OnToggleCutsceneSkip"]
+[connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/General/PenalityButton" to="Background/AdminTab" method="OnApplyQuestPenalty"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/CreateButton" to="Background/AdminTab" method="OnCreateItems"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Items/DeselectButton" to="Background/AdminTab" method="OnDeselectAll"]
 [connection signal="pressed" from="Background/AdminTab/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Time Manager/PauseTimeButton" to="Background/AdminTab" method="OnPauseTimeButton"]
