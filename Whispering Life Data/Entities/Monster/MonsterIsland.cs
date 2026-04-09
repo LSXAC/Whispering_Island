@@ -13,6 +13,15 @@ public partial class MonsterIsland : Building_Node
     public static float nerv_normal = 1f;
     public static float nerv_abuse = 0f;
 
+    [Export]
+    public Sprite2D texture_rect;
+
+    [Export]
+    public PointLight2D pointlight1;
+
+    [Export]
+    public PointLight2D pointlight2;
+
     private MonsterIslandStateManager island_state;
     public SpriteAnimationManager sprite_animation_manager;
     private Resource cutscene_item = ResourceLoader.Load<Resource>(
@@ -105,11 +114,16 @@ public partial class MonsterIsland : Building_Node
     {
         int quest_time_left = QuestManager.current_quest_time;
 
-        // Monster verschwindet
-        if (!monsterDisappearTriggered && quest_time_left <= (quest_duration - 240))
+        // Monster verschwindet (nur wenn noch Zeit im mittleren Bereich)
+        if (
+            !monsterDisappearTriggered
+            && quest_time_left <= (quest_duration - 240)
+            && quest_time_left > 240
+        )
         {
             monsterDisappearTriggered = true;
             is_visible = false;
+            SetInstantVisibility(true);
             CutsceneManager.instance.QueueCutscene(cutscene_item, "Monster_Disappear");
         }
 
@@ -118,8 +132,23 @@ public partial class MonsterIsland : Building_Node
         {
             monsterAppearTriggered = true;
             is_visible = true;
+            SetInstantVisibility(false);
             CutsceneManager.instance.QueueCutscene(cutscene_item, "Monster_Appear");
         }
+    }
+
+    private void SetInstantVisibility(bool visible)
+    {
+        Color modulate_color = visible ? new Color(1, 1, 1, 1) : new Color(1, 1, 1, 0);
+
+        if (texture_rect != null)
+            texture_rect.SelfModulate = modulate_color;
+
+        if (pointlight1 != null)
+            pointlight1.SelfModulate = modulate_color;
+
+        if (pointlight2 != null)
+            pointlight2.SelfModulate = modulate_color;
     }
 
     public void StartHittingCutscene()

@@ -69,6 +69,7 @@ public partial class QuestManager : Node
         GameMenu.questMenu.InitQuest(quests[current_quest_id]);
         QuestMiniPanel.instance.UpdateTimeLabel(current_quest_time);
         QuestMiniPanel.instance.InitQuestMiniPanel(quests[current_quest_id]);
+        MonsterIsland.instance.InitializeQuestTimers(quests[current_quest_id].quest_time);
     }
 
     public void OnQuestTimerTimeout()

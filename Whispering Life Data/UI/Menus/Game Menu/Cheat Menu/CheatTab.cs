@@ -50,8 +50,8 @@ public partial class CheatTab : ColorRect
 
     public void OnTimeMultiplier(int mult)
     {
-        GameManager.time_multiplier = mult;
-        timeStateLabel.Text = $"Time multiplier set to {mult / 5}x";
+        GameManager.time_multiplier = 5 * mult;
+        timeStateLabel.Text = $"Time multiplier set to {mult}x";
     }
 
     private void SetItemsInList()
