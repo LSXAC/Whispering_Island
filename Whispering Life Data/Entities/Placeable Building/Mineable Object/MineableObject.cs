@@ -67,9 +67,6 @@ public partial class MineableObject : placeable_building
         MYSTIC,
     }
 
-    /// <summary>
-    /// Override to enable hold/repeat clicking for mineable objects.
-    /// </summary>
     protected override bool SupportsHoldAction => true;
 
     [Signal]
@@ -194,7 +191,6 @@ public partial class MineableObject : placeable_building
         PlayerUI.instance.harvest_timer.Start();
 
         Item item = resource_item.Clone();
-        // 2. Inventar-Prüfung für normalen und letzten Schlag
         int miningAmount = CalculateMiningAmountInt();
         int durabilityAfterHit = current_durability - miningAmount;
         int bonusAmount = (int)(resource_item.amount * miningAmount);
@@ -286,7 +282,6 @@ public partial class MineableObject : placeable_building
             );
         }
 
-        // Collider und Shadow deaktivieren
         if (HasNode("Collision"))
             GetNode<CollisionShape2D>("Collision").Disabled = true;
         if (HasNode("Shadow"))
