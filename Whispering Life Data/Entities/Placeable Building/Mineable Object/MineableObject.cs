@@ -158,6 +158,10 @@ public partial class MineableObject : placeable_building
 
         if (in_cooldown)
             return;
+
+        if (timer_bar.current_state == TimerBar.STATE.SPAWNING)
+            return;
+
         try
         {
             Hit();
