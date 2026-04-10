@@ -20,6 +20,9 @@ public partial class MainMenu : Control
     public OptionButton difficulty_select;
 
     [Export]
+    public Button create_new_game_after_difficult_button;
+
+    [Export]
     public Button load_button;
 
     [Export]
@@ -116,16 +119,26 @@ public partial class MainMenu : Control
     {
         switch (index)
         {
+            case 0:
+                create_new_game_after_difficult_button.Disabled = true;
+                break;
             case (int)GameManager.DIFFICULTY.EASY:
                 GameManager.difficulty_multiplier = 0.5f;
+                create_new_game_after_difficult_button.Disabled = false;
+                break;
                 break;
             case (int)GameManager.DIFFICULTY.NORMAL:
+
+                create_new_game_after_difficult_button.Disabled = false;
                 GameManager.difficulty_multiplier = 1.0f;
                 break;
             case (int)GameManager.DIFFICULTY.HARD:
+
+                create_new_game_after_difficult_button.Disabled = false;
                 GameManager.difficulty_multiplier = 1.5f;
                 break;
             case (int)GameManager.DIFFICULTY.EXPERT:
+                create_new_game_after_difficult_button.Disabled = false;
                 GameManager.difficulty_multiplier = 2.5f;
                 break;
         }

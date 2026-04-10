@@ -170,7 +170,7 @@
 [ext_resource type="AudioStream" uid="uid://bwod2wh4o0qwt" path="res://Islands/Audio/Background Music/759996__josefpres__piano-loops-167-octave-short-loop-120-bpm.wav" id="167_0iy3j"]
 [ext_resource type="AudioStream" uid="uid://dghm7erto75a0" path="res://UI/Button_Click_Sound.wav" id="168_il1im"]
 
-[node name="MainMenu" type="Control" unique_id=1921051255 node_paths=PackedStringArray("skip_tutorial", "intro_player", "parent", "menu_part_1", "menu_part_2", "difficulty_select", "load_button")]
+[node name="MainMenu" type="Control" unique_id=1921051255 node_paths=PackedStringArray("skip_tutorial", "intro_player", "parent", "menu_part_1", "menu_part_2", "difficulty_select", "create_new_game_after_difficult_button", "load_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -185,6 +185,7 @@ parent = NodePath("Menu/Control")
 menu_part_1 = NodePath("Menu/Control/VBox_Menu_Part1")
 menu_part_2 = NodePath("Menu/Control/VBox_Menu_Part2")
 difficulty_select = NodePath("Menu/Control/VBox_Menu_Part2/DifficultOptionButton")
+create_new_game_after_difficult_button = NodePath("Menu/Control/VBox_Menu_Part2/NewGameButton")
 load_button = NodePath("Menu/Control/VBox_Menu_Part1/LoadGameButton")
 skip_intro = true
 
@@ -404,16 +405,18 @@ theme_override_styles/hover = ExtResource("9_ogxk2")
 theme_override_styles/disabled = ExtResource("10_u2kkx")
 theme_override_styles/focus = ExtResource("11_6tlws")
 alignment = 1
-selected = 1
-item_count = 4
-popup/item_0/text = "Easy"
+selected = 0
+item_count = 5
+popup/item_0/text = "Select Here"
 popup/item_0/id = 0
-popup/item_1/text = "Normal"
+popup/item_1/text = "Easy"
 popup/item_1/id = 1
-popup/item_2/text = "Hard"
+popup/item_2/text = "Normal"
 popup/item_2/id = 2
-popup/item_3/text = "Expert"
+popup/item_3/text = "Hard"
 popup/item_3/id = 3
+popup/item_4/text = "Expert"
+popup/item_4/id = 4
 
 [node name="EMPTYLABEL2" type="Label" parent="Menu/Control/VBox_Menu_Part2" unique_id=1840322438]
 layout_mode = 2
@@ -436,6 +439,7 @@ theme_override_styles/pressed = ExtResource("8_jnprb")
 theme_override_styles/hover = ExtResource("9_ogxk2")
 theme_override_styles/disabled = ExtResource("10_u2kkx")
 theme_override_styles/focus = ExtResource("11_6tlws")
+disabled = true
 keep_pressed_outside = true
 text = "Create new Game"
 script = ExtResource("12_jqrcp")

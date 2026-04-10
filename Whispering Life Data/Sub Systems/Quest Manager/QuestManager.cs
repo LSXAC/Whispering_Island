@@ -47,12 +47,17 @@ public partial class QuestManager : Node
     public void StartQuest(QuestSave quest_save = null)
     {
         Debug.Print("Start new Quest!");
+        float difficultyTimeMultiplier = GetDifficultyTimeMultiplier();
+
         if (quest_save != null)
         {
             current_quest_id = quest_save.current_quest_id;
 
             if (quest_save.quest_time_left <= 0)
-                current_quest_time = quests[current_quest_id].quest_time;
+                current_quest_time =
+                    Mathf.RoundToInt(
+                        quests[current_quest_id].quest_time * difficultyTimeMultiplier / 5f
+                    ) * 5;
             else
                 current_quest_time = quest_save.quest_time_left;
         }
@@ -60,7 +65,7 @@ public partial class QuestManager : Node
         {
             current_quest_time =
                 Mathf.RoundToInt(
-                    quests[current_quest_id].quest_time / GameManager.difficulty_multiplier / 5f
+                    quests[current_quest_id].quest_time * difficultyTimeMultiplier / 5f
                 ) * 5;
         }
 
@@ -69,7 +74,7 @@ public partial class QuestManager : Node
         GameMenu.questMenu.InitQuest(quests[current_quest_id]);
         QuestMiniPanel.instance.UpdateTimeLabel(current_quest_time);
         QuestMiniPanel.instance.InitQuestMiniPanel(quests[current_quest_id]);
-        MonsterIsland.instance.InitializeQuestTimers(quests[current_quest_id].quest_time);
+        MonsterIsland.instance.InitializeQuestTimers(current_quest_time);
     }
 
     public void OnQuestTimerTimeout()
@@ -204,5 +209,10 @@ public partial class QuestManager : Node
         }
 
         CutsceneManager.In_Cutscene = false;
+    }
+
+    private float GetDifficultyTimeMultiplier()
+    {
+        return 1.0f / GameManager.difficulty_multiplier;
     }
 }

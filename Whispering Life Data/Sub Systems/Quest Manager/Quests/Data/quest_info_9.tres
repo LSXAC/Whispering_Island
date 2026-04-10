@@ -29,4 +29,4 @@ script = ExtResource("6_2qyb6")
 quest_name = "QUEST_TITLE_9"
 quest_description = "QUEST_DESC_9"
 required_items = Array[Object]([SubResource("Resource_c6knq"), SubResource("Resource_qo0b6"), SubResource("Resource_sq2ci")])
-quest_time = 1440
+quest_time = 2880

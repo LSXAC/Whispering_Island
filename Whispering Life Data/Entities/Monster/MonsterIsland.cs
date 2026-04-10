@@ -54,6 +54,7 @@ public partial class MonsterIsland : Building_Node
         hit_label_manager = GetNode<HitLabelManager>("HitLabelManager");
         island_state.StateChanged += OnStateChanged;
         UpdateStateVisuals(island_state.GetCurrentState());
+        SetInstantVisibility(true);
     }
 
     public float GetNervRate()
@@ -112,6 +113,9 @@ public partial class MonsterIsland : Building_Node
 
     private void CheckQuestTimeTriggers()
     {
+        if (!GameManager.instance.tutorial_finished)
+            return;
+
         int quest_time_left = QuestManager.current_quest_time;
 
         // Monster verschwindet (nur wenn noch Zeit im mittleren Bereich)
@@ -137,7 +141,7 @@ public partial class MonsterIsland : Building_Node
         }
     }
 
-    private void SetInstantVisibility(bool visible)
+    public void SetInstantVisibility(bool visible)
     {
         Color modulate_color = visible ? new Color(1, 1, 1, 1) : new Color(1, 1, 1, 0);
 
