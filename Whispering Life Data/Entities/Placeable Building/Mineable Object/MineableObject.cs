@@ -74,18 +74,62 @@ public partial class MineableObject : placeable_building
 
     public void GetTexture2DArray(int variant)
     {
+        if (variants_parent == null)
+        {
+            GD.PrintErr("variants_parent is null in GetTexture2DArray");
+            return;
+        }
+
+        int childCount = variants_parent.GetChildCount();
+        if (variant < 0 || variant >= childCount)
+        {
+            GD.PrintErr(
+                $"Variant index {variant} is out of bounds. Available variants: {childCount}"
+            );
+            variant = 0;
+        }
+
         Texture2DArray t2d_array = variants_parent.GetChild<Texture2DArray>(variant);
         mine_textures = t2d_array;
         if (!growable)
             return;
-        Texture2DArray growth_t2d_array = growth_variants_parent.GetChild<Texture2DArray>(variant);
-        growth_textures = growth_t2d_array;
+
+        if (growth_variants_parent != null)
+        {
+            int growth_childCount = growth_variants_parent.GetChildCount();
+            if (variant < 0 || variant >= growth_childCount)
+            {
+                GD.PrintErr(
+                    $"Growth variant index {variant} is out of bounds. Available growth variants: {growth_childCount}"
+                );
+                return;
+            }
+            Texture2DArray growth_t2d_array = growth_variants_parent.GetChild<Texture2DArray>(
+                variant
+            );
+            growth_textures = growth_t2d_array;
+        }
     }
 
     public int GetRandomVariation()
     {
+        if (variants_parent == null)
+        {
+            GD.PrintErr("variants_parent is null in GetRandomVariation");
+            variant = 0;
+            return variant;
+        }
+
+        int childCount = variants_parent.GetChildCount();
+        if (childCount <= 0)
+        {
+            GD.PrintErr("No variants available in variants_parent");
+            variant = 0;
+            return variant;
+        }
+
         Random rnd = new Random();
-        variant = rnd.Next(0, variants_parent.GetChildCount());
+        variant = rnd.Next(0, childCount);
         return variant;
     }
 
@@ -132,6 +176,7 @@ public partial class MineableObject : placeable_building
 
         interactableArea = GetNode<Area2D>("MouseArea");
         SetResourceTexture();
+        Debug.Print("First Mineable");
     }
 
     public void SpawnPlant()
@@ -296,6 +341,7 @@ public partial class MineableObject : placeable_building
         Debug.Print("Starting TimerBar with state: " + state.ToString() + " for time: " + time);
         if (state == TimerBar.STATE.SPAWNING)
         {
+            gpu_particles.Emitting = false;
             if (collision_polygon != null)
                 collision_polygon.Disabled = false;
             timer_bar.InitTimer(
@@ -327,6 +373,7 @@ public partial class MineableObject : placeable_building
         if (timer_bar.current_state == TimerBar.STATE.SPAWNING || from_loading)
             current_durability = max_durability;
 
+        gpu_particles.Emitting = true;
         interactableArea.Monitoring = true;
         timer_bar.current_state = TimerBar.STATE.NONE;
     }
@@ -367,7 +414,14 @@ public partial class MineableObject : placeable_building
                 if (ros.time_left == 0)
                     Reset(from_loading: true);
                 else
+                {
                     StartTimerBar(ros.last_state, ros.time_left, from_loading: true);
+                    if (ros.last_state == TimerBar.STATE.SPAWNING && growable)
+                    {
+                        UpdateGrowthTexture();
+                        return;
+                    }
+                }
             SetResourceTexture();
         }
         else

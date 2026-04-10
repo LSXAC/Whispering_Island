@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cxtq18i442ldo"]
+[gd_scene format=4 uid="uid://cxtq18i442ldo"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Entities/Placeable Building/Mineable Object/MineableObject.cs" id="1_cj282"]
 [ext_resource type="Resource" uid="uid://dn1orkomhkyrw" path="res://Entities/Items/Vegetation/Oak/Oak Wood/Data/OakWood.tres" id="2_1wx72"]
@@ -137,7 +137,7 @@ resource_item = SubResource("Resource_uwm61")
 extra_item = SubResource("Resource_cgqts")
 gpu_particles = NodePath("SpriteAnimationManager/FallingLeaves")
 building_id = 15
-tile_types = Array[int]([1])
+tile_types = Array[int]([0])
 use_wind = true
 title = "WORLD_RESOURCE_TREE"
 description = "WORLD_RESOURCE_TREE_DESC"
@@ -221,10 +221,12 @@ offset_left = -14.0
 offset_top = -4.0
 offset_right = -2.0
 offset_bottom = -3.0
+max_value = 10.0
+value = 0.0
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." unique_id=669398491]
 z_index = -2
-tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray("AAD/////AAACAAAAAAD+////AAACAAAAAAD+/wAAAAACAAAAAAAAAAAAAAACAAAAAAD//wAAAAACAAAAAAAAAP//AAACAAAAAAAAAP7/AAACAAAAAAD///7/AAACAAAAAAD+//7/AAACAAAAAAA=")
 enabled = false
 tile_set = ExtResource("9_htwjv")
 

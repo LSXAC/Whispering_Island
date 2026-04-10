@@ -197,9 +197,8 @@ public abstract partial class ProcessBuilding : MachineBase
 
         int input_idx = GetSlotIndexByPurpose(SlotPurpose.INPUT);
 
-        // Check all conditions independently - panels can be active simultaneously
         bool has_no_materials = item_array[input_idx] == null;
-        bool has_no_recipe = !SelectAndCheckCanCraft();
+        bool has_no_recipe = selected_recipe == null;
         bool has_no_fuel = !RefuelIfNeeded();
 
         UpdateRecipeAndMaterialPanels(has_no_materials, has_no_recipe);
@@ -298,6 +297,13 @@ public abstract partial class ProcessBuilding : MachineBase
                 if (ui_updater != null)
                 {
                     ui_updater.UpdateRecipeSlotIcons(selected_recipe);
+                }
+
+                if (Logger.NodeIsNotNull(building_information_panel_instance))
+                {
+                    building_information_panel_instance.DeactivatePanel(
+                        BuildingInformationPanel.PanelType.NO_RECIPE
+                    );
                 }
             }
         }
@@ -424,6 +430,13 @@ public abstract partial class ProcessBuilding : MachineBase
         if (ui_updater != null)
         {
             ui_updater.UpdateRecipeSlotIcons(recipe);
+        }
+
+        if (recipe != null && Logger.NodeIsNotNull(building_information_panel_instance))
+        {
+            building_information_panel_instance.DeactivatePanel(
+                BuildingInformationPanel.PanelType.NO_RECIPE
+            );
         }
     }
 
