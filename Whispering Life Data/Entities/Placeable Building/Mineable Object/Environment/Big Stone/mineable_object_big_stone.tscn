@@ -108,11 +108,10 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_4ikef")
 
-[node name="BigStone" type="StaticBody2D" unique_id=2104619315 node_paths=PackedStringArray("hit_point", "variants_parent", "gpu_particles")]
+[node name="BigStone" type="StaticBody2D" unique_id=2104619315 node_paths=PackedStringArray("variants_parent", "gpu_particles")]
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_hrp6s")
-hit_point = NodePath("")
 tool_type = 3
 variants_parent = NodePath("SpriteAnimationManager/Variants")
 resource_item = SubResource("Resource_o5wt5")
