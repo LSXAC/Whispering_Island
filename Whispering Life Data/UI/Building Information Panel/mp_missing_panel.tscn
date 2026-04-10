@@ -5,19 +5,20 @@
 [ext_resource type="Texture2D" uid="uid://wvpbk4oqakih" path="res://UI/Building Information Panel/Textures/Cross_Icon.png" id="3_u4cq8"]
 [ext_resource type="Texture2D" uid="uid://curt66yojsxad" path="res://UI/Building Information Panel/Textures/Gear.png" id="4_jbxb2"]
 [ext_resource type="Texture2D" uid="uid://d1wddls2semmy" path="res://Entities/Items/SpritesForItems/Icons_3rd/Iron_Ingot.png" id="5_u4cq8"]
+[ext_resource type="Texture2D" uid="uid://3krvv00h3sv8" path="res://Entities/Items/SpritesForItems/Icons_3rd/Coal.png" id="6_8cyik"]
 
-[node name="BuildingInformationPanel" type="Control" unique_id=1319776930 node_paths=PackedStringArray("no_energy_panel", "no_recipe_panel", "no_input_panel")]
+[node name="BuildingInformationPanel" type="Control" unique_id=1319776930 node_paths=PackedStringArray("no_energy_panel", "no_recipe_panel", "no_input_panel", "no_fuel_panel")]
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
-offset_left = -14.0
+offset_left = -16.0
 offset_top = -16.0
-offset_right = 2.0
 mouse_filter = 2
 script = ExtResource("1_68x0j")
 no_energy_panel = NodePath("HBoxContainer/NoEnergy")
 no_recipe_panel = NodePath("HBoxContainer/NoRecipe")
 no_input_panel = NodePath("HBoxContainer/NoMaterials")
+no_fuel_panel = NodePath("HBoxContainer/NoFuel")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2073822773]
 layout_mode = 1
@@ -26,9 +27,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -18.0
+offset_left = -27.0
 offset_top = -12.0
-offset_right = 18.0
+offset_right = 27.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -168,6 +169,59 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Cross" type="TextureRect" parent="HBoxContainer/NoMaterials" unique_id=1227368481]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_u4cq8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NoFuel" type="Control" parent="HBoxContainer" unique_id=352075643]
+visible = false
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Background" type="PanelContainer" parent="HBoxContainer/NoFuel" unique_id=1454340414]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Content" type="TextureRect" parent="HBoxContainer/NoFuel" unique_id=845630084]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_8cyik")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cross" type="TextureRect" parent="HBoxContainer/NoFuel" unique_id=630531562]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 1
 anchors_preset = 8

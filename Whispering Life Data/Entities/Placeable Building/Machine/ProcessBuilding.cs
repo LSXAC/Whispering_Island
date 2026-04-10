@@ -64,7 +64,11 @@ public abstract partial class ProcessBuilding : MachineBase
         OpenGameMenuTab();
     }
 
-    private void UpdateRecipeAndMaterialPanels(bool has_no_materials, bool has_no_recipe)
+    private void UpdateRecipeAndMaterialPanels(
+        bool has_no_materials,
+        bool has_no_recipe,
+        bool has_no_fuel
+    )
     {
         if (!Logger.NodeIsNotNull(building_information_panel_instance))
             return;
@@ -75,6 +79,9 @@ public abstract partial class ProcessBuilding : MachineBase
         building_information_panel_instance.DeactivatePanel(
             BuildingInformationPanel.PanelType.NO_RECIPE
         );
+        building_information_panel_instance.DeactivatePanel(
+            BuildingInformationPanel.PanelType.NO_FUEL
+        );
 
         if (has_no_materials)
             building_information_panel_instance.ActivatePanel(
@@ -84,6 +91,11 @@ public abstract partial class ProcessBuilding : MachineBase
         if (has_no_recipe && requires_recipe)
             building_information_panel_instance.ActivatePanel(
                 BuildingInformationPanel.PanelType.NO_RECIPE
+            );
+
+        if (has_no_fuel)
+            building_information_panel_instance.ActivatePanel(
+                BuildingInformationPanel.PanelType.NO_FUEL
             );
     }
 
@@ -201,7 +213,7 @@ public abstract partial class ProcessBuilding : MachineBase
         bool has_no_recipe = selected_recipe == null;
         bool has_no_fuel = !RefuelIfNeeded();
 
-        UpdateRecipeAndMaterialPanels(has_no_materials, has_no_recipe);
+        UpdateRecipeAndMaterialPanels(has_no_materials, has_no_recipe, has_no_fuel);
 
         if (is_crafting)
             return;
@@ -303,6 +315,9 @@ public abstract partial class ProcessBuilding : MachineBase
                 {
                     building_information_panel_instance.DeactivatePanel(
                         BuildingInformationPanel.PanelType.NO_RECIPE
+                    );
+                    building_information_panel_instance.DeactivatePanel(
+                        BuildingInformationPanel.PanelType.NO_FUEL
                     );
                 }
             }
@@ -436,6 +451,9 @@ public abstract partial class ProcessBuilding : MachineBase
         {
             building_information_panel_instance.DeactivatePanel(
                 BuildingInformationPanel.PanelType.NO_RECIPE
+            );
+            building_information_panel_instance.DeactivatePanel(
+                BuildingInformationPanel.PanelType.NO_FUEL
             );
         }
     }
