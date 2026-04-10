@@ -208,7 +208,7 @@ process_material = SubResource("ParticleProcessMaterial_6nogx")
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." unique_id=1578173779]
 z_index = -2
-tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
 enabled = false
 tile_set = ExtResource("8_4renc")
 
