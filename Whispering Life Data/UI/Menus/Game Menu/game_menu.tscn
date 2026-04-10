@@ -626,13 +626,15 @@ offset_right = -280.0
 offset_bottom = 22.0
 inventory_items = Array[Resource]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 
-[node name="EquipmentPanel" type="Control" parent="Background/InventoryTab" unique_id=1820287311 node_paths=PackedStringArray("player_stats_ui")]
+[node name="EquipmentPanel" type="Control" parent="Background/InventoryTab" unique_id=1820287311 node_paths=PackedStringArray("slots_armor", "slots_tool", "player_stats_ui")]
 anchors_preset = 0
 offset_left = 381.0
 offset_top = 49.0
 offset_right = 717.0
 offset_bottom = 306.0
 script = ExtResource("4_e3tur")
+slots_armor = [NodePath("Character/ArmorGridContainer/HeadSlotBackground/Slot0"), NodePath("Character/ArmorGridContainer/ChestSlotBackground/Slot0"), NodePath("Character/ArmorGridContainer/LegSlotBackground/Slot0"), NodePath("Character/ArmorGridContainer/ShoesSlotBackground/Slot0")]
+slots_tool = [NodePath("Character/ToolsHBox/HeadSlotBackground/Slot0"), NodePath("Character/ToolsHBox/HeadSlotBackground2/Slot0"), NodePath("Character/ToolsHBox/HeadSlotBackground3/Slot0"), NodePath("Character/ToolsHBox/HeadSlotBackground4/Slot0")]
 player_stats_ui = NodePath("PlayerStatsUI")
 
 [node name="Character" type="Control" parent="Background/InventoryTab/EquipmentPanel" unique_id=583756182]
