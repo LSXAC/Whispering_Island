@@ -122,13 +122,12 @@ shader_parameter/speed = 1.0
 shader_parameter/angle = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
-size = Vector2(15, 26)
+size = Vector2(13, 26)
 
-[node name="Tree" type="StaticBody2D" unique_id=1970682869 node_paths=PackedStringArray("hit_point", "variants_parent", "growth_variants_parent", "gpu_particles")]
+[node name="Tree" type="StaticBody2D" unique_id=1970682869 node_paths=PackedStringArray("variants_parent", "growth_variants_parent", "gpu_particles")]
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_cj282")
-hit_point = NodePath("")
 growable = true
 tool_type = 2
 variants_parent = NodePath("SpriteAnimationManager/Variations")
@@ -138,7 +137,7 @@ resource_item = SubResource("Resource_uwm61")
 extra_item = SubResource("Resource_cgqts")
 gpu_particles = NodePath("SpriteAnimationManager/FallingLeaves")
 building_id = 15
-tile_types = Array[int]([0])
+tile_types = Array[int]([1])
 use_wind = true
 title = "WORLD_RESOURCE_TREE"
 description = "WORLD_RESOURCE_TREE_DESC"
@@ -214,7 +213,7 @@ position = Vector2(-6, -10)
 script = ExtResource("6_ci7ld")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=1215025898]
-position = Vector2(-5.5, -7)
+position = Vector2(-2.5, -7)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." unique_id=188716541 instance=ExtResource("7_0yyoq")]
@@ -237,7 +236,6 @@ collision_tilemap = NodePath("../CollisionTemplateTilemap")
 offset_left = -10.0
 offset_top = -40.0
 offset_right = 30.0
-offset_bottom = 0.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]

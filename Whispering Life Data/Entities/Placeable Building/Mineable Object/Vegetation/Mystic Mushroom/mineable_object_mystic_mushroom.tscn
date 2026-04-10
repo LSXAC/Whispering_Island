@@ -66,12 +66,11 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_lfoib")
 
-[node name="Mystic Mushroom" type="StaticBody2D" unique_id=1807192200 node_paths=PackedStringArray("hit_point", "variants_parent", "growth_variants_parent", "gpu_particles")]
+[node name="Mystic Mushroom" type="StaticBody2D" unique_id=1807192200 node_paths=PackedStringArray("variants_parent", "growth_variants_parent", "gpu_particles")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_uyotn")
-hit_point = NodePath("")
 growable = true
 tool_type = 4
 variants_parent = NodePath("SpriteAnimationManager/Variation")
@@ -81,7 +80,7 @@ resource_item = SubResource("Resource_pony2")
 extra_item = SubResource("Resource_b02l2")
 gpu_particles = NodePath("PotatoParticle")
 building_id = 36
-tile_types = Array[int]([0])
+tile_types = Array[int]([1])
 title = "WORLD_RESOURCE_MYSTIC_MUSHROOM"
 description = "WORLD_RESOURCE_MYSTIC_MUSHROOM_DESC"
 

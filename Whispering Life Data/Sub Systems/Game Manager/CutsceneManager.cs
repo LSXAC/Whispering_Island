@@ -81,6 +81,7 @@ public partial class CutsceneManager : Node2D
         }
         TimeManager.PauseTime();
         GameMenu.instance.OnExitButton();
+        BuildMenu.instance.CloseWindow();
         GameMenu.CloseLastWindow();
 
         In_Cutscene = true;

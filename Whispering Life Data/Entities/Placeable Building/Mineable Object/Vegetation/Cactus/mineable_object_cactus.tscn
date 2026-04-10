@@ -100,11 +100,10 @@ shader_parameter/angle = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
 size = Vector2(15, 26)
 
-[node name="Cactus" type="StaticBody2D" unique_id=677092106 node_paths=PackedStringArray("hit_point", "variants_parent", "growth_variants_parent", "gpu_particles")]
+[node name="Cactus" type="StaticBody2D" unique_id=677092106 node_paths=PackedStringArray("variants_parent", "growth_variants_parent", "gpu_particles")]
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_3vihl")
-hit_point = NodePath("")
 growable = true
 tool_type = 2
 variants_parent = NodePath("SpriteAnimationManager/Variations")
@@ -114,7 +113,7 @@ resource_item = SubResource("Resource_uwm61")
 extra_item = SubResource("Resource_cgqts")
 gpu_particles = NodePath("SpriteAnimationManager/FallingLeaves")
 building_id = 38
-tile_types = Array[int]([0])
+tile_types = Array[int]([1])
 use_wind = true
 title = "WORLD_RESOURCE_CACTUS"
 description = "WORLD_RESOURCE_CACTUS_DESC"

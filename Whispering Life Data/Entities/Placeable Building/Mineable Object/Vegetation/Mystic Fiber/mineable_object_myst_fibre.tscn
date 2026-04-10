@@ -65,11 +65,10 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_lfoib")
 
-[node name="MystFibre" type="StaticBody2D" unique_id=1535952136 node_paths=PackedStringArray("hit_point", "variants_parent", "growth_variants_parent", "gpu_particles")]
+[node name="MystFibre" type="StaticBody2D" unique_id=1535952136 node_paths=PackedStringArray("variants_parent", "growth_variants_parent", "gpu_particles")]
 y_sort_enabled = true
 collision_layer = 13
 script = ExtResource("1_g4r0j")
-hit_point = NodePath("")
 growable = true
 tool_type = 4
 variants_parent = NodePath("SpriteAnimationManager/Variations")
@@ -78,7 +77,7 @@ resource_item = SubResource("Resource_yly7u")
 extra_item = SubResource("Resource_x0ixx")
 gpu_particles = NodePath("FibreParticles")
 building_id = 14
-tile_types = Array[int]([0])
+tile_types = Array[int]([1])
 use_wind = true
 title = "WORLD_RESOURCE_MYSTIC_FIBRE"
 description = "WORLD_RESOURCE_MYSTIC_FIBRE_DESC"
