@@ -38,7 +38,7 @@ public abstract partial class ProcessBuilding : MachineBase
     protected abstract ProcessingTab GetUIUpdater();
     protected abstract void OpenGameMenuTab();
 
-    protected abstract int GetSlotIndexByPurpose(SlotPurpose purpose);
+    public abstract int GetSlotIndexByPurpose(SlotPurpose purpose);
 
     public ItemInfo GetItemResource(int slotIndex)
     {

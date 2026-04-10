@@ -126,7 +126,6 @@ public partial class MainMenu : Control
                 GameManager.difficulty_multiplier = 0.5f;
                 create_new_game_after_difficult_button.Disabled = false;
                 break;
-                break;
             case (int)GameManager.DIFFICULTY.NORMAL:
 
                 create_new_game_after_difficult_button.Disabled = false;

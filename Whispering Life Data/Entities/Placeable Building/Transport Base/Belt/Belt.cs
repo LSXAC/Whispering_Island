@@ -37,42 +37,22 @@ public partial class Belt : TransportBase
                 {
                     if (item_holder.hasBeltItem())
                     {
-                        BeltItem belt_item = item_holder.GetBeltItem();
-                        if (
-                            process_building.GetItemResource((int)FurnaceTab.SlotType.IMPORT)
-                            != null
-                        )
-                            if (
-                                belt_item.GetItemInfo()
-                                != process_building.GetItemResource((int)FurnaceTab.SlotType.IMPORT)
-                            )
-                                return;
-                            else
-                            {
-                                var item2 = item_holder.offload_item();
-                                process_building
-                                    .item_array[(int)FurnaceTab.SlotType.IMPORT]
-                                    .amount += 1;
-                                taker.receive_item(item2);
-                                return;
-                            }
-                        process_building.item_array[(int)FurnaceTab.SlotType.IMPORT] = new ItemSave(
-                            (int)belt_item.GetItemInfo().id,
-                            1,
-                            -1,
-                            (int)belt_item.item.state
-                        );
-                        taker.receive_item(item);
+                        // Remove the item and let Taker handle ALL validation and storage
+                        var item_to_transfer = item_holder.offload_item();
+                        taker.receive_item(item_to_transfer);
                     }
                 }
             }
-            if (area.GetParent().GetParent() is ChestBase)
+            else if (area.GetParent().GetParent() is ChestBase)
+            {
                 if (taker.can_receive_item((BeltItem)item))
                     taker.receive_item(item);
-
-            if (area.GetParent().GetParent() is RailStation)
+            }
+            else if (area.GetParent().GetParent() is RailStation)
+            {
                 if (taker.can_receive_item((BeltItem)item))
                     taker.receive_item(item);
+            }
         }
     }
 

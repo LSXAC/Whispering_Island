@@ -92,13 +92,6 @@ public partial class Giver : Area2D
     {
         if (destination.GetParent() is Belt belt)
         {
-            Debug.Print(
-                "Belt to Direction: "
-                    + belt.to_direction.ToString()
-                    + " | "
-                    + " Direction Not Giving: "
-                    + direction_not_giving.ToString()
-            );
             if (belt.to_direction == direction_not_giving)
                 return;
 
@@ -118,21 +111,23 @@ public partial class Giver : Area2D
     {
         if (!belt.can_receive_item())
             return;
+        Debug.Print("[Taker] Item from Giver given");
 
         ProcessBuilding process_building = (ProcessBuilding)building;
         if (process_building.item_array[(int)FurnaceTab.SlotType.EXPORT] != null)
             if (process_building.item_array[(int)FurnaceTab.SlotType.EXPORT].amount > 0)
             {
-                process_building.item_array[(int)FurnaceTab.SlotType.EXPORT].amount--;
-                AddBeltItemToBelt(
-                    belt,
-                    new Item(process_building.GetItemResource((int)FurnaceTab.SlotType.EXPORT), 1)
+                ItemInfo output_item = process_building.GetItemResource(
+                    (int)FurnaceTab.SlotType.EXPORT
                 );
+                Debug.Print($"[GIVER] 📤 Sending output item: {output_item.name}");
+
+                process_building.item_array[(int)FurnaceTab.SlotType.EXPORT].amount--;
+                AddBeltItemToBelt(belt, new Item(output_item, 1));
 
                 if (process_building.item_array[(int)FurnaceTab.SlotType.EXPORT].amount == 0)
                     process_building.ResetExportSlot();
 
-                // Benachrichtige das UI dass Items sich geändert haben
                 process_building.NotifyItemsChanged();
 
                 if (belt is BeltTunnel belt_tunnel)
@@ -163,6 +158,8 @@ public partial class Giver : Area2D
                 continue;
 
             Item item = new Item(Inventory.ITEM_TYPES[(Inventory.ITEM_ID)i_s.item_id], 1);
+            Debug.Print($"[GIVER] 📤 Sending chest item: {item.info.name}");
+
             ChestTab.instance.chest_inventory.RemoveItem(item, ((ChestBase)building).chest_items);
 
             AddBeltItemToBelt(
@@ -178,6 +175,11 @@ public partial class Giver : Area2D
     {
         if (belt.can_receive_item() && ((ProductionMachine)building).count > 0)
         {
+            ProductionMachine prod_building = (ProductionMachine)building;
+            Debug.Print(
+                $"[GIVER] 📤 Sending production item: {prod_building.output_item_resource.name}"
+            );
+
             if (belt is BeltTunnel belt_tunnel)
                 belt_tunnel.from_Belt = true;
 
@@ -187,11 +189,8 @@ public partial class Giver : Area2D
             if (belt is BeltCombiner belt_combiner)
                 belt_combiner.GetNode<Timer>("CheckAreaTimer").Start();
 
-            ((ProductionMachine)building).count -= 1;
-            AddBeltItemToBelt(
-                belt,
-                new Item(((ProductionMachine)building).output_item_resource, 1)
-            );
+            prod_building.count -= 1;
+            AddBeltItemToBelt(belt, new Item(prod_building.output_item_resource, 1));
 
             // Benachrichtige ProcessBuilding wenn es um eine solche Maschine handelt
             if (building is ProcessBuilding pb)

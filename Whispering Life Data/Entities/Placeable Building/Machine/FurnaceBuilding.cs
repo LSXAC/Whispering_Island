@@ -164,7 +164,7 @@ public partial class FurnaceBuilding : ProcessBuilding
         return FurnaceTab.instance;
     }
 
-    protected override int GetSlotIndexByPurpose(SlotPurpose purpose)
+    public override int GetSlotIndexByPurpose(SlotPurpose purpose)
     {
         return purpose switch
         {

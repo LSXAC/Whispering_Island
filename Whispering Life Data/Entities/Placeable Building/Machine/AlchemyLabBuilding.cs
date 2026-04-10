@@ -151,7 +151,7 @@ public partial class AlchemyLabBuilding : ProcessBuilding
         return AlchemyLabTab.instance;
     }
 
-    protected override int GetSlotIndexByPurpose(SlotPurpose purpose)
+    public override int GetSlotIndexByPurpose(SlotPurpose purpose)
     {
         return purpose switch
         {

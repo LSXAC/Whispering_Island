@@ -167,7 +167,7 @@ public partial class CombinerBuilding : ProcessBuilding
         return CombinerTab.instance;
     }
 
-    protected override int GetSlotIndexByPurpose(SlotPurpose purpose)
+    public override int GetSlotIndexByPurpose(SlotPurpose purpose)
     {
         return purpose switch
         {

@@ -27,7 +27,6 @@ public partial class ProductionMachine : MachineBase
             EnableMachine();
             process_timer.Paused = false;
         }
-        Debug.Print("Current WaitTime: " + process_timer.WaitTime);
     }
 
     public void OnSpawnTimeout()
