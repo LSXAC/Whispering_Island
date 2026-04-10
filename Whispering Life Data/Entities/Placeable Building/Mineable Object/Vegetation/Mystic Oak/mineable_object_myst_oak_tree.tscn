@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://gb18hiamdyqj"]
+[gd_scene format=3 uid="uid://gb18hiamdyqj"]
 
 [ext_resource type="Script" uid="uid://bccwv3yyfmoqn" path="res://Entities/Placeable Building/Mineable Object/MineableObject.cs" id="1_oeonl"]
 [ext_resource type="Resource" uid="uid://c6cvl30smgqs7" path="res://Entities/Items/Vegetation/Mystic Oak/Mystic Oak Wood/Data/MysticOakWood.tres" id="2_wvxkc"]
@@ -85,7 +85,7 @@ shader_parameter/speed = 1.0
 shader_parameter/angle = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25cn"]
-size = Vector2(13, 30)
+size = Vector2(13, 29)
 
 [sub_resource type="Curve" id="Curve_lkdxx"]
 _data = [Vector2(0.00478469, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.509545), 0.0, 0.0, 0, 0]
@@ -186,7 +186,7 @@ position = Vector2(-6, -8)
 script = ExtResource("5_ntkvk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=583800236]
-position = Vector2(-2.5, -9)
+position = Vector2(-2.5, -8.5)
 shape = SubResource("RectangleShape2D_a25cn")
 
 [node name="TimerBar" parent="." unique_id=1859640207 instance=ExtResource("6_j0pn3")]
@@ -208,7 +208,7 @@ process_material = SubResource("ParticleProcessMaterial_6nogx")
 
 [node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." unique_id=1578173779]
 z_index = -2
-tile_map_data = PackedByteArray("AAD/////AAACAAAAAAD//wAAAAACAAAAAAD+/wAAAAACAAAAAAD+////AAACAAAAAAD+//7/AAACAAAAAAD///7/AAACAAAAAAAAAP7/AAACAAAAAAAAAP//AAACAAAAAAAAAAAAAAACAAAAAAA=")
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 2, 0, 0, 0, 0, 0)
 enabled = false
 tile_set = ExtResource("8_4renc")
 
