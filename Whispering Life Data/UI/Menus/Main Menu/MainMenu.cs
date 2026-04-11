@@ -85,6 +85,7 @@ public partial class MainMenu : Control
     {
         skip_tutorial.ButtonPressed = false;
         difficulty_select.Selected = (int)GameManager.DIFFICULTY.NONE;
+        create_new_game_after_difficult_button.Disabled = true;
         menu_part_1.Visible = true;
         menu_part_2.Visible = false;
     }
