@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 [resource]
 script = ExtResource("2_b3cpl")
 attributes = Array[Object]([SubResource("Resource_fbfdm")])
-max_stackable_size = 250
+max_stackable_size = 999
 name = "SUGAR_CANE_SEED"
 id = 55
 description = "SUGAR_CANE_SEED_DESC"

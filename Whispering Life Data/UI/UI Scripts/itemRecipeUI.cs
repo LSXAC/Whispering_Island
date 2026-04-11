@@ -50,11 +50,32 @@ public partial class itemRecipeUI : Control
     {
         foreach (Item item in req_items)
         {
-            PlayerInventoryUI.instance.RemoveItem(
-                new Item(item.info, item.amount),
-                PlayerInventoryUI.instance.inventory_items
-            );
-            Debug.Print("Item Name for Crafting: " + item.info.name);
+            if (
+                PlayerInventoryUI.instance.HasItemInInventory(
+                    PlayerInventoryUI.instance.inventory_items,
+                    item
+                )
+            )
+            {
+                PlayerInventoryUI.instance.RemoveItem(
+                    new Item(item.info, item.amount),
+                    PlayerInventoryUI.instance.inventory_items
+                );
+                Debug.Print("Item Name for Crafting: " + item.info.name);
+                continue;
+            }
+            if (
+                SeedInventoryUI.instance.HasItemInInventory(
+                    SeedInventoryUI.instance.inventory_items,
+                    item
+                )
+            )
+            {
+                SeedInventoryUI.instance.RemoveItem(
+                    new Item(item.info, item.amount),
+                    SeedInventoryUI.instance.inventory_items
+                );
+            }
         }
 
         PlayerInventoryUI.instance.AddItem(

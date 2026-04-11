@@ -8,7 +8,7 @@ public partial class SeedInventoryUI : Inventory
     public override void _Ready()
     {
         instance = this;
-        slot_amount = 30;
+        slot_amount = 15;
         base._Ready();
         SetSlots();
     }

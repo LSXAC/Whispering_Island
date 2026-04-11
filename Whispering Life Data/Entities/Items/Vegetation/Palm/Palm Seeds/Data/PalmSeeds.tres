@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 [resource]
 script = ExtResource("2_hbrvv")
 attributes = Array[Object]([SubResource("Resource_2wb6e")])
-max_stackable_size = 250
+max_stackable_size = 999
 name = "PALM_SEED"
 id = 63
 description = "PALM_SEED_DESC"

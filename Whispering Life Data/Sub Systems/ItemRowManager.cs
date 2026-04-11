@@ -31,6 +31,11 @@ public partial class ItemRowManager : HBoxContainer
                 item
             );
 
+            Array<Item> seed_list = SeedInventoryUI.instance?.GetItemFromListOrNull(
+                SeedInventoryUI.instance?.GetListOfItemsInInventory(),
+                item
+            );
+
             Item item_ref = item.Clone();
             item_ref.amount = (int)(item_ref.amount * GameManager.difficulty_multiplier);
 
@@ -39,10 +44,16 @@ public partial class ItemRowManager : HBoxContainer
             {
                 foreach (Item i in i_list)
                     amount_of_item += i.amount;
-
-                if (amount_of_item >= item_ref.amount && item_ref.amount > 0)
-                    hbc_c.ChangeColor(global::h_box_item.colorType.white);
             }
+
+            if (seed_list != null)
+            {
+                foreach (Item i in seed_list)
+                    amount_of_item += i.amount;
+            }
+
+            if (amount_of_item >= item_ref.amount && item_ref.amount > 0)
+                hbc_c.ChangeColor(global::h_box_item.colorType.white);
             AddChild(hbc_c);
         }
     }
@@ -66,12 +77,23 @@ public partial class ItemRowManager : HBoxContainer
                 item
             );
 
-            int amount_of_item = 0;
-            if (i_list == null)
-                continue;
+            Array<Item> seed_list = SeedInventoryUI.instance?.GetItemFromListOrNull(
+                SeedInventoryUI.instance?.GetListOfItemsInInventory(),
+                item
+            );
 
-            foreach (Item i in i_list)
-                amount_of_item += i.amount;
+            int amount_of_item = 0;
+            if (i_list != null)
+            {
+                foreach (Item i in i_list)
+                    amount_of_item += i.amount;
+            }
+
+            if (seed_list != null)
+            {
+                foreach (Item i in seed_list)
+                    amount_of_item += i.amount;
+            }
 
             if (amount_of_item >= item.amount && item.amount > 0)
             {
