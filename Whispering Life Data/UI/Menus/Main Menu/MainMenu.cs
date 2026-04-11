@@ -84,7 +84,7 @@ public partial class MainMenu : Control
     public void OnBackToMainMenu()
     {
         skip_tutorial.ButtonPressed = false;
-        difficulty_select.Selected = (int)GameManager.DIFFICULTY.NORMAL;
+        difficulty_select.Selected = (int)GameManager.DIFFICULTY.NONE;
         menu_part_1.Visible = true;
         menu_part_2.Visible = false;
     }

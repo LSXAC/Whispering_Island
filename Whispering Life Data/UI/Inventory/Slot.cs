@@ -44,7 +44,7 @@ public partial class Slot : Button
 
             index = GetParent().GetIndex();
 
-            if (GetParent().GetParent().GetParent() is PlayerInventoryUI)
+            if (GetParent().GetParent().GetParent() is PlayerInventoryUI or SeedInventoryUI)
             {
                 item_array = ((Inventory)GetParent().GetParent().GetParent()).inventory_items;
                 slotUpdater = (Inventory)GetParent().GetParent().GetParent();
@@ -94,9 +94,9 @@ public partial class Slot : Button
     public void OnEquipSlotButton(int index)
     {
         SlotItemUI slot_item_ui = GetSlotItemUI();
-        SlotItemUI clicked_slot_item_ui = PlayerInventoryUI.clicked_slot_item_ui;
+        SlotItemUI clicked_slot_item_ui = InventoryTab.clicked_slot_item_ui;
 
-        if (PlayerInventoryUI.clicked_slot_item_ui == null)
+        if (InventoryTab.clicked_slot_item_ui == null)
         {
             if (slot_item_ui != null) //Take Item from Slot
             {
@@ -153,7 +153,7 @@ public partial class Slot : Button
     public void OnSlotButton(InputEventMouseButton @btn)
     {
         SlotItemUI slot_item_ui = GetSlotItemUI();
-        SlotItemUI clicked_slot_item_ui = PlayerInventoryUI.clicked_slot_item_ui;
+        SlotItemUI clicked_slot_item_ui = InventoryTab.clicked_slot_item_ui;
 
         if (clicked_slot_item_ui == null)
         {
@@ -208,7 +208,7 @@ public partial class Slot : Button
                     NewSlotItem(clickedItemClone, clickedDurability);
                     CreateClickedItem(slotItemClone, slotDurability);
                     Debug.Print(
-                        PlayerInventoryUI.clicked_slot_item_ui.item.state.ToString()
+                        InventoryTab.clicked_slot_item_ui.item.state.ToString()
                             + " | "
                             + GetSlotItemUI().item.state.ToString()
                     );
@@ -223,9 +223,9 @@ public partial class Slot : Button
             {
                 Debug.Print("Rightclick Slot");
                 UpdateSlot(item_array, GetAmountOfSlot(item_array) + 1);
-                PlayerInventoryUI.clicked_slot_item_ui.item.amount -= 1;
-                PlayerInventoryUI.clicked_slot_item_ui.UpdateAmountLabel();
-                if (PlayerInventoryUI.clicked_slot_item_ui.item.amount <= 0)
+                InventoryTab.clicked_slot_item_ui.item.amount -= 1;
+                InventoryTab.clicked_slot_item_ui.UpdateAmountLabel();
+                if (InventoryTab.clicked_slot_item_ui.item.amount <= 0)
                     ClearClickedItem();
                 return;
             }
@@ -358,7 +358,7 @@ public partial class Slot : Button
         if (amount == -1)
             return;
         i_save[index].amount = amount;
-        slotUpdater.UpdateSlot(index, PlayerInventoryUI.clicked_slot_item_ui);
+        slotUpdater.UpdateSlot(index, InventoryTab.clicked_slot_item_ui);
     }
 
     private int GetAmountOfSlot(ItemSave[] i_save)
@@ -395,8 +395,8 @@ public partial class Slot : Button
 
     private void ClearClickedItem()
     {
-        PlayerInventoryUI.clicked_slot_item_ui.Free();
-        PlayerInventoryUI.clicked_slot_item_ui = null;
+        InventoryTab.clicked_slot_item_ui.Free();
+        InventoryTab.clicked_slot_item_ui = null;
     }
 
     private int HalfAmount(int amount)
@@ -419,7 +419,7 @@ public partial class Slot : Button
     public void OnResearchSlotButton()
     {
         SlotItemUI slot_item_ui = GetSlotItemUI();
-        SlotItemUI clicked_slot_item_ui = PlayerInventoryUI.clicked_slot_item_ui;
+        SlotItemUI clicked_slot_item_ui = InventoryTab.clicked_slot_item_ui;
 
         if (clicked_slot_item_ui == null)
         {
@@ -451,7 +451,7 @@ public partial class Slot : Button
     public void CreateClickedItem(Item item, int durability = -1)
     {
         SlotItemUI slot_item_ui = slot_item_ui_scene.Instantiate() as SlotItemUI;
-        PlayerInventoryUI.instance.AddChild(slot_item_ui);
+        InventoryTab.instance.AddChild(slot_item_ui);
         slot_item_ui.init(item, durability);
         slot_item_ui.MouseFilter = MouseFilterEnum.Ignore;
         slot_item_ui.ZIndex = 10;
@@ -459,8 +459,8 @@ public partial class Slot : Button
         if (durability != -1)
             slot_item_ui.SetDurability(durability);
         slot_item_ui.SelfModulate = GetSlotItemUI().SelfModulate;
-        PlayerInventoryUI.clicked_slot_item_ui = slot_item_ui;
-        PlayerInventoryUI.clicked_slot_item_ui.UpdateAmountLabel();
+        InventoryTab.clicked_slot_item_ui = slot_item_ui;
+        InventoryTab.clicked_slot_item_ui.UpdateAmountLabel();
     }
 
     public bool ItemCanBeHalfed(SlotItemUI slot_item_ui)
@@ -477,7 +477,7 @@ public partial class Slot : Button
 
         if (check_attributes)
             if (
-                !PlayerInventoryUI.clicked_slot_item_ui.item.info.HasAttributByType(
+                !InventoryTab.clicked_slot_item_ui.item.info.HasAttributByType(
                     attribute_to_check.GetType()
                 )
             )

@@ -143,6 +143,8 @@ public partial class GameManager : Node2D
 
         if (PlayerInventoryUI.instance != null)
             save_state.char_save.inventory_items = PlayerInventoryUI.instance.inventory_items;
+        if (SeedInventoryUI.instance != null)
+            save_state.char_save.seed_inventory_items = SeedInventoryUI.instance.inventory_items;
 
         save_state.char_save.equipped_armor = EquipmentPanel.instance.equipped_armor;
         save_state.char_save.equipped_tool = EquipmentPanel.instance.equipped_tools;
@@ -206,7 +208,9 @@ public partial class GameManager : Node2D
         Player.instance.Position = save_state.char_save.player_position;
         Player.instance.player_stats.health_value = save_state.char_save.health_value;
         Player.instance.player_stats.fatigue_value = save_state.char_save.fatigue_value;
+
         PlayerInventoryUI.instance.LoadInventoryFromSave(save_state.char_save.inventory_items);
+        SeedInventoryUI.instance.LoadInventoryFromSave(save_state.char_save.seed_inventory_items);
 
         EquipmentPanel.instance.LoadArmorFromSave(save_state.char_save.equipped_armor);
         EquipmentPanel.instance.LoadToolFromSave(save_state.char_save.equipped_tool);

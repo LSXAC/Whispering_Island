@@ -10,6 +10,9 @@ public partial class CharacterSave : Resource
     public ItemSave[] inventory_items = new ItemSave[30];
 
     [Export]
+    public ItemSave[] seed_inventory_items = new ItemSave[30];
+
+    [Export]
     public ItemSave[] equipped_armor = new ItemSave[4];
 
     [Export]

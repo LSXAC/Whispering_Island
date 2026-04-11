@@ -52,8 +52,8 @@ public partial class EquipmentSelectBar : Container
     {
         select_slots[index]
             .SetItem(
-                PlayerInventoryUI.clicked_slot_item_ui.item,
-                PlayerInventoryUI.clicked_slot_item_ui.current_durability
+                InventoryTab.clicked_slot_item_ui.item,
+                InventoryTab.clicked_slot_item_ui.current_durability
             );
         if (current_selected_slot == index)
             SelectSelectSlot(index);

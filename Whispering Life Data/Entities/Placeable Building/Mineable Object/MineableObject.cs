@@ -285,6 +285,22 @@ public partial class MineableObject : placeable_building
 
     private bool CanReceiveItem(Item item)
     {
+        if (extra_item != null && item == extra_item)
+        {
+            if (
+                !SeedInventoryUI.instance.CanReceiveItem(
+                    item,
+                    SeedInventoryUI.instance.inventory_items
+                )
+            )
+            {
+                PlayerUI.AddItemLabelUI(
+                    TranslationServer.Translate("PLAYERUI_PlayerInventoryUI_FULL")
+                );
+                return false;
+            }
+            return true;
+        }
         if (
             !PlayerInventoryUI.instance.CanReceiveItem(
                 item,
@@ -321,10 +337,7 @@ public partial class MineableObject : placeable_building
         if (extra_item != null)
         {
             PlayerUI.AddItemLabelMineableBonusItemUI(extra_item);
-            PlayerInventoryUI.instance.AddItem(
-                extra_item,
-                PlayerInventoryUI.instance.inventory_items
-            );
+            SeedInventoryUI.instance.AddItem(extra_item, SeedInventoryUI.instance.inventory_items);
         }
 
         if (HasNode("Collision"))

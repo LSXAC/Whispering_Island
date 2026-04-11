@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://dvbxwe6an2st" path="res://UI/Menus/Game Menu/Inventory Menu/Texture/Menu_Front_Style_1.png" id="11_mmhr0"]
 [ext_resource type="PackedScene" uid="uid://ceypkxf7dox6w" path="res://UI/Inventory/slot_background.tscn" id="13_m8k7p"]
 [ext_resource type="Texture2D" uid="uid://e6d1pgbiv2dn" path="res://Entities/Items/SpritesForItems/Armor/Placeholder_Armor_Head.png" id="14_mmhr0"]
+[ext_resource type="Script" uid="uid://e8ypwlcni3lf" path="res://UI/Menus/Game Menu/Inventory Menu/InventoryTab.cs" id="14_y8xqs"]
 [ext_resource type="Script" uid="uid://c80nhtlc3g8ga" path="res://Entities/Items/Attributes/ArmorAttribute.cs" id="15_jkil6"]
 [ext_resource type="Script" uid="uid://c1q35nbh8sb51" path="res://UI/Menus/Island Menu/IslandMenu.cs" id="16_burxg"]
 [ext_resource type="Script" uid="uid://c7qu86gm6haea" path="res://UI/Menus/Game Menu/Cheat Menu/CheatTab.cs" id="16_f2xax"]
@@ -34,9 +35,11 @@
 [ext_resource type="Script" uid="uid://mtwprpv04hll" path="res://UI/Menus/Machine Menus/Chest Menu/ChestTab.cs" id="17_8qgvy"]
 [ext_resource type="Texture2D" uid="uid://bktanws4eilvv" path="res://Entities/Items/SpritesForItems/Armor/Placeholder_Armor_Chest.png" id="17_6662a"]
 [ext_resource type="Texture2D" uid="uid://c31i22wovn4qr" path="res://Entities/Items/SpritesForItems/Icons_3rd/Wood_Icon.png" id="17_iq1ex"]
+[ext_resource type="PackedScene" uid="uid://blymtsueebkds" path="res://UI/Menus/Game Menu/Inventory Menu/seed_inventory.tscn" id="17_mf3kg"]
 [ext_resource type="Texture2D" uid="uid://d24spwn8n1w7w" path="res://UI/Flaggs/DE_FLAG.png" id="18_1qrrt"]
 [ext_resource type="Texture2D" uid="uid://ih5t52rdyjcs" path="res://Entities/Items/SpritesForItems/Armor/Placeholder_Armor_Legs.png" id="18_gcthi"]
 [ext_resource type="Texture2D" uid="uid://w1k1mv22ckvl" path="res://Entities/Items/SpritesForItems/Icons_3rd/Stone.png" id="18_ou1xm"]
+[ext_resource type="Script" uid="uid://doj5r860fsxyq" path="res://UI/Menus/Game Menu/Inventory Menu/SeedInventoryUI.cs" id="19_o8b8a"]
 [ext_resource type="Texture2D" uid="uid://dpkjoc1lf1fa5" path="res://Entities/Items/SpritesForItems/Armor/Placeholder_Armor_Shoes.png" id="19_rgd55"]
 [ext_resource type="Texture2D" uid="uid://04ccgfwkqldn" path="res://Entities/Items/SpritesForItems/Icons/Fuel.png" id="20_s2f2w"]
 [ext_resource type="Script" uid="uid://bu58bbjdvh5bk" path="res://Entities/Player/PlayerStat.cs" id="21_kv5uf"]
@@ -593,7 +596,7 @@ icon = ExtResource("10_yfud7")
 flat = true
 script = ExtResource("3_pwamf")
 
-[node name="InventoryTab" type="ColorRect" parent="Background" unique_id=440724408]
+[node name="InventoryTab" type="ColorRect" parent="Background" unique_id=440724408 node_paths=PackedStringArray("inventory_ui", "seed_ui")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -602,6 +605,9 @@ offset_top = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+script = ExtResource("14_y8xqs")
+inventory_ui = NodePath("PlayerInventoryUI")
+seed_ui = NodePath("SeedInventoryUI")
 
 [node name="Forground" type="ColorRect" parent="Background/InventoryTab" unique_id=1346762133]
 layout_mode = 0
@@ -618,13 +624,56 @@ offset_right = 552.0
 offset_bottom = 279.0
 texture = ExtResource("11_mmhr0")
 
-[node name="Inventory" parent="Background/InventoryTab" unique_id=1831494961 instance=ExtResource("3_ub0ut")]
-layout_mode = 1
-offset_left = 32.0
+[node name="HBoxContainer" type="VBoxContainer" parent="Background/InventoryTab" unique_id=439801285]
+layout_mode = 0
+offset_left = 1.0
 offset_top = 37.0
-offset_right = -280.0
+offset_right = 33.0
+offset_bottom = 115.0
+theme_override_constants/separation = 4
+
+[node name="NormalBagButton" type="Button" parent="Background/InventoryTab/HBoxContainer" unique_id=2074757435]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/icon_max_width = 24
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+icon = ExtResource("4_2jtc7")
+flat = true
+script = ExtResource("3_pwamf")
+
+[node name="SeedBagButton" type="Button" parent="Background/InventoryTab/HBoxContainer" unique_id=1611515689]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/icon_max_width = 24
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+icon = ExtResource("109_4awxy")
+flat = true
+script = ExtResource("3_pwamf")
+
+[node name="PlayerInventoryUI" parent="Background/InventoryTab" unique_id=1831494961 instance=ExtResource("3_ub0ut")]
+layout_mode = 1
+offset_left = 33.0
+offset_top = 37.0
+offset_right = -279.0
 offset_bottom = 22.0
 inventory_items = Array[Resource]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+
+[node name="SeedInventoryUI" parent="Background/InventoryTab" unique_id=2048543270 instance=ExtResource("17_mf3kg")]
+visible = false
+layout_mode = 1
+offset_left = 33.0
+offset_top = 37.0
+offset_right = 33.0
+offset_bottom = 37.0
+script = ExtResource("19_o8b8a")
 
 [node name="EquipmentPanel" type="Control" parent="Background/InventoryTab" unique_id=1820287311 node_paths=PackedStringArray("slots_armor", "slots_tool", "player_stats_ui")]
 anchors_preset = 0
@@ -7768,7 +7817,9 @@ color = Color(0, 0, 0, 1)
 [connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/HelpButton" to="." method="OnHelpTabButton"]
 [connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/SettingsTabButton" to="." method="OnSettingsTabButton"]
 [connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/ExitTabButton" to="." method="OnExitButton"]
-[connection signal="visibility_changed" from="Background/InventoryTab" to="Background/InventoryTab/Inventory" method="OnVisiblityChange"]
+[connection signal="visibility_changed" from="Background/InventoryTab" to="Background/InventoryTab" method="OnVisiblitytityChanged"]
+[connection signal="pressed" from="Background/InventoryTab/HBoxContainer/NormalBagButton" to="Background/InventoryTab" method="OnInventoryButton"]
+[connection signal="pressed" from="Background/InventoryTab/HBoxContainer/SeedBagButton" to="Background/InventoryTab" method="OnSeedButton"]
 [connection signal="visibility_changed" from="Background/InventoryTab/EquipmentPanel" to="Background/InventoryTab/EquipmentPanel" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/FurnaceTab/PanelContainer/EnableDisableButton" to="Background/FurnaceTab" method="OnMachineStateButton"]
 [connection signal="pressed" from="Background/CombinerTab/PanelContainer/EnableDisableButton" to="Background/CombinerTab" method="OnMachineStateButton"]

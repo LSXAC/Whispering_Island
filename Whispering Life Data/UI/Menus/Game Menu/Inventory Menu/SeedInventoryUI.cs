@@ -1,9 +1,9 @@
-using System.Diagnostics;
-using System.Transactions;
+using System;
+using Godot;
 
-public partial class PlayerInventoryUI : Inventory
+public partial class SeedInventoryUI : Inventory
 {
-    public static PlayerInventoryUI instance = null;
+    public static SeedInventoryUI instance = null;
 
     public override void _Ready()
     {
