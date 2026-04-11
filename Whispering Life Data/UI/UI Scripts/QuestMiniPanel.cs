@@ -62,6 +62,7 @@ public partial class QuestMiniPanel : PanelContainer
             return;
         }
         Array<Item> items_in_inventory = PlayerInventoryUI.instance.GetListOfItemsInInventory();
+        Array<Item> items_in_seedinventory = SeedInventoryUI.instance.GetListOfItemsInInventory();
         for (int i = 0; i < currentQuest.required_items.Count; i++)
         {
             Item item = currentQuest.required_items[i];
@@ -71,9 +72,12 @@ public partial class QuestMiniPanel : PanelContainer
                 item
             );
 
-            Item item_ref = item.Clone();
-            item_ref.amount = (int)(item_ref.amount * GameManager.difficulty_multiplier);
+            Array<Item> sii = SeedInventoryUI.instance.GetItemFromListOrNull(
+                items_in_seedinventory,
+                item
+            );
 
+            Item item_ref = item.Clone();
             hbox_items[i].Visible = true;
 
             if (QuestManager.next_quest_is_doubled_items)
@@ -87,19 +91,25 @@ public partial class QuestMiniPanel : PanelContainer
 
             hbox_items[i].ChangeColor(h_box_item.colorType.white);
 
-            if (iii == null)
-            {
-                Debug.Print("Quest mini Panel: Item not in Inventory: " + item.info.name);
-                if (QuestManager.next_quest_is_doubled_items)
-                    hbox_items[i].item_label.Text = "0x / " + (item_ref.amount * 2) + "x";
-                else
-                    hbox_items[i].item_label.Text = "0x / " + item_ref.amount + "x";
-                continue;
-            }
             int amount = 0;
             if (iii != null)
                 foreach (Item i_x in iii)
                     amount += i_x.amount;
+            if (sii != null)
+                foreach (Item s_x in sii)
+                    amount += s_x.amount;
+
+            if (amount == 0)
+            {
+                Debug.Print("Quest mini Panel: Item not in Inventory: " + item.info.name);
+                if (QuestManager.next_quest_is_doubled_items)
+                    hbox_items[i].item_label.Text =
+                        "0x / " + (item_ref.amount * 2 * GameManager.difficulty_multiplier) + "x";
+                else
+                    hbox_items[i].item_label.Text =
+                        "0x / " + (item_ref.amount * GameManager.difficulty_multiplier) + "x";
+                continue;
+            }
 
             hbox_items[i].item_label.Text = amount + "x /" + hbox_items[i].item_label.Text;
             if (!QuestManager.next_quest_is_doubled_items)
