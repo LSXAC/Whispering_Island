@@ -124,22 +124,22 @@ public partial class MainMenu : Control
                 create_new_game_after_difficult_button.Disabled = true;
                 break;
             case (int)GameManager.DIFFICULTY.EASY:
-                GameManager.difficulty_multiplier = 0.5f;
+                GameManager.difficulty_multiplier = 1f;
                 create_new_game_after_difficult_button.Disabled = false;
                 break;
             case (int)GameManager.DIFFICULTY.NORMAL:
 
                 create_new_game_after_difficult_button.Disabled = false;
-                GameManager.difficulty_multiplier = 1.0f;
+                GameManager.difficulty_multiplier = 1.5f;
                 break;
             case (int)GameManager.DIFFICULTY.HARD:
 
                 create_new_game_after_difficult_button.Disabled = false;
-                GameManager.difficulty_multiplier = 1.5f;
+                GameManager.difficulty_multiplier = 2f;
                 break;
             case (int)GameManager.DIFFICULTY.EXPERT:
                 create_new_game_after_difficult_button.Disabled = false;
-                GameManager.difficulty_multiplier = 2.5f;
+                GameManager.difficulty_multiplier = 3f;
                 break;
         }
         GameManager.difficulty = (GameManager.DIFFICULTY)index;

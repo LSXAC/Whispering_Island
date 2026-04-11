@@ -54,6 +54,7 @@ public partial class ItemRowManager : HBoxContainer
 
             if (amount_of_item >= item_ref.amount && item_ref.amount > 0)
                 hbc_c.ChangeColor(global::h_box_item.colorType.white);
+
             AddChild(hbc_c);
         }
     }
