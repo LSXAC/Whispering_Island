@@ -1082,6 +1082,77 @@ color = Color(1, 1, 1, 0.2)
 
 [node name="Screenshot_Timer" type="Timer" parent="." unique_id=653795909]
 
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=781921757]
+offset_left = 109.0
+offset_top = 32.0
+offset_right = 149.0
+offset_bottom = 72.0
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer" unique_id=203185358]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer5" unique_id=1129594980]
+layout_mode = 2
+text = "[MOUSE 1]"
+label_settings = ExtResource("22_0o76g")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5" unique_id=681504234]
+layout_mode = 2
+text = "INTERACT"
+label_settings = ExtResource("22_0o76g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=841035025]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=666349690]
+layout_mode = 2
+text = "[TAB]"
+label_settings = ExtResource("22_0o76g")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1529756181]
+layout_mode = 2
+text = "INVENTORY"
+label_settings = ExtResource("22_0o76g")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1258982301]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1481326165]
+layout_mode = 2
+text = "[J]"
+label_settings = ExtResource("22_0o76g")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1073033093]
+layout_mode = 2
+text = "BUILD MENU"
+label_settings = ExtResource("22_0o76g")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer" unique_id=1046135465]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer4" unique_id=1335258357]
+layout_mode = 2
+text = "[ESC]"
+label_settings = ExtResource("22_0o76g")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4" unique_id=1026915905]
+layout_mode = 2
+text = "QUICK CLOSE"
+label_settings = ExtResource("22_0o76g")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=595181901]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=1583897297]
+layout_mode = 2
+text = "[1] - [4]"
+label_settings = ExtResource("22_0o76g")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=650250860]
+layout_mode = 2
+text = "TOOLBAR"
+label_settings = ExtResource("22_0o76g")
+
 [connection signal="timeout" from="QuestCompletePanel/Timer" to="." method="OnCompleteQuestCompletepanel"]
 [connection signal="pressed" from="QuestAcceptPanel/CenterContainer/VBoxContainer/ConfirmButton" to="QuestAcceptPanel" method="OnButton"]
 [connection signal="timeout" from="QuestAcceptPanel/Timer" to="." method="OnCompleteQuestCompletepanel"]

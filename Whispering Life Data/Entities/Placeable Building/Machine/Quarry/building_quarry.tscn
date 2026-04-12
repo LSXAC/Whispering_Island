@@ -23,13 +23,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
 size = Vector2(48, 48)
 
-[node name="Quarry" type="StaticBody2D" unique_id=98569693]
+[node name="Quarry" type="StaticBody2D" unique_id=98569693 node_paths=PackedStringArray("machine_activ_color_rect", "process_timer")]
 y_sort_enabled = true
 collision_layer = 13
 collision_mask = 0
 script = ExtResource("1_rsbck")
 output_item_resource = ExtResource("2_nowyl")
+machine_activ_color_rect = NodePath("MachineActivColorRect")
+process_timer = NodePath("ProcessTimer")
 building_id = 4
+consums_magic_power = true
+magic_power_consumption = 5.0
 tile_types = Array[int]([0])
 title = "BUILDING_QUARRY"
 description = "BUILDING_QUARRY_DESC"
@@ -88,6 +92,7 @@ position = Vector2(-7, -12)
 texture = ExtResource("6_iudpf")
 
 [node name="Giver" parent="." unique_id=1632079670 node_paths=PackedStringArray("building") instance=ExtResource("9_dvgwj")]
+position = Vector2(-39, -9)
 direction_not_giving = 1
 building = NodePath("..")
 
@@ -99,15 +104,22 @@ building = NodePath("..")
 [node name="Holder" parent="Giver2" index="0" unique_id=1704036799]
 position = Vector2(-16, 1)
 
-[node name="SpawnTimer" type="Timer" parent="." unique_id=232812811]
-wait_time = 0.75
-autostart = true
-
 [node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=141668041]
 polygon = PackedVector2Array(15, 15, -31, 15, -31, 4, -32, 4, -32, -11, -31, -11, -31, -27, 15, -27, 15, -11, 16, -11, 16, 4, 15, 4)
 
+[node name="ProcessTimer" type="Timer" parent="." unique_id=1564923472]
+wait_time = 0.1
+autostart = true
+
+[node name="MachineActivColorRect" type="ColorRect" parent="." unique_id=940549215]
+z_index = 2
+offset_left = -8.0
+offset_top = -5.0
+offset_right = -6.0
+offset_bottom = -3.0
+
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
-[connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimeout"]
+[connection signal="timeout" from="ProcessTimer" to="." method="OnSpawnTimeout"]
 
 [editable path="Giver2"]

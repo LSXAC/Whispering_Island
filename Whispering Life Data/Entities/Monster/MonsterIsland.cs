@@ -121,8 +121,8 @@ public partial class MonsterIsland : Building_Node
         // Monster verschwindet (nur wenn noch Zeit im mittleren Bereich)
         if (
             !monsterDisappearTriggered
-            && quest_time_left <= (quest_duration - 240)
-            && quest_time_left > 240
+            && quest_time_left <= (quest_duration - 480)
+            && quest_time_left > 480
         )
         {
             monsterDisappearTriggered = true;
@@ -132,7 +132,7 @@ public partial class MonsterIsland : Building_Node
         }
 
         // Monster erscheint
-        if (!monsterAppearTriggered && quest_time_left <= 240)
+        if (!monsterAppearTriggered && quest_time_left <= 480)
         {
             monsterAppearTriggered = true;
             is_visible = true;

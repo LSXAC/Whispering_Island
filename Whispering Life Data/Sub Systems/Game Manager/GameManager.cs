@@ -19,7 +19,7 @@ public partial class GameManager : Node2D
     );
 
     public static CanvasLayer current_activ_canvaslayer = null;
-    public static bool dev_build_mode = true;
+    public static bool dev_build_mode = false;
     public static GameManager instance = null;
     public static bool gameover = false;
     public static bool[,] island_matrix;
@@ -260,6 +260,7 @@ public partial class GameManager : Node2D
         TimeManager.instance.day_night_manager.UpdateColor();
 
         TimeManager.instance.UpdatePlayerUITime();
+        GlobalFunctions.QueueFreeTree();
     }
 
     private void CreateIslands()

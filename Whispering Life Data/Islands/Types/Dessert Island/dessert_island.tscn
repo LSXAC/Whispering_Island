@@ -23,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://b0djr6hnof713" path="res://Entities/Items/Vegetation/Sunflower/Data/Sunflower.tres" id="17_my1c2"]
 [ext_resource type="Script" uid="uid://dtnhk45w8jmps" path="res://UI/World Map/WorldMapIcon.cs" id="18_bgudc"]
 [ext_resource type="Texture2D" uid="uid://ch7l8hspct7p6" path="res://Entities/Items/SpritesForItems/Icons_3rd/Stone_Pickaxe.png" id="19_ub2wh"]
+[ext_resource type="TileSet" uid="uid://e3yw7xs7e1sr" path="res://Islands/Tileset/shadow_tileset.tres" id="22_1bqov"]
 [ext_resource type="PackedScene" uid="uid://fpm5unt0tjo3" path="res://Sub Systems/Magic Power Listener/magic_power_listener.tscn" id="24_2tjpp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpdmr"]
@@ -339,18 +340,20 @@ sign_parent = NodePath("Signs")
 [node name="Signs" type="Node2D" parent="RemovableObjectsManager" unique_id=1449574172]
 y_sort_enabled = true
 
-[node name="RemoveSign1" parent="RemovableObjectsManager/Signs" unique_id=1737771307 node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "island") instance=ExtResource("12_6qjww")]
+[node name="RemoveSign1" parent="RemovableObjectsManager/Signs" unique_id=1737771307 node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "shadow_tilemap", "island") instance=ExtResource("12_6qjww")]
 position = Vector2(64, -40)
 removable_objects_Manager = NodePath("../..")
 object_connected = NodePath("../../Tilemaps/Object1")
 required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Resource_2vll2"), SubResource("Resource_tdjhn"), SubResource("Resource_uavw5")])
+shadow_tilemap = NodePath("../../Tilemaps/Object1/Shadow")
 island = NodePath("../../..")
 
-[node name="RemoveSign0" parent="RemovableObjectsManager/Signs" unique_id=1476774976 node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "island") instance=ExtResource("12_6qjww")]
+[node name="RemoveSign0" parent="RemovableObjectsManager/Signs" unique_id=1476774976 node_paths=PackedStringArray("removable_objects_Manager", "object_connected", "shadow_tilemap", "island") instance=ExtResource("12_6qjww")]
 position = Vector2(-40, 160)
 removable_objects_Manager = NodePath("../..")
 object_connected = NodePath("../../Tilemaps/Object0")
 required_items = Array[Object]([SubResource("Resource_0sl6k"), SubResource("Resource_2vll2"), SubResource("Resource_tdjhn"), SubResource("Resource_uavw5")])
+shadow_tilemap = NodePath("../../Tilemaps/Object0/Shadow")
 id = 1
 island = NodePath("../../..")
 
@@ -366,6 +369,11 @@ tile_set = ExtResource("4_qkol0")
 [node name="Ground" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0" unique_id=1794715855]
 z_index = -2
 tile_set = ExtResource("4_qkol0")
+
+[node name="Shadow" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0" unique_id=1142000663]
+z_index = -2
+tile_map_data = PackedByteArray("AAD7/wQAAAACAAAAAAD6/wQAAAAAAAEAAAD8/wUAAAABAAAAAAD9/wUAAAABAAAAAAD7/wUAAAAAAAEAAAD+/wUAAAABAAEAAAD//wQAAAABAAEAAAD+/wQAAAAAAAAAAAA=")
+tile_set = ExtResource("22_1bqov")
 
 [node name="Decoration" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object0" unique_id=102627672]
 z_index = -1
@@ -423,5 +431,10 @@ icon_texture = ExtResource("19_ub2wh")
 icon_type = 1
 parent = NodePath("..")
 scale = Vector2(2.5, 2.5)
+
+[node name="Shadow" type="TileMapLayer" parent="RemovableObjectsManager/Tilemaps/Object1" unique_id=1905226878]
+z_index = -2
+tile_map_data = PackedByteArray("AAD///z/AAAAAAEAAAAAAPz/AAACAAAAAAABAP3/AAACAAAAAAAAAP3/AAAAAAEAAAABAP7/AAAAAAEAAAADAP7/AAABAAAAAAACAP7/AAACAAEAAAAEAP7/AAABAAEAAAA=")
+tile_set = ExtResource("22_1bqov")
 
 [node name="MagicPowerListener" parent="." unique_id=1986599109 instance=ExtResource("24_2tjpp")]
