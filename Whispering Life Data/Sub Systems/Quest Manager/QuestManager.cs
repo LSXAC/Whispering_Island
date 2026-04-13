@@ -93,6 +93,7 @@ public partial class QuestManager : Node
             }
 
             ApplyPenality();
+            return;
         }
 
         current_quest_time -= GameManager.time_multiplier;
