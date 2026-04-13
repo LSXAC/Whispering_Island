@@ -89,10 +89,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_Poisoning_DE
 
-% Tuoni: ROAW! Du willst mich also vergiften!?
-% Tuoni: Ich glaube nicht, dass du mich vergiften willst!
-% Tuoni: Vergiftung? Du willst es wirklich drauf anlegen oder?
-Tuoni: [b][color=gold]Du musst bestraft werden![/color][/b]
+% Tuoni: ROAW! Du willst mich also vergiften!? [ID:01009D_67422A]
+% Tuoni: Ich glaube nicht, dass du mich vergiften willst! [ID:01009D_58F662]
+% Tuoni: Vergiftung? Du willst es wirklich drauf anlegen oder? [ID:01009D_AE0067]
+Tuoni: [b][color=gold]Du musst bestraft werden![/color][/b] [ID:01009D_7D8608]
 do GlobalFunctions.NextQuestHalfTime()
 do GlobalFunctions.OpenAcceptPanel()
 
@@ -100,10 +100,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_Poisoning_ENG
 
-% Tuoni: ROAW! So you're trying to poison me!?
-% Tuoni: I don't think you're trying to poison me!
-% Tuoni: Poisoning? You're really looking for a fight, aren't you?
-Tuoni: [b][color=gold]You must be punished![/color][/b]
+% Tuoni: ROAW! So you're trying to poison me!? [ID:01009D_5CDE6D]
+% Tuoni: I don't think you're trying to poison me! [ID:01009D_B88401]
+% Tuoni: Poisoning? You're really looking for a fight, aren't you? [ID:01009D_687D59]
+Tuoni: [b][color=gold]You must be punished![/color][/b] [ID:01009D_E0FC1D]
 
 do GlobalFunctions.NextQuestHalfTime()
 do GlobalFunctions.OpenAcceptPanel()
@@ -113,10 +113,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_Poisoning_1_DE
 
-% Tuoni: ROAW! Du willst mich also vergiften!?
-% Tuoni: Ich glaube nicht, dass du mich vergiften willst!
-% Tuoni: Vergiftung? Du willst es wirklich drauf anlegen oder?
-Tuoni: [b][color=gold]Du musst bestraft werden![/color][/b]
+% Tuoni: ROAW! Du willst mich also vergiften!? [ID:01009D_DC1DE1]
+% Tuoni: Ich glaube nicht, dass du mich vergiften willst! [ID:01009D_AFB3C7]
+% Tuoni: Vergiftung? Du willst es wirklich drauf anlegen oder? [ID:01009D_D66CBA]
+Tuoni: [b][color=gold]Du musst bestraft werden![/color][/b] [ID:01009D_537AC6]
 do GlobalFunctions.NextQuestDoubledItems()
 do GlobalFunctions.OpenAcceptPanel()
 
@@ -124,10 +124,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_Poisoning_1_ENG
 
-% Tuoni: ROAW! So you're trying to poison me!?
-% Tuoni: I don't think you're trying to poison me!
-% Tuoni: Poisoning? You're really looking for a fight, aren't you?
-Tuoni: [b][color=gold]You must be punished![/color][/b]
+% Tuoni: ROAW! So you're trying to poison me!? [ID:01009D_2A83CB]
+% Tuoni: I don't think you're trying to poison me! [ID:01009D_0E930A]
+% Tuoni: Poisoning? You're really looking for a fight, aren't you? [ID:01009D_5EFF9F]
+Tuoni: [b][color=gold]You must be punished![/color][/b] [ID:01009D_952ED0]
 
 do GlobalFunctions.NextQuestDoubledItems()
 do GlobalFunctions.OpenAcceptPanel()
@@ -136,10 +136,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_Poisoning_2_DE
 
-% Tuoni: ROAW! Du willst mich also vergiften!?
-% Tuoni: Ich glaube nicht, dass du mich vergiften willst!
-% Tuoni: Vergiftung? Du willst es wirklich drauf anlegen oder?
-Tuoni: [b][color=gold]Du musst bestraft werden![/color][/b]
+% Tuoni: ROAW! Du willst mich also vergiften!? [ID:01009D_AA7A89]
+% Tuoni: Ich glaube nicht, dass du mich vergiften willst! [ID:01009D_8BC78C]
+% Tuoni: Vergiftung? Du willst es wirklich drauf anlegen oder? [ID:01009D_7B18A3]
+Tuoni: [b][color=gold]Du musst bestraft werden![/color][/b] [ID:01009D_952CA3]
 do GlobalFunctions.NextQuestIslandsRemoved()
 do GlobalFunctions.OpenAcceptPanel()
 
@@ -147,10 +147,10 @@ do GlobalFunctions.OpenAcceptPanel()
 
 ~ Quest_Not_Completed_Poisoning_2_ENG
 
-% Tuoni: ROAW! So you're trying to poison me!?
-% Tuoni: I don't think you're trying to poison me!
-% Tuoni: Poisoning? You're really looking for a fight, aren't you?
-Tuoni: [b][color=gold]You must be punished![/color][/b]
+% Tuoni: ROAW! So you're trying to poison me!? [ID:01009D_582D8D]
+% Tuoni: I don't think you're trying to poison me! [ID:01009D_B925E0]
+% Tuoni: Poisoning? You're really looking for a fight, aren't you? [ID:01009D_A5B640]
+Tuoni: [b][color=gold]You must be punished![/color][/b] [ID:01009D_E6BC69]
 
 do GlobalFunctions.NextQuestIslandsRemoved()
 do GlobalFunctions.OpenAcceptPanel()

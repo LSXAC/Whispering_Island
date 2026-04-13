@@ -25,12 +25,12 @@ do GlobalFunctions.LeaveDialogue()
 ~ Monster_Hitting
 
 do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))
-Tuoni: Ha! Those Resources were delicous!
+Tuoni: Ha! Those Resources were delicous! [ID:36CAB5_DBB88D]
 if GlobalFunctions.ItemsWithDamage != 0:
 	do GlobalFunctions.DealQuestDamage()
-	Tuoni: Mhh... aua..
+	Tuoni: Mhh... aua.. [ID:36CAB5_9993BB]
 else:
-	Tuoni: Next time, give me even faster and even more! Haha!
+	Tuoni: Next time, give me even faster and even more! Haha! [ID:36CAB5_50863A]
 do GlobalFunctions.FinishGame()
 do GlobalFunctions.LeaveDialogue()
 => END
