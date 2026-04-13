@@ -10,6 +10,9 @@ public partial class TranslationButton : Button
     public bool has_different_label = false;
 
     [Export]
+    public bool only_meta_text = false;
+
+    [Export]
     public Label label;
 
     public override void _Notification(int what)
@@ -31,6 +34,11 @@ public partial class TranslationButton : Button
 
     private void UpdateText()
     {
+        if (only_meta_text)
+        {
+            TooltipText = TranslationServer.Translate(label_translation_string);
+            return;
+        }
         if (!has_different_label)
             Text = TranslationServer.Translate(label_translation_string);
         else if (label != null)

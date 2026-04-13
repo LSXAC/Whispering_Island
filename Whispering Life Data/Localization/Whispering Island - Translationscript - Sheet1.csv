@@ -8,6 +8,10 @@ GAMEMENU_CRAFTING_BUTTON,Crafting,Herstellen
 GAMEMENU_SAVELOAD_BUTTON,Save,Speichern
 GAMEMENU_SETTINGS_BUTTON,Settings,Einstellungen
 GAMEMENU_HELP_BUTTON,Guide,Handbuch
+GAMEMENU_INVENTORY_BACKPACK,Backpack,Rucksack
+GAMEMENU_INVENTORY_SEEDBAG,Seed Bag,Samenbeutel
+,,
+,,
 SETTINGS_MASTER_VOLUME,Master Volume,Gesamtlautstärke
 SETTINGS_SFX_VOLUME,SFX Volume,SFX Lautstärke
 SETTINGS_MUSIC_VOLUME,Music Volume,Musik Lautstärke

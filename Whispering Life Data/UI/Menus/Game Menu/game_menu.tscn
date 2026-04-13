@@ -636,6 +636,7 @@ theme_override_constants/separation = 4
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+theme = ExtResource("125_uspna")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 4
 theme_override_constants/icon_max_width = 24
@@ -644,11 +645,14 @@ theme_override_font_sizes/font_size = 10
 icon = ExtResource("4_2jtc7")
 flat = true
 script = ExtResource("3_pwamf")
+label_translation_string = "GAMEMENU_INVENTORY_BACKPACK"
+only_meta_text = true
 
 [node name="SeedBagButton" type="Button" parent="Background/InventoryTab/HBoxContainer" unique_id=1611515689]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+theme = ExtResource("125_uspna")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 4
 theme_override_constants/icon_max_width = 24
@@ -657,6 +661,8 @@ theme_override_font_sizes/font_size = 10
 icon = ExtResource("109_4awxy")
 flat = true
 script = ExtResource("3_pwamf")
+label_translation_string = "GAMEMENU_INVENTORY_SEEDBAG"
+only_meta_text = true
 
 [node name="PlayerInventoryUI" parent="Background/InventoryTab" unique_id=1831494961 instance=ExtResource("3_ub0ut")]
 layout_mode = 1
