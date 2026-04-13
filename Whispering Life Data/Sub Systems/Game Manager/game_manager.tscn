@@ -294,6 +294,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="WorldMap" type="CanvasLayer" parent="World" unique_id=1659729370 node_paths=PackedStringArray("camera", "icons_parent", "quest_checkbox", "traders_checkbox", "removeable_checkbox")]
 layer = 2
