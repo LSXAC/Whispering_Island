@@ -88,16 +88,14 @@ public partial class EquipmentPanel : Control
             }
             else
             {
-                /*
-                    PlayerUI
-                        .instance.equipmentSelectBar.select_slots[
-                            EquipmentSelectBar.current_selected_slot
-                        ]
-                        .ClearSlotItem();
-                    instance.slots_tool[EquipmentSelectBar.current_selected_slot].ClearSlotItem();
-                    instance.equipped_tools[EquipmentSelectBar.current_selected_slot] = null;
-                    PlayerUI.instance.equipmentSelectBar.current_selected_slot_item_ui = null;
-                */
+                PlayerUI
+                    .instance.equipmentSelectBar.select_slots[
+                        EquipmentSelectBar.current_selected_slot
+                    ]
+                    .ClearSlotItem();
+                instance.slots_tool[EquipmentSelectBar.current_selected_slot].ClearSlotItem();
+                instance.equipped_tools[EquipmentSelectBar.current_selected_slot] = null;
+                PlayerUI.instance.equipmentSelectBar.current_selected_slot_item_ui = null;
             }
             instance.CalculateStatsFromEquipment();
         }
