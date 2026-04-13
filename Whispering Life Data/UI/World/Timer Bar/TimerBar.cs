@@ -66,6 +66,9 @@ public partial class TimerBar : ProgressBar
         if (action != null)
             action.Invoke();
 
+        if (hover_menu.instance.current_object == parent)
+            hover_menu.InitHoverMenu(parent);
+
         if (Value >= MaxValue)
         {
             timer.Stop();
@@ -79,5 +82,10 @@ public partial class TimerBar : ProgressBar
     public double GetProgressPercent()
     {
         return Value / MaxValue;
+    }
+
+    public int GetTimeLeft()
+    {
+        return Mathf.CeilToInt(MaxValue - Value);
     }
 }

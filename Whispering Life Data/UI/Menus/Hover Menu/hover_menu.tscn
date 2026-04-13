@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://daiymos1mp4si" path="res://UI/UI Scripts/hover_menu.cs" id="1_ywqhi"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/Menus/Translation/TranslationLabel.cs" id="3_u1ani"]
 
-[node name="HoverMenu" type="PanelContainer" unique_id=1919267257 node_paths=PackedStringArray("title_container", "descriptiion_container", "object_type_container", "hitpoint_container", "resource_type_container", "resource_type_level_container", "process_bar_container", "process_fuel_container", "process_input_container", "process_output_container", "chest_slots_container", "magic_power_container", "magic_power_efficiency_container", "title_content", "description_content", "object_type_content", "hitpoint_content", "resource_type_content", "resource_type_level_content", "process_bar_content", "process_fuel_content", "process_input_content", "process_output_content", "power_content", "power_efficiency_content", "chest_slots_content", "Line1", "Line2")]
+[node name="HoverMenu" type="PanelContainer" unique_id=1919267257 node_paths=PackedStringArray("title_container", "descriptiion_container", "object_type_container", "hitpoint_container", "resource_type_container", "resource_type_level_container", "process_bar_container", "process_fuel_container", "process_input_container", "process_output_container", "chest_slots_container", "magic_power_container", "magic_power_efficiency_container", "growth_time_container", "title_content", "description_content", "object_type_content", "hitpoint_content", "resource_type_content", "resource_type_level_content", "process_bar_content", "process_fuel_content", "process_input_content", "process_output_content", "power_content", "power_efficiency_content", "growth_time_content", "chest_slots_content", "Line1", "Line2")]
 z_index = 5
 z_as_relative = false
 offset_right = 164.0
-offset_bottom = 159.0
+offset_bottom = 27.0
 script = ExtResource("1_ywqhi")
 title_container = NodePath("MarginContainer/VBoxContainer/HBoxTitle")
 descriptiion_container = NodePath("MarginContainer/VBoxContainer/HBoxDescription")
@@ -23,6 +23,7 @@ process_output_container = NodePath("MarginContainer/VBoxContainer/HBoxOutput")
 chest_slots_container = NodePath("MarginContainer/VBoxContainer/HBoxSlots")
 magic_power_container = NodePath("MarginContainer/VBoxContainer/HBoxGeneration")
 magic_power_efficiency_container = NodePath("MarginContainer/VBoxContainer/HBoxEfficiency")
+growth_time_container = NodePath("MarginContainer/VBoxContainer/HBoxGrowthTimeLeft")
 title_content = NodePath("MarginContainer/VBoxContainer/HBoxTitle/TitleContent")
 description_content = NodePath("MarginContainer/VBoxContainer/HBoxDescription/DescriptionContent")
 object_type_content = NodePath("MarginContainer/VBoxContainer/HBoxObjectType/ObjectTypeContent")
@@ -35,7 +36,8 @@ process_input_content = NodePath("MarginContainer/VBoxContainer/HBoxInput/InputC
 process_output_content = NodePath("MarginContainer/VBoxContainer/HBoxOutput/OutputContent")
 power_content = NodePath("MarginContainer/VBoxContainer/HBoxGeneration/ProgressContent")
 power_efficiency_content = NodePath("MarginContainer/VBoxContainer/HBoxEfficiency/ProgressContent")
-chest_slots_content = NodePath("MarginContainer/VBoxContainer/HBoxSlots/SlotsContent")
+growth_time_content = NodePath("MarginContainer/VBoxContainer/HBoxGrowthTimeLeft/ProgressContent")
+chest_slots_content = NodePath("MarginContainer/VBoxContainer/HBoxGrowthTimeLeft/ProgressLabel")
 Line1 = NodePath("MarginContainer/VBoxContainer/Line")
 Line2 = NodePath("MarginContainer/VBoxContainer/Line2")
 
@@ -86,6 +88,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="HBoxDescription" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1745934020]
+visible = false
 layout_mode = 2
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxDescription" unique_id=1258396462]
@@ -118,6 +121,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="HBoxObjectType" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=370931581]
+visible = false
 layout_mode = 2
 
 [node name="ObjectTypeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxObjectType" unique_id=803463253]
@@ -149,10 +153,12 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Line" type="ColorRect" parent="MarginContainer/VBoxContainer" unique_id=1375022078]
+visible = false
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 
 [node name="HBoxHitPoint" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1869769085]
+visible = false
 layout_mode = 2
 
 [node name="HealthLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxHitPoint" unique_id=1242477474]
@@ -184,6 +190,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="HBoxType" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=83724887]
+visible = false
 layout_mode = 2
 
 [node name="TypeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxType" unique_id=202988149]
@@ -215,6 +222,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="HBoxCollectLevel" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1720254882]
+visible = false
 layout_mode = 2
 
 [node name="CollectLevelLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxCollectLevel" unique_id=867060305]
@@ -246,10 +254,12 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Line2" type="ColorRect" parent="MarginContainer/VBoxContainer" unique_id=541611813]
+visible = false
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 
 [node name="HBoxProgress" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1160873568]
+visible = false
 layout_mode = 2
 
 [node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxProgress" unique_id=1576126915]
@@ -281,6 +291,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="HBoxEfficiency" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=545232817]
+visible = false
 layout_mode = 2
 
 [node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxEfficiency" unique_id=768211319]
@@ -312,6 +323,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="HBoxFuel" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=864913008]
+visible = false
 layout_mode = 2
 
 [node name="FuelLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxFuel" unique_id=573660644]
@@ -343,6 +355,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="HBoxInput" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1442345970]
+visible = false
 layout_mode = 2
 
 [node name="InputLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxInput" unique_id=1265691333]
@@ -374,6 +387,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="HBoxOutput" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1857472096]
+visible = false
 layout_mode = 2
 
 [node name="OutputLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxOutput" unique_id=1805243055]
@@ -405,6 +419,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="HBoxSlots" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1574603691]
+visible = false
 layout_mode = 2
 
 [node name="SlotsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxSlots" unique_id=1495461343]
@@ -436,6 +451,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="HBoxGeneration" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1530815103]
+visible = false
 layout_mode = 2
 
 [node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxGeneration" unique_id=205740687]
@@ -454,6 +470,38 @@ script = ExtResource("3_u1ani")
 label_translation_string = "HOVER_MENU_GENERATION_RATE"
 
 [node name="ProgressContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxGeneration" unique_id=1074468747]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_mkuyp")
+theme_override_font_sizes/font_size = 6
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxGrowthTimeLeft" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=297375913]
+visible = false
+layout_mode = 2
+
+[node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxGrowthTimeLeft" unique_id=2106795113]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_mkuyp")
+theme_override_font_sizes/font_size = 6
+text = "Generationrate"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("3_u1ani")
+label_translation_string = "HOVER_MENU_GROWTH_TIME"
+
+[node name="ProgressContent" type="Label" parent="MarginContainer/VBoxContainer/HBoxGrowthTimeLeft" unique_id=411760346]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 6

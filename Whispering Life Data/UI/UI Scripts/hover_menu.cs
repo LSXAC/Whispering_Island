@@ -20,7 +20,8 @@ public partial class hover_menu : PanelContainer
         process_output_container,
         chest_slots_container,
         magic_power_container,
-        magic_power_efficiency_container;
+        magic_power_efficiency_container,
+        growth_time_container;
 
     [Export]
     public Label title_content,
@@ -44,7 +45,8 @@ public partial class hover_menu : PanelContainer
         process_input_content,
         process_output_content,
         power_content,
-        power_efficiency_content;
+        power_efficiency_content,
+        growth_time_content;
 
     [Export]
     public Label chest_slots_content;
@@ -79,6 +81,8 @@ public partial class hover_menu : PanelContainer
             instance.chest_slots_container.Visible = false;
             instance.magic_power_container.Visible = false;
             instance.magic_power_efficiency_container.Visible = false;
+
+            instance.growth_time_container.Visible = false;
 
             instance.Line1.Visible = false;
             instance.Line2.Visible = false;
@@ -130,6 +134,11 @@ public partial class hover_menu : PanelContainer
             instance.hitpoint_content.Text =
                 (ro.current_durability + 1) + "/" + (ro.max_durability + 1);
 
+            if (ro.timer_bar.current_state == TimerBar.STATE.SPAWNING)
+            {
+                instance.growth_time_container.Visible = true;
+                instance.growth_time_content.Text = ro.timer_bar.GetTimeLeft() + "s";
+            }
             //Type if Ressource
             instance.resource_type_content.Text = ro.tool_type.ToString();
 

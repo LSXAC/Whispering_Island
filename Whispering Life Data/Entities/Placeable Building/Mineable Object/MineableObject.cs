@@ -52,7 +52,7 @@ public partial class MineableObject : placeable_building
     public int max_durability;
     public int current_durability;
 
-    TimerBar timer_bar;
+    public TimerBar timer_bar;
     Area2D interactableArea;
     public static bool in_cooldown = false;
     HitLabelManager hitLabelManager;
