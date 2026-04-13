@@ -29,23 +29,14 @@ public abstract partial class ProcessingTab : SlotUpdater
     protected Dictionary<int, Slot> slot_by_index = new Dictionary<int, Slot>();
     public ProcessBuilding process_building;
 
-    public override void _Ready()
-    {
-        // Subklassen müssen dies überschreiben und InitializeSlots() aufrufen
-    }
-
     protected void InitializeSlots(ProcessingSlotConfig[] configs)
     {
         slot_configs = configs;
         slot_by_index.Clear();
 
         for (int i = 0; i < slot_configs.Length; i++)
-        {
             if (slot_configs[i].ui_reference != null)
-            {
                 slot_by_index[i] = slot_configs[i].ui_reference;
-            }
-        }
     }
 
     public override void UpdateSlot(int index, SlotItemUI slot_item_ui)
@@ -57,9 +48,7 @@ public abstract partial class ProcessingTab : SlotUpdater
     public override void ClearSlot(int index)
     {
         if (index >= 0 && index < slot_by_index.Count)
-        {
             slot_by_index[index].ClearSlotItem();
-        }
     }
 
     public override ItemInfo GetItemInfo(int index)
@@ -78,9 +67,7 @@ public abstract partial class ProcessingTab : SlotUpdater
     public void ClearInfo(int slotIndex)
     {
         if (slotIndex >= 0 && slotIndex < process_building.item_array.Length)
-        {
             process_building.item_array[slotIndex] = null;
-        }
     }
 
     public void UpdateInfoHalf(int slotIndex)
@@ -191,14 +178,11 @@ public abstract partial class ProcessingTab : SlotUpdater
         if (!slot_by_index.TryGetValue(slotIndex, out var slot))
             return;
 
-        // Grenzen-Check
         if (slotIndex < 0 || slotIndex >= process_building.item_array.Length)
             return;
 
         if (slot.GetSlotItemUI() == null)
-        {
             ClearInfo(slotIndex);
-        }
         else
         {
             process_building.item_array[slotIndex] = new ItemSave(
@@ -210,68 +194,48 @@ public abstract partial class ProcessingTab : SlotUpdater
         }
     }
 
-    /// <summary>
-    /// Findet den Slot-Index basierend auf dem Slot-Zweck
-    /// </summary>
     protected int GetSlotIndexByPurpose(SlotPurpose purpose)
     {
         for (int i = 0; i < slot_configs.Length; i++)
-        {
             if (slot_configs[i].purpose == purpose)
                 return i;
-        }
+
         return -1;
     }
 
-    /// <summary>
-    /// Findet alle Slot-Indizes eines bestimmten Zwecks
-    /// </summary>
     protected int[] GetSlotIndicesByPurpose(SlotPurpose purpose)
     {
         var indices = new System.Collections.Generic.List<int>();
         for (int i = 0; i < slot_configs.Length; i++)
-        {
             if (slot_configs[i].purpose == purpose)
                 indices.Add(i);
-        }
+
         return indices.ToArray();
     }
 
-    /// <summary>
-    /// Updates slot button icons to show recipe requirements as placeholders
-    /// </summary>
     public void UpdateRecipeSlotIcons(ProcessingRecipe recipe)
     {
         if (recipe == null || process_building == null)
             return;
 
-        // Clear all slot icons first
         foreach (var slot in slot_by_index.Values)
-        {
             if (slot != null)
                 slot.Icon = null;
-        }
 
-        // Set Input slot icon
         int input_idx = GetSlotIndexByPurpose(SlotPurpose.INPUT);
         if (input_idx >= 0 && slot_by_index.TryGetValue(input_idx, out var input_slot))
         {
             ItemInfo input_requirement = recipe.GetInputRequirement();
             if (input_requirement != null && input_requirement.texture != null)
-            {
                 input_slot.Icon = input_requirement.texture;
-            }
         }
 
-        // Set Output slot icon
         int output_idx = GetSlotIndexByPurpose(SlotPurpose.OUTPUT);
         if (output_idx >= 0 && slot_by_index.TryGetValue(output_idx, out var output_slot))
         {
             ItemInfo output_requirement = recipe.GetOutputItem();
             if (output_requirement != null && output_requirement.texture != null)
-            {
                 output_slot.Icon = output_requirement.texture;
-            }
         }
     }
 }

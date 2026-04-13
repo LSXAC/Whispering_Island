@@ -9,7 +9,7 @@ public partial class RecipeOverviewPanel : PanelContainer
 
     [Export]
     public PackedScene recipe_slot_scene = ResourceLoader.Load<PackedScene>(
-        ResourceUid.UidToPath("uid://bcjpv15dugfyi") // Vorerst Platzhalter, später eigene Szene
+        ResourceUid.UidToPath("uid://bcjpv15dugfyi")
     );
 
     private ProcessBuilding current_building = null;

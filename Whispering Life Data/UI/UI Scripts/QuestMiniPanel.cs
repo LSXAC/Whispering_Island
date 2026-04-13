@@ -104,10 +104,12 @@ public partial class QuestMiniPanel : PanelContainer
                 Debug.Print("Quest mini Panel: Item not in Inventory: " + item.info.name);
                 if (QuestManager.next_quest_is_doubled_items)
                     hbox_items[i].item_label.Text =
-                        "0x / " + (item_ref.amount * 2 * GameManager.difficulty_multiplier) + "x";
+                        "0x / "
+                        + (int)(item_ref.amount * 2 * GameManager.difficulty_multiplier)
+                        + "x";
                 else
                     hbox_items[i].item_label.Text =
-                        "0x / " + (item_ref.amount * GameManager.difficulty_multiplier) + "x";
+                        "0x / " + (int)(item_ref.amount * GameManager.difficulty_multiplier) + "x";
                 continue;
             }
 

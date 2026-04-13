@@ -189,7 +189,7 @@ public partial class ProcessingRecipeSlot : Control
         if (is_selected)
         {
             select_button.AddThemeColorOverride("font_color", Colors.Gold);
-            select_button.Text = "✓ Selected";
+            select_button.Text = "Selected";
         }
         else
         {

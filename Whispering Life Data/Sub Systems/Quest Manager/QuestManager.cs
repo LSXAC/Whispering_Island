@@ -150,6 +150,42 @@ public partial class QuestManager : Node
                     GameMenu.questMenu.quest_inventory.inventory_items
                 );
         }
+
+        ReturnExcessQuestItemsToInventory();
+    }
+
+    private void ReturnExcessQuestItemsToInventory()
+    {
+        if (GameMenu.questMenu == null || GameMenu.questMenu.quest_inventory == null)
+            return;
+
+        if (PlayerInventoryUI.instance == null)
+            return;
+
+        ItemSave[] remaining_items = GameMenu.questMenu.quest_inventory.inventory_items;
+
+        foreach (ItemSave item_save in remaining_items)
+        {
+            if (item_save == null || item_save.amount <= 0)
+                continue;
+
+            ItemInfo item_info = Inventory.ITEM_TYPES[(Inventory.ITEM_ID)item_save.item_id];
+            if (item_info == null)
+                continue;
+
+            Item remaining_item = new Item(
+                item_info,
+                item_save.amount,
+                (Item.STATE)item_save.state
+            );
+
+            PlayerInventoryUI.instance.AddItem(
+                remaining_item,
+                PlayerInventoryUI.instance.inventory_items
+            );
+        }
+
+        GameMenu.questMenu.quest_inventory.ClearInventory();
     }
 
     public async void FinishGame()
