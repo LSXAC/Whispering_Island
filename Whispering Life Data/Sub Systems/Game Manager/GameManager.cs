@@ -104,6 +104,7 @@ public partial class GameManager : Node2D
 
     public override void _Ready()
     {
+        dev_build_mode = false;
         Input.UseAccumulatedInput = false;
         gameover = false;
         CutsceneManager.In_Cutscene = false;
