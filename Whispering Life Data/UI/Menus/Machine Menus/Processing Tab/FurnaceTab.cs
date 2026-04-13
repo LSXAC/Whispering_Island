@@ -16,6 +16,9 @@ public partial class FurnaceTab : ProcessingTab
     [Export]
     public Slot fuel_slot;
 
+    [Export]
+    public Texture2D fuel_icon;
+
     public static FurnaceTab instance = null;
 
     public enum SlotType
@@ -47,5 +50,10 @@ public partial class FurnaceTab : ProcessingTab
                 new ProcessingSlotConfig("fuel", SlotPurpose.FUEL, fuel_slot, "Brennstoff")
             ]
         );
+    }
+
+    protected override Texture2D GetFuelIcon()
+    {
+        return fuel_icon;
     }
 }

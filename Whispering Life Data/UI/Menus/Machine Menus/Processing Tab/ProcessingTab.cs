@@ -213,6 +213,11 @@ public abstract partial class ProcessingTab : SlotUpdater
         return indices.ToArray();
     }
 
+    protected virtual Texture2D GetFuelIcon()
+    {
+        return null;
+    }
+
     public void UpdateRecipeSlotIcons(ProcessingRecipe recipe)
     {
         if (recipe == null || process_building == null)
@@ -230,12 +235,34 @@ public abstract partial class ProcessingTab : SlotUpdater
                 input_slot.Icon = input_requirement.texture;
         }
 
+        int auxiliary_idx = GetSlotIndexByPurpose(SlotPurpose.AUXILIARY);
+        if (auxiliary_idx >= 0 && slot_by_index.TryGetValue(auxiliary_idx, out var auxiliary_slot))
+        {
+            ItemInfo auxiliary_requirement = null;
+
+            if (recipe is CombinerRecipe combiner_recipe)
+                auxiliary_requirement = combiner_recipe.GetSecondaryInputRequirement();
+            else if (recipe is StateChangingRecipe state_changing_recipe)
+                auxiliary_requirement = state_changing_recipe.GetSecondaryInputRequirement();
+
+            if (auxiliary_requirement != null && auxiliary_requirement.texture != null)
+                auxiliary_slot.Icon = auxiliary_requirement.texture;
+        }
+
         int output_idx = GetSlotIndexByPurpose(SlotPurpose.OUTPUT);
         if (output_idx >= 0 && slot_by_index.TryGetValue(output_idx, out var output_slot))
         {
             ItemInfo output_requirement = recipe.GetOutputItem();
             if (output_requirement != null && output_requirement.texture != null)
                 output_slot.Icon = output_requirement.texture;
+        }
+
+        int fuel_idx = GetSlotIndexByPurpose(SlotPurpose.FUEL);
+        if (fuel_idx >= 0 && slot_by_index.TryGetValue(fuel_idx, out var fuel_slot))
+        {
+            Texture2D fuel_icon = GetFuelIcon();
+            if (fuel_icon != null)
+                fuel_slot.Icon = fuel_icon;
         }
     }
 }

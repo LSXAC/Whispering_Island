@@ -15,6 +15,9 @@ public partial class AlchemyLabTab : ProcessingTab
     [Export]
     public Slot fuel_slot;
 
+    [Export]
+    public Texture2D fuel_icon;
+
     public static AlchemyLabTab instance = null;
 
     public override void _Ready()
@@ -36,9 +39,19 @@ public partial class AlchemyLabTab : ProcessingTab
                     right_slot,
                     "Katalysator (fest)"
                 ),
-                new ProcessingSlotConfig("output", SlotPurpose.OUTPUT, output_slot, "Transformiertes Ergebnis"),
+                new ProcessingSlotConfig(
+                    "output",
+                    SlotPurpose.OUTPUT,
+                    output_slot,
+                    "Transformiertes Ergebnis"
+                ),
                 new ProcessingSlotConfig("fuel", SlotPurpose.FUEL, fuel_slot, "Brennstoff")
             ]
         );
+    }
+
+    protected override Texture2D GetFuelIcon()
+    {
+        return fuel_icon;
     }
 }

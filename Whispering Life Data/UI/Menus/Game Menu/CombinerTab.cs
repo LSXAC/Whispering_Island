@@ -15,6 +15,9 @@ public partial class CombinerTab : ProcessingTab
     [Export]
     public Slot fuel_slot;
 
+    [Export]
+    public Texture2D fuel_icon;
+
     public static CombinerTab instance = null;
 
     public override void _Ready()
@@ -36,9 +39,19 @@ public partial class CombinerTab : ProcessingTab
                     right_slot,
                     "Sekundärer Rohstoff"
                 ),
-                new ProcessingSlotConfig("output", SlotPurpose.OUTPUT, output_slot, "Kombiniertes Ergebnis"),
+                new ProcessingSlotConfig(
+                    "output",
+                    SlotPurpose.OUTPUT,
+                    output_slot,
+                    "Kombiniertes Ergebnis"
+                ),
                 new ProcessingSlotConfig("fuel", SlotPurpose.FUEL, fuel_slot, "Brennstoff")
             ]
         );
+    }
+
+    protected override Texture2D GetFuelIcon()
+    {
+        return fuel_icon;
     }
 }

@@ -193,10 +193,10 @@ polygon = PackedVector2Array(-48, 0, 32, 0, 32, -17, -48, -17)
 
 [node name="MachineActivColorRect" type="ColorRect" parent="." unique_id=117330272]
 z_index = 2
-offset_left = -25.0
-offset_top = -6.0
-offset_right = -23.0
-offset_bottom = -4.0
+offset_left = -9.0
+offset_top = -25.0
+offset_right = -7.0
+offset_bottom = -23.0
 
 [connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
