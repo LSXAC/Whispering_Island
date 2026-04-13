@@ -47,7 +47,7 @@ public partial class QuestManager : Node
     public void StartQuest(QuestSave quest_save = null)
     {
         Debug.Print("Start new Quest!");
-        float difficultyTimeMultiplier = GetDifficultyTimeMultiplier();
+        double difficultyTimeMultiplier = GetDifficultyTimeMultiplier();
 
         if (quest_save != null)
         {
@@ -56,7 +56,7 @@ public partial class QuestManager : Node
             if (quest_save.quest_time_left <= 0)
                 current_quest_time =
                     Mathf.RoundToInt(
-                        quests[current_quest_id].quest_time * difficultyTimeMultiplier / 5f
+                        quests[current_quest_id].quest_time * difficultyTimeMultiplier / 5.0
                     ) * 5;
             else
                 current_quest_time = quest_save.quest_time_left;
@@ -65,7 +65,7 @@ public partial class QuestManager : Node
         {
             current_quest_time =
                 Mathf.RoundToInt(
-                    quests[current_quest_id].quest_time * difficultyTimeMultiplier / 5f
+                    quests[current_quest_id].quest_time * difficultyTimeMultiplier / 5.0
                 ) * 5;
         }
 
@@ -212,8 +212,8 @@ public partial class QuestManager : Node
         CutsceneManager.In_Cutscene = false;
     }
 
-    private float GetDifficultyTimeMultiplier()
+    private double GetDifficultyTimeMultiplier()
     {
-        return 1.0f / GameManager.difficulty_multiplier;
+        return 1.0 / GameManager.difficulty_multiplier;
     }
 }

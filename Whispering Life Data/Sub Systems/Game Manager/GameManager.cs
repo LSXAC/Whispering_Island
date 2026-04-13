@@ -27,7 +27,7 @@ public partial class GameManager : Node2D
     public Node2D island_parent;
     public bool new_game = false;
 
-    public static float difficulty_multiplier = 1.0f;
+    public static double difficulty_multiplier = 1.0f;
     public static DIFFICULTY difficulty = DIFFICULTY.NORMAL;
 
     public enum DIFFICULTY

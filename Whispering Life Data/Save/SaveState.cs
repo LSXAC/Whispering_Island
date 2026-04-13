@@ -68,7 +68,7 @@ public partial class SaveState : Resource
     public int[] island_types_build = new int[4];
 
     [Export]
-    public float difficulty_multiplier = 1.0f;
+    public double difficulty_multiplier = 1.0;
 
     [Export]
     public GameManager.DIFFICULTY difficulty = GameManager.DIFFICULTY.NORMAL;
