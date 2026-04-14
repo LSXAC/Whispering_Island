@@ -14,6 +14,9 @@ public partial class Island : Node2D
     public RemovableObjectsManager removable_objects_manager;
     public IslandObjectSaveManager island_object_save_manager;
     public TileMapLayer ground_tilemap;
+    
+    [Export]
+    public TileMapLayer farmland_tilemap;
 
     [Export]
     private int island_tiles = 16;
@@ -77,6 +80,8 @@ public partial class Island : Node2D
         magic_power_listener = GetNode<MagicPowerListener>("MagicPowerListener");
         ground_tilemap = GetNode("Tilemaps").GetNode<TileMapLayer>("Ground");
         building_area = GetNode<TileMapLayer>("BuildingArea");
+        if (farmland_tilemap == null && HasNode("Tilemaps/Farmland"))
+            farmland_tilemap = GetNode("Tilemaps").GetNode<TileMapLayer>("Farmland");
         bridge_start_points = GetNode<Node2D>("BridgePoints/StartPoints");
         bridge_collision_parent = GetNode<StaticBody2D>("BridgePoints/BridgeCollisions");
         bridges_parent = GetNode<Node2D>("BridgePoints/Bridges");
