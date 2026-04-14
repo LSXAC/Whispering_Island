@@ -229,7 +229,6 @@ public partial class EquipmentSelectBar : Container
             return;
         }
 
-        // Convert world position to tilemap local coordinates, then to tile coordinates
         Vector2 mouse_tilemap_local_pos = nearest_island.farmland_tilemap.ToLocal(mouse_world_pos);
         Vector2I tile_under_mouse = nearest_island.farmland_tilemap.LocalToMap(
             mouse_tilemap_local_pos

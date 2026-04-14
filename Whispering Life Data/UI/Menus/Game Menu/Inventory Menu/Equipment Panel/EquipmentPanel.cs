@@ -214,5 +214,6 @@ public partial class EquipmentPanel : Control
                         item_save[i].current_durability
                     );
             }
+        PlayerUI.instance.equipmentSelectBar.SelectSelectSlot(0);
     }
 }
