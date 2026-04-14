@@ -14,6 +14,7 @@ metadata/_custom_type_script = "uid://b40cejs4t88i5"
 script = ExtResource("2_mc3s4")
 type = 4
 mining_level = 1
+has_menu = true
 slot_type = 5
 durability = 50
 metadata/_custom_type_script = "uid://v7dew0yr5trl"

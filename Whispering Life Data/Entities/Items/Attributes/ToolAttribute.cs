@@ -13,6 +13,12 @@ public partial class ToolAttribute : WearableAttribute
     [Export]
     public MineableObject.MINING_LEVEL mining_level = MineableObject.MINING_LEVEL.HAND;
 
+    [Export]
+    public bool has_menu = false;
+
+    [Export]
+    public int auto_tile_id = 0;
+
     public enum TYPE
     {
         None,

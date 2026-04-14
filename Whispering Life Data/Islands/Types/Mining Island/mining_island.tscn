@@ -179,7 +179,7 @@ z_index = -1
 use_parent_material = true
 tile_set = ExtResource("4_oxa82")
 
-[node name="FarmlandLayer" type="TileMapLayer" parent="Tilemaps" unique_id=1693170340 groups=["FARMINGGROUND"]]
+[node name="Farmland" type="TileMapLayer" parent="Tilemaps" unique_id=1693170340 groups=["FARMINGGROUND"]]
 z_index = -2
 tile_set = ExtResource("8_0fich")
 
