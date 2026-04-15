@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class ToolAttribute : WearableAttribute
@@ -15,6 +16,14 @@ public partial class ToolAttribute : WearableAttribute
 
     [Export]
     public bool has_menu = false;
+
+    [Export]
+    public Array<placeable_building.TILETYPE> can_be_used_on_tile_types =
+        new Array<placeable_building.TILETYPE>();
+
+    [Export]
+    public Array<placeable_building.TILETYPE> can_be_removed_on_tile_types =
+        new Array<placeable_building.TILETYPE>();
 
     [Export]
     public int auto_tile_id = 0;

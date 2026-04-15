@@ -101,7 +101,7 @@ public partial class BuildingCollider : Area2D
         rect.Texture = found ? grid_outline_green : grid_outline_red;
     }
 
-    private void SetRectVisible(bool state)
+    public void SetRectVisible(bool state)
     {
         activated = state;
         if (rect != null)

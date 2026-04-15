@@ -216,4 +216,22 @@ public partial class EquipmentPanel : Control
             }
         PlayerUI.instance.equipmentSelectBar.SelectSelectSlot(0);
     }
+
+    public void RemoveDurability(int amount)
+    {
+        if (equipped_tools[EquipmentSelectBar.current_selected_slot] != null)
+        {
+            equipped_tools[EquipmentSelectBar.current_selected_slot].current_durability -= amount;
+            UpdateSlots();
+        }
+    }
+
+    public void AddDurability(int amount)
+    {
+        if (equipped_tools[EquipmentSelectBar.current_selected_slot] != null)
+        {
+            equipped_tools[EquipmentSelectBar.current_selected_slot].current_durability += amount;
+            UpdateSlots();
+        }
+    }
 }

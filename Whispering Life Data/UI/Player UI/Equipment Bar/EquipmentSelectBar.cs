@@ -18,21 +18,49 @@ public partial class EquipmentSelectBar : Container
     private double last_farmland_modification_time = -0.5;
     private const double FARMLAND_MODIFICATION_COOLDOWN = 0.3;
 
+    private Node2D tool_marker_container;
     private Sprite2D tool_marker;
+    private BuildingColliderManager tool_marker_collider_manager;
 
     [Export]
     public Texture2D tool_marker_texture;
+
+    [Export]
+    private PackedScene building_collider_scene = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://b5u81hi3w1yvx")
+    );
+
+    private ToolAttribute current_tool_attr = null;
 
     public override void _Ready()
     {
         if (tool_marker == null)
         {
+            // Erstelle einen Container für den Marker
+            tool_marker_container = new Node2D();
+            GetTree().Root.AddChild(tool_marker_container);
+            tool_marker_container.ZIndex = 10;
+
+            // Erstelle den Sprite2D
             tool_marker = new Sprite2D();
             tool_marker.Texture = tool_marker_texture;
             tool_marker.Modulate = new Color(1, 1, 1, 0.7f);
-            GetTree().Root.AddChild(tool_marker);
-            tool_marker.ZIndex = 10;
-            tool_marker.Visible = false;
+            tool_marker_container.AddChild(tool_marker);
+
+            // Erstelle den BuildingColliderManager
+            tool_marker_collider_manager = new BuildingColliderManager();
+            tool_marker_container.AddChild(tool_marker_collider_manager);
+
+            // Erstelle einen BuildingCollider
+            if (Logger.NodeIsNotNull(building_collider_scene))
+            {
+                BuildingCollider building_collider = (BuildingCollider)
+                    building_collider_scene.Instantiate();
+                tool_marker_collider_manager.AddChild(building_collider);
+                building_collider.Position = new Vector2(0, 0);
+            }
+
+            tool_marker_container.Visible = false;
         }
         SelectSelectSlot(0);
     }
@@ -126,12 +154,17 @@ public partial class EquipmentSelectBar : Container
 
     public void SelectSelectSlot(int index)
     {
-        tool_marker.Visible = false;
+        tool_marker_container.Visible = false;
         select_slots[current_selected_slot].GetParent().GetParent().GetParent<ColorRect>().Color =
             normal_color;
         select_slots[index].GetParent().GetParent().GetParent<ColorRect>().Color = selected_color;
         current_selected_slot_item_ui = select_slots[index].GetSlotItemUI();
         current_selected_slot = index;
+
+        current_tool_attr =
+            current_selected_slot_item_ui != null
+                ? current_selected_slot_item_ui.item.info.GetAttributeOrNull<ToolAttribute>()
+                : null;
 
         if (EquipmentPanel.instance != null)
             EquipmentPanel.instance.CalculateStatsFromEquipment();
@@ -189,7 +222,7 @@ public partial class EquipmentSelectBar : Container
 
         if (nearest_island == null || nearest_island.farmland_tilemap == null)
         {
-            tool_marker.Visible = false;
+            tool_marker_container.Visible = false;
             return;
         }
 
@@ -201,8 +234,8 @@ public partial class EquipmentSelectBar : Container
         Vector2 tile_center_local = nearest_island.farmland_tilemap.MapToLocal(tile_under_mouse);
         Vector2 tile_center_global = nearest_island.farmland_tilemap.ToGlobal(tile_center_local);
 
-        tool_marker.GlobalPosition = tile_center_global;
-        tool_marker.Visible = true;
+        tool_marker_container.GlobalPosition = tile_center_global;
+        tool_marker_container.Visible = true;
     }
 
     private void HandleFarmlandTileModification()
@@ -240,11 +273,33 @@ public partial class EquipmentSelectBar : Container
             return;
         }
 
-        ToolAttribute tool_attr =
-            current_selected_slot_item_ui.item.info.GetAttributeOrNull<ToolAttribute>();
-        ModifyFarmlandTile(nearest_island.farmland_tilemap, tile_under_mouse, tool_attr);
+        // Prüfe ob das Tile entfernt werden kann
+        if (!CheckBuildingColliders(isRemoving: true))
+        {
+            Debug.Print("[DEBUG] Cannot remove tile - collision check failed");
+            return;
+        }
+
+        ModifyFarmlandTile(nearest_island.farmland_tilemap, tile_under_mouse, current_tool_attr);
+
+        // Durability reduzieren
+        if (Logger.NodeIsNotNull(EquipmentPanel.instance))
+            EquipmentPanel.instance.RemoveDurability(1);
 
         last_farmland_modification_time = Time.GetTicksMsec() / 1000.0;
+    }
+
+    private bool CheckBuildingColliders(bool isRemoving = false)
+    {
+        if (Logger.NodeIsNull(tool_marker_collider_manager) || Logger.NodeIsNull(current_tool_attr))
+            return false;
+
+        Array<placeable_building.TILETYPE> tileTypes = isRemoving
+            ? current_tool_attr.can_be_removed_on_tile_types
+            : current_tool_attr.can_be_used_on_tile_types;
+
+        tool_marker_collider_manager.SetTileType(tileTypes);
+        return tool_marker_collider_manager.AllCollidersOnBuildingLayer(null);
     }
 
     private void HandleFarmlandTileSet()
@@ -271,12 +326,15 @@ public partial class EquipmentSelectBar : Container
             return;
         }
 
-        ToolAttribute tool_attr =
-            current_selected_slot_item_ui.item.info.GetAttributeOrNull<ToolAttribute>();
-
-        if (tool_attr == null || tool_attr.auto_tile_id < 0)
+        if (current_tool_attr == null || current_tool_attr.auto_tile_id < 0)
         {
             Debug.Print("[DEBUG] Tool has no valid farmland tile source ID");
+            return;
+        }
+
+        if (!CheckBuildingColliders())
+        {
+            Debug.Print("[DEBUG] Cannot place tile - collision check failed");
             return;
         }
 
@@ -288,7 +346,7 @@ public partial class EquipmentSelectBar : Container
         nearest_island.farmland_tilemap.SetCellsTerrainConnect(
             new Array<Vector2I> { tile_under_mouse },
             0,
-            tool_attr.auto_tile_id
+            current_tool_attr.auto_tile_id
         );
 
         var set_source_id = nearest_island.farmland_tilemap.GetCellSourceId(tile_under_mouse);
@@ -296,6 +354,10 @@ public partial class EquipmentSelectBar : Container
         Debug.Print(
             $"[DEBUG] After SetCellsTerrainConnect - Source ID: {set_source_id}, Atlas: {set_atlas}"
         );
+
+        // Durability reduzieren
+        if (Logger.NodeIsNotNull(EquipmentPanel.instance))
+            EquipmentPanel.instance.RemoveDurability(1);
 
         last_farmland_modification_time = Time.GetTicksMsec() / 1000.0;
     }

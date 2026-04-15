@@ -316,15 +316,8 @@ public partial class MineableObject : placeable_building
 
     private void UpdateToolDurability(int miningAmount)
     {
-        var slot_item_ui = PlayerUI.instance.equipmentSelectBar.GetSelectedSlotItemUI();
-        if (slot_item_ui != null && slot_item_ui.item.info.HasAttribute<ToolAttribute>())
-        {
-            EquipmentPanel
-                .instance
-                .equipped_tools[EquipmentSelectBar.current_selected_slot]
-                .current_durability -= miningAmount;
-            EquipmentPanel.UpdateSlots();
-        }
+        if (Logger.NodeIsNotNull(EquipmentPanel.instance))
+            EquipmentPanel.instance.RemoveDurability(miningAmount);
     }
 
     private void HandleBreak(int bonusAmount)

@@ -5,62 +5,67 @@ using Godot.Collections;
 
 public partial class BuildingColliderManager : Node2D
 {
-	[Export]
-	private PackedScene building_collider = ResourceLoader.Load<PackedScene>(ResourceUid.UidToPath("uid://b5u81hi3w1yvx")
-	);
-	[Export]
-	public PLACE_TYPE current_type = PLACE_TYPE.BUILDING;
+    [Export]
+    private PackedScene building_collider = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://b5u81hi3w1yvx")
+    );
 
-	public enum PLACE_TYPE
-	{
-		BUILDING,
-		MOVEABLE
-	};
+    [Export]
+    public PLACE_TYPE current_type = PLACE_TYPE.BUILDING;
 
-	[Export]
-	private TileMapLayer collision_tilemap;
+    public enum PLACE_TYPE
+    {
+        BUILDING,
+        MOVEABLE
+    };
 
-	public override void _Ready()
-	{
-		CreateBuildingCollider();
-	}
+    [Export]
+    private TileMapLayer collision_tilemap;
 
-	public void SetTileType(Array<placeable_building.TILETYPE> types)
-	{
-		foreach (Node2D node in GetChildren())
-		{
-			BuildingCollider bc = node as BuildingCollider;
-			bc.types = types;
-		}
-	}
+    public override void _Ready()
+    {
+        CreateBuildingCollider();
+    }
 
-	public bool AllCollidersOnBuildingLayer(placeable_building building)
-	{
-		if (GetChildren().Count == 0)
-			return false;
+    public void SetTileType(Array<placeable_building.TILETYPE> types)
+    {
+        foreach (Node2D node in GetChildren())
+        {
+            BuildingCollider bc = node as BuildingCollider;
+            bc.types = types;
+        }
+    }
 
-		foreach (Node2D node in GetChildren())
-		{
-			BuildingCollider bc = node as BuildingCollider;
-			bc.type = current_type;
-			bc.Calc(building.can_be_build_on_air);
-			if (!bc.on_building_layer)
-				return false;
-		}
-		return true;
-	}
+    public bool AllCollidersOnBuildingLayer(placeable_building building)
+    {
+        if (GetChildren().Count == 0)
+            return false;
 
-	private void CreateBuildingCollider()
-	{
-		if (Logger.NodeIsNotNull(collision_tilemap))
-			foreach (Vector2I cell in collision_tilemap.GetUsedCells())
-			{
-				if (Logger.NodeIsNull(building_collider))
-					continue;
+        foreach (Node2D node in GetChildren())
+        {
+            BuildingCollider bc = node as BuildingCollider;
+            bc.type = current_type;
+            if (building == null)
+                bc.Calc(on_air: false);
+            else
+                bc.Calc(building.can_be_build_on_air);
+            if (!bc.on_building_layer)
+                return false;
+        }
+        return true;
+    }
 
-				Area2D area = (Area2D)building_collider.Instantiate();
-				area.Position = new Vector2(cell.X * 16 + 8, cell.Y * 16 + 8);
-				AddChild(area);
-			}
-	}
+    private void CreateBuildingCollider()
+    {
+        if (Logger.NodeIsNotNull(collision_tilemap))
+            foreach (Vector2I cell in collision_tilemap.GetUsedCells())
+            {
+                if (Logger.NodeIsNull(building_collider))
+                    continue;
+
+                Area2D area = (Area2D)building_collider.Instantiate();
+                area.Position = new Vector2(cell.X * 16 + 8, cell.Y * 16 + 8);
+                AddChild(area);
+            }
+    }
 }
