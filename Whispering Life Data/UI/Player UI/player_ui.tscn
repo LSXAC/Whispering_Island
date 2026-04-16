@@ -18,11 +18,14 @@
 [ext_resource type="Script" uid="uid://chwavdauv6ifd" path="res://UI/Player UI/Time Stripe/TimeStripe.cs" id="13_kaodh"]
 [ext_resource type="Theme" uid="uid://pft8ltrg588m" path="res://UI/Themes/Main_Theme.tres" id="13_uwodk"]
 [ext_resource type="Texture2D" uid="uid://raaamx5w323j" path="res://UI/Player UI/Textures/currency_icon.png" id="14_uwodk"]
+[ext_resource type="Texture2D" uid="uid://0wvycrn2vx3d" path="res://UI/Styles/daynightcycle-display-gradient-texture.tres" id="15_fswye"]
+[ext_resource type="Texture2D" uid="uid://w0vqrn7qfjw1" path="res://UI/Icons/Clouds.png" id="17_6ji4w"]
 [ext_resource type="Script" uid="uid://cowg1oi4t5ap8" path="res://UI/Player UI/Equipment Bar/EquipmentSelectBar.cs" id="17_450ol"]
 [ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://UI/Styles/tab_container_panel_style.tres.tres" id="17_rkorj"]
 [ext_resource type="PackedScene" uid="uid://bnf8yngk7oyy0" path="res://UI/Menus/h_box_item_menu_line_horizontal.tscn" id="18_uwodk"]
 [ext_resource type="PackedScene" uid="uid://bovrg0u6tuo04" path="res://UI/Menus/Hover Menu/hover_menu.tscn" id="20_fdkbp"]
 [ext_resource type="StyleBox" uid="uid://bfrdtjfua8vts" path="res://UI/Styles/Panel_Transparent.tres" id="20_kobl8"]
+[ext_resource type="Texture2D" uid="uid://cty2onbf7nvi" path="res://UI/Icons/Stars.png" id="20_ucp0k"]
 [ext_resource type="PackedScene" uid="uid://ceypkxf7dox6w" path="res://UI/Inventory/slot_background.tscn" id="21_uwodk"]
 [ext_resource type="LabelSettings" uid="uid://dq0dwmb4gc45u" path="res://UI/Styles/Label_Settings_Normal_Text.tres" id="22_0o76g"]
 [ext_resource type="LabelSettings" uid="uid://bfyhqbjhexoyv" path="res://UI/Styles/Label_Settings_Title_Text.tres" id="22_2d87j"]
@@ -493,6 +496,8 @@ script = ExtResource("13_kaodh")
 left = NodePath("HBoxContainer/TextureRect")
 right = NodePath("HBoxContainer/TextureRect2")
 pointer = NodePath("Pointer")
+display_gradient = ExtResource("15_fswye")
+metadata/_edit_group_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="QuestAndInfoVBoxContainer/TimeStripe" unique_id=852312055]
 layout_mode = 1
@@ -516,12 +521,49 @@ layout_mode = 2
 size_flags_horizontal = 3
 expand_mode = 1
 
-[node name="Pointer" type="ColorRect" parent="QuestAndInfoVBoxContainer/TimeStripe" unique_id=1492501273]
-custom_minimum_size = Vector2(2, 14)
+[node name="TextureRect" type="TextureRect" parent="QuestAndInfoVBoxContainer/TimeStripe" unique_id=1759706848]
+modulate = Color(0.8627451, 0.8666667, 0, 0.7882353)
 layout_mode = 0
-offset_right = 2.0
+offset_left = 2.0
+offset_right = 21.0
+offset_bottom = 18.0
+texture = ExtResource("20_ucp0k")
+expand_mode = 1
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="QuestAndInfoVBoxContainer/TimeStripe" unique_id=899113961]
+modulate = Color(0.8627451, 0.8666667, 0, 0.7882353)
+layout_mode = 0
+offset_left = 80.0
+offset_right = 99.0
+offset_bottom = 18.0
+texture = ExtResource("20_ucp0k")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="QuestAndInfoVBoxContainer/TimeStripe" unique_id=668128142]
+layout_mode = 0
+offset_left = 28.0
+offset_right = 47.0
+offset_bottom = 18.0
+texture = ExtResource("17_6ji4w")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="QuestAndInfoVBoxContainer/TimeStripe" unique_id=1259456526]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 1.0
+offset_right = 73.0
 offset_bottom = 19.0
-color = Color(0, 0, 0, 1)
+texture = ExtResource("17_6ji4w")
+expand_mode = 1
+flip_h = true
+
+[node name="Pointer" type="ColorRect" parent="QuestAndInfoVBoxContainer/TimeStripe" unique_id=1492501273]
+custom_minimum_size = Vector2(2, 12)
+layout_mode = 0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = 18.0
 
 [node name="ColorRect2" type="ColorRect" parent="QuestAndInfoVBoxContainer/TimeStripe" unique_id=1853217621]
 layout_mode = 0
@@ -1026,10 +1068,14 @@ wait_time = 4.0
 one_shot = true
 
 [node name="MagicPowerPanel" type="Panel" parent="." unique_id=193682183 node_paths=PackedStringArray("current_magic_power_label", "latest_magic_power_label")]
-offset_left = 108.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -210.0
 offset_top = 5.0
-offset_right = 233.0
+offset_right = -85.0
 offset_bottom = 29.0
+grow_horizontal = 2
 theme = ExtResource("13_uwodk")
 theme_override_styles/panel = ExtResource("20_kobl8")
 script = ExtResource("30_nvb1m")
@@ -1085,10 +1131,10 @@ color = Color(1, 1, 1, 0.2)
 [node name="Screenshot_Timer" type="Timer" parent="." unique_id=653795909]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=781921757]
-offset_left = 109.0
-offset_top = 32.0
-offset_right = 149.0
-offset_bottom = 72.0
+offset_left = 5.0
+offset_top = 258.0
+offset_right = 83.0
+offset_bottom = 309.0
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer" unique_id=203185358]
 layout_mode = 2

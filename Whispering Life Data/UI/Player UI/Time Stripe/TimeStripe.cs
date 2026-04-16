@@ -10,6 +10,9 @@ public partial class TimeStripe : Panel
     [Export]
     public ColorRect pointer;
 
+    [Export]
+    public GradientTexture1D display_gradient;
+
     public override void _Ready()
     {
         right.FlipH = true;
@@ -17,8 +20,8 @@ public partial class TimeStripe : Panel
 
     public void SetStripe()
     {
-        left.Texture = TimeManager.instance.day_night_manager.dayNightGradient;
-        right.Texture = TimeManager.instance.day_night_manager.dayNightGradient;
+        left.Texture = display_gradient;
+        right.Texture = display_gradient;
     }
 
     public void SetPointer(float value)
