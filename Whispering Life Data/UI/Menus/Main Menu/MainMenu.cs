@@ -26,6 +26,9 @@ public partial class MainMenu : Control
     public Button load_button;
 
     [Export]
+    public SettingsTab settings_tab;
+
+    [Export]
     public bool skip_intro = false;
 
     public static MainMenu instance = null;
@@ -37,6 +40,7 @@ public partial class MainMenu : Control
     public override void _Ready()
     {
         instance = this;
+        settings_tab.exit_container.Visible = false;
         if (!skip_intro)
         {
             intro_player.Play();
@@ -73,6 +77,16 @@ public partial class MainMenu : Control
 
         TranslationServer.SetLocale("en");
         SaveLauncherConfig();
+    }
+
+    public void OnSettingsExitButton()
+    {
+        settings_tab.Visible = false;
+    }
+
+    public void OnSettingsButton()
+    {
+        settings_tab.Visible = true;
     }
 
     public void OpenCreateSettings()

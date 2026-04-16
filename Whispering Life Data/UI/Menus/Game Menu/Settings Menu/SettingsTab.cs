@@ -8,10 +8,20 @@ public partial class SettingsTab : ColorRect
     public OptionButton option_button,
         window_mode_button;
 
-    // Called when the node enters the scene tree for the first time.
+    [Export]
+    public AudioStreamPlayer master_sound_player;
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta) { }
+    [Export]
+    public AudioStreamPlayer sfx_sound_player;
+
+    [Export]
+    public AudioStreamPlayer music_sound_player;
+
+    [Export]
+    public HBoxContainer exit_container;
+
+    [Export]
+    public Button exit_button;
 
     public override void _Notification(int what)
     {
@@ -59,5 +69,29 @@ public partial class SettingsTab : ColorRect
                 break;
         }
         TranslationServer.SetLocale(language);
+    }
+
+    public void PlaySoundMaster()
+    {
+        if (master_sound_player == null)
+            return;
+
+        AudioManager.Instance.PlaySound(master_sound_player, "Master");
+    }
+
+    public void PlaySoundSFX()
+    {
+        if (sfx_sound_player == null)
+            return;
+
+        AudioManager.Instance.PlaySound(sfx_sound_player, "SFX");
+    }
+
+    public void PlaySoundMusic()
+    {
+        if (music_sound_player == null)
+            return;
+
+        AudioManager.Instance.PlaySound(music_sound_player, "Music");
     }
 }

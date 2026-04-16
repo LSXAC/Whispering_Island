@@ -35,7 +35,7 @@ public partial class GameMenu : CanvasLayer
     public ColorRect chest_tab;
 
     [Export]
-    public ColorRect settings_tab;
+    public SettingsTab settings_tab;
 
     [Export]
     public ColorRect saveload_tab;
@@ -84,6 +84,7 @@ public partial class GameMenu : CanvasLayer
     public override void _Ready()
     {
         questMenu = (QuestMenu)quest_tab;
+        settings_tab.exit_button.Pressed += OnBackToMainMenu;
         instance = this;
     }
 

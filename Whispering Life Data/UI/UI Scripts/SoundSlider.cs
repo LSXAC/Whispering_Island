@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 public partial class SoundSlider : HSlider
@@ -15,11 +16,17 @@ public partial class SoundSlider : HSlider
 
     public void OnVisiblityChange()
     {
-        Value = AudioServer.GetBusVolumeDb(AudioServer.GetBusIndex(bus.ToString()));
+        Value = Mathf.DbToLinear(
+            AudioServer.GetBusVolumeDb(AudioServer.GetBusIndex(bus.ToString()))
+        );
     }
 
     public void OnValueChanged(float value)
     {
-        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex(bus.ToString()), value);
+        AudioServer.SetBusVolumeDb(
+            AudioServer.GetBusIndex(bus.ToString()),
+            Mathf.LinearToDb(value)
+        );
+        Debug.Print("Sound:" + value + " | Bus: " + bus.ToString());
     }
 }

@@ -80,4 +80,13 @@ public partial class AudioManager : Node2D
         if (ButtonSoundPlayer != null && audio != null)
             ButtonSoundPlayer.Stream = audio;
     }
+
+    public void PlaySound(AudioStreamPlayer player, string bus)
+    {
+        if (player != null)
+        {
+            player.Bus = bus;
+            player.Play();
+        }
+    }
 }

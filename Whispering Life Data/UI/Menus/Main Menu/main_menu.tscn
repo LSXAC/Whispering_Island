@@ -11,15 +11,20 @@
 [ext_resource type="StyleBox" uid="uid://c0rrcqgclnbps" path="res://UI/Styles/Button_Hover_Style.tres" id="9_ogxk2"]
 [ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://UI/Styles/Button_Disabled_Style.tres.tres" id="10_u2kkx"]
 [ext_resource type="StyleBox" uid="uid://bigjpe72nd1x8" path="res://UI/Styles/slot_focus_style.tres" id="11_6tlws"]
+[ext_resource type="Texture2D" uid="uid://c4258hkqai8ka" path="res://Entities/Items/SpritesForItems/Plants_Icons/Stone_Sword.png" id="12_5ngv7"]
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://UI/Menus/Translation/TranslationButton.cs" id="12_jqrcp"]
+[ext_resource type="Texture2D" uid="uid://curt66yojsxad" path="res://UI/Building Information Panel/Textures/Gear.png" id="13_0iy3j"]
 [ext_resource type="StyleBox" uid="uid://h4o1ussquiqb" path="res://UI/Styles/button_hover_pressed_style.tres" id="13_dd1k4"]
 [ext_resource type="Script" uid="uid://dlnqgvorydc7m" path="res://UI/Menus/Translation/TranslationCheckBox.cs" id="14_cc178"]
+[ext_resource type="Texture2D" uid="uid://cuagpqln1w5xa" path="res://Entities/Items/Research/Research Book Level/Texture/research_book_level.png" id="14_sr8d7"]
 [ext_resource type="VideoStream" uid="uid://cn5ad33bqf2ra" path="res://UI/Videos/Start_Screen.ogv" id="15_jwfcp"]
+[ext_resource type="Texture2D" uid="uid://be2xmt8674o1k" path="res://Entities/Items/SpritesForItems/Icons/rejected.png" id="16_c7pgb"]
 [ext_resource type="PackedScene" uid="uid://mpqbrpcj1slc" path="res://3rd Party Systems/Transition System/transition_manager.tscn" id="16_il1im"]
 [ext_resource type="Script" uid="uid://bhrk2d2mypk8p" path="res://Sub Systems/Global/Database.cs" id="17_2xiho"]
 [ext_resource type="Script" uid="uid://d0ne5pdty3svn" path="res://Sub Systems/Global/DatabasePopulator.gd" id="18_pq0dg"]
 [ext_resource type="Resource" uid="uid://dvamcu1lg3joc" path="res://Entities/Placeable Building/Environment/Decoration/Wood Bed/Data/WoodBedBuildMenu.tres" id="18_sicj5"]
 [ext_resource type="Resource" uid="uid://tbpa4v56negm" path="res://Entities/Placeable Building/Machine/Chest/Chest With Timed Clear/Data/ChestWithAutoRemoveBuildMenu.tres" id="19_5j77y"]
+[ext_resource type="PackedScene" uid="uid://dh4vkk44iyg3p" path="res://UI/Menus/Game Menu/settings_tab.tscn" id="19_sr8d7"]
 [ext_resource type="Resource" uid="uid://cxyl31duovsut" path="res://Entities/Placeable Building/Machine/Chest/Data/ChestBuildMenu.tres" id="20_5ir77"]
 [ext_resource type="Resource" uid="uid://cbq4h0xdafbrv" path="res://Entities/Placeable Building/Machine/Furnace/Data/FurnaceBuildMenu.tres" id="21_jnprb"]
 [ext_resource type="Resource" uid="uid://cqdeu12oy7xw5" path="res://Entities/Placeable Building/Machine/Growther/Tree Growther/Data/TreeGrowtherBuildMenu.tres" id="22_ogxk2"]
@@ -170,7 +175,7 @@
 [ext_resource type="AudioStream" uid="uid://bwod2wh4o0qwt" path="res://Islands/Audio/Background Music/759996__josefpres__piano-loops-167-octave-short-loop-120-bpm.wav" id="167_0iy3j"]
 [ext_resource type="AudioStream" uid="uid://dghm7erto75a0" path="res://UI/Button_Click_Sound.wav" id="168_il1im"]
 
-[node name="MainMenu" type="Control" unique_id=1921051255 node_paths=PackedStringArray("skip_tutorial", "intro_player", "parent", "menu_part_1", "menu_part_2", "difficulty_select", "create_new_game_after_difficult_button", "load_button")]
+[node name="MainMenu" type="Control" unique_id=1921051255 node_paths=PackedStringArray("skip_tutorial", "intro_player", "parent", "menu_part_1", "menu_part_2", "difficulty_select", "create_new_game_after_difficult_button", "load_button", "settings_tab")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -187,6 +192,7 @@ menu_part_2 = NodePath("Menu/Control/VBox_Menu_Part2")
 difficulty_select = NodePath("Menu/Control/VBox_Menu_Part2/DifficultOptionButton")
 create_new_game_after_difficult_button = NodePath("Menu/Control/VBox_Menu_Part2/NewGameButton")
 load_button = NodePath("Menu/Control/VBox_Menu_Part1/LoadGameButton")
+settings_tab = NodePath("Menu/Control/SettingsTab")
 skip_intro = true
 
 [node name="Menu" type="Control" parent="." unique_id=1914198663]
@@ -269,6 +275,7 @@ custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("6_5j77y")
 theme_override_font_sizes/font_size = 10
 theme_override_styles/normal = ExtResource("7_5ir77")
@@ -278,6 +285,8 @@ theme_override_styles/disabled = ExtResource("10_u2kkx")
 theme_override_styles/focus = ExtResource("11_6tlws")
 keep_pressed_outside = true
 text = "NEW GAME"
+icon = ExtResource("12_5ngv7")
+autowrap_mode = 2
 script = ExtResource("12_jqrcp")
 label_translation_string = "MAINMENU_NEW_GAME"
 
@@ -287,6 +296,7 @@ custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("6_5j77y")
 theme_override_font_sizes/font_size = 10
 theme_override_styles/normal = ExtResource("7_5ir77")
@@ -296,14 +306,36 @@ theme_override_styles/disabled = ExtResource("10_u2kkx")
 theme_override_styles/focus = ExtResource("11_6tlws")
 keep_pressed_outside = true
 text = "LOAD GAME"
+icon = ExtResource("14_sr8d7")
+autowrap_mode = 2
 script = ExtResource("12_jqrcp")
 label_translation_string = "SAVELOAD_MENU_LOAD_BUTTON"
 
-[node name="ExitButton" type="Button" parent="Menu/Control/VBox_Menu_Part1" unique_id=905517288]
+[node name="SettingsButton" type="Button" parent="Menu/Control/VBox_Menu_Part1" unique_id=905517288]
 clip_contents = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("6_5j77y")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("7_5ir77")
+theme_override_styles/pressed = ExtResource("8_jnprb")
+theme_override_styles/hover = ExtResource("9_ogxk2")
+theme_override_styles/disabled = ExtResource("10_u2kkx")
+theme_override_styles/focus = ExtResource("11_6tlws")
+keep_pressed_outside = true
+text = "Settings"
+icon = ExtResource("13_0iy3j")
+autowrap_mode = 2
+script = ExtResource("12_jqrcp")
+
+[node name="ExitButton2" type="Button" parent="Menu/Control/VBox_Menu_Part1" unique_id=1348053658]
+clip_contents = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 16
 theme_override_fonts/font = ExtResource("6_5j77y")
 theme_override_font_sizes/font_size = 10
 theme_override_styles/normal = ExtResource("7_5ir77")
@@ -313,6 +345,8 @@ theme_override_styles/disabled = ExtResource("10_u2kkx")
 theme_override_styles/focus = ExtResource("11_6tlws")
 keep_pressed_outside = true
 text = "EXIT GAME"
+icon = ExtResource("16_c7pgb")
+autowrap_mode = 2
 script = ExtResource("12_jqrcp")
 label_translation_string = "MAINMENU_EXIT_GAME"
 
@@ -463,6 +497,28 @@ text = "Back to Start"
 script = ExtResource("12_jqrcp")
 label_translation_string = "MAINMENU_BACK"
 
+[node name="SettingsTab" parent="Menu/Control" unique_id=1019914161 instance=ExtResource("19_sr8d7")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = -139.5
+offset_right = 279.0
+offset_bottom = 139.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExitButton" type="Button" parent="Menu/Control/SettingsTab" unique_id=1462083709]
+layout_mode = 0
+offset_left = 557.0
+offset_top = -38.5
+offset_right = 597.0
+offset_bottom = 1.5
+icon = ExtResource("16_c7pgb")
+
 [node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="Menu" unique_id=1814333455]
 layout_mode = 1
 anchors_preset = 15
@@ -491,7 +547,7 @@ metadata/_custom_type_script = "uid://d0ne5pdty3svn"
 
 [node name="AudioManager" type="Node2D" parent="." unique_id=399866809 node_paths=PackedStringArray("SFXPlayer", "MusicPlayer", "ButtonSoundPlayer")]
 script = ExtResource("165_il1im")
-SFXPlayer = NodePath("SFXAudioPlayer")
+SFXPlayer = NodePath("MusicPlayer")
 MusicPlayer = NodePath("AtmosphereAudioPlayer")
 ButtonSoundPlayer = NodePath("ButtonAudioPlayer")
 
@@ -501,7 +557,7 @@ autoplay = true
 bus = &"SFX"
 playback_type = 1
 
-[node name="SFXAudioPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=80064183]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=80064183]
 stream = ExtResource("167_0iy3j")
 autoplay = true
 bus = &"Music"
@@ -509,14 +565,15 @@ playback_type = 1
 
 [node name="ButtonAudioPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=2119153207]
 stream = ExtResource("168_il1im")
-autoplay = true
-bus = &"Music"
+bus = &"SFX"
 playback_type = 1
 
 [connection signal="visibility_changed" from="." to="." method="OnVisiblityChanged"]
 [connection signal="pressed" from="Menu/Control/VBox_Menu_Part1/NewGameButton" to="." method="OpenCreateSettings"]
 [connection signal="pressed" from="Menu/Control/VBox_Menu_Part1/LoadGameButton" to="." method="OnLoadGameButtoN"]
-[connection signal="pressed" from="Menu/Control/VBox_Menu_Part1/ExitButton" to="." method="OnExitGameButtoN"]
+[connection signal="pressed" from="Menu/Control/VBox_Menu_Part1/SettingsButton" to="." method="OnSettingsButton"]
+[connection signal="pressed" from="Menu/Control/VBox_Menu_Part1/ExitButton2" to="." method="OnExitGameButtoN"]
 [connection signal="item_selected" from="Menu/Control/VBox_Menu_Part2/DifficultOptionButton" to="." method="OnDifficultSelect"]
 [connection signal="pressed" from="Menu/Control/VBox_Menu_Part2/NewGameButton" to="." method="OnNewGameButtoN"]
 [connection signal="pressed" from="Menu/Control/VBox_Menu_Part2/V" to="." method="OnBackToMainMenu"]
+[connection signal="pressed" from="Menu/Control/SettingsTab/ExitButton" to="." method="OnSettingsExitButton"]
