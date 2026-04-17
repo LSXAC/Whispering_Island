@@ -182,4 +182,10 @@ public partial class OreMinerMachine : ProductionMachine
     {
         ore_atlas_to_item_mapping.Clear();
     }
+
+    public override void Load(Resource machine_save)
+    {
+        base.Load(machine_save);
+        InitOreMiner();
+    }
 }
