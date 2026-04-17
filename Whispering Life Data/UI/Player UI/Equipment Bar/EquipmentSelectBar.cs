@@ -36,22 +36,18 @@ public partial class EquipmentSelectBar : Container
     {
         if (tool_marker == null)
         {
-            // Erstelle einen Container für den Marker
             tool_marker_container = new Node2D();
             GetTree().Root.AddChild(tool_marker_container);
             tool_marker_container.ZIndex = 10;
 
-            // Erstelle den Sprite2D
             tool_marker = new Sprite2D();
             tool_marker.Texture = tool_marker_texture;
             tool_marker.Modulate = new Color(1, 1, 1, 0.7f);
             tool_marker_container.AddChild(tool_marker);
 
-            // Erstelle den BuildingColliderManager
             tool_marker_collider_manager = new BuildingColliderManager();
             tool_marker_container.AddChild(tool_marker_collider_manager);
 
-            // Erstelle einen BuildingCollider
             if (Logger.NodeIsNotNull(building_collider_scene))
             {
                 BuildingCollider building_collider = (BuildingCollider)
@@ -82,13 +78,7 @@ public partial class EquipmentSelectBar : Container
 
     public override void _PhysicsProcess(double delta)
     {
-        if (!IsToolWithMenuActive())
-            return;
-
-        if (CutsceneManager.In_Cutscene)
-            return;
-
-        if (GameMenu.IsWindowActiv())
+        if (!ShouldProcessToolInput())
             return;
 
         UpdateToolMarker();
@@ -170,6 +160,224 @@ public partial class EquipmentSelectBar : Container
             EquipmentPanel.instance.CalculateStatsFromEquipment();
     }
 
+    public void HideToolMarker()
+    {
+        if (tool_marker_container != null)
+            tool_marker_container.Visible = false;
+    }
+
+    private void HandleFarmlandTileModification()
+    {
+        if (!IsModificationCooldownExpired())
+            return;
+
+        Vector2 mouse_world_pos = GetMouseWorldPosition();
+        Island nearest_island = IslandManager.instance.GetNearestIsland(mouse_world_pos);
+
+        if (!IsValidIsland(nearest_island))
+            return;
+
+        Vector2I tile_under_mouse = GetTileUnderMouse(nearest_island, mouse_world_pos);
+
+        if (!HasFarmlandTile(nearest_island, tile_under_mouse))
+            return;
+
+        if (!CanRemoveTile())
+            return;
+
+        ModifyFarmlandTile(nearest_island.farmland_tilemap, tile_under_mouse, current_tool_attr);
+        ReduceDurability();
+        UpdateModificationTime();
+    }
+
+    private void HandleFarmlandTileSet()
+    {
+        if (!IsModificationCooldownExpired())
+            return;
+
+        Vector2 mouse_world_pos = GetMouseWorldPosition();
+        Island nearest_island = IslandManager.instance.GetNearestIsland(mouse_world_pos);
+
+        if (!IsValidIsland(nearest_island))
+            return;
+
+        if (!HasValidToolAttribute())
+            return;
+
+        if (!CanPlaceTile())
+            return;
+
+        Vector2I tile_under_mouse = GetTileUnderMouse(nearest_island, mouse_world_pos);
+        PlaceFarmlandTile(nearest_island, tile_under_mouse);
+        ReduceDurability();
+        UpdateModificationTime();
+    }
+
+    private bool ShouldProcessToolInput()
+    {
+        if (!IsToolWithMenuActive())
+            return false;
+
+        if (CutsceneManager.In_Cutscene)
+            return false;
+
+        if (GameMenu.IsWindowActiv())
+            return false;
+
+        return true;
+    }
+
+    private bool IsToolWithMenuActive()
+    {
+        if (!HasValidSelectedSlot())
+            return false;
+
+        ToolAttribute tool_attr = GetCurrentToolAttribute();
+        return tool_attr != null && tool_attr.has_menu;
+    }
+
+    private bool HasValidSelectedSlot()
+    {
+        return current_selected_slot_item_ui != null;
+    }
+
+    private ToolAttribute GetCurrentToolAttribute()
+    {
+        if (current_selected_slot_item_ui == null)
+            return null;
+
+        return current_selected_slot_item_ui.item.info.GetAttributeOrNull<ToolAttribute>();
+    }
+
+    private void UpdateToolMarker()
+    {
+        if (!IsToolMarkerValid())
+            return;
+
+        Vector2 mouse_world_pos = GetMouseWorldPosition();
+        Island nearest_island = IslandManager.instance.GetNearestIsland(mouse_world_pos);
+
+        if (!IsValidFarmland(nearest_island))
+        {
+            HideToolMarker();
+            return;
+        }
+
+        Vector2I tile_under_mouse = GetTileUnderMouse(nearest_island, mouse_world_pos);
+        Vector2 tile_center_global = GetTileCenterGlobalPosition(nearest_island, tile_under_mouse);
+
+        tool_marker_container.GlobalPosition = tile_center_global;
+        tool_marker_container.Visible = true;
+    }
+
+    private bool IsToolMarkerValid()
+    {
+        return tool_marker != null && tool_marker_texture != null;
+    }
+
+    private Vector2 GetMouseWorldPosition()
+    {
+        Camera2D camera = GetViewport().GetCamera2D();
+        return camera != null ? camera.GetGlobalMousePosition() : GetGlobalMousePosition();
+    }
+
+    private Vector2I GetTileUnderMouse(Island island, Vector2 mouse_world_pos)
+    {
+        Vector2 mouse_tilemap_local_pos = island.farmland_tilemap.ToLocal(mouse_world_pos);
+        return island.farmland_tilemap.LocalToMap(mouse_tilemap_local_pos);
+    }
+
+    private Vector2 GetTileCenterGlobalPosition(Island island, Vector2I tile_pos)
+    {
+        Vector2 tile_center_local = island.farmland_tilemap.MapToLocal(tile_pos);
+        return island.farmland_tilemap.ToGlobal(tile_center_local);
+    }
+
+    private bool IsValidFarmland(Island island)
+    {
+        return island != null && island.farmland_tilemap != null;
+    }
+
+    private bool IsValidIsland(Island island)
+    {
+        if (island == null)
+        {
+            Debug.Print("[DEBUG] No island found under mouse");
+            return false;
+        }
+
+        if (island.farmland_tilemap == null)
+        {
+            Debug.Print("[DEBUG] Island has no farmland tilemap");
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool HasFarmlandTile(Island island, Vector2I tile_pos)
+    {
+        if (island.farmland_tilemap.GetCellSourceId(tile_pos) < 0)
+        {
+            Debug.Print($"[DEBUG] No farmland tile at position {tile_pos}");
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool HasValidToolAttribute()
+    {
+        if (current_tool_attr == null || current_tool_attr.auto_tile_id < 0)
+        {
+            Debug.Print("[DEBUG] Tool has no valid farmland tile source ID");
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool IsModificationCooldownExpired()
+    {
+        double current_time = Time.GetTicksMsec() / 1000.0;
+        return current_time - last_farmland_modification_time >= FARMLAND_MODIFICATION_COOLDOWN;
+    }
+
+    private bool CanRemoveTile()
+    {
+        if (!CheckBuildingColliders(isRemoving: true))
+        {
+            Debug.Print("[DEBUG] Cannot remove tile - collision check failed");
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool CanPlaceTile()
+    {
+        if (!CheckBuildingColliders())
+        {
+            Debug.Print("[DEBUG] Cannot place tile - collision check failed");
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool CheckBuildingColliders(bool isRemoving = false)
+    {
+        if (Logger.NodeIsNull(tool_marker_collider_manager) || Logger.NodeIsNull(current_tool_attr))
+            return false;
+
+        Array<placeable_building.TILETYPE> tileTypes = isRemoving
+            ? current_tool_attr.can_be_removed_on_tile_types
+            : current_tool_attr.can_be_used_on_tile_types;
+
+        tool_marker_collider_manager.SetTileType(tileTypes);
+        return tool_marker_collider_manager.AllCollidersOnBuildingLayer(null);
+    }
+
     private void ModifyFarmlandTile(
         TileMapLayer farmland,
         Vector2I tile_pos,
@@ -194,171 +402,29 @@ public partial class EquipmentSelectBar : Container
         }
     }
 
-    private bool IsToolWithMenuActive()
+    private void PlaceFarmlandTile(Island island, Vector2I tile_pos)
     {
-        if (current_selected_slot_item_ui == null)
-            return false;
-
-        ToolAttribute tool_attr =
-            current_selected_slot_item_ui.item.info.GetAttributeOrNull<ToolAttribute>();
-
-        if (tool_attr == null)
-            return false;
-
-        bool is_active = tool_attr.has_menu;
-        return is_active;
-    }
-
-    private void UpdateToolMarker()
-    {
-        if (tool_marker == null || tool_marker_texture == null)
-            return;
-
-        Camera2D camera = GetViewport().GetCamera2D();
-        Vector2 mouse_world_pos =
-            camera != null ? camera.GetGlobalMousePosition() : GetGlobalMousePosition();
-
-        Island nearest_island = IslandManager.instance.GetNearestIsland(mouse_world_pos);
-
-        if (nearest_island == null || nearest_island.farmland_tilemap == null)
-        {
-            tool_marker_container.Visible = false;
-            return;
-        }
-
-        Vector2 mouse_tilemap_local_pos = nearest_island.farmland_tilemap.ToLocal(mouse_world_pos);
-        Vector2I tile_under_mouse = nearest_island.farmland_tilemap.LocalToMap(
-            mouse_tilemap_local_pos
-        );
-
-        Vector2 tile_center_local = nearest_island.farmland_tilemap.MapToLocal(tile_under_mouse);
-        Vector2 tile_center_global = nearest_island.farmland_tilemap.ToGlobal(tile_center_local);
-
-        tool_marker_container.GlobalPosition = tile_center_global;
-        tool_marker_container.Visible = true;
-    }
-
-    private void HandleFarmlandTileModification()
-    {
-        double current_time = Time.GetTicksMsec() / 1000.0;
-        if (current_time - last_farmland_modification_time < FARMLAND_MODIFICATION_COOLDOWN)
-            return;
-
-        Camera2D camera = GetViewport().GetCamera2D();
-        Vector2 mouse_world_pos =
-            camera != null ? camera.GetGlobalMousePosition() : GetGlobalMousePosition();
-
-        Island nearest_island = IslandManager.instance.GetNearestIsland(mouse_world_pos);
-
-        if (nearest_island == null)
-        {
-            Debug.Print("[DEBUG] No island found under mouse");
-            return;
-        }
-
-        if (nearest_island.farmland_tilemap == null)
-        {
-            Debug.Print("[DEBUG] Island has no farmland tilemap");
-            return;
-        }
-
-        Vector2 mouse_tilemap_local_pos = nearest_island.farmland_tilemap.ToLocal(mouse_world_pos);
-        Vector2I tile_under_mouse = nearest_island.farmland_tilemap.LocalToMap(
-            mouse_tilemap_local_pos
-        );
-
-        if (nearest_island.farmland_tilemap.GetCellSourceId(tile_under_mouse) < 0)
-        {
-            Debug.Print($"[DEBUG] No farmland tile at position {tile_under_mouse}");
-            return;
-        }
-
-        // Prüfe ob das Tile entfernt werden kann
-        if (!CheckBuildingColliders(isRemoving: true))
-        {
-            Debug.Print("[DEBUG] Cannot remove tile - collision check failed");
-            return;
-        }
-
-        ModifyFarmlandTile(nearest_island.farmland_tilemap, tile_under_mouse, current_tool_attr);
-
-        // Durability reduzieren
-        if (Logger.NodeIsNotNull(EquipmentPanel.instance))
-            EquipmentPanel.instance.RemoveDurability(1);
-
-        last_farmland_modification_time = Time.GetTicksMsec() / 1000.0;
-    }
-
-    private bool CheckBuildingColliders(bool isRemoving = false)
-    {
-        if (Logger.NodeIsNull(tool_marker_collider_manager) || Logger.NodeIsNull(current_tool_attr))
-            return false;
-
-        Array<placeable_building.TILETYPE> tileTypes = isRemoving
-            ? current_tool_attr.can_be_removed_on_tile_types
-            : current_tool_attr.can_be_used_on_tile_types;
-
-        tool_marker_collider_manager.SetTileType(tileTypes);
-        return tool_marker_collider_manager.AllCollidersOnBuildingLayer(null);
-    }
-
-    private void HandleFarmlandTileSet()
-    {
-        double current_time = Time.GetTicksMsec() / 1000.0;
-        if (current_time - last_farmland_modification_time < FARMLAND_MODIFICATION_COOLDOWN)
-            return;
-
-        Camera2D camera = GetViewport().GetCamera2D();
-        Vector2 mouse_world_pos =
-            camera != null ? camera.GetGlobalMousePosition() : GetGlobalMousePosition();
-
-        Island nearest_island = IslandManager.instance.GetNearestIsland(mouse_world_pos);
-
-        if (nearest_island == null)
-        {
-            Debug.Print("[DEBUG] No island found under mouse");
-            return;
-        }
-
-        if (nearest_island.farmland_tilemap == null)
-        {
-            Debug.Print("[DEBUG] Island has no farmland tilemap");
-            return;
-        }
-
-        if (current_tool_attr == null || current_tool_attr.auto_tile_id < 0)
-        {
-            Debug.Print("[DEBUG] Tool has no valid farmland tile source ID");
-            return;
-        }
-
-        if (!CheckBuildingColliders())
-        {
-            Debug.Print("[DEBUG] Cannot place tile - collision check failed");
-            return;
-        }
-
-        Vector2 mouse_tilemap_local_pos = nearest_island.farmland_tilemap.ToLocal(mouse_world_pos);
-        Vector2I tile_under_mouse = nearest_island.farmland_tilemap.LocalToMap(
-            mouse_tilemap_local_pos
-        );
-
-        nearest_island.farmland_tilemap.SetCellsTerrainConnect(
-            new Array<Vector2I> { tile_under_mouse },
+        island.farmland_tilemap.SetCellsTerrainConnect(
+            new Array<Vector2I> { tile_pos },
             0,
             current_tool_attr.auto_tile_id
         );
 
-        var set_source_id = nearest_island.farmland_tilemap.GetCellSourceId(tile_under_mouse);
-        var set_atlas = nearest_island.farmland_tilemap.GetCellAtlasCoords(tile_under_mouse);
+        var set_source_id = island.farmland_tilemap.GetCellSourceId(tile_pos);
+        var set_atlas = island.farmland_tilemap.GetCellAtlasCoords(tile_pos);
         Debug.Print(
             $"[DEBUG] After SetCellsTerrainConnect - Source ID: {set_source_id}, Atlas: {set_atlas}"
         );
+    }
 
-        // Durability reduzieren
+    private void ReduceDurability()
+    {
         if (Logger.NodeIsNotNull(EquipmentPanel.instance))
             EquipmentPanel.instance.RemoveDurability(1);
+    }
 
+    private void UpdateModificationTime()
+    {
         last_farmland_modification_time = Time.GetTicksMsec() / 1000.0;
     }
 }

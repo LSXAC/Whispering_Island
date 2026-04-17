@@ -176,6 +176,11 @@ public partial class Giver : Area2D
         if (belt.can_receive_item() && ((ProductionMachine)building).count > 0)
         {
             ProductionMachine prod_building = (ProductionMachine)building;
+            if (prod_building.output_item_resource == null)
+            {
+                Debug.Print("Production machine has no output item resource set!");
+                return;
+            }
             Debug.Print(
                 $"[GIVER] 📤 Sending production item: {prod_building.output_item_resource.name}"
             );

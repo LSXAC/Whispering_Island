@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://cn5b25qghis1f"]
+
+[ext_resource type="Script" uid="uid://dhh5hag8ls1mj" path="res://Entities/Placeable Building/Machine/OreMinerMachine.cs" id="1_dcbwe"]
+[ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="3_xgsyu"]
+[ext_resource type="Texture2D" uid="uid://cyj3ocpxtclg4" path="res://Entities/Placeable Building/Machine/Growther/Ore Miner/Texture/Ore_Miner.png" id="5_x507b"]
+[ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="7_nsboh"]
+[ext_resource type="Script" uid="uid://bnn86cn1jdpgk" path="res://Entities/Placeable Building/BuildingColliderManager.cs" id="9_kbcqd"]
+[ext_resource type="TileSet" uid="uid://5b1ncrvsg5w1" path="res://Islands/Tileset/BlockingTileset.tres" id="10_heu4b"]
+[ext_resource type="Script" uid="uid://d31875p3e3y02" path="res://Entities/MouseArea.cs" id="11_elset"]
+[ext_resource type="PackedScene" uid="uid://j27j32uphbhr" path="res://Entities/Placeable Building/Machine/Components/Giver/component_building_item_giver.tscn" id="12_p68p5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fs0bn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_x507b")
+}],
+"loop": true,
+"name": &"Normal",
+"speed": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_l6moi"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_pnxny"]
+resource_name = "Tree_Idle"
+length = 1.3
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_14qf6"]
+_data = {
+&"RESET": SubResource("Animation_l6moi"),
+&"Tree_Idle": SubResource("Animation_pnxny")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0le"]
+size = Vector2(51, 44)
+
+[node name="Building" type="StaticBody2D" unique_id=1101112268 node_paths=PackedStringArray("machine_activ_color_rect", "process_timer")]
+y_sort_enabled = true
+collision_layer = 13
+collision_mask = 0
+script = ExtResource("1_dcbwe")
+ore_tilemap_name = "OREAREA"
+spawn_time = 10.0
+machine_enabled = true
+machine_activ_color_rect = NodePath("MachineActivColorRect")
+process_timer = NodePath("ProcessTimer")
+building_id = 43
+consums_magic_power = true
+magic_power_consumption = 5.0
+tile_types = Array[int]([2])
+title = "BUILDING_WOOD_GROWTHER"
+description = "BUILDING_WOOD_GROWTHER"
+
+[node name="SpriteAnimationManager" type="Node2D" parent="." unique_id=332065024]
+script = ExtResource("3_xgsyu")
+use_sprite = false
+use_animated_sprite = true
+anim_name = "Normal"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAnimationManager" unique_id=1248060801]
+sprite_frames = SubResource("SpriteFrames_fs0bn")
+animation = &"Normal"
+frame_progress = 0.42868307
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteAnimationManager" unique_id=979461068]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_14qf6")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteAnimationManager" unique_id=704566041]
+visible = false
+texture = ExtResource("5_x507b")
+
+[node name="ShadowNode" parent="SpriteAnimationManager" unique_id=246761824 instance=ExtResource("7_nsboh")]
+
+[node name="BuildingAreas" type="Node2D" parent="." unique_id=1016570940 node_paths=PackedStringArray("collision_tilemap")]
+script = ExtResource("9_kbcqd")
+collision_tilemap = NodePath("../CollisionTemplateTilemap")
+
+[node name="CollisionTemplateTilemap" type="TileMapLayer" parent="." unique_id=205623328]
+z_index = -2
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0)
+enabled = false
+tile_set = ExtResource("10_heu4b")
+
+[node name="MouseArea" type="Area2D" parent="." unique_id=840081071]
+position = Vector2(-8, -8)
+collision_layer = 2
+script = ExtResource("11_elset")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=1418134154]
+position = Vector2(8.5, 12)
+shape = SubResource("RectangleShape2D_fk0le")
+
+[node name="Giver" parent="." unique_id=1986682076 node_paths=PackedStringArray("building") instance=ExtResource("12_p68p5")]
+position = Vector2(-37, 4)
+direction_not_giving = 1
+building = NodePath("..")
+
+[node name="Giver2" parent="." unique_id=190335220 node_paths=PackedStringArray("building") instance=ExtResource("12_p68p5")]
+position = Vector2(37, 4)
+direction_not_giving = 3
+to_direction = 1
+building = NodePath("..")
+
+[node name="Holder" parent="Giver2" index="0" unique_id=1704036799]
+position = Vector2(-16, 1)
+
+[node name="ProcessTimer" type="Timer" parent="." unique_id=1097977986]
+wait_time = 0.1
+autostart = true
+
+[node name="BuildingPolygon" type="CollisionPolygon2D" parent="." unique_id=1695153310]
+position = Vector2(7, 12)
+polygon = PackedVector2Array(24, 4, 21, 4, 20, 7, 18, 10, 15, 13, 12, 15, 9, 17, 6, 18, 3, 19, 0, 19, 0, 21, -14, 21, -14, 19, -17, 19, -20, 18, -23, 17, -26, 15, -29, 13, -31, 11, -33, 8, -35, 5, -35, 4, -38, 4, -38, -10, -34, -10, -34, -11, -32, -13, -30, -15, -28, -17, -25, -19, -21, -21, -16, -22, -13, -23, -13, -24, -1, -24, -1, -23, 3, -22, 5, -21, 10, -19, 16, -14, 19, -11, 19, -10, 24, -10)
+
+[node name="MachineActivColorRect" type="ColorRect" parent="." unique_id=627099440]
+z_index = 2
+offset_left = -1.0
+offset_top = 23.0
+offset_right = 1.0
+offset_bottom = 25.0
+
+[connection signal="mouse_entered" from="MouseArea" to="MouseArea" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="MouseArea" to="MouseArea" method="OnMouseLeaved"]
+[connection signal="timeout" from="ProcessTimer" to="." method="OnSpawnTimeout"]
+
+[editable path="Giver2"]

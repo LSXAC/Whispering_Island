@@ -36,7 +36,8 @@ public abstract partial class placeable_building : Building_Node
     public enum TILETYPE
     {
         BUILDINGCOLLISION,
-        FARMINGGROUND
+        FARMINGGROUND,
+        OREAREA
     }
 
     public abstract Resource Save();

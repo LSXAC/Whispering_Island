@@ -14,7 +14,7 @@ public partial class Island : Node2D
     public RemovableObjectsManager removable_objects_manager;
     public IslandObjectSaveManager island_object_save_manager;
     public TileMapLayer ground_tilemap;
-    
+
     [Export]
     public TileMapLayer farmland_tilemap;
 

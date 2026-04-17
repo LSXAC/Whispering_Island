@@ -198,6 +198,8 @@ public partial class BuildingPlacer : Node2D
         if (temp is MachineBase mb)
         {
             mb.EnableAreas();
+            if (mb is OreMinerMachine oreMiner)
+                oreMiner.InitOreMiner();
             if (mb is NerveTransducer transducer)
                 NervTransducterManager.instance.AddNervTransducer(transducer);
         }

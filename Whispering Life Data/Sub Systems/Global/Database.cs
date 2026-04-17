@@ -325,6 +325,7 @@ public partial class Database : Node
         MAGIC_GENERATOR,
         NERVE_TRANSDUCER,
         COMBINER,
-        ALCHEMY_LAB
+        ALCHEMY_LAB,
+        ORE_MINER,
     }
 }

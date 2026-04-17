@@ -86,15 +86,9 @@ public partial class BuildingCollider : Area2D
             }
 
             if (types != null)
-            {
                 foreach (var t in types)
-                {
                     if (node.IsInGroup(t.ToString()))
-                    {
                         found = true;
-                    }
-                }
-            }
         }
 
         on_building_layer = found;

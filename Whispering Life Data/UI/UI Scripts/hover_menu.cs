@@ -216,10 +216,15 @@ public partial class hover_menu : PanelContainer
             instance.Line2.Visible = true;
 
             instance.process_bar_content.Text = production_machine.progress + "/" + 100;
-            instance.process_output_content.Text =
-                production_machine.count
-                + "x "
-                + TranslationServer.Translate(production_machine.output_item_resource.name);
+            if (production_machine.output_item_resource != null)
+                instance.process_output_content.Text =
+                    production_machine.count
+                    + "x "
+                    + TranslationServer.Translate(production_machine.output_item_resource.name);
+            else
+                instance.process_output_content.Text = TranslationServer.Translate(
+                    "HOVER_MENU_PROCESS_NO_ITEM"
+                );
         }
 
         if (node is ChestBase chest)
