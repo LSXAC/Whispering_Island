@@ -59,7 +59,7 @@ process_timer = NodePath("ProcessTimer")
 building_id = 5
 consums_magic_power = true
 magic_power_consumption = 5.0
-tile_types = Array[int]([0])
+tile_types = Array[int]([1])
 title = "BUILDING_WOOD_GROWTHER"
 description = "BUILDING_WOOD_GROWTHER"
 
