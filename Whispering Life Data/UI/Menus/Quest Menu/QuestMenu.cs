@@ -30,16 +30,93 @@ public partial class QuestMenu : ColorRect
 
     [Export]
     public Label reward_label;
+
+    [Export]
+    public TabContainer quest_options_tab_container; // TabContainer mit den 3 Quest-Optionen
+
+    [Export]
+    public Control quest_selection_container; // Container mit Quest-Optionen (sichtbar bei Auswahl)
+
+    [Export]
+    public Control quest_display_container; // Container mit Quest-Details (sichtbar wenn Quest lauft)
+
     public PackedScene h_box_item = ResourceLoader.Load<PackedScene>(
         ResourceUid.UidToPath("uid://bnf8yngk7oyy0")
     );
     public static QuestInfo currentQuest = null;
+    public static QuestMenu questMenu;
 
     private Array<Label> item_labels = new Array<Label>();
+    private Array<QuestSelect> quest_select_panels = new Array<QuestSelect>();
 
     public override void _Ready()
     {
+        questMenu = this;
         quest_inventory.OnItemChanged += CheckQuest;
+
+        if (quest_options_tab_container != null)
+            for (int i = 0; i < quest_options_tab_container.GetChildCount(); i++)
+            {
+                QuestSelect questSelect = quest_options_tab_container.GetChild(i) as QuestSelect;
+                if (questSelect != null)
+                    quest_select_panels.Add(questSelect);
+            }
+    }
+
+    public void InitQuestSelection(int questId)
+    {
+        if (QuestManager.instance == null)
+            return;
+
+        Array<QuestInfo> availableQuests = QuestManager.instance.GetRandomQuestsFromPool(
+            questId,
+            3
+        );
+
+        for (int i = 0; i < quest_select_panels.Count; i++)
+        {
+            if (i < availableQuests.Count)
+                quest_select_panels[i].InitQuestOption(availableQuests[i], i);
+            else
+                quest_select_panels[i].InitQuestOption(null, -1);
+        }
+
+        GD.Print("Quest Selection initialized with " + availableQuests.Count + " quests");
+    }
+
+    /// <summary>
+    /// Wird aufgerufen, wenn der Spieler eine Quest auswählt
+    /// </summary>
+    public void OnSelectQuestOption(int optionIndex)
+    {
+        if (optionIndex < 0 || optionIndex >= quest_select_panels.Count)
+            return;
+
+        QuestSelect selectedPanel = quest_select_panels[optionIndex];
+        QuestInfo selectedQuest = selectedPanel.GetCurrentQuest();
+
+        if (selectedQuest == null)
+            return;
+
+        // Speichere die ausgewählte Quest
+        QuestManager.current_selected_quest = selectedQuest;
+        currentQuest = selectedQuest;
+
+        // Berechne die Zeit für diese Quest
+        double difficultyTimeMultiplier = 1.0 / GameManager.difficulty_multiplier;
+        QuestManager.current_quest_time =
+            Mathf.RoundToInt(selectedQuest.quest_time * difficultyTimeMultiplier / 5.0) * 5;
+
+        // Initialisiere die Quest UI mit der ausgewählten Quest
+        InitQuest(selectedQuest);
+        QuestMiniPanel.instance.UpdateTimeLabel(QuestManager.current_quest_time);
+        QuestMiniPanel.instance.InitQuestMiniPanel(selectedQuest);
+        MonsterIsland.instance.InitializeQuestTimers(QuestManager.current_quest_time);
+
+        // Wechsle zu Quest-Display
+        ShowQuestDisplay();
+
+        GD.Print("Quest selected: " + selectedQuest.quest_name);
     }
 
     public void InitQuest(QuestInfo quest)
@@ -76,7 +153,12 @@ public partial class QuestMenu : ColorRect
     public void OnOpenQuestMenu()
     {
         GameMenu.instance.OnOpenQuestTab();
-        OnVisiblityChanged();
+
+        // Wenn keine Quest geladen, erzwinge Quest-Selection anzuzeigen
+        if (QuestManager.current_selected_quest == null)
+            ShowQuestSelection();
+        else
+            OnVisiblityChanged();
     }
 
     public void OnVisiblityChanged()
@@ -90,39 +172,39 @@ public partial class QuestMenu : ColorRect
             GD.PrintErr("QuestManager.instance is null in QuestMenu.OnVisiblityChanged");
             return;
         }
+
+        if (QuestManager.current_selected_quest == null)
+        {
+            GD.PrintErr("No quest selected in QuestMenu.OnVisiblityChanged");
+            return;
+        }
+
         quest_name_label.Text =
             "[center]"
-            + TranslationServer.Translate(
-                QuestManager.instance.quests[QuestManager.current_quest_id].quest_name
-            );
+            + TranslationServer.Translate(QuestManager.current_selected_quest.quest_name);
         quest_description_label.Text =
             "[center]"
-            + TranslationServer.Translate(
-                QuestManager.instance.quests[QuestManager.current_quest_id].quest_description
-            );
-        reward_label.Text = QuestManager
-            .instance.quests[QuestManager.current_quest_id]
-            .reward_money.ToString();
+            + TranslationServer.Translate(QuestManager.current_selected_quest.quest_description);
+        reward_label.Text = QuestManager.current_selected_quest.reward_money.ToString();
 
         CheckQuest();
     }
 
     public void CheckQuest()
     {
+        if (QuestManager.current_selected_quest == null)
+            return;
+
         ResetParent();
         int multi = 1;
         if (QuestManager.next_quest_is_doubled_items)
             multi = 2;
 
-        CreateLabels(
-            QuestManager.instance.quests[QuestManager.current_quest_id].required_items,
-            quest_label_parent,
-            multi
-        );
+        CreateLabels(QuestManager.current_selected_quest.required_items, quest_label_parent, multi);
         if (
             InventoryContainsQuestItems(
                 quest_inventory.inventory_items,
-                QuestManager.instance.quests[QuestManager.current_quest_id].required_items,
+                QuestManager.current_selected_quest.required_items,
                 multi
             )
         )
@@ -132,7 +214,7 @@ public partial class QuestMenu : ColorRect
 
         GlobalFunctions.ItemsWithDamage = CalculateDamagedQuestItems(
             quest_inventory.inventory_items,
-            QuestManager.instance.quests[QuestManager.current_quest_id].required_items,
+            QuestManager.current_selected_quest.required_items,
             multi
         );
 
@@ -218,9 +300,13 @@ public partial class QuestMenu : ColorRect
 
     public static void CreateLabels(Array<Item> questItems, Control parent, int multi = 1)
     {
+        PackedScene h_box_item = ResourceLoader.Load<PackedScene>(
+            ResourceUid.UidToPath("uid://bnf8yngk7oyy0")
+        );
+
         foreach (Item item in questItems)
         {
-            h_box_item label = (h_box_item)GameMenu.questMenu.h_box_item.Instantiate();
+            h_box_item label = (h_box_item)h_box_item.Instantiate();
             parent.AddChild(label);
 
             Item item_ref = item.Clone();
@@ -249,5 +335,34 @@ public partial class QuestMenu : ColorRect
                     : global::h_box_item.colorType.white
             );
         }
+    }
+
+    /// <summary>
+    /// Zeigt den Quest-Display Container und versteckt die Quest-Selection
+    /// </summary>
+    public void ShowQuestDisplay()
+    {
+        if (quest_selection_container != null)
+            quest_selection_container.Visible = false;
+
+        if (quest_display_container != null)
+            quest_display_container.Visible = true;
+    }
+
+    /// <summary>
+    /// Zeigt den Quest-Selection Container und versteckt den Quest-Display
+    /// Wird aufgerufen wenn neue Quests angeboten werden
+    /// </summary>
+    public void ShowQuestSelection()
+    {
+        if (quest_display_container != null)
+            quest_display_container.Visible = false;
+
+        if (quest_selection_container != null)
+            quest_selection_container.Visible = true;
+
+        // Lade neue Quest-Optionen
+        if (QuestManager.current_quest_id >= 0 && QuestManager.instance != null)
+            InitQuestSelection(QuestManager.current_quest_id);
     }
 }

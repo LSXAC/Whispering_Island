@@ -284,9 +284,8 @@ public partial class Inventory : SlotUpdater
                 }
             }
 
-            QuestMiniPanel.instance.UpdateQuestMiniPanel(
-                QuestManager.instance.quests[QuestManager.current_quest_id]
-            );
+            if (QuestManager.current_selected_quest != null)
+                QuestMiniPanel.instance.UpdateQuestMiniPanel(QuestManager.current_selected_quest);
         }
 
         WearableAttribute attribute = item_info.GetAttributeOrNull<WearableAttribute>();
@@ -316,9 +315,10 @@ public partial class Inventory : SlotUpdater
                             (int)item.state
                         );
 
-                    QuestMiniPanel.instance.UpdateQuestMiniPanel(
-                        QuestManager.instance.quests[QuestManager.current_quest_id]
-                    );
+                    if (QuestManager.current_selected_quest != null)
+                        QuestMiniPanel.instance.UpdateQuestMiniPanel(
+                            QuestManager.current_selected_quest
+                        );
                     UpdateSlot(i);
                     return;
                 }
@@ -342,9 +342,10 @@ public partial class Inventory : SlotUpdater
                             item_info.max_stackable_size,
                             (int)item.state
                         );
-                    QuestMiniPanel.instance.UpdateQuestMiniPanel(
-                        QuestManager.instance.quests[QuestManager.current_quest_id]
-                    );
+                    if (QuestManager.current_selected_quest != null)
+                        QuestMiniPanel.instance.UpdateQuestMiniPanel(
+                            QuestManager.current_selected_quest
+                        );
                     remaining -= item_info.max_stackable_size;
                 }
             }
@@ -404,9 +405,8 @@ public partial class Inventory : SlotUpdater
         if (remaining < 0)
             GD.PrintErr("Not all resources got removed, cause not enough items!");
 
-        QuestMiniPanel.instance.UpdateQuestMiniPanel(
-            QuestManager.instance.quests[QuestManager.current_quest_id]
-        );
+        if (QuestManager.current_selected_quest != null)
+            QuestMiniPanel.instance.UpdateQuestMiniPanel(QuestManager.current_selected_quest);
     }
 
     public bool CanReceiveItem(Item item, ItemSave[] array)
@@ -514,9 +514,8 @@ public partial class Inventory : SlotUpdater
                 .GetSlotItemUI()
                 .SelfModulate = pref_ref.SelfModulate;
 
-        QuestMiniPanel.instance.UpdateQuestMiniPanel(
-            QuestManager.instance.quests[QuestManager.current_quest_id]
-        );
+        if (QuestManager.current_selected_quest != null)
+            QuestMiniPanel.instance.UpdateQuestMiniPanel(QuestManager.current_selected_quest);
     }
 
     public override void ClearSlot(int index)

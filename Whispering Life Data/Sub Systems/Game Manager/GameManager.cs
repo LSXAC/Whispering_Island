@@ -141,6 +141,8 @@ public partial class GameManager : Node2D
         //Save Quest
         save_state.quest_save.current_quest_id = QuestManager.current_quest_id;
         save_state.quest_save.quest_time_left = QuestManager.current_quest_time;
+        save_state.quest_save.current_selected_quest = QuestManager.current_selected_quest;
+        save_state.quest_save.master_seed = QuestManager.current_master_seed;
 
         if (PlayerInventoryUI.instance != null)
             save_state.char_save.inventory_items = PlayerInventoryUI.instance.inventory_items;

@@ -132,6 +132,7 @@
 [ext_resource type="Resource" uid="uid://c1p7gva6jex80" path="res://Sub Systems/Dialogue System/Dialogues/Quests/Questing.dialogue" id="125_m1qfe"]
 [ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://UI/Themes/Theme_Slots.tres" id="125_uspna"]
 [ext_resource type="Script" uid="uid://ck6hcox7174uj" path="res://Sub Systems/Inventory/Chest/ChestInventory.cs" id="127_4fnoa"]
+[ext_resource type="Script" uid="uid://ctf878viheqps" path="res://UI/Menus/Game Menu/QuestSelect.cs" id="133_aa4tk"]
 
 [sub_resource type="Resource" id="Resource_7gwna"]
 script = ExtResource("15_jkil6")
@@ -7114,7 +7115,7 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 alignment = 1
 
-[node name="QuestMenu" type="ColorRect" parent="Background" unique_id=183995902 node_paths=PackedStringArray("quest_label_parent", "success_label", "quest_name_label", "complete_button", "quest_description_label", "quest_inventory", "reward_label")]
+[node name="QuestMenu" type="ColorRect" parent="Background" unique_id=183995902 node_paths=PackedStringArray("quest_label_parent", "success_label", "quest_name_label", "complete_button", "quest_description_label", "quest_inventory", "reward_label", "quest_options_tab_container", "quest_selection_container", "quest_display_container")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -7128,14 +7129,17 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.67451, 0.654902, 0.796078, 1)
 script = ExtResource("124_miyc7")
-quest_label_parent = NodePath("MarginContainer/VBoxContainer2/HBoxContainer2/VBoxContainer")
-success_label = NodePath("MarginContainer/VBoxContainer2/HBoxContainer/ChangeNotToPenality")
-quest_name_label = NodePath("MarginContainer/VBoxContainer2/Label")
-complete_button = NodePath("MarginContainer/VBoxContainer2/HBoxContainer3/CompleteQuestButton")
-quest_description_label = NodePath("MarginContainer/VBoxContainer2/Description")
+quest_label_parent = NodePath("MarginContainer/VBoxRequest/HBoxContainer2/VBoxContainer")
+success_label = NodePath("MarginContainer/VBoxRequest/HBoxContainer/ChangeNotToPenality")
+quest_name_label = NodePath("MarginContainer/VBoxRequest/Label")
+complete_button = NodePath("MarginContainer/VBoxRequest/HBoxContainer3/CompleteQuestButton")
+quest_description_label = NodePath("MarginContainer/VBoxRequest/Description")
 dialogue_timeline = ExtResource("125_m1qfe")
-quest_inventory = NodePath("MarginContainer/VBoxContainer2/ChestInventoryIn")
-reward_label = NodePath("MarginContainer/VBoxContainer2/HBoxContainer/MoneyLabel")
+quest_inventory = NodePath("MarginContainer/VBoxRequest/ChestInventoryIn")
+reward_label = NodePath("MarginContainer/VBoxRequest/HBoxContainer/MoneyLabel")
+quest_options_tab_container = NodePath("MarginContainer/TabContainer")
+quest_selection_container = NodePath("MarginContainer/TabContainer")
+quest_display_container = NodePath("MarginContainer/VBoxRequest")
 
 [node name="HeaderColorRect" parent="Background/QuestMenu" unique_id=220148782 instance=ExtResource("11_45saq")]
 layout_mode = 0
@@ -7157,10 +7161,11 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Background/QuestMenu/MarginContainer" unique_id=1781447634]
+[node name="VBoxRequest" type="VBoxContainer" parent="Background/QuestMenu/MarginContainer" unique_id=1781447634]
+visible = false
 layout_mode = 2
 
-[node name="Label" type="RichTextLabel" parent="Background/QuestMenu/MarginContainer/VBoxContainer2" unique_id=1483086208]
+[node name="Label" type="RichTextLabel" parent="Background/QuestMenu/MarginContainer/VBoxRequest" unique_id=1483086208]
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 theme_override_constants/outline_size = 5
@@ -7171,7 +7176,7 @@ theme_override_font_sizes/bold_font_size = 12
 bbcode_enabled = true
 text = "[center]Die hungrige Insel #1"
 
-[node name="Description" type="RichTextLabel" parent="Background/QuestMenu/MarginContainer/VBoxContainer2" unique_id=1804523018]
+[node name="Description" type="RichTextLabel" parent="Background/QuestMenu/MarginContainer/VBoxRequest" unique_id=1804523018]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/outline_size = 3
@@ -7184,35 +7189,35 @@ text = "Du bist zufällig auf eine hungrige Insel getroffen. Du bist dir nicht S
 Naja, das was die Insel grade will, sieht eigentlich noch nicht so schwer aus!"
 fit_content = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/VBoxContainer2" unique_id=1781651518]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/VBoxRequest" unique_id=1781651518]
 layout_mode = 2
 alignment = 1
 
-[node name="VBoxContainer" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer2" unique_id=181130693]
+[node name="VBoxContainer" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/VBoxRequest/HBoxContainer2" unique_id=181130693]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="HBoxItem" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer2/VBoxContainer" unique_id=1556551577 instance=ExtResource("124_lxbwb")]
+[node name="HBoxItem" parent="Background/QuestMenu/MarginContainer/VBoxRequest/HBoxContainer2/VBoxContainer" unique_id=1556551577 instance=ExtResource("124_lxbwb")]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="HBoxItem2" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer2/VBoxContainer" unique_id=1437844519 instance=ExtResource("124_lxbwb")]
+[node name="HBoxItem2" parent="Background/QuestMenu/MarginContainer/VBoxRequest/HBoxContainer2/VBoxContainer" unique_id=1437844519 instance=ExtResource("124_lxbwb")]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="HBoxItem3" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer2/VBoxContainer" unique_id=550655428 instance=ExtResource("124_lxbwb")]
+[node name="HBoxItem3" parent="Background/QuestMenu/MarginContainer/VBoxRequest/HBoxContainer2/VBoxContainer" unique_id=550655428 instance=ExtResource("124_lxbwb")]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="ChestInventoryIn" type="Control" parent="Background/QuestMenu/MarginContainer/VBoxContainer2" unique_id=686449062]
+[node name="ChestInventoryIn" type="Control" parent="Background/QuestMenu/MarginContainer/VBoxRequest" unique_id=686449062]
 custom_minimum_size = Vector2(0, 85)
 layout_mode = 2
 script = ExtResource("127_4fnoa")
 inventory_items = []
 
-[node name="GridContainer" type="GridContainer" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn" unique_id=734503638]
+[node name="GridContainer" type="GridContainer" parent="Background/QuestMenu/MarginContainer/VBoxRequest/ChestInventoryIn" unique_id=734503638]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -7229,42 +7234,42 @@ theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 columns = 5
 
-[node name="SlotBackground0" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn/GridContainer" unique_id=1405380423 instance=ExtResource("13_m8k7p")]
+[node name="SlotBackground0" parent="Background/QuestMenu/MarginContainer/VBoxRequest/ChestInventoryIn/GridContainer" unique_id=1405380423 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="SlotBackground1" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn/GridContainer" unique_id=486456129 instance=ExtResource("13_m8k7p")]
+[node name="SlotBackground1" parent="Background/QuestMenu/MarginContainer/VBoxRequest/ChestInventoryIn/GridContainer" unique_id=486456129 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="SlotBackground2" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn/GridContainer" unique_id=1474547462 instance=ExtResource("13_m8k7p")]
+[node name="SlotBackground2" parent="Background/QuestMenu/MarginContainer/VBoxRequest/ChestInventoryIn/GridContainer" unique_id=1474547462 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="SlotBackground3" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn/GridContainer" unique_id=238179537 instance=ExtResource("13_m8k7p")]
+[node name="SlotBackground3" parent="Background/QuestMenu/MarginContainer/VBoxRequest/ChestInventoryIn/GridContainer" unique_id=238179537 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="SlotBackground4" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn/GridContainer" unique_id=1844663038 instance=ExtResource("13_m8k7p")]
+[node name="SlotBackground4" parent="Background/QuestMenu/MarginContainer/VBoxRequest/ChestInventoryIn/GridContainer" unique_id=1844663038 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="SlotBackground5" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn/GridContainer" unique_id=1184000313 instance=ExtResource("13_m8k7p")]
+[node name="SlotBackground5" parent="Background/QuestMenu/MarginContainer/VBoxRequest/ChestInventoryIn/GridContainer" unique_id=1184000313 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="SlotBackground6" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn/GridContainer" unique_id=743639419 instance=ExtResource("13_m8k7p")]
+[node name="SlotBackground6" parent="Background/QuestMenu/MarginContainer/VBoxRequest/ChestInventoryIn/GridContainer" unique_id=743639419 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="SlotBackground7" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn/GridContainer" unique_id=2068321819 instance=ExtResource("13_m8k7p")]
+[node name="SlotBackground7" parent="Background/QuestMenu/MarginContainer/VBoxRequest/ChestInventoryIn/GridContainer" unique_id=2068321819 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="SlotBackground8" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn/GridContainer" unique_id=1267610108 instance=ExtResource("13_m8k7p")]
+[node name="SlotBackground8" parent="Background/QuestMenu/MarginContainer/VBoxRequest/ChestInventoryIn/GridContainer" unique_id=1267610108 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="SlotBackground9" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/ChestInventoryIn/GridContainer" unique_id=1638855279 instance=ExtResource("13_m8k7p")]
+[node name="SlotBackground9" parent="Background/QuestMenu/MarginContainer/VBoxRequest/ChestInventoryIn/GridContainer" unique_id=1638855279 instance=ExtResource("13_m8k7p")]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/VBoxContainer2" unique_id=297121596]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/VBoxRequest" unique_id=297121596]
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="ChangeNotToPenality" type="Label" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1176591193]
+[node name="ChangeNotToPenality" type="Label" parent="Background/QuestMenu/MarginContainer/VBoxRequest/HBoxContainer" unique_id=1176591193]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
@@ -7272,7 +7277,7 @@ theme_override_font_sizes/font_size = 10
 text = "95% Success Rate"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1691200343]
+[node name="Label" type="Label" parent="Background/QuestMenu/MarginContainer/VBoxRequest/HBoxContainer" unique_id=1691200343]
 layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_6nb4j")
@@ -7282,7 +7287,7 @@ horizontal_alignment = 1
 script = ExtResource("26_tl5yt")
 label_translation_string = "QUEST_MENU_REWARD"
 
-[node name="TextureRect" type="TextureRect" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1822025213]
+[node name="TextureRect" type="TextureRect" parent="Background/QuestMenu/MarginContainer/VBoxRequest/HBoxContainer" unique_id=1822025213]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme = ExtResource("125_uspna")
@@ -7290,7 +7295,7 @@ texture = ExtResource("31_sy28q")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MoneyLabel" type="Label" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=569208143]
+[node name="MoneyLabel" type="Label" parent="Background/QuestMenu/MarginContainer/VBoxRequest/HBoxContainer" unique_id=569208143]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
@@ -7299,11 +7304,11 @@ theme_override_font_sizes/font_size = 10
 text = "2883"
 horizontal_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/VBoxContainer2" unique_id=1522287511]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/VBoxRequest" unique_id=1522287511]
 layout_mode = 2
 alignment = 1
 
-[node name="ReloadButton" type="Button" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer3" unique_id=38851256]
+[node name="ReloadButton" type="Button" parent="Background/QuestMenu/MarginContainer/VBoxRequest/HBoxContainer3" unique_id=38851256]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_constants/outline_size = 5
@@ -7316,7 +7321,7 @@ theme_override_styles/disabled = ExtResource("31_j0nuq")
 theme_override_styles/focus = ExtResource("28_gcthi")
 text = "(RELOAD)"
 
-[node name="CompleteQuestButton" type="Button" parent="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer3" unique_id=69728070]
+[node name="CompleteQuestButton" type="Button" parent="Background/QuestMenu/MarginContainer/VBoxRequest/HBoxContainer3" unique_id=69728070]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_constants/outline_size = 5
@@ -7328,6 +7333,351 @@ theme_override_styles/hover = ExtResource("32_w3vm4")
 theme_override_styles/disabled = ExtResource("31_j0nuq")
 theme_override_styles/focus = ExtResource("28_gcthi")
 text = "Finish Quest"
+
+[node name="TabContainer" type="TabContainer" parent="Background/QuestMenu/MarginContainer" unique_id=1538974437]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("43_fato5")
+theme_override_styles/tab_unselected = ExtResource("41_fato5")
+theme_override_styles/tab_selected = ExtResource("40_sy5xb")
+current_tab = 0
+
+[node name="MC_1" type="MarginContainer" parent="Background/QuestMenu/MarginContainer/TabContainer" unique_id=345236529 node_paths=PackedStringArray("reward_label", "quest_label_parent", "quest_name_label", "select_button", "quest_description_label")]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("133_aa4tk")
+reward_label = NodePath("VBoxContainer/HBoxContainer/MoneyLabel")
+quest_label_parent = NodePath("VBoxContainer/HBoxContainer2/VBoxContainer")
+quest_name_label = NodePath("VBoxContainer/Label")
+select_button = NodePath("VBoxContainer/HBoxContainer3/SelectQuestButton")
+quest_description_label = NodePath("VBoxContainer/Description")
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_1" unique_id=120138941]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_1/VBoxContainer" unique_id=1752076254]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("2_6nb4j")
+theme_override_fonts/bold_font = ExtResource("2_6nb4j")
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 12
+bbcode_enabled = true
+text = "[center]Die hungrige Insel #1"
+
+[node name="Description" type="RichTextLabel" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_1/VBoxContainer" unique_id=1587045682]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("2_6nb4j")
+theme_override_fonts/bold_font = ExtResource("2_6nb4j")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 10
+bbcode_enabled = true
+text = "Du bist zufällig auf eine hungrige Insel getroffen. Du bist dir nicht Sicher, wie, oder warum es dazu kam. Aber du hast dich dazu verpflichtet eine [b][color=gold]Insel auf ewig[/color][/b] mit Ressourcen [b][color=gold]zu füttern.[/color][/b]
+Naja, das was die Insel grade will, sieht eigentlich noch nicht so schwer aus!"
+fit_content = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_1/VBoxContainer" unique_id=840155237]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_1/VBoxContainer/HBoxContainer2" unique_id=1119015202]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="HBoxItem" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_1/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=993415093 instance=ExtResource("124_lxbwb")]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="HBoxItem2" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_1/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1494123732 instance=ExtResource("124_lxbwb")]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="HBoxItem3" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_1/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=255080061 instance=ExtResource("124_lxbwb")]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_1/VBoxContainer" unique_id=811125678]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_1/VBoxContainer/HBoxContainer" unique_id=259420847]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Reward:"
+horizontal_alignment = 1
+script = ExtResource("26_tl5yt")
+label_translation_string = "QUEST_MENU_REWARD"
+
+[node name="TextureRect" type="TextureRect" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_1/VBoxContainer/HBoxContainer" unique_id=1234308044]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme = ExtResource("125_uspna")
+texture = ExtResource("31_sy28q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoneyLabel" type="Label" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_1/VBoxContainer/HBoxContainer" unique_id=967185853]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "2883"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_1/VBoxContainer" unique_id=1595245508]
+layout_mode = 2
+alignment = 1
+
+[node name="SelectQuestButton" type="Button" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_1/VBoxContainer/HBoxContainer3" unique_id=216569033]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("46_tmrav")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/focus = ExtResource("28_gcthi")
+text = "Select Quest"
+
+[node name="MC_2" type="MarginContainer" parent="Background/QuestMenu/MarginContainer/TabContainer" unique_id=30295179 node_paths=PackedStringArray("reward_label", "quest_label_parent", "quest_name_label", "select_button", "quest_description_label")]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("133_aa4tk")
+reward_label = NodePath("VBoxContainer/HBoxContainer/MoneyLabel")
+quest_label_parent = NodePath("VBoxContainer/HBoxContainer2/VBoxContainer")
+quest_name_label = NodePath("VBoxContainer/Label")
+select_button = NodePath("VBoxContainer/HBoxContainer3/SelectQuestButton")
+quest_description_label = NodePath("VBoxContainer/Description")
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_2" unique_id=705097660]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_2/VBoxContainer" unique_id=2099662376]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("2_6nb4j")
+theme_override_fonts/bold_font = ExtResource("2_6nb4j")
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 12
+bbcode_enabled = true
+text = "[center]Die hungrige Insel #1"
+
+[node name="Description" type="RichTextLabel" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_2/VBoxContainer" unique_id=904275610]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("2_6nb4j")
+theme_override_fonts/bold_font = ExtResource("2_6nb4j")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 10
+bbcode_enabled = true
+text = "Du bist zufällig auf eine hungrige Insel getroffen. Du bist dir nicht Sicher, wie, oder warum es dazu kam. Aber du hast dich dazu verpflichtet eine [b][color=gold]Insel auf ewig[/color][/b] mit Ressourcen [b][color=gold]zu füttern.[/color][/b]
+Naja, das was die Insel grade will, sieht eigentlich noch nicht so schwer aus!"
+fit_content = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_2/VBoxContainer" unique_id=184565339]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_2/VBoxContainer/HBoxContainer2" unique_id=523863408]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="HBoxItem" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_2/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1008538815 instance=ExtResource("124_lxbwb")]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="HBoxItem2" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_2/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1303879901 instance=ExtResource("124_lxbwb")]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="HBoxItem3" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_2/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=708345346 instance=ExtResource("124_lxbwb")]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_2/VBoxContainer" unique_id=1045902407]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_2/VBoxContainer/HBoxContainer" unique_id=62852330]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Reward:"
+horizontal_alignment = 1
+script = ExtResource("26_tl5yt")
+label_translation_string = "QUEST_MENU_REWARD"
+
+[node name="TextureRect" type="TextureRect" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_2/VBoxContainer/HBoxContainer" unique_id=1819365326]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme = ExtResource("125_uspna")
+texture = ExtResource("31_sy28q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoneyLabel" type="Label" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_2/VBoxContainer/HBoxContainer" unique_id=1701288819]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "2883"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_2/VBoxContainer" unique_id=250443850]
+layout_mode = 2
+alignment = 1
+
+[node name="SelectQuestButton" type="Button" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_2/VBoxContainer/HBoxContainer3" unique_id=583774059]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("46_tmrav")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/focus = ExtResource("28_gcthi")
+text = "Select Quest"
+
+[node name="MC_3" type="MarginContainer" parent="Background/QuestMenu/MarginContainer/TabContainer" unique_id=853081606 node_paths=PackedStringArray("reward_label", "quest_label_parent", "quest_name_label", "select_button", "quest_description_label")]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("133_aa4tk")
+reward_label = NodePath("VBoxContainer/HBoxContainer/MoneyLabel")
+quest_label_parent = NodePath("VBoxContainer/HBoxContainer2/VBoxContainer")
+quest_name_label = NodePath("VBoxContainer/Label")
+select_button = NodePath("VBoxContainer/HBoxContainer3/SelectQuestButton")
+quest_description_label = NodePath("VBoxContainer/Description")
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_3" unique_id=1664194024]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_3/VBoxContainer" unique_id=2069902335]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("2_6nb4j")
+theme_override_fonts/bold_font = ExtResource("2_6nb4j")
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 12
+bbcode_enabled = true
+text = "[center]Die hungrige Insel #1"
+
+[node name="Description" type="RichTextLabel" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_3/VBoxContainer" unique_id=435140448]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("2_6nb4j")
+theme_override_fonts/bold_font = ExtResource("2_6nb4j")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 10
+bbcode_enabled = true
+text = "Du bist zufällig auf eine hungrige Insel getroffen. Du bist dir nicht Sicher, wie, oder warum es dazu kam. Aber du hast dich dazu verpflichtet eine [b][color=gold]Insel auf ewig[/color][/b] mit Ressourcen [b][color=gold]zu füttern.[/color][/b]
+Naja, das was die Insel grade will, sieht eigentlich noch nicht so schwer aus!"
+fit_content = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_3/VBoxContainer" unique_id=996677007]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_3/VBoxContainer/HBoxContainer2" unique_id=1118060378]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="HBoxItem" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_3/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=371736571 instance=ExtResource("124_lxbwb")]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="HBoxItem2" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_3/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=646417377 instance=ExtResource("124_lxbwb")]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="HBoxItem3" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_3/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1690130665 instance=ExtResource("124_lxbwb")]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_3/VBoxContainer" unique_id=129092850]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_3/VBoxContainer/HBoxContainer" unique_id=642296702]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "Reward:"
+horizontal_alignment = 1
+script = ExtResource("26_tl5yt")
+label_translation_string = "QUEST_MENU_REWARD"
+
+[node name="TextureRect" type="TextureRect" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_3/VBoxContainer/HBoxContainer" unique_id=564557728]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme = ExtResource("125_uspna")
+texture = ExtResource("31_sy28q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoneyLabel" type="Label" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_3/VBoxContainer/HBoxContainer" unique_id=756880531]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+text = "2883"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_3/VBoxContainer" unique_id=421830645]
+layout_mode = 2
+alignment = 1
+
+[node name="SelectQuestButton" type="Button" parent="Background/QuestMenu/MarginContainer/TabContainer/MC_3/VBoxContainer/HBoxContainer3" unique_id=209567354]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("46_tmrav")
+theme_override_styles/pressed = ExtResource("33_sy5xb")
+theme_override_styles/hover = ExtResource("32_w3vm4")
+theme_override_styles/disabled = ExtResource("31_j0nuq")
+theme_override_styles/focus = ExtResource("28_gcthi")
+text = "Select Quest"
 
 [node name="Border" type="ColorRect" parent="Background/QuestMenu" unique_id=309710199]
 layout_mode = 0
@@ -7439,8 +7789,11 @@ color = Color(0, 0, 0, 1)
 [connection signal="pressed" from="Background/MinecartTab/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StopEngineBtn" to="Background/MinecartTab" method="StopEngine"]
 [connection signal="visibility_changed" from="Background/DestroyMenu" to="Background/DestroyMenu" method="OnVisiblityChanged"]
 [connection signal="pressed" from="Background/DestroyMenu/MarginContainer/VBoxContainer2/CompleteQuestButton" to="Background/DestroyMenu" method="OnDestroyButton"]
-[connection signal="pressed" from="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer3/ReloadButton" to="Background/QuestMenu" method="CheckQuest"]
-[connection signal="pressed" from="Background/QuestMenu/MarginContainer/VBoxContainer2/HBoxContainer3/CompleteQuestButton" to="Background/QuestMenu" method="OnCompleteButton"]
+[connection signal="pressed" from="Background/QuestMenu/MarginContainer/VBoxRequest/HBoxContainer3/ReloadButton" to="Background/QuestMenu" method="CheckQuest"]
+[connection signal="pressed" from="Background/QuestMenu/MarginContainer/VBoxRequest/HBoxContainer3/CompleteQuestButton" to="Background/QuestMenu" method="OnCompleteButton"]
+[connection signal="pressed" from="Background/QuestMenu/MarginContainer/TabContainer/MC_1/VBoxContainer/HBoxContainer3/SelectQuestButton" to="Background/QuestMenu/MarginContainer/TabContainer/MC_1" method="OnSelectButtonPressed"]
+[connection signal="pressed" from="Background/QuestMenu/MarginContainer/TabContainer/MC_2/VBoxContainer/HBoxContainer3/SelectQuestButton" to="Background/QuestMenu/MarginContainer/TabContainer/MC_2" method="OnSelectButtonPressed"]
+[connection signal="pressed" from="Background/QuestMenu/MarginContainer/TabContainer/MC_3/VBoxContainer/HBoxContainer3/SelectQuestButton" to="Background/QuestMenu/MarginContainer/TabContainer/MC_3" method="OnSelectButtonPressed"]
 
 [editable path="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer/HeadSlotBackground"]
 [editable path="Background/InventoryTab/EquipmentPanel/Character/ArmorGridContainer/ChestSlotBackground"]

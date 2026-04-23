@@ -11,21 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://deu0spbxs5bju" path="res://UI/Menus/Game Menu/game_menu.tscn" id="8_gytje"]
 [ext_resource type="PackedScene" uid="uid://44ev1js8tcvp" path="res://UI/Menus/Build Menu/Build_Menu.tscn" id="9_1xtv0"]
 [ext_resource type="Script" uid="uid://b1ofqxr15cnlw" path="res://Sub Systems/Global/GlobalFunctions.cs" id="10_1whgu"]
-[ext_resource type="Resource" uid="uid://bixdfcui86uar" path="res://Sub Systems/Quest Manager/Quests/Data/quest_info_2.tres" id="10_h8pdp"]
 [ext_resource type="Shader" uid="uid://6h8nokelt8tj" path="res://Sub Systems/Shader/Wind/Wind.gdshader" id="10_uv8n6"]
 [ext_resource type="Texture2D" uid="uid://bii6l8tbbd33s" path="res://Entities/Placeable Building/Spritesheets/Plants/Oak_Tree/Oak_Tree_Animation4.png" id="11_4xc4d"]
-[ext_resource type="Resource" uid="uid://cpmdxkr2eawci" path="res://Sub Systems/Quest Manager/Quests/Data/quest_info_3.tres" id="11_lj4ef"]
-[ext_resource type="Resource" uid="uid://cim2ng28wf04v" path="res://Sub Systems/Quest Manager/Quests/Data/quest_info_4.tres" id="12_wajns"]
-[ext_resource type="Resource" uid="uid://bxwgmp1fse4m" path="res://Sub Systems/Quest Manager/Quests/Data/quest_info_5.tres" id="13_f280c"]
 [ext_resource type="Script" uid="uid://diq6llslgpl4r" path="res://Sub Systems/Quest Manager/QuestManager.cs" id="13_irdkv"]
 [ext_resource type="PackedScene" uid="uid://cr71wklpfy30f" path="res://Sub Systems/Shadow Manager/Shadow/shadow_node.tscn" id="13_uv8n6"]
 [ext_resource type="Texture2D" uid="uid://di4f2bpucp4m8" path="res://Entities/Placeable Building/Spritesheets/Plants/Mystic_Oak_Tree/Mystic_Oak_Tree_Animation_Shadow4.png" id="14_4xc4d"]
-[ext_resource type="Resource" uid="uid://bmkxnaw3cirb8" path="res://Sub Systems/Quest Manager/Quests/Data/quest_info_6.tres" id="14_p85m3"]
-[ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Sub Systems/Quest Manager/Quests/Data/quest_info_1.tres" id="14_sw2xm"]
-[ext_resource type="Resource" uid="uid://bbb0mqt5qpmap" path="res://Sub Systems/Quest Manager/Quests/Data/quest_info_7.tres" id="15_5qlke"]
-[ext_resource type="Resource" uid="uid://b4f0pdj2v6jfh" path="res://Sub Systems/Quest Manager/Quests/Data/quest_info_8.tres" id="16_gytje"]
-[ext_resource type="Resource" uid="uid://c2p2638k7calp" path="res://Sub Systems/Quest Manager/Quests/Data/quest_info_9.tres" id="17_1xtv0"]
+[ext_resource type="Resource" uid="uid://cs4uuqbyiqh6m" path="res://Sub Systems/Quest Manager/Quests/Data/Quest Stage 1/quest_stage_1.tres" id="19_e4a2m"]
 [ext_resource type="Script" uid="uid://blgdti6ab4olj" path="res://Sub Systems/SpriteAnimationManager.cs" id="19_f280c"]
+[ext_resource type="Resource" uid="uid://b3xgyaf7543j" path="res://Sub Systems/Quest Manager/Quests/Data/Quest Stage 2/quest_stage_2.tres" id="20_m8acs"]
 [ext_resource type="Script" uid="uid://c54qloxkixlh" path="res://Sub Systems/Time/TimeManager.cs" id="21_3gobv"]
 [ext_resource type="Texture2D" uid="uid://bfw0elq5yfvqk" path="res://Entities/Placeable Building/Mineable Object/Vegetation/Oak/Leave.png" id="21_5qlke"]
 [ext_resource type="Script" uid="uid://blf1q1vqdlpkq" path="res://Sub Systems/Time/DayNightManager.cs" id="22_3jk2j"]
@@ -229,9 +222,10 @@ visible = false
 building_placer = NodePath("../BuildingManager/BuildingPlacer")
 hbox_category = []
 
-[node name="QuestManager" type="Node2D" parent="." unique_id=1673432054]
+[node name="QuestManager" type="Node2D" parent="." unique_id=1673432054 node_paths=PackedStringArray("quest_timer")]
 script = ExtResource("13_irdkv")
-quests = Array[Object]([ExtResource("14_sw2xm"), ExtResource("10_h8pdp"), ExtResource("11_lj4ef"), ExtResource("12_wajns"), ExtResource("13_f280c"), ExtResource("14_p85m3"), ExtResource("15_5qlke"), ExtResource("16_gytje"), ExtResource("17_1xtv0")])
+quest_pool = [ExtResource("19_e4a2m"), ExtResource("20_m8acs")]
+quest_timer = NodePath("QuestTimer")
 
 [node name="QuestTimer" type="Timer" parent="QuestManager" unique_id=1871866256]
 script = ExtResource("27_rrlqx")

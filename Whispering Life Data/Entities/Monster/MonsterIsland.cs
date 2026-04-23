@@ -95,7 +95,6 @@ public partial class MonsterIsland : Building_Node
 
     public override void _Process(double delta)
     {
-        // Cutscene-Trigger für Quest-Zeitpunkte
         CheckQuestTimeTriggers();
 
         if (Input.IsActionJustPressed("EventF1"))
@@ -115,10 +114,11 @@ public partial class MonsterIsland : Building_Node
     {
         if (!GameManager.instance.tutorial_finished)
             return;
+        if (QuestManager.current_selected_quest == null)
+            return;
 
         int quest_time_left = QuestManager.current_quest_time;
 
-        // Monster verschwindet (nur wenn noch Zeit im mittleren Bereich)
         if (
             !monsterDisappearTriggered
             && quest_time_left <= (quest_duration - 480)

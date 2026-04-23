@@ -26,6 +26,9 @@ public partial class MainMenu : Control
     public Button load_button;
 
     [Export]
+    public TextEdit seed_input;
+
+    [Export]
     public SettingsTab settings_tab;
 
     [Export]
@@ -182,6 +185,8 @@ public partial class MainMenu : Control
             gm.tutorial_finished = true;
         GetTree().Root.AddChild(gm);
         GetTree().Root.MoveChild(gm, 0);
+
+        QuestManager.instance.SetSeedFromInput(seed_input.Text);
 
         TransitionManager.instance.StopTransition();
         parent.Visible = false;

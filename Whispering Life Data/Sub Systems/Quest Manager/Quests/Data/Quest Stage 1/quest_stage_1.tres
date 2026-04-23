@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="QuestStagePool" format=3 uid="uid://cs4uuqbyiqh6m"]
+
+[ext_resource type="Script" uid="uid://b3n14sms4d1nk" path="res://Sub Systems/Quest Manager/Quests/QuestInfo.cs" id="1_rs082"]
+[ext_resource type="Script" uid="uid://cgt0cw56fg01o" path="res://Sub Systems/Quest Manager/Quests/QuestStagePool.cs" id="2_irird"]
+[ext_resource type="Resource" uid="uid://6dsfnan8rxtt" path="res://Sub Systems/Quest Manager/Quests/Data/Quest Stage 1/quest_info_1.tres" id="2_n0tyb"]
+[ext_resource type="Resource" uid="uid://w2y3lftbq2r7" path="res://Sub Systems/Quest Manager/Quests/Data/Quest Stage 1/quest_info_1_2.tres" id="3_s1mvk"]
+[ext_resource type="Resource" uid="uid://yvqrfcrm4bpb" path="res://Sub Systems/Quest Manager/Quests/Data/Quest Stage 1/quest_info_1_3.tres" id="4_mkuou"]
+[ext_resource type="Resource" uid="uid://doiyi7idy55f5" path="res://Sub Systems/Quest Manager/Quests/Data/Quest Stage 1/quest_info_1_4.tres" id="5_q6x0h"]
+[ext_resource type="Resource" uid="uid://b6m23iv4qw0dh" path="res://Sub Systems/Quest Manager/Quests/Data/Quest Stage 1/quest_info_1_5.tres" id="6_08ec2"]
+
+[resource]
+script = ExtResource("2_irird")
+quests = Array[ExtResource("1_rs082")]([ExtResource("2_n0tyb"), ExtResource("3_s1mvk"), ExtResource("4_mkuou"), ExtResource("5_q6x0h"), ExtResource("6_08ec2")])
+metadata/_custom_type_script = "uid://cgt0cw56fg01o"
