@@ -175,6 +175,7 @@
 [ext_resource type="AudioStream" uid="uid://baxwufa73fl35" path="res://Islands/Audio/Atmosphere Sounds/441638__naturenotesuk__birds-at-feeder.wav" id="166_2xiho"]
 [ext_resource type="AudioStream" uid="uid://bwod2wh4o0qwt" path="res://Islands/Audio/Background Music/759996__josefpres__piano-loops-167-octave-short-loop-120-bpm.wav" id="167_0iy3j"]
 [ext_resource type="AudioStream" uid="uid://dghm7erto75a0" path="res://UI/Button_Click_Sound.wav" id="168_il1im"]
+[ext_resource type="Script" uid="uid://c8h22s7k1la2r" path="res://Sub Systems/Global/ItemDatabasePdfExporter.gd" id="172_q02jy"]
 
 [node name="MainMenu" type="Control" unique_id=1921051255 node_paths=PackedStringArray("skip_tutorial", "intro_player", "parent", "menu_part_1", "menu_part_2", "difficulty_select", "create_new_game_after_difficult_button", "load_button", "seed_input", "settings_tab")]
 layout_mode = 3
@@ -564,6 +565,9 @@ item_info_list = [ExtResource("92_b1uc7"), ExtResource("93_vwfet"), ExtResource(
 [node name="DatabasePopulator" type="Node" parent="Database" unique_id=1257109130]
 script = ExtResource("18_pq0dg")
 metadata/_custom_type_script = "uid://d0ne5pdty3svn"
+
+[node name="PDFExporter" type="Node" parent="Database" unique_id=1035212694]
+script = ExtResource("172_q02jy")
 
 [node name="AudioManager" type="Node2D" parent="." unique_id=399866809 node_paths=PackedStringArray("SFXPlayer", "MusicPlayer", "ButtonSoundPlayer")]
 script = ExtResource("165_il1im")
