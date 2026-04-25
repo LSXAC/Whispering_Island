@@ -72,7 +72,10 @@ do GlobalFunctions.MoveCameraToPosition(Vector2(0,-208))
 Mia: Man. Da bekommt man ja gleich selber Hunger auf ein großes Stück Eichenholz! [ID:td8e4ea2ba3]
 Mia: Also - Resourcen [b][color=gold]farmen[/color][/b], weiter [b][color=gold]verarbeiten[/color][/b], eventuell [b][color=gold]automatisieren[/color][/b] und am wichtigsten ist es dieser Insel immer rechtzeitig etwas essbares zu bringen! [ID:t545ae50c2a]
 Mia: Das schaffe sogar ich! [ID:t718293417c]
-Tuoni: Jetzt beeile dich. Ich merke schon, dass ich Hunger bekomme! [ID:t718293417d]
+do GlobalFunctions.MoveCameraToPosition(Vector2(0,-256))
+Tuoni: Jetzt beeile dich. Ich merke schon, dass ich Hunger bekomme! [ID:t718293417d]#
+Tuoni: Aber jetzt mal wirklich. Wähle einfach eine der 3 Quests aus und fang an zu ackern!
+
 
 do GlobalFunctions.StartAfterTutorial()
 do GlobalFunctions.LeaveDialogue()

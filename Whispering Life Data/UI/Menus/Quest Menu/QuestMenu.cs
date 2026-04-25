@@ -32,13 +32,16 @@ public partial class QuestMenu : ColorRect
     public Label reward_label;
 
     [Export]
-    public TabContainer quest_options_tab_container; // TabContainer mit den 3 Quest-Optionen
+    public Button exit_button;
 
     [Export]
-    public Control quest_selection_container; // Container mit Quest-Optionen (sichtbar bei Auswahl)
+    public TabContainer quest_options_tab_container;
 
     [Export]
-    public Control quest_display_container; // Container mit Quest-Details (sichtbar wenn Quest lauft)
+    public Control quest_selection_container;
+
+    [Export]
+    public Control quest_display_container;
 
     public PackedScene h_box_item = ResourceLoader.Load<PackedScene>(
         ResourceUid.UidToPath("uid://bnf8yngk7oyy0")
@@ -84,36 +87,31 @@ public partial class QuestMenu : ColorRect
         GD.Print("Quest Selection initialized with " + availableQuests.Count + " quests");
     }
 
-    /// <summary>
-    /// Wird aufgerufen, wenn der Spieler eine Quest auswählt
-    /// </summary>
     public void OnSelectQuestOption(int optionIndex)
     {
         if (optionIndex < 0 || optionIndex >= quest_select_panels.Count)
             return;
 
+        GetTree().Paused = false;
         QuestSelect selectedPanel = quest_select_panels[optionIndex];
         QuestInfo selectedQuest = selectedPanel.GetCurrentQuest();
+        exit_button.Disabled = false;
 
         if (selectedQuest == null)
             return;
 
-        // Speichere die ausgewählte Quest
         QuestManager.current_selected_quest = selectedQuest;
         currentQuest = selectedQuest;
 
-        // Berechne die Zeit für diese Quest
         double difficultyTimeMultiplier = 1.0 / GameManager.difficulty_multiplier;
         QuestManager.current_quest_time =
             Mathf.RoundToInt(selectedQuest.quest_time * difficultyTimeMultiplier / 5.0) * 5;
 
-        // Initialisiere die Quest UI mit der ausgewählten Quest
         InitQuest(selectedQuest);
         QuestMiniPanel.instance.UpdateTimeLabel(QuestManager.current_quest_time);
         QuestMiniPanel.instance.InitQuestMiniPanel(selectedQuest);
         MonsterIsland.instance.InitializeQuestTimers(QuestManager.current_quest_time);
 
-        // Wechsle zu Quest-Display
         ShowQuestDisplay();
 
         GD.Print("Quest selected: " + selectedQuest.quest_name);
@@ -154,7 +152,6 @@ public partial class QuestMenu : ColorRect
     {
         GameMenu.instance.OnOpenQuestTab();
 
-        // Wenn keine Quest geladen, erzwinge Quest-Selection anzuzeigen
         if (QuestManager.current_selected_quest == null)
             ShowQuestSelection();
         else
@@ -252,7 +249,6 @@ public partial class QuestMenu : ColorRect
                         countedDamaged += toAdd;
                     }
 
-                    // optional: früh abbrechen
                     if (countedDamaged >= needed)
                         break;
                 }
@@ -285,7 +281,6 @@ public partial class QuestMenu : ColorRect
                 {
                     amount += invItem.amount;
 
-                    // optional: früh abbrechen
                     if (amount >= needed)
                         break;
                 }
@@ -337,9 +332,6 @@ public partial class QuestMenu : ColorRect
         }
     }
 
-    /// <summary>
-    /// Zeigt den Quest-Display Container und versteckt die Quest-Selection
-    /// </summary>
     public void ShowQuestDisplay()
     {
         if (quest_selection_container != null)
@@ -349,20 +341,18 @@ public partial class QuestMenu : ColorRect
             quest_display_container.Visible = true;
     }
 
-    /// <summary>
-    /// Zeigt den Quest-Selection Container und versteckt den Quest-Display
-    /// Wird aufgerufen wenn neue Quests angeboten werden
-    /// </summary>
     public void ShowQuestSelection()
     {
+        exit_button.Disabled = true;
+
         if (quest_display_container != null)
             quest_display_container.Visible = false;
 
         if (quest_selection_container != null)
             quest_selection_container.Visible = true;
 
-        // Lade neue Quest-Optionen
         if (QuestManager.current_quest_id >= 0 && QuestManager.instance != null)
             InitQuestSelection(QuestManager.current_quest_id);
+        GetTree().Paused = true;
     }
 }

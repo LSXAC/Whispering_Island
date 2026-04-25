@@ -222,10 +222,11 @@ visible = false
 building_placer = NodePath("../BuildingManager/BuildingPlacer")
 hbox_category = []
 
-[node name="QuestManager" type="Node2D" parent="." unique_id=1673432054 node_paths=PackedStringArray("quest_timer")]
+[node name="QuestManager" type="Node2D" parent="." unique_id=1673432054 node_paths=PackedStringArray("quest_timer", "monster_island")]
 script = ExtResource("13_irdkv")
 quest_pool = [ExtResource("19_e4a2m"), ExtResource("20_m8acs")]
 quest_timer = NodePath("QuestTimer")
+monster_island = NodePath("../IslandManager/MainIsland/MonsterIsland")
 
 [node name="QuestTimer" type="Timer" parent="QuestManager" unique_id=1871866256]
 script = ExtResource("27_rrlqx")

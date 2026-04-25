@@ -211,7 +211,6 @@ border_color = Color(0, 0, 0, 1)
 border_blend = true
 
 [node name="GameMenu" type="CanvasLayer" unique_id=1705449440 node_paths=PackedStringArray("load_button", "destroy_menu", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "processing_tab", "research_tab", "nerve_transducer_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "quest_tab", "rail_station_tab", "minecart_tab", "poison_combiner_tab", "alchemy_lab_tab", "header_container", "crafting_category_panel")]
-process_mode = 3
 script = ExtResource("1_2bdem")
 load_button = NodePath("Background/SaveLoadTab/HBoxContainer/LoadGameButton")
 destroy_menu = NodePath("Background/DestroyMenu")
@@ -581,6 +580,7 @@ flat = true
 script = ExtResource("3_pwamf")
 
 [node name="ExitTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=1903726751]
+process_mode = 3
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -7115,7 +7115,7 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 alignment = 1
 
-[node name="QuestMenu" type="ColorRect" parent="Background" unique_id=183995902 node_paths=PackedStringArray("quest_label_parent", "success_label", "quest_name_label", "complete_button", "quest_description_label", "quest_inventory", "reward_label", "quest_options_tab_container", "quest_selection_container", "quest_display_container")]
+[node name="QuestMenu" type="ColorRect" parent="Background" unique_id=183995902 node_paths=PackedStringArray("quest_label_parent", "success_label", "quest_name_label", "complete_button", "quest_description_label", "quest_inventory", "reward_label", "exit_button", "quest_options_tab_container", "quest_selection_container", "quest_display_container")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -7137,6 +7137,7 @@ quest_description_label = NodePath("MarginContainer/VBoxRequest/Description")
 dialogue_timeline = ExtResource("125_m1qfe")
 quest_inventory = NodePath("MarginContainer/VBoxRequest/ChestInventoryIn")
 reward_label = NodePath("MarginContainer/VBoxRequest/HBoxContainer/MoneyLabel")
+exit_button = NodePath("../ColorRect/ColorRect/HBoxHeader/ExitTabButton")
 quest_options_tab_container = NodePath("MarginContainer/TabContainer")
 quest_selection_container = NodePath("MarginContainer/TabContainer")
 quest_display_container = NodePath("MarginContainer/VBoxRequest")
@@ -7335,6 +7336,7 @@ theme_override_styles/focus = ExtResource("28_gcthi")
 text = "Finish Quest"
 
 [node name="TabContainer" type="TabContainer" parent="Background/QuestMenu/MarginContainer" unique_id=1538974437]
+process_mode = 2
 layout_mode = 2
 theme_override_styles/panel = ExtResource("43_fato5")
 theme_override_styles/tab_unselected = ExtResource("41_fato5")

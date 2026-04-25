@@ -563,7 +563,7 @@ custom_minimum_size = Vector2(2, 12)
 layout_mode = 0
 offset_top = 1.0
 offset_right = 2.0
-offset_bottom = 18.0
+offset_bottom = 19.0
 
 [node name="ColorRect2" type="ColorRect" parent="QuestAndInfoVBoxContainer/TimeStripe" unique_id=1853217621]
 layout_mode = 0

@@ -7,7 +7,7 @@ using Godot.Collections;
 public partial class QuestManager : Node
 {
     [Export]
-    public Array<QuestStagePool> quest_pool; // Pool der Quests pro Stage mittels QuestStagePool Wrapper
+    public Array<QuestStagePool> quest_pool;
 
     private Resource quest_dialogue = ResourceLoader.Load<Resource>(
         ResourceUid.UidToPath("uid://c1p7gva6jex80")
@@ -16,8 +16,8 @@ public partial class QuestManager : Node
     public static QuestManager instance = null;
     public static int current_quest_time = 0;
 
-    public static QuestInfo current_selected_quest = null; // Die aktuelle ausgewählte Quest
-    public static int current_master_seed = 0; // Der einfache Seed vom Nutzer
+    public static QuestInfo current_selected_quest = null;
+    public static int current_master_seed = 0;
     public static bool next_quest_half_time = false;
     public static bool next_quest_is_doubled_items = false;
 
@@ -25,7 +25,8 @@ public partial class QuestManager : Node
     public QuestTimer quest_timer;
     public QuestPenality quest_penality;
 
-    private MonsterIsland monster_island;
+    [Export]
+    public MonsterIsland monster_island;
     private MonsterIslandStateManager island_state_manager;
 
     [Signal]
