@@ -334,7 +334,7 @@ public partial class Slot : Button
         }
         else
         {
-            GetSlotItemUI().QueueFree();
+            GetSlotItemUI().Free();
             SetItem(item, durability);
         }
     }
@@ -348,9 +348,16 @@ public partial class Slot : Button
 
     public void ClearSlotItem()
     {
-        if (GetSlotItemUI() == null)
+        SlotItemUI slot_item_ui = GetSlotItemUI();
+        if (slot_item_ui == null)
             return;
-        GetSlotItemUI().Free();
+        
+        // Block any tweens in the CustomToolTip before deletion
+        CustomToolTip tooltip = slot_item_ui.GetNode<CustomToolTip>("CustomToolTip");
+        if (tooltip != null)
+            tooltip.BlockTweens();
+        
+        slot_item_ui.Free();
     }
 
     private void UpdateSlot(ItemSave[] i_save, int amount)

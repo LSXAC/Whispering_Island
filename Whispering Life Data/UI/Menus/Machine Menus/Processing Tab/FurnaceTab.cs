@@ -1,10 +1,6 @@
 using System;
 using Godot;
 
-/// <summary>
-/// Spezialisierte Implementierung von ProcessingTab für Furnace/Schmelzofen
-/// Konfiguriert 3 Slots: INPUT (Rohstoff), OUTPUT (Ergebnis), FUEL (Brennstoff)
-/// </summary>
 public partial class FurnaceTab : ProcessingTab
 {
     [Export]
@@ -32,7 +28,6 @@ public partial class FurnaceTab : ProcessingTab
     {
         instance = this;
 
-        // Initialisiere die Slots mit der Standard-Furnace-Konfiguration
         InitializeSlots(
             [
                 new ProcessingSlotConfig(

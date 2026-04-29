@@ -823,7 +823,6 @@ theme_override_constants/separation = 4
 alignment = 1
 
 [node name="ColorRect4" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox" unique_id=1875311922]
-clip_contents = true
 custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
@@ -852,7 +851,6 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
 
 [node name="ColorRect5" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox" unique_id=1833929168]
-clip_contents = true
 custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
@@ -881,7 +879,6 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
 
 [node name="ColorRect6" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox" unique_id=1956064683]
-clip_contents = true
 custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
@@ -910,7 +907,6 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_4utg2")
 disabled = true
 
 [node name="ColorRect7" type="ColorRect" parent="EquipmentSelectBar/VBoxContainer/EquipmentHBox" unique_id=1760193542]
-clip_contents = true
 custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 color = Color(1, 1, 1, 0)

@@ -6,6 +6,6 @@ public partial class ProcessedAttribute : ItemAttributeBase
 {
     public override string GetNameOfAttribute()
     {
-        return TranslationServer.Translate("PROCESSED") + "\n";
+        return TranslationServer.Translate("PROCESSED");
     }
 }

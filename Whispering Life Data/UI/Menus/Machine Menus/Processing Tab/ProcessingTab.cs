@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Godot;
 
-/// <summary>
-/// Generische Basis-Klasse für alle Verarbeitungs-UI-Fenster (Furnace, Combiner, etc.)
-/// Ermöglicht dynamische Slot-Konfiguration und generische Rezept-Verarbeitung
-/// </summary>
 public abstract partial class ProcessingTab : SlotUpdater
 {
     [Export]
@@ -100,26 +96,12 @@ public abstract partial class ProcessingTab : SlotUpdater
 
     public void SetReferenceBuilding(ProcessBuilding process_building)
     {
-        GD.PrintErr(
-            $"[ProcessingTab.SetReferenceBuilding] START - building: {(process_building != null ? process_building.GetType().Name : "NULL")}"
-        );
-
         this.process_building = process_building;
 
-        GD.PrintErr(
-            $"[ProcessingTab.SetReferenceBuilding] recipe_overview_panel: {(recipe_overview_panel != null ? "✓ FOUND" : "❌ NULL")}"
-        );
-
         if (recipe_overview_panel != null)
-        {
-            GD.PrintErr(
-                "[ProcessingTab.SetReferenceBuilding] Calling SetReferenceBuilding on RecipeOverviewPanel"
-            );
             recipe_overview_panel.SetReferenceBuilding(process_building);
-        }
 
         UpdateUI();
-        GD.PrintErr("[ProcessingTab.SetReferenceBuilding] END");
     }
 
     public virtual void UpdateUI()
@@ -129,9 +111,6 @@ public abstract partial class ProcessingTab : SlotUpdater
 
         if (recipe_overview_panel != null)
             recipe_overview_panel.ReloadRecipes();
-
-        foreach (var slot in slot_by_index.Values)
-            slot.ClearSlotItem();
 
         SetMachineProgressbar(process_building.ui_progress);
         UpdateFuelProgressbar(
@@ -143,17 +122,25 @@ public abstract partial class ProcessingTab : SlotUpdater
             if (i >= process_building.item_array.Length)
                 break;
 
-            if (process_building.item_array[i] != null && process_building.item_array[i].amount > 0)
+            if (slot_by_index.TryGetValue(i, out var slot))
             {
-                if (slot_by_index.TryGetValue(i, out var slot))
+                if (
+                    process_building.item_array[i] != null
+                    && process_building.item_array[i].amount > 0
+                )
                 {
-                    slot.SetItem(
+                    slot.UpdateItem(
                         new Item(
                             GetItemInfo(i),
                             process_building.item_array[i].amount,
                             state: (Item.STATE)process_building.item_array[i].state
-                        )
+                        ),
+                        -1
                     );
+                }
+                else
+                {
+                    slot.ClearSlotItem();
                 }
             }
         }

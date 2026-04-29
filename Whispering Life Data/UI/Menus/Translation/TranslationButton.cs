@@ -36,7 +36,6 @@ public partial class TranslationButton : Button
     {
         if (only_meta_text)
         {
-            TooltipText = TranslationServer.Translate(label_translation_string);
             return;
         }
         if (!has_different_label)

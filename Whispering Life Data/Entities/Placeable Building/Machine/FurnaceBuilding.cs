@@ -90,9 +90,7 @@ public partial class FurnaceBuilding : ProcessBuilding
     protected override bool SelectAndCheckCanCraft()
     {
         if (item_array[(int)SlotType.IMPORT] == null)
-        {
             return false;
-        }
 
         ItemInfo import_item_info = Inventory.ITEM_TYPES[
             (Inventory.ITEM_ID)item_array[(int)SlotType.IMPORT].item_id
@@ -104,9 +102,7 @@ public partial class FurnaceBuilding : ProcessBuilding
         {
             recipe = selected_recipe as SmeltableRecipe;
             if (recipe == null)
-            {
                 return false;
-            }
 
             if (
                 recipe.GetInputRequirement() == null

@@ -59,6 +59,18 @@ public partial class GameManager : Node2D
         island_matrix[x + 5, y + 5] = state;
     }
 
+    public static bool IsGameInterupted()
+    {
+        if (CutsceneManager.In_Cutscene)
+            return true;
+        if (gameover)
+            return true;
+        if (instance.GetTree().Paused)
+            return true;
+
+        return false;
+    }
+
     public static int GetIslandCountOnMatrix()
     {
         if (island_matrix == null)

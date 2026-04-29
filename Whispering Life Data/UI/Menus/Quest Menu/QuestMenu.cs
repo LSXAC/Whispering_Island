@@ -43,6 +43,9 @@ public partial class QuestMenu : ColorRect
     [Export]
     public Control quest_display_container;
 
+    [Export]
+    public ColorRect interaction_break_panel;
+
     public PackedScene h_box_item = ResourceLoader.Load<PackedScene>(
         ResourceUid.UidToPath("uid://bnf8yngk7oyy0")
     );
@@ -64,6 +67,7 @@ public partial class QuestMenu : ColorRect
                 if (questSelect != null)
                     quest_select_panels.Add(questSelect);
             }
+        interaction_break_panel.Visible = false;
     }
 
     public void InitQuestSelection(int questId)
@@ -84,6 +88,7 @@ public partial class QuestMenu : ColorRect
                 quest_select_panels[i].InitQuestOption(null, -1);
         }
 
+        interaction_break_panel.Visible = true;
         GD.Print("Quest Selection initialized with " + availableQuests.Count + " quests");
     }
 
@@ -93,6 +98,7 @@ public partial class QuestMenu : ColorRect
             return;
 
         GetTree().Paused = false;
+        interaction_break_panel.Visible = false;
         QuestSelect selectedPanel = quest_select_panels[optionIndex];
         QuestInfo selectedQuest = selectedPanel.GetCurrentQuest();
         exit_button.Disabled = false;

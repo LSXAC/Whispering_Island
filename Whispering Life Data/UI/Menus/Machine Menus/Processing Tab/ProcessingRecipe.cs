@@ -5,9 +5,9 @@ public abstract partial class ProcessingRecipe : Resource
 {
     public abstract ItemInfo GetInputRequirement();
 
-    public abstract int GetAmountToProcess(); // Benötigte INPUT-Menge
+    public abstract int GetAmountToProcess();
 
-    public abstract int GetAmountToProduce(); // Produzierte OUTPUT-Menge
+    public abstract int GetAmountToProduce();
 
     public abstract ItemInfo GetOutputItem();
 

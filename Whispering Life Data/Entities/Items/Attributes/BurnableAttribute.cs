@@ -9,6 +9,6 @@ public partial class BurnableAttribute : ItemAttributeBase
 
     public override string GetNameOfAttribute()
     {
-        return TranslationServer.Translate("BURNTIME") + ": " + burntime + "s" + "\n";
+        return TranslationServer.Translate("BURNTIME") + ": " + burntime + "s";
     }
 }

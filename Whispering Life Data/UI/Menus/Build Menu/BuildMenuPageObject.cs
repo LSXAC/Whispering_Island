@@ -5,7 +5,6 @@ using Godot.Collections;
 
 public partial class BuildMenuPageObject : ColorRect
 {
-    // Called when the node enters the scene tree for the first time.
     [Export]
     public Control parent;
 

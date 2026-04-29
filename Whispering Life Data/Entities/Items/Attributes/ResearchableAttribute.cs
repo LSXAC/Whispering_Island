@@ -6,6 +6,6 @@ public partial class ResearchableAttribute : ItemAttributeBase
 {
     public override string GetNameOfAttribute()
     {
-        return TranslationServer.Translate("RESEARCHABLE") + "\n";
+        return TranslationServer.Translate("RESEARCHABLE");
     }
 }

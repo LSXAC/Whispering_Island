@@ -19,6 +19,11 @@ public partial class SlotItemUI : Control
     [Export]
     public Control poison_icon;
 
+    private CustomToolTip custom_tooltip;
+    private PackedScene custom_tool_tip_scene = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://drhdbuo05k0tx")
+    );
+
     public override void _Notification(int what)
     {
         if (what != NotificationTranslationChanged)
@@ -35,7 +40,7 @@ public partial class SlotItemUI : Control
         amount_label.Text = item.amount + "x";
         UpdateToolTip();
         UpdatePoisonIcon();
-        Debug.Print("Update ToolTip!");
+        Debug.Print("Init Slot Item UI!");
 
         WearableAttribute attribute = item.info.GetAttributeOrNull<WearableAttribute>();
         //57cb00
@@ -81,22 +86,10 @@ public partial class SlotItemUI : Control
 
     public void UpdateToolTip()
     {
-        if (item?.info == null)
+        if (item?.info == null || custom_tooltip == null)
             return;
-        TooltipText = TranslationServer.Translate(item.info.name.ToString()) + "\n\n";
-        TooltipText += TranslationServer.Translate(item.info.description.ToString()) + "\n\n";
-        if (current_durability != -1)
-            TooltipText += "Durability: " + current_durability + "/" + max_durability;
-        TooltipText += "\n";
-        foreach (ItemAttributeBase item_attribute in item.info.attributes)
-        {
-            if (item_attribute == null)
-                continue;
 
-            TooltipText += item_attribute.GetNameOfAttribute();
-        }
-        TooltipText += "\n";
-        TooltipText += "State: " + item.state.ToString();
+        custom_tooltip.Update(item, current_durability, max_durability);
     }
 
     public void UpdateAmountLabel()
@@ -127,5 +120,8 @@ public partial class SlotItemUI : Control
 
         if (poison_icon != null)
             poison_icon.Visible = false;
+
+        custom_tooltip = custom_tool_tip_scene.Instantiate<CustomToolTip>();
+        AddChild(custom_tooltip);
     }
 }

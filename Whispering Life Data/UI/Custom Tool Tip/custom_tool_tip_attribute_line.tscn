@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dduohpr71a7hf"]
+
+[ext_resource type="Texture2D" uid="uid://04ccgfwkqldn" path="res://Entities/Items/SpritesForItems/Icons/Fuel.png" id="1_1udvy"]
+[ext_resource type="LabelSettings" uid="uid://dq0dwmb4gc45u" path="res://UI/Styles/Label_Settings_Normal_Text.tres" id="2_mto02"]
+
+[node name="ToolTipAttributeLine" type="HBoxContainer" unique_id=1893070057]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=131338778]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("1_1udvy")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=1680056708]
+layout_mode = 2
+text = "Attribute"
+label_settings = ExtResource("2_mto02")

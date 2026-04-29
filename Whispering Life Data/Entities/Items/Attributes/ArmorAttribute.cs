@@ -7,6 +7,6 @@ public partial class ArmorAttribute : WearableAttribute
 {
     public override string GetNameOfAttribute()
     {
-        return TranslationServer.Translate("ARMOR") + "\n";
+        return TranslationServer.Translate("ARMOR");
     }
 }

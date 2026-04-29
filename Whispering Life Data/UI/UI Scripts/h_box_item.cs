@@ -20,11 +20,19 @@ public partial class h_box_item : VBoxContainer
 
     public TextureRect item_texture;
 
+    private CustomToolTip custom_tooltip;
+    private PackedScene custom_tool_tip_scene = ResourceLoader.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://drhdbuo05k0tx")
+    );
+
     public override void _Ready()
     {
         item_label = GetNode<Label>("ItemLabel");
         title_label = GetNode<Label>("ItemLabelTitle");
         item_texture = GetNode<TextureRect>("ItemTexture");
+
+        custom_tooltip = custom_tool_tip_scene.Instantiate<CustomToolTip>();
+        item_texture.AddChild(custom_tooltip);
     }
 
     public void InitItemUI(Item item, bool with_name = false)
@@ -49,7 +57,12 @@ public partial class h_box_item : VBoxContainer
         else
             item_label.Text = " " + ((int)(item.amount * GameManager.difficulty_multiplier)) + "x";
         item_texture.Texture = item.info.texture;
-        item_texture.TooltipText = Inventory.GetToolTipItem(item);
+
+        // Update CustomToolTip
+        if (custom_tooltip == null)
+            return;
+
+        custom_tooltip.Update(item);
     }
 
     public void ChangeColor(colorType type)

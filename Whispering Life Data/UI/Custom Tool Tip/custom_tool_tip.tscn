@@ -1,0 +1,223 @@
+[gd_scene format=3 uid="uid://drhdbuo05k0tx"]
+
+[ext_resource type="Script" uid="uid://msbi5f6274wg" path="res://UI/Custom Tool Tip/CustomToolTip.cs" id="1_m341v"]
+[ext_resource type="Texture2D" uid="uid://bmjksm04vbllq" path="res://Entities/Items/SpritesForItems/Plants_Icons/Paper.png" id="2_632rw"]
+[ext_resource type="LabelSettings" uid="uid://bfyhqbjhexoyv" path="res://UI/Styles/Label_Settings_Title_Text.tres" id="3_rvvrd"]
+[ext_resource type="LabelSettings" uid="uid://dq0dwmb4gc45u" path="res://UI/Styles/Label_Settings_Normal_Text.tres" id="4_pp5v6"]
+[ext_resource type="Texture2D" uid="uid://cnvvdeihm1guu" path="res://Entities/Items/SpritesForItems/Armor/Mystic_Armor_Chestplate.png" id="5_wnddx"]
+[ext_resource type="Texture2D" uid="uid://w1k1mv22ckvl" path="res://Entities/Items/SpritesForItems/Icons_3rd/Stone.png" id="6_u3jy4"]
+[ext_resource type="Texture2D" uid="uid://cuagpqln1w5xa" path="res://Entities/Items/Research/Research Book Level/Texture/research_book_level.png" id="7_nrla0"]
+[ext_resource type="Texture2D" uid="uid://bguqn2xuu380w" path="res://Entities/Items/Minerals/Mercury Bottle/Texture/mercury_bottle.png" id="8_my6wl"]
+[ext_resource type="Texture2D" uid="uid://cuqvcm8x7oafa" path="res://Entities/Items/Craftable/Gear.png" id="9_wynn5"]
+[ext_resource type="Texture2D" uid="uid://3krvv00h3sv8" path="res://Entities/Items/SpritesForItems/Icons_3rd/Coal.png" id="10_jdc47"]
+[ext_resource type="Texture2D" uid="uid://deai4c50jpvjn" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_11.png" id="11_5jvil"]
+[ext_resource type="Texture2D" uid="uid://b6kjyf31e4wqm" path="res://Entities/Items/SpritesForItems/Icons_3rd/Hammer.png" id="12_nfnn0"]
+[ext_resource type="Texture2D" uid="uid://cs4n7hu86pfxu" path="res://Entities/Items/Poison_Item_Icon.png" id="13_nrla0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25sp6"]
+content_margin_left = 6.0
+content_margin_top = 4.0
+content_margin_right = 6.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5294118, 0.50980395, 0.64705884, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[node name="CustomToolTip" type="PanelContainer" unique_id=751895785 node_paths=PackedStringArray("title_label", "content_label", "attributes_container", "poisoned_container")]
+z_index = 10
+offset_right = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_25sp6")
+script = ExtResource("1_m341v")
+title_label = NodePath("VBoxContainer/HBoxContainer/Title")
+content_label = NodePath("VBoxContainer/Content")
+attributes_container = NodePath("VBoxContainer/AttributesContainer")
+poisoned_container = NodePath("VBoxContainer/Poisoned")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=584553354]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1729767599]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=2022597178]
+layout_mode = 2
+texture = ExtResource("2_632rw")
+expand_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1016320347]
+layout_mode = 2
+text = "Title"
+label_settings = ExtResource("3_rvvrd")
+
+[node name="Icon2" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1380009551]
+layout_mode = 2
+texture = ExtResource("2_632rw")
+expand_mode = 2
+
+[node name="Content" type="Label" parent="VBoxContainer" unique_id=210890864]
+layout_mode = 2
+text = "Content"
+label_settings = ExtResource("4_pp5v6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttributesContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1234567890]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="WearableAttribute" type="HBoxContainer" parent="VBoxContainer/AttributesContainer" unique_id=155490146]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/AttributesContainer/WearableAttribute" unique_id=390811592]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+texture = ExtResource("5_wnddx")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/AttributesContainer/WearableAttribute" unique_id=1002043792]
+layout_mode = 2
+text = "Wearable"
+label_settings = ExtResource("4_pp5v6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResourceAttribute" type="HBoxContainer" parent="VBoxContainer/AttributesContainer" unique_id=304041159]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/AttributesContainer/ResourceAttribute" unique_id=658272403]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+texture = ExtResource("6_u3jy4")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/AttributesContainer/ResourceAttribute" unique_id=1309337112]
+layout_mode = 2
+text = "Resource"
+label_settings = ExtResource("4_pp5v6")
+vertical_alignment = 1
+
+[node name="ResearchableAttribute" type="HBoxContainer" parent="VBoxContainer/AttributesContainer" unique_id=509005263]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/AttributesContainer/ResearchableAttribute" unique_id=1176142904]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+texture = ExtResource("7_nrla0")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/AttributesContainer/ResearchableAttribute" unique_id=19791025]
+layout_mode = 2
+text = "Researchable"
+label_settings = ExtResource("4_pp5v6")
+vertical_alignment = 1
+
+[node name="RarityAttribute" type="HBoxContainer" parent="VBoxContainer/AttributesContainer" unique_id=2141832261]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/AttributesContainer/RarityAttribute" unique_id=1376847746]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+texture = ExtResource("8_my6wl")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/AttributesContainer/RarityAttribute" unique_id=1288488278]
+layout_mode = 2
+text = "Rarity"
+label_settings = ExtResource("4_pp5v6")
+vertical_alignment = 1
+
+[node name="ProcessedAttribute" type="HBoxContainer" parent="VBoxContainer/AttributesContainer" unique_id=1670420211]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/AttributesContainer/ProcessedAttribute" unique_id=1635095150]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+texture = ExtResource("9_wynn5")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/AttributesContainer/ProcessedAttribute" unique_id=693841270]
+layout_mode = 2
+text = "Processed"
+label_settings = ExtResource("4_pp5v6")
+vertical_alignment = 1
+
+[node name="BurnableAttribute" type="HBoxContainer" parent="VBoxContainer/AttributesContainer" unique_id=724373941]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/AttributesContainer/BurnableAttribute" unique_id=458590149]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+texture = ExtResource("10_jdc47")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/AttributesContainer/BurnableAttribute" unique_id=1761742742]
+layout_mode = 2
+text = "Burnable"
+label_settings = ExtResource("4_pp5v6")
+vertical_alignment = 1
+
+[node name="UseAttribute" type="HBoxContainer" parent="VBoxContainer/AttributesContainer" unique_id=729145013]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/AttributesContainer/UseAttribute" unique_id=1437512154]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+texture = ExtResource("11_5jvil")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/AttributesContainer/UseAttribute" unique_id=899663381]
+layout_mode = 2
+text = "Use"
+label_settings = ExtResource("4_pp5v6")
+vertical_alignment = 1
+
+[node name="BuildingAttribute" type="HBoxContainer" parent="VBoxContainer/AttributesContainer" unique_id=1573180713]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/AttributesContainer/BuildingAttribute" unique_id=524479180]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+texture = ExtResource("12_nfnn0")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/AttributesContainer/BuildingAttribute" unique_id=1064189710]
+layout_mode = 2
+text = "Building"
+label_settings = ExtResource("4_pp5v6")
+vertical_alignment = 1
+
+[node name="Poisoned" type="HBoxContainer" parent="VBoxContainer" unique_id=829873539]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Poisoned" unique_id=769094072]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+texture = ExtResource("13_nrla0")
+expand_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/Poisoned" unique_id=1556999654]
+layout_mode = 2
+text = "Poisoned"
+label_settings = ExtResource("4_pp5v6")

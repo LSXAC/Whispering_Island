@@ -7115,7 +7115,7 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 alignment = 1
 
-[node name="QuestMenu" type="ColorRect" parent="Background" unique_id=183995902 node_paths=PackedStringArray("quest_label_parent", "success_label", "quest_name_label", "complete_button", "quest_description_label", "quest_inventory", "reward_label", "exit_button", "quest_options_tab_container", "quest_selection_container", "quest_display_container")]
+[node name="QuestMenu" type="ColorRect" parent="Background" unique_id=183995902 node_paths=PackedStringArray("quest_label_parent", "success_label", "quest_name_label", "complete_button", "quest_description_label", "quest_inventory", "reward_label", "exit_button", "quest_options_tab_container", "quest_selection_container", "quest_display_container", "interaction_break_panel")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -7141,6 +7141,7 @@ exit_button = NodePath("../ColorRect/ColorRect/HBoxHeader/ExitTabButton")
 quest_options_tab_container = NodePath("MarginContainer/TabContainer")
 quest_selection_container = NodePath("MarginContainer/TabContainer")
 quest_display_container = NodePath("MarginContainer/VBoxRequest")
+interaction_break_panel = NodePath("InteractionBreakPanel")
 
 [node name="HeaderColorRect" parent="Background/QuestMenu" unique_id=220148782 instance=ExtResource("11_45saq")]
 layout_mode = 0
@@ -7683,10 +7684,17 @@ text = "Select Quest"
 
 [node name="Border" type="ColorRect" parent="Background/QuestMenu" unique_id=309710199]
 layout_mode = 0
-offset_top = -2.0
+offset_top = -1.0
 offset_right = 4.0
-offset_bottom = 278.0
+offset_bottom = 279.0
 color = Color(0, 0, 0, 1)
+
+[node name="InteractionBreakPanel" type="ColorRect" parent="Background/QuestMenu" unique_id=552177799]
+visible = false
+layout_mode = 0
+offset_left = -250.0
+offset_bottom = 279.0
+color = Color(0, 0, 0, 0.29411766)
 
 [connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/InvTabButton" to="." method="OnInventoryTabButton"]
 [connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]

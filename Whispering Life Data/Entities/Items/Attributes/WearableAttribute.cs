@@ -26,6 +26,6 @@ public partial class WearableAttribute : ItemAttributeBase
 
     public override string GetNameOfAttribute()
     {
-        return "EMPTY WEARABLE \n";
+        return "EMPTY WEARABLE";
     }
 }

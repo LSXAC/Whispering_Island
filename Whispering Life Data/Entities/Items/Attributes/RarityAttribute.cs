@@ -17,6 +17,6 @@ public partial class RarityAttribute : ItemAttributeBase
 
     public override string GetNameOfAttribute()
     {
-        return TranslationServer.Translate("RARITY") + ": " + rarity + "" + "\n";
+        return TranslationServer.Translate("RARITY") + ": " + rarity;
     }
 }

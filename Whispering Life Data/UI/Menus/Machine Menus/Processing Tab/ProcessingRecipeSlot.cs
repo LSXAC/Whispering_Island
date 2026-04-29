@@ -31,36 +31,12 @@ public partial class ProcessingRecipeSlot : Control
         RecipeOverviewPanel panel
     )
     {
-        GD.PrintErr("[ProcessingRecipeSlot.InitRecipe] START");
-        GD.PrintErr(
-            $"[ProcessingRecipeSlot.InitRecipe]   recipe: {(recipe != null ? recipe.GetType().Name : "NULL")}"
-        );
-        GD.PrintErr(
-            $"[ProcessingRecipeSlot.InitRecipe]   building: {(building != null ? building.GetType().Name : "NULL")}"
-        );
-        GD.PrintErr(
-            $"[ProcessingRecipeSlot.InitRecipe]   panel: {(panel != null ? panel.GetType().Name : "NULL")}"
-        );
-
         this.recipe = recipe;
         this.building = building;
         this.overview_panel = panel;
 
         if (recipe == null)
-        {
-            GD.PrintErr("[ProcessingRecipeSlot.InitRecipe] ❌ recipe is NULL, returning");
             return;
-        }
-
-        GD.PrintErr(
-            $"[ProcessingRecipeSlot.InitRecipe]   input_row_manager: {(input_row_manager != null ? "✓ FOUND" : "❌ NULL")}"
-        );
-        GD.PrintErr(
-            $"[ProcessingRecipeSlot.InitRecipe]   output_item_display: {(output_item_display != null ? "✓ FOUND" : "❌ NULL")}"
-        );
-        GD.PrintErr(
-            $"[ProcessingRecipeSlot.InitRecipe]   select_button: {(select_button != null ? "✓ FOUND" : "❌ NULL")}"
-        );
 
         if (input_row_manager != null)
         {
@@ -74,9 +50,6 @@ public partial class ProcessingRecipeSlot : Control
                     required_items.Add(
                         new Item(primary_input, combiner_recipe.GetAmountToProcess())
                     );
-                    GD.PrintErr(
-                        $"[ProcessingRecipeSlot.InitRecipe]   ✓ Added primary input: {primary_input.name}"
-                    );
                 }
 
                 ItemInfo secondary_input = combiner_recipe.GetSecondaryInputRequirement();
@@ -84,9 +57,6 @@ public partial class ProcessingRecipeSlot : Control
                 {
                     required_items.Add(
                         new Item(secondary_input, combiner_recipe.GetSecondaryAmountToProcess())
-                    );
-                    GD.PrintErr(
-                        $"[ProcessingRecipeSlot.InitRecipe]   ✓ Added secondary input: {secondary_input.name}"
                     );
                 }
             }
@@ -97,9 +67,6 @@ public partial class ProcessingRecipeSlot : Control
                 {
                     required_items.Add(
                         new Item(primary_input, state_changing_recipe.GetAmountToProcess())
-                    );
-                    GD.PrintErr(
-                        $"[ProcessingRecipeSlot.InitRecipe]   ✓ Added primary input: {primary_input.name}"
                     );
                 }
 
@@ -112,22 +79,15 @@ public partial class ProcessingRecipeSlot : Control
                             state_changing_recipe.GetSecondaryAmountToProcess()
                         )
                     );
-                    GD.PrintErr(
-                        $"[ProcessingRecipeSlot.InitRecipe]   ✓ Added secondary input: {secondary_input.name}"
-                    );
                 }
             }
             else
             {
                 ItemInfo input_req = recipe.GetInputRequirement();
-                GD.PrintErr(
-                    $"[ProcessingRecipeSlot.InitRecipe]   input_req: {(input_req != null ? input_req.name : "NULL")}"
-                );
 
                 if (input_req != null)
                 {
                     required_items.Add(new Item(input_req, recipe.GetAmountToProcess()));
-                    GD.PrintErr($"[ProcessingRecipeSlot.InitRecipe]   ✓ Set input requirements");
                 }
             }
 
@@ -136,19 +96,11 @@ public partial class ProcessingRecipeSlot : Control
                 input_row_manager.SetResourcesOnUI(required_items, no_dev_list: true);
             }
         }
-        else
-        {
-            GD.PrintErr(
-                "[ProcessingRecipeSlot.InitRecipe]   ⚠ input_row_manager null, skipping input"
-            );
-        }
+        else { }
 
         if (output_item_display != null)
         {
             ItemInfo output_item = recipe.GetOutputItem();
-            GD.PrintErr(
-                $"[ProcessingRecipeSlot.InitRecipe]   output_item: {(output_item != null ? output_item.name : "NULL")}"
-            );
 
             if (output_item != null)
             {
@@ -156,18 +108,11 @@ public partial class ProcessingRecipeSlot : Control
                     new Item(output_item, recipe.GetAmountToProduce()),
                     with_name: true
                 );
-                GD.PrintErr($"[ProcessingRecipeSlot.InitRecipe]   ✓ Set output item");
             }
         }
-        else
-        {
-            GD.PrintErr(
-                "[ProcessingRecipeSlot.InitRecipe]   ⚠ output_item_display null, skipping output"
-            );
-        }
+        else { }
 
         UpdateButtonState();
-        GD.PrintErr("[ProcessingRecipeSlot.InitRecipe] END");
     }
 
     private void OnSelectRecipe()

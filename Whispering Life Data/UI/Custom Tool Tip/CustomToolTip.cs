@@ -1,0 +1,266 @@
+using System;
+using System.Collections.Generic;
+using Godot;
+
+public partial class CustomToolTip : PanelContainer
+{
+    [Export]
+    public Label title_label,
+        content_label;
+
+    [Export]
+    public VBoxContainer attributes_container;
+
+    [Export]
+    public HBoxContainer poisoned_container;
+
+    [Export]
+    public string button_content = "";
+
+    const float SCREEN_BORDER_OFFSET = 8f;
+    Tween opacityTween = null;
+    private bool is_being_destroyed = false;
+
+    public override void _Ready()
+    {
+        Hide();
+
+        // Auto-find Labels if not set
+        if (title_label == null)
+            title_label = GetNode<Label>("VBoxContainer/HBoxContainer/Title");
+        if (content_label == null)
+            content_label = GetNode<Label>("VBoxContainer/Content");
+        if (attributes_container == null)
+            attributes_container = GetNode<VBoxContainer>("VBoxContainer/AttributesContainer");
+
+        if (GetParent() is Control)
+        {
+            ((Control)GetParent()).MouseEntered += () => Toggle(true);
+            ((Control)GetParent()).MouseExited += () => Toggle(false);
+        }
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (!IsNodeReady() || !Visible)
+            return;
+
+        if (@event is InputEventMouseMotion)
+        {
+            Vector2 newPos = GetGlobalMousePosition() + new Vector2(10, 10);
+            Rect2 screenRect = GetViewportRect();
+
+            // Get tooltip dimensions
+            Vector2 tooltipSize = GetRect().Size;
+
+            // Clamp position to keep tooltip within screen bounds with 8px offset
+            if (newPos.X + tooltipSize.X + SCREEN_BORDER_OFFSET > screenRect.Size.X)
+                newPos.X = screenRect.Size.X - tooltipSize.X - SCREEN_BORDER_OFFSET;
+
+            if (newPos.Y + tooltipSize.Y + SCREEN_BORDER_OFFSET > screenRect.Size.Y)
+                newPos.Y = screenRect.Size.Y - tooltipSize.Y - SCREEN_BORDER_OFFSET;
+
+            // Ensure it doesn't go below 0 with offset
+            newPos.X = Mathf.Max(SCREEN_BORDER_OFFSET, newPos.X);
+            newPos.Y = Mathf.Max(SCREEN_BORDER_OFFSET, newPos.Y);
+
+            GlobalPosition = newPos;
+        }
+    }
+
+    public async void Toggle(bool on)
+    {
+        if (GameManager.IsGameInterupted() || !IsNodeReady())
+            return;
+
+        try
+        {
+            if (on)
+            {
+                Show();
+                Modulate = new Color(1, 1, 1, 0);
+                TweenOpacity(new Color(1, 1, 1, 1));
+            }
+            else
+            {
+                if (!IsNodeReady())
+                    return;
+
+                Modulate = new Color(1, 1, 1, 1);
+                Tween tween = TweenOpacity(new Color(1, 1, 1, 0));
+                if (tween != null && IsNodeReady())
+                    await ToSignal(tween, Tween.SignalName.Finished);
+
+                if (IsNodeReady())
+                    Hide();
+            }
+        }
+        catch (System.Exception ex)
+        {
+            GD.PrintErr($"Error in Toggle: {ex.Message}");
+        }
+    }
+
+    public void BlockTweens()
+    {
+        is_being_destroyed = true;
+        opacityTween?.Kill();
+    }
+
+    public Tween TweenOpacity(Color to)
+    {
+        // Block new tweens if node is being destroyed
+        if (is_being_destroyed)
+            return null;
+
+        // Check if node is still valid
+        if (!IsNodeReady())
+            return null;
+
+        var tree = GetTree();
+        if (tree == null)
+            return null;
+
+        try
+        {
+            opacityTween?.Kill();
+            opacityTween = tree.CreateTween();
+
+            // Add callback that checks if node is still valid before tweening
+            if (IsNodeReady())
+            {
+                opacityTween.TweenProperty(this, "modulate", to, 0.2f);
+            }
+
+            return opacityTween;
+        }
+        catch (System.Exception ex)
+        {
+            GD.PrintErr($"Error in TweenOpacity: {ex.Message}");
+            return null;
+        }
+    }
+
+    public void SetTitle(string title)
+    {
+        if (title_label != null)
+            title_label.Text = title;
+    }
+
+    public void SetContent(string content)
+    {
+        if (content_label != null)
+            content_label.Text = content;
+    }
+
+    public void AddContent(string content)
+    {
+        if (content_label != null)
+            content_label.Text += content;
+    }
+
+    public void ClearTitle()
+    {
+        if (title_label != null)
+            title_label.Text = "";
+    }
+
+    public void ClearContent()
+    {
+        if (content_label != null)
+            content_label.Text = "";
+    }
+
+    public void UpdateItemAttributes()
+    {
+        if (attributes_container == null)
+            return;
+
+        // Hide all attributes first
+        foreach (Node child in attributes_container.GetChildren())
+        {
+            if (child is Control control)
+                control.Visible = false;
+        }
+
+        // Only update if parent is SlotItemUI
+        if (GetParent() is not SlotItemUI slot_item_ui || slot_item_ui.item?.info == null)
+            return;
+
+        // Show attributes that exist in the item
+        foreach (ItemAttributeBase attribute in slot_item_ui.item.info.attributes)
+        {
+            if (attribute == null)
+                continue;
+
+            string attribute_type_name = attribute.GetType().Name;
+            Node attribute_node = attributes_container.FindChild(attribute_type_name);
+
+            if (attribute_node is Control control)
+            {
+                control.Visible = true;
+                // Update label with attribute name
+                Label label = control.GetNode<Label>("Label");
+                label.Text = attribute.GetNameOfAttribute();
+            }
+            else
+            {
+                GD.PrintErr($"Attribute node '{attribute_type_name}' not found in tooltip!");
+            }
+        }
+    }
+
+    public void Update(Item item, int current_durability = -1, int max_durability = 0)
+    {
+        if (item?.info == null || title_label == null || content_label == null)
+            return;
+
+        poisoned_container.Visible = false;
+        SetTitle(TranslationServer.Translate(item.info.name.ToString()));
+
+        string content = TranslationServer.Translate(item.info.description.ToString()) + "\n";
+
+        if (current_durability != -1)
+            content += "Durability: " + current_durability + "/" + max_durability + "\n";
+
+        if (item.state != Item.STATE.NORMAL)
+            poisoned_container.Visible = true;
+
+        SetContent(content);
+
+        UpdateItemAttributesForItem(item);
+    }
+
+    private void UpdateItemAttributesForItem(Item item)
+    {
+        if (item?.info == null || attributes_container == null)
+            return;
+
+        foreach (Node child in attributes_container.GetChildren())
+        {
+            if (child is Control control)
+                control.Visible = false;
+        }
+
+        foreach (ItemAttributeBase attribute in item.info.attributes)
+        {
+            if (attribute == null)
+                continue;
+
+            string attribute_type_name = attribute.GetType().Name;
+            Node attribute_node = attributes_container.FindChild(attribute_type_name);
+
+            if (attribute_node is Control control)
+            {
+                control.Visible = true;
+
+                Label label = control.GetNode<Label>("Label");
+                label.Text = attribute.GetNameOfAttribute();
+            }
+            else
+            {
+                GD.PrintErr($"Attribute node '{attribute_type_name}' not found in tooltip!");
+            }
+        }
+    }
+}
