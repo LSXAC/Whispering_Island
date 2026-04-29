@@ -17,6 +17,12 @@ public partial class CustomToolTip : PanelContainer
     [Export]
     public string button_content = "";
 
+    [Export]
+    public bool position_left = false;
+
+    [Export]
+    public Control bounds_container = null;
+
     const float SCREEN_BORDER_OFFSET = 8f;
     Tween opacityTween = null;
     private bool is_being_destroyed = false;
@@ -47,22 +53,35 @@ public partial class CustomToolTip : PanelContainer
 
         if (@event is InputEventMouseMotion)
         {
-            Vector2 newPos = GetGlobalMousePosition() + new Vector2(10, 10);
-            Rect2 screenRect = GetViewportRect();
-
-            // Get tooltip dimensions
             Vector2 tooltipSize = GetRect().Size;
+            Vector2 newPos;
+            Rect2 availableRect;
 
-            // Clamp position to keep tooltip within screen bounds with 8px offset
-            if (newPos.X + tooltipSize.X + SCREEN_BORDER_OFFSET > screenRect.Size.X)
-                newPos.X = screenRect.Size.X - tooltipSize.X - SCREEN_BORDER_OFFSET;
+            if (bounds_container != null && bounds_container.IsNodeReady())
+                availableRect = bounds_container.GetGlobalRect();
+            else
+                availableRect = GetViewportRect();
 
-            if (newPos.Y + tooltipSize.Y + SCREEN_BORDER_OFFSET > screenRect.Size.Y)
-                newPos.Y = screenRect.Size.Y - tooltipSize.Y - SCREEN_BORDER_OFFSET;
+            if (position_left)
+                newPos = GetGlobalMousePosition() + new Vector2(-tooltipSize.X - 10, 10);
+            else
+                newPos = GetGlobalMousePosition() + new Vector2(10, 10);
 
-            // Ensure it doesn't go below 0 with offset
-            newPos.X = Mathf.Max(SCREEN_BORDER_OFFSET, newPos.X);
-            newPos.Y = Mathf.Max(SCREEN_BORDER_OFFSET, newPos.Y);
+            float minX = availableRect.Position.X + SCREEN_BORDER_OFFSET;
+            float maxX =
+                availableRect.Position.X
+                + availableRect.Size.X
+                - tooltipSize.X
+                - SCREEN_BORDER_OFFSET;
+            float minY = availableRect.Position.Y + SCREEN_BORDER_OFFSET;
+            float maxY =
+                availableRect.Position.Y
+                + availableRect.Size.Y
+                - tooltipSize.Y
+                - SCREEN_BORDER_OFFSET;
+
+            newPos.X = Mathf.Clamp(newPos.X, minX, maxX);
+            newPos.Y = Mathf.Clamp(newPos.Y, minY, maxY);
 
             GlobalPosition = newPos;
         }

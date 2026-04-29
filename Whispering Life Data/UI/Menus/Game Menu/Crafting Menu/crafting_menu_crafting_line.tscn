@@ -16,7 +16,7 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_fxdbo")
 item_row_manager = NodePath("MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere")
-craft_button = NodePath("MarginContainer/VSplitContainer/HBoxRequiereToCraft/CraftButton")
+craft_button = NodePath("MarginContainer/VSplitContainer/HBoxToCraft/CraftButton")
 output_item_hbox = NodePath("MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1116420246]
@@ -35,9 +35,22 @@ split_offsets = PackedInt32Array(250)
 collapsed = true
 split_offset = 250
 
-[node name="HBoxToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer" unique_id=1850141300]
-custom_minimum_size = Vector2(175, 0)
+[node name="HBoxRequiereToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer" unique_id=11124704]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CC_Requiere" type="HBoxContainer" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft" unique_id=867464102]
+layout_mode = 2
+script = ExtResource("5_xiqxj")
+
+[node name="HBoxItem" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere" unique_id=926058299 instance=ExtResource("2_f48sm")]
+layout_mode = 2
+
+[node name="HBoxToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer" unique_id=1850141300]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+alignment = 2
 
 [node name="CC" type="CenterContainer" parent="MarginContainer/VSplitContainer/HBoxToCraft" unique_id=934246422]
 layout_mode = 2
@@ -49,28 +62,13 @@ alignment = 0
 
 [node name="ItemLabelTitle" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem" index="0" unique_id=1565653983]
 text = "2x434343434343434"
-horizontal_alignment = 0
+horizontal_alignment = 2
 
 [node name="ItemTexture" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem" index="1" unique_id=1871821504]
 custom_minimum_size = Vector2(20, 20)
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 
-[node name="ItemLabel" parent="MarginContainer/VSplitContainer/HBoxToCraft/CC/HBoxItem" index="2" unique_id=796178816]
-horizontal_alignment = 0
-
-[node name="HBoxRequiereToCraft" type="HBoxContainer" parent="MarginContainer/VSplitContainer" unique_id=11124704]
-custom_minimum_size = Vector2(75, 0)
-layout_mode = 2
-alignment = 2
-
-[node name="CC_Requiere" type="HBoxContainer" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft" unique_id=867464102]
-layout_mode = 2
-script = ExtResource("5_xiqxj")
-
-[node name="HBoxItem" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft/CC_Requiere" unique_id=926058299 instance=ExtResource("2_f48sm")]
-layout_mode = 2
-
-[node name="CraftButton" type="Button" parent="MarginContainer/VSplitContainer/HBoxRequiereToCraft" unique_id=467042745]
+[node name="CraftButton" type="Button" parent="MarginContainer/VSplitContainer/HBoxToCraft" unique_id=467042745]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_constants/icon_max_width = 24

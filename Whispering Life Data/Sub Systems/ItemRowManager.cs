@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Godot;
@@ -9,6 +10,8 @@ public partial class ItemRowManager : HBoxContainer
     private PackedScene h_box_item = ResourceLoader.Load<PackedScene>(
         ResourceUid.UidToPath("uid://bnf8yngk7oyy0")
     );
+
+    public List<h_box_item> h_box_item_list = new List<h_box_item>();
 
     public void SetResourcesOnUI(Array<Item> items, bool no_dev_list = false)
     {
@@ -26,6 +29,7 @@ public partial class ItemRowManager : HBoxContainer
         foreach (Item item in items_to_use)
         {
             h_box_item hbc_c = CreateHBoxItem(item);
+            h_box_item_list.Add(hbc_c);
             Array<Item> i_list = PlayerInventoryUI.instance?.GetItemFromListOrNull(
                 PlayerInventoryUI.instance?.GetListOfItemsInInventory(),
                 item
@@ -69,7 +73,8 @@ public partial class ItemRowManager : HBoxContainer
         Array<Item> items_to_use = GlobalFunctions.GetNormalListOrDevList(items);
 
         int different_item_types = 0;
-        Dictionary<Item, int> amount_of_each_item = new Dictionary<Item, int>();
+        System.Collections.Generic.Dictionary<Item, int> amount_of_each_item =
+            new System.Collections.Generic.Dictionary<Item, int>();
 
         foreach (Item item in items_to_use)
         {
@@ -126,11 +131,13 @@ public partial class ItemRowManager : HBoxContainer
     {
         foreach (Control c in GetChildren())
             c.Free();
+        h_box_item_list.Clear();
     }
 
     private h_box_item CreateHBoxItem(Item item)
     {
         h_box_item hbi = (h_box_item)h_box_item.Instantiate();
+        hbi._Ready();
         hbi.InitItemUI(item);
         hbi.ChangeColor(global::h_box_item.colorType.red);
         return hbi;

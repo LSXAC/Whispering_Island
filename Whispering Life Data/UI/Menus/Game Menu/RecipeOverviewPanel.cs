@@ -25,9 +25,7 @@ public partial class RecipeOverviewPanel : PanelContainer
     public void ReloadRecipes()
     {
         if (current_building == null)
-        {
             return;
-        }
 
         if (recipe_container != null)
         {
@@ -35,21 +33,15 @@ public partial class RecipeOverviewPanel : PanelContainer
                 child.QueueFree();
         }
         else
-        {
             return;
-        }
 
         if (!current_building.requires_recipe)
-        {
             return;
-        }
 
         Godot.Collections.Array available_recipes = current_building.GetAvailableRecipes();
 
         if (available_recipes == null || available_recipes.Count == 0)
-        {
             return;
-        }
 
         int loaded_count = 0;
         int filtered_count = 0;
@@ -66,9 +58,7 @@ public partial class RecipeOverviewPanel : PanelContainer
                 bool is_unlocked = GlobalFunctions.CheckResearchRequirements(requirements);
 
                 if (!is_unlocked)
-                {
                     continue;
-                }
             }
 
             if (recipe_container != null)
@@ -94,7 +84,20 @@ public partial class RecipeOverviewPanel : PanelContainer
                     recipe_container.AddChild(recipe_slot);
                     loaded_count++;
                 }
-                else { }
+            }
+        }
+    }
+
+    public void UpdateRecipeButtonStates()
+    {
+        if (recipe_container == null)
+            return;
+
+        foreach (Control child in recipe_container.GetChildren())
+        {
+            if (child is ProcessingRecipeSlot recipe_slot)
+            {
+                recipe_slot.UpdateButtonState();
             }
         }
     }

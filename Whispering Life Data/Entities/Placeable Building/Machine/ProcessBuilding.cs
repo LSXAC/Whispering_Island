@@ -336,9 +336,7 @@ public abstract partial class ProcessBuilding : MachineBase
         machine_save.selected_recipe_index = -1;
 
         if (selected_recipe != null)
-        {
             for (int i = 0; i < recipes.Count; i++)
-            {
                 try
                 {
                     Variant recipeVariant = recipes[i];
@@ -351,8 +349,6 @@ public abstract partial class ProcessBuilding : MachineBase
                     }
                 }
                 catch { }
-            }
-        }
 
         return machine_save;
     }
@@ -363,9 +359,7 @@ public abstract partial class ProcessBuilding : MachineBase
         {
             var ui_updater = GetUIUpdater();
             if (ui_updater != null && ui_updater.process_building == this)
-            {
                 ui_updater.UpdateUI();
-            }
         }
         catch { }
     }
@@ -443,9 +437,10 @@ public abstract partial class ProcessBuilding : MachineBase
 
         ProcessingTab ui_updater = GetUIUpdater() as ProcessingTab;
         if (ui_updater != null)
-        {
             ui_updater.UpdateRecipeSlotIcons(recipe);
-        }
+
+        if (ui_updater != null)
+            ui_updater.UpdateSlotAllowedItems(recipe);
 
         if (recipe != null && Logger.NodeIsNotNull(building_information_panel_instance))
         {
@@ -504,7 +499,7 @@ public abstract partial class ProcessBuilding : MachineBase
         else if (item_array[slot_index].item_id == item_save.item_id)
             item_array[slot_index].amount += item_save.amount;
         else
-            return false; // Unterschiedliche Items können nicht kombiniert werden
+            return false;
 
         NotifyItemsChanged();
         return true;

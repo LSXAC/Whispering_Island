@@ -20,7 +20,7 @@ public partial class h_box_item : VBoxContainer
 
     public TextureRect item_texture;
 
-    private CustomToolTip custom_tooltip;
+    public CustomToolTip custom_tooltip;
     private PackedScene custom_tool_tip_scene = ResourceLoader.Load<PackedScene>(
         ResourceUid.UidToPath("uid://drhdbuo05k0tx")
     );
@@ -30,9 +30,6 @@ public partial class h_box_item : VBoxContainer
         item_label = GetNode<Label>("ItemLabel");
         title_label = GetNode<Label>("ItemLabelTitle");
         item_texture = GetNode<TextureRect>("ItemTexture");
-
-        custom_tooltip = custom_tool_tip_scene.Instantiate<CustomToolTip>();
-        item_texture.AddChild(custom_tooltip);
     }
 
     public void InitItemUI(Item item, bool with_name = false)
@@ -44,6 +41,11 @@ public partial class h_box_item : VBoxContainer
         if (title_label == null)
             title_label = GetNode<Label>("ItemLabelTitle");
 
+        if (custom_tooltip == null)
+        {
+            custom_tooltip = custom_tool_tip_scene.Instantiate<CustomToolTip>();
+            item_texture.AddChild(custom_tooltip);
+        }
         if (with_name)
         {
             title_label.Visible = true;

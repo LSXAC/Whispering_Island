@@ -36,7 +36,13 @@ public partial class itemRecipeUI : Control
         if (item_row_manager.CheckEnoughResources(items))
             can_craft = true;
         item_row_manager.SetResourcesOnUI(items);
-
+        foreach (h_box_item hbi in item_row_manager.h_box_item_list)
+        {
+            if (hbi?.custom_tooltip != null)
+                hbi.custom_tooltip.bounds_container = GetParent().GetParent<Control>();
+        }
+        output_item_hbox.custom_tooltip.position_left = true;
+        output_item_hbox.custom_tooltip.bounds_container = GetParent().GetParent<Control>();
         if (
             !PlayerInventoryUI.instance.CanReceiveItem(
                 new Item(output_item.info, output_item.amount),

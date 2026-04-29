@@ -109,9 +109,6 @@ public abstract partial class ProcessingTab : SlotUpdater
         if (process_building == null)
             return;
 
-        if (recipe_overview_panel != null)
-            recipe_overview_panel.ReloadRecipes();
-
         SetMachineProgressbar(process_building.ui_progress);
         UpdateFuelProgressbar(
             (int)((double)process_building.fuel_left / process_building.max_fuel_count * 100)
@@ -203,6 +200,39 @@ public abstract partial class ProcessingTab : SlotUpdater
     protected virtual Texture2D GetFuelIcon()
     {
         return null;
+    }
+
+    public void UpdateSlotAllowedItems(ProcessingRecipe recipe)
+    {
+        if (recipe == null)
+            return;
+
+        int input_idx = GetSlotIndexByPurpose(SlotPurpose.INPUT);
+        if (input_idx >= 0 && slot_by_index.TryGetValue(input_idx, out var input_slot))
+        {
+            ItemInfo input_requirement = recipe.GetInputRequirement();
+            input_slot.allowed_item = input_requirement;
+        }
+
+        int auxiliary_idx = GetSlotIndexByPurpose(SlotPurpose.AUXILIARY);
+        if (auxiliary_idx >= 0 && slot_by_index.TryGetValue(auxiliary_idx, out var auxiliary_slot))
+        {
+            ItemInfo auxiliary_requirement = null;
+
+            if (recipe is CombinerRecipe combiner_recipe)
+                auxiliary_requirement = combiner_recipe.GetSecondaryInputRequirement();
+            else if (recipe is StateChangingRecipe state_changing_recipe)
+                auxiliary_requirement = state_changing_recipe.GetSecondaryInputRequirement();
+
+            auxiliary_slot.allowed_item = auxiliary_requirement;
+        }
+
+        int output_idx = GetSlotIndexByPurpose(SlotPurpose.OUTPUT);
+        if (output_idx >= 0 && slot_by_index.TryGetValue(output_idx, out var output_slot))
+        {
+            ItemInfo output_requirement = recipe.GetOutputItem();
+            output_slot.allowed_item = output_requirement;
+        }
     }
 
     public void UpdateRecipeSlotIcons(ProcessingRecipe recipe)

@@ -20,9 +20,7 @@ public partial class ProcessingRecipeSlot : Control
     public override void _Ready()
     {
         if (select_button != null)
-        {
             select_button.Pressed += OnSelectRecipe;
-        }
     }
 
     public void InitRecipe(
@@ -92,11 +90,8 @@ public partial class ProcessingRecipeSlot : Control
             }
 
             if (required_items.Count > 0)
-            {
                 input_row_manager.SetResourcesOnUI(required_items, no_dev_list: true);
-            }
         }
-        else { }
 
         if (output_item_display != null)
         {
@@ -110,7 +105,6 @@ public partial class ProcessingRecipeSlot : Control
                 );
             }
         }
-        else { }
 
         UpdateButtonState();
     }
@@ -121,7 +115,7 @@ public partial class ProcessingRecipeSlot : Control
             return;
 
         building.SelectRecipe(recipe);
-        overview_panel?.ReloadRecipes();
+        overview_panel?.UpdateRecipeButtonStates();
     }
 
     public void UpdateButtonState()
@@ -146,8 +140,6 @@ public partial class ProcessingRecipeSlot : Control
     public override void _ExitTree()
     {
         if (select_button != null)
-        {
             select_button.Pressed -= OnSelectRecipe;
-        }
     }
 }

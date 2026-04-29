@@ -12,6 +12,9 @@ public partial class Slot : Button
     public ItemAttributeBase attribute_to_check;
 
     [Export]
+    public ItemInfo allowed_item = null;
+
+    [Export]
     public bool check_attributes = false;
 
     [Export]
@@ -351,12 +354,12 @@ public partial class Slot : Button
         SlotItemUI slot_item_ui = GetSlotItemUI();
         if (slot_item_ui == null)
             return;
-        
+
         // Block any tweens in the CustomToolTip before deletion
         CustomToolTip tooltip = slot_item_ui.GetNode<CustomToolTip>("CustomToolTip");
         if (tooltip != null)
             tooltip.BlockTweens();
-        
+
         slot_item_ui.Free();
     }
 
@@ -488,6 +491,10 @@ public partial class Slot : Button
                     attribute_to_check.GetType()
                 )
             )
+                return false;
+
+        if (allowed_item != null)
+            if (InventoryTab.clicked_slot_item_ui.item.info != allowed_item)
                 return false;
 
         return true;
