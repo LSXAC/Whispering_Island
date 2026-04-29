@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://dn1orkomhkyrw"]
 
 [ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="1_i3vrx"]
+[ext_resource type="Script" uid="uid://co6vsqcpmoyox" path="res://Entities/Items/Attributes/UseAttribute.cs" id="4_lb24r"]
 [ext_resource type="Script" uid="uid://doosgdjr0ddtl" path="res://Entities/Items/Attributes/ResearchableAttribute.cs" id="5_rvi3f"]
 [ext_resource type="Script" uid="uid://bfnqqg6a2on8k" path="res://Entities/Items/Attributes/BurnableAttribute.cs" id="6_i5wgf"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="7_libhm"]
@@ -18,9 +19,16 @@ metadata/_custom_type_script = "uid://doosgdjr0ddtl"
 script = ExtResource("6_i5wgf")
 metadata/_custom_type_script = "uid://bfnqqg6a2on8k"
 
+[sub_resource type="Resource" id="Resource_vu87b"]
+script = ExtResource("4_lb24r")
+stamina_restoration = 2
+health_restoration = 2
+mana_restoration = 2
+metadata/_custom_type_script = "uid://co6vsqcpmoyox"
+
 [resource]
 script = ExtResource("7_libhm")
-attributes = Array[Object]([SubResource("Resource_11wgx"), SubResource("Resource_c6dd4"), SubResource("Resource_q0dr4")])
+attributes = Array[Object]([SubResource("Resource_11wgx"), SubResource("Resource_c6dd4"), SubResource("Resource_q0dr4"), SubResource("Resource_vu87b")])
 max_stackable_size = 250
 name = "WOOD"
 id = 41

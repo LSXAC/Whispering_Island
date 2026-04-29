@@ -11,8 +11,6 @@ public partial class ItemRowManager : HBoxContainer
         ResourceUid.UidToPath("uid://bnf8yngk7oyy0")
     );
 
-    public List<h_box_item> h_box_item_list = new List<h_box_item>();
-
     public void SetResourcesOnUI(Array<Item> items, bool no_dev_list = false)
     {
         Debug.Print($"[ItemRowManager.SetResourcesOnUI] START with {items.Count} items");
@@ -29,7 +27,6 @@ public partial class ItemRowManager : HBoxContainer
         foreach (Item item in items_to_use)
         {
             h_box_item hbc_c = CreateHBoxItem(item);
-            h_box_item_list.Add(hbc_c);
 
             Array<Item> i_list = PlayerInventoryUI.instance?.GetItemFromListOrNull(
                 PlayerInventoryUI.instance?.GetListOfItemsInInventory(),
@@ -132,7 +129,6 @@ public partial class ItemRowManager : HBoxContainer
     {
         foreach (Control c in GetChildren())
             c.Free();
-        h_box_item_list.Clear();
     }
 
     private h_box_item CreateHBoxItem(Item item)

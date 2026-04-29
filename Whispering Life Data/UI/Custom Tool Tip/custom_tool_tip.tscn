@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bguqn2xuu380w" path="res://Entities/Items/Minerals/Mercury Bottle/Texture/mercury_bottle.png" id="8_my6wl"]
 [ext_resource type="Texture2D" uid="uid://cuqvcm8x7oafa" path="res://Entities/Items/Craftable/Gear.png" id="9_wynn5"]
 [ext_resource type="Texture2D" uid="uid://3krvv00h3sv8" path="res://Entities/Items/SpritesForItems/Icons_3rd/Coal.png" id="10_jdc47"]
-[ext_resource type="Texture2D" uid="uid://deai4c50jpvjn" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_11.png" id="11_5jvil"]
 [ext_resource type="Texture2D" uid="uid://b6kjyf31e4wqm" path="res://Entities/Items/SpritesForItems/Icons_3rd/Hammer.png" id="12_nfnn0"]
 [ext_resource type="Texture2D" uid="uid://cs4n7hu86pfxu" path="res://Entities/Items/Poison_Item_Icon.png" id="13_nrla0"]
 
@@ -33,7 +32,7 @@ shadow_color = Color(0, 0, 0, 0.39215687)
 shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
-[node name="CustomToolTip" type="PanelContainer" unique_id=751895785 node_paths=PackedStringArray("title_label", "content_label", "attributes_container", "poisoned_container")]
+[node name="CustomToolTip" type="PanelContainer" unique_id=751895785 node_paths=PackedStringArray("title_label", "content_label", "attributes_container", "poisoned_container", "use_button")]
 z_index = 10
 offset_right = 1.0
 mouse_filter = 2
@@ -43,6 +42,7 @@ title_label = NodePath("VBoxContainer/HBoxContainer/Title")
 content_label = NodePath("VBoxContainer/Content")
 attributes_container = NodePath("VBoxContainer/AttributesContainer")
 poisoned_container = NodePath("VBoxContainer/Poisoned")
+use_button = NodePath("")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=584553354]
 layout_mode = 2
@@ -72,6 +72,20 @@ text = "Content"
 label_settings = ExtResource("4_pp5v6")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Poisoned" type="HBoxContainer" parent="VBoxContainer" unique_id=829873539]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Poisoned" unique_id=769094072]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+texture = ExtResource("13_nrla0")
+expand_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/Poisoned" unique_id=1556999654]
+layout_mode = 2
+text = "Poisoned"
+label_settings = ExtResource("4_pp5v6")
 
 [node name="AttributesContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1234567890]
 layout_mode = 2
@@ -176,22 +190,6 @@ text = "Burnable"
 label_settings = ExtResource("4_pp5v6")
 vertical_alignment = 1
 
-[node name="UseAttribute" type="HBoxContainer" parent="VBoxContainer/AttributesContainer" unique_id=729145013]
-custom_minimum_size = Vector2(0, 12)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/AttributesContainer/UseAttribute" unique_id=1437512154]
-custom_minimum_size = Vector2(12, 12)
-layout_mode = 2
-texture = ExtResource("11_5jvil")
-expand_mode = 4
-
-[node name="Label" type="Label" parent="VBoxContainer/AttributesContainer/UseAttribute" unique_id=899663381]
-layout_mode = 2
-text = "Use"
-label_settings = ExtResource("4_pp5v6")
-vertical_alignment = 1
-
 [node name="BuildingAttribute" type="HBoxContainer" parent="VBoxContainer/AttributesContainer" unique_id=1573180713]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
@@ -207,17 +205,3 @@ layout_mode = 2
 text = "Building"
 label_settings = ExtResource("4_pp5v6")
 vertical_alignment = 1
-
-[node name="Poisoned" type="HBoxContainer" parent="VBoxContainer" unique_id=829873539]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/Poisoned" unique_id=769094072]
-custom_minimum_size = Vector2(12, 12)
-layout_mode = 2
-texture = ExtResource("13_nrla0")
-expand_mode = 2
-
-[node name="Title" type="Label" parent="VBoxContainer/Poisoned" unique_id=1556999654]
-layout_mode = 2
-text = "Poisoned"
-label_settings = ExtResource("4_pp5v6")

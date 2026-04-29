@@ -2,7 +2,7 @@ using System;
 using Godot;
 
 [GlobalClass]
-public partial class BuildingAttribute : UseAttribute
+public partial class BuildingAttribute : ItemAttributeBase
 {
     [Export]
     public Callable on_place_callable;

@@ -31,7 +31,6 @@ public partial class CustomToolTip : PanelContainer
     {
         Hide();
 
-        // Auto-find Labels if not set
         if (title_label == null)
             title_label = GetNode<Label>("VBoxContainer/HBoxContainer/Title");
         if (content_label == null)
@@ -43,6 +42,20 @@ public partial class CustomToolTip : PanelContainer
         {
             ((Control)GetParent()).MouseEntered += () => Toggle(true);
             ((Control)GetParent()).MouseExited += () => Toggle(false);
+        }
+
+        if (bounds_container == null)
+        {
+            Node current = GetParent();
+            while (current != null)
+            {
+                if (current is ScrollContainer scroll_container)
+                {
+                    bounds_container = scroll_container;
+                    break;
+                }
+                current = current.GetParent();
+            }
         }
     }
 
@@ -63,9 +76,9 @@ public partial class CustomToolTip : PanelContainer
                 availableRect = GetViewportRect();
 
             if (position_left)
-                newPos = GetGlobalMousePosition() + new Vector2(-tooltipSize.X - 10, 10);
+                newPos = new Vector2(-tooltipSize.X - 10, 10);
             else
-                newPos = GetGlobalMousePosition() + new Vector2(10, 10);
+                newPos = new Vector2(10, 10);
 
             float minX = availableRect.Position.X + SCREEN_BORDER_OFFSET;
             float maxX =
@@ -128,11 +141,9 @@ public partial class CustomToolTip : PanelContainer
 
     public Tween TweenOpacity(Color to)
     {
-        // Block new tweens if node is being destroyed
         if (is_being_destroyed)
             return null;
 
-        // Check if node is still valid
         if (!IsNodeReady())
             return null;
 
@@ -145,15 +156,12 @@ public partial class CustomToolTip : PanelContainer
             opacityTween?.Kill();
             opacityTween = tree.CreateTween();
 
-            // Add callback that checks if node is still valid before tweening
             if (IsNodeReady())
-            {
                 opacityTween.TweenProperty(this, "modulate", to, 0.2f);
-            }
 
             return opacityTween;
         }
-        catch (System.Exception ex)
+        catch (Exception ex)
         {
             GD.PrintErr($"Error in TweenOpacity: {ex.Message}");
             return null;
@@ -195,18 +203,15 @@ public partial class CustomToolTip : PanelContainer
         if (attributes_container == null)
             return;
 
-        // Hide all attributes first
         foreach (Node child in attributes_container.GetChildren())
         {
             if (child is Control control)
                 control.Visible = false;
         }
 
-        // Only update if parent is SlotItemUI
         if (GetParent() is not SlotItemUI slot_item_ui || slot_item_ui.item?.info == null)
             return;
 
-        // Show attributes that exist in the item
         foreach (ItemAttributeBase attribute in slot_item_ui.item.info.attributes)
         {
             if (attribute == null)
@@ -218,14 +223,11 @@ public partial class CustomToolTip : PanelContainer
             if (attribute_node is Control control)
             {
                 control.Visible = true;
-                // Update label with attribute name
                 Label label = control.GetNode<Label>("Label");
                 label.Text = attribute.GetNameOfAttribute();
             }
             else
-            {
                 GD.PrintErr($"Attribute node '{attribute_type_name}' not found in tooltip!");
-            }
         }
     }
 
@@ -277,9 +279,7 @@ public partial class CustomToolTip : PanelContainer
                 label.Text = attribute.GetNameOfAttribute();
             }
             else
-            {
                 GD.PrintErr($"Attribute node '{attribute_type_name}' not found in tooltip!");
-            }
         }
     }
 }

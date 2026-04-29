@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://cqrxk5fhdhnu5" path="res://UI/World Map/Textures/Compass.png" id="37_sw2xm"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="38_irdkv"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/Menus/Translation/TranslationLabel.cs" id="39_sw2xm"]
+[ext_resource type="Script" uid="uid://h0f2m4phglc1" path="res://Sub Systems/Game Manager/ItemUseManager.cs" id="40_ekee1"]
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://UI/Menus/Translation/TranslationButton.cs" id="40_uv8n6"]
 [ext_resource type="Script" uid="uid://dlnqgvorydc7m" path="res://UI/Menus/Translation/TranslationCheckBox.cs" id="41_4xc4d"]
 [ext_resource type="Texture2D" uid="uid://wyobtxm8epgl" path="res://UI/Icons/world_compass.png" id="41_irdkv"]
@@ -429,6 +430,9 @@ script = ExtResource("48_yiylw")
 
 [node name="NervTransducterManager" type="Node2D" parent="." unique_id=2112165860]
 script = ExtResource("48_3cr4v")
+
+[node name="ItemUseManager" type="Node2D" parent="." unique_id=248691893]
+script = ExtResource("40_ekee1")
 
 [connection signal="timeout" from="QuestManager/QuestTimer" to="QuestManager" method="OnQuestTimerTimeout"]
 [connection signal="timeout" from="GlobalAnimationTimer" to="GlobalAnimationTimer" method="OnAnimationGlobalTimerTimeout"]

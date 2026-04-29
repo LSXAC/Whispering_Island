@@ -32,7 +32,6 @@ public partial class SlotItemUI : Control
         UpdateToolTip();
     }
 
-    //TODO: Extract Durability to extra Class
     public void init(Item item, int current_durability = -1)
     {
         this.item = item.Clone();
