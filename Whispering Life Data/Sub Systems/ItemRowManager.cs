@@ -30,6 +30,7 @@ public partial class ItemRowManager : HBoxContainer
         {
             h_box_item hbc_c = CreateHBoxItem(item);
             h_box_item_list.Add(hbc_c);
+
             Array<Item> i_list = PlayerInventoryUI.instance?.GetItemFromListOrNull(
                 PlayerInventoryUI.instance?.GetListOfItemsInInventory(),
                 item
