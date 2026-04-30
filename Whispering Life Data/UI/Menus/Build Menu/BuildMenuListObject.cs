@@ -37,25 +37,15 @@ public partial class BuildMenuListObject : Control
         if (Logger.NodeIsNotNull(texture))
         {
             texture.TooltipText = TranslationServer.Translate(building_node.GetTitle()) + "\n";
-            texture.Texture = building_type.texture_in_build_menu;
             texture.TooltipText += TranslationServer.Translate(building_node.GetDescription());
         }
         if (building_type.show_magic_power_use)
             magic_power_icon.Visible = true;
-
-        if (Logger.NodeIsNotNull(item_row_manager) && Logger.NodeIsNotNull(build_button))
-        {
-            item_row_manager.SetResourcesOnUI(building_type.required_items);
-            if (item_row_manager.CheckEnoughResources(building_type.required_items))
-                build_button.Disabled = false;
-            else
-                build_button.Disabled = true;
-        }
     }
 
     public void OnSelectButton()
     {
         BuildMenu.instance.Visible = false;
-        BuildMenu.instance.building_placer.InitBuildingFromBuildingMenu(building_type);
+        BuildMenu.instance.building_placer.InitBuildingFromBuildingMenu(building_type, 1);
     }
 }

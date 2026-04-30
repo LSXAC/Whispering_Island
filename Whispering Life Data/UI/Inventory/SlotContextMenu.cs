@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 /// <summary>
@@ -39,6 +40,8 @@ public partial class SlotContextMenu : PanelContainer
     public static SlotContextMenu instance { get; private set; }
 
     public Slot ParentSlot => parent_slot;
+
+    private Item current_build_item = null;
 
     public override void _Ready()
     {
@@ -82,6 +85,8 @@ public partial class SlotContextMenu : PanelContainer
                 current = current.GetParent();
             }
         }
+        if (BuildMenu.instance?.building_placer != null)
+            BuildMenu.instance.building_placer.BuildingPlaced += OnBuildingPlaced;
     }
 
     public void Show(Slot slot, SlotItemUI slot_item_ui, Vector2 mousePos = default)
@@ -311,9 +316,18 @@ public partial class SlotContextMenu : PanelContainer
         BuildingAttribute building_attr =
             slot_item_ui.item.info.GetAttributeOrNull<BuildingAttribute>();
         if (building_attr != null && building_attr.building_menu_list_object != null)
+        {
+            current_build_item = slot_item_ui.item;
             ItemUseManager.instance.BuildItem(slot_item_ui.item);
+        }
 
         HideMenu();
+    }
+
+    private void OnBuildingPlaced()
+    {
+        if (parent_slot != null)
+            parent_slot.DecreaseItemAmount(1);
     }
 
     private void OnSplitHalfPressed()

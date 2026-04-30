@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://dfymr6is0idaa"]
+
+[ext_resource type="Script" uid="uid://cmmub3ei8m4o8" path="res://Entities/Items/Attributes/ProcessedAttribute.cs" id="1_0lp0k"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="2_jk1t1"]
+[ext_resource type="Resource" uid="uid://cbq4h0xdafbrv" path="res://Entities/Placeable Building/Machine/Furnace/Data/FurnaceBuildMenu.tres" id="3_6mac7"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="3_dc7xv"]
+[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Placeable Building/Machine/Furnace/Texture/Furnace_Building_Sprite.png" id="4_6mac7"]
+[ext_resource type="Script" uid="uid://c01in27e8taec" path="res://Entities/Items/Attributes/BuildingAttribute.cs" id="4_cb12i"]
+
+[sub_resource type="Resource" id="Resource_h2t5y"]
+script = ExtResource("1_0lp0k")
+metadata/_custom_type_script = "uid://cmmub3ei8m4o8"
+
+[sub_resource type="Resource" id="Resource_gjvhw"]
+script = ExtResource("2_jk1t1")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[sub_resource type="Resource" id="Resource_5ygbn"]
+script = ExtResource("4_cb12i")
+building_menu_list_object = ExtResource("3_6mac7")
+metadata/_custom_type_script = "uid://c01in27e8taec"
+
+[resource]
+script = ExtResource("3_dc7xv")
+attributes = Array[Object]([SubResource("Resource_h2t5y"), SubResource("Resource_gjvhw"), SubResource("Resource_5ygbn")])
+max_stackable_size = 250
+name = "FURNACE"
+id = 70
+description = "FURNACE_DESC"
+texture = ExtResource("4_6mac7")
+value = 100.0

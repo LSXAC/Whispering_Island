@@ -15,16 +15,23 @@ public partial class BuildingPlacer : Node2D
     private placeable_building placeable;
     private Vector2 current_scale = new Vector2(1, 1);
 
-    private Array<Item> required_items = new Array<Item>();
-
     private bool can_create = false;
     private bool is_flipped = false;
 
     public static Node2D moveable_selected_parent = null;
     private Island current_island = null;
 
-    public void InitBuildingFromBuildingMenu(Building_Menu_List_Object scene_info)
+    private int amount_to_build = 0;
+
+    [Signal]
+    public delegate void BuildingPlacedEventHandler();
+
+    public void InitBuildingFromBuildingMenu(
+        Building_Menu_List_Object scene_info,
+        int amount_to_build
+    )
     {
+        this.amount_to_build = amount_to_build;
         if (Logger.NodeIsNull(scene_info?.scene))
         {
             BuildMenu.instance.CloseWindow();
@@ -34,24 +41,14 @@ public partial class BuildingPlacer : Node2D
 
         InitPlacingParameter(scene_info);
 
-        if (Logger.NodeIsNotNull(PlayerUI.instance))
-            PlayerUI.instance.SetBuildingUI(required_items);
-
         AddChild(current_building);
         placeable = current_building as placeable_building;
         placeable.PrepareForBuild();
 
-        // Spezialfälle behandeln
         if (current_building is TransportBase transport_base)
         {
             placeable = transport_base;
             transport_base.SetRotationAndDisableMonitoring(rotation: 3);
-            /*if (transport_base is BeltTunnel tunnel)
-            {
-                TunnelArea belt_tunnel = GetNode<TunnelArea>("TunnelArea");
-                if (Logger.NodeIsNotNull(belt_tunnel))
-                    belt_tunnel.Monitoring = false;
-            }*/
         }
 
         if (current_building is MineableObject mineable)
@@ -68,7 +65,6 @@ public partial class BuildingPlacer : Node2D
     {
         selected_building = scene_info.scene;
         current_building = (Node2D)scene_info.scene.Instantiate();
-        required_items = scene_info.required_items;
         is_flipped = false;
         can_create = true;
         current_scale = new Vector2(1, 1);
@@ -157,10 +153,10 @@ public partial class BuildingPlacer : Node2D
         temp.Scale = current_scale;
 
         SetBuildBuildingByBase(temp);
-        RemoveBuildingResources();
+        EmitSignal(SignalName.BuildingPlaced);
+        amount_to_build--;
 
-        PlayerUI.instance.item_row_manager.SetResourcesOnUI(required_items);
-        if (!PlayerUI.instance.item_row_manager.CheckEnoughResources(required_items))
+        if (amount_to_build < 1)
         {
             can_create = false;
             CloseMenuWithBuildingSelected();
@@ -223,36 +219,6 @@ public partial class BuildingPlacer : Node2D
             + island.building_area.GlobalPosition
             + new Vector2(8, 8);
         return tileCenter;
-    }
-
-    private void RemoveBuildingResources()
-    {
-        foreach (Item item in required_items)
-        {
-            if (
-                PlayerInventoryUI.instance.HasItemInInventory(
-                    PlayerInventoryUI.instance.inventory_items,
-                    item
-                )
-            )
-            {
-                PlayerInventoryUI.instance.RemoveItem(
-                    new Item(item.info, (int)(item.amount * GameManager.difficulty_multiplier)),
-                    PlayerInventoryUI.instance.inventory_items
-                );
-                continue;
-            }
-            if (
-                SeedInventoryUI.instance.HasItemInInventory(
-                    SeedInventoryUI.instance.inventory_items,
-                    item
-                )
-            )
-                SeedInventoryUI.instance.RemoveItem(
-                    new Item(item.info, (int)(item.amount * GameManager.difficulty_multiplier)),
-                    SeedInventoryUI.instance.inventory_items
-                );
-        }
     }
 
     public void CloseMenuWithBuildingSelected()

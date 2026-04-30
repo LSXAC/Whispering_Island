@@ -28,9 +28,13 @@ public partial class ItemUseManager : Node2D
 
         BuildingAttribute building_attr = item.info.GetAttributeOrNull<BuildingAttribute>();
         if (building_attr != null && building_attr.building_menu_list_object != null)
+        {
+            GameMenu.CloseLastWindow();
             BuildMenu.instance.building_placer.InitBuildingFromBuildingMenu(
-                building_attr.building_menu_list_object
+                building_attr.building_menu_list_object,
+                item.amount
             );
+        }
     }
 
     private void ApplyUseEffects(UseAttribute use_attr, Node target)

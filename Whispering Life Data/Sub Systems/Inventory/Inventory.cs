@@ -86,7 +86,8 @@ public partial class Inventory : SlotUpdater
         MAGIC_DUST,
         MAGIC_CORE_COMPONENT,
         MERCURY_BOTTLE,
-        UNKNOWN_ITEM
+        UNKNOWN_ITEM,
+        FURNACE
     }
 
     public Action OnItemChanged;

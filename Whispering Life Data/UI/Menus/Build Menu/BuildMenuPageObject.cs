@@ -33,8 +33,6 @@ public partial class BuildMenuPageObject : ColorRect
                 if (scene.unlock_requirements != null || scene.unlock_requirements.Count > 0)
                     if (!GlobalFunctions.CheckResearchRequirements(scene.unlock_requirements))
                         continue;
-                if (!scene.show_object_in_building_menu_list)
-                    continue;
                 InitBuildings(scene);
             }
         }

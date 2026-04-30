@@ -94,6 +94,7 @@ public partial class GameMenu : CanvasLayer
             GameManager.gameover
             || CutsceneManager.In_Cutscene
             || QuestManager.current_selected_quest == null
+            || GameManager.building_mode == GameManager.BuildingMode.Placing
         )
             return;
 

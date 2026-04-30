@@ -69,7 +69,13 @@ public partial class Slot : Button
                 {
                     UseAttribute use_attr =
                         slot_item_ui.item.info.GetAttributeOrNull<UseAttribute>();
-                    if (use_attr != null && SlotContextMenu.instance != null)
+                    BuildingAttribute building_attr =
+                        slot_item_ui.item.info.GetAttributeOrNull<BuildingAttribute>();
+
+                    if (
+                        (use_attr != null || building_attr != null)
+                        && SlotContextMenu.instance != null
+                    )
                     {
                         SlotContextMenu.instance.Show(this, slot_item_ui, GetGlobalMousePosition());
                         return;
@@ -407,6 +413,29 @@ public partial class Slot : Button
             tooltip.BlockTweens();
 
         slot_item_ui.Free();
+    }
+
+    public void DecreaseItemAmount(int amount = 1)
+    {
+        SlotItemUI slot_item_ui = GetSlotItemUI();
+        if (slot_item_ui == null)
+            return;
+
+        SelectDependingInventory();
+
+        slot_item_ui.item.amount -= amount;
+        slot_item_ui.UpdateAmountLabel();
+
+        if (item_array != null && index >= 0 && index < item_array.Length)
+            if (item_array[index] != null)
+            {
+                item_array[index].amount = slot_item_ui.item.amount;
+                if (slotUpdater != null)
+                    slotUpdater.UpdateSlot(index, null);
+            }
+
+        if (slot_item_ui.item.amount <= 0)
+            ClearSlotItem();
     }
 
     private void UpdateSlot(ItemSave[] i_save, int amount)
