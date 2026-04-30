@@ -58,13 +58,11 @@ public partial class EquipmentPanel : Control
 
             if (instance.equipped_tools[i].current_durability > 0)
             {
-                Debug.Print(i + " | " + instance.equipped_tools[i]);
                 Item item = new Item(
                     Inventory.ITEM_TYPES[(Inventory.ITEM_ID)instance.equipped_tools[i].item_id],
-                    instance.equipped_tools[i].amount
+                    instance.equipped_tools[i].amount,
+                    (Item.STATE)instance.equipped_tools[i].state
                 );
-
-                Debug.Print("Durability: " + instance.equipped_tools[i].current_durability);
 
                 if (instance?.slots_tool[i]?.GetSlotItemUI() == null)
                     continue;

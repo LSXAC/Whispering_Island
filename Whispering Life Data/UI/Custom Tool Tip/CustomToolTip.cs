@@ -76,9 +76,9 @@ public partial class CustomToolTip : PanelContainer
                 availableRect = GetViewportRect();
 
             if (position_left)
-                newPos = new Vector2(-tooltipSize.X - 10, 10);
+                newPos = GetGlobalMousePosition() + new Vector2(-tooltipSize.X - 10, 10);
             else
-                newPos = new Vector2(10, 10);
+                newPos = GetGlobalMousePosition() + new Vector2(10, 10);
 
             float minX = availableRect.Position.X + SCREEN_BORDER_OFFSET;
             float maxX =

@@ -9,6 +9,8 @@ SMELTABLE,Smeltable,Schmelzbar
 BURNABLE,Burnable,Brennbar
 PROCESSED,Processed,Verarbeitet
 RESEARCHABLE,Researchable,Erforschbar
+USE,Use,Verwenden
+SPLIT_HALF,Split Half,Halbieren
 TYPE,Type,Typ
 BURNTIME,Burntime,Brennzeit
 RARITY,Rarity,Seltenheit

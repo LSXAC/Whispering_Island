@@ -29,11 +29,30 @@ public partial class Slot : Button
     PackedScene slot_item_ui_scene = GD.Load<PackedScene>(
         ResourceUid.UidToPath("uid://xjy2l41obahq")
     );
+    PackedScene context_menu_scene = GD.Load<PackedScene>(
+        ResourceUid.UidToPath("uid://bsvj4xv8dan20")
+    );
+    SlotContextMenu context_menu = null;
 
     public override void _Ready()
     {
         if (slot_item_ui_scene == null)
             GD.PrintErr("Slot: slot_item_ui_scene is null, please check if the path is correct.");
+
+        if (context_menu_scene == null)
+            GD.PrintErr("Slot: context_menu_scene is null, please check if the path is correct.");
+
+        CreateContextMenu();
+    }
+
+    private void CreateContextMenu()
+    {
+        if (context_menu_scene == null)
+            return;
+
+        context_menu = context_menu_scene.Instantiate() as SlotContextMenu;
+        if (context_menu != null)
+            AddChild(context_menu);
     }
 
     public Action OnSlotChanged;
@@ -47,28 +66,39 @@ public partial class Slot : Button
 
             index = GetParent().GetIndex();
 
+            if (btn.ButtonMask == MouseButtonMask.Right)
+            {
+                SlotItemUI slot_item_ui = GetSlotItemUI();
+                if (
+                    slot_item_ui != null
+                    && slot_item_ui.item?.info != null
+                    && InventoryTab.clicked_slot_item_ui == null
+                )
+                {
+                    UseAttribute use_attr =
+                        slot_item_ui.item.info.GetAttributeOrNull<UseAttribute>();
+                    if (use_attr != null && context_menu != null)
+                    {
+                        context_menu.Show(slot_item_ui);
+                        AcceptEvent();
+                        return;
+                    }
+                }
+            }
+
+            SelectDependingInventory();
             if (GetParent().GetParent().GetParent() is PlayerInventoryUI or SeedInventoryUI)
             {
-                item_array = ((Inventory)GetParent().GetParent().GetParent()).inventory_items;
-                slotUpdater = (Inventory)GetParent().GetParent().GetParent();
                 OnSlotButton(btn);
                 ((Inventory)GetParent().GetParent().GetParent()).OnItemChanged?.Invoke();
             }
 
             if (GetParent().GetParent().GetParent().GetParent() is ProcessingTab)
-            {
-                item_array = ((ProcessingTab)GetParent().GetParent().GetParent().GetParent())
-                    .process_building
-                    .item_array;
-                slotUpdater = (ProcessingTab)GetParent().GetParent().GetParent().GetParent();
                 if (item_array != null)
                     OnSlotButton(btn);
-            }
 
             if (GetParent().GetParent().GetParent() is ChestInventory)
             {
-                item_array = ((Inventory)GetParent().GetParent().GetParent()).inventory_items;
-                slotUpdater = (Inventory)GetParent().GetParent().GetParent();
                 OnSlotButton(btn);
                 ((Inventory)GetParent().GetParent().GetParent()).OnItemChanged?.Invoke();
             }
@@ -80,6 +110,29 @@ public partial class Slot : Button
                 OnResearchSlotButton();
 
             AcceptEvent();
+        }
+    }
+
+    private void SelectDependingInventory()
+    {
+        if (GetParent().GetParent().GetParent() is PlayerInventoryUI or SeedInventoryUI)
+        {
+            item_array = ((Inventory)GetParent().GetParent().GetParent()).inventory_items;
+            slotUpdater = (Inventory)GetParent().GetParent().GetParent();
+        }
+
+        if (GetParent().GetParent().GetParent().GetParent() is ProcessingTab)
+        {
+            item_array = ((ProcessingTab)GetParent().GetParent().GetParent().GetParent())
+                .process_building
+                .item_array;
+            slotUpdater = (ProcessingTab)GetParent().GetParent().GetParent().GetParent();
+        }
+
+        if (GetParent().GetParent().GetParent() is ChestInventory)
+        {
+            item_array = ((Inventory)GetParent().GetParent().GetParent()).inventory_items;
+            slotUpdater = (Inventory)GetParent().GetParent().GetParent();
         }
     }
 
@@ -202,7 +255,7 @@ public partial class Slot : Button
                     Debug.Print(
                         clickedItemClone.state.ToString() + " | " + slotItemClone.state.ToString()
                     );
-                    // Werte sichern
+
                     int clickedDurability = clicked_slot_item_ui.current_durability;
                     int slotDurability = slot_item_ui.current_durability;
 
@@ -345,7 +398,9 @@ public partial class Slot : Button
     public SlotItemUI GetSlotItemUI()
     {
         if (GetChildCount() > 0)
-            return (SlotItemUI)GetChild(0);
+            foreach (Control c in GetChildren())
+                if (c is SlotItemUI)
+                    return (SlotItemUI)c;
         return null;
     }
 
@@ -498,5 +553,30 @@ public partial class Slot : Button
                 return false;
 
         return true;
+    }
+
+    public void SplitItemHalf(SlotItemUI slot_item_ui)
+    {
+        if (slot_item_ui == null || item_array == null)
+            SelectDependingInventory();
+
+        int first = slot_item_ui.item.amount;
+        int half;
+
+        if (first % 2 == 0)
+        {
+            half = HalfAmount(first);
+            UpdateSlot(item_array, half);
+            slot_item_ui.item.amount = half;
+        }
+        else
+        {
+            half = HalfAmountNextInt(first);
+            UpdateSlot(item_array, first - half);
+            slot_item_ui.item.amount = half;
+        }
+
+        CreateClickedItem(slot_item_ui.item);
+        Debug.Print("Split Half Item from Slot");
     }
 }

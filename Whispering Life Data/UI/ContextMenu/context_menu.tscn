@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bsvj4xv8dan20"]
+
+[ext_resource type="Script" uid="uid://bobcj0rvgneo4" path="res://UI/Inventory/SlotContextMenu.cs" id="1_5flsw"]
+[ext_resource type="StyleBox" uid="uid://c21ulk1hylhfv" path="res://UI/Styles/tab_container_panel_style.tres.tres" id="1_lsph7"]
+[ext_resource type="StyleBox" uid="uid://dblsyajhbmtwa" path="res://UI/Styles/Button_Normal_Style.tres" id="2_g1hrd"]
+[ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="2_spe72"]
+[ext_resource type="StyleBox" uid="uid://h4o1ussquiqb" path="res://UI/Styles/button_hover_pressed_style.tres" id="3_spe72"]
+[ext_resource type="StyleBox" uid="uid://c0rrcqgclnbps" path="res://UI/Styles/Button_Hover_Style.tres" id="4_lsph7"]
+[ext_resource type="StyleBox" uid="uid://c5b3i5xoa4qx2" path="res://UI/Styles/Button_Disabled_Style.tres.tres" id="5_6f10w"]
+
+[node name="ContextMenu" type="PanelContainer" unique_id=2078936467 node_paths=PackedStringArray("use_button", "split_half_button", "exit_button", "vbox_container")]
+z_index = 15
+offset_right = 32.0
+offset_bottom = 38.0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("1_lsph7")
+script = ExtResource("1_5flsw")
+use_button = NodePath("MarginContainer/VBoxContainer/UseButton")
+split_half_button = NodePath("MarginContainer/VBoxContainer/SplitHalfButton")
+exit_button = NodePath("MarginContainer/VBoxContainer/ExitButton")
+vbox_container = NodePath("MarginContainer/VBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1140336356]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2079258813]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="UseButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=696431873]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_spe72")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = ExtResource("2_g1hrd")
+theme_override_styles/pressed = ExtResource("3_spe72")
+theme_override_styles/hover = ExtResource("4_lsph7")
+theme_override_styles/hover_pressed = ExtResource("3_spe72")
+theme_override_styles/disabled = ExtResource("5_6f10w")
+text = "Use"
+
+[node name="SplitHalfButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1210194209]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_spe72")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = ExtResource("2_g1hrd")
+theme_override_styles/pressed = ExtResource("3_spe72")
+theme_override_styles/hover = ExtResource("4_lsph7")
+theme_override_styles/hover_pressed = ExtResource("3_spe72")
+theme_override_styles/disabled = ExtResource("5_6f10w")
+text = "Split"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1978782580]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_spe72")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = ExtResource("2_g1hrd")
+theme_override_styles/pressed = ExtResource("3_spe72")
+theme_override_styles/hover = ExtResource("4_lsph7")
+theme_override_styles/hover_pressed = ExtResource("3_spe72")
+theme_override_styles/disabled = ExtResource("5_6f10w")
+text = "Exit"

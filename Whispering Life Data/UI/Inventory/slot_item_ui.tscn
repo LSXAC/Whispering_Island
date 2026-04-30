@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://y865cl3n6n6u" path="res://UI/Inventory/SlotItemUI.cs" id="1_ckowm"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="2_567ka"]
 [ext_resource type="LabelSettings" uid="uid://dq0dwmb4gc45u" path="res://UI/Styles/Label_Settings_Normal_Text.tres" id="3_k5yiy"]
+[ext_resource type="Texture2D" uid="uid://deai4c50jpvjn" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_11.png" id="5_j1msr"]
 [ext_resource type="Texture2D" uid="uid://cs4n7hu86pfxu" path="res://Entities/Items/Poison_Item_Icon.png" id="5_pihqp"]
+[ext_resource type="Texture2D" uid="uid://b6kjyf31e4wqm" path="res://Entities/Items/SpritesForItems/Icons_3rd/Hammer.png" id="6_pihqp"]
 
-[node name="SlotItemUI" type="Control" unique_id=1206033608 node_paths=PackedStringArray("item_texture_rect", "poison_icon")]
+[node name="SlotItemUI" type="Control" unique_id=1206033608 node_paths=PackedStringArray("item_texture_rect", "poison_icon", "use_icon", "building_icon")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 3
 anchors_preset = 0
@@ -17,6 +19,8 @@ mouse_filter = 1
 script = ExtResource("1_ckowm")
 item_texture_rect = NodePath("ItemTexture")
 poison_icon = NodePath("PoisonIcon")
+use_icon = NodePath("UseIcon")
+building_icon = NodePath("BuildingIcon")
 
 [node name="ItemTexture" type="TextureRect" parent="." unique_id=1520191620]
 custom_minimum_size = Vector2(24, 24)
@@ -67,6 +71,32 @@ offset_bottom = 9.0
 grow_horizontal = 0
 mouse_filter = 2
 texture = ExtResource("5_pihqp")
+expand_mode = 1
+
+[node name="UseIcon" type="TextureRect" parent="." unique_id=380999830]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -9.0
+offset_right = 8.0
+offset_bottom = -1.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("5_j1msr")
+expand_mode = 1
+
+[node name="BuildingIcon" type="TextureRect" parent="." unique_id=1709851650]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -9.0
+offset_right = 8.0
+offset_bottom = -1.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("6_pihqp")
 expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=948852369]

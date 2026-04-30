@@ -40,9 +40,11 @@ public partial class EquipmentSelectBar : Container
             GetTree().Root.AddChild(tool_marker_container);
             tool_marker_container.ZIndex = 10;
 
-            tool_marker = new Sprite2D();
-            tool_marker.Texture = tool_marker_texture;
-            tool_marker.Modulate = new Color(1, 1, 1, 0.7f);
+            tool_marker = new Sprite2D
+            {
+                Texture = tool_marker_texture,
+                Modulate = new Color(1, 1, 1, 0.7f)
+            };
             tool_marker_container.AddChild(tool_marker);
 
             tool_marker_collider_manager = new BuildingColliderManager();

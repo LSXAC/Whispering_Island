@@ -19,6 +19,12 @@ public partial class SlotItemUI : Control
     [Export]
     public Control poison_icon;
 
+    [Export]
+    public Control use_icon;
+
+    [Export]
+    public Control building_icon;
+
     private CustomToolTip custom_tooltip;
     private PackedScene custom_tool_tip_scene = ResourceLoader.Load<PackedScene>(
         ResourceUid.UidToPath("uid://drhdbuo05k0tx")
@@ -39,6 +45,8 @@ public partial class SlotItemUI : Control
         amount_label.Text = item.amount + "x";
         UpdateToolTip();
         UpdatePoisonIcon();
+        UpdateUseIcon();
+        UpdateBuildingIcon();
         Debug.Print("Init Slot Item UI!");
 
         WearableAttribute attribute = item.info.GetAttributeOrNull<WearableAttribute>();
@@ -96,14 +104,26 @@ public partial class SlotItemUI : Control
         if (amount_label != null)
             amount_label.Text = item.amount + "x";
         UpdatePoisonIcon();
+        UpdateUseIcon();
+        UpdateBuildingIcon();
     }
 
     private void UpdatePoisonIcon()
     {
         if (poison_icon != null && item != null)
-        {
             poison_icon.Visible = item.state == Item.STATE.POISONED;
-        }
+    }
+
+    private void UpdateUseIcon()
+    {
+        if (use_icon != null && item != null)
+            use_icon.Visible = item.info.HasAttribute<UseAttribute>();
+    }
+
+    private void UpdateBuildingIcon()
+    {
+        if (building_icon != null && item != null)
+            building_icon.Visible = item.info.HasAttribute<BuildingAttribute>();
     }
 
     public void SetDurability(int durability)
@@ -119,6 +139,12 @@ public partial class SlotItemUI : Control
 
         if (poison_icon != null)
             poison_icon.Visible = false;
+
+        if (use_icon != null)
+            use_icon.Visible = false;
+
+        if (building_icon != null)
+            building_icon.Visible = false;
 
         custom_tooltip = custom_tool_tip_scene.Instantiate<CustomToolTip>();
         AddChild(custom_tooltip);
