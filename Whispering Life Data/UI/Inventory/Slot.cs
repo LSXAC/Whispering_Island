@@ -29,30 +29,11 @@ public partial class Slot : Button
     PackedScene slot_item_ui_scene = GD.Load<PackedScene>(
         ResourceUid.UidToPath("uid://xjy2l41obahq")
     );
-    PackedScene context_menu_scene = GD.Load<PackedScene>(
-        ResourceUid.UidToPath("uid://bsvj4xv8dan20")
-    );
-    SlotContextMenu context_menu = null;
 
     public override void _Ready()
     {
         if (slot_item_ui_scene == null)
             GD.PrintErr("Slot: slot_item_ui_scene is null, please check if the path is correct.");
-
-        if (context_menu_scene == null)
-            GD.PrintErr("Slot: context_menu_scene is null, please check if the path is correct.");
-
-        CreateContextMenu();
-    }
-
-    private void CreateContextMenu()
-    {
-        if (context_menu_scene == null)
-            return;
-
-        context_menu = context_menu_scene.Instantiate() as SlotContextMenu;
-        if (context_menu != null)
-            AddChild(context_menu);
     }
 
     public Action OnSlotChanged;
@@ -61,6 +42,17 @@ public partial class Slot : Button
     {
         if (@event is InputEventMouseButton btn && @event.IsPressed())
         {
+            // Block input only if another slot's context menu is active and visible
+            if (
+                SlotContextMenu.active_menu != null
+                && SlotContextMenu.active_menu.Visible
+                && SlotContextMenu.active_menu.ParentSlot != this
+            )
+            {
+                AcceptEvent();
+                return;
+            }
+
             if (btn.ButtonMask != MouseButtonMask.Left && btn.ButtonMask != MouseButtonMask.Right)
                 return;
 
@@ -77,10 +69,9 @@ public partial class Slot : Button
                 {
                     UseAttribute use_attr =
                         slot_item_ui.item.info.GetAttributeOrNull<UseAttribute>();
-                    if (use_attr != null && context_menu != null)
+                    if (use_attr != null && SlotContextMenu.instance != null)
                     {
-                        context_menu.Show(slot_item_ui);
-                        AcceptEvent();
+                        SlotContextMenu.instance.Show(this, slot_item_ui, GetGlobalMousePosition());
                         return;
                     }
                 }
@@ -109,7 +100,7 @@ public partial class Slot : Button
             if (attribute_to_check is ResearchableAttribute)
                 OnResearchSlotButton();
 
-            AcceptEvent();
+            AcceptEvent(); // Always accept input to prevent clicks passing through
         }
     }
 

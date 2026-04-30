@@ -18,21 +18,31 @@ public partial class SlotContextMenu : PanelContainer
     public Button exit_button;
 
     [Export]
+    public Button build_button;
+
+    [Export]
     public VBoxContainer vbox_container;
 
     [Export]
     public Control bounds_container = null;
 
     const float SCREEN_BORDER_OFFSET = 8f;
-    const float MOUSE_DISTANCE_THRESHOLD = 50;
+    const float MOUSE_DISTANCE_THRESHOLD = 5;
     Tween opacityTween = null;
     private bool is_being_destroyed = false;
     private bool is_visible_menu = false;
     private bool inTransition = false;
     private Slot parent_slot = null;
 
+    // Static reference to the currently active context menu
+    public static SlotContextMenu active_menu = null;
+    public static SlotContextMenu instance { get; private set; }
+
+    public Slot ParentSlot => parent_slot;
+
     public override void _Ready()
     {
+        instance = this;
         HideImmediate();
         parent_slot = GetParent() as Slot;
 
@@ -41,7 +51,9 @@ public partial class SlotContextMenu : PanelContainer
         if (split_half_button == null)
             split_half_button = GetNode<Button>("MarginContainer/VBoxContainer/SplitHalfButton");
         if (exit_button == null)
-            exit_button = GetNode<Button>("MarginContainer/VBoxContainer/ExitButton");
+            exit_button = GetNode<Button>("Control/ExitButton");
+        if (build_button == null)
+            build_button = GetNode<Button>("MarginContainer/VBoxContainer/BuildButton");
         if (vbox_container == null)
             vbox_container = GetNode<VBoxContainer>("MarginContainer/VBoxContainer");
 
@@ -53,6 +65,9 @@ public partial class SlotContextMenu : PanelContainer
 
         if (exit_button != null)
             exit_button.Pressed += OnExitPressed;
+
+        if (build_button != null)
+            build_button.Pressed += OnBuildButtonPressed;
 
         if (bounds_container == null)
         {
@@ -69,25 +84,35 @@ public partial class SlotContextMenu : PanelContainer
         }
     }
 
-    public void Show(SlotItemUI slot_item_ui)
+    public void Show(Slot slot, SlotItemUI slot_item_ui, Vector2 mousePos = default)
     {
         if (slot_item_ui == null || slot_item_ui.item?.info == null)
             return;
 
-        parent_slot = GetParent() as Slot;
+        parent_slot = slot;
 
         UseAttribute use_attr = slot_item_ui.item.info.GetAttributeOrNull<UseAttribute>();
+        BuildingAttribute building_attr =
+            slot_item_ui.item.info.GetAttributeOrNull<BuildingAttribute>();
+
+        if (build_button != null)
+            build_button.Visible = building_attr != null;
 
         if (use_button != null)
             use_button.Visible = use_attr != null;
+
+        // Disable split button if amount < 2
+        if (split_half_button != null)
+            split_half_button.Disabled = slot_item_ui.item.amount < 2;
 
         if (!IsNodeReady())
             return;
 
         is_visible_menu = true;
         inTransition = false;
+        active_menu = this;
         DisplayMenu();
-        PositionMenu();
+        PositionMenu(mousePos);
     }
 
     private void DisplayMenu()
@@ -136,6 +161,8 @@ public partial class SlotContextMenu : PanelContainer
     {
         is_visible_menu = false;
         inTransition = false;
+        if (active_menu == this)
+            active_menu = null;
         Hide();
     }
 
@@ -191,19 +218,30 @@ public partial class SlotContextMenu : PanelContainer
 
             if (distance > MOUSE_DISTANCE_THRESHOLD)
                 HideMenu();
+
+            AcceptEvent(); // Always accept input to prevent clicks passing through
         }
     }
 
-    private void PositionMenu()
+    private void PositionMenu(Vector2 mousePos = default)
     {
         if (!IsNodeReady() || parent_slot == null)
             return;
 
         Vector2 menuSize = GetRect().Size;
-        Vector2 slotGlobalPos = parent_slot.GetGlobalRect().Position;
-        Vector2 slotSize = parent_slot.GetRect().Size;
+        Vector2 newPos;
 
-        Vector2 newPos = new Vector2(slotGlobalPos.X + slotSize.X, slotGlobalPos.Y + slotSize.Y);
+        // If mouse position was provided, use it; otherwise use slot position
+        if (mousePos != default)
+        {
+            newPos = mousePos;
+        }
+        else
+        {
+            Vector2 slotGlobalPos = parent_slot.GetGlobalRect().Position;
+            Vector2 slotSize = parent_slot.GetRect().Size;
+            newPos = new Vector2(slotGlobalPos.X + slotSize.X, slotGlobalPos.Y + slotSize.Y);
+        }
 
         Rect2 availableRect;
         if (bounds_container != null && bounds_container.IsNodeReady())
@@ -221,7 +259,7 @@ public partial class SlotContextMenu : PanelContainer
         newPos.X = Mathf.Clamp(newPos.X, minX, maxX);
         newPos.Y = Mathf.Clamp(newPos.Y, minY, maxY);
 
-        GlobalPosition = newPos;
+        GlobalPosition = newPos + new Vector2(-5, 0);
     }
 
     private void OnUsePressed()
@@ -251,6 +289,29 @@ public partial class SlotContextMenu : PanelContainer
             if (slot_item_ui.item.amount <= 0)
                 parent_slot.ClearSlotItem();
         }
+
+        HideMenu();
+    }
+
+    private void OnBuildButtonPressed()
+    {
+        if (parent_slot == null)
+        {
+            HideMenu();
+            return;
+        }
+
+        SlotItemUI slot_item_ui = parent_slot.GetSlotItemUI();
+        if (slot_item_ui == null || slot_item_ui.item?.info == null)
+        {
+            HideMenu();
+            return;
+        }
+
+        BuildingAttribute building_attr =
+            slot_item_ui.item.info.GetAttributeOrNull<BuildingAttribute>();
+        if (building_attr != null && building_attr.building_menu_list_object != null)
+            ItemUseManager.instance.BuildItem(slot_item_ui.item);
 
         HideMenu();
     }

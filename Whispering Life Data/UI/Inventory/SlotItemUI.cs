@@ -47,10 +47,9 @@ public partial class SlotItemUI : Control
         UpdatePoisonIcon();
         UpdateUseIcon();
         UpdateBuildingIcon();
-        Debug.Print("Init Slot Item UI!");
 
         WearableAttribute attribute = item.info.GetAttributeOrNull<WearableAttribute>();
-        //57cb00
+
         if (attribute == null)
         {
             amount_label.Visible = true;
@@ -66,7 +65,6 @@ public partial class SlotItemUI : Control
         vbc.Size = new Vector2(40, 40);
         vbc.Alignment = BoxContainer.AlignmentMode.End;
 
-        //Durability Bar
         progress_bar.MaxValue = max_durability;
         progress_bar.Value = current_durability;
         this.current_durability = current_durability;
@@ -80,7 +78,7 @@ public partial class SlotItemUI : Control
     public void RescaleDurabilityBar()
     {
         WearableAttribute attribute = item.info.GetAttributeOrNull<WearableAttribute>();
-        //57cb00
+
         if (attribute != null)
         {
             max_durability = (int)(

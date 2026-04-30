@@ -133,6 +133,7 @@
 [ext_resource type="Theme" uid="uid://dkkm0u2p44xos" path="res://UI/Themes/Theme_Slots.tres" id="125_uspna"]
 [ext_resource type="Script" uid="uid://ck6hcox7174uj" path="res://Sub Systems/Inventory/Chest/ChestInventory.cs" id="127_4fnoa"]
 [ext_resource type="Script" uid="uid://ctf878viheqps" path="res://UI/Menus/Game Menu/QuestSelect.cs" id="133_aa4tk"]
+[ext_resource type="PackedScene" uid="uid://bsvj4xv8dan20" path="res://UI/ContextMenu/context_menu.tscn" id="134_wf4uf"]
 
 [sub_resource type="Resource" id="Resource_7gwna"]
 script = ExtResource("15_jkil6")
@@ -7695,6 +7696,10 @@ layout_mode = 0
 offset_left = -250.0
 offset_bottom = 279.0
 color = Color(0, 0, 0, 0.29411766)
+
+[node name="ContextMenu" parent="Background" unique_id=2078936467 instance=ExtResource("134_wf4uf")]
+visible = false
+layout_mode = 0
 
 [connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/InvTabButton" to="." method="OnInventoryTabButton"]
 [connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]

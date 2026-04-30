@@ -16,20 +16,25 @@ public partial class ItemUseManager : Node2D
         if (item?.info == null)
             return;
 
-        // UseAttribute - Effekte anwenden
         UseAttribute use_attr = item.info.GetAttributeOrNull<UseAttribute>();
         if (use_attr != null && use_attr.HasEffects())
-        {
             ApplyUseEffects(use_attr, target);
-        }
+    }
 
-        // Weitere Attribute die bei Verwendung reagieren
-        // z.B. ConsumableAttribute, BuffAttribute, etc.
+    public void BuildItem(Item item)
+    {
+        if (item?.info == null)
+            return;
+
+        BuildingAttribute building_attr = item.info.GetAttributeOrNull<BuildingAttribute>();
+        if (building_attr != null && building_attr.building_menu_list_object != null)
+            BuildMenu.instance.building_placer.InitBuildingFromBuildingMenu(
+                building_attr.building_menu_list_object
+            );
     }
 
     private void ApplyUseEffects(UseAttribute use_attr, Node target)
     {
-        // Wenn kein Target, verwende Player
         if (target == null)
             target = PlayerUI.instance;
 

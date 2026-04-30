@@ -52,7 +52,7 @@ public partial class BuildMenu : CanvasLayer
         planting_page.Visible = false;
         transport_page.Visible = false;
         machine_page.Visible = false;
-        //hbox_category[0].Visible = false;
+
         switch (id)
         {
             case 0:
