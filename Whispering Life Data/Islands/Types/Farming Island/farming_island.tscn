@@ -18,7 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://bmjn6kocpubo3" path="res://Entities/Placeable Building/Mineable Object/Vegetation/Sunflower/mineable_object_sunflower.tscn" id="17_wlbus"]
 [ext_resource type="PackedScene" uid="uid://hl3jkk2n0f7x" path="res://Entities/Placeable Building/Mineable Object/Vegetation/Wheat/mineable_object_wheat.tscn" id="17_yy7cq"]
 [ext_resource type="PackedScene" uid="uid://dyhqyvmm3pp6m" path="res://Entities/Placeable Building/Mineable Object/Vegetation/Mushroom/mineable_object_mushroom.tscn" id="18_sunwl"]
+[ext_resource type="PackedScene" uid="uid://p7nxdwibna32" path="res://Entities/Placeable Building/Mineable Object/Environment/Stone/mineable_object_stone.tscn" id="19_rxy2d"]
 [ext_resource type="PackedScene" uid="uid://fpm5unt0tjo3" path="res://Sub Systems/Magic Power Listener/magic_power_listener.tscn" id="19_v1m1i"]
+[ext_resource type="PackedScene" uid="uid://coeye4llpicv7" path="res://Entities/Placeable Building/Mineable Object/Environment/Big Stone/mineable_object_big_stone.tscn" id="20_vf03m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpdmr"]
 size = Vector2(32, 32)
@@ -395,5 +397,64 @@ position = Vector2(64, 160)
 
 [node name="Mushroom9" parent="IslandObjectSaveManager" unique_id=436773916 instance=ExtResource("18_sunwl")]
 position = Vector2(-120, 216)
+
+[node name="Stone2" parent="IslandObjectSaveManager" unique_id=496829898 instance=ExtResource("19_rxy2d")]
+position = Vector2(-104, -168)
+variant = 1
+
+[node name="Stone3" parent="IslandObjectSaveManager" unique_id=1022982609 instance=ExtResource("19_rxy2d")]
+position = Vector2(-24, -96)
+variant = 1
+
+[node name="Stone13" parent="IslandObjectSaveManager" unique_id=1105732699 instance=ExtResource("19_rxy2d")]
+position = Vector2(-80, -48)
+variant = 1
+
+[node name="Stone14" parent="IslandObjectSaveManager" unique_id=2063664357 instance=ExtResource("19_rxy2d")]
+position = Vector2(-48, -128)
+
+[node name="Stone4" parent="IslandObjectSaveManager" unique_id=1146241717 instance=ExtResource("19_rxy2d")]
+position = Vector2(-152, -64)
+variant = 1
+
+[node name="Stone5" parent="IslandObjectSaveManager" unique_id=618571435 instance=ExtResource("19_rxy2d")]
+position = Vector2(88, 144)
+variant = 1
+
+[node name="Stone6" parent="IslandObjectSaveManager" unique_id=1241567610 instance=ExtResource("19_rxy2d")]
+position = Vector2(-168, 128)
+variant = 1
+
+[node name="Stone7" parent="IslandObjectSaveManager" unique_id=561687598 instance=ExtResource("19_rxy2d")]
+position = Vector2(24, 168)
+variant = 1
+
+[node name="Stone8" parent="IslandObjectSaveManager" unique_id=978947721 instance=ExtResource("19_rxy2d")]
+position = Vector2(-88, 112)
+
+[node name="Stone15" parent="IslandObjectSaveManager" unique_id=1309187593 instance=ExtResource("19_rxy2d")]
+position = Vector2(-128, 160)
+
+[node name="Stone9" parent="IslandObjectSaveManager" unique_id=762660312 instance=ExtResource("19_rxy2d")]
+position = Vector2(120, -64)
+
+[node name="Stone10" parent="IslandObjectSaveManager" unique_id=527915425 instance=ExtResource("19_rxy2d")]
+position = Vector2(40, -16)
+
+[node name="Stone11" parent="IslandObjectSaveManager" unique_id=755173591 instance=ExtResource("19_rxy2d")]
+position = Vector2(-168, -144)
+
+[node name="Stone12" parent="IslandObjectSaveManager" unique_id=824848845 instance=ExtResource("19_rxy2d")]
+position = Vector2(40, -176)
+
+[node name="BigStone4" parent="IslandObjectSaveManager" unique_id=2104619315 instance=ExtResource("20_vf03m")]
+position = Vector2(-80, -152)
+variant = 1
+
+[node name="BigStone6" parent="IslandObjectSaveManager" unique_id=1362041949 instance=ExtResource("20_vf03m")]
+position = Vector2(-56, -80)
+
+[node name="BigStone5" parent="IslandObjectSaveManager" unique_id=1635217618 instance=ExtResource("20_vf03m")]
+position = Vector2(-112, 144)
 
 [node name="MagicPowerListener" parent="." unique_id=1986599109 instance=ExtResource("19_v1m1i")]
