@@ -162,7 +162,7 @@ public partial class Inventory : SlotUpdater
             UpdateSlot(i);
         }
 
-        ItemSave[] equip = EquipmentPanel.instance.equipped_tools;
+        ItemSave[] equip = EquipmentPanel.instance.toolbar_inventory_ui.inventory_items;
         for (int i = 0; i < equip.Length; i++)
         {
             if (equip[i] == null)
@@ -182,8 +182,6 @@ public partial class Inventory : SlotUpdater
                     * Skilltree.instance.GetBonusOfCategory(SkillData.TYPE_CATEGORY.TOOL_DURABILITY)
             )
                 equip[i].current_durability += 1;
-
-            EquipmentPanel.UpdateSlots();
         }
     }
 
@@ -434,26 +432,6 @@ public partial class Inventory : SlotUpdater
         return false;
     }
 
-    public bool HasEnoughResources(Item item, ItemSave[] array)
-    {
-        int item_amount = 0;
-        //Check if Item already exists
-        for (int i = 0; i < array.Length; i++)
-        {
-            if (array[i] == null)
-                continue;
-
-            if (array[i].item_id == (int)item.info.id)
-            {
-                item_amount += array[i].amount;
-
-                if (item_amount >= item.amount)
-                    return true;
-            }
-        }
-        return false;
-    }
-
     public bool HasItemInInventory(ItemSave[] array, Item item)
     {
         //Check if Item already exists
@@ -491,7 +469,13 @@ public partial class Inventory : SlotUpdater
     {
         for (int i = 0; i < inventory_items.Length; i++)
             UpdateSlot(i);
-        EquipmentPanel.UpdateSlots();
+    }
+
+    public Slot GetSlot(int index)
+    {
+        if (index < 0 || index >= slots.Count)
+            return null;
+        return slots[index];
     }
 
     public override void UpdateSlot(int index, SlotItemUI pref_ref = null)
@@ -533,11 +517,7 @@ public partial class Inventory : SlotUpdater
 
     public int GetDurability(int index)
     {
-        WearableAttribute attribute = GetItemInfo(index).GetAttributeOrNull<WearableAttribute>();
-        if (attribute != null)
-            return inventory_items[index].current_durability;
-        else
-            return -1;
+        return inventory_items[index].current_durability;
     }
 
     public void LoadInventoryFromSave(ItemSave[] item_save)

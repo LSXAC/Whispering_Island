@@ -128,10 +128,10 @@ public partial class ItemUseManager : Node2D
         if (EquipmentPanel.instance == null)
             return null;
 
-        if (index < 0 || index >= EquipmentPanel.instance.slots_tool.Count)
+        if (index < 0 || index >= EquipmentPanel.instance.toolbar_inventory_ui.slot_amount)
             return null;
 
-        return EquipmentPanel.instance.slots_tool[index];
+        return EquipmentPanel.instance.toolbar_inventory_ui.GetSlot(index);
     }
 
     private void ConsumeEquippedToolItem(int index, int amount)
@@ -139,10 +139,12 @@ public partial class ItemUseManager : Node2D
         if (EquipmentPanel.instance == null)
             return;
 
-        if (index < 0 || index >= EquipmentPanel.instance.equipped_tools.Length)
+        if (index < 0 || index >= EquipmentPanel.instance.armor_inventory_ui.slot_amount)
             return;
 
-        ItemSave equipped_tool = EquipmentPanel.instance.equipped_tools[index];
+        ItemSave equipped_tool = EquipmentPanel.instance.toolbar_inventory_ui.inventory_items[
+            index
+        ];
         if (equipped_tool == null)
             return;
 
@@ -154,8 +156,8 @@ public partial class ItemUseManager : Node2D
             return;
         }
 
-        EquipmentPanel.instance.equipped_tools[index] = null;
-        EquipmentPanel.instance.ClearToolSlotItem(index);
+        EquipmentPanel.instance.toolbar_inventory_ui.inventory_items[index] = null;
+        EquipmentPanel.instance.toolbar_inventory_ui.ClearSlot(index);
         PlayerUI.instance?.equipmentSelectBar?.ClearSelectSlot(index);
 
         if (EquipmentSelectBar.current_selected_slot == index)
@@ -167,15 +169,14 @@ public partial class ItemUseManager : Node2D
                 select_bar.HideToolMarker();
             }
         }
-
-        EquipmentPanel.instance.CalculateStatsFromEquipment();
     }
 
     private void UpdateSlotUiAmount(int index, int new_amount)
     {
         Slot equipment_slot =
-            EquipmentPanel.instance != null && index < EquipmentPanel.instance.slots_tool.Count
-                ? EquipmentPanel.instance.slots_tool[index]
+            EquipmentPanel.instance != null
+            && index < EquipmentPanel.instance.toolbar_inventory_ui.slot_amount
+                ? EquipmentPanel.instance.toolbar_inventory_ui.GetSlot(index)
                 : null;
 
         EquipmentSelectBar select_bar = PlayerUI.instance?.equipmentSelectBar;
@@ -220,8 +221,10 @@ public partial class ItemUseManager : Node2D
 
         if (
             EquipmentPanel.instance == null
-            || pending_build_slot_index >= EquipmentPanel.instance.equipped_tools.Length
-            || EquipmentPanel.instance.equipped_tools[pending_build_slot_index] == null
+            || pending_build_slot_index >= EquipmentPanel.instance.toolbar_inventory_ui.slot_amount
+            || EquipmentPanel.instance.toolbar_inventory_ui.inventory_items[
+                pending_build_slot_index
+            ] == null
         )
             pending_build_slot_index = -1;
     }

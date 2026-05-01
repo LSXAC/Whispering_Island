@@ -13,10 +13,10 @@ public partial class CharacterSave : Resource
     public ItemSave[] seed_inventory_items = new ItemSave[30];
 
     [Export]
-    public ItemSave[] equipped_armor = new ItemSave[4];
+    public ItemSave[] equipped_tools = new ItemSave[8];
 
     [Export]
-    public ItemSave[] equipped_tool = new ItemSave[4];
+    public ItemSave[] equipped_armor = new ItemSave[4];
 
     [Export]
     public Vector2 player_position = new Vector2(0, -160);

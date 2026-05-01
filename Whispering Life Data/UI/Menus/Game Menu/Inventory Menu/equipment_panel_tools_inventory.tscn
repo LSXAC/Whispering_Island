@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://e0wtjb6048ar"]
 
-[ext_resource type="Script" uid="uid://ck16fti57dnx3" path="res://UI/Menus/Game Menu/Inventory Menu/PlayerInventoryUI.cs" id="1_6ytyp"]
+[ext_resource type="Script" uid="uid://c1svwakdlt43" path="res://UI/Menus/Game Menu/Inventory Menu/EquipmentPanelToolsInventoryUI.cs" id="1_6ytyp"]
 [ext_resource type="PackedScene" uid="uid://ceypkxf7dox6w" path="res://UI/Inventory/slot_background.tscn" id="2_tej2h"]
 [ext_resource type="LabelSettings" uid="uid://bxjlynolh43sw" path="res://UI/Styles/Label_Settings_Title_Text_Selected.tres" id="3_lxju0"]
 [ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/Menus/Translation/TranslationLabel.cs" id="4_ujkt4"]
 
-[node name="Inventory" type="Control" unique_id=2048543270]
+[node name="ToolsInventory" type="Control" unique_id=2048543270]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_6ytyp")
-inventory_items = Array[Resource]([])
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=820086927]
 layout_mode = 0
@@ -23,7 +22,7 @@ offset_bottom = 40.0
 mouse_filter = 2
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
-columns = 5
+columns = 8
 
 [node name="SlotBackground0" parent="GridContainer" unique_id=1129377612 instance=ExtResource("2_tej2h")]
 layout_mode = 2
@@ -49,78 +48,12 @@ layout_mode = 2
 [node name="SlotBackground7" parent="GridContainer" unique_id=1721121059 instance=ExtResource("2_tej2h")]
 layout_mode = 2
 
-[node name="SlotBackground8" parent="GridContainer" unique_id=1218530974 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground9" parent="GridContainer" unique_id=1030751343 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground10" parent="GridContainer" unique_id=1909327273 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground11" parent="GridContainer" unique_id=25575615 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground12" parent="GridContainer" unique_id=306413285 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground13" parent="GridContainer" unique_id=1581720447 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground14" parent="GridContainer" unique_id=1218163835 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground15" parent="GridContainer" unique_id=677687318 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground16" parent="GridContainer" unique_id=1842252634 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground17" parent="GridContainer" unique_id=1627670070 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground18" parent="GridContainer" unique_id=1330511615 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground19" parent="GridContainer" unique_id=61886768 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground20" parent="GridContainer" unique_id=492702187 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground21" parent="GridContainer" unique_id=1086627927 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground22" parent="GridContainer" unique_id=377271084 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground23" parent="GridContainer" unique_id=250840555 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground24" parent="GridContainer" unique_id=1727209983 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground25" parent="GridContainer" unique_id=542434474 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground26" parent="GridContainer" unique_id=1520947204 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground27" parent="GridContainer" unique_id=367078019 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground28" parent="GridContainer" unique_id=1661050325 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
-[node name="SlotBackground29" parent="GridContainer" unique_id=46320250 instance=ExtResource("2_tej2h")]
-layout_mode = 2
-
 [node name="Label" type="Label" parent="." unique_id=90477453]
 layout_mode = 0
 offset_top = -13.0
 offset_right = 43.0
 offset_bottom = 10.0
-text = "Backpack"
+text = "TOOLBAR"
 label_settings = ExtResource("3_lxju0")
 script = ExtResource("4_ujkt4")
-label_translation_string = "GAMEMENU_INVENTORY_BACKPACK"
+label_translation_string = "GAMEMENU_INVENTORY_HOTBAR"

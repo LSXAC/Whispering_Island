@@ -131,9 +131,6 @@ public partial class EquipmentSelectBar : Container
         tool_mode_active = false;
         is_actual_use_active = false;
         UpdateSlotBoxVisibility(index, false);
-
-        if (EquipmentPanel.instance != null)
-            EquipmentPanel.instance.CalculateStatsFromEquipment();
     }
 
     private void UpdateSlotBoxVisibility(int selected_index, bool show_actual_use_box)
@@ -237,6 +234,10 @@ public partial class EquipmentSelectBar : Container
 
         UseAttribute use_attr = slot_item_ui.item.info.GetAttributeOrNull<UseAttribute>();
         if (use_attr != null)
+            return true;
+
+        ToolAttribute tool_attr = slot_item_ui.item.info.GetAttributeOrNull<ToolAttribute>();
+        if (tool_attr != null && tool_attr.has_menu)
             return true;
 
         BuildingAttribute building_attr =

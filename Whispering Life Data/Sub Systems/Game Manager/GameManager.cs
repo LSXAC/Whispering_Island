@@ -160,9 +160,16 @@ public partial class GameManager : Node2D
             save_state.char_save.inventory_items = PlayerInventoryUI.instance.inventory_items;
         if (SeedInventoryUI.instance != null)
             save_state.char_save.seed_inventory_items = SeedInventoryUI.instance.inventory_items;
-
-        save_state.char_save.equipped_armor = EquipmentPanel.instance.equipped_armor;
-        save_state.char_save.equipped_tool = EquipmentPanel.instance.equipped_tools;
+        if (EquipmentPanel.instance?.toolbar_inventory_ui != null)
+            save_state.char_save.equipped_tools = EquipmentPanel
+                .instance
+                .toolbar_inventory_ui
+                .inventory_items;
+        if (EquipmentPanel.instance?.armor_inventory_ui != null)
+            save_state.char_save.equipped_armor = EquipmentPanel
+                .instance
+                .armor_inventory_ui
+                .inventory_items;
 
         save_state.tutorial_finished = tutorial_finished;
 
@@ -227,9 +234,12 @@ public partial class GameManager : Node2D
         PlayerInventoryUI.instance.LoadInventoryFromSave(save_state.char_save.inventory_items);
         SeedInventoryUI.instance.LoadInventoryFromSave(save_state.char_save.seed_inventory_items);
 
-        EquipmentPanel.instance.LoadArmorFromSave(save_state.char_save.equipped_armor);
-        EquipmentPanel.instance.LoadToolFromSave(save_state.char_save.equipped_tool);
-        EquipmentPanel.instance.CalculateStatsFromEquipment();
+        EquipmentPanel.instance.armor_inventory_ui.LoadInventoryFromSave(
+            save_state.char_save.equipped_armor
+        );
+        EquipmentPanel.instance.toolbar_inventory_ui.LoadInventoryFromSave(
+            save_state.char_save.equipped_tools
+        );
 
         IslandManager.instance.island_saves = save_state.env_save.island_Saves;
         IslandManager.instance.build_saves = save_state.build_saves;
