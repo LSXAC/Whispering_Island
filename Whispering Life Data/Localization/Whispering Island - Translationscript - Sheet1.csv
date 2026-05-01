@@ -10,6 +10,8 @@ GAMEMENU_SETTINGS_BUTTON,Settings,Einstellungen
 GAMEMENU_HELP_BUTTON,Guide,Handbuch
 GAMEMENU_INVENTORY_BACKPACK,Backpack,Rucksack
 GAMEMENU_INVENTORY_SEEDBAG,Seed Bag,Samenbeutel
+GAMEMENU_INVENTORY_HOTBAR,Hotbar,Schnellleiste
+GAMEMENU_INVENTORY_PLAYER_INFORMATION,Player Information,Spielerinformation
 ,,
 ,,
 SETTINGS_MASTER_VOLUME,Master Volume,Gesamtlautstärke

@@ -12,7 +12,7 @@ public partial class EquipmentPanel : Control
     public ItemSave[] equipped_armor = new ItemSave[4];
 
     [Export]
-    public ItemSave[] equipped_tools = new ItemSave[4];
+    public ItemSave[] equipped_tools = new ItemSave[8];
 
     [Export]
     public Array<Slot> slots_armor = new Array<Slot>();
@@ -56,46 +56,30 @@ public partial class EquipmentPanel : Control
             if (instance?.equipped_tools[i] == null)
                 continue;
 
-            if (instance.equipped_tools[i].current_durability > 0)
-            {
-                Item item = new Item(
-                    Inventory.ITEM_TYPES[(Inventory.ITEM_ID)instance.equipped_tools[i].item_id],
-                    instance.equipped_tools[i].amount,
-                    (Item.STATE)instance.equipped_tools[i].state
-                );
+            Item item = new Item(
+                Inventory.ITEM_TYPES[(Inventory.ITEM_ID)instance.equipped_tools[i].item_id],
+                instance.equipped_tools[i].amount,
+                (Item.STATE)instance.equipped_tools[i].state
+            );
 
-                if (instance?.slots_tool[i]?.GetSlotItemUI() == null)
-                    continue;
+            if (instance?.slots_tool[i]?.GetSlotItemUI() == null)
+                continue;
 
-                instance.slots_tool[i].GetSlotItemUI().current_durability = instance
-                    .equipped_tools[i]
-                    .current_durability;
+            instance.slots_tool[i].GetSlotItemUI().current_durability = instance
+                .equipped_tools[i]
+                .current_durability;
 
-                instance
-                    .slots_tool[i]
-                    .UpdateItem(item, instance.equipped_tools[i].current_durability);
+            instance.slots_tool[i].UpdateItem(item, instance.equipped_tools[i].current_durability);
 
-                PlayerUI
-                    .instance.equipmentSelectBar.select_slots[i]
-                    .GetSlotItemUI()
-                    .current_durability = instance.equipped_tools[i].current_durability;
+            PlayerUI
+                .instance.equipmentSelectBar.select_slots[i]
+                .GetSlotItemUI()
+                .current_durability = instance.equipped_tools[i].current_durability;
 
-                PlayerUI
-                    .instance.equipmentSelectBar.select_slots[i]
-                    .UpdateItem(item, instance.equipped_tools[i].current_durability);
-            }
-            else
-            {
-                PlayerUI
-                    .instance.equipmentSelectBar.select_slots[
-                        EquipmentSelectBar.current_selected_slot
-                    ]
-                    .ClearSlotItem();
-                instance.slots_tool[EquipmentSelectBar.current_selected_slot].ClearSlotItem();
-                instance.equipped_tools[EquipmentSelectBar.current_selected_slot] = null;
-                PlayerUI.instance.equipmentSelectBar.current_selected_slot_item_ui = null;
-                PlayerUI.instance.equipmentSelectBar.HideToolMarker();
-            }
+            PlayerUI
+                .instance.equipmentSelectBar.select_slots[i]
+                .UpdateItem(item, instance.equipped_tools[i].current_durability);
+
             instance.CalculateStatsFromEquipment();
         }
     }

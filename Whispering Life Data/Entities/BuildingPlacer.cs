@@ -75,8 +75,14 @@ public partial class BuildingPlacer : Node2D
     {
         if (GameManager.building_mode == GameManager.BuildingMode.Removing)
         {
-            if (Input.IsActionJustPressed("Close") || Input.IsActionJustPressed("Escape"))
+            if (Input.IsActionJustPressed("Close"))
                 CloseMenuWithNoBuilding();
+
+            if (Input.IsActionJustPressed("Escape"))
+            {
+                CloseMenuWithNoBuilding();
+                PlayerUI.instance?.equipmentSelectBar?.ResetCurrentSlotToSelectState();
+            }
 
             return;
         }
@@ -90,6 +96,7 @@ public partial class BuildingPlacer : Node2D
         if (Input.IsActionJustPressed("Escape"))
         {
             CloseMenuWithBuildingSelected();
+            PlayerUI.instance?.equipmentSelectBar?.ResetCurrentSlotToSelectState();
             return;
         }
 

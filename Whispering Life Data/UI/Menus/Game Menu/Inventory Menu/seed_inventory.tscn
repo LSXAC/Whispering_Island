@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ck16fti57dnx3" path="res://UI/Menus/Game Menu/Inventory Menu/PlayerInventoryUI.cs" id="1_cojds"]
 [ext_resource type="PackedScene" uid="uid://ceypkxf7dox6w" path="res://UI/Inventory/slot_background.tscn" id="2_nckbp"]
 [ext_resource type="LabelSettings" uid="uid://bxjlynolh43sw" path="res://UI/Styles/Label_Settings_Title_Text_Selected.tres" id="3_nckbp"]
+[ext_resource type="Script" uid="uid://cqoeip75pqyqv" path="res://UI/Menus/Translation/TranslationLabel.cs" id="4_omuyw"]
 
 [node name="Inventory" type="Control" unique_id=2048543270]
 layout_mode = 3
@@ -74,3 +75,5 @@ offset_right = 43.0
 offset_bottom = 10.0
 text = "Seed Bag"
 label_settings = ExtResource("3_nckbp")
+script = ExtResource("4_omuyw")
+label_translation_string = "GAMEMENU_INVENTORY_SEEDBAG"
