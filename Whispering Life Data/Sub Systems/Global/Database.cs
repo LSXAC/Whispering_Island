@@ -35,10 +35,6 @@ public partial class Database : Node
         Debug.Print("Loaded all Resources!");
     }
 
-    /// <summary>
-    /// Scans res:// for .tres resources and populates the arrays.
-    /// Call this from the Editor to fill the arrays before export.
-    /// </summary>
     public void PopulateDatabase()
     {
         if (!Engine.IsEditorHint())

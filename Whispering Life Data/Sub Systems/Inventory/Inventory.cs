@@ -88,7 +88,23 @@ public partial class Inventory : SlotUpdater
         MERCURY_BOTTLE,
         UNKNOWN_ITEM,
         FURNACE,
-        BELT
+        BELT,
+        BELT_SPLITTER_1x2,
+        BELT_SPLITTER_1x3,
+        BELT_COMBINER_2x1,
+        BELT_COMBINER_3x1,
+        CHEST,
+        PUFFER_CHEST,
+        COMBINER_MACHINE,
+        ALCHEMY_TABLE,
+        WOOD_GROWTHER,
+        QUARRY,
+        ORE_MINER,
+        RESEARCH_TABLE,
+        MAGIC_GENERATOR_SMALL,
+        RAIL,
+        RAIL_STATION,
+        MINECART
     }
 
     public Action OnItemChanged;

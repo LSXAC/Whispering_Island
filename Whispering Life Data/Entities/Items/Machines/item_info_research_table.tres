@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://bncg8whp0tgrg"]
+
+[ext_resource type="Script" uid="uid://cmmub3ei8m4o8" path="res://Entities/Items/Attributes/ProcessedAttribute.cs" id="1_u1p5c"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="2_lgcsb"]
+[ext_resource type="Resource" uid="uid://c2tfkto5ygm4k" path="res://Entities/Placeable Building/Research/Research Table/Data/ResearchTableBuildMenu.tres" id="3_u1p5c"]
+[ext_resource type="Script" uid="uid://c01in27e8taec" path="res://Entities/Items/Attributes/BuildingAttribute.cs" id="4_mbwyt"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="5_vnkrg"]
+[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Placeable Building/Machine/Furnace/Texture/Furnace_Building_Sprite.png" id="6_mvbua"]
+
+[sub_resource type="Resource" id="Resource_h2t5y"]
+script = ExtResource("1_u1p5c")
+metadata/_custom_type_script = "uid://cmmub3ei8m4o8"
+
+[sub_resource type="Resource" id="Resource_gjvhw"]
+script = ExtResource("2_lgcsb")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[sub_resource type="Resource" id="Resource_5ygbn"]
+script = ExtResource("4_mbwyt")
+building_menu_list_object = ExtResource("3_u1p5c")
+metadata/_custom_type_script = "uid://c01in27e8taec"
+
+[resource]
+script = ExtResource("5_vnkrg")
+attributes = Array[Object]([SubResource("Resource_h2t5y"), SubResource("Resource_gjvhw"), SubResource("Resource_5ygbn")])
+max_stackable_size = 250
+name = "BUILDING_RESEARCH_TABLE"
+id = 83
+description = "BUILDING_RESEARCH_TABLE_DESC"
+texture = ExtResource("6_mvbua")
+value = 100.0

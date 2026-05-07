@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemInfo" format=3 uid="uid://bs8nkehp2v4sa"]
+
+[ext_resource type="Script" uid="uid://cmmub3ei8m4o8" path="res://Entities/Items/Attributes/ProcessedAttribute.cs" id="1_kdj3f"]
+[ext_resource type="Script" uid="uid://b40cejs4t88i5" path="res://Entities/Items/Attributes/ResourceAttribute.cs" id="2_w802u"]
+[ext_resource type="Resource" uid="uid://8b8h6neopltv" path="res://Entities/Placeable Building/Transport Base/Belt/Belt Combiner/Data/BeltCombiner3x1BuildMenu.tres" id="3_ddkq5"]
+[ext_resource type="Script" uid="uid://c01in27e8taec" path="res://Entities/Items/Attributes/BuildingAttribute.cs" id="4_vtrcn"]
+[ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="5_y23k2"]
+[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Placeable Building/Machine/Furnace/Texture/Furnace_Building_Sprite.png" id="6_ians2"]
+
+[sub_resource type="Resource" id="Resource_h2t5y"]
+script = ExtResource("1_kdj3f")
+metadata/_custom_type_script = "uid://cmmub3ei8m4o8"
+
+[sub_resource type="Resource" id="Resource_gjvhw"]
+script = ExtResource("2_w802u")
+metadata/_custom_type_script = "uid://b40cejs4t88i5"
+
+[sub_resource type="Resource" id="Resource_5ygbn"]
+script = ExtResource("4_vtrcn")
+building_menu_list_object = ExtResource("3_ddkq5")
+metadata/_custom_type_script = "uid://c01in27e8taec"
+
+[resource]
+script = ExtResource("5_y23k2")
+attributes = Array[Object]([SubResource("Resource_h2t5y"), SubResource("Resource_gjvhw"), SubResource("Resource_5ygbn")])
+max_stackable_size = 250
+name = "BUILDING_BELT_COMBINER_3x1"
+id = 75
+description = "BUILDING_BELT_COMBINER_3x1_DESC"
+texture = ExtResource("6_ians2")
+value = 100.0

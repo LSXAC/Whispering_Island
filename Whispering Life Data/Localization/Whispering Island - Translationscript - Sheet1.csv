@@ -113,27 +113,6 @@ BUILDING_MENU_RESEARCH,> Research,> Forschung
 BUILDING_MENU_REMOVE_BUILDINGS,> Remove Building,> Gebäude entfernen
 BUILDING_MENU_PLANTS,> Plants,> Pflanzen
 ,,
-BUILDING_FURNACE,Furnace,Ofen
-BUILDING_FURNACE_DESC,Smelts Resources that are smeltable,"Schmilzt Ressourcen 
-die schmelzbar sind"
-BUILDING_CHEST,Chest,Kiste
-BUILDING_CHEST_DESC,Can hold Resources,Kann Ressourcen speichern
-BUILDING_WOOD_GROWTHER,Wood Producer,Holz Produzierer
-BUILDING_WOOD_GROWTHER_DESC,Generates continuesly wood,Produziert stetig Holz
-BUILDING_BED,Bed,Bett
-BUILDING_BED_DESC,"Sleep removes fatigue, but sacrifice Time",Schlafen entfernt Erschöpfung und benötigt Zeit
-BUILDING_QUARRY,Quarry,Steinbruch
-BUILDING_QUARRY_DESC,Generates continuesly stone,Produziert stetig Stein
-BUILDING_SIGN,Sign,Schild
-BUILDING_SIGN_DESC,Sign where a Bridge can be build,Schild an dem eine Brücke gebaut werden kann
-BUILDING_RAIL,Rail,Gleise
-BUILDING_RAIL_DESC,"A Minecart can be placed on top, to Transports resources","Eine Lohre kann auf die Gleise gesetzt werden, um Ressourcen zu transportieren"
-BUILDING_MINECART,Minecart,Lohre
-BUILDING_MINECART_DESC,Can be placed on top of rails and store resources,Kann auf Gleisen gesetzt werden und speichert Ressourcen
-BUILDING_RAIL_STATION,Railstation,Bahnhof
-BUILDING_RAIL_STATION_DESC,Can import/export resources from minecart. Can also export/import to belts,Kann Importieren/Exportieren Ressourcen von einer Lohre. Kann auch Importieren/Exportieren zu Fließbändern
-,,
-,,
 WORLD_RESOURCE_STONE,Stone,Stein
 WORLD_RESOURCE_STONE_DESC,Mine to receive stone,Erhalte Stein beim abbauen
 WORLD_RESOURCE_TREE,Tree,Baum
@@ -199,28 +178,7 @@ MAINMENU_SKIP_TUTORIAL,Skip Tutorial,Start überspringen
 MAINMENU_BACK_TO_MAINMENU,Main Menu,Hauptmenü
 MAINMENU_BACK,Back to Start,Zurück zum Start
 ,,
-BUILDING_BELT,Belt,Fließband
-BUILDING_BELT_DESC,Transports resources.,Transportiert Ressourcen.
-BUILDING_BELT_TUNNEL,Transmitter belt,Übertragungs Fließband
-BUILDING_BELT_TUNNEL_DESC,Transports resources over air.,Transportiert Ressourcen über Luft.
-BUILDING_BELT_SPLITTER_1x2,Belt Splitter 1x2,Fließbandteiler 1x2
-BUILDING_BELT_SPLITTER_1x2_DESC,Splits Items from one belt to two other.,Verteilt Gegenstände von einen Fließband zu zwei anderen.
-BUILDING_BELT_SPLITTER_1x3,Belt Splitter 1x3,Fließbandteiler 1x3
-BUILDING_BELT_SPLITTER_1x3_DESC,Splits Items from one belt to three other.,Verteilt Gegenstände von einen Fließband zu drei anderen.
-BUILDING_BELT_COMBINER_2x1,Belt Combiner 2x1,Fließbandverbinder 2x1
-BUILDING_BELT_COMBINER_2x1_DESC,Combines Items from 2 belts to 1 belt,Kombiniert Gegenstände von zwei Fließbändern zu einem Fließband.
-BUILDING_BELT_COMBINER_3x1,Belt Combiner 3x1,Fließbandverbinder 3x1
-BUILDING_BELT_COMBINER_3x1_DESC,Combines Items from 3 belts to 1 belt,Kombiniert Gegenstände von drei Fließbändern zu einem Fließband.
-BUILDING_CHEST_PUFFER,Chest Puffer,Kistenzwischenlager
-BUILDING_CHEST_PUFFER_DESC,"Collects Items from one side, stores it and gives it to the next belt.","Sammelt Gegenstände von einer Seite, lagert diese und gibt diese auf ein anderes Belt aus."
-BUILDING_RAIL_STATION,Rail Station,Bahnstation
-BUILDING_RAIL_STATION_DESC,A Station that imports or exports resources from Train,Eine Station die Ressourcen vom Zug importiert oder exportiert.
-BUILDING_OUTDOOR_LAMP,Outdoor Lamp,Außenlampe
-BUILDING_OUTDOOR_LAMP_DESC,Lights the enviourment up,Erleuchtet die Umgebung
-,,
 QUEST_MENU_REWARD,Rewards after completion:,Belohnung nach Vollendung:
-,,
-,,
 ,,
 QUEST_ACCEPT_PANEL_HALF_TIME_TITLE,> Half Time - Punishment,> Halbzeit - Strafe
 QUEST_ACCEPT_PANEL_HALF_TIME_DESC,The Next Quest will only have half of the Time to complete,Für die nächste Aufgabe wird nur die halbe Zeit zur Verfügung stehen
