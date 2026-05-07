@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://1ejkff4privx" path="res://Entities/Placeable Building/Transport Base/Belt/Belt Splitter/Data/BeltSplitter1x2BuildMenu.tres" id="3_p26dn"]
 [ext_resource type="Script" uid="uid://c01in27e8taec" path="res://Entities/Items/Attributes/BuildingAttribute.cs" id="4_rl4bh"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="5_1ilv0"]
-[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Placeable Building/Machine/Furnace/Texture/Furnace_Building_Sprite.png" id="6_wio0t"]
+[ext_resource type="Texture2D" uid="uid://c5fsef0i410ye" path="res://UI/Menus/Build Menu/Items/Belt/Belt Splitter/Texture/Menu_Belt_Splitter_1x2.png" id="6_p26dn"]
 
 [sub_resource type="Resource" id="Resource_h2t5y"]
 script = ExtResource("1_p26dn")
@@ -27,5 +27,5 @@ max_stackable_size = 250
 name = "BUILDING_BELT_SPLITTER_1x2"
 id = 72
 description = "BUILDING_BELT_SPLITTER_1x2_DESC"
-texture = ExtResource("6_wio0t")
+texture = ExtResource("6_p26dn")
 value = 100.0

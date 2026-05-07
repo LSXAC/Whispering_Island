@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://cbq4h0xdafbrv" path="res://Entities/Placeable Building/Machine/Furnace/Data/FurnaceBuildMenu.tres" id="3_m0dp4"]
 [ext_resource type="Script" uid="uid://c01in27e8taec" path="res://Entities/Items/Attributes/BuildingAttribute.cs" id="4_adp2n"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="5_mmym8"]
-[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Placeable Building/Machine/Furnace/Texture/Furnace_Building_Sprite.png" id="6_6h7ba"]
+[ext_resource type="Texture2D" uid="uid://cn8y6cj766xw0" path="res://Entities/Items/SpritesForItems/Icons_3rd/Chest.png" id="6_tvx10"]
 
 [sub_resource type="Resource" id="Resource_h2t5y"]
 script = ExtResource("1_tvx10")
@@ -27,5 +27,5 @@ max_stackable_size = 250
 name = "BUILDING_CHEST"
 id = 76
 description = "BUILDING_CHEST_DESC"
-texture = ExtResource("6_6h7ba")
+texture = ExtResource("6_tvx10")
 value = 100.0

@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://clw3yssds38l7" path="res://Entities/Placeable Building/Machine/Magic Generator/Data/MagicGeneratorBuildMenu.tres" id="3_i8bq3"]
 [ext_resource type="Script" uid="uid://c01in27e8taec" path="res://Entities/Items/Attributes/BuildingAttribute.cs" id="4_pco54"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="5_duw8x"]
-[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Placeable Building/Machine/Furnace/Texture/Furnace_Building_Sprite.png" id="6_g6f8k"]
+[ext_resource type="Texture2D" uid="uid://lk1r0gi45cn5" path="res://Entities/Placeable Building/Machine/Magic Generator/Texture/MagicGenerator1.png" id="6_i8bq3"]
 
 [sub_resource type="Resource" id="Resource_h2t5y"]
 script = ExtResource("1_y446v")
@@ -27,5 +27,5 @@ max_stackable_size = 250
 name = "BUILDING_MAGIC_GENERATOR_SMALL"
 id = 84
 description = "BUILDING_MAGIC_GENERATOR_SMALL_DESC"
-texture = ExtResource("6_g6f8k")
+texture = ExtResource("6_i8bq3")
 value = 100.0

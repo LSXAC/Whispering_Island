@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://c8cgmkv8acr6f" path="res://Entities/Placeable Building/Machine/Trash/Data/TrashcanBuildMenu.tres" id="3_7m86e"]
 [ext_resource type="Script" uid="uid://c01in27e8taec" path="res://Entities/Items/Attributes/BuildingAttribute.cs" id="4_jbddp"]
 [ext_resource type="Script" uid="uid://c5ivgiyvk6028" path="res://Entities/Items/ItemInfo.cs" id="5_6ipbw"]
-[ext_resource type="Texture2D" uid="uid://bnx2s3aaea0b2" path="res://Entities/Placeable Building/Machine/Furnace/Texture/Furnace_Building_Sprite.png" id="6_fam1l"]
+[ext_resource type="Texture2D" uid="uid://ppkhe2a2ex8x" path="res://Entities/Items/SpritesForItems/Tool_Icons/Wood_Chest.png" id="6_7m86e"]
 
 [sub_resource type="Resource" id="Resource_h2t5y"]
 script = ExtResource("1_7m86e")
@@ -27,5 +27,5 @@ max_stackable_size = 250
 name = "BUILDING_PUFFER"
 id = 77
 description = "BUILDING_PUFFER_DESC"
-texture = ExtResource("6_fam1l")
+texture = ExtResource("6_7m86e")
 value = 100.0
