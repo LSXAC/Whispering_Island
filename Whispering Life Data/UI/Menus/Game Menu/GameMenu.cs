@@ -17,7 +17,7 @@ public partial class GameMenu : CanvasLayer
     public Button crafting_tab_button;
 
     [Export]
-    public ColorRect inventory_tab;
+    public Control inventory_tab;
 
     [Export]
     public ColorRect crafting_tab;

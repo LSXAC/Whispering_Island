@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class InventoryTab : ColorRect
+public partial class InventoryTab : Control
 {
     [Export]
     public Inventory inventory_ui,
