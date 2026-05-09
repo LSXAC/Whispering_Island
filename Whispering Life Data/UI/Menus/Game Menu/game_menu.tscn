@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ducdca4ke1uec" path="res://UI/Menus/Game Menu/GameMenu.cs" id="1_2bdem"]
 [ext_resource type="FontFile" uid="uid://c71q7yvhwlclf" path="res://UI/Fonts/upheavtt.ttf" id="2_6nb4j"]
 [ext_resource type="LabelSettings" uid="uid://bxjlynolh43sw" path="res://UI/Styles/Label_Settings_Title_Text_Selected.tres" id="2_k61vr"]
+[ext_resource type="Texture2D" uid="uid://bon1tv1tisige" path="res://UI/Menus/Book_Cover_Selected_Marker.png" id="3_ci00t"]
 [ext_resource type="Script" uid="uid://cc56ntqxe4w3q" path="res://UI/Menus/Translation/TranslationButton.cs" id="3_pwamf"]
 [ext_resource type="PackedScene" uid="uid://74pm7gmanqf2" path="res://UI/Menus/Game Menu/Inventory Menu/player_inventory.tscn" id="3_ub0ut"]
 [ext_resource type="Texture2D" uid="uid://du1pviqlflmsq" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_25.png" id="4_2jtc7"]
@@ -12,17 +13,17 @@
 [ext_resource type="Texture2D" uid="uid://rypu3d4txpnn" path="res://UI/Menus/Book_Cover.png" id="4_o8b8a"]
 [ext_resource type="Texture2D" uid="uid://ne3oahdi530f" path="res://UI/Menus/Game Menu/Inventory Menu/Texture/Char_Profil.png" id="5_6jpat"]
 [ext_resource type="Texture2D" uid="uid://b8klnfsxws1y4" path="res://Entities/Items/SpritesForItems/Icons_3rd/Icons_27_10.png" id="5_bku2s"]
-[ext_resource type="Texture2D" uid="uid://bjo17nkno7g5g" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_90.png" id="6_2jtc7"]
 [ext_resource type="Script" uid="uid://bwddpawbd6vna" path="res://UI/Menus/Game Menu/Inventory Menu/Player Stats/PlayerStatsUI.cs" id="7_hhlnf"]
 [ext_resource type="LabelSettings" uid="uid://bfyhqbjhexoyv" path="res://UI/Styles/Label_Settings_Title_Text.tres" id="7_kqkeb"]
 [ext_resource type="Texture2D" uid="uid://bpn4kdrr5ejdr" path="res://Entities/Items/Minerals/Magic Dust/Texture/Magic_Dust.png" id="7_wk80g"]
-[ext_resource type="Texture2D" uid="uid://cq8pk1q4c8ud0" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_60.png" id="9_2jtc7"]
 [ext_resource type="Texture2D" uid="uid://soncujix6fa3" path="res://Entities/Items/SpritesForItems/Icons/setting.png" id="9_4wwa8"]
-[ext_resource type="Texture2D" uid="uid://hwm8o43058yi" path="res://Entities/Items/SpritesForItems/Tool_Icons/icons_30_03.png" id="10_kqkeb"]
+[ext_resource type="Texture2D" uid="uid://dkgqur450bxr1" path="res://UI/Menus/Book_Cover_Button_Marker.png" id="9_ci00t"]
 [ext_resource type="Texture2D" uid="uid://be2xmt8674o1k" path="res://Entities/Items/SpritesForItems/Icons/rejected.png" id="10_yfud7"]
 [ext_resource type="PackedScene" uid="uid://dq2ti6q4f3wjo" path="res://UI/Menus/menu_header_object.tscn" id="11_45saq"]
+[ext_resource type="Texture2D" uid="uid://cuagpqln1w5xa" path="res://Entities/Items/Research/Research Book Level/Texture/research_book_level.png" id="11_ci00t"]
 [ext_resource type="Script" uid="uid://dmhek11432ok0" path="res://UI/Menus/Research Menu/ResearchTab.cs" id="11_hr8uu"]
 [ext_resource type="Texture2D" uid="uid://dvbxwe6an2st" path="res://UI/Menus/Game Menu/Inventory Menu/Texture/Menu_Front_Style_1.png" id="11_mmhr0"]
+[ext_resource type="Texture2D" uid="uid://dgdgpeeiw5ea0" path="res://Entities/Items/SpritesForItems/Icons_3rd/Copper_Ingot.png" id="12_ci00t"]
 [ext_resource type="PackedScene" uid="uid://ceypkxf7dox6w" path="res://UI/Inventory/slot_background.tscn" id="13_m8k7p"]
 [ext_resource type="Texture2D" uid="uid://e6d1pgbiv2dn" path="res://Entities/Items/SpritesForItems/Armor/Placeholder_Armor_Head.png" id="14_mmhr0"]
 [ext_resource type="Script" uid="uid://e8ypwlcni3lf" path="res://UI/Menus/Game Menu/Inventory Menu/InventoryTab.cs" id="14_y8xqs"]
@@ -140,7 +141,7 @@
 [ext_resource type="PackedScene" uid="uid://bsvj4xv8dan20" path="res://UI/ContextMenu/context_menu.tscn" id="134_wf4uf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4utg2"]
-bg_color = Color(0.278431, 0.270588, 0.329412, 1)
+bg_color = Color(0.85882354, 0.6784314, 0.5058824, 1)
 
 [sub_resource type="Resource" id="Resource_wf4uf"]
 script = ExtResource("15_jkil6")
@@ -198,12 +199,15 @@ border_width_top = 2
 border_color = Color(0, 0, 0, 1)
 border_blend = true
 
-[node name="GameMenu" type="CanvasLayer" unique_id=1705449440 node_paths=PackedStringArray("load_button", "destroy_menu", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "processing_tab", "research_tab", "nerve_transducer_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "quest_tab", "rail_station_tab", "minecart_tab", "poison_combiner_tab", "alchemy_lab_tab", "header_container", "crafting_category_panel")]
+[node name="GameMenu" type="CanvasLayer" unique_id=1705449440 node_paths=PackedStringArray("tab_label", "load_button", "destroy_menu", "inventory_tab_button", "crafting_tab_button", "inventory_tab", "crafting_tab", "processing_tab", "research_tab", "nerve_transducer_tab", "chest_tab", "settings_tab", "saveload_tab", "admin_tab", "island_tab", "skilltree_tab", "help_tab", "quest_tab", "rail_station_tab", "minecart_tab", "poison_combiner_tab", "alchemy_lab_tab", "header_container", "crafting_category_panel")]
 script = ExtResource("1_2bdem")
+normal_marker = ExtResource("17_a81u3")
+selected_marker = ExtResource("3_ci00t")
+tab_label = NodePath("Background/NormalBar/CurrentActiv/TextureRect/Label")
 load_button = NodePath("Background/SaveLoadTab/HBoxContainer/LoadGameButton")
 destroy_menu = NodePath("Background/DestroyMenu")
-inventory_tab_button = NodePath("Background/ColorRect/ColorRect/HBoxHeader/InvTabButton")
-crafting_tab_button = NodePath("Background/ColorRect/ColorRect/HBoxHeader/CraftingTabButton")
+inventory_tab_button = NodePath("Background/NormalBar/HBoxHeader/Inventory/InvTabButton")
+crafting_tab_button = NodePath("Background/NormalBar/HBoxHeader/Crafting/CraftingTabButton")
 inventory_tab = NodePath("Background/InventoryTab")
 crafting_tab = NodePath("Background/CraftingTab")
 processing_tab = NodePath("Background/FurnaceTab")
@@ -221,7 +225,7 @@ rail_station_tab = NodePath("Background/RailStationTab")
 minecart_tab = NodePath("Background/MinecartTab")
 poison_combiner_tab = NodePath("Background/CombinerTab")
 alchemy_lab_tab = NodePath("Background/AlchemyLabTab")
-header_container = NodePath("Background/ColorRect/ColorRect/HBoxHeader")
+header_container = NodePath("Background/NormalBar/HBoxHeader")
 title_selected = ExtResource("2_k61vr")
 title_normal = ExtResource("7_kqkeb")
 crafting_category_panel = NodePath("Background/CraftingTab/CraftingCategoryPanel")
@@ -250,168 +254,169 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_o8b8a")
 
-[node name="ColorRect" type="ColorRect" parent="Background" unique_id=729827259]
+[node name="NormalBar" type="Control" parent="Background" unique_id=971634797]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxHeader" type="HBoxContainer" parent="Background/NormalBar" unique_id=85498363]
+layout_mode = 0
+offset_left = 297.0
+offset_top = -34.0
+offset_right = 855.0
+
+[node name="Inventory" type="TextureRect" parent="Background/NormalBar/HBoxHeader" unique_id=1801759143]
+layout_mode = 2
+texture = ExtResource("17_a81u3")
+
+[node name="InvTabButton" type="Button" parent="Background/NormalBar/HBoxHeader/Inventory" unique_id=987414041 node_paths=PackedStringArray("label")]
 layout_mode = 0
 offset_left = 2.0
-offset_top = -29.0
-offset_right = 562.0
-offset_bottom = -5.0
-color = Color(0, 0, 0, 1)
-
-[node name="ColorRect" type="ColorRect" parent="Background/ColorRect" unique_id=705558058]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.278431, 0.270588, 0.329412, 1)
-
-[node name="HBoxHeader" type="HBoxContainer" parent="Background/ColorRect/ColorRect" unique_id=85498363]
-layout_mode = 0
-offset_right = 558.0
-offset_bottom = 22.0
-alignment = 1
-
-[node name="InvTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=987414041 node_paths=PackedStringArray("label")]
-layout_mode = 2
+offset_top = 2.0
+offset_right = 34.0
+offset_bottom = 34.0
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 4
-theme_override_constants/icon_max_width = 12
+theme_override_constants/icon_max_width = 20
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
+icon = ExtResource("4_2jtc7")
 flat = true
+icon_alignment = 1
 script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_INVENTORY_BUTTON"
-has_different_label = true
-label = NodePath("HBoxContainer/Label")
+only_meta_text = true
+label = NodePath("")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/ColorRect/ColorRect/HBoxHeader/InvTabButton" unique_id=1495464881]
+[node name="Crafting" type="TextureRect" parent="Background/NormalBar/HBoxHeader" unique_id=714129667]
+layout_mode = 2
+texture = ExtResource("17_a81u3")
+
+[node name="CraftingTabButton" type="Button" parent="Background/NormalBar/HBoxHeader/Crafting" unique_id=2034542310 node_paths=PackedStringArray("label")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -16.0
-offset_right = 30.0
-offset_bottom = 16.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 4
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Background/ColorRect/ColorRect/HBoxHeader/InvTabButton/HBoxContainer" unique_id=783767033]
-custom_minimum_size = Vector2(16, 0)
-layout_mode = 2
-texture = ExtResource("4_2jtc7")
-expand_mode = 4
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Background/ColorRect/ColorRect/HBoxHeader/InvTabButton/HBoxContainer" unique_id=1243858477]
-layout_mode = 2
-text = "Inventory"
-label_settings = ExtResource("2_k61vr")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CraftingTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=2034542310 node_paths=PackedStringArray("label")]
-layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
-theme_override_constants/icon_max_width = 12
+theme_override_constants/icon_max_width = 20
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
+icon = ExtResource("5_bku2s")
 flat = true
+icon_alignment = 1
 script = ExtResource("3_pwamf")
 label_translation_string = "GAMEMENU_CRAFTING_BUTTON"
-has_different_label = true
-label = NodePath("HBoxContainer/Label")
+only_meta_text = true
+label = NodePath("")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/ColorRect/ColorRect/HBoxHeader/CraftingTabButton" unique_id=545823502]
+[node name="Skilltree" type="TextureRect" parent="Background/NormalBar/HBoxHeader" unique_id=1941529130]
+layout_mode = 2
+texture = ExtResource("17_a81u3")
+
+[node name="SkillTreeTabButton" type="Button" parent="Background/NormalBar/HBoxHeader/Skilltree" unique_id=1820418579 node_paths=PackedStringArray("label")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -16.0
-offset_right = 30.0
-offset_bottom = 16.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 4
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Background/ColorRect/ColorRect/HBoxHeader/CraftingTabButton/HBoxContainer" unique_id=1680005756]
-custom_minimum_size = Vector2(16, 0)
-layout_mode = 2
-texture = ExtResource("5_bku2s")
-expand_mode = 4
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Background/ColorRect/ColorRect/HBoxHeader/CraftingTabButton/HBoxContainer" unique_id=1024398699]
-layout_mode = 2
-text = "CRAFTING"
-label_settings = ExtResource("7_kqkeb")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SaveTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=942135890 node_paths=PackedStringArray("label")]
-layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
-theme_override_constants/icon_max_width = 12
+theme_override_constants/icon_max_width = 20
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
+icon = ExtResource("11_ci00t")
 flat = true
+icon_alignment = 1
 script = ExtResource("3_pwamf")
-label_translation_string = "GAMEMENU_SAVELOAD_BUTTON"
+label_translation_string = "GAMEMENU_SKILLTREE"
 has_different_label = true
-label = NodePath("HBoxContainer/Label")
+only_meta_text = true
+label = NodePath("")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/ColorRect/ColorRect/HBoxHeader/SaveTabButton" unique_id=434318562]
+[node name="Admin" type="TextureRect" parent="Background/NormalBar/HBoxHeader" unique_id=1904684505]
+layout_mode = 2
+texture = ExtResource("17_a81u3")
+
+[node name="AdminButton" type="Button" parent="Background/NormalBar/HBoxHeader/Admin" unique_id=504328986 node_paths=PackedStringArray("label")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -16.0
-offset_right = 30.0
-offset_bottom = 16.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 4
-alignment = 1
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 20
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+icon = ExtResource("12_ci00t")
+flat = true
+icon_alignment = 1
+script = ExtResource("3_pwamf")
+has_different_label = true
+only_meta_text = true
+label = NodePath("")
 
-[node name="TextureRect" type="TextureRect" parent="Background/ColorRect/ColorRect/HBoxHeader/SaveTabButton/HBoxContainer" unique_id=638696663]
-custom_minimum_size = Vector2(20, 0)
+[node name="Settings" type="TextureRect" parent="Background/NormalBar/HBoxHeader" unique_id=801701569]
 layout_mode = 2
-texture = ExtResource("6_2jtc7")
-expand_mode = 4
-stretch_mode = 5
+texture = ExtResource("17_a81u3")
 
-[node name="Label" type="Label" parent="Background/ColorRect/ColorRect/HBoxHeader/SaveTabButton/HBoxContainer" unique_id=1037652847]
+[node name="SettingsTabButton" type="Button" parent="Background/NormalBar/HBoxHeader/Settings" unique_id=2075880969]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 20
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+icon = ExtResource("9_4wwa8")
+flat = true
+icon_alignment = 1
+script = ExtResource("3_pwamf")
+only_meta_text = true
+
+[node name="Exit" type="TextureRect" parent="Background/NormalBar/HBoxHeader" unique_id=1940138793]
 layout_mode = 2
-text = "SAVE"
-label_settings = ExtResource("7_kqkeb")
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("17_a81u3")
 
-[node name="StatsTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=1996054672]
+[node name="ExitTabButton" type="Button" parent="Background/NormalBar/HBoxHeader/Exit" unique_id=1903726751]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/icon_max_width = 20
+theme_override_fonts/font = ExtResource("2_6nb4j")
+theme_override_font_sizes/font_size = 10
+icon = ExtResource("10_yfud7")
+flat = true
+icon_alignment = 1
+script = ExtResource("3_pwamf")
+only_meta_text = true
+
+[node name="StatsTabButton" type="Button" parent="Background/NormalBar/HBoxHeader" unique_id=1996054672]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
@@ -425,96 +430,7 @@ text = "Stats"
 flat = true
 script = ExtResource("3_pwamf")
 
-[node name="SkillTreeTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=1820418579 node_paths=PackedStringArray("label")]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-theme_override_constants/icon_max_width = 12
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-flat = true
-script = ExtResource("3_pwamf")
-label_translation_string = "GAMEMENU_SKILLTREE"
-has_different_label = true
-label = NodePath("HBoxContainer/Label")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/ColorRect/ColorRect/HBoxHeader/SkillTreeTabButton" unique_id=1784743392]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -16.0
-offset_right = 30.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 4
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Background/ColorRect/ColorRect/HBoxHeader/SkillTreeTabButton/HBoxContainer" unique_id=839786465]
-custom_minimum_size = Vector2(16, 0)
-layout_mode = 2
-texture = ExtResource("9_2jtc7")
-expand_mode = 4
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Background/ColorRect/ColorRect/HBoxHeader/SkillTreeTabButton/HBoxContainer" unique_id=36817969]
-layout_mode = 2
-text = "Skilltree"
-label_settings = ExtResource("7_kqkeb")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AdminButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=504328986 node_paths=PackedStringArray("label")]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-theme_override_constants/icon_max_width = 12
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-flat = true
-script = ExtResource("3_pwamf")
-has_different_label = true
-label = NodePath("HBoxContainer/Label")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/ColorRect/ColorRect/HBoxHeader/AdminButton" unique_id=2082115427]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -16.0
-offset_right = 30.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 4
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Background/ColorRect/ColorRect/HBoxHeader/AdminButton/HBoxContainer" unique_id=2010326051]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-texture = ExtResource("10_kqkeb")
-expand_mode = 4
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Background/ColorRect/ColorRect/HBoxHeader/AdminButton/HBoxContainer" unique_id=2087263551]
-layout_mode = 2
-text = "ADMIN"
-label_settings = ExtResource("7_kqkeb")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HelpButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=607044454 node_paths=PackedStringArray("label")]
+[node name="HelpButton" type="Button" parent="Background/NormalBar/HBoxHeader" unique_id=607044454 node_paths=PackedStringArray("label")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
@@ -530,7 +446,7 @@ label_translation_string = "GAMEMENU_HELP_BUTTON"
 has_different_label = true
 label = NodePath("HBoxContainer/Label")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/ColorRect/ColorRect/HBoxHeader/HelpButton" unique_id=1950922695]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/NormalBar/HBoxHeader/HelpButton" unique_id=1950922695]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -546,44 +462,51 @@ grow_vertical = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Background/ColorRect/ColorRect/HBoxHeader/HelpButton/HBoxContainer" unique_id=2111220395]
+[node name="TextureRect" type="TextureRect" parent="Background/NormalBar/HBoxHeader/HelpButton/HBoxContainer" unique_id=2111220395]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 texture = ExtResource("7_wk80g")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Background/ColorRect/ColorRect/HBoxHeader/HelpButton/HBoxContainer" unique_id=368344664]
+[node name="Label" type="Label" parent="Background/NormalBar/HBoxHeader/HelpButton/HBoxContainer" unique_id=368344664]
 layout_mode = 2
 text = "HELP CENTER"
 label_settings = ExtResource("7_kqkeb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=2075880969]
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-theme_override_constants/icon_max_width = 12
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-icon = ExtResource("9_4wwa8")
-flat = true
-script = ExtResource("3_pwamf")
+[node name="CurrentActiv" type="Control" parent="Background/NormalBar" unique_id=1399568477]
+anchors_preset = 0
+offset_left = 21.0
+offset_top = -38.0
+offset_right = 61.0
+offset_bottom = 2.0
 
-[node name="ExitTabButton" type="Button" parent="Background/ColorRect/ColorRect/HBoxHeader" unique_id=1903726751]
-process_mode = 3
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-theme_override_constants/icon_max_width = 12
-theme_override_fonts/font = ExtResource("2_6nb4j")
-theme_override_font_sizes/font_size = 10
-icon = ExtResource("10_yfud7")
-flat = true
-script = ExtResource("3_pwamf")
+[node name="TextureRect" type="TextureRect" parent="Background/NormalBar/CurrentActiv" unique_id=166058271]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 0
+offset_left = 122.0
+offset_top = 23.0
+offset_right = 234.0
+offset_bottom = 55.0
+texture = ExtResource("9_ci00t")
+
+[node name="Label" type="Label" parent="Background/NormalBar/CurrentActiv/TextureRect" unique_id=973479466]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Inventory"
+label_settings = ExtResource("2_k61vr")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="InventoryTab" type="Control" parent="Background" unique_id=344553409 node_paths=PackedStringArray("inventory_ui", "seed_ui")]
 layout_mode = 1
@@ -649,7 +572,7 @@ focus_mode = 0
 theme = ExtResource("125_uspna")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 4
-theme_override_constants/icon_max_width = 24
+theme_override_constants/icon_max_width = 20
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
 icon = ExtResource("4_2jtc7")
@@ -681,7 +604,7 @@ focus_mode = 0
 theme = ExtResource("125_uspna")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 4
-theme_override_constants/icon_max_width = 24
+theme_override_constants/icon_max_width = 20
 theme_override_fonts/font = ExtResource("2_6nb4j")
 theme_override_font_sizes/font_size = 10
 icon = ExtResource("109_4awxy")
@@ -752,7 +675,7 @@ theme_override_constants/v_separation = 4
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.76862746, 0.6, 0.44313726, 1)
 
 [node name="Slot0" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character/ArmorInventoryUI/GridContainer/SlotBackground0" unique_id=1848838759]
 custom_minimum_size = Vector2(30, 30)
@@ -778,7 +701,7 @@ slot_is_switchable = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.76862746, 0.6, 0.44313726, 1)
 
 [node name="Slot0" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character/ArmorInventoryUI/GridContainer/SlotBackground1" unique_id=1827969267]
 custom_minimum_size = Vector2(30, 30)
@@ -803,7 +726,7 @@ check_attributes = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.76862746, 0.6, 0.44313726, 1)
 
 [node name="Slot0" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character/ArmorInventoryUI/GridContainer/SlotBackground2" unique_id=2070288104]
 custom_minimum_size = Vector2(30, 30)
@@ -828,7 +751,7 @@ check_attributes = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.76862746, 0.6, 0.44313726, 1)
 
 [node name="Slot0" type="Button" parent="Background/InventoryTab/EquipmentPanel/Character/ArmorInventoryUI/GridContainer/SlotBackground3" unique_id=1424083889]
 custom_minimum_size = Vector2(30, 30)
@@ -924,7 +847,7 @@ offset_left = 27.0
 offset_top = 3.0
 offset_right = 95.0
 offset_bottom = 143.0
-color = Color(0, 0, 0, 1)
+color = Color(0.76862746, 0.6, 0.44313726, 1)
 
 [node name="Forground" type="ColorRect" parent="Background/InventoryTab/EquipmentPanel/Character/ColorRectProfilBackground" unique_id=1861504857]
 layout_mode = 0
@@ -932,7 +855,7 @@ offset_left = 1.0
 offset_top = 1.0
 offset_right = 67.0
 offset_bottom = 139.0
-color = Color(0.278431, 0.270588, 0.329412, 1)
+color = Color(0.85882354, 0.6784314, 0.5058824, 1)
 
 [node name="TextureRect" type="TextureRect" parent="Background/InventoryTab/EquipmentPanel/Character/ColorRectProfilBackground" unique_id=697152842]
 layout_mode = 1
@@ -957,7 +880,7 @@ offset_right = 148.0
 offset_bottom = 128.0
 tooltip_text = "
 "
-color = Color(0, 0, 0, 1)
+color = Color(0.76862746, 0.6, 0.44313726, 1)
 script = ExtResource("7_hhlnf")
 stats_container = NodePath("VBoxContainer")
 
@@ -967,7 +890,7 @@ offset_left = 1.0
 offset_top = 1.0
 offset_right = 67.0
 offset_bottom = 139.0
-color = Color(0.278431, 0.270588, 0.329412, 1)
+color = Color(0.85882354, 0.6784314, 0.5058824, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/InventoryTab/EquipmentPanel/PlayerStatsUI" unique_id=1194553375]
 layout_mode = 0
@@ -7233,7 +7156,7 @@ quest_description_label = NodePath("MarginContainer/VBoxRequest/Description")
 dialogue_timeline = ExtResource("125_m1qfe")
 quest_inventory = NodePath("MarginContainer/VBoxRequest/ChestInventoryIn")
 reward_label = NodePath("MarginContainer/VBoxRequest/HBoxContainer/MoneyLabel")
-exit_button = NodePath("../ColorRect/ColorRect/HBoxHeader/ExitTabButton")
+exit_button = NodePath("../NormalBar/HBoxHeader/Exit/ExitTabButton")
 quest_options_tab_container = NodePath("MarginContainer/TabContainer")
 quest_selection_container = NodePath("MarginContainer/TabContainer")
 quest_display_container = NodePath("MarginContainer/VBoxRequest")
@@ -7796,14 +7719,13 @@ color = Color(0, 0, 0, 0.29411766)
 visible = false
 layout_mode = 0
 
-[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/InvTabButton" to="." method="OnInventoryTabButton"]
-[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/CraftingTabButton" to="." method="OnCraftingTabButton"]
-[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/SaveTabButton" to="." method="OnSaveLoadTabButton"]
-[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/SkillTreeTabButton" to="." method="OnOpenSkilltreeTab"]
-[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/AdminButton" to="." method="OnOpenAdminTab"]
-[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/HelpButton" to="." method="OnHelpTabButton"]
-[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/SettingsTabButton" to="." method="OnSettingsTabButton"]
-[connection signal="pressed" from="Background/ColorRect/ColorRect/HBoxHeader/ExitTabButton" to="." method="OnExitButton"]
+[connection signal="pressed" from="Background/NormalBar/HBoxHeader/Inventory/InvTabButton" to="." method="OnInventoryTabButton"]
+[connection signal="pressed" from="Background/NormalBar/HBoxHeader/Crafting/CraftingTabButton" to="." method="OnCraftingTabButton"]
+[connection signal="pressed" from="Background/NormalBar/HBoxHeader/Skilltree/SkillTreeTabButton" to="." method="OnOpenSkilltreeTab"]
+[connection signal="pressed" from="Background/NormalBar/HBoxHeader/Admin/AdminButton" to="." method="OnOpenAdminTab"]
+[connection signal="pressed" from="Background/NormalBar/HBoxHeader/Settings/SettingsTabButton" to="." method="OnSettingsTabButton"]
+[connection signal="pressed" from="Background/NormalBar/HBoxHeader/Exit/ExitTabButton" to="." method="OnExitButton"]
+[connection signal="pressed" from="Background/NormalBar/HBoxHeader/HelpButton" to="." method="OnHelpTabButton"]
 [connection signal="visibility_changed" from="Background/InventoryTab" to="Background/InventoryTab" method="OnVisiblitytityChanged"]
 [connection signal="pressed" from="Background/InventoryTab/HBoxContainer/Control/TextureRect/NormalBagButton" to="Background/InventoryTab" method="OnInventoryButton"]
 [connection signal="pressed" from="Background/InventoryTab/HBoxContainer/Control2/TextureRect2/SeedBagButton" to="Background/InventoryTab" method="OnSeedButton"]

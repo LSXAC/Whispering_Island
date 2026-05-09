@@ -5,6 +5,13 @@ using Godot;
 public partial class GameMenu : CanvasLayer
 {
     [Export]
+    public Texture2D normal_marker,
+        selected_marker;
+
+    [Export]
+    public Label tab_label;
+
+    [Export]
     public Button load_button;
 
     [Export]
@@ -191,17 +198,52 @@ public partial class GameMenu : CanvasLayer
         X
     }
 
+    private int GetTextureRectIndexForTab(Tabs tab)
+    {
+        return tab switch
+        {
+            Tabs.Inventory => 0,
+            Tabs.Crafting => 1,
+            Tabs.SkillTree => 2,
+            Tabs.Admin => 3,
+            Tabs.Settings => 4,
+            Tabs.LoadSave => 5,
+            _ => -1
+        };
+    }
+
     private void ChangeSelectedTabColor(Tabs tab)
     {
-        foreach (Button btn in header_container.GetChildren())
+        int targetIndex = GetTextureRectIndexForTab(tab);
+        if (targetIndex == -1)
+            return;
+
+        int currentIndex = 0;
+        foreach (Node child in header_container.GetChildren())
         {
-            if (btn.HasNode("HBoxContainer"))
-                btn.GetChild(0).GetNode<Label>("Label").LabelSettings = title_normal;
+            if (child is TextureRect textureRect)
+            {
+                if (currentIndex == targetIndex)
+                {
+                    textureRect.Texture = selected_marker;
+                    if (textureRect.GetChildCount() > 0)
+                    {
+                        Node firstChild = textureRect.GetChild(0);
+                        if (
+                            firstChild is TranslationButton tranBtn
+                            && tranBtn.label_translation_string != null
+                        )
+                            tab_label.Text = TranslationServer.Translate(
+                                tranBtn.label_translation_string
+                            );
+                    }
+                }
+                else
+                    textureRect.Texture = normal_marker;
+
+                currentIndex++;
+            }
         }
-        ((Button)header_container.GetChild((int)tab))
-            .GetChild(0)
-            .GetNode<Label>("Label")
-            .LabelSettings = title_selected;
     }
 
     public void OnVisiblityChange()
